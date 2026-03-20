@@ -1,0 +1,64 @@
+{
+    "name": "@girs/clutter-18",
+    "version": "18.0.0-4.0.0-beta.41",
+    "description": "GJS TypeScript type definitions for Clutter-18, generated from library version 18.0.0",
+    "type": "module",
+    "module": "clutter-18.js",
+    "main": "clutter-18.js",
+    "exports": {
+      "./ambient": {
+        "types": "./clutter-18-ambient.d.ts",
+        "import": "./clutter-18-ambient.js",
+        "default": "./clutter-18-ambient.js"
+      },
+      "./import": {
+        "types": "./clutter-18-import.d.ts",
+        "import": "./clutter-18-import.js",
+        "default": "./clutter-18-import.js"
+      },
+      "./clutter-18": {
+        "types": "./clutter-18.d.ts",
+        "import": "./clutter-18.js",
+        "default": "./clutter-18.js"
+      },
+      ".": {
+        "types": "./index.d.ts",
+        "import": "./index.js",
+        "default": "./index.js"
+      }
+    },
+    "scripts": {
+      "test": "tsc --project tsconfig.json"
+    },
+    "dependencies": {
+      "@girs/gjs": "4.0.0-beta.41",
+      "@girs/pango-1.0": "1.57.0-4.0.0-beta.41",
+      "@girs/cairo-1.0": "1.0.0-4.0.0-beta.41",
+      "@girs/gobject-2.0": "2.88.0-4.0.0-beta.41",
+      "@girs/glib-2.0": "2.88.0-4.0.0-beta.41",
+      "@girs/harfbuzz-0.0": "12.3.2-4.0.0-beta.41",
+      "@girs/freetype2-2.0": "2.0.0-4.0.0-beta.41",
+      "@girs/gio-2.0": "2.88.0-4.0.0-beta.41",
+      "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.41",
+      "@girs/mtk-18": "18.0.0-4.0.0-beta.41",
+      "@girs/graphene-1.0": "1.0.0-4.0.0-beta.41",
+      "@girs/gl-1.0": "1.0.0-4.0.0-beta.41",
+      "@girs/cogl-18": "18.0.0-4.0.0-beta.41",
+      "@girs/atk-1.0": "2.60.0-4.0.0-beta.41"    },
+    "devDependencies": {
+      "typescript": "*"
+    },
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "Clutter-18"],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/gjsify/types.git"
+    },
+    "bugs": {
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/clutter-18#readme"
+}
+
+

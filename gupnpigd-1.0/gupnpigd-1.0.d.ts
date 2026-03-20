@@ -20,6 +20,7 @@ export namespace GUPnPIgd {
 
     /**
      * Errors coming out of the GUPnPSimpleIGD object.
+     * @gir-type Enum
      */
     enum SimpleIgdError {
         /**
@@ -32,7 +33,22 @@ export namespace GUPnPIgd {
     namespace SimpleIgd {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * This is to allow the application to control which `GUPnPContext` this
+             * client should use. If the application connects to this signal, it controls
+             * if a context will be used by changing the return value of the signal
+             * handler.
+             * @signal
+             * @run-last
+             */
             'context-available': (arg0: GObject.Object) => boolean | void;
+            /**
+             * This means that mapping a port on a specific IGD has failed (it may still
+             * succeed on other IGDs on the network).
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'error-mapping-port': (
                 arg0: GLib.Error,
                 arg1: string,
@@ -41,6 +57,12 @@ export namespace GUPnPIgd {
                 arg4: number,
                 arg5: string,
             ) => void;
+            /**
+             * This signal means that an IGD has been found that that adding a port
+             * mapping has succeeded.
+             * @signal
+             * @run-last
+             */
             'mapped-external-port': (
                 arg0: string,
                 arg1: string,
@@ -51,6 +73,13 @@ export namespace GUPnPIgd {
                 arg6: string,
             ) => void;
             'notify::main-context': (pspec: GObject.ParamSpec) => void;
+            /**
+             * This means that mapping a port on a specific IGD has failed (it may still
+             * succeed on other IGDs on the network).
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'error-mapping-port::main-context': (
                 arg0: GLib.Error,
                 arg1: string,
@@ -71,13 +100,20 @@ export namespace GUPnPIgd {
 
     /**
      * All members are private, access them using methods and properties
+     * @gir-type Class
      */
     class SimpleIgd extends GObject.Object {
         static $gtype: GObject.GType<SimpleIgd>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get main_context(): any;
+        /**
+         * @read-only
+         */
         get mainContext(): any;
 
         /**
@@ -99,16 +135,19 @@ export namespace GUPnPIgd {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SimpleIgd.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SimpleIgd.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SimpleIgd.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SimpleIgd.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SimpleIgd.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SimpleIgd.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -124,12 +163,12 @@ export namespace GUPnPIgd {
         /**
          * This adds a port to the router's forwarding table. The mapping will
          * be automatically refreshed by this object until it is either
-         * removed with gupnp_simple_igd_remove_port(),
-         * gupnp_simple_igd_remove_port_local() or the object disapears.
+         * removed with `gupnp_simple_igd_remove_port()`,
+         * `gupnp_simple_igd_remove_port_local()` or the object disapears.
          *
-         * If there is a problem, the #GUPnPSimpleIgd::error-mapping-port signal will
+         * If there is a problem, the {@link GUPnPIgd.SimpleIgd.SignalSignatures.error_mapping_port | GUPnPIgd.SimpleIgd::error-mapping-port} signal will
          * be emitted. If a router is found and a port is mapped correctly,
-         * #GUPnPSimpleIgd::mapped-external-port will be emitted. These signals may
+         * {@link GUPnPIgd.SimpleIgd.SignalSignatures.mapped_external_port | GUPnPIgd.SimpleIgd::mapped-external-port} will be emitted. These signals may
          * be emitted multiple times if there are multiple routers present.
          * @param protocol the protocol "UDP" or "TCP"
          * @param external_port The port to try to open on the external device,   0 means to try a random port if the same port as the local port is already   taken
@@ -149,26 +188,26 @@ export namespace GUPnPIgd {
         /**
          * Removes all mappings and prevents other from being formed
          * Should only be called by the dispose function of subclasses
-         * @returns %TRUE if the object can be disposed, %FALSE otherwise
+         * @returns `true` if the object can be disposed, `false` otherwise
          */
         delete_all_mappings(): boolean;
         /**
          * This tries to remove a port entry from the routers that was previously added
-         * with gupnp_simple_igd_add_port(). There is no indicated of success or failure
+         * with `gupnp_simple_igd_add_port()`. There is no indicated of success or failure
          * it is a best effort mechanism. If it fails, the bindings will disapears after
          * the lease duration set when the port where added.
-         * @param protocol the protocol "UDP" or "TCP" as given to  gupnp_simple_igd_add_port()
-         * @param external_port The port to try to open on the external device as given to  gupnp_simple_igd_add_port()
+         * @param protocol the protocol "UDP" or "TCP" as given to  `gupnp_simple_igd_add_port()`
+         * @param external_port The port to try to open on the external device as given to  `gupnp_simple_igd_add_port()`
          */
         remove_port(protocol: string, external_port: number): void;
         /**
          * This tries to remove a port entry from the routers that was previously added
-         * with gupnp_simple_igd_add_port(). There is no indicated of success or failure
+         * with `gupnp_simple_igd_add_port()`. There is no indicated of success or failure
          * it is a best effort mechanism. If it fails, the bindings will disapears after
          * the lease duration set when the port where added.
-         * @param protocol the protocol "UDP" or "TCP" as given to  gupnp_simple_igd_add_port()
-         * @param local_ip The local ip on the internal device as was to  gupnp_simple_igd_add_port()
-         * @param local_port The port to try to open on the internal device as given to  gupnp_simple_igd_add_port()
+         * @param protocol the protocol "UDP" or "TCP" as given to  `gupnp_simple_igd_add_port()`
+         * @param local_ip The local ip on the internal device as was to  `gupnp_simple_igd_add_port()`
+         * @param local_port The port to try to open on the internal device as given to  `gupnp_simple_igd_add_port()`
          */
         remove_port_local(protocol: string, local_ip: string, local_port: number): void;
     }
@@ -186,6 +225,7 @@ export namespace GUPnPIgd {
 
     /**
      * All members are private, access them using methods and properties
+     * @gir-type Class
      */
     class SimpleIgdThread extends SimpleIgd {
         static $gtype: GObject.GType<SimpleIgdThread>;
@@ -209,16 +249,19 @@ export namespace GUPnPIgd {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SimpleIgdThread.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SimpleIgdThread.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SimpleIgdThread.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SimpleIgdThread.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SimpleIgdThread.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SimpleIgdThread.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -226,12 +269,24 @@ export namespace GUPnPIgd {
         emit(signal: string, ...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SimpleIgdClass = typeof SimpleIgd;
+    /**
+     * @gir-type Struct
+     */
     abstract class SimpleIgdPrivate {
         static $gtype: GObject.GType<SimpleIgdPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SimpleIgdThreadClass = typeof SimpleIgdThread;
+    /**
+     * @gir-type Struct
+     */
     abstract class SimpleIgdThreadPrivate {
         static $gtype: GObject.GType<SimpleIgdThreadPrivate>;
     }

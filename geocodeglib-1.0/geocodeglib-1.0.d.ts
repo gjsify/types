@@ -24,6 +24,7 @@ export namespace GeocodeGlib {
 
     /**
      * Error codes returned by geocode-glib functions.
+     * @gir-type Struct
      */
     class Error extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -63,12 +64,16 @@ export namespace GeocodeGlib {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LocationCRS {
         export const $gtype: GObject.GType<LocationCRS>;
     }
 
     /**
      * Coordinate Reference System Identification for a location.
+     * @gir-type Enum
      */
     enum LocationCRS {
         /**
@@ -77,12 +82,16 @@ export namespace GeocodeGlib {
         WGS84,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LocationURIScheme {
         export const $gtype: GObject.GType<LocationURIScheme>;
     }
 
     /**
      * The URI scheme for this location.
+     * @gir-type Enum
      */
     enum LocationURIScheme {
         /**
@@ -91,12 +100,16 @@ export namespace GeocodeGlib {
         GEO,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PlaceOsmType {
         export const $gtype: GObject.GType<PlaceOsmType>;
     }
 
     /**
      * Osm type of the place.
+     * @gir-type Enum
      */
     enum PlaceOsmType {
         /**
@@ -117,12 +130,16 @@ export namespace GeocodeGlib {
         WAY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PlaceType {
         export const $gtype: GObject.GType<PlaceType>;
     }
 
     /**
      * Type of the place.
+     * @gir-type Enum
      */
     enum PlaceType {
         /**
@@ -293,7 +310,7 @@ export namespace GeocodeGlib {
     const LOCATION_ACCURACY_UNKNOWN: number;
     /**
      * Gets the geocode-glib error quark.
-     * @returns a #GQuark.
+     * @returns a {@link GLib.Quark}.
      */
     function error_quark(): GLib.Quark;
     namespace BoundingBox {
@@ -316,8 +333,9 @@ export namespace GeocodeGlib {
     }
 
     /**
-     * All the fields in the #GeocodeLocation structure are private and should
+     * All the fields in the {@link GeocodeGlib.Location} structure are private and should
      * never be accessed directly.
+     * @gir-type Class
      */
     class BoundingBox extends GObject.Object {
         static $gtype: GObject.GType<BoundingBox>;
@@ -326,18 +344,22 @@ export namespace GeocodeGlib {
 
         /**
          * Bottom coordinate.
+         * @construct-only
          */
         get bottom(): number;
         /**
          * Left coordinate.
+         * @construct-only
          */
         get left(): number;
         /**
          * Right coordinate.
+         * @construct-only
          */
         get right(): number;
         /**
          * Top coordinate.
+         * @construct-only
          */
         get top(): number;
 
@@ -360,16 +382,19 @@ export namespace GeocodeGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BoundingBox.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BoundingBox.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BoundingBox.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BoundingBox.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BoundingBox.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BoundingBox.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -379,32 +404,32 @@ export namespace GeocodeGlib {
         // Methods
 
         /**
-         * Compare two #GeocodeBoundingBox instances for equality. This compares all
-         * fields and only returns %TRUE if the instances are exactly equal.
+         * Compare two {@link GeocodeGlib.BoundingBox} instances for equality. This compares all
+         * fields and only returns `true` if the instances are exactly equal.
          *
-         * Both instances must be non-%NULL.
+         * Both instances must be non-`null`.
          * @param b another bounding box
-         * @returns %TRUE if the instances are equal, %FALSE otherwise
+         * @returns `true` if the instances are equal, `false` otherwise
          */
         equal(b: BoundingBox): boolean;
         /**
          * Gets the bottom coordinate of `bbox`.
-         * @returns the bottom coordinate of @bbox.
+         * @returns the bottom coordinate of `bbox`.
          */
         get_bottom(): number;
         /**
          * Gets the left coordinate of `bbox`.
-         * @returns the left coordinate of @bbox.
+         * @returns the left coordinate of `bbox`.
          */
         get_left(): number;
         /**
          * Gets the right coordinate of `bbox`.
-         * @returns the right coordinate of @bbox.
+         * @returns the right coordinate of `bbox`.
          */
         get_right(): number;
         /**
          * Gets the top coordinate of `bbox`.
-         * @returns the top coordinate of @bbox.
+         * @returns the top coordinate of `bbox`.
          */
         get_top(): number;
     }
@@ -429,7 +454,8 @@ export namespace GeocodeGlib {
     }
 
     /**
-     * All the fields in the #GeocodeForward structure are private and should never be accessed directly.
+     * All the fields in the {@link GeocodeGlib.Forward} structure are private and should never be accessed directly.
+     * @gir-type Class
      */
     class Forward extends GObject.Object {
         static $gtype: GObject.GType<Forward>;
@@ -447,23 +473,23 @@ export namespace GeocodeGlib {
         get answerCount(): number;
         set answerCount(val: number);
         /**
-         * If set to #TRUE then only results in the #GeocodeForward:search-area
+         * If set to `TRUE` then only results in the {@link GeocodeGlib.Forward.search_area}
          * bounding box are returned.
-         * If set to #FALSE the #GeocodeForward:search-area is treated like a
+         * If set to `FALSE` the {@link GeocodeGlib.Forward.search_area} is treated like a
          * preferred area for results.
          */
         get bounded(): boolean;
         set bounded(val: boolean);
         /**
          * The bounding box that limits the search area.
-         * If #GeocodeForward:bounded property is set to #TRUE only results from
+         * If {@link GeocodeGlib.Forward.bounded} property is set to `TRUE` only results from
          * this area is returned.
          */
         get search_area(): BoundingBox;
         set search_area(val: BoundingBox);
         /**
          * The bounding box that limits the search area.
-         * If #GeocodeForward:bounded property is set to #TRUE only results from
+         * If {@link GeocodeGlib.Forward.bounded} property is set to `TRUE` only results from
          * this area is returned.
          */
         get searchArea(): BoundingBox;
@@ -490,16 +516,19 @@ export namespace GeocodeGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Forward.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Forward.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Forward.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Forward.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Forward.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Forward.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -513,64 +542,64 @@ export namespace GeocodeGlib {
          */
         get_answer_count(): number;
         /**
-         * Gets the #GeocodeForward:bounded property that regulates whether the
-         * #GeocodeForward:search-area property acts restricting or not.
+         * Gets the {@link GeocodeGlib.Forward.bounded} property that regulates whether the
+         * {@link GeocodeGlib.Forward.search_area} property acts restricting or not.
          */
         get_bounded(): boolean;
         /**
          * Gets the area to limit searches within.
-         * @returns the search area, or %NULL if none is set
+         * @returns the search area, or `null` if none is set
          */
         get_search_area(): BoundingBox | null;
         /**
          * Gets the result of a forward geocoding
-         * query using the current backend (see geocode_forward_set_backend()). By
-         * default the GNOME Nominatim server is used. See #GeocodeBackend for more
+         * query using the current backend (see `geocode_forward_set_backend()`). By
+         * default the GNOME Nominatim server is used. See {@link GeocodeGlib.Backend} for more
          * information.
          *
-         * If no results are found, a %GEOCODE_ERROR_NO_MATCHES error is returned.
-         * @returns A list of places or %NULL in case of errors. Free the returned instances with g_object_unref() and the list with g_list_free() when done.
+         * If no results are found, a {@link GeocodeGlib.Error.NO_MATCHES} error is returned.
+         * @returns A list of places or `null` in case of errors. Free the returned instances with `g_object_unref()` and the list with `g_list_free()` when done.
          */
         search(): Place[];
         /**
          * Asynchronously performs a forward geocoding
-         * query using a web service. Use geocode_forward_search() to do the same
+         * query using a web service. Use `geocode_forward_search()` to do the same
          * thing synchronously.
          *
          * When the operation is finished, `callback` will be called. You can then call
-         * geocode_forward_search_finish() to get the result of the operation.
-         * @param cancellable optional #GCancellable forward, %NULL to ignore.
+         * `geocode_forward_search_finish()` to get the result of the operation.
+         * @param cancellable optional {@link Gio.Cancellable} forward, `null` to ignore.
          */
         search_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Place[]>;
         /**
          * Asynchronously performs a forward geocoding
-         * query using a web service. Use geocode_forward_search() to do the same
+         * query using a web service. Use `geocode_forward_search()` to do the same
          * thing synchronously.
          *
          * When the operation is finished, `callback` will be called. You can then call
-         * geocode_forward_search_finish() to get the result of the operation.
-         * @param cancellable optional #GCancellable forward, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * `geocode_forward_search_finish()` to get the result of the operation.
+         * @param cancellable optional {@link Gio.Cancellable} forward, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         search_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Asynchronously performs a forward geocoding
-         * query using a web service. Use geocode_forward_search() to do the same
+         * query using a web service. Use `geocode_forward_search()` to do the same
          * thing synchronously.
          *
          * When the operation is finished, `callback` will be called. You can then call
-         * geocode_forward_search_finish() to get the result of the operation.
-         * @param cancellable optional #GCancellable forward, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * `geocode_forward_search_finish()` to get the result of the operation.
+         * @param cancellable optional {@link Gio.Cancellable} forward, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         search_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Place[]> | void;
         /**
-         * Finishes a forward geocoding operation. See geocode_forward_search_async().
-         * @param res a #GAsyncResult.
-         * @returns A list of places or %NULL in case of errors. Free the returned instances with g_object_unref() and the list with g_list_free() when done.
+         * Finishes a forward geocoding operation. See `geocode_forward_search_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @returns A list of places or `null` in case of errors. Free the returned instances with `g_object_unref()` and the list with `g_list_free()` when done.
          */
         search_finish(res: Gio.AsyncResult): Place[];
         /**
@@ -582,13 +611,13 @@ export namespace GeocodeGlib {
          * Specifies the backend to use in the forward geocoding operation.
          *
          * If none is given, the default GNOME Nominatim server is used.
-         * @param backend a #GeocodeBackend, or %NULL to use the    default one.
+         * @param backend a {@link GeocodeGlib.Backend}, or `null` to use the    default one.
          */
         set_backend(backend?: Backend | null): void;
         /**
-         * Set the #GeocodeForward:bounded property that regulates whether the
-         * #GeocodeForward:search-area property acts restricting or not.
-         * @param bounded #TRUE to restrict results to only items contained within the #GeocodeForward:search-area bounding box.
+         * Set the {@link GeocodeGlib.Forward.bounded} property that regulates whether the
+         * {@link GeocodeGlib.Forward.search_area} property acts restricting or not.
+         * @param bounded `TRUE` to restrict results to only items contained within the {@link GeocodeGlib.Forward.search_area} bounding box.
          */
         set_bounded(bounded: boolean): void;
         /**
@@ -624,7 +653,8 @@ export namespace GeocodeGlib {
     }
 
     /**
-     * All the fields in the #GeocodeLocation structure are private and should never be accessed directly.
+     * All the fields in the {@link GeocodeGlib.Location} structure are private and should never be accessed directly.
+     * @gir-type Class
      */
     class Location extends GObject.Object {
         static $gtype: GObject.GType<Location>;
@@ -644,6 +674,7 @@ export namespace GeocodeGlib {
         /**
          * The Coordinate Reference System Identification of this location.
          * Only the value 'wgs84' is currently valid.
+         * @construct-only
          */
         get crs(): LocationCRS;
         /**
@@ -667,6 +698,7 @@ export namespace GeocodeGlib {
          * giving when the location was resolved from an address.
          *
          * A value of 0 (zero) will be interpreted as the current time.
+         * @construct-only
          */
         get timestamp(): number;
 
@@ -696,16 +728,19 @@ export namespace GeocodeGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Location.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Location.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Location.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Location.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Location.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Location.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -715,64 +750,64 @@ export namespace GeocodeGlib {
         // Methods
 
         /**
-         * Compare two #GeocodeLocation instances for equality. This compares all fields
-         * and only returns %TRUE if the instances are exactly equal. For example, if
+         * Compare two {@link GeocodeGlib.Location} instances for equality. This compares all fields
+         * and only returns `true` if the instances are exactly equal. For example, if
          * both locations have the same physical coordinates, but one location has its
-         * #GeocodeLocation:description property set and the other does not, %FALSE
+         * {@link GeocodeGlib.Location.description} property set and the other does not, `false`
          * will be returned. Similarly, if both locations have the same
-         * #GeocodeLocation:latitude, #GeocodeLocation:longitude and
-         * #GeocodeLocation:altitude, but a different #GeocodeLocation:accuracy or
-         * #GeocodeLocation:timestamp, %FALSE will be returned. Or if both locations
-         * have the same#GeocodeLocation:latitude and #GeocodeLocation:longitude but a
-         * different #GeocodeLocation:altitude, %FALSE will be returned.
+         * {@link GeocodeGlib.Location.latitude}, {@link GeocodeGlib.Location.longitude} and
+         * {@link GeocodeGlib.Location.altitude}, but a different {@link GeocodeGlib.Location.accuracy} or
+         * {@link GeocodeGlib.Location.timestamp}, `false` will be returned. Or if both locations
+         * have the same{@link GeocodeGlib.Location.latitude} and {@link GeocodeGlib.Location.longitude} but a
+         * different {@link GeocodeGlib.Location.altitude}, `false` will be returned.
          *
-         * Both instances must be non-%NULL.
+         * Both instances must be non-`null`.
          * @param b another location
-         * @returns %TRUE if the instances are equal, %FALSE otherwise
+         * @returns `true` if the instances are equal, `false` otherwise
          */
         equal(b: Location): boolean;
         /**
          * Gets the accuracy (in meters) of location `loc`.
-         * @returns The accuracy of location @loc.
+         * @returns The accuracy of location `loc`.
          */
         get_accuracy(): number;
         /**
          * Gets the altitude of location `loc`.
-         * @returns The altitude of location @loc.
+         * @returns The altitude of location `loc`.
          */
         get_altitude(): number;
         /**
          * Gets the Coordinate Reference System Identification of location `loc`.
-         * @returns The CRS of location @loc.
+         * @returns The CRS of location `loc`.
          */
         get_crs(): LocationCRS;
         /**
          * Gets the description of location `loc`.
-         * @returns The description of location @loc.
+         * @returns The description of location `loc`.
          */
         get_description(): string;
         /**
          * Calculates the distance in km, along the curvature of the Earth,
          * between 2 locations. Note that altitude changes are not
          * taken into account.
-         * @param locb a #GeocodeLocation
+         * @param locb a {@link GeocodeGlib.Location}
          * @returns a distance in km.
          */
         get_distance_from(locb: Location): number;
         /**
          * Gets the latitude of location `loc`.
-         * @returns The latitude of location @loc.
+         * @returns The latitude of location `loc`.
          */
         get_latitude(): number;
         /**
          * Gets the longitude of location `loc`.
-         * @returns The longitude of location @loc.
+         * @returns The longitude of location `loc`.
          */
         get_longitude(): number;
         /**
          * Gets the timestamp (in seconds since the Epoch) of location `loc`. See
-         * #GeocodeLocation:timestamp.
-         * @returns The timestamp of location @loc.
+         * {@link GeocodeGlib.Location.timestamp}.
+         * @returns The timestamp of location `loc`.
          */
         get_timestamp(): number;
         /**
@@ -781,7 +816,7 @@ export namespace GeocodeGlib {
          */
         set_description(description: string): void;
         /**
-         * Initialize a #GeocodeLocation object with the given `uri`.
+         * Initialize a {@link GeocodeGlib.Location} object with the given `uri`.
          *
          * The URI should be in the geo scheme (RFC 5870) which in its simplest form
          * looks like:
@@ -794,13 +829,13 @@ export namespace GeocodeGlib {
          *
          * - geo:0,0?q=latitude,longitude(description)
          * @param uri a URI mapping out a location
-         * @returns %TRUE on success and %FALSE on error.
+         * @returns `true` on success and `false` on error.
          */
         set_from_uri(uri: string): boolean;
         /**
          * Creates a URI representing `loc` in the scheme specified in `scheme`.
          * @param scheme the scheme of the requested URI
-         * @returns a URI representing the location. The returned string should be freed with g_free() when no longer needed.
+         * @returns a URI representing the location. The returned string should be freed with `g_free()` when no longer needed.
          */
         to_uri(scheme: LocationURIScheme | null): string;
     }
@@ -815,8 +850,10 @@ export namespace GeocodeGlib {
     }
 
     /**
-     * All the fields in the #GeocodeMockBackend structure are private and should
+     * All the fields in the {@link GeocodeGlib.MockBackend} structure are private and should
      * never be accessed directly.
+     * @gir-type Class
+     * @since 3.23.1
      */
     class MockBackend extends GObject.Object implements Backend {
         static $gtype: GObject.GType<MockBackend>;
@@ -840,16 +877,19 @@ export namespace GeocodeGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MockBackend.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MockBackend.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MockBackend.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MockBackend.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MockBackend.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MockBackend.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -861,17 +901,17 @@ export namespace GeocodeGlib {
         /**
          * Add a query and corresponding result (or error) to the mock backend, meaning
          * that if it receives a forward search for `params` through
-         * geocode_backend_forward_search() (or its asynchronous variants), the mock
+         * `geocode_backend_forward_search()` (or its asynchronous variants), the mock
          * backend will return the given `results` or `error` to the caller.
          *
          * If a set of `params` is added to the backend multiple times, the most
          * recently provided `results` and `error` will be used.
          *
          * Exactly one of `results` and `error` must be set. Empty result sets are
-         * represented as a %GEOCODE_ERROR_NO_MATCHES error.
-         * @param params query parameters to     respond to, in the same format as accepted by geocode_forward_search()
-         * @param results result set     to return for the query, or %NULL if @error is non-%NULL; result sets     must be in the same format as returned by geocode_forward_search()
-         * @param error error to return for the query, or %NULL if @results     should be returned instead; errors must match those returned by     geocode_forward_search()
+         * represented as a {@link GeocodeGlib.Error.NO_MATCHES} error.
+         * @param params query parameters to     respond to, in the same format as accepted by `geocode_forward_search()`
+         * @param results result set     to return for the query, or `null` if `error` is non-`null`; result sets     must be in the same format as returned by `geocode_forward_search()`
+         * @param error error to return for the query, or `null` if `results`     should be returned instead; errors must match those returned by     `geocode_forward_search()`
          */
         add_forward_result(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
@@ -881,17 +921,17 @@ export namespace GeocodeGlib {
         /**
          * Add a query and corresponding result (or error) to the mock backend, meaning
          * that if it receives a reverse search for `params` through
-         * geocode_backend_reverse_resolve() (or its asynchronous variants), the mock
+         * `geocode_backend_reverse_resolve()` (or its asynchronous variants), the mock
          * backend will return the given `results` or `error` to the caller.
          *
          * If a set of `params` is added to the backend multiple times, the most
          * recently provided `results` and `error` will be used.
          *
          * Exactly one of `results` and `error` must be set. Empty result sets are
-         * represented as a %GEOCODE_ERROR_NOT_SUPPORTED error.
-         * @param params query parameters to     respond to, in the same format as accepted by geocode_reverse_resolve()
-         * @param results result set     to return for the query, or %NULL if @error is non-%NULL; result sets     must be in the same format as returned by geocode_reverse_resolve()
-         * @param error error to return for the query, or %NULL if @results     should be returned instead; errors must match those returned by     geocode_reverse_resolve()
+         * represented as a {@link GeocodeGlib.Error.NOT_SUPPORTED} error.
+         * @param params query parameters to     respond to, in the same format as accepted by `geocode_reverse_resolve()`
+         * @param results result set     to return for the query, or `null` if `error` is non-`null`; result sets     must be in the same format as returned by `geocode_reverse_resolve()`
+         * @param error error to return for the query, or `null` if `results`     should be returned instead; errors must match those returned by     `geocode_reverse_resolve()`
          */
         add_reverse_result(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
@@ -900,9 +940,9 @@ export namespace GeocodeGlib {
         ): void;
         /**
          * Clear the set of stored results in the mock backend which have been added
-         * using geocode_mock_backend_add_forward_result() and
-         * geocode_mock_backend_add_reverse_result(). Additionally, clear the query log
-         * so far (see geocode_mock_backend_get_query_log()).
+         * using `geocode_mock_backend_add_forward_result()` and
+         * `geocode_mock_backend_add_reverse_result()`. Additionally, clear the query log
+         * so far (see `geocode_mock_backend_get_query_log()`).
          *
          * This effectively resets the mock backend to its initial state.
          */
@@ -910,32 +950,30 @@ export namespace GeocodeGlib {
         /**
          * Get the details of the forward and reverse queries which have been requested
          * of the mock backend since the most recent call to
-         * geocode_mock_backend_clear(). The query details are provided as
-         * #GeocodeMockBackendQuery structures, which map the query parameters to
-         * either the result set or the error which geocode_backend_forward_search()
-         * or geocode_backend_reverse_resolve() (or their asynchronous variants)
+         * `geocode_mock_backend_clear()`. The query details are provided as
+         * {@link GeocodeGlib.MockBackendQuery} structures, which map the query parameters to
+         * either the result set or the error which `geocode_backend_forward_search()`
+         * or `geocode_backend_reverse_resolve()` (or their asynchronous variants)
          * returned to the caller.
          *
          * The results are provided in the order in which calls were made to
-         * geocode_backend_forward_search() and geocode_backend_reverse_resolve().
+         * `geocode_backend_forward_search()` and `geocode_backend_reverse_resolve()`.
          * Results for forward and reverse queries may be interleaved.
          * @returns potentially     empty sequence of forward and reverse query details
          */
         get_query_log(): MockBackendQuery[];
-
-        // Inherited methods
         /**
          * Gets the result of a forward geocoding query using the `backend`.
          *
-         * If no results are found, a %GEOCODE_ERROR_NO_MATCHES error is returned.
+         * If no results are found, a {@link GeocodeGlib.Error.NO_MATCHES} error is returned.
          *
          * This is a synchronous function, which means it may block on network requests.
          * In most situations, the asynchronous version
          * (geocode_backend_forward_search_async()) is more appropriate. See its
          * documentation for more information on usage.
-         * @param params a #GHashTable with string keys, and #GValue values.
-         * @param cancellable optional #GCancellable, %NULL to ignore.
-         * @returns A list of places or %NULL in case of errors. Free the returned instances with g_object_unref() and the list with g_list_free() when done.
+         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+         * @param cancellable optional {@link Gio.Cancellable}, `null` to ignore.
+         * @returns A list of places or `null` in case of errors. Free the returned instances with `g_object_unref()` and the list with `g_list_free()` when done.
          */
         forward_search(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
@@ -943,7 +981,7 @@ export namespace GeocodeGlib {
         ): Place[];
         /**
          * Asynchronously performs a forward geocoding query using the `backend`. Use
-         * geocode_backend_forward_search() to do the same thing synchronously.
+         * `geocode_backend_forward_search()` to do the same thing synchronously.
          *
          * The `params` hash table is in the format used by Telepathy, and documented
          * in the [Telepathy specification](http://telepathy.freedesktop.org/spec/Connection_Interface_Location.html#Mapping:Location).
@@ -951,9 +989,9 @@ export namespace GeocodeGlib {
          * See also: [XEP-0080 specification](http://xmpp.org/extensions/xep-0080.html).
          *
          * When the operation is finished, `callback` will be called. You can then call
-         * geocode_backend_forward_search_finish() to get the result of the operation.
-         * @param params a #GHashTable with string keys, and #GValue values.
-         * @param cancellable optional #GCancellable, %NULL to ignore.
+         * `geocode_backend_forward_search_finish()` to get the result of the operation.
+         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+         * @param cancellable optional {@link Gio.Cancellable}, `null` to ignore.
          */
         forward_search_async(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
@@ -961,7 +999,7 @@ export namespace GeocodeGlib {
         ): globalThis.Promise<Place[]>;
         /**
          * Asynchronously performs a forward geocoding query using the `backend`. Use
-         * geocode_backend_forward_search() to do the same thing synchronously.
+         * `geocode_backend_forward_search()` to do the same thing synchronously.
          *
          * The `params` hash table is in the format used by Telepathy, and documented
          * in the [Telepathy specification](http://telepathy.freedesktop.org/spec/Connection_Interface_Location.html#Mapping:Location).
@@ -969,10 +1007,10 @@ export namespace GeocodeGlib {
          * See also: [XEP-0080 specification](http://xmpp.org/extensions/xep-0080.html).
          *
          * When the operation is finished, `callback` will be called. You can then call
-         * geocode_backend_forward_search_finish() to get the result of the operation.
-         * @param params a #GHashTable with string keys, and #GValue values.
-         * @param cancellable optional #GCancellable, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * `geocode_backend_forward_search_finish()` to get the result of the operation.
+         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+         * @param cancellable optional {@link Gio.Cancellable}, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         forward_search_async(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
@@ -981,7 +1019,7 @@ export namespace GeocodeGlib {
         ): void;
         /**
          * Asynchronously performs a forward geocoding query using the `backend`. Use
-         * geocode_backend_forward_search() to do the same thing synchronously.
+         * `geocode_backend_forward_search()` to do the same thing synchronously.
          *
          * The `params` hash table is in the format used by Telepathy, and documented
          * in the [Telepathy specification](http://telepathy.freedesktop.org/spec/Connection_Interface_Location.html#Mapping:Location).
@@ -989,10 +1027,10 @@ export namespace GeocodeGlib {
          * See also: [XEP-0080 specification](http://xmpp.org/extensions/xep-0080.html).
          *
          * When the operation is finished, `callback` will be called. You can then call
-         * geocode_backend_forward_search_finish() to get the result of the operation.
-         * @param params a #GHashTable with string keys, and #GValue values.
-         * @param cancellable optional #GCancellable, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * `geocode_backend_forward_search_finish()` to get the result of the operation.
+         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+         * @param cancellable optional {@link Gio.Cancellable}, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         forward_search_async(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
@@ -1001,25 +1039,25 @@ export namespace GeocodeGlib {
         ): globalThis.Promise<Place[]> | void;
         /**
          * Finishes a forward geocoding operation. See
-         * geocode_backend_forward_search_async().
-         * @param result a #GAsyncResult.
-         * @returns A list of places or %NULL in case of errors. Free the returned instances with g_object_unref() and the list with g_list_free() when done.
+         * `geocode_backend_forward_search_async()`.
+         * @param result a {@link Gio.AsyncResult}.
+         * @returns A list of places or `null` in case of errors. Free the returned instances with `g_object_unref()` and the list with `g_list_free()` when done.
          */
         forward_search_finish(result: Gio.AsyncResult): Place[];
         /**
          * Gets the result of a reverse geocoding query using the `backend`.
          *
-         * If no result could be found, a %GEOCODE_ERROR_NOT_SUPPORTED error will be
+         * If no result could be found, a {@link GeocodeGlib.Error.NOT_SUPPORTED} error will be
          * returned. This typically happens if the coordinates to geocode are in the
          * middle of the ocean.
          *
          * This is a synchronous function, which means it may block on network requests.
          * In most situations, the asynchronous version,
-         * geocode_backend_forward_search_async(), is more appropriate. See its
+         * `geocode_backend_forward_search_async()`, is more appropriate. See its
          * documentation for more information on usage.
-         * @param params a #GHashTable with string keys, and #GValue values.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns A list of    #GeocodePlace instances, or %NULL in case of errors. The list is ordered    by relevance, with most relevant results first. Free the returned    instances with g_object_unref() and the list with g_list_free() when done.
+         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns A list of    {@link GeocodeGlib.Place} instances, or `null` in case of errors. The list is ordered    by relevance, with most relevant results first. Free the returned    instances with `g_object_unref()` and the list with `g_list_free()` when done.
          */
         reverse_resolve(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
@@ -1030,7 +1068,7 @@ export namespace GeocodeGlib {
          * backend.
          *
          * Typically, a single result will be returned representing the place at a
-         * given latitude and longitude (the `lat` and `lon` keys to `params)`; but in
+         * given latitude and longitude (the `lat` and `lon` keys to `params`); but in
          * some cases the results will be ambiguous and *multiple* results will be
          * returned. They will be returned in order of relevance, with the most
          * relevant result first in the list.
@@ -1040,12 +1078,12 @@ export namespace GeocodeGlib {
          *
          * See also: [XEP-0080 specification](http://xmpp.org/extensions/xep-0080.html).
          *
-         * Use geocode_backend_reverse_resolve() to do the same thing synchronously.
+         * Use `geocode_backend_reverse_resolve()` to do the same thing synchronously.
          *
          * When the operation is finished, `callback` will be called. You can then call
-         * geocode_backend_reverse_resolve_finish() to get the result of the operation.
-         * @param params a #GHashTable with string keys, and #GValue values.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * `geocode_backend_reverse_resolve_finish()` to get the result of the operation.
+         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
         reverse_resolve_async(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
@@ -1056,7 +1094,7 @@ export namespace GeocodeGlib {
          * backend.
          *
          * Typically, a single result will be returned representing the place at a
-         * given latitude and longitude (the `lat` and `lon` keys to `params)`; but in
+         * given latitude and longitude (the `lat` and `lon` keys to `params`); but in
          * some cases the results will be ambiguous and *multiple* results will be
          * returned. They will be returned in order of relevance, with the most
          * relevant result first in the list.
@@ -1066,13 +1104,13 @@ export namespace GeocodeGlib {
          *
          * See also: [XEP-0080 specification](http://xmpp.org/extensions/xep-0080.html).
          *
-         * Use geocode_backend_reverse_resolve() to do the same thing synchronously.
+         * Use `geocode_backend_reverse_resolve()` to do the same thing synchronously.
          *
          * When the operation is finished, `callback` will be called. You can then call
-         * geocode_backend_reverse_resolve_finish() to get the result of the operation.
-         * @param params a #GHashTable with string keys, and #GValue values.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         * `geocode_backend_reverse_resolve_finish()` to get the result of the operation.
+         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         reverse_resolve_async(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
@@ -1084,7 +1122,7 @@ export namespace GeocodeGlib {
          * backend.
          *
          * Typically, a single result will be returned representing the place at a
-         * given latitude and longitude (the `lat` and `lon` keys to `params)`; but in
+         * given latitude and longitude (the `lat` and `lon` keys to `params`); but in
          * some cases the results will be ambiguous and *multiple* results will be
          * returned. They will be returned in order of relevance, with the most
          * relevant result first in the list.
@@ -1094,13 +1132,13 @@ export namespace GeocodeGlib {
          *
          * See also: [XEP-0080 specification](http://xmpp.org/extensions/xep-0080.html).
          *
-         * Use geocode_backend_reverse_resolve() to do the same thing synchronously.
+         * Use `geocode_backend_reverse_resolve()` to do the same thing synchronously.
          *
          * When the operation is finished, `callback` will be called. You can then call
-         * geocode_backend_reverse_resolve_finish() to get the result of the operation.
-         * @param params a #GHashTable with string keys, and #GValue values.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         * `geocode_backend_reverse_resolve_finish()` to get the result of the operation.
+         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         reverse_resolve_async(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
@@ -1108,22 +1146,23 @@ export namespace GeocodeGlib {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Place[]> | void;
         /**
-         * Finishes a reverse geocoding operation. See geocode_backend_reverse_resolve_async().
-         * @param result a #GAsyncResult.
-         * @returns A list of    #GeocodePlace instances, or %NULL in case of errors. The list is ordered    by relevance, with most relevant results first. Free the returned    instances with g_object_unref() and the list with g_list_free() when done.
+         * Finishes a reverse geocoding operation. See `geocode_backend_reverse_resolve_async()`.
+         * @param result a {@link Gio.AsyncResult}.
+         * @returns A list of    {@link GeocodeGlib.Place} instances, or `null` in case of errors. The list is ordered    by relevance, with most relevant results first. Free the returned    instances with `g_object_unref()` and the list with `g_list_free()` when done.
          */
         reverse_resolve_finish(result: Gio.AsyncResult): Place[];
         /**
          * Gets the result of a forward geocoding query using the `backend`.
          *
-         * If no results are found, a %GEOCODE_ERROR_NO_MATCHES error is returned.
+         * If no results are found, a {@link GeocodeGlib.Error.NO_MATCHES} error is returned.
          *
          * This is a synchronous function, which means it may block on network requests.
          * In most situations, the asynchronous version
          * (geocode_backend_forward_search_async()) is more appropriate. See its
          * documentation for more information on usage.
-         * @param params a #GHashTable with string keys, and #GValue values.
-         * @param cancellable optional #GCancellable, %NULL to ignore.
+         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+         * @param cancellable optional {@link Gio.Cancellable}, `null` to ignore.
+         * @virtual
          */
         vfunc_forward_search(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
@@ -1131,7 +1170,7 @@ export namespace GeocodeGlib {
         ): Place[];
         /**
          * Asynchronously performs a forward geocoding query using the `backend`. Use
-         * geocode_backend_forward_search() to do the same thing synchronously.
+         * `geocode_backend_forward_search()` to do the same thing synchronously.
          *
          * The `params` hash table is in the format used by Telepathy, and documented
          * in the [Telepathy specification](http://telepathy.freedesktop.org/spec/Connection_Interface_Location.html#Mapping:Location).
@@ -1139,10 +1178,11 @@ export namespace GeocodeGlib {
          * See also: [XEP-0080 specification](http://xmpp.org/extensions/xep-0080.html).
          *
          * When the operation is finished, `callback` will be called. You can then call
-         * geocode_backend_forward_search_finish() to get the result of the operation.
-         * @param params a #GHashTable with string keys, and #GValue values.
-         * @param cancellable optional #GCancellable, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * `geocode_backend_forward_search_finish()` to get the result of the operation.
+         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+         * @param cancellable optional {@link Gio.Cancellable}, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @virtual
          */
         vfunc_forward_search_async(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
@@ -1151,23 +1191,25 @@ export namespace GeocodeGlib {
         ): void;
         /**
          * Finishes a forward geocoding operation. See
-         * geocode_backend_forward_search_async().
-         * @param result a #GAsyncResult.
+         * `geocode_backend_forward_search_async()`.
+         * @param result a {@link Gio.AsyncResult}.
+         * @virtual
          */
         vfunc_forward_search_finish(result: Gio.AsyncResult): Place[];
         /**
          * Gets the result of a reverse geocoding query using the `backend`.
          *
-         * If no result could be found, a %GEOCODE_ERROR_NOT_SUPPORTED error will be
+         * If no result could be found, a {@link GeocodeGlib.Error.NOT_SUPPORTED} error will be
          * returned. This typically happens if the coordinates to geocode are in the
          * middle of the ocean.
          *
          * This is a synchronous function, which means it may block on network requests.
          * In most situations, the asynchronous version,
-         * geocode_backend_forward_search_async(), is more appropriate. See its
+         * `geocode_backend_forward_search_async()`, is more appropriate. See its
          * documentation for more information on usage.
-         * @param params a #GHashTable with string keys, and #GValue values.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_reverse_resolve(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
@@ -1178,7 +1220,7 @@ export namespace GeocodeGlib {
          * backend.
          *
          * Typically, a single result will be returned representing the place at a
-         * given latitude and longitude (the `lat` and `lon` keys to `params)`; but in
+         * given latitude and longitude (the `lat` and `lon` keys to `params`); but in
          * some cases the results will be ambiguous and *multiple* results will be
          * returned. They will be returned in order of relevance, with the most
          * relevant result first in the list.
@@ -1188,13 +1230,14 @@ export namespace GeocodeGlib {
          *
          * See also: [XEP-0080 specification](http://xmpp.org/extensions/xep-0080.html).
          *
-         * Use geocode_backend_reverse_resolve() to do the same thing synchronously.
+         * Use `geocode_backend_reverse_resolve()` to do the same thing synchronously.
          *
          * When the operation is finished, `callback` will be called. You can then call
-         * geocode_backend_reverse_resolve_finish() to get the result of the operation.
-         * @param params a #GHashTable with string keys, and #GValue values.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         * `geocode_backend_reverse_resolve_finish()` to get the result of the operation.
+         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         * @virtual
          */
         vfunc_reverse_resolve_async(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
@@ -1202,8 +1245,9 @@ export namespace GeocodeGlib {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Finishes a reverse geocoding operation. See geocode_backend_reverse_resolve_async().
-         * @param result a #GAsyncResult.
+         * Finishes a reverse geocoding operation. See `geocode_backend_reverse_resolve_async()`.
+         * @param result a {@link Gio.AsyncResult}.
+         * @virtual
          */
         vfunc_reverse_resolve_finish(result: Gio.AsyncResult): Place[];
         /**
@@ -1219,32 +1263,32 @@ export namespace GeocodeGlib {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -1253,39 +1297,39 @@ export namespace GeocodeGlib {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -1296,13 +1340,16 @@ export namespace GeocodeGlib {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -1310,7 +1357,7 @@ export namespace GeocodeGlib {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -1318,9 +1365,9 @@ export namespace GeocodeGlib {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -1340,9 +1387,9 @@ export namespace GeocodeGlib {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -1355,34 +1402,34 @@ export namespace GeocodeGlib {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1415,22 +1462,22 @@ export namespace GeocodeGlib {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -1439,8 +1486,8 @@ export namespace GeocodeGlib {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -1457,10 +1504,10 @@ export namespace GeocodeGlib {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -1475,13 +1522,13 @@ export namespace GeocodeGlib {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1512,21 +1559,21 @@ export namespace GeocodeGlib {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1536,33 +1583,34 @@ export namespace GeocodeGlib {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1571,6 +1619,7 @@ export namespace GeocodeGlib {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1579,12 +1628,14 @@ export namespace GeocodeGlib {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1593,20 +1644,22 @@ export namespace GeocodeGlib {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1618,6 +1671,7 @@ export namespace GeocodeGlib {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -1668,8 +1722,10 @@ export namespace GeocodeGlib {
     }
 
     /**
-     * All the fields in the #GeocodeNominatim structure are private and should
+     * All the fields in the {@link GeocodeGlib.Nominatim} structure are private and should
      * never be accessed directly.
+     * @gir-type Class
+     * @since 3.23.1
      */
     class Nominatim extends GObject.Object implements Backend {
         static $gtype: GObject.GType<Nominatim>;
@@ -1679,11 +1735,15 @@ export namespace GeocodeGlib {
         /**
          * The base URL of the Nominatim service, for example
          * `https://nominatim.example.org`.
+         * @since 3.23.1
+         * @construct-only
          */
         get base_url(): string;
         /**
          * The base URL of the Nominatim service, for example
          * `https://nominatim.example.org`.
+         * @since 3.23.1
+         * @construct-only
          */
         get baseUrl(): string;
         /**
@@ -1691,6 +1751,8 @@ export namespace GeocodeGlib {
          * geocoding requests to the  Nominatim server. This is used to contact
          * them in the event of a problem with their usage. See
          * [the Nominatim API](http://wiki.openstreetmap.org/wiki/Nominatim).
+         * @since 3.23.1
+         * @construct-only
          */
         get maintainer_email_address(): string;
         /**
@@ -1698,12 +1760,14 @@ export namespace GeocodeGlib {
          * geocoding requests to the  Nominatim server. This is used to contact
          * them in the event of a problem with their usage. See
          * [the Nominatim API](http://wiki.openstreetmap.org/wiki/Nominatim).
+         * @since 3.23.1
+         * @construct-only
          */
         get maintainerEmailAddress(): string;
         /**
-         * User-Agent string to send with HTTP(S) requests, or %NULL to use the
+         * User-Agent string to send with HTTP(S) requests, or `null` to use the
          * default user agent, which is derived from the geocode-glib version
-         * and #GApplication:id, for example: `geocode-glib/3.20 (MyAppId)`.
+         * and {@link Gio.Application.id}, for example: `geocode-glib/3.20 (MyAppId)`.
          *
          * As per the
          * [Nominatim usage policy](http://wiki.openstreetmap.org/wiki/Nominatim_usage_policy),
@@ -1711,13 +1775,14 @@ export namespace GeocodeGlib {
          * is using geocode-glib, and must be a valid
          * [user agent](https://tools.ietf.org/html/rfc7231#section-5.5.3)
          * string.
+         * @since 3.23.1
          */
         get user_agent(): string;
         set user_agent(val: string);
         /**
-         * User-Agent string to send with HTTP(S) requests, or %NULL to use the
+         * User-Agent string to send with HTTP(S) requests, or `null` to use the
          * default user agent, which is derived from the geocode-glib version
-         * and #GApplication:id, for example: `geocode-glib/3.20 (MyAppId)`.
+         * and {@link Gio.Application.id}, for example: `geocode-glib/3.20 (MyAppId)`.
          *
          * As per the
          * [Nominatim usage policy](http://wiki.openstreetmap.org/wiki/Nominatim_usage_policy),
@@ -1725,6 +1790,7 @@ export namespace GeocodeGlib {
          * is using geocode-glib, and must be a valid
          * [user agent](https://tools.ietf.org/html/rfc7231#section-5.5.3)
          * string.
+         * @since 3.23.1
          */
         get userAgent(): string;
         set userAgent(val: string);
@@ -1748,16 +1814,19 @@ export namespace GeocodeGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Nominatim.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Nominatim.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Nominatim.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Nominatim.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Nominatim.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Nominatim.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1775,27 +1844,40 @@ export namespace GeocodeGlib {
 
         // Virtual methods
 
+        /**
+         * @param uri
+         * @param cancellable
+         * @virtual
+         */
         vfunc_query(uri: string, cancellable?: Gio.Cancellable | null): string;
+        /**
+         * @param uri
+         * @param cancellable
+         * @param callback
+         * @virtual
+         */
         vfunc_query_async(
             uri: string,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param res
+         * @virtual
+         */
         vfunc_query_finish(res: Gio.AsyncResult): string;
-
-        // Inherited methods
         /**
          * Gets the result of a forward geocoding query using the `backend`.
          *
-         * If no results are found, a %GEOCODE_ERROR_NO_MATCHES error is returned.
+         * If no results are found, a {@link GeocodeGlib.Error.NO_MATCHES} error is returned.
          *
          * This is a synchronous function, which means it may block on network requests.
          * In most situations, the asynchronous version
          * (geocode_backend_forward_search_async()) is more appropriate. See its
          * documentation for more information on usage.
-         * @param params a #GHashTable with string keys, and #GValue values.
-         * @param cancellable optional #GCancellable, %NULL to ignore.
-         * @returns A list of places or %NULL in case of errors. Free the returned instances with g_object_unref() and the list with g_list_free() when done.
+         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+         * @param cancellable optional {@link Gio.Cancellable}, `null` to ignore.
+         * @returns A list of places or `null` in case of errors. Free the returned instances with `g_object_unref()` and the list with `g_list_free()` when done.
          */
         forward_search(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
@@ -1803,7 +1885,7 @@ export namespace GeocodeGlib {
         ): Place[];
         /**
          * Asynchronously performs a forward geocoding query using the `backend`. Use
-         * geocode_backend_forward_search() to do the same thing synchronously.
+         * `geocode_backend_forward_search()` to do the same thing synchronously.
          *
          * The `params` hash table is in the format used by Telepathy, and documented
          * in the [Telepathy specification](http://telepathy.freedesktop.org/spec/Connection_Interface_Location.html#Mapping:Location).
@@ -1811,9 +1893,9 @@ export namespace GeocodeGlib {
          * See also: [XEP-0080 specification](http://xmpp.org/extensions/xep-0080.html).
          *
          * When the operation is finished, `callback` will be called. You can then call
-         * geocode_backend_forward_search_finish() to get the result of the operation.
-         * @param params a #GHashTable with string keys, and #GValue values.
-         * @param cancellable optional #GCancellable, %NULL to ignore.
+         * `geocode_backend_forward_search_finish()` to get the result of the operation.
+         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+         * @param cancellable optional {@link Gio.Cancellable}, `null` to ignore.
          */
         forward_search_async(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
@@ -1821,7 +1903,7 @@ export namespace GeocodeGlib {
         ): globalThis.Promise<Place[]>;
         /**
          * Asynchronously performs a forward geocoding query using the `backend`. Use
-         * geocode_backend_forward_search() to do the same thing synchronously.
+         * `geocode_backend_forward_search()` to do the same thing synchronously.
          *
          * The `params` hash table is in the format used by Telepathy, and documented
          * in the [Telepathy specification](http://telepathy.freedesktop.org/spec/Connection_Interface_Location.html#Mapping:Location).
@@ -1829,10 +1911,10 @@ export namespace GeocodeGlib {
          * See also: [XEP-0080 specification](http://xmpp.org/extensions/xep-0080.html).
          *
          * When the operation is finished, `callback` will be called. You can then call
-         * geocode_backend_forward_search_finish() to get the result of the operation.
-         * @param params a #GHashTable with string keys, and #GValue values.
-         * @param cancellable optional #GCancellable, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * `geocode_backend_forward_search_finish()` to get the result of the operation.
+         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+         * @param cancellable optional {@link Gio.Cancellable}, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         forward_search_async(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
@@ -1841,7 +1923,7 @@ export namespace GeocodeGlib {
         ): void;
         /**
          * Asynchronously performs a forward geocoding query using the `backend`. Use
-         * geocode_backend_forward_search() to do the same thing synchronously.
+         * `geocode_backend_forward_search()` to do the same thing synchronously.
          *
          * The `params` hash table is in the format used by Telepathy, and documented
          * in the [Telepathy specification](http://telepathy.freedesktop.org/spec/Connection_Interface_Location.html#Mapping:Location).
@@ -1849,10 +1931,10 @@ export namespace GeocodeGlib {
          * See also: [XEP-0080 specification](http://xmpp.org/extensions/xep-0080.html).
          *
          * When the operation is finished, `callback` will be called. You can then call
-         * geocode_backend_forward_search_finish() to get the result of the operation.
-         * @param params a #GHashTable with string keys, and #GValue values.
-         * @param cancellable optional #GCancellable, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * `geocode_backend_forward_search_finish()` to get the result of the operation.
+         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+         * @param cancellable optional {@link Gio.Cancellable}, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         forward_search_async(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
@@ -1861,25 +1943,25 @@ export namespace GeocodeGlib {
         ): globalThis.Promise<Place[]> | void;
         /**
          * Finishes a forward geocoding operation. See
-         * geocode_backend_forward_search_async().
-         * @param result a #GAsyncResult.
-         * @returns A list of places or %NULL in case of errors. Free the returned instances with g_object_unref() and the list with g_list_free() when done.
+         * `geocode_backend_forward_search_async()`.
+         * @param result a {@link Gio.AsyncResult}.
+         * @returns A list of places or `null` in case of errors. Free the returned instances with `g_object_unref()` and the list with `g_list_free()` when done.
          */
         forward_search_finish(result: Gio.AsyncResult): Place[];
         /**
          * Gets the result of a reverse geocoding query using the `backend`.
          *
-         * If no result could be found, a %GEOCODE_ERROR_NOT_SUPPORTED error will be
+         * If no result could be found, a {@link GeocodeGlib.Error.NOT_SUPPORTED} error will be
          * returned. This typically happens if the coordinates to geocode are in the
          * middle of the ocean.
          *
          * This is a synchronous function, which means it may block on network requests.
          * In most situations, the asynchronous version,
-         * geocode_backend_forward_search_async(), is more appropriate. See its
+         * `geocode_backend_forward_search_async()`, is more appropriate. See its
          * documentation for more information on usage.
-         * @param params a #GHashTable with string keys, and #GValue values.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns A list of    #GeocodePlace instances, or %NULL in case of errors. The list is ordered    by relevance, with most relevant results first. Free the returned    instances with g_object_unref() and the list with g_list_free() when done.
+         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns A list of    {@link GeocodeGlib.Place} instances, or `null` in case of errors. The list is ordered    by relevance, with most relevant results first. Free the returned    instances with `g_object_unref()` and the list with `g_list_free()` when done.
          */
         reverse_resolve(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
@@ -1890,7 +1972,7 @@ export namespace GeocodeGlib {
          * backend.
          *
          * Typically, a single result will be returned representing the place at a
-         * given latitude and longitude (the `lat` and `lon` keys to `params)`; but in
+         * given latitude and longitude (the `lat` and `lon` keys to `params`); but in
          * some cases the results will be ambiguous and *multiple* results will be
          * returned. They will be returned in order of relevance, with the most
          * relevant result first in the list.
@@ -1900,12 +1982,12 @@ export namespace GeocodeGlib {
          *
          * See also: [XEP-0080 specification](http://xmpp.org/extensions/xep-0080.html).
          *
-         * Use geocode_backend_reverse_resolve() to do the same thing synchronously.
+         * Use `geocode_backend_reverse_resolve()` to do the same thing synchronously.
          *
          * When the operation is finished, `callback` will be called. You can then call
-         * geocode_backend_reverse_resolve_finish() to get the result of the operation.
-         * @param params a #GHashTable with string keys, and #GValue values.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * `geocode_backend_reverse_resolve_finish()` to get the result of the operation.
+         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
         reverse_resolve_async(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
@@ -1916,7 +1998,7 @@ export namespace GeocodeGlib {
          * backend.
          *
          * Typically, a single result will be returned representing the place at a
-         * given latitude and longitude (the `lat` and `lon` keys to `params)`; but in
+         * given latitude and longitude (the `lat` and `lon` keys to `params`); but in
          * some cases the results will be ambiguous and *multiple* results will be
          * returned. They will be returned in order of relevance, with the most
          * relevant result first in the list.
@@ -1926,13 +2008,13 @@ export namespace GeocodeGlib {
          *
          * See also: [XEP-0080 specification](http://xmpp.org/extensions/xep-0080.html).
          *
-         * Use geocode_backend_reverse_resolve() to do the same thing synchronously.
+         * Use `geocode_backend_reverse_resolve()` to do the same thing synchronously.
          *
          * When the operation is finished, `callback` will be called. You can then call
-         * geocode_backend_reverse_resolve_finish() to get the result of the operation.
-         * @param params a #GHashTable with string keys, and #GValue values.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         * `geocode_backend_reverse_resolve_finish()` to get the result of the operation.
+         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         reverse_resolve_async(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
@@ -1944,7 +2026,7 @@ export namespace GeocodeGlib {
          * backend.
          *
          * Typically, a single result will be returned representing the place at a
-         * given latitude and longitude (the `lat` and `lon` keys to `params)`; but in
+         * given latitude and longitude (the `lat` and `lon` keys to `params`); but in
          * some cases the results will be ambiguous and *multiple* results will be
          * returned. They will be returned in order of relevance, with the most
          * relevant result first in the list.
@@ -1954,13 +2036,13 @@ export namespace GeocodeGlib {
          *
          * See also: [XEP-0080 specification](http://xmpp.org/extensions/xep-0080.html).
          *
-         * Use geocode_backend_reverse_resolve() to do the same thing synchronously.
+         * Use `geocode_backend_reverse_resolve()` to do the same thing synchronously.
          *
          * When the operation is finished, `callback` will be called. You can then call
-         * geocode_backend_reverse_resolve_finish() to get the result of the operation.
-         * @param params a #GHashTable with string keys, and #GValue values.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         * `geocode_backend_reverse_resolve_finish()` to get the result of the operation.
+         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         reverse_resolve_async(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
@@ -1968,22 +2050,23 @@ export namespace GeocodeGlib {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Place[]> | void;
         /**
-         * Finishes a reverse geocoding operation. See geocode_backend_reverse_resolve_async().
-         * @param result a #GAsyncResult.
-         * @returns A list of    #GeocodePlace instances, or %NULL in case of errors. The list is ordered    by relevance, with most relevant results first. Free the returned    instances with g_object_unref() and the list with g_list_free() when done.
+         * Finishes a reverse geocoding operation. See `geocode_backend_reverse_resolve_async()`.
+         * @param result a {@link Gio.AsyncResult}.
+         * @returns A list of    {@link GeocodeGlib.Place} instances, or `null` in case of errors. The list is ordered    by relevance, with most relevant results first. Free the returned    instances with `g_object_unref()` and the list with `g_list_free()` when done.
          */
         reverse_resolve_finish(result: Gio.AsyncResult): Place[];
         /**
          * Gets the result of a forward geocoding query using the `backend`.
          *
-         * If no results are found, a %GEOCODE_ERROR_NO_MATCHES error is returned.
+         * If no results are found, a {@link GeocodeGlib.Error.NO_MATCHES} error is returned.
          *
          * This is a synchronous function, which means it may block on network requests.
          * In most situations, the asynchronous version
          * (geocode_backend_forward_search_async()) is more appropriate. See its
          * documentation for more information on usage.
-         * @param params a #GHashTable with string keys, and #GValue values.
-         * @param cancellable optional #GCancellable, %NULL to ignore.
+         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+         * @param cancellable optional {@link Gio.Cancellable}, `null` to ignore.
+         * @virtual
          */
         vfunc_forward_search(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
@@ -1991,7 +2074,7 @@ export namespace GeocodeGlib {
         ): Place[];
         /**
          * Asynchronously performs a forward geocoding query using the `backend`. Use
-         * geocode_backend_forward_search() to do the same thing synchronously.
+         * `geocode_backend_forward_search()` to do the same thing synchronously.
          *
          * The `params` hash table is in the format used by Telepathy, and documented
          * in the [Telepathy specification](http://telepathy.freedesktop.org/spec/Connection_Interface_Location.html#Mapping:Location).
@@ -1999,10 +2082,11 @@ export namespace GeocodeGlib {
          * See also: [XEP-0080 specification](http://xmpp.org/extensions/xep-0080.html).
          *
          * When the operation is finished, `callback` will be called. You can then call
-         * geocode_backend_forward_search_finish() to get the result of the operation.
-         * @param params a #GHashTable with string keys, and #GValue values.
-         * @param cancellable optional #GCancellable, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * `geocode_backend_forward_search_finish()` to get the result of the operation.
+         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+         * @param cancellable optional {@link Gio.Cancellable}, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @virtual
          */
         vfunc_forward_search_async(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
@@ -2011,23 +2095,25 @@ export namespace GeocodeGlib {
         ): void;
         /**
          * Finishes a forward geocoding operation. See
-         * geocode_backend_forward_search_async().
-         * @param result a #GAsyncResult.
+         * `geocode_backend_forward_search_async()`.
+         * @param result a {@link Gio.AsyncResult}.
+         * @virtual
          */
         vfunc_forward_search_finish(result: Gio.AsyncResult): Place[];
         /**
          * Gets the result of a reverse geocoding query using the `backend`.
          *
-         * If no result could be found, a %GEOCODE_ERROR_NOT_SUPPORTED error will be
+         * If no result could be found, a {@link GeocodeGlib.Error.NOT_SUPPORTED} error will be
          * returned. This typically happens if the coordinates to geocode are in the
          * middle of the ocean.
          *
          * This is a synchronous function, which means it may block on network requests.
          * In most situations, the asynchronous version,
-         * geocode_backend_forward_search_async(), is more appropriate. See its
+         * `geocode_backend_forward_search_async()`, is more appropriate. See its
          * documentation for more information on usage.
-         * @param params a #GHashTable with string keys, and #GValue values.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_reverse_resolve(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
@@ -2038,7 +2124,7 @@ export namespace GeocodeGlib {
          * backend.
          *
          * Typically, a single result will be returned representing the place at a
-         * given latitude and longitude (the `lat` and `lon` keys to `params)`; but in
+         * given latitude and longitude (the `lat` and `lon` keys to `params`); but in
          * some cases the results will be ambiguous and *multiple* results will be
          * returned. They will be returned in order of relevance, with the most
          * relevant result first in the list.
@@ -2048,13 +2134,14 @@ export namespace GeocodeGlib {
          *
          * See also: [XEP-0080 specification](http://xmpp.org/extensions/xep-0080.html).
          *
-         * Use geocode_backend_reverse_resolve() to do the same thing synchronously.
+         * Use `geocode_backend_reverse_resolve()` to do the same thing synchronously.
          *
          * When the operation is finished, `callback` will be called. You can then call
-         * geocode_backend_reverse_resolve_finish() to get the result of the operation.
-         * @param params a #GHashTable with string keys, and #GValue values.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         * `geocode_backend_reverse_resolve_finish()` to get the result of the operation.
+         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         * @virtual
          */
         vfunc_reverse_resolve_async(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
@@ -2062,8 +2149,9 @@ export namespace GeocodeGlib {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Finishes a reverse geocoding operation. See geocode_backend_reverse_resolve_async().
-         * @param result a #GAsyncResult.
+         * Finishes a reverse geocoding operation. See `geocode_backend_reverse_resolve_async()`.
+         * @param result a {@link Gio.AsyncResult}.
+         * @virtual
          */
         vfunc_reverse_resolve_finish(result: Gio.AsyncResult): Place[];
         /**
@@ -2079,32 +2167,32 @@ export namespace GeocodeGlib {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -2113,39 +2201,39 @@ export namespace GeocodeGlib {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -2156,13 +2244,16 @@ export namespace GeocodeGlib {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -2170,7 +2261,7 @@ export namespace GeocodeGlib {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -2178,9 +2269,9 @@ export namespace GeocodeGlib {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -2200,9 +2291,9 @@ export namespace GeocodeGlib {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -2215,34 +2306,34 @@ export namespace GeocodeGlib {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -2275,22 +2366,22 @@ export namespace GeocodeGlib {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -2299,8 +2390,8 @@ export namespace GeocodeGlib {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -2317,10 +2408,10 @@ export namespace GeocodeGlib {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -2335,13 +2426,13 @@ export namespace GeocodeGlib {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -2372,21 +2463,21 @@ export namespace GeocodeGlib {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -2396,33 +2487,34 @@ export namespace GeocodeGlib {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -2431,6 +2523,7 @@ export namespace GeocodeGlib {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -2439,12 +2532,14 @@ export namespace GeocodeGlib {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -2453,20 +2548,22 @@ export namespace GeocodeGlib {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -2478,6 +2575,7 @@ export namespace GeocodeGlib {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -2565,7 +2663,8 @@ export namespace GeocodeGlib {
     }
 
     /**
-     * All the fields in the #GeocodePlace structure are private and should never be accessed directly.
+     * All the fields in the {@link GeocodeGlib.Place} structure are private and should never be accessed directly.
+     * @gir-type Class
      */
     class Place extends GObject.Object {
         static $gtype: GObject.GType<Place>;
@@ -2628,7 +2727,8 @@ export namespace GeocodeGlib {
         get county(): string;
         set county(val: string);
         /**
-         * #GIcon representing the `GeocodePlace`.
+         * {@link Gio.Icon} representing the `GeocodePlace`.
+         * @read-only
          */
         get icon(): Gio.Icon;
         /**
@@ -2663,10 +2763,12 @@ export namespace GeocodeGlib {
         set osmType(val: PlaceOsmType);
         /**
          * The type of the place.
+         * @construct-only
          */
         get place_type(): PlaceType;
         /**
          * The type of the place.
+         * @construct-only
          */
         get placeType(): PlaceType;
         /**
@@ -2726,16 +2828,19 @@ export namespace GeocodeGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Place.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Place.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Place.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Place.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Place.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Place.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2745,60 +2850,60 @@ export namespace GeocodeGlib {
         // Methods
 
         /**
-         * Compare two #GeocodePlace instances for equality. This compares all fields
-         * and only returns %TRUE if the instances are exactly equal. For example, if
-         * both places have the same #GeocodePlace:location, but place `b` has its
-         * #GeocodePlace:continent property set and place `a` does not, %FALSE will be
+         * Compare two {@link GeocodeGlib.Place} instances for equality. This compares all fields
+         * and only returns `true` if the instances are exactly equal. For example, if
+         * both places have the same {@link GeocodeGlib.Place.location}, but place `b` has its
+         * {@link GeocodeGlib.Place.continent} property set and place `a` does not, `false` will be
          * returned.
          *
-         * Both instances must be non-%NULL.
+         * Both instances must be non-`null`.
          * @param b another place
-         * @returns %TRUE if the instances are equal, %FALSE otherwise
+         * @returns `true` if the instances are equal, `false` otherwise
          */
         equal(b: Place): boolean;
         /**
          * Gets the local administrative area of the `place`.
-         * @returns The local administrative area of the @place.
+         * @returns The local administrative area of the `place`.
          */
         get_administrative_area(): string;
         /**
          * Gets the area of the `place`.
-         * @returns The area of the @place.
+         * @returns The area of the `place`.
          */
         get_area(): string;
         /**
          * Gets the bounding box for the place `place`.
-         * @returns A #GeocodeBoundingBox, or NULL if boundaries are unknown.
+         * @returns A {@link GeocodeGlib.BoundingBox}, or NULL if boundaries are unknown.
          */
         get_bounding_box(): BoundingBox;
         /**
          * Gets the building of the `place`.
-         * @returns The building of the @place.
+         * @returns The building of the `place`.
          */
         get_building(): string;
         /**
          * Gets the continent of the `place`.
-         * @returns The continent of the @place.
+         * @returns The continent of the `place`.
          */
         get_continent(): string;
         /**
          * Gets the country of the `place`.
-         * @returns The country of the @place.
+         * @returns The country of the `place`.
          */
         get_country(): string;
         /**
          * Gets the ISO-3166 country code of the `place`.
-         * @returns The ISO-3166 country code of the @place, in upper case.
+         * @returns The ISO-3166 country code of the `place`, in upper case.
          */
         get_country_code(): string;
         /**
          * Gets the county of the `place`.
-         * @returns The country of the @place.
+         * @returns The country of the `place`.
          */
         get_county(): string;
         /**
-         * Gets the #GIcon representing the `place`.
-         * @returns The #GIcon representing the @place.
+         * Gets the {@link Gio.Icon} representing the `place`.
+         * @returns The {@link Gio.Icon} representing the `place`.
          */
         get_icon(): Gio.Icon;
         /**
@@ -2808,47 +2913,47 @@ export namespace GeocodeGlib {
         get_location(): Location;
         /**
          * Gets the name of the `place`.
-         * @returns The name of the @place.
+         * @returns The name of the `place`.
          */
         get_name(): string;
         /**
          * Gets the OpenStreetMap ID of the `place`.
-         * @returns The osm ID of the @place.
+         * @returns The osm ID of the `place`.
          */
         get_osm_id(): string;
         /**
          * Gets the OpenStreetMap type of the `place`.
-         * @returns The osm type of the @place.
+         * @returns The osm type of the `place`.
          */
         get_osm_type(): PlaceOsmType;
         /**
          * Gets the type of the `place`.
-         * @returns The type of the @place.
+         * @returns The type of the `place`.
          */
         get_place_type(): PlaceType;
         /**
          * Gets the postal code of the `place`.
-         * @returns The postal code of the @place.
+         * @returns The postal code of the `place`.
          */
         get_postal_code(): string;
         /**
          * Gets the state of the `place`.
-         * @returns The state of the @place.
+         * @returns The state of the `place`.
          */
         get_state(): string;
         /**
          * Gets the street of the `place`.
-         * @returns The street of the @place.
+         * @returns The street of the `place`.
          */
         get_street(): string;
         /**
          * Gets the street address of the `place`.
-         * @returns The street address of the @place.
+         * @returns The street address of the `place`.
          */
         get_street_address(): string;
         /**
          * Gets the town of the `place`.
-         * @returns The town of the @place.
+         * @returns The town of the `place`.
          */
         get_town(): string;
         /**
@@ -2862,8 +2967,8 @@ export namespace GeocodeGlib {
          */
         set_area(area: string): void;
         /**
-         * Sets the #GeocodeBoundingBox for the place `place`.
-         * @param bbox A #GeocodeBoundingBox for the place
+         * Sets the {@link GeocodeGlib.BoundingBox} for the place `place`.
+         * @param bbox A {@link GeocodeGlib.BoundingBox} for the place
          */
         set_bounding_box(bbox: BoundingBox): void;
         /**
@@ -2938,7 +3043,8 @@ export namespace GeocodeGlib {
     }
 
     /**
-     * All the fields in the #GeocodeReverse structure are private and should never be accessed directly.
+     * All the fields in the {@link GeocodeGlib.Reverse} structure are private and should never be accessed directly.
+     * @gir-type Class
      */
     class Reverse extends GObject.Object {
         static $gtype: GObject.GType<Reverse>;
@@ -2962,16 +3068,19 @@ export namespace GeocodeGlib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Reverse.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Reverse.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Reverse.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Reverse.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Reverse.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Reverse.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2982,91 +3091,117 @@ export namespace GeocodeGlib {
 
         /**
          * Gets the result of a reverse geocoding
-         * query using the current backend (see geocode_reverse_set_backend()). By
-         * default the GNOME Nominatim server is used. See #GeocodeBackend for more
+         * query using the current backend (see `geocode_reverse_set_backend()`). By
+         * default the GNOME Nominatim server is used. See {@link GeocodeGlib.Backend} for more
          * information.
          *
-         * If no result could be found, a %GEOCODE_ERROR_NOT_SUPPORTED error will be
+         * If no result could be found, a {@link GeocodeGlib.Error.NOT_SUPPORTED} error will be
          * returned. This typically happens if the coordinates to geocode are in the
          * middle of the ocean.
-         * @returns A #GeocodePlace instance, or %NULL in case of errors. Free the returned instance with #g_object_unref() when done.
+         * @returns A {@link GeocodeGlib.Place} instance, or `null` in case of errors. Free the returned instance with `g_object_unref`() when done.
          */
         resolve(): Place;
         /**
          * Asynchronously gets the result of a reverse geocoding
-         * query using a web service. Use geocode_reverse_resolve() to do the same
+         * query using a web service. Use `geocode_reverse_resolve()` to do the same
          * thing synchronously.
          *
          * When the operation is finished, `callback` will be called. You can then call
-         * geocode_reverse_resolve_finish() to get the result of the operation.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * `geocode_reverse_resolve_finish()` to get the result of the operation.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
         resolve_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Place>;
         /**
          * Asynchronously gets the result of a reverse geocoding
-         * query using a web service. Use geocode_reverse_resolve() to do the same
+         * query using a web service. Use `geocode_reverse_resolve()` to do the same
          * thing synchronously.
          *
          * When the operation is finished, `callback` will be called. You can then call
-         * geocode_reverse_resolve_finish() to get the result of the operation.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * `geocode_reverse_resolve_finish()` to get the result of the operation.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         resolve_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Asynchronously gets the result of a reverse geocoding
-         * query using a web service. Use geocode_reverse_resolve() to do the same
+         * query using a web service. Use `geocode_reverse_resolve()` to do the same
          * thing synchronously.
          *
          * When the operation is finished, `callback` will be called. You can then call
-         * geocode_reverse_resolve_finish() to get the result of the operation.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * `geocode_reverse_resolve_finish()` to get the result of the operation.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         resolve_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Place> | void;
         /**
-         * Finishes a reverse geocoding operation. See geocode_reverse_resolve_async().
-         * @param res a #GAsyncResult.
-         * @returns A #GeocodePlace instance, or %NULL in case of errors. Free the returned instance with #g_object_unref() when done.
+         * Finishes a reverse geocoding operation. See `geocode_reverse_resolve_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @returns A {@link GeocodeGlib.Place} instance, or `null` in case of errors. Free the returned instance with `g_object_unref`() when done.
          */
         resolve_finish(res: Gio.AsyncResult): Place;
         /**
          * Specifies the backend to use in the reverse geocoding operation.
          *
          * If none is given, the default GNOME Nominatim server is used.
-         * @param backend a #GeocodeBackend, or %NULL to use the default one.
+         * @param backend a {@link GeocodeGlib.Backend}, or `null` to use the default one.
          */
         set_backend(backend?: Backend | null): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type BackendInterface = typeof Backend;
+    /**
+     * @gir-type Alias
+     */
     type BoundingBoxClass = typeof BoundingBox;
+    /**
+     * @gir-type Struct
+     */
     abstract class BoundingBoxPrivate {
         static $gtype: GObject.GType<BoundingBoxPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ForwardClass = typeof Forward;
+    /**
+     * @gir-type Struct
+     */
     abstract class ForwardPrivate {
         static $gtype: GObject.GType<ForwardPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type LocationClass = typeof Location;
+    /**
+     * @gir-type Struct
+     */
     abstract class LocationPrivate {
         static $gtype: GObject.GType<LocationPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MockBackendClass = typeof MockBackend;
     /**
      * The details of a forward or reverse query which was performed on a
-     * #GeocodeMockBackend by application code. This includes the input (`params,`
-     * `is_forward)`, and the output which was returned (`results` or `error)`.
+     * {@link GeocodeGlib.MockBackend} by application code. This includes the input (`params`,
+     * `is_forward`), and the output which was returned (`results` or `error`).
      *
-     * Empty result sets are represented by the %GEOCODE_ERROR_NO_MATCHES error
-     * (for forward queries) or the %GEOCODE_ERROR_NOT_SUPPORTED error (for reverse
+     * Empty result sets are represented by the {@link GeocodeGlib.Error.NO_MATCHES} error
+     * (for forward queries) or the {@link GeocodeGlib.Error.NOT_SUPPORTED} error (for reverse
      * queries), rather than an empty `results` list.
+     * @gir-type Struct
+     * @since 3.23.1
      */
     class MockBackendQuery {
         static $gtype: GObject.GType<MockBackendQuery>;
@@ -3078,13 +3213,28 @@ export namespace GeocodeGlib {
         error: GLib.Error;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type NominatimClass = typeof Nominatim;
+    /**
+     * @gir-type Alias
+     */
     type PlaceClass = typeof Place;
+    /**
+     * @gir-type Struct
+     */
     abstract class PlacePrivate {
         static $gtype: GObject.GType<PlacePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ReverseClass = typeof Reverse;
+    /**
+     * @gir-type Struct
+     */
     abstract class ReversePrivate {
         static $gtype: GObject.GType<ReversePrivate>;
     }
@@ -3100,14 +3250,15 @@ export namespace GeocodeGlib {
             /**
              * Gets the result of a forward geocoding query using the `backend`.
              *
-             * If no results are found, a %GEOCODE_ERROR_NO_MATCHES error is returned.
+             * If no results are found, a {@link GeocodeGlib.Error.NO_MATCHES} error is returned.
              *
              * This is a synchronous function, which means it may block on network requests.
              * In most situations, the asynchronous version
              * (geocode_backend_forward_search_async()) is more appropriate. See its
              * documentation for more information on usage.
-             * @param params a #GHashTable with string keys, and #GValue values.
-             * @param cancellable optional #GCancellable, %NULL to ignore.
+             * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+             * @param cancellable optional {@link Gio.Cancellable}, `null` to ignore.
+             * @virtual
              */
             vfunc_forward_search(
                 params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
@@ -3115,7 +3266,7 @@ export namespace GeocodeGlib {
             ): Place[];
             /**
              * Asynchronously performs a forward geocoding query using the `backend`. Use
-             * geocode_backend_forward_search() to do the same thing synchronously.
+             * `geocode_backend_forward_search()` to do the same thing synchronously.
              *
              * The `params` hash table is in the format used by Telepathy, and documented
              * in the [Telepathy specification](http://telepathy.freedesktop.org/spec/Connection_Interface_Location.html#Mapping:Location).
@@ -3123,10 +3274,11 @@ export namespace GeocodeGlib {
              * See also: [XEP-0080 specification](http://xmpp.org/extensions/xep-0080.html).
              *
              * When the operation is finished, `callback` will be called. You can then call
-             * geocode_backend_forward_search_finish() to get the result of the operation.
-             * @param params a #GHashTable with string keys, and #GValue values.
-             * @param cancellable optional #GCancellable, %NULL to ignore.
-             * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+             * `geocode_backend_forward_search_finish()` to get the result of the operation.
+             * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+             * @param cancellable optional {@link Gio.Cancellable}, `null` to ignore.
+             * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+             * @virtual
              */
             vfunc_forward_search_async(
                 params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
@@ -3135,23 +3287,25 @@ export namespace GeocodeGlib {
             ): void;
             /**
              * Finishes a forward geocoding operation. See
-             * geocode_backend_forward_search_async().
-             * @param result a #GAsyncResult.
+             * `geocode_backend_forward_search_async()`.
+             * @param result a {@link Gio.AsyncResult}.
+             * @virtual
              */
             vfunc_forward_search_finish(result: Gio.AsyncResult): Place[];
             /**
              * Gets the result of a reverse geocoding query using the `backend`.
              *
-             * If no result could be found, a %GEOCODE_ERROR_NOT_SUPPORTED error will be
+             * If no result could be found, a {@link GeocodeGlib.Error.NOT_SUPPORTED} error will be
              * returned. This typically happens if the coordinates to geocode are in the
              * middle of the ocean.
              *
              * This is a synchronous function, which means it may block on network requests.
              * In most situations, the asynchronous version,
-             * geocode_backend_forward_search_async(), is more appropriate. See its
+             * `geocode_backend_forward_search_async()`, is more appropriate. See its
              * documentation for more information on usage.
-             * @param params a #GHashTable with string keys, and #GValue values.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
+             * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+             * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+             * @virtual
              */
             vfunc_reverse_resolve(
                 params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
@@ -3162,7 +3316,7 @@ export namespace GeocodeGlib {
              * backend.
              *
              * Typically, a single result will be returned representing the place at a
-             * given latitude and longitude (the `lat` and `lon` keys to `params)`; but in
+             * given latitude and longitude (the `lat` and `lon` keys to `params`); but in
              * some cases the results will be ambiguous and *multiple* results will be
              * returned. They will be returned in order of relevance, with the most
              * relevant result first in the list.
@@ -3172,13 +3326,14 @@ export namespace GeocodeGlib {
              *
              * See also: [XEP-0080 specification](http://xmpp.org/extensions/xep-0080.html).
              *
-             * Use geocode_backend_reverse_resolve() to do the same thing synchronously.
+             * Use `geocode_backend_reverse_resolve()` to do the same thing synchronously.
              *
              * When the operation is finished, `callback` will be called. You can then call
-             * geocode_backend_reverse_resolve_finish() to get the result of the operation.
-             * @param params a #GHashTable with string keys, and #GValue values.
-             * @param cancellable optional #GCancellable object, %NULL to ignore.
-             * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+             * `geocode_backend_reverse_resolve_finish()` to get the result of the operation.
+             * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+             * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+             * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+             * @virtual
              */
             vfunc_reverse_resolve_async(
                 params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
@@ -3186,8 +3341,9 @@ export namespace GeocodeGlib {
                 callback?: Gio.AsyncReadyCallback<this> | null,
             ): void;
             /**
-             * Finishes a reverse geocoding operation. See geocode_backend_reverse_resolve_async().
-             * @param result a #GAsyncResult.
+             * Finishes a reverse geocoding operation. See `geocode_backend_reverse_resolve_async()`.
+             * @param result a {@link Gio.AsyncResult}.
+             * @virtual
              */
             vfunc_reverse_resolve_finish(result: Gio.AsyncResult): Place[];
         }
@@ -3201,21 +3357,27 @@ export namespace GeocodeGlib {
         $gtype: GObject.GType<Backend>;
         prototype: Backend;
     }
+    /**
+     * All the fields in the {@link GeocodeGlib.Backend} structure are private and should
+     * never be accessed directly.
+     * @gir-type Interface
+     * @since 3.23.1
+     */
     interface Backend extends GObject.Object, Backend.Interface {
         // Methods
 
         /**
          * Gets the result of a forward geocoding query using the `backend`.
          *
-         * If no results are found, a %GEOCODE_ERROR_NO_MATCHES error is returned.
+         * If no results are found, a {@link GeocodeGlib.Error.NO_MATCHES} error is returned.
          *
          * This is a synchronous function, which means it may block on network requests.
          * In most situations, the asynchronous version
          * (geocode_backend_forward_search_async()) is more appropriate. See its
          * documentation for more information on usage.
-         * @param params a #GHashTable with string keys, and #GValue values.
-         * @param cancellable optional #GCancellable, %NULL to ignore.
-         * @returns A list of places or %NULL in case of errors. Free the returned instances with g_object_unref() and the list with g_list_free() when done.
+         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+         * @param cancellable optional {@link Gio.Cancellable}, `null` to ignore.
+         * @returns A list of places or `null` in case of errors. Free the returned instances with `g_object_unref()` and the list with `g_list_free()` when done.
          */
         forward_search(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
@@ -3223,7 +3385,7 @@ export namespace GeocodeGlib {
         ): Place[];
         /**
          * Asynchronously performs a forward geocoding query using the `backend`. Use
-         * geocode_backend_forward_search() to do the same thing synchronously.
+         * `geocode_backend_forward_search()` to do the same thing synchronously.
          *
          * The `params` hash table is in the format used by Telepathy, and documented
          * in the [Telepathy specification](http://telepathy.freedesktop.org/spec/Connection_Interface_Location.html#Mapping:Location).
@@ -3231,9 +3393,9 @@ export namespace GeocodeGlib {
          * See also: [XEP-0080 specification](http://xmpp.org/extensions/xep-0080.html).
          *
          * When the operation is finished, `callback` will be called. You can then call
-         * geocode_backend_forward_search_finish() to get the result of the operation.
-         * @param params a #GHashTable with string keys, and #GValue values.
-         * @param cancellable optional #GCancellable, %NULL to ignore.
+         * `geocode_backend_forward_search_finish()` to get the result of the operation.
+         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+         * @param cancellable optional {@link Gio.Cancellable}, `null` to ignore.
          */
         forward_search_async(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
@@ -3241,7 +3403,7 @@ export namespace GeocodeGlib {
         ): globalThis.Promise<Place[]>;
         /**
          * Asynchronously performs a forward geocoding query using the `backend`. Use
-         * geocode_backend_forward_search() to do the same thing synchronously.
+         * `geocode_backend_forward_search()` to do the same thing synchronously.
          *
          * The `params` hash table is in the format used by Telepathy, and documented
          * in the [Telepathy specification](http://telepathy.freedesktop.org/spec/Connection_Interface_Location.html#Mapping:Location).
@@ -3249,10 +3411,10 @@ export namespace GeocodeGlib {
          * See also: [XEP-0080 specification](http://xmpp.org/extensions/xep-0080.html).
          *
          * When the operation is finished, `callback` will be called. You can then call
-         * geocode_backend_forward_search_finish() to get the result of the operation.
-         * @param params a #GHashTable with string keys, and #GValue values.
-         * @param cancellable optional #GCancellable, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * `geocode_backend_forward_search_finish()` to get the result of the operation.
+         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+         * @param cancellable optional {@link Gio.Cancellable}, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         forward_search_async(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
@@ -3261,7 +3423,7 @@ export namespace GeocodeGlib {
         ): void;
         /**
          * Asynchronously performs a forward geocoding query using the `backend`. Use
-         * geocode_backend_forward_search() to do the same thing synchronously.
+         * `geocode_backend_forward_search()` to do the same thing synchronously.
          *
          * The `params` hash table is in the format used by Telepathy, and documented
          * in the [Telepathy specification](http://telepathy.freedesktop.org/spec/Connection_Interface_Location.html#Mapping:Location).
@@ -3269,10 +3431,10 @@ export namespace GeocodeGlib {
          * See also: [XEP-0080 specification](http://xmpp.org/extensions/xep-0080.html).
          *
          * When the operation is finished, `callback` will be called. You can then call
-         * geocode_backend_forward_search_finish() to get the result of the operation.
-         * @param params a #GHashTable with string keys, and #GValue values.
-         * @param cancellable optional #GCancellable, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * `geocode_backend_forward_search_finish()` to get the result of the operation.
+         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+         * @param cancellable optional {@link Gio.Cancellable}, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         forward_search_async(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
@@ -3281,25 +3443,25 @@ export namespace GeocodeGlib {
         ): globalThis.Promise<Place[]> | void;
         /**
          * Finishes a forward geocoding operation. See
-         * geocode_backend_forward_search_async().
-         * @param result a #GAsyncResult.
-         * @returns A list of places or %NULL in case of errors. Free the returned instances with g_object_unref() and the list with g_list_free() when done.
+         * `geocode_backend_forward_search_async()`.
+         * @param result a {@link Gio.AsyncResult}.
+         * @returns A list of places or `null` in case of errors. Free the returned instances with `g_object_unref()` and the list with `g_list_free()` when done.
          */
         forward_search_finish(result: Gio.AsyncResult): Place[];
         /**
          * Gets the result of a reverse geocoding query using the `backend`.
          *
-         * If no result could be found, a %GEOCODE_ERROR_NOT_SUPPORTED error will be
+         * If no result could be found, a {@link GeocodeGlib.Error.NOT_SUPPORTED} error will be
          * returned. This typically happens if the coordinates to geocode are in the
          * middle of the ocean.
          *
          * This is a synchronous function, which means it may block on network requests.
          * In most situations, the asynchronous version,
-         * geocode_backend_forward_search_async(), is more appropriate. See its
+         * `geocode_backend_forward_search_async()`, is more appropriate. See its
          * documentation for more information on usage.
-         * @param params a #GHashTable with string keys, and #GValue values.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns A list of    #GeocodePlace instances, or %NULL in case of errors. The list is ordered    by relevance, with most relevant results first. Free the returned    instances with g_object_unref() and the list with g_list_free() when done.
+         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns A list of    {@link GeocodeGlib.Place} instances, or `null` in case of errors. The list is ordered    by relevance, with most relevant results first. Free the returned    instances with `g_object_unref()` and the list with `g_list_free()` when done.
          */
         reverse_resolve(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
@@ -3310,7 +3472,7 @@ export namespace GeocodeGlib {
          * backend.
          *
          * Typically, a single result will be returned representing the place at a
-         * given latitude and longitude (the `lat` and `lon` keys to `params)`; but in
+         * given latitude and longitude (the `lat` and `lon` keys to `params`); but in
          * some cases the results will be ambiguous and *multiple* results will be
          * returned. They will be returned in order of relevance, with the most
          * relevant result first in the list.
@@ -3320,12 +3482,12 @@ export namespace GeocodeGlib {
          *
          * See also: [XEP-0080 specification](http://xmpp.org/extensions/xep-0080.html).
          *
-         * Use geocode_backend_reverse_resolve() to do the same thing synchronously.
+         * Use `geocode_backend_reverse_resolve()` to do the same thing synchronously.
          *
          * When the operation is finished, `callback` will be called. You can then call
-         * geocode_backend_reverse_resolve_finish() to get the result of the operation.
-         * @param params a #GHashTable with string keys, and #GValue values.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * `geocode_backend_reverse_resolve_finish()` to get the result of the operation.
+         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
         reverse_resolve_async(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
@@ -3336,7 +3498,7 @@ export namespace GeocodeGlib {
          * backend.
          *
          * Typically, a single result will be returned representing the place at a
-         * given latitude and longitude (the `lat` and `lon` keys to `params)`; but in
+         * given latitude and longitude (the `lat` and `lon` keys to `params`); but in
          * some cases the results will be ambiguous and *multiple* results will be
          * returned. They will be returned in order of relevance, with the most
          * relevant result first in the list.
@@ -3346,13 +3508,13 @@ export namespace GeocodeGlib {
          *
          * See also: [XEP-0080 specification](http://xmpp.org/extensions/xep-0080.html).
          *
-         * Use geocode_backend_reverse_resolve() to do the same thing synchronously.
+         * Use `geocode_backend_reverse_resolve()` to do the same thing synchronously.
          *
          * When the operation is finished, `callback` will be called. You can then call
-         * geocode_backend_reverse_resolve_finish() to get the result of the operation.
-         * @param params a #GHashTable with string keys, and #GValue values.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         * `geocode_backend_reverse_resolve_finish()` to get the result of the operation.
+         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         reverse_resolve_async(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
@@ -3364,7 +3526,7 @@ export namespace GeocodeGlib {
          * backend.
          *
          * Typically, a single result will be returned representing the place at a
-         * given latitude and longitude (the `lat` and `lon` keys to `params)`; but in
+         * given latitude and longitude (the `lat` and `lon` keys to `params`); but in
          * some cases the results will be ambiguous and *multiple* results will be
          * returned. They will be returned in order of relevance, with the most
          * relevant result first in the list.
@@ -3374,13 +3536,13 @@ export namespace GeocodeGlib {
          *
          * See also: [XEP-0080 specification](http://xmpp.org/extensions/xep-0080.html).
          *
-         * Use geocode_backend_reverse_resolve() to do the same thing synchronously.
+         * Use `geocode_backend_reverse_resolve()` to do the same thing synchronously.
          *
          * When the operation is finished, `callback` will be called. You can then call
-         * geocode_backend_reverse_resolve_finish() to get the result of the operation.
-         * @param params a #GHashTable with string keys, and #GValue values.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         * `geocode_backend_reverse_resolve_finish()` to get the result of the operation.
+         * @param params a {@link GLib.HashTable} with string keys, and {@link GObject.Value} values.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         reverse_resolve_async(
             params: { [key: string]: any } | GLib.HashTable<string, GObject.Value>,
@@ -3388,9 +3550,9 @@ export namespace GeocodeGlib {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Place[]> | void;
         /**
-         * Finishes a reverse geocoding operation. See geocode_backend_reverse_resolve_async().
-         * @param result a #GAsyncResult.
-         * @returns A list of    #GeocodePlace instances, or %NULL in case of errors. The list is ordered    by relevance, with most relevant results first. Free the returned    instances with g_object_unref() and the list with g_list_free() when done.
+         * Finishes a reverse geocoding operation. See `geocode_backend_reverse_resolve_async()`.
+         * @param result a {@link Gio.AsyncResult}.
+         * @returns A list of    {@link GeocodeGlib.Place} instances, or `null` in case of errors. The list is ordered    by relevance, with most relevant results first. Free the returned    instances with `g_object_unref()` and the list with `g_list_free()` when done.
          */
         reverse_resolve_finish(result: Gio.AsyncResult): Place[];
     }

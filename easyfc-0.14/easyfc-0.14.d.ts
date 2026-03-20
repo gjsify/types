@@ -21,6 +21,7 @@ export namespace Easyfc {
 
     /**
      * Error code used in libeasyfc.
+     * @gir-type Enum
      */
     enum Error {
         /**
@@ -74,7 +75,8 @@ export namespace Easyfc {
     }
 
     /**
-     * The hintstyle option to be used for ezfc_font_set_hintstyle().
+     * The hintstyle option to be used for `ezfc_font_set_hintstyle()`.
+     * @gir-type Enum
      */
     enum FontHintstyle {
         /**
@@ -104,7 +106,8 @@ export namespace Easyfc {
     }
 
     /**
-     * The sub-pixel rendering option to be used in ezfc_font_set_subpixel_rendering().
+     * The sub-pixel rendering option to be used in `ezfc_font_set_subpixel_rendering()`.
+     * @gir-type Enum
      */
     enum FontSubpixelRender {
         /**
@@ -142,8 +145,8 @@ export namespace Easyfc {
     }
 
     /**
-     * Obtains a #GQuark being used for #GError.
-     * @returns a #GQuark.
+     * Obtains a {@link GLib.Quark} being used for {@link GLib.Error}.
+     * @returns a {@link GLib.Quark}.
      */
     function error_get_quark(): GLib.Quark;
     /**
@@ -153,33 +156,33 @@ export namespace Easyfc {
     /**
      * Obtains the list of the config directories where fontconfig can recognizes
      * and enables the configuration files.
-     * @returns a #GList contains a string
+     * @returns a {@link GLib.List} contains a string
      */
     function font_config_get_config_dirs(): string[];
     /**
      * Obtains the list of the config directories where fontconfig can recognizes
      * and enables the configuration files from `config`.
-     * @param config a #FcConfig.
-     * @returns a #GList contains a string
+     * @param config a {@link fontconfig.Config}.
+     * @returns a {@link GLib.List} contains a string
      */
     function font_config_get_config_dirs_from(config: fontconfig.Config): string[];
     /**
-     * Obtains the list of #EzfcFontConfig to see what kind of configuration
+     * Obtains the list of {@link Easyfc.FontConfig} to see what kind of configuration
      * files for fontconfig are installed and enabled on the system.
-     * @returns a #GList contains #EzfcFontConfig.
+     * @returns a {@link GLib.List} contains {@link Easyfc.FontConfig}.
      */
     function font_config_get_list(): FontConfig[];
     /**
-     * Obtains the list of #EzfcFontConfig to see what kind of configuration
+     * Obtains the list of {@link Easyfc.FontConfig} to see what kind of configuration
      * files for fontconfig are installed and enabled on the system from `config`.
-     * @param config a #FcConfig.
-     * @returns a #GList contains #EzfcFontConfig.
+     * @param config a {@link fontconfig.Config}.
+     * @returns a {@link GLib.List} contains {@link Easyfc.FontConfig}.
      */
     function font_config_get_list_from(config: fontconfig.Config): FontConfig[];
     /**
      * Analize `pattern` and returns a alias name string according to the result.
-     * @param pattern a #FcPattern.
-     * @returns a #GList containing          a static string for the alias name.
+     * @param pattern a {@link fontconfig.Pattern}.
+     * @returns a {@link GLib.List} containing          a static string for the alias name.
      */
     function font_get_alias_name_from_pattern(pattern: fontconfig.Pattern): string[];
     /**
@@ -189,36 +192,38 @@ export namespace Easyfc {
      * a reservation for future improvement.
      * @param language the language name fontconfig can deal with.
      * @param alias_name the alias name to obtain the fonts list for.
-     * @param localized_font_name %TRUE to include the localized font name if available,                       %FALSE for English font name only.
-     * @returns a #GList contains the font family name.          if no valid families, %NULL then.
+     * @param localized_font_name `true` to include the localized font name if available,                       `false` for English font name only.
+     * @returns a {@link GLib.List} contains the font family name.          if no valid families, `null` then.
      */
     function font_get_list(language: string | null, alias_name: string | null, localized_font_name: boolean): string[];
     /**
-     * Obtains #FcPattern list being assigned to `alias_name` for `language`.
+     * Obtains {@link fontconfig.Pattern} list being assigned to `alias_name` for `language`.
      * @param language the language name fontconfig can deal with.
      * @param alias_name the alias name to obtain the fonts pettern list for.
-     * @returns a #GList contains #FcPattern, otherwise %NULL.
+     * @returns a {@link GLib.List} contains {@link fontconfig.Pattern}, otherwise `null`.
      */
     function font_get_pattern_list(language?: string | null, alias_name?: string | null): fontconfig.Pattern[];
     /**
      * Checks if `alias_name` is one of sans-serif, serif, monospace, cursive, fantasy,
      * emoji or math.
      * @param alias_name the alias font name
-     * @returns %TRUE if @alias_name is an alias font name, otherwise %FALSE.
+     * @returns `true` if `alias_name` is an alias font name, otherwise `false`.
      */
     function font_is_alias_font(alias_name: string): boolean;
     /**
      * Obtains the fonts list being assigned to `alias_name` for `language`.
      * @param language the language name fontconfig can deal with.
      * @param alias_name the alias name to obtain the fonts list for.
-     * @returns a #GList contains the font family name.          if no valid families, %NULL then.
+     * @returns a {@link GLib.List} contains the font family name.          if no valid families, `null` then.
+     * @deprecated since 0.7: Use `ezfc_font_get_list()`.
      */
     function get_fonts_list(language?: string | null, alias_name?: string | null): string[];
     /**
-     * Obtains #FcPattern list being assigned to `alias_name` for `language`.
+     * Obtains {@link fontconfig.Pattern} list being assigned to `alias_name` for `language`.
      * @param language the language name fontconfig can deal with.
      * @param alias_name the alias name to obtain the fonts pettern list for.
-     * @returns a #GList contains #FcPattern, otherwise %NULL.
+     * @returns a {@link GLib.List} contains {@link fontconfig.Pattern}, otherwise `null`.
+     * @deprecated since 0.7: Use `ezfc_font_get_pattern_list()`.
      */
     function get_fonts_pattern_list(language?: string | null, alias_name?: string | null): fontconfig.Pattern[];
     /**
@@ -229,7 +234,8 @@ export namespace Easyfc {
      * Checks if `alias_name` is one of sans-serif, serif, monospace, cursive, fantasy,
      * emoji or math.
      * @param alias_name the alias font name
-     * @returns %TRUE if @alias_name is an alias font name, otherwise %FALSE.
+     * @returns `true` if `alias_name` is an alias font name, otherwise `false`.
+     * @deprecated since 0.7: Use `ezfc_font_is_alias_font()`.
      */
     function is_alias_font(alias_name: string): boolean;
     /**
@@ -239,7 +245,8 @@ export namespace Easyfc {
     function version(): string;
     /**
      * All the fields in the <structname>EzfcAlias</structname>
-     * structure are private to the #EzfcAlias implementation.
+     * structure are private to the {@link Easyfc.Alias} implementation.
+     * @gir-type Struct
      */
     class Alias {
         static $gtype: GObject.GType<Alias>;
@@ -254,7 +261,7 @@ export namespace Easyfc {
 
         /**
          * Set a flag whether checking the font existence when invoking
-         * ezfc_alias_set_font().
+         * `ezfc_alias_set_font()`.
          * @param flag a boolean value.
          */
         check_font_existence(flag: boolean): void;
@@ -270,20 +277,20 @@ export namespace Easyfc {
         get_name(): string;
         /**
          * Increases the reference count of `alias`.
-         * @returns the same @alias.
+         * @returns the same `alias`.
          */
         ref(): Alias;
         /**
          * Set `font_name` as the font family name used for the alias font.
          * @param font_name a font name.
-         * @returns %TRUE if it successfully is set. otherwise %FALSE.
+         * @returns `true` if it successfully is set. otherwise `false`.
          */
         set_font(font_name: string): boolean;
         /**
          * Set `pattern` as the font pattern. `alias` keeps a duplicate instance of
          * `pattern`.
-         * @param pattern a #FcPattern.
-         * @returns %TRUE if it successfully is set. otherwise %FALSE.
+         * @param pattern a {@link fontconfig.Pattern}.
+         * @returns `true` if it successfully is set. otherwise `false`.
          */
         set_font_pattern(pattern: fontconfig.Pattern): boolean;
         /**
@@ -295,7 +302,8 @@ export namespace Easyfc {
 
     /**
      * All the fields in the <structname>EzfcConfig</structname>
-     * structure are private to the #EzfcConfig implementation.
+     * structure are private to the {@link Easyfc.Config} implementation.
+     * @gir-type Struct
      */
     class Config {
         static $gtype: GObject.GType<Config>;
@@ -309,25 +317,25 @@ export namespace Easyfc {
         // Methods
 
         /**
-         * Add a `alias` font for `language` language. if giving %NULL to `language,`
+         * Add a `alias` font for `language` language. if giving `null` to `language`,
          * `alias` takes effect for any languages.
-         * @param language a language name to add @alias for or %NULL for global settings.
-         * @param alias a #EzfcAlias.
-         * @returns %TRUE if it's successfully completed, otherwise %FALSE.
+         * @param language a language name to add `alias` for or `null` for global settings.
+         * @param alias a {@link Easyfc.Alias}.
+         * @returns `true` if it's successfully completed, otherwise `false`.
          */
         add_alias(language: string | null, alias: Alias): boolean;
         /**
          * Add a #font font to generate non-language-specific, non-alias-specific
          * rules.
-         * @param font a #EzfcFont.
-         * @returns %TRUE if it's successfully completed, otherwise %FALSE.
+         * @param font a {@link Easyfc.Font}.
+         * @returns `true` if it's successfully completed, otherwise `false`.
          */
         add_font(font: Font): boolean;
         /**
          * Add a #subst font as a substitute font for `family_name`.
          * @param family_name a family name to be substituted.
-         * @param subst a #EzfcFont for substitute font
-         * @returns %TRUE if it's successfully completed, otherwise %FALSE.
+         * @param subst a {@link Easyfc.Font} for substitute font
+         * @returns `true` if it's successfully completed, otherwise `false`.
          */
         add_subst(family_name: string, subst: Font): boolean;
         /**
@@ -335,23 +343,23 @@ export namespace Easyfc {
          */
         dump(): void;
         /**
-         * Obtains the list of #EzfcAlias in #EzfcConfig instance.
+         * Obtains the list of {@link Easyfc.Alias} in {@link Easyfc.Config} instance.
          * @param language a language name referenced to the alias
-         * @returns a #GList contains #EzfcAlias or %NULL.
+         * @returns a {@link GLib.List} contains {@link Easyfc.Alias} or `null`.
          */
         get_aliases(language?: string | null): Alias[];
         /**
-         * Obtains the list of #EzfcFont in `config`.
-         * @returns a #GList contains #EzfcFont or %NULL.
+         * Obtains the list of {@link Easyfc.Font} in `config`.
+         * @returns a {@link GLib.List} contains {@link Easyfc.Font} or `null`.
          */
         get_fonts(): Font[];
         /**
-         * Obtains the list of languages registered by ezfc_config_add_alias() in `config`.
-         * @returns a #GList contains languages or %NULL.
+         * Obtains the list of languages registered by `ezfc_config_add_alias()` in `config`.
+         * @returns a {@link GLib.List} contains languages or `null`.
          */
         get_language_list(): string[];
         /**
-         * Obtains the configuration name that is set by ezfc_config_set_name().
+         * Obtains the configuration name that is set by `ezfc_config_set_name()`.
          * @returns the configuration name.
          */
         get_name(): string;
@@ -362,85 +370,85 @@ export namespace Easyfc {
         get_priority(): number;
         /**
          * Obtains the list of the family name being substituted
-         * @returns a #GList contains languages or %NULL.
+         * @returns a {@link GLib.List} contains languages or `null`.
          */
         get_subst_family(): string[];
         /**
-         * Obtains the list of #EzfcFont to be substituted for `family_name`.
+         * Obtains the list of {@link Easyfc.Font} to be substituted for `family_name`.
          * @param family_name a family name being substituted.
-         * @returns a #GList contains #EzfcFont or %NULL.
+         * @returns a {@link GLib.List} contains {@link Easyfc.Font} or `null`.
          */
         get_substs(family_name: string): Font[];
         /**
          * Read the configuration file and rebuild the object.
-         * You have to invoke ezfc_config_set_priority() and ezfc_config_set_name()
+         * You have to invoke `ezfc_config_set_priority()` and `ezfc_config_set_name()`
          * first to read the appropriate configuration file.
-         * @returns %TRUE if it's successfully completed, otherwise %FALSE.
+         * @returns `true` if it's successfully completed, otherwise `false`.
          */
         load(): boolean;
         /**
          * Increases the refernce count of `config`.
-         * @returns the same @config object.
+         * @returns the same `config` object.
          */
         ref(): Config;
         /**
          * Removes `alias_name` assigned for `language` language from `config`.
-         * @param language a language name to remove @alias_name from.
+         * @param language a language name to remove `alias_name` from.
          * @param alias_name a alias font name to remove.
-         * @returns %TRUE if it's successfully removed, otherwise %FALSE.
+         * @returns `true` if it's successfully removed, otherwise `false`.
          */
         remove_alias(language: string | null, alias_name: string): boolean;
         /**
          * Removes all of aliases assigned for `language` language from `config`.
-         * @param language a language name to remove @alias_name from.
-         * @returns %TRUE if it's successfully removed, otherwise %FALSE.
+         * @param language a language name to remove `alias_name` from.
+         * @returns `true` if it's successfully removed, otherwise `false`.
          */
         remove_aliases(language?: string | null): boolean;
         /**
-         * Remove a #EzfcFont instance corresponding to `family`.
+         * Remove a {@link Easyfc.Font} instance corresponding to `family`.
          * @param family a family name to be removed.
-         * @returns %TRUE if it's successfully removed, otherwise %FALSE.
+         * @returns `true` if it's successfully removed, otherwise `false`.
          */
         remove_font(family: string): boolean;
         /**
-         * Remove all of fonts from `config,` which added by ezfc_config_add_font().
-         * @returns %TRUE if it's successfully removed, otherwise %FALSE.
+         * Remove all of fonts from `config`, which added by `ezfc_config_add_font()`.
+         * @returns `true` if it's successfully removed, otherwise `false`.
          */
         remove_fonts(): boolean;
         /**
          * Remove `subst_name` from the substitute font list of `family_name`.
          * @param family_name a family name to be substituted.
          * @param subst_name a substitute font name
-         * @returns %TRUE if it's successfully completed, otherwise %FALSE.
+         * @returns `true` if it's successfully completed, otherwise `false`.
          */
         remove_subst(family_name: string, subst_name: string): boolean;
         /**
          * Remove all of substitute font list of `family_name`.
          * @param family_name a family name to be substituted.
-         * @returns %TRUE if it's successfully completed, otherwise %FALSE.
+         * @returns `true` if it's successfully completed, otherwise `false`.
          */
         remove_substs(family_name: string): boolean;
         /**
          * Write the data to the configuration file. you may want to invoke
-         * ezfc_config_set_priority() and ezfc_config_set_name() first to
+         * `ezfc_config_set_priority()` and `ezfc_config_set_name()` first to
          * write it to the appropriate configuration file.
-         * @returns %TRUE if it's successfully completed, otherwise %FALSE.
+         * @returns `true` if it's successfully completed, otherwise `false`.
          */
         save(): boolean;
         /**
          * Write the data to the buffer.
-         * @returns a #GString containing a xml data. %NULL if fails.
+         * @returns a {@link GLib.String} containing a xml data. `null` if fails.
          */
         save_to_buffer(): GLib.String;
         /**
          * Set a flag to migrate the configuration file on the older place to
          * the new one where XDG Base Directory Specification defines.
-         * If `flag` is %TRUE, ezfc_config_load() will tries to read the config
+         * If `flag` is `true`, `ezfc_config_load()` will tries to read the config
          * file from the old path prior to new place and the old file will be
-         * removed during ezfc_config_save().
+         * removed during `ezfc_config_save()`.
          *
          * This feature is enabled by default.
-         * @param flag a #gboolean.
+         * @param flag a `gboolean`.
          */
         set_migration(flag: boolean): void;
         /**
@@ -463,7 +471,8 @@ export namespace Easyfc {
 
     /**
      * All the fields in the <structname>EzfcFont</structname>
-     * structure are private to the #EzfcFont implementation.
+     * structure are private to the {@link Easyfc.Font} implementation.
+     * @gir-type Struct
      */
     class Font {
         static $gtype: GObject.GType<Font>;
@@ -478,7 +487,7 @@ export namespace Easyfc {
 
         /**
          * Analize `pattern` and returns a alias name string according to the result.
-         * @param pattern a #FcPattern.
+         * @param pattern a {@link fontconfig.Pattern}.
          */
         static get_alias_name_from_pattern(pattern: fontconfig.Pattern): string[];
         /**
@@ -488,11 +497,11 @@ export namespace Easyfc {
          * a reservation for future improvement.
          * @param language the language name fontconfig can deal with.
          * @param alias_name the alias name to obtain the fonts list for.
-         * @param localized_font_name %TRUE to include the localized font name if available,                       %FALSE for English font name only.
+         * @param localized_font_name `true` to include the localized font name if available,                       `false` for English font name only.
          */
         static get_list(language: string | null, alias_name: string | null, localized_font_name: boolean): string[];
         /**
-         * Obtains #FcPattern list being assigned to `alias_name` for `language`.
+         * Obtains {@link fontconfig.Pattern} list being assigned to `alias_name` for `language`.
          * @param language the language name fontconfig can deal with.
          * @param alias_name the alias name to obtain the fonts pettern list for.
          */
@@ -509,65 +518,65 @@ export namespace Easyfc {
         /**
          * Add `font_name` as the font family name used for the font font.
          * @param font_name a font name.
-         * @returns %TRUE if it successfully is set. otherwise %FALSE.
+         * @returns `true` if it successfully is set. otherwise `false`.
          */
         add_family(font_name: string): boolean;
         /**
          * Add `feature` font feature to `font`.
          * @param feature feature name to be added
-         * @returns %TRUE if it's successfully completed, otherwise %FALSE.
+         * @returns `true` if it's successfully completed, otherwise `false`.
          */
         add_feature(feature: string): boolean;
         /**
-         * Split up `font` to #EzfcFont that has one family name only.
-         * @returns a #GList contains          #EzfcFont, otherwise %NULL.
+         * Split up `font` to {@link Easyfc.Font} that has one family name only.
+         * @returns a {@link GLib.List} contains          {@link Easyfc.Font}, otherwise `null`.
          */
         canonicalize(): Font[];
         /**
          * Set a flag whether checking the font existence when invoking
-         * ezfc_font_set_family().
+         * `ezfc_font_set_family()`.
          * @param flag a boolean value.
          */
         check_existence(flag: boolean): void;
         /**
          * Check if `font` contains `font_name`.
          * @param font_name a font name.
-         * @returns %TRUE if it contains, otherwise %FALSE.
+         * @returns `true` if it contains, otherwise `false`.
          */
         find(font_name: string): boolean;
         /**
          * Analize `font` and returns a alias name string according to the result.
-         * @returns a #GList containing          a static string for the alias name.
+         * @returns a {@link GLib.List} containing          a static string for the alias name.
          */
         get_alias_name(): string[];
         /**
          * Obtain a boolean value about the anti-aliasing usage in `font`.
-         * @returns %TRUE if the antialiasing is enabled. otherwise %FALSE.
+         * @returns `true` if the antialiasing is enabled. otherwise `false`.
          */
         get_antialiasing(): boolean;
         /**
          * Obtain a boolean value about the auto-hinting usage in `font`.
-         * @returns %TRUE if the auto-hinting is enabled. otherwise %FALSE.
+         * @returns `true` if the auto-hinting is enabled. otherwise `false`.
          */
         get_autohinting(): boolean;
         /**
          * Obtains available font features in `font`.
-         * @returns a #GList containing          memory-allocated string of feature name that is available          in @font. strings in #GList has to be freed when it isn't          needed anymore.
+         * @returns a {@link GLib.List} containing          memory-allocated string of feature name that is available          in `font`. strings in {@link GLib.List} has to be freed when it isn't          needed anymore.
          */
         get_available_features(): string[];
         /**
          * Obtain a flag in `font` if it's supposed to check the font existence when invoking
-         * @returns %TRUE if it does otherwise %FALSE.
+         * @returns `true` if it does otherwise `false`.
          */
         get_check_existence(): boolean;
         /**
          * Obtain a boolean value about the embedded bitmap usage in `font`.
-         * @returns %TRUE if the embedded bitmap is enabled, otherwise %FALSE.
+         * @returns `true` if the embedded bitmap is enabled, otherwise `false`.
          */
         get_embedded_bitmap(): boolean;
         /**
          * Obtains font family names in `font`.
-         * @returns a #GList containing          the static string of font family names
+         * @returns a {@link GLib.List} containing          the static string of font family names
          */
         get_families(): string[];
         /**
@@ -577,17 +586,17 @@ export namespace Easyfc {
         get_family(): string;
         /**
          * Obtains font features list that `font` has.
-         * @returns a #GList containing          the static string of feature name.
+         * @returns a {@link GLib.List} containing          the static string of feature name.
          */
         get_features(): string[];
         /**
          * Obtain a boolean value about the hinting usage in `font`.
-         * @returns %TRUE if the hinting is enabled. otherwise %FALSE.
+         * @returns `true` if the hinting is enabled. otherwise `false`.
          */
         get_hinting(): boolean;
         /**
          * Obtain the hintstyle in `font`.
-         * @returns a #EzfcFontHintstyle.
+         * @returns a {@link Easyfc.FontHintstyle}.
          */
         get_hintstyle(): FontHintstyle;
         /**
@@ -602,24 +611,24 @@ export namespace Easyfc {
         get_subpixel_rendering(): FontSubpixelRender;
         /**
          * Increases the reference count of `font`.
-         * @returns the same @font object.
+         * @returns the same `font` object.
          */
         ref(): Font;
         /**
          * Removes all of families in `font`.
-         * @returns %TRUE if it's successfully completed, otherwise %FALSE.
+         * @returns `true` if it's successfully completed, otherwise `false`.
          */
         remove(): boolean;
         /**
          * Removes `font_name` from `font`.
          * @param font_name a font name to be removed.
-         * @returns %TRUE if it's successfully completed, otherwise %FALSE.
+         * @returns `true` if it's successfully completed, otherwise `false`.
          */
         remove_family(font_name: string): boolean;
         /**
          * Remove `feature` from `font` if available.
          * @param feature feature name to be removed
-         * @returns %TRUE if it's successfully completed, otherwise %FALSE.
+         * @returns `true` if it's successfully completed, otherwise `false`.
          */
         remove_feature(feature: string): boolean;
         /**
@@ -641,7 +650,7 @@ export namespace Easyfc {
         /**
          * Set `font_name` as the font family name used for the font font.
          * @param font_name a font name.
-         * @returns %TRUE if it successfully is set. otherwise %FALSE.
+         * @returns `true` if it successfully is set. otherwise `false`.
          */
         set_family(font_name: string): boolean;
         /**
@@ -651,14 +660,14 @@ export namespace Easyfc {
         set_hinting(flag: boolean): void;
         /**
          * Set a hintstyle for `font`.
-         * @param hintstyle a #EzfcFontHintstyle.
+         * @param hintstyle a {@link Easyfc.FontHintstyle}.
          */
         set_hintstyle(hintstyle: FontHintstyle | null): void;
         /**
          * Set `pattern` as the font pattern. `font` keeps a duplicate instance of
          * `pattern`.
-         * @param pattern a #FcPattern.
-         * @returns %TRUE if it successfully is set. otherwise %FALSE.
+         * @param pattern a {@link fontconfig.Pattern}.
+         * @returns `true` if it successfully is set. otherwise `false`.
          */
         set_pattern(pattern: fontconfig.Pattern): boolean;
         /**
@@ -669,8 +678,8 @@ export namespace Easyfc {
         /**
          * This is just convenient to change the several configuration for subpixel
          * rendering.
-         * @param mode a #EzfcFontSubpixelRender.
-         * @returns %TRUE if the sub-pixel rendering is enabled. otherwise %FALSE.
+         * @param mode a {@link Easyfc.FontSubpixelRender}.
+         * @returns `true` if the sub-pixel rendering is enabled. otherwise `false`.
          */
         set_subpixel_rendering(mode: FontSubpixelRender | null): boolean;
         /**
@@ -682,7 +691,8 @@ export namespace Easyfc {
 
     /**
      * All the fields in the <structname>EzfcFontConfig</structname>
-     * structure are private to the #EzfcFontConfig implementation.
+     * structure are private to the {@link Easyfc.FontConfig} implementation.
+     * @gir-type Struct
      */
     abstract class FontConfig {
         static $gtype: GObject.GType<FontConfig>;
@@ -697,18 +707,18 @@ export namespace Easyfc {
         /**
          * Obtains the list of the config directories where fontconfig can recognizes
          * and enables the configuration files from `config`.
-         * @param config a #FcConfig.
+         * @param config a {@link fontconfig.Config}.
          */
         static get_config_dirs_from(config: fontconfig.Config): string[];
         /**
-         * Obtains the list of #EzfcFontConfig to see what kind of configuration
+         * Obtains the list of {@link Easyfc.FontConfig} to see what kind of configuration
          * files for fontconfig are installed and enabled on the system.
          */
         static get_list(): FontConfig[];
         /**
-         * Obtains the list of #EzfcFontConfig to see what kind of configuration
+         * Obtains the list of {@link Easyfc.FontConfig} to see what kind of configuration
          * files for fontconfig are installed and enabled on the system from `config`.
-         * @param config a #FcConfig.
+         * @param config a {@link fontconfig.Config}.
          */
         static get_list_from(config: fontconfig.Config): FontConfig[];
 
@@ -725,34 +735,34 @@ export namespace Easyfc {
          */
         get_name(): string;
         /**
-         * Returns %TRUE if the configuration is enabled in fontconfig, otherwise %FALSE.
+         * Returns `true` if the configuration is enabled in fontconfig, otherwise `false`.
          * @returns a boolean value
          */
         is_enabled(): boolean;
         /**
-         * Returns %TRUE if the configuration is a system config otherwise %FALSE.
+         * Returns `true` if the configuration is a system config otherwise `false`.
          * @returns a boolean value
          */
         is_system_conf(): boolean;
         /**
-         * Returns %TRUE if the configuration is an user config otherwise %FALSE.
+         * Returns `true` if the configuration is an user config otherwise `false`.
          * @returns a boolean value
          */
         is_user_conf(): boolean;
         /**
-         * Returns %TRUE if the configuration is writable to be disabled/enabled otherwise %FALSE
+         * Returns `true` if the configuration is writable to be disabled/enabled otherwise `false`
          * @returns a boolean value
          */
         is_writable(): boolean;
         /**
          * Increases the reference count of `info`.
-         * @returns the same @info object.
+         * @returns the same `info` object.
          */
         ref(): FontConfig;
         /**
          * Enable/Disable a configuration.
          * @param flag a boolean value
-         * @returns %TRUE if successfully enabled or disabled, otherwise %FALSE.
+         * @returns `true` if successfully enabled or disabled, otherwise `false`.
          */
         set_enable(flag: boolean): boolean;
         /**

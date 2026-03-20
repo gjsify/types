@@ -21,19 +21,49 @@ export namespace UnityExtras {
      * UnityExtras-7.0
      */
 
+    /**
+     * @param uri
+     */
     function show_in_folder(uri: string): globalThis.Promise<void>;
-    function show_in_folder(uri: string, _callback_: Gio.AsyncReadyCallback<string>): void;
-    function show_in_folder(uri: string, _callback_: Gio.AsyncReadyCallback<string>): globalThis.Promise<void> | void;
+    /**
+     * @param uri
+     * @param _callback_
+     */
+    function show_in_folder(uri: string, _callback_: Gio.AsyncReadyCallback<string> | null): void;
+    /**
+     * @param uri
+     * @param _callback_
+     */
+    function show_in_folder(
+        uri: string,
+        _callback_?: Gio.AsyncReadyCallback<string> | null,
+    ): globalThis.Promise<void> | void;
+    /**
+     * @param _res_
+     */
     function show_in_folder_finish(_res_: Gio.AsyncResult): void;
+    /**
+     * @param name
+     */
     function dbus_name_has_owner(name: string): boolean;
-    function dbus_own_name(name: string, scope_creation_cb: CreateScopeCallback): Gio.Application;
+    /**
+     * @param name
+     * @param scope_creation_cb
+     */
+    function dbus_own_name(name: string, scope_creation_cb: CreateScopeCallback): Gio.Application | null;
+    /**
+     * @gir-type Callback
+     */
     interface CreateScopeCallback {
         (): void;
     }
     namespace PreviewPlayer {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
-            progress: (arg0: string, arg1: Unity.MusicPreviewTrackState, arg2: number) => void;
+            /**
+             * @signal
+             */
+            progress: (arg0: string, arg1: never, arg2: number) => void;
         }
 
         // Constructor properties interface
@@ -41,6 +71,9 @@ export namespace UnityExtras {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class PreviewPlayer extends GObject.Object {
         static $gtype: GObject.GType<PreviewPlayer>;
 
@@ -63,16 +96,19 @@ export namespace UnityExtras {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof PreviewPlayer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PreviewPlayer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof PreviewPlayer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PreviewPlayer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PreviewPlayer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PreviewPlayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -81,40 +117,119 @@ export namespace UnityExtras {
 
         // Methods
 
+        /**
+         * @param uri
+         */
         play(uri: string): globalThis.Promise<void>;
-        play(uri: string, _callback_: Gio.AsyncReadyCallback<this>): void;
-        play(uri: string, _callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        /**
+         * @param uri
+         * @param _callback_
+         */
+        play(uri: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param uri
+         * @param _callback_
+         */
+        play(uri: string, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         play_finish(_res_: Gio.AsyncResult): void;
         pause(): globalThis.Promise<void>;
-        pause(_callback_: Gio.AsyncReadyCallback<this>): void;
-        pause(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        /**
+         * @param _callback_
+         */
+        pause(_callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param _callback_
+         */
+        pause(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         pause_finish(_res_: Gio.AsyncResult): void;
         pause_resume(): globalThis.Promise<void>;
-        pause_resume(_callback_: Gio.AsyncReadyCallback<this>): void;
-        pause_resume(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        /**
+         * @param _callback_
+         */
+        pause_resume(_callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param _callback_
+         */
+        pause_resume(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         pause_resume_finish(_res_: Gio.AsyncResult): void;
         resume(): globalThis.Promise<void>;
-        resume(_callback_: Gio.AsyncReadyCallback<this>): void;
-        resume(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        /**
+         * @param _callback_
+         */
+        resume(_callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param _callback_
+         */
+        resume(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         resume_finish(_res_: Gio.AsyncResult): void;
         stop(): globalThis.Promise<void>;
-        stop(_callback_: Gio.AsyncReadyCallback<this>): void;
-        stop(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        /**
+         * @param _callback_
+         */
+        stop(_callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param _callback_
+         */
+        stop(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         stop_finish(_res_: Gio.AsyncResult): void;
         close(): globalThis.Promise<void>;
-        close(_callback_: Gio.AsyncReadyCallback<this>): void;
-        close(_callback_?: Gio.AsyncReadyCallback<this>): globalThis.Promise<void> | void;
+        /**
+         * @param _callback_
+         */
+        close(_callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param _callback_
+         */
+        close(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         close_finish(_res_: Gio.AsyncResult): void;
+        /**
+         * @param uri
+         */
         video_properties(uri: string): globalThis.Promise<GLib.HashTable<string, GLib.Variant>>;
-        video_properties(uri: string, _callback_: Gio.AsyncReadyCallback<this>): void;
+        /**
+         * @param uri
+         * @param _callback_
+         */
+        video_properties(uri: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param uri
+         * @param _callback_
+         */
         video_properties(
             uri: string,
-            _callback_?: Gio.AsyncReadyCallback<this>,
+            _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.HashTable<string, GLib.Variant>> | void;
+        /**
+         * @param _res_
+         */
         video_properties_finish(_res_: Gio.AsyncResult): GLib.HashTable<string, GLib.Variant>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PreviewPlayerClass = typeof PreviewPlayer;
+    /**
+     * @gir-type Struct
+     */
     abstract class PreviewPlayerPrivate {
         static $gtype: GObject.GType<PreviewPlayerPrivate>;
     }

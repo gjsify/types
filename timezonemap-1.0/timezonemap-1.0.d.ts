@@ -10,18 +10,18 @@
 import '@girs/gjs';
 
 // Module dependencies
-import type xlib from '@girs/xlib-2.0';
-import type cairo from 'cairo';
+import type Json from '@girs/json-1.0';
+import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
+import type GModule from '@girs/gmodule-2.0';
+import type Gtk from '@girs/gtk-3.0';
+import type xlib from '@girs/xlib-2.0';
+import type Gdk from '@girs/gdk-3.0';
+import type cairo from 'cairo';
 import type Pango from '@girs/pango-1.0';
 import type HarfBuzz from '@girs/harfbuzz-0.0';
 import type freetype2 from '@girs/freetype2-2.0';
-import type Gio from '@girs/gio-2.0';
-import type GModule from '@girs/gmodule-2.0';
-import type Json from '@girs/json-1.0';
-import type Gtk from '@girs/gtk-3.0';
-import type Gdk from '@girs/gdk-3.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
 
@@ -60,6 +60,9 @@ export namespace TimezoneMap {
                 Gtk.CellLayout.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class TimezoneCompletion extends Gtk.EntryCompletion implements Gtk.Buildable, Gtk.CellLayout {
         static $gtype: GObject.GType<TimezoneCompletion>;
 
@@ -82,16 +85,19 @@ export namespace TimezoneMap {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TimezoneCompletion.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TimezoneCompletion.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TimezoneCompletion.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TimezoneCompletion.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TimezoneCompletion.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TimezoneCompletion.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -100,32 +106,33 @@ export namespace TimezoneMap {
 
         // Methods
 
+        /**
+         * @param entry
+         */
         watch_entry(entry: Gtk.Entry): void;
-
-        // Inherited methods
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
-         * @param builder a #GtkBuilder
+         * @param builder a {@link Gtk.Builder}
          * @param child child to add
-         * @param type kind of child or %NULL
+         * @param type kind of child or `null`
          */
         add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
         /**
          * Constructs a child of `buildable` with the name `name`.
          *
-         * #GtkBuilder calls this function if a “constructor” has been
+         * {@link Gtk.Builder} calls this function if a “constructor” has been
          * specified in the UI definition.
-         * @param builder #GtkBuilder used to construct this object
+         * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
          */
         construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
         /**
-         * This is similar to gtk_buildable_parser_finished() but is
+         * This is similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
-         * @param builder a #GtkBuilder
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder}
+         * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
@@ -133,18 +140,18 @@ export namespace TimezoneMap {
         /**
          * This is called at the end of each custom element handled by
          * the buildable.
-         * @param builder #GtkBuilder used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
         custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: any | null): void;
         /**
          * This is called for each unknown element under `<child>`.
-         * @param builder a #GtkBuilder used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
-         * @returns %TRUE if a object has a custom implementation, %FALSE          if it doesn't.
+         * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
         custom_tag_start(
             builder: Gtk.Builder,
@@ -153,7 +160,7 @@ export namespace TimezoneMap {
         ): [boolean, GLib.MarkupParser, any];
         /**
          * Get the internal child called `childname` of the `buildable` object.
-         * @param builder a #GtkBuilder
+         * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
          */
@@ -161,24 +168,24 @@ export namespace TimezoneMap {
         /**
          * Gets the name of the `buildable` object.
          *
-         * #GtkBuilder sets the name based on the
+         * {@link Gtk.Builder} sets the name based on the
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
-         * @returns the name set with gtk_buildable_set_name()
+         * @returns the name set with `gtk_buildable_set_name()`
          */
         get_name(): string;
         /**
          * Called when the builder finishes the parsing of a
          * [GtkBuilder UI definition][BUILDER-UI].
          * Note that this will be called once for each time
-         * gtk_builder_add_from_file() or gtk_builder_add_from_string()
+         * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
-         * @param builder a #GtkBuilder
+         * @param builder a {@link Gtk.Builder}
          */
         parser_finished(builder: Gtk.Builder): void;
         /**
          * Sets the property name `name` to `value` on the `buildable` object.
-         * @param builder a #GtkBuilder
+         * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
          */
@@ -191,27 +198,30 @@ export namespace TimezoneMap {
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
-         * @param builder a #GtkBuilder
+         * @param builder a {@link Gtk.Builder}
          * @param child child to add
-         * @param type kind of child or %NULL
+         * @param type kind of child or `null`
+         * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
         /**
          * Constructs a child of `buildable` with the name `name`.
          *
-         * #GtkBuilder calls this function if a “constructor” has been
+         * {@link Gtk.Builder} calls this function if a “constructor” has been
          * specified in the UI definition.
-         * @param builder #GtkBuilder used to construct this object
+         * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
         /**
-         * This is similar to gtk_buildable_parser_finished() but is
+         * This is similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
-         * @param builder a #GtkBuilder
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder}
+         * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @virtual
          */
         vfunc_custom_finished(
             builder: Gtk.Builder,
@@ -222,10 +232,11 @@ export namespace TimezoneMap {
         /**
          * This is called at the end of each custom element handled by
          * the buildable.
-         * @param builder #GtkBuilder used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @virtual
          */
         vfunc_custom_tag_end(
             builder: Gtk.Builder,
@@ -235,9 +246,10 @@ export namespace TimezoneMap {
         ): void;
         /**
          * This is called for each unknown element under `<child>`.
-         * @param builder a #GtkBuilder used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @virtual
          */
         vfunc_custom_tag_start(
             builder: Gtk.Builder,
@@ -246,37 +258,42 @@ export namespace TimezoneMap {
         ): [boolean, GLib.MarkupParser, any];
         /**
          * Get the internal child called `childname` of the `buildable` object.
-         * @param builder a #GtkBuilder
+         * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
         /**
          * Gets the name of the `buildable` object.
          *
-         * #GtkBuilder sets the name based on the
+         * {@link Gtk.Builder} sets the name based on the
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
+         * @virtual
          */
         vfunc_get_name(): string;
         /**
          * Called when the builder finishes the parsing of a
          * [GtkBuilder UI definition][BUILDER-UI].
          * Note that this will be called once for each time
-         * gtk_builder_add_from_file() or gtk_builder_add_from_string()
+         * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
-         * @param builder a #GtkBuilder
+         * @param builder a {@link Gtk.Builder}
+         * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
         /**
          * Sets the property name `name` to `value` on the `buildable` object.
-         * @param builder a #GtkBuilder
+         * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @virtual
          */
         vfunc_set_name(name: string): void;
         /**
@@ -285,8 +302,8 @@ export namespace TimezoneMap {
          * The `column` is the column of the model to get a value from, and the
          * `attribute` is the parameter on `cell` to be set from the value. So for
          * example if column 2 of the model contains strings, you could have the
-         * “text” attribute of a #GtkCellRendererText get its values from column 2.
-         * @param cell a #GtkCellRenderer
+         * “text” attribute of a {@link Gtk.CellRendererText} get its values from column 2.
+         * @param cell a {@link Gtk.CellRenderer}
          * @param attribute an attribute on the renderer
          * @param column the column position on the model to get the attribute from
          */
@@ -298,40 +315,40 @@ export namespace TimezoneMap {
         clear(): void;
         /**
          * Clears all existing attributes previously set with
-         * gtk_cell_layout_set_attributes().
-         * @param cell a #GtkCellRenderer to clear the attribute mapping on
+         * `gtk_cell_layout_set_attributes()`.
+         * @param cell a {@link Gtk.CellRenderer} to clear the attribute mapping on
          */
         clear_attributes(cell: Gtk.CellRenderer): void;
         /**
-         * Returns the underlying #GtkCellArea which might be `cell_layout`
-         * if called on a #GtkCellArea or might be %NULL if no #GtkCellArea
+         * Returns the underlying {@link Gtk.CellArea} which might be `cell_layout`
+         * if called on a {@link Gtk.CellArea} or might be `null` if no {@link Gtk.CellArea}
          * is used by `cell_layout`.
-         * @returns the cell area used by @cell_layout, or %NULL in case no cell area is used.
+         * @returns the cell area used by `cell_layout`, or `null` in case no cell area is used.
          */
         get_area(): Gtk.CellArea | null;
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
-         * @returns a list of cell renderers. The list, but not the renderers has     been newly allocated and should be freed with g_list_free()     when no longer needed.
+         * @returns a list of cell renderers. The list, but not the renderers has     been newly allocated and should be freed with `g_list_free()`     when no longer needed.
          */
         get_cells(): Gtk.CellRenderer[];
         /**
-         * Adds the `cell` to the end of `cell_layout`. If `expand` is %FALSE, then the
+         * Adds the `cell` to the end of `cell_layout`. If `expand` is `false`, then the
          * `cell` is allocated no more space than it needs. Any unused space is
-         * divided evenly between cells for which `expand` is %TRUE.
+         * divided evenly between cells for which `expand` is `true`.
          *
          * Note that reusing the same cell renderer is not supported.
-         * @param cell a #GtkCellRenderer
-         * @param expand %TRUE if @cell is to be given extra space allocated to @cell_layout
+         * @param cell a {@link Gtk.CellRenderer}
+         * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
          */
         pack_end(cell: Gtk.CellRenderer, expand: boolean): void;
         /**
-         * Packs the `cell` into the beginning of `cell_layout`. If `expand` is %FALSE,
+         * Packs the `cell` into the beginning of `cell_layout`. If `expand` is `false`,
          * then the `cell` is allocated no more space than it needs. Any unused space
-         * is divided evenly between cells for which `expand` is %TRUE.
+         * is divided evenly between cells for which `expand` is `true`.
          *
          * Note that reusing the same cell renderer is not supported.
-         * @param cell a #GtkCellRenderer
-         * @param expand %TRUE if @cell is to be given extra space allocated to @cell_layout
+         * @param cell a {@link Gtk.CellRenderer}
+         * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
          */
         pack_start(cell: Gtk.CellRenderer, expand: boolean): void;
         /**
@@ -339,20 +356,20 @@ export namespace TimezoneMap {
          *
          * Note that `cell` has already to be packed into `cell_layout`
          * for this to function properly.
-         * @param cell a #GtkCellRenderer to reorder
-         * @param position new position to insert @cell at
+         * @param cell a {@link Gtk.CellRenderer} to reorder
+         * @param position new position to insert `cell` at
          */
         reorder(cell: Gtk.CellRenderer, position: number): void;
         /**
-         * Sets the #GtkCellLayoutDataFunc to use for `cell_layout`.
+         * Sets the {@link Gtk.CellLayoutDataFunc} to use for `cell_layout`.
          *
          * This function is used instead of the standard attributes mapping
-         * for setting the column value, and should set the value of `cell_layout’`s
+         * for setting the column value, and should set the value of `cell_layout`’s
          * cell renderer(s) as appropriate.
          *
-         * `func` may be %NULL to remove a previously set function.
-         * @param cell a #GtkCellRenderer
-         * @param func the #GtkCellLayoutDataFunc to use, or %NULL
+         * `func` may be `null` to remove a previously set function.
+         * @param cell a {@link Gtk.CellRenderer}
+         * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
          */
         set_cell_data_func(cell: Gtk.CellRenderer, func?: Gtk.CellLayoutDataFunc | null): void;
         /**
@@ -361,51 +378,58 @@ export namespace TimezoneMap {
          * The `column` is the column of the model to get a value from, and the
          * `attribute` is the parameter on `cell` to be set from the value. So for
          * example if column 2 of the model contains strings, you could have the
-         * “text” attribute of a #GtkCellRendererText get its values from column 2.
-         * @param cell a #GtkCellRenderer
+         * “text” attribute of a {@link Gtk.CellRendererText} get its values from column 2.
+         * @param cell a {@link Gtk.CellRenderer}
          * @param attribute an attribute on the renderer
          * @param column the column position on the model to get the attribute from
+         * @virtual
          */
         vfunc_add_attribute(cell: Gtk.CellRenderer, attribute: string, column: number): void;
         /**
          * Unsets all the mappings on all renderers on `cell_layout` and
          * removes all renderers from `cell_layout`.
+         * @virtual
          */
         vfunc_clear(): void;
         /**
          * Clears all existing attributes previously set with
-         * gtk_cell_layout_set_attributes().
-         * @param cell a #GtkCellRenderer to clear the attribute mapping on
+         * `gtk_cell_layout_set_attributes()`.
+         * @param cell a {@link Gtk.CellRenderer} to clear the attribute mapping on
+         * @virtual
          */
         vfunc_clear_attributes(cell: Gtk.CellRenderer): void;
         /**
-         * Returns the underlying #GtkCellArea which might be `cell_layout`
-         * if called on a #GtkCellArea or might be %NULL if no #GtkCellArea
+         * Returns the underlying {@link Gtk.CellArea} which might be `cell_layout`
+         * if called on a {@link Gtk.CellArea} or might be `null` if no {@link Gtk.CellArea}
          * is used by `cell_layout`.
+         * @virtual
          */
         vfunc_get_area(): Gtk.CellArea | null;
         /**
          * Returns the cell renderers which have been added to `cell_layout`.
+         * @virtual
          */
         vfunc_get_cells(): Gtk.CellRenderer[];
         /**
-         * Adds the `cell` to the end of `cell_layout`. If `expand` is %FALSE, then the
+         * Adds the `cell` to the end of `cell_layout`. If `expand` is `false`, then the
          * `cell` is allocated no more space than it needs. Any unused space is
-         * divided evenly between cells for which `expand` is %TRUE.
+         * divided evenly between cells for which `expand` is `true`.
          *
          * Note that reusing the same cell renderer is not supported.
-         * @param cell a #GtkCellRenderer
-         * @param expand %TRUE if @cell is to be given extra space allocated to @cell_layout
+         * @param cell a {@link Gtk.CellRenderer}
+         * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @virtual
          */
         vfunc_pack_end(cell: Gtk.CellRenderer, expand: boolean): void;
         /**
-         * Packs the `cell` into the beginning of `cell_layout`. If `expand` is %FALSE,
+         * Packs the `cell` into the beginning of `cell_layout`. If `expand` is `false`,
          * then the `cell` is allocated no more space than it needs. Any unused space
-         * is divided evenly between cells for which `expand` is %TRUE.
+         * is divided evenly between cells for which `expand` is `true`.
          *
          * Note that reusing the same cell renderer is not supported.
-         * @param cell a #GtkCellRenderer
-         * @param expand %TRUE if @cell is to be given extra space allocated to @cell_layout
+         * @param cell a {@link Gtk.CellRenderer}
+         * @param expand `true` if `cell` is to be given extra space allocated to `cell_layout`
+         * @virtual
          */
         vfunc_pack_start(cell: Gtk.CellRenderer, expand: boolean): void;
         /**
@@ -413,20 +437,22 @@ export namespace TimezoneMap {
          *
          * Note that `cell` has already to be packed into `cell_layout`
          * for this to function properly.
-         * @param cell a #GtkCellRenderer to reorder
-         * @param position new position to insert @cell at
+         * @param cell a {@link Gtk.CellRenderer} to reorder
+         * @param position new position to insert `cell` at
+         * @virtual
          */
         vfunc_reorder(cell: Gtk.CellRenderer, position: number): void;
         /**
-         * Sets the #GtkCellLayoutDataFunc to use for `cell_layout`.
+         * Sets the {@link Gtk.CellLayoutDataFunc} to use for `cell_layout`.
          *
          * This function is used instead of the standard attributes mapping
-         * for setting the column value, and should set the value of `cell_layout’`s
+         * for setting the column value, and should set the value of `cell_layout`’s
          * cell renderer(s) as appropriate.
          *
-         * `func` may be %NULL to remove a previously set function.
-         * @param cell a #GtkCellRenderer
-         * @param func the #GtkCellLayoutDataFunc to use, or %NULL
+         * `func` may be `null` to remove a previously set function.
+         * @param cell a {@link Gtk.CellRenderer}
+         * @param func the {@link Gtk.CellLayoutDataFunc} to use, or `null`
+         * @virtual
          */
         vfunc_set_cell_data_func(cell: Gtk.CellRenderer, func?: Gtk.CellLayoutDataFunc | null): void;
         /**
@@ -442,32 +468,32 @@ export namespace TimezoneMap {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -476,39 +502,39 @@ export namespace TimezoneMap {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -519,13 +545,16 @@ export namespace TimezoneMap {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -533,7 +562,7 @@ export namespace TimezoneMap {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -541,9 +570,9 @@ export namespace TimezoneMap {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -563,9 +592,9 @@ export namespace TimezoneMap {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -578,34 +607,34 @@ export namespace TimezoneMap {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -638,22 +667,22 @@ export namespace TimezoneMap {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -662,8 +691,8 @@ export namespace TimezoneMap {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -680,10 +709,10 @@ export namespace TimezoneMap {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -698,13 +727,13 @@ export namespace TimezoneMap {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -735,21 +764,21 @@ export namespace TimezoneMap {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -759,33 +788,34 @@ export namespace TimezoneMap {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -794,6 +824,7 @@ export namespace TimezoneMap {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -802,12 +833,14 @@ export namespace TimezoneMap {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -816,20 +849,22 @@ export namespace TimezoneMap {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -841,6 +876,7 @@ export namespace TimezoneMap {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -876,8 +912,11 @@ export namespace TimezoneMap {
             'notify::comment': (pspec: GObject.ParamSpec) => void;
             'notify::country': (pspec: GObject.ParamSpec) => void;
             'notify::dist': (pspec: GObject.ParamSpec) => void;
+            'notify::en-name': (pspec: GObject.ParamSpec) => void;
+            'notify::full-country': (pspec: GObject.ParamSpec) => void;
             'notify::latitude': (pspec: GObject.ParamSpec) => void;
             'notify::longitude': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
             'notify::zone': (pspec: GObject.ParamSpec) => void;
         }
 
@@ -887,12 +926,20 @@ export namespace TimezoneMap {
             Comment: string;
             country: string;
             dist: number;
+            en_name: string;
+            enName: string;
+            full_country: string;
+            fullCountry: string;
             latitude: number;
             longitude: number;
+            state: string;
             zone: string;
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class TimezoneLocation extends GObject.Object {
         static $gtype: GObject.GType<TimezoneLocation>;
 
@@ -904,10 +951,20 @@ export namespace TimezoneMap {
         set country(val: string);
         get dist(): number;
         set dist(val: number);
+        get en_name(): string;
+        set en_name(val: string);
+        get enName(): string;
+        set enName(val: string);
+        get full_country(): string;
+        set full_country(val: string);
+        get fullCountry(): string;
+        set fullCountry(val: string);
         get latitude(): number;
         set latitude(val: number);
         get longitude(): number;
         set longitude(val: number);
+        get state(): string;
+        set state(val: string);
         get zone(): string;
         set zone(val: string);
 
@@ -930,27 +987,83 @@ export namespace TimezoneMap {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TimezoneLocation.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TimezoneLocation.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TimezoneLocation.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TimezoneLocation.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TimezoneLocation.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TimezoneLocation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
+
+        // Methods
+
+        get_comment(): string;
+        get_country(): string;
+        get_dist(): number;
+        get_en_name(): string;
+        get_full_country(): string;
+        get_latitude(): number;
+        get_longitude(): number;
+        get_state(): string;
+        get_zone(): string;
+        /**
+         * @param comment
+         */
+        set_comment(comment: string): void;
+        /**
+         * @param country
+         */
+        set_country(country: string): void;
+        /**
+         * @param dist
+         */
+        set_dist(dist: number): void;
+        /**
+         * @param en_name
+         */
+        set_en_name(en_name: string): void;
+        /**
+         * @param full_country
+         */
+        set_full_country(full_country: string): void;
+        /**
+         * @param lat
+         */
+        set_latitude(lat: number): void;
+        /**
+         * @param lng
+         */
+        set_longitude(lng: number): void;
+        /**
+         * @param state
+         */
+        set_state(state: string): void;
+        /**
+         * @param zone
+         */
+        set_zone(zone: string): void;
     }
 
     namespace TimezoneMap {
         // Signal signatures
         interface SignalSignatures extends Gtk.Widget.SignalSignatures {
+            /**
+             * @signal
+             * @run-first
+             */
             'location-changed': (arg0: TimezoneLocation) => void;
+            'notify::selected-offset': (pspec: GObject.ParamSpec) => void;
             'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
             'notify::can-default': (pspec: GObject.ParamSpec) => void;
             'notify::can-focus': (pspec: GObject.ParamSpec) => void;
@@ -995,14 +1108,24 @@ export namespace TimezoneMap {
         // Constructor properties interface
 
         interface ConstructorProps
-            extends
-                Gtk.Widget.ConstructorProps,
-                Atk.ImplementorIface.ConstructorProps,
-                Gtk.Buildable.ConstructorProps {}
+            extends Gtk.Widget.ConstructorProps, Atk.ImplementorIface.ConstructorProps, Gtk.Buildable.ConstructorProps {
+            selected_offset: string;
+            selectedOffset: string;
+        }
     }
 
+    /**
+     * @gir-type Class
+     */
     class TimezoneMap extends Gtk.Widget implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<TimezoneMap>;
+
+        // Properties
+
+        get selected_offset(): string;
+        set selected_offset(val: string);
+        get selectedOffset(): string;
+        set selectedOffset(val: string);
 
         /**
          * Compile-time signal type information.
@@ -1023,16 +1146,19 @@ export namespace TimezoneMap {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TimezoneMap.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TimezoneMap.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TimezoneMap.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TimezoneMap.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TimezoneMap.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TimezoneMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1041,35 +1167,73 @@ export namespace TimezoneMap {
 
         // Methods
 
+        /**
+         * Clear the location currently set for the {@link TimezoneMap.TimezoneMap}. This will remove
+         * the highlight and reset the map to its original state.
+         */
+        clear_location(): void;
+        /**
+         * Returns the current location set for the map.
+         * @returns the map location.
+         */
+        get_location(): TimezoneLocation;
+        /**
+         * Returns the currently selected offset in hours from GMT.
+         * @returns The selected offset.
+         */
+        get_selected_offset(): number;
+        /**
+         * @param lon
+         * @param lat
+         */
         get_timezone_at_coords(lon: number, lat: number): string;
+        /**
+         * @param lon
+         * @param lat
+         */
         set_coords(lon: number, lat: number): void;
+        /**
+         * @param lon
+         * @param lat
+         */
+        set_location(lon: number, lat: number): void;
+        /**
+         * Set the currently selected offset for the map and redraw the highlighted
+         * time zone.
+         * @param offset The offset from GMT in hours
+         */
+        set_selected_offset(offset: number): void;
+        /**
+         * @param timezone
+         */
         set_timezone(timezone: string): void;
+        /**
+         * @param watermark
+         */
         set_watermark(watermark: string): void;
-
-        // Inherited methods
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
-         * @param builder a #GtkBuilder
+         * @param builder a {@link Gtk.Builder}
          * @param child child to add
-         * @param type kind of child or %NULL
+         * @param type kind of child or `null`
          */
         add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
         /**
          * Constructs a child of `buildable` with the name `name`.
          *
-         * #GtkBuilder calls this function if a “constructor” has been
+         * {@link Gtk.Builder} calls this function if a “constructor” has been
          * specified in the UI definition.
-         * @param builder #GtkBuilder used to construct this object
+         * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
          */
         construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
         /**
-         * This is similar to gtk_buildable_parser_finished() but is
+         * This is similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
-         * @param builder a #GtkBuilder
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder}
+         * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
@@ -1077,18 +1241,18 @@ export namespace TimezoneMap {
         /**
          * This is called at the end of each custom element handled by
          * the buildable.
-         * @param builder #GtkBuilder used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
         custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: any | null): void;
         /**
          * This is called for each unknown element under `<child>`.
-         * @param builder a #GtkBuilder used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
-         * @returns %TRUE if a object has a custom implementation, %FALSE          if it doesn't.
+         * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
         custom_tag_start(
             builder: Gtk.Builder,
@@ -1097,7 +1261,7 @@ export namespace TimezoneMap {
         ): [boolean, GLib.MarkupParser, any];
         /**
          * Get the internal child called `childname` of the `buildable` object.
-         * @param builder a #GtkBuilder
+         * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
          */
@@ -1105,24 +1269,24 @@ export namespace TimezoneMap {
         /**
          * Gets the name of the `buildable` object.
          *
-         * #GtkBuilder sets the name based on the
+         * {@link Gtk.Builder} sets the name based on the
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
-         * @returns the name set with gtk_buildable_set_name()
+         * @returns the name set with `gtk_buildable_set_name()`
          */
         get_name(): string;
         /**
          * Called when the builder finishes the parsing of a
          * [GtkBuilder UI definition][BUILDER-UI].
          * Note that this will be called once for each time
-         * gtk_builder_add_from_file() or gtk_builder_add_from_string()
+         * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
-         * @param builder a #GtkBuilder
+         * @param builder a {@link Gtk.Builder}
          */
         parser_finished(builder: Gtk.Builder): void;
         /**
          * Sets the property name `name` to `value` on the `buildable` object.
-         * @param builder a #GtkBuilder
+         * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
          */
@@ -1135,27 +1299,30 @@ export namespace TimezoneMap {
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
-         * @param builder a #GtkBuilder
+         * @param builder a {@link Gtk.Builder}
          * @param child child to add
-         * @param type kind of child or %NULL
+         * @param type kind of child or `null`
+         * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
         /**
          * Constructs a child of `buildable` with the name `name`.
          *
-         * #GtkBuilder calls this function if a “constructor” has been
+         * {@link Gtk.Builder} calls this function if a “constructor” has been
          * specified in the UI definition.
-         * @param builder #GtkBuilder used to construct this object
+         * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
         /**
-         * This is similar to gtk_buildable_parser_finished() but is
+         * This is similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
-         * @param builder a #GtkBuilder
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder}
+         * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @virtual
          */
         vfunc_custom_finished(
             builder: Gtk.Builder,
@@ -1166,10 +1333,11 @@ export namespace TimezoneMap {
         /**
          * This is called at the end of each custom element handled by
          * the buildable.
-         * @param builder #GtkBuilder used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @virtual
          */
         vfunc_custom_tag_end(
             builder: Gtk.Builder,
@@ -1179,9 +1347,10 @@ export namespace TimezoneMap {
         ): void;
         /**
          * This is called for each unknown element under `<child>`.
-         * @param builder a #GtkBuilder used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @virtual
          */
         vfunc_custom_tag_start(
             builder: Gtk.Builder,
@@ -1190,37 +1359,42 @@ export namespace TimezoneMap {
         ): [boolean, GLib.MarkupParser, any];
         /**
          * Get the internal child called `childname` of the `buildable` object.
-         * @param builder a #GtkBuilder
+         * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
         /**
          * Gets the name of the `buildable` object.
          *
-         * #GtkBuilder sets the name based on the
+         * {@link Gtk.Builder} sets the name based on the
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
+         * @virtual
          */
         vfunc_get_name(): string;
         /**
          * Called when the builder finishes the parsing of a
          * [GtkBuilder UI definition][BUILDER-UI].
          * Note that this will be called once for each time
-         * gtk_builder_add_from_file() or gtk_builder_add_from_string()
+         * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
-         * @param builder a #GtkBuilder
+         * @param builder a {@link Gtk.Builder}
+         * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
         /**
          * Sets the property name `name` to `value` on the `buildable` object.
-         * @param builder a #GtkBuilder
+         * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @virtual
          */
         vfunc_set_name(name: string): void;
         /**
@@ -1236,32 +1410,32 @@ export namespace TimezoneMap {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -1270,39 +1444,39 @@ export namespace TimezoneMap {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -1313,13 +1487,16 @@ export namespace TimezoneMap {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -1327,7 +1504,7 @@ export namespace TimezoneMap {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -1335,9 +1512,9 @@ export namespace TimezoneMap {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -1357,9 +1534,9 @@ export namespace TimezoneMap {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -1372,34 +1549,34 @@ export namespace TimezoneMap {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1432,22 +1609,22 @@ export namespace TimezoneMap {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -1456,8 +1633,8 @@ export namespace TimezoneMap {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -1474,10 +1651,10 @@ export namespace TimezoneMap {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -1492,13 +1669,13 @@ export namespace TimezoneMap {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1529,21 +1706,21 @@ export namespace TimezoneMap {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1553,33 +1730,34 @@ export namespace TimezoneMap {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1588,6 +1766,7 @@ export namespace TimezoneMap {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1596,12 +1775,14 @@ export namespace TimezoneMap {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1610,20 +1791,22 @@ export namespace TimezoneMap {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1635,6 +1818,7 @@ export namespace TimezoneMap {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -1664,17 +1848,35 @@ export namespace TimezoneMap {
         stop_emission_by_name(detailedName: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TimezoneCompletionClass = typeof TimezoneCompletion;
+    /**
+     * @gir-type Struct
+     */
     abstract class TimezoneCompletionPrivate {
         static $gtype: GObject.GType<TimezoneCompletionPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TimezoneLocationClass = typeof TimezoneLocation;
+    /**
+     * @gir-type Struct
+     */
     abstract class TimezoneLocationPrivate {
         static $gtype: GObject.GType<TimezoneLocationPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TimezoneMapClass = typeof TimezoneMap;
+    /**
+     * @gir-type Struct
+     */
     abstract class TimezoneMapPrivate {
         static $gtype: GObject.GType<TimezoneMapPrivate>;
     }

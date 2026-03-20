@@ -2,6 +2,8 @@
     "entryPoints": ["./mirage-3.2.d.ts"],
     "readme": "./README.md",
     "name": "Mirage-3.2",
-    "tsconfig": "./tsconfig.json"
+    "tsconfig": "./tsconfig.json",
+    "skipErrorChecking": true,
+    "highlightLanguages": ["typescript", "javascript", "c", "cpp", "xml", "bash", "json", "css"]
 }
 

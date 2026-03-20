@@ -31,20 +31,32 @@ export namespace Gitg {
      * Gitg-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AuthenticationLifeTime {
         export const $gtype: GObject.GType<AuthenticationLifeTime>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum AuthenticationLifeTime {
         FORGET,
         SESSION,
         FOREVER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CommitModelColumns {
         export const $gtype: GObject.GType<CommitModelColumns>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum CommitModelColumns {
         SHA1,
         SUBJECT,
@@ -61,10 +73,16 @@ export namespace Gitg {
         NUM,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RefType {
         export const $gtype: GObject.GType<RefType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum RefType {
         NONE,
         BRANCH,
@@ -73,20 +91,32 @@ export namespace Gitg {
         STASH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RefState {
         export const $gtype: GObject.GType<RefState>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum RefState {
         NONE,
         SELECTED,
         PRELIGHT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RemoteState {
         export const $gtype: GObject.GType<RemoteState>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum RemoteState {
         DISCONNECTED,
         CONNECTING,
@@ -94,29 +124,47 @@ export namespace Gitg {
         TRANSFERRING,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SelectionMode {
         export const $gtype: GObject.GType<SelectionMode>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum SelectionMode {
         NORMAL,
         SELECTION,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DeleteSources {
         export const $gtype: GObject.GType<DeleteSources>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum DeleteSources {
         CANCEL,
         TRASH,
         DELETE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SidebarHint {
         export const $gtype: GObject.GType<SidebarHint>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum SidebarHint {
         NONE,
         HEADER,
@@ -124,16 +172,25 @@ export namespace Gitg {
         DUMMY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SidebarColumn {
         export const $gtype: GObject.GType<SidebarColumn>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum SidebarColumn {
         HINT,
         SECTION,
         ITEM,
     }
 
+    /**
+     * @gir-type Struct
+     */
     class CredentialsError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -146,6 +203,9 @@ export namespace Gitg {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Struct
+     */
     class DateError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -158,6 +218,9 @@ export namespace Gitg {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Struct
+     */
     class InitError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -170,6 +233,9 @@ export namespace Gitg {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Struct
+     */
     class RemoteError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -185,6 +251,9 @@ export namespace Gitg {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Struct
+     */
     class StageError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -203,10 +272,16 @@ export namespace Gitg {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PatchSetType {
         export const $gtype: GObject.GType<PatchSetType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum PatchSetType {
         ADD,
         REMOVE,
@@ -214,10 +289,16 @@ export namespace Gitg {
 
     function commit_model_columns_type(): GObject.GType;
     function init(): void;
+    /**
+     * @gir-type Flags
+     */
     export namespace LaneTag {
         export const $gtype: GObject.GType<LaneTag>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum LaneTag {
         NONE,
         START,
@@ -228,10 +309,16 @@ export namespace Gitg {
         HIDDEN,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace StageCommitOptions {
         export const $gtype: GObject.GType<StageCommitOptions>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum StageCommitOptions {
         NONE,
         SIGN_OFF,
@@ -249,6 +336,9 @@ export namespace Gitg {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Async {
         static $gtype: GObject.GType<Async>;
 
@@ -264,16 +354,19 @@ export namespace Gitg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Async.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Async.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Async.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Async.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Async.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Async.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -282,9 +375,23 @@ export namespace Gitg {
 
         // Static methods
 
+        /**
+         * @param func
+         * @param _callback_
+         */
         static thread(func: Async.ThreadFunc, _callback_?: Gio.AsyncReadyCallback<Async> | null): void;
+        /**
+         * @param _res_
+         */
         static thread_finish(_res_: Gio.AsyncResult): void;
+        /**
+         * @param func
+         * @param _callback_
+         */
         static thread_try(func: Async.ThreadFunc, _callback_?: Gio.AsyncReadyCallback<Async> | null): void;
+        /**
+         * @param _res_
+         */
         static thread_try_finish(_res_: Gio.AsyncResult): void;
     }
 
@@ -382,14 +489,29 @@ export namespace Gitg {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class AuthenticationDialog extends Gtk.Dialog {
         static $gtype: GObject.GType<AuthenticationDialog>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get username(): string;
+        /**
+         * @read-only
+         */
         get password(): string;
+        /**
+         * @read-only
+         */
         get life_time(): AuthenticationLifeTime;
+        /**
+         * @read-only
+         */
         get lifeTime(): AuthenticationLifeTime;
 
         /**
@@ -414,16 +536,19 @@ export namespace Gitg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AuthenticationDialog.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AuthenticationDialog.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AuthenticationDialog.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AuthenticationDialog.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AuthenticationDialog.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AuthenticationDialog.SignalSignatures[K]> extends [any, ...infer Q]
@@ -448,6 +573,9 @@ export namespace Gitg {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class AvatarCache extends GObject.Object {
         static $gtype: GObject.GType<AvatarCache>;
 
@@ -468,16 +596,19 @@ export namespace Gitg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AvatarCache.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AvatarCache.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AvatarCache.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AvatarCache.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AvatarCache.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AvatarCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -490,23 +621,43 @@ export namespace Gitg {
 
         // Methods
 
+        /**
+         * @param email
+         * @param size
+         * @param cancellable
+         */
         load(
             email: string,
             size: number,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<GdkPixbuf.Pixbuf | null>;
+        /**
+         * @param email
+         * @param size
+         * @param cancellable
+         * @param _callback_
+         */
         load(
             email: string,
             size: number,
             cancellable: Gio.Cancellable | null,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param email
+         * @param size
+         * @param cancellable
+         * @param _callback_
+         */
         load(
             email: string,
             size: number,
             cancellable?: Gio.Cancellable | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GdkPixbuf.Pixbuf | null> | void;
+        /**
+         * @param _res_
+         */
         load_finish(_res_: Gio.AsyncResult): GdkPixbuf.Pixbuf | null;
     }
 
@@ -526,6 +677,9 @@ export namespace Gitg {
             extends Ggit.Branch.ConstructorProps, Ref.ConstructorProps, Branch.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class BranchBase extends Ggit.Branch implements Ref, Branch {
         static $gtype: GObject.GType<BranchBase>;
 
@@ -548,62 +702,119 @@ export namespace Gitg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BranchBase.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BranchBase.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BranchBase.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BranchBase.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BranchBase.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BranchBase.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited properties
+        /** @category Inherited from Gitg.Ref */
         get d_parsed_name(): ParsedRefName;
         set d_parsed_name(val: ParsedRefName);
+        /** @category Inherited from Gitg.Ref */
         get dParsedName(): ParsedRefName;
         set dParsedName(val: ParsedRefName);
+        /** @category Inherited from Gitg.Ref */
         get d_pushes(): Ref[];
         set d_pushes(val: Ref[]);
+        /** @category Inherited from Gitg.Ref */
         get dPushes(): Ref[];
         set dPushes(val: Ref[]);
+        /** @category Inherited from Gitg.Ref */
         get state(): RefState;
         set state(val: RefState);
+        /** @category Inherited from Gitg.Ref */
         get working(): boolean;
         set working(val: boolean);
-
-        // Inherited methods
         get_owner(): Repository;
+        /**
+         * @param args
+         */
         // Conflicted with Ggit.Ref.get_owner
         get_owner(...args: never[]): any;
         get_d_parsed_name(): ParsedRefName;
+        /**
+         * @param value
+         */
         set_d_parsed_name(value: ParsedRefName): void;
         get_d_pushes(): Ref[] | null;
+        /**
+         * @param value
+         */
         set_d_pushes(value?: Ref[] | null): void;
         get_state(): RefState;
+        /**
+         * @param value
+         */
         set_state(value: RefState | null): void;
         get_working(): boolean;
+        /**
+         * @param value
+         */
         set_working(value: boolean): void;
         get_parsed_name(): ParsedRefName;
         get_pushes(): Ref[];
+        /**
+         * @virtual
+         */
         vfunc_get_owner(): Repository;
+        /**
+         * @virtual
+         */
         vfunc_get_d_parsed_name(): ParsedRefName;
+        /**
+         * @param value
+         * @virtual
+         */
         vfunc_set_d_parsed_name(value: ParsedRefName): void;
+        /**
+         * @virtual
+         */
         vfunc_get_d_pushes(): Ref[] | null;
+        /**
+         * @param value
+         * @virtual
+         */
         vfunc_set_d_pushes(value?: Ref[] | null): void;
+        /**
+         * @virtual
+         */
         vfunc_get_state(): RefState;
+        /**
+         * @param value
+         * @virtual
+         */
         vfunc_set_state(value: RefState): void;
+        /**
+         * @virtual
+         */
         vfunc_get_working(): boolean;
+        /**
+         * @param value
+         * @virtual
+         */
         vfunc_set_working(value: boolean): void;
         get_upstream(): Ref;
+        /**
+         * @param args
+         */
         // Conflicted with Ggit.Branch.get_upstream
         get_upstream(...args: never[]): any;
+        /**
+         * @virtual
+         */
         vfunc_get_upstream(): Ref;
         /**
          * Deletes `ref`.
@@ -615,18 +826,18 @@ export namespace Gitg {
          */
         ['delete'](): void;
         /**
-         * Deletes the log for `ref,` on error `error` is set.
+         * Deletes the log for `ref`, on error `error` is set.
          */
         delete_log(): void;
         /**
-         * Gets the #GgitReflog for `ref`. The reflog will be created if it doesn't exist
+         * Gets the {@link Ggit.Reflog} for `ref`. The reflog will be created if it doesn't exist
          * yet.
-         * @returns the reflog or %NULL.
+         * @returns the reflog or `null`.
          */
         get_log(): Ggit.Reflog | null;
         /**
          * Gets the full name of `ref`.
-         * @returns the full name of a reference or %NULL.
+         * @returns the full name of a reference or `null`.
          */
         get_name(): string | null;
         /**
@@ -637,50 +848,50 @@ export namespace Gitg {
         get_reference_type(): Ggit.RefType;
         /**
          * Gets the shorthand name of `ref`.
-         * @returns the shorthand name of a reference or %NULL.
+         * @returns the shorthand name of a reference or `null`.
          */
         get_shorthand(): string | null;
         /**
          * Get full name to the reference pointed to by a symbolic reference.
          * Only available if the reference is symbolic.
-         * @returns the name if available, %NULL otherwise.
+         * @returns the name if available, `null` otherwise.
          */
         get_symbolic_target(): string | null;
         /**
          * Get the OID pointed to by a direct reference.
          * Only available if the reference is direct (i.e. an object id reference,
          * not a symbolic one).
-         * @returns a new oid if available, %NULL otherwise.
+         * @returns a new oid if available, `null` otherwise.
          */
         get_target(): Ggit.OId | null;
         /**
          * Get whether `ref` has an existing log.
-         * @returns %TRUE if @ref has a log, %FALSE otherwise.
+         * @returns `true` if `ref` has a log, `false` otherwise.
          */
         has_log(): boolean;
         /**
          * Check whether the reference is a branch.
-         * @returns %TRUE if the reference is a branch, %FALSE otherwise.
+         * @returns `true` if the reference is a branch, `false` otherwise.
          */
         is_branch(): boolean;
         /**
          * Check whether the reference is a note.
-         * @returns %TRUE if the reference is a note, %FALSE otherwise.
+         * @returns `true` if the reference is a note, `false` otherwise.
          */
         is_note(): boolean;
         /**
          * Check whether the reference is a remote.
-         * @returns %TRUE if the reference is a remote, %FALSE otherwise.
+         * @returns `true` if the reference is a remote, `false` otherwise.
          */
         is_remote(): boolean;
         /**
          * Check whether the reference is a tag.
-         * @returns %TRUE if the reference is a tag, %FALSE otherwise.
+         * @returns `true` if the reference is a tag, `false` otherwise.
          */
         is_tag(): boolean;
         /**
          * Convenient method to resolve a reference to an object.
-         * @returns a #GgitObject or %NULL.
+         * @returns a {@link Ggit.Object} or `null`.
          */
         lookup(): Ggit.Object | null;
         /**
@@ -692,7 +903,7 @@ export namespace Gitg {
          * See `ggit_ref_create_symbolic()` for rules about valid names.
          *
          * If not error, `ref` will be deleted from disk and a
-         * new #GgitRef will be returned.
+         * new {@link Ggit.Ref} will be returned.
          *
          * The reference will be immediately renamed in-memory and on disk.
          *
@@ -704,9 +915,9 @@ export namespace Gitg {
          * reflog is enabled for the repository. We only rename
          * the reflog if it exists.
          * @param new_name the new name.
-         * @param force %TRUE to force the renaming.
+         * @param force `true` to force the renaming.
          * @param log_message The one line long message to be appended to the reflog.
-         * @returns a newly created #GgitRef or %NULL.
+         * @returns a newly created {@link Ggit.Ref} or `null`.
          */
         rename(new_name: string, force: boolean, log_message: string): Ggit.Ref | null;
         /**
@@ -717,7 +928,7 @@ export namespace Gitg {
          *
          * If a direct reference is passed as an argument,
          * that reference is returned immediately.
-         * @returns the resolved reference to the peeled one or %NULL.
+         * @returns the resolved reference to the peeled one or `null`.
          */
         resolve(): Ggit.Ref | null;
         /**
@@ -731,7 +942,7 @@ export namespace Gitg {
          * See `ggit_ref_create_symbolic()` for rules about valid names.
          * @param target The new target for the reference.
          * @param log_message The one line long message to be appended to the reflog.
-         * @returns the newly created #GgitRef or %NULL.
+         * @returns the newly created {@link Ggit.Ref} or `null`.
          */
         set_symbolic_target(target: string, log_message?: string | null): Ggit.Ref | null;
         /**
@@ -740,31 +951,31 @@ export namespace Gitg {
          * this will fail.
          *
          * The new reference will be written to disk, overwriting the given reference.
-         * @param oid a #GgitOId.
+         * @param oid a {@link Ggit.OId}.
          * @param log_message The one line long message to be appended to the reflog.
-         * @returns the newly created #GgitRef or %NULL.
+         * @returns the newly created {@link Ggit.Ref} or `null`.
          */
         set_target(oid: Ggit.OId, log_message?: string | null): Ggit.Ref | null;
         /**
          * Get a string representation of the ref.
-         * @returns a string representation of the ref or %NULL.
+         * @returns a string representation of the ref or `null`.
          */
         to_string(): string | null;
         /**
          * Determines if the current local branch is pointed at by HEAD.
-         * @returns %TRUE if the current local branch is pointed at by HEAD.
+         * @returns `true` if the current local branch is pointed at by HEAD.
          */
         is_head(): boolean;
         /**
          * Moves/renames an existing branch reference.
          * @param new_branch_name target name of the branch once the move is performed; this name is validated for consistency.
-         * @param flags a #GgitCreateFlags.
-         * @returns the new branch or %NULL.
+         * @param flags a {@link Ggit.CreateFlags}.
+         * @returns the new branch or `null`.
          */
         move(new_branch_name: string, flags: Ggit.CreateFlags | null): Ggit.Branch | null;
         /**
          * Sets the upstream branch, for a given local branch reference
-         * @param upstream_branch_name name of the upstream branch; if %NULL unsets it.
+         * @param upstream_branch_name name of the upstream branch; if `null` unsets it.
          */
         set_upstream(upstream_branch_name: string): void;
     }
@@ -857,6 +1068,9 @@ export namespace Gitg {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class CellRendererLanes extends Gtk.CellRendererText {
         static $gtype: GObject.GType<CellRendererLanes>;
 
@@ -898,16 +1112,19 @@ export namespace Gitg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CellRendererLanes.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CellRendererLanes.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CellRendererLanes.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CellRendererLanes.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CellRendererLanes.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CellRendererLanes.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -916,16 +1133,36 @@ export namespace Gitg {
 
         // Methods
 
+        /**
+         * @param widget
+         * @param x
+         * @param cell_w
+         */
         get_ref_at_pos(widget: Gtk.Widget, x: number, cell_w: number): [Ref | null, number];
         get_commit(): Commit | null;
+        /**
+         * @param value
+         */
         set_commit(value?: Commit | null): void;
         get_next_commit(): Commit | null;
+        /**
+         * @param value
+         */
         set_next_commit(value?: Commit | null): void;
         get_lane_width(): number;
+        /**
+         * @param value
+         */
         set_lane_width(value: number): void;
         get_dot_width(): number;
+        /**
+         * @param value
+         */
         set_dot_width(value: number): void;
         get_labels(): Ref[];
+        /**
+         * @param value
+         */
         set_labels(value: Ref[]): void;
     }
 
@@ -946,13 +1183,25 @@ export namespace Gitg {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Color extends GObject.Object {
         static $gtype: GObject.GType<Color>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get r(): number;
+        /**
+         * @read-only
+         */
         get g(): number;
+        /**
+         * @read-only
+         */
         get b(): number;
 
         /**
@@ -978,16 +1227,19 @@ export namespace Gitg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Color.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Color.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Color.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Color.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Color.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Color.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1079,6 +1331,9 @@ export namespace Gitg {
         interface ConstructorProps extends Gtk.TreeView.ConstructorProps, Gtk.Buildable.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class CommitListView extends Gtk.TreeView implements Gtk.Buildable {
         static $gtype: GObject.GType<CommitListView>;
 
@@ -1106,16 +1361,19 @@ export namespace Gitg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CommitListView.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CommitListView.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CommitListView.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CommitListView.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CommitListView.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CommitListView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1124,9 +1382,12 @@ export namespace Gitg {
 
         // Methods
 
+        /**
+         * @param column
+         * @param path
+         * @param x
+         */
         find_cell_at_pos(column: Gtk.TreeViewColumn, path: Gtk.TreePath, x: number): [Gtk.CellRenderer | null, number];
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -1140,32 +1401,32 @@ export namespace Gitg {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -1174,39 +1435,39 @@ export namespace Gitg {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -1217,13 +1478,16 @@ export namespace Gitg {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -1231,7 +1495,7 @@ export namespace Gitg {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -1239,9 +1503,9 @@ export namespace Gitg {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -1261,9 +1525,9 @@ export namespace Gitg {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -1276,34 +1540,34 @@ export namespace Gitg {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1336,22 +1600,22 @@ export namespace Gitg {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -1360,8 +1624,8 @@ export namespace Gitg {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -1378,10 +1642,10 @@ export namespace Gitg {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -1396,13 +1660,13 @@ export namespace Gitg {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1433,21 +1697,21 @@ export namespace Gitg {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1457,33 +1721,34 @@ export namespace Gitg {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1492,6 +1757,7 @@ export namespace Gitg {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1500,12 +1766,14 @@ export namespace Gitg {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1514,20 +1782,22 @@ export namespace Gitg {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1539,6 +1809,7 @@ export namespace Gitg {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -1571,10 +1842,25 @@ export namespace Gitg {
     namespace CommitModel {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             started: () => void;
+            /**
+             * @signal
+             */
             update: (arg0: number) => void;
+            /**
+             * @signal
+             */
             finished: () => void;
+            /**
+             * @signal
+             */
             'begin-clear': () => void;
+            /**
+             * @signal
+             */
             'end-clear': () => void;
             'notify::limit': (pspec: GObject.ParamSpec) => void;
             'notify::sort-mode': (pspec: GObject.ParamSpec) => void;
@@ -1591,6 +1877,9 @@ export namespace Gitg {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class CommitModel extends GObject.Object implements Gtk.TreeModel {
         static $gtype: GObject.GType<CommitModel>;
 
@@ -1624,16 +1913,19 @@ export namespace Gitg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CommitModel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CommitModel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CommitModel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CommitModel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CommitModel.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CommitModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1643,36 +1935,64 @@ export namespace Gitg {
         // Methods
 
         get_permanent_lanes(): Ggit.OId[];
+        /**
+         * @param value
+         */
         set_permanent_lanes(value: Ggit.OId[]): void;
         reload(): void;
         size(): number;
+        /**
+         * @param idx
+         */
         get(idx: number): Commit | null;
+        /**
+         * @param ids
+         */
         set_include(ids: Ggit.OId[]): void;
         get_include(): Ggit.OId[];
+        /**
+         * @param ids
+         */
         set_exclude(ids: Ggit.OId[]): void;
+        /**
+         * @param iter
+         */
         commit_from_iter(iter: Gtk.TreeIter): Commit | null;
+        /**
+         * @param commit
+         */
         path_from_commit(commit: Commit): Gtk.TreePath | null;
+        /**
+         * @param path
+         */
         commit_from_path(path: Gtk.TreePath): Commit | null;
         get_limit(): number;
+        /**
+         * @param value
+         */
         set_limit(value: number): void;
         get_sort_mode(): Ggit.SortMode;
+        /**
+         * @param value
+         */
         set_sort_mode(value: Ggit.SortMode | null): void;
         get_repository(): Repository;
-        set_repository(value: Repository): void;
-
-        // Inherited methods
         /**
-         * Creates a new #GtkTreeModel, with `child_model` as the child_model
+         * @param value
+         */
+        set_repository(value: Repository): void;
+        /**
+         * Creates a new {@link Gtk.TreeModel}, with `child_model` as the child_model
          * and `root` as the virtual root.
-         * @param root A #GtkTreePath or %NULL.
-         * @returns A new #GtkTreeModel.
+         * @param root A {@link Gtk.TreePath} or `null`.
+         * @returns A new {@link Gtk.TreeModel}.
          */
         filter_new(root?: Gtk.TreePath | null): Gtk.TreeModel;
         /**
          * Calls func on each node in model in a depth-first fashion.
          *
-         * If `func` returns %TRUE, then the tree ceases to be walked,
-         * and gtk_tree_model_foreach() returns.
+         * If `func` returns `true`, then the tree ceases to be walked,
+         * and `gtk_tree_model_foreach()` returns.
          * @param func a function to be called on each row
          */
         foreach(func: Gtk.TreeModelForeachFunc): void;
@@ -1685,7 +2005,7 @@ export namespace Gitg {
         /**
          * Returns a set of flags supported by this interface.
          *
-         * The flags are a bitwise combination of #GtkTreeModelFlags.
+         * The flags are a bitwise combination of {@link Gtk.TreeModelFlags}.
          * The flags supported should not change during the lifetime
          * of the `tree_model`.
          * @returns the flags supported by this interface
@@ -1693,23 +2013,23 @@ export namespace Gitg {
         get_flags(): Gtk.TreeModelFlags;
         /**
          * Sets `iter` to a valid iterator pointing to `path`.  If `path` does
-         * not exist, `iter` is set to an invalid iterator and %FALSE is returned.
-         * @param path the #GtkTreePath-struct
-         * @returns %TRUE, if @iter was set
+         * not exist, `iter` is set to an invalid iterator and `false` is returned.
+         * @param path the {@link Gtk.TreePath}-struct
+         * @returns `true`, if `iter` was set
          */
         get_iter(path: Gtk.TreePath): [boolean, Gtk.TreeIter];
         /**
          * Initializes `iter` with the first iterator in the tree
-         * (the one at the path "0") and returns %TRUE. Returns
-         * %FALSE if the tree is empty.
-         * @returns %TRUE, if @iter was set
+         * (the one at the path "0") and returns `true`. Returns
+         * `false` if the tree is empty.
+         * @returns `true`, if `iter` was set
          */
         get_iter_first(): [boolean, Gtk.TreeIter];
         /**
-         * Sets `iter` to a valid iterator pointing to `path_string,` if it
-         * exists. Otherwise, `iter` is left invalid and %FALSE is returned.
-         * @param path_string a string representation of a #GtkTreePath-struct
-         * @returns %TRUE, if @iter was set
+         * Sets `iter` to a valid iterator pointing to `path_string`, if it
+         * exists. Otherwise, `iter` is left invalid and `false` is returned.
+         * @param path_string a string representation of a {@link Gtk.TreePath}-struct
+         * @returns `true`, if `iter` was set
          */
         get_iter_from_string(path_string: string): [boolean, Gtk.TreeIter];
         /**
@@ -1718,11 +2038,11 @@ export namespace Gitg {
          */
         get_n_columns(): number;
         /**
-         * Returns a newly-created #GtkTreePath-struct referenced by `iter`.
+         * Returns a newly-created {@link Gtk.TreePath}-struct referenced by `iter`.
          *
-         * This path should be freed with gtk_tree_path_free().
-         * @param iter the #GtkTreeIter-struct
-         * @returns a newly-created #GtkTreePath-struct
+         * This path should be freed with `gtk_tree_path_free()`.
+         * @param iter the {@link Gtk.TreeIter}-struct
+         * @returns a newly-created {@link Gtk.TreePath}-struct
          */
         get_path(iter: Gtk.TreeIter): Gtk.TreePath;
         /**
@@ -1731,90 +2051,90 @@ export namespace Gitg {
          * This string is a “:” separated list of numbers.
          * For example, “4:10:0:3” would be an acceptable
          * return value for this string.
-         * @param iter a #GtkTreeIter-struct
-         * @returns a newly-allocated string.     Must be freed with g_free().
+         * @param iter a {@link Gtk.TreeIter}-struct
+         * @returns a newly-allocated string.     Must be freed with `g_free()`.
          */
         get_string_from_iter(iter: Gtk.TreeIter): string;
         /**
          * Initializes and sets `value` to that at `column`.
          *
-         * When done with `value,` g_value_unset() needs to be called
+         * When done with `value`, `g_value_unset()` needs to be called
          * to free any allocated memory.
-         * @param iter the #GtkTreeIter-struct
+         * @param iter the {@link Gtk.TreeIter}-struct
          * @param column the column to lookup the value at
          */
         get_value(iter: Gtk.TreeIter, column: number): unknown;
         /**
          * Sets `iter` to point to the first child of `parent`.
          *
-         * If `parent` has no children, %FALSE is returned and `iter` is
+         * If `parent` has no children, `false` is returned and `iter` is
          * set to be invalid. `parent` will remain a valid node after this
          * function has been called.
          *
-         * If `parent` is %NULL returns the first node, equivalent to
+         * If `parent` is `null` returns the first node, equivalent to
          * `gtk_tree_model_get_iter_first (tree_model, iter);`
-         * @param parent the #GtkTreeIter-struct, or %NULL
-         * @returns %TRUE, if @iter has been set to the first child
+         * @param parent the {@link Gtk.TreeIter}-struct, or `null`
+         * @returns `true`, if `iter` has been set to the first child
          */
         iter_children(parent?: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
         /**
-         * Returns %TRUE if `iter` has children, %FALSE otherwise.
-         * @param iter the #GtkTreeIter-struct to test for children
-         * @returns %TRUE if @iter has children
+         * Returns `true` if `iter` has children, `false` otherwise.
+         * @param iter the {@link Gtk.TreeIter}-struct to test for children
+         * @returns `true` if `iter` has children
          */
         iter_has_child(iter: Gtk.TreeIter): boolean;
         /**
          * Returns the number of children that `iter` has.
          *
-         * As a special case, if `iter` is %NULL, then the number
+         * As a special case, if `iter` is `null`, then the number
          * of toplevel nodes is returned.
-         * @param iter the #GtkTreeIter-struct, or %NULL
-         * @returns the number of children of @iter
+         * @param iter the {@link Gtk.TreeIter}-struct, or `null`
+         * @returns the number of children of `iter`
          */
         iter_n_children(iter?: Gtk.TreeIter | null): number;
         /**
          * Sets `iter` to point to the node following it at the current level.
          *
-         * If there is no next `iter,` %FALSE is returned and `iter` is set
+         * If there is no next `iter`, `false` is returned and `iter` is set
          * to be invalid.
-         * @param iter the #GtkTreeIter-struct
-         * @returns %TRUE if @iter has been changed to the next node
+         * @param iter the {@link Gtk.TreeIter}-struct
+         * @returns `true` if `iter` has been changed to the next node
          */
         iter_next(iter: Gtk.TreeIter): boolean;
         /**
-         * Sets `iter` to be the child of `parent,` using the given index.
+         * Sets `iter` to be the child of `parent`, using the given index.
          *
          * The first index is 0. If `n` is too big, or `parent` has no children,
-         * `iter` is set to an invalid iterator and %FALSE is returned. `parent`
+         * `iter` is set to an invalid iterator and `false` is returned. `parent`
          * will remain a valid node after this function has been called. As a
-         * special case, if `parent` is %NULL, then the `n-th` root node
+         * special case, if `parent` is `null`, then the `n`-th root node
          * is set.
-         * @param parent the #GtkTreeIter-struct to get the child from, or %NULL.
+         * @param parent the {@link Gtk.TreeIter}-struct to get the child from, or `null`.
          * @param n the index of the desired child
-         * @returns %TRUE, if @parent has an @n-th child
+         * @returns `true`, if `parent` has an `n`-th child
          */
         iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
         /**
          * Sets `iter` to be the parent of `child`.
          *
          * If `child` is at the toplevel, and doesn’t have a parent, then
-         * `iter` is set to an invalid iterator and %FALSE is returned.
+         * `iter` is set to an invalid iterator and `false` is returned.
          * `child` will remain a valid node after this function has been
          * called.
          *
          * `iter` will be initialized before the lookup is performed, so `child`
          * and `iter` cannot point to the same memory location.
-         * @param child the #GtkTreeIter-struct
-         * @returns %TRUE, if @iter is set to the parent of @child
+         * @param child the {@link Gtk.TreeIter}-struct
+         * @returns `true`, if `iter` is set to the parent of `child`
          */
         iter_parent(child: Gtk.TreeIter): [boolean, Gtk.TreeIter];
         /**
          * Sets `iter` to point to the previous node at the current level.
          *
-         * If there is no previous `iter,` %FALSE is returned and `iter` is
+         * If there is no previous `iter`, `false` is returned and `iter` is
          * set to be invalid.
-         * @param iter the #GtkTreeIter-struct
-         * @returns %TRUE if @iter has been changed to the previous node
+         * @param iter the {@link Gtk.TreeIter}-struct
+         * @returns `true` if `iter` has been changed to the previous node
          */
         iter_previous(iter: Gtk.TreeIter): boolean;
         /**
@@ -1835,17 +2155,17 @@ export namespace Gitg {
          *
          * A model should be expected to be able to get an iter independent
          * of its reffed state.
-         * @param iter the #GtkTreeIter-struct
+         * @param iter the {@link Gtk.TreeIter}-struct
          */
         ref_node(iter: Gtk.TreeIter): void;
         /**
-         * Emits the #GtkTreeModel::row-changed signal on `tree_model`.
-         * @param path a #GtkTreePath-struct pointing to the changed row
-         * @param iter a valid #GtkTreeIter-struct pointing to the changed row
+         * Emits the {@link Gtk.TreeModel.SignalSignatures.row_changed | Gtk.TreeModel::row-changed} signal on `tree_model`.
+         * @param path a {@link Gtk.TreePath}-struct pointing to the changed row
+         * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the changed row
          */
         row_changed(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
         /**
-         * Emits the #GtkTreeModel::row-deleted signal on `tree_model`.
+         * Emits the {@link Gtk.TreeModel.SignalSignatures.row_deleted | Gtk.TreeModel::row-deleted} signal on `tree_model`.
          *
          * This should be called by models after a row has been removed.
          * The location pointed to by `path` should be the location that
@@ -1853,31 +2173,31 @@ export namespace Gitg {
          *
          * Nodes that are deleted are not unreffed, this means that any
          * outstanding references on the deleted node should not be released.
-         * @param path a #GtkTreePath-struct pointing to the previous location of     the deleted row
+         * @param path a {@link Gtk.TreePath}-struct pointing to the previous location of     the deleted row
          */
         row_deleted(path: Gtk.TreePath): void;
         /**
-         * Emits the #GtkTreeModel::row-has-child-toggled signal on
+         * Emits the {@link Gtk.TreeModel.SignalSignatures.row_has_child_toggled | Gtk.TreeModel::row-has-child-toggled} signal on
          * `tree_model`. This should be called by models after the child
          * state of a node changes.
-         * @param path a #GtkTreePath-struct pointing to the changed row
-         * @param iter a valid #GtkTreeIter-struct pointing to the changed row
+         * @param path a {@link Gtk.TreePath}-struct pointing to the changed row
+         * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the changed row
          */
         row_has_child_toggled(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
         /**
-         * Emits the #GtkTreeModel::row-inserted signal on `tree_model`.
-         * @param path a #GtkTreePath-struct pointing to the inserted row
-         * @param iter a valid #GtkTreeIter-struct pointing to the inserted row
+         * Emits the {@link Gtk.TreeModel.SignalSignatures.row_inserted | Gtk.TreeModel::row-inserted} signal on `tree_model`.
+         * @param path a {@link Gtk.TreePath}-struct pointing to the inserted row
+         * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the inserted row
          */
         row_inserted(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
         /**
-         * Emits the #GtkTreeModel::rows-reordered signal on `tree_model`.
+         * Emits the {@link Gtk.TreeModel.SignalSignatures.rows_reordered | Gtk.TreeModel::rows-reordered} signal on `tree_model`.
          *
          * This should be called by models when their rows have been
          * reordered.
-         * @param path a #GtkTreePath-struct pointing to the tree node whose children     have been reordered
-         * @param iter a valid #GtkTreeIter-struct pointing to the node     whose children have been reordered, or %NULL if the depth     of @path is 0
-         * @param new_order an array of integers     mapping the current position of each child to its old     position before the re-ordering,     i.e. @new_order`[newpos] = oldpos`
+         * @param path a {@link Gtk.TreePath}-struct pointing to the tree node whose children     have been reordered
+         * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the node     whose children have been reordered, or `null` if the depth     of `path` is 0
+         * @param new_order an array of integers     mapping the current position of each child to its old     position before the re-ordering,     i.e. `new_order``[newpos] = oldpos`
          */
         rows_reordered(path: Gtk.TreePath, iter: Gtk.TreeIter | null, new_order: number[]): void;
         /**
@@ -1886,115 +2206,128 @@ export namespace Gitg {
          * This is an optional method for models to implement.
          * To be more specific, models may ignore this call as it exists
          * primarily for performance reasons. For more information on what
-         * this means, see gtk_tree_model_ref_node().
+         * this means, see `gtk_tree_model_ref_node()`.
          *
          * Please note that nodes that are deleted are not unreffed.
-         * @param iter the #GtkTreeIter-struct
+         * @param iter the {@link Gtk.TreeIter}-struct
          */
         unref_node(iter: Gtk.TreeIter): void;
         /**
          * Returns the type of the column.
          * @param index_ the column index
+         * @virtual
          */
         vfunc_get_column_type(index_: number): GObject.GType;
         /**
          * Returns a set of flags supported by this interface.
          *
-         * The flags are a bitwise combination of #GtkTreeModelFlags.
+         * The flags are a bitwise combination of {@link Gtk.TreeModelFlags}.
          * The flags supported should not change during the lifetime
          * of the `tree_model`.
+         * @virtual
          */
         vfunc_get_flags(): Gtk.TreeModelFlags;
         /**
          * Sets `iter` to a valid iterator pointing to `path`.  If `path` does
-         * not exist, `iter` is set to an invalid iterator and %FALSE is returned.
-         * @param path the #GtkTreePath-struct
+         * not exist, `iter` is set to an invalid iterator and `false` is returned.
+         * @param path the {@link Gtk.TreePath}-struct
+         * @virtual
          */
         vfunc_get_iter(path: Gtk.TreePath): [boolean, Gtk.TreeIter];
         /**
          * Returns the number of columns supported by `tree_model`.
+         * @virtual
          */
         vfunc_get_n_columns(): number;
         /**
-         * Returns a newly-created #GtkTreePath-struct referenced by `iter`.
+         * Returns a newly-created {@link Gtk.TreePath}-struct referenced by `iter`.
          *
-         * This path should be freed with gtk_tree_path_free().
-         * @param iter the #GtkTreeIter-struct
+         * This path should be freed with `gtk_tree_path_free()`.
+         * @param iter the {@link Gtk.TreeIter}-struct
+         * @virtual
          */
         vfunc_get_path(iter: Gtk.TreeIter): Gtk.TreePath;
         /**
          * Initializes and sets `value` to that at `column`.
          *
-         * When done with `value,` g_value_unset() needs to be called
+         * When done with `value`, `g_value_unset()` needs to be called
          * to free any allocated memory.
-         * @param iter the #GtkTreeIter-struct
+         * @param iter the {@link Gtk.TreeIter}-struct
          * @param column the column to lookup the value at
+         * @virtual
          */
         vfunc_get_value(iter: Gtk.TreeIter, column: number): unknown;
         /**
          * Sets `iter` to point to the first child of `parent`.
          *
-         * If `parent` has no children, %FALSE is returned and `iter` is
+         * If `parent` has no children, `false` is returned and `iter` is
          * set to be invalid. `parent` will remain a valid node after this
          * function has been called.
          *
-         * If `parent` is %NULL returns the first node, equivalent to
+         * If `parent` is `null` returns the first node, equivalent to
          * `gtk_tree_model_get_iter_first (tree_model, iter);`
-         * @param parent the #GtkTreeIter-struct, or %NULL
+         * @param parent the {@link Gtk.TreeIter}-struct, or `null`
+         * @virtual
          */
         vfunc_iter_children(parent?: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
         /**
-         * Returns %TRUE if `iter` has children, %FALSE otherwise.
-         * @param iter the #GtkTreeIter-struct to test for children
+         * Returns `true` if `iter` has children, `false` otherwise.
+         * @param iter the {@link Gtk.TreeIter}-struct to test for children
+         * @virtual
          */
         vfunc_iter_has_child(iter: Gtk.TreeIter): boolean;
         /**
          * Returns the number of children that `iter` has.
          *
-         * As a special case, if `iter` is %NULL, then the number
+         * As a special case, if `iter` is `null`, then the number
          * of toplevel nodes is returned.
-         * @param iter the #GtkTreeIter-struct, or %NULL
+         * @param iter the {@link Gtk.TreeIter}-struct, or `null`
+         * @virtual
          */
         vfunc_iter_n_children(iter?: Gtk.TreeIter | null): number;
         /**
          * Sets `iter` to point to the node following it at the current level.
          *
-         * If there is no next `iter,` %FALSE is returned and `iter` is set
+         * If there is no next `iter`, `false` is returned and `iter` is set
          * to be invalid.
-         * @param iter the #GtkTreeIter-struct
+         * @param iter the {@link Gtk.TreeIter}-struct
+         * @virtual
          */
         vfunc_iter_next(iter: Gtk.TreeIter): boolean;
         /**
-         * Sets `iter` to be the child of `parent,` using the given index.
+         * Sets `iter` to be the child of `parent`, using the given index.
          *
          * The first index is 0. If `n` is too big, or `parent` has no children,
-         * `iter` is set to an invalid iterator and %FALSE is returned. `parent`
+         * `iter` is set to an invalid iterator and `false` is returned. `parent`
          * will remain a valid node after this function has been called. As a
-         * special case, if `parent` is %NULL, then the `n-th` root node
+         * special case, if `parent` is `null`, then the `n`-th root node
          * is set.
-         * @param parent the #GtkTreeIter-struct to get the child from, or %NULL.
+         * @param parent the {@link Gtk.TreeIter}-struct to get the child from, or `null`.
          * @param n the index of the desired child
+         * @virtual
          */
         vfunc_iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
         /**
          * Sets `iter` to be the parent of `child`.
          *
          * If `child` is at the toplevel, and doesn’t have a parent, then
-         * `iter` is set to an invalid iterator and %FALSE is returned.
+         * `iter` is set to an invalid iterator and `false` is returned.
          * `child` will remain a valid node after this function has been
          * called.
          *
          * `iter` will be initialized before the lookup is performed, so `child`
          * and `iter` cannot point to the same memory location.
-         * @param child the #GtkTreeIter-struct
+         * @param child the {@link Gtk.TreeIter}-struct
+         * @virtual
          */
         vfunc_iter_parent(child: Gtk.TreeIter): [boolean, Gtk.TreeIter];
         /**
          * Sets `iter` to point to the previous node at the current level.
          *
-         * If there is no previous `iter,` %FALSE is returned and `iter` is
+         * If there is no previous `iter`, `false` is returned and `iter` is
          * set to be invalid.
-         * @param iter the #GtkTreeIter-struct
+         * @param iter the {@link Gtk.TreeIter}-struct
+         * @virtual
          */
         vfunc_iter_previous(iter: Gtk.TreeIter): boolean;
         /**
@@ -2015,17 +2348,19 @@ export namespace Gitg {
          *
          * A model should be expected to be able to get an iter independent
          * of its reffed state.
-         * @param iter the #GtkTreeIter-struct
+         * @param iter the {@link Gtk.TreeIter}-struct
+         * @virtual
          */
         vfunc_ref_node(iter: Gtk.TreeIter): void;
         /**
-         * Emits the #GtkTreeModel::row-changed signal on `tree_model`.
-         * @param path a #GtkTreePath-struct pointing to the changed row
-         * @param iter a valid #GtkTreeIter-struct pointing to the changed row
+         * Emits the {@link Gtk.TreeModel.SignalSignatures.row_changed | Gtk.TreeModel::row-changed} signal on `tree_model`.
+         * @param path a {@link Gtk.TreePath}-struct pointing to the changed row
+         * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the changed row
+         * @virtual
          */
         vfunc_row_changed(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
         /**
-         * Emits the #GtkTreeModel::row-deleted signal on `tree_model`.
+         * Emits the {@link Gtk.TreeModel.SignalSignatures.row_deleted | Gtk.TreeModel::row-deleted} signal on `tree_model`.
          *
          * This should be called by models after a row has been removed.
          * The location pointed to by `path` should be the location that
@@ -2033,21 +2368,24 @@ export namespace Gitg {
          *
          * Nodes that are deleted are not unreffed, this means that any
          * outstanding references on the deleted node should not be released.
-         * @param path a #GtkTreePath-struct pointing to the previous location of     the deleted row
+         * @param path a {@link Gtk.TreePath}-struct pointing to the previous location of     the deleted row
+         * @virtual
          */
         vfunc_row_deleted(path: Gtk.TreePath): void;
         /**
-         * Emits the #GtkTreeModel::row-has-child-toggled signal on
+         * Emits the {@link Gtk.TreeModel.SignalSignatures.row_has_child_toggled | Gtk.TreeModel::row-has-child-toggled} signal on
          * `tree_model`. This should be called by models after the child
          * state of a node changes.
-         * @param path a #GtkTreePath-struct pointing to the changed row
-         * @param iter a valid #GtkTreeIter-struct pointing to the changed row
+         * @param path a {@link Gtk.TreePath}-struct pointing to the changed row
+         * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the changed row
+         * @virtual
          */
         vfunc_row_has_child_toggled(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
         /**
-         * Emits the #GtkTreeModel::row-inserted signal on `tree_model`.
-         * @param path a #GtkTreePath-struct pointing to the inserted row
-         * @param iter a valid #GtkTreeIter-struct pointing to the inserted row
+         * Emits the {@link Gtk.TreeModel.SignalSignatures.row_inserted | Gtk.TreeModel::row-inserted} signal on `tree_model`.
+         * @param path a {@link Gtk.TreePath}-struct pointing to the inserted row
+         * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the inserted row
+         * @virtual
          */
         vfunc_row_inserted(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
         /**
@@ -2056,10 +2394,11 @@ export namespace Gitg {
          * This is an optional method for models to implement.
          * To be more specific, models may ignore this call as it exists
          * primarily for performance reasons. For more information on what
-         * this means, see gtk_tree_model_ref_node().
+         * this means, see `gtk_tree_model_ref_node()`.
          *
          * Please note that nodes that are deleted are not unreffed.
-         * @param iter the #GtkTreeIter-struct
+         * @param iter the {@link Gtk.TreeIter}-struct
+         * @virtual
          */
         vfunc_unref_node(iter: Gtk.TreeIter): void;
         /**
@@ -2075,32 +2414,32 @@ export namespace Gitg {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -2109,39 +2448,39 @@ export namespace Gitg {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -2152,13 +2491,16 @@ export namespace Gitg {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -2166,7 +2508,7 @@ export namespace Gitg {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -2174,9 +2516,9 @@ export namespace Gitg {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -2196,9 +2538,9 @@ export namespace Gitg {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -2211,34 +2553,34 @@ export namespace Gitg {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -2271,22 +2613,22 @@ export namespace Gitg {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -2295,8 +2637,8 @@ export namespace Gitg {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -2313,10 +2655,10 @@ export namespace Gitg {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -2331,13 +2673,13 @@ export namespace Gitg {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -2368,21 +2710,21 @@ export namespace Gitg {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -2392,33 +2734,34 @@ export namespace Gitg {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -2427,6 +2770,7 @@ export namespace Gitg {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -2435,12 +2779,14 @@ export namespace Gitg {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -2449,20 +2795,22 @@ export namespace Gitg {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -2474,6 +2822,7 @@ export namespace Gitg {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -2530,6 +2879,9 @@ export namespace Gitg {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Commit extends Ggit.Commit {
         static $gtype: GObject.GType<Commit>;
 
@@ -2539,12 +2891,33 @@ export namespace Gitg {
         set tag(val: LaneTag);
         get mylane(): number;
         set mylane(val: number);
+        /**
+         * @read-only
+         */
         get lane(): Lane;
+        /**
+         * @read-only
+         */
         get format_patch_name(): string;
+        /**
+         * @read-only
+         */
         get formatPatchName(): string;
+        /**
+         * @read-only
+         */
         get committer_date_for_display(): string;
+        /**
+         * @read-only
+         */
         get committerDateForDisplay(): string;
+        /**
+         * @read-only
+         */
         get author_date_for_display(): string;
+        /**
+         * @read-only
+         */
         get authorDateForDisplay(): string;
 
         /**
@@ -2566,16 +2939,19 @@ export namespace Gitg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Commit.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Commit.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Commit.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Commit.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Commit.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Commit.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2585,14 +2961,35 @@ export namespace Gitg {
         // Methods
 
         get_lanes(): Lane[];
+        /**
+         * @param lane
+         * @param idx
+         */
         insert_lane(lane: Lane, idx: number): Lane[];
+        /**
+         * @param lane
+         */
         remove_lane(lane: Lane): Lane[];
+        /**
+         * @param lanes
+         * @param mylane
+         */
         update_lanes(lanes: Lane[], mylane: number): void;
+        /**
+         * @param options
+         * @param parent
+         */
         get_diff(options: Ggit.DiffOptions | null, parent: number): Ggit.Diff;
         get_note(): Ggit.Note;
         get_tag(): LaneTag;
+        /**
+         * @param value
+         */
         set_tag(value: LaneTag | null): void;
         get_mylane(): number;
+        /**
+         * @param value
+         */
         set_mylane(value: number): void;
         get_lane(): Lane;
         get_format_patch_name(): string;
@@ -2605,6 +3002,9 @@ export namespace Gitg {
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class CredentialsManager {
         static $gtype: GObject.GType<CredentialsManager>;
 
@@ -2624,16 +3024,19 @@ export namespace Gitg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CredentialsManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CredentialsManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CredentialsManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CredentialsManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CredentialsManager.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CredentialsManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2642,6 +3045,11 @@ export namespace Gitg {
 
         // Methods
 
+        /**
+         * @param url
+         * @param username
+         * @param allowed_types
+         */
         credentials(url: string, username: string | null, allowed_types: Ggit.Credtype | null): Ggit.Cred | null;
     }
 
@@ -2661,6 +3069,9 @@ export namespace Gitg {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Date extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Date>;
 
@@ -2670,6 +3081,9 @@ export namespace Gitg {
         set date_string(val: string);
         get dateString(): string;
         set dateString(val: string);
+        /**
+         * @read-only
+         */
         get date(): GLib.DateTime;
 
         /**
@@ -2693,16 +3107,19 @@ export namespace Gitg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Date.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Date.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Date.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Date.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Date.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Date.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2711,42 +3128,50 @@ export namespace Gitg {
 
         // Static methods
 
+        /**
+         * @param date
+         */
         static parse(date: string): GLib.DateTime;
 
         // Methods
 
+        /**
+         * @param t
+         */
+        get_relative_date(t: GLib.TimeSpan): string;
         for_display(): string;
         get_date_string(): string;
+        /**
+         * @param value
+         */
         set_date_string(value: string): void;
         get_date(): GLib.DateTime;
-
-        // Inherited methods
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -2756,40 +3181,40 @@ export namespace Gitg {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
         init(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -2799,11 +3224,12 @@ export namespace Gitg {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -2819,32 +3245,32 @@ export namespace Gitg {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -2853,39 +3279,39 @@ export namespace Gitg {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -2896,13 +3322,16 @@ export namespace Gitg {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -2910,7 +3339,7 @@ export namespace Gitg {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -2918,9 +3347,9 @@ export namespace Gitg {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -2940,9 +3369,9 @@ export namespace Gitg {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -2955,34 +3384,34 @@ export namespace Gitg {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -3015,22 +3444,22 @@ export namespace Gitg {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -3039,8 +3468,8 @@ export namespace Gitg {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -3057,10 +3486,10 @@ export namespace Gitg {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -3075,13 +3504,13 @@ export namespace Gitg {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -3112,21 +3541,21 @@ export namespace Gitg {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -3136,33 +3565,34 @@ export namespace Gitg {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -3171,6 +3601,7 @@ export namespace Gitg {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -3179,12 +3610,14 @@ export namespace Gitg {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -3193,20 +3626,22 @@ export namespace Gitg {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -3218,6 +3653,7 @@ export namespace Gitg {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -3301,6 +3737,9 @@ export namespace Gitg {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class DiffStat extends Gtk.DrawingArea {
         static $gtype: GObject.GType<DiffStat>;
 
@@ -3330,16 +3769,19 @@ export namespace Gitg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DiffStat.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DiffStat.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DiffStat.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DiffStat.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DiffStat.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DiffStat.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3349,8 +3791,14 @@ export namespace Gitg {
         // Methods
 
         get_added(): number;
+        /**
+         * @param value
+         */
         set_added(value: number): void;
         get_removed(): number;
+        /**
+         * @param value
+         */
         set_removed(value: number): void;
     }
 
@@ -3416,6 +3864,9 @@ export namespace Gitg {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class DiffViewOptions extends Gtk.Toolbar {
         static $gtype: GObject.GType<DiffViewOptions>;
 
@@ -3450,16 +3901,19 @@ export namespace Gitg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DiffViewOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DiffViewOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DiffViewOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DiffViewOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DiffViewOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DiffViewOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3469,14 +3923,23 @@ export namespace Gitg {
         // Methods
 
         get_context_lines(): number;
+        /**
+         * @param value
+         */
         set_context_lines(value: number): void;
         get_view(): DiffView | null;
+        /**
+         * @param value
+         */
         set_view(value?: DiffView | null): void;
     }
 
     namespace DiffView {
         // Signal signatures
         interface SignalSignatures extends Gtk.Grid.SignalSignatures {
+            /**
+             * @signal
+             */
             'options-changed': () => void;
             'notify::options': (pspec: GObject.ParamSpec) => void;
             'notify::has-selection': (pspec: GObject.ParamSpec) => void;
@@ -3580,11 +4043,17 @@ export namespace Gitg {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class DiffView extends Gtk.Grid {
         static $gtype: GObject.GType<DiffView>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get options(): Ggit.DiffOptions;
         get has_selection(): boolean;
         set has_selection(val: boolean);
@@ -3662,16 +4131,19 @@ export namespace Gitg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DiffView.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DiffView.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DiffView.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DiffView.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DiffView.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DiffView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3680,10 +4152,21 @@ export namespace Gitg {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_options_changed(): void;
 
         // Methods
 
+        /**
+         * @param buffer
+         * @param regex
+         * @param replacement
+         * @param custom_color_link
+         * @param is_custom_color
+         * @param is_custom_link
+         */
         apply_link_tags(
             buffer: Gtk.TextBuffer,
             regex: GLib.Regex,
@@ -3692,42 +4175,94 @@ export namespace Gitg {
             is_custom_color: boolean,
             is_custom_link: boolean,
         ): void;
+        /**
+         * @param texview
+         * @param iter
+         */
         follow_if_link(texview: Gtk.Widget, iter: Gtk.TextIter): void;
         get_selection(): PatchSet[];
         clear_selection(): void;
         get_options(): Ggit.DiffOptions;
         get_has_selection(): boolean;
         get_diff(): Ggit.Diff | null;
+        /**
+         * @param value
+         */
         set_diff(value?: Ggit.Diff | null): void;
         get_commit(): Commit | null;
+        /**
+         * @param value
+         */
         set_commit(value?: Commit | null): void;
         get_wrap_lines(): boolean;
+        /**
+         * @param value
+         */
         set_wrap_lines(value: boolean): void;
         get_staged(): boolean;
+        /**
+         * @param value
+         */
         set_staged(value: boolean): void;
         get_unstaged(): boolean;
+        /**
+         * @param value
+         */
         set_unstaged(value: boolean): void;
         get_show_parents(): boolean;
+        /**
+         * @param value
+         */
         set_show_parents(value: boolean): void;
         get_default_collapse_all(): boolean;
+        /**
+         * @param value
+         */
         set_default_collapse_all(value: boolean): void;
         get_use_gravatar(): boolean;
+        /**
+         * @param value
+         */
         set_use_gravatar(value: boolean): void;
         get_tab_width(): number;
+        /**
+         * @param value
+         */
         set_tab_width(value: number): void;
         get_handle_selection(): boolean;
+        /**
+         * @param value
+         */
         set_handle_selection(value: boolean): void;
         get_highlight(): boolean;
+        /**
+         * @param value
+         */
         set_highlight(value: boolean): void;
         get_repository(): Repository | null;
+        /**
+         * @param value
+         */
         set_repository(value?: Repository | null): void;
         get_new_is_workdir(): boolean;
+        /**
+         * @param value
+         */
         set_new_is_workdir(value: boolean): void;
         get_ignore_whitespace(): boolean;
+        /**
+         * @param value
+         */
         set_ignore_whitespace(value: boolean): void;
         get_changes_inline(): boolean;
+        /**
+         * @param value
+         */
         set_changes_inline(value: boolean): void;
         get_context_lines(): number;
+        /**
+         * @param value
+         */
         set_context_lines(value: number): void;
     }
 
@@ -3740,6 +4275,9 @@ export namespace Gitg {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class FontManager extends GObject.Object {
         static $gtype: GObject.GType<FontManager>;
 
@@ -3762,16 +4300,19 @@ export namespace Gitg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FontManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FontManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FontManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FontManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FontManager.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FontManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3784,6 +4325,9 @@ export namespace Gitg {
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class GPGUtils {
         static $gtype: GObject.GType<GPGUtils>;
 
@@ -3799,16 +4343,19 @@ export namespace Gitg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof GPGUtils.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GPGUtils.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof GPGUtils.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GPGUtils.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof GPGUtils.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<GPGUtils.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3817,6 +4364,10 @@ export namespace Gitg {
 
         // Static methods
 
+        /**
+         * @param commit_content
+         * @param signing_key
+         */
         static sign_commit_object(commit_content: string, signing_key: string): string;
     }
 
@@ -3840,6 +4391,9 @@ export namespace Gitg {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Hook extends GObject.Object {
         static $gtype: GObject.GType<Hook>;
 
@@ -3853,6 +4407,9 @@ export namespace Gitg {
         set working_directory(val: Gio.File);
         get workingDirectory(): Gio.File;
         set workingDirectory(val: Gio.File);
+        /**
+         * @read-only
+         */
         get output(): string[];
 
         /**
@@ -3874,16 +4431,19 @@ export namespace Gitg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Hook.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Hook.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Hook.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Hook.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Hook.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Hook.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3892,21 +4452,53 @@ export namespace Gitg {
 
         // Methods
 
+        /**
+         * @param arg
+         */
         add_argument(arg: string): void;
+        /**
+         * @param repository
+         */
         exists_in(repository: Ggit.Repository): boolean;
+        /**
+         * @param repository
+         */
         run_sync(repository: Ggit.Repository): number;
+        /**
+         * @param repository
+         */
         run(repository: Ggit.Repository): globalThis.Promise<number>;
+        /**
+         * @param repository
+         * @param _callback_
+         */
         run(repository: Ggit.Repository, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param repository
+         * @param _callback_
+         */
         run(
             repository: Ggit.Repository,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<number> | void;
+        /**
+         * @param _res_
+         */
         run_finish(_res_: Gio.AsyncResult): number;
         get_environment(): Gee.HashMap;
+        /**
+         * @param value
+         */
         set_environment(value: Gee.HashMap): void;
         get_name(): string;
+        /**
+         * @param value
+         */
         set_name(value: string): void;
         get_working_directory(): Gio.File | null;
+        /**
+         * @param value
+         */
         set_working_directory(value?: Gio.File | null): void;
         get_output(): string[];
     }
@@ -3916,6 +4508,9 @@ export namespace Gitg {
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class LabelRenderer {
         static $gtype: GObject.GType<LabelRenderer>;
 
@@ -3931,16 +4526,19 @@ export namespace Gitg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LabelRenderer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LabelRenderer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LabelRenderer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LabelRenderer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LabelRenderer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LabelRenderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3949,7 +4547,19 @@ export namespace Gitg {
 
         // Static methods
 
+        /**
+         * @param widget
+         * @param font
+         * @param labels
+         */
         static width(widget: Gtk.Widget, font: any | null, labels: Ref[]): number;
+        /**
+         * @param widget
+         * @param font
+         * @param context
+         * @param labels
+         * @param area
+         */
         static draw(
             widget: Gtk.Widget,
             font: Pango.FontDescription,
@@ -3957,12 +4567,25 @@ export namespace Gitg {
             labels: Ref[],
             area: Gdk.Rectangle,
         ): void;
+        /**
+         * @param widget
+         * @param font
+         * @param labels
+         * @param x
+         */
         static get_ref_at_pos(
             widget: Gtk.Widget,
             font: Pango.FontDescription,
             labels: Ref[],
             x: number,
         ): [Ref | null, number];
+        /**
+         * @param widget
+         * @param font
+         * @param r
+         * @param height
+         * @param minwidth
+         */
         static render_ref(
             widget: Gtk.Widget,
             font: Pango.FontDescription,
@@ -3998,6 +4621,9 @@ export namespace Gitg {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Lanes extends GObject.Object {
         static $gtype: GObject.GType<Lanes>;
 
@@ -4043,16 +4669,19 @@ export namespace Gitg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Lanes.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Lanes.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Lanes.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Lanes.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Lanes.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Lanes.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4061,17 +4690,40 @@ export namespace Gitg {
 
         // Methods
 
+        /**
+         * @param reserved
+         * @param roots
+         */
         reset(reserved?: Ggit.OId[] | null, roots?: Gee.HashSet | null): void;
+        /**
+         * @param next
+         * @param save_miss
+         */
         next(next: Commit, save_miss: boolean): [boolean, Lane[], number];
         get_inactive_max(): number;
+        /**
+         * @param value
+         */
         set_inactive_max(value: number): void;
         get_inactive_collapse(): number;
+        /**
+         * @param value
+         */
         set_inactive_collapse(value: number): void;
         get_inactive_gap(): number;
+        /**
+         * @param value
+         */
         set_inactive_gap(value: number): void;
         get_inactive_enabled(): boolean;
+        /**
+         * @param value
+         */
         set_inactive_enabled(value: boolean): void;
         get_miss_commits(): Gee.LinkedList;
+        /**
+         * @param value
+         */
         set_miss_commits(value: Gee.LinkedList): void;
     }
 
@@ -4084,6 +4736,9 @@ export namespace Gitg {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Lane extends GObject.Object {
         static $gtype: GObject.GType<Lane>;
 
@@ -4114,16 +4769,19 @@ export namespace Gitg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Lane.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Lane.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Lane.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Lane.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Lane.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Lane.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4191,6 +4849,9 @@ export namespace Gitg {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ProgressBin extends Gtk.Bin {
         static $gtype: GObject.GType<ProgressBin>;
 
@@ -4218,16 +4879,19 @@ export namespace Gitg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ProgressBin.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ProgressBin.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ProgressBin.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ProgressBin.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ProgressBin.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ProgressBin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4237,6 +4901,9 @@ export namespace Gitg {
         // Methods
 
         get_fraction(): number;
+        /**
+         * @param value
+         */
         set_fraction(value: number): void;
     }
 
@@ -4255,6 +4922,9 @@ export namespace Gitg {
         interface ConstructorProps extends Ggit.Ref.ConstructorProps, Ref.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class RefBase extends Ggit.Ref implements Ref {
         static $gtype: GObject.GType<RefBase>;
 
@@ -4277,58 +4947,109 @@ export namespace Gitg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RefBase.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RefBase.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RefBase.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RefBase.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RefBase.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RefBase.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited properties
+        /** @category Inherited from Gitg.Ref */
         get d_parsed_name(): ParsedRefName;
         set d_parsed_name(val: ParsedRefName);
+        /** @category Inherited from Gitg.Ref */
         get dParsedName(): ParsedRefName;
         set dParsedName(val: ParsedRefName);
+        /** @category Inherited from Gitg.Ref */
         get d_pushes(): Ref[];
         set d_pushes(val: Ref[]);
+        /** @category Inherited from Gitg.Ref */
         get dPushes(): Ref[];
         set dPushes(val: Ref[]);
+        /** @category Inherited from Gitg.Ref */
         get state(): RefState;
         set state(val: RefState);
+        /** @category Inherited from Gitg.Ref */
         get working(): boolean;
         set working(val: boolean);
-
-        // Inherited methods
         get_owner(): Repository;
+        /**
+         * @param args
+         */
         // Conflicted with Ggit.Ref.get_owner
         get_owner(...args: never[]): any;
         get_d_parsed_name(): ParsedRefName;
+        /**
+         * @param value
+         */
         set_d_parsed_name(value: ParsedRefName): void;
         get_d_pushes(): Ref[] | null;
+        /**
+         * @param value
+         */
         set_d_pushes(value?: Ref[] | null): void;
         get_state(): RefState;
+        /**
+         * @param value
+         */
         set_state(value: RefState | null): void;
         get_working(): boolean;
+        /**
+         * @param value
+         */
         set_working(value: boolean): void;
         get_parsed_name(): ParsedRefName;
         get_pushes(): Ref[];
+        /**
+         * @virtual
+         */
         vfunc_get_owner(): Repository;
+        /**
+         * @virtual
+         */
         vfunc_get_d_parsed_name(): ParsedRefName;
+        /**
+         * @param value
+         * @virtual
+         */
         vfunc_set_d_parsed_name(value: ParsedRefName): void;
+        /**
+         * @virtual
+         */
         vfunc_get_d_pushes(): Ref[] | null;
+        /**
+         * @param value
+         * @virtual
+         */
         vfunc_set_d_pushes(value?: Ref[] | null): void;
+        /**
+         * @virtual
+         */
         vfunc_get_state(): RefState;
+        /**
+         * @param value
+         * @virtual
+         */
         vfunc_set_state(value: RefState): void;
+        /**
+         * @virtual
+         */
         vfunc_get_working(): boolean;
+        /**
+         * @param value
+         * @virtual
+         */
         vfunc_set_working(value: boolean): void;
         /**
          * Deletes `ref`.
@@ -4340,18 +5061,18 @@ export namespace Gitg {
          */
         ['delete'](): void;
         /**
-         * Deletes the log for `ref,` on error `error` is set.
+         * Deletes the log for `ref`, on error `error` is set.
          */
         delete_log(): void;
         /**
-         * Gets the #GgitReflog for `ref`. The reflog will be created if it doesn't exist
+         * Gets the {@link Ggit.Reflog} for `ref`. The reflog will be created if it doesn't exist
          * yet.
-         * @returns the reflog or %NULL.
+         * @returns the reflog or `null`.
          */
         get_log(): Ggit.Reflog | null;
         /**
          * Gets the full name of `ref`.
-         * @returns the full name of a reference or %NULL.
+         * @returns the full name of a reference or `null`.
          */
         get_name(): string | null;
         /**
@@ -4362,50 +5083,50 @@ export namespace Gitg {
         get_reference_type(): Ggit.RefType;
         /**
          * Gets the shorthand name of `ref`.
-         * @returns the shorthand name of a reference or %NULL.
+         * @returns the shorthand name of a reference or `null`.
          */
         get_shorthand(): string | null;
         /**
          * Get full name to the reference pointed to by a symbolic reference.
          * Only available if the reference is symbolic.
-         * @returns the name if available, %NULL otherwise.
+         * @returns the name if available, `null` otherwise.
          */
         get_symbolic_target(): string | null;
         /**
          * Get the OID pointed to by a direct reference.
          * Only available if the reference is direct (i.e. an object id reference,
          * not a symbolic one).
-         * @returns a new oid if available, %NULL otherwise.
+         * @returns a new oid if available, `null` otherwise.
          */
         get_target(): Ggit.OId | null;
         /**
          * Get whether `ref` has an existing log.
-         * @returns %TRUE if @ref has a log, %FALSE otherwise.
+         * @returns `true` if `ref` has a log, `false` otherwise.
          */
         has_log(): boolean;
         /**
          * Check whether the reference is a branch.
-         * @returns %TRUE if the reference is a branch, %FALSE otherwise.
+         * @returns `true` if the reference is a branch, `false` otherwise.
          */
         is_branch(): boolean;
         /**
          * Check whether the reference is a note.
-         * @returns %TRUE if the reference is a note, %FALSE otherwise.
+         * @returns `true` if the reference is a note, `false` otherwise.
          */
         is_note(): boolean;
         /**
          * Check whether the reference is a remote.
-         * @returns %TRUE if the reference is a remote, %FALSE otherwise.
+         * @returns `true` if the reference is a remote, `false` otherwise.
          */
         is_remote(): boolean;
         /**
          * Check whether the reference is a tag.
-         * @returns %TRUE if the reference is a tag, %FALSE otherwise.
+         * @returns `true` if the reference is a tag, `false` otherwise.
          */
         is_tag(): boolean;
         /**
          * Convenient method to resolve a reference to an object.
-         * @returns a #GgitObject or %NULL.
+         * @returns a {@link Ggit.Object} or `null`.
          */
         lookup(): Ggit.Object | null;
         /**
@@ -4417,7 +5138,7 @@ export namespace Gitg {
          * See `ggit_ref_create_symbolic()` for rules about valid names.
          *
          * If not error, `ref` will be deleted from disk and a
-         * new #GgitRef will be returned.
+         * new {@link Ggit.Ref} will be returned.
          *
          * The reference will be immediately renamed in-memory and on disk.
          *
@@ -4429,9 +5150,9 @@ export namespace Gitg {
          * reflog is enabled for the repository. We only rename
          * the reflog if it exists.
          * @param new_name the new name.
-         * @param force %TRUE to force the renaming.
+         * @param force `true` to force the renaming.
          * @param log_message The one line long message to be appended to the reflog.
-         * @returns a newly created #GgitRef or %NULL.
+         * @returns a newly created {@link Ggit.Ref} or `null`.
          */
         rename(new_name: string, force: boolean, log_message: string): Ggit.Ref | null;
         /**
@@ -4442,7 +5163,7 @@ export namespace Gitg {
          *
          * If a direct reference is passed as an argument,
          * that reference is returned immediately.
-         * @returns the resolved reference to the peeled one or %NULL.
+         * @returns the resolved reference to the peeled one or `null`.
          */
         resolve(): Ggit.Ref | null;
         /**
@@ -4456,7 +5177,7 @@ export namespace Gitg {
          * See `ggit_ref_create_symbolic()` for rules about valid names.
          * @param target The new target for the reference.
          * @param log_message The one line long message to be appended to the reflog.
-         * @returns the newly created #GgitRef or %NULL.
+         * @returns the newly created {@link Ggit.Ref} or `null`.
          */
         set_symbolic_target(target: string, log_message?: string | null): Ggit.Ref | null;
         /**
@@ -4465,14 +5186,14 @@ export namespace Gitg {
          * this will fail.
          *
          * The new reference will be written to disk, overwriting the given reference.
-         * @param oid a #GgitOId.
+         * @param oid a {@link Ggit.OId}.
          * @param log_message The one line long message to be appended to the reflog.
-         * @returns the newly created #GgitRef or %NULL.
+         * @returns the newly created {@link Ggit.Ref} or `null`.
          */
         set_target(oid: Ggit.OId, log_message?: string | null): Ggit.Ref | null;
         /**
          * Get a string representation of the ref.
-         * @returns a string representation of the ref or %NULL.
+         * @returns a string representation of the ref or `null`.
          */
         to_string(): string | null;
     }
@@ -4502,6 +5223,9 @@ export namespace Gitg {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ParsedRefName extends GObject.Object {
         static $gtype: GObject.GType<ParsedRefName>;
 
@@ -4509,12 +5233,33 @@ export namespace Gitg {
 
         get rtype(): RefType;
         set rtype(val: RefType);
+        /**
+         * @read-only
+         */
         get name(): string;
+        /**
+         * @read-only
+         */
         get shortname(): string;
+        /**
+         * @read-only
+         */
         get remote_name(): string;
+        /**
+         * @read-only
+         */
         get remoteName(): string;
+        /**
+         * @read-only
+         */
         get remote_branch(): string;
+        /**
+         * @read-only
+         */
         get remoteBranch(): string;
+        /**
+         * @read-only
+         */
         get prefix(): string;
 
         /**
@@ -4536,16 +5281,19 @@ export namespace Gitg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ParsedRefName.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParsedRefName.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ParsedRefName.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ParsedRefName.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ParsedRefName.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ParsedRefName.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4565,6 +5313,9 @@ export namespace Gitg {
     namespace Remote {
         // Signal signatures
         interface SignalSignatures extends Ggit.Remote.SignalSignatures {
+            /**
+             * @signal
+             */
             'tip-updated': (arg0: string, arg1: Ggit.OId, arg2: Ggit.OId) => void;
             'notify::transfer-progress': (pspec: GObject.ParamSpec) => void;
             'notify::state': (pspec: GObject.ParamSpec) => void;
@@ -4589,12 +5340,21 @@ export namespace Gitg {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Remote extends Ggit.Remote {
         static $gtype: GObject.GType<Remote>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get transfer_progress(): number;
+        /**
+         * @read-only
+         */
         get transferProgress(): number;
         get state(): RemoteState;
         set state(val: RemoteState);
@@ -4630,11 +5390,13 @@ export namespace Gitg {
 
         // Signals
 
+        /** @signal */
         connect_after<K extends keyof Remote.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Remote.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Remote.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Remote.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4643,75 +5405,176 @@ export namespace Gitg {
 
         // Methods
 
+        /**
+         * @param direction
+         * @param callbacks
+         */
         connect(direction: Ggit.Direction | null, callbacks?: Ggit.RemoteCallbacks | null): globalThis.Promise<void>;
+        /**
+         * @param direction
+         * @param callbacks
+         * @param _callback_
+         */
         connect(
             direction: Ggit.Direction | null,
             callbacks: Ggit.RemoteCallbacks | null,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param direction
+         * @param callbacks
+         * @param _callback_
+         */
         connect(
             direction: Ggit.Direction | null,
             callbacks?: Ggit.RemoteCallbacks | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
+        /**
+         * @param args
+         */
         // Conflicted with Ggit.Remote.connect
         connect(...args: never[]): any;
+        /**
+         * @param _res_
+         */
         connect_finish(_res_: Gio.AsyncResult): void;
         disconnect(): globalThis.Promise<void>;
+        /**
+         * @param _callback_
+         */
         disconnect(_callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param _callback_
+         */
         disconnect(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        /**
+         * @param args
+         */
         // Conflicted with Ggit.Remote.disconnect
         disconnect(...args: never[]): any;
+        /**
+         * @param _res_
+         */
         disconnect_finish(_res_: Gio.AsyncResult): void;
+        /**
+         * @param callbacks
+         */
         download(callbacks?: Ggit.RemoteCallbacks | null): globalThis.Promise<void>;
+        /**
+         * @param callbacks
+         * @param _callback_
+         */
         download(callbacks: Ggit.RemoteCallbacks | null, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param callbacks
+         * @param _callback_
+         */
         download(
             callbacks?: Ggit.RemoteCallbacks | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
+        /**
+         * @param args
+         */
         // Conflicted with Ggit.Remote.download
         download(...args: never[]): any;
+        /**
+         * @param _res_
+         */
         download_finish(_res_: Gio.AsyncResult): void;
+        /**
+         * @param branch
+         * @param callbacks
+         */
         push(branch: string, callbacks?: Ggit.RemoteCallbacks | null): globalThis.Promise<void>;
+        /**
+         * @param branch
+         * @param callbacks
+         * @param _callback_
+         */
         push(
             branch: string,
             callbacks: Ggit.RemoteCallbacks | null,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param branch
+         * @param callbacks
+         * @param _callback_
+         */
         push(
             branch: string,
             callbacks?: Ggit.RemoteCallbacks | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
+        /**
+         * @param args
+         */
         // Conflicted with Ggit.Remote.push
         push(...args: never[]): any;
+        /**
+         * @param _res_
+         */
         push_finish(_res_: Gio.AsyncResult): void;
+        /**
+         * @param message
+         * @param callbacks
+         */
         fetch(message?: string | null, callbacks?: Ggit.RemoteCallbacks | null): globalThis.Promise<void>;
+        /**
+         * @param message
+         * @param callbacks
+         * @param _callback_
+         */
         fetch(
             message: string | null,
             callbacks: Ggit.RemoteCallbacks | null,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param message
+         * @param callbacks
+         * @param _callback_
+         */
         fetch(
             message?: string | null,
             callbacks?: Ggit.RemoteCallbacks | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         fetch_finish(_res_: Gio.AsyncResult): void;
         get_transfer_progress(): number;
         get_state(): RemoteState;
         get_fetch_specs(): string[] | null;
+        /**
+         * @param value
+         */
         set_fetch_specs(value?: string[] | null): void;
         get_push_specs(): string[] | null;
+        /**
+         * @param value
+         */
         set_push_specs(value?: string[] | null): void;
         get_credentials_provider(): CredentialsProvider | null;
+        /**
+         * @param value
+         */
         set_credentials_provider(value?: CredentialsProvider | null): void;
     }
 
     namespace RepositoryListBox {
         // Signal signatures
         interface SignalSignatures extends Gtk.ListBox.SignalSignatures {
+            /**
+             * @signal
+             */
             'repository-activated': (arg0: Repository) => void;
+            /**
+             * @signal
+             */
             'show-error': (arg0: string, arg1: string) => void;
             'notify::mode': (pspec: GObject.ParamSpec) => void;
             'notify::bookmarks-from-recent-files': (pspec: GObject.ParamSpec) => void;
@@ -4775,6 +5638,9 @@ export namespace Gitg {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class RepositoryListBox extends Gtk.ListBox {
         static $gtype: GObject.GType<RepositoryListBox>;
 
@@ -4788,7 +5654,13 @@ export namespace Gitg {
         set bookmarksFromRecentFiles(val: boolean);
         get location(): Gio.File;
         set location(val: Gio.File);
+        /**
+         * @read-only
+         */
         get has_selection(): boolean;
+        /**
+         * @read-only
+         */
         get hasSelection(): boolean;
 
         /**
@@ -4810,16 +5682,19 @@ export namespace Gitg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RepositoryListBox.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RepositoryListBox.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RepositoryListBox.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RepositoryListBox.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RepositoryListBox.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RepositoryListBox.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4829,16 +5704,39 @@ export namespace Gitg {
         // Methods
 
         populate_bookmarks(): void;
+        /**
+         * @param row
+         * @param repository
+         */
         end_cloning(row: RepositoryListBoxRow, repository?: Repository | null): void;
+        /**
+         * @param location
+         */
         begin_cloning(location: Gio.File): RepositoryListBoxRow | null;
+        /**
+         * @param repository
+         * @param visited
+         */
         add_repository(repository: Repository, visited?: GLib.DateTime | null): RepositoryListBoxRow | null;
         get_selection(): RepositoryListBoxRow[];
+        /**
+         * @param text
+         */
         filter_text(text?: string | null): void;
         get_mode(): SelectionMode;
+        /**
+         * @param value
+         */
         set_mode(value: SelectionMode | null): void;
         get_bookmarks_from_recent_files(): boolean;
+        /**
+         * @param value
+         */
         set_bookmarks_from_recent_files(value: boolean): void;
         get_location(): Gio.File | null;
+        /**
+         * @param value
+         */
         set_location(value?: Gio.File | null): void;
         get_has_selection(): boolean;
     }
@@ -4846,8 +5744,18 @@ export namespace Gitg {
     namespace RepositoryListBoxRow {
         // Signal signatures
         interface SignalSignatures extends Gtk.ListBoxRow.SignalSignatures {
+            /**
+             * @signal
+             */
             'request-remove': () => void;
+            /**
+             * @signal
+             */
             'request-delete-source': () => void;
+            /**
+             * @signal
+             */
+            'secondary-clicked': () => void;
             'notify::mode': (pspec: GObject.ParamSpec) => void;
             'notify::selected': (pspec: GObject.ParamSpec) => void;
             'notify::repository': (pspec: GObject.ParamSpec) => void;
@@ -4923,6 +5831,9 @@ export namespace Gitg {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class RepositoryListBoxRow extends Gtk.ListBoxRow {
         static $gtype: GObject.GType<RepositoryListBoxRow>;
 
@@ -4940,6 +5851,9 @@ export namespace Gitg {
         set canRemove(val: boolean);
         get time(): GLib.DateTime;
         set time(val: GLib.DateTime);
+        /**
+         * @write-only
+         */
         set fraction(val: number);
         get repository_name(): string;
         set repository_name(val: string);
@@ -4976,16 +5890,19 @@ export namespace Gitg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RepositoryListBoxRow.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RepositoryListBoxRow.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RepositoryListBoxRow.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RepositoryListBoxRow.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RepositoryListBoxRow.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RepositoryListBoxRow.SignalSignatures[K]> extends [any, ...infer Q]
@@ -4997,23 +5914,53 @@ export namespace Gitg {
         // Methods
 
         get_mode(): SelectionMode;
+        /**
+         * @param value
+         */
         set_mode(value: SelectionMode | null): void;
         get_selected(): boolean;
+        /**
+         * @param value
+         */
         set_selected(value: boolean): void;
         get_repository(): Repository | null;
+        /**
+         * @param value
+         */
         set_repository(value?: Repository | null): void;
         get_can_remove(): boolean;
+        /**
+         * @param value
+         */
         set_can_remove(value: boolean): void;
         get_time(): GLib.DateTime;
+        /**
+         * @param value
+         */
         set_time(value: GLib.DateTime): void;
+        /**
+         * @param value
+         */
         set_fraction(value: number): void;
         get_repository_name(): string | null;
+        /**
+         * @param value
+         */
         set_repository_name(value?: string | null): void;
         get_dirname(): string | null;
+        /**
+         * @param value
+         */
         set_dirname(value?: string | null): void;
         get_branch_name(): string | null;
+        /**
+         * @param value
+         */
         set_branch_name(value?: string | null): void;
         get_loading(): boolean;
+        /**
+         * @param value
+         */
         set_loading(value: boolean): void;
     }
 
@@ -5040,12 +5987,21 @@ export namespace Gitg {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Repository extends Ggit.Repository {
         static $gtype: GObject.GType<Repository>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get name(): string;
+        /**
+         * @read-only
+         */
         get stage(): Stage;
 
         /**
@@ -5067,16 +6023,19 @@ export namespace Gitg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Repository.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Repository.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Repository.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Repository.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Repository.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Repository.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5085,35 +6044,96 @@ export namespace Gitg {
 
         // Static methods
 
+        /**
+         * @param location
+         * @param is_bare
+         */
         static init_repository(location: Gio.File, is_bare: boolean): Repository;
+        /**
+         * @param args
+         */
         // Conflicted with Ggit.Repository.init_repository
         static init_repository(...args: never[]): any;
 
         // Methods
 
         clear_refs_cache(): void;
+        /**
+         * @param id
+         */
         refs_for_id(id: Ggit.OId): Ref[];
+        /**
+         * @param t_type
+         * @param t_dup_func
+         * @param id
+         */
         lookup(t_type: GObject.GType, t_dup_func: GObject.BoxedCopyFunc, id: Ggit.OId): any | null;
+        /**
+         * @param args
+         */
         // Conflicted with Ggit.Repository.lookup
         lookup(...args: never[]): any;
+        /**
+         * @param name
+         */
         lookup_reference(name: string): Ref;
+        /**
+         * @param args
+         */
         // Conflicted with Ggit.Repository.lookup_reference
         lookup_reference(...args: never[]): any;
+        /**
+         * @param short_name
+         */
         lookup_reference_dwim(short_name: string): Ref;
+        /**
+         * @param args
+         */
         // Conflicted with Ggit.Repository.lookup_reference_dwim
         lookup_reference_dwim(...args: never[]): any;
+        /**
+         * @param name
+         * @param obj
+         * @param flags
+         */
         create_branch(name: string, obj: Ggit.Object, flags: Ggit.CreateFlags | null): Branch;
+        /**
+         * @param args
+         */
         // Conflicted with Ggit.Repository.create_branch
         create_branch(...args: never[]): any;
+        /**
+         * @param name
+         * @param oid
+         * @param message
+         */
         create_reference(name: string, oid: Ggit.OId, message: string): Ref;
+        /**
+         * @param args
+         */
         // Conflicted with Ggit.Repository.create_reference
         create_reference(...args: never[]): any;
+        /**
+         * @param name
+         * @param target
+         * @param message
+         */
         create_symbolic_reference(name: string, target: string, message: string): Ref;
+        /**
+         * @param args
+         */
         // Conflicted with Ggit.Repository.create_symbolic_reference
         create_symbolic_reference(...args: never[]): any;
         get_head(): Ref;
+        /**
+         * @param args
+         */
         // Conflicted with Ggit.Repository.get_head
         get_head(...args: never[]): any;
+        /**
+         * @param env
+         * @param envname
+         */
         get_signature_with_environment(env: Gee.Map, envname: string): Ggit.Signature;
         get_name(): string | null;
         get_stage(): Stage;
@@ -5124,6 +6144,9 @@ export namespace Gitg {
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Resource {
         static $gtype: GObject.GType<Resource>;
 
@@ -5139,16 +6162,19 @@ export namespace Gitg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Resource.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Resource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Resource.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Resource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Resource.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Resource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5157,6 +6183,9 @@ export namespace Gitg {
 
         // Static methods
 
+        /**
+         * @param id
+         */
         static load_css(id: string): Gtk.CssProvider | null;
     }
 
@@ -5173,11 +6202,17 @@ export namespace Gitg {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SidebarStore extends Gtk.TreeStore {
         static $gtype: GObject.GType<SidebarStore>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get clearing(): boolean;
 
         /**
@@ -5199,16 +6234,19 @@ export namespace Gitg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SidebarStore.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SidebarStore.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SidebarStore.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SidebarStore.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SidebarStore.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SidebarStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5217,16 +6255,36 @@ export namespace Gitg {
 
         // Methods
 
+        /**
+         * @param text
+         */
         append_dummy(text: string): SidebarStore;
+        /**
+         * @param item
+         */
         append(item: SidebarItem): SidebarStore;
+        /**
+         * @param args
+         */
         // Conflicted with Gtk.TreeStore.append
         append(...args: never[]): any;
+        /**
+         * @param text
+         * @param id
+         */
         begin_header(text: string, id: number): SidebarStoreSidebarHeader;
         end_header(): SidebarStore;
         begin_section(): number;
         end_section(): void;
         clear(): void;
+        /**
+         * @param iter
+         */
         item_for_iter(iter: Gtk.TreeIter): SidebarItem;
+        /**
+         * @param iter
+         * @param numclick
+         */
         activate(iter: Gtk.TreeIter, numclick: number): void;
         get_clearing(): boolean;
     }
@@ -5243,6 +6301,9 @@ export namespace Gitg {
         interface ConstructorProps extends GObject.Object.ConstructorProps, SidebarItem.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class SidebarStoreSidebarText extends GObject.Object implements SidebarItem {
         static $gtype: GObject.GType<SidebarStoreSidebarText>;
 
@@ -5265,16 +6326,19 @@ export namespace Gitg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SidebarStoreSidebarText.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SidebarStoreSidebarText.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SidebarStoreSidebarText.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SidebarStoreSidebarText.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SidebarStoreSidebarText.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SidebarStoreSidebarText.SignalSignatures[K]> extends [any, ...infer Q]
@@ -5282,18 +6346,39 @@ export namespace Gitg {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited properties
+        /**
+         * @read-only
+         * @category Inherited from Gitg.SidebarItem
+         */
         get text(): string;
+        /**
+         * @read-only
+         * @category Inherited from Gitg.SidebarItem
+         */
         get icon_name(): string;
+        /**
+         * @read-only
+         * @category Inherited from Gitg.SidebarItem
+         */
         get iconName(): string;
-
-        // Inherited methods
+        /**
+         * @param numclick
+         */
         activate(numclick: number): void;
         get_text(): string;
         get_icon_name(): string | null;
+        /**
+         * @param numclick
+         * @virtual
+         */
         vfunc_activate(numclick: number): void;
+        /**
+         * @virtual
+         */
         vfunc_get_text(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_icon_name(): string | null;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -5308,32 +6393,32 @@ export namespace Gitg {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -5342,39 +6427,39 @@ export namespace Gitg {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -5385,13 +6470,16 @@ export namespace Gitg {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -5399,7 +6487,7 @@ export namespace Gitg {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -5407,9 +6495,9 @@ export namespace Gitg {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -5429,9 +6517,9 @@ export namespace Gitg {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -5444,34 +6532,34 @@ export namespace Gitg {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -5504,22 +6592,22 @@ export namespace Gitg {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -5528,8 +6616,8 @@ export namespace Gitg {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -5546,10 +6634,10 @@ export namespace Gitg {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -5564,13 +6652,13 @@ export namespace Gitg {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -5601,21 +6689,21 @@ export namespace Gitg {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -5625,33 +6713,34 @@ export namespace Gitg {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -5660,6 +6749,7 @@ export namespace Gitg {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -5668,12 +6758,14 @@ export namespace Gitg {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -5682,20 +6774,22 @@ export namespace Gitg {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -5707,6 +6801,7 @@ export namespace Gitg {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -5749,11 +6844,17 @@ export namespace Gitg {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SidebarStoreSidebarHeader extends SidebarStoreSidebarText {
         static $gtype: GObject.GType<SidebarStoreSidebarHeader>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get id(): number;
 
         /**
@@ -5778,16 +6879,19 @@ export namespace Gitg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SidebarStoreSidebarHeader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SidebarStoreSidebarHeader.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SidebarStoreSidebarHeader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SidebarStoreSidebarHeader.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SidebarStoreSidebarHeader.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SidebarStoreSidebarHeader.SignalSignatures[K]> extends [any, ...infer Q]
@@ -5804,7 +6908,13 @@ export namespace Gitg {
     namespace Sidebar {
         // Signal signatures
         interface SignalSignatures extends Gtk.TreeView.SignalSignatures {
+            /**
+             * @signal
+             */
             deselected: () => void;
+            /**
+             * @signal
+             */
             'populate-popup': (arg0: Gtk.Menu) => void;
             'notify::model': (pspec: GObject.ParamSpec) => void;
             'notify::activate-on-single-click': (pspec: GObject.ParamSpec) => void;
@@ -5875,6 +6985,9 @@ export namespace Gitg {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Sidebar extends Gtk.TreeView {
         static $gtype: GObject.GType<Sidebar>;
 
@@ -5902,16 +7015,19 @@ export namespace Gitg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Sidebar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Sidebar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Sidebar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Sidebar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Sidebar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Sidebar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5920,24 +7036,60 @@ export namespace Gitg {
 
         // Virtual methods
 
+        /**
+         * @param sel
+         * @param model
+         * @param path
+         * @param cursel
+         * @virtual
+         */
         vfunc_select_function(
             sel: Gtk.TreeSelection,
             model: Gtk.TreeModel,
             path: Gtk.TreePath,
             cursel: boolean,
         ): boolean;
+        /**
+         * @param sel
+         * @virtual
+         */
         vfunc_selection_changed(sel: Gtk.TreeSelection): void;
 
         // Methods
 
+        /**
+         * @param sel
+         * @param model
+         * @param path
+         * @param cursel
+         */
         select_function(sel: Gtk.TreeSelection, model: Gtk.TreeModel, path: Gtk.TreePath, cursel: boolean): boolean;
+        /**
+         * @param sel
+         */
         selection_changed(sel: Gtk.TreeSelection): void;
         get_selected_iter(): [boolean, Gtk.TreeIter];
+        /**
+         * @param t_type
+         * @param t_dup_func
+         */
         get_selected_item(t_type: GObject.GType, t_dup_func: GObject.BoxedCopyFunc): any | null;
+        /**
+         * @param t_dup_func
+         */
         get_selected_items(t_dup_func: GObject.BoxedCopyFunc): [any[], number];
+        /**
+         * @param item
+         */
         select(item: SidebarItem): void;
+        /**
+         * @param item
+         */
         is_selected(item: SidebarItem): boolean;
         get_model(): SidebarStore;
+        /**
+         * @param value
+         */
         set_model(value: SidebarStore): void;
     }
 
@@ -5959,11 +7111,17 @@ export namespace Gitg {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class StageStatusFile extends GObject.Object implements StageStatusItem {
         static $gtype: GObject.GType<StageStatusFile>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get flags(): Ggit.StatusFlags;
 
         /**
@@ -5985,16 +7143,19 @@ export namespace Gitg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof StageStatusFile.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StageStatusFile.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof StageStatusFile.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StageStatusFile.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof StageStatusFile.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<StageStatusFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6004,28 +7165,75 @@ export namespace Gitg {
         // Methods
 
         get_flags(): Ggit.StatusFlags;
-
-        // Inherited properties
+        /**
+         * @read-only
+         * @category Inherited from Gitg.StageStatusItem
+         */
         get path(): string;
+        /**
+         * @read-only
+         * @category Inherited from Gitg.StageStatusItem
+         */
         get is_staged(): boolean;
+        /**
+         * @read-only
+         * @category Inherited from Gitg.StageStatusItem
+         */
         get isStaged(): boolean;
+        /**
+         * @read-only
+         * @category Inherited from Gitg.StageStatusItem
+         */
         get is_unstaged(): boolean;
+        /**
+         * @read-only
+         * @category Inherited from Gitg.StageStatusItem
+         */
         get isUnstaged(): boolean;
+        /**
+         * @read-only
+         * @category Inherited from Gitg.StageStatusItem
+         */
         get is_untracked(): boolean;
+        /**
+         * @read-only
+         * @category Inherited from Gitg.StageStatusItem
+         */
         get isUntracked(): boolean;
+        /**
+         * @read-only
+         * @category Inherited from Gitg.StageStatusItem
+         */
         get icon_name(): string;
+        /**
+         * @read-only
+         * @category Inherited from Gitg.StageStatusItem
+         */
         get iconName(): string;
-
-        // Inherited methods
         get_path(): string;
         get_is_staged(): boolean;
         get_is_unstaged(): boolean;
         get_is_untracked(): boolean;
         get_icon_name(): string | null;
+        /**
+         * @virtual
+         */
         vfunc_get_path(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_is_staged(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_get_is_unstaged(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_get_is_untracked(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_get_icon_name(): string | null;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -6040,32 +7248,32 @@ export namespace Gitg {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -6074,39 +7282,39 @@ export namespace Gitg {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -6117,13 +7325,16 @@ export namespace Gitg {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -6131,7 +7342,7 @@ export namespace Gitg {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -6139,9 +7350,9 @@ export namespace Gitg {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -6161,9 +7372,9 @@ export namespace Gitg {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -6176,34 +7387,34 @@ export namespace Gitg {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -6236,22 +7447,22 @@ export namespace Gitg {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -6260,8 +7471,8 @@ export namespace Gitg {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -6278,10 +7489,10 @@ export namespace Gitg {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -6296,13 +7507,13 @@ export namespace Gitg {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -6333,21 +7544,21 @@ export namespace Gitg {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -6357,33 +7568,34 @@ export namespace Gitg {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -6392,6 +7604,7 @@ export namespace Gitg {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -6400,12 +7613,14 @@ export namespace Gitg {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -6414,20 +7629,22 @@ export namespace Gitg {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -6439,6 +7656,7 @@ export namespace Gitg {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -6491,14 +7709,29 @@ export namespace Gitg {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class StageStatusSubmodule extends GObject.Object implements StageStatusItem {
         static $gtype: GObject.GType<StageStatusSubmodule>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get submodule(): Ggit.Submodule;
+        /**
+         * @read-only
+         */
         get is_dirty(): boolean;
+        /**
+         * @read-only
+         */
         get isDirty(): boolean;
+        /**
+         * @read-only
+         */
         get flags(): Ggit.SubmoduleStatus;
 
         /**
@@ -6520,16 +7753,19 @@ export namespace Gitg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof StageStatusSubmodule.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StageStatusSubmodule.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof StageStatusSubmodule.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StageStatusSubmodule.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof StageStatusSubmodule.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<StageStatusSubmodule.SignalSignatures[K]> extends [any, ...infer Q]
@@ -6543,28 +7779,75 @@ export namespace Gitg {
         get_submodule(): Ggit.Submodule;
         get_is_dirty(): boolean;
         get_flags(): Ggit.SubmoduleStatus;
-
-        // Inherited properties
+        /**
+         * @read-only
+         * @category Inherited from Gitg.StageStatusItem
+         */
         get path(): string;
+        /**
+         * @read-only
+         * @category Inherited from Gitg.StageStatusItem
+         */
         get is_staged(): boolean;
+        /**
+         * @read-only
+         * @category Inherited from Gitg.StageStatusItem
+         */
         get isStaged(): boolean;
+        /**
+         * @read-only
+         * @category Inherited from Gitg.StageStatusItem
+         */
         get is_unstaged(): boolean;
+        /**
+         * @read-only
+         * @category Inherited from Gitg.StageStatusItem
+         */
         get isUnstaged(): boolean;
+        /**
+         * @read-only
+         * @category Inherited from Gitg.StageStatusItem
+         */
         get is_untracked(): boolean;
+        /**
+         * @read-only
+         * @category Inherited from Gitg.StageStatusItem
+         */
         get isUntracked(): boolean;
+        /**
+         * @read-only
+         * @category Inherited from Gitg.StageStatusItem
+         */
         get icon_name(): string;
+        /**
+         * @read-only
+         * @category Inherited from Gitg.StageStatusItem
+         */
         get iconName(): string;
-
-        // Inherited methods
         get_path(): string;
         get_is_staged(): boolean;
         get_is_unstaged(): boolean;
         get_is_untracked(): boolean;
         get_icon_name(): string | null;
+        /**
+         * @virtual
+         */
         vfunc_get_path(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_is_staged(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_get_is_unstaged(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_get_is_untracked(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_get_icon_name(): string | null;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -6579,32 +7862,32 @@ export namespace Gitg {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -6613,39 +7896,39 @@ export namespace Gitg {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -6656,13 +7939,16 @@ export namespace Gitg {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -6670,7 +7956,7 @@ export namespace Gitg {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -6678,9 +7964,9 @@ export namespace Gitg {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -6700,9 +7986,9 @@ export namespace Gitg {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -6715,34 +8001,34 @@ export namespace Gitg {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -6775,22 +8061,22 @@ export namespace Gitg {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -6799,8 +8085,8 @@ export namespace Gitg {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -6817,10 +8103,10 @@ export namespace Gitg {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -6835,13 +8121,13 @@ export namespace Gitg {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -6872,21 +8158,21 @@ export namespace Gitg {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -6896,33 +8182,34 @@ export namespace Gitg {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -6931,6 +8218,7 @@ export namespace Gitg {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -6939,12 +8227,14 @@ export namespace Gitg {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -6953,20 +8243,22 @@ export namespace Gitg {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -6978,6 +8270,7 @@ export namespace Gitg {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -7016,6 +8309,9 @@ export namespace Gitg {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class StageStatusEnumerator extends GObject.Object {
         static $gtype: GObject.GType<StageStatusEnumerator>;
 
@@ -7036,16 +8332,19 @@ export namespace Gitg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof StageStatusEnumerator.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StageStatusEnumerator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof StageStatusEnumerator.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StageStatusEnumerator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof StageStatusEnumerator.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<StageStatusEnumerator.SignalSignatures[K]> extends [any, ...infer Q]
@@ -7057,12 +8356,26 @@ export namespace Gitg {
         // Methods
 
         cancel(): void;
+        /**
+         * @param num
+         */
         next_items(num: number): globalThis.Promise<StageStatusItem[]>;
+        /**
+         * @param num
+         * @param _callback_
+         */
         next_items(num: number, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param num
+         * @param _callback_
+         */
         next_items(
             num: number,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<StageStatusItem[]> | void;
+        /**
+         * @param _res_
+         */
         next_items_finish(_res_: Gio.AsyncResult): StageStatusItem[];
     }
 
@@ -7071,6 +8384,9 @@ export namespace Gitg {
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class PatchSet {
         static $gtype: GObject.GType<PatchSet>;
 
@@ -7088,16 +8404,19 @@ export namespace Gitg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof PatchSet.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PatchSet.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof PatchSet.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PatchSet.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PatchSet.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PatchSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7118,6 +8437,9 @@ export namespace Gitg {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Stage extends GObject.Object {
         static $gtype: GObject.GType<Stage>;
 
@@ -7138,16 +8460,19 @@ export namespace Gitg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Stage.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Stage.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Stage.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Stage.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Stage.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Stage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7157,21 +8482,65 @@ export namespace Gitg {
         // Methods
 
         refresh(): globalThis.Promise<void>;
+        /**
+         * @param _callback_
+         */
         refresh(_callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param _callback_
+         */
         refresh(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         refresh_finish(_res_: Gio.AsyncResult): void;
         get_head_tree(): globalThis.Promise<Ggit.Tree | null>;
+        /**
+         * @param _callback_
+         */
         get_head_tree(_callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param _callback_
+         */
         get_head_tree(_callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<Ggit.Tree | null> | void;
+        /**
+         * @param _res_
+         */
         get_head_tree_finish(_res_: Gio.AsyncResult): Ggit.Tree | null;
+        /**
+         * @param options
+         */
         file_status(options?: Ggit.StatusOptions | null): StageStatusEnumerator;
+        /**
+         * @param author
+         */
         pre_commit_hook(author: Ggit.Signature): globalThis.Promise<void>;
+        /**
+         * @param author
+         * @param _callback_
+         */
         pre_commit_hook(author: Ggit.Signature, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param author
+         * @param _callback_
+         */
         pre_commit_hook(
             author: Ggit.Signature,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         pre_commit_hook_finish(_res_: Gio.AsyncResult): void;
+        /**
+         * @param index
+         * @param reference
+         * @param message
+         * @param author
+         * @param committer
+         * @param parents
+         * @param options
+         */
         commit_index(
             index: Ggit.Index,
             reference: Ggit.Ref,
@@ -7181,6 +8550,16 @@ export namespace Gitg {
             parents: Ggit.OId[] | null,
             options: StageCommitOptions | null,
         ): globalThis.Promise<Ggit.OId | null>;
+        /**
+         * @param index
+         * @param reference
+         * @param message
+         * @param author
+         * @param committer
+         * @param parents
+         * @param options
+         * @param _callback_
+         */
         commit_index(
             index: Ggit.Index,
             reference: Ggit.Ref,
@@ -7191,6 +8570,16 @@ export namespace Gitg {
             options: StageCommitOptions | null,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param index
+         * @param reference
+         * @param message
+         * @param author
+         * @param committer
+         * @param parents
+         * @param options
+         * @param _callback_
+         */
         commit_index(
             index: Ggit.Index,
             reference: Ggit.Ref,
@@ -7201,7 +8590,19 @@ export namespace Gitg {
             options: StageCommitOptions | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Ggit.OId | null> | void;
+        /**
+         * @param _res_
+         */
         commit_index_finish(_res_: Gio.AsyncResult): Ggit.OId | null;
+        /**
+         * @param treeoid
+         * @param reference
+         * @param message
+         * @param author
+         * @param committer
+         * @param parents
+         * @param options
+         */
         commit_tree(
             treeoid: Ggit.OId,
             reference: Ggit.Ref,
@@ -7211,6 +8612,16 @@ export namespace Gitg {
             parents: Ggit.OId[] | null,
             options: StageCommitOptions | null,
         ): globalThis.Promise<Ggit.OId | null>;
+        /**
+         * @param treeoid
+         * @param reference
+         * @param message
+         * @param author
+         * @param committer
+         * @param parents
+         * @param options
+         * @param _callback_
+         */
         commit_tree(
             treeoid: Ggit.OId,
             reference: Ggit.Ref,
@@ -7221,6 +8632,16 @@ export namespace Gitg {
             options: StageCommitOptions | null,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param treeoid
+         * @param reference
+         * @param message
+         * @param author
+         * @param committer
+         * @param parents
+         * @param options
+         * @param _callback_
+         */
         commit_tree(
             treeoid: Ggit.OId,
             reference: Ggit.Ref,
@@ -7231,13 +8652,29 @@ export namespace Gitg {
             options: StageCommitOptions | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Ggit.OId | null> | void;
+        /**
+         * @param _res_
+         */
         commit_tree_finish(_res_: Gio.AsyncResult): Ggit.OId | null;
+        /**
+         * @param message
+         * @param author
+         * @param committer
+         * @param options
+         */
         commit(
             message: string,
             author: Ggit.Signature,
             committer: Ggit.Signature,
             options: StageCommitOptions | null,
         ): globalThis.Promise<Ggit.OId | null>;
+        /**
+         * @param message
+         * @param author
+         * @param committer
+         * @param options
+         * @param _callback_
+         */
         commit(
             message: string,
             author: Ggit.Signature,
@@ -7245,6 +8682,13 @@ export namespace Gitg {
             options: StageCommitOptions | null,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param message
+         * @param author
+         * @param committer
+         * @param options
+         * @param _callback_
+         */
         commit(
             message: string,
             author: Ggit.Signature,
@@ -7252,118 +8696,360 @@ export namespace Gitg {
             options: StageCommitOptions | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Ggit.OId | null> | void;
+        /**
+         * @param _res_
+         */
         commit_finish(_res_: Gio.AsyncResult): Ggit.OId | null;
+        /**
+         * @param file
+         */
         revert(file: Gio.File): globalThis.Promise<void>;
+        /**
+         * @param file
+         * @param _callback_
+         */
         revert(file: Gio.File, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param file
+         * @param _callback_
+         */
         revert(file: Gio.File, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         revert_finish(_res_: Gio.AsyncResult): void;
+        /**
+         * @param path
+         */
         revert_path(path: string): globalThis.Promise<void>;
+        /**
+         * @param path
+         * @param _callback_
+         */
         revert_path(path: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param path
+         * @param _callback_
+         */
         revert_path(path: string, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         revert_path_finish(_res_: Gio.AsyncResult): void;
+        /**
+         * @param patch
+         */
         revert_patch(patch: PatchSet): globalThis.Promise<void>;
+        /**
+         * @param patch
+         * @param _callback_
+         */
         revert_patch(patch: PatchSet, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param patch
+         * @param _callback_
+         */
         revert_patch(
             patch: PatchSet,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         revert_patch_finish(_res_: Gio.AsyncResult): void;
+        /**
+         * @param file
+         */
         ['delete'](file: Gio.File): globalThis.Promise<void>;
+        /**
+         * @param file
+         * @param _callback_
+         */
         ['delete'](file: Gio.File, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param file
+         * @param _callback_
+         */
         ['delete'](file: Gio.File, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         delete_finish(_res_: Gio.AsyncResult): void;
+        /**
+         * @param path
+         */
         delete_path(path: string): globalThis.Promise<void>;
+        /**
+         * @param path
+         * @param _callback_
+         */
         delete_path(path: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param path
+         * @param _callback_
+         */
         delete_path(path: string, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         delete_path_finish(_res_: Gio.AsyncResult): void;
+        /**
+         * @param file
+         */
         stage(file: Gio.File): globalThis.Promise<void>;
+        /**
+         * @param file
+         * @param _callback_
+         */
         stage(file: Gio.File, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param file
+         * @param _callback_
+         */
         stage(file: Gio.File, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         stage_finish(_res_: Gio.AsyncResult): void;
+        /**
+         * @param path
+         */
         stage_path(path: string): globalThis.Promise<void>;
+        /**
+         * @param path
+         * @param _callback_
+         */
         stage_path(path: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param path
+         * @param _callback_
+         */
         stage_path(path: string, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         stage_path_finish(_res_: Gio.AsyncResult): void;
+        /**
+         * @param path
+         * @param commit
+         */
         stage_commit(path: string, commit: Ggit.Commit): globalThis.Promise<void>;
+        /**
+         * @param path
+         * @param commit
+         * @param _callback_
+         */
         stage_commit(path: string, commit: Ggit.Commit, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param path
+         * @param commit
+         * @param _callback_
+         */
         stage_commit(
             path: string,
             commit: Ggit.Commit,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         stage_commit_finish(_res_: Gio.AsyncResult): void;
+        /**
+         * @param patch
+         */
         stage_patch(patch: PatchSet): globalThis.Promise<void>;
+        /**
+         * @param patch
+         * @param _callback_
+         */
         stage_patch(patch: PatchSet, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param patch
+         * @param _callback_
+         */
         stage_patch(patch: PatchSet, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         stage_patch_finish(_res_: Gio.AsyncResult): void;
+        /**
+         * @param file
+         */
         unstage(file: Gio.File): globalThis.Promise<void>;
+        /**
+         * @param file
+         * @param _callback_
+         */
         unstage(file: Gio.File, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param file
+         * @param _callback_
+         */
         unstage(file: Gio.File, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         unstage_finish(_res_: Gio.AsyncResult): void;
+        /**
+         * @param path
+         */
         unstage_path(path: string): globalThis.Promise<void>;
+        /**
+         * @param path
+         * @param _callback_
+         */
         unstage_path(path: string, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param path
+         * @param _callback_
+         */
         unstage_path(path: string, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         unstage_path_finish(_res_: Gio.AsyncResult): void;
+        /**
+         * @param patch
+         */
         unstage_patch(patch: PatchSet): globalThis.Promise<void>;
+        /**
+         * @param patch
+         * @param _callback_
+         */
         unstage_patch(patch: PatchSet, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param patch
+         * @param _callback_
+         */
         unstage_patch(
             patch: PatchSet,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         unstage_patch_finish(_res_: Gio.AsyncResult): void;
+        /**
+         * @param files
+         * @param defopts
+         */
         diff_index_all(
             files?: StageStatusItem[] | null,
             defopts?: Ggit.DiffOptions | null,
         ): globalThis.Promise<Ggit.Diff | null>;
+        /**
+         * @param files
+         * @param defopts
+         * @param _callback_
+         */
         diff_index_all(
             files: StageStatusItem[] | null,
             defopts: Ggit.DiffOptions | null,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param files
+         * @param defopts
+         * @param _callback_
+         */
         diff_index_all(
             files?: StageStatusItem[] | null,
             defopts?: Ggit.DiffOptions | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Ggit.Diff | null> | void;
+        /**
+         * @param _res_
+         */
         diff_index_all_finish(_res_: Gio.AsyncResult): Ggit.Diff | null;
+        /**
+         * @param f
+         * @param defopts
+         */
         diff_index(f: StageStatusItem, defopts?: Ggit.DiffOptions | null): globalThis.Promise<Ggit.Diff | null>;
+        /**
+         * @param f
+         * @param defopts
+         * @param _callback_
+         */
         diff_index(
             f: StageStatusItem,
             defopts: Ggit.DiffOptions | null,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param f
+         * @param defopts
+         * @param _callback_
+         */
         diff_index(
             f: StageStatusItem,
             defopts?: Ggit.DiffOptions | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Ggit.Diff | null> | void;
+        /**
+         * @param _res_
+         */
         diff_index_finish(_res_: Gio.AsyncResult): Ggit.Diff | null;
+        /**
+         * @param files
+         * @param defopts
+         */
         diff_workdir_all(
             files: StageStatusItem[],
             defopts?: Ggit.DiffOptions | null,
         ): globalThis.Promise<Ggit.Diff | null>;
+        /**
+         * @param files
+         * @param defopts
+         * @param _callback_
+         */
         diff_workdir_all(
             files: StageStatusItem[],
             defopts: Ggit.DiffOptions | null,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param files
+         * @param defopts
+         * @param _callback_
+         */
         diff_workdir_all(
             files: StageStatusItem[],
             defopts?: Ggit.DiffOptions | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Ggit.Diff | null> | void;
+        /**
+         * @param _res_
+         */
         diff_workdir_all_finish(_res_: Gio.AsyncResult): Ggit.Diff | null;
+        /**
+         * @param f
+         * @param defopts
+         */
         diff_workdir(f: StageStatusItem, defopts?: Ggit.DiffOptions | null): globalThis.Promise<Ggit.Diff | null>;
+        /**
+         * @param f
+         * @param defopts
+         * @param _callback_
+         */
         diff_workdir(
             f: StageStatusItem,
             defopts: Ggit.DiffOptions | null,
             _callback_: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param f
+         * @param defopts
+         * @param _callback_
+         */
         diff_workdir(
             f: StageStatusItem,
             defopts?: Ggit.DiffOptions | null,
             _callback_?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Ggit.Diff | null> | void;
+        /**
+         * @param _res_
+         */
         diff_workdir_finish(_res_: Gio.AsyncResult): Ggit.Diff | null;
     }
 
@@ -7372,6 +9058,9 @@ export namespace Gitg {
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class TextConv {
         static $gtype: GObject.GType<TextConv>;
 
@@ -7387,16 +9076,19 @@ export namespace Gitg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TextConv.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TextConv.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TextConv.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TextConv.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TextConv.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TextConv.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7405,8 +9097,21 @@ export namespace Gitg {
 
         // Static methods
 
+        /**
+         * @param repository
+         * @param file
+         */
         static has_textconv_command(repository: Repository, file: Ggit.DiffFile): boolean;
+        /**
+         * @param repository
+         * @param file
+         */
         static get_textconv_content(repository: Repository, file: Ggit.DiffFile): Uint8Array;
+        /**
+         * @param repository
+         * @param file
+         * @param raw_content
+         */
         static get_textconv_content_from_raw(
             repository: Repository,
             file: Ggit.DiffFile,
@@ -7463,6 +9168,9 @@ export namespace Gitg {
         interface ConstructorProps extends Gtk.Widget.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Theme extends Gtk.Widget {
         static $gtype: GObject.GType<Theme>;
 
@@ -7485,16 +9193,19 @@ export namespace Gitg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Theme.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Theme.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Theme.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Theme.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Theme.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Theme.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7515,6 +9226,9 @@ export namespace Gitg {
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Utils {
         static $gtype: GObject.GType<Utils>;
 
@@ -7530,16 +9244,19 @@ export namespace Gitg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Utils.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Utils.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Utils.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Utils.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Utils.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Utils.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7548,7 +9265,13 @@ export namespace Gitg {
 
         // Static methods
 
+        /**
+         * @param file
+         */
         static replace_home_dir_with_tilde(file: Gio.File): string;
+        /**
+         * @param path
+         */
         static expand_home_dir(path: string): string;
     }
 
@@ -7561,6 +9284,9 @@ export namespace Gitg {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class WhenMapped {
         static $gtype: GObject.GType<WhenMapped>;
 
@@ -7576,16 +9302,19 @@ export namespace Gitg {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof WhenMapped.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WhenMapped.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof WhenMapped.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WhenMapped.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WhenMapped.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WhenMapped.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7594,189 +9323,412 @@ export namespace Gitg {
 
         // Methods
 
+        /**
+         * @param mapped
+         * @param lifetime
+         */
         update(mapped: WhenMapped.OnMapped, lifetime?: GObject.Object | null): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AsyncClass = typeof Async;
+    /**
+     * @gir-type Struct
+     */
     abstract class AsyncPrivate {
         static $gtype: GObject.GType<AsyncPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AuthenticationDialogClass = typeof AuthenticationDialog;
+    /**
+     * @gir-type Struct
+     */
     abstract class AuthenticationDialogPrivate {
         static $gtype: GObject.GType<AuthenticationDialogPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AvatarCacheClass = typeof AvatarCache;
+    /**
+     * @gir-type Struct
+     */
     abstract class AvatarCachePrivate {
         static $gtype: GObject.GType<AvatarCachePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type BranchBaseClass = typeof BranchBase;
+    /**
+     * @gir-type Struct
+     */
     abstract class BranchBasePrivate {
         static $gtype: GObject.GType<BranchBasePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CellRendererLanesClass = typeof CellRendererLanes;
+    /**
+     * @gir-type Struct
+     */
     abstract class CellRendererLanesPrivate {
         static $gtype: GObject.GType<CellRendererLanesPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ColorClass = typeof Color;
+    /**
+     * @gir-type Struct
+     */
     abstract class ColorPrivate {
         static $gtype: GObject.GType<ColorPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CommitListViewClass = typeof CommitListView;
+    /**
+     * @gir-type Struct
+     */
     abstract class CommitListViewPrivate {
         static $gtype: GObject.GType<CommitListViewPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CommitModelClass = typeof CommitModel;
+    /**
+     * @gir-type Struct
+     */
     abstract class CommitModelPrivate {
         static $gtype: GObject.GType<CommitModelPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CommitClass = typeof Commit;
+    /**
+     * @gir-type Struct
+     */
     abstract class CommitPrivate {
         static $gtype: GObject.GType<CommitPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CredentialsManagerClass = typeof CredentialsManager;
+    /**
+     * @gir-type Struct
+     */
     abstract class CredentialsManagerPrivate {
         static $gtype: GObject.GType<CredentialsManagerPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DateClass = typeof Date;
+    /**
+     * @gir-type Struct
+     */
     abstract class DatePrivate {
         static $gtype: GObject.GType<DatePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DiffStatClass = typeof DiffStat;
+    /**
+     * @gir-type Struct
+     */
     abstract class DiffStatPrivate {
         static $gtype: GObject.GType<DiffStatPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DiffViewOptionsClass = typeof DiffViewOptions;
+    /**
+     * @gir-type Struct
+     */
     abstract class DiffViewOptionsPrivate {
         static $gtype: GObject.GType<DiffViewOptionsPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DiffViewClass = typeof DiffView;
+    /**
+     * @gir-type Struct
+     */
     abstract class DiffViewPrivate {
         static $gtype: GObject.GType<DiffViewPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type FontManagerClass = typeof FontManager;
+    /**
+     * @gir-type Struct
+     */
     abstract class FontManagerPrivate {
         static $gtype: GObject.GType<FontManagerPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type GPGUtilsClass = typeof GPGUtils;
+    /**
+     * @gir-type Struct
+     */
     abstract class GPGUtilsPrivate {
         static $gtype: GObject.GType<GPGUtilsPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type HookClass = typeof Hook;
+    /**
+     * @gir-type Struct
+     */
     abstract class HookPrivate {
         static $gtype: GObject.GType<HookPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type LabelRendererClass = typeof LabelRenderer;
+    /**
+     * @gir-type Struct
+     */
     abstract class LabelRendererPrivate {
         static $gtype: GObject.GType<LabelRendererPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type LanesClass = typeof Lanes;
+    /**
+     * @gir-type Struct
+     */
     abstract class LanesPrivate {
         static $gtype: GObject.GType<LanesPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type LaneClass = typeof Lane;
+    /**
+     * @gir-type Struct
+     */
     abstract class LanePrivate {
         static $gtype: GObject.GType<LanePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ProgressBinClass = typeof ProgressBin;
+    /**
+     * @gir-type Struct
+     */
     abstract class ProgressBinPrivate {
         static $gtype: GObject.GType<ProgressBinPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RefBaseClass = typeof RefBase;
+    /**
+     * @gir-type Struct
+     */
     abstract class RefBasePrivate {
         static $gtype: GObject.GType<RefBasePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ParsedRefNameClass = typeof ParsedRefName;
+    /**
+     * @gir-type Struct
+     */
     abstract class ParsedRefNamePrivate {
         static $gtype: GObject.GType<ParsedRefNamePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RemoteClass = typeof Remote;
+    /**
+     * @gir-type Struct
+     */
     abstract class RemotePrivate {
         static $gtype: GObject.GType<RemotePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RepositoryListBoxClass = typeof RepositoryListBox;
+    /**
+     * @gir-type Struct
+     */
     abstract class RepositoryListBoxPrivate {
         static $gtype: GObject.GType<RepositoryListBoxPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RepositoryListBoxRowClass = typeof RepositoryListBoxRow;
+    /**
+     * @gir-type Struct
+     */
     abstract class RepositoryListBoxRowPrivate {
         static $gtype: GObject.GType<RepositoryListBoxRowPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RepositoryClass = typeof Repository;
+    /**
+     * @gir-type Struct
+     */
     abstract class RepositoryPrivate {
         static $gtype: GObject.GType<RepositoryPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ResourceClass = typeof Resource;
+    /**
+     * @gir-type Struct
+     */
     abstract class ResourcePrivate {
         static $gtype: GObject.GType<ResourcePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SidebarStoreClass = typeof SidebarStore;
+    /**
+     * @gir-type Struct
+     */
     abstract class SidebarStorePrivate {
         static $gtype: GObject.GType<SidebarStorePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SidebarStoreSidebarTextClass = typeof SidebarStoreSidebarText;
+    /**
+     * @gir-type Struct
+     */
     abstract class SidebarStoreSidebarTextPrivate {
         static $gtype: GObject.GType<SidebarStoreSidebarTextPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SidebarStoreSidebarHeaderClass = typeof SidebarStoreSidebarHeader;
+    /**
+     * @gir-type Struct
+     */
     abstract class SidebarStoreSidebarHeaderPrivate {
         static $gtype: GObject.GType<SidebarStoreSidebarHeaderPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SidebarClass = typeof Sidebar;
+    /**
+     * @gir-type Struct
+     */
     abstract class SidebarPrivate {
         static $gtype: GObject.GType<SidebarPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type StageStatusFileClass = typeof StageStatusFile;
+    /**
+     * @gir-type Struct
+     */
     abstract class StageStatusFilePrivate {
         static $gtype: GObject.GType<StageStatusFilePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type StageStatusSubmoduleClass = typeof StageStatusSubmodule;
+    /**
+     * @gir-type Struct
+     */
     abstract class StageStatusSubmodulePrivate {
         static $gtype: GObject.GType<StageStatusSubmodulePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type StageStatusEnumeratorClass = typeof StageStatusEnumerator;
+    /**
+     * @gir-type Struct
+     */
     abstract class StageStatusEnumeratorPrivate {
         static $gtype: GObject.GType<StageStatusEnumeratorPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PatchSetClass = typeof PatchSet;
+    /**
+     * @gir-type Struct
+     */
     abstract class PatchSetPrivate {
         static $gtype: GObject.GType<PatchSetPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class PatchSetPatch {
         static $gtype: GObject.GType<PatchSetPatch>;
 
@@ -7788,35 +9740,80 @@ export namespace Gitg {
         length: number;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type StageClass = typeof Stage;
+    /**
+     * @gir-type Struct
+     */
     abstract class StagePrivate {
         static $gtype: GObject.GType<StagePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TextConvClass = typeof TextConv;
+    /**
+     * @gir-type Struct
+     */
     abstract class TextConvPrivate {
         static $gtype: GObject.GType<TextConvPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ThemeClass = typeof Theme;
+    /**
+     * @gir-type Struct
+     */
     abstract class ThemePrivate {
         static $gtype: GObject.GType<ThemePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type UtilsClass = typeof Utils;
+    /**
+     * @gir-type Struct
+     */
     abstract class UtilsPrivate {
         static $gtype: GObject.GType<UtilsPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type WhenMappedClass = typeof WhenMapped;
+    /**
+     * @gir-type Struct
+     */
     abstract class WhenMappedPrivate {
         static $gtype: GObject.GType<WhenMappedPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type BranchIface = typeof Branch;
+    /**
+     * @gir-type Alias
+     */
     type RefIface = typeof Ref;
+    /**
+     * @gir-type Alias
+     */
     type CredentialsProviderIface = typeof CredentialsProvider;
+    /**
+     * @gir-type Alias
+     */
     type SidebarItemIface = typeof SidebarItem;
+    /**
+     * @gir-type Alias
+     */
     type StageStatusItemIface = typeof StageStatusItem;
     namespace Branch {
         /**
@@ -7826,6 +9823,9 @@ export namespace Gitg {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @virtual
+             */
             vfunc_get_upstream(): Ref;
         }
 
@@ -7838,10 +9838,16 @@ export namespace Gitg {
         $gtype: GObject.GType<Branch>;
         prototype: Branch;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Branch extends Ggit.Branch, Branch.Interface {
         // Methods
 
         get_upstream(): Ref;
+        /**
+         * @param args
+         */
         // Conflicted with Ggit.Branch.get_upstream
         get_upstream(...args: never[]): any;
     }
@@ -7858,14 +9864,45 @@ export namespace Gitg {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @virtual
+             */
             vfunc_get_owner(): Repository;
+            /**
+             * @virtual
+             */
             vfunc_get_d_parsed_name(): ParsedRefName;
+            /**
+             * @param value
+             * @virtual
+             */
             vfunc_set_d_parsed_name(value: ParsedRefName): void;
+            /**
+             * @virtual
+             */
             vfunc_get_d_pushes(): Ref[] | null;
+            /**
+             * @param value
+             * @virtual
+             */
             vfunc_set_d_pushes(value?: Ref[] | null): void;
+            /**
+             * @virtual
+             */
             vfunc_get_state(): RefState;
+            /**
+             * @param value
+             * @virtual
+             */
             vfunc_set_state(value: RefState): void;
+            /**
+             * @virtual
+             */
             vfunc_get_working(): boolean;
+            /**
+             * @param value
+             * @virtual
+             */
             vfunc_set_working(value: boolean): void;
         }
 
@@ -7885,6 +9922,9 @@ export namespace Gitg {
         $gtype: GObject.GType<Ref>;
         prototype: Ref;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Ref extends Ggit.Ref, Ref.Interface {
         // Properties
 
@@ -7904,15 +9944,30 @@ export namespace Gitg {
         // Methods
 
         get_owner(): Repository;
+        /**
+         * @param args
+         */
         // Conflicted with Ggit.Ref.get_owner
         get_owner(...args: never[]): any;
         get_d_parsed_name(): ParsedRefName;
+        /**
+         * @param value
+         */
         set_d_parsed_name(value: ParsedRefName): void;
         get_d_pushes(): Ref[] | null;
+        /**
+         * @param value
+         */
         set_d_pushes(value?: Ref[] | null): void;
         get_state(): RefState;
+        /**
+         * @param value
+         */
         set_state(value: RefState | null): void;
         get_working(): boolean;
+        /**
+         * @param value
+         */
         set_working(value: boolean): void;
         get_parsed_name(): ParsedRefName;
         get_pushes(): Ref[];
@@ -7930,6 +9985,12 @@ export namespace Gitg {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param url
+             * @param username_from_url
+             * @param allowed_types
+             * @virtual
+             */
             vfunc_credentials(
                 url: string,
                 username_from_url: string | null,
@@ -7946,9 +10007,17 @@ export namespace Gitg {
         $gtype: GObject.GType<CredentialsProvider>;
         prototype: CredentialsProvider;
     }
+    /**
+     * @gir-type Interface
+     */
     interface CredentialsProvider extends GObject.Object, CredentialsProvider.Interface {
         // Methods
 
+        /**
+         * @param url
+         * @param username_from_url
+         * @param allowed_types
+         */
         credentials(
             url: string,
             username_from_url: string | null,
@@ -7968,8 +10037,18 @@ export namespace Gitg {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param numclick
+             * @virtual
+             */
             vfunc_activate(numclick: number): void;
+            /**
+             * @virtual
+             */
             vfunc_get_text(): string;
+            /**
+             * @virtual
+             */
             vfunc_get_icon_name(): string | null;
         }
 
@@ -7986,15 +10065,30 @@ export namespace Gitg {
         $gtype: GObject.GType<SidebarItem>;
         prototype: SidebarItem;
     }
+    /**
+     * @gir-type Interface
+     */
     interface SidebarItem extends GObject.Object, SidebarItem.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get text(): string;
+        /**
+         * @read-only
+         */
         get icon_name(): string;
+        /**
+         * @read-only
+         */
         get iconName(): string;
 
         // Methods
 
+        /**
+         * @param numclick
+         */
         activate(numclick: number): void;
         get_text(): string;
         get_icon_name(): string | null;
@@ -8012,10 +10106,25 @@ export namespace Gitg {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @virtual
+             */
             vfunc_get_path(): string;
+            /**
+             * @virtual
+             */
             vfunc_get_is_staged(): boolean;
+            /**
+             * @virtual
+             */
             vfunc_get_is_unstaged(): boolean;
+            /**
+             * @virtual
+             */
             vfunc_get_is_untracked(): boolean;
+            /**
+             * @virtual
+             */
             vfunc_get_icon_name(): string | null;
         }
 
@@ -8038,17 +10147,47 @@ export namespace Gitg {
         $gtype: GObject.GType<StageStatusItem>;
         prototype: StageStatusItem;
     }
+    /**
+     * @gir-type Interface
+     */
     interface StageStatusItem extends GObject.Object, StageStatusItem.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get path(): string;
+        /**
+         * @read-only
+         */
         get is_staged(): boolean;
+        /**
+         * @read-only
+         */
         get isStaged(): boolean;
+        /**
+         * @read-only
+         */
         get is_unstaged(): boolean;
+        /**
+         * @read-only
+         */
         get isUnstaged(): boolean;
+        /**
+         * @read-only
+         */
         get is_untracked(): boolean;
+        /**
+         * @read-only
+         */
         get isUntracked(): boolean;
+        /**
+         * @read-only
+         */
         get icon_name(): string;
+        /**
+         * @read-only
+         */
         get iconName(): string;
 
         // Methods

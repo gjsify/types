@@ -1,0 +1,64 @@
+{
+    "name": "@girs/gfls-1",
+    "version": "1.0.0-4.0.0-beta.41",
+    "description": "GJS TypeScript type definitions for Gfls-1, generated from library version 1.0.0",
+    "type": "module",
+    "module": "gfls-1.js",
+    "main": "gfls-1.js",
+    "exports": {
+      "./ambient": {
+        "types": "./gfls-1-ambient.d.ts",
+        "import": "./gfls-1-ambient.js",
+        "default": "./gfls-1-ambient.js"
+      },
+      "./import": {
+        "types": "./gfls-1-import.d.ts",
+        "import": "./gfls-1-import.js",
+        "default": "./gfls-1-import.js"
+      },
+      "./gfls-1": {
+        "types": "./gfls-1.d.ts",
+        "import": "./gfls-1.js",
+        "default": "./gfls-1.js"
+      },
+      ".": {
+        "types": "./index.d.ts",
+        "import": "./index.js",
+        "default": "./index.js"
+      }
+    },
+    "scripts": {
+      "test": "tsc --project tsconfig.json"
+    },
+    "dependencies": {
+      "@girs/gjs": "4.0.0-beta.41",
+      "@girs/gtk-3.0": "3.24.51-4.0.0-beta.41",
+      "@girs/xlib-2.0": "2.0.0-4.0.0-beta.41",
+      "@girs/gdk-3.0": "3.24.51-4.0.0-beta.41",
+      "@girs/cairo-1.0": "1.0.0-4.0.0-beta.41",
+      "@girs/gobject-2.0": "2.88.0-4.0.0-beta.41",
+      "@girs/glib-2.0": "2.88.0-4.0.0-beta.41",
+      "@girs/pango-1.0": "1.57.0-4.0.0-beta.41",
+      "@girs/harfbuzz-0.0": "12.3.2-4.0.0-beta.41",
+      "@girs/freetype2-2.0": "2.0.0-4.0.0-beta.41",
+      "@girs/gio-2.0": "2.88.0-4.0.0-beta.41",
+      "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.41",
+      "@girs/gdkpixbuf-2.0": "2.0.0-4.0.0-beta.41",
+      "@girs/atk-1.0": "2.60.0-4.0.0-beta.41"    },
+    "devDependencies": {
+      "typescript": "*"
+    },
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "Gfls-1"],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/gjsify/types.git"
+    },
+    "bugs": {
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/gfls-1#readme"
+}
+
+

@@ -32,6 +32,7 @@ export namespace Shumate {
 
     /**
      * Error codes in the #SHUMATE_FILE_CACHE_ERROR domain.
+     * @gir-type Struct
      */
     class FileCacheError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -50,17 +51,22 @@ export namespace Shumate {
         // Static methods
 
         /**
-         * Gets the #ShumateFileCache error quark.
+         * Gets the {@link Shumate.FileCache} error quark.
          */
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace GeometryType {
         export const $gtype: GObject.GType<GeometryType>;
     }
 
     /**
      * A type of geometry.
+     * @gir-type Enum
+     * @since 1.2
      */
     enum GeometryType {
         /**
@@ -93,12 +99,16 @@ export namespace Shumate {
         MULTIPOLYGON,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MapProjection {
         export const $gtype: GObject.GType<MapProjection>;
     }
 
     /**
      * Projections supported by the library.
+     * @gir-type Enum
      */
     enum MapProjection {
         /**
@@ -107,12 +117,16 @@ export namespace Shumate {
         MERCATOR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace State {
         export const $gtype: GObject.GType<State>;
     }
 
     /**
      * Tile loading state.
+     * @gir-type Enum
      */
     enum State {
         /**
@@ -135,7 +149,8 @@ export namespace Shumate {
     }
 
     /**
-     * Error codes that occurs while parsing the style in [class`VectorRenderer]`.
+     * Error codes that occurs while parsing the style in {@link VectorRenderer}.
+     * @gir-type Struct
      */
     class StyleError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -159,7 +174,7 @@ export namespace Shumate {
          */
         static INVALID_EXPRESSION: number;
         /**
-         * Libshumate was compiled without vector tile support.
+         * Libshumate was compiled without vector tile support. As of 1.6, vector tile support is always enabled and this error never occurs.
          */
         static SUPPORT_OMITTED: number;
         /**
@@ -178,6 +193,7 @@ export namespace Shumate {
 
     /**
      * Error codes in the #SHUMATE_TILE_DOWNLOADER_ERROR domain.
+     * @gir-type Struct
      */
     class TileDownloaderError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -212,17 +228,21 @@ export namespace Shumate {
         // Static methods
 
         /**
-         * Gets the #ShumateTileDownloader error quark.
+         * Gets the {@link Shumate.TileDownloader} error quark.
          */
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Unit {
         export const $gtype: GObject.GType<Unit>;
     }
 
     /**
      * Units used by the scale.
+     * @gir-type Enum
      */
     enum Unit {
         /**
@@ -240,7 +260,58 @@ export namespace Shumate {
     }
 
     /**
-     * The major version of libshumate (1, if %SHUMATE_VERSION is 1.2.3)
+     * @gir-type Enum
+     */
+    export namespace VectorValueType {
+        export const $gtype: GObject.GType<VectorValueType>;
+    }
+
+    /**
+     * Type of a {@link VectorValue}.
+     * @gir-type Enum
+     * @since 1.6
+     */
+    enum VectorValueType {
+        /**
+         * Null value
+         */
+        NULL,
+        /**
+         * Number value
+         */
+        NUMBER,
+        /**
+         * Boolean value
+         */
+        BOOLEAN,
+        /**
+         * String value
+         */
+        STRING,
+        /**
+         * Color value
+         */
+        COLOR,
+        /**
+         * Array value
+         */
+        ARRAY,
+        /**
+         * Resolved image value
+         */
+        RESOLVED_IMAGE,
+        /**
+         * Formatted string value
+         */
+        FORMATTED_STRING,
+        /**
+         * Collator value
+         */
+        COLLATOR,
+    }
+
+    /**
+     * The major version of libshumate (1, if `SHUMATE_VERSION` is 1.2.3)
      */
     const MAJOR_VERSION: number;
     /**
@@ -288,11 +359,11 @@ export namespace Shumate {
      */
     const MAX_LONGITUDE: number;
     /**
-     * The micro version of libshumate (3, if %SHUMATE_VERSION is 1.2.3)
+     * The micro version of libshumate (3, if `SHUMATE_VERSION` is 1.2.3)
      */
     const MICRO_VERSION: number;
     /**
-     * The minor version of libshumate (2, if %SHUMATE_VERSION is 1.2.3)
+     * The minor version of libshumate (2, if `SHUMATE_VERSION` is 1.2.3)
      */
     const MINOR_VERSION: number;
     /**
@@ -304,8 +375,8 @@ export namespace Shumate {
      */
     const MIN_LONGITUDE: number;
     /**
-     * Gets the #ShumateFileCache error quark.
-     * @returns a #GQuark
+     * Gets the {@link Shumate.FileCache} error quark.
+     * @returns a {@link GLib.Quark}
      */
     function file_cache_error_quark(): GLib.Quark;
     /**
@@ -319,15 +390,21 @@ export namespace Shumate {
      * Sets the user agent that libshumate uses for all requests.
      *
      * This API is not thread-safe and should only be called from the main thread.
-     * @param new_user_agent the new user agent, or %NULL to reset to the default
+     * @param new_user_agent the new user agent, or `null` to reset to the default
      */
     function set_user_agent(new_user_agent?: string | null): void;
+    /**
+     * @returns a {@link GLib.Quark}
+     */
     function style_error_quark(): GLib.Quark;
     /**
-     * Gets the #ShumateTileDownloader error quark.
-     * @returns a #GQuark
+     * Gets the {@link Shumate.TileDownloader} error quark.
+     * @returns a {@link GLib.Quark}
      */
     function tile_downloader_error_quark(): GLib.Quark;
+    /**
+     * @gir-type Callback
+     */
     interface VectorSpriteFallbackFunc {
         (sprite_sheet: VectorSpriteSheet, name: string, scale: number): VectorSprite | null;
     }
@@ -396,8 +473,9 @@ export namespace Shumate {
      * ├──── image
      * ```
      *
-     * `ShumateCompass` uses a single CSS node with name map-compass. It also uses an
+     * {@link Shumate.Compass} uses a single CSS node with name map-compass. It also uses an
      * image named "map-compass".
+     * @gir-type Class
      */
     class Compass extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Compass>;
@@ -429,16 +507,19 @@ export namespace Shumate {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Compass.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Compass.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Compass.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Compass.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Compass.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Compass.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -449,32 +530,30 @@ export namespace Shumate {
 
         /**
          * Gets the viewport used by the compass.
-         * @returns The #ShumateViewport used by the compass
+         * @returns The {@link Shumate.Viewport} used by the compass
          */
         get_viewport(): Viewport | null;
         /**
          * Sets the compass viewport.
-         * @param viewport a [class@Viewport]
+         * @param viewport a {@link Viewport}
          */
         set_viewport(viewport?: Viewport | null): void;
-
-        // Inherited properties
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
         set accessible_role(val: Gtk.AccessibleRole);
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
         set accessibleRole(val: Gtk.AccessibleRole);
-
-        // Inherited methods
         /**
          * Requests the user's screen reader to announce the given message.
          *
@@ -489,6 +568,17 @@ export namespace Shumate {
          * @param priority the priority of the announcement
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
+        /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @returns the accessible identifier
+         */
+        get_accessible_id(): string | null;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -509,7 +599,7 @@ export namespace Shumate {
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
@@ -528,9 +618,9 @@ export namespace Shumate {
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
          */
@@ -556,7 +646,7 @@ export namespace Shumate {
          * This function is meant to be used by accessible implementations that are
          * not part of the widget hierarchy, and but act as a logical bridge between
          * widgets. For instance, if a widget creates an object that holds metadata
-         * for each child, and you want that object to implement the `GtkAccessible`
+         * for each child, and you want that object to implement the {@link Gtk.Accessible}
          * interface, you will use this function to ensure that the parent of each
          * child widget is the metadata object, and the parent of each metadata
          * object is the container widget.
@@ -575,7 +665,7 @@ export namespace Shumate {
         /**
          * Informs ATs that the platform state has changed.
          *
-         * This function should be used by `GtkAccessible` implementations that
+         * This function should be used by {@link Gtk.Accessible} implementations that
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
@@ -584,7 +674,7 @@ export namespace Shumate {
         /**
          * Updates an array of accessible properties.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * property change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -595,7 +685,7 @@ export namespace Shumate {
         /**
          * Updates an array of accessible relations.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * relation change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -606,7 +696,7 @@ export namespace Shumate {
         /**
          * Updates an array of accessible states.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * state change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -615,44 +705,61 @@ export namespace Shumate {
          */
         update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
         /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @virtual
+         */
+        vfunc_get_accessible_id(): string | null;
+        /**
          * Retrieves the accessible parent for an accessible object.
          *
          * This function returns `NULL` for top level widgets.
+         * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
         /**
          * Retrieves the implementation for the given accessible object.
+         * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
         /**
          * Gets the ID of the `buildable` object.
          *
-         * `GtkBuilder` sets the name based on the ID attribute
+         * {@link Gtk.Builder} sets the name based on the ID attribute
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
@@ -660,18 +767,20 @@ export namespace Shumate {
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param child child to add
-         * @param type kind of child or %NULL
+         * @param type kind of child or `null`
+         * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
         /**
-         * Similar to gtk_buildable_parser_finished() but is
+         * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
-         * @param builder a `GtkBuilder`
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder}
+         * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @virtual
          */
         vfunc_custom_finished(
             builder: Gtk.Builder,
@@ -682,10 +791,11 @@ export namespace Shumate {
         /**
          * Called at the end of each custom element handled by
          * the buildable.
-         * @param builder `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @virtual
          */
         vfunc_custom_tag_end(
             builder: Gtk.Builder,
@@ -695,9 +805,10 @@ export namespace Shumate {
         ): void;
         /**
          * Called for each unknown element under `<child>`.
-         * @param builder a `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @virtual
          */
         vfunc_custom_tag_start(
             builder: Gtk.Builder,
@@ -707,39 +818,44 @@ export namespace Shumate {
         /**
          * The getter corresponding to `set_id`. Implement this
          *   if you implement `set_id`.
+         * @virtual
          */
         vfunc_get_id(): string;
         /**
          * Retrieves the internal child called `childname` of the `buildable` object.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
         /**
          * Called when a builder finishes the parsing
          *  of a UI definition. It is normally not necessary to implement this,
-         *  unless you need to perform special cleanup actions. `GtkWindow` sets
-         *  the `GtkWidget:visible` property here.
+         *  unless you need to perform special cleanup actions. {@link Gtk.Window} sets
+         *  the {@link Gtk.Widget.visible} property here.
          * @param builder
+         * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
         /**
          * Sets a property of a buildable object.
-         *  It is normally not necessary to implement this, g_object_set_property()
-         *  is used by default. `GtkWindow` implements this to delay showing itself
-         *  (i.e. setting the [property`Gtk`.Widget:visible] property) until the whole
+         *  It is normally not necessary to implement this, `g_object_set_property()`
+         *  is used by default. {@link Gtk.Window} implements this to delay showing itself
+         *  (i.e. setting the {@link Gtk.Widget.visible} property) until the whole
          *  interface is created.
          * @param builder
          * @param name
          * @param value
+         * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
         /**
-         * Stores the id attribute given in the `GtkBuilder` UI definition.
-         *   `GtkWidget` stores the name as object data. Implement this method if your
+         * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
+         *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
          *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id
+         * @virtual
          */
         vfunc_set_id(id: string): void;
         /**
@@ -755,32 +871,32 @@ export namespace Shumate {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -789,39 +905,39 @@ export namespace Shumate {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -832,13 +948,16 @@ export namespace Shumate {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -846,7 +965,7 @@ export namespace Shumate {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -854,9 +973,9 @@ export namespace Shumate {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -876,9 +995,9 @@ export namespace Shumate {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -891,34 +1010,34 @@ export namespace Shumate {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -951,22 +1070,22 @@ export namespace Shumate {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -975,8 +1094,8 @@ export namespace Shumate {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -993,10 +1112,10 @@ export namespace Shumate {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -1011,13 +1130,13 @@ export namespace Shumate {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1048,21 +1167,21 @@ export namespace Shumate {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1072,33 +1191,34 @@ export namespace Shumate {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1107,6 +1227,7 @@ export namespace Shumate {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1115,12 +1236,14 @@ export namespace Shumate {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1129,20 +1252,22 @@ export namespace Shumate {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1154,6 +1279,7 @@ export namespace Shumate {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -1196,7 +1322,8 @@ export namespace Shumate {
     }
 
     /**
-     * A simple object implementing [iface`Location]`.
+     * A simple object implementing {@link Location}.
+     * @gir-type Class
      */
     class Coordinate extends GObject.InitiallyUnowned implements Location {
         static $gtype: GObject.GType<Coordinate>;
@@ -1222,43 +1349,44 @@ export namespace Shumate {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Coordinate.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Coordinate.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Coordinate.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Coordinate.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Coordinate.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Coordinate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited properties
         /**
          * The latitude coordonate in degrees
+         * @category Inherited from Shumate.Location
          */
         get latitude(): number;
         set latitude(val: number);
         /**
          * The longitude coordonate in degrees
+         * @category Inherited from Shumate.Location
          */
         get longitude(): number;
         set longitude(val: number);
-
-        // Inherited methods
         /**
          * Calculates the distance in meters between two locations.
          *
          * This function uses the great-circle distance formula, which assumes
          * Earth is a perfect sphere. This limits the accuracy of the result,
          * but is good enough for most purposes.
-         * @param other a [iface@Location]
-         * @returns the distance in meters between @self and @other
+         * @param other a {@link Location}
+         * @returns the distance in meters between `self` and `other`
          */
         distance(other: Location): number;
         /**
@@ -1279,16 +1407,19 @@ export namespace Shumate {
         set_location(latitude: number, longitude: number): void;
         /**
          * Gets the latitude coordinate in degrees.
+         * @virtual
          */
         vfunc_get_latitude(): number;
         /**
          * Gets the longitude coordinate in degrees.
+         * @virtual
          */
         vfunc_get_longitude(): number;
         /**
          * Sets the coordinates of the location
          * @param latitude the latitude in degrees
          * @param longitude the longitude in degrees
+         * @virtual
          */
         vfunc_set_location(latitude: number, longitude: number): void;
         /**
@@ -1304,32 +1435,32 @@ export namespace Shumate {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -1338,39 +1469,39 @@ export namespace Shumate {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -1381,13 +1512,16 @@ export namespace Shumate {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -1395,7 +1529,7 @@ export namespace Shumate {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -1403,9 +1537,9 @@ export namespace Shumate {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -1425,9 +1559,9 @@ export namespace Shumate {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -1440,34 +1574,34 @@ export namespace Shumate {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1500,22 +1634,22 @@ export namespace Shumate {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -1524,8 +1658,8 @@ export namespace Shumate {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -1542,10 +1676,10 @@ export namespace Shumate {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -1560,13 +1694,13 @@ export namespace Shumate {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1597,21 +1731,21 @@ export namespace Shumate {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1621,33 +1755,34 @@ export namespace Shumate {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1656,6 +1791,7 @@ export namespace Shumate {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1664,12 +1800,14 @@ export namespace Shumate {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1678,20 +1816,22 @@ export namespace Shumate {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1703,6 +1843,7 @@ export namespace Shumate {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -1735,6 +1876,13 @@ export namespace Shumate {
     namespace DataSource {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted when data is received for any tile. This includes any intermediate
+             * steps, such as data from the file cache, as well as the final result.
+             * @signal
+             * @deprecated since 1.1: Use {@link DataSource.start_request} and connect to the notify signals of the resulting {@link DataSourceRequest}.
+             * @run-last
+             */
             'received-data': (arg0: number, arg1: number, arg2: number, arg3: GLib.Bytes) => void;
             'notify::max-zoom-level': (pspec: GObject.ParamSpec) => void;
             'notify::min-zoom-level': (pspec: GObject.ParamSpec) => void;
@@ -1751,7 +1899,8 @@ export namespace Shumate {
     }
 
     /**
-     * The base class used to retrieve tiles as [struct`GLib`.Bytes].
+     * The base class used to retrieve tiles as {@link GLib.Bytes}.
+     * @gir-type Class
      */
     abstract class DataSource extends GObject.Object {
         static $gtype: GObject.GType<DataSource>;
@@ -1760,21 +1909,25 @@ export namespace Shumate {
 
         /**
          * The maximum zoom level
+         * @since 1.1
          */
         get max_zoom_level(): number;
         set max_zoom_level(val: number);
         /**
          * The maximum zoom level
+         * @since 1.1
          */
         get maxZoomLevel(): number;
         set maxZoomLevel(val: number);
         /**
          * The minimum zoom level
+         * @since 1.1
          */
         get min_zoom_level(): number;
         set min_zoom_level(val: number);
         /**
          * The minimum zoom level
+         * @since 1.1
          */
         get minZoomLevel(): number;
         set minZoomLevel(val: number);
@@ -1796,16 +1949,19 @@ export namespace Shumate {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DataSource.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DataSource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DataSource.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DataSource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DataSource.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DataSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1818,14 +1974,15 @@ export namespace Shumate {
          * Gets the data for the tile at the given coordinates.
          *
          * Some data sources may return data multiple times. For example,
-         * [class`TileDownloader]` may return data from a cache, then return updated
-         * data from the network. [signal`ShumateDataSource:`:received-data] is emitted
+         * {@link TileDownloader} may return data from a cache, then return updated
+         * data from the network. `Shumate.DataSource::received-data` is emitted
          * each time data is received, then `callback` is called after the last update.
          * @param x the X coordinate to fetch
          * @param y the Y coordinate to fetch
          * @param zoom_level the Z coordinate to fetch
-         * @param cancellable a #GCancellable
-         * @param callback a #GAsyncReadyCallback to execute upon completion
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
+         * @virtual
          */
         vfunc_get_tile_data_async(
             x: number,
@@ -1836,8 +1993,9 @@ export namespace Shumate {
         ): void;
         /**
          * Gets the final result of a request started with
-         * shumate_data_source_get_tile_data_async().
-         * @param result a #GAsyncResult provided to callback
+         * `shumate_data_source_get_tile_data_async()`.
+         * @param result a {@link Gio.AsyncResult} provided to callback
+         * @virtual
          */
         vfunc_get_tile_data_finish(result: Gio.AsyncResult): GLib.Bytes | null;
         /**
@@ -1846,6 +2004,7 @@ export namespace Shumate {
          * @param y Y coordinate to request
          * @param zoom_level zoom level to request
          * @param cancellable for cancelling the request
+         * @virtual
          */
         vfunc_start_request(
             x: number,
@@ -1870,13 +2029,13 @@ export namespace Shumate {
          * Gets the data for the tile at the given coordinates.
          *
          * Some data sources may return data multiple times. For example,
-         * [class`TileDownloader]` may return data from a cache, then return updated
-         * data from the network. [signal`ShumateDataSource:`:received-data] is emitted
+         * {@link TileDownloader} may return data from a cache, then return updated
+         * data from the network. `Shumate.DataSource::received-data` is emitted
          * each time data is received, then `callback` is called after the last update.
          * @param x the X coordinate to fetch
          * @param y the Y coordinate to fetch
          * @param zoom_level the Z coordinate to fetch
-         * @param cancellable a #GCancellable
+         * @param cancellable a {@link Gio.Cancellable}
          */
         get_tile_data_async(
             x: number,
@@ -1888,14 +2047,14 @@ export namespace Shumate {
          * Gets the data for the tile at the given coordinates.
          *
          * Some data sources may return data multiple times. For example,
-         * [class`TileDownloader]` may return data from a cache, then return updated
-         * data from the network. [signal`ShumateDataSource:`:received-data] is emitted
+         * {@link TileDownloader} may return data from a cache, then return updated
+         * data from the network. `Shumate.DataSource::received-data` is emitted
          * each time data is received, then `callback` is called after the last update.
          * @param x the X coordinate to fetch
          * @param y the Y coordinate to fetch
          * @param zoom_level the Z coordinate to fetch
-         * @param cancellable a #GCancellable
-         * @param callback a #GAsyncReadyCallback to execute upon completion
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
         get_tile_data_async(
             x: number,
@@ -1908,14 +2067,14 @@ export namespace Shumate {
          * Gets the data for the tile at the given coordinates.
          *
          * Some data sources may return data multiple times. For example,
-         * [class`TileDownloader]` may return data from a cache, then return updated
-         * data from the network. [signal`ShumateDataSource:`:received-data] is emitted
+         * {@link TileDownloader} may return data from a cache, then return updated
+         * data from the network. `Shumate.DataSource::received-data` is emitted
          * each time data is received, then `callback` is called after the last update.
          * @param x the X coordinate to fetch
          * @param y the Y coordinate to fetch
          * @param zoom_level the Z coordinate to fetch
-         * @param cancellable a #GCancellable
-         * @param callback a #GAsyncReadyCallback to execute upon completion
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
         get_tile_data_async(
             x: number,
@@ -1926,9 +2085,9 @@ export namespace Shumate {
         ): globalThis.Promise<GLib.Bytes | null> | void;
         /**
          * Gets the final result of a request started with
-         * shumate_data_source_get_tile_data_async().
-         * @param result a #GAsyncResult provided to callback
-         * @returns The requested data, or %NULL if an error occurred
+         * `shumate_data_source_get_tile_data_async()`.
+         * @param result a {@link Gio.AsyncResult} provided to callback
+         * @returns The requested data, or `null` if an error occurred
          */
         get_tile_data_finish(result: Gio.AsyncResult): GLib.Bytes | null;
         /**
@@ -1947,7 +2106,7 @@ export namespace Shumate {
          * @param y Y coordinate to request
          * @param zoom_level zoom level to request
          * @param cancellable for cancelling the request
-         * @returns a [class@DataSourceRequest] object for tracking the request.
+         * @returns a {@link DataSourceRequest} object for tracking the request.
          */
         start_request(
             x: number,
@@ -1982,24 +2141,26 @@ export namespace Shumate {
     }
 
     /**
-     * Represents a request to a [class`DataSource]` for a tile.
+     * Represents a request to a {@link DataSource} for a tile.
      *
      * Data sources can return a tile multiple times. For example, a
-     * [class`TileDownloader]` may return cached data first, then later return data
+     * {@link TileDownloader} may return cached data first, then later return data
      * from a network service when it arrives. This allows the map to be rendered
      * as quickly as possible without waiting for the network unnecessarily.
      *
      * Conventional async/finish method pairs don't support multiple returns.
-     * Instead, [method`DataSource`.start_request] is available, which returns a
-     * [class`DataSourceRequest]` whose properties, [property`DataSourceRequest:`data]
-     * and [property`DataSourceRequest:`error], update as data becomes available.
-     * The [signal`GObject`.Object::notify] signal can be used to watch for these
+     * Instead, {@link DataSource.start_request} is available, which returns a
+     * {@link DataSourceRequest} whose properties, {@link DataSourceRequest.data}
+     * and {@link DataSourceRequest.error}, update as data becomes available.
+     * The `GObject.Object::notify` signal can be used to watch for these
      * changes. When the request is done and no more data will be returned,
-     * [property`DataSourceRequest:`completed] is set to %TRUE.
+     * {@link DataSourceRequest.completed} is set to `true`.
      *
-     * [class`DataSource]` implementations can use a subclass of
-     * [class`DataSourceRequest]`, but the base class should be sufficient in most
+     * {@link DataSource} implementations can use a subclass of
+     * {@link DataSourceRequest}, but the base class should be sufficient in most
      * cases.
+     * @gir-type Class
+     * @since 1.1
      */
     class DataSourceRequest extends GObject.Object {
         static $gtype: GObject.GType<DataSourceRequest>;
@@ -2007,34 +2168,48 @@ export namespace Shumate {
         // Properties
 
         /**
-         * %TRUE if the request has been completed, otherwise %FALSE. A completed
+         * `true` if the request has been completed, otherwise `false`. A completed
          * request will not receive further updates to either
-         * [property`DataSourceRequest:`data] or [property`DataSourceRequest:`error].
+         * {@link DataSourceRequest.data} or {@link DataSourceRequest.error}.
+         * @since 1.1
+         * @read-only
          */
         get completed(): boolean;
         /**
          * The most recent data for the tile, if available. If an error is emitted,
-         * this will be set to %NULL.
+         * this will be set to `null`.
+         * @since 1.1
+         * @read-only
          */
         get data(): GLib.Bytes;
         /**
          * The error that occurred during the request, if any.
+         * @since 1.1
+         * @read-only
          */
         get error(): GLib.Error;
         /**
          * The X coordinate of the requested tile.
+         * @since 1.1
+         * @construct-only
          */
         get x(): number;
         /**
          * The Y coordinate of the requested tile.
+         * @since 1.1
+         * @construct-only
          */
         get y(): number;
         /**
          * The zoom level of the requested tile.
+         * @since 1.1
+         * @construct-only
          */
         get zoom_level(): number;
         /**
          * The zoom level of the requested tile.
+         * @since 1.1
+         * @construct-only
          */
         get zoomLevel(): number;
 
@@ -2057,16 +2232,19 @@ export namespace Shumate {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DataSourceRequest.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DataSourceRequest.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DataSourceRequest.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DataSourceRequest.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DataSourceRequest.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DataSourceRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2079,18 +2257,18 @@ export namespace Shumate {
          * Marks the request as complete. No more data or errors may be emitted.
          *
          * This can only be called if data has been emitted. If there is no data,
-         * use [method`DataSourceRequest`.emit_error] instead, which will automatically
+         * use {@link DataSourceRequest.emit_error} instead, which will automatically
          * complete the request.
          */
         complete(): void;
         /**
          * Emits tile data as a response to the request. This sets the
-         * [property`DataSourceRequest:`data] property.
+         * {@link DataSourceRequest.data} property.
          *
-         * If `complete` is %TRUE, then [property`DataSourceRequest:`completed] is set to
-         * %TRUE as well.
+         * If `complete` is `true`, then {@link DataSourceRequest.completed} is set to
+         * `true` as well.
          * @param data the data to emit
-         * @param complete %TRUE to also complete the request, %FALSE otherwise
+         * @param complete `true` to also complete the request, `false` otherwise
          */
         emit_data(data: GLib.Bytes | Uint8Array, complete: boolean): void;
         /**
@@ -2098,7 +2276,7 @@ export namespace Shumate {
          * so no more data or errors can be emitted after this. Non-fatal errors should
          * not be reported.
          *
-         * If [property`DataSourceRequest:`data] was previously set, it will be cleared.
+         * If {@link DataSourceRequest.data} was previously set, it will be cleared.
          * @param error an error
          */
         emit_error(error: GLib.Error): void;
@@ -2107,6 +2285,9 @@ export namespace Shumate {
          * @returns The latest data, if any.
          */
         get_data(): GLib.Bytes | null;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.get_data
         get_data(...args: never[]): any;
         /**
@@ -2132,7 +2313,7 @@ export namespace Shumate {
         /**
          * Gets whether the request has been completed. Completed requests will not
          * receive new data or errors.
-         * @returns %TRUE if the request is completed, otherwise %FALSE
+         * @returns `true` if the request is completed, otherwise `false`
          */
         is_completed(): boolean;
     }
@@ -2159,7 +2340,7 @@ export namespace Shumate {
 
     /**
      * A cache that stores and retrieves tiles from the file system. It is mainly
-     * used by [class`TileDownloader]`, but can also be used by custom data
+     * used by {@link TileDownloader}, but can also be used by custom data
      * sources.
      *
      * The cache will be filled up to a certain size limit. When this limit is
@@ -2171,6 +2352,7 @@ export namespace Shumate {
      * The cache can optionally store an ETag string with each tile. This is
      * useful to avoid redownloading old tiles that haven't changed (for example,
      * using the HTTP If-None-Match header).
+     * @gir-type Class
      */
     class FileCache extends GObject.Object {
         static $gtype: GObject.GType<FileCache>;
@@ -2179,33 +2361,37 @@ export namespace Shumate {
 
         /**
          * The directory where the tile database is stored.
+         * @construct-only
          */
         get cache_dir(): string;
         /**
          * The directory where the tile database is stored.
+         * @construct-only
          */
         get cacheDir(): string;
         /**
          * The key used to store and retrieve tiles from the cache. Different keys
          * can be used to store multiple tilesets in the same cache directory.
+         * @construct-only
          */
         get cache_key(): string;
         /**
          * The key used to store and retrieve tiles from the cache. Different keys
          * can be used to store multiple tilesets in the same cache directory.
+         * @construct-only
          */
         get cacheKey(): string;
         /**
          * The cache size limit in bytes.
          *
-         * Note: this new value will not be applied until you call shumate_file_cache_purge()
+         * Note: this new value will not be applied until you call `shumate_file_cache_purge()`
          */
         get size_limit(): number;
         set size_limit(val: number);
         /**
          * The cache size limit in bytes.
          *
-         * Note: this new value will not be applied until you call shumate_file_cache_purge()
+         * Note: this new value will not be applied until you call `shumate_file_cache_purge()`
          */
         get sizeLimit(): number;
         set sizeLimit(val: number);
@@ -2229,16 +2415,19 @@ export namespace Shumate {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FileCache.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileCache.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FileCache.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileCache.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FileCache.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FileCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2268,7 +2457,7 @@ export namespace Shumate {
          * @param x the X coordinate of the tile
          * @param y the Y coordinate of the tile
          * @param zoom_level the zoom level of the tile
-         * @param cancellable a #GCancellable
+         * @param cancellable a {@link Gio.Cancellable}
          */
         get_tile_async(
             x: number,
@@ -2281,8 +2470,8 @@ export namespace Shumate {
          * @param x the X coordinate of the tile
          * @param y the Y coordinate of the tile
          * @param zoom_level the zoom level of the tile
-         * @param cancellable a #GCancellable
-         * @param callback a #GAsyncReadyCallback to execute upon completion
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
         get_tile_async(
             x: number,
@@ -2296,8 +2485,8 @@ export namespace Shumate {
          * @param x the X coordinate of the tile
          * @param y the Y coordinate of the tile
          * @param zoom_level the zoom level of the tile
-         * @param cancellable a #GCancellable
-         * @param callback a #GAsyncReadyCallback to execute upon completion
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
         get_tile_async(
             x: number,
@@ -2307,15 +2496,15 @@ export namespace Shumate {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[GLib.Bytes, string, GLib.DateTime | null]> | void;
         /**
-         * Gets the tile data from a completed shumate_file_cache_get_tile_async()
+         * Gets the tile data from a completed `shumate_file_cache_get_tile_async()`
          * operation.
          *
          * `modtime` will be set to the time the tile was added to the cache, or the
          * latest time it was confirmed to be up to date.
          *
          * `etag` will be set to the data's ETag, if present.
-         * @param result a #GAsyncResult provided to callback
-         * @returns a #GBytes containing the tile data, or %NULL if the tile was not in the cache or an error occurred
+         * @param result a {@link Gio.AsyncResult} provided to callback
+         * @returns a {@link GLib.Bytes} containing the tile data, or `null` if the tile was not in the cache or an error occurred
          */
         get_tile_finish(result: Gio.AsyncResult): [GLib.Bytes, string, GLib.DateTime | null];
         /**
@@ -2331,21 +2520,21 @@ export namespace Shumate {
         /**
          * Removes less used tiles from the cache, if necessary, until it fits in
          * the size limit.
-         * @param cancellable a #GCancellable
+         * @param cancellable a {@link Gio.Cancellable}
          */
         purge_cache_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Removes less used tiles from the cache, if necessary, until it fits in
          * the size limit.
-         * @param cancellable a #GCancellable
-         * @param callback a #GAsyncReadyCallback to execute upon completion
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
         purge_cache_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Removes less used tiles from the cache, if necessary, until it fits in
          * the size limit.
-         * @param cancellable a #GCancellable
-         * @param callback a #GAsyncReadyCallback to execute upon completion
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
         purge_cache_async(
             cancellable?: Gio.Cancellable | null,
@@ -2353,9 +2542,9 @@ export namespace Shumate {
         ): globalThis.Promise<boolean> | void;
         /**
          * Gets the result of an async operation started using
-         * shumate_file_cache_purge_cache_async().
-         * @param result a #GAsyncResult provided to callback
-         * @returns %TRUE if any tiles were removed, otherwise %FALSE
+         * `shumate_file_cache_purge_cache_async()`.
+         * @param result a {@link Gio.AsyncResult} provided to callback
+         * @returns `true` if any tiles were removed, otherwise `false`
          */
         purge_cache_finish(result: Gio.AsyncResult): boolean;
         /**
@@ -2368,9 +2557,9 @@ export namespace Shumate {
          * @param x the X coordinate of the tile
          * @param y the Y coordinate of the tile
          * @param zoom_level the zoom level of the tile
-         * @param bytes a #GBytes
-         * @param etag an ETag string, or %NULL
-         * @param cancellable a #GCancellable
+         * @param bytes a {@link GLib.Bytes}
+         * @param etag an ETag string, or `null`
+         * @param cancellable a {@link Gio.Cancellable}
          */
         store_tile_async(
             x: number,
@@ -2385,10 +2574,10 @@ export namespace Shumate {
          * @param x the X coordinate of the tile
          * @param y the Y coordinate of the tile
          * @param zoom_level the zoom level of the tile
-         * @param bytes a #GBytes
-         * @param etag an ETag string, or %NULL
-         * @param cancellable a #GCancellable
-         * @param callback a #GAsyncReadyCallback to execute upon completion
+         * @param bytes a {@link GLib.Bytes}
+         * @param etag an ETag string, or `null`
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
         store_tile_async(
             x: number,
@@ -2404,10 +2593,10 @@ export namespace Shumate {
          * @param x the X coordinate of the tile
          * @param y the Y coordinate of the tile
          * @param zoom_level the zoom level of the tile
-         * @param bytes a #GBytes
-         * @param etag an ETag string, or %NULL
-         * @param cancellable a #GCancellable
-         * @param callback a #GAsyncReadyCallback to execute upon completion
+         * @param bytes a {@link GLib.Bytes}
+         * @param etag an ETag string, or `null`
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
         store_tile_async(
             x: number,
@@ -2419,10 +2608,10 @@ export namespace Shumate {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Gets the success value of a completed shumate_file_cache_store_tile_async()
+         * Gets the success value of a completed `shumate_file_cache_store_tile_async()`
          * operation.
-         * @param result a #GAsyncResult provided to callback
-         * @returns %TRUE if the operation was successful, otherwise %FALSE
+         * @param result a {@link Gio.AsyncResult} provided to callback
+         * @returns `true` if the operation was successful, otherwise `false`
          */
         store_tile_finish(result: Gio.AsyncResult): boolean;
     }
@@ -2486,14 +2675,18 @@ export namespace Shumate {
      * class and implement its virtual methods.
      *
      * You can use the same layer to display many types of maps.  In Shumate they
-     * are called map sources.  You can change the [property`MapLayer:`map-source]
+     * are called map sources.  You can change the {@link MapLayer.map_source}
      * property at any time to replace the current displayed map.
+     * @gir-type Class
      */
     abstract class Layer extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Layer>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get viewport(): Viewport;
 
         /**
@@ -2513,16 +2706,19 @@ export namespace Shumate {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Layer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Layer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Layer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Layer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Layer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Layer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2534,34 +2730,33 @@ export namespace Shumate {
         /**
          * Returns a string to show in the debug overlay, which can be
          * enabled in the GTK inspector.
+         * @virtual
          */
         vfunc_get_debug_text(): string | null;
 
         // Methods
 
         /**
-         * Gets the #ShumateViewport used by this layer.
-         * @returns The #ShumateViewport.
+         * Gets the {@link Shumate.Viewport} used by this layer.
+         * @returns The {@link Shumate.Viewport}.
          */
         get_viewport(): Viewport;
-
-        // Inherited properties
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
         set accessible_role(val: Gtk.AccessibleRole);
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
         set accessibleRole(val: Gtk.AccessibleRole);
-
-        // Inherited methods
         /**
          * Requests the user's screen reader to announce the given message.
          *
@@ -2576,6 +2771,17 @@ export namespace Shumate {
          * @param priority the priority of the announcement
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
+        /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @returns the accessible identifier
+         */
+        get_accessible_id(): string | null;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -2596,7 +2802,7 @@ export namespace Shumate {
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
@@ -2615,9 +2821,9 @@ export namespace Shumate {
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
          */
@@ -2643,7 +2849,7 @@ export namespace Shumate {
          * This function is meant to be used by accessible implementations that are
          * not part of the widget hierarchy, and but act as a logical bridge between
          * widgets. For instance, if a widget creates an object that holds metadata
-         * for each child, and you want that object to implement the `GtkAccessible`
+         * for each child, and you want that object to implement the {@link Gtk.Accessible}
          * interface, you will use this function to ensure that the parent of each
          * child widget is the metadata object, and the parent of each metadata
          * object is the container widget.
@@ -2662,7 +2868,7 @@ export namespace Shumate {
         /**
          * Informs ATs that the platform state has changed.
          *
-         * This function should be used by `GtkAccessible` implementations that
+         * This function should be used by {@link Gtk.Accessible} implementations that
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
@@ -2671,7 +2877,7 @@ export namespace Shumate {
         /**
          * Updates an array of accessible properties.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * property change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -2682,7 +2888,7 @@ export namespace Shumate {
         /**
          * Updates an array of accessible relations.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * relation change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -2693,7 +2899,7 @@ export namespace Shumate {
         /**
          * Updates an array of accessible states.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * state change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -2702,44 +2908,61 @@ export namespace Shumate {
          */
         update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
         /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @virtual
+         */
+        vfunc_get_accessible_id(): string | null;
+        /**
          * Retrieves the accessible parent for an accessible object.
          *
          * This function returns `NULL` for top level widgets.
+         * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
         /**
          * Retrieves the implementation for the given accessible object.
+         * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
         /**
          * Gets the ID of the `buildable` object.
          *
-         * `GtkBuilder` sets the name based on the ID attribute
+         * {@link Gtk.Builder} sets the name based on the ID attribute
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
@@ -2747,18 +2970,20 @@ export namespace Shumate {
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param child child to add
-         * @param type kind of child or %NULL
+         * @param type kind of child or `null`
+         * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
         /**
-         * Similar to gtk_buildable_parser_finished() but is
+         * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
-         * @param builder a `GtkBuilder`
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder}
+         * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @virtual
          */
         vfunc_custom_finished(
             builder: Gtk.Builder,
@@ -2769,10 +2994,11 @@ export namespace Shumate {
         /**
          * Called at the end of each custom element handled by
          * the buildable.
-         * @param builder `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @virtual
          */
         vfunc_custom_tag_end(
             builder: Gtk.Builder,
@@ -2782,9 +3008,10 @@ export namespace Shumate {
         ): void;
         /**
          * Called for each unknown element under `<child>`.
-         * @param builder a `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @virtual
          */
         vfunc_custom_tag_start(
             builder: Gtk.Builder,
@@ -2794,39 +3021,44 @@ export namespace Shumate {
         /**
          * The getter corresponding to `set_id`. Implement this
          *   if you implement `set_id`.
+         * @virtual
          */
         vfunc_get_id(): string;
         /**
          * Retrieves the internal child called `childname` of the `buildable` object.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
         /**
          * Called when a builder finishes the parsing
          *  of a UI definition. It is normally not necessary to implement this,
-         *  unless you need to perform special cleanup actions. `GtkWindow` sets
-         *  the `GtkWidget:visible` property here.
+         *  unless you need to perform special cleanup actions. {@link Gtk.Window} sets
+         *  the {@link Gtk.Widget.visible} property here.
          * @param builder
+         * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
         /**
          * Sets a property of a buildable object.
-         *  It is normally not necessary to implement this, g_object_set_property()
-         *  is used by default. `GtkWindow` implements this to delay showing itself
-         *  (i.e. setting the [property`Gtk`.Widget:visible] property) until the whole
+         *  It is normally not necessary to implement this, `g_object_set_property()`
+         *  is used by default. {@link Gtk.Window} implements this to delay showing itself
+         *  (i.e. setting the {@link Gtk.Widget.visible} property) until the whole
          *  interface is created.
          * @param builder
          * @param name
          * @param value
+         * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
         /**
-         * Stores the id attribute given in the `GtkBuilder` UI definition.
-         *   `GtkWidget` stores the name as object data. Implement this method if your
+         * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
+         *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
          *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id
+         * @virtual
          */
         vfunc_set_id(id: string): void;
         /**
@@ -2842,32 +3074,32 @@ export namespace Shumate {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -2876,39 +3108,39 @@ export namespace Shumate {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -2919,13 +3151,16 @@ export namespace Shumate {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -2933,7 +3168,7 @@ export namespace Shumate {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -2941,9 +3176,9 @@ export namespace Shumate {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -2963,9 +3198,9 @@ export namespace Shumate {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -2978,34 +3213,34 @@ export namespace Shumate {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -3038,22 +3273,22 @@ export namespace Shumate {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -3062,8 +3297,8 @@ export namespace Shumate {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -3080,10 +3315,10 @@ export namespace Shumate {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -3098,13 +3333,13 @@ export namespace Shumate {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -3135,21 +3370,21 @@ export namespace Shumate {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -3159,33 +3394,34 @@ export namespace Shumate {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -3194,6 +3430,7 @@ export namespace Shumate {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -3202,12 +3439,14 @@ export namespace Shumate {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -3216,20 +3455,22 @@ export namespace Shumate {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -3241,6 +3482,7 @@ export namespace Shumate {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -3329,6 +3571,7 @@ export namespace Shumate {
 
     /**
      * A widget that displays license text.
+     * @gir-type Class
      */
     class License extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<License>;
@@ -3374,16 +3617,19 @@ export namespace Shumate {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof License.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, License.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof License.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, License.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof License.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<License.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3392,6 +3638,9 @@ export namespace Shumate {
 
         // Methods
 
+        /**
+         * @param map_source
+         */
         append_map_source(map_source: MapSource): void;
         /**
          * Gets the additional license text.
@@ -3403,7 +3652,13 @@ export namespace Shumate {
          * @returns the license's text horizontal alignment.
          */
         get_xalign(): number;
+        /**
+         * @param map_source
+         */
         prepend_map_source(map_source: MapSource): void;
+        /**
+         * @param map_source
+         */
         remove_map_source(map_source: MapSource): void;
         /**
          * Show the additional license text on the map view.  The text will preceed the
@@ -3416,24 +3671,22 @@ export namespace Shumate {
          * @param xalign The license's text horizontal alignment
          */
         set_xalign(xalign: number): void;
-
-        // Inherited properties
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
         set accessible_role(val: Gtk.AccessibleRole);
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
         set accessibleRole(val: Gtk.AccessibleRole);
-
-        // Inherited methods
         /**
          * Requests the user's screen reader to announce the given message.
          *
@@ -3448,6 +3701,17 @@ export namespace Shumate {
          * @param priority the priority of the announcement
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
+        /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @returns the accessible identifier
+         */
+        get_accessible_id(): string | null;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -3468,7 +3732,7 @@ export namespace Shumate {
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
@@ -3487,9 +3751,9 @@ export namespace Shumate {
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
          */
@@ -3515,7 +3779,7 @@ export namespace Shumate {
          * This function is meant to be used by accessible implementations that are
          * not part of the widget hierarchy, and but act as a logical bridge between
          * widgets. For instance, if a widget creates an object that holds metadata
-         * for each child, and you want that object to implement the `GtkAccessible`
+         * for each child, and you want that object to implement the {@link Gtk.Accessible}
          * interface, you will use this function to ensure that the parent of each
          * child widget is the metadata object, and the parent of each metadata
          * object is the container widget.
@@ -3534,7 +3798,7 @@ export namespace Shumate {
         /**
          * Informs ATs that the platform state has changed.
          *
-         * This function should be used by `GtkAccessible` implementations that
+         * This function should be used by {@link Gtk.Accessible} implementations that
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
@@ -3543,7 +3807,7 @@ export namespace Shumate {
         /**
          * Updates an array of accessible properties.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * property change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -3554,7 +3818,7 @@ export namespace Shumate {
         /**
          * Updates an array of accessible relations.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * relation change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -3565,7 +3829,7 @@ export namespace Shumate {
         /**
          * Updates an array of accessible states.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * state change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -3574,44 +3838,61 @@ export namespace Shumate {
          */
         update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
         /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @virtual
+         */
+        vfunc_get_accessible_id(): string | null;
+        /**
          * Retrieves the accessible parent for an accessible object.
          *
          * This function returns `NULL` for top level widgets.
+         * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
         /**
          * Retrieves the implementation for the given accessible object.
+         * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
         /**
          * Gets the ID of the `buildable` object.
          *
-         * `GtkBuilder` sets the name based on the ID attribute
+         * {@link Gtk.Builder} sets the name based on the ID attribute
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
@@ -3619,18 +3900,20 @@ export namespace Shumate {
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param child child to add
-         * @param type kind of child or %NULL
+         * @param type kind of child or `null`
+         * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
         /**
-         * Similar to gtk_buildable_parser_finished() but is
+         * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
-         * @param builder a `GtkBuilder`
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder}
+         * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @virtual
          */
         vfunc_custom_finished(
             builder: Gtk.Builder,
@@ -3641,10 +3924,11 @@ export namespace Shumate {
         /**
          * Called at the end of each custom element handled by
          * the buildable.
-         * @param builder `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @virtual
          */
         vfunc_custom_tag_end(
             builder: Gtk.Builder,
@@ -3654,9 +3938,10 @@ export namespace Shumate {
         ): void;
         /**
          * Called for each unknown element under `<child>`.
-         * @param builder a `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @virtual
          */
         vfunc_custom_tag_start(
             builder: Gtk.Builder,
@@ -3666,39 +3951,44 @@ export namespace Shumate {
         /**
          * The getter corresponding to `set_id`. Implement this
          *   if you implement `set_id`.
+         * @virtual
          */
         vfunc_get_id(): string;
         /**
          * Retrieves the internal child called `childname` of the `buildable` object.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
         /**
          * Called when a builder finishes the parsing
          *  of a UI definition. It is normally not necessary to implement this,
-         *  unless you need to perform special cleanup actions. `GtkWindow` sets
-         *  the `GtkWidget:visible` property here.
+         *  unless you need to perform special cleanup actions. {@link Gtk.Window} sets
+         *  the {@link Gtk.Widget.visible} property here.
          * @param builder
+         * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
         /**
          * Sets a property of a buildable object.
-         *  It is normally not necessary to implement this, g_object_set_property()
-         *  is used by default. `GtkWindow` implements this to delay showing itself
-         *  (i.e. setting the [property`Gtk`.Widget:visible] property) until the whole
+         *  It is normally not necessary to implement this, `g_object_set_property()`
+         *  is used by default. {@link Gtk.Window} implements this to delay showing itself
+         *  (i.e. setting the {@link Gtk.Widget.visible} property) until the whole
          *  interface is created.
          * @param builder
          * @param name
          * @param value
+         * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
         /**
-         * Stores the id attribute given in the `GtkBuilder` UI definition.
-         *   `GtkWidget` stores the name as object data. Implement this method if your
+         * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
+         *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
          *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id
+         * @virtual
          */
         vfunc_set_id(id: string): void;
         /**
@@ -3714,32 +4004,32 @@ export namespace Shumate {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -3748,39 +4038,39 @@ export namespace Shumate {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -3791,13 +4081,16 @@ export namespace Shumate {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -3805,7 +4098,7 @@ export namespace Shumate {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -3813,9 +4106,9 @@ export namespace Shumate {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -3835,9 +4128,9 @@ export namespace Shumate {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -3850,34 +4143,34 @@ export namespace Shumate {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -3910,22 +4203,22 @@ export namespace Shumate {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -3934,8 +4227,8 @@ export namespace Shumate {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -3952,10 +4245,10 @@ export namespace Shumate {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -3970,13 +4263,13 @@ export namespace Shumate {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -4007,21 +4300,21 @@ export namespace Shumate {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -4031,33 +4324,34 @@ export namespace Shumate {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -4066,6 +4360,7 @@ export namespace Shumate {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -4074,12 +4369,14 @@ export namespace Shumate {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -4088,20 +4385,22 @@ export namespace Shumate {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -4113,6 +4412,7 @@ export namespace Shumate {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -4145,6 +4445,15 @@ export namespace Shumate {
     namespace Map {
         // Signal signatures
         interface SignalSignatures extends Gtk.Widget.SignalSignatures {
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed': () => void;
             'notify::animate-zoom': (pspec: GObject.ParamSpec) => void;
             'notify::go-to-duration': (pspec: GObject.ParamSpec) => void;
@@ -4187,46 +4496,415 @@ export namespace Shumate {
             'notify::visible': (pspec: GObject.ParamSpec) => void;
             'notify::width-request': (pspec: GObject.ParamSpec) => void;
             'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed::animate-zoom': () => void;
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed::go-to-duration': () => void;
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed::state': () => void;
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed::viewport': () => void;
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed::zoom-on-double-click': () => void;
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed::can-focus': () => void;
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed::can-target': () => void;
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed::css-classes': () => void;
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed::css-name': () => void;
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed::cursor': () => void;
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed::focus-on-click': () => void;
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed::focusable': () => void;
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed::halign': () => void;
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed::has-default': () => void;
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed::has-focus': () => void;
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed::has-tooltip': () => void;
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed::height-request': () => void;
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed::hexpand': () => void;
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed::hexpand-set': () => void;
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed::layout-manager': () => void;
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed::limit-events': () => void;
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed::margin-bottom': () => void;
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed::margin-end': () => void;
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed::margin-start': () => void;
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed::margin-top': () => void;
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed::name': () => void;
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed::opacity': () => void;
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed::overflow': () => void;
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed::parent': () => void;
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed::receives-default': () => void;
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed::root': () => void;
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed::scale-factor': () => void;
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed::sensitive': () => void;
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed::tooltip-markup': () => void;
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed::tooltip-text': () => void;
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed::valign': () => void;
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed::vexpand': () => void;
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed::vexpand-set': () => void;
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed::visible': () => void;
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed::width-request': () => void;
+            /**
+             * The {@link Shumate.Map.SignalSignatures.animation_completed | Shumate.Map::animation-completed} signal is emitted when any animation in the view
+             * ends.  This is a detailed signal.  For example, if you want to be signaled
+             * only for go-to animation, you should connect to
+             * "animation-completed::go-to". And for zoom, connect to "animation-completed::zoom".
+             * @signal
+             * @detailed
+             * @run-last
+             */
             'animation-completed::accessible-role': () => void;
         }
 
@@ -4250,23 +4928,24 @@ export namespace Shumate {
     }
 
     /**
-     * The Map widget is a [class`Gtk`.Widget] that show and allows interaction with
+     * The Map widget is a {@link Gtk.Widget} that show and allows interaction with
      * the user.
      *
      * This is the base widget and doesn't have advanced features. You can check the
-     * [class`Shumate`.SimpleMap] for a ready-to-use widget.
+     * {@link Shumate.SimpleMap} for a ready-to-use widget.
      *
-     * By default, a [class`Shumate`.Viewport] is created and can be accessed with
-     * [method`Shumate`.Map.get_viewport].
+     * By default, a {@link Shumate.Viewport} is created and can be accessed with
+     * {@link Shumate.Map.get_viewport}.
      *
-     * Unless created with [ctor`Shumate`.Map.new_simple], the widget doesn't hold any
-     * layer and won't show anything. A [class`Shumate`.Layer] can be added or removed
-     * using the [method`Shumate`.Map.add_layer] or [method`Shumate`.Map.remove_layer]
+     * Unless created with {@link Shumate.Map.new_simple}, the widget doesn't hold any
+     * layer and won't show anything. A {@link Shumate.Layer} can be added or removed
+     * using the {@link Shumate.Map.add_layer} or {@link Shumate.Map.remove_layer}
      * methods.
      *
      * ## CSS nodes
      *
-     * `ShumateMap` has a single CSS node with the name “map-view”.
+     * {@link Shumate.Map} has a single CSS node with the name “map-view”.
+     * @gir-type Class
      */
     class Map extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Map>;
@@ -4287,7 +4966,7 @@ export namespace Shumate {
          * The duration of an animation when going to a location, in milliseconds.
          * A value of 0 means that the duration is calculated automatically for you.
          *
-         * Please note that animation of #shumate_map_ensure_visible also
+         * Please note that animation of `shumate_map_ensure_visible` also
          * involves a 'go-to' animation.
          */
         get go_to_duration(): number;
@@ -4296,7 +4975,7 @@ export namespace Shumate {
          * The duration of an animation when going to a location, in milliseconds.
          * A value of 0 means that the duration is calculated automatically for you.
          *
-         * Please note that animation of #shumate_map_ensure_visible also
+         * Please note that animation of `shumate_map_ensure_visible` also
          * involves a 'go-to' animation.
          */
         get goToDuration(): number;
@@ -4304,11 +4983,13 @@ export namespace Shumate {
         /**
          * The view's global state. Useful to inform using if the view is busy loading
          * tiles or not.
+         * @read-only
          */
         get state(): State;
         /**
          * The viewport, which contains information about the center, rotation, zoom,
          * etc. of the map.
+         * @read-only
          */
         get viewport(): Viewport;
         /**
@@ -4343,16 +5024,19 @@ export namespace Shumate {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Map.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Map.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Map.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Map.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Map.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Map.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4363,7 +5047,7 @@ export namespace Shumate {
 
         /**
          * Adds a new layer to the view
-         * @param layer a #ShumateLayer
+         * @param layer a {@link Shumate.Layer}
          */
         add_layer(layer: Layer): void;
         /**
@@ -4379,7 +5063,7 @@ export namespace Shumate {
         get_animate_zoom(): boolean;
         /**
          * Get the 'go-to-duration' property.
-         * @returns the animation duration when calling [method@Map.go_to],   in milliseconds.
+         * @returns the animation duration when calling {@link Map.go_to},   in milliseconds.
          */
         get_go_to_duration(): number;
         /**
@@ -4388,8 +5072,8 @@ export namespace Shumate {
          */
         get_state(): State;
         /**
-         * Get the #ShumateViewport used by this view.
-         * @returns the #ShumateViewport
+         * Get the {@link Shumate.Viewport} used by this view.
+         * @returns the {@link Shumate.Viewport}
          */
         get_viewport(): Viewport;
         /**
@@ -4414,7 +5098,7 @@ export namespace Shumate {
         go_to_full(latitude: number, longitude: number, zoom_level: number): void;
         /**
          * Move from the current position to these coordinates and zoom to the given
-         * zoom level. The given duration is used instead of the map's default [property`Map:`go-to-duration].
+         * zoom level. The given duration is used instead of the map's default {@link Map.go_to_duration}.
          * All tiles in the intermediate view WILL be loaded!
          * @param latitude the longitude to center the map at
          * @param longitude the longitude to center the map at
@@ -4423,46 +5107,46 @@ export namespace Shumate {
          */
         go_to_full_with_duration(latitude: number, longitude: number, zoom_level: number, duration_ms: number): void;
         /**
-         * Adds `layer` to `self` above `next_sibling` or, if `next_sibling` is %NULL, at
+         * Adds `layer` to `self` above `next_sibling` or, if `next_sibling` is `null`, at
          * the bottom of the layer list.
-         * @param layer a #ShumateLayer
-         * @param next_sibling a #ShumateLayer that is a child of @self, or %NULL
+         * @param layer a {@link Shumate.Layer}
+         * @param next_sibling a {@link Shumate.Layer} that is a child of `self`, or `null`
          */
         insert_layer_above(layer: Layer, next_sibling?: Layer | null): void;
         /**
-         * Adds `layer` to `self` behind `next_sibling` or, if `next_sibling` is %NULL, at
+         * Adds `layer` to `self` behind `next_sibling` or, if `next_sibling` is `null`, at
          * the top of the layer list.
-         * @param layer a #ShumateLayer
-         * @param next_sibling a #ShumateLayer that is a child of @self, or %NULL
+         * @param layer a {@link Shumate.Layer}
+         * @param next_sibling a {@link Shumate.Layer} that is a child of `self`, or `null`
          */
         insert_layer_behind(layer: Layer, next_sibling?: Layer | null): void;
         /**
          * Removes the given layer from the view
-         * @param layer a #ShumateLayer
+         * @param layer a {@link Shumate.Layer}
          */
         remove_layer(layer: Layer): void;
         /**
          * Should the view animate zoom level changes.
-         * @param value a #gboolean
+         * @param value a `gboolean`
          */
         set_animate_zoom(value: boolean): void;
         /**
-         * Set the duration of the transition of [method`Map`.go_to].
+         * Set the duration of the transition of {@link Map.go_to}.
          * @param duration the animation duration, in milliseconds
          */
         set_go_to_duration(duration: number): void;
         /**
-         * Changes the currently used map source. #g_object_unref() will be called on
+         * Changes the currently used map source. `g_object_unref`() will be called on
          * the previous one.
          *
          * As a side effect, changing the primary map source will also clear all
          * secondary map sources.
-         * @param map_source a #ShumateMapSource
+         * @param map_source a {@link Shumate.MapSource}
          */
         set_map_source(map_source: MapSource): void;
         /**
          * Should the view zoom in and recenter when the user double click on the map.
-         * @param value a #gboolean
+         * @param value a `gboolean`
          */
         set_zoom_on_double_click(value: boolean): void;
         /**
@@ -4471,31 +5155,29 @@ export namespace Shumate {
          */
         stop_go_to(): void;
         /**
-         * Zooms the map in. If [property`Map:`animate-zoom] is `TRUE`, the change will be animated.
+         * Zooms the map in. If {@link Map.animate_zoom} is `TRUE`, the change will be animated.
          */
         zoom_in(): void;
         /**
-         * Zooms the map out. If [property`Map:`animate-zoom] is `TRUE`, the change will be animated.
+         * Zooms the map out. If {@link Map.animate_zoom} is `TRUE`, the change will be animated.
          */
         zoom_out(): void;
-
-        // Inherited properties
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
         set accessible_role(val: Gtk.AccessibleRole);
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
         set accessibleRole(val: Gtk.AccessibleRole);
-
-        // Inherited methods
         /**
          * Requests the user's screen reader to announce the given message.
          *
@@ -4510,6 +5192,17 @@ export namespace Shumate {
          * @param priority the priority of the announcement
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
+        /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @returns the accessible identifier
+         */
+        get_accessible_id(): string | null;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -4530,7 +5223,7 @@ export namespace Shumate {
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
@@ -4549,9 +5242,9 @@ export namespace Shumate {
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
          */
@@ -4577,7 +5270,7 @@ export namespace Shumate {
          * This function is meant to be used by accessible implementations that are
          * not part of the widget hierarchy, and but act as a logical bridge between
          * widgets. For instance, if a widget creates an object that holds metadata
-         * for each child, and you want that object to implement the `GtkAccessible`
+         * for each child, and you want that object to implement the {@link Gtk.Accessible}
          * interface, you will use this function to ensure that the parent of each
          * child widget is the metadata object, and the parent of each metadata
          * object is the container widget.
@@ -4596,7 +5289,7 @@ export namespace Shumate {
         /**
          * Informs ATs that the platform state has changed.
          *
-         * This function should be used by `GtkAccessible` implementations that
+         * This function should be used by {@link Gtk.Accessible} implementations that
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
@@ -4605,7 +5298,7 @@ export namespace Shumate {
         /**
          * Updates an array of accessible properties.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * property change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -4616,7 +5309,7 @@ export namespace Shumate {
         /**
          * Updates an array of accessible relations.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * relation change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -4627,7 +5320,7 @@ export namespace Shumate {
         /**
          * Updates an array of accessible states.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * state change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -4636,44 +5329,61 @@ export namespace Shumate {
          */
         update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
         /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @virtual
+         */
+        vfunc_get_accessible_id(): string | null;
+        /**
          * Retrieves the accessible parent for an accessible object.
          *
          * This function returns `NULL` for top level widgets.
+         * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
         /**
          * Retrieves the implementation for the given accessible object.
+         * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
         /**
          * Gets the ID of the `buildable` object.
          *
-         * `GtkBuilder` sets the name based on the ID attribute
+         * {@link Gtk.Builder} sets the name based on the ID attribute
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
@@ -4681,18 +5391,20 @@ export namespace Shumate {
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param child child to add
-         * @param type kind of child or %NULL
+         * @param type kind of child or `null`
+         * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
         /**
-         * Similar to gtk_buildable_parser_finished() but is
+         * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
-         * @param builder a `GtkBuilder`
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder}
+         * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @virtual
          */
         vfunc_custom_finished(
             builder: Gtk.Builder,
@@ -4703,10 +5415,11 @@ export namespace Shumate {
         /**
          * Called at the end of each custom element handled by
          * the buildable.
-         * @param builder `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @virtual
          */
         vfunc_custom_tag_end(
             builder: Gtk.Builder,
@@ -4716,9 +5429,10 @@ export namespace Shumate {
         ): void;
         /**
          * Called for each unknown element under `<child>`.
-         * @param builder a `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @virtual
          */
         vfunc_custom_tag_start(
             builder: Gtk.Builder,
@@ -4728,39 +5442,44 @@ export namespace Shumate {
         /**
          * The getter corresponding to `set_id`. Implement this
          *   if you implement `set_id`.
+         * @virtual
          */
         vfunc_get_id(): string;
         /**
          * Retrieves the internal child called `childname` of the `buildable` object.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
         /**
          * Called when a builder finishes the parsing
          *  of a UI definition. It is normally not necessary to implement this,
-         *  unless you need to perform special cleanup actions. `GtkWindow` sets
-         *  the `GtkWidget:visible` property here.
+         *  unless you need to perform special cleanup actions. {@link Gtk.Window} sets
+         *  the {@link Gtk.Widget.visible} property here.
          * @param builder
+         * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
         /**
          * Sets a property of a buildable object.
-         *  It is normally not necessary to implement this, g_object_set_property()
-         *  is used by default. `GtkWindow` implements this to delay showing itself
-         *  (i.e. setting the [property`Gtk`.Widget:visible] property) until the whole
+         *  It is normally not necessary to implement this, `g_object_set_property()`
+         *  is used by default. {@link Gtk.Window} implements this to delay showing itself
+         *  (i.e. setting the {@link Gtk.Widget.visible} property) until the whole
          *  interface is created.
          * @param builder
          * @param name
          * @param value
+         * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
         /**
-         * Stores the id attribute given in the `GtkBuilder` UI definition.
-         *   `GtkWidget` stores the name as object data. Implement this method if your
+         * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
+         *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
          *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id
+         * @virtual
          */
         vfunc_set_id(id: string): void;
         /**
@@ -4776,32 +5495,32 @@ export namespace Shumate {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -4810,39 +5529,39 @@ export namespace Shumate {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -4853,13 +5572,16 @@ export namespace Shumate {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -4867,7 +5589,7 @@ export namespace Shumate {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -4875,9 +5597,9 @@ export namespace Shumate {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -4897,9 +5619,9 @@ export namespace Shumate {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -4912,34 +5634,34 @@ export namespace Shumate {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -4972,22 +5694,22 @@ export namespace Shumate {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -4996,8 +5718,8 @@ export namespace Shumate {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -5014,10 +5736,10 @@ export namespace Shumate {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -5032,13 +5754,13 @@ export namespace Shumate {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -5069,21 +5791,21 @@ export namespace Shumate {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -5093,33 +5815,34 @@ export namespace Shumate {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -5128,6 +5851,7 @@ export namespace Shumate {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -5136,12 +5860,14 @@ export namespace Shumate {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -5150,20 +5876,22 @@ export namespace Shumate {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -5175,6 +5903,7 @@ export namespace Shumate {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -5207,8 +5936,28 @@ export namespace Shumate {
     namespace MapLayer {
         // Signal signatures
         interface SignalSignatures extends Layer.SignalSignatures {
+            /**
+             * Emitted when all the tiles in the map view are finished loading.
+             *
+             * As the map is panned or zoomed, this signal may be emitted multiple times.
+             * @signal
+             * @since 1.4
+             * @run-last
+             */
             'map-loaded': (arg0: boolean) => void;
+            /**
+             * Emitted when a symbol in the map layer is clicked.
+             * @signal
+             * @since 1.1
+             * @run-last
+             */
             'symbol-clicked': (arg0: SymbolEvent) => void;
+            /**
+             * Emitted when a tile fails to load.
+             * @signal
+             * @since 1.4
+             * @run-last
+             */
             'tile-error': (arg0: Tile, arg1: GLib.Error) => void;
             'notify::map-source': (pspec: GObject.ParamSpec) => void;
             'notify::viewport': (pspec: GObject.ParamSpec) => void;
@@ -5263,19 +6012,26 @@ export namespace Shumate {
     }
 
     /**
-     * A [class`Shumate`.Layer] implementation that fetches tiles from a [class`Shumate`.MapSource]
+     * A {@link Shumate.Layer} implementation that fetches tiles from a {@link Shumate.MapSource}
      * and draws them as a grid.
      *
      * ## CSS nodes
      *
-     * `ShumatePoint` has a single CSS node with the name “map-layer”.
+     * {@link Shumate.Point} has a single CSS node with the name “map-layer”.
+     * @gir-type Class
      */
     class MapLayer extends Layer implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<MapLayer>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get map_source(): MapSource;
+        /**
+         * @construct-only
+         */
         get mapSource(): MapSource;
 
         /**
@@ -5297,23 +6053,24 @@ export namespace Shumate {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MapLayer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MapLayer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MapLayer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MapLayer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MapLayer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MapLayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -5327,32 +6084,32 @@ export namespace Shumate {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -5361,39 +6118,39 @@ export namespace Shumate {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -5404,13 +6161,16 @@ export namespace Shumate {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -5418,7 +6178,7 @@ export namespace Shumate {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -5426,9 +6186,9 @@ export namespace Shumate {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -5448,9 +6208,9 @@ export namespace Shumate {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -5463,34 +6223,34 @@ export namespace Shumate {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -5523,22 +6283,22 @@ export namespace Shumate {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -5547,8 +6307,8 @@ export namespace Shumate {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -5565,10 +6325,10 @@ export namespace Shumate {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -5583,13 +6343,13 @@ export namespace Shumate {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -5620,21 +6380,21 @@ export namespace Shumate {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -5644,33 +6404,34 @@ export namespace Shumate {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -5679,6 +6440,7 @@ export namespace Shumate {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -5687,12 +6449,14 @@ export namespace Shumate {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -5701,20 +6465,22 @@ export namespace Shumate {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -5726,6 +6492,7 @@ export namespace Shumate {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -5787,12 +6554,13 @@ export namespace Shumate {
     }
 
     /**
-     * The base class for all map sources. Map sources fill [class`Tile]` objects
+     * The base class for all map sources. Map sources fill {@link Tile} objects
      * with images from various sources: a web API, for example, or a test pattern
      * generated on demand.
      *
-     * The most common map source is [class`RasterRenderer]`, which fetches tiles
-     * using a [class`TileDownloader]`.
+     * The most common map source is {@link RasterRenderer}, which fetches tiles
+     * using a {@link TileDownloader}.
+     * @gir-type Class
      */
     abstract class MapSource extends GObject.Object {
         static $gtype: GObject.GType<MapSource>;
@@ -5877,16 +6645,19 @@ export namespace Shumate {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MapSource.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MapSource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MapSource.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MapSource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MapSource.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MapSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5896,10 +6667,11 @@ export namespace Shumate {
         // Virtual methods
 
         /**
-         * Asynchronous version of shumate_map_source_fill_tile().
-         * @param tile a #ShumateTile
-         * @param cancellable a #GCancellable
-         * @param callback a #GAsyncReadyCallback to execute upon completion
+         * Asynchronous version of `shumate_map_source_fill_tile()`.
+         * @param tile a {@link Shumate.Tile}
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
+         * @virtual
          */
         vfunc_fill_tile_async(
             tile: Tile,
@@ -5907,25 +6679,26 @@ export namespace Shumate {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Gets the success value of a completed shumate_map_source_fill_tile_async()
+         * Gets the success value of a completed `shumate_map_source_fill_tile_async()`
          * operation.
-         * @param result a #GAsyncResult provided to callback
+         * @param result a {@link Gio.AsyncResult} provided to callback
+         * @virtual
          */
         vfunc_fill_tile_finish(result: Gio.AsyncResult): boolean;
 
         // Methods
 
         /**
-         * Asynchronous version of shumate_map_source_fill_tile().
-         * @param tile a #ShumateTile
-         * @param cancellable a #GCancellable
+         * Asynchronous version of `shumate_map_source_fill_tile()`.
+         * @param tile a {@link Shumate.Tile}
+         * @param cancellable a {@link Gio.Cancellable}
          */
         fill_tile_async(tile: Tile, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
-         * Asynchronous version of shumate_map_source_fill_tile().
-         * @param tile a #ShumateTile
-         * @param cancellable a #GCancellable
-         * @param callback a #GAsyncReadyCallback to execute upon completion
+         * Asynchronous version of `shumate_map_source_fill_tile()`.
+         * @param tile a {@link Shumate.Tile}
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
         fill_tile_async(
             tile: Tile,
@@ -5933,10 +6706,10 @@ export namespace Shumate {
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Asynchronous version of shumate_map_source_fill_tile().
-         * @param tile a #ShumateTile
-         * @param cancellable a #GCancellable
-         * @param callback a #GAsyncReadyCallback to execute upon completion
+         * Asynchronous version of `shumate_map_source_fill_tile()`.
+         * @param tile a {@link Shumate.Tile}
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to execute upon completion
          */
         fill_tile_async(
             tile: Tile,
@@ -5944,10 +6717,10 @@ export namespace Shumate {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Gets the success value of a completed shumate_map_source_fill_tile_async()
+         * Gets the success value of a completed `shumate_map_source_fill_tile_async()`
          * operation.
-         * @param result a #GAsyncResult provided to callback
-         * @returns %TRUE if the tile was filled with valid data, otherwise %FALSE
+         * @param result a {@link Gio.AsyncResult} provided to callback
+         * @returns `true` if the tile was filled with valid data, otherwise `false`
          */
         fill_tile_finish(result: Gio.AsyncResult): boolean;
         /**
@@ -6085,7 +6858,7 @@ export namespace Shumate {
         set_name(name: string): void;
         /**
          * Sets the map source's projection.
-         * @param projection a #ShumateMapProjection
+         * @param projection a {@link Shumate.MapProjection}
          */
         set_projection(projection: MapProjection | null): void;
         /**
@@ -6106,10 +6879,11 @@ export namespace Shumate {
     }
 
     /**
-     * This object allows you to hold [class`MapSource]` instances, you can access a
-     * default set of sources with [method`MapSourceRegistry`.populate_defaults].
+     * This object allows you to hold {@link MapSource} instances, you can access a
+     * default set of sources with {@link MapSourceRegistry.populate_defaults}.
      *
-     * It conveniently implements [iface`Gio`.ListModel] to easily integrate with it.
+     * It conveniently implements {@link Gio.ListModel} to easily integrate with it.
+     * @gir-type Class
      */
     class MapSourceRegistry<A extends GObject.Object = GObject.Object>
         extends GObject.Object
@@ -6138,16 +6912,19 @@ export namespace Shumate {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MapSourceRegistry.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MapSourceRegistry.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MapSourceRegistry.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MapSourceRegistry.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MapSourceRegistry.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MapSourceRegistry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6157,38 +6934,36 @@ export namespace Shumate {
         // Methods
 
         /**
-         * Adds the #ShumateMapSource to the #ShumateMapSourceRegistry
-         * @param map_source a #ShumateMapSource
+         * Adds the {@link Shumate.MapSource} to the {@link Shumate.MapSourceRegistry}
+         * @param map_source a {@link Shumate.MapSource}
          */
         add(map_source: MapSource): void;
         /**
-         * Find the #ShumateMapSource with the corresponding id
-         * @param id the id of the #ShumateMapSource
-         * @returns the #ShumateMapSource or %NULL if no map source has been found
+         * Find the {@link Shumate.MapSource} with the corresponding id
+         * @param id the id of the {@link Shumate.MapSource}
+         * @returns the {@link Shumate.MapSource} or `null` if no map source has been found
          */
         get_by_id(id: string): MapSource | null;
         /**
-         * Populates the #ShumateMapSourceRegistry with a default set of sources.
+         * Populates the {@link Shumate.MapSourceRegistry} with a default set of sources.
          */
         populate_defaults(): void;
         /**
-         * Removes the corresponding #ShumateMapSource from the registry.
+         * Removes the corresponding {@link Shumate.MapSource} from the registry.
          * If the source doesn't exist in the registry, this function does nothing.
-         * @param id a #ShumateMapSource id
+         * @param id a {@link Shumate.MapSource} id
          */
         remove(id: string): void;
-
-        // Inherited methods
         /**
          * Gets the type of the items in `list`.
          *
-         * All items returned from g_list_model_get_item() are of the type
+         * All items returned from `g_list_model_get_item()` are of the type
          * returned by this function, or a subtype, or if the type is an
          * interface, they are an implementation of that interface.
          *
-         * The item type of a #GListModel can not change during the life of the
+         * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
-         * @returns the #GType of the items contained in @list.
+         * @returns the {@link GObject.GType} of the items contained in `list`.
          */
         get_item_type(): GObject.GType;
         /**
@@ -6196,73 +6971,75 @@ export namespace Shumate {
          *
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
-         * `position` until g_list_model_get_item() returns %NULL.
-         * @returns the number of items in @list.
+         * `position` until `g_list_model_get_item()` returns `null`.
+         * @returns the number of items in `list`.
          */
         get_n_items(): number;
         /**
          * Get the item at `position`.
          *
-         * If `position` is greater than the number of items in `list,` %NULL is
+         * If `position` is greater than the number of items in `list`, `null` is
          * returned.
          *
-         * %NULL is never returned for an index that is smaller than the length
+         * `null` is never returned for an index that is smaller than the length
          * of the list.
          *
          * This function is meant to be used by language bindings in place
-         * of g_list_model_get_item().
+         * of `g_list_model_get_item()`.
          *
-         * See also: g_list_model_get_n_items()
+         * See also: `g_list_model_get_n_items()`
          * @param position the position of the item to fetch
-         * @returns the object at @position.
+         * @returns the object at `position`.
          */
         get_item(position: number): A | null;
         /**
-         * Emits the #GListModel::items-changed signal on `list`.
+         * Emits the {@link Gio.ListModel.SignalSignatures.items_changed | Gio.ListModel::items-changed} signal on `list`.
          *
          * This function should only be called by classes implementing
-         * #GListModel. It has to be called after the internal representation
+         * {@link Gio.ListModel}. It has to be called after the internal representation
          * of `list` has been updated, because handlers connected to this signal
          * might query the new state of the list.
          *
          * Implementations must only make changes to the model (as visible to
          * its consumer) in places that will not cause problems for that
          * consumer.  For models that are driven directly by a write API (such
-         * as #GListStore), changes can be reported in response to uses of that
+         * as {@link Gio.ListStore}), changes can be reported in response to uses of that
          * API.  For models that represent remote data, changes should only be
          * made from a fresh mainloop dispatch.  It is particularly not
-         * permitted to make changes in response to a call to the #GListModel
+         * permitted to make changes in response to a call to the {@link Gio.ListModel}
          * consumer API.
          *
          * Stated another way: in general, it is assumed that code making a
          * series of accesses to the model via the API, without returning to the
          * mainloop, and without calling other code, will continue to view the
          * same contents of the model.
-         * @param position the position at which @list changed
+         * @param position the position at which `list` changed
          * @param removed the number of items removed
          * @param added the number of items added
          */
         items_changed(position: number, removed: number, added: number): void;
         /**
          * Get the item at `position`. If `position` is greater than the number of
-         * items in `list,` %NULL is returned.
+         * items in `list`, `null` is returned.
          *
-         * %NULL is never returned for an index that is smaller than the length
-         * of the list.  See g_list_model_get_n_items().
+         * `null` is never returned for an index that is smaller than the length
+         * of the list.  See `g_list_model_get_n_items()`.
          *
-         * The same #GObject instance may not appear more than once in a #GListModel.
+         * The same {@link GObject.Object} instance may not appear more than once in a {@link Gio.ListModel}.
          * @param position the position of the item to fetch
+         * @virtual
          */
         vfunc_get_item(position: number): A | null;
         /**
          * Gets the type of the items in `list`.
          *
-         * All items returned from g_list_model_get_item() are of the type
+         * All items returned from `g_list_model_get_item()` are of the type
          * returned by this function, or a subtype, or if the type is an
          * interface, they are an implementation of that interface.
          *
-         * The item type of a #GListModel can not change during the life of the
+         * The item type of a {@link Gio.ListModel} can not change during the life of the
          * model.
+         * @virtual
          */
         vfunc_get_item_type(): GObject.GType;
         /**
@@ -6270,7 +7047,8 @@ export namespace Shumate {
          *
          * Depending on the model implementation, calling this function may be
          * less efficient than iterating the list with increasing values for
-         * `position` until g_list_model_get_item() returns %NULL.
+         * `position` until `g_list_model_get_item()` returns `null`.
+         * @virtual
          */
         vfunc_get_n_items(): number;
         /**
@@ -6286,32 +7064,32 @@ export namespace Shumate {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -6320,39 +7098,39 @@ export namespace Shumate {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -6363,13 +7141,16 @@ export namespace Shumate {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -6377,7 +7158,7 @@ export namespace Shumate {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -6385,9 +7166,9 @@ export namespace Shumate {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -6407,9 +7188,9 @@ export namespace Shumate {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -6422,34 +7203,34 @@ export namespace Shumate {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -6482,22 +7263,22 @@ export namespace Shumate {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -6506,8 +7287,8 @@ export namespace Shumate {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -6524,10 +7305,10 @@ export namespace Shumate {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -6542,13 +7323,13 @@ export namespace Shumate {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -6579,21 +7360,21 @@ export namespace Shumate {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -6603,33 +7384,34 @@ export namespace Shumate {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -6638,6 +7420,7 @@ export namespace Shumate {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -6646,12 +7429,14 @@ export namespace Shumate {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -6660,20 +7445,22 @@ export namespace Shumate {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -6685,6 +7472,7 @@ export namespace Shumate {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -6781,21 +7569,22 @@ export namespace Shumate {
 
     /**
      * Markers represent points of interest on a map. Markers need to be
-     * placed on a layer (a [class`MarkerLayer]`). Layers have to be added to a
-     * [class`Map]` for the markers to show on the map.
+     * placed on a layer (a {@link MarkerLayer}). Layers have to be added to a
+     * {@link Map} for the markers to show on the map.
      *
-     * A marker is nothing more than a regular [class`Gtk`.Widget]. You can draw on
+     * A marker is nothing more than a regular {@link Gtk.Widget}. You can draw on
      * it what ever you want. Set the marker's position on the map using
-     * [method`Location`.set_location].
+     * {@link Location.set_location}.
      *
      * This is a base class of all markers. A typical usage of a marker is for
-     * instance to add a [class`Gtk`.Image] with a pin image and add the
-     * [class`Gtk`.GestureClick] controller to listen to click events and show
-     * a [class`Gtk`.Popover] with the description of the marker.
+     * instance to add a {@link Gtk.Image} with a pin image and add the
+     * {@link Gtk.GestureClick} controller to listen to click events and show
+     * a {@link Gtk.Popover} with the description of the marker.
      *
      * ## CSS nodes
      *
-     * `ShumateMarker` has a single CSS node with the name “map-marker”.
+     * {@link Shumate.Marker} has a single CSS node with the name “map-marker”.
+     * @gir-type Class
      */
     class Marker extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Location {
         static $gtype: GObject.GType<Marker>;
@@ -6814,29 +7603,33 @@ export namespace Shumate {
         set selectable(val: boolean);
         /**
          * The x hotspot of the marker, a negative value means that the actual
-         * x hotspot is calculated with the [property`Gtk`.Widget:halign] property.
+         * x hotspot is calculated with the {@link Gtk.Widget.halign} property.
          * The x hotspot should not be more than the width of the widget.
+         * @since 1.5
          */
         get x_hotspot(): number;
         set x_hotspot(val: number);
         /**
          * The x hotspot of the marker, a negative value means that the actual
-         * x hotspot is calculated with the [property`Gtk`.Widget:halign] property.
+         * x hotspot is calculated with the {@link Gtk.Widget.halign} property.
          * The x hotspot should not be more than the width of the widget.
+         * @since 1.5
          */
         get xHotspot(): number;
         set xHotspot(val: number);
         /**
          * The y hotspot of the marker, a negative value means that the actual
-         * y hotspot is calculated with the [property`Gtk`.Widget:valign] property.
+         * y hotspot is calculated with the {@link Gtk.Widget.valign} property.
          * The y hotspot should not be more than the height of the widget.
+         * @since 1.5
          */
         get y_hotspot(): number;
         set y_hotspot(val: number);
         /**
          * The y hotspot of the marker, a negative value means that the actual
-         * y hotspot is calculated with the [property`Gtk`.Widget:valign] property.
+         * y hotspot is calculated with the {@link Gtk.Widget.valign} property.
          * The y hotspot should not be more than the height of the widget.
+         * @since 1.5
          */
         get yHotspot(): number;
         set yHotspot(val: number);
@@ -6860,16 +7653,19 @@ export namespace Shumate {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Marker.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Marker.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Marker.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Marker.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Marker.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Marker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6879,19 +7675,25 @@ export namespace Shumate {
         // Methods
 
         animate_in(): void;
+        /**
+         * @param delay
+         */
         animate_in_with_delay(delay: number): void;
         animate_out(): void;
+        /**
+         * @param delay
+         */
         animate_out_with_delay(delay: number): void;
         /**
          * Retrieves the current child of `marker`.
-         * @returns a #GtkWidget.
+         * @returns a {@link Gtk.Widget}.
          */
         get_child(): Gtk.Widget | null;
         get_draggable(): boolean;
         /**
          * Get the hotspot point for the given marker. The value is in pixel relative
          * to the top-left corner. Any negative value means that the hotspot get
-         * computed with the [property`Gtk`.Widget:halign] or [property`Gtk`.Widget:valign]
+         * computed with the {@link Gtk.Widget.halign} or {@link Gtk.Widget.valign}
          * properties.
          */
         get_hotspot(): [number, number];
@@ -6902,19 +7704,22 @@ export namespace Shumate {
         get_selectable(): boolean;
         /**
          * Checks whether the marker is selected.
-         * @returns %TRUE if the marker is selected, otherwise %FALSE
+         * @returns `true` if the marker is selected, otherwise `false`
          */
         is_selected(): boolean;
         /**
          * Sets the child widget of `marker`.
-         * @param child a #GtkWidget
+         * @param child a {@link Gtk.Widget}
          */
         set_child(child?: Gtk.Widget | null): void;
+        /**
+         * @param value
+         */
         set_draggable(value: boolean): void;
         /**
          * Set the hotspot point for the given marker. The value is in pixel relative
          * to the top-left corner. Use any negative value to fallback to the
-         * [property`Gtk`.Widget:halign] or [property`Gtk`.Widget:valign] properties.
+         * {@link Gtk.Widget.halign} or {@link Gtk.Widget.valign} properties.
          * @param x_hotspot the x hotspot
          * @param y_hotspot the y hotspot
          */
@@ -6924,34 +7729,34 @@ export namespace Shumate {
          * @param value the selectable state
          */
         set_selectable(value: boolean): void;
-
-        // Inherited properties
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
         set accessible_role(val: Gtk.AccessibleRole);
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
         set accessibleRole(val: Gtk.AccessibleRole);
         /**
          * The latitude coordonate in degrees
+         * @category Inherited from Shumate.Location
          */
         get latitude(): number;
         set latitude(val: number);
         /**
          * The longitude coordonate in degrees
+         * @category Inherited from Shumate.Location
          */
         get longitude(): number;
         set longitude(val: number);
-
-        // Inherited methods
         /**
          * Requests the user's screen reader to announce the given message.
          *
@@ -6966,6 +7771,17 @@ export namespace Shumate {
          * @param priority the priority of the announcement
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
+        /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @returns the accessible identifier
+         */
+        get_accessible_id(): string | null;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -6986,7 +7802,7 @@ export namespace Shumate {
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
@@ -7005,9 +7821,9 @@ export namespace Shumate {
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
          */
@@ -7033,7 +7849,7 @@ export namespace Shumate {
          * This function is meant to be used by accessible implementations that are
          * not part of the widget hierarchy, and but act as a logical bridge between
          * widgets. For instance, if a widget creates an object that holds metadata
-         * for each child, and you want that object to implement the `GtkAccessible`
+         * for each child, and you want that object to implement the {@link Gtk.Accessible}
          * interface, you will use this function to ensure that the parent of each
          * child widget is the metadata object, and the parent of each metadata
          * object is the container widget.
@@ -7052,7 +7868,7 @@ export namespace Shumate {
         /**
          * Informs ATs that the platform state has changed.
          *
-         * This function should be used by `GtkAccessible` implementations that
+         * This function should be used by {@link Gtk.Accessible} implementations that
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
@@ -7061,7 +7877,7 @@ export namespace Shumate {
         /**
          * Updates an array of accessible properties.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * property change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -7072,7 +7888,7 @@ export namespace Shumate {
         /**
          * Updates an array of accessible relations.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * relation change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -7083,7 +7899,7 @@ export namespace Shumate {
         /**
          * Updates an array of accessible states.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * state change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -7092,44 +7908,61 @@ export namespace Shumate {
          */
         update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
         /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @virtual
+         */
+        vfunc_get_accessible_id(): string | null;
+        /**
          * Retrieves the accessible parent for an accessible object.
          *
          * This function returns `NULL` for top level widgets.
+         * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
         /**
          * Retrieves the implementation for the given accessible object.
+         * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
         /**
          * Gets the ID of the `buildable` object.
          *
-         * `GtkBuilder` sets the name based on the ID attribute
+         * {@link Gtk.Builder} sets the name based on the ID attribute
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
@@ -7137,18 +7970,20 @@ export namespace Shumate {
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param child child to add
-         * @param type kind of child or %NULL
+         * @param type kind of child or `null`
+         * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
         /**
-         * Similar to gtk_buildable_parser_finished() but is
+         * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
-         * @param builder a `GtkBuilder`
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder}
+         * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @virtual
          */
         vfunc_custom_finished(
             builder: Gtk.Builder,
@@ -7159,10 +7994,11 @@ export namespace Shumate {
         /**
          * Called at the end of each custom element handled by
          * the buildable.
-         * @param builder `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @virtual
          */
         vfunc_custom_tag_end(
             builder: Gtk.Builder,
@@ -7172,9 +8008,10 @@ export namespace Shumate {
         ): void;
         /**
          * Called for each unknown element under `<child>`.
-         * @param builder a `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @virtual
          */
         vfunc_custom_tag_start(
             builder: Gtk.Builder,
@@ -7184,39 +8021,44 @@ export namespace Shumate {
         /**
          * The getter corresponding to `set_id`. Implement this
          *   if you implement `set_id`.
+         * @virtual
          */
         vfunc_get_id(): string;
         /**
          * Retrieves the internal child called `childname` of the `buildable` object.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
         /**
          * Called when a builder finishes the parsing
          *  of a UI definition. It is normally not necessary to implement this,
-         *  unless you need to perform special cleanup actions. `GtkWindow` sets
-         *  the `GtkWidget:visible` property here.
+         *  unless you need to perform special cleanup actions. {@link Gtk.Window} sets
+         *  the {@link Gtk.Widget.visible} property here.
          * @param builder
+         * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
         /**
          * Sets a property of a buildable object.
-         *  It is normally not necessary to implement this, g_object_set_property()
-         *  is used by default. `GtkWindow` implements this to delay showing itself
-         *  (i.e. setting the [property`Gtk`.Widget:visible] property) until the whole
+         *  It is normally not necessary to implement this, `g_object_set_property()`
+         *  is used by default. {@link Gtk.Window} implements this to delay showing itself
+         *  (i.e. setting the {@link Gtk.Widget.visible} property) until the whole
          *  interface is created.
          * @param builder
          * @param name
          * @param value
+         * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
         /**
-         * Stores the id attribute given in the `GtkBuilder` UI definition.
-         *   `GtkWidget` stores the name as object data. Implement this method if your
+         * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
+         *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
          *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id
+         * @virtual
          */
         vfunc_set_id(id: string): void;
         /**
@@ -7225,8 +8067,8 @@ export namespace Shumate {
          * This function uses the great-circle distance formula, which assumes
          * Earth is a perfect sphere. This limits the accuracy of the result,
          * but is good enough for most purposes.
-         * @param other a [iface@Location]
-         * @returns the distance in meters between @self and @other
+         * @param other a {@link Location}
+         * @returns the distance in meters between `self` and `other`
          */
         distance(other: Location): number;
         /**
@@ -7247,16 +8089,19 @@ export namespace Shumate {
         set_location(latitude: number, longitude: number): void;
         /**
          * Gets the latitude coordinate in degrees.
+         * @virtual
          */
         vfunc_get_latitude(): number;
         /**
          * Gets the longitude coordinate in degrees.
+         * @virtual
          */
         vfunc_get_longitude(): number;
         /**
          * Sets the coordinates of the location
          * @param latitude the latitude in degrees
          * @param longitude the longitude in degrees
+         * @virtual
          */
         vfunc_set_location(latitude: number, longitude: number): void;
         /**
@@ -7272,32 +8117,32 @@ export namespace Shumate {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -7306,39 +8151,39 @@ export namespace Shumate {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -7349,13 +8194,16 @@ export namespace Shumate {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -7363,7 +8211,7 @@ export namespace Shumate {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -7371,9 +8219,9 @@ export namespace Shumate {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -7393,9 +8241,9 @@ export namespace Shumate {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -7408,34 +8256,34 @@ export namespace Shumate {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -7468,22 +8316,22 @@ export namespace Shumate {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -7492,8 +8340,8 @@ export namespace Shumate {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -7510,10 +8358,10 @@ export namespace Shumate {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -7528,13 +8376,13 @@ export namespace Shumate {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -7565,21 +8413,21 @@ export namespace Shumate {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -7589,33 +8437,34 @@ export namespace Shumate {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -7624,6 +8473,7 @@ export namespace Shumate {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -7632,12 +8482,14 @@ export namespace Shumate {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -7646,20 +8498,22 @@ export namespace Shumate {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -7671,6 +8525,7 @@ export namespace Shumate {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -7703,7 +8558,17 @@ export namespace Shumate {
     namespace MarkerLayer {
         // Signal signatures
         interface SignalSignatures extends Layer.SignalSignatures {
+            /**
+             * Emitted when a marker in the layer is selected.
+             * @signal
+             * @run-last
+             */
             'marker-selected': (arg0: Marker) => void;
+            /**
+             * Emitted when a marker in the layer is unselected.
+             * @signal
+             * @run-last
+             */
             'marker-unselected': (arg0: Marker) => void;
             'notify::selection-mode': (pspec: GObject.ParamSpec) => void;
             'notify::viewport': (pspec: GObject.ParamSpec) => void;
@@ -7760,6 +8625,7 @@ export namespace Shumate {
     /**
      * Displays markers on the map. It is responsible for positioning markers
      * correctly, marker selections and group marker operations.
+     * @gir-type Class
      */
     class MarkerLayer extends Layer implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<MarkerLayer>;
@@ -7798,16 +8664,19 @@ export namespace Shumate {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MarkerLayer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MarkerLayer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MarkerLayer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MarkerLayer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MarkerLayer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MarkerLayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7818,7 +8687,7 @@ export namespace Shumate {
 
         /**
          * Adds the marker to the layer.
-         * @param marker a [class@Marker]
+         * @param marker a {@link Marker}
          */
         add_marker(marker: Marker): void;
         /**
@@ -7843,7 +8712,7 @@ export namespace Shumate {
         remove_all(): void;
         /**
          * Removes the marker from the layer.
-         * @param marker a [class@Marker]
+         * @param marker a {@link Marker}
          */
         remove_marker(marker: Marker): void;
         /**
@@ -7853,19 +8722,19 @@ export namespace Shumate {
         /**
          * Selects a marker in this layer.
          *
-         * If [class`MarkerLayer]`:selection-mode is %GTK_SELECTION_SINGLE or
-         * %GTK_SELECTION_BROWSE, all other markers will be unselected. If the mode is
-         * %GTK_SELECTION_NONE or `marker` is not selectable, nothing will happen.
-         * @param marker a [class@Marker] that is a child of @self
-         * @returns %TRUE if the marker is now selected, otherwise %FALSE
+         * If {@link MarkerLayer}:selection-mode is {@link Gtk.SelectionMode.SINGLE} or
+         * {@link Gtk.SelectionMode.BROWSE}, all other markers will be unselected. If the mode is
+         * {@link Gtk.SelectionMode.NONE} or `marker` is not selectable, nothing will happen.
+         * @param marker a {@link Marker} that is a child of `self`
+         * @returns `true` if the marker is now selected, otherwise `false`
          */
         select_marker(marker: Marker): boolean;
         /**
          * Sets the selection mode of the layer.
          *
-         * NOTE: changing selection mode to %GTK_SELECTION_NONE, %GTK_SELECTION_SINGLE
-         * or %GTK_SELECTION_BROWSE will clear all previously selected markers.
-         * @param mode a [enum@Gtk.SelectionMode] value
+         * NOTE: changing selection mode to {@link Gtk.SelectionMode.NONE}, {@link Gtk.SelectionMode.SINGLE}
+         * or {@link Gtk.SelectionMode.BROWSE} will clear all previously selected markers.
+         * @param mode a {@link Gtk.SelectionMode} value
          */
         set_selection_mode(mode: Gtk.SelectionMode | null): void;
         /**
@@ -7875,14 +8744,12 @@ export namespace Shumate {
         /**
          * Unselects a marker in this layer.
          *
-         * This works even if [class`MarkerLayer]`:selection-mode is
-         * %GTK_SELECTION_BROWSE. Browse mode only prevents user interaction, not the
+         * This works even if {@link MarkerLayer}:selection-mode is
+         * {@link Gtk.SelectionMode.BROWSE}. Browse mode only prevents user interaction, not the
          * program, from unselecting a marker.
-         * @param marker a [class@Marker] that is a child of @self
+         * @param marker a {@link Marker} that is a child of `self`
          */
         unselect_marker(marker: Marker): void;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -7896,32 +8763,32 @@ export namespace Shumate {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -7930,39 +8797,39 @@ export namespace Shumate {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -7973,13 +8840,16 @@ export namespace Shumate {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -7987,7 +8857,7 @@ export namespace Shumate {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -7995,9 +8865,9 @@ export namespace Shumate {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -8017,9 +8887,9 @@ export namespace Shumate {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -8032,34 +8902,34 @@ export namespace Shumate {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -8092,22 +8962,22 @@ export namespace Shumate {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -8116,8 +8986,8 @@ export namespace Shumate {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -8134,10 +9004,10 @@ export namespace Shumate {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -8152,13 +9022,13 @@ export namespace Shumate {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -8189,21 +9059,21 @@ export namespace Shumate {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -8213,33 +9083,34 @@ export namespace Shumate {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -8248,6 +9119,7 @@ export namespace Shumate {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -8256,12 +9128,14 @@ export namespace Shumate {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -8270,20 +9144,22 @@ export namespace Shumate {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -8295,6 +9171,7 @@ export namespace Shumate {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -8398,13 +9275,14 @@ export namespace Shumate {
     }
 
     /**
-     * A layer displaying line path between inserted [iface`Location]` objects
+     * A layer displaying line path between inserted {@link Location} objects
      *
      * This layer shows a connection between inserted objects implementing the
-     * [iface`Location]` interface. This means that both [class`Marker]`
-     * objects and [class`Coordinate]` objects can be inserted into the layer.
-     * Of course, custom objects implementing the [iface`Location]` interface
+     * {@link Location} interface. This means that both {@link Marker}
+     * objects and {@link Coordinate} objects can be inserted into the layer.
+     * Of course, custom objects implementing the {@link Location} interface
      * can be used as well.
+     * @gir-type Class
      */
     class PathLayer extends Layer implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<PathLayer>;
@@ -8496,16 +9374,19 @@ export namespace Shumate {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof PathLayer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PathLayer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof PathLayer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PathLayer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PathLayer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PathLayer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -8515,14 +9396,14 @@ export namespace Shumate {
         // Methods
 
         /**
-         * Adds a [iface`Location]` object to the layer.
+         * Adds a {@link Location} object to the layer.
          * The node is prepended to the list.
-         * @param location a [iface@Location]
+         * @param location a {@link Location}
          */
         add_node(location: Location): void;
         /**
          * Gets information whether the path is closed.
-         * @returns %TRUE when the path is closed, %FALSE otherwise
+         * @returns `true` when the path is closed, `false` otherwise
          */
         get_closed(): boolean;
         /**
@@ -8532,7 +9413,7 @@ export namespace Shumate {
         get_dash(): number[];
         /**
          * Checks whether the path is filled.
-         * @returns %TRUE if the path is filled, %FALSE otherwise.
+         * @returns `true` if the path is filled, `false` otherwise.
          */
         get_fill(): boolean;
         /**
@@ -8541,7 +9422,7 @@ export namespace Shumate {
          */
         get_fill_color(): Gdk.RGBA;
         /**
-         * Gets a copy of the list of all [iface`Location]` objects inserted into the layer. You should
+         * Gets a copy of the list of all {@link Location} objects inserted into the layer. You should
          * free the list but not its contents.
          * @returns the list
          */
@@ -8558,7 +9439,7 @@ export namespace Shumate {
         get_outline_width(): number;
         /**
          * Checks whether the path is stroked.
-         * @returns %TRUE if the path is stroked, %FALSE otherwise.
+         * @returns `true` if the path is stroked, `false` otherwise.
          */
         get_stroke(): boolean;
         /**
@@ -8572,32 +9453,32 @@ export namespace Shumate {
          */
         get_stroke_width(): number;
         /**
-         * Inserts a [iface`Location]` object to the specified position.
-         * @param location a [iface@Location]
-         * @param position position in the list where the [iface@Location] object should be inserted
+         * Inserts a {@link Location} object to the specified position.
+         * @param location a {@link Location}
+         * @param position position in the list where the {@link Location} object should be inserted
          */
         insert_node(location: Location, position: number): void;
         /**
-         * Removes all [iface`Location]` objects from the layer.
+         * Removes all {@link Location} objects from the layer.
          */
         remove_all(): void;
         /**
-         * Removes the [iface`Location]` object from the layer.
-         * @param location a [iface@Location]
+         * Removes the {@link Location} object from the layer.
+         * @param location a {@link Location}
          */
         remove_node(location: Location): void;
         /**
          * Makes the path closed.
-         * @param value %TRUE to make the path closed
+         * @param value `true` to make the path closed
          */
         set_closed(value: boolean): void;
         /**
-         * Sets dashed line pattern in a way similar to cairo_set_dash() of cairo. This
+         * Sets dashed line pattern in a way similar to `cairo_set_dash()` of cairo. This
          * method supports only integer values for segment lengths. The values have to be
-         * passed inside the data pointer of the list (using the %GUINT_TO_POINTER conversion)
+         * passed inside the data pointer of the list (using the `GUINT_TO_POINTER` conversion)
          *
-         * Pass %NULL to use solid line.
-         * @param dash_pattern list of integer values representing lengths     of dashes/spaces (see cairo documentation of cairo_set_dash())
+         * Pass `null` to use solid line.
+         * @param dash_pattern list of integer values representing lengths     of dashes/spaces (see cairo documentation of `cairo_set_dash()`)
          */
         set_dash(dash_pattern: number[]): void;
         /**
@@ -8607,12 +9488,12 @@ export namespace Shumate {
         set_fill(value: boolean): void;
         /**
          * Set the path's fill color.
-         * @param color The path's fill color or %NULL to reset to the         default color. The color parameter is copied.
+         * @param color The path's fill color or `null` to reset to the         default color. The color parameter is copied.
          */
         set_fill_color(color?: Gdk.RGBA | null): void;
         /**
          * Set the path's outline color.
-         * @param color The path's outline color or %NULL to reset to the         default color. The color parameter is copied.
+         * @param color The path's outline color or `null` to reset to the         default color. The color parameter is copied.
          */
         set_outline_color(color?: Gdk.RGBA | null): void;
         /**
@@ -8627,7 +9508,7 @@ export namespace Shumate {
         set_stroke(value: boolean): void;
         /**
          * Set the path's stroke color.
-         * @param color The path's stroke color or %NULL to reset to the         default color. The color parameter is copied.
+         * @param color The path's stroke color or `null` to reset to the         default color. The color parameter is copied.
          */
         set_stroke_color(color?: Gdk.RGBA | null): void;
         /**
@@ -8635,8 +9516,6 @@ export namespace Shumate {
          * @param value the width of the stroke (in pixels)
          */
         set_stroke_width(value: number): void;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -8650,32 +9529,32 @@ export namespace Shumate {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -8684,39 +9563,39 @@ export namespace Shumate {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -8727,13 +9606,16 @@ export namespace Shumate {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -8741,7 +9623,7 @@ export namespace Shumate {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -8749,9 +9631,9 @@ export namespace Shumate {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -8771,9 +9653,9 @@ export namespace Shumate {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -8786,34 +9668,34 @@ export namespace Shumate {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -8846,22 +9728,22 @@ export namespace Shumate {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -8870,8 +9752,8 @@ export namespace Shumate {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -8888,10 +9770,10 @@ export namespace Shumate {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -8906,13 +9788,13 @@ export namespace Shumate {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -8943,21 +9825,21 @@ export namespace Shumate {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -8967,33 +9849,34 @@ export namespace Shumate {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -9002,6 +9885,7 @@ export namespace Shumate {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -9010,12 +9894,14 @@ export namespace Shumate {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -9024,20 +9910,22 @@ export namespace Shumate {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -9049,6 +9937,7 @@ export namespace Shumate {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -9136,12 +10025,13 @@ export namespace Shumate {
     }
 
     /**
-     * A simple variant of [class`Marker]` showing the location of the point as a
+     * A simple variant of {@link Marker} showing the location of the point as a
      * circle on the map.
      *
      * ## CSS nodes
      *
-     * `ShumatePoint` has a single CSS node with the name “map-point”.
+     * {@link Shumate.Point} has a single CSS node with the name “map-point”.
+     * @gir-type Class
      */
     class Point extends Marker implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Location {
         static $gtype: GObject.GType<Point>;
@@ -9165,43 +10055,44 @@ export namespace Shumate {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Point.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Point.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Point.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Point.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Point.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Point.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited properties
         /**
          * The latitude coordonate in degrees
+         * @category Inherited from Shumate.Location
          */
         get latitude(): number;
         set latitude(val: number);
         /**
          * The longitude coordonate in degrees
+         * @category Inherited from Shumate.Location
          */
         get longitude(): number;
         set longitude(val: number);
-
-        // Inherited methods
         /**
          * Calculates the distance in meters between two locations.
          *
          * This function uses the great-circle distance formula, which assumes
          * Earth is a perfect sphere. This limits the accuracy of the result,
          * but is good enough for most purposes.
-         * @param other a [iface@Location]
-         * @returns the distance in meters between @self and @other
+         * @param other a {@link Location}
+         * @returns the distance in meters between `self` and `other`
          */
         distance(other: Location): number;
         /**
@@ -9222,16 +10113,19 @@ export namespace Shumate {
         set_location(latitude: number, longitude: number): void;
         /**
          * Gets the latitude coordinate in degrees.
+         * @virtual
          */
         vfunc_get_latitude(): number;
         /**
          * Gets the longitude coordinate in degrees.
+         * @virtual
          */
         vfunc_get_longitude(): number;
         /**
          * Sets the coordinates of the location
          * @param latitude the latitude in degrees
          * @param longitude the longitude in degrees
+         * @virtual
          */
         vfunc_set_location(latitude: number, longitude: number): void;
         /**
@@ -9247,32 +10141,32 @@ export namespace Shumate {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -9281,39 +10175,39 @@ export namespace Shumate {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -9324,13 +10218,16 @@ export namespace Shumate {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -9338,7 +10235,7 @@ export namespace Shumate {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -9346,9 +10243,9 @@ export namespace Shumate {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -9368,9 +10265,9 @@ export namespace Shumate {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -9383,34 +10280,34 @@ export namespace Shumate {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -9443,22 +10340,22 @@ export namespace Shumate {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -9467,8 +10364,8 @@ export namespace Shumate {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -9485,10 +10382,10 @@ export namespace Shumate {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -9503,13 +10400,13 @@ export namespace Shumate {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -9540,21 +10437,21 @@ export namespace Shumate {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -9564,33 +10461,34 @@ export namespace Shumate {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -9599,6 +10497,7 @@ export namespace Shumate {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -9607,12 +10506,14 @@ export namespace Shumate {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -9621,20 +10522,22 @@ export namespace Shumate {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -9646,6 +10549,7 @@ export namespace Shumate {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -9697,6 +10601,9 @@ export namespace Shumate {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class RasterRenderer extends MapSource {
         static $gtype: GObject.GType<RasterRenderer>;
 
@@ -9704,12 +10611,14 @@ export namespace Shumate {
 
         /**
          * The data source that provides image tiles to display. In most cases,
-         * a [class`TileDownloader]` is sufficient.
+         * a {@link TileDownloader} is sufficient.
+         * @construct-only
          */
         get data_source(): DataSource;
         /**
          * The data source that provides image tiles to display. In most cases,
-         * a [class`TileDownloader]` is sufficient.
+         * a {@link TileDownloader} is sufficient.
+         * @construct-only
          */
         get dataSource(): DataSource;
 
@@ -9758,16 +10667,19 @@ export namespace Shumate {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RasterRenderer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RasterRenderer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RasterRenderer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RasterRenderer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RasterRenderer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RasterRenderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -9844,8 +10756,9 @@ export namespace Shumate {
      * ├── label[.metric][.imperial]
      * ```
      *
-     * `ShumateScale` uses a single CSS node with name map-scale, it has up to two
+     * {@link Shumate.Scale} uses a single CSS node with name map-scale, it has up to two
      * childs different labels.
+     * @gir-type Class
      */
     class Scale extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Scale>;
@@ -9892,16 +10805,19 @@ export namespace Shumate {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Scale.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Scale.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Scale.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Scale.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Scale.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Scale.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -9922,7 +10838,7 @@ export namespace Shumate {
         get_unit(): Unit;
         /**
          * Gets the viewport used by the scale.
-         * @returns The #ShumateViewport used by the scale
+         * @returns The {@link Shumate.Viewport} used by the scale
          */
         get_viewport(): Viewport | null;
         /**
@@ -9932,32 +10848,30 @@ export namespace Shumate {
         set_max_width(value: number): void;
         /**
          * Sets the scale unit.
-         * @param unit a #ShumateUnit
+         * @param unit a {@link Shumate.Unit}
          */
         set_unit(unit: Unit | null): void;
         /**
          * Sets the scale viewport.
-         * @param viewport a #ShumateViewport
+         * @param viewport a {@link Shumate.Viewport}
          */
         set_viewport(viewport?: Viewport | null): void;
-
-        // Inherited properties
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
         set accessible_role(val: Gtk.AccessibleRole);
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
         set accessibleRole(val: Gtk.AccessibleRole);
-
-        // Inherited methods
         /**
          * Requests the user's screen reader to announce the given message.
          *
@@ -9972,6 +10886,17 @@ export namespace Shumate {
          * @param priority the priority of the announcement
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
+        /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @returns the accessible identifier
+         */
+        get_accessible_id(): string | null;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -9992,7 +10917,7 @@ export namespace Shumate {
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
@@ -10011,9 +10936,9 @@ export namespace Shumate {
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
          */
@@ -10039,7 +10964,7 @@ export namespace Shumate {
          * This function is meant to be used by accessible implementations that are
          * not part of the widget hierarchy, and but act as a logical bridge between
          * widgets. For instance, if a widget creates an object that holds metadata
-         * for each child, and you want that object to implement the `GtkAccessible`
+         * for each child, and you want that object to implement the {@link Gtk.Accessible}
          * interface, you will use this function to ensure that the parent of each
          * child widget is the metadata object, and the parent of each metadata
          * object is the container widget.
@@ -10058,7 +10983,7 @@ export namespace Shumate {
         /**
          * Informs ATs that the platform state has changed.
          *
-         * This function should be used by `GtkAccessible` implementations that
+         * This function should be used by {@link Gtk.Accessible} implementations that
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
@@ -10067,7 +10992,7 @@ export namespace Shumate {
         /**
          * Updates an array of accessible properties.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * property change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -10078,7 +11003,7 @@ export namespace Shumate {
         /**
          * Updates an array of accessible relations.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * relation change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -10089,7 +11014,7 @@ export namespace Shumate {
         /**
          * Updates an array of accessible states.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * state change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -10098,44 +11023,61 @@ export namespace Shumate {
          */
         update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
         /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @virtual
+         */
+        vfunc_get_accessible_id(): string | null;
+        /**
          * Retrieves the accessible parent for an accessible object.
          *
          * This function returns `NULL` for top level widgets.
+         * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
         /**
          * Retrieves the implementation for the given accessible object.
+         * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
         /**
          * Gets the ID of the `buildable` object.
          *
-         * `GtkBuilder` sets the name based on the ID attribute
+         * {@link Gtk.Builder} sets the name based on the ID attribute
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
@@ -10143,18 +11085,20 @@ export namespace Shumate {
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param child child to add
-         * @param type kind of child or %NULL
+         * @param type kind of child or `null`
+         * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
         /**
-         * Similar to gtk_buildable_parser_finished() but is
+         * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
-         * @param builder a `GtkBuilder`
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder}
+         * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @virtual
          */
         vfunc_custom_finished(
             builder: Gtk.Builder,
@@ -10165,10 +11109,11 @@ export namespace Shumate {
         /**
          * Called at the end of each custom element handled by
          * the buildable.
-         * @param builder `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @virtual
          */
         vfunc_custom_tag_end(
             builder: Gtk.Builder,
@@ -10178,9 +11123,10 @@ export namespace Shumate {
         ): void;
         /**
          * Called for each unknown element under `<child>`.
-         * @param builder a `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @virtual
          */
         vfunc_custom_tag_start(
             builder: Gtk.Builder,
@@ -10190,39 +11136,44 @@ export namespace Shumate {
         /**
          * The getter corresponding to `set_id`. Implement this
          *   if you implement `set_id`.
+         * @virtual
          */
         vfunc_get_id(): string;
         /**
          * Retrieves the internal child called `childname` of the `buildable` object.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
         /**
          * Called when a builder finishes the parsing
          *  of a UI definition. It is normally not necessary to implement this,
-         *  unless you need to perform special cleanup actions. `GtkWindow` sets
-         *  the `GtkWidget:visible` property here.
+         *  unless you need to perform special cleanup actions. {@link Gtk.Window} sets
+         *  the {@link Gtk.Widget.visible} property here.
          * @param builder
+         * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
         /**
          * Sets a property of a buildable object.
-         *  It is normally not necessary to implement this, g_object_set_property()
-         *  is used by default. `GtkWindow` implements this to delay showing itself
-         *  (i.e. setting the [property`Gtk`.Widget:visible] property) until the whole
+         *  It is normally not necessary to implement this, `g_object_set_property()`
+         *  is used by default. {@link Gtk.Window} implements this to delay showing itself
+         *  (i.e. setting the {@link Gtk.Widget.visible} property) until the whole
          *  interface is created.
          * @param builder
          * @param name
          * @param value
+         * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
         /**
-         * Stores the id attribute given in the `GtkBuilder` UI definition.
-         *   `GtkWidget` stores the name as object data. Implement this method if your
+         * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
+         *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
          *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id
+         * @virtual
          */
         vfunc_set_id(id: string): void;
         /**
@@ -10238,32 +11189,32 @@ export namespace Shumate {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -10272,39 +11223,39 @@ export namespace Shumate {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -10315,13 +11266,16 @@ export namespace Shumate {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -10329,7 +11283,7 @@ export namespace Shumate {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -10337,9 +11291,9 @@ export namespace Shumate {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -10359,9 +11313,9 @@ export namespace Shumate {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -10374,34 +11328,34 @@ export namespace Shumate {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -10434,22 +11388,22 @@ export namespace Shumate {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -10458,8 +11412,8 @@ export namespace Shumate {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -10476,10 +11430,10 @@ export namespace Shumate {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -10494,13 +11448,13 @@ export namespace Shumate {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -10531,21 +11485,21 @@ export namespace Shumate {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -10555,33 +11509,34 @@ export namespace Shumate {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -10590,6 +11545,7 @@ export namespace Shumate {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -10598,12 +11554,14 @@ export namespace Shumate {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -10612,20 +11570,22 @@ export namespace Shumate {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -10637,6 +11597,7 @@ export namespace Shumate {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -10669,6 +11630,13 @@ export namespace Shumate {
     namespace SimpleMap {
         // Signal signatures
         interface SignalSignatures extends Gtk.Widget.SignalSignatures {
+            /**
+             * Emitted when a symbol in the base map layer (not in overlay layers) is
+             * clicked.
+             * @signal
+             * @since 1.1
+             * @run-last
+             */
             'symbol-clicked': (arg0: SymbolEvent) => void;
             'notify::base-map-layer': (pspec: GObject.ParamSpec) => void;
             'notify::compass': (pspec: GObject.ParamSpec) => void;
@@ -10739,11 +11707,12 @@ export namespace Shumate {
     }
 
     /**
-     * A ready-to-use map [class`Gtk`.Widget].If you want to use your own implementation,
-     * you can look at the [class`Shumate`.Map] widget.
+     * A ready-to-use map {@link Gtk.Widget}.If you want to use your own implementation,
+     * you can look at the {@link Shumate.Map} widget.
      *
-     * The simple map contains a zoom widget, a [class`Shumate`.License] at the bottom,
-     * a [class`Shumate`.Scale] and a [class`Shumate`.Compass].
+     * The simple map contains a zoom widget, a {@link Shumate.License} at the bottom,
+     * a {@link Shumate.Scale} and a {@link Shumate.Compass}.
+     * @gir-type Class
      */
     class SimpleMap extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<SimpleMap>;
@@ -10751,32 +11720,51 @@ export namespace Shumate {
         // Properties
 
         /**
-         * The [class`MapLayer]` that displays the map source.
+         * The {@link MapLayer} that displays the map source.
          *
          * This is a read-only property. To change the basemap, set the
-         * [property`SimpleMap:`map-source] property.
+         * {@link SimpleMap.map_source} property.
+         * @since 1.4
+         * @read-only
          */
         get base_map_layer(): MapLayer;
         /**
-         * The [class`MapLayer]` that displays the map source.
+         * The {@link MapLayer} that displays the map source.
          *
          * This is a read-only property. To change the basemap, set the
-         * [property`SimpleMap:`map-source] property.
+         * {@link SimpleMap.map_source} property.
+         * @since 1.4
+         * @read-only
          */
         get baseMapLayer(): MapLayer;
+        /**
+         * @read-only
+         */
         get compass(): Compass;
+        /**
+         * @read-only
+         */
         get license(): License;
+        /**
+         * @read-only
+         */
         // This accessor conflicts with a field or function name in a parent class or interface.
         map: Map | any;
         get map_source(): MapSource;
         set map_source(val: MapSource);
         get mapSource(): MapSource;
         set mapSource(val: MapSource);
+        /**
+         * @read-only
+         */
         get scale(): Scale;
         get show_zoom_buttons(): boolean;
         set show_zoom_buttons(val: boolean);
         get showZoomButtons(): boolean;
         set showZoomButtons(val: boolean);
+        /**
+         * @read-only
+         */
         get viewport(): Viewport;
 
         /**
@@ -10798,16 +11786,19 @@ export namespace Shumate {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SimpleMap.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SimpleMap.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SimpleMap.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SimpleMap.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SimpleMap.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SimpleMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -10818,98 +11809,96 @@ export namespace Shumate {
 
         /**
          * Adds a map layer as an overlay on top of the base map.
-         * @param layer a [class@Layer] to add
+         * @param layer a {@link Layer} to add
          */
         add_overlay_layer(layer: Layer): void;
         /**
-         * Gets the [class`MapLayer]` that displays the base map.
+         * Gets the {@link MapLayer} that displays the base map.
          * @returns the base map layer
          */
         get_base_map_layer(): MapLayer;
         /**
          * Gets the compass widget for the map.
-         * @returns a [class@Compass]
+         * @returns a {@link Compass}
          */
         get_compass(): Compass;
         /**
          * Gets the license widget for the map.
-         * @returns a [class@License]
+         * @returns a {@link License}
          */
         get_license(): License;
         /**
-         * Gets the [class`SimpleMap]`'s underlying [class`Map]`.
-         * @returns a [class@Map]
+         * Gets the {@link SimpleMap}'s underlying {@link Map}.
+         * @returns a {@link Map}
          */
         get_map(): Map;
         /**
          * Gets the map source for the current base layer.
-         * @returns a [class@MapSource]
+         * @returns a {@link MapSource}
          */
         get_map_source(): MapSource;
         /**
          * Gets the scale widget for the map.
-         * @returns a [class@Scale]
+         * @returns a {@link Scale}
          */
         get_scale(): Scale;
         /**
          * Gets whether or not the zoom buttons are shown.
-         * @returns %TRUE if the zoom buttons are visible, otherwise %FALSE
+         * @returns `true` if the zoom buttons are visible, otherwise `false`
          */
         get_show_zoom_buttons(): boolean;
         /**
          * Gets the map's viewport, needed for constructing map layers that will be added
          * to it.
-         * @returns a [class@Viewport]
+         * @returns a {@link Viewport}
          */
         get_viewport(): Viewport;
         /**
          * Inserts a map layer as an overlay on top of the base map. The layer will
-         * appear above `sibling,` or at the bottom (but still above the base map)
-         * if `sibling` is %NULL.
-         * @param layer a [class@Layer] to insert
+         * appear above `sibling`, or at the bottom (but still above the base map)
+         * if `sibling` is `null`.
+         * @param layer a {@link Layer} to insert
          * @param sibling
          */
         insert_overlay_layer_above(layer: Layer, sibling: Layer): void;
         /**
          * Inserts a map layer as an overlay on top of the base map. The layer will
-         * appear just below `sibling,` or above everything else if `sibling` is %NULL.
-         * @param layer a [class@Layer] to insert
+         * appear just below `sibling`, or above everything else if `sibling` is `null`.
+         * @param layer a {@link Layer} to insert
          * @param sibling
          */
         insert_overlay_layer_behind(layer: Layer, sibling: Layer): void;
         /**
          * Removes a layer from the map.
-         * @param layer a [class@Layer] that was added to the map previously
+         * @param layer a {@link Layer} that was added to the map previously
          */
         remove_overlay_layer(layer: Layer): void;
         /**
          * Sets the source for the base map.
-         * @param map_source a [class@MapSource]
+         * @param map_source a {@link MapSource}
          */
         set_map_source(map_source?: MapSource | null): void;
         /**
          * Sets whether or not the zoom buttons are shown.
-         * @param show_zoom_buttons %TRUE to show the zoom buttons, %FALSE to hide them
+         * @param show_zoom_buttons `true` to show the zoom buttons, `false` to hide them
          */
         set_show_zoom_buttons(show_zoom_buttons: boolean): void;
-
-        // Inherited properties
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
         set accessible_role(val: Gtk.AccessibleRole);
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
         set accessibleRole(val: Gtk.AccessibleRole);
-
-        // Inherited methods
         /**
          * Requests the user's screen reader to announce the given message.
          *
@@ -10924,6 +11913,17 @@ export namespace Shumate {
          * @param priority the priority of the announcement
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
+        /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @returns the accessible identifier
+         */
+        get_accessible_id(): string | null;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -10944,7 +11944,7 @@ export namespace Shumate {
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
@@ -10963,9 +11963,9 @@ export namespace Shumate {
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
          */
@@ -10991,7 +11991,7 @@ export namespace Shumate {
          * This function is meant to be used by accessible implementations that are
          * not part of the widget hierarchy, and but act as a logical bridge between
          * widgets. For instance, if a widget creates an object that holds metadata
-         * for each child, and you want that object to implement the `GtkAccessible`
+         * for each child, and you want that object to implement the {@link Gtk.Accessible}
          * interface, you will use this function to ensure that the parent of each
          * child widget is the metadata object, and the parent of each metadata
          * object is the container widget.
@@ -11010,7 +12010,7 @@ export namespace Shumate {
         /**
          * Informs ATs that the platform state has changed.
          *
-         * This function should be used by `GtkAccessible` implementations that
+         * This function should be used by {@link Gtk.Accessible} implementations that
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
@@ -11019,7 +12019,7 @@ export namespace Shumate {
         /**
          * Updates an array of accessible properties.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * property change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -11030,7 +12030,7 @@ export namespace Shumate {
         /**
          * Updates an array of accessible relations.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * relation change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -11041,7 +12041,7 @@ export namespace Shumate {
         /**
          * Updates an array of accessible states.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * state change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -11050,44 +12050,61 @@ export namespace Shumate {
          */
         update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
         /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @virtual
+         */
+        vfunc_get_accessible_id(): string | null;
+        /**
          * Retrieves the accessible parent for an accessible object.
          *
          * This function returns `NULL` for top level widgets.
+         * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
         /**
          * Retrieves the implementation for the given accessible object.
+         * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
         /**
          * Gets the ID of the `buildable` object.
          *
-         * `GtkBuilder` sets the name based on the ID attribute
+         * {@link Gtk.Builder} sets the name based on the ID attribute
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
@@ -11095,18 +12112,20 @@ export namespace Shumate {
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param child child to add
-         * @param type kind of child or %NULL
+         * @param type kind of child or `null`
+         * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
         /**
-         * Similar to gtk_buildable_parser_finished() but is
+         * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
-         * @param builder a `GtkBuilder`
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder}
+         * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @virtual
          */
         vfunc_custom_finished(
             builder: Gtk.Builder,
@@ -11117,10 +12136,11 @@ export namespace Shumate {
         /**
          * Called at the end of each custom element handled by
          * the buildable.
-         * @param builder `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @virtual
          */
         vfunc_custom_tag_end(
             builder: Gtk.Builder,
@@ -11130,9 +12150,10 @@ export namespace Shumate {
         ): void;
         /**
          * Called for each unknown element under `<child>`.
-         * @param builder a `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @virtual
          */
         vfunc_custom_tag_start(
             builder: Gtk.Builder,
@@ -11142,39 +12163,44 @@ export namespace Shumate {
         /**
          * The getter corresponding to `set_id`. Implement this
          *   if you implement `set_id`.
+         * @virtual
          */
         vfunc_get_id(): string;
         /**
          * Retrieves the internal child called `childname` of the `buildable` object.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
         /**
          * Called when a builder finishes the parsing
          *  of a UI definition. It is normally not necessary to implement this,
-         *  unless you need to perform special cleanup actions. `GtkWindow` sets
-         *  the `GtkWidget:visible` property here.
+         *  unless you need to perform special cleanup actions. {@link Gtk.Window} sets
+         *  the {@link Gtk.Widget.visible} property here.
          * @param builder
+         * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
         /**
          * Sets a property of a buildable object.
-         *  It is normally not necessary to implement this, g_object_set_property()
-         *  is used by default. `GtkWindow` implements this to delay showing itself
-         *  (i.e. setting the [property`Gtk`.Widget:visible] property) until the whole
+         *  It is normally not necessary to implement this, `g_object_set_property()`
+         *  is used by default. {@link Gtk.Window} implements this to delay showing itself
+         *  (i.e. setting the {@link Gtk.Widget.visible} property) until the whole
          *  interface is created.
          * @param builder
          * @param name
          * @param value
+         * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
         /**
-         * Stores the id attribute given in the `GtkBuilder` UI definition.
-         *   `GtkWidget` stores the name as object data. Implement this method if your
+         * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
+         *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
          *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id
+         * @virtual
          */
         vfunc_set_id(id: string): void;
         /**
@@ -11190,32 +12216,32 @@ export namespace Shumate {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -11224,39 +12250,39 @@ export namespace Shumate {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -11267,13 +12293,16 @@ export namespace Shumate {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -11281,7 +12310,7 @@ export namespace Shumate {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -11289,9 +12318,9 @@ export namespace Shumate {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -11311,9 +12340,9 @@ export namespace Shumate {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -11326,34 +12355,34 @@ export namespace Shumate {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -11386,22 +12415,22 @@ export namespace Shumate {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -11410,8 +12439,8 @@ export namespace Shumate {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -11428,10 +12457,10 @@ export namespace Shumate {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -11446,13 +12475,13 @@ export namespace Shumate {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -11483,21 +12512,21 @@ export namespace Shumate {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -11507,33 +12536,34 @@ export namespace Shumate {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -11542,6 +12572,7 @@ export namespace Shumate {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -11550,12 +12581,14 @@ export namespace Shumate {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -11564,20 +12597,22 @@ export namespace Shumate {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -11589,6 +12624,7 @@ export namespace Shumate {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -11644,15 +12680,17 @@ export namespace Shumate {
 
     /**
      * An object containing the details of a map feature that has been clicked.
-     * It is the argument of the [signal`MapLayer:`:symbol-clicked] and
-     * [signal`SimpleMap:`:symbol-clicked] signals.
+     * It is the argument of the `Shumate.MapLayer::symbol-clicked` and
+     * `Shumate.SimpleMap::symbol-clicked` signals.
      *
      * When vector maps are rendered, they may contain labels and icons. When one
      * of these symbols is clicked, these signals are emitted to give the
      * application access to the original location and details of the map feature.
      *
-     * [class`SymbolEvent]` implements [iface`Location]` so you can get the latitude
+     * {@link SymbolEvent} implements {@link Location} so you can get the latitude
      * and longitude of the feature that was clicked.
+     * @gir-type Class
+     * @since 1.1
      */
     class SymbolEvent extends GObject.Object implements Location {
         static $gtype: GObject.GType<SymbolEvent>;
@@ -11662,33 +12700,43 @@ export namespace Shumate {
         /**
          * The ID of the feature that this event pertains to, as it was given in the
          * data source.
+         * @since 1.1
+         * @read-only
          */
         get feature_id(): string;
         /**
          * The ID of the feature that this event pertains to, as it was given in the
          * data source.
+         * @since 1.1
+         * @read-only
          */
         get featureId(): string;
         /**
          * The ID of the style layer of the symbol that this event pertains to.
+         * @since 1.1
+         * @read-only
          */
         get layer(): string;
         /**
          * The number of clicks/presses triggering the symbol event.
+         * @since 1.5
          */
         get n_press(): number;
         set n_press(val: number);
         /**
          * The number of clicks/presses triggering the symbol event.
+         * @since 1.5
          */
         get nPress(): number;
         set nPress(val: number);
         /**
          * The ID of the source layer of the symbol that this event pertains to.
+         * @read-only
          */
         get source_layer(): string;
         /**
          * The ID of the source layer of the symbol that this event pertains to.
+         * @read-only
          */
         get sourceLayer(): string;
 
@@ -11709,16 +12757,19 @@ export namespace Shumate {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SymbolEvent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SymbolEvent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SymbolEvent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SymbolEvent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SymbolEvent.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SymbolEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -11772,28 +12823,26 @@ export namespace Shumate {
          * @returns the tag value, formatted as a string
          */
         get_tag(tag_name: string): string;
-
-        // Inherited properties
         /**
          * The latitude coordonate in degrees
+         * @category Inherited from Shumate.Location
          */
         get latitude(): number;
         set latitude(val: number);
         /**
          * The longitude coordonate in degrees
+         * @category Inherited from Shumate.Location
          */
         get longitude(): number;
         set longitude(val: number);
-
-        // Inherited methods
         /**
          * Calculates the distance in meters between two locations.
          *
          * This function uses the great-circle distance formula, which assumes
          * Earth is a perfect sphere. This limits the accuracy of the result,
          * but is good enough for most purposes.
-         * @param other a [iface@Location]
-         * @returns the distance in meters between @self and @other
+         * @param other a {@link Location}
+         * @returns the distance in meters between `self` and `other`
          */
         distance(other: Location): number;
         /**
@@ -11814,16 +12863,19 @@ export namespace Shumate {
         set_location(latitude: number, longitude: number): void;
         /**
          * Gets the latitude coordinate in degrees.
+         * @virtual
          */
         vfunc_get_latitude(): number;
         /**
          * Gets the longitude coordinate in degrees.
+         * @virtual
          */
         vfunc_get_longitude(): number;
         /**
          * Sets the coordinates of the location
          * @param latitude the latitude in degrees
          * @param longitude the longitude in degrees
+         * @virtual
          */
         vfunc_set_location(latitude: number, longitude: number): void;
         /**
@@ -11839,32 +12891,32 @@ export namespace Shumate {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -11873,39 +12925,39 @@ export namespace Shumate {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -11916,13 +12968,16 @@ export namespace Shumate {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -11930,7 +12985,7 @@ export namespace Shumate {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -11938,9 +12993,9 @@ export namespace Shumate {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -11960,9 +13015,9 @@ export namespace Shumate {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -11975,34 +13030,34 @@ export namespace Shumate {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -12035,22 +13090,22 @@ export namespace Shumate {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -12059,8 +13114,8 @@ export namespace Shumate {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -12077,10 +13132,10 @@ export namespace Shumate {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -12095,13 +13150,13 @@ export namespace Shumate {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -12132,21 +13187,21 @@ export namespace Shumate {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -12156,33 +13211,34 @@ export namespace Shumate {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -12191,6 +13247,7 @@ export namespace Shumate {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -12199,12 +13256,14 @@ export namespace Shumate {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -12213,20 +13272,22 @@ export namespace Shumate {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -12238,6 +13299,7 @@ export namespace Shumate {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -12298,7 +13360,8 @@ export namespace Shumate {
     }
 
     /**
-     * An object that represents map tiles. Tiles are loaded by a [class`MapSource]`.
+     * An object that represents map tiles. Tiles are loaded by a {@link MapSource}.
+     * @gir-type Class
      */
     class Tile extends GObject.Object {
         static $gtype: GObject.GType<Tile>;
@@ -12316,17 +13379,19 @@ export namespace Shumate {
         get fadeIn(): boolean;
         set fadeIn(val: boolean);
         /**
-         * The [iface`Gdk`.Paintable] backing the tile
+         * The {@link Gdk.Paintable} backing the tile
          */
         get paintable(): Gdk.Paintable;
         set paintable(val: Gdk.Paintable);
         /**
          * The scale factor of the widget the tile will be displayed in.
+         * @since 1.1
          */
         get scale_factor(): number;
         set scale_factor(val: number);
         /**
          * The scale factor of the widget the tile will be displayed in.
+         * @since 1.1
          */
         get scaleFactor(): number;
         set scaleFactor(val: number);
@@ -12382,16 +13447,19 @@ export namespace Shumate {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Tile.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Tile.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Tile.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Tile.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Tile.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Tile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -12406,8 +13474,8 @@ export namespace Shumate {
          */
         get_fade_in(): boolean;
         /**
-         * Get the [iface`Gdk`.Paintable] representing this tile.
-         * @returns A [iface@Gdk.Paintable]
+         * Get the {@link Gdk.Paintable} representing this tile.
+         * @returns A {@link Gdk.Paintable}
          */
         get_paintable(): Gdk.Paintable | null;
         /**
@@ -12422,7 +13490,7 @@ export namespace Shumate {
         get_size(): number;
         /**
          * Gets the current state of tile loading.
-         * @returns the tile's #ShumateState
+         * @returns the tile's {@link Shumate.State}
          */
         get_state(): State;
         /**
@@ -12446,8 +13514,8 @@ export namespace Shumate {
          */
         set_fade_in(fade_in: boolean): void;
         /**
-         * Sets the [iface`Gdk`.Paintable] representing this tile.
-         * @param paintable a [iface@Gdk.Paintable]
+         * Sets the {@link Gdk.Paintable} representing this tile.
+         * @param paintable a {@link Gdk.Paintable}
          */
         set_paintable(paintable: Gdk.Paintable): void;
         /**
@@ -12461,8 +13529,8 @@ export namespace Shumate {
          */
         set_size(size: number): void;
         /**
-         * Sets the tile's #ShumateState
-         * @param state a #ShumateState
+         * Sets the tile's {@link Shumate.State}
+         * @param state a {@link Shumate.State}
          */
         set_state(state: State | null): void;
         /**
@@ -12499,10 +13567,11 @@ export namespace Shumate {
     }
 
     /**
-     * A [class`DataSource]` that asynchronously downloads tiles from an online
+     * A {@link DataSource} that asynchronously downloads tiles from an online
      * service using a given template.
      *
-     * It contains an internal [class`FileCache]` to cache the tiles on the system.
+     * It contains an internal {@link FileCache} to cache the tiles on the system.
+     * @gir-type Class
      */
     class TileDownloader extends DataSource {
         static $gtype: GObject.GType<TileDownloader>;
@@ -12518,6 +13587,7 @@ export namespace Shumate {
          * - "{z}": The zoom level of the tile
          * - "{tmsy}": The inverted Y coordinate (i.e. tile numbering starts with 0 at
          * the bottom, rather than top, of the map)
+         * @construct-only
          */
         get url_template(): string;
         /**
@@ -12529,6 +13599,7 @@ export namespace Shumate {
          * - "{z}": The zoom level of the tile
          * - "{tmsy}": The inverted Y coordinate (i.e. tile numbering starts with 0 at
          * the bottom, rather than top, of the map)
+         * @construct-only
          */
         get urlTemplate(): string;
 
@@ -12551,16 +13622,19 @@ export namespace Shumate {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TileDownloader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TileDownloader.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TileDownloader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TileDownloader.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TileDownloader.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TileDownloader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -12580,11 +13654,13 @@ export namespace Shumate {
     /**
      * Provides low-level access to the contents of a vector tile.
      *
-     * To create a new [class`VectorReader]`, use [ctor`VectorReader`.new] and pass
-     * the bytes of a vector tile, which you might get from a [class`DataSource]`.
-     * Then, use [method`VectorReader`.iterate] to get a [class`VectorReaderIter]`
+     * To create a new {@link VectorReader}, use {@link VectorReader.new} and pass
+     * the bytes of a vector tile, which you might get from a {@link DataSource}.
+     * Then, use {@link VectorReader.iterate} to get a {@link VectorReaderIter}
      * and iterate over the features in the tile. You can create multiple
-     * [class`VectorReaderIter]`s from the same [class`VectorReader]`.
+     * {@link VectorReaderIter}s from the same {@link VectorReader}.
+     * @gir-type Class
+     * @since 1.2
      */
     class VectorReader extends GObject.Object {
         static $gtype: GObject.GType<VectorReader>;
@@ -12608,16 +13684,19 @@ export namespace Shumate {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof VectorReader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VectorReader.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof VectorReader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VectorReader.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof VectorReader.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<VectorReader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -12627,8 +13706,8 @@ export namespace Shumate {
         // Methods
 
         /**
-         * Creates a new [class`VectorReaderIter]` for `self`.
-         * @returns A new [class@VectorReaderIter]
+         * Creates a new {@link VectorReaderIter} for `self`.
+         * @returns A new {@link VectorReaderIter}
          */
         iterate(): VectorReaderIter;
     }
@@ -12649,7 +13728,7 @@ export namespace Shumate {
     /**
      * Reads the layers and features of a vector tile.
      *
-     * To create a new [class`VectorReaderIter]`, use [method`VectorReader`.iterate].
+     * To create a new {@link VectorReaderIter}, use {@link VectorReader.iterate}.
      *
      * A vector tile consists of named layers, which contain features. Each feature
      * has an ID, a geometry, and a set of key/value tags. The meanings of
@@ -12657,24 +13736,29 @@ export namespace Shumate {
      * [OpenMapTiles schema](https://openmaptiles.org/schema/) is a common schema
      * for vector tiles.
      *
-     * To read all layers in a tile, use [method`VectorReaderIter`.get_layer_count] and
-     * [method`VectorReaderIter`.read_layer]. If you know the name of the layer you
-     * want, you can also use [method`VectorReaderIter`.read_layer_by_name].
+     * To read all layers in a tile, use {@link VectorReaderIter.get_layer_count} and
+     * {@link VectorReaderIter.read_layer}. If you know the name of the layer you
+     * want, you can also use {@link VectorReaderIter.read_layer_by_name}.
      * Once the iterator is reading a layer, you can call
-     * [method`VectorReaderIter`.next_feature] in a loop to read all the features in
+     * {@link VectorReaderIter.next_feature} in a loop to read all the features in
      * the layer.
      *
-     * A [class`VectorReaderIter]` is not thread-safe, but iterators created
-     * from the same [class`VectorReader]` can be used in different threads.
+     * A {@link VectorReaderIter} is not thread-safe, but iterators created
+     * from the same {@link VectorReader} can be used in different threads.
      *
      * See [the Mapbox Vector Tile specification](https://github.com/mapbox/vector-tile-spec/tree/master/2.1)
      * for more information about the vector tile format.
+     * @gir-type Class
+     * @since 1.2
      */
     class VectorReaderIter extends GObject.Object {
         static $gtype: GObject.GType<VectorReaderIter>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get reader(): VectorReader;
 
         /**
@@ -12694,16 +13778,19 @@ export namespace Shumate {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof VectorReaderIter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VectorReaderIter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof VectorReaderIter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VectorReaderIter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof VectorReaderIter.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<VectorReaderIter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -12716,17 +13803,17 @@ export namespace Shumate {
          * Determines whether the current feature contains the given point.
          *
          * The point must be specified in tile space. See
-         * [method`VectorReaderIter`.get_layer_extent] to get the range of the
+         * {@link VectorReaderIter.get_layer_extent} to get the range of the
          * coordinates.
          *
          * Only polygon or multipolygon features can contain a point. For all
-         * other feature types, this function returns %FALSE.
+         * other feature types, this function returns `false`.
          *
          * If the point is on the border of the polygon, this function may return
-         * either %TRUE or %FALSE.
+         * either `true` or `false`.
          * @param x
          * @param y
-         * @returns %TRUE if the feature contains the point, %FALSE otherwise.
+         * @returns `true` if the feature contains the point, `false` otherwise.
          */
         feature_contains_point(x: number, y: number): boolean;
         /**
@@ -12748,19 +13835,19 @@ export namespace Shumate {
          * Gets the coordinates of the current feature in tile space, if the
          * feature is a single point.
          *
-         * See [method`VectorReaderIter`.get_layer_extent] to get the range
+         * See {@link VectorReaderIter.get_layer_extent} to get the range
          * of the coordinates.
          *
          * It is an error to call this function if the feature is not a single point.
-         * Use [method`VectorReaderIter`.get_feature_geometry_type] to check
+         * Use {@link VectorReaderIter.get_feature_geometry_type} to check
          * the feature's geometry type.
-         * @returns %TRUE if the feature is a point, %FALSE otherwise.
+         * @returns `true` if the feature is a point, `false` otherwise.
          */
         get_feature_point(): [boolean, number, number];
         /**
          * Gets the value of the tag with the given key.
          * @param key The key of the tag to get.
-         * @returns %TRUE if the tag was found, %FALSE otherwise.
+         * @returns `true` if the tag was found, `false` otherwise.
          */
         get_feature_tag(key: string): [boolean, unknown];
         /**
@@ -12785,9 +13872,9 @@ export namespace Shumate {
          * Gets the number of features in the current layer.
          *
          * You can loop over all features in the current layer by calling
-         * [method`VectorReaderIter`.read_feature] with each index from 0 to
+         * {@link VectorReaderIter.read_feature} with each index from 0 to
          * the feature count, but it might be easier to use
-         * [method`VectorReaderIter`.next_feature] instead.
+         * {@link VectorReaderIter.next_feature} instead.
          * @returns The number of features in the current layer.
          */
         get_layer_feature_count(): number;
@@ -12803,14 +13890,14 @@ export namespace Shumate {
         get_reader(): VectorReader;
         /**
          * Advances the iterator to the next feature in the current layer.
-         * @returns %TRUE if there is a next feature, %FALSE otherwise.
+         * @returns `true` if there is a next feature, `false` otherwise.
          */
         next_feature(): boolean;
         /**
          * Moves the iterator to the feature at the given index in the current layer.
          *
          * You can get the number of features in the current layer with
-         * [method`VectorReaderIter`.get_layer_feature_count].
+         * {@link VectorReaderIter.get_layer_feature_count}.
          * @param index The index of the feature to read.
          */
         read_feature(index: number): void;
@@ -12822,15 +13909,15 @@ export namespace Shumate {
         /**
          * Moves the iterator to the layer with the given name, if present.
          *
-         * If the layer is not found, the current layer will be set to %NULL and the
-         * function will return %FALSE. Layers are typically omitted if they are empty,
+         * If the layer is not found, the current layer will be set to `null` and the
+         * function will return `false`. Layers are typically omitted if they are empty,
          * so don't assume that a layer in the schema will always be present.
          *
-         * The iterator's current feature will be %NULL after calling this function;
-         * use [method`VectorReaderIter`.next_feature] to advance to the first feature
+         * The iterator's current feature will be `null` after calling this function;
+         * use {@link VectorReaderIter.next_feature} to advance to the first feature
          * in the layer.
          * @param name
-         * @returns %TRUE if the layer was found, %FALSE otherwise.
+         * @returns `true` if the layer was found, `false` otherwise.
          */
         read_layer_by_name(name: string): boolean;
     }
@@ -12861,7 +13948,8 @@ export namespace Shumate {
     }
 
     /**
-     * A [class`MapSource]` that renders tiles from a given vector data source.
+     * A {@link MapSource} that renders tiles from a given vector data source.
+     * @gir-type Class
      */
     class VectorRenderer extends MapSource implements Gio.Initable {
         static $gtype: GObject.GType<VectorRenderer>;
@@ -12870,11 +13958,13 @@ export namespace Shumate {
 
         /**
          * The sprite sheet used to render icons and textures.
+         * @since 1.1
          */
         get sprite_sheet(): VectorSpriteSheet;
         set sprite_sheet(val: VectorSpriteSheet);
         /**
          * The sprite sheet used to render icons and textures.
+         * @since 1.1
          */
         get spriteSheet(): VectorSpriteSheet;
         set spriteSheet(val: VectorSpriteSheet);
@@ -12883,6 +13973,7 @@ export namespace Shumate {
          * format.
          *
          * Note that not all features of the specification are supported.
+         * @construct-only
          */
         get style_json(): string;
         /**
@@ -12890,6 +13981,7 @@ export namespace Shumate {
          * format.
          *
          * Note that not all features of the specification are supported.
+         * @construct-only
          */
         get styleJson(): string;
 
@@ -12912,16 +14004,19 @@ export namespace Shumate {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof VectorRenderer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VectorRenderer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof VectorRenderer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VectorRenderer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof VectorRenderer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<VectorRenderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -12931,74 +14026,101 @@ export namespace Shumate {
         // Static methods
 
         /**
-         * Checks whether libshumate was compiled with vector tile support. If it was
-         * not, vector renderers cannot be created or used.
+         * Checks whether libshumate was compiled with vector tile support. Previous
+         * versions of libshumate had a build-time option to disable vector tiles,
+         * but as of 1.6 they are always enabled.
          */
         static is_supported(): boolean;
 
         // Methods
 
         /**
+         * Gets a global state value.
+         *
+         * If the value has not been set with {@link VectorRenderer.set_global_state}, the default
+         * defined in the style will be returned, or `null` if no default is defined. Note that an
+         * explicitly set null value will return a {@link VectorValue} of type null, while an
+         * undefined value will return `null`.
+         * @param key the state key
+         * @returns the state value, or `null` if none is set
+         */
+        get_global_state(key: string): VectorValue;
+        /**
          * Gets the sprite sheet used to render icons and textures.
-         * @returns the [class@VectorSpriteSheet]
+         * @returns the {@link VectorSpriteSheet}
          */
         get_sprite_sheet(): VectorSpriteSheet;
         /**
+         * Resets a global state value to the default defined in the style, or to null
+         * if no default is defined.
+         * @param key the state key
+         */
+        reset_global_state(key: string): void;
+        /**
          * Adds a data source to the renderer.
          *
-         * Currently, [class`VectorRenderer]` only supports one data source
+         * Currently, {@link VectorRenderer} only supports one data source
          * and throws an error if the style does not contain exactly one
          * data source. However, support for multiple sources may be added
          * in the future, so this method accepts a name parameter. If the
          * name does not match the one expected by the style, this method
          * will have no effect.
          * @param name the name of the data source
-         * @param data_source a [class@DataSource]
+         * @param data_source a {@link DataSource}
          */
         set_data_source(name: string, data_source: DataSource): void;
         /**
+         * Sets a global state value.
+         *
+         * Global state can be accessed in the stylesheet through the "global-state" expression operator.
+         * This allows styles to provide options that can be configured without changing the style JSON.
+         *
+         * Previously rendered tiles are not affected by changes to global state and must be re-rendered.
+         * @param key the state key
+         * @param value the state value
+         */
+        set_global_state(key: string, value: VectorValue): void;
+        /**
          * Sets the sprite sheet used to render icons and textures.
-         * @param sprites a [class@VectorSpriteSheet]
+         * @param sprites a {@link VectorSpriteSheet}
          */
         set_sprite_sheet(sprites: VectorSpriteSheet): void;
         /**
          * Sets the sprite sheet used by the style JSON to render icons and textures.
          *
-         * The existing [property`VectorRenderer:`sprite-sheet] property will be replaced
-         * with a new instance of [class`VectorSpriteSheet]`.
-         * @param sprites_pixbuf a [class@GdkPixbuf.Pixbuf]
+         * The existing {@link VectorRenderer.sprite_sheet} property will be replaced
+         * with a new instance of {@link VectorSpriteSheet}.
+         * @param sprites_pixbuf a {@link GdkPixbuf.Pixbuf}
          * @param sprites_json a JSON string
          * @returns whether the sprite sheet was loaded successfully
          */
         set_sprite_sheet_data(sprites_pixbuf: GdkPixbuf.Pixbuf, sprites_json: string): boolean;
-
-        // Inherited methods
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -13008,40 +14130,40 @@ export namespace Shumate {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
         init(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -13051,11 +14173,12 @@ export namespace Shumate {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -13071,32 +14194,32 @@ export namespace Shumate {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -13105,39 +14228,39 @@ export namespace Shumate {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -13148,13 +14271,16 @@ export namespace Shumate {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -13162,7 +14288,7 @@ export namespace Shumate {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -13170,9 +14296,9 @@ export namespace Shumate {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -13192,9 +14318,9 @@ export namespace Shumate {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -13207,34 +14333,34 @@ export namespace Shumate {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -13267,22 +14393,22 @@ export namespace Shumate {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -13291,8 +14417,8 @@ export namespace Shumate {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -13309,10 +14435,10 @@ export namespace Shumate {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -13327,13 +14453,13 @@ export namespace Shumate {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -13364,21 +14490,21 @@ export namespace Shumate {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -13388,33 +14514,34 @@ export namespace Shumate {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -13423,6 +14550,7 @@ export namespace Shumate {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -13431,12 +14559,14 @@ export namespace Shumate {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -13445,20 +14575,22 @@ export namespace Shumate {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -13470,6 +14602,7 @@ export namespace Shumate {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -13532,10 +14665,12 @@ export namespace Shumate {
      *
      * ## Symbolic icons
      *
-     * If a sprite is created from a [iface`Gtk`.SymbolicPaintable] source, such
+     * If a sprite is created from a {@link Gtk.SymbolicPaintable} source, such
      * as a symbolic icon, then when the sprite is part of a symbol layer it
      * will be drawn using the icon-color property (or the text color, if the
      * sprite is part of a formatted string).
+     * @gir-type Class
+     * @since 1.1
      */
     class VectorSprite extends GObject.Object implements Gdk.Paintable, Gtk.SymbolicPaintable {
         static $gtype: GObject.GType<VectorSprite>;
@@ -13544,34 +14679,50 @@ export namespace Shumate {
 
         /**
          * The height at which the sprite should be drawn, in pixels.
+         * @since 1.1
+         * @construct-only
          */
         get height(): number;
         /**
          * The intended scale factor of the sprite.
+         * @since 1.1
+         * @construct-only
          */
         get scale_factor(): number;
         /**
          * The intended scale factor of the sprite.
+         * @since 1.1
+         * @construct-only
          */
         get scaleFactor(): number;
         /**
-         * The [iface`Gdk`.Paintable] used to draw the sprite.
+         * The {@link Gdk.Paintable} used to draw the sprite.
+         * @since 1.1
+         * @construct-only
          */
         get source_paintable(): Gdk.Paintable;
         /**
-         * The [iface`Gdk`.Paintable] used to draw the sprite.
+         * The {@link Gdk.Paintable} used to draw the sprite.
+         * @since 1.1
+         * @construct-only
          */
         get sourcePaintable(): Gdk.Paintable;
         /**
-         * The area of the source rectangle to draw, or %NULL to use the entire paintable.
+         * The area of the source rectangle to draw, or `null` to use the entire paintable.
+         * @since 1.1
+         * @construct-only
          */
         get source_rect(): Gdk.Rectangle;
         /**
-         * The area of the source rectangle to draw, or %NULL to use the entire paintable.
+         * The area of the source rectangle to draw, or `null` to use the entire paintable.
+         * @since 1.1
+         * @construct-only
          */
         get sourceRect(): Gdk.Rectangle;
         /**
          * The width at which the sprite should be drawn, in pixels.
+         * @since 1.1
+         * @construct-only
          */
         get width(): number;
 
@@ -13602,16 +14753,19 @@ export namespace Shumate {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof VectorSprite.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VectorSprite.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof VectorSprite.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VectorSprite.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof VectorSprite.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<VectorSprite.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -13631,16 +14785,16 @@ export namespace Shumate {
          */
         get_scale_factor(): number;
         /**
-         * Gets the source [iface`Gdk`.Paintable] used to draw the sprite.
+         * Gets the source {@link Gdk.Paintable} used to draw the sprite.
          *
-         * Note that [class`VectorSprite]` also implements [iface`Gdk`.Paintable].
+         * Note that {@link VectorSprite} also implements {@link Gdk.Paintable}.
          * In most cases, you should draw the sprite rather than the original paintable.
          * @returns the source paintable
          */
         get_source_paintable(): Gdk.Paintable;
         /**
          * Gets the source rectangle of the sprite.
-         * @returns the sprite's source rectangle, or %NULL if the entire paintable is used
+         * @returns the sprite's source rectangle, or `null` if the entire paintable is used
          */
         get_source_rect(): Gdk.Rectangle | null;
         /**
@@ -13648,10 +14802,8 @@ export namespace Shumate {
          * @returns the sprite's width in pixels
          */
         get_width(): number;
-
-        // Inherited methods
         /**
-         * Compute a concrete size for the `GdkPaintable`.
+         * Compute a concrete size for the {@link Gdk.Paintable}.
          *
          * Applies the sizing algorithm outlined in the
          * [CSS Image spec](https://drafts.csswg.org/css-images-3/#default-sizing)
@@ -13661,10 +14813,10 @@ export namespace Shumate {
          * and `specified_height` are known, but it is useful to call this
          * function in GtkWidget:measure implementations to compute the
          * other dimension when only one dimension is given.
-         * @param specified_width the width @paintable could be drawn into or   0.0 if unknown
-         * @param specified_height the height @paintable could be drawn into or   0.0 if unknown
-         * @param default_width the width @paintable would be drawn into if   no other constraints were given
-         * @param default_height the height @paintable would be drawn into if   no other constraints were given
+         * @param specified_width the width `paintable` could be drawn into or   0.0 if unknown
+         * @param specified_height the height `paintable` could be drawn into or   0.0 if unknown
+         * @param default_width the width `paintable` would be drawn into if   no other constraints were given
+         * @param default_height the height `paintable` would be drawn into if   no other constraints were given
          */
         compute_concrete_size(
             specified_width: number,
@@ -13679,7 +14831,7 @@ export namespace Shumate {
          * for example to take a screenshot of a running animation.
          *
          * If the `paintable` is already immutable, it will return itself.
-         * @returns An immutable paintable for the current   contents of @paintable
+         * @returns An immutable paintable for the current   contents of `paintable`
          */
         get_current_image(): Gdk.Paintable;
         /**
@@ -13687,8 +14839,8 @@ export namespace Shumate {
          *
          * This is oftentimes useful for optimizations.
          *
-         * See [flags`Gdk`.PaintableFlags] for the flags and what they mean.
-         * @returns The `GdkPaintableFlags` for this paintable
+         * See {@link Gdk.PaintableFlags} for the flags and what they mean.
+         * @returns The {@link Gdk.PaintableFlags} for this paintable
          */
         get_flags(): Gdk.PaintableFlags;
         /**
@@ -13700,16 +14852,16 @@ export namespace Shumate {
          * ratio when displaying the paintable.
          *
          * This is a purely informational value and does not in any way limit the
-         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         * values that may be passed to {@link Gdk.Paintable.snapshot}.
          *
          * Usually when a `paintable` returns nonzero values from
-         * [method`Gdk`.Paintable.get_intrinsic_width] and
-         * [method`Gdk`.Paintable.get_intrinsic_height] the aspect ratio
+         * {@link Gdk.Paintable.get_intrinsic_width} and
+         * {@link Gdk.Paintable.get_intrinsic_height} the aspect ratio
          * should conform to those values, though that is not required.
          *
          * If the `paintable` does not have a preferred aspect ratio,
          * it returns 0. Negative values are never returned.
-         * @returns the intrinsic aspect ratio of @paintable or 0 if none.
+         * @returns the intrinsic aspect ratio of `paintable` or 0 if none.
          */
         get_intrinsic_aspect_ratio(): number;
         /**
@@ -13719,11 +14871,11 @@ export namespace Shumate {
          * the paintable.
          *
          * This is a purely informational value and does not in any way limit the
-         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         * values that may be passed to {@link Gdk.Paintable.snapshot}.
          *
          * If the `paintable` does not have a preferred height, it returns 0.
          * Negative values are never returned.
-         * @returns the intrinsic height of @paintable or 0 if none.
+         * @returns the intrinsic height of `paintable` or 0 if none.
          */
         get_intrinsic_height(): number;
         /**
@@ -13733,36 +14885,36 @@ export namespace Shumate {
          * the paintable.
          *
          * This is a purely informational value and does not in any way limit the
-         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         * values that may be passed to {@link Gdk.Paintable.snapshot}.
          *
          * If the `paintable` does not have a preferred width, it returns 0.
          * Negative values are never returned.
-         * @returns the intrinsic width of @paintable or 0 if none.
+         * @returns the intrinsic width of `paintable` or 0 if none.
          */
         get_intrinsic_width(): number;
         /**
-         * Called by implementations of `GdkPaintable` to invalidate their contents.
+         * Called by implementations of {@link Gdk.Paintable} to invalidate their contents.
          *
          * Unless the contents are invalidated, implementations must guarantee that
-         * multiple calls of [method`Gdk`.Paintable.snapshot] produce the same output.
+         * multiple calls of {@link Gdk.Paintable.snapshot} produce the same output.
          *
-         * This function will emit the [signal`Gdk`.Paintable::invalidate-contents]
+         * This function will emit the `Gdk.Paintable::invalidate-contents`
          * signal.
          *
-         * If a `paintable` reports the %GDK_PAINTABLE_STATIC_CONTENTS flag,
+         * If a `paintable` reports the {@link Gdk.PaintableFlags.STATIC_CONTENTS} flag,
          * it must not call this function.
          */
         invalidate_contents(): void;
         /**
-         * Called by implementations of `GdkPaintable` to invalidate their size.
+         * Called by implementations of {@link Gdk.Paintable} to invalidate their size.
          *
          * As long as the size is not invalidated, `paintable` must return the same
          * values for its intrinsic width, height and aspect ratio.
          *
-         * This function will emit the [signal`Gdk`.Paintable::invalidate-size]
+         * This function will emit the `Gdk.Paintable::invalidate-size`
          * signal.
          *
-         * If a `paintable` reports the %GDK_PAINTABLE_STATIC_SIZE flag,
+         * If a `paintable` reports the {@link Gdk.PaintableFlags.STATIC_SIZE} flag,
          * it must not call this function.
          */
         invalidate_size(): void;
@@ -13772,7 +14924,7 @@ export namespace Shumate {
          * The paintable is drawn at the current (0,0) offset of the `snapshot`.
          * If `width` and `height` are not larger than zero, this function will
          * do nothing.
-         * @param snapshot a `GdkSnapshot` to snapshot to
+         * @param snapshot a {@link Gdk.Snapshot} to snapshot to
          * @param width width to snapshot in
          * @param height height to snapshot in
          */
@@ -13784,6 +14936,7 @@ export namespace Shumate {
          * for example to take a screenshot of a running animation.
          *
          * If the `paintable` is already immutable, it will return itself.
+         * @virtual
          */
         vfunc_get_current_image(): Gdk.Paintable;
         /**
@@ -13791,7 +14944,8 @@ export namespace Shumate {
          *
          * This is oftentimes useful for optimizations.
          *
-         * See [flags`Gdk`.PaintableFlags] for the flags and what they mean.
+         * See {@link Gdk.PaintableFlags} for the flags and what they mean.
+         * @virtual
          */
         vfunc_get_flags(): Gdk.PaintableFlags;
         /**
@@ -13803,15 +14957,16 @@ export namespace Shumate {
          * ratio when displaying the paintable.
          *
          * This is a purely informational value and does not in any way limit the
-         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         * values that may be passed to {@link Gdk.Paintable.snapshot}.
          *
          * Usually when a `paintable` returns nonzero values from
-         * [method`Gdk`.Paintable.get_intrinsic_width] and
-         * [method`Gdk`.Paintable.get_intrinsic_height] the aspect ratio
+         * {@link Gdk.Paintable.get_intrinsic_width} and
+         * {@link Gdk.Paintable.get_intrinsic_height} the aspect ratio
          * should conform to those values, though that is not required.
          *
          * If the `paintable` does not have a preferred aspect ratio,
          * it returns 0. Negative values are never returned.
+         * @virtual
          */
         vfunc_get_intrinsic_aspect_ratio(): number;
         /**
@@ -13821,10 +14976,11 @@ export namespace Shumate {
          * the paintable.
          *
          * This is a purely informational value and does not in any way limit the
-         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         * values that may be passed to {@link Gdk.Paintable.snapshot}.
          *
          * If the `paintable` does not have a preferred height, it returns 0.
          * Negative values are never returned.
+         * @virtual
          */
         vfunc_get_intrinsic_height(): number;
         /**
@@ -13834,10 +14990,11 @@ export namespace Shumate {
          * the paintable.
          *
          * This is a purely informational value and does not in any way limit the
-         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         * values that may be passed to {@link Gdk.Paintable.snapshot}.
          *
          * If the `paintable` does not have a preferred width, it returns 0.
          * Negative values are never returned.
+         * @virtual
          */
         vfunc_get_intrinsic_width(): number;
         /**
@@ -13846,33 +15003,72 @@ export namespace Shumate {
          * The paintable is drawn at the current (0,0) offset of the `snapshot`.
          * If `width` and `height` are not larger than zero, this function will
          * do nothing.
-         * @param snapshot a `GdkSnapshot` to snapshot to
+         * @param snapshot a {@link Gdk.Snapshot} to snapshot to
          * @param width width to snapshot in
          * @param height height to snapshot in
+         * @virtual
          */
         vfunc_snapshot(snapshot: Gdk.Snapshot, width: number, height: number): void;
         /**
          * Snapshots the paintable with the given colors.
          *
-         * If less than 4 colors are provided, GTK will pad the array with default
+         * If less than 5 colors are provided, GTK will pad the array with default
          * colors.
-         * @param snapshot a `GdkSnapshot` to snapshot to
+         * @param snapshot a {@link Gdk.Snapshot} to snapshot to
          * @param width width to snapshot in
          * @param height height to snapshot in
          * @param colors a pointer to an array of colors
          */
         snapshot_symbolic(snapshot: Gdk.Snapshot, width: number, height: number, colors: Gdk.RGBA[]): void;
         /**
-         * Snapshots the paintable with the given colors.
+         * Snapshots the paintable with the given colors and weight.
          *
-         * If less than 4 colors are provided, GTK will pad the array with default
+         * If less than 5 colors are provided, GTK will pad the array with default
          * colors.
-         * @param snapshot a `GdkSnapshot` to snapshot to
+         * @param snapshot a {@link Gdk.Snapshot} to snapshot to
          * @param width width to snapshot in
          * @param height height to snapshot in
          * @param colors a pointer to an array of colors
+         * @param weight The font weight to use (from 1 to 1000, with default 400)
+         */
+        snapshot_with_weight(
+            snapshot: Gdk.Snapshot,
+            width: number,
+            height: number,
+            colors: Gdk.RGBA[],
+            weight: number,
+        ): void;
+        /**
+         * Snapshots the paintable with the given colors.
+         *
+         * If less than 5 colors are provided, GTK will pad the array with default
+         * colors.
+         * @param snapshot a {@link Gdk.Snapshot} to snapshot to
+         * @param width width to snapshot in
+         * @param height height to snapshot in
+         * @param colors a pointer to an array of colors
+         * @virtual
          */
         vfunc_snapshot_symbolic(snapshot: Gdk.Snapshot, width: number, height: number, colors: Gdk.RGBA[]): void;
+        /**
+         * Snapshots the paintable with the given colors and weight.
+         *
+         * If less than 5 colors are provided, GTK will pad the array with default
+         * colors.
+         * @param snapshot a {@link Gdk.Snapshot} to snapshot to
+         * @param width width to snapshot in
+         * @param height height to snapshot in
+         * @param colors a pointer to an array of colors
+         * @param weight The font weight to use (from 1 to 1000, with default 400)
+         * @virtual
+         */
+        vfunc_snapshot_with_weight(
+            snapshot: Gdk.Snapshot,
+            width: number,
+            height: number,
+            colors: Gdk.RGBA[],
+            weight: number,
+        ): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -13886,32 +15082,32 @@ export namespace Shumate {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -13920,39 +15116,39 @@ export namespace Shumate {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -13963,13 +15159,16 @@ export namespace Shumate {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -13977,7 +15176,7 @@ export namespace Shumate {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -13985,9 +15184,9 @@ export namespace Shumate {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -14007,9 +15206,9 @@ export namespace Shumate {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -14022,34 +15221,34 @@ export namespace Shumate {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -14082,22 +15281,22 @@ export namespace Shumate {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -14106,8 +15305,8 @@ export namespace Shumate {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -14124,10 +15323,10 @@ export namespace Shumate {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -14142,13 +15341,13 @@ export namespace Shumate {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -14179,21 +15378,21 @@ export namespace Shumate {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -14203,33 +15402,34 @@ export namespace Shumate {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -14238,6 +15438,7 @@ export namespace Shumate {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -14246,12 +15447,14 @@ export namespace Shumate {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -14260,20 +15463,22 @@ export namespace Shumate {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -14285,6 +15490,7 @@ export namespace Shumate {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -14324,26 +15530,26 @@ export namespace Shumate {
     }
 
     /**
-     * A collection of [class`VectorSprite]`s.
+     * A collection of {@link VectorSprite}s.
      *
      * Sprites are used as icons in symbols or as the pattern for a fill layer.
      *
      * Most MapLibre stylesheets provide their spritesheet as a PNG image and a JSON
      * description of the sprites. This spritesheet can be added using
-     * [method`VectorSpriteSheet`.add_page]. Sprites can also be added individually
-     * using [method`VectorSpriteSheet`.add_sprite].
+     * {@link VectorSpriteSheet.add_page}. Sprites can also be added individually
+     * using {@link VectorSpriteSheet.add_sprite}.
      *
      * Some map styles rely on application code to provide some or all of their
      * sprites. This is supported using a fallback function, which can be set using
-     * [method`VectorSpriteSheet`.set_fallback]. This function can generate sprites
-     * on demand. For example, it could load a symbolic icon from the [class`Gtk`.IconTheme]
+     * {@link VectorSpriteSheet.set_fallback}. This function can generate sprites
+     * on demand. For example, it could load a symbolic icon from the {@link Gtk.IconTheme}
      * or render a custom highway shield.
      *
      * ## HiDPI support
      *
      * Map styles should provide a double resolution spritesheet for high DPI
      * displays. That spritesheet can be added as a separate page.
-     * The [class`VectorSpriteSheet]` will pick the best sprites for the display's
+     * The {@link VectorSpriteSheet} will pick the best sprites for the display's
      * scale factor.
      *
      * If a fallback function is set, it receives the requested scale factor
@@ -14353,7 +15559,9 @@ export namespace Shumate {
      *
      * ## Thread Safety
      *
-     * [class`VectorSpriteSheet]` is thread safe.
+     * {@link VectorSpriteSheet} is thread safe.
+     * @gir-type Class
+     * @since 1.1
      */
     class VectorSpriteSheet extends GObject.Object {
         static $gtype: GObject.GType<VectorSpriteSheet>;
@@ -14377,16 +15585,19 @@ export namespace Shumate {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof VectorSpriteSheet.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VectorSpriteSheet.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof VectorSpriteSheet.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VectorSpriteSheet.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof VectorSpriteSheet.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<VectorSpriteSheet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -14405,16 +15616,16 @@ export namespace Shumate {
          * Map styles should provide a double resolution spritesheet for high DPI
          * displays. That spritesheet should be added as its own page, with a
          * `default_scale` of 2.
-         * @param texture a [class@Gdk.Texture]
+         * @param texture a {@link Gdk.Texture}
          * @param json a JSON string
          * @param default_scale the default scale factor of the page
-         * @returns %TRUE if the page was added successfully, %FALSE otherwise
+         * @returns `true` if the page was added successfully, `false` otherwise
          */
         add_page(texture: Gdk.Texture, json: string, default_scale: number): boolean;
         /**
          * Adds a sprite to the spritesheet.
          * @param name the name of the sprite
-         * @param sprite a [class@VectorSprite]
+         * @param sprite a {@link VectorSprite}
          */
         add_sprite(name: string, sprite: VectorSprite): void;
         /**
@@ -14424,7 +15635,7 @@ export namespace Shumate {
          * match is not found.
          * @param name an icon name
          * @param scale the scale factor of the icon
-         * @returns a [class@VectorSprite], or %NULL if the icon does not exist.
+         * @returns a {@link VectorSprite}, or `null` if the icon does not exist.
          */
         get_sprite(name: string, scale: number): VectorSprite | null;
         /**
@@ -14432,15 +15643,15 @@ export namespace Shumate {
          *
          * The fallback function is called when a texture is not found in the sprite
          * sheet. It receives the icon name and scale factor, and should return a
-         * [class`VectorSprite]`, or %NULL if the icon could not be generated.
+         * {@link VectorSprite}, or `null` if the icon could not be generated.
          * It may be called in a different thread, and it may be called multiple times
          * for the same icon name.
          *
          * If a previous fallback function was set, it will be replaced and any sprites
          * it generated will be cleared.
          *
-         * `fallback` may be %NULL to clear the fallback function.
-         * @param fallback a [callback@ShumateVectorSpriteFallbackFunc] or %NULL
+         * `fallback` may be `null` to clear the fallback function.
+         * @param fallback a {@link ShumateVectorSpriteFallbackFunc} or `null`
          */
         set_fallback(fallback?: VectorSpriteFallbackFunc | null): void;
     }
@@ -14448,6 +15659,14 @@ export namespace Shumate {
     namespace Viewport {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted when the viewport position (location, zoom, rotation, etc.) changes. Changes to multiple properties at once
+             * may be combined into a single signal emission.
+             * @signal
+             * @since 1.6
+             * @run-last
+             */
+            changed: () => void;
             'notify::max-zoom-level': (pspec: GObject.ParamSpec) => void;
             'notify::min-zoom-level': (pspec: GObject.ParamSpec) => void;
             'notify::reference-map-source': (pspec: GObject.ParamSpec) => void;
@@ -14475,8 +15694,9 @@ export namespace Shumate {
     /**
      * The object holding the coordinate, zoom-level, and rotation state of the current view.
      *
-     * As the object implements [iface`Shumate`.Location], the latitude and longitude are
+     * As the object implements {@link Shumate.Location}, the latitude and longitude are
      * accessible via the interface methods.
+     * @gir-type Class
      */
     class Viewport extends GObject.Object implements Location {
         static $gtype: GObject.GType<Viewport>;
@@ -14504,12 +15724,12 @@ export namespace Shumate {
         get minZoomLevel(): number;
         set minZoomLevel(val: number);
         /**
-         * The reference #ShumateMapSource being displayed
+         * The reference {@link Shumate.MapSource} being displayed
          */
         get reference_map_source(): MapSource;
         set reference_map_source(val: MapSource);
         /**
-         * The reference #ShumateMapSource being displayed
+         * The reference {@link Shumate.MapSource} being displayed
          */
         get referenceMapSource(): MapSource;
         set referenceMapSource(val: MapSource);
@@ -14548,16 +15768,19 @@ export namespace Shumate {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Viewport.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Viewport.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Viewport.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Viewport.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Viewport.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Viewport.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -14578,7 +15801,7 @@ export namespace Shumate {
         get_min_zoom_level(): number;
         /**
          * Get the reference map source
-         * @returns the reference #ShumateMapSource or %NULL when none has been set.
+         * @returns the reference {@link Shumate.MapSource} or `null` when none has been set.
          */
         get_reference_map_source(): MapSource | null;
         /**
@@ -14594,7 +15817,7 @@ export namespace Shumate {
         /**
          * Gets the position on `widget` that correspond to the given latitude and
          * longitude.
-         * @param widget a #GtkWidget that uses @self as viewport
+         * @param widget a {@link Gtk.Widget} that uses `self` as viewport
          * @param latitude the latitude
          * @param longitude the longitude
          */
@@ -14611,7 +15834,7 @@ export namespace Shumate {
         set_min_zoom_level(min_zoom_level: number): void;
         /**
          * Set the reference map source
-         * @param map_source a #ShumateMapSource or %NULL to set none.
+         * @param map_source a {@link Shumate.MapSource} or `null` to set none.
          */
         set_reference_map_source(map_source?: MapSource | null): void;
         /**
@@ -14626,33 +15849,31 @@ export namespace Shumate {
         set_zoom_level(zoom_level: number): void;
         /**
          * Gets the latitude and longitude corresponding to a position on `widget`.
-         * @param widget a #GtkWidget that uses @self as viewport
+         * @param widget a {@link Gtk.Widget} that uses `self` as viewport
          * @param x the x coordinate
          * @param y the y coordinate
          */
         widget_coords_to_location(widget: Gtk.Widget, x: number, y: number): [number, number];
-
-        // Inherited properties
         /**
          * The latitude coordonate in degrees
+         * @category Inherited from Shumate.Location
          */
         get latitude(): number;
         set latitude(val: number);
         /**
          * The longitude coordonate in degrees
+         * @category Inherited from Shumate.Location
          */
         get longitude(): number;
         set longitude(val: number);
-
-        // Inherited methods
         /**
          * Calculates the distance in meters between two locations.
          *
          * This function uses the great-circle distance formula, which assumes
          * Earth is a perfect sphere. This limits the accuracy of the result,
          * but is good enough for most purposes.
-         * @param other a [iface@Location]
-         * @returns the distance in meters between @self and @other
+         * @param other a {@link Location}
+         * @returns the distance in meters between `self` and `other`
          */
         distance(other: Location): number;
         /**
@@ -14673,16 +15894,19 @@ export namespace Shumate {
         set_location(latitude: number, longitude: number): void;
         /**
          * Gets the latitude coordinate in degrees.
+         * @virtual
          */
         vfunc_get_latitude(): number;
         /**
          * Gets the longitude coordinate in degrees.
+         * @virtual
          */
         vfunc_get_longitude(): number;
         /**
          * Sets the coordinates of the location
          * @param latitude the latitude in degrees
          * @param longitude the longitude in degrees
+         * @virtual
          */
         vfunc_set_location(latitude: number, longitude: number): void;
         /**
@@ -14698,32 +15922,32 @@ export namespace Shumate {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -14732,39 +15956,39 @@ export namespace Shumate {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -14775,13 +15999,16 @@ export namespace Shumate {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -14789,7 +16016,7 @@ export namespace Shumate {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -14797,9 +16024,9 @@ export namespace Shumate {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -14819,9 +16046,9 @@ export namespace Shumate {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -14834,34 +16061,34 @@ export namespace Shumate {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -14894,22 +16121,22 @@ export namespace Shumate {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -14918,8 +16145,8 @@ export namespace Shumate {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -14936,10 +16163,10 @@ export namespace Shumate {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -14954,13 +16181,13 @@ export namespace Shumate {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -14991,21 +16218,21 @@ export namespace Shumate {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -15015,33 +16242,34 @@ export namespace Shumate {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -15050,6 +16278,7 @@ export namespace Shumate {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -15058,12 +16287,14 @@ export namespace Shumate {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -15072,20 +16303,22 @@ export namespace Shumate {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -15097,6 +16330,7 @@ export namespace Shumate {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -15126,33 +16360,230 @@ export namespace Shumate {
         stop_emission_by_name(detailedName: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CompassClass = typeof Compass;
+    /**
+     * @gir-type Alias
+     */
     type CoordinateClass = typeof Coordinate;
+    /**
+     * @gir-type Alias
+     */
     type DataSourceClass = typeof DataSource;
+    /**
+     * @gir-type Alias
+     */
     type DataSourceRequestClass = typeof DataSourceRequest;
+    /**
+     * @gir-type Alias
+     */
     type FileCacheClass = typeof FileCache;
+    /**
+     * @gir-type Alias
+     */
     type LayerClass = typeof Layer;
+    /**
+     * @gir-type Alias
+     */
     type LicenseClass = typeof License;
+    /**
+     * @gir-type Alias
+     */
     type LocationInterface = typeof Location;
+    /**
+     * @gir-type Alias
+     */
     type MapClass = typeof Map;
+    /**
+     * @gir-type Alias
+     */
     type MapLayerClass = typeof MapLayer;
+    /**
+     * @gir-type Alias
+     */
     type MapSourceClass = typeof MapSource;
+    /**
+     * @gir-type Alias
+     */
     type MapSourceRegistryClass = typeof MapSourceRegistry;
+    /**
+     * @gir-type Alias
+     */
     type MarkerClass = typeof Marker;
+    /**
+     * @gir-type Alias
+     */
     type MarkerLayerClass = typeof MarkerLayer;
+    /**
+     * @gir-type Alias
+     */
     type PathLayerClass = typeof PathLayer;
+    /**
+     * @gir-type Alias
+     */
     type PointClass = typeof Point;
+    /**
+     * @gir-type Alias
+     */
     type RasterRendererClass = typeof RasterRenderer;
+    /**
+     * @gir-type Alias
+     */
     type ScaleClass = typeof Scale;
+    /**
+     * @gir-type Alias
+     */
     type SimpleMapClass = typeof SimpleMap;
+    /**
+     * @gir-type Alias
+     */
     type SymbolEventClass = typeof SymbolEvent;
+    /**
+     * @gir-type Alias
+     */
     type TileClass = typeof Tile;
+    /**
+     * @gir-type Alias
+     */
     type TileDownloaderClass = typeof TileDownloader;
+    /**
+     * @gir-type Alias
+     */
     type VectorReaderClass = typeof VectorReader;
+    /**
+     * @gir-type Alias
+     */
     type VectorReaderIterClass = typeof VectorReaderIter;
+    /**
+     * @gir-type Alias
+     */
     type VectorRendererClass = typeof VectorRenderer;
+    /**
+     * @gir-type Alias
+     */
     type VectorSpriteClass = typeof VectorSprite;
+    /**
+     * @gir-type Alias
+     */
     type VectorSpriteSheetClass = typeof VectorSpriteSheet;
+    /**
+     * A mutable value used in the vector style specification.
+     * @gir-type Struct
+     * @since 1.6
+     */
+    class VectorValue {
+        static $gtype: GObject.GType<VectorValue>;
+
+        // Constructors
+
+        constructor(properties?: Partial<{}>);
+
+        static ['new'](): VectorValue;
+
+        static new_boolean(_boolean: boolean): VectorValue;
+
+        static new_color(color: Gdk.RGBA): VectorValue;
+
+        static new_from_value(value: GObject.Value | any): VectorValue;
+
+        static new_number(number: number): VectorValue;
+
+        static new_string(string: string): VectorValue;
+
+        // Methods
+
+        /**
+         * Appends `element` to the array value of `self`. The value of `element` is copied.
+         * @param element a {@link VectorValue} to append to the array
+         */
+        array_append(element: VectorValue): void;
+        /**
+         * Creates a duplicate of `self`.
+         * @returns a new {@link VectorValue} which is a duplicate of `self`
+         */
+        dup(): VectorValue;
+        /**
+         * Compares two {@link VectorValue}s for equality.
+         * @param b a {@link VectorValue}
+         * @returns `true` if `a` and `b` are equal, `false` otherwise
+         */
+        equal(b: VectorValue): boolean;
+        /**
+         * Frees a {@link VectorValue}.
+         */
+        free(): void;
+        /**
+         * Gets the boolean value of `self`.
+         * @returns `true` if `self` is a boolean value and `boolean` was set, `false` otherwise
+         */
+        get_boolean(): [boolean, boolean];
+        /**
+         * Gets the color value of `self`.
+         *
+         * If `self` is a string value, it will attempt to parse the string as a color.
+         * @returns `true` if `self` is a color value and `color` was set, `false` otherwise
+         */
+        get_color(): [boolean, Gdk.RGBA];
+        /**
+         * Gets the number value of `self`.
+         * @returns `true` if `self` is a number value and `number` was set, `false` otherwise
+         */
+        get_number(): [boolean, number];
+        /**
+         * Gets the string value of `self`.
+         * @returns `true` if `self` is a string value and `string` was set, `false` otherwise
+         */
+        get_string(): [boolean, string];
+        /**
+         * Gets the type of value stored in `self`.
+         * @returns the type of `self`
+         */
+        get_value_type(): VectorValueType;
+        /**
+         * Calculates a hash value for `self`.
+         * @returns a hash value for `self`
+         */
+        hash(): number;
+        /**
+         * Checks if `self` is a null value.
+         * @returns `true` if `self` is a null value, `false` otherwise
+         */
+        is_null(): boolean;
+        /**
+         * Sets `self` to a boolean value.
+         * @param _boolean a boolean value
+         */
+        set_boolean(_boolean: boolean): void;
+        /**
+         * Sets `self` to a color value.
+         * @param color a {@link Gdk.RGBA}
+         */
+        set_color(color: Gdk.RGBA): void;
+        /**
+         * Sets `self` to a number value.
+         * @param number a number value
+         */
+        set_number(number: number): void;
+        /**
+         * Sets `self` to a string value.
+         * @param string a string value
+         */
+        set_string(string: string): void;
+        /**
+         * Sets `self` to an empty array value.
+         */
+        start_array(): void;
+        /**
+         * Sets `self` to a null value.
+         */
+        unset(): void;
+    }
+
+    /**
+     * @gir-type Alias
+     */
     type ViewportClass = typeof Viewport;
     namespace Location {
         /**
@@ -15164,16 +16595,19 @@ export namespace Shumate {
 
             /**
              * Gets the latitude coordinate in degrees.
+             * @virtual
              */
             vfunc_get_latitude(): number;
             /**
              * Gets the longitude coordinate in degrees.
+             * @virtual
              */
             vfunc_get_longitude(): number;
             /**
              * Sets the coordinates of the location
              * @param latitude the latitude in degrees
              * @param longitude the longitude in degrees
+             * @virtual
              */
             vfunc_set_location(latitude: number, longitude: number): void;
         }
@@ -15190,6 +16624,13 @@ export namespace Shumate {
         $gtype: GObject.GType<Location>;
         prototype: Location;
     }
+    /**
+     * An interface common to objects having latitude and longitude
+     *
+     * By implementing {@link Shumate.Location} the object declares that it has latitude
+     * and longitude and can be used to specify location on the map.
+     * @gir-type Interface
+     */
     interface Location extends GObject.Object, Location.Interface {
         // Properties
 
@@ -15212,8 +16653,8 @@ export namespace Shumate {
          * This function uses the great-circle distance formula, which assumes
          * Earth is a perfect sphere. This limits the accuracy of the result,
          * but is good enough for most purposes.
-         * @param other a [iface@Location]
-         * @returns the distance in meters between @self and @other
+         * @param other a {@link Location}
+         * @returns the distance in meters between `self` and `other`
          */
         distance(other: Location): number;
         /**

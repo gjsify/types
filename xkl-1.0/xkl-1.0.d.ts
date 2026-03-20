@@ -19,12 +19,16 @@ export namespace Xkl {
      * Xkl-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace EngineListenModes {
         export const $gtype: GObject.GType<EngineListenModes>;
     }
 
     /**
      * The listener action modes:
+     * @gir-type Enum
      */
     enum EngineListenModes {
         /**
@@ -43,12 +47,16 @@ export namespace Xkl {
         MANAGE_LAYOUTS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace EngineStateChange {
         export const $gtype: GObject.GType<EngineStateChange>;
     }
 
     /**
      * The type of the keyboard state change
+     * @gir-type Enum
      */
     enum EngineStateChange {
         /**
@@ -76,6 +84,9 @@ export namespace Xkl {
      * @returns localized country name (English, Russiam, French, ... translated)
      */
     function get_language_name(code: string): string;
+    /**
+     * @returns the text message (statically allocated) of the last error
+     */
     function get_last_error(): string;
     /**
      * Restores XKB from the property saved by xkl_backup_names_prop
@@ -89,18 +100,28 @@ export namespace Xkl {
      * @param level new debug level
      */
     function set_debug_level(level: number): void;
+    /**
+     * @gir-type Callback
+     */
     interface ConfigItemProcessFunc {
-        (config: ConfigRegistry, item: ConfigItem, data: any): void;
+        (config: ConfigRegistry, item: ConfigItem, data?: any | null): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface TwoConfigItemsProcessFunc {
-        (config: ConfigRegistry, item: ConfigItem, subitem: ConfigItem, data: any): void;
+        (config: ConfigRegistry, item: ConfigItem, subitem: ConfigItem, data?: any | null): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace EngineFeatures {
         export const $gtype: GObject.GType<EngineFeatures>;
     }
 
     /**
      * A set of flags used to indicate the capabilities of the active backend
+     * @gir-type Flags
      */
     enum EngineFeatures {
         /**
@@ -139,6 +160,9 @@ export namespace Xkl {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ConfigItem extends GObject.Object {
         static $gtype: GObject.GType<ConfigItem>;
 
@@ -167,16 +191,19 @@ export namespace Xkl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ConfigItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ConfigItem.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ConfigItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ConfigItem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ConfigItem.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ConfigItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -185,8 +212,17 @@ export namespace Xkl {
 
         // Methods
 
+        /**
+         * @returns The `description` field of a XklConfigItem. This is mostly useful for language bindings, in C you can manipulate the member directly.
+         */
         get_description(): string;
+        /**
+         * @returns The `name` field of a XklConfigItem. This is mostly useful for language bindings, in C you can manipulate the member directly.
+         */
         get_name(): string;
+        /**
+         * @returns The `short_description` field of a XklConfigItem. This is mostly useful for language bindings, in C you can manipulate the member directly.
+         */
         get_short_description(): string;
         /**
          * Change the `description` field of a XklConfigItem. This is mostly useful for
@@ -217,6 +253,9 @@ export namespace Xkl {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ConfigRec extends GObject.Object {
         static $gtype: GObject.GType<ConfigRec>;
 
@@ -246,16 +285,19 @@ export namespace Xkl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ConfigRec.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ConfigRec.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ConfigRec.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ConfigRec.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ConfigRec.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ConfigRec.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -367,11 +409,17 @@ export namespace Xkl {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ConfigRegistry extends GObject.Object {
         static $gtype: GObject.GType<ConfigRegistry>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get engine(): Engine;
 
         /**
@@ -391,16 +439,19 @@ export namespace Xkl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ConfigRegistry.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ConfigRegistry.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ConfigRegistry.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ConfigRegistry.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ConfigRegistry.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ConfigRegistry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -527,9 +578,25 @@ export namespace Xkl {
     namespace Engine {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
             'X-config-changed': () => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'X-new-device': () => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'X-state-changed': (arg0: EngineStateChange, arg1: number, arg2: boolean) => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'new-toplevel-window': (arg0: number, arg1: number) => number;
             'notify::backend-name': (pspec: GObject.ParamSpec) => void;
             'notify::default-group': (pspec: GObject.ParamSpec) => void;
@@ -560,23 +627,65 @@ export namespace Xkl {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Engine extends GObject.Object {
         static $gtype: GObject.GType<Engine>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get backendName(): string;
+        /**
+         * @read-only
+         */
         get default_group(): number;
+        /**
+         * @read-only
+         */
         get defaultGroup(): number;
+        /**
+         * @construct-only
+         */
         get display(): any;
+        /**
+         * @read-only
+         */
         get features(): EngineFeatures;
+        /**
+         * @read-only
+         */
         get indicators_handling(): boolean;
+        /**
+         * @read-only
+         */
         get indicatorsHandling(): boolean;
+        /**
+         * @read-only
+         */
         get max_num_groups(): number;
+        /**
+         * @read-only
+         */
         get maxNumGroups(): number;
+        /**
+         * @read-only
+         */
         get num_groups(): number;
+        /**
+         * @read-only
+         */
         get numGroups(): number;
+        /**
+         * @read-only
+         */
         get secondary_groups_mask(): number;
+        /**
+         * @read-only
+         */
         get secondaryGroupsMask(): number;
 
         /**
@@ -596,16 +705,19 @@ export namespace Xkl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Engine.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Engine.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Engine.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Engine.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Engine.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Engine.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -614,21 +726,37 @@ export namespace Xkl {
 
         // Static methods
 
+        /**
+         * @param closure
+         * @param return_value
+         * @param n_param_values
+         * @param param_values
+         * @param invocation_hint
+         * @param marshal_data
+         */
         static INT__LONG_LONG(
             closure: GObject.Closure,
             return_value: GObject.Value | any,
             n_param_values: number,
             param_values: GObject.Value | any,
-            invocation_hint: any,
-            marshal_data: any,
+            invocation_hint?: any | null,
+            marshal_data?: any | null,
         ): void;
+        /**
+         * @param closure
+         * @param return_value
+         * @param n_param_values
+         * @param param_values
+         * @param invocation_hint
+         * @param marshal_data
+         */
         static VOID__ENUM_INT_BOOLEAN(
             closure: GObject.Closure,
             return_value: GObject.Value | any,
             n_param_values: number,
             param_values: GObject.Value | any,
-            invocation_hint: any,
-            marshal_data: any,
+            invocation_hint?: any | null,
+            marshal_data?: any | null,
         ): void;
         /**
          * Get the instance of the XklEngine. Within a process, there is always once instance.
@@ -638,9 +766,26 @@ export namespace Xkl {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_config_notify(): void;
+        /**
+         * @virtual
+         */
         vfunc_new_device_notify(): void;
+        /**
+         * @param win
+         * @param parent
+         * @virtual
+         */
         vfunc_new_window_notify(win: xlib.Window, parent: xlib.Window): number;
+        /**
+         * @param change_type
+         * @param group
+         * @param restore
+         * @virtual
+         */
         vfunc_state_notify(change_type: EngineStateChange, group: number, restore: boolean): void;
 
         // Methods
@@ -672,8 +817,17 @@ export namespace Xkl {
          * @returns some string id of the backend
          */
         get_backend_name(): string;
+        /**
+         * @returns current state of the keyboard. Returned value is a statically allocated buffer, should not be freed.
+         */
         get_current_state(): State;
+        /**
+         * @returns currently focused window
+         */
         get_current_window(): xlib.Window;
+        /**
+         * @returns saved group id of the current window.
+         */
         get_current_window_group(): number;
         /**
          * Returns the default group set on window creation
@@ -687,8 +841,17 @@ export namespace Xkl {
          * @returns ORed XKLF_* constants
          */
         get_features(): number;
+        /**
+         * @returns the array of group names for the current XKB configuration (keyboard). This array is static, should not be freed
+         */
         get_groups_names(): string[];
+        /**
+         * @returns the value of the parameter: perform indicator handling
+         */
         get_indicators_handling(): boolean;
+        /**
+         * @returns the array of indicator names for the current XKB configuration (keyboard). This array is static, should not be freed
+         */
         get_indicators_names(): string[];
         /**
          * Provides the information on maximum number of simultaneously supported
@@ -701,12 +864,18 @@ export namespace Xkl {
          * @returns next group id
          */
         get_next_group(): number;
+        /**
+         * @returns the total number of groups in the current configuration (keyboard)
+         */
         get_num_groups(): number;
         /**
          * Calculates prev group id. Does not change the state of anything.
          * @returns prev group id
          */
         get_prev_group(): number;
+        /**
+         * @returns the secondary group mask
+         */
         get_secondary_groups_mask(): number;
         /**
          * Finds the state for a given window (for its "App window").
@@ -715,6 +884,10 @@ export namespace Xkl {
          * @returns TRUE on success, otherwise FALSE (the error message can be obtained using xkl_GetLastError).
          */
         get_state(win: xlib.Window, state_out: State): boolean;
+        /**
+         * @param win X window
+         * @returns the window title of some window or NULL. If not NULL, it should be freed with XFree
+         */
         get_window_title(win: xlib.Window): string;
         /**
          * Grabs some key
@@ -723,6 +896,9 @@ export namespace Xkl {
          * @returns TRUE on success
          */
         grab_key(keycode: number, modifiers: number): boolean;
+        /**
+         * @returns the value of the parameter: group per application
+         */
         is_group_per_toplevel_window(): boolean;
         /**
          * Checks whether 2 windows have the same topmost window
@@ -731,6 +907,10 @@ export namespace Xkl {
          * @returns TRUE is windows are in the same application
          */
         is_window_from_same_toplevel_window(win1: xlib.Window, win2: xlib.Window): boolean;
+        /**
+         * @param win window to get the transparent flag from.
+         * @returns TRUE if the window is "transparent"
+         */
         is_window_transparent(win: xlib.Window): boolean;
         /**
          * Locks the group. Can be used after xkl_GetXXXGroup functions
@@ -799,18 +979,39 @@ export namespace Xkl {
         ungrab_key(keycode: number, modifiers: number): boolean;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ConfigItemClass = typeof ConfigItem;
+    /**
+     * @gir-type Alias
+     */
     type ConfigRecClass = typeof ConfigRec;
+    /**
+     * @gir-type Alias
+     */
     type ConfigRegistryClass = typeof ConfigRegistry;
+    /**
+     * @gir-type Struct
+     */
     abstract class ConfigRegistryPrivate {
         static $gtype: GObject.GType<ConfigRegistryPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type EngineClass = typeof Engine;
+    /**
+     * @gir-type Struct
+     */
     abstract class EnginePrivate {
         static $gtype: GObject.GType<EnginePrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class State {
         static $gtype: GObject.GType<State>;
 

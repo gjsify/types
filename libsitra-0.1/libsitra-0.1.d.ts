@@ -51,6 +51,9 @@ export namespace Libsitra {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Font extends GObject.Object {
         static $gtype: GObject.GType<Font>;
 
@@ -105,16 +108,19 @@ export namespace Libsitra {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Font.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Font.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Font.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Font.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Font.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Font.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -123,27 +129,57 @@ export namespace Libsitra {
 
         // Static methods
 
+        /**
+         * @param obj
+         */
         static from_json(obj: Json.Object): Font;
 
         // Methods
 
         get_id(): string;
+        /**
+         * @param value
+         */
         set_id(value: string): void;
         get_family(): string;
+        /**
+         * @param value
+         */
         set_family(value: string): void;
         get_category(): string;
+        /**
+         * @param value
+         */
         set_category(value: string): void;
         get_variable(): boolean;
+        /**
+         * @param value
+         */
         set_variable(value: boolean): void;
         get_license(): string;
+        /**
+         * @param value
+         */
         set_license(value: string): void;
         get_weights(): Gee.List;
+        /**
+         * @param value
+         */
         set_weights(value: Gee.List): void;
         get_subsets(): Gee.List;
+        /**
+         * @param value
+         */
         set_subsets(value: Gee.List): void;
         get_files(): Gee.Map;
+        /**
+         * @param value
+         */
         set_files(value: Gee.Map): void;
         get_styles(): Gee.List;
+        /**
+         * @param value
+         */
         set_styles(value: Gee.List): void;
     }
 
@@ -156,6 +192,9 @@ export namespace Libsitra {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Fonts extends GObject.Object {
         static $gtype: GObject.GType<Fonts>;
 
@@ -178,16 +217,19 @@ export namespace Libsitra {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Fonts.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Fonts.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Fonts.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Fonts.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Fonts.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Fonts.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -196,6 +238,9 @@ export namespace Libsitra {
 
         // Methods
 
+        /**
+         * @param id
+         */
         font(id: string): Font | null;
         collection(): Gee.Collection;
     }
@@ -203,9 +248,21 @@ export namespace Libsitra {
     namespace Library {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             'installation-started': (arg0: string) => void;
+            /**
+             * @signal
+             */
             'installation-progress': (arg0: string, arg1: number) => void;
+            /**
+             * @signal
+             */
             'installation-completed': (arg0: string, arg1: boolean, arg2: string | null) => void;
+            /**
+             * @signal
+             */
             'uninstallation-completed': (arg0: string, arg1: boolean, arg2: string | null) => void;
         }
 
@@ -214,6 +271,9 @@ export namespace Libsitra {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Library extends GObject.Object {
         static $gtype: GObject.GType<Library>;
 
@@ -236,16 +296,19 @@ export namespace Libsitra {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Library.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Library.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Library.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Library.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Library.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Library.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -254,30 +317,79 @@ export namespace Libsitra {
 
         // Methods
 
+        /**
+         * @param font
+         */
         is_installed(font: Font): boolean;
         list_installed(): Gee.List;
+        /**
+         * @param font
+         */
         install(font: Font): globalThis.Promise<void>;
+        /**
+         * @param font
+         * @param _callback_
+         */
         install(font: Font, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param font
+         * @param _callback_
+         */
         install(font: Font, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         install_finish(_res_: Gio.AsyncResult): void;
         cancel(): void;
+        /**
+         * @param font
+         */
         uninstall(font: Font): globalThis.Promise<void>;
+        /**
+         * @param font
+         * @param _callback_
+         */
         uninstall(font: Font, _callback_: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param font
+         * @param _callback_
+         */
         uninstall(font: Font, _callback_?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
+        /**
+         * @param _res_
+         */
         uninstall_finish(_res_: Gio.AsyncResult): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type FontClass = typeof Font;
+    /**
+     * @gir-type Struct
+     */
     abstract class FontPrivate {
         static $gtype: GObject.GType<FontPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type FontsClass = typeof Fonts;
+    /**
+     * @gir-type Struct
+     */
     abstract class FontsPrivate {
         static $gtype: GObject.GType<FontsPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type LibraryClass = typeof Library;
+    /**
+     * @gir-type Struct
+     */
     abstract class LibraryPrivate {
         static $gtype: GObject.GType<LibraryPrivate>;
     }

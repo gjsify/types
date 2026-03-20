@@ -19,14 +19,14 @@ export namespace LibvirtGLib {
      */
 
     /**
-     * Creates a new #GError; unlike gvir_error_new(), `message` is
-     * not a printf()-style format string. Use this function if
+     * Creates a new {@link GLib.Error}; unlike `gvir_error_new()`, `message` is
+     * not a `printf()`-style format string. Use this function if
      * `message` contains text you don't have control over,
-     * that could include printf() escape sequences.
+     * that could include `printf()` escape sequences.
      * @param domain error domain
      * @param code error code
      * @param message error message
-     * @returns a new #GError
+     * @returns a new {@link GLib.Error}
      */
     function error_new_literal(domain: GLib.Quark, code: number, message: string): GLib.Error;
     /**
@@ -50,7 +50,7 @@ export namespace LibvirtGLib {
      * It will initialize everything needed to operate the toolkit and parses some standard
      * command line options.
      *
-     * Although you are expected to pass the `argc,` `argv` parameters from main() to this
+     * Although you are expected to pass the `argc`, `argv` parameters from `main()` to this
      * function, it is possible to pass NULL if `argv` is not available or commandline
      * handling is not required.
      *
@@ -63,27 +63,27 @@ export namespace LibvirtGLib {
      * This function will terminate your program if it was unable to initialize
      * for some reason. If you want the program to fall back to an alternate
      * mode of operation call <code>gvir_init_check</code> instead.
-     * @param argv Address of the     <parameter>argv</parameter> parameter of main(), or %NULL. Any options     understood by GTK+ are stripped before return.
+     * @param argv Address of the     <parameter>argv</parameter> parameter of `main()`, or `null`. Any options     understood by GTK+ are stripped before return.
      */
     function init(argv?: string[] | null): string[] | null;
     /**
-     * This function does the same work as gvir_init() with only a single
+     * This function does the same work as `gvir_init()` with only a single
      * change: It does not terminate the program if the Libvirt GLib library
-     * can't be initialized. Instead it returns %FALSE on failure.
+     * can't be initialized. Instead it returns `false` on failure.
      *
      * This way the application can fall back to some other mode of
      * operation.
-     * @param argv Address of the     <parameter>argv</parameter> parameter of main(), or %NULL. Any options     understood by GTK+ are stripped before return.
-     * @returns %TRUE if the library was successfully initialized,     %FALSE otherwise
+     * @param argv Address of the     <parameter>argv</parameter> parameter of `main()`, or `null`. Any options     understood by GTK+ are stripped before return.
+     * @returns `true` if the library was successfully initialized,     `false` otherwise
      */
     function init_check(argv?: string[] | null): [boolean, string[] | null];
     /**
      * If `error` is NULL this does nothing. Otherwise it
-     * creates a new #GError and stores it in `error;` unlike
-     * gvir_set_error(), `message` is not a printf()-style
+     * creates a new {@link GLib.Error} and stores it in `error`; unlike
+     * `gvir_set_error()`, `message` is not a `printf()`-style
      * format string. Use this function if `message` contains
      * text you don't have control over, that could include
-     * printf() escape sequences.
+     * `printf()` escape sequences.
      * @param error pointer to error location
      * @param domain error domain
      * @param code error code

@@ -32,19 +32,19 @@ export namespace GnomeAutoarGtk {
 
     /**
      * Gets the selected archive format of the widget created by
-     * autoar_gtk_chooser_advanced_new().
-     * @param advanced a #GtkGrid returned by autoar_gtk_chooser_advanced_new()
-     * @param format the place to store the #AutoarFormat selected by the user
-     * @param filter the place to store the #AutoarFilter selected by the user
-     * @returns %TRUE if @format and @filter are set. %FALSE if there is no selected item on @advanced, so @format and @filter are not modified.
+     * `autoar_gtk_chooser_advanced_new()`.
+     * @param advanced a {@link Gtk.Grid} returned by `autoar_gtk_chooser_advanced_new()`
+     * @param format the place to store the {@link GnomeAutoar.Format} selected by the user
+     * @param filter the place to store the {@link GnomeAutoar.Filter} selected by the user
+     * @returns `true` if `format` and `filter` are set. `false` if there is no selected item on `advanced`, so `format` and `filter` are not modified.
      */
     function chooser_advanced_get(advanced: Gtk.Widget, format: number, filter: number): boolean;
     /**
-     * Create a #GtkGrid with two lists. One list shows all available formats,
+     * Create a {@link Gtk.Grid} with two lists. One list shows all available formats,
      * and the other list shows all available filters.
-     * @param default_format an #AutoarFormat
-     * @param default_filter an #AutoarFilter
-     * @returns a new #GtkGrid widget
+     * @param default_format an {@link GnomeAutoar.Format}
+     * @param default_filter an {@link GnomeAutoar.Filter}
+     * @returns a new {@link Gtk.Grid} widget
      */
     function chooser_advanced_new(
         default_format: GnomeAutoar.Format | null,
@@ -52,26 +52,26 @@ export namespace GnomeAutoarGtk {
     ): Gtk.Widget;
     /**
      * Gets the selected archive format of the widget created by
-     * autoar_gtk_chooser_simple_new().
-     * @param simple a #GtkComboBox returned by autoar_gtk_chooser_simple_new()
-     * @param format the place to store the #AutoarFormat selected by the user
-     * @param filter the place to store the #AutoarFilter selected by the user
-     * @returns %TRUE if @format and @filter are set. %FALSE if there is no selected item on @simple, so @format and @filter are not modified.
+     * `autoar_gtk_chooser_simple_new()`.
+     * @param simple a {@link Gtk.ComboBox} returned by `autoar_gtk_chooser_simple_new()`
+     * @param format the place to store the {@link GnomeAutoar.Format} selected by the user
+     * @param filter the place to store the {@link GnomeAutoar.Filter} selected by the user
+     * @returns `true` if `format` and `filter` are set. `false` if there is no selected item on `simple`, so `format` and `filter` are not modified.
      */
     function chooser_simple_get(simple: Gtk.Widget, format: number, filter: number): boolean;
     /**
-     * Create a #GtkComboBox with a list of common archive format. There is also
+     * Create a {@link Gtk.ComboBox} with a list of common archive format. There is also
      * an option called "Other format…", which will use
-     * autoar_gtk_chooser_advanced_new() and
-     * autoar_gtk_chooser_advanced_get() to select less common archive
+     * `autoar_gtk_chooser_advanced_new()` and
+     * `autoar_gtk_chooser_advanced_get()` to select less common archive
      * format. Arguments `default_format` and `default_filter` are the default archive
      * format selected on the returned widget. You may want to get the preferred
-     * format of users using autoar_pref_get_default_format() and
-     * autoar_pref_get_default_filter(), or just set them to 1 to select
+     * format of users using `autoar_pref_get_default_format()` and
+     * `autoar_pref_get_default_filter()`, or just set them to 1 to select
      * the default archive format.
-     * @param default_format an #AutoarFormat
-     * @param default_filter an #AutoarFilter
-     * @returns a new #GtkComboBox widget
+     * @param default_format an {@link GnomeAutoar.Format}
+     * @param default_filter an {@link GnomeAutoar.Filter}
+     * @returns a new {@link Gtk.ComboBox} widget
      */
     function chooser_simple_new(
         default_format: GnomeAutoar.Format | null,

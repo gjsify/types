@@ -2,6 +2,8 @@
     "entryPoints": ["./amtk-5.d.ts"],
     "readme": "./README.md",
     "name": "Amtk-5",
-    "tsconfig": "./tsconfig.json"
+    "tsconfig": "./tsconfig.json",
+    "skipErrorChecking": true,
+    "highlightLanguages": ["typescript", "javascript", "c", "cpp", "xml", "bash", "json", "css"]
 }
 

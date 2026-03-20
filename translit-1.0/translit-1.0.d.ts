@@ -20,6 +20,9 @@ export namespace Translit {
      * Translit-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     enum ErrorEnum {
         NO_SUCH_BACKEND,
         LOAD_FAILED,
@@ -28,6 +31,10 @@ export namespace Translit {
     }
 
     function error_quark(): GLib.Quark;
+    /**
+     * @param backend
+     * @param type
+     */
     function implement_transliterator(backend: string, type: GObject.GType): void;
     namespace Transliterator {
         // Signal signatures
@@ -42,13 +49,17 @@ export namespace Translit {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Transliterator extends GObject.Object {
         static $gtype: GObject.GType<Transliterator>;
 
         // Properties
 
         /**
-         * The transliteration which #TranslitTransliterator supports
+         * The transliteration which {@link Translit.Transliterator} supports
+         * @construct-only
          */
         get name(): string;
 
@@ -69,16 +80,19 @@ export namespace Translit {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Transliterator.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Transliterator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Transliterator.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Transliterator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Transliterator.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Transliterator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -96,14 +110,28 @@ export namespace Translit {
 
         // Virtual methods
 
+        /**
+         * @param input an input string in UTF-8
+         * @virtual
+         */
         vfunc_transliterate(input: string): [string, number];
 
         // Methods
 
+        /**
+         * @param input an input string in UTF-8
+         * @returns a newly allocated output string
+         */
         transliterate(input: string): [string, number];
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TransliteratorClass = typeof Transliterator;
+    /**
+     * @gir-type Struct
+     */
     abstract class TransliteratorPrivate {
         static $gtype: GObject.GType<TransliteratorPrivate>;
     }

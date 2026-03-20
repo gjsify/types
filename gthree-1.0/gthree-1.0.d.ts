@@ -23,6 +23,9 @@ export namespace Gthree {
      * Gthree-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     enum AttributeType {
         DOUBLE,
         FLOAT,
@@ -34,11 +37,17 @@ export namespace Gthree {
         INT8,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum BindMode {
         ATTACHED,
         DETACHED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum BlendMode {
         NO,
         NORMAL,
@@ -48,6 +57,9 @@ export namespace Gthree {
         CUSTOM,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum CullFace {
         NONE,
         FRONT,
@@ -55,22 +67,34 @@ export namespace Gthree {
         FRONT_BACK,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum DataType {
         UNSIGNED_BYTE,
         BYTE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum DepthPackingFormat {
         BASIC,
         RGBA,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum DrawMode {
         TRIANGLES,
         TRIANGLE_STRIP,
         TRIANGLE_FAN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum EncodingFormat {
         LINEAR,
         SRGB,
@@ -82,12 +106,18 @@ export namespace Gthree {
         RGBD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum EndingMode {
         ZERO_CURVATURE,
         ZERO_SLOPE,
         WRAP_AROUND,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum Filter {
         NEAREST,
         NEAREST_MIPMAP_NEAREST,
@@ -97,32 +127,50 @@ export namespace Gthree {
         LINEAR_MIPMAP_LINEAR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum FogStyle {
         LINEAR,
         EXP2,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum FrontFaceDirection {
         CW,
         CCW,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum InterpolationMode {
         DISCRETE,
         LINEAR,
         SMOOTH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum LoaderError {
         LOADER_ERROR_FAIL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum LoopMode {
         ONCE,
         REPEAT,
         PINGPONG,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum Mapping {
         UV,
         CUBE_REFLECTION,
@@ -131,46 +179,70 @@ export namespace Gthree {
         SPHERICAL_REFRACTION,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum NormalMapType {
         TANGENT_SPACE,
         OBJECT_SPACE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum Operation {
         MULTIPLY,
         MIX,
         ADD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum Precision {
         LOW,
         MEDIUM,
         HIGH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ShadingType {
         NONE,
         FLAT,
         SMOOTH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ShadowMapType {
         BASIC,
         PCF,
         PCF_SOFT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum Side {
         FRONT,
         BACK,
         DOUBLE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum TextureFormat {
         RGBA,
         RGB,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum UniformType {
         INT,
         FLOAT,
@@ -198,6 +270,9 @@ export namespace Gthree {
         UNIFORMS_ARRAY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ValueType {
         COLOR,
         NUMBER,
@@ -205,15 +280,24 @@ export namespace Gthree {
         VECTOR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum Wrapping {
         REPEAT,
         CLAMP,
         MIRRORED,
     }
 
+    /**
+     * @gir-type Callback
+     */
     interface BeforeRenderCallback {
         (object: Object, scene: Scene, camera: Camera): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface TraverseCallback {
         (object: Object): boolean;
     }
@@ -235,6 +319,9 @@ export namespace Gthree {
         interface ConstructorProps extends Light.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class AmbientLight extends Light {
         static $gtype: GObject.GType<AmbientLight>;
 
@@ -260,16 +347,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AmbientLight.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AmbientLight.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AmbientLight.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AmbientLight.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AmbientLight.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AmbientLight.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -286,6 +376,9 @@ export namespace Gthree {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class AnimationAction extends GObject.Object {
         static $gtype: GObject.GType<AnimationAction>;
 
@@ -308,16 +401,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AnimationAction.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AnimationAction.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AnimationAction.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AnimationAction.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AnimationAction.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AnimationAction.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -326,9 +422,25 @@ export namespace Gthree {
 
         // Methods
 
+        /**
+         * @param fade_out_action
+         * @param duration
+         * @param warp
+         */
         cross_fade_from(fade_out_action: AnimationAction, duration: number, warp: boolean): void;
+        /**
+         * @param fade_in_action
+         * @param duration
+         * @param warp
+         */
         cross_fade_to(fade_in_action: AnimationAction, duration: number, warp: boolean): void;
+        /**
+         * @param duration
+         */
         fade_in(duration: number): void;
+        /**
+         * @param duration
+         */
         fade_out(duration: number): void;
         get_effective_time_scale(): number;
         get_effective_weight(): number;
@@ -337,23 +449,59 @@ export namespace Gthree {
         get_time(): number;
         get_time_scale(): number;
         get_weight(): number;
+        /**
+         * @param duration
+         */
         halt(duration: number): void;
         is_running(): boolean;
         is_scheduled(): boolean;
         play(): void;
         reset(): void;
+        /**
+         * @param duration
+         */
         set_duration(duration: number): void;
+        /**
+         * @param time_scale
+         */
         set_effective_time_scale(time_scale: number): void;
+        /**
+         * @param weight
+         */
         set_effective_weight(weight: number): void;
+        /**
+         * @param enabled
+         */
         set_enabled(enabled: boolean): void;
+        /**
+         * @param loop_mode
+         * @param repetitions
+         */
         set_loop_mode(loop_mode: LoopMode | null, repetitions: number): void;
+        /**
+         * @param paused
+         */
         set_paused(paused: boolean): void;
+        /**
+         * @param time
+         */
         set_time(time: number): void;
+        /**
+         * @param time
+         */
         start_at(time: number): void;
         stop(): void;
         stop_fading(): void;
         stop_warping(): void;
+        /**
+         * @param other_action
+         */
         sync_with(other_action: AnimationAction): void;
+        /**
+         * @param start_time_scale
+         * @param end_time_scale
+         * @param duration
+         */
         warp(start_time_scale: number, end_time_scale: number, duration: number): void;
     }
 
@@ -366,6 +514,9 @@ export namespace Gthree {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class AnimationClip extends GObject.Object {
         static $gtype: GObject.GType<AnimationClip>;
 
@@ -388,16 +539,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AnimationClip.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AnimationClip.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AnimationClip.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AnimationClip.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AnimationClip.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AnimationClip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -406,6 +560,9 @@ export namespace Gthree {
 
         // Methods
 
+        /**
+         * @param track
+         */
         add_track(track: KeyframeTrack): void;
         get_duration(): number;
         get_n_tracks(): number;
@@ -418,7 +575,15 @@ export namespace Gthree {
     namespace AnimationMixer {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
             finished: (arg0: AnimationAction, arg1: number) => void;
+            /**
+             * @signal
+             * @run-last
+             */
             loop: (arg0: AnimationAction, arg1: number) => void;
         }
 
@@ -427,6 +592,9 @@ export namespace Gthree {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class AnimationMixer extends GObject.Object {
         static $gtype: GObject.GType<AnimationMixer>;
 
@@ -449,16 +617,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AnimationMixer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AnimationMixer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AnimationMixer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AnimationMixer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AnimationMixer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AnimationMixer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -469,12 +640,31 @@ export namespace Gthree {
 
         get_time(): number;
         get_time_scale(): number;
+        /**
+         * @param time
+         */
         set_time(time: number): void;
+        /**
+         * @param time_scale
+         */
         set_time_scale(time_scale: number): void;
         stop_all_action(): void;
+        /**
+         * @param clip
+         * @param optional_root
+         */
         uncache_action(clip: AnimationClip, optional_root: Object): void;
+        /**
+         * @param clip
+         */
         uncache_clip(clip: AnimationClip): void;
+        /**
+         * @param object
+         */
         uncache_root(object: Object): void;
+        /**
+         * @param delta_time
+         */
         update(delta_time: number): void;
     }
 
@@ -487,6 +677,9 @@ export namespace Gthree {
         interface ConstructorProps extends Resource.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Attribute extends Resource {
         static $gtype: GObject.GType<Attribute>;
 
@@ -532,16 +725,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Attribute.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Attribute.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Attribute.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Attribute.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Attribute.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Attribute.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -550,66 +746,223 @@ export namespace Gthree {
 
         // Static methods
 
+        /**
+         * @param type
+         */
         static type_length(type: AttributeType): number;
 
         // Methods
 
+        /**
+         * @param index
+         * @param source
+         * @param source_index
+         * @param n_items
+         */
         copy_at(index: number, source: Attribute, source_index: number, n_items: number): void;
         get_attribute_type(): AttributeType;
         get_count(): number;
         get_dynamic(): boolean;
         get_item_offset(): number;
         get_item_size(): number;
+        /**
+         * @param index
+         * @param matrix
+         */
         get_matrix(index: number, matrix: Graphene.Matrix): void;
         get_name(): string;
         get_normalized(): boolean;
+        /**
+         * @param index
+         * @param point
+         */
         get_point3d(index: number, point: Graphene.Point3D): void;
         get_stride(): number;
+        /**
+         * @param index
+         */
         get_uint(index: number): number;
+        /**
+         * @param index
+         */
         get_uint16(index: number): number;
+        /**
+         * @param index
+         */
         get_uint32(index: number): number;
+        /**
+         * @param index
+         */
         get_uint8(index: number): number;
+        /**
+         * @param index
+         * @param vec2
+         */
         get_vec2(index: number, vec2: Graphene.Vec2): void;
+        /**
+         * @param index
+         * @param vec3
+         */
         get_vec3(index: number, vec3: Graphene.Vec3): void;
+        /**
+         * @param index
+         * @param vec4
+         */
         get_vec4(index: number, vec4: Graphene.Vec4): void;
+        /**
+         * @param index
+         * @param x
+         * @param y
+         * @param z
+         */
         get_xyz(index: number, x: number, y: number, z: number): void;
+        /**
+         * @param index
+         * @param x
+         * @param y
+         * @param z
+         * @param w
+         */
         get_xyzw(index: number, x: number, y: number, z: number, w: number): void;
         peek_double(): number;
+        /**
+         * @param index
+         */
         peek_double_at(index: number): number;
         peek_float(): number;
+        /**
+         * @param index
+         */
         peek_float_at(index: number): number;
         peek_int16(): number;
+        /**
+         * @param index
+         */
         peek_int16_at(index: number): number;
         peek_int32(): number;
+        /**
+         * @param index
+         */
         peek_int32_at(index: number): number;
         peek_int8(): number;
+        /**
+         * @param index
+         */
         peek_int8_at(index: number): number;
         peek_point3d(): Graphene.Point3D;
+        /**
+         * @param index
+         */
         peek_point3d_at(index: number): Graphene.Point3D;
         peek_uint16(): number;
+        /**
+         * @param index
+         */
         peek_uint16_at(index: number): number;
         peek_uint32(): number;
+        /**
+         * @param index
+         */
         peek_uint32_at(index: number): number;
         peek_uint8(): number;
+        /**
+         * @param index
+         */
         peek_uint8_at(index: number): number;
+        /**
+         * @param array
+         */
         set_array(array: AttributeArray): void;
+        /**
+         * @param dynamic
+         */
         set_dynamic(dynamic: boolean): void;
         set_needs_update(): void;
+        /**
+         * @param index
+         * @param point
+         */
         set_point3d(index: number, point: Graphene.Point3D): void;
+        /**
+         * @param index
+         * @param value
+         */
         set_uint(index: number, value: number): void;
+        /**
+         * @param index
+         * @param value
+         */
         set_uint16(index: number, value: number): void;
+        /**
+         * @param index
+         * @param value
+         */
         set_uint32(index: number, value: number): void;
+        /**
+         * @param index
+         * @param value
+         */
         set_uint8(index: number, value: number): void;
+        /**
+         * @param index
+         * @param vec2
+         */
         set_vec2(index: number, vec2: Graphene.Vec2): void;
+        /**
+         * @param index
+         * @param vec3
+         */
         set_vec3(index: number, vec3: Graphene.Vec3): void;
+        /**
+         * @param index
+         * @param vec4
+         */
         set_vec4(index: number, vec4: Graphene.Vec4): void;
+        /**
+         * @param index
+         * @param w
+         */
         set_w(index: number, w: number): void;
+        /**
+         * @param index
+         * @param x
+         */
         set_x(index: number, x: number): void;
+        /**
+         * @param index
+         * @param x
+         * @param y
+         */
         set_xy(index: number, x: number, y: number): void;
+        /**
+         * @param index
+         * @param x
+         * @param y
+         * @param z
+         */
         set_xyz(index: number, x: number, y: number, z: number): void;
+        /**
+         * @param index
+         * @param x
+         * @param y
+         * @param z
+         * @param w
+         */
         set_xyzw(index: number, x: number, y: number, z: number, w: number): void;
+        /**
+         * @param index
+         * @param y
+         */
         set_y(index: number, y: number): void;
+        /**
+         * @param index
+         * @param z
+         */
         set_z(index: number, z: number): void;
+        /**
+         * @param renderer
+         * @param buffer_type
+         */
         update(renderer: Renderer, buffer_type: number): void;
     }
 
@@ -622,6 +975,9 @@ export namespace Gthree {
         interface ConstructorProps extends Pass.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class BloomPass extends Pass {
         static $gtype: GObject.GType<BloomPass>;
 
@@ -644,16 +1000,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BloomPass.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BloomPass.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BloomPass.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BloomPass.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BloomPass.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BloomPass.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -677,6 +1036,9 @@ export namespace Gthree {
         interface ConstructorProps extends Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Bone extends Object {
         static $gtype: GObject.GType<Bone>;
 
@@ -699,16 +1061,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Bone.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Bone.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Bone.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Bone.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Bone.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Bone.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -737,6 +1102,9 @@ export namespace Gthree {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Camera extends Object {
         static $gtype: GObject.GType<Camera>;
 
@@ -764,16 +1132,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Camera.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Camera.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Camera.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Camera.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Camera.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Camera.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -782,12 +1153,18 @@ export namespace Gthree {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_update(): void;
 
         // Methods
 
         get_far(): number;
         get_near(): number;
+        /**
+         * @param res
+         */
         get_proj_screen_matrix(res: Graphene.Matrix): void;
         /**
          * ...
@@ -795,8 +1172,18 @@ export namespace Gthree {
          */
         get_projection_matrix(): Graphene.Matrix;
         get_world_inverse_matrix(): Graphene.Matrix;
+        /**
+         * @param far
+         */
         set_far(far: number): void;
+        /**
+         * @param near
+         */
         set_near(near: number): void;
+        /**
+         * @param screen_point
+         * @param res
+         */
         unproject(screen_point: Graphene.Vec3, res: Graphene.Vec3): Graphene.Vec3;
         /**
          * ...
@@ -817,6 +1204,9 @@ export namespace Gthree {
         interface ConstructorProps extends Pass.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ClearPass extends Pass {
         static $gtype: GObject.GType<ClearPass>;
 
@@ -839,16 +1229,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ClearPass.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClearPass.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ClearPass.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClearPass.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ClearPass.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ClearPass.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -857,6 +1250,9 @@ export namespace Gthree {
 
         // Methods
 
+        /**
+         * @param clear_depth
+         */
         set_clear_depth(clear_depth: boolean): void;
     }
 
@@ -869,6 +1265,9 @@ export namespace Gthree {
         interface ConstructorProps extends KeyframeTrack.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ColorKeyframeTrack extends KeyframeTrack {
         static $gtype: GObject.GType<ColorKeyframeTrack>;
 
@@ -891,16 +1290,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ColorKeyframeTrack.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ColorKeyframeTrack.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ColorKeyframeTrack.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ColorKeyframeTrack.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ColorKeyframeTrack.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ColorKeyframeTrack.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -920,6 +1322,9 @@ export namespace Gthree {
         interface ConstructorProps extends Texture.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class CubeTexture extends Texture {
         static $gtype: GObject.GType<CubeTexture>;
 
@@ -954,16 +1359,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CubeTexture.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CubeTexture.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CubeTexture.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CubeTexture.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CubeTexture.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CubeTexture.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -980,6 +1388,9 @@ export namespace Gthree {
         interface ConstructorProps extends Interpolant.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class CubicInterpolant extends Interpolant {
         static $gtype: GObject.GType<CubicInterpolant>;
 
@@ -1002,16 +1413,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CubicInterpolant.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CubicInterpolant.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CubicInterpolant.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CubicInterpolant.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CubicInterpolant.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CubicInterpolant.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1040,6 +1454,9 @@ export namespace Gthree {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class DirectionalLight extends Light {
         static $gtype: GObject.GType<DirectionalLight>;
 
@@ -1070,16 +1487,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DirectionalLight.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DirectionalLight.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DirectionalLight.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DirectionalLight.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DirectionalLight.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DirectionalLight.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1088,6 +1508,9 @@ export namespace Gthree {
 
         // Methods
 
+        /**
+         * @param target
+         */
         set_target(target: Object): void;
     }
 
@@ -1100,6 +1523,9 @@ export namespace Gthree {
         interface ConstructorProps extends LightShadow.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class DirectionalLightShadow extends LightShadow {
         static $gtype: GObject.GType<DirectionalLightShadow>;
 
@@ -1120,16 +1546,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DirectionalLightShadow.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DirectionalLightShadow.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DirectionalLightShadow.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DirectionalLightShadow.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DirectionalLightShadow.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DirectionalLightShadow.SignalSignatures[K]> extends [any, ...infer Q]
@@ -1148,6 +1577,9 @@ export namespace Gthree {
         interface ConstructorProps extends Interpolant.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class DiscreteInterpolant extends Interpolant {
         static $gtype: GObject.GType<DiscreteInterpolant>;
 
@@ -1170,16 +1602,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DiscreteInterpolant.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DiscreteInterpolant.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DiscreteInterpolant.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DiscreteInterpolant.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DiscreteInterpolant.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DiscreteInterpolant.SignalSignatures[K]> extends [any, ...infer Q]
@@ -1198,6 +1633,9 @@ export namespace Gthree {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class EffectComposer extends GObject.Object {
         static $gtype: GObject.GType<EffectComposer>;
 
@@ -1220,16 +1658,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof EffectComposer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, EffectComposer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof EffectComposer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, EffectComposer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof EffectComposer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<EffectComposer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1238,9 +1679,24 @@ export namespace Gthree {
 
         // Methods
 
+        /**
+         * @param pass
+         */
         add_pass(pass: Pass): void;
+        /**
+         * @param renderer
+         * @param delta_time
+         */
         render(renderer: Renderer, delta_time: number): void;
+        /**
+         * @param renderer
+         * @param render_target
+         */
         reset(renderer: Renderer, render_target: RenderTarget): void;
+        /**
+         * @param width
+         * @param height
+         */
         set_size(width: number, height: number): void;
     }
 
@@ -1253,6 +1709,9 @@ export namespace Gthree {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Fog extends GObject.Object {
         static $gtype: GObject.GType<Fog>;
 
@@ -1277,16 +1736,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Fog.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Fog.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Fog.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Fog.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Fog.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Fog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1300,10 +1762,25 @@ export namespace Gthree {
         get_far(): number;
         get_near(): number;
         get_style(): FogStyle;
+        /**
+         * @param color
+         */
         set_color(color: Graphene.Vec3): void;
+        /**
+         * @param density
+         */
         set_density(density: number): void;
+        /**
+         * @param far
+         */
         set_far(far: number): void;
+        /**
+         * @param near
+         */
         set_near(near: number): void;
+        /**
+         * @param style
+         */
         set_style(style: FogStyle | null): void;
     }
 
@@ -1316,6 +1793,9 @@ export namespace Gthree {
         interface ConstructorProps extends Pass.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class FullscreenQuadPass extends Pass {
         static $gtype: GObject.GType<FullscreenQuadPass>;
 
@@ -1338,16 +1818,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FullscreenQuadPass.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FullscreenQuadPass.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FullscreenQuadPass.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FullscreenQuadPass.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FullscreenQuadPass.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FullscreenQuadPass.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1356,6 +1839,9 @@ export namespace Gthree {
 
         // Methods
 
+        /**
+         * @param material
+         */
         set_material(material: Material): void;
     }
 
@@ -1368,6 +1854,9 @@ export namespace Gthree {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Geometry extends GObject.Object {
         static $gtype: GObject.GType<Geometry>;
 
@@ -1468,16 +1957,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Geometry.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Geometry.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Geometry.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Geometry.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Geometry.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Geometry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1486,7 +1978,16 @@ export namespace Gthree {
 
         // Methods
 
+        /**
+         * @param start
+         * @param count
+         * @param material_index
+         */
         add_group(start: number, count: number, material_index: number): void;
+        /**
+         * @param name
+         * @param attribute
+         */
         add_morph_attribute(name: string, attribute: Attribute): void;
         clear_groups(): void;
         compute_vertex_normals(): void;
@@ -1497,15 +1998,37 @@ export namespace Gthree {
         get_n_groups(): number;
         get_position_count(): number;
         get_vertex_count(): number;
+        /**
+         * @param name
+         */
         has_attribute(name: string): boolean;
         has_morph_attributes(): boolean;
         invalidate_bounds(): void;
         normalize_normals(): void;
+        /**
+         * @param name
+         */
         remove_attribute(name: string): void;
+        /**
+         * @param name
+         */
         remove_morph_attributes(name: string): void;
+        /**
+         * @param box
+         */
         set_bounding_box(box: Graphene.Box): void;
+        /**
+         * @param sphere
+         */
         set_bounding_sphere(sphere: Graphene.Sphere): void;
+        /**
+         * @param start
+         * @param count
+         */
         set_draw_range(start: number, count: number): void;
+        /**
+         * @param index
+         */
         set_index(index: Attribute): void;
     }
 
@@ -1525,6 +2048,9 @@ export namespace Gthree {
         interface ConstructorProps extends Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Group extends Object {
         static $gtype: GObject.GType<Group>;
 
@@ -1547,16 +2073,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Group.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Group.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Group.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Group.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Group.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Group.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1586,6 +2115,9 @@ export namespace Gthree {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class HemisphereLight extends Light {
         static $gtype: GObject.GType<HemisphereLight>;
 
@@ -1618,16 +2150,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof HemisphereLight.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HemisphereLight.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof HemisphereLight.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HemisphereLight.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof HemisphereLight.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<HemisphereLight.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1644,6 +2179,9 @@ export namespace Gthree {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Interpolant extends GObject.Object {
         static $gtype: GObject.GType<Interpolant>;
 
@@ -1664,16 +2202,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Interpolant.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Interpolant.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Interpolant.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Interpolant.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Interpolant.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Interpolant.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1682,7 +2223,21 @@ export namespace Gthree {
 
         // Virtual methods
 
+        /**
+         * @param i1
+         * @param t0
+         * @param t
+         * @param t1
+         * @param dest
+         * @virtual
+         */
         vfunc_interpolate(i1: number, t0: number, t: number, t1: number, dest: AttributeArray): void;
+        /**
+         * @param i1
+         * @param t0
+         * @param t1
+         * @virtual
+         */
         vfunc_interval_changed(i1: number, t0: number, t1: number): void;
 
         // Methods
@@ -1692,6 +2247,9 @@ export namespace Gthree {
         get_sample_size(): number;
         get_sample_type(): AttributeType;
         get_start_ending_mode(): EndingMode;
+        /**
+         * @param settings
+         */
         set_settings(settings: InterpolantSettings): void;
     }
 
@@ -1704,6 +2262,9 @@ export namespace Gthree {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class InterpolantSettings extends GObject.Object {
         static $gtype: GObject.GType<InterpolantSettings>;
 
@@ -1726,16 +2287,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof InterpolantSettings.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InterpolantSettings.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof InterpolantSettings.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InterpolantSettings.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof InterpolantSettings.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<InterpolantSettings.SignalSignatures[K]> extends [any, ...infer Q]
@@ -1748,7 +2312,13 @@ export namespace Gthree {
 
         get_end_ending_mode(): EndingMode;
         get_start_ending_mode(): EndingMode;
+        /**
+         * @param mode
+         */
         set_end_ending_mode(mode: EndingMode | null): void;
+        /**
+         * @param mode
+         */
         set_start_ending_mode(mode: EndingMode | null): void;
     }
 
@@ -1761,6 +2331,9 @@ export namespace Gthree {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class KeyframeTrack extends GObject.Object {
         static $gtype: GObject.GType<KeyframeTrack>;
 
@@ -1781,16 +2354,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof KeyframeTrack.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, KeyframeTrack.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof KeyframeTrack.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, KeyframeTrack.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof KeyframeTrack.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<KeyframeTrack.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1804,8 +2380,18 @@ export namespace Gthree {
         get_value_size(): number;
         get_value_type(): ValueType;
         optimize(): void;
+        /**
+         * @param time_scale
+         */
         scale(time_scale: number): void;
+        /**
+         * @param interpolation
+         */
         set_interpolation(interpolation: InterpolationMode | null): void;
+        /**
+         * @param start_time
+         * @param end_time
+         */
         trim(start_time: number, end_time: number): void;
     }
 
@@ -1830,6 +2416,9 @@ export namespace Gthree {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Light extends Object {
         static $gtype: GObject.GType<Light>;
 
@@ -1859,16 +2448,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Light.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Light.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Light.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Light.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Light.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Light.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1877,13 +2469,24 @@ export namespace Gthree {
 
         // Virtual methods
 
+        /**
+         * @param camera
+         * @param light_setup
+         * @virtual
+         */
         vfunc_setup(camera: Camera, light_setup: LightSetup): void;
 
         // Methods
 
         get_color(): Graphene.Vec3;
         get_intensity(): number;
+        /**
+         * @param color
+         */
         set_color(color: Graphene.Vec3): void;
+        /**
+         * @param intensity
+         */
         set_intensity(intensity: number): void;
     }
 
@@ -1896,6 +2499,9 @@ export namespace Gthree {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class LightShadow extends GObject.Object {
         static $gtype: GObject.GType<LightShadow>;
 
@@ -1916,16 +2522,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LightShadow.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LightShadow.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LightShadow.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LightShadow.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LightShadow.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LightShadow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1938,8 +2547,18 @@ export namespace Gthree {
         get_map_height(): number;
         get_map_width(): number;
         get_radius(): number;
+        /**
+         * @param bias
+         */
         set_bias(bias: number): void;
+        /**
+         * @param width
+         * @param height
+         */
         set_map_size(width: number, height: number): void;
+        /**
+         * @param radiuso
+         */
         set_radius(radiuso: number): void;
     }
 
@@ -1964,12 +2583,21 @@ export namespace Gthree {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Line extends Object {
         static $gtype: GObject.GType<Line>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get geometry(): Geometry;
+        /**
+         * @construct-only
+         */
         get material(): Material;
 
         /**
@@ -1994,16 +2622,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Line.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Line.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Line.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Line.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Line.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Line.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2033,6 +2664,9 @@ export namespace Gthree {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class LineBasicMaterial extends Material {
         static $gtype: GObject.GType<LineBasicMaterial>;
 
@@ -2064,16 +2698,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LineBasicMaterial.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LineBasicMaterial.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LineBasicMaterial.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LineBasicMaterial.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LineBasicMaterial.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LineBasicMaterial.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2084,7 +2721,13 @@ export namespace Gthree {
 
         get_color(): Graphene.Vec3;
         get_line_width(): number;
+        /**
+         * @param color
+         */
         set_color(color: Graphene.Vec3): void;
+        /**
+         * @param line_width
+         */
         set_line_width(line_width: number): void;
     }
 
@@ -2106,6 +2749,9 @@ export namespace Gthree {
         interface ConstructorProps extends Line.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class LineSegments extends Line {
         static $gtype: GObject.GType<LineSegments>;
 
@@ -2131,16 +2777,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LineSegments.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LineSegments.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LineSegments.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LineSegments.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LineSegments.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LineSegments.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2157,6 +2806,9 @@ export namespace Gthree {
         interface ConstructorProps extends Interpolant.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class LinearInterpolant extends Interpolant {
         static $gtype: GObject.GType<LinearInterpolant>;
 
@@ -2179,16 +2831,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LinearInterpolant.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LinearInterpolant.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LinearInterpolant.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LinearInterpolant.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LinearInterpolant.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LinearInterpolant.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2205,6 +2860,9 @@ export namespace Gthree {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Loader extends GObject.Object {
         static $gtype: GObject.GType<Loader>;
 
@@ -2225,16 +2883,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Loader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Loader.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Loader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Loader.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Loader.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Loader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2278,6 +2939,9 @@ export namespace Gthree {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Material extends GObject.Object {
         static $gtype: GObject.GType<Material>;
 
@@ -2319,16 +2983,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Material.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Material.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Material.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Material.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Material.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Material.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2337,18 +3004,50 @@ export namespace Gthree {
 
         // Virtual methods
 
+        /**
+         * @param attribute_location
+         * @param attribute
+         * @virtual
+         */
         vfunc_load_default_attribute(attribute_location: number, attribute: GLib.Quark): void;
+        /**
+         * @virtual
+         */
         vfunc_needs_camera_pos(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_needs_lights(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_needs_view_matrix(): boolean;
+        /**
+         * @param params
+         * @virtual
+         */
         vfunc_set_params(params: ProgramParameters): void;
+        /**
+         * @param uniforms
+         * @param camera
+         * @param renderer
+         * @virtual
+         */
         vfunc_set_uniforms(uniforms: Uniforms, camera: Camera, renderer: Renderer): void;
 
         // Methods
 
         get_alpha_test(): number;
+        /**
+         * @param equation
+         * @param src_factor
+         * @param dst_factor
+         */
         get_blend_mode(equation: number, src_factor: number, dst_factor: number): BlendMode;
         get_clip_intersection(): boolean;
+        /**
+         * @param index
+         */
         get_clipping_plane(index: number): Graphene.Plane;
         get_depth_test(): boolean;
         get_depth_write(): boolean;
@@ -2358,29 +3057,93 @@ export namespace Gthree {
         get_n_clipping_planes(): number;
         get_name(): string;
         get_opacity(): number;
+        /**
+         * @param factor
+         * @param units
+         */
         get_polygon_offset(factor: number, units: number): boolean;
         get_side(): Side;
         get_vertex_colors(): boolean;
+        /**
+         * @param attribute_location
+         * @param attribute
+         */
         load_default_attribute(attribute_location: number, attribute: GLib.Quark): void;
         needs_camera_pos(): boolean;
         needs_lights(): boolean;
         needs_view_matrix(): boolean;
+        /**
+         * @param alpha_test
+         */
         set_alpha_test(alpha_test: number): void;
+        /**
+         * @param mode
+         * @param equation
+         * @param src_factor
+         * @param dst_factor
+         */
         set_blend_mode(mode: BlendMode | null, equation: number, src_factor: number, dst_factor: number): void;
+        /**
+         * @param clip_intersection
+         */
         set_clip_intersection(clip_intersection: boolean): void;
+        /**
+         * @param index
+         * @param plane
+         */
         set_clipping_plane(index: number, plane: Graphene.Plane): number;
+        /**
+         * @param depth_test
+         */
         set_depth_test(depth_test: boolean): void;
+        /**
+         * @param depth_write
+         */
         set_depth_write(depth_write: boolean): void;
+        /**
+         * @param fog
+         */
         set_fog(fog: boolean): void;
+        /**
+         * @param is_transparent
+         */
         set_is_transparent(is_transparent: boolean): void;
+        /**
+         * @param is_visible
+         */
         set_is_visible(is_visible: boolean): void;
+        /**
+         * @param name
+         */
         set_name(name: string): void;
         set_needs_update(): void;
+        /**
+         * @param opacity
+         */
         set_opacity(opacity: number): void;
+        /**
+         * @param params
+         */
         set_params(params: ProgramParameters): void;
+        /**
+         * @param polygon_offset
+         * @param factor
+         * @param units
+         */
         set_polygon_offset(polygon_offset: boolean, factor: number, units: number): void;
+        /**
+         * @param side
+         */
         set_side(side: Side | null): void;
+        /**
+         * @param uniforms
+         * @param camera
+         * @param renderer
+         */
         set_uniforms(uniforms: Uniforms, camera: Camera, renderer: Renderer): void;
+        /**
+         * @param vertex_colors
+         */
         set_vertex_colors(vertex_colors: boolean): void;
     }
 
@@ -2405,11 +3168,17 @@ export namespace Gthree {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Mesh extends Object {
         static $gtype: GObject.GType<Mesh>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get geometry(): Geometry;
         get materials(): any[];
         set materials(val: any[]);
@@ -2436,16 +3205,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Mesh.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Mesh.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Mesh.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Mesh.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Mesh.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Mesh.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2454,11 +3226,21 @@ export namespace Gthree {
 
         // Methods
 
+        /**
+         * @param material
+         */
         add_material(material: Material): void;
         get_draw_mode(): DrawMode;
         get_n_materials(): number;
         has_morph_targets(): boolean;
+        /**
+         * @param mode
+         */
         set_draw_mode(mode: DrawMode | null): void;
+        /**
+         * @param index
+         * @param material
+         */
         set_material(index: number, material: Material): void;
         update_morph_targets(): void;
     }
@@ -2497,6 +3279,9 @@ export namespace Gthree {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class MeshBasicMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshBasicMaterial>;
 
@@ -2536,16 +3321,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MeshBasicMaterial.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MeshBasicMaterial.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MeshBasicMaterial.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MeshBasicMaterial.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MeshBasicMaterial.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MeshBasicMaterial.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2558,11 +3346,29 @@ export namespace Gthree {
         get_combine(): Operation;
         get_reflectivity(): number;
         get_refraction_ratio(): number;
+        /**
+         * @param color
+         */
         set_color(color: Graphene.Vec3): void;
+        /**
+         * @param combine
+         */
         set_combine(combine: Operation | null): void;
+        /**
+         * @param texture
+         */
         set_env_map(texture: Texture): void;
+        /**
+         * @param texture
+         */
         set_map(texture: Texture): void;
+        /**
+         * @param reflectivity
+         */
         set_reflectivity(reflectivity: number): void;
+        /**
+         * @param ratio
+         */
         set_refraction_ratio(ratio: number): void;
     }
 
@@ -2587,6 +3393,9 @@ export namespace Gthree {
         interface ConstructorProps extends MeshMaterial.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class MeshDepthMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshDepthMaterial>;
 
@@ -2609,16 +3418,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MeshDepthMaterial.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MeshDepthMaterial.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MeshDepthMaterial.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MeshDepthMaterial.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MeshDepthMaterial.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MeshDepthMaterial.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2628,6 +3440,9 @@ export namespace Gthree {
         // Methods
 
         get_depth_packing_format(): DepthPackingFormat;
+        /**
+         * @param format
+         */
         set_depth_packing_format(format: DepthPackingFormat | null): void;
     }
 
@@ -2652,6 +3467,9 @@ export namespace Gthree {
         interface ConstructorProps extends MeshMaterial.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class MeshDistanceMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshDistanceMaterial>;
 
@@ -2674,16 +3492,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MeshDistanceMaterial.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MeshDistanceMaterial.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MeshDistanceMaterial.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MeshDistanceMaterial.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MeshDistanceMaterial.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MeshDistanceMaterial.SignalSignatures[K]> extends [any, ...infer Q]
@@ -2697,8 +3518,17 @@ export namespace Gthree {
         get_far_distance(): number;
         get_near_distance(): number;
         get_reference_point(): Graphene.Vec3;
+        /**
+         * @param far_distance
+         */
         set_far_distance(far_distance: number): void;
+        /**
+         * @param near_distance
+         */
         set_near_distance(near_distance: number): void;
+        /**
+         * @param ref_point
+         */
         set_reference_point(ref_point: Graphene.Vec3): void;
     }
 
@@ -2739,6 +3569,9 @@ export namespace Gthree {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class MeshLambertMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshLambertMaterial>;
 
@@ -2782,16 +3615,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MeshLambertMaterial.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MeshLambertMaterial.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MeshLambertMaterial.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MeshLambertMaterial.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MeshLambertMaterial.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MeshLambertMaterial.SignalSignatures[K]> extends [any, ...infer Q]
@@ -2807,12 +3643,33 @@ export namespace Gthree {
         get_emissive_color(): Graphene.Vec3;
         get_reflectivity(): number;
         get_refraction_ratio(): number;
+        /**
+         * @param color
+         */
         set_color(color: Graphene.Vec3): void;
+        /**
+         * @param combine
+         */
         set_combine(combine: Operation | null): void;
+        /**
+         * @param color
+         */
         set_emissive_color(color: Graphene.Vec3): void;
+        /**
+         * @param texture
+         */
         set_env_map(texture: Texture): void;
+        /**
+         * @param texture
+         */
         set_map(texture: Texture): void;
+        /**
+         * @param reflectivity
+         */
         set_reflectivity(reflectivity: number): void;
+        /**
+         * @param ratio
+         */
         set_refraction_ratio(ratio: number): void;
     }
 
@@ -2846,6 +3703,9 @@ export namespace Gthree {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class MeshMaterial extends Material {
         static $gtype: GObject.GType<MeshMaterial>;
 
@@ -2885,16 +3745,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MeshMaterial.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MeshMaterial.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MeshMaterial.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MeshMaterial.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MeshMaterial.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MeshMaterial.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2908,10 +3771,25 @@ export namespace Gthree {
         get_morph_targets(): boolean;
         get_skinning(): boolean;
         get_wireframe_line_width(): number;
+        /**
+         * @param is_wireframe
+         */
         set_is_wireframe(is_wireframe: boolean): void;
+        /**
+         * @param value
+         */
         set_morph_normals(value: boolean): void;
+        /**
+         * @param value
+         */
         set_morph_targets(value: boolean): void;
+        /**
+         * @param value
+         */
         set_skinning(value: boolean): void;
+        /**
+         * @param line_width
+         */
         set_wireframe_line_width(line_width: number): void;
     }
 
@@ -2936,6 +3814,9 @@ export namespace Gthree {
         interface ConstructorProps extends MeshMaterial.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class MeshNormalMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshNormalMaterial>;
 
@@ -2958,16 +3839,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MeshNormalMaterial.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MeshNormalMaterial.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MeshNormalMaterial.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MeshNormalMaterial.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MeshNormalMaterial.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MeshNormalMaterial.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2977,6 +3861,9 @@ export namespace Gthree {
         // Methods
 
         get_shading_type(): ShadingType;
+        /**
+         * @param shading_type
+         */
         set_shading_type(shading_type: ShadingType | null): void;
     }
 
@@ -3034,6 +3921,9 @@ export namespace Gthree {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class MeshPhongMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshPhongMaterial>;
 
@@ -3099,16 +3989,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MeshPhongMaterial.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MeshPhongMaterial.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MeshPhongMaterial.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MeshPhongMaterial.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MeshPhongMaterial.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MeshPhongMaterial.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3127,19 +4020,61 @@ export namespace Gthree {
         get_refraction_ratio(): number;
         get_shininess(): number;
         get_specular_color(): Graphene.Vec3;
+        /**
+         * @param color
+         */
         set_color(color: Graphene.Vec3): void;
+        /**
+         * @param combine
+         */
         set_combine(combine: Operation | null): void;
+        /**
+         * @param color
+         */
         set_emissive_color(color: Graphene.Vec3): void;
+        /**
+         * @param texture
+         */
         set_env_map(texture: Texture): void;
+        /**
+         * @param flat_shading
+         */
         set_flat_shading(flat_shading: boolean): void;
+        /**
+         * @param texture
+         */
         set_map(texture: Texture): void;
+        /**
+         * @param texture
+         */
         set_normal_map(texture: Texture): void;
+        /**
+         * @param scale
+         */
         set_normal_map_scale(scale: Graphene.Vec2): void;
+        /**
+         * @param type
+         */
         set_normal_map_type(type: NormalMapType | null): void;
+        /**
+         * @param reflectivity
+         */
         set_reflectivity(reflectivity: number): void;
+        /**
+         * @param ratio
+         */
         set_refraction_ratio(ratio: number): void;
+        /**
+         * @param shininess
+         */
         set_shininess(shininess: number): void;
+        /**
+         * @param color
+         */
         set_specular_color(color: Graphene.Vec3): void;
+        /**
+         * @param texture
+         */
         set_specular_map(texture: Texture): void;
     }
 
@@ -3234,6 +4169,9 @@ export namespace Gthree {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class MeshSpecglosMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshSpecglosMaterial>;
 
@@ -3349,16 +4287,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MeshSpecglosMaterial.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MeshSpecglosMaterial.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MeshSpecglosMaterial.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MeshSpecglosMaterial.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MeshSpecglosMaterial.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MeshSpecglosMaterial.SignalSignatures[K]> extends [any, ...infer Q]
@@ -3383,30 +4324,105 @@ export namespace Gthree {
         get_normal_map_type(): NormalMapType;
         get_refraction_ratio(): number;
         get_specular_factor(): Graphene.Vec3;
+        /**
+         * @param texture
+         */
         set_alpha_map(texture: Texture): void;
+        /**
+         * @param texture
+         */
         set_ao_map(texture: Texture): void;
+        /**
+         * @param value
+         */
         set_ao_map_intensity(value: number): void;
+        /**
+         * @param texture
+         */
         set_bump_map(texture: Texture): void;
+        /**
+         * @param value
+         */
         set_bump_scale(value: number): void;
+        /**
+         * @param color
+         */
         set_color(color: Graphene.Vec3): void;
+        /**
+         * @param value
+         */
         set_displacement_bias(value: number): void;
+        /**
+         * @param texture
+         */
         set_displacement_map(texture: Texture): void;
+        /**
+         * @param value
+         */
         set_displacement_scale(value: number): void;
+        /**
+         * @param color
+         */
         set_emissive_color(color: Graphene.Vec3): void;
+        /**
+         * @param value
+         */
         set_emissive_intensity(value: number): void;
+        /**
+         * @param texture
+         */
         set_emissive_map(texture: Texture): void;
+        /**
+         * @param texture
+         */
         set_env_map(texture: Texture): void;
+        /**
+         * @param value
+         */
         set_env_map_intensity(value: number): void;
+        /**
+         * @param ratio
+         */
         set_glossiness(ratio: number): void;
+        /**
+         * @param texture
+         */
         set_glossiness_map(texture: Texture): void;
+        /**
+         * @param texture
+         */
         set_light_map(texture: Texture): void;
+        /**
+         * @param value
+         */
         set_light_map_intensity(value: number): void;
+        /**
+         * @param texture
+         */
         set_map(texture: Texture): void;
+        /**
+         * @param texture
+         */
         set_normal_map(texture: Texture): void;
+        /**
+         * @param scale
+         */
         set_normal_map_scale(scale: Graphene.Vec2): void;
+        /**
+         * @param type
+         */
         set_normal_map_type(type: NormalMapType | null): void;
+        /**
+         * @param ratio
+         */
         set_refraction_ratio(ratio: number): void;
+        /**
+         * @param factor
+         */
         set_specular_factor(factor: Graphene.Vec3): void;
+        /**
+         * @param texture
+         */
         set_specular_map(texture: Texture): void;
     }
 
@@ -3500,6 +4516,9 @@ export namespace Gthree {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class MeshStandardMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshStandardMaterial>;
 
@@ -3613,16 +4632,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MeshStandardMaterial.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MeshStandardMaterial.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MeshStandardMaterial.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MeshStandardMaterial.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MeshStandardMaterial.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MeshStandardMaterial.SignalSignatures[K]> extends [any, ...infer Q]
@@ -3647,30 +4669,105 @@ export namespace Gthree {
         get_normal_map_type(): NormalMapType;
         get_refraction_ratio(): number;
         get_roughness(): number;
+        /**
+         * @param texture
+         */
         set_alpha_map(texture: Texture): void;
+        /**
+         * @param texture
+         */
         set_ao_map(texture: Texture): void;
+        /**
+         * @param value
+         */
         set_ao_map_intensity(value: number): void;
+        /**
+         * @param texture
+         */
         set_bump_map(texture: Texture): void;
+        /**
+         * @param value
+         */
         set_bump_scale(value: number): void;
+        /**
+         * @param color
+         */
         set_color(color: Graphene.Vec3): void;
+        /**
+         * @param value
+         */
         set_displacement_bias(value: number): void;
+        /**
+         * @param texture
+         */
         set_displacement_map(texture: Texture): void;
+        /**
+         * @param value
+         */
         set_displacement_scale(value: number): void;
+        /**
+         * @param color
+         */
         set_emissive_color(color: Graphene.Vec3): void;
+        /**
+         * @param value
+         */
         set_emissive_intensity(value: number): void;
+        /**
+         * @param texture
+         */
         set_emissive_map(texture: Texture): void;
+        /**
+         * @param texture
+         */
         set_env_map(texture: Texture): void;
+        /**
+         * @param value
+         */
         set_env_map_intensity(value: number): void;
+        /**
+         * @param texture
+         */
         set_light_map(texture: Texture): void;
+        /**
+         * @param value
+         */
         set_light_map_intensity(value: number): void;
+        /**
+         * @param texture
+         */
         set_map(texture: Texture): void;
+        /**
+         * @param value
+         */
         set_metalness(value: number): void;
+        /**
+         * @param texture
+         */
         set_metalness_map(texture: Texture): void;
+        /**
+         * @param texture
+         */
         set_normal_map(texture: Texture): void;
+        /**
+         * @param scale
+         */
         set_normal_map_scale(scale: Graphene.Vec2): void;
+        /**
+         * @param type
+         */
         set_normal_map_type(type: NormalMapType | null): void;
+        /**
+         * @param ratio
+         */
         set_refraction_ratio(ratio: number): void;
+        /**
+         * @param ratio
+         */
         set_roughness(ratio: number): void;
+        /**
+         * @param texture
+         */
         set_roughness_map(texture: Texture): void;
     }
 
@@ -3748,6 +4845,9 @@ export namespace Gthree {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class MeshToonMaterial extends MeshMaterial {
         static $gtype: GObject.GType<MeshToonMaterial>;
 
@@ -3841,16 +4941,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MeshToonMaterial.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MeshToonMaterial.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MeshToonMaterial.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MeshToonMaterial.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MeshToonMaterial.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MeshToonMaterial.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3869,24 +4972,81 @@ export namespace Gthree {
         get_light_map_intensity(): number;
         get_normal_map_scale(): Graphene.Vec2;
         get_normal_map_type(): NormalMapType;
+        /**
+         * @param texture
+         */
         set_alpha_map(texture: Texture): void;
+        /**
+         * @param texture
+         */
         set_ao_map(texture: Texture): void;
+        /**
+         * @param value
+         */
         set_ao_map_intensity(value: number): void;
+        /**
+         * @param texture
+         */
         set_bump_map(texture: Texture): void;
+        /**
+         * @param value
+         */
         set_bump_scale(value: number): void;
+        /**
+         * @param color
+         */
         set_color(color: Graphene.Vec3): void;
+        /**
+         * @param value
+         */
         set_displacement_bias(value: number): void;
+        /**
+         * @param texture
+         */
         set_displacement_map(texture: Texture): void;
+        /**
+         * @param value
+         */
         set_displacement_scale(value: number): void;
+        /**
+         * @param color
+         */
         set_emissive_color(color: Graphene.Vec3): void;
+        /**
+         * @param value
+         */
         set_emissive_intensity(value: number): void;
+        /**
+         * @param texture
+         */
         set_emissive_map(texture: Texture): void;
+        /**
+         * @param texture
+         */
         set_gradient_map(texture: Texture): void;
+        /**
+         * @param texture
+         */
         set_light_map(texture: Texture): void;
+        /**
+         * @param value
+         */
         set_light_map_intensity(value: number): void;
+        /**
+         * @param texture
+         */
         set_map(texture: Texture): void;
+        /**
+         * @param texture
+         */
         set_normal_map(texture: Texture): void;
+        /**
+         * @param scale
+         */
         set_normal_map_scale(scale: Graphene.Vec2): void;
+        /**
+         * @param type
+         */
         set_normal_map_type(type: NormalMapType | null): void;
     }
 
@@ -3899,6 +5059,9 @@ export namespace Gthree {
         interface ConstructorProps extends KeyframeTrack.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class NumberKeyframeTrack extends KeyframeTrack {
         static $gtype: GObject.GType<NumberKeyframeTrack>;
 
@@ -3921,16 +5084,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof NumberKeyframeTrack.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, NumberKeyframeTrack.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof NumberKeyframeTrack.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, NumberKeyframeTrack.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof NumberKeyframeTrack.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<NumberKeyframeTrack.SignalSignatures[K]> extends [any, ...infer Q]
@@ -3943,7 +5109,15 @@ export namespace Gthree {
     namespace Object {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             * @run-cleanup
+             */
             destroy: () => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'parent-set': (arg0: Object) => void;
             'notify::first-child': (pspec: GObject.ParamSpec) => void;
             'notify::last-child': (pspec: GObject.ParamSpec) => void;
@@ -3969,19 +5143,49 @@ export namespace Gthree {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Object extends GObject.Object {
         static $gtype: GObject.GType<Object>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get first_child(): Object;
+        /**
+         * @read-only
+         */
         get firstChild(): Object;
+        /**
+         * @read-only
+         */
         get last_child(): Object;
+        /**
+         * @read-only
+         */
         get lastChild(): Object;
+        /**
+         * @read-only
+         */
         get next_sibling(): Object;
+        /**
+         * @read-only
+         */
         get nextSibling(): Object;
+        /**
+         * @read-only
+         */
         get parent(): Object;
+        /**
+         * @read-only
+         */
         get previous_sibling(): Object;
+        /**
+         * @read-only
+         */
         get previousSibling(): Object;
         get visible(): boolean;
         set visible(val: boolean);
@@ -4005,16 +5209,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Object.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Object.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Object.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Object.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4023,31 +5230,83 @@ export namespace Gthree {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_destroy(): void;
+        /**
+         * @param list
+         * @virtual
+         */
         vfunc_fill_render_list(list: RenderList): void;
+        /**
+         * @param frustum
+         * @virtual
+         */
         vfunc_in_frustum(frustum: Graphene.Frustum): boolean;
+        /**
+         * @param old_parent
+         * @virtual
+         */
         vfunc_parent_set(old_parent: Object): void;
+        /**
+         * @param program
+         * @param renderer
+         * @virtual
+         */
         vfunc_set_direct_uniforms(program: Program, renderer: Renderer): void;
+        /**
+         * @param renderer
+         * @virtual
+         */
         vfunc_update(renderer: Renderer): void;
+        /**
+         * @param force
+         * @virtual
+         */
         vfunc_update_matrix_world(force: boolean): boolean;
 
         // Methods
 
+        /**
+         * @param child
+         */
         add_child(child: Object): void;
+        /**
+         * @param matrix
+         */
         apply_matrix(matrix: Graphene.Matrix): void;
+        /**
+         * @param layer_mask
+         */
         check_layer(layer_mask: number): boolean;
         destroy(): void;
         destroy_all_children(): void;
+        /**
+         * @param layer
+         */
         disable_layer(layer: number): void;
+        /**
+         * @param layer
+         */
         enable_layer(layer: number): void;
         get_cast_shadow(): boolean;
         get_is_frustum_culled(): boolean;
         get_layer_mask(): number;
         get_matrix(): Graphene.Matrix;
+        /**
+         * @param box
+         */
         get_mesh_extents(box: Graphene.Box): void;
+        /**
+         * @param dest
+         */
         get_model_view_matrix_floats(dest: number): void;
         get_n_children(): number;
         get_name(): string;
+        /**
+         * @param dest
+         */
         get_normal_matrix3_floats(dest: number): void;
         get_position(): Graphene.Vec3;
         get_quaternion(): Graphene.Quaternion;
@@ -4058,43 +5317,157 @@ export namespace Gthree {
         get_uuid(): string;
         get_visible(): boolean;
         get_world_matrix(): Graphene.Matrix;
+        /**
+         * @param dest
+         */
         get_world_matrix_floats(dest: number): void;
+        /**
+         * @param attribute
+         */
         has_attribute_data(attribute: GLib.Quark): boolean;
         hide(): void;
+        /**
+         * @param frustum
+         */
         is_in_frustum(frustum: Graphene.Frustum): boolean;
+        /**
+         * @param pos
+         */
         look_at(pos: Graphene.Vec3): void;
+        /**
+         * @param pos
+         */
         look_at_point3d(pos: Graphene.Point3D): void;
+        /**
+         * @param x
+         * @param y
+         * @param z
+         */
         look_at_xyz(x: number, y: number, z: number): void;
+        /**
+         * @param child
+         */
         remove_child(child: Object): void;
+        /**
+         * @param cast_shadow
+         */
         set_cast_shadow(cast_shadow: boolean): void;
+        /**
+         * @param layer
+         */
         set_layer(layer: number): void;
+        /**
+         * @param matrix
+         */
         set_matrix(matrix: Graphene.Matrix): void;
+        /**
+         * @param auto_update
+         */
         set_matrix_auto_update(auto_update: boolean): void;
+        /**
+         * @param name
+         */
         set_name(name: string): void;
+        /**
+         * @param vec
+         */
         set_position(vec: Graphene.Vec3): void;
+        /**
+         * @param pos
+         */
         set_position_point3d(pos: Graphene.Point3D): void;
+        /**
+         * @param x
+         * @param y
+         * @param z
+         */
         set_position_xyz(x: number, y: number, z: number): void;
+        /**
+         * @param q
+         */
         set_quaternion(q: Graphene.Quaternion): void;
+        /**
+         * @param receive_shadow
+         */
         set_receive_shadow(receive_shadow: boolean): void;
+        /**
+         * @param rot
+         */
         set_rotation(rot: Graphene.Euler): void;
+        /**
+         * @param x
+         * @param y
+         * @param z
+         */
         set_rotation_xyz(x: number, y: number, z: number): void;
+        /**
+         * @param scale
+         */
         set_scale(scale: Graphene.Vec3): void;
+        /**
+         * @param scale
+         */
         set_scale_point3d(scale: Graphene.Point3D): void;
+        /**
+         * @param scale
+         */
         set_scale_uniform(scale: number): void;
+        /**
+         * @param x
+         * @param y
+         * @param z
+         */
         set_scale_xyz(x: number, y: number, z: number): void;
+        /**
+         * @param up
+         */
         set_up(up: Graphene.Vec3): void;
+        /**
+         * @param uuid
+         */
         set_uuid(uuid: string): void;
+        /**
+         * @param visible
+         */
         set_visible(visible: boolean): void;
+        /**
+         * @param matrix
+         */
         set_world_matrix(matrix: Graphene.Matrix): void;
         show(): void;
+        /**
+         * @param layer
+         */
         toggle_layer(layer: number): void;
+        /**
+         * @param axis
+         * @param distance
+         */
         translate_on_axis(axis: Graphene.Vec3, distance: number): void;
+        /**
+         * @param distance
+         */
         translate_x(distance: number): void;
+        /**
+         * @param distance
+         */
         translate_y(distance: number): void;
+        /**
+         * @param distance
+         */
         translate_z(distance: number): void;
+        /**
+         * @param renderer
+         */
         update(renderer: Renderer): void;
         update_matrix(): void;
+        /**
+         * @param camera_matrix
+         */
         update_matrix_view(camera_matrix: Graphene.Matrix): void;
+        /**
+         * @param force
+         */
         update_matrix_world(force: boolean): void;
     }
 
@@ -4125,6 +5498,9 @@ export namespace Gthree {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class OrthographicCamera extends Camera {
         static $gtype: GObject.GType<OrthographicCamera>;
 
@@ -4168,16 +5544,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof OrthographicCamera.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OrthographicCamera.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof OrthographicCamera.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OrthographicCamera.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof OrthographicCamera.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<OrthographicCamera.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4190,9 +5569,21 @@ export namespace Gthree {
         get_left(): number;
         get_right(): number;
         get_top(): number;
+        /**
+         * @param bottom
+         */
         set_bottom(bottom: number): void;
+        /**
+         * @param left
+         */
         set_left(left: number): void;
+        /**
+         * @param right
+         */
         set_right(right: number): void;
+        /**
+         * @param top
+         */
         set_top(top: number): void;
     }
 
@@ -4205,6 +5596,9 @@ export namespace Gthree {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Pass extends GObject.Object {
         static $gtype: GObject.GType<Pass>;
 
@@ -4234,16 +5628,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Pass.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Pass.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Pass.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Pass.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Pass.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Pass.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4252,6 +5649,15 @@ export namespace Gthree {
 
         // Virtual methods
 
+        /**
+         * @param renderer
+         * @param write_buffer
+         * @param read_buffer
+         * @param delta_time
+         * @param render_to_screen
+         * @param mask_active
+         * @virtual
+         */
         vfunc_render(
             renderer: Renderer,
             write_buffer: RenderTarget,
@@ -4260,10 +5666,23 @@ export namespace Gthree {
             render_to_screen: boolean,
             mask_active: boolean,
         ): void;
+        /**
+         * @param width
+         * @param height
+         * @virtual
+         */
         vfunc_set_size(width: number, height: number): void;
 
         // Methods
 
+        /**
+         * @param renderer
+         * @param write_buffer
+         * @param read_buffer
+         * @param delta_time
+         * @param render_to_screen
+         * @param mask_active
+         */
         render(
             renderer: Renderer,
             write_buffer: RenderTarget,
@@ -4272,8 +5691,18 @@ export namespace Gthree {
             render_to_screen: boolean,
             mask_active: boolean,
         ): void;
+        /**
+         * @param width
+         * @param height
+         */
         resize(width: number, height: number): void;
+        /**
+         * @param clear
+         */
         set_clear(clear: boolean): void;
+        /**
+         * @param enabled
+         */
         set_enabled(enabled: boolean): void;
     }
 
@@ -4300,6 +5729,9 @@ export namespace Gthree {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class PerspectiveCamera extends Camera {
         static $gtype: GObject.GType<PerspectiveCamera>;
 
@@ -4332,16 +5764,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof PerspectiveCamera.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PerspectiveCamera.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof PerspectiveCamera.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PerspectiveCamera.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PerspectiveCamera.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PerspectiveCamera.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4352,7 +5787,13 @@ export namespace Gthree {
 
         get_aspect(): number;
         get_fov(): number;
+        /**
+         * @param aspect
+         */
         set_aspect(aspect: number): void;
+        /**
+         * @param aspect
+         */
         set_fov(aspect: number): void;
     }
 
@@ -4379,6 +5820,9 @@ export namespace Gthree {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class PlaneHelper extends Object {
         static $gtype: GObject.GType<PlaneHelper>;
 
@@ -4413,16 +5857,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof PlaneHelper.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PlaneHelper.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof PlaneHelper.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PlaneHelper.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PlaneHelper.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PlaneHelper.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4434,8 +5881,17 @@ export namespace Gthree {
         get_color(): Graphene.Vec3;
         get_plane(): Graphene.Plane;
         get_size(): number;
+        /**
+         * @param color
+         */
         set_color(color: Graphene.Vec3): void;
+        /**
+         * @param plane
+         */
         set_plane(plane: Graphene.Plane): void;
+        /**
+         * @param size
+         */
         set_size(size: number): void;
     }
 
@@ -4462,6 +5918,9 @@ export namespace Gthree {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class PointLight extends Light {
         static $gtype: GObject.GType<PointLight>;
 
@@ -4494,16 +5953,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof PointLight.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PointLight.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof PointLight.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PointLight.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PointLight.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PointLight.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4514,7 +5976,13 @@ export namespace Gthree {
 
         get_decay(): number;
         get_distance(): number;
+        /**
+         * @param decay
+         */
         set_decay(decay: number): void;
+        /**
+         * @param distance
+         */
         set_distance(distance: number): void;
     }
 
@@ -4539,11 +6007,17 @@ export namespace Gthree {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Points extends Object {
         static $gtype: GObject.GType<Points>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get geometry(): Geometry;
         get material(): Material;
         set material(val: Material);
@@ -4570,16 +6044,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Points.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Points.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Points.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Points.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Points.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Points.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4588,6 +6065,9 @@ export namespace Gthree {
 
         // Methods
 
+        /**
+         * @param material
+         */
         set_material(material: Material): void;
     }
 
@@ -4617,6 +6097,9 @@ export namespace Gthree {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class PointsMaterial extends Material {
         static $gtype: GObject.GType<PointsMaterial>;
 
@@ -4652,16 +6135,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof PointsMaterial.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PointsMaterial.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof PointsMaterial.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PointsMaterial.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PointsMaterial.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PointsMaterial.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4673,9 +6159,21 @@ export namespace Gthree {
         get_color(): Graphene.Vec3;
         get_size(): number;
         get_size_attenuation(): boolean;
+        /**
+         * @param color
+         */
         set_color(color: Graphene.Vec3): void;
+        /**
+         * @param texture
+         */
         set_map(texture: Texture): void;
+        /**
+         * @param size
+         */
         set_size(size: number): void;
+        /**
+         * @param size_attenuation
+         */
         set_size_attenuation(size_attenuation: boolean): void;
     }
 
@@ -4688,6 +6186,9 @@ export namespace Gthree {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Program extends GObject.Object {
         static $gtype: GObject.GType<Program>;
 
@@ -4710,16 +6211,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Program.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Program.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Program.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Program.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Program.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Program.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4728,9 +6232,21 @@ export namespace Gthree {
 
         // Methods
 
+        /**
+         * @param attribute
+         */
         lookup_attribute_location(attribute: GLib.Quark): number;
+        /**
+         * @param attribute
+         */
         lookup_attribute_location_from_string(attribute: string): number;
+        /**
+         * @param uniform
+         */
         lookup_uniform_location(uniform: GLib.Quark): number;
+        /**
+         * @param uniform
+         */
         lookup_uniform_location_from_string(uniform: string): number;
         use(): void;
     }
@@ -4744,6 +6260,9 @@ export namespace Gthree {
         interface ConstructorProps extends Interpolant.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class QuaternionInterpolant extends Interpolant {
         static $gtype: GObject.GType<QuaternionInterpolant>;
 
@@ -4766,16 +6285,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof QuaternionInterpolant.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, QuaternionInterpolant.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof QuaternionInterpolant.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, QuaternionInterpolant.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof QuaternionInterpolant.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<QuaternionInterpolant.SignalSignatures[K]> extends [any, ...infer Q]
@@ -4794,6 +6316,9 @@ export namespace Gthree {
         interface ConstructorProps extends KeyframeTrack.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class QuaternionKeyframeTrack extends KeyframeTrack {
         static $gtype: GObject.GType<QuaternionKeyframeTrack>;
 
@@ -4816,16 +6341,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof QuaternionKeyframeTrack.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, QuaternionKeyframeTrack.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof QuaternionKeyframeTrack.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, QuaternionKeyframeTrack.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof QuaternionKeyframeTrack.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<QuaternionKeyframeTrack.SignalSignatures[K]> extends [any, ...infer Q]
@@ -4844,6 +6372,9 @@ export namespace Gthree {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Raycaster extends GObject.Object {
         static $gtype: GObject.GType<Raycaster>;
 
@@ -4866,16 +6397,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Raycaster.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Raycaster.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Raycaster.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Raycaster.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Raycaster.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Raycaster.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4887,9 +6421,23 @@ export namespace Gthree {
         get_far(): number;
         get_near(): number;
         get_ray(): Graphene.Ray;
+        /**
+         * @param far
+         */
         set_far(far: number): void;
+        /**
+         * @param camera
+         * @param x
+         * @param y
+         */
         set_from_camera(camera: Camera, x: number, y: number): void;
+        /**
+         * @param near
+         */
         set_near(near: number): void;
+        /**
+         * @param ray
+         */
         set_ray(ray: Graphene.Ray): void;
     }
 
@@ -4902,6 +6450,9 @@ export namespace Gthree {
         interface ConstructorProps extends Pass.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class RenderPass extends Pass {
         static $gtype: GObject.GType<RenderPass>;
 
@@ -4924,16 +6475,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RenderPass.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RenderPass.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RenderPass.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RenderPass.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RenderPass.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RenderPass.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4942,6 +6496,9 @@ export namespace Gthree {
 
         // Methods
 
+        /**
+         * @param clear_depth
+         */
         set_clear_depth(clear_depth: boolean): void;
     }
 
@@ -4954,6 +6511,9 @@ export namespace Gthree {
         interface ConstructorProps extends Resource.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class RenderTarget extends Resource {
         static $gtype: GObject.GType<RenderTarget>;
 
@@ -4976,16 +6536,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RenderTarget.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RenderTarget.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RenderTarget.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RenderTarget.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RenderTarget.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RenderTarget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4994,16 +6557,43 @@ export namespace Gthree {
 
         // Methods
 
+        /**
+         * @param renderer
+         * @param data
+         * @param stride
+         */
         download(renderer: Renderer, data: number, stride: number): void;
+        /**
+         * @param renderer
+         * @param area
+         * @param data
+         * @param stride
+         */
         download_area(renderer: Renderer, area: cairo.RectangleInt, data: number, stride: number): void;
         get_depth_buffer(): boolean;
         get_height(): number;
         get_stencil_buffer(): boolean;
         get_width(): number;
+        /**
+         * @param depth_buffer
+         */
         set_depth_buffer(depth_buffer: boolean): void;
+        /**
+         * @param texture
+         */
         set_depth_texture(texture: Texture): void;
+        /**
+         * @param width
+         * @param height
+         */
         set_size(width: number, height: number): void;
+        /**
+         * @param stencil_buffer
+         */
         set_stencil_buffer(stencil_buffer: boolean): void;
+        /**
+         * @param renderer
+         */
         update_mipmap(renderer: Renderer): void;
     }
 
@@ -5016,6 +6606,9 @@ export namespace Gthree {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Renderer extends GObject.Object {
         static $gtype: GObject.GType<Renderer>;
 
@@ -5038,16 +6631,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Renderer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Renderer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Renderer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Renderer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Renderer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Renderer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5056,6 +6652,11 @@ export namespace Gthree {
 
         // Methods
 
+        /**
+         * @param color
+         * @param depth
+         * @param stencil
+         */
         clear(color: boolean, depth: boolean, stencil: boolean): void;
         clear_color(): void;
         clear_depth(): void;
@@ -5065,6 +6666,9 @@ export namespace Gthree {
         get_autoclear_stencil(): boolean;
         get_clear_alpha(): number;
         get_clear_color(): Graphene.Vec3;
+        /**
+         * @param index
+         */
         get_clipping_plane(index: number): Graphene.Plane;
         get_drawing_buffer_height(): number;
         get_drawing_buffer_width(): number;
@@ -5078,22 +6682,78 @@ export namespace Gthree {
         get_shadow_map_needs_update(): boolean;
         get_width(): number;
         remove_all_clipping_planes(): void;
+        /**
+         * @param index
+         */
         remove_clipping_plane(index: number): void;
+        /**
+         * @param scene
+         * @param camera
+         */
         render(scene: Scene, camera: Camera): void;
+        /**
+         * @param auto_clear
+         */
         set_autoclear(auto_clear: boolean): void;
+        /**
+         * @param clear_color
+         */
         set_autoclear_color(clear_color: boolean): void;
+        /**
+         * @param clear_depth
+         */
         set_autoclear_depth(clear_depth: boolean): void;
+        /**
+         * @param clear_stencil
+         */
         set_autoclear_stencil(clear_stencil: boolean): void;
+        /**
+         * @param alpha
+         */
         set_clear_alpha(alpha: number): void;
+        /**
+         * @param color
+         */
         set_clear_color(color: Graphene.Vec3): void;
+        /**
+         * @param index
+         * @param plane
+         */
         set_clipping_plane(index: number, plane: Graphene.Plane): number;
+        /**
+         * @param factor
+         */
         set_gamma_factor(factor: number): void;
+        /**
+         * @param enabled
+         */
         set_local_clipping_enabled(enabled: boolean): void;
+        /**
+         * @param pixel_ratio
+         */
         set_pixel_ratio(pixel_ratio: number): void;
+        /**
+         * @param target
+         * @param active_cube_target
+         * @param active_mipmap_level
+         */
         set_render_target(target: RenderTarget, active_cube_target: number, active_mipmap_level: number): void;
+        /**
+         * @param auto_update
+         */
         set_shadow_map_auto_update(auto_update: boolean): void;
+        /**
+         * @param enabled
+         */
         set_shadow_map_enabled(enabled: boolean): void;
+        /**
+         * @param needs_update
+         */
         set_shadow_map_needs_update(needs_update: boolean): void;
+        /**
+         * @param width
+         * @param height
+         */
         set_size(width: number, height: number): void;
         unrealize(): void;
     }
@@ -5107,6 +6767,9 @@ export namespace Gthree {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Resource extends GObject.Object {
         static $gtype: GObject.GType<Resource>;
 
@@ -5127,16 +6790,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Resource.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Resource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Resource.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Resource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Resource.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Resource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5145,16 +6811,39 @@ export namespace Gthree {
 
         // Virtual methods
 
+        /**
+         * @param used
+         * @virtual
+         */
         vfunc_set_used(used: boolean): void;
+        /**
+         * @param renderer
+         * @virtual
+         */
         vfunc_unrealize(renderer: Renderer): void;
 
         // Methods
 
+        /**
+         * @param renderer
+         */
         get_data_for(renderer: Renderer): any | null;
         get_used(): boolean;
+        /**
+         * @param renderer
+         */
         is_realized_for(renderer: Renderer): boolean;
+        /**
+         * @param renderer
+         */
         set_realized_for(renderer: Renderer): void;
+        /**
+         * @param used
+         */
         set_used(used: boolean): void;
+        /**
+         * @param renderer
+         */
         unrealize(renderer: Renderer): void;
     }
 
@@ -5174,6 +6863,9 @@ export namespace Gthree {
         interface ConstructorProps extends Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Scene extends Object {
         static $gtype: GObject.GType<Scene>;
 
@@ -5196,16 +6888,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Scene.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Scene.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Scene.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Scene.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Scene.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Scene.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5216,10 +6911,25 @@ export namespace Gthree {
 
         get_background_alpha(): number;
         get_background_color(): Graphene.Vec3;
+        /**
+         * @param alpha
+         */
         set_background_alpha(alpha: number): void;
+        /**
+         * @param color
+         */
         set_background_color(color: Graphene.Vec3): void;
+        /**
+         * @param texture
+         */
         set_background_texture(texture: Texture): void;
+        /**
+         * @param fog
+         */
         set_fog(fog: Fog): void;
+        /**
+         * @param material
+         */
         set_override_material(material: Material): void;
     }
 
@@ -5232,6 +6942,9 @@ export namespace Gthree {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Shader extends GObject.Object {
         static $gtype: GObject.GType<Shader>;
 
@@ -5252,16 +6965,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Shader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Shader.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Shader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Shader.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Shader.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Shader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5270,12 +6986,21 @@ export namespace Gthree {
 
         // Methods
 
+        /**
+         * @param b
+         */
         equal(b: Shader): boolean;
         get_fragment_shader_text(): string;
         get_name(): string;
         get_vertex_shader_text(): string;
         hash(): number;
+        /**
+         * @param name
+         */
         set_name(name: string): void;
+        /**
+         * @param program
+         */
         update_uniform_locations_for_program(program: Program): void;
     }
 
@@ -5308,11 +7033,17 @@ export namespace Gthree {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ShaderMaterial extends MeshMaterial {
         static $gtype: GObject.GType<ShaderMaterial>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get shader(): Shader;
         get use_lights(): boolean;
         set use_lights(val: boolean);
@@ -5342,16 +7073,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ShaderMaterial.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ShaderMaterial.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ShaderMaterial.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ShaderMaterial.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ShaderMaterial.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ShaderMaterial.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5363,8 +7097,17 @@ export namespace Gthree {
         get_shading_type(): ShadingType;
         get_use_lights(): boolean;
         get_vertex_colors(): boolean;
+        /**
+         * @param shading_type
+         */
         set_shading_type(shading_type: ShadingType | null): void;
+        /**
+         * @param use_lights
+         */
         set_use_lights(use_lights: boolean): void;
+        /**
+         * @param vertex_color
+         */
         set_vertex_colors(vertex_color: boolean): void;
     }
 
@@ -5377,6 +7120,9 @@ export namespace Gthree {
         interface ConstructorProps extends Pass.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ShaderPass extends Pass {
         static $gtype: GObject.GType<ShaderPass>;
 
@@ -5399,16 +7145,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ShaderPass.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ShaderPass.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ShaderPass.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ShaderPass.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ShaderPass.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ShaderPass.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5425,6 +7174,9 @@ export namespace Gthree {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Skeleton extends GObject.Object {
         static $gtype: GObject.GType<Skeleton>;
 
@@ -5447,16 +7199,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Skeleton.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Skeleton.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Skeleton.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Skeleton.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Skeleton.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Skeleton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5491,11 +7246,17 @@ export namespace Gthree {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SkeletonHelper extends LineSegments {
         static $gtype: GObject.GType<SkeletonHelper>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get root(): Object;
 
         /**
@@ -5520,16 +7281,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SkeletonHelper.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SkeletonHelper.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SkeletonHelper.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SkeletonHelper.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SkeletonHelper.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SkeletonHelper.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5555,6 +7319,9 @@ export namespace Gthree {
         interface ConstructorProps extends Mesh.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class SkinnedMesh extends Mesh {
         static $gtype: GObject.GType<SkinnedMesh>;
 
@@ -5580,16 +7347,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SkinnedMesh.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SkinnedMesh.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SkinnedMesh.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SkinnedMesh.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SkinnedMesh.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SkinnedMesh.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5598,11 +7368,18 @@ export namespace Gthree {
 
         // Methods
 
+        /**
+         * @param skeleton
+         * @param bind_matrix
+         */
         bind(skeleton: Skeleton, bind_matrix: Graphene.Matrix): void;
         get_bind_matrix(): Graphene.Matrix;
         get_inverse_bind_matrix(): Graphene.Matrix;
         normalize_skin_weights(): void;
         pose(): void;
+        /**
+         * @param bind_mode
+         */
         set_bind_mode(bind_mode: BindMode | null): void;
     }
 
@@ -5635,6 +7412,9 @@ export namespace Gthree {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SpotLight extends Light {
         static $gtype: GObject.GType<SpotLight>;
 
@@ -5679,16 +7459,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SpotLight.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SpotLight.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SpotLight.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SpotLight.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SpotLight.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SpotLight.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5701,10 +7484,25 @@ export namespace Gthree {
         get_decay(): number;
         get_distance(): number;
         get_penumbra(): number;
+        /**
+         * @param angle
+         */
         set_angle(angle: number): void;
+        /**
+         * @param decay
+         */
         set_decay(decay: number): void;
+        /**
+         * @param distance
+         */
         set_distance(distance: number): void;
+        /**
+         * @param penumbra
+         */
         set_penumbra(penumbra: number): void;
+        /**
+         * @param object
+         */
         set_target(object: Object): void;
     }
 
@@ -5717,6 +7515,9 @@ export namespace Gthree {
         interface ConstructorProps extends LightShadow.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class SpotLightShadow extends LightShadow {
         static $gtype: GObject.GType<SpotLightShadow>;
 
@@ -5737,16 +7538,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SpotLightShadow.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SpotLightShadow.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SpotLightShadow.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SpotLightShadow.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SpotLightShadow.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SpotLightShadow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5773,6 +7577,9 @@ export namespace Gthree {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Sprite extends Object {
         static $gtype: GObject.GType<Sprite>;
 
@@ -5803,16 +7610,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Sprite.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Sprite.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Sprite.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Sprite.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Sprite.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Sprite.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5822,7 +7632,13 @@ export namespace Gthree {
         // Methods
 
         get_center(): Graphene.Vec2;
+        /**
+         * @param center
+         */
         set_center(center: Graphene.Vec2): void;
+        /**
+         * @param material
+         */
         set_material(material: Material): void;
     }
 
@@ -5852,6 +7668,9 @@ export namespace Gthree {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SpriteMaterial extends Material {
         static $gtype: GObject.GType<SpriteMaterial>;
 
@@ -5887,16 +7706,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SpriteMaterial.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SpriteMaterial.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SpriteMaterial.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SpriteMaterial.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SpriteMaterial.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SpriteMaterial.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5908,9 +7730,21 @@ export namespace Gthree {
         get_color(): Graphene.Vec3;
         get_rotation(): number;
         get_size_attenuation(): boolean;
+        /**
+         * @param color
+         */
         set_color(color: Graphene.Vec3): void;
+        /**
+         * @param texture
+         */
         set_map(texture: Texture): void;
+        /**
+         * @param rotation
+         */
         set_rotation(rotation: number): void;
+        /**
+         * @param size_attenuation
+         */
         set_size_attenuation(size_attenuation: boolean): void;
     }
 
@@ -5929,12 +7763,21 @@ export namespace Gthree {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Texture extends Resource {
         static $gtype: GObject.GType<Texture>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get pixbuf(): GdkPixbuf.Pixbuf;
+        /**
+         * @construct-only
+         */
         get surface(): cairo.Surface;
 
         /**
@@ -5958,16 +7801,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Texture.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Texture.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Texture.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Texture.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Texture.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Texture.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5976,10 +7822,18 @@ export namespace Gthree {
 
         // Virtual methods
 
+        /**
+         * @param renderer
+         * @param slot
+         * @virtual
+         */
         vfunc_load(renderer: Renderer, slot: number): void;
 
         // Methods
 
+        /**
+         * @param source
+         */
         copy_settings(source: Texture): void;
         get_anisotropy(): number;
         get_data_type(): DataType;
@@ -5987,6 +7841,9 @@ export namespace Gthree {
         get_flip_y(): boolean;
         get_format(): TextureFormat;
         get_generate_mipmaps(): boolean;
+        /**
+         * @param renderer
+         */
         get_gl_texture(renderer: Renderer): number;
         get_mag_filter(): Filter;
         get_mapping(): Mapping;
@@ -5998,21 +7855,66 @@ export namespace Gthree {
         get_uuid(): string;
         get_wrap_s(): Wrapping;
         get_wrap_t(): Wrapping;
+        /**
+         * @param anisotropy
+         */
         set_anisotropy(anisotropy: number): void;
+        /**
+         * @param type
+         */
         set_data_type(type: DataType | null): void;
+        /**
+         * @param encoding
+         */
         set_encoding(encoding: EncodingFormat | null): void;
+        /**
+         * @param flip_y
+         */
         set_flip_y(flip_y: boolean): void;
+        /**
+         * @param format
+         */
         set_format(format: TextureFormat | null): void;
+        /**
+         * @param generate_mipmaps
+         */
         set_generate_mipmaps(generate_mipmaps: boolean): void;
+        /**
+         * @param mag_filter
+         */
         set_mag_filter(mag_filter: Filter | null): void;
+        /**
+         * @param mapping
+         */
         set_mapping(mapping: Mapping | null): void;
+        /**
+         * @param min_filter
+         */
         set_min_filter(min_filter: Filter | null): void;
+        /**
+         * @param name
+         */
         set_name(name: string): void;
         set_needs_update(): void;
+        /**
+         * @param offset
+         */
         set_offset(offset: Graphene.Vec2): void;
+        /**
+         * @param repeat
+         */
         set_repeat(repeat: Graphene.Vec2): void;
+        /**
+         * @param uuid
+         */
         set_uuid(uuid: string): void;
+        /**
+         * @param wrap_s
+         */
         set_wrap_s(wrap_s: Wrapping | null): void;
+        /**
+         * @param wrap_t
+         */
         set_wrap_t(wrap_t: Wrapping | null): void;
     }
 
@@ -6025,6 +7927,9 @@ export namespace Gthree {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Uniforms extends GObject.Object {
         static $gtype: GObject.GType<Uniforms>;
 
@@ -6049,16 +7954,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Uniforms.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Uniforms.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Uniforms.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Uniforms.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Uniforms.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Uniforms.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6067,15 +7975,51 @@ export namespace Gthree {
 
         // Methods
 
+        /**
+         * @param uniform
+         */
         add(uniform: Uniform): void;
+        /**
+         * @param source
+         */
         copy_values(source: Uniforms): void;
+        /**
+         * @param renderer
+         */
         load(renderer: Renderer): void;
+        /**
+         * @param source
+         */
         merge(source: Uniforms): void;
+        /**
+         * @param name
+         * @param value
+         */
         set_float(name: string, value: number): void;
+        /**
+         * @param name
+         * @param value
+         */
         set_int(name: string, value: number): void;
+        /**
+         * @param name
+         * @param value
+         */
         set_texture(name: string, value: Texture): void;
+        /**
+         * @param name
+         * @param value
+         */
         set_vec2(name: string, value: Graphene.Vec2): void;
+        /**
+         * @param name
+         * @param value
+         */
         set_vec3(name: string, value: Graphene.Vec3): void;
+        /**
+         * @param name
+         * @param value
+         */
         set_vec4(name: string, value: Graphene.Vec4): void;
     }
 
@@ -6088,6 +8032,9 @@ export namespace Gthree {
         interface ConstructorProps extends KeyframeTrack.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class VectorKeyframeTrack extends KeyframeTrack {
         static $gtype: GObject.GType<VectorKeyframeTrack>;
 
@@ -6110,16 +8057,19 @@ export namespace Gthree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof VectorKeyframeTrack.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VectorKeyframeTrack.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof VectorKeyframeTrack.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VectorKeyframeTrack.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof VectorKeyframeTrack.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<VectorKeyframeTrack.SignalSignatures[K]> extends [any, ...infer Q]
@@ -6129,15 +8079,39 @@ export namespace Gthree {
         emit(signal: string, ...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AmbientLightClass = typeof AmbientLight;
+    /**
+     * @gir-type Alias
+     */
     type AnimationActionClass = typeof AnimationAction;
+    /**
+     * @gir-type Alias
+     */
     type AnimationClipClass = typeof AnimationClip;
+    /**
+     * @gir-type Alias
+     */
     type AnimationMixerClass = typeof AnimationMixer;
+    /**
+     * @gir-type Struct
+     */
     abstract class AttributeArray {
         static $gtype: GObject.GType<AttributeArray>;
 
         // Methods
 
+        /**
+         * @param index
+         * @param offset
+         * @param source
+         * @param source_index
+         * @param source_offset
+         * @param n_elements
+         * @param n_items
+         */
         copy_at(
             index: number,
             offset: number,
@@ -6147,6 +8121,14 @@ export namespace Gthree {
             n_elements: number,
             n_items: number,
         ): void;
+        /**
+         * @param index
+         * @param offset
+         * @param source
+         * @param source_stride
+         * @param n_elements
+         * @param n_items
+         */
         copy_float(
             index: number,
             offset: number,
@@ -6155,6 +8137,14 @@ export namespace Gthree {
             n_elements: number,
             n_items: number,
         ): void;
+        /**
+         * @param index
+         * @param offset
+         * @param source
+         * @param source_stride
+         * @param n_elements
+         * @param n_items
+         */
         copy_uint16(
             index: number,
             offset: number,
@@ -6163,6 +8153,14 @@ export namespace Gthree {
             n_elements: number,
             n_items: number,
         ): void;
+        /**
+         * @param index
+         * @param offset
+         * @param source
+         * @param source_stride
+         * @param n_elements
+         * @param n_items
+         */
         copy_uint32(
             index: number,
             offset: number,
@@ -6173,69 +8171,294 @@ export namespace Gthree {
         ): void;
         get_attribute_type(): AttributeType;
         get_count(): number;
+        /**
+         * @param index
+         * @param offset
+         * @param dest
+         * @param n_elements
+         */
         get_elements_as_float(index: number, offset: number, dest: number, n_elements: number): void;
+        /**
+         * @param index
+         * @param offset
+         */
         get_float_at(index: number, offset: number): number;
         get_len(): number;
+        /**
+         * @param index
+         * @param offset
+         * @param matrix
+         */
         get_matrix(index: number, offset: number, matrix: Graphene.Matrix): void;
+        /**
+         * @param index
+         * @param offset
+         * @param point
+         */
         get_point3d(index: number, offset: number, point: Graphene.Point3D): void;
         get_stride(): number;
+        /**
+         * @param index
+         * @param offset
+         */
         get_uint(index: number, offset: number): number;
+        /**
+         * @param index
+         * @param offset
+         */
         get_uint16(index: number, offset: number): number;
+        /**
+         * @param index
+         * @param offset
+         */
         get_uint32(index: number, offset: number): number;
+        /**
+         * @param index
+         * @param offset
+         */
         get_uint8(index: number, offset: number): number;
+        /**
+         * @param index
+         * @param offset
+         * @param vec2
+         */
         get_vec2(index: number, offset: number, vec2: Graphene.Vec2): void;
+        /**
+         * @param index
+         * @param offset
+         * @param vec3
+         */
         get_vec3(index: number, offset: number, vec3: Graphene.Vec3): void;
+        /**
+         * @param index
+         * @param offset
+         * @param vec4
+         */
         get_vec4(index: number, offset: number, vec4: Graphene.Vec4): void;
+        /**
+         * @param index
+         * @param offset
+         * @param x
+         * @param y
+         * @param z
+         */
         get_xyz(index: number, offset: number, x: number, y: number, z: number): void;
+        /**
+         * @param index
+         * @param offset
+         * @param x
+         * @param y
+         * @param z
+         * @param w
+         */
         get_xyzw(index: number, offset: number, x: number, y: number, z: number, w: number): void;
         peek_double(): number;
+        /**
+         * @param index
+         * @param offset
+         */
         peek_double_at(index: number, offset: number): number;
         peek_float(): number;
+        /**
+         * @param index
+         * @param offset
+         */
         peek_float_at(index: number, offset: number): number;
         peek_int16(): number;
+        /**
+         * @param index
+         * @param offset
+         */
         peek_int16_at(index: number, offset: number): number;
         peek_int32(): number;
+        /**
+         * @param index
+         * @param offset
+         */
         peek_int32_at(index: number, offset: number): number;
         peek_int8(): number;
+        /**
+         * @param index
+         * @param offset
+         */
         peek_int8_at(index: number, offset: number): number;
         peek_point3d(): Graphene.Point3D;
+        /**
+         * @param index
+         * @param offset
+         */
         peek_point3d_at(index: number, offset: number): Graphene.Point3D;
         peek_uint16(): number;
+        /**
+         * @param index
+         * @param offset
+         */
         peek_uint16_at(index: number, offset: number): number;
         peek_uint32(): number;
+        /**
+         * @param index
+         * @param offset
+         */
         peek_uint32_at(index: number, offset: number): number;
         peek_uint8(): number;
+        /**
+         * @param index
+         * @param offset
+         */
         peek_uint8_at(index: number, offset: number): number;
+        /**
+         * @param index
+         * @param offset
+         * @param src
+         * @param n_elements
+         */
         set_elements_from_float(index: number, offset: number, src: number, n_elements: number): void;
+        /**
+         * @param index
+         * @param offset
+         * @param point
+         */
         set_point3d(index: number, offset: number, point: Graphene.Point3D): void;
+        /**
+         * @param index
+         * @param offset
+         * @param value
+         */
         set_uint(index: number, offset: number, value: number): void;
+        /**
+         * @param index
+         * @param offset
+         * @param value
+         */
         set_uint16(index: number, offset: number, value: number): void;
+        /**
+         * @param index
+         * @param offset
+         * @param value
+         */
         set_uint32(index: number, offset: number, value: number): void;
+        /**
+         * @param index
+         * @param offset
+         * @param value
+         */
         set_uint8(index: number, offset: number, value: number): void;
+        /**
+         * @param index
+         * @param offset
+         * @param vec2
+         */
         set_vec2(index: number, offset: number, vec2: Graphene.Vec2): void;
+        /**
+         * @param index
+         * @param offset
+         * @param vec3
+         */
         set_vec3(index: number, offset: number, vec3: Graphene.Vec3): void;
+        /**
+         * @param index
+         * @param offset
+         * @param vec4
+         */
         set_vec4(index: number, offset: number, vec4: Graphene.Vec4): void;
+        /**
+         * @param index
+         * @param offset
+         * @param w
+         */
         set_w(index: number, offset: number, w: number): void;
+        /**
+         * @param index
+         * @param offset
+         * @param x
+         */
         set_x(index: number, offset: number, x: number): void;
+        /**
+         * @param index
+         * @param offset
+         * @param x
+         * @param y
+         */
         set_xy(index: number, offset: number, x: number, y: number): void;
+        /**
+         * @param index
+         * @param offset
+         * @param x
+         * @param y
+         * @param z
+         */
         set_xyz(index: number, offset: number, x: number, y: number, z: number): void;
+        /**
+         * @param index
+         * @param offset
+         * @param x
+         * @param y
+         * @param z
+         * @param w
+         */
         set_xyzw(index: number, offset: number, x: number, y: number, z: number, w: number): void;
+        /**
+         * @param index
+         * @param offset
+         * @param y
+         */
         set_y(index: number, offset: number, y: number): void;
+        /**
+         * @param index
+         * @param offset
+         * @param z
+         */
         set_z(index: number, offset: number, z: number): void;
         unref(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type BoneClass = typeof Bone;
+    /**
+     * @gir-type Alias
+     */
     type CameraClass = typeof Camera;
+    /**
+     * @gir-type Alias
+     */
     type ColorKeyframeTrackClass = typeof ColorKeyframeTrack;
+    /**
+     * @gir-type Alias
+     */
     type CubeTextureClass = typeof CubeTexture;
+    /**
+     * @gir-type Alias
+     */
     type CubicInterpolantClass = typeof CubicInterpolant;
+    /**
+     * @gir-type Alias
+     */
     type DirectionalLightClass = typeof DirectionalLight;
+    /**
+     * @gir-type Alias
+     */
     type DirectionalLightShadowClass = typeof DirectionalLightShadow;
+    /**
+     * @gir-type Alias
+     */
     type DiscreteInterpolantClass = typeof DiscreteInterpolant;
+    /**
+     * @gir-type Alias
+     */
     type EffectComposerClass = typeof EffectComposer;
+    /**
+     * @gir-type Alias
+     */
     type FogClass = typeof Fog;
+    /**
+     * @gir-type Alias
+     */
     type GeometryClass = typeof Geometry;
+    /**
+     * @gir-type Struct
+     */
     class GeometryGroup {
         static $gtype: GObject.GType<GeometryGroup>;
 
@@ -6256,39 +8479,123 @@ export namespace Gthree {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type GroupClass = typeof Group;
+    /**
+     * @gir-type Alias
+     */
     type HemisphereLightClass = typeof HemisphereLight;
+    /**
+     * @gir-type Alias
+     */
     type InterpolantClass = typeof Interpolant;
+    /**
+     * @gir-type Alias
+     */
     type KeyframeTrackClass = typeof KeyframeTrack;
+    /**
+     * @gir-type Alias
+     */
     type LightClass = typeof Light;
+    /**
+     * @gir-type Struct
+     */
     abstract class LightSetup {
         static $gtype: GObject.GType<LightSetup>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type LightShadowClass = typeof LightShadow;
+    /**
+     * @gir-type Alias
+     */
     type LineBasicMaterialClass = typeof LineBasicMaterial;
+    /**
+     * @gir-type Alias
+     */
     type LineClass = typeof Line;
+    /**
+     * @gir-type Alias
+     */
     type LineSegmentsClass = typeof LineSegments;
+    /**
+     * @gir-type Alias
+     */
     type LinearInterpolantClass = typeof LinearInterpolant;
+    /**
+     * @gir-type Alias
+     */
     type LoaderClass = typeof Loader;
+    /**
+     * @gir-type Alias
+     */
     type MaterialClass = typeof Material;
+    /**
+     * @gir-type Struct
+     */
     abstract class MaterialProperties {
         static $gtype: GObject.GType<MaterialProperties>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MeshBasicMaterialClass = typeof MeshBasicMaterial;
+    /**
+     * @gir-type Alias
+     */
     type MeshClass = typeof Mesh;
+    /**
+     * @gir-type Alias
+     */
     type MeshDepthMaterialClass = typeof MeshDepthMaterial;
+    /**
+     * @gir-type Alias
+     */
     type MeshDistanceMaterialClass = typeof MeshDistanceMaterial;
+    /**
+     * @gir-type Alias
+     */
     type MeshLambertMaterialClass = typeof MeshLambertMaterial;
+    /**
+     * @gir-type Alias
+     */
     type MeshMaterialClass = typeof MeshMaterial;
+    /**
+     * @gir-type Alias
+     */
     type MeshNormalMaterialClass = typeof MeshNormalMaterial;
+    /**
+     * @gir-type Alias
+     */
     type MeshPhongMaterialClass = typeof MeshPhongMaterial;
+    /**
+     * @gir-type Alias
+     */
     type MeshSpecglosMaterialClass = typeof MeshSpecglosMaterial;
+    /**
+     * @gir-type Alias
+     */
     type MeshStandardMaterialClass = typeof MeshStandardMaterial;
+    /**
+     * @gir-type Alias
+     */
     type MeshToonMaterialClass = typeof MeshToonMaterial;
+    /**
+     * @gir-type Alias
+     */
     type NumberKeyframeTrackClass = typeof NumberKeyframeTrack;
+    /**
+     * @gir-type Alias
+     */
     type ObjectClass = typeof Object;
+    /**
+     * @gir-type Struct
+     */
     class ObjectIter {
         static $gtype: GObject.GType<ObjectIter>;
 
@@ -6299,20 +8606,53 @@ export namespace Gthree {
         // Methods
 
         destroy(): void;
+        /**
+         * @param root
+         */
         init(root: Object): void;
         is_valid(): boolean;
+        /**
+         * @param child
+         */
         next(child: Object): boolean;
+        /**
+         * @param child
+         */
         prev(child: Object): boolean;
         remove(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type OrthographicCameraClass = typeof OrthographicCamera;
+    /**
+     * @gir-type Alias
+     */
     type PassClass = typeof Pass;
+    /**
+     * @gir-type Alias
+     */
     type PerspectiveCameraClass = typeof PerspectiveCamera;
+    /**
+     * @gir-type Alias
+     */
     type PlaneHelperClass = typeof PlaneHelper;
+    /**
+     * @gir-type Alias
+     */
     type PointLightClass = typeof PointLight;
+    /**
+     * @gir-type Alias
+     */
     type PointsClass = typeof Points;
+    /**
+     * @gir-type Alias
+     */
     type PointsMaterialClass = typeof PointsMaterial;
+    /**
+     * @gir-type Struct
+     */
     abstract class ProgramCache {
         static $gtype: GObject.GType<ProgramCache>;
 
@@ -6321,13 +8661,28 @@ export namespace Gthree {
         free(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ProgramClass = typeof Program;
+    /**
+     * @gir-type Struct
+     */
     abstract class ProgramParameters {
         static $gtype: GObject.GType<ProgramParameters>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type QuaternionInterpolantClass = typeof QuaternionInterpolant;
+    /**
+     * @gir-type Alias
+     */
     type QuaternionKeyframeTrackClass = typeof QuaternionKeyframeTrack;
+    /**
+     * @gir-type Struct
+     */
     class RayIntersection {
         static $gtype: GObject.GType<RayIntersection>;
 
@@ -6354,14 +8709,32 @@ export namespace Gthree {
         free(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RaycasterClass = typeof Raycaster;
+    /**
+     * @gir-type Struct
+     */
     abstract class RenderList {
         static $gtype: GObject.GType<RenderList>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RenderTargetClass = typeof RenderTarget;
+    /**
+     * @gir-type Alias
+     */
     type RendererClass = typeof Renderer;
+    /**
+     * @gir-type Alias
+     */
     type ResourceClass = typeof Resource;
+    /**
+     * @gir-type Struct
+     */
     class ResourceRealizeData {
         static $gtype: GObject.GType<ResourceRealizeData>;
 
@@ -6371,38 +8744,110 @@ export namespace Gthree {
         dirty: boolean;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SceneClass = typeof Scene;
+    /**
+     * @gir-type Alias
+     */
     type ShaderClass = typeof Shader;
+    /**
+     * @gir-type Alias
+     */
     type ShaderMaterialClass = typeof ShaderMaterial;
+    /**
+     * @gir-type Alias
+     */
     type SkeletonClass = typeof Skeleton;
+    /**
+     * @gir-type Alias
+     */
     type SkeletonHelperClass = typeof SkeletonHelper;
+    /**
+     * @gir-type Alias
+     */
     type SkinnedMeshClass = typeof SkinnedMesh;
+    /**
+     * @gir-type Alias
+     */
     type SpotLightClass = typeof SpotLight;
+    /**
+     * @gir-type Alias
+     */
     type SpotLightShadowClass = typeof SpotLightShadow;
+    /**
+     * @gir-type Alias
+     */
     type SpriteClass = typeof Sprite;
+    /**
+     * @gir-type Alias
+     */
     type SpriteMaterialClass = typeof SpriteMaterial;
+    /**
+     * @gir-type Alias
+     */
     type TextureClass = typeof Texture;
+    /**
+     * @gir-type Struct
+     */
     abstract class Uniform {
         static $gtype: GObject.GType<Uniform>;
 
         // Methods
 
+        /**
+         * @param source
+         */
         copy_value(source: Uniform): void;
         get_name(): string;
         get_qname(): GLib.Quark;
         get_type(): UniformType;
+        /**
+         * @param renderer
+         */
         load(renderer: Renderer): void;
+        /**
+         * @param value
+         */
         set_float(value: number): void;
+        /**
+         * @param value
+         */
         set_int(value: number): void;
+        /**
+         * @param location
+         */
         set_location(location: number): void;
+        /**
+         * @param needs_update
+         */
         set_needs_update(needs_update: boolean): void;
+        /**
+         * @param value
+         */
         set_texture(value: Texture): void;
+        /**
+         * @param value
+         */
         set_vec2(value: Graphene.Vec2): void;
+        /**
+         * @param value
+         */
         set_vec3(value: Graphene.Vec3): void;
+        /**
+         * @param value
+         */
         set_vec4(value: Graphene.Vec4): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type UniformsClass = typeof Uniforms;
+    /**
+     * @gir-type Struct
+     */
     class UniformsDefinition {
         static $gtype: GObject.GType<UniformsDefinition>;
 
@@ -6413,7 +8858,13 @@ export namespace Gthree {
         value: any;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type VectorKeyframeTrackClass = typeof VectorKeyframeTrack;
+    /**
+     * @gir-type Alias
+     */
     type AttributeName = number;
     /**
      * Name of the imported GIR library

@@ -26,6 +26,9 @@ export namespace Gdk {
      * Gdk-4.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AxisUse {
         export const $gtype: GObject.GType<AxisUse>;
     }
@@ -36,6 +39,7 @@ export namespace Gdk {
      * Note that the X and Y axes are not really needed; pointer devices
      * report their location via the x/y members of events regardless. Whether
      * X and Y are present as axes depends on the GDK backend.
+     * @gir-type Enum
      */
     enum AxisUse {
         /**
@@ -92,6 +96,9 @@ export namespace Gdk {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CicpRange {
         export const $gtype: GObject.GType<CicpRange>;
     }
@@ -103,6 +110,8 @@ export namespace Gdk {
      * In digital broadcasting, it is common to reserve the lowest and
      * highest values. Typically the allowed values for the narrow range
      * are 16-235 for Y and 16-240 for u,v (when dealing with YUV data).
+     * @gir-type Enum
+     * @since 4.16
      */
     enum CicpRange {
         /**
@@ -115,12 +124,51 @@ export namespace Gdk {
         FULL,
     }
 
+    /**
+     * @gir-type Enum
+     */
+    export namespace ColorChannel {
+        export const $gtype: GObject.GType<ColorChannel>;
+    }
+
+    /**
+     * Enumerates the color channels of RGBA values as used in
+     * `GdkColor` and OpenGL/Vulkan shaders.
+     *
+     * Note that this is not the order of pixel values in Cairo
+     * and {@link Gdk.MemoryFormat} can have many different orders.
+     * @gir-type Enum
+     * @since 4.22
+     */
+    enum ColorChannel {
+        /**
+         * The red color channel, aka 0
+         */
+        RED,
+        /**
+         * The green color channel, aka 1
+         */
+        GREEN,
+        /**
+         * The blue color channel, aka 2
+         */
+        BLUE,
+        /**
+         * The alpha color channel, aka 3
+         */
+        ALPHA,
+    }
+
+    /**
+     * @gir-type Enum
+     */
     export namespace CrossingMode {
         export const $gtype: GObject.GType<CrossingMode>;
     }
 
     /**
      * Specifies the crossing mode for enter and leave events.
+     * @gir-type Enum
      */
     enum CrossingMode {
         /**
@@ -166,12 +214,16 @@ export namespace Gdk {
         DEVICE_SWITCH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DevicePadFeature {
         export const $gtype: GObject.GType<DevicePadFeature>;
     }
 
     /**
      * A pad feature.
+     * @gir-type Enum
      */
     enum DevicePadFeature {
         /**
@@ -188,6 +240,9 @@ export namespace Gdk {
         STRIP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DeviceToolType {
         export const $gtype: GObject.GType<DeviceToolType>;
     }
@@ -195,6 +250,7 @@ export namespace Gdk {
     /**
      * Indicates the specific type of tool being used being a tablet. Such as an
      * airbrush, pencil, etc.
+     * @gir-type Enum
      */
     enum DeviceToolType {
         /**
@@ -232,7 +288,8 @@ export namespace Gdk {
     }
 
     /**
-     * Error enumeration for `GdkDmabufTexture`.
+     * Error enumeration for {@link Gdk.DmabufTexture}.
+     * @gir-type Struct
      */
     class DmabufError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -261,17 +318,21 @@ export namespace Gdk {
         // Static methods
 
         /**
-         * Registers an error quark for [class`Gdk`.DmabufTexture] errors.
+         * Registers an error quark for {@link Gdk.DmabufTexture} errors.
          */
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DragCancelReason {
         export const $gtype: GObject.GType<DragCancelReason>;
     }
 
     /**
-     * Used in `GdkDrag` to the reason of a cancelled DND operation.
+     * Used in {@link Gdk.Drag} to the reason of a cancelled DND operation.
+     * @gir-type Enum
      */
     enum DragCancelReason {
         /**
@@ -288,12 +349,16 @@ export namespace Gdk {
         ERROR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace EventType {
         export const $gtype: GObject.GType<EventType>;
     }
 
     /**
      * Specifies the type of the event.
+     * @gir-type Enum
      */
     enum EventType {
         /**
@@ -421,17 +486,25 @@ export namespace Gdk {
          */
         TOUCHPAD_HOLD,
         /**
+         * A tablet pad axis event from a "dial".
+         */
+        PAD_DIAL,
+        /**
          * marks the end of the GdkEventType enumeration.
          */
         EVENT_LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FullscreenMode {
         export const $gtype: GObject.GType<FullscreenMode>;
     }
 
     /**
      * Indicates which monitor a surface should span over when in fullscreen mode.
+     * @gir-type Enum
      */
     enum FullscreenMode {
         /**
@@ -445,7 +518,8 @@ export namespace Gdk {
     }
 
     /**
-     * Error enumeration for `GdkGLContext`.
+     * Error enumeration for {@link Gdk.GLContext}.
+     * @gir-type Struct
      */
     class GLError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -480,17 +554,21 @@ export namespace Gdk {
         // Static methods
 
         /**
-         * Registers an error quark for [class`Gdk`.GLContext] errors.
+         * Registers an error quark for {@link Gdk.GLContext} errors.
          */
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Gravity {
         export const $gtype: GObject.GType<Gravity>;
     }
 
     /**
-     * Defines the reference point of a surface and is used in `GdkPopupLayout`.
+     * Defines the reference point of a surface and is used in {@link Gdk.PopupLayout}.
+     * @gir-type Enum
      */
     enum Gravity {
         /**
@@ -536,12 +614,16 @@ export namespace Gdk {
         STATIC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace InputSource {
         export const $gtype: GObject.GType<InputSource>;
     }
 
     /**
      * An enumeration describing the type of an input device in general terms.
+     * @gir-type Enum
      */
     enum InputSource {
         /**
@@ -578,6 +660,9 @@ export namespace Gdk {
         TABLET_PAD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace KeyMatch {
         export const $gtype: GObject.GType<KeyMatch>;
     }
@@ -585,7 +670,8 @@ export namespace Gdk {
     /**
      * Describes how well an event matches a given keyval and modifiers.
      *
-     * `GdkKeyMatch` values are returned by [method`Gdk`.KeyEvent.matches].
+     * {@link Gdk.KeyMatch} values are returned by {@link Gdk.KeyEvent.matches}.
+     * @gir-type Enum
      */
     enum KeyMatch {
         /**
@@ -603,6 +689,9 @@ export namespace Gdk {
         EXACT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MemoryFormat {
         export const $gtype: GObject.GType<MemoryFormat>;
     }
@@ -619,6 +708,7 @@ export namespace Gdk {
      * Its naming is modelled after
      * [VkFormat](https://www.khronos.org/registry/vulkan/specs/1.0/html/vkspec.html#VkFormat)
      * for details).
+     * @gir-type Enum
      */
     enum MemoryFormat {
         /**
@@ -1098,12 +1188,192 @@ export namespace Gdk {
          */
         B8G8R8G8_422,
         /**
+         * Multiplane format with 3 planes.
+         *
+         * Each channel is a 16 bit integer.
+         *
+         * Only the 10 lower bits are used. The remaining ones must be set to 0 by the
+         * producer.
+         *
+         * The first plane usually contains the luma channel. It is mapped
+         * into the 2nd channel.
+         *
+         * The second plane usually contains the first chroma chanel.
+         * Subsampled in both the X and Y direction. It is mapped into the
+         * 3rd channel.
+         *
+         * The third plane usually contains the second chroma channel.
+         * Subsampled in both the X and Y direction. It is mapped into the
+         * 1st channel.
+         *
+         * Commonly known by the fourcc "S010".
+         */
+        X6G10_X6B10_X6R10_420,
+        /**
+         * Multiplane format with 3 planes.
+         *
+         * Each channel is a 16 bit integer.
+         *
+         * Only the 10 lower bits are used. The remaining ones must be set to 0 by the
+         * producer.
+         *
+         * The first plane usually contains the luma channel. It is mapped
+         * into the 2nd channel.
+         *
+         * The second plane usually contains the first chroma chanel.
+         * Subsampled in the X direction. It is mapped into the 3rd channel.
+         *
+         * The third plane usually contains the second chroma channel.
+         * Subsampled in the X direction. It is mapped into the 1st channel.
+         *
+         * Commonly known by the fourcc "S210".
+         */
+        X6G10_X6B10_X6R10_422,
+        /**
+         * Multiplane format with 3 planes.
+         *
+         * Each channel is a 16 bit integer.
+         *
+         * Only the 10 lower bits are used. The remaining ones must be set to 0 by the
+         * producer.
+         *
+         * The first plane usually contains the luma channel. It is mapped
+         * into the 2nd channel.
+         *
+         * The second plane usually contains the first chroma chanel. It is
+         * mapped into the 3rd channel.
+         *
+         * The third plane usually contains the second chroma channel. It is
+         * mapped into the 1st channel.
+         *
+         * Commonly known by the fourcc "S410".
+         */
+        X6G10_X6B10_X6R10_444,
+        /**
+         * Multiplane format with 3 planes.
+         *
+         * Each channel is a 16 bit integer.
+         *
+         * Only the 12 lower bits are used. The remaining ones must be set to 0 by the
+         * producer.
+         *
+         * The first plane usually contains the luma channel. It is mapped
+         * into the 2nd channel.
+         *
+         * The second plane usually contains the first chroma chanel.
+         * Subsampled in both the X and Y direction. It is mapped into the
+         * 3rd channel.
+         *
+         * The third plane usually contains the second chroma channel.
+         * Subsampled in both the X and Y direction. It is mapped into the
+         * 1st channel.
+         *
+         * Commonly known by the fourcc "S012".
+         */
+        X4G12_X4B12_X4R12_420,
+        /**
+         * Multiplane format with 3 planes.
+         *
+         * Each channel is a 16 bit integer.
+         *
+         * Only the 12 lower bits are used. The remaining ones must be set to 0 by the
+         * producer.
+         *
+         * The first plane usually contains the luma channel. It is mapped
+         * into the 2nd channel.
+         *
+         * The second plane usually contains the first chroma chanel.
+         * Subsampled in the X direction. It is mapped into the 3rd channel.
+         *
+         * The third plane usually contains the second chroma channel.
+         * Subsampled in the X direction. It is mapped into the 1st channel.
+         *
+         * Commonly known by the fourcc "S212".
+         */
+        X4G12_X4B12_X4R12_422,
+        /**
+         * Multiplane format with 3 planes.
+         *
+         * Each channel is a 16 bit integer.
+         *
+         * Only the 12 lower bits are used. The remaining ones must be set to 0 by the
+         * producer.
+         *
+         * The first plane usually contains the luma channel. It is mapped
+         * into the 2nd channel.
+         *
+         * The second plane usually contains the first chroma chanel. It is
+         * mapped into the 3rd channel.
+         *
+         * The third plane usually contains the second chroma channel. It is
+         * mapped into the 1st channel.
+         *
+         * Commonly known by the fourcc "S412".
+         */
+        X4G12_X4B12_X4R12_444,
+        /**
+         * Multiplane format with 3 planes.
+         *
+         * Each channel is a 16 bit integer.
+         *
+         * The first plane usually contains the luma channel. It is mapped
+         * into the 2nd channel.
+         *
+         * The second plane usually contains the first chroma chanel.
+         * Subsampled in both the X and Y direction. It is mapped into the
+         * 3rd channel.
+         *
+         * The third plane usually contains the second chroma channel.
+         * Subsampled in both the X and Y direction. It is mapped into the
+         * 1st channel.
+         *
+         * Commonly known by the fourcc "S016".
+         */
+        G16_B16_R16_420,
+        /**
+         * Multiplane format with 3 planes.
+         *
+         * Each channel is a 16 bit integer.
+         *
+         * The first plane usually contains the luma channel. It is mapped
+         * into the 2nd channel.
+         *
+         * The second plane usually contains the first chroma chanel.
+         * Subsampled in the X direction. It is mapped into the 3rd channel.
+         *
+         * The third plane usually contains the second chroma channel.
+         * Subsampled in the X direction. It is mapped into the 1st channel.
+         *
+         * Commonly known by the fourcc "S216".
+         */
+        G16_B16_R16_422,
+        /**
+         * Multiplane format with 3 planes.
+         *
+         * Each channel is a 16 bit integer.
+         *
+         * The first plane usually contains the luma channel. It is mapped
+         * into the 2nd channel.
+         *
+         * The second plane usually contains the first chroma chanel. It is
+         * mapped into the 3rd channel.
+         *
+         * The third plane usually contains the second chroma channel. It is
+         * mapped into the 1st channel.
+         *
+         * Commonly known by the fourcc "S416".
+         */
+        G16_B16_R16_444,
+        /**
          * The number of formats. This value will change as
          *   more formats get added, so do not rely on its concrete integer.
          */
         N_FORMATS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NotifyType {
         export const $gtype: GObject.GType<NotifyType>;
     }
@@ -1113,6 +1383,7 @@ export namespace Gdk {
      *
      * See the X11 protocol specification of LeaveNotify for
      * full details of crossing event generation.
+     * @gir-type Enum
      */
     enum NotifyType {
         /**
@@ -1148,12 +1419,16 @@ export namespace Gdk {
         UNKNOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ScrollDirection {
         export const $gtype: GObject.GType<ScrollDirection>;
     }
 
     /**
      * Specifies the direction for scroll events.
+     * @gir-type Enum
      */
     enum ScrollDirection {
         /**
@@ -1174,11 +1449,42 @@ export namespace Gdk {
         RIGHT,
         /**
          * the scrolling is determined by the delta values
-         *   in scroll events. See gdk_scroll_event_get_deltas()
+         *   in scroll events. See `gdk_scroll_event_get_deltas()`
          */
         SMOOTH,
     }
 
+    /**
+     * @gir-type Enum
+     */
+    export namespace ScrollRelativeDirection {
+        export const $gtype: GObject.GType<ScrollRelativeDirection>;
+    }
+
+    /**
+     * Used in scroll events, to announce the direction relative
+     * to physical motion.
+     * @gir-type Enum
+     * @since 4.20
+     */
+    enum ScrollRelativeDirection {
+        /**
+         * Physical motion and event motion are the same
+         */
+        IDENTICAL,
+        /**
+         * Physical motion is inverted relative to event motion
+         */
+        INVERTED,
+        /**
+         * Relative motion is unknown on this device or backend
+         */
+        UNKNOWN,
+    }
+
+    /**
+     * @gir-type Enum
+     */
     export namespace ScrollUnit {
         export const $gtype: GObject.GType<ScrollUnit>;
     }
@@ -1186,12 +1492,12 @@ export namespace Gdk {
     /**
      * Specifies the unit of scroll deltas.
      *
-     * When you get %GDK_SCROLL_UNIT_WHEEL, a delta of 1.0 means 1 wheel detent
+     * When you get {@link Gdk.ScrollUnit.WHEEL}, a delta of 1.0 means 1 wheel detent
      * click in the south direction, 2.0 means 2 wheel detent clicks in the south
      * direction... This is the same logic for negative values but in the north
      * direction.
      *
-     * If you get %GDK_SCROLL_UNIT_SURFACE, are managing a scrollable view and get a
+     * If you get {@link Gdk.ScrollUnit.SURFACE}, are managing a scrollable view and get a
      * value of 123, you have to scroll 123 surface logical pixels right if it's
      * `delta_x` or down if it's `delta_y`. This is the same logic for negative values
      * but you have to scroll left instead of right if it's `delta_x` and up instead
@@ -1200,6 +1506,8 @@ export namespace Gdk {
      * 1 surface logical pixel is equal to 1 real screen pixel multiplied by the
      * final scale factor of your graphical interface (the product of the desktop
      * scale factor and eventually a custom scale factor in your app).
+     * @gir-type Enum
+     * @since 4.8
      */
     enum ScrollUnit {
         /**
@@ -1213,6 +1521,9 @@ export namespace Gdk {
         SURFACE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SubpixelLayout {
         export const $gtype: GObject.GType<SubpixelLayout>;
     }
@@ -1220,6 +1531,7 @@ export namespace Gdk {
     /**
      * This enumeration describes how the red, green and blue components
      * of physical pixels on an output device are laid out.
+     * @gir-type Enum
      */
     enum SubpixelLayout {
         /**
@@ -1248,12 +1560,16 @@ export namespace Gdk {
         VERTICAL_BGR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SurfaceEdge {
         export const $gtype: GObject.GType<SurfaceEdge>;
     }
 
     /**
      * Determines a surface edge or corner.
+     * @gir-type Enum
      */
     enum SurfaceEdge {
         /**
@@ -1291,7 +1607,8 @@ export namespace Gdk {
     }
 
     /**
-     * Possible errors that can be returned by `GdkTexture` constructors.
+     * Possible errors that can be returned by {@link Gdk.Texture} constructors.
+     * @gir-type Struct
      */
     class TextureError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -1323,18 +1640,23 @@ export namespace Gdk {
         // Static methods
 
         /**
-         * Registers an error quark for [class`Gdk`.Texture] errors.
+         * Registers an error quark for {@link Gdk.Texture} errors.
          */
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TitlebarGesture {
         export const $gtype: GObject.GType<TitlebarGesture>;
     }
 
     /**
      * The kind of title bar gesture to emit with
-     * [method`Gdk`.Toplevel.titlebar_gesture].
+     * {@link Gdk.Toplevel.titlebar_gesture}.
+     * @gir-type Enum
+     * @since 4.4
      */
     enum TitlebarGesture {
         /**
@@ -1351,6 +1673,9 @@ export namespace Gdk {
         MIDDLE_CLICK,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TouchpadGesturePhase {
         export const $gtype: GObject.GType<TouchpadGesturePhase>;
     }
@@ -1359,11 +1684,11 @@ export namespace Gdk {
      * Specifies the current state of a touchpad gesture.
      *
      * All gestures are guaranteed to begin with an event with phase
-     * %GDK_TOUCHPAD_GESTURE_PHASE_BEGIN, followed by 0 or several events
-     * with phase %GDK_TOUCHPAD_GESTURE_PHASE_UPDATE.
+     * {@link Gdk.TouchpadGesturePhase.BEGIN}, followed by 0 or several events
+     * with phase {@link Gdk.TouchpadGesturePhase.UPDATE}.
      *
      * A finished gesture may have 2 possible outcomes, an event with phase
-     * %GDK_TOUCHPAD_GESTURE_PHASE_END will be emitted when the gesture is
+     * {@link Gdk.TouchpadGesturePhase.END} will be emitted when the gesture is
      * considered successful, this should be used as the hint to perform any
      * permanent changes.
      *
@@ -1371,9 +1696,10 @@ export namespace Gdk {
      * or the compositor, or due to the gesture recognition layers hinting the
      * gesture did not finish resolutely (eg. a 3rd finger being added during
      * a pinch gesture). In these cases, the last event will report the phase
-     * %GDK_TOUCHPAD_GESTURE_PHASE_CANCEL, this should be used as a hint
+     * {@link Gdk.TouchpadGesturePhase.CANCEL}, this should be used as a hint
      * to undo any visible/permanent changes that were done throughout the
      * progress of the gesture.
+     * @gir-type Enum
      */
     enum TouchpadGesturePhase {
         /**
@@ -1397,7 +1723,8 @@ export namespace Gdk {
     }
 
     /**
-     * Error enumeration for `GdkVulkanContext`.
+     * Error enumeration for {@link Gdk.VulkanContext}.
+     * @gir-type Struct
      */
     class VulkanError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -1421,7 +1748,7 @@ export namespace Gdk {
         // Static methods
 
         /**
-         * Registers an error quark for [class`Gdk`.VulkanContext] errors.
+         * Registers an error quark for {@link Gdk.VulkanContext} errors.
          */
         static quark(): GLib.Quark;
     }
@@ -1429,7 +1756,7 @@ export namespace Gdk {
     /**
      * Defines all possible DND actions.
      *
-     * This can be used in [method`Gdk`.Drop.status] messages when any drop
+     * This can be used in {@link Gdk.Drop.status} messages when any drop
      * can be accepted or a more specific drop method is not yet known.
      */
     const ACTION_ALL: number;
@@ -3912,7 +4239,7 @@ export namespace Gdk {
     const KEY_zerosuperior: number;
     const KEY_zstroke: number;
     /**
-     * A mask covering all entries in `GdkModifierType`.
+     * A mask covering all entries in {@link Gdk.ModifierType}.
      */
     const MODIFIER_MASK: number;
     /**
@@ -3926,7 +4253,7 @@ export namespace Gdk {
      * It takes a render buffer ID (`source_type` == GL_RENDERBUFFER) or a texture
      * id (`source_type` == GL_TEXTURE) and draws it onto `cr` with an OVER operation,
      * respecting the current clip. The top left corner of the rectangle specified
-     * by `x,` `y,` `width` and `height` will be drawn at the current (0,0) position of
+     * by `x`, `y`, `width` and `height` will be drawn at the current (0,0) position of
      * the `cairo_t`.
      *
      * This will work for *all* `cairo_t`, as long as `surface` is realized, but the
@@ -3942,12 +4269,13 @@ export namespace Gdk {
      * @param cr a cairo context
      * @param surface The surface we're rendering for (not necessarily into)
      * @param source The GL ID of the source buffer
-     * @param source_type The type of the @source
-     * @param buffer_scale The scale-factor that the @source buffer is allocated for
-     * @param x The source x position in @source to start copying from in GL coordinates
-     * @param y The source y position in @source to start copying from in GL coordinates
+     * @param source_type The type of the `source`
+     * @param buffer_scale The scale-factor that the `source` buffer is allocated for
+     * @param x The source x position in `source` to start copying from in GL coordinates
+     * @param y The source y position in `source` to start copying from in GL coordinates
      * @param width The width of the region to draw
      * @param height The height of the region to draw
+     * @deprecated since 4.6: The function is overly complex and produces broken output   in various combinations of arguments. If you want to draw with GL textures   in GTK, use {@link Gdk.GLTexture.new}; if you want to use that texture in   Cairo, use {@link Gdk.Texture.download} to download the data into a Cairo   image surface.
      */
     function cairo_draw_from_gl(
         cr: cairo.Context,
@@ -3963,7 +4291,7 @@ export namespace Gdk {
     /**
      * Adds the given rectangle to the current path of `cr`.
      * @param cr a cairo context
-     * @param rectangle a `GdkRectangle`
+     * @param rectangle a {@link Gdk.Rectangle}
      */
     function cairo_rectangle(cr: cairo.Context, rectangle: Rectangle): void;
     /**
@@ -3977,7 +4305,7 @@ export namespace Gdk {
      * `surface` is more than 50% opaque.
      *
      * This function takes into account device offsets that might be
-     * set with cairo_surface_set_device_offset().
+     * set with `cairo_surface_set_device_offset()`.
      * @param surface a cairo surface
      * @returns A `cairo_region_t`
      */
@@ -3985,12 +4313,13 @@ export namespace Gdk {
     /**
      * Sets the given pixbuf as the source pattern for `cr`.
      *
-     * The pattern has an extend mode of %CAIRO_EXTEND_NONE and is aligned
-     * so that the origin of `pixbuf` is `pixbuf_x,` `pixbuf_y`.
+     * The pattern has an extend mode of {@link cairo.Extend.NONE} and is aligned
+     * so that the origin of `pixbuf` is `pixbuf_x`, `pixbuf_y`.
      * @param cr a cairo context
-     * @param pixbuf a `GdkPixbuf`
-     * @param pixbuf_x X coordinate of location to place upper left corner of @pixbuf
-     * @param pixbuf_y Y coordinate of location to place upper left corner of @pixbuf
+     * @param pixbuf a {@link GdkPixbuf.Pixbuf}
+     * @param pixbuf_x X coordinate of location to place upper left corner of `pixbuf`
+     * @param pixbuf_y Y coordinate of location to place upper left corner of `pixbuf`
+     * @deprecated since 4.20: Use `cairo_set_source_surface()` and `gdk_texture_download()`
      */
     function cairo_set_source_pixbuf(
         cr: cairo.Context,
@@ -3999,9 +4328,9 @@ export namespace Gdk {
         pixbuf_y: number,
     ): void;
     /**
-     * Sets the specified `GdkRGBA` as the source color of `cr`.
+     * Sets the specified {@link Gdk.RGBA} as the source color of `cr`.
      * @param cr a cairo context
-     * @param rgba a `GdkRGBA`
+     * @param rgba a {@link Gdk.RGBA}
      */
     function cairo_set_source_rgba(cr: cairo.Context, rgba: RGBA): void;
     /**
@@ -4009,6 +4338,7 @@ export namespace Gdk {
      *
      * This is a perceptually uniform color state.
      * @returns the color state object for oklab
+     * @since 4.18
      */
     function color_state_get_oklab(): ColorState;
     /**
@@ -4017,6 +4347,7 @@ export namespace Gdk {
      * This is the polar variant of oklab, in which the hue is encoded as
      * a polar coordinate.
      * @returns the color state object for oklch
+     * @since 4.18
      */
     function color_state_get_oklch(): ColorState;
     /**
@@ -4025,11 +4356,12 @@ export namespace Gdk {
      * This color state uses the primaries defined by BT.2020-2 and BT.2100-0 and a linear
      * transfer function.
      *
-     * It is equivalent to the [Cicp](class.CicpParams.html) tuple 9/8/0/1.
+     * It is equivalent to the [Cicp](https://docs.gtk.org/gdk4/class.CicpParams.html) tuple 9/8/0/1.
      *
      * See e.g. [the CSS HDR Module](https://drafts.csswg.org/css-color-hdr/#valdef-color-rec2100-linear)
      * for details about this colorstate.
      * @returns the color state object for linearized rec2100
+     * @since 4.16
      */
     function color_state_get_rec2100_linear(): ColorState;
     /**
@@ -4038,11 +4370,12 @@ export namespace Gdk {
      * This color state uses the primaries defined by BT.2020-2 and BT.2100-0 and the transfer
      * function defined by SMPTE ST 2084 and BT.2100-2.
      *
-     * It is equivalent to the [Cicp](class.CicpParams.html) tuple 9/16/0/1.
+     * It is equivalent to the [Cicp](https://docs.gtk.org/gdk4/class.CicpParams.html) tuple 9/16/0/1.
      *
      * See e.g. [the CSS HDR Module](https://drafts.csswg.org/css-color-hdr/#valdef-color-rec2100-pq)
      * for details about this colorstate.
      * @returns the color state object for rec2100-pq
+     * @since 4.16
      */
     function color_state_get_rec2100_pq(): ColorState;
     /**
@@ -4051,11 +4384,12 @@ export namespace Gdk {
      * This color state uses the primaries defined by BT.709-6 and the transfer function
      * defined by IEC 61966-2-1.
      *
-     * It is equivalent to the [Cicp](class.CicpParams.html) tuple 1/13/0/1.
+     * It is equivalent to the [Cicp](https://docs.gtk.org/gdk4/class.CicpParams.html) tuple 1/13/0/1.
      *
      * See e.g. [the CSS Color Module](https://www.w3.org/TR/css-color-4/#predefined-sRGB)
      * for details about this colorstate.
      * @returns the color state object for sRGB
+     * @since 4.16
      */
     function color_state_get_srgb(): ColorState;
     /**
@@ -4063,11 +4397,12 @@ export namespace Gdk {
      *
      * This color state uses the primaries defined by BT.709-6 and a linear transfer function.
      *
-     * It is equivalent to the [Cicp](class.CicpParams.html) tuple 1/8/0/1.
+     * It is equivalent to the [Cicp](https://docs.gtk.org/gdk4/class.CicpParams.html) tuple 1/8/0/1.
      *
      * See e.g. [the CSS Color Module](https://www.w3.org/TR/css-color-4/#predefined-sRGB-linear)
      * for details about this colorstate.
      * @returns the color state object for linearized sRGB
+     * @since 4.16
      */
     function color_state_get_srgb_linear(): ColorState;
     /**
@@ -4075,11 +4410,11 @@ export namespace Gdk {
      *
      * The default I/O priority is `G_PRIORITY_DEFAULT` (i.e. 0), and lower numbers
      * indicate a higher priority.
-     * @param stream a `GInputStream` to read the serialized content from
+     * @param stream a {@link Gio.InputStream} to read the serialized content from
      * @param mime_type the mime type to deserialize from
      * @param type the GType to deserialize from
      * @param io_priority the I/O priority of the operation
-     * @param cancellable optional `GCancellable` object
+     * @param cancellable optional {@link Gio.Cancellable} object
      */
     function content_deserialize_async(
         stream: Gio.InputStream,
@@ -4093,11 +4428,11 @@ export namespace Gdk {
      *
      * The default I/O priority is `G_PRIORITY_DEFAULT` (i.e. 0), and lower numbers
      * indicate a higher priority.
-     * @param stream a `GInputStream` to read the serialized content from
+     * @param stream a {@link Gio.InputStream} to read the serialized content from
      * @param mime_type the mime type to deserialize from
      * @param type the GType to deserialize from
      * @param io_priority the I/O priority of the operation
-     * @param cancellable optional `GCancellable` object
+     * @param cancellable optional {@link Gio.Cancellable} object
      * @param callback callback to call when the operation is done
      */
     function content_deserialize_async(
@@ -4113,11 +4448,11 @@ export namespace Gdk {
      *
      * The default I/O priority is `G_PRIORITY_DEFAULT` (i.e. 0), and lower numbers
      * indicate a higher priority.
-     * @param stream a `GInputStream` to read the serialized content from
+     * @param stream a {@link Gio.InputStream} to read the serialized content from
      * @param mime_type the mime type to deserialize from
      * @param type the GType to deserialize from
      * @param io_priority the I/O priority of the operation
-     * @param cancellable optional `GCancellable` object
+     * @param cancellable optional {@link Gio.Cancellable} object
      * @param callback callback to call when the operation is done
      */
     function content_deserialize_async(
@@ -4130,25 +4465,30 @@ export namespace Gdk {
     ): globalThis.Promise<[GObject.Value]> | void;
     /**
      * Finishes a content deserialization operation.
-     * @param result the `GAsyncResult`
-     * @returns %TRUE if the operation was successful. In this case,   @value is set. %FALSE if an error occurred. In this case,   @error is set
+     * @param result the {@link Gio.AsyncResult}
+     * @returns `true` if the operation was successful. In this case,   `value` is set. `false` if an error occurred. In this case,   `error` is set
      */
     function content_deserialize_finish(result: Gio.AsyncResult): [boolean, unknown];
     /**
-     * Parses the given `string` into `GdkContentFormats` and
+     * Parses the given `string` into {@link Gdk.ContentFormats} and
      * returns the formats.
      *
-     * Strings printed via [method`Gdk`.ContentFormats.to_string]
+     * Strings printed via {@link Gdk.ContentFormats.to_string}
      * can be read in again successfully using this function.
      *
-     * If `string` does not describe valid content formats, %NULL
+     * If `string` does not describe valid content formats, `null`
      * is returned.
      * @param string the string to parse
-     * @returns the content formats if @string is valid
+     * @returns the content formats if `string` is valid
+     * @since 4.4
      */
     function content_formats_parse(string: string): ContentFormats | null;
     /**
      * Registers a function to deserialize object of a given type.
+     *
+     * Since 4.20, when looking up a deserializer to use, GTK will
+     * use the last registered deserializer for a given mime type,
+     * so applications can override the built-in deserializers.
      * @param mime_type the mime type which the function can deserialize from
      * @param type the type of objects that the function creates
      * @param deserialize the callback
@@ -4160,6 +4500,10 @@ export namespace Gdk {
     ): void;
     /**
      * Registers a function to serialize objects of a given type.
+     *
+     * Since 4.20, when looking up a serializer to use, GTK will
+     * use the last registered serializer for a given mime type,
+     * so applications can override the built-in serializers.
      * @param type the type of objects that the function can serialize
      * @param mime_type the mime type to serialize to
      * @param serialize the callback
@@ -4168,13 +4512,13 @@ export namespace Gdk {
     /**
      * Serialize content and write it to the given output stream, asynchronously.
      *
-     * The default I/O priority is %G_PRIORITY_DEFAULT (i.e. 0), and lower numbers
+     * The default I/O priority is `G_PRIORITY_DEFAULT` (i.e. 0), and lower numbers
      * indicate a higher priority.
-     * @param stream a `GOutputStream` to write the serialized content to
+     * @param stream a {@link Gio.OutputStream} to write the serialized content to
      * @param mime_type the mime type to serialize to
      * @param value the content to serialize
      * @param io_priority the I/O priority of the operation
-     * @param cancellable optional `GCancellable` object
+     * @param cancellable optional {@link Gio.Cancellable} object
      */
     function content_serialize_async(
         stream: Gio.OutputStream,
@@ -4186,13 +4530,13 @@ export namespace Gdk {
     /**
      * Serialize content and write it to the given output stream, asynchronously.
      *
-     * The default I/O priority is %G_PRIORITY_DEFAULT (i.e. 0), and lower numbers
+     * The default I/O priority is `G_PRIORITY_DEFAULT` (i.e. 0), and lower numbers
      * indicate a higher priority.
-     * @param stream a `GOutputStream` to write the serialized content to
+     * @param stream a {@link Gio.OutputStream} to write the serialized content to
      * @param mime_type the mime type to serialize to
      * @param value the content to serialize
      * @param io_priority the I/O priority of the operation
-     * @param cancellable optional `GCancellable` object
+     * @param cancellable optional {@link Gio.Cancellable} object
      * @param callback callback to call when the operation is done
      */
     function content_serialize_async(
@@ -4206,13 +4550,13 @@ export namespace Gdk {
     /**
      * Serialize content and write it to the given output stream, asynchronously.
      *
-     * The default I/O priority is %G_PRIORITY_DEFAULT (i.e. 0), and lower numbers
+     * The default I/O priority is `G_PRIORITY_DEFAULT` (i.e. 0), and lower numbers
      * indicate a higher priority.
-     * @param stream a `GOutputStream` to write the serialized content to
+     * @param stream a {@link Gio.OutputStream} to write the serialized content to
      * @param mime_type the mime type to serialize to
      * @param value the content to serialize
      * @param io_priority the I/O priority of the operation
-     * @param cancellable optional `GCancellable` object
+     * @param cancellable optional {@link Gio.Cancellable} object
      * @param callback callback to call when the operation is done
      */
     function content_serialize_async(
@@ -4225,12 +4569,12 @@ export namespace Gdk {
     ): globalThis.Promise<boolean> | void;
     /**
      * Finishes a content serialization operation.
-     * @param result the `GAsyncResult`
-     * @returns %TRUE if the operation was successful, %FALSE if an   error occurred. In this case, @error is set
+     * @param result the {@link Gio.AsyncResult}
+     * @returns `true` if the operation was successful, `false` if an   error occurred. In this case, `error` is set
      */
     function content_serialize_finish(result: Gio.AsyncResult): boolean;
     /**
-     * Registers an error quark for [class`Gdk`.DmabufTexture] errors.
+     * Registers an error quark for {@link Gdk.DmabufTexture} errors.
      * @returns the error quark
      */
     function dmabuf_error_quark(): GLib.Quark;
@@ -4238,10 +4582,10 @@ export namespace Gdk {
      * Checks if `action` represents a single action or includes
      * multiple actions.
      *
-     * When `action` is 0 - ie no action was given, %TRUE
+     * When `action` is `GDK_ACTION_NONE` - ie no action was given, `TRUE`
      * is returned.
-     * @param action a `GdkDragAction`
-     * @returns %TRUE if exactly one action was given
+     * @param action a {@link Gdk.DragAction}
+     * @returns `true` if exactly one action was given
      */
     function drag_action_is_unique(action: DragAction | null): boolean;
     /**
@@ -4252,44 +4596,44 @@ export namespace Gdk {
      * angles is from the positive X axis towards the positive Y axis.
      *
      * This assumes that both events have X/Y information.
-     * If not, this function returns %FALSE.
-     * @param event1 first `GdkEvent`
-     * @param event2 second `GdkEvent`
-     * @returns %TRUE if the angle could be calculated.
+     * If not, this function returns `false`.
+     * @param event1 first {@link Gdk.Event}
+     * @param event2 second {@link Gdk.Event}
+     * @returns `true` if the angle could be calculated.
      */
     function events_get_angle(event1: Event, event2: Event): [boolean, number];
     /**
      * Returns the point halfway between the events' positions.
      *
      * This assumes that both events have X/Y information.
-     * If not, this function returns %FALSE.
-     * @param event1 first `GdkEvent`
-     * @param event2 second `GdkEvent`
-     * @returns %TRUE if the center could be calculated.
+     * If not, this function returns `false`.
+     * @param event1 first {@link Gdk.Event}
+     * @param event2 second {@link Gdk.Event}
+     * @returns `true` if the center could be calculated.
      */
     function events_get_center(event1: Event, event2: Event): [boolean, number, number];
     /**
      * Returns the distance between the event locations.
      *
      * This assumes that both events have X/Y information.
-     * If not, this function returns %FALSE.
-     * @param event1 first `GdkEvent`
-     * @param event2 second `GdkEvent`
-     * @returns %TRUE if the distance could be calculated.
+     * If not, this function returns `false`.
+     * @param event1 first {@link Gdk.Event}
+     * @param event2 second {@link Gdk.Event}
+     * @returns `true` if the distance could be calculated.
      */
     function events_get_distance(event1: Event, event2: Event): [boolean, number];
     /**
-     * Registers an error quark for [class`Gdk`.GLContext] errors.
+     * Registers an error quark for {@link Gdk.GLContext} errors.
      * @returns the error quark
      */
     function gl_error_quark(): GLib.Quark;
     /**
      * Canonicalizes the given mime type and interns the result.
      *
-     * If `string` is not a valid mime type, %NULL is returned instead.
+     * If `string` is not a valid mime type, `null` is returned instead.
      * See RFC 2048 for the syntax if mime types.
      * @param string string of a potential mime type
-     * @returns An interned string for the canonicalized   mime type or %NULL if the string wasn't a valid mime type
+     * @returns An interned string for the canonicalized   mime type or `null` if the string wasn't a valid mime type
      */
     function intern_mime_type(string: string): string | null;
     /**
@@ -4312,13 +4656,13 @@ export namespace Gdk {
     /**
      * Returns true if the given key value is in lower case.
      * @param keyval a key value.
-     * @returns true if @keyval is in lower case, or if @keyval is not   subject to case conversion.
+     * @returns true if `keyval` is in lower case, or if `keyval` is not   subject to case conversion.
      */
     function keyval_is_lower(keyval: number): boolean;
     /**
      * Returns true if the given key value is in upper case.
      * @param keyval a key value.
-     * @returns true if @keyval is in upper case, or if @keyval is not subject to  case conversion.
+     * @returns true if `keyval` is in upper case, or if `keyval` is not subject to  case conversion.
      */
     function keyval_is_upper(keyval: number): boolean;
     /**
@@ -4334,7 +4678,7 @@ export namespace Gdk {
     /**
      * Converts a key value to lower case, if applicable.
      * @param keyval a key value.
-     * @returns the lower case form of @keyval, or @keyval itself if it is already  in lower case or it is not subject to case conversion.
+     * @returns the lower case form of `keyval`, or `keyval` itself if it is already  in lower case or it is not subject to case conversion.
      */
     function keyval_to_lower(keyval: number): number;
     /**
@@ -4351,36 +4695,37 @@ export namespace Gdk {
     /**
      * Converts a key value to upper case, if applicable.
      * @param keyval a key value.
-     * @returns the upper case form of @keyval, or @keyval itself if it is already   in upper case or it is not subject to case conversion.
+     * @returns the upper case form of `keyval`, or `keyval` itself if it is already   in upper case or it is not subject to case conversion.
      */
     function keyval_to_upper(keyval: number): number;
     /**
      * Returns a paintable that has the given intrinsic size and draws nothing.
      *
      * This is often useful for implementing the
-     * [vfunc`Gdk`.Paintable.get_current_image] virtual function
+     * {@link Gdk.Paintable.get_current_image} virtual function
      * when the paintable is in an incomplete state (like a
      * [GtkMediaStream](../gtk4/class.MediaStream.html) before receiving
      * the first frame).
      * @param intrinsic_width The intrinsic width to report. Can be 0 for no width.
      * @param intrinsic_height The intrinsic height to report. Can be 0 for no height.
-     * @returns a `GdkPaintable`
+     * @returns a {@link Gdk.Paintable}
      */
     function paintable_new_empty(intrinsic_width: number, intrinsic_height: number): Paintable;
     /**
      * Transfers image data from a `cairo_surface_t` and converts it
-     * to a `GdkPixbuf`.
+     * to a {@link GdkPixbuf.Pixbuf}.
      *
      * This allows you to efficiently read individual pixels from cairo surfaces.
      *
      * This function will create an RGB pixbuf with 8 bits per channel.
      * The pixbuf will contain an alpha channel if the `surface` contains one.
      * @param surface surface to copy from
-     * @param src_x Source X coordinate within @surface
-     * @param src_y Source Y coordinate within @surface
+     * @param src_x Source X coordinate within `surface`
+     * @param src_y Source Y coordinate within `surface`
      * @param width Width in pixels of region to get
      * @param height Height in pixels of region to get
      * @returns A newly-created pixbuf with a   reference count of 1
+     * @deprecated since 4.12: Use {@link Gdk.Texture} and subclasses instead   cairo surfaces and pixbufs
      */
     function pixbuf_get_from_surface(
         surface: cairo.Surface,
@@ -4395,8 +4740,9 @@ export namespace Gdk {
      * This should generally not be used in newly written code as later
      * stages will almost certainly convert the pixbuf back into a texture
      * to draw it on screen.
-     * @param texture a `GdkTexture`
-     * @returns a new `GdkPixbuf`
+     * @param texture a {@link Gdk.Texture}
+     * @returns a new {@link GdkPixbuf.Pixbuf}
+     * @deprecated since 4.12: Use {@link Gdk.Texture} and subclasses instead   cairo surfaces and pixbufs
      */
     function pixbuf_get_from_texture(texture: Texture): GdkPixbuf.Pixbuf | null;
     /**
@@ -4431,13 +4777,13 @@ export namespace Gdk {
      * You can also include a `*` in the list to try all remaining backends.
      *
      * This call must happen prior to functions that open a display, such
-     * as [func`Gdk`.Display.open], `gtk_init()`, or `gtk_init_check()`
+     * as {@link Gdk.Display.open}, `gtk_init()`, or `gtk_init_check()`
      * in order to take effect.
      * @param backends a comma-separated list of backends
      */
     function set_allowed_backends(backends: string): void;
     /**
-     * Registers an error quark for [class`Gdk`.Texture] errors.
+     * Registers an error quark for {@link Gdk.Texture} errors.
      * @returns the error quark
      */
     function texture_error_quark(): GLib.Quark;
@@ -4448,19 +4794,31 @@ export namespace Gdk {
      */
     function unicode_to_keyval(wc: number): number;
     /**
-     * Registers an error quark for [class`Gdk`.VulkanContext] errors.
+     * Registers an error quark for {@link Gdk.VulkanContext} errors.
      * @returns the error quark
      */
     function vulkan_error_quark(): GLib.Quark;
+    /**
+     * @gir-type Callback
+     */
     interface ContentDeserializeFunc {
         (deserializer: ContentDeserializer): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ContentSerializeFunc {
         (serializer: ContentSerializer): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface CursorGetTextureCallback {
         (cursor: Cursor, cursor_size: number, scale: number, data?: any | null): Texture | null;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace AnchorHints {
         export const $gtype: GObject.GType<AnchorHints>;
     }
@@ -4471,16 +4829,17 @@ export namespace Gdk {
      * These hints determine how the surface should be positioned in the case that
      * the surface would fall off-screen if placed in its ideal position.
      *
-     * For example, %GDK_ANCHOR_FLIP_X will replace %GDK_GRAVITY_NORTH_WEST with
-     * %GDK_GRAVITY_NORTH_EAST and vice versa if the surface extends beyond the left
+     * For example, {@link Gdk.AnchorHints.FLIP_X} will replace {@link Gdk.Gravity.NORTH_WEST} with
+     * {@link Gdk.Gravity.NORTH_EAST} and vice versa if the surface extends beyond the left
      * or right edges of the monitor.
      *
-     * If %GDK_ANCHOR_SLIDE_X is set, the surface can be shifted horizontally to fit
-     * on-screen. If %GDK_ANCHOR_RESIZE_X is set, the surface can be shrunken
+     * If {@link Gdk.AnchorHints.SLIDE_X} is set, the surface can be shifted horizontally to fit
+     * on-screen. If {@link Gdk.AnchorHints.RESIZE_X} is set, the surface can be shrunken
      * horizontally to fit.
      *
      * In general, when multiple flags are set, flipping should take precedence over
      * sliding, which should take precedence over resizing.
+     * @gir-type Flags
      */
     enum AnchorHints {
         /**
@@ -4521,12 +4880,16 @@ export namespace Gdk {
         RESIZE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace AxisFlags {
         export const $gtype: GObject.GType<AxisFlags>;
     }
 
     /**
      * Flags describing the current capabilities of a device/tool.
+     * @gir-type Flags
      */
     enum AxisFlags {
         /**
@@ -4575,15 +4938,23 @@ export namespace Gdk {
         SLIDER,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DragAction {
         export const $gtype: GObject.GType<DragAction>;
     }
 
     /**
-     * Used in `GdkDrop` and `GdkDrag` to indicate the actions that the
+     * Used in {@link Gdk.Drop} and {@link Gdk.Drag} to indicate the actions that the
      * destination can and should do with the dropped data.
+     * @gir-type Flags
      */
     enum DragAction {
+        /**
+         * No action.
+         */
+        NONE,
         /**
          * Copy the data.
          */
@@ -4605,6 +4976,9 @@ export namespace Gdk {
         ASK,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace FrameClockPhase {
         export const $gtype: GObject.GType<FrameClockPhase>;
     }
@@ -4612,7 +4986,8 @@ export namespace Gdk {
     /**
      * Used to represent the different paint clock phases that can be requested.
      *
-     * The elements of the enumeration correspond to the signals of `GdkFrameClock`.
+     * The elements of the enumeration correspond to the signals of {@link Gdk.FrameClock}.
+     * @gir-type Flags
      */
     enum FrameClockPhase {
         /**
@@ -4649,12 +5024,17 @@ export namespace Gdk {
         AFTER_PAINT,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace GLAPI {
         export const $gtype: GObject.GType<GLAPI>;
     }
 
     /**
      * The list of the different APIs that GdkGLContext can potentially support.
+     * @gir-type Flags
+     * @since 4.6
      */
     enum GLAPI {
         /**
@@ -4667,6 +5047,9 @@ export namespace Gdk {
         GLES,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ModifierType {
         export const $gtype: GObject.GType<ModifierType>;
     }
@@ -4680,7 +5063,8 @@ export namespace Gdk {
      *
      * Note that GDK may add internal values to events which include values outside
      * of this enumeration. Your code should preserve and ignore them. You can use
-     * %GDK_MODIFIER_MASK to remove all private values.
+     * `GDK_MODIFIER_MASK` to remove all private values.
+     * @gir-type Flags
      */
     enum ModifierType {
         /**
@@ -4740,6 +5124,9 @@ export namespace Gdk {
         META_MASK,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace PaintableFlags {
         export const $gtype: GObject.GType<PaintableFlags>;
     }
@@ -4748,28 +5135,33 @@ export namespace Gdk {
      * Flags about a paintable object.
      *
      * Implementations use these for optimizations such as caching.
+     * @gir-type Flags
      */
     enum PaintableFlags {
         /**
          * The size is immutable.
-         *   The [signal`Gdk`.Paintable::invalidate-size] signal will never be
+         *   The `Gdk.Paintable::invalidate-size` signal will never be
          *   emitted.
          */
-        SIZE,
+        STATIC_SIZE,
         /**
          * The content is immutable.
-         *   The [signal`Gdk`.Paintable::invalidate-contents] signal will never be
+         *   The `Gdk.Paintable::invalidate-contents` signal will never be
          *   emitted.
          */
-        CONTENTS,
+        STATIC_CONTENTS,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SeatCapabilities {
         export const $gtype: GObject.GType<SeatCapabilities>;
     }
 
     /**
      * Flags describing the seat capabilities.
+     * @gir-type Flags
      */
     enum SeatCapabilities {
         /**
@@ -4806,12 +5198,17 @@ export namespace Gdk {
         ALL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ToplevelCapabilities {
         export const $gtype: GObject.GType<ToplevelCapabilities>;
     }
 
     /**
-     * Reflects what features a `GdkToplevel` supports.
+     * Reflects what features a {@link Gdk.Toplevel} supports.
+     * @gir-type Flags
+     * @since 4.20
      */
     enum ToplevelCapabilities {
         /**
@@ -4820,17 +5217,17 @@ export namespace Gdk {
         EDGE_CONSTRAINTS,
         /**
          * Whether inhibiting system shortcuts is supported.
-         * See [method`Gdk`.Toplevel.inhibit_system_shortcuts].
+         * See {@link Gdk.Toplevel.inhibit_system_shortcuts}.
          */
         INHIBIT_SHORTCUTS,
         /**
          * Whether titlebar gestures are supported.
-         * See [method`Gdk`.Toplevel.titlebar_gesture].
+         * See {@link Gdk.Toplevel.titlebar_gesture}.
          */
         TITLEBAR_GESTURES,
         /**
          * Whether showing the window menu is supported.
-         * See [method`Gdk`.Toplevel.show_window_menu].
+         * See {@link Gdk.Toplevel.show_window_menu}.
          */
         WINDOW_MENU,
         /**
@@ -4843,16 +5240,19 @@ export namespace Gdk {
         FULLSCREEN,
         /**
          * Whether the toplevel can be minimized.
-         * See [method`Gdk`.Toplevel.minimize].
+         * See {@link Gdk.Toplevel.minimize}.
          */
         MINIMIZE,
         /**
          * Whether the toplevel can be lowered.
-         * See [method`Gdk`.Toplevel.lower].
+         * See {@link Gdk.Toplevel.lower}.
          */
         LOWER,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ToplevelState {
         export const $gtype: GObject.GType<ToplevelState>;
     }
@@ -4861,10 +5261,11 @@ export namespace Gdk {
      * Specifies the state of a toplevel surface.
      *
      * On platforms that support information about individual edges, the
-     * %GDK_TOPLEVEL_STATE_TILED state will be set whenever any of the individual
+     * {@link Gdk.ToplevelState.TILED} state will be set whenever any of the individual
      * tiled states is set. On platforms that lack that support, the tiled state
      * will give an indication of tiledness without any of the per-edge states
      * being set.
+     * @gir-type Flags
      */
     enum ToplevelState {
         /**
@@ -4953,7 +5354,7 @@ export namespace Gdk {
     /**
      * Handles launching an application in a graphical context.
      *
-     * It is an implementation of `GAppLaunchContext` that provides startup
+     * It is an implementation of {@link Gio.AppLaunchContext} that provides startup
      * notification and allows to launch applications on a specific workspace.
      *
      * ## Launching an application
@@ -4970,6 +5371,7 @@ export namespace Gdk {
      *
      * g_object_unref (context);
      * ```
+     * @gir-type Class
      */
     class AppLaunchContext extends Gio.AppLaunchContext {
         static $gtype: GObject.GType<AppLaunchContext>;
@@ -4977,7 +5379,8 @@ export namespace Gdk {
         // Properties
 
         /**
-         * The display that the `GdkAppLaunchContext` is on.
+         * The display that the {@link Gdk.AppLaunchContext} is on.
+         * @construct-only
          */
         get display(): Display;
 
@@ -4998,16 +5401,19 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AppLaunchContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AppLaunchContext.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AppLaunchContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AppLaunchContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AppLaunchContext.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AppLaunchContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5017,10 +5423,13 @@ export namespace Gdk {
         // Methods
 
         /**
-         * Gets the `GdkDisplay` that `context` is for.
-         * @returns the display of @context
+         * Gets the {@link Gdk.Display} that `context` is for.
+         * @returns the display of `context`
          */
         get_display(): Display;
+        /**
+         * @param args
+         */
         // Conflicted with Gio.AppLaunchContext.get_display
         get_display(...args: never[]): any;
         /**
@@ -5047,19 +5456,19 @@ export namespace Gdk {
          * Window Managers can use this information when displaying startup
          * notification.
          *
-         * See also [method`Gdk`.AppLaunchContext.set_icon_name].
-         * @param icon a `GIcon`
+         * See also {@link Gdk.AppLaunchContext.set_icon_name}.
+         * @param icon a {@link Gio.Icon}
          */
         set_icon(icon?: Gio.Icon | null): void;
         /**
          * Sets the icon for applications that are launched with this context.
          *
          * The `icon_name` will be interpreted in the same way as the Icon field
-         * in desktop files. See also [method`Gdk`.AppLaunchContext.set_icon].
+         * in desktop files. See also {@link Gdk.AppLaunchContext.set_icon}.
          *
          * If both `icon` and `icon_name` are set, the `icon_name` takes priority.
          * If neither `icon` or `icon_name` is set, the icon is taken from either
-         * the file that is passed to launched application or from the `GAppInfo`
+         * the file that is passed to launched application or from the {@link Gio.AppInfo}
          * for the launched application itself.
          * @param icon_name an icon name
          */
@@ -5086,6 +5495,7 @@ export namespace Gdk {
 
     /**
      * An event related to a button on a pointer device.
+     * @gir-type Class
      */
     class ButtonEvent extends Event {
         static $gtype: GObject.GType<ButtonEvent>;
@@ -5096,16 +5506,19 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ButtonEvent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ButtonEvent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ButtonEvent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ButtonEvent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ButtonEvent.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ButtonEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5116,7 +5529,7 @@ export namespace Gdk {
 
         /**
          * Extract the button number from a button event.
-         * @returns the button of @event
+         * @returns the button of `event`
          */
         get_button(): number;
     }
@@ -5136,9 +5549,10 @@ export namespace Gdk {
     /**
      * Represents the platform-specific draw context.
      *
-     * `GdkCairoContext`s are created for a surface using
-     * [method`Gdk`.Surface.create_cairo_context], and the context
+     * {@link Gdk.CairoContext}s are created for a surface using
+     * {@link Gdk.Surface.create_cairo_context}, and the context
      * can then be used to draw on that surface.
+     * @gir-type Class
      */
     abstract class CairoContext extends DrawContext {
         static $gtype: GObject.GType<CairoContext>;
@@ -5160,16 +5574,19 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CairoContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CairoContext.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CairoContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CairoContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CairoContext.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CairoContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5179,14 +5596,14 @@ export namespace Gdk {
         // Methods
 
         /**
-         * Retrieves a Cairo context to be used to draw on the `GdkSurface`
+         * Retrieves a Cairo context to be used to draw on the {@link Gdk.Surface}
          * of `context`.
          *
-         * A call to [method`Gdk`.DrawContext.begin_frame] with this
-         * `context` must have been done or this function will return %NULL.
+         * A call to {@link Gdk.DrawContext.begin_frame} with this
+         * `context` must have been done or this function will return `null`.
          *
          * The returned context is guaranteed to be valid until
-         * [method`Gdk`.DrawContext.end_frame] is called.
+         * {@link Gdk.DrawContext.end_frame} is called.
          * @returns a Cairo context   to draw on `GdkSurface
          */
         cairo_create(): cairo.Context | null;
@@ -5225,15 +5642,17 @@ export namespace Gdk {
      * The 'unspecified' value (2) is not treated in any special way, and
      * must be replaced by a different value before creating a color state.
      *
-     * `GdkCicpParams` can be used as a builder object to construct a color
-     * state from Cicp data with [method`Gdk`.CicpParams.build_color_state].
+     * {@link Gdk.CicpParams} can be used as a builder object to construct a color
+     * state from Cicp data with {@link Gdk.CicpParams.build_color_state}.
      * The function will return an error if the given parameters are not
      * supported.
      *
-     * You can obtain a `GdkCicpParams` object from a color state with
-     * [method`Gdk`.ColorState.create_cicp_params]. This can be used to
+     * You can obtain a {@link Gdk.CicpParams} object from a color state with
+     * {@link Gdk.ColorState.create_cicp_params}. This can be used to
      * create a variant of a color state, by changing just one of the cicp
      * parameters, or just to obtain information about the color state.
+     * @gir-type Class
+     * @since 4.16
      */
     class CicpParams extends GObject.Object {
         static $gtype: GObject.GType<CicpParams>;
@@ -5251,6 +5670,7 @@ export namespace Gdk {
          * - 6,7: BT.601 / NTSC
          * - 9: BT.2020
          * - 12: Display P3
+         * @since 4.16
          */
         get color_primaries(): number;
         set color_primaries(val: number);
@@ -5265,6 +5685,7 @@ export namespace Gdk {
          * - 6,7: BT.601 / NTSC
          * - 9: BT.2020
          * - 12: Display P3
+         * @since 4.16
          */
         get colorPrimaries(): number;
         set colorPrimaries(val: number);
@@ -5278,6 +5699,7 @@ export namespace Gdk {
          * - 2: unspecified
          * - 5,6: BT.601
          * - 9: BT.2020
+         * @since 4.16
          */
         get matrix_coefficients(): number;
         set matrix_coefficients(val: number);
@@ -5291,6 +5713,7 @@ export namespace Gdk {
          * - 2: unspecified
          * - 5,6: BT.601
          * - 9: BT.2020
+         * @since 4.16
          */
         get matrixCoefficients(): number;
         set matrixCoefficients(val: number);
@@ -5298,6 +5721,7 @@ export namespace Gdk {
          * Whether the data is using the full range of values.
          *
          * The range of the data.
+         * @since 4.16
          */
         get range(): CicpRange;
         set range(val: CicpRange);
@@ -5314,6 +5738,7 @@ export namespace Gdk {
          * - 13: sRGB
          * - 16: BT.2100 PQ
          * - 18: BT.2100 HLG
+         * @since 4.16
          */
         get transfer_function(): number;
         set transfer_function(val: number);
@@ -5330,6 +5755,7 @@ export namespace Gdk {
          * - 13: sRGB
          * - 16: BT.2100 PQ
          * - 18: BT.2100 HLG
+         * @since 4.16
          */
         get transferFunction(): number;
         set transferFunction(val: number);
@@ -5353,16 +5779,19 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CicpParams.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CicpParams.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CicpParams.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CicpParams.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CicpParams.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CicpParams.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5372,12 +5801,12 @@ export namespace Gdk {
         // Methods
 
         /**
-         * Creates a new `GdkColorState` object for the cicp parameters in `self`.
+         * Creates a new {@link Gdk.ColorState} object for the cicp parameters in `self`.
          *
          * Note that this may fail if the cicp parameters in `self` are not
          * supported by GTK. In that case, `NULL` is returned, and `error` is set
          * with an error message that can be presented to the user.
-         * @returns A newly allocated `GdkColorState`
+         * @returns A newly allocated {@link Gdk.ColorState}
          */
         build_color_state(): ColorState;
         /**
@@ -5407,7 +5836,7 @@ export namespace Gdk {
          */
         set_color_primaries(color_primaries: number): void;
         /**
-         * `self` a `GdkCicpParams`
+         * `self` a {@link Gdk.CicpParams}
          * Sets the matrix-coefficients property of `self`.
          * @param matrix_coefficients the new matrix-coefficients value
          */
@@ -5427,6 +5856,11 @@ export namespace Gdk {
     namespace Clipboard {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted when the clipboard changes ownership.
+             * @signal
+             * @run-last
+             */
             changed: () => void;
             'notify::content': (pspec: GObject.ParamSpec) => void;
             'notify::display': (pspec: GObject.ParamSpec) => void;
@@ -5447,20 +5881,21 @@ export namespace Gdk {
     /**
      * Represents data shared between applications or inside an application.
      *
-     * To get a `GdkClipboard` object, use [method`Gdk`.Display.get_clipboard] or
-     * [method`Gdk`.Display.get_primary_clipboard]. You can find out about the data
+     * To get a {@link Gdk.Clipboard} object, use {@link Gdk.Display.get_clipboard} or
+     * {@link Gdk.Display.get_primary_clipboard}. You can find out about the data
      * that is currently available in a clipboard using
-     * [method`Gdk`.Clipboard.get_formats].
+     * {@link Gdk.Clipboard.get_formats}.
      *
      * To make text or image data available in a clipboard, use
-     * [method`Gdk`.Clipboard.set_text] or [method`Gdk`.Clipboard.set_texture].
-     * For other data, you can use [method`Gdk`.Clipboard.set_content], which
-     * takes a [class`Gdk`.ContentProvider] object.
+     * {@link Gdk.Clipboard.set_text} or {@link Gdk.Clipboard.set_texture}.
+     * For other data, you can use {@link Gdk.Clipboard.set_content}, which
+     * takes a {@link Gdk.ContentProvider} object.
      *
      * To read textual or image data from a clipboard, use
-     * [method`Gdk`.Clipboard.read_text_async] or
-     * [method`Gdk`.Clipboard.read_texture_async]. For other data, use
-     * [method`Gdk`.Clipboard.read_async], which provides a `GInputStream` object.
+     * {@link Gdk.Clipboard.read_text_async} or
+     * {@link Gdk.Clipboard.read_texture_async}. For other data, use
+     * {@link Gdk.Clipboard.read_async}, which provides a {@link Gio.InputStream} object.
+     * @gir-type Class
      */
     class Clipboard extends GObject.Object {
         static $gtype: GObject.GType<Clipboard>;
@@ -5468,20 +5903,24 @@ export namespace Gdk {
         // Properties
 
         /**
-         * The `GdkContentProvider` or %NULL if the clipboard is empty or contents are
+         * The {@link Gdk.ContentProvider} or `null` if the clipboard is empty or contents are
          * provided otherwise.
+         * @read-only
          */
         get content(): ContentProvider;
         /**
-         * The `GdkDisplay` that the clipboard belongs to.
+         * The {@link Gdk.Display} that the clipboard belongs to.
+         * @construct-only
          */
         get display(): Display;
         /**
          * The possible formats that the clipboard can provide its data in.
+         * @read-only
          */
         get formats(): ContentFormats;
         /**
-         * %TRUE if the contents of the clipboard are owned by this process.
+         * `true` if the contents of the clipboard are owned by this process.
+         * @read-only
          */
         get local(): boolean;
 
@@ -5502,16 +5941,19 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Clipboard.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Clipboard.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Clipboard.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Clipboard.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Clipboard.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Clipboard.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5521,16 +5963,16 @@ export namespace Gdk {
         // Methods
 
         /**
-         * Returns the `GdkContentProvider` currently set on `clipboard`.
+         * Returns the {@link Gdk.ContentProvider} currently set on `clipboard`.
          *
          * If the `clipboard` is empty or its contents are not owned by the
-         * current process, %NULL will be returned.
+         * current process, `null` will be returned.
          * @returns The content of a clipboard   if the clipboard does not maintain any content
          */
         get_content(): ContentProvider | null;
         /**
-         * Gets the `GdkDisplay` that the clipboard was created for.
-         * @returns a `GdkDisplay`
+         * Gets the {@link Gdk.Display} that the clipboard was created for.
+         * @returns a {@link Gdk.Display}
          */
         get_display(): Display;
         /**
@@ -5544,20 +5986,20 @@ export namespace Gdk {
          * A clipboard is considered local if it was last claimed
          * by the running application.
          *
-         * Note that [method`Gdk`.Clipboard.get_content] may return %NULL
+         * Note that {@link Gdk.Clipboard.get_content} may return `null`
          * even on a local clipboard. In this case the clipboard is empty.
-         * @returns %TRUE if the clipboard is local
+         * @returns `true` if the clipboard is local
          */
         is_local(): boolean;
         /**
-         * Asynchronously requests an input stream to read the `clipboard'`s
+         * Asynchronously requests an input stream to read the `clipboard`'s
          * contents from.
          *
          * The clipboard will choose the most suitable mime type from the given list
          * to fulfill the request, preferring the ones listed first.
-         * @param mime_types a %NULL-terminated array of mime types to choose from
+         * @param mime_types a `null`-terminated array of mime types to choose from
          * @param io_priority the I/O priority of the request
-         * @param cancellable optional `GCancellable` object
+         * @param cancellable optional {@link Gio.Cancellable} object
          */
         read_async(
             mime_types: string[],
@@ -5565,14 +6007,14 @@ export namespace Gdk {
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<[Gio.InputStream | null, string]>;
         /**
-         * Asynchronously requests an input stream to read the `clipboard'`s
+         * Asynchronously requests an input stream to read the `clipboard`'s
          * contents from.
          *
          * The clipboard will choose the most suitable mime type from the given list
          * to fulfill the request, preferring the ones listed first.
-         * @param mime_types a %NULL-terminated array of mime types to choose from
+         * @param mime_types a `null`-terminated array of mime types to choose from
          * @param io_priority the I/O priority of the request
-         * @param cancellable optional `GCancellable` object
+         * @param cancellable optional {@link Gio.Cancellable} object
          * @param callback callback to call when the request is satisfied
          */
         read_async(
@@ -5582,14 +6024,14 @@ export namespace Gdk {
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Asynchronously requests an input stream to read the `clipboard'`s
+         * Asynchronously requests an input stream to read the `clipboard`'s
          * contents from.
          *
          * The clipboard will choose the most suitable mime type from the given list
          * to fulfill the request, preferring the ones listed first.
-         * @param mime_types a %NULL-terminated array of mime types to choose from
+         * @param mime_types a `null`-terminated array of mime types to choose from
          * @param io_priority the I/O priority of the request
-         * @param cancellable optional `GCancellable` object
+         * @param cancellable optional {@link Gio.Cancellable} object
          * @param callback callback to call when the request is satisfied
          */
         read_async(
@@ -5601,37 +6043,37 @@ export namespace Gdk {
         /**
          * Finishes an asynchronous clipboard read.
          *
-         * See [method`Gdk`.Clipboard.read_async].
-         * @param result a `GAsyncResult`
-         * @returns a `GInputStream`
+         * See {@link Gdk.Clipboard.read_async}.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns a {@link Gio.InputStream}
          */
         read_finish(result: Gio.AsyncResult): [Gio.InputStream | null, string];
         /**
          * Asynchronously request the `clipboard` contents converted to a string.
          *
-         * This is a simple wrapper around [method`Gdk`.Clipboard.read_value_async].
-         * Use that function or [method`Gdk`.Clipboard.read_async] directly if you
+         * This is a simple wrapper around {@link Gdk.Clipboard.read_value_async}.
+         * Use that function or {@link Gdk.Clipboard.read_async} directly if you
          * need more control over the operation.
-         * @param cancellable optional `GCancellable` object
+         * @param cancellable optional {@link Gio.Cancellable} object
          */
         read_text_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<string | null>;
         /**
          * Asynchronously request the `clipboard` contents converted to a string.
          *
-         * This is a simple wrapper around [method`Gdk`.Clipboard.read_value_async].
-         * Use that function or [method`Gdk`.Clipboard.read_async] directly if you
+         * This is a simple wrapper around {@link Gdk.Clipboard.read_value_async}.
+         * Use that function or {@link Gdk.Clipboard.read_async} directly if you
          * need more control over the operation.
-         * @param cancellable optional `GCancellable` object
+         * @param cancellable optional {@link Gio.Cancellable} object
          * @param callback callback to call when the request is satisfied
          */
         read_text_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Asynchronously request the `clipboard` contents converted to a string.
          *
-         * This is a simple wrapper around [method`Gdk`.Clipboard.read_value_async].
-         * Use that function or [method`Gdk`.Clipboard.read_async] directly if you
+         * This is a simple wrapper around {@link Gdk.Clipboard.read_value_async}.
+         * Use that function or {@link Gdk.Clipboard.read_async} directly if you
          * need more control over the operation.
-         * @param cancellable optional `GCancellable` object
+         * @param cancellable optional {@link Gio.Cancellable} object
          * @param callback callback to call when the request is satisfied
          */
         read_text_async(
@@ -5641,37 +6083,37 @@ export namespace Gdk {
         /**
          * Finishes an asynchronous clipboard read.
          *
-         * See [method`Gdk`.Clipboard.read_text_async].
-         * @param result a `GAsyncResult`
+         * See {@link Gdk.Clipboard.read_text_async}.
+         * @param result a {@link Gio.AsyncResult}
          * @returns a new string
          */
         read_text_finish(result: Gio.AsyncResult): string | null;
         /**
-         * Asynchronously request the `clipboard` contents converted to a `GdkPixbuf`.
+         * Asynchronously request the `clipboard` contents converted to a {@link GdkPixbuf.Pixbuf}.
          *
-         * This is a simple wrapper around [method`Gdk`.Clipboard.read_value_async].
-         * Use that function or [method`Gdk`.Clipboard.read_async] directly if you
+         * This is a simple wrapper around {@link Gdk.Clipboard.read_value_async}.
+         * Use that function or {@link Gdk.Clipboard.read_async} directly if you
          * need more control over the operation.
-         * @param cancellable optional `GCancellable` object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
         read_texture_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Texture | null>;
         /**
-         * Asynchronously request the `clipboard` contents converted to a `GdkPixbuf`.
+         * Asynchronously request the `clipboard` contents converted to a {@link GdkPixbuf.Pixbuf}.
          *
-         * This is a simple wrapper around [method`Gdk`.Clipboard.read_value_async].
-         * Use that function or [method`Gdk`.Clipboard.read_async] directly if you
+         * This is a simple wrapper around {@link Gdk.Clipboard.read_value_async}.
+         * Use that function or {@link Gdk.Clipboard.read_async} directly if you
          * need more control over the operation.
-         * @param cancellable optional `GCancellable` object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback callback to call when the request is satisfied
          */
         read_texture_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
-         * Asynchronously request the `clipboard` contents converted to a `GdkPixbuf`.
+         * Asynchronously request the `clipboard` contents converted to a {@link GdkPixbuf.Pixbuf}.
          *
-         * This is a simple wrapper around [method`Gdk`.Clipboard.read_value_async].
-         * Use that function or [method`Gdk`.Clipboard.read_async] directly if you
+         * This is a simple wrapper around {@link Gdk.Clipboard.read_value_async}.
+         * Use that function or {@link Gdk.Clipboard.read_async} directly if you
          * need more control over the operation.
-         * @param cancellable optional `GCancellable` object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback callback to call when the request is satisfied
          */
         read_texture_async(
@@ -5681,21 +6123,21 @@ export namespace Gdk {
         /**
          * Finishes an asynchronous clipboard read.
          *
-         * See [method`Gdk`.Clipboard.read_texture_async].
-         * @param result a `GAsyncResult`
-         * @returns a new `GdkTexture`
+         * See {@link Gdk.Clipboard.read_texture_async}.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns a new {@link Gdk.Texture}
          */
         read_texture_finish(result: Gio.AsyncResult): Texture | null;
         /**
          * Asynchronously request the `clipboard` contents converted to the given
          * `type`.
          *
-         * For local clipboard contents that are available in the given `GType`,
+         * For local clipboard contents that are available in the given {@link GObject.GType},
          * the value will be copied directly. Otherwise, GDK will try to use
-         * [func`content_deserialize_async]` to convert the clipboard's data.
-         * @param type a `GType` to read
+         * {@link content_deserialize_async} to convert the clipboard's data.
+         * @param type a {@link GObject.GType} to read
          * @param io_priority the I/O priority of the request
-         * @param cancellable optional `GCancellable` object
+         * @param cancellable optional {@link Gio.Cancellable} object
          */
         read_value_async(
             type: GObject.GType,
@@ -5706,12 +6148,12 @@ export namespace Gdk {
          * Asynchronously request the `clipboard` contents converted to the given
          * `type`.
          *
-         * For local clipboard contents that are available in the given `GType`,
+         * For local clipboard contents that are available in the given {@link GObject.GType},
          * the value will be copied directly. Otherwise, GDK will try to use
-         * [func`content_deserialize_async]` to convert the clipboard's data.
-         * @param type a `GType` to read
+         * {@link content_deserialize_async} to convert the clipboard's data.
+         * @param type a {@link GObject.GType} to read
          * @param io_priority the I/O priority of the request
-         * @param cancellable optional `GCancellable` object
+         * @param cancellable optional {@link Gio.Cancellable} object
          * @param callback callback to call when the request is satisfied
          */
         read_value_async(
@@ -5724,12 +6166,12 @@ export namespace Gdk {
          * Asynchronously request the `clipboard` contents converted to the given
          * `type`.
          *
-         * For local clipboard contents that are available in the given `GType`,
+         * For local clipboard contents that are available in the given {@link GObject.GType},
          * the value will be copied directly. Otherwise, GDK will try to use
-         * [func`content_deserialize_async]` to convert the clipboard's data.
-         * @param type a `GType` to read
+         * {@link content_deserialize_async} to convert the clipboard's data.
+         * @param type a {@link GObject.GType} to read
          * @param io_priority the I/O priority of the request
-         * @param cancellable optional `GCancellable` object
+         * @param cancellable optional {@link Gio.Cancellable} object
          * @param callback callback to call when the request is satisfied
          */
         read_value_async(
@@ -5741,33 +6183,36 @@ export namespace Gdk {
         /**
          * Finishes an asynchronous clipboard read.
          *
-         * See [method`Gdk`.Clipboard.read_value_async].
-         * @param result a `GAsyncResult`
-         * @returns a `GValue` containing the result.
+         * See {@link Gdk.Clipboard.read_value_async}.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns a {@link GObject.Value} containing the result.
          */
         read_value_finish(result: Gio.AsyncResult): unknown;
         /**
          * Sets a new content provider on `clipboard`.
          *
-         * The clipboard will claim the `GdkDisplay`'s resources and advertise
+         * The clipboard will claim the {@link Gdk.Display}'s resources and advertise
          * these new contents to other applications.
          *
-         * In the rare case of a failure, this function will return %FALSE. The
+         * In the rare case of a failure, this function will return `false`. The
          * clipboard will then continue reporting its old contents and ignore
          * `provider`.
          *
          * If the contents are read by either an external application or the
-         * `clipboard'`s read functions, `clipboard` will select the best format to
+         * `clipboard`'s read functions, `clipboard` will select the best format to
          * transfer the contents and then request that format from `provider`.
-         * @param provider the new contents of @clipboard   or %NULL to clear the clipboard
-         * @returns %TRUE if setting the clipboard succeeded
+         * @param provider the new contents of `clipboard`   or `null` to clear the clipboard
+         * @returns `true` if setting the clipboard succeeded
          */
         set_content(provider?: ContentProvider | null): boolean;
         /**
          * Sets the `clipboard` to contain the given `value`.
-         * @param value a `GValue` to set
+         * @param value a {@link GObject.Value} to set
          */
         set(value: GObject.Value | any): void;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         /**
@@ -5784,7 +6229,7 @@ export namespace Gdk {
          * [GtkApplication](../gtk4/class.Application.html)
          * is shut down, so you likely don't need to call it.
          * @param io_priority the I/O priority of the request
-         * @param cancellable optional `GCancellable` object
+         * @param cancellable optional {@link Gio.Cancellable} object
          */
         store_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
@@ -5801,7 +6246,7 @@ export namespace Gdk {
          * [GtkApplication](../gtk4/class.Application.html)
          * is shut down, so you likely don't need to call it.
          * @param io_priority the I/O priority of the request
-         * @param cancellable optional `GCancellable` object
+         * @param cancellable optional {@link Gio.Cancellable} object
          * @param callback callback to call when the request is satisfied
          */
         store_async(
@@ -5823,7 +6268,7 @@ export namespace Gdk {
          * [GtkApplication](../gtk4/class.Application.html)
          * is shut down, so you likely don't need to call it.
          * @param io_priority the I/O priority of the request
-         * @param cancellable optional `GCancellable` object
+         * @param cancellable optional {@link Gio.Cancellable} object
          * @param callback callback to call when the request is satisfied
          */
         store_async(
@@ -5834,9 +6279,9 @@ export namespace Gdk {
         /**
          * Finishes an asynchronous clipboard store.
          *
-         * See [method`Gdk`.Clipboard.store_async].
-         * @param result a `GAsyncResult`
-         * @returns %TRUE if storing was successful.
+         * See {@link Gdk.Clipboard.store_async}.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns `true` if storing was successful.
          */
         store_finish(result: Gio.AsyncResult): boolean;
     }
@@ -5853,14 +6298,15 @@ export namespace Gdk {
     /**
      * Deserializes content received via inter-application data transfers.
      *
-     * The `GdkContentDeserializer` transforms serialized content that is
+     * The {@link Gdk.ContentDeserializer} transforms serialized content that is
      * identified by a mime type into an object identified by a GType.
      *
      * GTK provides serializers and deserializers for common data types
      * such as text, colors, images or file lists. To register your own
-     * deserialization functions, use [func`content_register_deserializer]`.
+     * deserialization functions, use {@link content_register_deserializer}.
      *
-     * Also see [class`Gdk`.ContentSerializer].
+     * Also see {@link Gdk.ContentSerializer}.
+     * @gir-type Class
      */
     class ContentDeserializer extends GObject.Object implements Gio.AsyncResult {
         static $gtype: GObject.GType<ContentDeserializer>;
@@ -5882,16 +6328,19 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ContentDeserializer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ContentDeserializer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ContentDeserializer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ContentDeserializer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ContentDeserializer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ContentDeserializer.SignalSignatures[K]> extends [any, ...infer Q]
@@ -5905,19 +6354,19 @@ export namespace Gdk {
         /**
          * Gets the cancellable for the current operation.
          *
-         * This is the `GCancellable` that was passed to [func`Gdk`.content_deserialize_async].
+         * This is the {@link Gio.Cancellable} that was passed to {@link Gdk.content_deserialize_async}.
          * @returns the cancellable for the current operation
          */
         get_cancellable(): Gio.Cancellable | null;
         /**
-         * Gets the `GType` to create an instance of.
-         * @returns the `GType` for the current operation
+         * Gets the {@link GObject.GType} to create an instance of.
+         * @returns the {@link GObject.GType} for the current operation
          */
         get_gtype(): GObject.GType;
         /**
          * Gets the input stream for the current operation.
          *
-         * This is the stream that was passed to [func`Gdk`.content_deserialize_async].
+         * This is the stream that was passed to {@link Gdk.content_deserialize_async}.
          * @returns the input stream for the current operation
          */
         get_input_stream(): Gio.InputStream;
@@ -5929,15 +6378,15 @@ export namespace Gdk {
         /**
          * Gets the I/O priority for the current operation.
          *
-         * This is the priority that was passed to [func`Gdk`.content_deserialize_async].
+         * This is the priority that was passed to {@link Gdk.content_deserialize_async}.
          * @returns the I/O priority for the current operation
          */
         get_priority(): number;
         /**
          * Gets the data that was associated with the current operation.
          *
-         * See [method`Gdk`.ContentDeserializer.set_task_data].
-         * @returns the task data for @deserializer
+         * See {@link Gdk.ContentDeserializer.set_task_data}.
+         * @returns the task data for `deserializer`
          */
         get_task_data(): any | null;
         /**
@@ -5946,15 +6395,15 @@ export namespace Gdk {
          */
         get_user_data(): any | null;
         /**
-         * Gets the `GValue` to store the deserialized object in.
-         * @returns the `GValue` for the current operation
+         * Gets the {@link GObject.Value} to store the deserialized object in.
+         * @returns the {@link GObject.Value} for the current operation
          */
         get_value(): unknown;
         /**
          * Indicate that the deserialization has ended with an error.
          *
          * This function consumes `error`.
-         * @param error a `GError`
+         * @param error a {@link GLib.Error}
          */
         return_error(error: GLib.Error): void;
         /**
@@ -5966,46 +6415,47 @@ export namespace Gdk {
          * @param data data to associate with this operation
          */
         set_task_data(data?: any | null): void;
-
-        // Inherited methods
         /**
-         * Gets the source object from a [iface`Gio`.AsyncResult].
-         * @returns a new reference to the source    object for the @res, or `NULL` if there is none.
+         * Gets the source object from a {@link Gio.AsyncResult}.
+         * @returns a new reference to the source    object for the `res`, or `NULL` if there is none.
          */
         get_source_object<T = GObject.Object>(): T;
         /**
          * Checks if `res` has the given `source_tag` (generally a function
          * pointer indicating the function `res` was created by).
          * @param source_tag an application-defined tag
-         * @returns `TRUE` if @res has the indicated @source_tag, `FALSE` if   not.
+         * @returns `TRUE` if `res` has the indicated `source_tag`, `FALSE` if   not.
          */
         is_tagged(source_tag?: any | null): boolean;
         /**
-         * If `res` is a [class`Gio`.SimpleAsyncResult], this is equivalent to
-         * [method`Gio`.SimpleAsyncResult.propagate_error]. Otherwise it returns
+         * If `res` is a {@link Gio.SimpleAsyncResult}, this is equivalent to
+         * {@link Gio.SimpleAsyncResult.propagate_error}. Otherwise it returns
          * `FALSE`.
          *
          * This can be used for legacy error handling in async `*_finish()`
-         * wrapper functions that traditionally handled [class`Gio`.SimpleAsyncResult]
+         * wrapper functions that traditionally handled {@link Gio.SimpleAsyncResult}
          * error returns themselves rather than calling into the virtual method.
-         * This should not be used in new code; [iface`Gio`.AsyncResult] errors that are
+         * This should not be used in new code; {@link Gio.AsyncResult} errors that are
          * set by virtual methods should also be extracted by virtual methods,
          * to enable subclasses to chain up correctly.
-         * @returns `TRUE` if @error is has been filled in with an error from   @res, `FALSE` if not.
+         * @returns `TRUE` if `error` is has been filled in with an error from   `res`, `FALSE` if not.
          */
         legacy_propagate_error(): boolean;
         /**
-         * Gets the source object from a [iface`Gio`.AsyncResult].
+         * Gets the source object from a {@link Gio.AsyncResult}.
+         * @virtual
          */
         vfunc_get_source_object<T = GObject.Object>(): T;
         /**
-         * Gets the user data from a [iface`Gio`.AsyncResult].
+         * Gets the user data from a {@link Gio.AsyncResult}.
+         * @virtual
          */
         vfunc_get_user_data(): any | null;
         /**
          * Checks if `res` has the given `source_tag` (generally a function
          * pointer indicating the function `res` was created by).
          * @param source_tag an application-defined tag
+         * @virtual
          */
         vfunc_is_tagged(source_tag?: any | null): boolean;
         /**
@@ -6021,32 +6471,32 @@ export namespace Gdk {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -6055,39 +6505,39 @@ export namespace Gdk {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -6098,13 +6548,16 @@ export namespace Gdk {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](https://docs.gtk.org/gdk4/floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -6112,7 +6565,7 @@ export namespace Gdk {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -6120,9 +6573,9 @@ export namespace Gdk {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -6142,9 +6595,9 @@ export namespace Gdk {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -6157,34 +6610,34 @@ export namespace Gdk {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](https://docs.gtk.org/gdk4/floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -6217,22 +6670,22 @@ export namespace Gdk {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](https://docs.gtk.org/gdk4/floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -6241,8 +6694,8 @@ export namespace Gdk {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -6259,10 +6712,10 @@ export namespace Gdk {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -6277,13 +6730,13 @@ export namespace Gdk {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -6314,21 +6767,21 @@ export namespace Gdk {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -6338,33 +6791,34 @@ export namespace Gdk {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -6373,6 +6827,7 @@ export namespace Gdk {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -6381,12 +6836,14 @@ export namespace Gdk {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -6395,20 +6852,22 @@ export namespace Gdk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -6420,6 +6879,7 @@ export namespace Gdk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -6452,6 +6912,11 @@ export namespace Gdk {
     namespace ContentProvider {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted whenever the content provided by this provider has changed.
+             * @signal
+             * @run-last
+             */
             'content-changed': () => void;
             'notify::formats': (pspec: GObject.ParamSpec) => void;
             'notify::storable-formats': (pspec: GObject.ParamSpec) => void;
@@ -6470,12 +6935,13 @@ export namespace Gdk {
      * Provides content for the clipboard or for drag-and-drop operations
      * in a number of formats.
      *
-     * To create a `GdkContentProvider`, use [ctor`Gdk`.ContentProvider.new_for_value]
-     * or [ctor`Gdk`.ContentProvider.new_for_bytes].
+     * To create a {@link Gdk.ContentProvider}, use {@link Gdk.ContentProvider.new_for_value}
+     * or {@link Gdk.ContentProvider.new_for_bytes}.
      *
      * GDK knows how to handle common text and image formats out-of-the-box. See
-     * [class`Gdk`.ContentSerializer] and [class`Gdk`.ContentDeserializer] if you want
+     * {@link Gdk.ContentSerializer} and {@link Gdk.ContentDeserializer} if you want
      * to add support for application-specific data formats.
+     * @gir-type Class
      */
     class ContentProvider extends GObject.Object {
         static $gtype: GObject.GType<ContentProvider>;
@@ -6484,14 +6950,17 @@ export namespace Gdk {
 
         /**
          * The possible formats that the provider can provide its data in.
+         * @read-only
          */
         get formats(): ContentFormats;
         /**
          * The subset of formats that clipboard managers should store this provider's data in.
+         * @read-only
          */
         get storable_formats(): ContentFormats;
         /**
          * The subset of formats that clipboard managers should store this provider's data in.
+         * @read-only
          */
         get storableFormats(): ContentFormats;
 
@@ -6518,16 +6987,19 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ContentProvider.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ContentProvider.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ContentProvider.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ContentProvider.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ContentProvider.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ContentProvider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6536,24 +7008,35 @@ export namespace Gdk {
 
         // Virtual methods
 
+        /**
+         * @param clipboard
+         * @virtual
+         */
         vfunc_attach_clipboard(clipboard: Clipboard): void;
         /**
          * Emits the ::content-changed signal.
+         * @virtual
          */
         vfunc_content_changed(): void;
+        /**
+         * @param clipboard
+         * @virtual
+         */
         vfunc_detach_clipboard(clipboard: Clipboard): void;
         /**
          * Gets the contents of `provider` stored in `value`.
          *
-         * The `value` will have been initialized to the `GType` the value should be
-         * provided in. This given `GType` does not need to be listed in the formats
-         * returned by [method`Gdk`.ContentProvider.ref_formats]. However, if the
-         * given `GType` is not supported, this operation can fail and
+         * The `value` will have been initialized to the {@link GObject.GType} the value should be
+         * provided in. This given {@link GObject.GType} does not need to be listed in the formats
+         * returned by {@link Gdk.ContentProvider.ref_formats}. However, if the
+         * given {@link GObject.GType} is not supported, this operation can fail and
          * `G_IO_ERROR_NOT_SUPPORTED` will be reported.
+         * @virtual
          */
         vfunc_get_value(): [boolean, unknown];
         /**
          * Gets the formats that the provider can provide its current contents in.
+         * @virtual
          */
         vfunc_ref_formats(): ContentFormats;
         /**
@@ -6562,7 +7045,8 @@ export namespace Gdk {
          *
          * An example of such an application would be a clipboard manager.
          *
-         * This can be assumed to be a subset of [method`Gdk`.ContentProvider.ref_formats].
+         * This can be assumed to be a subset of {@link Gdk.ContentProvider.ref_formats}.
+         * @virtual
          */
         vfunc_ref_storable_formats(): ContentFormats;
         /**
@@ -6570,15 +7054,16 @@ export namespace Gdk {
          * `mime_type`.
          *
          * The given mime type does not need to be listed in the formats returned by
-         * [method`Gdk`.ContentProvider.ref_formats]. However, if the given `GType` is
+         * {@link Gdk.ContentProvider.ref_formats}. However, if the given {@link GObject.GType} is
          * not supported, `G_IO_ERROR_NOT_SUPPORTED` will be reported.
          *
          * The given `stream` will not be closed.
          * @param mime_type the mime type to provide the data in
-         * @param stream the `GOutputStream` to write to
+         * @param stream the {@link Gio.OutputStream} to write to
          * @param io_priority I/O priority of the request.
-         * @param cancellable optional `GCancellable` object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback callback to call when the request is satisfied
+         * @virtual
          */
         vfunc_write_mime_type_async(
             mime_type: string,
@@ -6590,8 +7075,9 @@ export namespace Gdk {
         /**
          * Finishes an asynchronous write operation.
          *
-         * See [method`Gdk`.ContentProvider.write_mime_type_async].
-         * @param result a `GAsyncResult`
+         * See {@link Gdk.ContentProvider.write_mime_type_async}.
+         * @param result a {@link Gio.AsyncResult}
+         * @virtual
          */
         vfunc_write_mime_type_finish(result: Gio.AsyncResult): boolean;
 
@@ -6604,12 +7090,12 @@ export namespace Gdk {
         /**
          * Gets the contents of `provider` stored in `value`.
          *
-         * The `value` will have been initialized to the `GType` the value should be
-         * provided in. This given `GType` does not need to be listed in the formats
-         * returned by [method`Gdk`.ContentProvider.ref_formats]. However, if the
-         * given `GType` is not supported, this operation can fail and
+         * The `value` will have been initialized to the {@link GObject.GType} the value should be
+         * provided in. This given {@link GObject.GType} does not need to be listed in the formats
+         * returned by {@link Gdk.ContentProvider.ref_formats}. However, if the
+         * given {@link GObject.GType} is not supported, this operation can fail and
          * `G_IO_ERROR_NOT_SUPPORTED` will be reported.
-         * @returns %TRUE if the value was set successfully. Otherwise   @error will be set to describe the failure.
+         * @returns `true` if the value was set successfully. Otherwise   `error` will be set to describe the failure.
          */
         get_value(): [boolean, unknown];
         /**
@@ -6623,7 +7109,7 @@ export namespace Gdk {
          *
          * An example of such an application would be a clipboard manager.
          *
-         * This can be assumed to be a subset of [method`Gdk`.ContentProvider.ref_formats].
+         * This can be assumed to be a subset of {@link Gdk.ContentProvider.ref_formats}.
          * @returns The storable formats of the provider
          */
         ref_storable_formats(): ContentFormats;
@@ -6632,14 +7118,14 @@ export namespace Gdk {
          * `mime_type`.
          *
          * The given mime type does not need to be listed in the formats returned by
-         * [method`Gdk`.ContentProvider.ref_formats]. However, if the given `GType` is
+         * {@link Gdk.ContentProvider.ref_formats}. However, if the given {@link GObject.GType} is
          * not supported, `G_IO_ERROR_NOT_SUPPORTED` will be reported.
          *
          * The given `stream` will not be closed.
          * @param mime_type the mime type to provide the data in
-         * @param stream the `GOutputStream` to write to
+         * @param stream the {@link Gio.OutputStream} to write to
          * @param io_priority I/O priority of the request.
-         * @param cancellable optional `GCancellable` object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
         write_mime_type_async(
             mime_type: string,
@@ -6652,14 +7138,14 @@ export namespace Gdk {
          * `mime_type`.
          *
          * The given mime type does not need to be listed in the formats returned by
-         * [method`Gdk`.ContentProvider.ref_formats]. However, if the given `GType` is
+         * {@link Gdk.ContentProvider.ref_formats}. However, if the given {@link GObject.GType} is
          * not supported, `G_IO_ERROR_NOT_SUPPORTED` will be reported.
          *
          * The given `stream` will not be closed.
          * @param mime_type the mime type to provide the data in
-         * @param stream the `GOutputStream` to write to
+         * @param stream the {@link Gio.OutputStream} to write to
          * @param io_priority I/O priority of the request.
-         * @param cancellable optional `GCancellable` object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback callback to call when the request is satisfied
          */
         write_mime_type_async(
@@ -6674,14 +7160,14 @@ export namespace Gdk {
          * `mime_type`.
          *
          * The given mime type does not need to be listed in the formats returned by
-         * [method`Gdk`.ContentProvider.ref_formats]. However, if the given `GType` is
+         * {@link Gdk.ContentProvider.ref_formats}. However, if the given {@link GObject.GType} is
          * not supported, `G_IO_ERROR_NOT_SUPPORTED` will be reported.
          *
          * The given `stream` will not be closed.
          * @param mime_type the mime type to provide the data in
-         * @param stream the `GOutputStream` to write to
+         * @param stream the {@link Gio.OutputStream} to write to
          * @param io_priority I/O priority of the request.
-         * @param cancellable optional `GCancellable` object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback callback to call when the request is satisfied
          */
         write_mime_type_async(
@@ -6694,9 +7180,9 @@ export namespace Gdk {
         /**
          * Finishes an asynchronous write operation.
          *
-         * See [method`Gdk`.ContentProvider.write_mime_type_async].
-         * @param result a `GAsyncResult`
-         * @returns %TRUE if the operation was completed successfully. Otherwise   @error will be set to describe the failure.
+         * See {@link Gdk.ContentProvider.write_mime_type_async}.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns `true` if the operation was completed successfully. Otherwise   `error` will be set to describe the failure.
          */
         write_mime_type_finish(result: Gio.AsyncResult): boolean;
     }
@@ -6713,15 +7199,16 @@ export namespace Gdk {
     /**
      * Serializes content for inter-application data transfers.
      *
-     * The `GdkContentSerializer` transforms an object that is identified
+     * The {@link Gdk.ContentSerializer} transforms an object that is identified
      * by a GType into a serialized form (i.e. a byte stream) that is
      * identified by a mime type.
      *
      * GTK provides serializers and deserializers for common data types
      * such as text, colors, images or file lists. To register your own
-     * serialization functions, use [func`Gdk`.content_register_serializer].
+     * serialization functions, use {@link Gdk.content_register_serializer}.
      *
-     * Also see [class`Gdk`.ContentDeserializer].
+     * Also see {@link Gdk.ContentDeserializer}.
+     * @gir-type Class
      */
     class ContentSerializer extends GObject.Object implements Gio.AsyncResult {
         static $gtype: GObject.GType<ContentSerializer>;
@@ -6743,16 +7230,19 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ContentSerializer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ContentSerializer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ContentSerializer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ContentSerializer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ContentSerializer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ContentSerializer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6764,13 +7254,13 @@ export namespace Gdk {
         /**
          * Gets the cancellable for the current operation.
          *
-         * This is the `GCancellable` that was passed to [func`content_serialize_async]`.
+         * This is the {@link Gio.Cancellable} that was passed to {@link content_serialize_async}.
          * @returns the cancellable for the current operation
          */
         get_cancellable(): Gio.Cancellable | null;
         /**
-         * Gets the `GType` to of the object to serialize.
-         * @returns the `GType` for the current operation
+         * Gets the {@link GObject.GType} to of the object to serialize.
+         * @returns the {@link GObject.GType} for the current operation
          */
         get_gtype(): GObject.GType;
         /**
@@ -6781,22 +7271,22 @@ export namespace Gdk {
         /**
          * Gets the output stream for the current operation.
          *
-         * This is the stream that was passed to [func`content_serialize_async]`.
+         * This is the stream that was passed to {@link content_serialize_async}.
          * @returns the output stream for the current operation
          */
         get_output_stream(): Gio.OutputStream;
         /**
          * Gets the I/O priority for the current operation.
          *
-         * This is the priority that was passed to [func`content_serialize_async]`.
+         * This is the priority that was passed to {@link content_serialize_async}.
          * @returns the I/O priority for the current operation
          */
         get_priority(): number;
         /**
          * Gets the data that was associated with the current operation.
          *
-         * See [method`Gdk`.ContentSerializer.set_task_data].
-         * @returns the task data for @serializer
+         * See {@link Gdk.ContentSerializer.set_task_data}.
+         * @returns the task data for `serializer`
          */
         get_task_data(): any | null;
         /**
@@ -6805,15 +7295,15 @@ export namespace Gdk {
          */
         get_user_data(): any | null;
         /**
-         * Gets the `GValue` to read the object to serialize from.
-         * @returns the `GValue` for the current operation
+         * Gets the {@link GObject.Value} to read the object to serialize from.
+         * @returns the {@link GObject.Value} for the current operation
          */
         get_value(): unknown;
         /**
          * Indicate that the serialization has ended with an error.
          *
          * This function consumes `error`.
-         * @param error a `GError`
+         * @param error a {@link GLib.Error}
          */
         return_error(error: GLib.Error): void;
         /**
@@ -6825,46 +7315,47 @@ export namespace Gdk {
          * @param data data to associate with this operation
          */
         set_task_data(data?: any | null): void;
-
-        // Inherited methods
         /**
-         * Gets the source object from a [iface`Gio`.AsyncResult].
-         * @returns a new reference to the source    object for the @res, or `NULL` if there is none.
+         * Gets the source object from a {@link Gio.AsyncResult}.
+         * @returns a new reference to the source    object for the `res`, or `NULL` if there is none.
          */
         get_source_object<T = GObject.Object>(): T;
         /**
          * Checks if `res` has the given `source_tag` (generally a function
          * pointer indicating the function `res` was created by).
          * @param source_tag an application-defined tag
-         * @returns `TRUE` if @res has the indicated @source_tag, `FALSE` if   not.
+         * @returns `TRUE` if `res` has the indicated `source_tag`, `FALSE` if   not.
          */
         is_tagged(source_tag?: any | null): boolean;
         /**
-         * If `res` is a [class`Gio`.SimpleAsyncResult], this is equivalent to
-         * [method`Gio`.SimpleAsyncResult.propagate_error]. Otherwise it returns
+         * If `res` is a {@link Gio.SimpleAsyncResult}, this is equivalent to
+         * {@link Gio.SimpleAsyncResult.propagate_error}. Otherwise it returns
          * `FALSE`.
          *
          * This can be used for legacy error handling in async `*_finish()`
-         * wrapper functions that traditionally handled [class`Gio`.SimpleAsyncResult]
+         * wrapper functions that traditionally handled {@link Gio.SimpleAsyncResult}
          * error returns themselves rather than calling into the virtual method.
-         * This should not be used in new code; [iface`Gio`.AsyncResult] errors that are
+         * This should not be used in new code; {@link Gio.AsyncResult} errors that are
          * set by virtual methods should also be extracted by virtual methods,
          * to enable subclasses to chain up correctly.
-         * @returns `TRUE` if @error is has been filled in with an error from   @res, `FALSE` if not.
+         * @returns `TRUE` if `error` is has been filled in with an error from   `res`, `FALSE` if not.
          */
         legacy_propagate_error(): boolean;
         /**
-         * Gets the source object from a [iface`Gio`.AsyncResult].
+         * Gets the source object from a {@link Gio.AsyncResult}.
+         * @virtual
          */
         vfunc_get_source_object<T = GObject.Object>(): T;
         /**
-         * Gets the user data from a [iface`Gio`.AsyncResult].
+         * Gets the user data from a {@link Gio.AsyncResult}.
+         * @virtual
          */
         vfunc_get_user_data(): any | null;
         /**
          * Checks if `res` has the given `source_tag` (generally a function
          * pointer indicating the function `res` was created by).
          * @param source_tag an application-defined tag
+         * @virtual
          */
         vfunc_is_tagged(source_tag?: any | null): boolean;
         /**
@@ -6880,32 +7371,32 @@ export namespace Gdk {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -6914,39 +7405,39 @@ export namespace Gdk {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -6957,13 +7448,16 @@ export namespace Gdk {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](https://docs.gtk.org/gdk4/floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -6971,7 +7465,7 @@ export namespace Gdk {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -6979,9 +7473,9 @@ export namespace Gdk {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -7001,9 +7495,9 @@ export namespace Gdk {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -7016,34 +7510,34 @@ export namespace Gdk {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](https://docs.gtk.org/gdk4/floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -7076,22 +7570,22 @@ export namespace Gdk {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](https://docs.gtk.org/gdk4/floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -7100,8 +7594,8 @@ export namespace Gdk {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -7118,10 +7612,10 @@ export namespace Gdk {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -7136,13 +7630,13 @@ export namespace Gdk {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -7173,21 +7667,21 @@ export namespace Gdk {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -7197,33 +7691,34 @@ export namespace Gdk {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -7232,6 +7727,7 @@ export namespace Gdk {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -7240,12 +7736,14 @@ export namespace Gdk {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -7254,20 +7752,22 @@ export namespace Gdk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -7279,6 +7779,7 @@ export namespace Gdk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -7315,6 +7816,7 @@ export namespace Gdk {
 
     /**
      * An event caused by a pointing device moving between surfaces.
+     * @gir-type Class
      */
     class CrossingEvent extends Event {
         static $gtype: GObject.GType<CrossingEvent>;
@@ -7325,16 +7827,19 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CrossingEvent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CrossingEvent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CrossingEvent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CrossingEvent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CrossingEvent.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CrossingEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7345,17 +7850,17 @@ export namespace Gdk {
 
         /**
          * Extracts the notify detail from a crossing event.
-         * @returns the notify detail of @event
+         * @returns the notify detail of `event`
          */
         get_detail(): NotifyType;
         /**
          * Checks if the `event` surface is the focus surface.
-         * @returns %TRUE if the surface is the focus surface
+         * @returns `true` if the surface is the focus surface
          */
         get_focus(): boolean;
         /**
          * Extracts the crossing mode from a crossing event.
-         * @returns the mode of @event
+         * @returns the mode of `event`
          */
         get_mode(): CrossingMode;
     }
@@ -7391,33 +7896,34 @@ export namespace Gdk {
      * something about it.
      *
      * Cursors by themselves are not very interesting: they must be bound to a
-     * window for users to see them. This is done with [method`Gdk`.Surface.set_cursor]
-     * or [method`Gdk`.Surface.set_device_cursor]. Applications will typically
+     * window for users to see them. This is done with {@link Gdk.Surface.set_cursor}
+     * or {@link Gdk.Surface.set_device_cursor}. Applications will typically
      * use higher-level GTK functions such as [gtk_widget_set_cursor()](../gtk4/method.Widget.set_cursor.html)
      * instead.
      *
-     * Cursors are not bound to a given [class`Gdk`.Display], so they can be shared.
+     * Cursors are not bound to a given {@link Gdk.Display}, so they can be shared.
      * However, the appearance of cursors may vary when used on different
      * platforms.
      *
      * ## Named and texture cursors
      *
      * There are multiple ways to create cursors. The platform's own cursors
-     * can be created with [ctor`Gdk`.Cursor.new_from_name]. That function lists
+     * can be created with {@link Gdk.Cursor.new_from_name}. That function lists
      * the commonly available names that are shared with the CSS specification.
      * Other names may be available, depending on the platform in use. On some
      * platforms, what images are used for named cursors may be influenced by
      * the cursor theme.
      *
-     * Another option to create a cursor is to use [ctor`Gdk`.Cursor.new_from_texture]
+     * Another option to create a cursor is to use {@link Gdk.Cursor.new_from_texture}
      * and provide an image to use for the cursor.
      *
      * To ease work with unsupported cursors, a fallback cursor can be provided.
-     * If a [class`Gdk`.Surface] cannot use a cursor because of the reasons mentioned
+     * If a {@link Gdk.Surface} cannot use a cursor because of the reasons mentioned
      * above, it will try the fallback cursor. Fallback cursors can themselves have
      * fallback cursors again, so it is possible to provide a chain of progressively
      * easier to support cursors. If none of the provided cursors can be supported,
      * the default cursor will be the ultimate fallback.
+     * @gir-type Class
      */
     class Cursor extends GObject.Object {
         static $gtype: GObject.GType<Cursor>;
@@ -7426,34 +7932,41 @@ export namespace Gdk {
 
         /**
          * Cursor to fall back to if this cursor cannot be displayed.
+         * @construct-only
          */
         get fallback(): Cursor;
         /**
          * X position of the cursor hotspot in the cursor image.
+         * @construct-only
          */
         get hotspot_x(): number;
         /**
          * X position of the cursor hotspot in the cursor image.
+         * @construct-only
          */
         get hotspotX(): number;
         /**
          * Y position of the cursor hotspot in the cursor image.
+         * @construct-only
          */
         get hotspot_y(): number;
         /**
          * Y position of the cursor hotspot in the cursor image.
+         * @construct-only
          */
         get hotspotY(): number;
         /**
          * Name of this this cursor.
          *
-         * The name will be %NULL if the cursor was created from a texture.
+         * The name will be `null` if the cursor was created from a texture.
+         * @construct-only
          */
         get name(): string;
         /**
          * The texture displayed by this cursor.
          *
-         * The texture will be %NULL if the cursor was created from a name.
+         * The texture will be `null` if the cursor was created from a name.
+         * @construct-only
          */
         get texture(): Texture;
 
@@ -7485,16 +7998,19 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Cursor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Cursor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Cursor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Cursor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Cursor.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Cursor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7507,11 +8023,11 @@ export namespace Gdk {
          * Returns the fallback for this `cursor`.
          *
          * The fallback will be used if this cursor is not available on a given
-         * `GdkDisplay`. For named cursors, this can happen when using nonstandard
+         * {@link Gdk.Display}. For named cursors, this can happen when using nonstandard
          * names or when using an incomplete cursor theme. For textured cursors,
-         * this can happen when the texture is too large or when the `GdkDisplay`
+         * this can happen when the texture is too large or when the {@link Gdk.Display}
          * it is used on does not support textured cursors.
-         * @returns the fallback of the cursor or %NULL   to use the default cursor as fallback
+         * @returns the fallback of the cursor or `null`   to use the default cursor as fallback
          */
         get_fallback(): Cursor | null;
         /**
@@ -7521,7 +8037,7 @@ export namespace Gdk {
          *
          * Note that named cursors may have a nonzero hotspot, but this function
          * will only return the hotspot position for cursors created with
-         * [ctor`Gdk`.Cursor.new_from_texture].
+         * {@link Gdk.Cursor.new_from_texture}.
          * @returns the horizontal offset of the hotspot or 0 for named cursors
          */
         get_hotspot_x(): number;
@@ -7532,22 +8048,22 @@ export namespace Gdk {
          *
          * Note that named cursors may have a nonzero hotspot, but this function
          * will only return the hotspot position for cursors created with
-         * [ctor`Gdk`.Cursor.new_from_texture].
+         * {@link Gdk.Cursor.new_from_texture}.
          * @returns the vertical offset of the hotspot or 0 for named cursors
          */
         get_hotspot_y(): number;
         /**
          * Returns the name of the cursor.
          *
-         * If the cursor is not a named cursor, %NULL will be returned.
-         * @returns the name of the cursor or %NULL   if it is not a named cursor
+         * If the cursor is not a named cursor, `null` will be returned.
+         * @returns the name of the cursor or `null`   if it is not a named cursor
          */
         get_name(): string | null;
         /**
          * Returns the texture for the cursor.
          *
-         * If the cursor is a named cursor, %NULL will be returned.
-         * @returns the texture for cursor or %NULL   if it is a named cursor
+         * If the cursor is a named cursor, `null` will be returned.
+         * @returns the texture for cursor or `null`   if it is a named cursor
          */
         get_texture(): Texture | null;
     }
@@ -7559,6 +8075,7 @@ export namespace Gdk {
 
     /**
      * An event related to drag and drop operations.
+     * @gir-type Class
      */
     class DNDEvent extends Event {
         static $gtype: GObject.GType<DNDEvent>;
@@ -7569,16 +8086,19 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DNDEvent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DNDEvent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DNDEvent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DNDEvent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DNDEvent.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DNDEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7588,7 +8108,7 @@ export namespace Gdk {
         // Methods
 
         /**
-         * Gets the `GdkDrop` object from a DND event.
+         * Gets the {@link Gdk.Drop} object from a DND event.
          * @returns the drop
          */
         get_drop(): Drop | null;
@@ -7601,6 +8121,7 @@ export namespace Gdk {
 
     /**
      * An event related to closing a top-level surface.
+     * @gir-type Class
      */
     class DeleteEvent extends Event {
         static $gtype: GObject.GType<DeleteEvent>;
@@ -7611,16 +8132,19 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DeleteEvent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DeleteEvent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DeleteEvent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DeleteEvent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DeleteEvent.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DeleteEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7631,7 +8155,23 @@ export namespace Gdk {
     namespace Device {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted either when the number of either axes or keys changes.
+             *
+             * On X11 this will normally happen when the physical device
+             * routing events through the logical device changes (for
+             * example, user switches from the USB mouse to a tablet); in
+             * that case the logical device will change to reflect the axes
+             * and keys on the new physical device.
+             * @signal
+             * @run-last
+             */
             changed: () => void;
+            /**
+             * Emitted on pen/eraser devices whenever tools enter or leave proximity.
+             * @signal
+             * @run-last
+             */
             'tool-changed': (arg0: DeviceTool) => void;
             'notify::active-layout-index': (pspec: GObject.ParamSpec) => void;
             'notify::caps-lock-state': (pspec: GObject.ParamSpec) => void;
@@ -7692,8 +8232,9 @@ export namespace Gdk {
     /**
      * Represents an input device, such as a keyboard, mouse or touchpad.
      *
-     * See the [class`Gdk`.Seat] documentation for more information
+     * See the {@link Gdk.Seat} documentation for more information
      * about the various kinds of devices, and their relationships.
+     * @gir-type Class
      */
     abstract class Device extends GObject.Object {
         static $gtype: GObject.GType<Device>;
@@ -7701,109 +8242,132 @@ export namespace Gdk {
         // Properties
 
         /**
-         * The index of the keyboard active layout of a `GdkDevice`.
+         * The index of the keyboard active layout of a {@link Gdk.Device}.
          *
          * Will be -1 if there is no valid active layout.
          *
          * This is only relevant for keyboard devices.
+         * @since 4.18
+         * @read-only
          */
         get active_layout_index(): number;
         /**
-         * The index of the keyboard active layout of a `GdkDevice`.
+         * The index of the keyboard active layout of a {@link Gdk.Device}.
          *
          * Will be -1 if there is no valid active layout.
          *
          * This is only relevant for keyboard devices.
+         * @since 4.18
+         * @read-only
          */
         get activeLayoutIndex(): number;
         /**
          * Whether Caps Lock is on.
          *
          * This is only relevant for keyboard devices.
+         * @read-only
          */
         get caps_lock_state(): boolean;
         /**
          * Whether Caps Lock is on.
          *
          * This is only relevant for keyboard devices.
+         * @read-only
          */
         get capsLockState(): boolean;
         /**
          * The direction of the current layout.
          *
          * This is only relevant for keyboard devices.
+         * @read-only
          */
         get direction(): Pango.Direction;
         /**
-         * The `GdkDisplay` the `GdkDevice` pertains to.
+         * The {@link Gdk.Display} the {@link Gdk.Device} pertains to.
+         * @construct-only
          */
         get display(): Display;
         /**
          * Whether the device has both right-to-left and left-to-right layouts.
          *
          * This is only relevant for keyboard devices.
+         * @read-only
          */
         get has_bidi_layouts(): boolean;
         /**
          * Whether the device has both right-to-left and left-to-right layouts.
          *
          * This is only relevant for keyboard devices.
+         * @read-only
          */
         get hasBidiLayouts(): boolean;
         /**
          * Whether the device is represented by a cursor on the screen.
+         * @construct-only
          */
         get has_cursor(): boolean;
         /**
          * Whether the device is represented by a cursor on the screen.
+         * @construct-only
          */
         get hasCursor(): boolean;
         /**
-         * The names of the keyboard layouts of a `GdkDevice`.
+         * The names of the keyboard layouts of a {@link Gdk.Device}.
          *
          * This is only relevant for keyboard devices.
+         * @since 4.18
+         * @read-only
          */
         get layout_names(): string[];
         /**
-         * The names of the keyboard layouts of a `GdkDevice`.
+         * The names of the keyboard layouts of a {@link Gdk.Device}.
          *
          * This is only relevant for keyboard devices.
+         * @since 4.18
+         * @read-only
          */
         get layoutNames(): string[];
         /**
          * The current modifier state of the device.
          *
          * This is only relevant for keyboard devices.
+         * @read-only
          */
         get modifier_state(): ModifierType;
         /**
          * The current modifier state of the device.
          *
          * This is only relevant for keyboard devices.
+         * @read-only
          */
         get modifierState(): ModifierType;
         /**
          * Number of axes in the device.
+         * @read-only
          */
         get n_axes(): number;
         /**
          * Number of axes in the device.
+         * @read-only
          */
         get nAxes(): number;
         /**
          * The device name.
+         * @construct-only
          */
         get name(): string;
         /**
          * Whether Num Lock is on.
          *
          * This is only relevant for keyboard devices.
+         * @read-only
          */
         get num_lock_state(): boolean;
         /**
          * Whether Num Lock is on.
          *
          * This is only relevant for keyboard devices.
+         * @read-only
          */
         get numLockState(): boolean;
         /**
@@ -7811,6 +8375,7 @@ export namespace Gdk {
          *
          * Will be 0 if the device is not a touch device or if the number
          * of touches is unknown.
+         * @construct-only
          */
         get num_touches(): number;
         /**
@@ -7818,55 +8383,64 @@ export namespace Gdk {
          *
          * Will be 0 if the device is not a touch device or if the number
          * of touches is unknown.
+         * @construct-only
          */
         get numTouches(): number;
         /**
          * Product ID of this device.
          *
-         * See [method`Gdk`.Device.get_product_id].
+         * See {@link Gdk.Device.get_product_id}.
+         * @construct-only
          */
         get product_id(): string;
         /**
          * Product ID of this device.
          *
-         * See [method`Gdk`.Device.get_product_id].
+         * See {@link Gdk.Device.get_product_id}.
+         * @construct-only
          */
         get productId(): string;
         /**
          * Whether Scroll Lock is on.
          *
          * This is only relevant for keyboard devices.
+         * @read-only
          */
         get scroll_lock_state(): boolean;
         /**
          * Whether Scroll Lock is on.
          *
          * This is only relevant for keyboard devices.
+         * @read-only
          */
         get scrollLockState(): boolean;
         /**
-         * `GdkSeat` of this device.
+         * {@link Gdk.Seat} of this device.
          */
         get seat(): Seat;
         set seat(val: Seat);
         /**
          * Source type for the device.
+         * @construct-only
          */
         get source(): InputSource;
         /**
-         * The `GdkDeviceTool` that is currently used with this device.
+         * The {@link Gdk.DeviceTool} that is currently used with this device.
+         * @read-only
          */
         get tool(): DeviceTool;
         /**
          * Vendor ID of this device.
          *
-         * See [method`Gdk`.Device.get_vendor_id].
+         * See {@link Gdk.Device.get_vendor_id}.
+         * @construct-only
          */
         get vendor_id(): string;
         /**
          * Vendor ID of this device.
          *
-         * See [method`Gdk`.Device.get_vendor_id].
+         * See {@link Gdk.Device.get_vendor_id}.
+         * @construct-only
          */
         get vendorId(): string;
 
@@ -7887,16 +8461,19 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Device.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Device.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Device.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Device.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7908,7 +8485,7 @@ export namespace Gdk {
         /**
          * Retrieves the index of the active layout of the keyboard.
          *
-         * If there is no valid active layout for the `GdkDevice`, this function will
+         * If there is no valid active layout for the {@link Gdk.Device}, this function will
          * return -1;
          *
          * This is only relevant for keyboard devices.
@@ -7919,12 +8496,12 @@ export namespace Gdk {
          * Retrieves whether the Caps Lock modifier of the keyboard is locked.
          *
          * This is only relevant for keyboard devices.
-         * @returns %TRUE if Caps Lock is on for @device
+         * @returns `true` if Caps Lock is on for `device`
          */
         get_caps_lock_state(): boolean;
         /**
          * Retrieves the current tool for `device`.
-         * @returns the `GdkDeviceTool`
+         * @returns the {@link Gdk.DeviceTool}
          */
         get_device_tool(): DeviceTool | null;
         /**
@@ -7933,13 +8510,13 @@ export namespace Gdk {
          * This is only relevant for keyboard devices.
          *
          * The direction of a layout is the direction of the majority
-         * of its symbols. See [func`Pango`.unichar_direction].
-         * @returns %PANGO_DIRECTION_LTR or %PANGO_DIRECTION_RTL   if it can determine the direction. %PANGO_DIRECTION_NEUTRAL   otherwise
+         * of its symbols. See {@link Pango.unichar_direction}.
+         * @returns {@link Pango.Direction.LTR} or {@link Pango.Direction.RTL}   if it can determine the direction. {@link Pango.Direction.NEUTRAL}   otherwise
          */
         get_direction(): Pango.Direction;
         /**
-         * Returns the `GdkDisplay` to which `device` pertains.
-         * @returns a `GdkDisplay`
+         * Returns the {@link Gdk.Display} to which `device` pertains.
+         * @returns a {@link Gdk.Display}
          */
         get_display(): Display;
         /**
@@ -7947,14 +8524,14 @@ export namespace Gdk {
          *
          * This is not meaningful for keyboard devices, which
          * don't have a pointer.
-         * @returns %TRUE if the pointer follows device motion
+         * @returns `true` if the pointer follows device motion
          */
         get_has_cursor(): boolean;
         /**
          * Retrieves the names of the layouts of the keyboard.
          *
          * This is only relevant for keyboard devices.
-         * @returns %NULL-terminated array of strings of layouts,
+         * @returns `null`-terminated array of strings of layouts,
          */
         get_layout_names(): string[] | null;
         /**
@@ -7973,7 +8550,7 @@ export namespace Gdk {
          * Retrieves whether the Num Lock modifier of the keyboard is locked.
          *
          * This is only relevant for keyboard devices.
-         * @returns %TRUE if Num Lock is on for @device
+         * @returns `true` if Num Lock is on for `device`
          */
         get_num_lock_state(): boolean;
         /**
@@ -7985,7 +8562,7 @@ export namespace Gdk {
          * Returns the product ID of this device.
          *
          * This ID is retrieved from the device, and does not change.
-         * See [method`Gdk`.Device.get_vendor_id] for more information.
+         * See {@link Gdk.Device.get_vendor_id} for more information.
          * @returns the product ID
          */
         get_product_id(): string | null;
@@ -7993,26 +8570,26 @@ export namespace Gdk {
          * Retrieves whether the Scroll Lock modifier of the keyboard is locked.
          *
          * This is only relevant for keyboard devices.
-         * @returns %TRUE if Scroll Lock is on for @device
+         * @returns `true` if Scroll Lock is on for `device`
          */
         get_scroll_lock_state(): boolean;
         /**
-         * Returns the `GdkSeat` the device belongs to.
-         * @returns a `GdkSeat`
+         * Returns the {@link Gdk.Seat} the device belongs to.
+         * @returns a {@link Gdk.Seat}
          */
         get_seat(): Seat;
         /**
          * Determines the type of the device.
-         * @returns a `GdkInputSource`
+         * @returns a {@link Gdk.InputSource}
          */
         get_source(): InputSource;
         /**
-         * Obtains the surface underneath `device,` returning the location of the
+         * Obtains the surface underneath `device`, returning the location of the
          * device in `win_x` and `win_y`.
          *
-         * Returns %NULL if the surface tree under `device` is not known to GDK
+         * Returns `null` if the surface tree under `device` is not known to GDK
          * (for example, belongs to another application).
-         * @returns the `GdkSurface` under the   device position
+         * @returns the {@link Gdk.Surface} under the   device position
          */
         get_surface_at_position(): [Surface | null, number, number];
         /**
@@ -8030,8 +8607,8 @@ export namespace Gdk {
          *
          * This ID is retrieved from the device, and does not change.
          *
-         * This function, together with [method`Gdk`.Device.get_product_id],
-         * can be used to eg. compose `GSettings` paths to store settings
+         * This function, together with {@link Gdk.Device.get_product_id},
+         * can be used to eg. compose {@link Gio.Settings} paths to store settings
          * for this device.
          *
          * ```c
@@ -8080,7 +8657,8 @@ export namespace Gdk {
     }
 
     /**
-     * A physical tool associated to a `GdkDevice`.
+     * A physical tool associated to a {@link Gdk.Device}.
+     * @gir-type Class
      */
     class DeviceTool extends GObject.Object {
         static $gtype: GObject.GType<DeviceTool>;
@@ -8089,26 +8667,32 @@ export namespace Gdk {
 
         /**
          * The axes of the tool.
+         * @construct-only
          */
         get axes(): AxisFlags;
         /**
          * The hardware ID of the tool.
+         * @construct-only
          */
         get hardware_id(): number;
         /**
          * The hardware ID of the tool.
+         * @construct-only
          */
         get hardwareId(): number;
         /**
          * The serial number of the tool.
+         * @construct-only
          */
         get serial(): number;
         /**
          * The type of the tool.
+         * @construct-only
          */
         get tool_type(): DeviceToolType;
         /**
          * The type of the tool.
+         * @construct-only
          */
         get toolType(): DeviceToolType;
 
@@ -8129,16 +8713,19 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DeviceTool.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DeviceTool.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DeviceTool.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DeviceTool.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DeviceTool.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DeviceTool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -8149,21 +8736,21 @@ export namespace Gdk {
 
         /**
          * Gets the axes of the tool.
-         * @returns the axes of @tool
+         * @returns the axes of `tool`
          */
         get_axes(): AxisFlags;
         /**
          * Gets the hardware ID of this tool, or 0 if it's not known.
          *
          * When non-zero, the identifier is unique for the given tool model,
-         * meaning that two identical tools will share the same `hardware_id,`
+         * meaning that two identical tools will share the same `hardware_id`,
          * but will have different serial numbers (see
-         * [method`Gdk`.DeviceTool.get_serial]).
+         * {@link Gdk.DeviceTool.get_serial}).
          *
          * This is a more concrete (and device specific) method to identify
-         * a `GdkDeviceTool` than [method`Gdk`.DeviceTool.get_tool_type],
+         * a {@link Gdk.DeviceTool} than {@link Gdk.DeviceTool.get_tool_type},
          * as a tablet may support multiple devices with the same
-         * `GdkDeviceToolType`, but different hardware identifiers.
+         * {@link Gdk.DeviceToolType}, but different hardware identifiers.
          * @returns The hardware identifier of this tool.
          */
         get_hardware_id(): number;
@@ -8176,7 +8763,7 @@ export namespace Gdk {
          */
         get_serial(): number;
         /**
-         * Gets the `GdkDeviceToolType` of the tool.
+         * Gets the {@link Gdk.DeviceToolType} of the tool.
          * @returns The physical type for this tool. This can be used to   figure out what sort of pen is being used, such as an airbrush   or a pencil.
          */
         get_tool_type(): DeviceToolType;
@@ -8185,10 +8772,35 @@ export namespace Gdk {
     namespace Display {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted when the connection to the windowing system for `display` is closed.
+             * @signal
+             * @run-last
+             */
             closed: (arg0: boolean) => void;
+            /**
+             * Emitted when the connection to the windowing system for `display` is opened.
+             * @signal
+             * @run-last
+             */
             opened: () => void;
+            /**
+             * Emitted whenever a new seat is made known to the windowing system.
+             * @signal
+             * @run-last
+             */
             'seat-added': (arg0: Seat) => void;
+            /**
+             * Emitted whenever a seat is removed by the windowing system.
+             * @signal
+             * @run-last
+             */
             'seat-removed': (arg0: Seat) => void;
+            /**
+             * Emitted whenever a setting changes its value.
+             * @signal
+             * @run-last
+             */
             'setting-changed': (arg0: string) => void;
             'notify::composited': (pspec: GObject.ParamSpec) => void;
             'notify::dmabuf-formats': (pspec: GObject.ParamSpec) => void;
@@ -8220,12 +8832,13 @@ export namespace Gdk {
      * - To manage and provide information about output devices (monitors, projectors, etc)
      *
      * Most of the input device handling has been factored out into separate
-     * [class`Gdk`.Seat] objects. Every display has a one or more seats, which
-     * can be accessed with [method`Gdk`.Display.get_default_seat] and
-     * [method`Gdk`.Display.list_seats].
+     * {@link Gdk.Seat} objects. Every display has a one or more seats, which
+     * can be accessed with {@link Gdk.Display.get_default_seat} and
+     * {@link Gdk.Display.list_seats}.
      *
-     * Output devices are represented by [class`Gdk`.Monitor] objects, which can
-     * be accessed with [method`Gdk`.Display.get_monitor_at_surface] and similar APIs.
+     * Output devices are represented by {@link Gdk.Monitor} objects, which can
+     * be accessed with {@link Gdk.Display.get_monitor_at_surface} and similar APIs.
+     * @gir-type Class
      */
     class Display extends GObject.Object {
         static $gtype: GObject.GType<Display>;
@@ -8233,35 +8846,47 @@ export namespace Gdk {
         // Properties
 
         /**
-         * %TRUE if the display properly composites the alpha channel.
+         * `true` if the display properly composites the alpha channel.
+         * @read-only
          */
         get composited(): boolean;
         /**
          * The dma-buf formats that are supported on this display
+         * @since 4.14
+         * @read-only
          */
         get dmabuf_formats(): DmabufFormats;
         /**
          * The dma-buf formats that are supported on this display
+         * @since 4.14
+         * @read-only
          */
         get dmabufFormats(): DmabufFormats;
         /**
-         * %TRUE if the display supports input shapes.
+         * `true` if the display supports input shapes.
+         * @read-only
          */
         get input_shapes(): boolean;
         /**
-         * %TRUE if the display supports input shapes.
+         * `true` if the display supports input shapes.
+         * @read-only
          */
         get inputShapes(): boolean;
         /**
-         * %TRUE if the display supports an alpha channel.
+         * `true` if the display supports an alpha channel.
+         * @read-only
          */
         get rgba(): boolean;
         /**
-         * %TRUE if the display supports extensible frames.
+         * `true` if the display supports extensible frames.
+         * @since 4.14
+         * @read-only
          */
         get shadow_width(): boolean;
         /**
-         * %TRUE if the display supports extensible frames.
+         * `true` if the display supports extensible frames.
+         * @since 4.14
+         * @read-only
          */
         get shadowWidth(): boolean;
 
@@ -8282,16 +8907,19 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Display.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Display.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Display.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Display.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Display.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Display.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -8301,7 +8929,7 @@ export namespace Gdk {
         // Static methods
 
         /**
-         * Gets the default `GdkDisplay`.
+         * Gets the default {@link Gdk.Display}.
          *
          * This is a convenience function for:
          *
@@ -8329,22 +8957,22 @@ export namespace Gdk {
          */
         close(): void;
         /**
-         * Creates a new `GdkGLContext` for the `GdkDisplay`.
+         * Creates a new {@link Gdk.GLContext} for the {@link Gdk.Display}.
          *
          * The context is disconnected from any particular surface or surface
          * and cannot be used to draw to any surface. It can only be used to
          * draw to non-surface framebuffers like textures.
          *
-         * If the creation of the `GdkGLContext` failed, `error` will be set.
-         * Before using the returned `GdkGLContext`, you will need to
-         * call [method`Gdk`.GLContext.make_current] or [method`Gdk`.GLContext.realize].
-         * @returns the newly created `GdkGLContext`
+         * If the creation of the {@link Gdk.GLContext} failed, `error` will be set.
+         * Before using the returned {@link Gdk.GLContext}, you will need to
+         * call {@link Gdk.GLContext.make_current} or {@link Gdk.GLContext.realize}.
+         * @returns the newly created {@link Gdk.GLContext}
          */
         create_gl_context(): GLContext;
         /**
-         * Returns %TRUE if there is an ongoing grab on `device` for `display`.
-         * @param device a `GdkDevice`
-         * @returns %TRUE if there is a grab in effect for @device.
+         * Returns `true` if there is an ongoing grab on `device` for `display`.
+         * @param device a {@link Gdk.Device}
+         * @returns `true` if there is a grab in effect for `device`.
          */
         device_is_grabbed(device: Device): boolean;
         /**
@@ -8361,9 +8989,9 @@ export namespace Gdk {
          */
         flush(): void;
         /**
-         * Returns a `GdkAppLaunchContext` suitable for launching
+         * Returns a {@link Gdk.AppLaunchContext} suitable for launching
          * applications on the given display.
-         * @returns a new `GdkAppLaunchContext` for @display
+         * @returns a new {@link Gdk.AppLaunchContext} for `display`
          */
         get_app_launch_context(): AppLaunchContext;
         /**
@@ -8372,10 +9000,10 @@ export namespace Gdk {
          */
         get_clipboard(): Clipboard;
         /**
-         * Returns the default `GdkSeat` for this display.
+         * Returns the default {@link Gdk.Seat} for this display.
          *
          * Note that a display may not have a seat. In this case,
-         * this function will return %NULL.
+         * this function will return `null`.
          * @returns the default seat.
          */
         get_default_seat(): Seat | null;
@@ -8388,15 +9016,17 @@ export namespace Gdk {
          * The formats returned by this function can be used for negotiating
          * buffer formats with producers such as v4l, pipewire or GStreamer.
          *
-         * To learn more about dma-bufs, see [class`Gdk`.DmabufTextureBuilder].
-         * @returns a `GdkDmabufFormats` object
+         * To learn more about dma-bufs, see {@link Gdk.DmabufTextureBuilder}.
+         *
+         * This function is threadsafe. It can be called from any thread.
+         * @returns a {@link Gdk.DmabufFormats} object
          */
         get_dmabuf_formats(): DmabufFormats;
         /**
          * Gets the monitor in which the largest area of `surface`
          * resides.
-         * @param surface a `GdkSurface`
-         * @returns the monitor with the largest   overlap with @surface
+         * @param surface a {@link Gdk.Surface}
+         * @returns the monitor with the largest   overlap with `surface`
          */
         get_monitor_at_surface(surface: Surface): Monitor | null;
         /**
@@ -8407,7 +9037,7 @@ export namespace Gdk {
          *
          * You can listen to the GListModel::items-changed signal on
          * this list to monitor changes to the monitor of this display.
-         * @returns a `GListModel` of `GdkMonitor`
+         * @returns a {@link Gio.ListModel} of {@link Gdk.Monitor}
          */
         get_monitors(): Gio.ListModel;
         /**
@@ -8428,31 +9058,31 @@ export namespace Gdk {
          * for the `display`.
          * @param name the name of the setting
          * @param value location to store the value of the setting
-         * @returns %TRUE if the setting existed and a value was stored   in @value, %FALSE otherwise
+         * @returns `true` if the setting existed and a value was stored   in `value`, `false` otherwise
          */
         get_setting(name: string, value: GObject.Value | any): boolean;
         /**
-         * Gets the startup notification ID for a Wayland display, or %NULL
+         * Gets the startup notification ID for a Wayland display, or `null`
          * if no ID has been defined.
-         * @returns the startup notification ID for @display
+         * @returns the startup notification ID for `display`
          */
         get_startup_notification_id(): string | null;
         /**
          * Finds out if the display has been closed.
-         * @returns %TRUE if the display is closed.
+         * @returns `true` if the display is closed.
          */
         is_closed(): boolean;
         /**
          * Returns whether surfaces can reasonably be expected to have
          * their alpha channel drawn correctly on the screen.
          *
-         * Check [method`Gdk`.Display.is_rgba] for whether the display
+         * Check {@link Gdk.Display.is_rgba} for whether the display
          * supports an alpha channel.
          *
          * On X11 this function returns whether a compositing manager is
          * compositing on `display`.
          *
-         * On modern displays, this value is always %TRUE.
+         * On modern displays, this value is always `true`.
          * @returns Whether surfaces with RGBA visuals can reasonably   be expected to have their alpha channels drawn correctly   on the screen.
          */
         is_composited(): boolean;
@@ -8460,34 +9090,34 @@ export namespace Gdk {
          * Returns whether surfaces on this `display` are created with an
          * alpha channel.
          *
-         * Even if a %TRUE is returned, it is possible that the
+         * Even if a `true` is returned, it is possible that the
          * surface’s alpha channel won’t be honored when displaying the
          * surface on the screen: in particular, for X an appropriate
          * windowing manager and compositing manager must be running to
-         * provide appropriate display. Use [method`Gdk`.Display.is_composited]
+         * provide appropriate display. Use {@link Gdk.Display.is_composited}
          * to check if that is the case.
          *
-         * On modern displays, this value is always %TRUE.
-         * @returns %TRUE if surfaces are created with an alpha channel or   %FALSE if the display does not support this functionality.
+         * On modern displays, this value is always `true`.
+         * @returns `true` if surfaces are created with an alpha channel or   `false` if the display does not support this functionality.
          */
         is_rgba(): boolean;
         /**
          * Returns the list of seats known to `display`.
-         * @returns the   list of seats known to the `GdkDisplay`
+         * @returns the   list of seats known to the {@link Gdk.Display}
          */
         list_seats(): Seat[];
         /**
          * Returns the keyvals bound to `keycode`.
          *
-         * The Nth `GdkKeymapKey` in `keys` is bound to the Nth keyval in `keyvals`.
+         * The Nth {@link Gdk.KeymapKey} in `keys` is bound to the Nth keyval in `keyvals`.
          *
          * When a keycode is pressed by the user, the keyval from
          * this list of entries is selected by considering the effective
          * keyboard group and level.
          *
-         * Free the returned arrays with g_free().
+         * Free the returned arrays with `g_free()`.
          * @param keycode a keycode
-         * @returns %TRUE if there were any entries
+         * @returns `true` if there were any entries
          */
         map_keycode(keycode: number): [boolean, KeymapKey[] | null, number[] | null];
         /**
@@ -8505,9 +9135,9 @@ export namespace Gdk {
          * `GdkEventKey` contains a %group field that indicates the active
          * keyboard group. The level is computed from the modifier mask.
          *
-         * The returned array should be freed with g_free().
+         * The returned array should be freed with `g_free()`.
          * @param keyval a keyval, such as %GDK_KEY_a, %GDK_KEY_Up, %GDK_KEY_Return, etc.
-         * @returns %TRUE if keys were found and returned
+         * @returns `true` if keys were found and returned
          */
         map_keyval(keyval: number): [boolean, KeymapKey[]];
         /**
@@ -8525,9 +9155,9 @@ export namespace Gdk {
          * Checks that OpenGL is available for `self` and ensures that it is
          * properly initialized.
          * When this fails, an `error` will be set describing the error and this
-         * function returns %FALSE.
+         * function returns `false`.
          *
-         * Note that even if this function succeeds, creating a `GdkGLContext`
+         * Note that even if this function succeeds, creating a {@link Gdk.GLContext}
          * may still fail.
          *
          * This function is idempotent. Calling it multiple times will just
@@ -8536,30 +9166,30 @@ export namespace Gdk {
          * You never need to call this function, GDK will call it automatically
          * as needed. But you can use it as a check when setting up code that
          * might make use of OpenGL.
-         * @returns %TRUE if the display supports OpenGL
+         * @returns `true` if the display supports OpenGL
          */
         prepare_gl(): boolean;
         /**
          * Adds the given event to the event queue for `display`.
-         * @param event a `GdkEvent`
+         * @param event a {@link Gdk.Event}
          */
         put_event(event: Event): void;
         /**
-         * Returns %TRUE if the display supports input shapes.
+         * Returns `true` if the display supports input shapes.
          *
-         * This means that [method`Gdk`.Surface.set_input_region] can
+         * This means that {@link Gdk.Surface.set_input_region} can
          * be used to modify the input shape of surfaces on `display`.
          *
-         * On modern displays, this value is always %TRUE.
-         * @returns %TRUE if surfaces with modified input shape are supported
+         * On modern displays, this value is always `true`.
+         * @returns `true` if surfaces with modified input shape are supported
          */
         supports_input_shapes(): boolean;
         /**
          * Returns whether it's possible for a surface to draw outside of the window area.
          *
-         * If %TRUE is returned the application decides if it wants to draw shadows.
-         * If %FALSE is returned, the compositor decides if it wants to draw shadows.
-         * @returns %TRUE if surfaces can draw shadows or   %FALSE if the display does not support this functionality.
+         * If `true` is returned the application decides if it wants to draw shadows.
+         * If `false` is returned, the compositor decides if it wants to draw shadows.
+         * @returns `true` if surfaces can draw shadows or   `false` if the display does not support this functionality.
          */
         supports_shadow_width(): boolean;
         /**
@@ -8567,8 +9197,8 @@ export namespace Gdk {
          * requests have been handled.
          *
          * This is often used for making sure that the display is synchronized
-         * with the current state of the program. Calling [method`Gdk`.Display.sync]
-         * before [method`GdkX1`1.Display.error_trap_pop] makes sure that any errors
+         * with the current state of the program. Calling {@link Gdk.Display.sync}
+         * before {@link GdkX11.Display.error_trap_pop} makes sure that any errors
          * generated from earlier requests are handled before the error trap is removed.
          *
          * This is most useful for X11. On windowing systems where requests are
@@ -8598,7 +9228,7 @@ export namespace Gdk {
          * @param keycode a keycode
          * @param state a modifier state
          * @param group active keyboard group
-         * @returns %TRUE if there was a keyval bound to keycode/state/group.
+         * @returns `true` if there was a keyval bound to keycode/state/group.
          */
         translate_key(
             keycode: number,
@@ -8610,6 +9240,11 @@ export namespace Gdk {
     namespace DisplayManager {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted when a display is opened.
+             * @signal
+             * @run-last
+             */
             'display-opened': (arg0: Display) => void;
             'notify::default-display': (pspec: GObject.ParamSpec) => void;
         }
@@ -8625,19 +9260,19 @@ export namespace Gdk {
     /**
      * Offers notification when displays appear or disappear.
      *
-     * `GdkDisplayManager` is a singleton object.
+     * {@link Gdk.DisplayManager} is a singleton object.
      *
-     * You can use [func`Gdk`.DisplayManager.get] to obtain the `GdkDisplayManager`
+     * You can use {@link Gdk.DisplayManager.get} to obtain the {@link Gdk.DisplayManager}
      * singleton, but that should be rarely necessary. Typically, initializing
      * GTK opens a display that you can work with without ever accessing the
-     * `GdkDisplayManager`.
+     * {@link Gdk.DisplayManager}.
      *
      * The GDK library can be built with support for multiple backends.
-     * The `GdkDisplayManager` object determines which backend is used
+     * The {@link Gdk.DisplayManager} object determines which backend is used
      * at runtime.
      *
      * In the rare case that you need to influence which of the backends
-     * is being used, you can use [func`Gdk`.set_allowed_backends]. Note
+     * is being used, you can use {@link Gdk.set_allowed_backends}. Note
      * that you need to call this function before initializing GTK.
      *
      * ## Backend-specific code
@@ -8666,6 +9301,7 @@ export namespace Gdk {
      * #endif
      *   g_error ("Unsupported GDK backend");
      * ```
+     * @gir-type Class
      */
     class DisplayManager extends GObject.Object {
         static $gtype: GObject.GType<DisplayManager>;
@@ -8700,16 +9336,19 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DisplayManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DisplayManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DisplayManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DisplayManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DisplayManager.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DisplayManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -8719,14 +9358,14 @@ export namespace Gdk {
         // Static methods
 
         /**
-         * Gets the singleton `GdkDisplayManager` object.
+         * Gets the singleton {@link Gdk.DisplayManager} object.
          *
          * When called for the first time, this function consults the
          * `GDK_BACKEND` environment variable to find out which of the
          * supported GDK backends to use (in case GDK has been compiled
          * with multiple backends).
          *
-         * Applications can use [func`set_allowed_backends]` to limit what
+         * Applications can use {@link set_allowed_backends} to limit what
          * backends will be used.
          */
         static get(): DisplayManager;
@@ -8734,24 +9373,24 @@ export namespace Gdk {
         // Methods
 
         /**
-         * Gets the default `GdkDisplay`.
-         * @returns a `GdkDisplay`
+         * Gets the default {@link Gdk.Display}.
+         * @returns a {@link Gdk.Display}
          */
         get_default_display(): Display | null;
         /**
          * List all currently open displays.
-         * @returns a newly   allocated `GSList` of `GdkDisplay` objects
+         * @returns a newly   allocated {@link GLib.SList} of {@link Gdk.Display} objects
          */
         list_displays(): Display[];
         /**
          * Opens a display.
          * @param name the name of the display to open
-         * @returns a `GdkDisplay`, or %NULL   if the display could not be opened
+         * @returns a {@link Gdk.Display}, or `null`   if the display could not be opened
          */
         open_display(name?: string | null): Display | null;
         /**
          * Sets `display` as the default display.
-         * @param display a `GdkDisplay`
+         * @param display a {@link Gdk.Display}
          */
         set_default_display(display: Display): void;
     }
@@ -8775,12 +9414,14 @@ export namespace Gdk {
     }
 
     /**
-     * A `GdkTexture` representing a DMA buffer.
+     * A {@link Gdk.Texture} representing a DMA buffer.
      *
-     * To create a `GdkDmabufTexture`, use the auxiliary
-     * [class`Gdk`.DmabufTextureBuilder] object.
+     * To create a {@link Gdk.DmabufTexture}, use the auxiliary
+     * {@link Gdk.DmabufTextureBuilder} object.
      *
      * Dma-buf textures can only be created on Linux.
+     * @gir-type Class
+     * @since 4.14
      */
     class DmabufTexture extends Texture implements Paintable, Gio.Icon, Gio.LoadableIcon {
         static $gtype: GObject.GType<DmabufTexture>;
@@ -8802,25 +9443,26 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DmabufTexture.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DmabufTexture.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DmabufTexture.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DmabufTexture.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DmabufTexture.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DmabufTexture.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited methods
         /**
-         * Compute a concrete size for the `GdkPaintable`.
+         * Compute a concrete size for the {@link Gdk.Paintable}.
          *
          * Applies the sizing algorithm outlined in the
          * [CSS Image spec](https://drafts.csswg.org/css-images-3/#default-sizing)
@@ -8830,10 +9472,10 @@ export namespace Gdk {
          * and `specified_height` are known, but it is useful to call this
          * function in GtkWidget:measure implementations to compute the
          * other dimension when only one dimension is given.
-         * @param specified_width the width @paintable could be drawn into or   0.0 if unknown
-         * @param specified_height the height @paintable could be drawn into or   0.0 if unknown
-         * @param default_width the width @paintable would be drawn into if   no other constraints were given
-         * @param default_height the height @paintable would be drawn into if   no other constraints were given
+         * @param specified_width the width `paintable` could be drawn into or   0.0 if unknown
+         * @param specified_height the height `paintable` could be drawn into or   0.0 if unknown
+         * @param default_width the width `paintable` would be drawn into if   no other constraints were given
+         * @param default_height the height `paintable` would be drawn into if   no other constraints were given
          */
         compute_concrete_size(
             specified_width: number,
@@ -8848,7 +9490,7 @@ export namespace Gdk {
          * for example to take a screenshot of a running animation.
          *
          * If the `paintable` is already immutable, it will return itself.
-         * @returns An immutable paintable for the current   contents of @paintable
+         * @returns An immutable paintable for the current   contents of `paintable`
          */
         get_current_image(): Paintable;
         /**
@@ -8856,8 +9498,8 @@ export namespace Gdk {
          *
          * This is oftentimes useful for optimizations.
          *
-         * See [flags`Gdk`.PaintableFlags] for the flags and what they mean.
-         * @returns The `GdkPaintableFlags` for this paintable
+         * See {@link Gdk.PaintableFlags} for the flags and what they mean.
+         * @returns The {@link Gdk.PaintableFlags} for this paintable
          */
         get_flags(): PaintableFlags;
         /**
@@ -8869,16 +9511,16 @@ export namespace Gdk {
          * ratio when displaying the paintable.
          *
          * This is a purely informational value and does not in any way limit the
-         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         * values that may be passed to {@link Gdk.Paintable.snapshot}.
          *
          * Usually when a `paintable` returns nonzero values from
-         * [method`Gdk`.Paintable.get_intrinsic_width] and
-         * [method`Gdk`.Paintable.get_intrinsic_height] the aspect ratio
+         * {@link Gdk.Paintable.get_intrinsic_width} and
+         * {@link Gdk.Paintable.get_intrinsic_height} the aspect ratio
          * should conform to those values, though that is not required.
          *
          * If the `paintable` does not have a preferred aspect ratio,
          * it returns 0. Negative values are never returned.
-         * @returns the intrinsic aspect ratio of @paintable or 0 if none.
+         * @returns the intrinsic aspect ratio of `paintable` or 0 if none.
          */
         get_intrinsic_aspect_ratio(): number;
         /**
@@ -8888,11 +9530,11 @@ export namespace Gdk {
          * the paintable.
          *
          * This is a purely informational value and does not in any way limit the
-         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         * values that may be passed to {@link Gdk.Paintable.snapshot}.
          *
          * If the `paintable` does not have a preferred height, it returns 0.
          * Negative values are never returned.
-         * @returns the intrinsic height of @paintable or 0 if none.
+         * @returns the intrinsic height of `paintable` or 0 if none.
          */
         get_intrinsic_height(): number;
         /**
@@ -8902,36 +9544,36 @@ export namespace Gdk {
          * the paintable.
          *
          * This is a purely informational value and does not in any way limit the
-         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         * values that may be passed to {@link Gdk.Paintable.snapshot}.
          *
          * If the `paintable` does not have a preferred width, it returns 0.
          * Negative values are never returned.
-         * @returns the intrinsic width of @paintable or 0 if none.
+         * @returns the intrinsic width of `paintable` or 0 if none.
          */
         get_intrinsic_width(): number;
         /**
-         * Called by implementations of `GdkPaintable` to invalidate their contents.
+         * Called by implementations of {@link Gdk.Paintable} to invalidate their contents.
          *
          * Unless the contents are invalidated, implementations must guarantee that
-         * multiple calls of [method`Gdk`.Paintable.snapshot] produce the same output.
+         * multiple calls of {@link Gdk.Paintable.snapshot} produce the same output.
          *
-         * This function will emit the [signal`Gdk`.Paintable::invalidate-contents]
+         * This function will emit the `Gdk.Paintable::invalidate-contents`
          * signal.
          *
-         * If a `paintable` reports the %GDK_PAINTABLE_STATIC_CONTENTS flag,
+         * If a `paintable` reports the {@link Gdk.PaintableFlags.STATIC_CONTENTS} flag,
          * it must not call this function.
          */
         invalidate_contents(): void;
         /**
-         * Called by implementations of `GdkPaintable` to invalidate their size.
+         * Called by implementations of {@link Gdk.Paintable} to invalidate their size.
          *
          * As long as the size is not invalidated, `paintable` must return the same
          * values for its intrinsic width, height and aspect ratio.
          *
-         * This function will emit the [signal`Gdk`.Paintable::invalidate-size]
+         * This function will emit the `Gdk.Paintable::invalidate-size`
          * signal.
          *
-         * If a `paintable` reports the %GDK_PAINTABLE_STATIC_SIZE flag,
+         * If a `paintable` reports the {@link Gdk.PaintableFlags.STATIC_SIZE} flag,
          * it must not call this function.
          */
         invalidate_size(): void;
@@ -8941,7 +9583,7 @@ export namespace Gdk {
          * The paintable is drawn at the current (0,0) offset of the `snapshot`.
          * If `width` and `height` are not larger than zero, this function will
          * do nothing.
-         * @param snapshot a `GdkSnapshot` to snapshot to
+         * @param snapshot a {@link Gdk.Snapshot} to snapshot to
          * @param width width to snapshot in
          * @param height height to snapshot in
          */
@@ -8953,6 +9595,7 @@ export namespace Gdk {
          * for example to take a screenshot of a running animation.
          *
          * If the `paintable` is already immutable, it will return itself.
+         * @virtual
          */
         vfunc_get_current_image(): Paintable;
         /**
@@ -8960,7 +9603,8 @@ export namespace Gdk {
          *
          * This is oftentimes useful for optimizations.
          *
-         * See [flags`Gdk`.PaintableFlags] for the flags and what they mean.
+         * See {@link Gdk.PaintableFlags} for the flags and what they mean.
+         * @virtual
          */
         vfunc_get_flags(): PaintableFlags;
         /**
@@ -8972,15 +9616,16 @@ export namespace Gdk {
          * ratio when displaying the paintable.
          *
          * This is a purely informational value and does not in any way limit the
-         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         * values that may be passed to {@link Gdk.Paintable.snapshot}.
          *
          * Usually when a `paintable` returns nonzero values from
-         * [method`Gdk`.Paintable.get_intrinsic_width] and
-         * [method`Gdk`.Paintable.get_intrinsic_height] the aspect ratio
+         * {@link Gdk.Paintable.get_intrinsic_width} and
+         * {@link Gdk.Paintable.get_intrinsic_height} the aspect ratio
          * should conform to those values, though that is not required.
          *
          * If the `paintable` does not have a preferred aspect ratio,
          * it returns 0. Negative values are never returned.
+         * @virtual
          */
         vfunc_get_intrinsic_aspect_ratio(): number;
         /**
@@ -8990,10 +9635,11 @@ export namespace Gdk {
          * the paintable.
          *
          * This is a purely informational value and does not in any way limit the
-         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         * values that may be passed to {@link Gdk.Paintable.snapshot}.
          *
          * If the `paintable` does not have a preferred height, it returns 0.
          * Negative values are never returned.
+         * @virtual
          */
         vfunc_get_intrinsic_height(): number;
         /**
@@ -9003,10 +9649,11 @@ export namespace Gdk {
          * the paintable.
          *
          * This is a purely informational value and does not in any way limit the
-         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         * values that may be passed to {@link Gdk.Paintable.snapshot}.
          *
          * If the `paintable` does not have a preferred width, it returns 0.
          * Negative values are never returned.
+         * @virtual
          */
         vfunc_get_intrinsic_width(): number;
         /**
@@ -9015,96 +9662,101 @@ export namespace Gdk {
          * The paintable is drawn at the current (0,0) offset of the `snapshot`.
          * If `width` and `height` are not larger than zero, this function will
          * do nothing.
-         * @param snapshot a `GdkSnapshot` to snapshot to
+         * @param snapshot a {@link Gdk.Snapshot} to snapshot to
          * @param width width to snapshot in
          * @param height height to snapshot in
+         * @virtual
          */
         vfunc_snapshot(snapshot: Snapshot, width: number, height: number): void;
         /**
          * Checks if two icons are equal.
-         * @param icon2 pointer to the second #GIcon.
-         * @returns %TRUE if @icon1 is equal to @icon2. %FALSE otherwise.
+         * @param icon2 pointer to the second {@link Gio.Icon}.
+         * @returns `true` if `icon1` is equal to `icon2`. `false` otherwise.
          */
         equal(icon2?: Gio.Icon | null): boolean;
         /**
          * Gets a hash for an icon.
-         * @returns a #guint containing a hash for the @icon, suitable for   use in a #GHashTable or similar data structure.
+         * @returns a `guint` containing a hash for the `icon`, suitable for   use in a {@link GLib.HashTable} or similar data structure.
          */
         hash(): number;
         /**
-         * Serializes a #GIcon into a #GVariant. An equivalent #GIcon can be retrieved
-         * back by calling g_icon_deserialize() on the returned value.
+         * Serializes a {@link Gio.Icon} into a {@link GLib.Variant}. An equivalent {@link Gio.Icon} can be retrieved
+         * back by calling `g_icon_deserialize()` on the returned value.
          * As serialization will avoid using raw icon data when possible, it only
-         * makes sense to transfer the #GVariant between processes on the same machine,
+         * makes sense to transfer the {@link GLib.Variant} between processes on the same machine,
          * (as opposed to over the network), and within the same file system namespace.
-         * @returns a #GVariant, or %NULL when serialization fails. The #GVariant will not be floating.
+         * @returns a {@link GLib.Variant}, or `null` when serialization fails. The {@link GLib.Variant} will not be floating.
          */
         serialize(): GLib.Variant | null;
         /**
          * Generates a textual representation of `icon` that can be used for
          * serialization such as when passing `icon` to a different process or
-         * saving it to persistent storage. Use g_icon_new_for_string() to
+         * saving it to persistent storage. Use `g_icon_new_for_string()` to
          * get `icon` back from the returned string.
          *
-         * The encoding of the returned string is proprietary to #GIcon except
+         * The encoding of the returned string is proprietary to {@link Gio.Icon} except
          * in the following two cases
          *
-         * - If `icon` is a #GFileIcon, the returned string is a native path
+         * - If `icon` is a {@link Gio.FileIcon}, the returned string is a native path
          *   (such as `/path/to/my icon.png`) without escaping
-         *   if the #GFile for `icon` is a native file.  If the file is not
-         *   native, the returned string is the result of g_file_get_uri()
+         *   if the {@link Gio.File} for `icon` is a native file.  If the file is not
+         *   native, the returned string is the result of `g_file_get_uri()`
          *   (such as `sftp://path/to/my%20icon.png`).
          *
-         * - If `icon` is a #GThemedIcon with exactly one name and no fallbacks,
+         * - If `icon` is a {@link Gio.ThemedIcon} with exactly one name and no fallbacks,
          *   the encoding is simply the name (such as `network-server`).
-         * @returns An allocated NUL-terminated UTF8 string or %NULL if @icon can't be serialized. Use g_free() to free.
+         * @returns An allocated NUL-terminated UTF8 string or `null` if `icon` can't be serialized. Use `g_free()` to free.
          */
         to_string(): string | null;
         /**
          * Checks if two icons are equal.
-         * @param icon2 pointer to the second #GIcon.
+         * @param icon2 pointer to the second {@link Gio.Icon}.
+         * @virtual
          */
         vfunc_equal(icon2?: Gio.Icon | null): boolean;
         /**
          * Gets a hash for an icon.
+         * @virtual
          */
         vfunc_hash(): number;
         /**
-         * Serializes a #GIcon into a #GVariant. An equivalent #GIcon can be retrieved
-         * back by calling g_icon_deserialize() on the returned value.
+         * Serializes a {@link Gio.Icon} into a {@link GLib.Variant}. An equivalent {@link Gio.Icon} can be retrieved
+         * back by calling `g_icon_deserialize()` on the returned value.
          * As serialization will avoid using raw icon data when possible, it only
-         * makes sense to transfer the #GVariant between processes on the same machine,
+         * makes sense to transfer the {@link GLib.Variant} between processes on the same machine,
          * (as opposed to over the network), and within the same file system namespace.
+         * @virtual
          */
         vfunc_serialize(): GLib.Variant | null;
         /**
          * Serializes the `icon` into string tokens.
-         * This is can be invoked when g_icon_new_for_string() is called.
+         * This is can be invoked when `g_icon_new_for_string()` is called.
+         * @virtual
          */
         vfunc_to_tokens(): [boolean, string[], number];
         /**
          * Loads a loadable icon. For the asynchronous version of this function,
-         * see g_loadable_icon_load_async().
+         * see `g_loadable_icon_load_async()`.
          * @param size an integer.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns a #GInputStream to read the icon from.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns a {@link Gio.InputStream} to read the icon from.
          */
         load(size: number, cancellable?: Gio.Cancellable | null): [Gio.InputStream, string];
         /**
          * Loads an icon asynchronously. To finish this function, see
-         * g_loadable_icon_load_finish(). For the synchronous, blocking
-         * version of this function, see g_loadable_icon_load().
+         * `g_loadable_icon_load_finish()`. For the synchronous, blocking
+         * version of this function, see `g_loadable_icon_load()`.
          * @param size an integer.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
         load_async(size: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<[Gio.InputStream, string]>;
         /**
          * Loads an icon asynchronously. To finish this function, see
-         * g_loadable_icon_load_finish(). For the synchronous, blocking
-         * version of this function, see g_loadable_icon_load().
+         * `g_loadable_icon_load_finish()`. For the synchronous, blocking
+         * version of this function, see `g_loadable_icon_load()`.
          * @param size an integer.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
         load_async(
             size: number,
@@ -9113,11 +9765,11 @@ export namespace Gdk {
         ): void;
         /**
          * Loads an icon asynchronously. To finish this function, see
-         * g_loadable_icon_load_finish(). For the synchronous, blocking
-         * version of this function, see g_loadable_icon_load().
+         * `g_loadable_icon_load_finish()`. For the synchronous, blocking
+         * version of this function, see `g_loadable_icon_load()`.
          * @param size an integer.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
         load_async(
             size: number,
@@ -9125,25 +9777,27 @@ export namespace Gdk {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[Gio.InputStream, string]> | void;
         /**
-         * Finishes an asynchronous icon load started in g_loadable_icon_load_async().
-         * @param res a #GAsyncResult.
-         * @returns a #GInputStream to read the icon from.
+         * Finishes an asynchronous icon load started in `g_loadable_icon_load_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @returns a {@link Gio.InputStream} to read the icon from.
          */
         load_finish(res: Gio.AsyncResult): [Gio.InputStream, string];
         /**
          * Loads a loadable icon. For the asynchronous version of this function,
-         * see g_loadable_icon_load_async().
+         * see `g_loadable_icon_load_async()`.
          * @param size an integer.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_load(size: number, cancellable?: Gio.Cancellable | null): [Gio.InputStream, string];
         /**
          * Loads an icon asynchronously. To finish this function, see
-         * g_loadable_icon_load_finish(). For the synchronous, blocking
-         * version of this function, see g_loadable_icon_load().
+         * `g_loadable_icon_load_finish()`. For the synchronous, blocking
+         * version of this function, see `g_loadable_icon_load()`.
          * @param size an integer.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
+         * @virtual
          */
         vfunc_load_async(
             size: number,
@@ -9151,8 +9805,9 @@ export namespace Gdk {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Finishes an asynchronous icon load started in g_loadable_icon_load_async().
-         * @param res a #GAsyncResult.
+         * Finishes an asynchronous icon load started in `g_loadable_icon_load_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @virtual
          */
         vfunc_load_finish(res: Gio.AsyncResult): [Gio.InputStream, string];
         /**
@@ -9168,32 +9823,32 @@ export namespace Gdk {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -9202,39 +9857,39 @@ export namespace Gdk {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -9245,13 +9900,16 @@ export namespace Gdk {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](https://docs.gtk.org/gdk4/floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -9259,7 +9917,7 @@ export namespace Gdk {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -9267,9 +9925,9 @@ export namespace Gdk {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -9289,9 +9947,9 @@ export namespace Gdk {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -9304,34 +9962,34 @@ export namespace Gdk {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](https://docs.gtk.org/gdk4/floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -9364,22 +10022,22 @@ export namespace Gdk {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](https://docs.gtk.org/gdk4/floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -9388,8 +10046,8 @@ export namespace Gdk {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -9406,10 +10064,10 @@ export namespace Gdk {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -9424,13 +10082,13 @@ export namespace Gdk {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -9461,21 +10119,21 @@ export namespace Gdk {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -9485,33 +10143,34 @@ export namespace Gdk {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -9520,6 +10179,7 @@ export namespace Gdk {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -9528,12 +10188,14 @@ export namespace Gdk {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -9542,20 +10204,22 @@ export namespace Gdk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -9567,6 +10231,7 @@ export namespace Gdk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -9632,7 +10297,7 @@ export namespace Gdk {
     }
 
     /**
-     * Constructs [class`Gdk`.Texture] objects from DMA buffers.
+     * Constructs {@link Gdk.Texture} objects from DMA buffers.
      *
      * DMA buffers are commonly called **_dma-bufs_**.
      *
@@ -9668,8 +10333,8 @@ export namespace Gdk {
      * instead return `DMA_FORMAT_MOD_INVALID` to indicate that their modifier is **_implicit_**.
      * GTK tries to accommodate this situation by accepting `DMA_FORMAT_MOD_INVALID` as modifier.
      *
-     * The operation of `GdkDmabufTextureBuilder` is quite simple: Create a texture builder,
-     * set all the necessary properties, and then call [method`Gdk`.DmabufTextureBuilder.build]
+     * The operation of {@link Gdk.DmabufTextureBuilder} is quite simple: Create a texture builder,
+     * set all the necessary properties, and then call {@link Gdk.DmabufTextureBuilder.build}
      * to create the new texture.
      *
      * The required properties for a dma-buf texture are
@@ -9680,7 +10345,7 @@ export namespace Gdk {
      *
      *  * The file descriptor, offset and stride for each of the planes
      *
-     * `GdkDmabufTextureBuilder` can be used for quick one-shot construction of
+     * {@link Gdk.DmabufTextureBuilder} can be used for quick one-shot construction of
      * textures as well as kept around and reused to construct multiple textures.
      *
      * For further information, see
@@ -9688,6 +10353,8 @@ export namespace Gdk {
      * * The Linux kernel [documentation](https://docs.kernel.org/driver-api/dma-buf.html)
      *
      * * The header file [drm_fourcc.h](https://gitlab.freedesktop.org/mesa/drm/-/blob/main/include/drm/drm_fourcc.h)
+     * @gir-type Class
+     * @since 4.14
      */
     class DmabufTextureBuilder extends GObject.Object {
         static $gtype: GObject.GType<DmabufTextureBuilder>;
@@ -9696,31 +10363,37 @@ export namespace Gdk {
 
         /**
          * The color state of the texture.
+         * @since 4.16
          */
         get color_state(): ColorState;
         set color_state(val: ColorState);
         /**
          * The color state of the texture.
+         * @since 4.16
          */
         get colorState(): ColorState;
         set colorState(val: ColorState);
         /**
          * The display that this texture will be used on.
+         * @since 4.14
          */
         get display(): Display;
         set display(val: Display);
         /**
          * The format of the texture, as a fourcc value.
+         * @since 4.14
          */
         get fourcc(): number;
         set fourcc(val: number);
         /**
          * The height of the texture.
+         * @since 4.14
          */
         get height(): number;
         set height(val: number);
         /**
          * The modifier.
+         * @since 4.14
          */
         get modifier(): number;
         set modifier(val: number);
@@ -9729,6 +10402,7 @@ export namespace Gdk {
          *
          * Note that you can set properties for other planes,
          * but they will be ignored when constructing the texture.
+         * @since 4.14
          */
         get n_planes(): number;
         set n_planes(val: number);
@@ -9737,6 +10411,7 @@ export namespace Gdk {
          *
          * Note that you can set properties for other planes,
          * but they will be ignored when constructing the texture.
+         * @since 4.14
          */
         get nPlanes(): number;
         set nPlanes(val: number);
@@ -9744,31 +10419,37 @@ export namespace Gdk {
          * Whether the alpha channel is premultiplied into the others.
          *
          * Only relevant if the format has alpha.
+         * @since 4.14
          */
         get premultiplied(): boolean;
         set premultiplied(val: boolean);
         /**
-         * The update region for [property`Gdk`.DmabufTextureBuilder:update-texture].
+         * The update region for {@link Gdk.DmabufTextureBuilder.update_texture}.
+         * @since 4.14
          */
         get update_region(): cairo.Region;
         set update_region(val: cairo.Region);
         /**
-         * The update region for [property`Gdk`.DmabufTextureBuilder:update-texture].
+         * The update region for {@link Gdk.DmabufTextureBuilder.update_texture}.
+         * @since 4.14
          */
         get updateRegion(): cairo.Region;
         set updateRegion(val: cairo.Region);
         /**
-         * The texture [property`Gdk`.DmabufTextureBuilder:update-region] is an update for.
+         * The texture {@link Gdk.DmabufTextureBuilder.update_region} is an update for.
+         * @since 4.14
          */
         get update_texture(): Texture;
         set update_texture(val: Texture);
         /**
-         * The texture [property`Gdk`.DmabufTextureBuilder:update-region] is an update for.
+         * The texture {@link Gdk.DmabufTextureBuilder.update_region} is an update for.
+         * @since 4.14
          */
         get updateTexture(): Texture;
         set updateTexture(val: Texture);
         /**
          * The width of the texture.
+         * @since 4.14
          */
         get width(): number;
         set width(val: number);
@@ -9792,16 +10473,19 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DmabufTextureBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DmabufTextureBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DmabufTextureBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DmabufTextureBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DmabufTextureBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DmabufTextureBuilder.SignalSignatures[K]> extends [any, ...infer Q]
@@ -9813,13 +10497,13 @@ export namespace Gdk {
         // Methods
 
         /**
-         * Builds a new `GdkTexture` with the values set up in the builder.
+         * Builds a new {@link Gdk.Texture} with the values set up in the builder.
          *
          * It is a programming error to call this function if any mandatory property has not been set.
          *
          * Not all formats defined in the `drm_fourcc.h` header are supported. You can use
-         * [method`Gdk`.Display.get_dmabuf_formats] to get a list of supported formats. If the
-         * format is not supported by GTK, %NULL will be returned and `error` will be set.
+         * {@link Gdk.Display.get_dmabuf_formats} to get a list of supported formats. If the
+         * format is not supported by GTK, `null` will be returned and `error` will be set.
          *
          * The `destroy` function gets called when the returned texture gets released.
          *
@@ -9831,11 +10515,11 @@ export namespace Gdk {
          * possibly with changing properties in between.
          * @param destroy destroy function to be called when the texture is   released
          * @param data user data to pass to the destroy function
-         * @returns a newly built `GdkTexture` or `NULL`   if the format is not supported
+         * @returns a newly built {@link Gdk.Texture} or `NULL`   if the format is not supported
          */
         build(destroy?: GLib.DestroyNotify | null, data?: any | null): Texture | null;
         /**
-         * Gets the color state previously set via gdk_dmabuf_texture_builder_set_color_state().
+         * Gets the color state previously set via `gdk_dmabuf_texture_builder_set_color_state()`.
          * @returns the color state
          */
         get_color_state(): ColorState | null;
@@ -9852,7 +10536,7 @@ export namespace Gdk {
          */
         get_fd(plane: number): number;
         /**
-         * Gets the format previously set via gdk_dmabuf_texture_builder_set_fourcc()
+         * Gets the format previously set via `gdk_dmabuf_texture_builder_set_fourcc()`
          * or 0 if the format wasn't set.
          *
          * The format is specified as a fourcc code.
@@ -9860,7 +10544,7 @@ export namespace Gdk {
          */
         get_fourcc(): number;
         /**
-         * Gets the height previously set via gdk_dmabuf_texture_builder_set_height() or
+         * Gets the height previously set via `gdk_dmabuf_texture_builder_set_height()` or
          * 0 if the height wasn't set.
          * @returns The height
          */
@@ -9893,19 +10577,19 @@ export namespace Gdk {
          */
         get_stride(plane: number): number;
         /**
-         * Gets the region previously set via gdk_dmabuf_texture_builder_set_update_region() or
-         * %NULL if none was set.
+         * Gets the region previously set via `gdk_dmabuf_texture_builder_set_update_region()` or
+         * `null` if none was set.
          * @returns The region
          */
         get_update_region(): cairo.Region | null;
         /**
-         * Gets the texture previously set via gdk_dmabuf_texture_builder_set_update_texture() or
-         * %NULL if none was set.
+         * Gets the texture previously set via `gdk_dmabuf_texture_builder_set_update_texture()` or
+         * `null` if none was set.
          * @returns The texture
          */
         get_update_texture(): Texture | null;
         /**
-         * Gets the width previously set via gdk_dmabuf_texture_builder_set_width() or
+         * Gets the width previously set via `gdk_dmabuf_texture_builder_set_width()` or
          * 0 if the width wasn't set.
          * @returns The width
          */
@@ -9916,7 +10600,7 @@ export namespace Gdk {
          * By default, the colorstate is `NULL`. In that case, GTK will choose the
          * correct colorstate based on the format.
          * If you don't know what colorstates are, this is probably the right thing.
-         * @param color_state a `GdkColorState` or `NULL` to unset the colorstate.
+         * @param color_state a {@link Gdk.ColorState} or `NULL` to unset the colorstate.
          */
         set_color_state(color_state?: ColorState | null): void;
         /**
@@ -9939,14 +10623,14 @@ export namespace Gdk {
          *
          * The format is specified as a fourcc code.
          *
-         * The format must be set before calling [method`Gdk`.DmabufTextureBuilder.build].
+         * The format must be set before calling {@link Gdk.DmabufTextureBuilder.build}.
          * @param fourcc the texture's format or 0 to unset
          */
         set_fourcc(fourcc: number): void;
         /**
          * Sets the height of the texture.
          *
-         * The height must be set before calling [method`Gdk`.DmabufTextureBuilder.build].
+         * The height must be set before calling {@link Gdk.DmabufTextureBuilder.build}.
          * @param height the texture's height or 0 to unset
          */
         set_height(height: number): void;
@@ -9977,14 +10661,14 @@ export namespace Gdk {
         /**
          * Sets the stride for a plane.
          *
-         * The stride must be set for all planes before calling [method`Gdk`.DmabufTextureBuilder.build].
+         * The stride must be set for all planes before calling {@link Gdk.DmabufTextureBuilder.build}.
          * @param plane the plane to set the stride for
          * @param stride the stride value
          */
         set_stride(plane: number, stride: number): void;
         /**
          * Sets the region to be updated by this texture. Together with
-         * [property`Gdk`.DmabufTextureBuilder:update-texture] this describes an
+         * {@link Gdk.DmabufTextureBuilder.update_texture} this describes an
          * update of a previous texture.
          *
          * When rendering animations of large textures, it is possible that
@@ -9998,14 +10682,14 @@ export namespace Gdk {
         set_update_region(region?: cairo.Region | null): void;
         /**
          * Sets the texture to be updated by this texture. See
-         * [method`Gdk`.DmabufTextureBuilder.set_update_region] for an explanation.
+         * {@link Gdk.DmabufTextureBuilder.set_update_region} for an explanation.
          * @param texture the texture to update
          */
         set_update_texture(texture?: Texture | null): void;
         /**
          * Sets the width of the texture.
          *
-         * The width must be set before calling [method`Gdk`.DmabufTextureBuilder.build].
+         * The width must be set before calling {@link Gdk.DmabufTextureBuilder.build}.
          * @param width The texture's width or 0 to unset
          */
         set_width(width: number): void;
@@ -10014,8 +10698,25 @@ export namespace Gdk {
     namespace Drag {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted when the drag operation is cancelled.
+             * @signal
+             * @run-last
+             */
             cancel: (arg0: DragCancelReason) => void;
+            /**
+             * Emitted when the destination side has finished reading all data.
+             *
+             * The drag object can now free all miscellaneous data.
+             * @signal
+             * @run-last
+             */
             'dnd-finished': () => void;
+            /**
+             * Emitted when the drop operation is performed on an accepting client.
+             * @signal
+             * @run-last
+             */
             'drop-performed': () => void;
             'notify::actions': (pspec: GObject.ParamSpec) => void;
             'notify::content': (pspec: GObject.ParamSpec) => void;
@@ -10043,14 +10744,15 @@ export namespace Gdk {
     /**
      * Represents the source of an ongoing DND operation.
      *
-     * A `GdkDrag` is created when a drag is started, and stays alive for duration of
-     * the DND operation. After a drag has been started with [func`Gdk`.Drag.begin],
+     * A {@link Gdk.Drag} is created when a drag is started, and stays alive for duration of
+     * the DND operation. After a drag has been started with {@link Gdk.Drag.begin},
      * the caller gets informed about the status of the ongoing drag operation
-     * with signals on the `GdkDrag` object.
+     * with signals on the {@link Gdk.Drag} object.
      *
      * GTK provides a higher level abstraction based on top of these functions,
      * and so they are not normally needed in GTK applications. See the
      * "Drag and Drop" section of the GTK documentation for more information.
+     * @gir-type Class
      */
     abstract class Drag extends GObject.Object {
         static $gtype: GObject.GType<Drag>;
@@ -10063,19 +10765,23 @@ export namespace Gdk {
         get actions(): DragAction;
         set actions(val: DragAction);
         /**
-         * The `GdkContentProvider`.
+         * The {@link Gdk.ContentProvider}.
+         * @construct-only
          */
         get content(): ContentProvider;
         /**
-         * The `GdkDevice` that is performing the drag.
+         * The {@link Gdk.Device} that is performing the drag.
+         * @construct-only
          */
         get device(): Device;
         /**
-         * The `GdkDisplay` that the drag belongs to.
+         * The {@link Gdk.Display} that the drag belongs to.
+         * @read-only
          */
         get display(): Display;
         /**
          * The possible formats that the drag can provide its data in.
+         * @construct-only
          */
         get formats(): ContentFormats;
         /**
@@ -10090,6 +10796,7 @@ export namespace Gdk {
         set selectedAction(val: DragAction);
         /**
          * The surface where the drag originates.
+         * @construct-only
          */
         get surface(): Surface;
 
@@ -10110,16 +10817,19 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Drag.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Drag.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Drag.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Drag.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Drag.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Drag.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -10133,22 +10843,22 @@ export namespace Gdk {
          *
          * This function is called by the drag source. After this call, you
          * probably want to set up the drag icon using the surface returned
-         * by [method`Gdk`.Drag.get_drag_surface].
+         * by {@link Gdk.Drag.get_drag_surface}.
          *
-         * This function returns a reference to the [class`Gdk`.Drag] object,
+         * This function returns a reference to the {@link Gdk.Drag} object,
          * but GTK keeps its own reference as well, as long as the DND operation
          * is going on.
          *
-         * Note: if `actions` include %GDK_ACTION_MOVE, you need to listen for
-         * the [signal`Gdk`.Drag::dnd-finished] signal and delete the data at
-         * the source if [method`Gdk`.Drag.get_selected_action] returns
-         * %GDK_ACTION_MOVE.
+         * Note: if `actions` include {@link Gdk.DragAction.MOVE}, you need to listen for
+         * the `Gdk.Drag::dnd-finished` signal and delete the data at
+         * the source if {@link Gdk.Drag.get_selected_action} returns
+         * {@link Gdk.DragAction.MOVE}.
          * @param surface the source surface for this drag
          * @param device the device that controls this drag
          * @param content the offered content
          * @param actions the actions supported by this drag
-         * @param dx the x offset to @device's position where the drag nominally started
-         * @param dy the y offset to @device's position where the drag nominally started
+         * @param dx the x offset to `device`'s position where the drag nominally started
+         * @param dy the y offset to `device`'s position where the drag nominally started
          */
         static begin(
             surface: Surface,
@@ -10164,13 +10874,13 @@ export namespace Gdk {
         /**
          * Informs GDK that the drop ended.
          *
-         * Passing %FALSE for `success` may trigger a drag cancellation
+         * Passing `false` for `success` may trigger a drag cancellation
          * animation.
          *
          * This function is called by the drag source, and should be the
          * last call before dropping the reference to the `drag`.
          *
-         * The `GdkDrag` will only take the first [method`Gdk`.Drag.drop_done]
+         * The {@link Gdk.Drag} will only take the first {@link Gdk.Drag.drop_done}
          * call as effective, if this function is called multiple times,
          * all subsequent calls will be ignored.
          * @param success whether the drag was ultimatively successful
@@ -10178,22 +10888,22 @@ export namespace Gdk {
         drop_done(success: boolean): void;
         /**
          * Determines the bitmask of possible actions proposed by the source.
-         * @returns the `GdkDragAction` flags
+         * @returns the {@link Gdk.DragAction} flags
          */
         get_actions(): DragAction;
         /**
-         * Returns the `GdkContentProvider` associated to the `GdkDrag` object.
-         * @returns The `GdkContentProvider` associated to @drag.
+         * Returns the {@link Gdk.ContentProvider} associated to the {@link Gdk.Drag} object.
+         * @returns The {@link Gdk.ContentProvider} associated to `drag`.
          */
         get_content(): ContentProvider;
         /**
-         * Returns the `GdkDevice` associated to the `GdkDrag` object.
-         * @returns The `GdkDevice` associated to @drag.
+         * Returns the {@link Gdk.Device} associated to the {@link Gdk.Drag} object.
+         * @returns The {@link Gdk.Device} associated to `drag`.
          */
         get_device(): Device;
         /**
-         * Gets the `GdkDisplay` that the drag object was created for.
-         * @returns a `GdkDisplay`
+         * Gets the {@link Gdk.Display} that the drag object was created for.
+         * @returns a {@link Gdk.Display}
          */
         get_display(): Display;
         /**
@@ -10208,18 +10918,18 @@ export namespace Gdk {
          */
         get_drag_surface(): Surface | null;
         /**
-         * Retrieves the formats supported by this `GdkDrag` object.
-         * @returns a `GdkContentFormats`
+         * Retrieves the formats supported by this {@link Gdk.Drag} object.
+         * @returns a {@link Gdk.ContentFormats}
          */
         get_formats(): ContentFormats;
         /**
          * Determines the action chosen by the drag destination.
-         * @returns a `GdkDragAction` value
+         * @returns a {@link Gdk.DragAction} value
          */
         get_selected_action(): DragAction;
         /**
-         * Returns the `GdkSurface` where the drag originates.
-         * @returns The `GdkSurface` where the drag originates
+         * Returns the {@link Gdk.Surface} where the drag originates.
+         * @returns The {@link Gdk.Surface} where the drag originates
          */
         get_surface(): Surface;
         /**
@@ -10251,13 +10961,14 @@ export namespace Gdk {
     /**
      * Base class for objects implementing different rendering methods.
      *
-     * `GdkDrawContext` is the base object used by contexts implementing different
-     * rendering methods, such as [class`Gdk`.CairoContext] or [class`Gdk`.GLContext].
+     * {@link Gdk.DrawContext} is the base object used by contexts implementing different
+     * rendering methods, such as {@link Gdk.CairoContext} or {@link Gdk.GLContext}.
      * It provides shared functionality between those contexts.
      *
      * You will always interact with one of those subclasses.
      *
-     * A `GdkDrawContext` is always associated with a single toplevel surface.
+     * A {@link Gdk.DrawContext} is always associated with a single toplevel surface.
+     * @gir-type Class
      */
     abstract class DrawContext extends GObject.Object {
         static $gtype: GObject.GType<DrawContext>;
@@ -10265,11 +10976,13 @@ export namespace Gdk {
         // Properties
 
         /**
-         * The `GdkDisplay` used to create the `GdkDrawContext`.
+         * The {@link Gdk.Display} used to create the {@link Gdk.DrawContext}.
+         * @construct-only
          */
         get display(): Display;
         /**
-         * The `GdkSurface` the context is bound to.
+         * The {@link Gdk.Surface} the context is bound to.
+         * @construct-only
          */
         get surface(): Surface;
 
@@ -10290,16 +11003,19 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DrawContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DrawContext.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DrawContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DrawContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DrawContext.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DrawContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -10310,72 +11026,72 @@ export namespace Gdk {
 
         /**
          * Indicates that you are beginning the process of redrawing `region`
-         * on the `context'`s surface.
+         * on the `context`'s surface.
          *
          * Calling this function begins a drawing operation using `context` on the
          * surface that `context` was created from. The actual requirements and
          * guarantees for the drawing operation vary for different implementations
-         * of drawing, so a [class`Gdk`.CairoContext] and a [class`Gdk`.GLContext]
+         * of drawing, so a {@link Gdk.CairoContext} and a {@link Gdk.GLContext}
          * need to be treated differently.
          *
          * A call to this function is a requirement for drawing and must be
-         * followed by a call to [method`Gdk`.DrawContext.end_frame], which will
+         * followed by a call to {@link Gdk.DrawContext.end_frame}, which will
          * complete the drawing operation and ensure the contents become visible
          * on screen.
          *
          * Note that the `region` passed to this function is the minimum region that
          * needs to be drawn and depending on implementation, windowing system and
          * hardware in use, it might be necessary to draw a larger region. Drawing
-         * implementation must use [method`Gdk`.DrawContext.get_frame_region] to
+         * implementation must use {@link Gdk.DrawContext.get_frame_region} to
          * query the region that must be drawn.
          *
          * When using GTK, the widget system automatically places calls to
-         * gdk_draw_context_begin_frame() and gdk_draw_context_end_frame() via the
+         * `gdk_draw_context_begin_frame()` and `gdk_draw_context_end_frame()` via the
          * use of [GskRenderer](../gsk4/class.Renderer.html)s, so application code
          * does not need to call these functions explicitly.
          * @param region minimum region that should be drawn
          */
         begin_frame(region: cairo.Region): void;
         /**
-         * Ends a drawing operation started with gdk_draw_context_begin_frame().
+         * Ends a drawing operation started with `gdk_draw_context_begin_frame()`.
          *
          * This makes the drawing available on screen.
-         * See [method`Gdk`.DrawContext.begin_frame] for more details about drawing.
+         * See {@link Gdk.DrawContext.begin_frame} for more details about drawing.
          *
-         * When using a [class`Gdk`.GLContext], this function may call `glFlush()`
+         * When using a {@link Gdk.GLContext}, this function may call `glFlush()`
          * implicitly before returning; it is not recommended to call `glFlush()`
          * explicitly before calling this function.
          */
         end_frame(): void;
         /**
-         * Retrieves the `GdkDisplay` the `context` is created for
-         * @returns the `GdkDisplay`
+         * Retrieves the {@link Gdk.Display} the `context` is created for
+         * @returns the {@link Gdk.Display}
          */
         get_display(): Display | null;
         /**
          * Retrieves the region that is currently being repainted.
          *
-         * After a call to [method`Gdk`.DrawContext.begin_frame] this function will
+         * After a call to {@link Gdk.DrawContext.begin_frame} this function will
          * return a union of the region passed to that function and the area of the
          * surface that the `context` determined needs to be repainted.
          *
-         * If `context` is not in between calls to [method`Gdk`.DrawContext.begin_frame]
-         * and [method`Gdk`.DrawContext.end_frame], %NULL will be returned.
+         * If `context` is not in between calls to {@link Gdk.DrawContext.begin_frame}
+         * and {@link Gdk.DrawContext.end_frame}, `null` will be returned.
          * @returns a Cairo region
          */
         get_frame_region(): cairo.Region | null;
         /**
          * Retrieves the surface that `context` is bound to.
-         * @returns a `GdkSurface`
+         * @returns a {@link Gdk.Surface}
          */
         get_surface(): Surface | null;
         /**
-         * Returns %TRUE if `context` is in the process of drawing to its surface.
+         * Returns `true` if `context` is in the process of drawing to its surface.
          *
-         * This is the case between calls to [method`Gdk`.DrawContext.begin_frame]
-         * and [method`Gdk`.DrawContext.end_frame]. In this situation, drawing commands
-         * may be effecting the contents of the `context'`s surface.
-         * @returns %TRUE if the context is between [method@Gdk.DrawContext.begin_frame]   and [method@Gdk.DrawContext.end_frame] calls.
+         * This is the case between calls to {@link Gdk.DrawContext.begin_frame}
+         * and {@link Gdk.DrawContext.end_frame}. In this situation, drawing commands
+         * may be effecting the contents of the `context`'s surface.
+         * @returns `true` if the context is between {@link Gdk.DrawContext.begin_frame}   and {@link Gdk.DrawContext.end_frame} calls.
          */
         is_in_frame(): boolean;
     }
@@ -10408,16 +11124,17 @@ export namespace Gdk {
      *
      * Possible drop sites get informed about the status of the ongoing drag
      * operation with events of type `GDK_DRAG_ENTER`, `GDK_DRAG_LEAVE`,
-     * `GDK_DRAG_MOTION` and `GDK_DROP_START`. The `GdkDrop` object can be obtained
-     * from these [class`Gdk`.Event] types using [method`Gdk`.DNDEvent.get_drop].
+     * `GDK_DRAG_MOTION` and `GDK_DROP_START`. The {@link Gdk.Drop} object can be obtained
+     * from these {@link Gdk.Event} types using {@link Gdk.DNDEvent.get_drop}.
      *
      * The actual data transfer is initiated from the target side via an async
-     * read, using one of the `GdkDrop` methods for this purpose:
-     * [method`Gdk`.Drop.read_async] or [method`Gdk`.Drop.read_value_async].
+     * read, using one of the {@link Gdk.Drop} methods for this purpose:
+     * {@link Gdk.Drop.read_async} or {@link Gdk.Drop.read_value_async}.
      *
      * GTK provides a higher level abstraction based on top of these functions,
      * and so they are not normally needed in GTK applications. See the
      * "Drag and Drop" section of the GTK documentation for more information.
+     * @gir-type Class
      */
     abstract class Drop extends GObject.Object {
         static $gtype: GObject.GType<Drop>;
@@ -10426,26 +11143,32 @@ export namespace Gdk {
 
         /**
          * The possible actions for this drop
+         * @construct-only
          */
         get actions(): DragAction;
         /**
-         * The `GdkDevice` performing the drop
+         * The {@link Gdk.Device} performing the drop
+         * @construct-only
          */
         get device(): Device;
         /**
-         * The `GdkDisplay` that the drop belongs to.
+         * The {@link Gdk.Display} that the drop belongs to.
+         * @read-only
          */
         get display(): Display;
         /**
-         * The `GdkDrag` that initiated this drop
+         * The {@link Gdk.Drag} that initiated this drop
+         * @construct-only
          */
         get drag(): Drag;
         /**
          * The possible formats that the drop can provide its data in.
+         * @construct-only
          */
         get formats(): ContentFormats;
         /**
-         * The `GdkSurface` the drop happens on
+         * The {@link Gdk.Surface} the drop happens on
+         * @construct-only
          */
         get surface(): Surface;
 
@@ -10466,16 +11189,19 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Drop.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Drop.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Drop.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Drop.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Drop.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Drop.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -10488,63 +11214,63 @@ export namespace Gdk {
          * Ends the drag operation after a drop.
          *
          * The `action` must be a single action selected from the actions
-         * available via [method`Gdk`.Drop.get_actions].
-         * @param action the action performed by the destination or 0 if the drop failed
+         * available via {@link Gdk.Drop.get_actions}.
+         * @param action the action performed by the destination or `GDK_ACTION_NONE` if the   drop failed
          */
         finish(action: DragAction | null): void;
         /**
-         * Returns the possible actions for this `GdkDrop`.
+         * Returns the possible actions for this {@link Gdk.Drop}.
          *
          * If this value contains multiple actions - i.e.
-         * [func`Gdk`.DragAction.is_unique] returns false for the result -
-         * [method`Gdk`.Drop.finish] must choose the action to use when
+         * {@link Gdk.DragAction.is_unique} returns false for the result -
+         * {@link Gdk.Drop.finish} must choose the action to use when
          * accepting the drop. This will only happen if you passed
          * `GDK_ACTION_ASK` as one of the possible actions in
-         * [method`Gdk`.Drop.status]. `GDK_ACTION_ASK` itself will not
+         * {@link Gdk.Drop.status}. `GDK_ACTION_ASK` itself will not
          * be included in the actions returned by this function.
          *
-         * This value may change over the lifetime of the [class`Gdk`.Drop]
+         * This value may change over the lifetime of the {@link Gdk.Drop}
          * both as a response to source side actions as well as to calls to
-         * [method`Gdk`.Drop.status] or [method`Gdk`.Drop.finish]. The source
+         * {@link Gdk.Drop.status} or {@link Gdk.Drop.finish}. The source
          * side will not change this value anymore once a drop has started.
          * @returns The possible `GdkDragActions`
          */
         get_actions(): DragAction;
         /**
-         * Returns the `GdkDevice` performing the drop.
-         * @returns The `GdkDevice` performing the drop.
+         * Returns the {@link Gdk.Device} performing the drop.
+         * @returns The {@link Gdk.Device} performing the drop.
          */
         get_device(): Device;
         /**
-         * Gets the `GdkDisplay` that `self` was created for.
-         * @returns a `GdkDisplay`
+         * Gets the {@link Gdk.Display} that `self` was created for.
+         * @returns a {@link Gdk.Display}
          */
         get_display(): Display;
         /**
-         * If this is an in-app drag-and-drop operation, returns the `GdkDrag`
+         * If this is an in-app drag-and-drop operation, returns the {@link Gdk.Drag}
          * that corresponds to this drop.
          *
          * If it is not, `NULL` is returned.
-         * @returns the corresponding `GdkDrag`
+         * @returns the corresponding {@link Gdk.Drag}
          */
         get_drag(): Drag | null;
         /**
-         * Returns the `GdkContentFormats` that the drop offers the data
+         * Returns the {@link Gdk.ContentFormats} that the drop offers the data
          * to be read in.
-         * @returns The possible `GdkContentFormats`
+         * @returns The possible {@link Gdk.ContentFormats}
          */
         get_formats(): ContentFormats;
         /**
-         * Returns the `GdkSurface` performing the drop.
-         * @returns The `GdkSurface` performing the drop.
+         * Returns the {@link Gdk.Surface} performing the drop.
+         * @returns The {@link Gdk.Surface} performing the drop.
          */
         get_surface(): Surface;
         /**
-         * Asynchronously read the dropped data from a `GdkDrop`
+         * Asynchronously read the dropped data from a {@link Gdk.Drop}
          * in a format that complies with one of the mime types.
          * @param mime_types pointer to an array of mime types
          * @param io_priority the I/O priority for the read operation
-         * @param cancellable optional `GCancellable` object
+         * @param cancellable optional {@link Gio.Cancellable} object
          */
         read_async(
             mime_types: string[],
@@ -10552,12 +11278,12 @@ export namespace Gdk {
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<[Gio.InputStream | null, string]>;
         /**
-         * Asynchronously read the dropped data from a `GdkDrop`
+         * Asynchronously read the dropped data from a {@link Gdk.Drop}
          * in a format that complies with one of the mime types.
          * @param mime_types pointer to an array of mime types
          * @param io_priority the I/O priority for the read operation
-         * @param cancellable optional `GCancellable` object
-         * @param callback a `GAsyncReadyCallback` to call when   the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when   the request is satisfied
          */
         read_async(
             mime_types: string[],
@@ -10566,12 +11292,12 @@ export namespace Gdk {
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Asynchronously read the dropped data from a `GdkDrop`
+         * Asynchronously read the dropped data from a {@link Gdk.Drop}
          * in a format that complies with one of the mime types.
          * @param mime_types pointer to an array of mime types
          * @param io_priority the I/O priority for the read operation
-         * @param cancellable optional `GCancellable` object
-         * @param callback a `GAsyncReadyCallback` to call when   the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when   the request is satisfied
          */
         read_async(
             mime_types: string[],
@@ -10585,11 +11311,11 @@ export namespace Gdk {
          * Note that you must not use blocking read calls on the returned stream
          * in the GTK thread, since some platforms might require communication with
          * GTK to complete the data transfer. You can use async APIs such as
-         * g_input_stream_read_bytes_async().
+         * `g_input_stream_read_bytes_async()`.
          *
-         * See [method`Gdk`.Drop.read_async].
-         * @param result a `GAsyncResult`
-         * @returns the `GInputStream`
+         * See {@link Gdk.Drop.read_async}.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns the {@link Gio.InputStream}
          */
         read_finish(result: Gio.AsyncResult): [Gio.InputStream | null, string];
         /**
@@ -10597,11 +11323,11 @@ export namespace Gdk {
          * to the given `type`.
          *
          * For local drag-and-drop operations that are available in the given
-         * `GType`, the value will be copied directly. Otherwise, GDK will
-         * try to use [func`Gdk`.content_deserialize_async] to convert the data.
-         * @param type a `GType` to read
+         * {@link GObject.GType}, the value will be copied directly. Otherwise, GDK will
+         * try to use {@link Gdk.content_deserialize_async} to convert the data.
+         * @param type a {@link GObject.GType} to read
          * @param io_priority the I/O priority of the request.
-         * @param cancellable optional `GCancellable` object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
         read_value_async(
             type: GObject.GType,
@@ -10613,11 +11339,11 @@ export namespace Gdk {
          * to the given `type`.
          *
          * For local drag-and-drop operations that are available in the given
-         * `GType`, the value will be copied directly. Otherwise, GDK will
-         * try to use [func`Gdk`.content_deserialize_async] to convert the data.
-         * @param type a `GType` to read
+         * {@link GObject.GType}, the value will be copied directly. Otherwise, GDK will
+         * try to use {@link Gdk.content_deserialize_async} to convert the data.
+         * @param type a {@link GObject.GType} to read
          * @param io_priority the I/O priority of the request.
-         * @param cancellable optional `GCancellable` object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback callback to call when the request is satisfied
          */
         read_value_async(
@@ -10631,11 +11357,11 @@ export namespace Gdk {
          * to the given `type`.
          *
          * For local drag-and-drop operations that are available in the given
-         * `GType`, the value will be copied directly. Otherwise, GDK will
-         * try to use [func`Gdk`.content_deserialize_async] to convert the data.
-         * @param type a `GType` to read
+         * {@link GObject.GType}, the value will be copied directly. Otherwise, GDK will
+         * try to use {@link Gdk.content_deserialize_async} to convert the data.
+         * @param type a {@link GObject.GType} to read
          * @param io_priority the I/O priority of the request.
-         * @param cancellable optional `GCancellable` object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback callback to call when the request is satisfied
          */
         read_value_async(
@@ -10647,16 +11373,16 @@ export namespace Gdk {
         /**
          * Finishes an async drop read.
          *
-         * See [method`Gdk`.Drop.read_value_async].
-         * @param result a `GAsyncResult`
-         * @returns a `GValue` containing the result.
+         * See {@link Gdk.Drop.read_value_async}.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns a {@link GObject.Value} containing the result.
          */
         read_value_finish(result: Gio.AsyncResult): unknown;
         /**
          * Selects all actions that are potentially supported by the destination.
          *
          * When calling this function, do not restrict the passed in actions to
-         * the ones provided by [method`Gdk`.Drop.get_actions]. Those actions may
+         * the ones provided by {@link Gdk.Drop.get_actions}. Those actions may
          * change in the future, even depending on the actions you provide here.
          *
          * The `preferred` action is a hint to the drag-and-drop mechanism about which
@@ -10666,8 +11392,8 @@ export namespace Gdk {
          * `GDK_DRAG_ENTER` or `GDK_DRAG_MOTION` events. If the destination does
          * not yet know the exact actions it supports, it should set any possible
          * actions first and then later call this function again.
-         * @param actions Supported actions of the destination, or 0 to indicate    that a drop will not be accepted
-         * @param preferred A unique action that's a member of @actions indicating the    preferred action
+         * @param actions Supported actions of the destination, or `GDK_ACTION_NONE` to    indicate that a drop will not be accepted
+         * @param preferred A unique action that's a member of `actions` indicating the    preferred action
          */
         status(actions: DragAction | null, preferred: DragAction | null): void;
     }
@@ -10682,9 +11408,10 @@ export namespace Gdk {
      *
      * In GTK applications the events are handled automatically by toplevel
      * widgets and passed on to the event controllers of appropriate widgets,
-     * so using `GdkEvent` and its related API is rarely needed.
+     * so using {@link Gdk.Event} and its related API is rarely needed.
      *
-     * `GdkEvent` structs are immutable.
+     * {@link Gdk.Event} structs are immutable.
+     * @gir-type Class
      */
     abstract class Event {
         static $gtype: GObject.GType<Event>;
@@ -10695,16 +11422,19 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Event.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Event.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Event.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Event.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Event.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Event.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -10721,69 +11451,69 @@ export namespace Gdk {
          * angles is from the positive X axis towards the positive Y axis.
          *
          * This assumes that both events have X/Y information.
-         * If not, this function returns %FALSE.
-         * @param event2 second `GdkEvent`
-         * @returns %TRUE if the angle could be calculated.
+         * If not, this function returns `false`.
+         * @param event2 second {@link Gdk.Event}
+         * @returns `true` if the angle could be calculated.
          */
         _get_angle(event2: Event): [boolean, number];
         /**
          * Returns the point halfway between the events' positions.
          *
          * This assumes that both events have X/Y information.
-         * If not, this function returns %FALSE.
-         * @param event2 second `GdkEvent`
-         * @returns %TRUE if the center could be calculated.
+         * If not, this function returns `false`.
+         * @param event2 second {@link Gdk.Event}
+         * @returns `true` if the center could be calculated.
          */
         _get_center(event2: Event): [boolean, number, number];
         /**
          * Returns the distance between the event locations.
          *
          * This assumes that both events have X/Y information.
-         * If not, this function returns %FALSE.
-         * @param event2 second `GdkEvent`
-         * @returns %TRUE if the distance could be calculated.
+         * If not, this function returns `false`.
+         * @param event2 second {@link Gdk.Event}
+         * @returns `true` if the distance could be calculated.
          */
         _get_distance(event2: Event): [boolean, number];
         /**
          * Extracts all axis values from an event.
          *
-         * To find out which axes are used, use [method`Gdk`.DeviceTool.get_axes]
-         * on the device tool returned by [method`Gdk`.Event.get_device_tool].
-         * @returns %TRUE on success, otherwise %FALSE
+         * To find out which axes are used, use {@link Gdk.DeviceTool.get_axes}
+         * on the device tool returned by {@link Gdk.Event.get_device_tool}.
+         * @returns `true` on success, otherwise `false`
          */
         get_axes(): [boolean, number[]];
         /**
          * Extract the axis value for a particular axis use from
          * an event structure.
          *
-         * To find out which axes are used, use [method`Gdk`.DeviceTool.get_axes]
-         * on the device tool returned by [method`Gdk`.Event.get_device_tool].
+         * To find out which axes are used, use {@link Gdk.DeviceTool.get_axes}
+         * on the device tool returned by {@link Gdk.Event.get_device_tool}.
          * @param axis_use the axis use to look for
-         * @returns %TRUE if the specified axis was found, otherwise %FALSE
+         * @returns `true` if the specified axis was found, otherwise `false`
          */
         get_axis(axis_use: AxisUse | null): [boolean, number];
         /**
          * Returns the device of an event.
-         * @returns a `GdkDevice`
+         * @returns a {@link Gdk.Device}
          */
         get_device(): Device | null;
         /**
-         * Returns a `GdkDeviceTool` representing the tool that
+         * Returns a {@link Gdk.DeviceTool} representing the tool that
          * caused the event.
          *
          * If the was not generated by a device that supports
          * different tools (such as a tablet), this function will
-         * return %NULL.
+         * return `null`.
          *
-         * Note: the `GdkDeviceTool` will be constant during
+         * Note: the {@link Gdk.DeviceTool} will be constant during
          * the application lifetime, if settings must be stored
-         * persistently across runs, see [method`Gdk`.DeviceTool.get_serial].
+         * persistently across runs, see {@link Gdk.DeviceTool.get_serial}.
          * @returns The current device tool
          */
         get_device_tool(): DeviceTool | null;
         /**
          * Retrieves the display associated to the `event`.
-         * @returns a `GdkDisplay`
+         * @returns a {@link Gdk.Display}
          */
         get_display(): Display | null;
         /**
@@ -10796,7 +11526,7 @@ export namespace Gdk {
         get_event_sequence(): EventSequence;
         /**
          * Retrieves the type of the event.
-         * @returns a `GdkEvent`Type
+         * @returns a {@link Gdk.Event}Type
          */
         get_event_type(): EventType;
         /**
@@ -10814,48 +11544,48 @@ export namespace Gdk {
         get_history(): TimeCoord[] | null;
         /**
          * Returns the modifier state field of an event.
-         * @returns the modifier state of @event
+         * @returns the modifier state of `event`
          */
         get_modifier_state(): ModifierType;
         /**
          * Returns whether this event is an 'emulated' pointer event.
          *
          * Emulated pointer events typically originate from a touch events.
-         * @returns %TRUE if this event is emulated
+         * @returns `true` if this event is emulated
          */
         get_pointer_emulated(): boolean;
         /**
          * Extract the event surface relative x/y coordinates from an event.
          *
-         * This position is in [surface coordinates](coordinates.html).
+         * This position is in [surface coordinates](https://docs.gtk.org/gdk4/coordinates.html).
          * @returns whether the positions were set
          */
         get_position(): [boolean, number, number];
         /**
          * Returns the seat that originated the event.
-         * @returns a `GdkSeat`.
+         * @returns a {@link Gdk.Seat}.
          */
         get_seat(): Seat | null;
         /**
          * Extracts the surface associated with an event.
-         * @returns The `GdkSurface` associated with the event
+         * @returns The {@link Gdk.Surface} associated with the event
          */
         get_surface(): Surface | null;
         /**
          * Returns the timestamp of `event`.
          *
          * Not all events have timestamps. In that case, this function
-         * returns %GDK_CURRENT_TIME.
-         * @returns timestamp field from @event
+         * returns `GDK_CURRENT_TIME`.
+         * @returns timestamp field from `event`
          */
         get_time(): number;
         /**
          * Increase the ref count of `event`.
-         * @returns @event
+         * @returns `event`
          */
         ref(): Event;
         /**
-         * Returns whether a `GdkEvent` should trigger a context menu,
+         * Returns whether a {@link Gdk.Event} should trigger a context menu,
          * according to platform conventions.
          *
          * The right mouse button typically triggers context menus.
@@ -10866,7 +11596,7 @@ export namespace Gdk {
          * ```c
          * event->button == GDK_BUTTON_SECONDARY
          * ```
-         * @returns %TRUE if the event should trigger a context menu.
+         * @returns `true` if the event should trigger a context menu.
          */
         triggers_context_menu(): boolean;
         /**
@@ -10884,6 +11614,7 @@ export namespace Gdk {
 
     /**
      * An event related to a keyboard focus change.
+     * @gir-type Class
      */
     class FocusEvent extends Event {
         static $gtype: GObject.GType<FocusEvent>;
@@ -10894,16 +11625,19 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FocusEvent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FocusEvent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FocusEvent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FocusEvent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FocusEvent.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FocusEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -10915,7 +11649,7 @@ export namespace Gdk {
         /**
          * Extracts whether this event is about focus entering or
          * leaving the surface.
-         * @returns %TRUE of the focus is entering
+         * @returns `true` of the focus is entering
          */
         get_in(): boolean;
     }
@@ -10923,12 +11657,73 @@ export namespace Gdk {
     namespace FrameClock {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * This signal ends processing of the frame.
+             *
+             * Applications should generally not handle this signal.
+             * @signal
+             * @run-last
+             */
             'after-paint': () => void;
+            /**
+             * Begins processing of the frame.
+             *
+             * Applications should generally not handle this signal.
+             * @signal
+             * @run-last
+             */
             'before-paint': () => void;
+            /**
+             * Used to flush pending motion events that are being batched up and
+             * compressed together.
+             *
+             * Applications should not handle this signal.
+             * @signal
+             * @run-last
+             */
             'flush-events': () => void;
+            /**
+             * Emitted as the second step of toolkit and application processing
+             * of the frame.
+             *
+             * Any work to update sizes and positions of application elements
+             * should be performed. GTK normally handles this internally.
+             * @signal
+             * @run-last
+             */
             layout: () => void;
+            /**
+             * Emitted as the third step of toolkit and application processing
+             * of the frame.
+             *
+             * The frame is repainted. GDK normally handles this internally and
+             * emits `Gdk.Surface::render` signals which are turned into
+             * [GtkWidget::snapshot](../gtk4/signal.Widget.snapshot.html) signals
+             * by GTK.
+             * @signal
+             * @run-last
+             */
             paint: () => void;
+            /**
+             * Emitted after processing of the frame is finished.
+             *
+             * This signal is handled internally by GTK to resume normal
+             * event processing. Applications should not handle this signal.
+             * @signal
+             * @run-last
+             */
             'resume-events': () => void;
+            /**
+             * Emitted as the first step of toolkit and application processing
+             * of the frame.
+             *
+             * Animations should be updated using {@link Gdk.FrameClock.get_frame_time}.
+             * Applications can connect directly to this signal, or use
+             * [gtk_widget_add_tick_callback()](../gtk4/method.Widget.add_tick_callback.html)
+             * as a more convenient interface.
+             * @signal
+             * @run-last
+             */
             update: () => void;
         }
 
@@ -10948,28 +11743,29 @@ export namespace Gdk {
      * The frame clock can also automatically stop painting when it knows the frames
      * will not be visible, or scale back animation framerates.
      *
-     * `GdkFrameClock` is designed to be compatible with an OpenGL-based implementation
+     * {@link Gdk.FrameClock} is designed to be compatible with an OpenGL-based implementation
      * or with mozRequestAnimationFrame in Firefox, for example.
      *
      * A frame clock is idle until someone requests a frame with
-     * [method`Gdk`.FrameClock.request_phase]. At some later point that makes sense
+     * {@link Gdk.FrameClock.request_phase}. At some later point that makes sense
      * for the synchronization being implemented, the clock will process a frame and
      * emit signals for each phase that has been requested. (See the signals of the
-     * `GdkFrameClock` class for documentation of the phases.
-     * %GDK_FRAME_CLOCK_PHASE_UPDATE and the [signal`Gdk`.FrameClock::update] signal
+     * {@link Gdk.FrameClock} class for documentation of the phases.
+     * {@link Gdk.FrameClockPhase.UPDATE} and the `Gdk.FrameClock::update` signal
      * are most interesting for application writers, and are used to update the
-     * animations, using the frame time given by [method`Gdk`.FrameClock.get_frame_time].
+     * animations, using the frame time given by {@link Gdk.FrameClock.get_frame_time}.
      *
      * The frame time is reported in microseconds and generally in the same
-     * timescale as g_get_monotonic_time(), however, it is not the same
-     * as g_get_monotonic_time(). The frame time does not advance during
+     * timescale as `g_get_monotonic_time()`, however, it is not the same
+     * as `g_get_monotonic_time()`. The frame time does not advance during
      * the time a frame is being painted, and outside of a frame, an attempt
-     * is made so that all calls to [method`Gdk`.FrameClock.get_frame_time] that
+     * is made so that all calls to {@link Gdk.FrameClock.get_frame_time} that
      * are called at a “similar” time get the same value. This means that
      * if different animations are timed by looking at the difference in
-     * time between an initial value from [method`Gdk`.FrameClock.get_frame_time]
-     * and the value inside the [signal`Gdk`.FrameClock::update] signal of the clock,
+     * time between an initial value from {@link Gdk.FrameClock.get_frame_time}
+     * and the value inside the `Gdk.FrameClock::update` signal of the clock,
      * they will stay exactly synchronized.
+     * @gir-type Class
      */
     abstract class FrameClock extends GObject.Object {
         static $gtype: GObject.GType<FrameClock>;
@@ -10991,16 +11787,19 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FrameClock.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FrameClock.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FrameClock.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FrameClock.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FrameClock.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FrameClock.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -11012,22 +11811,22 @@ export namespace Gdk {
         /**
          * Starts updates for an animation.
          *
-         * Until a matching call to [method`Gdk`.FrameClock.end_updating] is made,
+         * Until a matching call to {@link Gdk.FrameClock.end_updating} is made,
          * the frame clock will continually request a new frame with the
-         * %GDK_FRAME_CLOCK_PHASE_UPDATE phase. This function may be called multiple
-         * times and frames will be requested until gdk_frame_clock_end_updating()
+         * {@link Gdk.FrameClockPhase.UPDATE} phase. This function may be called multiple
+         * times and frames will be requested until `gdk_frame_clock_end_updating()`
          * is called the same number of times.
          */
         begin_updating(): void;
         /**
          * Stops updates for an animation.
          *
-         * See the documentation for [method`Gdk`.FrameClock.begin_updating].
+         * See the documentation for {@link Gdk.FrameClock.begin_updating}.
          */
         end_updating(): void;
         /**
          * Gets the frame timings for the current frame.
-         * @returns the `GdkFrameTimings` for the   frame currently being processed, or even no frame is being   processed, for the previous frame. Before any frames have been   processed, returns %NULL.
+         * @returns the {@link Gdk.FrameTimings} for the   frame currently being processed, or even no frame is being   processed, for the previous frame. Before any frames have been   processed, returns `null`.
          */
         get_current_timings(): FrameTimings | null;
         /**
@@ -11037,7 +11836,7 @@ export namespace Gdk {
          */
         get_fps(): number;
         /**
-         * `GdkFrameClock` maintains a 64-bit counter that increments for
+         * {@link Gdk.FrameClock} maintains a 64-bit counter that increments for
          * each frame drawn.
          * @returns inside frame processing, the value of the frame counter   for the current frame. Outside of frame processing, the frame   counter for the last frame.
          */
@@ -11050,19 +11849,19 @@ export namespace Gdk {
          * the time of the conceptual “previous frame,” which may be either
          * the actual previous frame time, or if that’s too old, an updated
          * time.
-         * @returns a timestamp in microseconds, in the timescale of  of g_get_monotonic_time().
+         * @returns a timestamp in microseconds, in the timescale of  of `g_get_monotonic_time()`.
          */
         get_frame_time(): number;
         /**
          * Returns the frame counter for the oldest frame available in history.
          *
-         * `GdkFrameClock` internally keeps a history of `GdkFrameTimings`
+         * {@link Gdk.FrameClock} internally keeps a history of {@link Gdk.FrameTimings}
          * objects for recent frames that can be retrieved with
-         * [method`Gdk`.FrameClock.get_timings]. The set of stored frames
+         * {@link Gdk.FrameClock.get_timings}. The set of stored frames
          * is the set from the counter values given by
-         * [method`Gdk`.FrameClock.get_history_start] and
-         * [method`Gdk`.FrameClock.get_frame_counter], inclusive.
-         * @returns the frame counter value for the oldest frame  that is available in the internal frame history of the  `GdkFrameClock`
+         * {@link Gdk.FrameClock.get_history_start} and
+         * {@link Gdk.FrameClock.get_frame_counter}, inclusive.
+         * @returns the frame counter value for the oldest frame  that is available in the internal frame history of the  {@link Gdk.FrameClock}
          */
         get_history_start(): number;
         /**
@@ -11077,14 +11876,14 @@ export namespace Gdk {
          */
         get_refresh_info(base_time: number): [number, number];
         /**
-         * Retrieves a `GdkFrameTimings` object holding timing information
+         * Retrieves a {@link Gdk.FrameTimings} object holding timing information
          * for the current frame or a recent frame.
          *
-         * The `GdkFrameTimings` object may not yet be complete: see
-         * [method`Gdk`.FrameTimings.get_complete] and
-         * [method`Gdk`.FrameClock.get_history_start].
+         * The {@link Gdk.FrameTimings} object may not yet be complete: see
+         * {@link Gdk.FrameTimings.get_complete} and
+         * {@link Gdk.FrameClock.get_history_start}.
          * @param frame_counter the frame counter value identifying the frame to  be received
-         * @returns the `GdkFrameTimings` object   for the specified frame, or %NULL if it is not available
+         * @returns the {@link Gdk.FrameTimings} object   for the specified frame, or `null` if it is not available
          */
         get_timings(frame_counter: number): FrameTimings | null;
         /**
@@ -11092,11 +11891,11 @@ export namespace Gdk {
          *
          * The signal corresponding the requested phase will be emitted the next
          * time the frame clock processes. Multiple calls to
-         * gdk_frame_clock_request_phase() will be combined together
+         * `gdk_frame_clock_request_phase()` will be combined together
          * and only one frame processed. If you are displaying animated
          * content and want to continually request the
-         * %GDK_FRAME_CLOCK_PHASE_UPDATE phase for a period of time,
-         * you should use [method`Gdk`.FrameClock.begin_updating] instead,
+         * {@link Gdk.FrameClockPhase.UPDATE} phase for a period of time,
+         * you should use {@link Gdk.FrameClock.begin_updating} instead,
          * since this allows GTK to adjust system parameters to get maximally
          * smooth animations.
          * @param phase the phase that is requested
@@ -11128,39 +11927,39 @@ export namespace Gdk {
     /**
      * Represents a platform-specific OpenGL draw context.
      *
-     * `GdkGLContext`s are created for a surface using
-     * [method`Gdk`.Surface.create_gl_context], and the context will match
+     * {@link Gdk.GLContext}s are created for a surface using
+     * {@link Gdk.Surface.create_gl_context}, and the context will match
      * the characteristics of the surface.
      *
-     * A `GdkGLContext` is not tied to any particular normal framebuffer.
+     * A {@link Gdk.GLContext} is not tied to any particular normal framebuffer.
      * For instance, it cannot draw to the surface back buffer. The GDK
      * repaint system is in full control of the painting to that. Instead,
-     * you can create render buffers or textures and use [func`cairo_draw_from_gl]`
+     * you can create render buffers or textures and use {@link cairo_draw_from_gl}
      * in the draw function of your widget to draw them. Then GDK will handle
      * the integration of your rendering with that of other widgets.
      *
-     * Support for `GdkGLContext` is platform-specific and context creation
-     * can fail, returning %NULL context.
+     * Support for {@link Gdk.GLContext} is platform-specific and context creation
+     * can fail, returning `null` context.
      *
-     * A `GdkGLContext` has to be made "current" in order to start using
+     * A {@link Gdk.GLContext} has to be made "current" in order to start using
      * it, otherwise any OpenGL call will be ignored.
      *
      * ## Creating a new OpenGL context
      *
-     * In order to create a new `GdkGLContext` instance you need a `GdkSurface`,
+     * In order to create a new {@link Gdk.GLContext} instance you need a {@link Gdk.Surface},
      * which you typically get during the realize call of a widget.
      *
-     * A `GdkGLContext` is not realized until either [method`Gdk`.GLContext.make_current]
-     * or [method`Gdk`.GLContext.realize] is called. It is possible to specify
+     * A {@link Gdk.GLContext} is not realized until either {@link Gdk.GLContext.make_current}
+     * or {@link Gdk.GLContext.realize} is called. It is possible to specify
      * details of the GL context like the OpenGL version to be used, or whether
      * the GL context should have extra state validation enabled after calling
-     * [method`Gdk`.Surface.create_gl_context] by calling [method`Gdk`.GLContext.realize].
+     * {@link Gdk.Surface.create_gl_context} by calling {@link Gdk.GLContext.realize}.
      * If the realization fails you have the option to change the settings of
-     * the `GdkGLContext` and try again.
+     * the {@link Gdk.GLContext} and try again.
      *
      * ## Using a GdkGLContext
      *
-     * You will need to make the `GdkGLContext` the current context before issuing
+     * You will need to make the {@link Gdk.GLContext} the current context before issuing
      * OpenGL calls; the system sends OpenGL commands to whichever context is current.
      * It is possible to have multiple contexts, so you always need to ensure that
      * the one which you want to draw with is the current one before issuing commands:
@@ -11171,9 +11970,10 @@ export namespace Gdk {
      *
      * You can now perform your drawing using OpenGL commands.
      *
-     * You can check which `GdkGLContext` is the current one by using
-     * [func`Gdk`.GLContext.get_current]; you can also unset any `GdkGLContext`
-     * that is currently set by calling [func`Gdk`.GLContext.clear_current].
+     * You can check which {@link Gdk.GLContext} is the current one by using
+     * {@link Gdk.GLContext.get_current}; you can also unset any {@link Gdk.GLContext}
+     * that is currently set by calling {@link Gdk.GLContext.clear_current}.
+     * @gir-type Class
      */
     abstract class GLContext extends DrawContext {
         static $gtype: GObject.GType<GLContext>;
@@ -11182,30 +11982,38 @@ export namespace Gdk {
 
         /**
          * The allowed APIs.
+         * @since 4.6
          */
         get allowed_apis(): GLAPI;
         set allowed_apis(val: GLAPI);
         /**
          * The allowed APIs.
+         * @since 4.6
          */
         get allowedApis(): GLAPI;
         set allowedApis(val: GLAPI);
         /**
          * The API currently in use.
+         * @since 4.6
+         * @read-only
          */
         get api(): GLAPI;
         /**
-         * Always %NULL
+         * Always `null`
          *
          * As many contexts can share data now and no single shared context exists
-         * anymore, this function has been deprecated and now always returns %NULL.
+         * anymore, this function has been deprecated and now always returns `null`.
+         * @deprecated since 4.4: Use {@link Gdk.GLContext.is_shared} to check if contexts   can be shared.
+         * @construct-only
          */
         get shared_context(): GLContext;
         /**
-         * Always %NULL
+         * Always `null`
          *
          * As many contexts can share data now and no single shared context exists
-         * anymore, this function has been deprecated and now always returns %NULL.
+         * anymore, this function has been deprecated and now always returns `null`.
+         * @deprecated since 4.4: Use {@link Gdk.GLContext.is_shared} to check if contexts   can be shared.
+         * @construct-only
          */
         get sharedContext(): GLContext;
 
@@ -11226,16 +12034,19 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof GLContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GLContext.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof GLContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GLContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof GLContext.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<GLContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -11245,21 +12056,21 @@ export namespace Gdk {
         // Static methods
 
         /**
-         * Clears the current `GdkGLContext`.
+         * Clears the current {@link Gdk.GLContext}.
          *
          * Any OpenGL call after this function returns will be ignored
-         * until [method`Gdk`.GLContext.make_current] is called.
+         * until {@link Gdk.GLContext.make_current} is called.
          */
         static clear_current(): void;
         /**
-         * Retrieves the current `GdkGLContext`.
+         * Retrieves the current {@link Gdk.GLContext}.
          */
         static get_current(): GLContext | null;
 
         // Methods
 
         /**
-         * Gets the allowed APIs set via gdk_gl_context_set_allowed_apis().
+         * Gets the allowed APIs set via `gdk_gl_context_set_allowed_apis()`.
          * @returns the allowed APIs
          */
         get_allowed_apis(): GLAPI;
@@ -11273,47 +12084,47 @@ export namespace Gdk {
         /**
          * Retrieves whether the context is doing extra validations and runtime checking.
          *
-         * See [method`Gdk`.GLContext.set_debug_enabled].
-         * @returns %TRUE if debugging is enabled
+         * See {@link Gdk.GLContext.set_debug_enabled}.
+         * @returns `true` if debugging is enabled
          */
         get_debug_enabled(): boolean;
         /**
          * Retrieves the display the `context` is created for
-         * @returns a `GdkDisplay`
+         * @returns a {@link Gdk.Display}
          */
         get_display(): Display | null;
         /**
          * Retrieves whether the context is forward-compatible.
          *
-         * See [method`Gdk`.GLContext.set_forward_compatible].
-         * @returns %TRUE if the context should be forward-compatible
+         * See {@link Gdk.GLContext.set_forward_compatible}.
+         * @returns `true` if the context should be forward-compatible
          */
         get_forward_compatible(): boolean;
         /**
          * Retrieves required OpenGL version set as a requirement for the `context`
          * realization. It will not change even if a greater OpenGL version is supported
          * and used after the `context` is realized. See
-         * [method`Gdk`.GLContext.get_version] for the real version in use.
+         * {@link Gdk.GLContext.get_version} for the real version in use.
          *
-         * See [method`Gdk`.GLContext.set_required_version].
+         * See {@link Gdk.GLContext.set_required_version}.
          */
         get_required_version(): [number, number];
         /**
-         * Used to retrieves the `GdkGLContext` that this `context` share data with.
+         * Used to retrieves the {@link Gdk.GLContext} that this `context` share data with.
          *
          * As many contexts can share data now and no single shared context exists
-         * anymore, this function has been deprecated and now always returns %NULL.
-         * @returns %NULL
+         * anymore, this function has been deprecated and now always returns `null`.
+         * @returns `null`
          */
         get_shared_context(): GLContext | null;
         /**
          * Retrieves the surface used by the `context`.
-         * @returns a `GdkSurface`
+         * @returns a {@link Gdk.Surface}
          */
         get_surface(): Surface | null;
         /**
          * Checks whether the `context` is using an OpenGL or OpenGL ES profile.
-         * @returns %TRUE if the `GdkGLContext` is using an OpenGL ES profile; %FALSE if other profile is in use of if the @context has not yet been realized.
+         * @returns `true` if the {@link Gdk.GLContext} is using an OpenGL ES profile; `false` if other profile is in use of if the `context` has not yet been realized.
          */
         get_use_es(): boolean;
         /**
@@ -11323,30 +12134,30 @@ export namespace Gdk {
          */
         get_version(): [number, number];
         /**
-         * Whether the `GdkGLContext` is in legacy mode or not.
+         * Whether the {@link Gdk.GLContext} is in legacy mode or not.
          *
-         * The `GdkGLContext` must be realized before calling this function.
+         * The {@link Gdk.GLContext} must be realized before calling this function.
          *
          * When realizing a GL context, GDK will try to use the OpenGL 3.2 core
          * profile; this profile removes all the OpenGL API that was deprecated
          * prior to the 3.2 version of the specification. If the realization is
-         * successful, this function will return %FALSE.
+         * successful, this function will return `false`.
          *
          * If the underlying OpenGL implementation does not support core profiles,
          * GDK will fall back to a pre-3.2 compatibility profile, and this function
-         * will return %TRUE.
+         * will return `true`.
          *
          * You can use the value returned by this function to decide which kind
          * of OpenGL API to use, or whether to do extension discovery, or what
          * kind of shader programs to load.
-         * @returns %TRUE if the GL context is in legacy mode
+         * @returns `true` if the GL context is in legacy mode
          */
         is_legacy(): boolean;
         /**
          * Checks if the two GL contexts can share resources.
          *
          * When they can, the texture IDs from `other` can be used in `self`. This
-         * is particularly useful when passing `GdkGLTexture` objects between
+         * is particularly useful when passing {@link Gdk.GLTexture} objects between
          * different contexts.
          *
          * Contexts created for the same display with the same properties will
@@ -11354,9 +12165,9 @@ export namespace Gdk {
          * For other contexts it depends on the GL backend.
          *
          * Both contexts must be realized for this check to succeed. If either one
-         * is not, this function will return %FALSE.
-         * @param other the `GdkGLContext` that should be compatible with @self
-         * @returns %TRUE if the two GL contexts are compatible.
+         * is not, this function will return `false`.
+         * @param other the {@link Gdk.GLContext} that should be compatible with `self`
+         * @returns `true` if the two GL contexts are compatible.
          */
         is_shared(other: GLContext): boolean;
         /**
@@ -11364,43 +12175,43 @@ export namespace Gdk {
          */
         make_current(): void;
         /**
-         * Realizes the given `GdkGLContext`.
+         * Realizes the given {@link Gdk.GLContext}.
          *
-         * It is safe to call this function on a realized `GdkGLContext`.
-         * @returns %TRUE if the context is realized
+         * It is safe to call this function on a realized {@link Gdk.GLContext}.
+         * @returns `true` if the context is realized
          */
         realize(): boolean;
         /**
-         * Sets the allowed APIs. When gdk_gl_context_realize() is called, only the
+         * Sets the allowed APIs. When `gdk_gl_context_realize()` is called, only the
          * allowed APIs will be tried. If you set this to 0, realizing will always fail.
          *
          * If you set it on a realized context, the property will not have any effect.
-         * It is only relevant during gdk_gl_context_realize().
+         * It is only relevant during `gdk_gl_context_realize()`.
          *
          * By default, all APIs are allowed.
          * @param apis the allowed APIs
          */
         set_allowed_apis(apis: GLAPI | null): void;
         /**
-         * Sets whether the `GdkGLContext` should perform extra validations and
+         * Sets whether the {@link Gdk.GLContext} should perform extra validations and
          * runtime checking.
          *
          * This is useful during development, but has additional overhead.
          *
-         * The `GdkGLContext` must not be realized or made current prior to
+         * The {@link Gdk.GLContext} must not be realized or made current prior to
          * calling this function.
          * @param enabled whether to enable debugging in the context
          */
         set_debug_enabled(enabled: boolean): void;
         /**
-         * Sets whether the `GdkGLContext` should be forward-compatible.
+         * Sets whether the {@link Gdk.GLContext} should be forward-compatible.
          *
          * Forward-compatible contexts must not support OpenGL functionality that
          * has been marked as deprecated in the requested version; non-forward
          * compatible contexts, on the other hand, must support both deprecated and
          * non deprecated functionality.
          *
-         * The `GdkGLContext` must not be realized or made current prior to calling
+         * The {@link Gdk.GLContext} must not be realized or made current prior to calling
          * this function.
          * @param compatible whether the context should be forward-compatible
          */
@@ -11430,8 +12241,8 @@ export namespace Gdk {
          * underlying GL implementation is OpenGL or OpenGL ES once the `context`
          * is realized.
          *
-         * You should check the return value of [method`Gdk`.GLContext.get_use_es]
-         * after calling [method`Gdk`.GLContext.realize] to decide whether to use
+         * You should check the return value of {@link Gdk.GLContext.get_use_es}
+         * after calling {@link Gdk.GLContext.realize} to decide whether to use
          * the OpenGL or OpenGL ES API, extensions, or shaders.
          * @param use_es whether the context should use OpenGL ES instead of OpenGL,   or -1 to allow auto-detection
          */
@@ -11457,7 +12268,8 @@ export namespace Gdk {
     }
 
     /**
-     * A `GdkTexture` representing a GL texture object.
+     * A {@link Gdk.Texture} representing a GL texture object.
+     * @gir-type Class
      */
     class GLTexture extends Texture implements Paintable, Gio.Icon, Gio.LoadableIcon {
         static $gtype: GObject.GType<GLTexture>;
@@ -11481,16 +12293,19 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof GLTexture.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GLTexture.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof GLTexture.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GLTexture.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof GLTexture.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<GLTexture.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -11500,17 +12315,15 @@ export namespace Gdk {
         // Methods
 
         /**
-         * Releases the GL resources held by a `GdkGLTexture`.
+         * Releases the GL resources held by a {@link Gdk.GLTexture}.
          *
          * The texture contents are still available via the
-         * [method`Gdk`.Texture.download] function, after this
+         * {@link Gdk.Texture.download} function, after this
          * function has been called.
          */
         release(): void;
-
-        // Inherited methods
         /**
-         * Compute a concrete size for the `GdkPaintable`.
+         * Compute a concrete size for the {@link Gdk.Paintable}.
          *
          * Applies the sizing algorithm outlined in the
          * [CSS Image spec](https://drafts.csswg.org/css-images-3/#default-sizing)
@@ -11520,10 +12333,10 @@ export namespace Gdk {
          * and `specified_height` are known, but it is useful to call this
          * function in GtkWidget:measure implementations to compute the
          * other dimension when only one dimension is given.
-         * @param specified_width the width @paintable could be drawn into or   0.0 if unknown
-         * @param specified_height the height @paintable could be drawn into or   0.0 if unknown
-         * @param default_width the width @paintable would be drawn into if   no other constraints were given
-         * @param default_height the height @paintable would be drawn into if   no other constraints were given
+         * @param specified_width the width `paintable` could be drawn into or   0.0 if unknown
+         * @param specified_height the height `paintable` could be drawn into or   0.0 if unknown
+         * @param default_width the width `paintable` would be drawn into if   no other constraints were given
+         * @param default_height the height `paintable` would be drawn into if   no other constraints were given
          */
         compute_concrete_size(
             specified_width: number,
@@ -11538,7 +12351,7 @@ export namespace Gdk {
          * for example to take a screenshot of a running animation.
          *
          * If the `paintable` is already immutable, it will return itself.
-         * @returns An immutable paintable for the current   contents of @paintable
+         * @returns An immutable paintable for the current   contents of `paintable`
          */
         get_current_image(): Paintable;
         /**
@@ -11546,8 +12359,8 @@ export namespace Gdk {
          *
          * This is oftentimes useful for optimizations.
          *
-         * See [flags`Gdk`.PaintableFlags] for the flags and what they mean.
-         * @returns The `GdkPaintableFlags` for this paintable
+         * See {@link Gdk.PaintableFlags} for the flags and what they mean.
+         * @returns The {@link Gdk.PaintableFlags} for this paintable
          */
         get_flags(): PaintableFlags;
         /**
@@ -11559,16 +12372,16 @@ export namespace Gdk {
          * ratio when displaying the paintable.
          *
          * This is a purely informational value and does not in any way limit the
-         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         * values that may be passed to {@link Gdk.Paintable.snapshot}.
          *
          * Usually when a `paintable` returns nonzero values from
-         * [method`Gdk`.Paintable.get_intrinsic_width] and
-         * [method`Gdk`.Paintable.get_intrinsic_height] the aspect ratio
+         * {@link Gdk.Paintable.get_intrinsic_width} and
+         * {@link Gdk.Paintable.get_intrinsic_height} the aspect ratio
          * should conform to those values, though that is not required.
          *
          * If the `paintable` does not have a preferred aspect ratio,
          * it returns 0. Negative values are never returned.
-         * @returns the intrinsic aspect ratio of @paintable or 0 if none.
+         * @returns the intrinsic aspect ratio of `paintable` or 0 if none.
          */
         get_intrinsic_aspect_ratio(): number;
         /**
@@ -11578,11 +12391,11 @@ export namespace Gdk {
          * the paintable.
          *
          * This is a purely informational value and does not in any way limit the
-         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         * values that may be passed to {@link Gdk.Paintable.snapshot}.
          *
          * If the `paintable` does not have a preferred height, it returns 0.
          * Negative values are never returned.
-         * @returns the intrinsic height of @paintable or 0 if none.
+         * @returns the intrinsic height of `paintable` or 0 if none.
          */
         get_intrinsic_height(): number;
         /**
@@ -11592,36 +12405,36 @@ export namespace Gdk {
          * the paintable.
          *
          * This is a purely informational value and does not in any way limit the
-         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         * values that may be passed to {@link Gdk.Paintable.snapshot}.
          *
          * If the `paintable` does not have a preferred width, it returns 0.
          * Negative values are never returned.
-         * @returns the intrinsic width of @paintable or 0 if none.
+         * @returns the intrinsic width of `paintable` or 0 if none.
          */
         get_intrinsic_width(): number;
         /**
-         * Called by implementations of `GdkPaintable` to invalidate their contents.
+         * Called by implementations of {@link Gdk.Paintable} to invalidate their contents.
          *
          * Unless the contents are invalidated, implementations must guarantee that
-         * multiple calls of [method`Gdk`.Paintable.snapshot] produce the same output.
+         * multiple calls of {@link Gdk.Paintable.snapshot} produce the same output.
          *
-         * This function will emit the [signal`Gdk`.Paintable::invalidate-contents]
+         * This function will emit the `Gdk.Paintable::invalidate-contents`
          * signal.
          *
-         * If a `paintable` reports the %GDK_PAINTABLE_STATIC_CONTENTS flag,
+         * If a `paintable` reports the {@link Gdk.PaintableFlags.STATIC_CONTENTS} flag,
          * it must not call this function.
          */
         invalidate_contents(): void;
         /**
-         * Called by implementations of `GdkPaintable` to invalidate their size.
+         * Called by implementations of {@link Gdk.Paintable} to invalidate their size.
          *
          * As long as the size is not invalidated, `paintable` must return the same
          * values for its intrinsic width, height and aspect ratio.
          *
-         * This function will emit the [signal`Gdk`.Paintable::invalidate-size]
+         * This function will emit the `Gdk.Paintable::invalidate-size`
          * signal.
          *
-         * If a `paintable` reports the %GDK_PAINTABLE_STATIC_SIZE flag,
+         * If a `paintable` reports the {@link Gdk.PaintableFlags.STATIC_SIZE} flag,
          * it must not call this function.
          */
         invalidate_size(): void;
@@ -11631,7 +12444,7 @@ export namespace Gdk {
          * The paintable is drawn at the current (0,0) offset of the `snapshot`.
          * If `width` and `height` are not larger than zero, this function will
          * do nothing.
-         * @param snapshot a `GdkSnapshot` to snapshot to
+         * @param snapshot a {@link Gdk.Snapshot} to snapshot to
          * @param width width to snapshot in
          * @param height height to snapshot in
          */
@@ -11643,6 +12456,7 @@ export namespace Gdk {
          * for example to take a screenshot of a running animation.
          *
          * If the `paintable` is already immutable, it will return itself.
+         * @virtual
          */
         vfunc_get_current_image(): Paintable;
         /**
@@ -11650,7 +12464,8 @@ export namespace Gdk {
          *
          * This is oftentimes useful for optimizations.
          *
-         * See [flags`Gdk`.PaintableFlags] for the flags and what they mean.
+         * See {@link Gdk.PaintableFlags} for the flags and what they mean.
+         * @virtual
          */
         vfunc_get_flags(): PaintableFlags;
         /**
@@ -11662,15 +12477,16 @@ export namespace Gdk {
          * ratio when displaying the paintable.
          *
          * This is a purely informational value and does not in any way limit the
-         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         * values that may be passed to {@link Gdk.Paintable.snapshot}.
          *
          * Usually when a `paintable` returns nonzero values from
-         * [method`Gdk`.Paintable.get_intrinsic_width] and
-         * [method`Gdk`.Paintable.get_intrinsic_height] the aspect ratio
+         * {@link Gdk.Paintable.get_intrinsic_width} and
+         * {@link Gdk.Paintable.get_intrinsic_height} the aspect ratio
          * should conform to those values, though that is not required.
          *
          * If the `paintable` does not have a preferred aspect ratio,
          * it returns 0. Negative values are never returned.
+         * @virtual
          */
         vfunc_get_intrinsic_aspect_ratio(): number;
         /**
@@ -11680,10 +12496,11 @@ export namespace Gdk {
          * the paintable.
          *
          * This is a purely informational value and does not in any way limit the
-         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         * values that may be passed to {@link Gdk.Paintable.snapshot}.
          *
          * If the `paintable` does not have a preferred height, it returns 0.
          * Negative values are never returned.
+         * @virtual
          */
         vfunc_get_intrinsic_height(): number;
         /**
@@ -11693,10 +12510,11 @@ export namespace Gdk {
          * the paintable.
          *
          * This is a purely informational value and does not in any way limit the
-         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         * values that may be passed to {@link Gdk.Paintable.snapshot}.
          *
          * If the `paintable` does not have a preferred width, it returns 0.
          * Negative values are never returned.
+         * @virtual
          */
         vfunc_get_intrinsic_width(): number;
         /**
@@ -11705,96 +12523,101 @@ export namespace Gdk {
          * The paintable is drawn at the current (0,0) offset of the `snapshot`.
          * If `width` and `height` are not larger than zero, this function will
          * do nothing.
-         * @param snapshot a `GdkSnapshot` to snapshot to
+         * @param snapshot a {@link Gdk.Snapshot} to snapshot to
          * @param width width to snapshot in
          * @param height height to snapshot in
+         * @virtual
          */
         vfunc_snapshot(snapshot: Snapshot, width: number, height: number): void;
         /**
          * Checks if two icons are equal.
-         * @param icon2 pointer to the second #GIcon.
-         * @returns %TRUE if @icon1 is equal to @icon2. %FALSE otherwise.
+         * @param icon2 pointer to the second {@link Gio.Icon}.
+         * @returns `true` if `icon1` is equal to `icon2`. `false` otherwise.
          */
         equal(icon2?: Gio.Icon | null): boolean;
         /**
          * Gets a hash for an icon.
-         * @returns a #guint containing a hash for the @icon, suitable for   use in a #GHashTable or similar data structure.
+         * @returns a `guint` containing a hash for the `icon`, suitable for   use in a {@link GLib.HashTable} or similar data structure.
          */
         hash(): number;
         /**
-         * Serializes a #GIcon into a #GVariant. An equivalent #GIcon can be retrieved
-         * back by calling g_icon_deserialize() on the returned value.
+         * Serializes a {@link Gio.Icon} into a {@link GLib.Variant}. An equivalent {@link Gio.Icon} can be retrieved
+         * back by calling `g_icon_deserialize()` on the returned value.
          * As serialization will avoid using raw icon data when possible, it only
-         * makes sense to transfer the #GVariant between processes on the same machine,
+         * makes sense to transfer the {@link GLib.Variant} between processes on the same machine,
          * (as opposed to over the network), and within the same file system namespace.
-         * @returns a #GVariant, or %NULL when serialization fails. The #GVariant will not be floating.
+         * @returns a {@link GLib.Variant}, or `null` when serialization fails. The {@link GLib.Variant} will not be floating.
          */
         serialize(): GLib.Variant | null;
         /**
          * Generates a textual representation of `icon` that can be used for
          * serialization such as when passing `icon` to a different process or
-         * saving it to persistent storage. Use g_icon_new_for_string() to
+         * saving it to persistent storage. Use `g_icon_new_for_string()` to
          * get `icon` back from the returned string.
          *
-         * The encoding of the returned string is proprietary to #GIcon except
+         * The encoding of the returned string is proprietary to {@link Gio.Icon} except
          * in the following two cases
          *
-         * - If `icon` is a #GFileIcon, the returned string is a native path
+         * - If `icon` is a {@link Gio.FileIcon}, the returned string is a native path
          *   (such as `/path/to/my icon.png`) without escaping
-         *   if the #GFile for `icon` is a native file.  If the file is not
-         *   native, the returned string is the result of g_file_get_uri()
+         *   if the {@link Gio.File} for `icon` is a native file.  If the file is not
+         *   native, the returned string is the result of `g_file_get_uri()`
          *   (such as `sftp://path/to/my%20icon.png`).
          *
-         * - If `icon` is a #GThemedIcon with exactly one name and no fallbacks,
+         * - If `icon` is a {@link Gio.ThemedIcon} with exactly one name and no fallbacks,
          *   the encoding is simply the name (such as `network-server`).
-         * @returns An allocated NUL-terminated UTF8 string or %NULL if @icon can't be serialized. Use g_free() to free.
+         * @returns An allocated NUL-terminated UTF8 string or `null` if `icon` can't be serialized. Use `g_free()` to free.
          */
         to_string(): string | null;
         /**
          * Checks if two icons are equal.
-         * @param icon2 pointer to the second #GIcon.
+         * @param icon2 pointer to the second {@link Gio.Icon}.
+         * @virtual
          */
         vfunc_equal(icon2?: Gio.Icon | null): boolean;
         /**
          * Gets a hash for an icon.
+         * @virtual
          */
         vfunc_hash(): number;
         /**
-         * Serializes a #GIcon into a #GVariant. An equivalent #GIcon can be retrieved
-         * back by calling g_icon_deserialize() on the returned value.
+         * Serializes a {@link Gio.Icon} into a {@link GLib.Variant}. An equivalent {@link Gio.Icon} can be retrieved
+         * back by calling `g_icon_deserialize()` on the returned value.
          * As serialization will avoid using raw icon data when possible, it only
-         * makes sense to transfer the #GVariant between processes on the same machine,
+         * makes sense to transfer the {@link GLib.Variant} between processes on the same machine,
          * (as opposed to over the network), and within the same file system namespace.
+         * @virtual
          */
         vfunc_serialize(): GLib.Variant | null;
         /**
          * Serializes the `icon` into string tokens.
-         * This is can be invoked when g_icon_new_for_string() is called.
+         * This is can be invoked when `g_icon_new_for_string()` is called.
+         * @virtual
          */
         vfunc_to_tokens(): [boolean, string[], number];
         /**
          * Loads a loadable icon. For the asynchronous version of this function,
-         * see g_loadable_icon_load_async().
+         * see `g_loadable_icon_load_async()`.
          * @param size an integer.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns a #GInputStream to read the icon from.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns a {@link Gio.InputStream} to read the icon from.
          */
         load(size: number, cancellable?: Gio.Cancellable | null): [Gio.InputStream, string];
         /**
          * Loads an icon asynchronously. To finish this function, see
-         * g_loadable_icon_load_finish(). For the synchronous, blocking
-         * version of this function, see g_loadable_icon_load().
+         * `g_loadable_icon_load_finish()`. For the synchronous, blocking
+         * version of this function, see `g_loadable_icon_load()`.
          * @param size an integer.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
         load_async(size: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<[Gio.InputStream, string]>;
         /**
          * Loads an icon asynchronously. To finish this function, see
-         * g_loadable_icon_load_finish(). For the synchronous, blocking
-         * version of this function, see g_loadable_icon_load().
+         * `g_loadable_icon_load_finish()`. For the synchronous, blocking
+         * version of this function, see `g_loadable_icon_load()`.
          * @param size an integer.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
         load_async(
             size: number,
@@ -11803,11 +12626,11 @@ export namespace Gdk {
         ): void;
         /**
          * Loads an icon asynchronously. To finish this function, see
-         * g_loadable_icon_load_finish(). For the synchronous, blocking
-         * version of this function, see g_loadable_icon_load().
+         * `g_loadable_icon_load_finish()`. For the synchronous, blocking
+         * version of this function, see `g_loadable_icon_load()`.
          * @param size an integer.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
         load_async(
             size: number,
@@ -11815,25 +12638,27 @@ export namespace Gdk {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[Gio.InputStream, string]> | void;
         /**
-         * Finishes an asynchronous icon load started in g_loadable_icon_load_async().
-         * @param res a #GAsyncResult.
-         * @returns a #GInputStream to read the icon from.
+         * Finishes an asynchronous icon load started in `g_loadable_icon_load_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @returns a {@link Gio.InputStream} to read the icon from.
          */
         load_finish(res: Gio.AsyncResult): [Gio.InputStream, string];
         /**
          * Loads a loadable icon. For the asynchronous version of this function,
-         * see g_loadable_icon_load_async().
+         * see `g_loadable_icon_load_async()`.
          * @param size an integer.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_load(size: number, cancellable?: Gio.Cancellable | null): [Gio.InputStream, string];
         /**
          * Loads an icon asynchronously. To finish this function, see
-         * g_loadable_icon_load_finish(). For the synchronous, blocking
-         * version of this function, see g_loadable_icon_load().
+         * `g_loadable_icon_load_finish()`. For the synchronous, blocking
+         * version of this function, see `g_loadable_icon_load()`.
          * @param size an integer.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
+         * @virtual
          */
         vfunc_load_async(
             size: number,
@@ -11841,8 +12666,9 @@ export namespace Gdk {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Finishes an asynchronous icon load started in g_loadable_icon_load_async().
-         * @param res a #GAsyncResult.
+         * Finishes an asynchronous icon load started in `g_loadable_icon_load_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @virtual
          */
         vfunc_load_finish(res: Gio.AsyncResult): [Gio.InputStream, string];
         /**
@@ -11858,32 +12684,32 @@ export namespace Gdk {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -11892,39 +12718,39 @@ export namespace Gdk {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -11935,13 +12761,16 @@ export namespace Gdk {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](https://docs.gtk.org/gdk4/floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -11949,7 +12778,7 @@ export namespace Gdk {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -11957,9 +12786,9 @@ export namespace Gdk {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -11979,9 +12808,9 @@ export namespace Gdk {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -11994,34 +12823,34 @@ export namespace Gdk {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](https://docs.gtk.org/gdk4/floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -12054,22 +12883,22 @@ export namespace Gdk {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](https://docs.gtk.org/gdk4/floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -12078,8 +12907,8 @@ export namespace Gdk {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -12096,10 +12925,10 @@ export namespace Gdk {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -12114,13 +12943,13 @@ export namespace Gdk {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -12151,21 +12980,21 @@ export namespace Gdk {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -12175,33 +13004,34 @@ export namespace Gdk {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -12210,6 +13040,7 @@ export namespace Gdk {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -12218,12 +13049,14 @@ export namespace Gdk {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -12232,20 +13065,22 @@ export namespace Gdk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -12257,6 +13092,7 @@ export namespace Gdk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -12322,16 +13158,18 @@ export namespace Gdk {
     }
 
     /**
-     * Constructs [class`Gdk`.Texture] objects from GL textures.
+     * Constructs {@link Gdk.Texture} objects from GL textures.
      *
      * The operation is quite simple: Create a texture builder, set all the necessary
-     * properties - keep in mind that the properties [property`Gdk`.GLTextureBuilder:context],
-     * [property`Gdk`.GLTextureBuilder:id], [property`Gdk`.GLTextureBuilder:width], and
-     * [property`Gdk`.GLTextureBuilder:height] are mandatory - and then call
-     * [method`Gdk`.GLTextureBuilder.build] to create the new texture.
+     * properties - keep in mind that the properties {@link Gdk.GLTextureBuilder.context},
+     * {@link Gdk.GLTextureBuilder.id}, {@link Gdk.GLTextureBuilder.width}, and
+     * {@link Gdk.GLTextureBuilder.height} are mandatory - and then call
+     * {@link Gdk.GLTextureBuilder.build} to create the new texture.
      *
-     * `GdkGLTextureBuilder` can be used for quick one-shot construction of
+     * {@link Gdk.GLTextureBuilder} can be used for quick one-shot construction of
      * textures as well as kept around and reused to construct multiple textures.
+     * @gir-type Class
+     * @since 4.12
      */
     class GLTextureBuilder extends GObject.Object {
         static $gtype: GObject.GType<GLTextureBuilder>;
@@ -12340,41 +13178,49 @@ export namespace Gdk {
 
         /**
          * The color state of the texture.
+         * @since 4.16
          */
         get color_state(): ColorState;
         set color_state(val: ColorState);
         /**
          * The color state of the texture.
+         * @since 4.16
          */
         get colorState(): ColorState;
         set colorState(val: ColorState);
         /**
          * The context owning the texture.
+         * @since 4.12
          */
         get context(): GLContext;
         set context(val: GLContext);
         /**
          * The format when downloading the texture.
+         * @since 4.12
          */
         get format(): MemoryFormat;
         set format(val: MemoryFormat);
         /**
          * If the texture has a mipmap.
+         * @since 4.12
          */
         get has_mipmap(): boolean;
         set has_mipmap(val: boolean);
         /**
          * If the texture has a mipmap.
+         * @since 4.12
          */
         get hasMipmap(): boolean;
         set hasMipmap(val: boolean);
         /**
          * The height of the texture.
+         * @since 4.12
          */
         get height(): number;
         set height(val: number);
         /**
          * The texture ID to use.
+         * @since 4.12
          */
         get id(): number;
         set id(val: number);
@@ -12382,31 +13228,37 @@ export namespace Gdk {
          * An optional `GLSync` object.
          *
          * If this is set, GTK will wait on it before using the texture.
+         * @since 4.12
          */
         get sync(): any;
         set sync(val: any);
         /**
-         * The update region for [property`Gdk`.GLTextureBuilder:update-texture].
+         * The update region for {@link Gdk.GLTextureBuilder.update_texture}.
+         * @since 4.12
          */
         get update_region(): cairo.Region;
         set update_region(val: cairo.Region);
         /**
-         * The update region for [property`Gdk`.GLTextureBuilder:update-texture].
+         * The update region for {@link Gdk.GLTextureBuilder.update_texture}.
+         * @since 4.12
          */
         get updateRegion(): cairo.Region;
         set updateRegion(val: cairo.Region);
         /**
-         * The texture [property`Gdk`.GLTextureBuilder:update-region] is an update for.
+         * The texture {@link Gdk.GLTextureBuilder.update_region} is an update for.
+         * @since 4.12
          */
         get update_texture(): Texture;
         set update_texture(val: Texture);
         /**
-         * The texture [property`Gdk`.GLTextureBuilder:update-region] is an update for.
+         * The texture {@link Gdk.GLTextureBuilder.update_region} is an update for.
+         * @since 4.12
          */
         get updateTexture(): Texture;
         set updateTexture(val: Texture);
         /**
          * The width of the texture.
+         * @since 4.12
          */
         get width(): number;
         set width(val: number);
@@ -12430,16 +13282,19 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof GLTextureBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GLTextureBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof GLTextureBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GLTextureBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof GLTextureBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<GLTextureBuilder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -12449,13 +13304,13 @@ export namespace Gdk {
         // Methods
 
         /**
-         * Builds a new `GdkTexture` with the values set up in the builder.
+         * Builds a new {@link Gdk.Texture} with the values set up in the builder.
          *
          * The `destroy` function gets called when the returned texture gets released;
          * either when the texture is finalized or by an explicit call to
-         * [method`Gdk`.GLTexture.release]. It should release all GL resources associated
-         * with the texture, such as the [property`Gdk`.GLTextureBuilder:id] and the
-         * [property`Gdk`.GLTextureBuilder:sync].
+         * {@link Gdk.GLTexture.release}. It should release all GL resources associated
+         * with the texture, such as the {@link Gdk.GLTextureBuilder.id} and the
+         * {@link Gdk.GLTextureBuilder.sync}.
          *
          * Note that it is a programming error to call this function if any mandatory
          * property has not been set.
@@ -12464,22 +13319,22 @@ export namespace Gdk {
          * possibly with changing properties in between.
          * @param destroy destroy function to be called when the texture is   released
          * @param data user data to pass to the destroy function
-         * @returns a newly built `GdkTexture`
+         * @returns a newly built {@link Gdk.Texture}
          */
         build(destroy?: GLib.DestroyNotify | null, data?: any | null): Texture;
         /**
-         * Gets the color state previously set via gdk_gl_texture_builder_set_color_state().
+         * Gets the color state previously set via `gdk_gl_texture_builder_set_color_state()`.
          * @returns the color state
          */
         get_color_state(): ColorState;
         /**
-         * Gets the context previously set via gdk_gl_texture_builder_set_context() or
-         * %NULL if none was set.
+         * Gets the context previously set via `gdk_gl_texture_builder_set_context()` or
+         * `null` if none was set.
          * @returns The context
          */
         get_context(): GLContext | null;
         /**
-         * Gets the format previously set via gdk_gl_texture_builder_set_format().
+         * Gets the format previously set via `gdk_gl_texture_builder_set_format()`.
          * @returns The format
          */
         get_format(): MemoryFormat;
@@ -12489,36 +13344,36 @@ export namespace Gdk {
          */
         get_has_mipmap(): boolean;
         /**
-         * Gets the height previously set via gdk_gl_texture_builder_set_height() or
+         * Gets the height previously set via `gdk_gl_texture_builder_set_height()` or
          * 0 if the height wasn't set.
          * @returns The height
          */
         get_height(): number;
         /**
-         * Gets the texture id previously set via gdk_gl_texture_builder_set_id() or
+         * Gets the texture id previously set via `gdk_gl_texture_builder_set_id()` or
          * 0 if the id wasn't set.
          * @returns The id
          */
         get_id(): number;
         /**
-         * Gets the `GLsync` previously set via gdk_gl_texture_builder_set_sync().
+         * Gets the `GLsync` previously set via `gdk_gl_texture_builder_set_sync()`.
          * @returns the `GLSync`
          */
         get_sync(): any | null;
         /**
-         * Gets the region previously set via gdk_gl_texture_builder_set_update_region() or
-         * %NULL if none was set.
+         * Gets the region previously set via `gdk_gl_texture_builder_set_update_region()` or
+         * `null` if none was set.
          * @returns The region
          */
         get_update_region(): cairo.Region | null;
         /**
-         * Gets the texture previously set via gdk_gl_texture_builder_set_update_texture() or
-         * %NULL if none was set.
+         * Gets the texture previously set via `gdk_gl_texture_builder_set_update_texture()` or
+         * `null` if none was set.
          * @returns The texture
          */
         get_update_texture(): Texture | null;
         /**
-         * Gets the width previously set via gdk_gl_texture_builder_set_width() or
+         * Gets the width previously set via `gdk_gl_texture_builder_set_width()` or
          * 0 if the width wasn't set.
          * @returns The width
          */
@@ -12528,22 +13383,22 @@ export namespace Gdk {
          *
          * By default, the sRGB colorstate is used. If you don't know what
          * colorstates are, this is probably the right thing.
-         * @param color_state a `GdkColorState`
+         * @param color_state a {@link Gdk.ColorState}
          */
         set_color_state(color_state: ColorState): void;
         /**
          * Sets the context to be used for the texture. This is the context that owns
          * the texture.
          *
-         * The context must be set before calling [method`Gdk`.GLTextureBuilder.build].
-         * @param context The context the texture belongs to or %NULL to unset
+         * The context must be set before calling {@link Gdk.GLTextureBuilder.build}.
+         * @param context The context the texture belongs to or `null` to unset
          */
         set_context(context?: GLContext | null): void;
         /**
          * Sets the format of the texture. The default is `GDK_MEMORY_R8G8B8A8_PREMULTIPLIED`.
          *
          * The format is the preferred format the texture data should be downloaded to. The
-         * format must be supported by the GL version of [property`Gdk`.GLTextureBuilder:context].
+         * format must be supported by the GL version of {@link Gdk.GLTextureBuilder.context}.
          *
          * GDK's texture download code assumes that the format corresponds to the storage
          * parameters of the GL texture in an obvious way. For example, a format of
@@ -12570,25 +13425,25 @@ export namespace Gdk {
         /**
          * Sets the height of the texture.
          *
-         * The height must be set before calling [method`Gdk`.GLTextureBuilder.build].
+         * The height must be set before calling {@link Gdk.GLTextureBuilder.build}.
          * @param height The texture's height or 0 to unset
          */
         set_height(height: number): void;
         /**
          * Sets the texture id of the texture. The texture id must remain unmodified
-         * until the texture was finalized. See [method`Gdk`.GLTextureBuilder.build]
+         * until the texture was finalized. See {@link Gdk.GLTextureBuilder.build}
          * for a longer discussion.
          *
-         * The id must be set before calling [method`Gdk`.GLTextureBuilder.build].
+         * The id must be set before calling {@link Gdk.GLTextureBuilder.build}.
          * @param id The texture id to be used for creating the texture
          */
         set_id(id: number): void;
         /**
          * Sets the GLSync object to use for the texture.
          *
-         * GTK will wait on this object before using the created `GdkTexture`.
+         * GTK will wait on this object before using the created {@link Gdk.Texture}.
          *
-         * The `destroy` function that is passed to [method`Gdk`.GLTextureBuilder.build]
+         * The `destroy` function that is passed to {@link Gdk.GLTextureBuilder.build}
          * is responsible for freeing the sync object when it is no longer needed.
          * The texture builder does not destroy it and it is the callers
          * responsibility to make sure it doesn't leak.
@@ -12597,7 +13452,7 @@ export namespace Gdk {
         set_sync(sync?: any | null): void;
         /**
          * Sets the region to be updated by this texture. Together with
-         * [property`Gdk`.GLTextureBuilder:update-texture] this describes an
+         * {@link Gdk.GLTextureBuilder.update_texture} this describes an
          * update of a previous texture.
          *
          * When rendering animations of large textures, it is possible that
@@ -12611,14 +13466,14 @@ export namespace Gdk {
         set_update_region(region?: cairo.Region | null): void;
         /**
          * Sets the texture to be updated by this texture. See
-         * [method`Gdk`.GLTextureBuilder.set_update_region] for an explanation.
+         * {@link Gdk.GLTextureBuilder.set_update_region} for an explanation.
          * @param texture the texture to update
          */
         set_update_texture(texture?: Texture | null): void;
         /**
          * Sets the width of the texture.
          *
-         * The width must be set before calling [method`Gdk`.GLTextureBuilder.build].
+         * The width must be set before calling {@link Gdk.GLTextureBuilder.build}.
          * @param width The texture's width or 0 to unset
          */
         set_width(width: number): void;
@@ -12631,6 +13486,7 @@ export namespace Gdk {
 
     /**
      * An event related to a broken windowing system grab.
+     * @gir-type Class
      */
     class GrabBrokenEvent extends Event {
         static $gtype: GObject.GType<GrabBrokenEvent>;
@@ -12641,16 +13497,19 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof GrabBrokenEvent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GrabBrokenEvent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof GrabBrokenEvent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GrabBrokenEvent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof GrabBrokenEvent.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<GrabBrokenEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -12661,12 +13520,12 @@ export namespace Gdk {
 
         /**
          * Extracts the grab surface from a grab broken event.
-         * @returns the grab surface of @event
+         * @returns the grab surface of `event`
          */
         get_grab_surface(): Surface;
         /**
          * Checks whether the grab broken event is for an implicit grab.
-         * @returns %TRUE if the an implicit grab was broken
+         * @returns `true` if the an implicit grab was broken
          */
         get_implicit(): boolean;
     }
@@ -12678,6 +13537,7 @@ export namespace Gdk {
 
     /**
      * An event related to a key-based device.
+     * @gir-type Class
      */
     class KeyEvent extends Event {
         static $gtype: GObject.GType<KeyEvent>;
@@ -12688,16 +13548,19 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof KeyEvent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, KeyEvent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof KeyEvent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, KeyEvent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof KeyEvent.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<KeyEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -12708,40 +13571,40 @@ export namespace Gdk {
 
         /**
          * Extracts the consumed modifiers from a key event.
-         * @returns the consumed modifiers or @event
+         * @returns the consumed modifiers or `event`
          */
         get_consumed_modifiers(): ModifierType;
         /**
          * Extracts the keycode from a key event.
-         * @returns the keycode of @event
+         * @returns the keycode of `event`
          */
         get_keycode(): number;
         /**
          * Extracts the keyval from a key event.
-         * @returns the keyval of @event
+         * @returns the keyval of `event`
          */
         get_keyval(): number;
         /**
          * Extracts the layout from a key event.
-         * @returns the layout of @event
+         * @returns the layout of `event`
          */
         get_layout(): number;
         /**
          * Extracts the shift level from a key event.
-         * @returns the shift level of @event
+         * @returns the shift level of `event`
          */
         get_level(): number;
         /**
          * Gets a keyval and modifier combination that will match
          * the event.
          *
-         * See [method`Gdk`.KeyEvent.matches].
-         * @returns %TRUE on success
+         * See {@link Gdk.KeyEvent.matches}.
+         * @returns `true` on success
          */
         get_match(): [boolean, number, ModifierType];
         /**
          * Extracts whether the key event is for a modifier key.
-         * @returns %TRUE if the @event is for a modifier key
+         * @returns `true` if the `event` is for a modifier key
          */
         is_modifier(): boolean;
         /**
@@ -12755,7 +13618,7 @@ export namespace Gdk {
          * Note that we ignore Caps Lock for matching.
          * @param keyval the keyval to match
          * @param modifiers the modifiers to match
-         * @returns a `GdkKeyMatch` value describing whether @event matches
+         * @returns a {@link Gdk.KeyMatch} value describing whether `event` matches
          */
         matches(keyval: number, modifiers: ModifierType | null): KeyMatch;
     }
@@ -12779,7 +13642,8 @@ export namespace Gdk {
     }
 
     /**
-     * A `GdkTexture` representing image data in memory.
+     * A {@link Gdk.Texture} representing image data in memory.
+     * @gir-type Class
      */
     class MemoryTexture extends Texture implements Paintable, Gio.Icon, Gio.LoadableIcon {
         static $gtype: GObject.GType<MemoryTexture>;
@@ -12809,25 +13673,26 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MemoryTexture.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MemoryTexture.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MemoryTexture.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MemoryTexture.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MemoryTexture.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MemoryTexture.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited methods
         /**
-         * Compute a concrete size for the `GdkPaintable`.
+         * Compute a concrete size for the {@link Gdk.Paintable}.
          *
          * Applies the sizing algorithm outlined in the
          * [CSS Image spec](https://drafts.csswg.org/css-images-3/#default-sizing)
@@ -12837,10 +13702,10 @@ export namespace Gdk {
          * and `specified_height` are known, but it is useful to call this
          * function in GtkWidget:measure implementations to compute the
          * other dimension when only one dimension is given.
-         * @param specified_width the width @paintable could be drawn into or   0.0 if unknown
-         * @param specified_height the height @paintable could be drawn into or   0.0 if unknown
-         * @param default_width the width @paintable would be drawn into if   no other constraints were given
-         * @param default_height the height @paintable would be drawn into if   no other constraints were given
+         * @param specified_width the width `paintable` could be drawn into or   0.0 if unknown
+         * @param specified_height the height `paintable` could be drawn into or   0.0 if unknown
+         * @param default_width the width `paintable` would be drawn into if   no other constraints were given
+         * @param default_height the height `paintable` would be drawn into if   no other constraints were given
          */
         compute_concrete_size(
             specified_width: number,
@@ -12855,7 +13720,7 @@ export namespace Gdk {
          * for example to take a screenshot of a running animation.
          *
          * If the `paintable` is already immutable, it will return itself.
-         * @returns An immutable paintable for the current   contents of @paintable
+         * @returns An immutable paintable for the current   contents of `paintable`
          */
         get_current_image(): Paintable;
         /**
@@ -12863,8 +13728,8 @@ export namespace Gdk {
          *
          * This is oftentimes useful for optimizations.
          *
-         * See [flags`Gdk`.PaintableFlags] for the flags and what they mean.
-         * @returns The `GdkPaintableFlags` for this paintable
+         * See {@link Gdk.PaintableFlags} for the flags and what they mean.
+         * @returns The {@link Gdk.PaintableFlags} for this paintable
          */
         get_flags(): PaintableFlags;
         /**
@@ -12876,16 +13741,16 @@ export namespace Gdk {
          * ratio when displaying the paintable.
          *
          * This is a purely informational value and does not in any way limit the
-         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         * values that may be passed to {@link Gdk.Paintable.snapshot}.
          *
          * Usually when a `paintable` returns nonzero values from
-         * [method`Gdk`.Paintable.get_intrinsic_width] and
-         * [method`Gdk`.Paintable.get_intrinsic_height] the aspect ratio
+         * {@link Gdk.Paintable.get_intrinsic_width} and
+         * {@link Gdk.Paintable.get_intrinsic_height} the aspect ratio
          * should conform to those values, though that is not required.
          *
          * If the `paintable` does not have a preferred aspect ratio,
          * it returns 0. Negative values are never returned.
-         * @returns the intrinsic aspect ratio of @paintable or 0 if none.
+         * @returns the intrinsic aspect ratio of `paintable` or 0 if none.
          */
         get_intrinsic_aspect_ratio(): number;
         /**
@@ -12895,11 +13760,11 @@ export namespace Gdk {
          * the paintable.
          *
          * This is a purely informational value and does not in any way limit the
-         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         * values that may be passed to {@link Gdk.Paintable.snapshot}.
          *
          * If the `paintable` does not have a preferred height, it returns 0.
          * Negative values are never returned.
-         * @returns the intrinsic height of @paintable or 0 if none.
+         * @returns the intrinsic height of `paintable` or 0 if none.
          */
         get_intrinsic_height(): number;
         /**
@@ -12909,36 +13774,36 @@ export namespace Gdk {
          * the paintable.
          *
          * This is a purely informational value and does not in any way limit the
-         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         * values that may be passed to {@link Gdk.Paintable.snapshot}.
          *
          * If the `paintable` does not have a preferred width, it returns 0.
          * Negative values are never returned.
-         * @returns the intrinsic width of @paintable or 0 if none.
+         * @returns the intrinsic width of `paintable` or 0 if none.
          */
         get_intrinsic_width(): number;
         /**
-         * Called by implementations of `GdkPaintable` to invalidate their contents.
+         * Called by implementations of {@link Gdk.Paintable} to invalidate their contents.
          *
          * Unless the contents are invalidated, implementations must guarantee that
-         * multiple calls of [method`Gdk`.Paintable.snapshot] produce the same output.
+         * multiple calls of {@link Gdk.Paintable.snapshot} produce the same output.
          *
-         * This function will emit the [signal`Gdk`.Paintable::invalidate-contents]
+         * This function will emit the `Gdk.Paintable::invalidate-contents`
          * signal.
          *
-         * If a `paintable` reports the %GDK_PAINTABLE_STATIC_CONTENTS flag,
+         * If a `paintable` reports the {@link Gdk.PaintableFlags.STATIC_CONTENTS} flag,
          * it must not call this function.
          */
         invalidate_contents(): void;
         /**
-         * Called by implementations of `GdkPaintable` to invalidate their size.
+         * Called by implementations of {@link Gdk.Paintable} to invalidate their size.
          *
          * As long as the size is not invalidated, `paintable` must return the same
          * values for its intrinsic width, height and aspect ratio.
          *
-         * This function will emit the [signal`Gdk`.Paintable::invalidate-size]
+         * This function will emit the `Gdk.Paintable::invalidate-size`
          * signal.
          *
-         * If a `paintable` reports the %GDK_PAINTABLE_STATIC_SIZE flag,
+         * If a `paintable` reports the {@link Gdk.PaintableFlags.STATIC_SIZE} flag,
          * it must not call this function.
          */
         invalidate_size(): void;
@@ -12948,7 +13813,7 @@ export namespace Gdk {
          * The paintable is drawn at the current (0,0) offset of the `snapshot`.
          * If `width` and `height` are not larger than zero, this function will
          * do nothing.
-         * @param snapshot a `GdkSnapshot` to snapshot to
+         * @param snapshot a {@link Gdk.Snapshot} to snapshot to
          * @param width width to snapshot in
          * @param height height to snapshot in
          */
@@ -12960,6 +13825,7 @@ export namespace Gdk {
          * for example to take a screenshot of a running animation.
          *
          * If the `paintable` is already immutable, it will return itself.
+         * @virtual
          */
         vfunc_get_current_image(): Paintable;
         /**
@@ -12967,7 +13833,8 @@ export namespace Gdk {
          *
          * This is oftentimes useful for optimizations.
          *
-         * See [flags`Gdk`.PaintableFlags] for the flags and what they mean.
+         * See {@link Gdk.PaintableFlags} for the flags and what they mean.
+         * @virtual
          */
         vfunc_get_flags(): PaintableFlags;
         /**
@@ -12979,15 +13846,16 @@ export namespace Gdk {
          * ratio when displaying the paintable.
          *
          * This is a purely informational value and does not in any way limit the
-         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         * values that may be passed to {@link Gdk.Paintable.snapshot}.
          *
          * Usually when a `paintable` returns nonzero values from
-         * [method`Gdk`.Paintable.get_intrinsic_width] and
-         * [method`Gdk`.Paintable.get_intrinsic_height] the aspect ratio
+         * {@link Gdk.Paintable.get_intrinsic_width} and
+         * {@link Gdk.Paintable.get_intrinsic_height} the aspect ratio
          * should conform to those values, though that is not required.
          *
          * If the `paintable` does not have a preferred aspect ratio,
          * it returns 0. Negative values are never returned.
+         * @virtual
          */
         vfunc_get_intrinsic_aspect_ratio(): number;
         /**
@@ -12997,10 +13865,11 @@ export namespace Gdk {
          * the paintable.
          *
          * This is a purely informational value and does not in any way limit the
-         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         * values that may be passed to {@link Gdk.Paintable.snapshot}.
          *
          * If the `paintable` does not have a preferred height, it returns 0.
          * Negative values are never returned.
+         * @virtual
          */
         vfunc_get_intrinsic_height(): number;
         /**
@@ -13010,10 +13879,11 @@ export namespace Gdk {
          * the paintable.
          *
          * This is a purely informational value and does not in any way limit the
-         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         * values that may be passed to {@link Gdk.Paintable.snapshot}.
          *
          * If the `paintable` does not have a preferred width, it returns 0.
          * Negative values are never returned.
+         * @virtual
          */
         vfunc_get_intrinsic_width(): number;
         /**
@@ -13022,96 +13892,101 @@ export namespace Gdk {
          * The paintable is drawn at the current (0,0) offset of the `snapshot`.
          * If `width` and `height` are not larger than zero, this function will
          * do nothing.
-         * @param snapshot a `GdkSnapshot` to snapshot to
+         * @param snapshot a {@link Gdk.Snapshot} to snapshot to
          * @param width width to snapshot in
          * @param height height to snapshot in
+         * @virtual
          */
         vfunc_snapshot(snapshot: Snapshot, width: number, height: number): void;
         /**
          * Checks if two icons are equal.
-         * @param icon2 pointer to the second #GIcon.
-         * @returns %TRUE if @icon1 is equal to @icon2. %FALSE otherwise.
+         * @param icon2 pointer to the second {@link Gio.Icon}.
+         * @returns `true` if `icon1` is equal to `icon2`. `false` otherwise.
          */
         equal(icon2?: Gio.Icon | null): boolean;
         /**
          * Gets a hash for an icon.
-         * @returns a #guint containing a hash for the @icon, suitable for   use in a #GHashTable or similar data structure.
+         * @returns a `guint` containing a hash for the `icon`, suitable for   use in a {@link GLib.HashTable} or similar data structure.
          */
         hash(): number;
         /**
-         * Serializes a #GIcon into a #GVariant. An equivalent #GIcon can be retrieved
-         * back by calling g_icon_deserialize() on the returned value.
+         * Serializes a {@link Gio.Icon} into a {@link GLib.Variant}. An equivalent {@link Gio.Icon} can be retrieved
+         * back by calling `g_icon_deserialize()` on the returned value.
          * As serialization will avoid using raw icon data when possible, it only
-         * makes sense to transfer the #GVariant between processes on the same machine,
+         * makes sense to transfer the {@link GLib.Variant} between processes on the same machine,
          * (as opposed to over the network), and within the same file system namespace.
-         * @returns a #GVariant, or %NULL when serialization fails. The #GVariant will not be floating.
+         * @returns a {@link GLib.Variant}, or `null` when serialization fails. The {@link GLib.Variant} will not be floating.
          */
         serialize(): GLib.Variant | null;
         /**
          * Generates a textual representation of `icon` that can be used for
          * serialization such as when passing `icon` to a different process or
-         * saving it to persistent storage. Use g_icon_new_for_string() to
+         * saving it to persistent storage. Use `g_icon_new_for_string()` to
          * get `icon` back from the returned string.
          *
-         * The encoding of the returned string is proprietary to #GIcon except
+         * The encoding of the returned string is proprietary to {@link Gio.Icon} except
          * in the following two cases
          *
-         * - If `icon` is a #GFileIcon, the returned string is a native path
+         * - If `icon` is a {@link Gio.FileIcon}, the returned string is a native path
          *   (such as `/path/to/my icon.png`) without escaping
-         *   if the #GFile for `icon` is a native file.  If the file is not
-         *   native, the returned string is the result of g_file_get_uri()
+         *   if the {@link Gio.File} for `icon` is a native file.  If the file is not
+         *   native, the returned string is the result of `g_file_get_uri()`
          *   (such as `sftp://path/to/my%20icon.png`).
          *
-         * - If `icon` is a #GThemedIcon with exactly one name and no fallbacks,
+         * - If `icon` is a {@link Gio.ThemedIcon} with exactly one name and no fallbacks,
          *   the encoding is simply the name (such as `network-server`).
-         * @returns An allocated NUL-terminated UTF8 string or %NULL if @icon can't be serialized. Use g_free() to free.
+         * @returns An allocated NUL-terminated UTF8 string or `null` if `icon` can't be serialized. Use `g_free()` to free.
          */
         to_string(): string | null;
         /**
          * Checks if two icons are equal.
-         * @param icon2 pointer to the second #GIcon.
+         * @param icon2 pointer to the second {@link Gio.Icon}.
+         * @virtual
          */
         vfunc_equal(icon2?: Gio.Icon | null): boolean;
         /**
          * Gets a hash for an icon.
+         * @virtual
          */
         vfunc_hash(): number;
         /**
-         * Serializes a #GIcon into a #GVariant. An equivalent #GIcon can be retrieved
-         * back by calling g_icon_deserialize() on the returned value.
+         * Serializes a {@link Gio.Icon} into a {@link GLib.Variant}. An equivalent {@link Gio.Icon} can be retrieved
+         * back by calling `g_icon_deserialize()` on the returned value.
          * As serialization will avoid using raw icon data when possible, it only
-         * makes sense to transfer the #GVariant between processes on the same machine,
+         * makes sense to transfer the {@link GLib.Variant} between processes on the same machine,
          * (as opposed to over the network), and within the same file system namespace.
+         * @virtual
          */
         vfunc_serialize(): GLib.Variant | null;
         /**
          * Serializes the `icon` into string tokens.
-         * This is can be invoked when g_icon_new_for_string() is called.
+         * This is can be invoked when `g_icon_new_for_string()` is called.
+         * @virtual
          */
         vfunc_to_tokens(): [boolean, string[], number];
         /**
          * Loads a loadable icon. For the asynchronous version of this function,
-         * see g_loadable_icon_load_async().
+         * see `g_loadable_icon_load_async()`.
          * @param size an integer.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns a #GInputStream to read the icon from.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns a {@link Gio.InputStream} to read the icon from.
          */
         load(size: number, cancellable?: Gio.Cancellable | null): [Gio.InputStream, string];
         /**
          * Loads an icon asynchronously. To finish this function, see
-         * g_loadable_icon_load_finish(). For the synchronous, blocking
-         * version of this function, see g_loadable_icon_load().
+         * `g_loadable_icon_load_finish()`. For the synchronous, blocking
+         * version of this function, see `g_loadable_icon_load()`.
          * @param size an integer.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
         load_async(size: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<[Gio.InputStream, string]>;
         /**
          * Loads an icon asynchronously. To finish this function, see
-         * g_loadable_icon_load_finish(). For the synchronous, blocking
-         * version of this function, see g_loadable_icon_load().
+         * `g_loadable_icon_load_finish()`. For the synchronous, blocking
+         * version of this function, see `g_loadable_icon_load()`.
          * @param size an integer.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
         load_async(
             size: number,
@@ -13120,11 +13995,11 @@ export namespace Gdk {
         ): void;
         /**
          * Loads an icon asynchronously. To finish this function, see
-         * g_loadable_icon_load_finish(). For the synchronous, blocking
-         * version of this function, see g_loadable_icon_load().
+         * `g_loadable_icon_load_finish()`. For the synchronous, blocking
+         * version of this function, see `g_loadable_icon_load()`.
          * @param size an integer.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
         load_async(
             size: number,
@@ -13132,25 +14007,27 @@ export namespace Gdk {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[Gio.InputStream, string]> | void;
         /**
-         * Finishes an asynchronous icon load started in g_loadable_icon_load_async().
-         * @param res a #GAsyncResult.
-         * @returns a #GInputStream to read the icon from.
+         * Finishes an asynchronous icon load started in `g_loadable_icon_load_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @returns a {@link Gio.InputStream} to read the icon from.
          */
         load_finish(res: Gio.AsyncResult): [Gio.InputStream, string];
         /**
          * Loads a loadable icon. For the asynchronous version of this function,
-         * see g_loadable_icon_load_async().
+         * see `g_loadable_icon_load_async()`.
          * @param size an integer.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_load(size: number, cancellable?: Gio.Cancellable | null): [Gio.InputStream, string];
         /**
          * Loads an icon asynchronously. To finish this function, see
-         * g_loadable_icon_load_finish(). For the synchronous, blocking
-         * version of this function, see g_loadable_icon_load().
+         * `g_loadable_icon_load_finish()`. For the synchronous, blocking
+         * version of this function, see `g_loadable_icon_load()`.
          * @param size an integer.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
+         * @virtual
          */
         vfunc_load_async(
             size: number,
@@ -13158,8 +14035,9 @@ export namespace Gdk {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Finishes an asynchronous icon load started in g_loadable_icon_load_async().
-         * @param res a #GAsyncResult.
+         * Finishes an asynchronous icon load started in `g_loadable_icon_load_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @virtual
          */
         vfunc_load_finish(res: Gio.AsyncResult): [Gio.InputStream, string];
         /**
@@ -13175,32 +14053,32 @@ export namespace Gdk {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -13209,39 +14087,39 @@ export namespace Gdk {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -13252,13 +14130,16 @@ export namespace Gdk {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](https://docs.gtk.org/gdk4/floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -13266,7 +14147,7 @@ export namespace Gdk {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -13274,9 +14155,9 @@ export namespace Gdk {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -13296,9 +14177,9 @@ export namespace Gdk {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -13311,34 +14192,34 @@ export namespace Gdk {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](https://docs.gtk.org/gdk4/floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -13371,22 +14252,22 @@ export namespace Gdk {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](https://docs.gtk.org/gdk4/floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -13395,8 +14276,8 @@ export namespace Gdk {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -13413,10 +14294,10 @@ export namespace Gdk {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -13431,13 +14312,13 @@ export namespace Gdk {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -13468,21 +14349,21 @@ export namespace Gdk {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -13492,33 +14373,34 @@ export namespace Gdk {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -13527,6 +14409,7 @@ export namespace Gdk {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -13535,12 +14418,14 @@ export namespace Gdk {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -13549,20 +14434,22 @@ export namespace Gdk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -13574,6 +14461,7 @@ export namespace Gdk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -13634,17 +14522,19 @@ export namespace Gdk {
     }
 
     /**
-     * Constructs [class`Gdk`.Texture] objects from system memory provided
-     * via [struct`GLib`.Bytes].
+     * Constructs {@link Gdk.Texture} objects from system memory provided
+     * via {@link GLib.Bytes}.
      *
      * The operation is quite simple: Create a texture builder, set all the necessary
-     * properties - keep in mind that the properties [property`Gdk`.MemoryTextureBuilder:bytes],
-     * [property`Gdk`.MemoryTextureBuilder:stride], [property`Gdk`.MemoryTextureBuilder:width],
-     * and [property`Gdk`.MemoryTextureBuilder:height] are mandatory - and then call
-     * [method`Gdk`.MemoryTextureBuilder.build] to create the new texture.
+     * properties - keep in mind that the properties {@link Gdk.MemoryTextureBuilder.bytes},
+     * {@link Gdk.MemoryTextureBuilder.stride}, {@link Gdk.MemoryTextureBuilder.width},
+     * and {@link Gdk.MemoryTextureBuilder.height} are mandatory - and then call
+     * {@link Gdk.MemoryTextureBuilder.build} to create the new texture.
      *
-     * `GdkMemoryTextureBuilder` can be used for quick one-shot construction of
+     * {@link Gdk.MemoryTextureBuilder} can be used for quick one-shot construction of
      * textures as well as kept around and reused to construct multiple textures.
+     * @gir-type Class
+     * @since 4.16
      */
     class MemoryTextureBuilder extends GObject.Object {
         static $gtype: GObject.GType<MemoryTextureBuilder>;
@@ -13653,26 +14543,31 @@ export namespace Gdk {
 
         /**
          * The bytes holding the data.
+         * @since 4.16
          */
         get bytes(): GLib.Bytes;
         set bytes(val: GLib.Bytes);
         /**
          * The colorstate describing the data.
+         * @since 4.16
          */
         get color_state(): ColorState;
         set color_state(val: ColorState);
         /**
          * The colorstate describing the data.
+         * @since 4.16
          */
         get colorState(): ColorState;
         set colorState(val: ColorState);
         /**
          * The format of the data.
+         * @since 4.16
          */
         get format(): MemoryFormat;
         set format(val: MemoryFormat);
         /**
          * The height of the texture.
+         * @since 4.16
          */
         get height(): number;
         set height(val: number);
@@ -13681,31 +14576,37 @@ export namespace Gdk {
          *
          * The rowstride is the number of bytes between the first pixel
          * in a row of image data, and the first pixel in the next row.
+         * @since 4.16
          */
         get stride(): number;
         set stride(val: number);
         /**
-         * The update region for [property`Gdk`.MemoryTextureBuilder:update-texture].
+         * The update region for {@link Gdk.MemoryTextureBuilder.update_texture}.
+         * @since 4.16
          */
         get update_region(): cairo.Region;
         set update_region(val: cairo.Region);
         /**
-         * The update region for [property`Gdk`.MemoryTextureBuilder:update-texture].
+         * The update region for {@link Gdk.MemoryTextureBuilder.update_texture}.
+         * @since 4.16
          */
         get updateRegion(): cairo.Region;
         set updateRegion(val: cairo.Region);
         /**
-         * The texture [property`Gdk`.MemoryTextureBuilder:update-region] is an update for.
+         * The texture {@link Gdk.MemoryTextureBuilder.update_region} is an update for.
+         * @since 4.16
          */
         get update_texture(): Texture;
         set update_texture(val: Texture);
         /**
-         * The texture [property`Gdk`.MemoryTextureBuilder:update-region] is an update for.
+         * The texture {@link Gdk.MemoryTextureBuilder.update_region} is an update for.
+         * @since 4.16
          */
         get updateTexture(): Texture;
         set updateTexture(val: Texture);
         /**
          * The width of the texture.
+         * @since 4.16
          */
         get width(): number;
         set width(val: number);
@@ -13729,16 +14630,19 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MemoryTextureBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MemoryTextureBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MemoryTextureBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MemoryTextureBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MemoryTextureBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MemoryTextureBuilder.SignalSignatures[K]> extends [any, ...infer Q]
@@ -13750,69 +14654,69 @@ export namespace Gdk {
         // Methods
 
         /**
-         * Builds a new `GdkTexture` with the values set up in the builder.
+         * Builds a new {@link Gdk.Texture} with the values set up in the builder.
          *
          * Note that it is a programming error to call this function if any mandatory
          * property has not been set.
          *
          * It is possible to call this function multiple times to create multiple textures,
          * possibly with changing properties in between.
-         * @returns a newly built `GdkTexture`
+         * @returns a newly built {@link Gdk.Texture}
          */
         build(): Texture;
         /**
-         * Gets the bytes previously set via gdk_memory_texture_builder_set_bytes()
-         * or %NULL if none was set.
+         * Gets the bytes previously set via `gdk_memory_texture_builder_set_bytes()`
+         * or `null` if none was set.
          * @returns The bytes
          */
         get_bytes(): GLib.Bytes | null;
         /**
-         * Gets the colorstate previously set via gdk_memory_texture_builder_set_color_state().
+         * Gets the colorstate previously set via `gdk_memory_texture_builder_set_color_state()`.
          * @returns The colorstate
          */
         get_color_state(): ColorState;
         /**
-         * Gets the format previously set via gdk_memory_texture_builder_set_format().
+         * Gets the format previously set via `gdk_memory_texture_builder_set_format()`.
          * @returns The format
          */
         get_format(): MemoryFormat;
         /**
-         * Gets the height previously set via gdk_memory_texture_builder_set_height()
+         * Gets the height previously set via `gdk_memory_texture_builder_set_height()`
          * or 0 if the height wasn't set.
          * @returns The height
          */
         get_height(): number;
         /**
-         * Gets the offset previously set via gdk_memory_texture_builder_set_offset().
+         * Gets the offset previously set via `gdk_memory_texture_builder_set_offset()`.
          * @param plane a plane
-         * @returns The offset associated to a @plane
+         * @returns The offset associated to a `plane`
          */
         get_offset(plane: number): number;
         /**
-         * Gets the stride previously set via gdk_memory_texture_builder_set_stride().
+         * Gets the stride previously set via `gdk_memory_texture_builder_set_stride()`.
          * @returns the stride
          */
         get_stride(): number;
         /**
-         * Gets the stride previously set via gdk_memory_texture_builder_set_stride_for_plane().
+         * Gets the stride previously set via `gdk_memory_texture_builder_set_stride_for_plane()`.
          * @param plane a plane
-         * @returns The stride associated to a @plane
+         * @returns The stride associated to a `plane`
          */
         get_stride_for_plane(plane: number): number;
         /**
-         * Gets the region previously set via gdk_memory_texture_builder_set_update_region()
-         * or %NULL if none was set.
+         * Gets the region previously set via `gdk_memory_texture_builder_set_update_region()`
+         * or `null` if none was set.
          * @returns The update region
          */
         get_update_region(): cairo.Region | null;
         /**
-         * Gets the texture previously set via gdk_memory_texture_builder_set_update_texture()
-         * or %NULL if none was set.
+         * Gets the texture previously set via `gdk_memory_texture_builder_set_update_texture()`
+         * or `null` if none was set.
          * @returns The update texture
          */
         get_update_texture(): Texture | null;
         /**
-         * Gets the width previously set via gdk_memory_texture_builder_set_width()
+         * Gets the width previously set via `gdk_memory_texture_builder_set_width()`
          * or 0 if the width wasn't set.
          * @returns The width
          */
@@ -13820,8 +14724,8 @@ export namespace Gdk {
         /**
          * Sets the data to be shown but the texture.
          *
-         * The bytes must be set before calling [method`Gdk`.MemoryTextureBuilder.build].
-         * @param bytes The bytes the texture shows or %NULL to unset
+         * The bytes must be set before calling {@link Gdk.MemoryTextureBuilder.build}.
+         * @param bytes The bytes the texture shows or `null` to unset
          */
         set_bytes(bytes?: GLib.Bytes | null): void;
         /**
@@ -13831,7 +14735,7 @@ export namespace Gdk {
          * what colorstates are, this is probably the right thing.
          * @param color_state The colorstate describing the data
          */
-        set_color_state(color_state?: ColorState | null): void;
+        set_color_state(color_state: ColorState): void;
         /**
          * Sets the format of the bytes.
          *
@@ -13842,7 +14746,7 @@ export namespace Gdk {
         /**
          * Sets the height of the texture.
          *
-         * The height must be set before calling [method`Gdk`.MemoryTextureBuilder.build]
+         * The height must be set before calling {@link Gdk.MemoryTextureBuilder.build}
          * and conform to size requirements of the provided format.
          * @param height The texture's height or 0 to unset
          */
@@ -13850,26 +14754,26 @@ export namespace Gdk {
         /**
          * Sets the offset of the texture for `plane`.
          * @param plane a plane
-         * @param offset the texture's offset for @plane
+         * @param offset the texture's offset for `plane`
          */
         set_offset(plane: number, offset: number): void;
         /**
          * Sets the rowstride of the bytes used.
          *
-         * The rowstride must be set before calling [method`Gdk`.MemoryTextureBuilder.build].
+         * The rowstride must be set before calling {@link Gdk.MemoryTextureBuilder.build}.
          * @param stride the stride or 0 to unset
          */
         set_stride(stride: number): void;
         /**
          * Sets the stride of the texture for `plane`.
          * @param plane a plane
-         * @param stride the texture's stride for @plane
+         * @param stride the texture's stride for `plane`
          */
         set_stride_for_plane(plane: number, stride: number): void;
         /**
          * Sets the region to be updated by this texture.
          *
-         * Together with [property`Gdk`.MemoryTextureBuilder:update-texture],
+         * Together with {@link Gdk.MemoryTextureBuilder.update_texture},
          * this describes an update of a previous texture.
          *
          * When rendering animations of large textures, it is possible that
@@ -13884,14 +14788,14 @@ export namespace Gdk {
         /**
          * Sets the texture to be updated by this texture.
          *
-         * See [method`Gdk`.MemoryTextureBuilder.set_update_region] for an explanation.
+         * See {@link Gdk.MemoryTextureBuilder.set_update_region} for an explanation.
          * @param texture the texture to update
          */
         set_update_texture(texture?: Texture | null): void;
         /**
          * Sets the width of the texture.
          *
-         * The width must be set before calling [method`Gdk`.MemoryTextureBuilder.build]
+         * The width must be set before calling {@link Gdk.MemoryTextureBuilder.build}
          * and conform to size requirements of the provided format.
          * @param width The texture's width or 0 to unset
          */
@@ -13901,6 +14805,11 @@ export namespace Gdk {
     namespace Monitor {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted when the output represented by `monitor` gets disconnected.
+             * @signal
+             * @run-first
+             */
             invalidate: () => void;
             'notify::connector': (pspec: GObject.ParamSpec) => void;
             'notify::description': (pspec: GObject.ParamSpec) => void;
@@ -13942,12 +14851,13 @@ export namespace Gdk {
     }
 
     /**
-     * Represents the individual outputs that are associated with a `GdkDisplay`.
+     * Represents the individual outputs that are associated with a {@link Gdk.Display}.
      *
-     * `GdkDisplay` keeps a `GListModel` to enumerate and monitor
-     * monitors with [method`Gdk`.Display.get_monitors]. You can use
-     * [method`Gdk`.Display.get_monitor_at_surface] to find a particular
+     * {@link Gdk.Display} keeps a {@link Gio.ListModel} to enumerate and monitor
+     * monitors with {@link Gdk.Display.get_monitors}. You can use
+     * {@link Gdk.Display.get_monitor_at_surface} to find a particular
      * monitor.
+     * @gir-type Class
      */
     class Monitor extends GObject.Object {
         static $gtype: GObject.GType<Monitor>;
@@ -13956,80 +14866,100 @@ export namespace Gdk {
 
         /**
          * The connector name.
+         * @read-only
          */
         get connector(): string;
         /**
          * A short description of the monitor, meant for display to the user.
+         * @since 4.10
+         * @read-only
          */
         get description(): string;
         /**
-         * The `GdkDisplay` of the monitor.
+         * The {@link Gdk.Display} of the monitor.
+         * @construct-only
          */
         get display(): Display;
         /**
          * The geometry of the monitor.
+         * @read-only
          */
         get geometry(): Rectangle;
         /**
          * The height of the monitor, in millimeters.
+         * @read-only
          */
         get height_mm(): number;
         /**
          * The height of the monitor, in millimeters.
+         * @read-only
          */
         get heightMm(): number;
         /**
          * The manufacturer name.
+         * @read-only
          */
         get manufacturer(): string;
         /**
          * The model name.
+         * @read-only
          */
         get model(): string;
         /**
          * The refresh rate, in milli-Hertz.
+         * @read-only
          */
         get refresh_rate(): number;
         /**
          * The refresh rate, in milli-Hertz.
+         * @read-only
          */
         get refreshRate(): number;
         /**
          * The scale of the monitor.
+         * @since 4.14
+         * @read-only
          */
         get scale(): number;
         /**
          * The scale factor.
          *
          * The scale factor is the next larger integer,
-         * compared to [property`Gdk`.Surface:scale].
+         * compared to {@link Gdk.Surface.scale}.
+         * @read-only
          */
         get scale_factor(): number;
         /**
          * The scale factor.
          *
          * The scale factor is the next larger integer,
-         * compared to [property`Gdk`.Surface:scale].
+         * compared to {@link Gdk.Surface.scale}.
+         * @read-only
          */
         get scaleFactor(): number;
         /**
          * The subpixel layout.
+         * @read-only
          */
         get subpixel_layout(): SubpixelLayout;
         /**
          * The subpixel layout.
+         * @read-only
          */
         get subpixelLayout(): SubpixelLayout;
         /**
          * Whether the object is still valid.
+         * @read-only
          */
         get valid(): boolean;
         /**
          * The width of the monitor, in millimeters.
+         * @read-only
          */
         get width_mm(): number;
         /**
          * The width of the monitor, in millimeters.
+         * @read-only
          */
         get widthMm(): number;
 
@@ -14050,16 +14980,19 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Monitor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Monitor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Monitor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Monitor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Monitor.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Monitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -14094,7 +15027,7 @@ export namespace Gdk {
          * display coordinate space.
          *
          * The returned geometry is in  ”application pixels”, not in
-         * ”device pixels” (see [method`Gdk`.Monitor.get_scale]).
+         * ”device pixels” (see {@link Gdk.Monitor.get_scale}).
          */
         get_geometry(): Rectangle;
         /**
@@ -14132,7 +15065,7 @@ export namespace Gdk {
          *
          * This can be used if you want to create pixel based data for a
          * particular monitor, but most of the time you’re drawing to a surface
-         * where it is better to use [method`Gdk`.Surface.get_scale] instead.
+         * where it is better to use {@link Gdk.Surface.get_scale} instead.
          * @returns the scale
          */
         get_scale(): number;
@@ -14145,7 +15078,7 @@ export namespace Gdk {
          *
          * This can be used if you want to create pixel based data for a
          * particular monitor, but most of the time you’re drawing to a surface
-         * where it is better to use [method`Gdk`.Surface.get_scale_factor] instead.
+         * where it is better to use {@link Gdk.Surface.get_scale_factor} instead.
          * @returns the scale factor
          */
         get_scale_factor(): number;
@@ -14161,12 +15094,12 @@ export namespace Gdk {
          */
         get_width_mm(): number;
         /**
-         * Returns %TRUE if the `monitor` object corresponds to a
+         * Returns `true` if the `monitor` object corresponds to a
          * physical monitor.
          *
          * The `monitor` becomes invalid when the physical monitor
          * is unplugged or removed.
-         * @returns %TRUE if the object corresponds to a physical monitor
+         * @returns `true` if the object corresponds to a physical monitor
          */
         is_valid(): boolean;
     }
@@ -14178,6 +15111,7 @@ export namespace Gdk {
 
     /**
      * An event related to a pointer or touch device motion.
+     * @gir-type Class
      */
     class MotionEvent extends Event {
         static $gtype: GObject.GType<MotionEvent>;
@@ -14188,16 +15122,19 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MotionEvent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MotionEvent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MotionEvent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MotionEvent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MotionEvent.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MotionEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -14212,6 +15149,7 @@ export namespace Gdk {
 
     /**
      * An event related to a pad-based device.
+     * @gir-type Class
      */
     class PadEvent extends Event {
         static $gtype: GObject.GType<PadEvent>;
@@ -14222,16 +15160,19 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof PadEvent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PadEvent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof PadEvent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PadEvent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PadEvent.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PadEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -14247,7 +15188,7 @@ export namespace Gdk {
         /**
          * Extracts information about the pressed button from
          * a pad event.
-         * @returns the button of @event
+         * @returns the button of `event`
          */
         get_button(): number;
         /**
@@ -14263,6 +15204,7 @@ export namespace Gdk {
 
     /**
      * An event related to the proximity of a tool to a device.
+     * @gir-type Class
      */
     class ProximityEvent extends Event {
         static $gtype: GObject.GType<ProximityEvent>;
@@ -14273,16 +15215,19 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ProximityEvent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ProximityEvent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ProximityEvent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ProximityEvent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ProximityEvent.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ProximityEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -14297,6 +15242,7 @@ export namespace Gdk {
 
     /**
      * An event related to a scrolling motion.
+     * @gir-type Class
      */
     class ScrollEvent extends Event {
         static $gtype: GObject.GType<ScrollEvent>;
@@ -14307,16 +15253,19 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ScrollEvent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ScrollEvent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ScrollEvent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ScrollEvent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ScrollEvent.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ScrollEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -14329,22 +15278,27 @@ export namespace Gdk {
          * Extracts the scroll deltas of a scroll event.
          *
          * The deltas will be zero unless the scroll direction
-         * is %GDK_SCROLL_SMOOTH.
+         * is {@link Gdk.ScrollDirection.SMOOTH}.
          *
          * For the representation unit of these deltas, see
-         * [method`Gdk`.ScrollEvent.get_unit].
+         * {@link Gdk.ScrollEvent.get_unit}.
          */
         get_deltas(): [number, number];
         /**
          * Extracts the direction of a scroll event.
-         * @returns the scroll direction of @event
+         * @returns the scroll direction of `event`
          */
         get_direction(): ScrollDirection;
         /**
+         * Extracts the scroll direction relative to the physical motion.
+         * @returns the relative scroll direction.
+         */
+        get_relative_direction(): ScrollRelativeDirection;
+        /**
          * Extracts the scroll delta unit of a scroll event.
          *
-         * The unit will always be %GDK_SCROLL_UNIT_WHEEL if the scroll direction is not
-         * %GDK_SCROLL_SMOOTH.
+         * The unit will always be {@link Gdk.ScrollUnit.WHEEL} if the scroll direction is not
+         * {@link Gdk.ScrollDirection.SMOOTH}.
          * @returns the scroll unit.
          */
         get_unit(): ScrollUnit;
@@ -14358,7 +15312,7 @@ export namespace Gdk {
          * velocity.
          *
          * Stop scroll events always have a delta of 0/0.
-         * @returns %TRUE if the event is a scroll stop event
+         * @returns `true` if the event is a scroll stop event
          */
         is_stop(): boolean;
     }
@@ -14366,9 +15320,35 @@ export namespace Gdk {
     namespace Seat {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted when a new input device is related to this seat.
+             * @signal
+             * @run-last
+             */
             'device-added': (arg0: Device) => void;
+            /**
+             * Emitted when an input device is removed (e.g. unplugged).
+             * @signal
+             * @run-last
+             */
             'device-removed': (arg0: Device) => void;
+            /**
+             * Emitted whenever a new tool is made known to the seat.
+             *
+             * The tool may later be assigned to a device (i.e. on
+             * proximity with a tablet). The device will emit the
+             * `Gdk.Device::tool-changed` signal accordingly.
+             *
+             * A same tool may be used by several devices.
+             * @signal
+             * @run-last
+             */
             'tool-added': (arg0: DeviceTool) => void;
+            /**
+             * Emitted whenever a tool is no longer known to this `seat`.
+             * @signal
+             * @run-last
+             */
             'tool-removed': (arg0: DeviceTool) => void;
             'notify::display': (pspec: GObject.ParamSpec) => void;
         }
@@ -14382,6 +15362,7 @@ export namespace Gdk {
 
     /**
      * Represents a collection of input devices that belong to a user.
+     * @gir-type Class
      */
     abstract class Seat extends GObject.Object {
         static $gtype: GObject.GType<Seat>;
@@ -14389,7 +15370,8 @@ export namespace Gdk {
         // Properties
 
         /**
-         * `GdkDisplay` of this seat.
+         * {@link Gdk.Display} of this seat.
+         * @construct-only
          */
         get display(): Display;
 
@@ -14410,16 +15392,19 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Seat.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Seat.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Seat.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Seat.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Seat.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Seat.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -14429,34 +15414,34 @@ export namespace Gdk {
         // Methods
 
         /**
-         * Returns the capabilities this `GdkSeat` currently has.
+         * Returns the capabilities this {@link Gdk.Seat} currently has.
          * @returns the seat capabilities
          */
         get_capabilities(): SeatCapabilities;
         /**
          * Returns the devices that match the given capabilities.
          * @param capabilities capabilities to get devices for
-         * @returns A list   of `GdkDevices`. The list must be freed with g_list_free(),   the elements are owned by GTK and must not be freed.
+         * @returns A list   of `GdkDevices`. The list must be freed with `g_list_free()`,   the elements are owned by GTK and must not be freed.
          */
         get_devices(capabilities: SeatCapabilities | null): Device[];
         /**
-         * Returns the `GdkDisplay` this seat belongs to.
-         * @returns a `GdkDisplay`. This object   is owned by GTK and must not be freed.
+         * Returns the {@link Gdk.Display} this seat belongs to.
+         * @returns a {@link Gdk.Display}. This object   is owned by GTK and must not be freed.
          */
         get_display(): Display;
         /**
          * Returns the device that routes keyboard events.
-         * @returns a `GdkDevice` with keyboard   capabilities. This object is owned by GTK and must not be freed.
+         * @returns a {@link Gdk.Device} with keyboard   capabilities. This object is owned by GTK and must not be freed.
          */
         get_keyboard(): Device | null;
         /**
          * Returns the device that routes pointer events.
-         * @returns a `GdkDevice` with pointer   capabilities. This object is owned by GTK and must not be freed.
+         * @returns a {@link Gdk.Device} with pointer   capabilities. This object is owned by GTK and must not be freed.
          */
         get_pointer(): Device | null;
         /**
          * Returns all `GdkDeviceTools` that are known to the application.
-         * @returns A list of tools. Free with g_list_free().
+         * @returns A list of tools. Free with `g_list_free()`.
          */
         get_tools(): DeviceTool[];
     }
@@ -14473,7 +15458,8 @@ export namespace Gdk {
     /**
      * Base type for snapshot operations.
      *
-     * The subclass of `GdkSnapshot` used by GTK is [GtkSnapshot](../gtk4/class.Snapshot.html).
+     * The subclass of {@link Gdk.Snapshot} used by GTK is [GtkSnapshot](../gtk4/class.Snapshot.html).
+     * @gir-type Class
      */
     abstract class Snapshot extends GObject.Object {
         static $gtype: GObject.GType<Snapshot>;
@@ -14495,16 +15481,19 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Snapshot.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Snapshot.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Snapshot.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Snapshot.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Snapshot.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Snapshot.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -14515,10 +15504,39 @@ export namespace Gdk {
     namespace Surface {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted when `surface` starts being present on the monitor.
+             * @signal
+             * @run-first
+             */
             'enter-monitor': (arg0: Monitor) => void;
+            /**
+             * Emitted when GDK receives an input event for `surface`.
+             * @signal
+             * @run-last
+             */
             event: (arg0: Event) => boolean | void;
+            /**
+             * Emitted when the size of `surface` is changed, or when relayout should
+             * be performed.
+             *
+             * Surface size is reported in ”application pixels”, not
+             * ”device pixels” (see `gdk_surface_get_scale_factor()`).
+             * @signal
+             * @run-first
+             */
             layout: (arg0: number, arg1: number) => void;
+            /**
+             * Emitted when `surface` stops being present on the monitor.
+             * @signal
+             * @run-first
+             */
             'leave-monitor': (arg0: Monitor) => void;
+            /**
+             * Emitted when part of the surface needs to be redrawn.
+             * @signal
+             * @run-last
+             */
             render: (arg0: cairo.Region) => boolean | void;
             'notify::cursor': (pspec: GObject.ParamSpec) => void;
             'notify::display': (pspec: GObject.ParamSpec) => void;
@@ -14552,10 +15570,11 @@ export namespace Gdk {
      * It’s a low-level object, used to implement high-level objects
      * such as [GtkWindow](../gtk4/class.Window.html).
      *
-     * The surfaces you see in practice are either [iface`Gdk`.Toplevel] or
-     * [iface`Gdk`.Popup], and those interfaces provide much of the required
+     * The surfaces you see in practice are either {@link Gdk.Toplevel} or
+     * {@link Gdk.Popup}, and those interfaces provide much of the required
      * API to interact with these surfaces. Other, more specialized surface
      * types exist, but you will rarely interact with them directly.
+     * @gir-type Class
      */
     abstract class Surface extends GObject.Object {
         static $gtype: GObject.GType<Surface>;
@@ -14563,50 +15582,60 @@ export namespace Gdk {
         // Properties
 
         /**
-         * The mouse pointer for the `GdkSurface`.
+         * The mouse pointer for the {@link Gdk.Surface}.
          */
         get cursor(): Cursor;
         set cursor(val: Cursor);
         /**
-         * The `GdkDisplay` connection of the surface.
+         * The {@link Gdk.Display} connection of the surface.
+         * @construct-only
          */
         get display(): Display;
         /**
-         * The `GdkFrameClock` of the surface.
+         * The {@link Gdk.FrameClock} of the surface.
+         * @construct-only
          */
         get frame_clock(): FrameClock;
         /**
-         * The `GdkFrameClock` of the surface.
+         * The {@link Gdk.FrameClock} of the surface.
+         * @construct-only
          */
         get frameClock(): FrameClock;
         /**
          * The height of the surface, in pixels.
+         * @read-only
          */
         get height(): number;
         /**
          * Whether the surface is mapped.
+         * @read-only
          */
         get mapped(): boolean;
         /**
          * The scale of the surface.
+         * @since 4.12
+         * @read-only
          */
         get scale(): number;
         /**
          * The scale factor of the surface.
          *
          * The scale factor is the next larger integer,
-         * compared to [property`Gdk`.Surface:scale].
+         * compared to {@link Gdk.Surface.scale}.
+         * @read-only
          */
         get scale_factor(): number;
         /**
          * The scale factor of the surface.
          *
          * The scale factor is the next larger integer,
-         * compared to [property`Gdk`.Surface:scale].
+         * compared to {@link Gdk.Surface.scale}.
+         * @read-only
          */
         get scaleFactor(): number;
         /**
          * The width of the surface in pixels.
+         * @read-only
          */
         get width(): number;
 
@@ -14631,16 +15660,19 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Surface.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Surface.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Surface.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Surface.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Surface.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Surface.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -14653,22 +15685,22 @@ export namespace Gdk {
          * Emits a short beep associated to `surface`.
          *
          * If the display of `surface` does not support per-surface beeps,
-         * emits a short beep on the display just as [method`Gdk`.Display.beep].
+         * emits a short beep on the display just as {@link Gdk.Display.beep}.
          */
         beep(): void;
         /**
-         * Creates a new `GdkCairoContext` for rendering on `surface`.
-         * @returns the newly created `GdkCairoContext`
+         * Creates a new {@link Gdk.CairoContext} for rendering on `surface`.
+         * @returns the newly created {@link Gdk.CairoContext}
          */
         create_cairo_context(): CairoContext;
         /**
-         * Creates a new `GdkGLContext` for the `GdkSurface`.
+         * Creates a new {@link Gdk.GLContext} for the {@link Gdk.Surface}.
          *
          * The context is disconnected from any particular surface or surface.
-         * If the creation of the `GdkGLContext` failed, `error` will be set.
-         * Before using the returned `GdkGLContext`, you will need to
-         * call [method`Gdk`.GLContext.make_current] or [method`Gdk`.GLContext.realize].
-         * @returns the newly created `GdkGLContext`
+         * If the creation of the {@link Gdk.GLContext} failed, `error` will be set.
+         * Before using the returned {@link Gdk.GLContext}, you will need to
+         * call {@link Gdk.GLContext.make_current} or {@link Gdk.GLContext.realize}.
+         * @returns the newly created {@link Gdk.GLContext}
          */
         create_gl_context(): GLContext;
         /**
@@ -14677,9 +15709,9 @@ export namespace Gdk {
          *
          * For example the new surface will have the same fallback resolution
          * and font options as `surface`. Generally, the new surface will also
-         * use the same backend as `surface,` unless that is not possible for
+         * use the same backend as `surface`, unless that is not possible for
          * some reason. The type of the returned surface may be examined with
-         * cairo_surface_get_type().
+         * `cairo_surface_get_type()`.
          *
          * Initially the surface contents are all 0 (transparent if contents
          * have transparency, black otherwise.)
@@ -14690,17 +15722,17 @@ export namespace Gdk {
          * @param content the content for the new surface
          * @param width width of the new surface
          * @param height height of the new surface
-         * @returns a pointer to the newly allocated surface. The caller   owns the surface and should call cairo_surface_destroy() when done   with it.
+         * @returns a pointer to the newly allocated surface. The caller   owns the surface and should call `cairo_surface_destroy()` when done   with it.
          */
         create_similar_surface(content: cairo.Content | null, width: number, height: number): cairo.Surface;
         /**
-         * Sets an error and returns %NULL.
-         * @returns %NULL
+         * Sets an error and returns `null`.
+         * @returns `null`
          */
         create_vulkan_context(): VulkanContext;
         /**
          * Destroys the window system resources associated with `surface` and
-         * decrements `surface'`s reference count.
+         * decrements `surface`'s reference count.
          *
          * The window system resources for all children of `surface` are also
          * destroyed, but the children’s reference counts are not decremented.
@@ -14711,26 +15743,26 @@ export namespace Gdk {
          */
         destroy(): void;
         /**
-         * Retrieves a `GdkCursor` pointer for the cursor currently set on the
-         * `GdkSurface`.
+         * Retrieves a {@link Gdk.Cursor} pointer for the cursor currently set on the
+         * {@link Gdk.Surface}.
          *
-         * If the return value is %NULL then there is no custom cursor set on
+         * If the return value is `null` then there is no custom cursor set on
          * the surface, and it is using the cursor for its parent surface.
          *
-         * Use [method`Gdk`.Surface.set_cursor] to unset the cursor of the surface.
-         * @returns a `GdkCursor`
+         * Use {@link Gdk.Surface.set_cursor} to unset the cursor of the surface.
+         * @returns a {@link Gdk.Cursor}
          */
         get_cursor(): Cursor | null;
         /**
-         * Retrieves a `GdkCursor` pointer for the `device` currently set on the
-         * specified `GdkSurface`.
+         * Retrieves a {@link Gdk.Cursor} pointer for the `device` currently set on the
+         * specified {@link Gdk.Surface}.
          *
-         * If the return value is %NULL then there is no custom cursor set on the
+         * If the return value is `null` then there is no custom cursor set on the
          * specified surface, and it is using the cursor for its parent surface.
          *
-         * Use [method`Gdk`.Surface.set_cursor] to unset the cursor of the surface.
-         * @param device a pointer `GdkDevice`
-         * @returns a `GdkCursor`
+         * Use {@link Gdk.Surface.set_cursor} to unset the cursor of the surface.
+         * @param device a pointer {@link Gdk.Device}
+         * @returns a {@link Gdk.Cursor}
          */
         get_device_cursor(device: Device): Cursor | null;
         /**
@@ -14738,13 +15770,13 @@ export namespace Gdk {
          *
          * The position is given in coordinates relative to the upper
          * left corner of `surface`.
-         * @param device pointer `GdkDevice` to query to
-         * @returns %TRUE if the device is over the surface
+         * @param device pointer {@link Gdk.Device} to query to
+         * @returns `true` if the device is over the surface
          */
         get_device_position(device: Device): [boolean, number, number, ModifierType | null];
         /**
-         * Gets the `GdkDisplay` associated with a `GdkSurface`.
-         * @returns the `GdkDisplay` associated with @surface
+         * Gets the {@link Gdk.Display} associated with a {@link Gdk.Surface}.
+         * @returns the {@link Gdk.Display} associated with `surface`
          */
         get_display(): Display;
         /**
@@ -14759,16 +15791,16 @@ export namespace Gdk {
          * Returns the height of the given `surface`.
          *
          * Surface size is reported in ”application pixels”, not
-         * ”device pixels” (see [method`Gdk`.Surface.get_scale_factor]).
-         * @returns The height of @surface
+         * ”device pixels” (see {@link Gdk.Surface.get_scale_factor}).
+         * @returns The height of `surface`
          */
         get_height(): number;
         /**
          * Checks whether the surface has been mapped.
          *
-         * A surface is mapped with [method`Gdk`.Toplevel.present]
-         * or [method`Gdk`.Popup.present].
-         * @returns %TRUE if the surface is mapped
+         * A surface is mapped with {@link Gdk.Toplevel.present}
+         * or {@link Gdk.Popup.present}.
+         * @returns `true` if the surface is mapped
          */
         get_mapped(): boolean;
         /**
@@ -14779,7 +15811,7 @@ export namespace Gdk {
          * buffers with a resolution that is bigger than the surface size (e.g.
          * to show the surface on a high-resolution display, or in a magnifier).
          *
-         * Compare with [method`Gdk`.Surface.get_scale_factor], which returns the
+         * Compare with {@link Gdk.Surface.get_scale_factor}, which returns the
          * next larger integer.
          *
          * The scale may change during the lifetime of the surface.
@@ -14805,8 +15837,8 @@ export namespace Gdk {
          * Returns the width of the given `surface`.
          *
          * Surface size is reported in ”application pixels”, not
-         * ”device pixels” (see [method`Gdk`.Surface.get_scale_factor]).
-         * @returns The width of @surface
+         * ”device pixels” (see {@link Gdk.Surface.get_scale_factor}).
+         * @returns The width of `surface`
          */
         get_width(): number;
         /**
@@ -14820,11 +15852,11 @@ export namespace Gdk {
         hide(): void;
         /**
          * Check to see if a surface is destroyed.
-         * @returns %TRUE if the surface is destroyed
+         * @returns `true` if the surface is destroyed
          */
         is_destroyed(): boolean;
         /**
-         * Forces a [signal`Gdk`.Surface::render] signal emission for `surface`
+         * Forces a `Gdk.Surface::render` signal emission for `surface`
          * to be scheduled.
          *
          * This function is useful for implementations that track invalid
@@ -14834,31 +15866,31 @@ export namespace Gdk {
         /**
          * Request a layout phase from the surface's frame clock.
          *
-         * See [method`Gdk`.FrameClock.request_phase].
+         * See {@link Gdk.FrameClock.request_phase}.
          */
         request_layout(): void;
         /**
-         * Sets the default mouse pointer for a `GdkSurface`.
+         * Sets the default mouse pointer for a {@link Gdk.Surface}.
          *
-         * Passing %NULL for the `cursor` argument means that `surface` will use
+         * Passing `null` for the `cursor` argument means that `surface` will use
          * the cursor of its parent surface. Most surfaces should use this default.
          * Note that `cursor` must be for the same display as `surface`.
          *
-         * Use [ctor`Gdk`.Cursor.new_from_name] or [ctor`Gdk`.Cursor.new_from_texture]
-         * to create the cursor. To make the cursor invisible, use %GDK_BLANK_CURSOR.
-         * @param cursor a `GdkCursor`
+         * Use {@link Gdk.Cursor.new_from_name} or {@link Gdk.Cursor.new_from_texture}
+         * to create the cursor. To make the cursor invisible, use `GDK_BLANK_CURSOR`.
+         * @param cursor a {@link Gdk.Cursor}
          */
         set_cursor(cursor?: Cursor | null): void;
         /**
-         * Sets a specific `GdkCursor` for a given device when it gets inside `surface`.
+         * Sets a specific {@link Gdk.Cursor} for a given device when it gets inside `surface`.
          *
-         * Passing %NULL for the `cursor` argument means that `surface` will use the
+         * Passing `null` for the `cursor` argument means that `surface` will use the
          * cursor of its parent surface. Most surfaces should use this default.
          *
-         * Use [ctor`Gdk`.Cursor.new_from_name] or [ctor`Gdk`.Cursor.new_from_texture]
-         * to create the cursor. To make the cursor invisible, use %GDK_BLANK_CURSOR.
-         * @param device a pointer `GdkDevice`
-         * @param cursor a `GdkCursor`
+         * Use {@link Gdk.Cursor.new_from_name} or {@link Gdk.Cursor.new_from_texture}
+         * to create the cursor. To make the cursor invisible, use `GDK_BLANK_CURSOR`.
+         * @param device a pointer {@link Gdk.Device}
+         * @param cursor a {@link Gdk.Cursor}
          */
         set_device_cursor(device: Device, cursor: Cursor): void;
         /**
@@ -14874,13 +15906,13 @@ export namespace Gdk {
          * allows for nicely antialiased borders, and the input region
          * controls where the surface is “clickable”.
          *
-         * Use [method`Gdk`.Display.supports_input_shapes] to find out if
+         * Use {@link Gdk.Display.supports_input_shapes} to find out if
          * a particular backend supports input regions.
-         * @param region region of surface to be reactive
+         * @param region region of surface to be reactive,   or `null` to make the entire surface reactive
          */
-        set_input_region(region: cairo.Region): void;
+        set_input_region(region?: cairo.Region | null): void;
         /**
-         * Marks a region of the `GdkSurface` as opaque.
+         * Marks a region of the {@link Gdk.Surface} as opaque.
          *
          * For optimisation purposes, compositing window managers may
          * like to not draw obscured regions of surfaces, or turn off blending
@@ -14895,7 +15927,7 @@ export namespace Gdk {
          * is opaque, as we know where the opaque regions are. If your surface
          * background is not opaque, please update this property in your
          * [GtkWidgetClass.css_changed](../gtk4/vfunc.Widget.css_changed.html) handler.
-         * @param region a region, or %NULL to make the entire   surface opaque
+         * @param region a region, or `null` to make the entire   surface opaque
          */
         set_opaque_region(region?: cairo.Region | null): void;
         /**
@@ -14906,7 +15938,7 @@ export namespace Gdk {
          * @param to the target surface
          * @param x coordinates to translate
          * @param y coordinates to translate
-         * @returns %TRUE if the coordinates were successfully translated
+         * @returns `true` if the coordinates were successfully translated
          */
         translate_coordinates(to: Surface, x: number, y: number): [boolean, number, number];
     }
@@ -14940,27 +15972,28 @@ export namespace Gdk {
      * It is primarily meant for pixel data that will not change over
      * multiple frames, and will be used for a long time.
      *
-     * There are various ways to create `GdkTexture` objects from a
-     * [class`GdkPixbuf`.Pixbuf], or from bytes stored in memory, a file, or a
-     * [struct`Gio`.Resource].
+     * There are various ways to create {@link Gdk.Texture} objects from a
+     * {@link GdkPixbuf.Pixbuf}, or from bytes stored in memory, a file, or a
+     * {@link Gio.Resource}.
      *
-     * The ownership of the pixel data is transferred to the `GdkTexture`
-     * instance; you can only make a copy of it, via [method`Gdk`.Texture.download].
+     * The ownership of the pixel data is transferred to the {@link Gdk.Texture}
+     * instance; you can only make a copy of it, via {@link Gdk.Texture.download}.
      *
-     * `GdkTexture` is an immutable object: That means you cannot change
+     * {@link Gdk.Texture} is an immutable object: That means you cannot change
      * anything about it other than increasing the reference count via
-     * [method`GObject`.Object.ref], and consequently, it is a threadsafe object.
+     * {@link GObject.Object.ref}, and consequently, it is a threadsafe object.
      *
      * GDK provides a number of threadsafe texture loading functions:
-     * [ctor`Gdk`.Texture.new_from_resource],
-     * [ctor`Gdk`.Texture.new_from_bytes],
-     * [ctor`Gdk`.Texture.new_from_file],
-     * [ctor`Gdk`.Texture.new_from_filename],
-     * [ctor`Gdk`.Texture.new_for_pixbuf]. Note that these are meant for loading
+     * {@link Gdk.Texture.new_from_resource},
+     * {@link Gdk.Texture.new_from_bytes},
+     * {@link Gdk.Texture.new_from_file},
+     * {@link Gdk.Texture.new_from_filename},
+     * {@link Gdk.Texture.new_for_pixbuf}. Note that these are meant for loading
      * icons and resources that are shipped with the toolkit or application. It
      * is recommended that you use a dedicated image loading framework such as
      * [glycin](https://lib.rs/crates/glycin), if you need to load untrusted image
      * data.
+     * @gir-type Class
      */
     abstract class Texture extends GObject.Object implements Paintable, Gio.Icon, Gio.LoadableIcon {
         static $gtype: GObject.GType<Texture>;
@@ -14969,18 +16002,24 @@ export namespace Gdk {
 
         /**
          * The color state of the texture.
+         * @since 4.16
+         * @construct-only
          */
         get color_state(): ColorState;
         /**
          * The color state of the texture.
+         * @since 4.16
+         * @construct-only
          */
         get colorState(): ColorState;
         /**
          * The height of the texture, in pixels.
+         * @construct-only
          */
         get height(): number;
         /**
          * The width of the texture, in pixels.
+         * @construct-only
          */
         get width(): number;
 
@@ -15011,16 +16050,19 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Texture.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Texture.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Texture.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Texture.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Texture.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Texture.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -15036,7 +16078,7 @@ export namespace Gdk {
          * may reside on a GPU or on a remote display server.
          *
          * The data format of the downloaded data is equivalent to
-         * %CAIRO_FORMAT_ARGB32, so every downloaded pixel requires
+         * {@link cairo.Format.ARGB32}, so every downloaded pixel requires
          * 4 bytes of memory.
          *
          * Downloading a texture into a Cairo image surface:
@@ -15051,14 +16093,14 @@ export namespace Gdk {
          * ```
          *
          * For more flexible download capabilities, see
-         * [struct`Gdk`.TextureDownloader].
-         * @param data pointer to enough memory to be filled with the   downloaded data of @texture
+         * {@link Gdk.TextureDownloader}.
+         * @param data pointer to enough memory to be filled with the   downloaded data of `texture`
          * @param stride rowstride in bytes
          */
         download(data: Uint8Array | string, stride: number): void;
         /**
          * Returns the color state associated with the texture.
-         * @returns the color state of the `GdkTexture`
+         * @returns the color state of the {@link Gdk.Texture}
          */
         get_color_state(): ColorState;
         /**
@@ -15075,13 +16117,13 @@ export namespace Gdk {
          */
         get_format(): MemoryFormat;
         /**
-         * Returns the height of the `texture,` in pixels.
-         * @returns the height of the `GdkTexture`
+         * Returns the height of the `texture`, in pixels.
+         * @returns the height of the {@link Gdk.Texture}
          */
         get_height(): number;
         /**
-         * Returns the width of `texture,` in pixels.
-         * @returns the width of the `GdkTexture`
+         * Returns the width of `texture`, in pixels.
+         * @returns the width of the {@link Gdk.Texture}
          */
         get_width(): number;
         /**
@@ -15089,29 +16131,29 @@ export namespace Gdk {
          *
          * This is a utility function intended for debugging and testing.
          * If you want more control over formats, proper error handling or
-         * want to store to a [iface`Gio`.File] or other location, you might want to
-         * use [method`Gdk`.Texture.save_to_png_bytes] or look into the
-         * gdk-pixbuf library.
+         * want to store to a {@link Gio.File} or other location, you might
+         * want to use {@link Gdk.Texture.save_to_png_bytes} or look into
+         * the libglycin library.
          * @param filename the filename to store to
-         * @returns %TRUE if saving succeeded, %FALSE on failure.
+         * @returns `true` if saving succeeded, `false` on failure.
          */
         save_to_png(filename: string): boolean;
         /**
          * Store the given `texture` in memory as a PNG file.
          *
-         * Use [ctor`Gdk`.Texture.new_from_bytes] to read it back.
+         * Use {@link Gdk.Texture.new_from_bytes} to read it back.
          *
          * If you want to serialize a texture, this is a convenient and
          * portable way to do that.
          *
          * If you need more control over the generated image, such as
          * attaching metadata, you should look into an image handling
-         * library such as the gdk-pixbuf library.
+         * library such as the libglycin library.
          *
          * If you are dealing with high dynamic range float data, you
-         * might also want to consider [method`Gdk`.Texture.save_to_tiff_bytes]
+         * might also want to consider {@link Gdk.Texture.save_to_tiff_bytes}
          * instead.
-         * @returns a newly allocated `GBytes` containing PNG data
+         * @returns a newly allocated {@link GLib.Bytes} containing PNG data
          */
         save_to_png_bytes(): GLib.Bytes;
         /**
@@ -15119,13 +16161,13 @@ export namespace Gdk {
          *
          * GTK will attempt to store data without loss.
          * @param filename the filename to store to
-         * @returns %TRUE if saving succeeded, %FALSE on failure.
+         * @returns `true` if saving succeeded, `false` on failure.
          */
         save_to_tiff(filename: string): boolean;
         /**
          * Store the given `texture` in memory as a TIFF file.
          *
-         * Use [ctor`Gdk`.Texture.new_from_bytes] to read it back.
+         * Use {@link Gdk.Texture.new_from_bytes} to read it back.
          *
          * This function is intended to store a representation of the
          * texture's data that is as accurate as possible. This is
@@ -15134,14 +16176,12 @@ export namespace Gdk {
          *
          * If that is not your concern and you are interested in a
          * smaller size and a more portable format, you might want to
-         * use [method`Gdk`.Texture.save_to_png_bytes].
-         * @returns a newly allocated `GBytes` containing TIFF data
+         * use {@link Gdk.Texture.save_to_png_bytes}.
+         * @returns a newly allocated {@link GLib.Bytes} containing TIFF data
          */
         save_to_tiff_bytes(): GLib.Bytes;
-
-        // Inherited methods
         /**
-         * Compute a concrete size for the `GdkPaintable`.
+         * Compute a concrete size for the {@link Gdk.Paintable}.
          *
          * Applies the sizing algorithm outlined in the
          * [CSS Image spec](https://drafts.csswg.org/css-images-3/#default-sizing)
@@ -15151,10 +16191,10 @@ export namespace Gdk {
          * and `specified_height` are known, but it is useful to call this
          * function in GtkWidget:measure implementations to compute the
          * other dimension when only one dimension is given.
-         * @param specified_width the width @paintable could be drawn into or   0.0 if unknown
-         * @param specified_height the height @paintable could be drawn into or   0.0 if unknown
-         * @param default_width the width @paintable would be drawn into if   no other constraints were given
-         * @param default_height the height @paintable would be drawn into if   no other constraints were given
+         * @param specified_width the width `paintable` could be drawn into or   0.0 if unknown
+         * @param specified_height the height `paintable` could be drawn into or   0.0 if unknown
+         * @param default_width the width `paintable` would be drawn into if   no other constraints were given
+         * @param default_height the height `paintable` would be drawn into if   no other constraints were given
          */
         compute_concrete_size(
             specified_width: number,
@@ -15169,7 +16209,7 @@ export namespace Gdk {
          * for example to take a screenshot of a running animation.
          *
          * If the `paintable` is already immutable, it will return itself.
-         * @returns An immutable paintable for the current   contents of @paintable
+         * @returns An immutable paintable for the current   contents of `paintable`
          */
         get_current_image(): Paintable;
         /**
@@ -15177,8 +16217,8 @@ export namespace Gdk {
          *
          * This is oftentimes useful for optimizations.
          *
-         * See [flags`Gdk`.PaintableFlags] for the flags and what they mean.
-         * @returns The `GdkPaintableFlags` for this paintable
+         * See {@link Gdk.PaintableFlags} for the flags and what they mean.
+         * @returns The {@link Gdk.PaintableFlags} for this paintable
          */
         get_flags(): PaintableFlags;
         /**
@@ -15190,16 +16230,16 @@ export namespace Gdk {
          * ratio when displaying the paintable.
          *
          * This is a purely informational value and does not in any way limit the
-         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         * values that may be passed to {@link Gdk.Paintable.snapshot}.
          *
          * Usually when a `paintable` returns nonzero values from
-         * [method`Gdk`.Paintable.get_intrinsic_width] and
-         * [method`Gdk`.Paintable.get_intrinsic_height] the aspect ratio
+         * {@link Gdk.Paintable.get_intrinsic_width} and
+         * {@link Gdk.Paintable.get_intrinsic_height} the aspect ratio
          * should conform to those values, though that is not required.
          *
          * If the `paintable` does not have a preferred aspect ratio,
          * it returns 0. Negative values are never returned.
-         * @returns the intrinsic aspect ratio of @paintable or 0 if none.
+         * @returns the intrinsic aspect ratio of `paintable` or 0 if none.
          */
         get_intrinsic_aspect_ratio(): number;
         /**
@@ -15209,11 +16249,11 @@ export namespace Gdk {
          * the paintable.
          *
          * This is a purely informational value and does not in any way limit the
-         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         * values that may be passed to {@link Gdk.Paintable.snapshot}.
          *
          * If the `paintable` does not have a preferred height, it returns 0.
          * Negative values are never returned.
-         * @returns the intrinsic height of @paintable or 0 if none.
+         * @returns the intrinsic height of `paintable` or 0 if none.
          */
         get_intrinsic_height(): number;
         /**
@@ -15223,36 +16263,36 @@ export namespace Gdk {
          * the paintable.
          *
          * This is a purely informational value and does not in any way limit the
-         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         * values that may be passed to {@link Gdk.Paintable.snapshot}.
          *
          * If the `paintable` does not have a preferred width, it returns 0.
          * Negative values are never returned.
-         * @returns the intrinsic width of @paintable or 0 if none.
+         * @returns the intrinsic width of `paintable` or 0 if none.
          */
         get_intrinsic_width(): number;
         /**
-         * Called by implementations of `GdkPaintable` to invalidate their contents.
+         * Called by implementations of {@link Gdk.Paintable} to invalidate their contents.
          *
          * Unless the contents are invalidated, implementations must guarantee that
-         * multiple calls of [method`Gdk`.Paintable.snapshot] produce the same output.
+         * multiple calls of {@link Gdk.Paintable.snapshot} produce the same output.
          *
-         * This function will emit the [signal`Gdk`.Paintable::invalidate-contents]
+         * This function will emit the `Gdk.Paintable::invalidate-contents`
          * signal.
          *
-         * If a `paintable` reports the %GDK_PAINTABLE_STATIC_CONTENTS flag,
+         * If a `paintable` reports the {@link Gdk.PaintableFlags.STATIC_CONTENTS} flag,
          * it must not call this function.
          */
         invalidate_contents(): void;
         /**
-         * Called by implementations of `GdkPaintable` to invalidate their size.
+         * Called by implementations of {@link Gdk.Paintable} to invalidate their size.
          *
          * As long as the size is not invalidated, `paintable` must return the same
          * values for its intrinsic width, height and aspect ratio.
          *
-         * This function will emit the [signal`Gdk`.Paintable::invalidate-size]
+         * This function will emit the `Gdk.Paintable::invalidate-size`
          * signal.
          *
-         * If a `paintable` reports the %GDK_PAINTABLE_STATIC_SIZE flag,
+         * If a `paintable` reports the {@link Gdk.PaintableFlags.STATIC_SIZE} flag,
          * it must not call this function.
          */
         invalidate_size(): void;
@@ -15262,7 +16302,7 @@ export namespace Gdk {
          * The paintable is drawn at the current (0,0) offset of the `snapshot`.
          * If `width` and `height` are not larger than zero, this function will
          * do nothing.
-         * @param snapshot a `GdkSnapshot` to snapshot to
+         * @param snapshot a {@link Gdk.Snapshot} to snapshot to
          * @param width width to snapshot in
          * @param height height to snapshot in
          */
@@ -15274,6 +16314,7 @@ export namespace Gdk {
          * for example to take a screenshot of a running animation.
          *
          * If the `paintable` is already immutable, it will return itself.
+         * @virtual
          */
         vfunc_get_current_image(): Paintable;
         /**
@@ -15281,7 +16322,8 @@ export namespace Gdk {
          *
          * This is oftentimes useful for optimizations.
          *
-         * See [flags`Gdk`.PaintableFlags] for the flags and what they mean.
+         * See {@link Gdk.PaintableFlags} for the flags and what they mean.
+         * @virtual
          */
         vfunc_get_flags(): PaintableFlags;
         /**
@@ -15293,15 +16335,16 @@ export namespace Gdk {
          * ratio when displaying the paintable.
          *
          * This is a purely informational value and does not in any way limit the
-         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         * values that may be passed to {@link Gdk.Paintable.snapshot}.
          *
          * Usually when a `paintable` returns nonzero values from
-         * [method`Gdk`.Paintable.get_intrinsic_width] and
-         * [method`Gdk`.Paintable.get_intrinsic_height] the aspect ratio
+         * {@link Gdk.Paintable.get_intrinsic_width} and
+         * {@link Gdk.Paintable.get_intrinsic_height} the aspect ratio
          * should conform to those values, though that is not required.
          *
          * If the `paintable` does not have a preferred aspect ratio,
          * it returns 0. Negative values are never returned.
+         * @virtual
          */
         vfunc_get_intrinsic_aspect_ratio(): number;
         /**
@@ -15311,10 +16354,11 @@ export namespace Gdk {
          * the paintable.
          *
          * This is a purely informational value and does not in any way limit the
-         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         * values that may be passed to {@link Gdk.Paintable.snapshot}.
          *
          * If the `paintable` does not have a preferred height, it returns 0.
          * Negative values are never returned.
+         * @virtual
          */
         vfunc_get_intrinsic_height(): number;
         /**
@@ -15324,10 +16368,11 @@ export namespace Gdk {
          * the paintable.
          *
          * This is a purely informational value and does not in any way limit the
-         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         * values that may be passed to {@link Gdk.Paintable.snapshot}.
          *
          * If the `paintable` does not have a preferred width, it returns 0.
          * Negative values are never returned.
+         * @virtual
          */
         vfunc_get_intrinsic_width(): number;
         /**
@@ -15336,96 +16381,101 @@ export namespace Gdk {
          * The paintable is drawn at the current (0,0) offset of the `snapshot`.
          * If `width` and `height` are not larger than zero, this function will
          * do nothing.
-         * @param snapshot a `GdkSnapshot` to snapshot to
+         * @param snapshot a {@link Gdk.Snapshot} to snapshot to
          * @param width width to snapshot in
          * @param height height to snapshot in
+         * @virtual
          */
         vfunc_snapshot(snapshot: Snapshot, width: number, height: number): void;
         /**
          * Checks if two icons are equal.
-         * @param icon2 pointer to the second #GIcon.
-         * @returns %TRUE if @icon1 is equal to @icon2. %FALSE otherwise.
+         * @param icon2 pointer to the second {@link Gio.Icon}.
+         * @returns `true` if `icon1` is equal to `icon2`. `false` otherwise.
          */
         equal(icon2?: Gio.Icon | null): boolean;
         /**
          * Gets a hash for an icon.
-         * @returns a #guint containing a hash for the @icon, suitable for   use in a #GHashTable or similar data structure.
+         * @returns a `guint` containing a hash for the `icon`, suitable for   use in a {@link GLib.HashTable} or similar data structure.
          */
         hash(): number;
         /**
-         * Serializes a #GIcon into a #GVariant. An equivalent #GIcon can be retrieved
-         * back by calling g_icon_deserialize() on the returned value.
+         * Serializes a {@link Gio.Icon} into a {@link GLib.Variant}. An equivalent {@link Gio.Icon} can be retrieved
+         * back by calling `g_icon_deserialize()` on the returned value.
          * As serialization will avoid using raw icon data when possible, it only
-         * makes sense to transfer the #GVariant between processes on the same machine,
+         * makes sense to transfer the {@link GLib.Variant} between processes on the same machine,
          * (as opposed to over the network), and within the same file system namespace.
-         * @returns a #GVariant, or %NULL when serialization fails. The #GVariant will not be floating.
+         * @returns a {@link GLib.Variant}, or `null` when serialization fails. The {@link GLib.Variant} will not be floating.
          */
         serialize(): GLib.Variant | null;
         /**
          * Generates a textual representation of `icon` that can be used for
          * serialization such as when passing `icon` to a different process or
-         * saving it to persistent storage. Use g_icon_new_for_string() to
+         * saving it to persistent storage. Use `g_icon_new_for_string()` to
          * get `icon` back from the returned string.
          *
-         * The encoding of the returned string is proprietary to #GIcon except
+         * The encoding of the returned string is proprietary to {@link Gio.Icon} except
          * in the following two cases
          *
-         * - If `icon` is a #GFileIcon, the returned string is a native path
+         * - If `icon` is a {@link Gio.FileIcon}, the returned string is a native path
          *   (such as `/path/to/my icon.png`) without escaping
-         *   if the #GFile for `icon` is a native file.  If the file is not
-         *   native, the returned string is the result of g_file_get_uri()
+         *   if the {@link Gio.File} for `icon` is a native file.  If the file is not
+         *   native, the returned string is the result of `g_file_get_uri()`
          *   (such as `sftp://path/to/my%20icon.png`).
          *
-         * - If `icon` is a #GThemedIcon with exactly one name and no fallbacks,
+         * - If `icon` is a {@link Gio.ThemedIcon} with exactly one name and no fallbacks,
          *   the encoding is simply the name (such as `network-server`).
-         * @returns An allocated NUL-terminated UTF8 string or %NULL if @icon can't be serialized. Use g_free() to free.
+         * @returns An allocated NUL-terminated UTF8 string or `null` if `icon` can't be serialized. Use `g_free()` to free.
          */
         to_string(): string | null;
         /**
          * Checks if two icons are equal.
-         * @param icon2 pointer to the second #GIcon.
+         * @param icon2 pointer to the second {@link Gio.Icon}.
+         * @virtual
          */
         vfunc_equal(icon2?: Gio.Icon | null): boolean;
         /**
          * Gets a hash for an icon.
+         * @virtual
          */
         vfunc_hash(): number;
         /**
-         * Serializes a #GIcon into a #GVariant. An equivalent #GIcon can be retrieved
-         * back by calling g_icon_deserialize() on the returned value.
+         * Serializes a {@link Gio.Icon} into a {@link GLib.Variant}. An equivalent {@link Gio.Icon} can be retrieved
+         * back by calling `g_icon_deserialize()` on the returned value.
          * As serialization will avoid using raw icon data when possible, it only
-         * makes sense to transfer the #GVariant between processes on the same machine,
+         * makes sense to transfer the {@link GLib.Variant} between processes on the same machine,
          * (as opposed to over the network), and within the same file system namespace.
+         * @virtual
          */
         vfunc_serialize(): GLib.Variant | null;
         /**
          * Serializes the `icon` into string tokens.
-         * This is can be invoked when g_icon_new_for_string() is called.
+         * This is can be invoked when `g_icon_new_for_string()` is called.
+         * @virtual
          */
         vfunc_to_tokens(): [boolean, string[], number];
         /**
          * Loads a loadable icon. For the asynchronous version of this function,
-         * see g_loadable_icon_load_async().
+         * see `g_loadable_icon_load_async()`.
          * @param size an integer.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns a #GInputStream to read the icon from.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns a {@link Gio.InputStream} to read the icon from.
          */
         load(size: number, cancellable?: Gio.Cancellable | null): [Gio.InputStream, string];
         /**
          * Loads an icon asynchronously. To finish this function, see
-         * g_loadable_icon_load_finish(). For the synchronous, blocking
-         * version of this function, see g_loadable_icon_load().
+         * `g_loadable_icon_load_finish()`. For the synchronous, blocking
+         * version of this function, see `g_loadable_icon_load()`.
          * @param size an integer.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
         load_async(size: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<[Gio.InputStream, string]>;
         /**
          * Loads an icon asynchronously. To finish this function, see
-         * g_loadable_icon_load_finish(). For the synchronous, blocking
-         * version of this function, see g_loadable_icon_load().
+         * `g_loadable_icon_load_finish()`. For the synchronous, blocking
+         * version of this function, see `g_loadable_icon_load()`.
          * @param size an integer.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
         load_async(
             size: number,
@@ -15434,11 +16484,11 @@ export namespace Gdk {
         ): void;
         /**
          * Loads an icon asynchronously. To finish this function, see
-         * g_loadable_icon_load_finish(). For the synchronous, blocking
-         * version of this function, see g_loadable_icon_load().
+         * `g_loadable_icon_load_finish()`. For the synchronous, blocking
+         * version of this function, see `g_loadable_icon_load()`.
          * @param size an integer.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
          */
         load_async(
             size: number,
@@ -15446,25 +16496,27 @@ export namespace Gdk {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<[Gio.InputStream, string]> | void;
         /**
-         * Finishes an asynchronous icon load started in g_loadable_icon_load_async().
-         * @param res a #GAsyncResult.
-         * @returns a #GInputStream to read the icon from.
+         * Finishes an asynchronous icon load started in `g_loadable_icon_load_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @returns a {@link Gio.InputStream} to read the icon from.
          */
         load_finish(res: Gio.AsyncResult): [Gio.InputStream, string];
         /**
          * Loads a loadable icon. For the asynchronous version of this function,
-         * see g_loadable_icon_load_async().
+         * see `g_loadable_icon_load_async()`.
          * @param size an integer.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_load(size: number, cancellable?: Gio.Cancellable | null): [Gio.InputStream, string];
         /**
          * Loads an icon asynchronously. To finish this function, see
-         * g_loadable_icon_load_finish(). For the synchronous, blocking
-         * version of this function, see g_loadable_icon_load().
+         * `g_loadable_icon_load_finish()`. For the synchronous, blocking
+         * version of this function, see `g_loadable_icon_load()`.
          * @param size an integer.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback}   to call when the request is satisfied
+         * @virtual
          */
         vfunc_load_async(
             size: number,
@@ -15472,8 +16524,9 @@ export namespace Gdk {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Finishes an asynchronous icon load started in g_loadable_icon_load_async().
-         * @param res a #GAsyncResult.
+         * Finishes an asynchronous icon load started in `g_loadable_icon_load_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @virtual
          */
         vfunc_load_finish(res: Gio.AsyncResult): [Gio.InputStream, string];
         /**
@@ -15489,32 +16542,32 @@ export namespace Gdk {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -15523,39 +16576,39 @@ export namespace Gdk {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -15566,13 +16619,16 @@ export namespace Gdk {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](https://docs.gtk.org/gdk4/floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -15580,7 +16636,7 @@ export namespace Gdk {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -15588,9 +16644,9 @@ export namespace Gdk {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -15610,9 +16666,9 @@ export namespace Gdk {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -15625,34 +16681,34 @@ export namespace Gdk {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](https://docs.gtk.org/gdk4/floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -15685,22 +16741,22 @@ export namespace Gdk {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](https://docs.gtk.org/gdk4/floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -15709,8 +16765,8 @@ export namespace Gdk {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -15727,10 +16783,10 @@ export namespace Gdk {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -15745,13 +16801,13 @@ export namespace Gdk {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -15782,21 +16838,21 @@ export namespace Gdk {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -15806,33 +16862,34 @@ export namespace Gdk {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -15841,6 +16898,7 @@ export namespace Gdk {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -15849,12 +16907,14 @@ export namespace Gdk {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -15863,20 +16923,22 @@ export namespace Gdk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -15888,6 +16950,7 @@ export namespace Gdk {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -15924,6 +16987,7 @@ export namespace Gdk {
 
     /**
      * An event related to a touch-based device.
+     * @gir-type Class
      */
     class TouchEvent extends Event {
         static $gtype: GObject.GType<TouchEvent>;
@@ -15934,16 +16998,19 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TouchEvent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TouchEvent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TouchEvent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TouchEvent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TouchEvent.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TouchEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -15954,7 +17021,7 @@ export namespace Gdk {
 
         /**
          * Extracts whether a touch event is emulating a pointer event.
-         * @returns %TRUE if @event is emulating
+         * @returns `true` if `event` is emulating
          */
         get_emulating_pointer(): boolean;
     }
@@ -15971,6 +17038,7 @@ export namespace Gdk {
      * sequences of begin, update, end events, and leaves gesture
      * recognition to the clients, touchpad gestures are typically
      * processed by the system, resulting in these events.
+     * @gir-type Class
      */
     class TouchpadEvent extends Event {
         static $gtype: GObject.GType<TouchpadEvent>;
@@ -15981,16 +17049,19 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TouchpadEvent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TouchpadEvent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TouchpadEvent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TouchpadEvent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TouchpadEvent.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TouchpadEvent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -16005,22 +17076,22 @@ export namespace Gdk {
         get_deltas(): [number, number];
         /**
          * Extracts the touchpad gesture phase from a touchpad event.
-         * @returns the gesture phase of @event
+         * @returns the gesture phase of `event`
          */
         get_gesture_phase(): TouchpadGesturePhase;
         /**
          * Extracts the number of fingers from a touchpad event.
-         * @returns the number of fingers for @event
+         * @returns the number of fingers for `event`
          */
         get_n_fingers(): number;
         /**
          * Extracts the angle delta from a touchpad pinch event.
-         * @returns the angle delta of @event
+         * @returns the angle delta of `event`
          */
         get_pinch_angle_delta(): number;
         /**
          * Extracts the scale from a touchpad pinch event.
-         * @returns the scale of @event
+         * @returns the scale of `event`
          */
         get_pinch_scale(): number;
     }
@@ -16028,6 +17099,14 @@ export namespace Gdk {
     namespace VulkanContext {
         // Signal signatures
         interface SignalSignatures extends DrawContext.SignalSignatures {
+            /**
+             * Emitted when the images managed by this context have changed.
+             *
+             * Usually this means that the swapchain had to be recreated,
+             * for example in response to a change of the surface size.
+             * @signal
+             * @run-last
+             */
             'images-updated': () => void;
             'notify::display': (pspec: GObject.ParamSpec) => void;
             'notify::surface': (pspec: GObject.ParamSpec) => void;
@@ -16035,20 +17114,22 @@ export namespace Gdk {
 
         // Constructor properties interface
 
-        interface ConstructorProps extends DrawContext.ConstructorProps, Gio.Initable.ConstructorProps {}
+        interface ConstructorProps extends DrawContext.ConstructorProps {}
     }
 
     /**
      * Represents the platform-specific Vulkan draw context.
      *
-     * `GdkVulkanContext`s are created for a surface using
-     * [method`Gdk`.Surface.create_vulkan_context], and the context will match
+     * {@link Gdk.VulkanContext}s are created for a surface using
+     * {@link Gdk.Surface.create_vulkan_context}, and the context will match
      * the characteristics of the surface.
      *
-     * Support for `GdkVulkanContext` is platform-specific and context creation
-     * can fail, returning %NULL context.
+     * Support for {@link Gdk.VulkanContext} is platform-specific and context creation
+     * can fail, returning `null` context.
+     * @gir-type Class
+     * @deprecated since 4.14: GTK does not expose any Vulkan internals. This   struct is a leftover that was accidentally exposed.
      */
-    abstract class VulkanContext extends DrawContext implements Gio.Initable {
+    abstract class VulkanContext extends DrawContext {
         static $gtype: GObject.GType<VulkanContext>;
 
         /**
@@ -16068,549 +17149,29 @@ export namespace Gdk {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof VulkanContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanContext.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof VulkanContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof VulkanContext.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<VulkanContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited methods
-        /**
-         * Initializes the object implementing the interface.
-         *
-         * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
-         *
-         * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
-         *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
-         * then initialization can be cancelled by triggering the cancellable object
-         * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
-         * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
-         *
-         * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
-         *
-         * Callers should not assume that a class which implements #GInitable can be
-         * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
-         * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
-         * recommendation was relaxed in GLib 2.54.
-         *
-         * If a class explicitly supports being initialized multiple times, it is
-         * recommended that the method is idempotent: multiple calls with the same
-         * arguments should return the same results. Only the first call initializes
-         * the object; further calls return the result of the first call.
-         *
-         * One reason why a class might need to support idempotent initialization is if
-         * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
-         * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
-         */
-        init(cancellable?: Gio.Cancellable | null): boolean;
-        /**
-         * Initializes the object implementing the interface.
-         *
-         * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
-         *
-         * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
-         *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
-         * then initialization can be cancelled by triggering the cancellable object
-         * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
-         * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
-         *
-         * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
-         *
-         * Callers should not assume that a class which implements #GInitable can be
-         * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
-         * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
-         * recommendation was relaxed in GLib 2.54.
-         *
-         * If a class explicitly supports being initialized multiple times, it is
-         * recommended that the method is idempotent: multiple calls with the same
-         * arguments should return the same results. Only the first call initializes
-         * the object; further calls return the result of the first call.
-         *
-         * One reason why a class might need to support idempotent initialization is if
-         * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
-         * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         */
-        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
-        /**
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target`.
-         *
-         * Whenever the `source_property` is changed the `target_property` is
-         * updated using the same value. For instance:
-         *
-         *
-         * ```c
-         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
-         * ```
-         *
-         *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
-         * instance.
-         *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well.
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
-         *
-         * Removing the binding by calling g_object_unref() on it must only be done if
-         * the binding, `source` and `target` are only used from a single thread and it
-         * is clear that both `source` and `target` outlive the binding. Especially it
-         * is not safe to rely on this if the binding, `source` or `target` can be
-         * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
-         *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
-         */
-        bind_property(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags | null,
-        ): GObject.Binding;
-        /**
-         * Complete version of g_object_bind_property().
-         *
-         * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
-         * the binding.
-         *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
-         * if `target_property` on `target` changes then the `source_property` on `source`
-         * will be updated as well. The `transform_from` function is only used in case
-         * of bidirectional bindings, otherwise it will be ignored
-         *
-         * The binding will automatically be removed when either the `source` or the
-         * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
-         *
-         * To remove the binding, call g_binding_unbind().
-         *
-         * A #GObject can have multiple bindings.
-         *
-         * The same `user_data` parameter will be used for both `transform_to`
-         * and `transform_from` transformation functions; the `notify` function will
-         * be called once, when the binding is removed. If you need different data
-         * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
-         */
-        bind_property_full(
-            source_property: string,
-            target: GObject.Object,
-            target_property: string,
-            flags: GObject.BindingFlags | null,
-            transform_to?: GObject.BindingTransformFunc | null,
-            transform_from?: GObject.BindingTransformFunc | null,
-            notify?: GLib.DestroyNotify | null,
-        ): GObject.Binding;
-        // Conflicted with GObject.Object.bind_property_full
-        bind_property_full(...args: never[]): any;
-        /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
-         */
-        force_floating(): void;
-        /**
-         * Increases the freeze count on `object`. If the freeze count is
-         * non-zero, the emission of "notify" signals on `object` is
-         * stopped. The signals are queued until the freeze count is decreased
-         * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
-         * object is frozen.
-         *
-         * This is necessary for accessors that modify multiple properties to prevent
-         * premature notification while the object is still being modified.
-         */
-        freeze_notify(): void;
-        /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
-         * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
-         */
-        get_data(key: string): any | null;
-        /**
-         * Gets a property of an object.
-         *
-         * The value can be:
-         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
-         * - a GObject.Value initialized with the expected type of the property
-         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
-         *
-         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
-         *
-         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
-         * @param property_name The name of the property to get
-         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
-         */
-        get_property(property_name: string, value: GObject.Value | any): any;
-        /**
-         * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
-         */
-        get_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Gets `n_properties` properties for an `object`.
-         * Obtained properties will be set to `values`. All properties must be valid.
-         * Warnings will be emitted and undefined behaviour may result if invalid
-         * properties are passed in.
-         * @param names the names of each property to get
-         * @param values the values of each property to get
-         */
-        getv(names: string[], values: (GObject.Value | any)[]): void;
-        /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
-         */
-        is_floating(): boolean;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
-         * called.
-         * @param property_name the name of a property installed on the class of @object.
-         */
-        notify(property_name: string): void;
-        /**
-         * Emits a "notify" signal for the property specified by `pspec` on `object`.
-         *
-         * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
-         *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
-         * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
-         *
-         *
-         * ```c
-         *   typedef enum
-         *   {
-         *     PROP_FOO = 1,
-         *     PROP_LAST
-         *   } MyObjectProperty;
-         *
-         *   static GParamSpec *properties[PROP_LAST];
-         *
-         *   static void
-         *   my_object_class_init (MyObjectClass *klass)
-         *   {
-         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
-         *                                              0, 100,
-         *                                              50,
-         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
-         *     g_object_class_install_property (gobject_class,
-         *                                      PROP_FOO,
-         *                                      properties[PROP_FOO]);
-         *   }
-         * ```
-         *
-         *
-         * and then notify a change on the "foo" property with:
-         *
-         *
-         * ```c
-         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
-         * ```
-         *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
-         */
-        notify_by_pspec(pspec: GObject.ParamSpec): void;
-        /**
-         * Increases the reference count of `object`.
-         *
-         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
-         * extension), so any casting the caller needs to do on the return type must be
-         * explicit.
-         * @returns the same @object
-         */
-        ref(): GObject.Object;
-        /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
-         *
-         * In other words, if the object is floating, then this call "assumes
-         * ownership" of the floating reference, converting it to a normal
-         * reference by clearing the floating flag while leaving the reference
-         * count unchanged.  If the object is not floating, then this call
-         * adds a new normal reference increasing the reference count by one.
-         *
-         * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
-         */
-        ref_sink(): GObject.Object;
-        /**
-         * Releases all references to other objects. This can be used to break
-         * reference cycles.
-         *
-         * This function should only be called from object system implementations.
-         */
-        run_dispose(): void;
-        /**
-         * Each object carries around a table of associations from
-         * strings to pointers.  This function lets you set an association.
-         *
-         * If the object already had an association with that name,
-         * the old association will be destroyed.
-         *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
-         * This means a copy of `key` is kept permanently (even after `object` has been
-         * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
-         * @param key name of the key
-         * @param data data to associate with that key
-         */
-        set_data(key: string, data?: any | null): void;
-        /**
-         * Sets a property on an object.
-         * @param property_name The name of the property to set
-         * @param value The value to set the property to
-         */
-        set_property(property_name: string, value: GObject.Value | any): void;
-        /**
-         * Remove a specified datum from the object's data associations,
-         * without invoking the association's destroy handler.
-         * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
-         */
-        steal_data(key: string): any | null;
-        /**
-         * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
-         * set).
-         * Usually, calling this function is only required to update
-         * user data pointers with a destroy notifier, for example:
-         *
-         * ```c
-         * void
-         * object_add_to_user_list (GObject     *object,
-         *                          const gchar *new_string)
-         * {
-         *   // the quark, naming the object data
-         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
-         *   // retrieve the old string list
-         *   GList *list = g_object_steal_qdata (object, quark_string_list);
-         *
-         *   // prepend new string
-         *   list = g_list_prepend (list, g_strdup (new_string));
-         *   // this changed 'list', so we need to set it again
-         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
-         * }
-         * static void
-         * free_string_list (gpointer data)
-         * {
-         *   GList *node, *list = data;
-         *
-         *   for (node = list; node; node = node->next)
-         *     g_free (node->data);
-         *   g_list_free (list);
-         * }
-         * ```
-         *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
-         * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
-         */
-        steal_qdata(quark: GLib.Quark): any | null;
-        /**
-         * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
-         * and when it reaches zero, queued "notify" signals are emitted.
-         *
-         * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
-         * in which they have been queued.
-         *
-         * It is an error to call this function when the freeze count is zero.
-         */
-        thaw_notify(): void;
-        /**
-         * Decreases the reference count of `object`. When its reference count
-         * drops to 0, the object is finalized (i.e. its memory is freed).
-         *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
-         * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
-         */
-        unref(): void;
-        /**
-         * This function essentially limits the life time of the `closure` to
-         * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
-         * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
-         * reference count is held on `object` during invocation of the
-         * `closure`.  Usually, this function will be called on closures that
-         * use this `object` as closure data.
-         * @param closure #GClosure to watch
-         */
-        watch_closure(closure: GObject.Closure): void;
-        /**
-         * the `constructed` function is called by g_object_new() as the
-         *  final step of the object creation process.  At the point of the call, all
-         *  construction properties have been set on the object.  The purpose of this
-         *  call is to allow for object initialisation steps that can only be performed
-         *  after construction properties have been set.  `constructed` implementors
-         *  should chain up to the `constructed` call of their parent class to allow it
-         *  to complete its initialisation.
-         */
-        vfunc_constructed(): void;
-        /**
-         * emits property change notification for a bunch
-         *  of properties. Overriding `dispatch_properties_changed` should be rarely
-         *  needed.
-         * @param n_pspecs
-         * @param pspecs
-         */
-        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
-        /**
-         * the `dispose` function is supposed to drop all references to other
-         *  objects, but keep the instance otherwise intact, so that client method
-         *  invocations still work. It may be run multiple times (due to reference
-         *  loops). Before returning, `dispose` should chain up to the `dispose` method
-         *  of the parent class.
-         */
-        vfunc_dispose(): void;
-        /**
-         * instance finalization function, should finish the finalization of
-         *  the instance begun in `dispose` and chain up to the `finalize` method of the
-         *  parent class.
-         */
-        vfunc_finalize(): void;
-        /**
-         * the generic getter for all properties of this type. Should be
-         *  overridden for every type with properties.
-         * @param property_id
-         * @param value
-         * @param pspec
-         */
-        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
-        /**
-         * Emits a "notify" signal for the property `property_name` on `object`.
-         *
-         * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
-         * instead.
-         *
-         * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
-         * called.
-         * @param pspec
-         */
-        vfunc_notify(pspec: GObject.ParamSpec): void;
-        /**
-         * the generic setter for all properties of this type. Should be
-         *  overridden for every type with properties. If implementations of
-         *  `set_property` don't emit property change notification explicitly, this will
-         *  be done implicitly by the type system. However, if the notify signal is
-         *  emitted explicitly, the type system will not emit it a second time.
-         * @param property_id
-         * @param value
-         * @param pspec
-         */
-        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
-        /**
-         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
-         * @param id Handler ID of the handler to be disconnected
-         */
-        disconnect(id: number): void;
-        /**
-         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
-         * @param properties Object containing the properties to set
-         */
-        set(properties: { [key: string]: any }): void;
-        /**
-         * Blocks a handler of an instance so it will not be called during any signal emissions
-         * @param id Handler ID of the handler to be blocked
-         */
-        block_signal_handler(id: number): void;
-        /**
-         * Unblocks a handler so it will be called again during any signal emissions
-         * @param id Handler ID of the handler to be unblocked
-         */
-        unblock_signal_handler(id: number): void;
-        /**
-         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
-         * @param detailedName Name of the signal to stop emission of
-         */
-        stop_emission_by_name(detailedName: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CicpParamsClass = typeof CicpParams;
     /**
      * Provides information to interpret colors and pixels in a variety of ways.
@@ -16621,7 +17182,9 @@ export namespace Gdk {
      * Crucially, GTK knows how to convert colors from one color
      * state to another.
      *
-     * `GdkColorState` objects are immutable and therefore threadsafe.
+     * {@link Gdk.ColorState} objects are immutable and therefore threadsafe.
+     * @gir-type Struct
+     * @since 4.16
      */
     abstract class ColorState {
         static $gtype: GObject.GType<ColorState>;
@@ -16647,7 +17210,7 @@ export namespace Gdk {
          * This color state uses the primaries defined by BT.2020-2 and BT.2100-0 and a linear
          * transfer function.
          *
-         * It is equivalent to the [Cicp](class.CicpParams.html) tuple 9/8/0/1.
+         * It is equivalent to the [Cicp](https://docs.gtk.org/gdk4/class.CicpParams.html) tuple 9/8/0/1.
          *
          * See e.g. [the CSS HDR Module](https://drafts.csswg.org/css-color-hdr/#valdef-color-rec2100-linear)
          * for details about this colorstate.
@@ -16659,7 +17222,7 @@ export namespace Gdk {
          * This color state uses the primaries defined by BT.2020-2 and BT.2100-0 and the transfer
          * function defined by SMPTE ST 2084 and BT.2100-2.
          *
-         * It is equivalent to the [Cicp](class.CicpParams.html) tuple 9/16/0/1.
+         * It is equivalent to the [Cicp](https://docs.gtk.org/gdk4/class.CicpParams.html) tuple 9/16/0/1.
          *
          * See e.g. [the CSS HDR Module](https://drafts.csswg.org/css-color-hdr/#valdef-color-rec2100-pq)
          * for details about this colorstate.
@@ -16671,7 +17234,7 @@ export namespace Gdk {
          * This color state uses the primaries defined by BT.709-6 and the transfer function
          * defined by IEC 61966-2-1.
          *
-         * It is equivalent to the [Cicp](class.CicpParams.html) tuple 1/13/0/1.
+         * It is equivalent to the [Cicp](https://docs.gtk.org/gdk4/class.CicpParams.html) tuple 1/13/0/1.
          *
          * See e.g. [the CSS Color Module](https://www.w3.org/TR/css-color-4/#predefined-sRGB)
          * for details about this colorstate.
@@ -16682,7 +17245,7 @@ export namespace Gdk {
          *
          * This color state uses the primaries defined by BT.709-6 and a linear transfer function.
          *
-         * It is equivalent to the [Cicp](class.CicpParams.html) tuple 1/8/0/1.
+         * It is equivalent to the [Cicp](https://docs.gtk.org/gdk4/class.CicpParams.html) tuple 1/8/0/1.
          *
          * See e.g. [the CSS Color Module](https://www.w3.org/TR/css-color-4/#predefined-sRGB-linear)
          * for details about this colorstate.
@@ -16692,12 +17255,12 @@ export namespace Gdk {
         // Methods
 
         /**
-         * Create a [class`Gdk`.CicpParams] representing the colorstate.
+         * Create a {@link Gdk.CicpParams} representing the colorstate.
          *
-         * It is not guaranteed that every `GdkColorState` can be
+         * It is not guaranteed that every {@link Gdk.ColorState} can be
          * represented with Cicp parameters. If that is the case,
          * this function returns `NULL`.
-         * @returns A new [class@Gdk.CicpParams]
+         * @returns A new {@link Gdk.CicpParams}
          */
         create_cicp_params(): CicpParams | null;
         /**
@@ -16707,9 +17270,18 @@ export namespace Gdk {
          * describing the same color state may compare not equal. However, different
          * color states will never compare equal.
          * @param other another `GdkColorStatee`
-         * @returns %TRUE if the two color states compare equal
+         * @returns `true` if the two color states compare equal
          */
         equal(other: ColorState): boolean;
+        /**
+         * Compares two `GdkColorStates` for equivalence.
+         *
+         * Two objects that represent the same color state should be equivalent,
+         * even though they may not be equal in the sense of {@link Gdk.ColorState.equal}.
+         * @param other another `GdkColorStatee`
+         * @returns `true` if the two color states are equivalent
+         */
+        equivalent(other: ColorState): boolean;
         /**
          * Increase the reference count of `self`.
          * @returns the object that was passed in
@@ -16727,35 +17299,36 @@ export namespace Gdk {
     /**
      * Used to advertise and negotiate the format of content.
      *
-     * You will encounter `GdkContentFormats` when interacting with objects
+     * You will encounter {@link Gdk.ContentFormats} when interacting with objects
      * controlling operations that pass data between different widgets, window
-     * or application, like [class`Gdk`.Drag], [class`Gdk`.Drop],
-     * [class`Gdk`.Clipboard] or [class`Gdk`.ContentProvider].
+     * or application, like {@link Gdk.Drag}, {@link Gdk.Drop},
+     * {@link Gdk.Clipboard} or {@link Gdk.ContentProvider}.
      *
-     * GDK supports content in 2 forms: `GType` and mime type.
+     * GDK supports content in 2 forms: {@link GObject.GType} and mime type.
      * Using `GTypes` is meant only for in-process content transfers. Mime types
      * are meant to be used for data passing both in-process and out-of-process.
      * The details of how data is passed is described in the documentation of
      * the actual implementations. To transform between the two forms,
-     * [class`Gdk`.ContentSerializer] and [class`Gdk`.ContentDeserializer] are used.
+     * {@link Gdk.ContentSerializer} and {@link Gdk.ContentDeserializer} are used.
      *
-     * A `GdkContentFormats` describes a set of possible formats content can be
+     * A {@link Gdk.ContentFormats} describes a set of possible formats content can be
      * exchanged in. It is assumed that this set is ordered. `GTypes` are more
      * important than mime types. Order between different `GTypes` or mime types
      * is the order they were added in, most important first. Functions that
-     * care about order, such as [method`Gdk`.ContentFormats.union], will describe
+     * care about order, such as {@link Gdk.ContentFormats.union}, will describe
      * in their documentation how they interpret that order, though in general the
      * order of the first argument is considered the primary order of the result,
      * followed by the order of further arguments.
      *
-     * For debugging purposes, the function [method`Gdk`.ContentFormats.to_string]
+     * For debugging purposes, the function {@link Gdk.ContentFormats.to_string}
      * exists. It will print a comma-separated list of formats from most important
      * to least important.
      *
-     * `GdkContentFormats` is an immutable struct. After creation, you cannot change
-     * the types it represents. Instead, new `GdkContentFormats` have to be created.
-     * The [struct`Gdk`.ContentFormatsBuilder] structure is meant to help in this
+     * {@link Gdk.ContentFormats} is an immutable struct. After creation, you cannot change
+     * the types it represents. Instead, new {@link Gdk.ContentFormats} have to be created.
+     * The {@link Gdk.ContentFormatsBuilder} structure is meant to help in this
      * endeavor.
+     * @gir-type Struct
      */
     class ContentFormats {
         static $gtype: GObject.GType<ContentFormats>;
@@ -16771,13 +17344,13 @@ export namespace Gdk {
         // Static methods
 
         /**
-         * Parses the given `string` into `GdkContentFormats` and
+         * Parses the given `string` into {@link Gdk.ContentFormats} and
          * returns the formats.
          *
-         * Strings printed via [method`Gdk`.ContentFormats.to_string]
+         * Strings printed via {@link Gdk.ContentFormats.to_string}
          * can be read in again successfully using this function.
          *
-         * If `string` does not describe valid content formats, %NULL
+         * If `string` does not describe valid content formats, `null`
          * is returned.
          * @param string the string to parse
          */
@@ -16786,118 +17359,118 @@ export namespace Gdk {
         // Methods
 
         /**
-         * Checks if a given `GType` is part of the given `formats`.
-         * @param type the `GType` to search for
-         * @returns %TRUE if the `GType` was found
+         * Checks if a given {@link GObject.GType} is part of the given `formats`.
+         * @param type the {@link GObject.GType} to search for
+         * @returns `true` if the {@link GObject.GType} was found
          */
         contain_gtype(type: GObject.GType): boolean;
         /**
          * Checks if a given mime type is part of the given `formats`.
          * @param mime_type the mime type to search for
-         * @returns %TRUE if the mime_type was found
+         * @returns `true` if the mime_type was found
          */
         contain_mime_type(mime_type: string): boolean;
         /**
-         * Gets the `GType`s included in `formats`.
+         * Gets the {@link GObject.GType}s included in `formats`.
          *
-         * Note that `formats` may not contain any `GType`s, in particular when
-         * they are empty. In that case %NULL will be returned.
-         * @returns %G_TYPE_INVALID-terminated array of types included in @formats
+         * Note that `formats` may not contain any {@link GObject.GType}s, in particular when
+         * they are empty. In that case `null` will be returned.
+         * @returns `G_TYPE_INVALID`-terminated array of types included in `formats`
          */
         get_gtypes(): GObject.GType[] | null;
         /**
          * Gets the mime types included in `formats`.
          *
          * Note that `formats` may not contain any mime types, in particular
-         * when they are empty. In that case %NULL will be returned.
-         * @returns %NULL-terminated array of interned strings of mime types included   in @formats
+         * when they are empty. In that case `null` will be returned.
+         * @returns `null`-terminated array of interned strings of mime types included   in `formats`
          */
         get_mime_types(): string[] | null;
         /**
          * Returns whether the content formats contain any formats.
-         * @returns true if @formats contains no mime types and no GTypes
+         * @returns true if `formats` contains no mime types and no GTypes
          */
         is_empty(): boolean;
         /**
          * Checks if `first` and `second` have any matching formats.
-         * @param second the `GdkContentFormats` to intersect with
-         * @returns %TRUE if a matching format was found.
+         * @param second the {@link Gdk.ContentFormats} to intersect with
+         * @returns `true` if a matching format was found.
          */
         match(second: ContentFormats): boolean;
         /**
-         * Finds the first `GType` from `first` that is also contained
+         * Finds the first {@link GObject.GType} from `first` that is also contained
          * in `second`.
          *
-         * If no matching `GType` is found, %G_TYPE_INVALID is returned.
-         * @param second the `GdkContentFormats` to intersect with
-         * @returns The first common `GType` or %G_TYPE_INVALID if none.
+         * If no matching {@link GObject.GType} is found, `G_TYPE_INVALID` is returned.
+         * @param second the {@link Gdk.ContentFormats} to intersect with
+         * @returns The first common {@link GObject.GType} or `G_TYPE_INVALID` if none.
          */
         match_gtype(second: ContentFormats): GObject.GType;
         /**
          * Finds the first mime type from `first` that is also contained
          * in `second`.
          *
-         * If no matching mime type is found, %NULL is returned.
-         * @param second the `GdkContentFormats` to intersect with
-         * @returns The first common mime type or %NULL if none
+         * If no matching mime type is found, `null` is returned.
+         * @param second the {@link Gdk.ContentFormats} to intersect with
+         * @returns The first common mime type or `null` if none
          */
         match_mime_type(second: ContentFormats): string | null;
         /**
          * Prints the given `formats` into a string for human consumption.
          *
          * The result of this function can later be parsed with
-         * [func`Gdk`.ContentFormats.parse].
-         * @param string a `GString` to print into
+         * {@link Gdk.ContentFormats.parse}.
+         * @param string a {@link GLib.String} to print into
          */
         print(string: GLib.String): void;
         /**
-         * Increases the reference count of a `GdkContentFormats` by one.
-         * @returns the passed in `GdkContentFormats`.
+         * Increases the reference count of a {@link Gdk.ContentFormats} by one.
+         * @returns the passed in {@link Gdk.ContentFormats}.
          */
         ref(): ContentFormats;
         /**
          * Prints the given `formats` into a human-readable string.
          *
-         * The resulting string can be parsed with [func`Gdk`.ContentFormats.parse].
+         * The resulting string can be parsed with {@link Gdk.ContentFormats.parse}.
          *
-         * This is a small wrapper around [method`Gdk`.ContentFormats.print]
+         * This is a small wrapper around {@link Gdk.ContentFormats.print}
          * to help when debugging.
          * @returns a new string
          */
         to_string(): string;
         /**
-         * Append all missing types from `second` to `first,` in the order
+         * Append all missing types from `second` to `first`, in the order
          * they had in `second`.
-         * @param second the `GdkContentFormats` to merge from
-         * @returns a new `GdkContentFormats`
+         * @param second the {@link Gdk.ContentFormats} to merge from
+         * @returns a new {@link Gdk.ContentFormats}
          */
         union(second: ContentFormats): ContentFormats;
         /**
          * Add GTypes for mime types in `formats` for which deserializers are
          * registered.
-         * @returns a new `GdkContentFormats`
+         * @returns a new {@link Gdk.ContentFormats}
          */
         union_deserialize_gtypes(): ContentFormats;
         /**
          * Add mime types for GTypes in `formats` for which deserializers are
          * registered.
-         * @returns a new `GdkContentFormats`
+         * @returns a new {@link Gdk.ContentFormats}
          */
         union_deserialize_mime_types(): ContentFormats;
         /**
          * Add GTypes for the mime types in `formats` for which serializers are
          * registered.
-         * @returns a new `GdkContentFormats`
+         * @returns a new {@link Gdk.ContentFormats}
          */
         union_serialize_gtypes(): ContentFormats;
         /**
          * Add mime types for GTypes in `formats` for which serializers are
          * registered.
-         * @returns a new `GdkContentFormats`
+         * @returns a new {@link Gdk.ContentFormats}
          */
         union_serialize_mime_types(): ContentFormats;
         /**
-         * Decreases the reference count of a `GdkContentFormats` by one.
+         * Decreases the reference count of a {@link Gdk.ContentFormats} by one.
          *
          * If the resulting reference count is zero, frees the formats.
          */
@@ -16905,7 +17478,8 @@ export namespace Gdk {
     }
 
     /**
-     * Creates `GdkContentFormats` objects.
+     * Creates {@link Gdk.ContentFormats} objects.
+     * @gir-type Struct
      */
     class ContentFormatsBuilder {
         static $gtype: GObject.GType<ContentFormatsBuilder>;
@@ -16919,14 +17493,14 @@ export namespace Gdk {
         // Methods
 
         /**
-         * Appends all formats from `formats` to `builder,` skipping those that
+         * Appends all formats from `formats` to `builder`, skipping those that
          * already exist.
          * @param formats the formats to add
          */
         add_formats(formats: ContentFormats): void;
         /**
          * Appends `type` to `builder` if it has not already been added.
-         * @param type a `GType`
+         * @param type a {@link GObject.GType}
          */
         add_gtype(type: GObject.GType): void;
         /**
@@ -16938,19 +17512,19 @@ export namespace Gdk {
          * Acquires a reference on the given `builder`.
          *
          * This function is intended primarily for bindings.
-         * `GdkContentFormatsBuilder` objects should not be kept around.
-         * @returns the given `GdkContentFormatsBuilder`   with its reference count increased
+         * {@link Gdk.ContentFormatsBuilder} objects should not be kept around.
+         * @returns the given {@link Gdk.ContentFormatsBuilder}   with its reference count increased
          */
         ref(): ContentFormatsBuilder;
         /**
-         * Creates a new `GdkContentFormats` from the given `builder`.
+         * Creates a new {@link Gdk.ContentFormats} from the given `builder`.
          *
-         * The given `GdkContentFormatsBuilder` is reset once this function returns;
+         * The given {@link Gdk.ContentFormatsBuilder} is reset once this function returns;
          * you cannot call this function multiple times on the same `builder` instance.
          *
          * This function is intended primarily for bindings. C code should use
-         * [method`Gdk`.ContentFormatsBuilder.free_to_formats].
-         * @returns the newly created `GdkContentFormats`   with all the formats added to @builder
+         * {@link Gdk.ContentFormatsBuilder.free_to_formats}.
+         * @returns the newly created {@link Gdk.ContentFormats}   with all the formats added to `builder`
          */
         to_formats(): ContentFormats;
         /**
@@ -16959,16 +17533,22 @@ export namespace Gdk {
         unref(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ContentProviderClass = typeof ContentProvider;
+    /**
+     * @gir-type Alias
+     */
     type DevicePadInterface = typeof DevicePad;
     /**
      * Provides information about supported DMA buffer formats.
      *
      * You can query whether a given format is supported with
-     * [method`Gdk`.DmabufFormats.contains] and you can iterate
+     * {@link Gdk.DmabufFormats.contains} and you can iterate
      * over the list of all supported formats with
-     * [method`Gdk`.DmabufFormats.get_n_formats] and
-     * [method`Gdk`.DmabufFormats.get_format].
+     * {@link Gdk.DmabufFormats.get_n_formats} and
+     * {@link Gdk.DmabufFormats.get_format}.
      *
      * The list of supported formats is sorted by preference,
      * with the best formats coming first.
@@ -16977,10 +17557,12 @@ export namespace Gdk {
      * is `DMA_FORMAT_MOD_INVALID`, indicating that **_implicit modifiers_**
      * may be used with this format.
      *
-     * See [class`Gdk`.DmabufTextureBuilder] for more information
+     * See {@link Gdk.DmabufTextureBuilder} for more information
      * about DMA buffers.
      *
      * Note that DMA buffers only exist on Linux.
+     * @gir-type Struct
+     * @since 4.14
      */
     abstract class DmabufFormats {
         static $gtype: GObject.GType<DmabufFormats>;
@@ -16991,14 +17573,14 @@ export namespace Gdk {
          * Returns whether a given format is contained in `formats`.
          * @param fourcc a format code
          * @param modifier a format modifier
-         * @returns `TRUE` if the format specified by the arguments   is part of @formats
+         * @returns `TRUE` if the format specified by the arguments   is part of `formats`
          */
         contains(fourcc: number, modifier: number): boolean;
         /**
          * Returns whether `formats1` and `formats2` contain the
          * same dmabuf formats, in the same order.
-         * @param formats2 another `GdkDmabufFormats`
-         * @returns `TRUE` if @formats1 and @formats2 are equal
+         * @param formats2 another {@link Gdk.DmabufFormats}
+         * @returns `TRUE` if `formats1` and `formats2` are equal
          */
         equal(formats2?: DmabufFormats | null): boolean;
         /**
@@ -17012,7 +17594,7 @@ export namespace Gdk {
          * contains.
          *
          * Note that DMA buffers are a Linux concept, so on other
-         * platforms, [method`Gdk`.DmabufFormats.get_n_formats] will
+         * platforms, {@link Gdk.DmabufFormats.get_n_formats} will
          * always return zero.
          * @returns the number of formats
          */
@@ -17031,11 +17613,22 @@ export namespace Gdk {
         unref(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DmabufTextureBuilderClass = typeof DmabufTextureBuilder;
+    /**
+     * @gir-type Alias
+     */
     type DmabufTextureClass = typeof DmabufTexture;
+    /**
+     * @gir-type Alias
+     */
     type DragSurfaceInterface = typeof DragSurface;
     /**
      * Contains information that is useful to compute the size of a drag surface.
+     * @gir-type Struct
+     * @since 4.12
      */
     abstract class DragSurfaceSize {
         static $gtype: GObject.GType<DragSurfaceSize>;
@@ -17052,6 +17645,7 @@ export namespace Gdk {
 
     /**
      * An opaque type representing a sequence of related events.
+     * @gir-type Struct
      */
     abstract class EventSequence {
         static $gtype: GObject.GType<EventSequence>;
@@ -17059,6 +17653,8 @@ export namespace Gdk {
 
     /**
      * An opaque type representing a list of files.
+     * @gir-type Struct
+     * @since 4.6
      */
     class FileList {
         static $gtype: GObject.GType<FileList>;
@@ -17074,7 +17670,7 @@ export namespace Gdk {
         // Methods
 
         /**
-         * Retrieves the list of files inside a `GdkFileList`.
+         * Retrieves the list of files inside a {@link Gdk.FileList}.
          *
          * This function is meant for language bindings.
          * @returns the files inside the list
@@ -17082,7 +17678,13 @@ export namespace Gdk {
         get_files(): Gio.File[];
     }
 
+    /**
+     * @gir-type Alias
+     */
     type FrameClockClass = typeof FrameClock;
+    /**
+     * @gir-type Struct
+     */
     abstract class FrameClockPrivate {
         static $gtype: GObject.GType<FrameClockPrivate>;
     }
@@ -17090,11 +17692,12 @@ export namespace Gdk {
     /**
      * Holds timing information for a single frame of the application’s displays.
      *
-     * To retrieve `GdkFrameTimings` objects, use [method`Gdk`.FrameClock.get_timings]
-     * or [method`Gdk`.FrameClock.get_current_timings]. The information in
-     * `GdkFrameTimings` is useful for precise synchronization of video with
+     * To retrieve {@link Gdk.FrameTimings} objects, use {@link Gdk.FrameClock.get_timings}
+     * or {@link Gdk.FrameClock.get_current_timings}. The information in
+     * {@link Gdk.FrameTimings} is useful for precise synchronization of video with
      * the event or audio streams, and for measuring quality metrics for the
      * application’s display, such as latency and jitter.
+     * @gir-type Struct
      */
     abstract class FrameTimings {
         static $gtype: GObject.GType<FrameTimings>;
@@ -17104,22 +17707,22 @@ export namespace Gdk {
         /**
          * Returns whether `timings` are complete.
          *
-         * The timing information in a `GdkFrameTimings` is filled in
+         * The timing information in a {@link Gdk.FrameTimings} is filled in
          * incrementally as the frame as drawn and passed off to the
          * window system for processing and display to the user. The
-         * accessor functions for `GdkFrameTimings` can return 0 to
+         * accessor functions for {@link Gdk.FrameTimings} can return 0 to
          * indicate an unavailable value for two reasons: either because
          * the information is not yet available, or because it isn't
          * available at all.
          *
-         * Once this function returns %TRUE for a frame, you can be
+         * Once this function returns `true` for a frame, you can be
          * certain that no further values will become available and be
-         * stored in the `GdkFrameTimings`.
-         * @returns %TRUE if all information that will be available   for the frame has been filled in.
+         * stored in the {@link Gdk.FrameTimings}.
+         * @returns `true` if all information that will be available   for the frame has been filled in.
          */
         get_complete(): boolean;
         /**
-         * Gets the frame counter value of the `GdkFrameClock` when
+         * Gets the frame counter value of the {@link Gdk.FrameClock} when
          * this frame was drawn.
          * @returns the frame counter value for this frame
          */
@@ -17128,8 +17731,8 @@ export namespace Gdk {
          * Returns the frame time for the frame.
          *
          * This is the time value that is typically used to time
-         * animations for the frame. See [method`Gdk`.FrameClock.get_frame_time].
-         * @returns the frame time for the frame, in the timescale  of g_get_monotonic_time()
+         * animations for the frame. See {@link Gdk.FrameClock.get_frame_time}.
+         * @returns the frame time for the frame, in the timescale  of `g_get_monotonic_time()`
          */
         get_frame_time(): number;
         /**
@@ -17137,22 +17740,22 @@ export namespace Gdk {
          *
          * Although no predicted time may be available, if one is available,
          * it will be available while the frame is being generated, in contrast
-         * to [method`Gdk`.FrameTimings.get_presentation_time], which is only
+         * to {@link Gdk.FrameTimings.get_presentation_time}, which is only
          * available after the frame has been presented.
          *
          * In general, if you are simply animating, you should use
-         * [method`Gdk`.FrameClock.get_frame_time] rather than this function,
+         * {@link Gdk.FrameClock.get_frame_time} rather than this function,
          * but this function is useful for applications that want exact control
          * over latency. For example, a movie player may want this information
          * for Audio/Video synchronization.
-         * @returns The predicted time at which the frame will be presented,   in the timescale of g_get_monotonic_time(), or 0 if no predicted   presentation time is available.
+         * @returns The predicted time at which the frame will be presented,   in the timescale of `g_get_monotonic_time()`, or 0 if no predicted   presentation time is available.
          */
         get_predicted_presentation_time(): number;
         /**
          * Reurns the presentation time.
          *
          * This is the time at which the frame became visible to the user.
-         * @returns the time the frame was displayed to the user, in the   timescale of g_get_monotonic_time(), or 0 if no presentation   time is available. See [method@Gdk.FrameTimings.get_complete]
+         * @returns the time the frame was displayed to the user, in the   timescale of `g_get_monotonic_time()`, or 0 if no presentation   time is available. See {@link Gdk.FrameTimings.get_complete}
          */
         get_presentation_time(): number;
         /**
@@ -17161,12 +17764,12 @@ export namespace Gdk {
          *
          * Frame presentation usually happens during the “vertical
          * blanking interval”.
-         * @returns the refresh interval of the display, in microseconds,   or 0 if the refresh interval is not available.   See [method@Gdk.FrameTimings.get_complete].
+         * @returns the refresh interval of the display, in microseconds,   or 0 if the refresh interval is not available.   See {@link Gdk.FrameTimings.get_complete}.
          */
         get_refresh_interval(): number;
         /**
          * Increases the reference count of `timings`.
-         * @returns @timings
+         * @returns `timings`
          */
         ref(): FrameTimings;
         /**
@@ -17177,10 +17780,17 @@ export namespace Gdk {
         unref(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type GLTextureBuilderClass = typeof GLTextureBuilder;
+    /**
+     * @gir-type Alias
+     */
     type GLTextureClass = typeof GLTexture;
     /**
      * Represents a hardware key that can be mapped to a keyval.
+     * @gir-type Struct
      */
     class KeymapKey {
         static $gtype: GObject.GType<KeymapKey>;
@@ -17202,13 +17812,28 @@ export namespace Gdk {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MemoryTextureBuilderClass = typeof MemoryTextureBuilder;
+    /**
+     * @gir-type Alias
+     */
     type MemoryTextureClass = typeof MemoryTexture;
+    /**
+     * @gir-type Alias
+     */
     type MonitorClass = typeof Monitor;
+    /**
+     * @gir-type Alias
+     */
     type PaintableInterface = typeof Paintable;
+    /**
+     * @gir-type Alias
+     */
     type PopupInterface = typeof Popup;
     /**
-     * Contains information that is necessary position a [iface`Gdk`.Popup]
+     * Contains information that is necessary position a {@link Gdk.Popup}
      * relative to its parent.
      *
      * The positioning requires a negotiation with the windowing system,
@@ -17235,12 +17860,13 @@ export namespace Gdk {
      *
      * Ultimatively, it is up to the windowing system to determine the position
      * and size of the popup. You can learn about the result by calling
-     * [method`Gdk`.Popup.get_position_x], [method`Gdk`.Popup.get_position_y],
-     * [method`Gdk`.Popup.get_rect_anchor] and [method`Gdk`.Popup.get_surface_anchor]
+     * {@link Gdk.Popup.get_position_x}, {@link Gdk.Popup.get_position_y},
+     * {@link Gdk.Popup.get_rect_anchor} and {@link Gdk.Popup.get_surface_anchor}
      * after the popup has been presented. This can be used to adjust the rendering.
      * For example, [GtkPopover](../gtk4/class.Popover.html) changes its arrow position
      * accordingly. But you have to be careful avoid changing the size of the popover,
      * or it has to be presented again.
+     * @gir-type Struct
      */
     class PopupLayout {
         static $gtype: GObject.GType<PopupLayout>;
@@ -17255,13 +17881,13 @@ export namespace Gdk {
 
         /**
          * Makes a copy of `layout`.
-         * @returns a copy of @layout.
+         * @returns a copy of `layout`.
          */
         copy(): PopupLayout;
         /**
          * Check whether `layout` and `other` has identical layout properties.
          * @param other another popup layout
-         * @returns true if @layout and @other have identical layout properties,   otherwise false.
+         * @returns true if `layout` and `other` have identical layout properties,   otherwise false.
          */
         equal(other: PopupLayout): boolean;
         /**
@@ -17294,7 +17920,7 @@ export namespace Gdk {
         get_surface_anchor(): Gravity;
         /**
          * Increases the reference count of `value`.
-         * @returns the same @layout
+         * @returns the same `layout`
          */
         ref(): PopupLayout;
         /**
@@ -17350,12 +17976,13 @@ export namespace Gdk {
     /**
      * Represents a color, in a way that is compatible with cairo’s notion of color.
      *
-     * `GdkRGBA` is a convenient way to pass colors around. It’s based on
+     * {@link Gdk.RGBA} is a convenient way to pass colors around. It’s based on
      * cairo’s way to deal with colors and mirrors its behavior. All values
      * are in the range from 0.0 to 1.0 inclusive. So the color
      * (0.0, 0.0, 0.0, 0.0) represents transparent black and
      * (1.0, 1.0, 1.0, 1.0) is opaque white. Other values will
      * be clamped to this range when drawing.
+     * @gir-type Struct
      */
     class RGBA {
         static $gtype: GObject.GType<RGBA>;
@@ -17381,33 +18008,33 @@ export namespace Gdk {
         // Methods
 
         /**
-         * Makes a copy of a `GdkRGBA`.
+         * Makes a copy of a {@link Gdk.RGBA}.
          *
-         * The result must be freed through [method`Gdk`.RGBA.free].
-         * @returns A newly allocated `GdkRGBA`, with the same contents as @rgba
+         * The result must be freed through {@link Gdk.RGBA.free}.
+         * @returns A newly allocated {@link Gdk.RGBA}, with the same contents as `rgba`
          */
         copy(): RGBA;
         /**
-         * Compares two `GdkRGBA` colors.
-         * @param p2 another `GdkRGBA`
-         * @returns %TRUE if the two colors compare equal
+         * Compares two {@link Gdk.RGBA} colors.
+         * @param p2 another {@link Gdk.RGBA}
+         * @returns `true` if the two colors compare equal
          */
         equal(p2: RGBA): boolean;
         /**
-         * Frees a `GdkRGBA`.
+         * Frees a {@link Gdk.RGBA}.
          */
         free(): void;
         /**
          * A hash function suitable for using for a hash
-         * table that stores `GdkRGBA`s.
-         * @returns The hash value for @p
+         * table that stores {@link Gdk.RGBA}s.
+         * @returns The hash value for `p`
          */
         hash(): number;
         /**
          * Checks if an `rgba` value is transparent.
          *
          * That is, drawing with the value would not produce any change.
-         * @returns %TRUE if the @rgba is clear
+         * @returns `true` if the `rgba` is clear
          */
         is_clear(): boolean;
         /**
@@ -17415,7 +18042,7 @@ export namespace Gdk {
          *
          * That is, drawing with the value will not retain any results
          * from previous contents.
-         * @returns %TRUE if the @rgba is opaque
+         * @returns `true` if the `rgba` is opaque
          */
         is_opaque(): boolean;
         /**
@@ -17431,18 +18058,24 @@ export namespace Gdk {
          * - A RGB color in the form “rgb(r,g,b)” (In this case the color
          *   will have full opacity)
          * - A RGBA color in the form “rgba(r,g,b,a)”
-         * - A HSL color in the form "hsl(hue, saturation, lightness)"
-         * - A HSLA color in the form "hsla(hue, saturation, lightness, alpha)"
+         * - A HSL color in the form “hsl(h,s,l)”
+         * - A HSLA color in the form “hsla(h,s,l,a)”
          *
          * Where “r”, “g”, “b” and “a” are respectively the red, green,
          * blue and alpha color values. In the last two cases, “r”, “g”,
          * and “b” are either integers in the range 0 to 255 or percentage
          * values in the range 0% to 100%, and a is a floating point value
-         * in the range 0 to 1.
+         * in the range 0 to 1. The range for “h” is 0 to 360, and
+         * “s”, “l” can be either numbers in the range 0 to 100 or
+         * percentages.
          * @param spec the string specifying the color
-         * @returns %TRUE if the parsing succeeded
+         * @returns `true` if the parsing succeeded
          */
         parse(spec: string): boolean;
+        /**
+         * @param string
+         */
+        print(string: GLib.String): GLib.String;
         /**
          * Returns a textual specification of `rgba` in the form
          * `rgb(r,g,b)` or `rgba(r,g,b,a)`, where “r”, “g”, “b” and
@@ -17452,7 +18085,7 @@ export namespace Gdk {
          * point value in the range 0 to 1.
          *
          * These string forms are string forms that are supported by
-         * the CSS3 colors module, and can be parsed by [method`Gdk`.RGBA.parse].
+         * the CSS3 colors module, and can be parsed by {@link Gdk.RGBA.parse}.
          *
          * Note that this string representation may lose some precision,
          * since “r”, “g” and “b” are represented as 8-bit integers. If
@@ -17465,19 +18098,20 @@ export namespace Gdk {
     /**
      * Represents a rectangle.
      *
-     * `GdkRectangle` is identical to `cairo_rectangle_t`. Together with Cairo’s
+     * {@link Gdk.Rectangle} is identical to `cairo_rectangle_t`. Together with Cairo’s
      * `cairo_region_t` data type, these are the central types for representing
      * sets of pixels.
      *
      * The intersection of two rectangles can be computed with
-     * [method`Gdk`.Rectangle.intersect]; to find the union of two rectangles use
-     * [method`Gdk`.Rectangle.union].
+     * {@link Gdk.Rectangle.intersect}; to find the union of two rectangles use
+     * {@link Gdk.Rectangle.union}.
      *
      * The `cairo_region_t` type provided by Cairo is usually used for managing
      * non-rectangular clipping of graphical operations.
      *
      * The Graphene library has a number of other data types for regions and
      * volumes in 2D and 3D.
+     * @gir-type Struct
      */
     class Rectangle {
         static $gtype: GObject.GType<Rectangle>;
@@ -17503,28 +18137,28 @@ export namespace Gdk {
         // Methods
 
         /**
-         * Returns %TRUE if `rect` contains the point described by `x` and `y`.
+         * Returns `true` if `rect` contains the point described by `x` and `y`.
          * @param x X coordinate
          * @param y Y coordinate
-         * @returns %TRUE if @rect contains the point
+         * @returns `true` if `rect` contains the point
          */
         contains_point(x: number, y: number): boolean;
         /**
          * Checks if the two given rectangles are equal.
-         * @param rect2 a `GdkRectangle`
-         * @returns %TRUE if the rectangles are equal.
+         * @param rect2 a {@link Gdk.Rectangle}
+         * @returns `true` if the rectangles are equal.
          */
         equal(rect2: Rectangle): boolean;
         /**
          * Calculates the intersection of two rectangles.
          *
          * It is allowed for `dest` to be the same as either `src1` or `src2`.
-         * If the rectangles do not intersect, `dest’`s width and height is set
+         * If the rectangles do not intersect, `dest`’s width and height is set
          * to 0 and its x and y values are undefined. If you are only interested
          * in whether the rectangles intersect, but not in the intersecting area
-         * itself, pass %NULL for `dest`.
-         * @param src2 a `GdkRectangle`
-         * @returns %TRUE if the rectangles intersect.
+         * itself, pass `null` for `dest`.
+         * @param src2 a {@link Gdk.Rectangle}
+         * @returns `true` if the rectangles intersect.
          */
         intersect(src2: Rectangle): [boolean, Rectangle | null];
         /**
@@ -17536,24 +18170,35 @@ export namespace Gdk {
          *
          * Note that this function does not ignore 'empty' rectangles (ie. with
          * zero width or height).
-         * @param src2 a `GdkRectangle`
+         * @param src2 a {@link Gdk.Rectangle}
          */
         union(src2: Rectangle): Rectangle;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SnapshotClass = typeof Snapshot;
+    /**
+     * @gir-type Alias
+     */
     type SurfaceClass = typeof Surface;
+    /**
+     * @gir-type Alias
+     */
     type TextureClass = typeof Texture;
     /**
-     * Used to download the contents of a [class`Gdk`.Texture].
+     * Used to download the contents of a {@link Gdk.Texture}.
      *
      * It is intended to be created as a short-term object for a single download,
      * but can be used for multiple downloads of different textures or with different
      * settings.
      *
-     * `GdkTextureDownloader` can be used to convert data between different formats.
-     * Create a `GdkTexture` for the existing format and then download it in a
+     * {@link Gdk.TextureDownloader} can be used to convert data between different formats.
+     * Create a {@link Gdk.Texture} for the existing format and then download it in a
      * different format.
+     * @gir-type Struct
+     * @since 4.10
      */
     class TextureDownloader {
         static $gtype: GObject.GType<TextureDownloader>;
@@ -17574,21 +18219,21 @@ export namespace Gdk {
          */
         copy(): TextureDownloader;
         /**
-         * Downloads the given texture pixels into a `GBytes`. The rowstride will
+         * Downloads the given texture pixels into a {@link GLib.Bytes}. The rowstride will
          * be stored in the stride value.
          *
          * This function will abort if it tries to download a large texture and
          * fails to allocate memory. If you think that may happen, you should handle
-         * memory allocation yourself and use [method`Gdk`.TextureDownloader.download_into]
+         * memory allocation yourself and use {@link Gdk.TextureDownloader.download_into}
          * once allocation succeeded.
          *
          * This function cannot be used with a multiplanar format. Use
-         * [method`Gdk`.TextureDownloader.download_bytes_with_planes] for that purpose.
+         * {@link Gdk.TextureDownloader.download_bytes_with_planes} for that purpose.
          * @returns The downloaded pixels
          */
         download_bytes(): [GLib.Bytes, number];
         /**
-         * Downloads the given texture pixels into a `GBytes`. The offsets and
+         * Downloads the given texture pixels into a {@link GLib.Bytes}. The offsets and
          * strides of the resulting buffer will be stored in the respective values.
          *
          * If the format does have less than 4 planes, the remaining offsets and strides will be
@@ -17626,7 +18271,7 @@ export namespace Gdk {
         /**
          * Sets the color state the downloader will convert the data to.
          *
-         * By default, the sRGB colorstate returned by [func`ColorState`.get_srgb]
+         * By default, the sRGB colorstate returned by {@link ColorState.get_srgb}
          * is used.
          * @param color_state the color state to use
          */
@@ -17649,9 +18294,10 @@ export namespace Gdk {
      * Stores a single event in a motion history.
      *
      * To check whether an axis is present, check whether the corresponding
-     * flag from the [flags`Gdk`.AxisFlags] enumeration is set in the `flags`
+     * flag from the {@link Gdk.AxisFlags} enumeration is set in the `flags`
      * To access individual axis values, use the values of the values of
-     * the [enum`Gdk`.AxisUse] enumerations as indices.
+     * the {@link Gdk.AxisUse} enumerations as indices.
+     * @gir-type Struct
      */
     class TimeCoord {
         static $gtype: GObject.GType<TimeCoord>;
@@ -17663,17 +18309,21 @@ export namespace Gdk {
         axes: number[];
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ToplevelInterface = typeof Toplevel;
     /**
      * Contains information that is necessary to present a sovereign
      * window on screen.
      *
-     * The `GdkToplevelLayout` struct is necessary for using
-     * [method`Gdk`.Toplevel.present].
+     * The {@link Gdk.ToplevelLayout} struct is necessary for using
+     * {@link Gdk.Toplevel.present}.
      *
      * Toplevel surfaces are sovereign windows that can be presented
      * to the user in various states (maximized, on all workspaces,
      * etc).
+     * @gir-type Struct
      */
     class ToplevelLayout {
         static $gtype: GObject.GType<ToplevelLayout>;
@@ -17687,34 +18337,34 @@ export namespace Gdk {
         // Methods
 
         /**
-         * Create a new `GdkToplevelLayout` and copy the contents of `layout` into it.
-         * @returns a copy of @layout.
+         * Create a new {@link Gdk.ToplevelLayout} and copy the contents of `layout` into it.
+         * @returns a copy of `layout`.
          */
         copy(): ToplevelLayout;
         /**
          * Check whether `layout` and `other` has identical layout properties.
          * @param other another toplevel layout
-         * @returns true if @layout and @other have identical layout properties,   otherwise false.
+         * @returns true if `layout` and `other` have identical layout properties,   otherwise false.
          */
         equal(other: ToplevelLayout): boolean;
         /**
          * If the layout specifies whether to the toplevel should go fullscreen,
          * the value pointed to by `fullscreen` is set to true if it should go
          * fullscreen, or false, if it should go unfullscreen.
-         * @returns whether the @layout specifies the fullscreen state for the toplevel
+         * @returns whether the `layout` specifies the fullscreen state for the toplevel
          */
         get_fullscreen(): [boolean, boolean];
         /**
          * Returns the monitor that the layout is fullscreening
          * the surface on.
-         * @returns the monitor on which @layout fullscreens
+         * @returns the monitor on which `layout` fullscreens
          */
         get_fullscreen_monitor(): Monitor | null;
         /**
          * If the layout specifies whether to the toplevel should go maximized,
          * the value pointed to by `maximized` is set to true if it should go
          * maximized, or false, if it should go unmaximized.
-         * @returns whether the @layout specifies the maximized state for the toplevel
+         * @returns whether the `layout` specifies the maximized state for the toplevel
          */
         get_maximized(): [boolean, boolean];
         /**
@@ -17725,7 +18375,7 @@ export namespace Gdk {
         get_resizable(): boolean;
         /**
          * Increases the reference count of `layout`.
-         * @returns the same @layout
+         * @returns the same `layout`
          */
         ref(): ToplevelLayout;
         /**
@@ -17755,6 +18405,7 @@ export namespace Gdk {
 
     /**
      * Contains information that is useful to compute the size of a toplevel.
+     * @gir-type Struct
      */
     abstract class ToplevelSize {
         static $gtype: GObject.GType<ToplevelSize>;
@@ -17775,12 +18426,12 @@ export namespace Gdk {
          * Sets the minimum size of the toplevel.
          *
          * The minimum size corresponds to the limitations the toplevel can be shrunk
-         * to, without resulting in incorrect painting. A user of a `GdkToplevel` should
+         * to, without resulting in incorrect painting. A user of a {@link Gdk.Toplevel} should
          * calculate these given both the existing size, and the bounds retrieved from
-         * the `GdkToplevelSize` object.
+         * the {@link Gdk.ToplevelSize} object.
          *
          * The minimum size should be within the bounds (see
-         * [method`Gdk`.ToplevelSize.get_bounds]).
+         * {@link Gdk.ToplevelSize.get_bounds}).
          * @param min_width the minimum width
          * @param min_height the minimum height
          */
@@ -17793,7 +18444,7 @@ export namespace Gdk {
          * there be any.
          *
          * Shadow width should only be set if
-         * [method`Gtk`.Display.supports_shadow_width] is %TRUE.
+         * {@link Gtk.Display.supports_shadow_width} is `true`.
          * @param left width of the left part of the shadow
          * @param right width of the right part of the shadow
          * @param top height of the top part of the shadow
@@ -17804,7 +18455,7 @@ export namespace Gdk {
          * Sets the size the toplevel prefers to be resized to.
          *
          * The size should be within the bounds (see
-         * [method`Gdk`.ToplevelSize.get_bounds]). The set size should
+         * {@link Gdk.ToplevelSize.get_bounds}). The set size should
          * be considered as a hint, and should not be assumed to be
          * respected by the windowing system, or backend.
          * @param width the width
@@ -17823,13 +18474,32 @@ export namespace Gdk {
         $gtype: GObject.GType<DevicePad>;
         prototype: DevicePad;
     }
+    /**
+     * An interface for tablet pad devices.
+     *
+     * It allows querying the features provided by the pad device.
+     *
+     * Tablet pads may contain one or more groups, each containing a subset
+     * of the buttons/rings/strips available. {@link Gdk.DevicePad.get_n_groups}
+     * can be used to obtain the number of groups, {@link Gdk.DevicePad.get_n_features}
+     * and {@link Gdk.DevicePad.get_feature_group} can be combined to find out
+     * the number of buttons/rings/strips the device has, and how are they grouped.
+     *
+     * Each of those groups have different modes, which may be used to map each
+     * individual pad feature to multiple actions. Only one mode is effective
+     * (current) for each given group, different groups may have different
+     * current modes. The number of available modes in a group can be found
+     * out through {@link Gdk.DevicePad.get_group_n_modes}, and the current mode
+     * for a given group will be notified through events of type `GDK_PAD_GROUP_MODE`.
+     * @gir-type Interface
+     */
     interface DevicePad extends Device {
         // Methods
 
         /**
          * Returns the group the given `feature` and `idx` belong to.
          *
-         * f the feature or index do not exist in `pad,` -1 is returned.
+         * f the feature or index do not exist in `pad`, -1 is returned.
          * @param feature the feature type to get the group from
          * @param feature_idx the index of the feature to get the group from
          * @returns The group number of the queried pad feature.
@@ -17838,13 +18508,13 @@ export namespace Gdk {
         /**
          * Returns the number of modes that `group` may have.
          * @param group_idx group to get the number of available modes from
-         * @returns The number of modes available in @group.
+         * @returns The number of modes available in `group`.
          */
         get_group_n_modes(group_idx: number): number;
         /**
          * Returns the number of features a tablet pad has.
          * @param feature a pad feature
-         * @returns The amount of elements of type @feature that this pad has.
+         * @returns The amount of elements of type `feature` that this pad has.
          */
         get_n_features(feature: DevicePadFeature | null): number;
         /**
@@ -17872,6 +18542,10 @@ export namespace Gdk {
         $gtype: GObject.GType<DragSurface>;
         prototype: DragSurface;
     }
+    /**
+     * A surface that is used during DND.
+     * @gir-type Interface
+     */
     interface DragSurface extends Surface {
         // Methods
 
@@ -17879,7 +18553,7 @@ export namespace Gdk {
          * Present `drag_surface`.
          * @param width the unconstrained drag_surface width to layout
          * @param height the unconstrained drag_surface height to layout
-         * @returns %FALSE if it failed to be presented, otherwise %TRUE.
+         * @returns `false` if it failed to be presented, otherwise `true`.
          */
         present(width: number, height: number): boolean;
     }
@@ -17903,6 +18577,7 @@ export namespace Gdk {
              * for example to take a screenshot of a running animation.
              *
              * If the `paintable` is already immutable, it will return itself.
+             * @virtual
              */
             vfunc_get_current_image(): Paintable;
             /**
@@ -17910,7 +18585,8 @@ export namespace Gdk {
              *
              * This is oftentimes useful for optimizations.
              *
-             * See [flags`Gdk`.PaintableFlags] for the flags and what they mean.
+             * See {@link Gdk.PaintableFlags} for the flags and what they mean.
+             * @virtual
              */
             vfunc_get_flags(): PaintableFlags;
             /**
@@ -17922,15 +18598,16 @@ export namespace Gdk {
              * ratio when displaying the paintable.
              *
              * This is a purely informational value and does not in any way limit the
-             * values that may be passed to [method`Gdk`.Paintable.snapshot].
+             * values that may be passed to {@link Gdk.Paintable.snapshot}.
              *
              * Usually when a `paintable` returns nonzero values from
-             * [method`Gdk`.Paintable.get_intrinsic_width] and
-             * [method`Gdk`.Paintable.get_intrinsic_height] the aspect ratio
+             * {@link Gdk.Paintable.get_intrinsic_width} and
+             * {@link Gdk.Paintable.get_intrinsic_height} the aspect ratio
              * should conform to those values, though that is not required.
              *
              * If the `paintable` does not have a preferred aspect ratio,
              * it returns 0. Negative values are never returned.
+             * @virtual
              */
             vfunc_get_intrinsic_aspect_ratio(): number;
             /**
@@ -17940,10 +18617,11 @@ export namespace Gdk {
              * the paintable.
              *
              * This is a purely informational value and does not in any way limit the
-             * values that may be passed to [method`Gdk`.Paintable.snapshot].
+             * values that may be passed to {@link Gdk.Paintable.snapshot}.
              *
              * If the `paintable` does not have a preferred height, it returns 0.
              * Negative values are never returned.
+             * @virtual
              */
             vfunc_get_intrinsic_height(): number;
             /**
@@ -17953,10 +18631,11 @@ export namespace Gdk {
              * the paintable.
              *
              * This is a purely informational value and does not in any way limit the
-             * values that may be passed to [method`Gdk`.Paintable.snapshot].
+             * values that may be passed to {@link Gdk.Paintable.snapshot}.
              *
              * If the `paintable` does not have a preferred width, it returns 0.
              * Negative values are never returned.
+             * @virtual
              */
             vfunc_get_intrinsic_width(): number;
             /**
@@ -17965,9 +18644,10 @@ export namespace Gdk {
              * The paintable is drawn at the current (0,0) offset of the `snapshot`.
              * If `width` and `height` are not larger than zero, this function will
              * do nothing.
-             * @param snapshot a `GdkSnapshot` to snapshot to
+             * @param snapshot a {@link Gdk.Snapshot} to snapshot to
              * @param width width to snapshot in
              * @param height height to snapshot in
+             * @virtual
              */
             vfunc_snapshot(snapshot: Snapshot, width: number, height: number): void;
         }
@@ -17985,7 +18665,7 @@ export namespace Gdk {
          * Returns a paintable that has the given intrinsic size and draws nothing.
          *
          * This is often useful for implementing the
-         * [vfunc`Gdk`.Paintable.get_current_image] virtual function
+         * {@link Gdk.Paintable.get_current_image} virtual function
          * when the paintable is in an incomplete state (like a
          * [GtkMediaStream](../gtk4/class.MediaStream.html) before receiving
          * the first frame).
@@ -17994,11 +18674,58 @@ export namespace Gdk {
          */
         new_empty(intrinsic_width: number, intrinsic_height: number): Paintable;
     }
+    /**
+     * An interface for content that can be painted.
+     *
+     * The content of a {@link Gdk.Paintable} can be painted anywhere at any size
+     * without requiring any sort of layout. The interface is inspired by
+     * similar concepts elsewhere, such as
+     * [ClutterContent](https://developer.gnome.org/clutter/stable/ClutterContent.html),
+     * [HTML/CSS Paint Sources](https://www.w3.org/TR/css-images-4/#paint-source),
+     * or [SVG Paint Servers](https://www.w3.org/TR/SVG2/pservers.html).
+     *
+     * A {@link Gdk.Paintable} can be snapshot at any time and size using
+     * {@link Gdk.Paintable.snapshot}. How the paintable interprets that size and
+     * if it scales or centers itself into the given rectangle is implementation
+     * defined, though if you are implementing a {@link Gdk.Paintable} and don't know what
+     * to do, it is suggested that you scale your paintable ignoring any potential
+     * aspect ratio.
+     *
+     * The contents that a {@link Gdk.Paintable} produces may depend on the {@link Gdk.Snapshot}
+     * passed to it. For example, paintables may decide to use more detailed images
+     * on higher resolution screens or when OpenGL is available. A {@link Gdk.Paintable}
+     * will however always produce the same output for the same snapshot.
+     *
+     * A {@link Gdk.Paintable} may change its contents, meaning that it will now produce
+     * a different output with the same snapshot. Once that happens, it will call
+     * {@link Gdk.Paintable.invalidate_contents} which will emit the
+     * `Gdk.Paintable::invalidate-contents` signal. If a paintable is known
+     * to never change its contents, it will set the {@link Gdk.PaintableFlags.STATIC_CONTENTS}
+     * flag. If a consumer cannot deal with changing contents, it may call
+     * {@link Gdk.Paintable.get_current_image} which will return a static
+     * paintable and use that.
+     *
+     * A paintable can report an intrinsic (or preferred) size or aspect ratio it
+     * wishes to be rendered at, though it doesn't have to. Consumers of the interface
+     * can use this information to layout thepaintable appropriately. Just like the
+     * contents, the size of a paintable can change. A paintable will indicate this
+     * by calling {@link Gdk.Paintable.invalidate_size} which will emit the
+     * `Gdk.Paintable::invalidate-size` signal. And just like for contents,
+     * if a paintable is known to never change its size, it will set the
+     * {@link Gdk.PaintableFlags.STATIC_SIZE} flag.
+     *
+     * Besides API for applications, there are some functions that are only
+     * useful for implementing subclasses and should not be used by applications:
+     * {@link Gdk.Paintable.invalidate_contents},
+     * {@link Gdk.Paintable.invalidate_size},
+     * {@link Gdk.Paintable.new_empty}.
+     * @gir-type Interface
+     */
     interface Paintable extends GObject.Object, Paintable.Interface {
         // Methods
 
         /**
-         * Compute a concrete size for the `GdkPaintable`.
+         * Compute a concrete size for the {@link Gdk.Paintable}.
          *
          * Applies the sizing algorithm outlined in the
          * [CSS Image spec](https://drafts.csswg.org/css-images-3/#default-sizing)
@@ -18008,10 +18735,10 @@ export namespace Gdk {
          * and `specified_height` are known, but it is useful to call this
          * function in GtkWidget:measure implementations to compute the
          * other dimension when only one dimension is given.
-         * @param specified_width the width @paintable could be drawn into or   0.0 if unknown
-         * @param specified_height the height @paintable could be drawn into or   0.0 if unknown
-         * @param default_width the width @paintable would be drawn into if   no other constraints were given
-         * @param default_height the height @paintable would be drawn into if   no other constraints were given
+         * @param specified_width the width `paintable` could be drawn into or   0.0 if unknown
+         * @param specified_height the height `paintable` could be drawn into or   0.0 if unknown
+         * @param default_width the width `paintable` would be drawn into if   no other constraints were given
+         * @param default_height the height `paintable` would be drawn into if   no other constraints were given
          */
         compute_concrete_size(
             specified_width: number,
@@ -18026,7 +18753,7 @@ export namespace Gdk {
          * for example to take a screenshot of a running animation.
          *
          * If the `paintable` is already immutable, it will return itself.
-         * @returns An immutable paintable for the current   contents of @paintable
+         * @returns An immutable paintable for the current   contents of `paintable`
          */
         get_current_image(): Paintable;
         /**
@@ -18034,8 +18761,8 @@ export namespace Gdk {
          *
          * This is oftentimes useful for optimizations.
          *
-         * See [flags`Gdk`.PaintableFlags] for the flags and what they mean.
-         * @returns The `GdkPaintableFlags` for this paintable
+         * See {@link Gdk.PaintableFlags} for the flags and what they mean.
+         * @returns The {@link Gdk.PaintableFlags} for this paintable
          */
         get_flags(): PaintableFlags;
         /**
@@ -18047,16 +18774,16 @@ export namespace Gdk {
          * ratio when displaying the paintable.
          *
          * This is a purely informational value and does not in any way limit the
-         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         * values that may be passed to {@link Gdk.Paintable.snapshot}.
          *
          * Usually when a `paintable` returns nonzero values from
-         * [method`Gdk`.Paintable.get_intrinsic_width] and
-         * [method`Gdk`.Paintable.get_intrinsic_height] the aspect ratio
+         * {@link Gdk.Paintable.get_intrinsic_width} and
+         * {@link Gdk.Paintable.get_intrinsic_height} the aspect ratio
          * should conform to those values, though that is not required.
          *
          * If the `paintable` does not have a preferred aspect ratio,
          * it returns 0. Negative values are never returned.
-         * @returns the intrinsic aspect ratio of @paintable or 0 if none.
+         * @returns the intrinsic aspect ratio of `paintable` or 0 if none.
          */
         get_intrinsic_aspect_ratio(): number;
         /**
@@ -18066,11 +18793,11 @@ export namespace Gdk {
          * the paintable.
          *
          * This is a purely informational value and does not in any way limit the
-         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         * values that may be passed to {@link Gdk.Paintable.snapshot}.
          *
          * If the `paintable` does not have a preferred height, it returns 0.
          * Negative values are never returned.
-         * @returns the intrinsic height of @paintable or 0 if none.
+         * @returns the intrinsic height of `paintable` or 0 if none.
          */
         get_intrinsic_height(): number;
         /**
@@ -18080,36 +18807,36 @@ export namespace Gdk {
          * the paintable.
          *
          * This is a purely informational value and does not in any way limit the
-         * values that may be passed to [method`Gdk`.Paintable.snapshot].
+         * values that may be passed to {@link Gdk.Paintable.snapshot}.
          *
          * If the `paintable` does not have a preferred width, it returns 0.
          * Negative values are never returned.
-         * @returns the intrinsic width of @paintable or 0 if none.
+         * @returns the intrinsic width of `paintable` or 0 if none.
          */
         get_intrinsic_width(): number;
         /**
-         * Called by implementations of `GdkPaintable` to invalidate their contents.
+         * Called by implementations of {@link Gdk.Paintable} to invalidate their contents.
          *
          * Unless the contents are invalidated, implementations must guarantee that
-         * multiple calls of [method`Gdk`.Paintable.snapshot] produce the same output.
+         * multiple calls of {@link Gdk.Paintable.snapshot} produce the same output.
          *
-         * This function will emit the [signal`Gdk`.Paintable::invalidate-contents]
+         * This function will emit the `Gdk.Paintable::invalidate-contents`
          * signal.
          *
-         * If a `paintable` reports the %GDK_PAINTABLE_STATIC_CONTENTS flag,
+         * If a `paintable` reports the {@link Gdk.PaintableFlags.STATIC_CONTENTS} flag,
          * it must not call this function.
          */
         invalidate_contents(): void;
         /**
-         * Called by implementations of `GdkPaintable` to invalidate their size.
+         * Called by implementations of {@link Gdk.Paintable} to invalidate their size.
          *
          * As long as the size is not invalidated, `paintable` must return the same
          * values for its intrinsic width, height and aspect ratio.
          *
-         * This function will emit the [signal`Gdk`.Paintable::invalidate-size]
+         * This function will emit the `Gdk.Paintable::invalidate-size`
          * signal.
          *
-         * If a `paintable` reports the %GDK_PAINTABLE_STATIC_SIZE flag,
+         * If a `paintable` reports the {@link Gdk.PaintableFlags.STATIC_SIZE} flag,
          * it must not call this function.
          */
         invalidate_size(): void;
@@ -18119,7 +18846,7 @@ export namespace Gdk {
          * The paintable is drawn at the current (0,0) offset of the `snapshot`.
          * If `width` and `height` are not larger than zero, this function will
          * do nothing.
-         * @param snapshot a `GdkSnapshot` to snapshot to
+         * @param snapshot a {@link Gdk.Snapshot} to snapshot to
          * @param width width to snapshot in
          * @param height height to snapshot in
          */
@@ -18143,15 +18870,27 @@ export namespace Gdk {
         $gtype: GObject.GType<Popup>;
         prototype: Popup;
     }
+    /**
+     * A surface that is attached to another surface.
+     *
+     * The {@link Gdk.Popup} is positioned relative to its parent surface.
+     *
+     * {@link Gdk.Popup}s are typically used to implement menus and similar popups.
+     * They can be modal, which is indicated by the {@link Gdk.Popup.autohide}
+     * property.
+     * @gir-type Interface
+     */
     interface Popup extends Surface {
         // Properties
 
         /**
          * Whether to hide on outside clicks.
+         * @construct-only
          */
         get autohide(): boolean;
         /**
          * The parent surface.
+         * @construct-only
          */
         get parent(): Surface;
 
@@ -18159,7 +18898,7 @@ export namespace Gdk {
 
         /**
          * Returns whether this popup is set to hide on outside clicks.
-         * @returns %TRUE if @popup will autohide
+         * @returns `true` if `popup` will autohide
          */
         get_autohide(): boolean;
         /**
@@ -18169,50 +18908,50 @@ export namespace Gdk {
         get_parent(): Surface | null;
         /**
          * Obtains the position of the popup relative to its parent.
-         * @returns the X coordinate of @popup position
+         * @returns the X coordinate of `popup` position
          */
         get_position_x(): number;
         /**
          * Obtains the position of the popup relative to its parent.
-         * @returns the Y coordinate of @popup position
+         * @returns the Y coordinate of `popup` position
          */
         get_position_y(): number;
         /**
          * Gets the current popup rectangle anchor.
          *
-         * The value returned may change after calling [method`Gdk`.Popup.present],
-         * or after the [signal`Gdk`.Surface::layout] signal is emitted.
-         * @returns the current rectangle anchor value of @popup
+         * The value returned may change after calling {@link Gdk.Popup.present},
+         * or after the `Gdk.Surface::layout` signal is emitted.
+         * @returns the current rectangle anchor value of `popup`
          */
         get_rect_anchor(): Gravity;
         /**
          * Gets the current popup surface anchor.
          *
-         * The value returned may change after calling [method`Gdk`.Popup.present],
-         * or after the [signal`Gdk`.Surface::layout] signal is emitted.
-         * @returns the current surface anchor value of @popup
+         * The value returned may change after calling {@link Gdk.Popup.present},
+         * or after the `Gdk.Surface::layout` signal is emitted.
+         * @returns the current surface anchor value of `popup`
          */
         get_surface_anchor(): Gravity;
         /**
-         * Present `popup` after having processed the `GdkPopupLayout` rules.
+         * Present `popup` after having processed the {@link Gdk.PopupLayout} rules.
          *
          * If the popup was previously not showing, it will be shown,
          * otherwise it will change position according to `layout`.
          *
          * After calling this function, the result should be handled in response
-         * to the [signal`Gdk`.Surface::layout] signal being emitted. The resulting
-         * popup position can be queried using [method`Gdk`.Popup.get_position_x],
-         * [method`Gdk`.Popup.get_position_y], and the resulting size will be sent as
-         * parameters in the layout signal. Use [method`Gdk`.Popup.get_rect_anchor]
-         * and [method`Gdk`.Popup.get_surface_anchor] to get the resulting anchors.
+         * to the `Gdk.Surface::layout` signal being emitted. The resulting
+         * popup position can be queried using {@link Gdk.Popup.get_position_x},
+         * {@link Gdk.Popup.get_position_y}, and the resulting size will be sent as
+         * parameters in the layout signal. Use {@link Gdk.Popup.get_rect_anchor}
+         * and {@link Gdk.Popup.get_surface_anchor} to get the resulting anchors.
          *
          * Presenting may fail, for example if the `popup` is set to autohide
          * and is immediately hidden upon being presented. If presenting failed,
-         * the [signal`Gdk`.Surface::layout] signal will not me emitted.
+         * the `Gdk.Surface::layout` signal will not me emitted.
          * @param width the unconstrained popup width to layout
          * @param height the unconstrained popup height to layout
-         * @param layout the `GdkPopupLayout` object used to layout
-         * @returns %FALSE if it failed to be presented, otherwise %TRUE.
+         * @param layout the {@link Gdk.PopupLayout} object used to layout
+         * @returns `false` if it failed to be presented, otherwise `true`.
          */
         present(width: number, height: number, layout: PopupLayout): boolean;
     }
@@ -18249,11 +18988,21 @@ export namespace Gdk {
         $gtype: GObject.GType<Toplevel>;
         prototype: Toplevel;
     }
+    /**
+     * A freestanding toplevel surface.
+     *
+     * The {@link Gdk.Toplevel} interface provides useful APIs for interacting with
+     * the windowing system, such as controlling maximization and size of the
+     * surface, setting icons and transient parents for dialogs.
+     * @gir-type Interface
+     */
     interface Toplevel extends Surface {
         // Properties
 
         /**
          * The capabilities that are available for this toplevel.
+         * @since 4.20
+         * @read-only
          */
         get capabilities(): ToplevelCapabilities;
         /**
@@ -18286,7 +19035,8 @@ export namespace Gdk {
          *
          * This property is just a hint that may affect the result when negotiating
          * toplevel sizes with the windowing system. It does not affect interactive
-         * resizes started with [method`Gdk`.Toplevel.begin_resize].
+         * resizes started with {@link Gdk.Toplevel.begin_resize}.
+         * @since 4.20
          */
         get gravity(): Gravity;
         set gravity(val: Gravity);
@@ -18307,16 +19057,18 @@ export namespace Gdk {
         set modal(val: boolean);
         /**
          * Whether the surface should inhibit keyboard shortcuts.
+         * @read-only
          */
         get shortcuts_inhibited(): boolean;
         /**
          * Whether the surface should inhibit keyboard shortcuts.
+         * @read-only
          */
         get shortcutsInhibited(): boolean;
         /**
          * The startup ID of the surface.
          *
-         * See [class`Gdk`.AppLaunchContext] for more information about
+         * See {@link Gdk.AppLaunchContext} for more information about
          * startup feedback.
          */
         get startup_id(): string;
@@ -18324,13 +19076,14 @@ export namespace Gdk {
         /**
          * The startup ID of the surface.
          *
-         * See [class`Gdk`.AppLaunchContext] for more information about
+         * See {@link Gdk.AppLaunchContext} for more information about
          * startup feedback.
          */
         get startupId(): string;
         set startupId(val: string);
         /**
          * The state of the toplevel.
+         * @read-only
          */
         get state(): ToplevelState;
         /**
@@ -18359,7 +19112,7 @@ export namespace Gdk {
          * @param button the button being used to drag, or 0 for a keyboard-initiated drag
          * @param x surface X coordinate of mouse click that began the drag
          * @param y surface Y coordinate of mouse click that began the drag
-         * @param timestamp timestamp of mouse click that began the drag (use   [method@Gdk.Event.get_time])
+         * @param timestamp timestamp of mouse click that began the drag (use   {@link Gdk.Event.get_time})
          */
         begin_move(device: Device, button: number, x: number, y: number, timestamp: number): void;
         /**
@@ -18371,7 +19124,7 @@ export namespace Gdk {
          * @param button the button being used to drag, or 0 for a keyboard-initiated drag
          * @param x surface X coordinate of mouse click that began the drag
          * @param y surface Y coordinate of mouse click that began the drag
-         * @param timestamp timestamp of mouse click that began the drag (use   [method@Gdk.Event.get_time])
+         * @param timestamp timestamp of mouse click that began the drag (use   {@link Gdk.Event.get_time})
          */
         begin_resize(
             edge: SurfaceEdge | null,
@@ -18392,6 +19145,7 @@ export namespace Gdk {
         focus(timestamp: number): void;
         /**
          * The capabilities that are available for this toplevel.
+         * @returns the capabilities of the {@link Gdk.Toplevel}.
          */
         get_capabilities(): ToplevelCapabilities;
         /**
@@ -18402,7 +19156,7 @@ export namespace Gdk {
         get_gravity(): Gravity;
         /**
          * Gets the bitwise or of the currently active surface state flags,
-         * from the `GdkToplevelState` enumeration.
+         * from the {@link Gdk.ToplevelState} enumeration.
          * @returns surface state bitfield
          */
         get_state(): ToplevelState;
@@ -18414,7 +19168,7 @@ export namespace Gdk {
          * of triggering system actions.
          *
          * If granted, the rerouting remains active until the default shortcuts
-         * processing is restored with [method`Gdk`.Toplevel.restore_system_shortcuts],
+         * processing is restored with {@link Gdk.Toplevel.restore_system_shortcuts},
          * or the request is revoked by the desktop environment, windowing system
          * or the user.
          *
@@ -18427,61 +19181,61 @@ export namespace Gdk {
          * or deny the request or even choose to ignore the request entirely.
          *
          * The caller can be notified whenever the request is granted or revoked
-         * by listening to the [property`Gdk`.Toplevel:shortcuts-inhibited] property.
-         * @param event the `GdkEvent` that is triggering the inhibit   request, or %NULL if none is available
+         * by listening to the {@link Gdk.Toplevel.shortcuts_inhibited} property.
+         * @param event the {@link Gdk.Event} that is triggering the inhibit   request, or `null` if none is available
          */
         inhibit_system_shortcuts(event?: Event | null): void;
         /**
          * Asks to lower the `toplevel` below other windows.
          *
          * The windowing system may choose to ignore the request.
-         * @returns %TRUE if the surface was lowered
+         * @returns `true` if the surface was lowered
          */
         lower(): boolean;
         /**
          * Asks to minimize the `toplevel`.
          *
          * The windowing system may choose to ignore the request.
-         * @returns %TRUE if the surface was minimized
+         * @returns `true` if the surface was minimized
          */
         minimize(): boolean;
         /**
-         * Present `toplevel` after having processed the `GdkToplevelLayout` rules.
+         * Present `toplevel` after having processed the {@link Gdk.ToplevelLayout} rules.
          *
          * If the toplevel was previously not showing, it will be showed,
          * otherwise it will change layout according to `layout`.
          *
-         * GDK may emit the [signal`Gdk`.Toplevel::compute-size] signal to let
+         * GDK may emit the `Gdk.Toplevel::compute-size` signal to let
          * the user of this toplevel compute the preferred size of the toplevel
          * surface.
          *
          * Presenting is asynchronous and the specified layout parameters are not
          * guaranteed to be respected.
-         * @param layout the `GdkToplevelLayout` object used to layout
+         * @param layout the {@link Gdk.ToplevelLayout} object used to layout
          */
         present(layout: ToplevelLayout): void;
         /**
          * Restore default system keyboard shortcuts which were previously
          * inhibited.
          *
-         * This undoes the effect of [method`Gdk`.Toplevel.inhibit_system_shortcuts].
+         * This undoes the effect of {@link Gdk.Toplevel.inhibit_system_shortcuts}.
          */
         restore_system_shortcuts(): void;
         /**
          * Sets the toplevel to be decorated.
          *
-         * Setting `decorated` to %FALSE hints the desktop environment
+         * Setting `decorated` to `false` hints the desktop environment
          * that the surface has its own, client-side decorations and
          * does not need to have window decorations added.
-         * @param decorated %TRUE to request decorations
+         * @param decorated `true` to request decorations
          */
         set_decorated(decorated: boolean): void;
         /**
          * Sets the toplevel to be deletable.
          *
-         * Setting `deletable` to %TRUE hints the desktop environment
+         * Setting `deletable` to `true` hints the desktop environment
          * that it should offer the user a way to close the surface.
-         * @param deletable %TRUE to request a delete button
+         * @param deletable `true` to request a delete button
          */
         set_deletable(deletable: boolean): void;
         /**
@@ -18512,8 +19266,8 @@ export namespace Gdk {
          * to handle modal surfaces in a special way.
          *
          * You should only use this on surfaces for which you have
-         * previously called [method`Gdk`.Toplevel.set_transient_for].
-         * @param modal %TRUE if the surface is modal, %FALSE otherwise.
+         * previously called {@link Gdk.Toplevel.set_transient_for}.
+         * @param modal `true` if the surface is modal, `false` otherwise.
          */
         set_modal(modal: boolean): void;
         /**
@@ -18530,7 +19284,7 @@ export namespace Gdk {
          *
          * The title maybe be displayed in the titlebar,
          * in lists of windows, etc.
-         * @param title title of @surface
+         * @param title title of `surface`
          */
         set_title(title: string): void;
         /**
@@ -18543,7 +19297,7 @@ export namespace Gdk {
          *
          * See [gtk_window_set_transient_for()](../gtk4/method.Window.set_transient_for.html)
          * if you’re using [GtkWindow](../gtk4/class.Window.html).
-         * @param parent another toplevel `GdkSurface`
+         * @param parent another toplevel {@link Gdk.Surface}
          */
         set_transient_for(parent: Surface): void;
         /**
@@ -18553,19 +19307,19 @@ export namespace Gdk {
          * on traditional windows managed by the window manager. This is useful
          * for windows using client-side decorations, activating it with a
          * right-click on the window decorations.
-         * @param event a `GdkEvent` to show the menu for
-         * @returns %TRUE if the window menu was shown and %FALSE otherwise.
+         * @param event a {@link Gdk.Event} to show the menu for
+         * @returns `true` if the window menu was shown and `false` otherwise.
          */
         show_window_menu(event: Event): boolean;
         /**
          * Returns whether the desktop environment supports
          * tiled window states.
-         * @returns %TRUE if the desktop environment supports tiled window states
+         * @returns `true` if the desktop environment supports tiled window states
          */
         supports_edge_constraints(): boolean;
         /**
          * Performs a title bar gesture.
-         * @param gesture a `GdkTitlebarGesture`
+         * @param gesture a {@link Gdk.TitlebarGesture}
          * @returns whether the gesture was performed
          */
         titlebar_gesture(gesture: TitlebarGesture | null): boolean;

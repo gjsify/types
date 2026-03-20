@@ -35,12 +35,17 @@ export namespace ClutterGst {
      * ClutterGst-2.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BufferingMode {
         export const $gtype: GObject.GType<BufferingMode>;
     }
 
     /**
      * Different buffering policies clutter-gst supports
+     * @gir-type Enum
+     * @since 1.4
      */
     enum BufferingMode {
         /**
@@ -54,15 +59,15 @@ export namespace ClutterGst {
     }
 
     /**
-     * ClutterGst major version (e.g. "1", if %CLUTTER_GST_VERSION is "1.2.3")
+     * ClutterGst major version (e.g. "1", if `CLUTTER_GST_VERSION` is "1.2.3")
      */
     const MAJOR_VERSION: number;
     /**
-     * ClutterGst micro version (e.g. "3", if %CLUTTER_GST_VERSION is "1.2.3")
+     * ClutterGst micro version (e.g. "3", if `CLUTTER_GST_VERSION` is "1.2.3")
      */
     const MICRO_VERSION: number;
     /**
-     * ClutterGst minor version (e.g. "2", if %CLUTTER_GST_VERSION is "1.2.3")
+     * ClutterGst minor version (e.g. "2", if `CLUTTER_GST_VERSION` is "1.2.3")
      */
     const MINOR_VERSION: number;
     /**
@@ -78,24 +83,25 @@ export namespace ClutterGst {
      *
      * This function should be called before calling any other GLib functions. If
      * this is not an option, your program must initialise the GLib thread system
-     * using g_thread_init() before any other GLib functions are called.
+     * using `g_thread_init()` before any other GLib functions are called.
      * @param argv A pointer to an array
-     * @returns A #ClutterInitError.
+     * @returns A {@link Clutter.InitError}.
      */
     function init(argv?: string[] | null): [Clutter.InitError, string[] | null];
     /**
-     * This function does the same work as clutter_gst_init(). Additionally, it
+     * This function does the same work as `clutter_gst_init()`. Additionally, it
      * allows you to add your own command line options, and it automatically
      * generates nicely formatted --help output. Clutter's and GStreamer's
-     * #GOptionGroup<!-- -->s are added to the set of available options.
+     * {@link GLib.OptionGroup}<!-- -->s are added to the set of available options.
      *
-     * Your program must initialise the GLib thread system using g_thread_init()
+     * Your program must initialise the GLib thread system using `g_thread_init()`
      * before any other GLib functions are called.
      * @param argv A pointer to an array
      * @param parameter_string a string which is displayed in    the first line of <option>--help</option> output, after    <literal><replaceable>programname</replaceable> [OPTION...]</literal>
-     * @param entries a %NULL-terminated array of #GOptionEntry<!-- -->s    describing the options of your program
-     * @param translation_domain a translation domain to use for translating    the <option>--help</option> output for the options in @entries    with gettext(), or %NULL
-     * @returns %CLUTTER_INIT_SUCCESS on success, a negative integer   on failure.
+     * @param entries a `null`-terminated array of {@link GLib.OptionEntry}<!-- -->s    describing the options of your program
+     * @param translation_domain a translation domain to use for translating    the <option>--help</option> output for the options in `entries`    with `gettext()`, or `null`
+     * @returns {@link Clutter.InitError.SUCCESS} on success, a negative integer   on failure.
+     * @since 1.0
      */
     function init_with_args(
         argv: string[] | null,
@@ -104,19 +110,25 @@ export namespace ClutterGst {
         translation_domain: string,
     ): [Clutter.InitError, string[] | null];
     /**
-     * Adds the #ClutterGstPlayer properties to a class and surchages the
-     * set/get_property of #GObjectClass. You should call this
+     * Adds the {@link ClutterGst.Player} properties to a class and surchages the
+     * set/get_property of {@link GObject.ObjectClass}. You should call this
      * function at the end of the class_init method of the class
-     * implementing #ClutterGstPlayer.
-     * @param object_class a #GObjectClass
+     * implementing {@link ClutterGst.Player}.
+     * @param object_class a {@link GObject.ObjectClass}
+     * @since 1.4
      */
     function player_class_init(object_class: typeof GObject.Object): void;
+    /**
+     * @gir-type Flags
+     */
     export namespace SeekFlags {
         export const $gtype: GObject.GType<SeekFlags>;
     }
 
     /**
-     * Flags that can be given to clutter_gst_video_texture_set_seek_flags().
+     * Flags that can be given to `clutter_gst_video_texture_set_seek_flags()`.
+     * @gir-type Flags
+     * @since 1.4
      */
     enum SeekFlags {
         /**
@@ -161,10 +173,11 @@ export namespace ClutterGst {
     }
 
     /**
-     * Class implementing a GStreamer sink element for #ClutterTexture<!-- -->s.
+     * Class implementing a GStreamer sink element for {@link Clutter.Texture}<!-- -->s.
      *
-     * The #ClutterGstVideoSink structure contains only private data and should
+     * The {@link ClutterGst.VideoSink} structure contains only private data and should
      * not be accessed directly.
+     * @gir-type Class
      */
     class VideoSink extends GstBase.BaseSink implements GstVideo.Navigation {
         static $gtype: GObject.GType<VideoSink>;
@@ -173,14 +186,14 @@ export namespace ClutterGst {
 
         /**
          * This is the texture the video is decoded into. It can be any
-         * #ClutterTexture, however Cluter-Gst has a handy subclass,
-         * #ClutterGstVideoTexture, that implements the #ClutterMedia
+         * {@link Clutter.Texture}, however Cluter-Gst has a handy subclass,
+         * {@link ClutterGst.VideoTexture}, that implements the {@link Clutter.Media}
          * interface.
          */
         get texture(): Clutter.Texture;
         set texture(val: Clutter.Texture);
         /**
-         * Clutter-Gst installs a #GSource to signal that a new frame is ready to
+         * Clutter-Gst installs a {@link GLib.Source} to signal that a new frame is ready to
          * the Clutter thread. This property allows to tweak the priority of the
          * source (Lower value is higher priority).
          *
@@ -189,7 +202,7 @@ export namespace ClutterGst {
         get update_priority(): number;
         set update_priority(val: number);
         /**
-         * Clutter-Gst installs a #GSource to signal that a new frame is ready to
+         * Clutter-Gst installs a {@link GLib.Source} to signal that a new frame is ready to
          * the Clutter thread. This property allows to tweak the priority of the
          * source (Lower value is higher priority).
          *
@@ -217,29 +230,36 @@ export namespace ClutterGst {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof VideoSink.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VideoSink.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof VideoSink.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VideoSink.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof VideoSink.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<VideoSink.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited methods
         /**
          * Sends the indicated command to the navigation interface.
          * @param command The command to issue
          */
         send_command(command: GstVideo.NavigationCommand | null): void;
+        /**
+         * @param structure
+         */
         send_event(structure: Gst.Structure): void;
+        /**
+         * @param args
+         */
         // Conflicted with Gst.Element.send_event
         send_event(...args: never[]): any;
         /**
@@ -247,13 +267,17 @@ export namespace ClutterGst {
          * @param event The event to send
          */
         send_event_simple(event: Gst.Event): void;
+        /**
+         * @param event The type of the key event. Recognised values are "key-press" and "key-release"
+         * @param key Character representation of the key. This is typically as produced by XKeysymToString.
+         */
         send_key_event(event: string, key: string): void;
         /**
          * Sends a mouse event to the navigation interface. Mouse event coordinates
          * are sent relative to the display space of the related output area. This is
          * usually the size in pixels of the window associated with the element
-         * implementing the #GstNavigation interface.
-         * @param event The type of mouse event, as a text string. Recognised values are "mouse-button-press", "mouse-button-release" and "mouse-move".
+         * implementing the {@link GstVideo.Navigation} interface.
+         * @param event The type of mouse event, as a text string. Recognised values are "mouse-button-press", "mouse-button-release", "mouse-move" and "mouse-double-click".
          * @param button The button number of the button being pressed or released. Pass 0 for mouse-move events.
          * @param x The x coordinate of the mouse event.
          * @param y The y coordinate of the mouse event.
@@ -263,7 +287,7 @@ export namespace ClutterGst {
          * Sends a mouse scroll event to the navigation interface. Mouse event coordinates
          * are sent relative to the display space of the related output area. This is
          * usually the size in pixels of the window associated with the element
-         * implementing the #GstNavigation interface.
+         * implementing the {@link GstVideo.Navigation} interface.
          * @param x The x coordinate of the mouse event.
          * @param y The y coordinate of the mouse event.
          * @param delta_x The delta_x coordinate of the mouse event.
@@ -273,13 +297,19 @@ export namespace ClutterGst {
         /**
          * sending a navigation event.
          * @param structure
+         * @virtual
          */
         vfunc_send_event(structure: Gst.Structure): void;
+        /**
+         * @param args
+         * @virtual
+         */
         // Conflicted with Gst.Element.vfunc_send_event
         vfunc_send_event(...args: never[]): any;
         /**
          * Sends an event to the navigation interface.
          * @param event The event to send
+         * @virtual
          */
         vfunc_send_event_simple(event: Gst.Event): void;
         /**
@@ -295,32 +325,32 @@ export namespace ClutterGst {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -329,39 +359,39 @@ export namespace ClutterGst {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -372,13 +402,16 @@ export namespace ClutterGst {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -386,7 +419,7 @@ export namespace ClutterGst {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -394,9 +427,9 @@ export namespace ClutterGst {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -416,9 +449,9 @@ export namespace ClutterGst {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -431,34 +464,34 @@ export namespace ClutterGst {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -491,24 +524,27 @@ export namespace ClutterGst {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
+        /**
+         * @param args
+         */
         // Conflicted with Gst.Object.ref
         ref(...args: never[]): any;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -517,8 +553,8 @@ export namespace ClutterGst {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -535,10 +571,10 @@ export namespace ClutterGst {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -553,13 +589,13 @@ export namespace ClutterGst {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -590,21 +626,21 @@ export namespace ClutterGst {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -614,33 +650,34 @@ export namespace ClutterGst {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -649,6 +686,7 @@ export namespace ClutterGst {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -657,12 +695,14 @@ export namespace ClutterGst {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -671,20 +711,22 @@ export namespace ClutterGst {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -696,6 +738,7 @@ export namespace ClutterGst {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -860,10 +903,11 @@ export namespace ClutterGst {
     }
 
     /**
-     * Subclass of #ClutterTexture that displays videos using GStreamer.
+     * Subclass of {@link Clutter.Texture} that displays videos using GStreamer.
      *
-     * The #ClutterGstVideoTexture structure contains only private data and
+     * The {@link ClutterGst.VideoTexture} structure contains only private data and
      * should not be accessed directly.
+     * @gir-type Class
      */
     class VideoTexture
         extends Clutter.Texture
@@ -903,16 +947,19 @@ export namespace ClutterGst {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof VideoTexture.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VideoTexture.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof VideoTexture.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VideoTexture.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof VideoTexture.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<VideoTexture.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -924,79 +971,91 @@ export namespace ClutterGst {
         /**
          * Get the current audio stream. The number returned in the index of the
          * audio stream playing in the list returned by
-         * clutter_gst_video_texture_get_audio_streams().
+         * `clutter_gst_video_texture_get_audio_streams()`.
          * @returns the index of the current audio stream, -1 if the media has no audio stream
          */
         get_audio_stream(): number;
         /**
          * Get the list of audio streams of the current media.
-         * @returns a list of #GstTagList describing the available audio streams
+         * @returns a list of {@link Gst.TagList} describing the available audio streams
          */
         get_audio_streams(): Gst.TagList[];
+        /**
+         * @param args
+         */
         // Conflicted with ClutterGst.Player.get_audio_streams
         get_audio_streams(...args: never[]): any;
+        /**
+         * @returns a {@link ClutterGst.BufferingMode}
+         */
         get_buffering_mode(): BufferingMode;
         /**
          * Retrieves the material used to draw when no media is being played.
-         * @returns the #CoglHandle of the idle material
+         * @returns the {@link Cogl.Handle} of the idle material
          */
         get_idle_material(): Cogl.Handle;
         /**
-         * Retrieves the #GstPipeline used by the `texture,` for direct use with
+         * Retrieves the {@link Gst.Pipeline} used by the `texture`, for direct use with
          * GStreamer API.
          * @returns the pipeline element used by the video texture
          */
         get_pipeline(): Gst.Element;
         /**
          * Get the current value of the seek-flags property.
-         * @returns a combination of #ClutterGstSeekFlags
+         * @returns a combination of {@link ClutterGst.SeekFlags}
          */
         get_seek_flags(): SeekFlags;
         /**
          * Get the current subtitles track. The number returned is the index of the
          * subitles track in the list returned by
-         * clutter_gst_video_texture_get_subtitle_tracks().
+         * `clutter_gst_video_texture_get_subtitle_tracks()`.
          * @returns the index of the current subtitlest track, -1 if the media has no subtitles track or if the subtitles have been turned off
          */
         get_subtitle_track(): number;
         /**
          * Get the list of subtitles tracks of the current media.
-         * @returns a list of #GstTagList describing the available subtitles tracks
+         * @returns a list of {@link Gst.TagList} describing the available subtitles tracks
          */
         get_subtitle_tracks(): Gst.TagList[];
+        /**
+         * @param args
+         */
         // Conflicted with ClutterGst.Player.get_subtitle_tracks
         get_subtitle_tracks(...args: never[]): any;
         /**
          * Retrieves the user agent used when streaming.
-         * @returns the user agent used. The returned string has to be freed with g_free()
+         * @returns the user agent used. The returned string has to be freed with `g_free()`
          */
         get_user_agent(): string;
         /**
          * Set the audio stream to play. `index_` is the index of the stream
-         * in the list returned by clutter_gst_video_texture_get_audio_streams().
+         * in the list returned by `clutter_gst_video_texture_get_audio_streams()`.
          * @param index_ the index of the audio stream
          */
         set_audio_stream(index_: number): void;
+        /**
+         * @param mode a {@link ClutterGst.BufferingMode}
+         */
         set_buffering_mode(mode: BufferingMode | null): void;
         /**
          * Sets a material to use to draw when no media is being played. The
-         * #ClutterGstVideoTexture holds a reference of the `material`.
+         * {@link ClutterGst.VideoTexture} holds a reference of the `material`.
          *
-         * The default idle material will paint the #ClutterGstVideoTexture in black.
-         * If %COGL_INVALID_HANDLE is given as `material` to this function, this
+         * The default idle material will paint the {@link ClutterGst.VideoTexture} in black.
+         * If `COGL_INVALID_HANDLE` is given as `material` to this function, this
          * default idle material will be used.
          * @param material the handle of a Cogl material
          */
         set_idle_material(material: Cogl.Handle): void;
         /**
          * Seeking can be done with several trade-offs. Clutter-gst defaults
-         * to %CLUTTER_GST_SEEK_FLAG_NONE.
-         * @param flags a combination of #ClutterGstSeekFlags
+         * to {@link ClutterGst.SeekFlags.NONE}.
+         * @param flags a combination of {@link ClutterGst.SeekFlags}
          */
         set_seek_flags(flags: SeekFlags | null): void;
         /**
          * Set the subtitles track to play. `index_` is the index of the stream
-         * in the list returned by clutter_gst_video_texture_get_subtitle_tracks().
+         * in the list returned by `clutter_gst_video_texture_get_subtitle_tracks()`.
          *
          * If `index_` is -1, the subtitles are turned off.
          * @param index_ the index of the subtitles track
@@ -1011,140 +1070,220 @@ export namespace ClutterGst {
          * @param user_agent the user agent
          */
         set_user_agent(user_agent: string): void;
-
-        // Inherited properties
         /**
          * The volume of the audio, as a normalized value between
          * 0.0 and 1.0.
+         * @since 1.0
+         * @deprecated since 1.12
+         * @category Inherited from Clutter.Media
          */
         get audio_volume(): number;
         set audio_volume(val: number);
         /**
          * The volume of the audio, as a normalized value between
          * 0.0 and 1.0.
+         * @since 1.0
+         * @deprecated since 1.12
+         * @category Inherited from Clutter.Media
          */
         get audioVolume(): number;
         set audioVolume(val: number);
         /**
          * The fill level of the buffer for the current stream,
          * as a value between 0.0 and 1.0.
+         * @since 1.0
+         * @deprecated since 1.12
+         * @read-only
+         * @category Inherited from Clutter.Media
          */
         get buffer_fill(): number;
         /**
          * The fill level of the buffer for the current stream,
          * as a value between 0.0 and 1.0.
+         * @since 1.0
+         * @deprecated since 1.12
+         * @read-only
+         * @category Inherited from Clutter.Media
          */
         get bufferFill(): number;
         /**
          * Whether the current stream is seekable.
+         * @since 0.2
+         * @deprecated since 1.12
+         * @read-only
+         * @category Inherited from Clutter.Media
          */
         get can_seek(): boolean;
         /**
          * Whether the current stream is seekable.
+         * @since 0.2
+         * @deprecated since 1.12
+         * @read-only
+         * @category Inherited from Clutter.Media
          */
         get canSeek(): boolean;
         /**
          * The duration of the current stream, in seconds
+         * @since 0.2
+         * @deprecated since 1.12
+         * @read-only
+         * @category Inherited from Clutter.Media
          */
         get duration(): number;
         /**
-         * Whether the #ClutterMedia actor is playing.
+         * Whether the {@link Clutter.Media} actor is playing.
+         * @since 0.2
+         * @deprecated since 1.12
+         * @category Inherited from Clutter.Media
          */
         get playing(): boolean;
         set playing(val: boolean);
         /**
          * The current progress of the playback, as a normalized
          * value between 0.0 and 1.0.
+         * @since 1.0
+         * @deprecated since 1.12
+         * @category Inherited from Clutter.Media
          */
         get progress(): number;
         set progress(val: number);
         /**
          * The font used to display subtitles. The font description has to
          * follow the same grammar as the one recognized by
-         * pango_font_description_from_string().
+         * `pango_font_description_from_string()`.
+         * @since 1.2
+         * @deprecated since 1.12
+         * @category Inherited from Clutter.Media
          */
         get subtitle_font_name(): string;
         set subtitle_font_name(val: string);
         /**
          * The font used to display subtitles. The font description has to
          * follow the same grammar as the one recognized by
-         * pango_font_description_from_string().
+         * `pango_font_description_from_string()`.
+         * @since 1.2
+         * @deprecated since 1.12
+         * @category Inherited from Clutter.Media
          */
         get subtitleFontName(): string;
         set subtitleFontName(val: string);
         /**
          * The location of a subtitle file, expressed as a valid URI.
+         * @since 1.2
+         * @deprecated since 1.12
+         * @category Inherited from Clutter.Media
          */
         get subtitle_uri(): string;
         set subtitle_uri(val: string);
         /**
          * The location of a subtitle file, expressed as a valid URI.
+         * @since 1.2
+         * @deprecated since 1.12
+         * @category Inherited from Clutter.Media
          */
         get subtitleUri(): string;
         set subtitleUri(val: string);
         /**
          * The location of a media file, expressed as a valid URI.
+         * @since 0.2
+         * @deprecated since 1.12
+         * @category Inherited from Clutter.Media
          */
         get uri(): string;
         set uri(val: string);
         /**
          * Index of the current audio stream.
+         * @since 1.4
+         * @category Inherited from ClutterGst.Player
          */
         get audio_stream(): number;
         set audio_stream(val: number);
         /**
          * Index of the current audio stream.
+         * @since 1.4
+         * @category Inherited from ClutterGst.Player
          */
         get audioStream(): number;
         set audioStream(val: number);
         /**
          * List of audio streams available on the current media.
+         * @since 1.4
+         * @read-only
+         * @category Inherited from ClutterGst.Player
          */
         get audio_streams(): any;
         /**
          * List of audio streams available on the current media.
+         * @since 1.4
+         * @read-only
+         * @category Inherited from ClutterGst.Player
          */
         get audioStreams(): any;
         /**
-         * Whether the #ClutterGstPlayer is in idle mode.
+         * Whether the {@link ClutterGst.Player} is in idle mode.
+         * @since 1.4
+         * @read-only
+         * @category Inherited from ClutterGst.Player
          */
         get idle(): boolean;
         /**
          * Whether or not the stream is being seeked.
+         * @since 1.6
+         * @read-only
+         * @category Inherited from ClutterGst.Player
          */
         get in_seek(): boolean;
         /**
          * Whether or not the stream is being seeked.
+         * @since 1.6
+         * @read-only
+         * @category Inherited from ClutterGst.Player
          */
         get inSeek(): boolean;
         /**
          * Flags to use when seeking.
+         * @since 1.4
+         * @category Inherited from ClutterGst.Player
          */
         get seek_flags(): SeekFlags;
         set seek_flags(val: SeekFlags);
         /**
          * Flags to use when seeking.
+         * @since 1.4
+         * @category Inherited from ClutterGst.Player
          */
         get seekFlags(): SeekFlags;
         set seekFlags(val: SeekFlags);
+        /** @category Inherited from ClutterGst.Player */
         get subtitle_track(): number;
         set subtitle_track(val: number);
+        /** @category Inherited from ClutterGst.Player */
         get subtitleTrack(): number;
         set subtitleTrack(val: number);
+        /**
+         * @read-only
+         * @category Inherited from ClutterGst.Player
+         */
         get subtitle_tracks(): any;
+        /**
+         * @read-only
+         * @category Inherited from ClutterGst.Player
+         */
         get subtitleTracks(): any;
         /**
-         * The User Agent used by #ClutterGstPlayer with network protocols.
+         * The User Agent used by {@link ClutterGst.Player} with network protocols.
+         * @since 1.4
+         * @category Inherited from ClutterGst.Player
          */
         get user_agent(): string;
         set user_agent(val: string);
         /**
-         * The User Agent used by #ClutterGstPlayer with network protocols.
+         * The User Agent used by {@link ClutterGst.Player} with network protocols.
+         * @since 1.4
+         * @category Inherited from ClutterGst.Player
          */
         get userAgent(): string;
         set userAgent(val: string);
-
-        // Inherited methods
         /**
          * Retrieves the playback volume of `media`.
          * @returns The playback volume between 0.0 and 1.0
@@ -1157,7 +1296,7 @@ export namespace ClutterGst {
         get_buffer_fill(): number;
         /**
          * Retrieves whether `media` is seekable or not.
-         * @returns %TRUE if @media can seek, %FALSE otherwise.
+         * @returns `true` if `media` can seek, `false` otherwise.
          */
         get_can_seek(): boolean;
         /**
@@ -1167,7 +1306,7 @@ export namespace ClutterGst {
         get_duration(): number;
         /**
          * Retrieves the playing status of `media`.
-         * @returns %TRUE if playing, %FALSE if stopped.
+         * @returns `true` if playing, `false` if stopped.
          */
         get_playing(): boolean;
         /**
@@ -1177,17 +1316,17 @@ export namespace ClutterGst {
         get_progress(): number;
         /**
          * Retrieves the font name currently used.
-         * @returns a string containing the font name. Use g_free()   to free the returned string
+         * @returns a string containing the font name. Use `g_free()`   to free the returned string
          */
         get_subtitle_font_name(): string;
         /**
          * Retrieves the URI of the subtitle file in use.
-         * @returns the URI of the subtitle file. Use g_free()   to free the returned string
+         * @returns the URI of the subtitle file. Use `g_free()`   to free the returned string
          */
         get_subtitle_uri(): string;
         /**
          * Retrieves the URI from `media`.
-         * @returns the URI of the media stream. Use g_free()   to free the returned string
+         * @returns the URI of the media stream. Use `g_free()`   to free the returned string
          */
         get_uri(): string;
         /**
@@ -1204,11 +1343,11 @@ export namespace ClutterGst {
          * Starts or stops playing of `media`.
          *
          * The implementation might be asynchronous, so the way to know whether
-         * the actual playing state of the `media` is to use the #GObject::notify
-         * signal on the #ClutterMedia:playing property and then retrieve the
-         * current state with clutter_media_get_playing(). ClutterGstVideoTexture
+         * the actual playing state of the `media` is to use the {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify}
+         * signal on the {@link Clutter.Media.playing} property and then retrieve the
+         * current state with `clutter_media_get_playing()`. ClutterGstVideoTexture
          * in clutter-gst is an example of such an asynchronous implementation.
-         * @param playing %TRUE to start playing
+         * @param playing `true` to start playing
          */
         set_playing(playing: boolean): void;
         /**
@@ -1219,16 +1358,16 @@ export namespace ClutterGst {
         set_progress(progress: number): void;
         /**
          * Sets the font used by the subtitle renderer. The `font_name` string must be
-         * either %NULL, which means that the default font name of the underlying
+         * either `null`, which means that the default font name of the underlying
          * implementation will be used; or must follow the grammar recognized by
-         * pango_font_description_from_string() like:
+         * `pango_font_description_from_string()` like:
          *
          *
          * ```
          *   clutter_media_set_subtitle_font_name (media, "Sans 24pt");
          * ```
          *
-         * @param font_name a font name, or %NULL to set the default font name
+         * @param font_name a font name, or `null` to set the default font name
          */
         set_subtitle_font_name(font_name: string): void;
         /**
@@ -1241,11 +1380,20 @@ export namespace ClutterGst {
          * @param uri the URI of the media stream
          */
         set_uri(uri: string): void;
+        /**
+         * handler for the {@link Clutter.Media.SignalSignatures.eos | Clutter.Media::eos} signal
+         * @virtual
+         */
         vfunc_eos(): void;
+        /**
+         * handler for the {@link Clutter.Media.SignalSignatures.error | Clutter.Media::error} signal
+         * @param error
+         * @virtual
+         */
         vfunc_error(error: GLib.Error): void;
         /**
-         * Frees the resources created by clutter_gst_player_init(). After
-         * clutter_gst_player_deinit() has been called, no other player method can be
+         * Frees the resources created by `clutter_gst_player_init()`. After
+         * `clutter_gst_player_deinit()` has been called, no other player method can be
          * called on the instance.
          */
         deinit(): void;
@@ -1260,78 +1408,102 @@ export namespace ClutterGst {
          */
         get_in_seek(): boolean;
         /**
-         * Initialize a #ClutterGstPlayer instance. You should call this
+         * Initialize a {@link ClutterGst.Player} instance. You should call this
          * function at the beginning of the init method of the class
-         * implementing #ClutterGstPlayer.
+         * implementing {@link ClutterGst.Player}.
          *
          * When you're finished with the ClutterGstPlayer mixin features (usually in
-         * the dispose or finalize vfuncs), call clutter_gst_player_deinit() to
-         * desallocate the resources created by clutter_gst_player_init().
+         * the dispose or finalize vfuncs), call `clutter_gst_player_deinit()` to
+         * desallocate the resources created by `clutter_gst_player_init()`.
          * @returns TRUE if the initialization was successfull, FALSE otherwise.
          */
         init(): boolean;
+        /**
+         * @param start
+         * @param stop
+         * @virtual
+         */
         vfunc_download_buffering(start: number, stop: number): void;
         /**
          * Get the current audio stream. The number returned in the index of the
          * audio stream playing in the list returned by
-         * clutter_gst_player_get_audio_streams().
+         * `clutter_gst_player_get_audio_streams()`.
+         * @virtual
          */
         vfunc_get_audio_stream(): number;
         /**
          * Get the list of audio streams of the current media.
+         * @virtual
          */
         vfunc_get_audio_streams(): string[];
+        /**
+         * @virtual
+         */
         vfunc_get_buffering_mode(): BufferingMode;
         /**
          * Get the idle state of the pipeline.
+         * @virtual
          */
         vfunc_get_idle(): boolean;
         /**
          * Whether the player is seeking.
+         * @virtual
          */
         vfunc_get_in_seek(): boolean;
         /**
-         * Retrieves the #GstPipeline used by the `player,` for direct use with
+         * Retrieves the {@link Gst.Pipeline} used by the `player`, for direct use with
          * GStreamer API.
+         * @virtual
          */
         vfunc_get_pipeline(): Gst.Element;
         /**
          * Get the current value of the seek-flags property.
+         * @virtual
          */
         vfunc_get_seek_flags(): SeekFlags;
         /**
          * Get the current subtitles track. The number returned is the index of the
          * subtiles track in the list returned by
-         * clutter_gst_player_get_subtitle_tracks().
+         * `clutter_gst_player_get_subtitle_tracks()`.
+         * @virtual
          */
         vfunc_get_subtitle_track(): number;
         /**
          * Get the list of subtitles tracks of the current media.
+         * @virtual
          */
         vfunc_get_subtitle_tracks(): string[];
         /**
          * Retrieves the user agent used when streaming.
+         * @virtual
          */
         vfunc_get_user_agent(): string;
         /**
          * Set the audio stream to play. `index_` is the index of the stream
-         * in the list returned by clutter_gst_player_get_audio_streams().
+         * in the list returned by `clutter_gst_player_get_audio_streams()`.
          * @param index_ the index of the audio stream
+         * @virtual
          */
         vfunc_set_audio_stream(index_: number): void;
+        /**
+         * @param mode a {@link ClutterGst.BufferingMode}
+         * @virtual
+         */
         vfunc_set_buffering_mode(mode: BufferingMode): void;
         /**
          * Seeking can be done with several trade-offs. Clutter-gst defaults
-         * to %CLUTTER_GST_SEEK_FLAG_NONE.
-         * @param flags a combination of #ClutterGstSeekFlags
+         * to {@link ClutterGst.SeekFlags.NONE}.
+         * @param flags a combination of {@link ClutterGst.SeekFlags}
+         * @virtual
          */
         vfunc_set_seek_flags(flags: SeekFlags): void;
         /**
          * Set the subtitles track to play. `index_` is the index of the stream
-         * in the list returned by clutter_gst_player_get_subtitle_tracks().
+         * in the list returned by `clutter_gst_player_get_subtitle_tracks()`.
          *
          * If `index_` is -1, the subtitles are turned off.
          * @param index_ the index of the subtitles track
+         * @virtual
          */
         vfunc_set_subtitle_track(index_: number): void;
         /**
@@ -1341,6 +1513,7 @@ export namespace ClutterGst {
          * promote your software, make it appear in statistics or because the server
          * requires a special user agent you want to impersonate.
          * @param user_agent the user agent
+         * @virtual
          */
         vfunc_set_user_agent(user_agent: string): void;
         /**
@@ -1356,32 +1529,32 @@ export namespace ClutterGst {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -1390,39 +1563,39 @@ export namespace ClutterGst {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -1433,13 +1606,16 @@ export namespace ClutterGst {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -1447,7 +1623,7 @@ export namespace ClutterGst {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -1455,9 +1631,9 @@ export namespace ClutterGst {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -1477,9 +1653,9 @@ export namespace ClutterGst {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -1492,34 +1668,34 @@ export namespace ClutterGst {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1552,22 +1728,22 @@ export namespace ClutterGst {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -1576,8 +1752,8 @@ export namespace ClutterGst {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -1594,10 +1770,10 @@ export namespace ClutterGst {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -1612,13 +1788,13 @@ export namespace ClutterGst {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1649,21 +1825,21 @@ export namespace ClutterGst {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1673,33 +1849,34 @@ export namespace ClutterGst {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1708,6 +1885,7 @@ export namespace ClutterGst {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1716,12 +1894,14 @@ export namespace ClutterGst {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1730,20 +1910,22 @@ export namespace ClutterGst {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1755,6 +1937,7 @@ export namespace ClutterGst {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -1784,17 +1967,35 @@ export namespace ClutterGst {
         stop_emission_by_name(detailedName: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PlayerIface = typeof Player;
+    /**
+     * @gir-type Struct
+     */
     abstract class PlayerIfacePrivate {
         static $gtype: GObject.GType<PlayerIfacePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type VideoSinkClass = typeof VideoSink;
+    /**
+     * @gir-type Struct
+     */
     abstract class VideoSinkPrivate {
         static $gtype: GObject.GType<VideoSinkPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type VideoTextureClass = typeof VideoTexture;
+    /**
+     * @gir-type Struct
+     */
     abstract class VideoTexturePrivate {
         static $gtype: GObject.GType<VideoTexturePrivate>;
     }
@@ -1807,68 +2008,92 @@ export namespace ClutterGst {
         interface Interface extends Clutter.Media.Interface {
             // Virtual methods
 
+            /**
+             * @param start
+             * @param stop
+             * @virtual
+             */
             vfunc_download_buffering(start: number, stop: number): void;
             /**
              * Get the current audio stream. The number returned in the index of the
              * audio stream playing in the list returned by
-             * clutter_gst_player_get_audio_streams().
+             * `clutter_gst_player_get_audio_streams()`.
+             * @virtual
              */
             vfunc_get_audio_stream(): number;
             /**
              * Get the list of audio streams of the current media.
+             * @virtual
              */
             vfunc_get_audio_streams(): string[];
+            /**
+             * @virtual
+             */
             vfunc_get_buffering_mode(): BufferingMode;
             /**
              * Get the idle state of the pipeline.
+             * @virtual
              */
             vfunc_get_idle(): boolean;
             /**
              * Whether the player is seeking.
+             * @virtual
              */
             vfunc_get_in_seek(): boolean;
             /**
-             * Retrieves the #GstPipeline used by the `player,` for direct use with
+             * Retrieves the {@link Gst.Pipeline} used by the `player`, for direct use with
              * GStreamer API.
+             * @virtual
              */
             vfunc_get_pipeline(): Gst.Element;
             /**
              * Get the current value of the seek-flags property.
+             * @virtual
              */
             vfunc_get_seek_flags(): SeekFlags;
             /**
              * Get the current subtitles track. The number returned is the index of the
              * subtiles track in the list returned by
-             * clutter_gst_player_get_subtitle_tracks().
+             * `clutter_gst_player_get_subtitle_tracks()`.
+             * @virtual
              */
             vfunc_get_subtitle_track(): number;
             /**
              * Get the list of subtitles tracks of the current media.
+             * @virtual
              */
             vfunc_get_subtitle_tracks(): string[];
             /**
              * Retrieves the user agent used when streaming.
+             * @virtual
              */
             vfunc_get_user_agent(): string;
             /**
              * Set the audio stream to play. `index_` is the index of the stream
-             * in the list returned by clutter_gst_player_get_audio_streams().
+             * in the list returned by `clutter_gst_player_get_audio_streams()`.
              * @param index_ the index of the audio stream
+             * @virtual
              */
             vfunc_set_audio_stream(index_: number): void;
+            /**
+             * @param mode a {@link ClutterGst.BufferingMode}
+             * @virtual
+             */
             vfunc_set_buffering_mode(mode: BufferingMode): void;
             /**
              * Seeking can be done with several trade-offs. Clutter-gst defaults
-             * to %CLUTTER_GST_SEEK_FLAG_NONE.
-             * @param flags a combination of #ClutterGstSeekFlags
+             * to {@link ClutterGst.SeekFlags.NONE}.
+             * @param flags a combination of {@link ClutterGst.SeekFlags}
+             * @virtual
              */
             vfunc_set_seek_flags(flags: SeekFlags): void;
             /**
              * Set the subtitles track to play. `index_` is the index of the stream
-             * in the list returned by clutter_gst_player_get_subtitle_tracks().
+             * in the list returned by `clutter_gst_player_get_subtitle_tracks()`.
              *
              * If `index_` is -1, the subtitles are turned off.
              * @param index_ the index of the subtitles track
+             * @virtual
              */
             vfunc_set_subtitle_track(index_: number): void;
             /**
@@ -1878,6 +2103,7 @@ export namespace ClutterGst {
              * promote your software, make it appear in statistics or because the server
              * requires a special user agent you want to impersonate.
              * @param user_agent the user agent
+             * @virtual
              */
             vfunc_set_user_agent(user_agent: string): void;
         }
@@ -1908,54 +2134,74 @@ export namespace ClutterGst {
         prototype: Player;
 
         /**
-         * Adds the #ClutterGstPlayer properties to a class and surchages the
-         * set/get_property of #GObjectClass. You should call this
+         * Adds the {@link ClutterGst.Player} properties to a class and surchages the
+         * set/get_property of {@link GObject.ObjectClass}. You should call this
          * function at the end of the class_init method of the class
-         * implementing #ClutterGstPlayer.
-         * @param object_class a #GObjectClass
+         * implementing {@link ClutterGst.Player}.
+         * @param object_class a {@link GObject.ObjectClass}
          */
         class_init(object_class: typeof GObject.Object): void;
     }
+    /**
+     * {@link ClutterGst.Player} is an opaque structure whose members cannot be
+     * directly accessed
+     * @gir-type Interface
+     * @since 1.4
+     */
     interface Player extends Clutter.Media, Player.Interface {
         // Properties
 
         /**
          * Index of the current audio stream.
+         * @since 1.4
          */
         get audio_stream(): number;
         set audio_stream(val: number);
         /**
          * Index of the current audio stream.
+         * @since 1.4
          */
         get audioStream(): number;
         set audioStream(val: number);
         /**
          * List of audio streams available on the current media.
+         * @since 1.4
+         * @read-only
          */
         get audio_streams(): any;
         /**
          * List of audio streams available on the current media.
+         * @since 1.4
+         * @read-only
          */
         get audioStreams(): any;
         /**
-         * Whether the #ClutterGstPlayer is in idle mode.
+         * Whether the {@link ClutterGst.Player} is in idle mode.
+         * @since 1.4
+         * @read-only
          */
         get idle(): boolean;
         /**
          * Whether or not the stream is being seeked.
+         * @since 1.6
+         * @read-only
          */
         get in_seek(): boolean;
         /**
          * Whether or not the stream is being seeked.
+         * @since 1.6
+         * @read-only
          */
         get inSeek(): boolean;
         /**
          * Flags to use when seeking.
+         * @since 1.4
          */
         get seek_flags(): SeekFlags;
         set seek_flags(val: SeekFlags);
         /**
          * Flags to use when seeking.
+         * @since 1.4
          */
         get seekFlags(): SeekFlags;
         set seekFlags(val: SeekFlags);
@@ -1963,15 +2209,23 @@ export namespace ClutterGst {
         set subtitle_track(val: number);
         get subtitleTrack(): number;
         set subtitleTrack(val: number);
+        /**
+         * @read-only
+         */
         get subtitle_tracks(): any;
+        /**
+         * @read-only
+         */
         get subtitleTracks(): any;
         /**
-         * The User Agent used by #ClutterGstPlayer with network protocols.
+         * The User Agent used by {@link ClutterGst.Player} with network protocols.
+         * @since 1.4
          */
         get user_agent(): string;
         set user_agent(val: string);
         /**
-         * The User Agent used by #ClutterGstPlayer with network protocols.
+         * The User Agent used by {@link ClutterGst.Player} with network protocols.
+         * @since 1.4
          */
         get userAgent(): string;
         set userAgent(val: string);
@@ -1979,15 +2233,15 @@ export namespace ClutterGst {
         // Methods
 
         /**
-         * Frees the resources created by clutter_gst_player_init(). After
-         * clutter_gst_player_deinit() has been called, no other player method can be
+         * Frees the resources created by `clutter_gst_player_init()`. After
+         * `clutter_gst_player_deinit()` has been called, no other player method can be
          * called on the instance.
          */
         deinit(): void;
         /**
          * Get the current audio stream. The number returned in the index of the
          * audio stream playing in the list returned by
-         * clutter_gst_player_get_audio_streams().
+         * `clutter_gst_player_get_audio_streams()`.
          * @returns the index of the current audio stream, -1 if the media has no audio stream
          */
         get_audio_stream(): number;
@@ -1996,6 +2250,9 @@ export namespace ClutterGst {
          * @returns a list of strings describing the available audio streams
          */
         get_audio_streams(): string[];
+        /**
+         * @returns a {@link ClutterGst.BufferingMode}
+         */
         get_buffering_mode(): BufferingMode;
         /**
          * Get the idle state of the pipeline.
@@ -2008,20 +2265,20 @@ export namespace ClutterGst {
          */
         get_in_seek(): boolean;
         /**
-         * Retrieves the #GstPipeline used by the `player,` for direct use with
+         * Retrieves the {@link Gst.Pipeline} used by the `player`, for direct use with
          * GStreamer API.
-         * @returns the #GstPipeline element used by the player
+         * @returns the {@link Gst.Pipeline} element used by the player
          */
         get_pipeline(): Gst.Element;
         /**
          * Get the current value of the seek-flags property.
-         * @returns a combination of #ClutterGstSeekFlags
+         * @returns a combination of {@link ClutterGst.SeekFlags}
          */
         get_seek_flags(): SeekFlags;
         /**
          * Get the current subtitles track. The number returned is the index of the
          * subtiles track in the list returned by
-         * clutter_gst_player_get_subtitle_tracks().
+         * `clutter_gst_player_get_subtitle_tracks()`.
          * @returns the index of the current subtitlest track, -1 if the media has no subtitles track or if the subtitles have been turned off
          */
         get_subtitle_track(): number;
@@ -2032,36 +2289,39 @@ export namespace ClutterGst {
         get_subtitle_tracks(): string[];
         /**
          * Retrieves the user agent used when streaming.
-         * @returns the user agent used. The returned string has to be freed with g_free()
+         * @returns the user agent used. The returned string has to be freed with `g_free()`
          */
         get_user_agent(): string;
         /**
-         * Initialize a #ClutterGstPlayer instance. You should call this
+         * Initialize a {@link ClutterGst.Player} instance. You should call this
          * function at the beginning of the init method of the class
-         * implementing #ClutterGstPlayer.
+         * implementing {@link ClutterGst.Player}.
          *
          * When you're finished with the ClutterGstPlayer mixin features (usually in
-         * the dispose or finalize vfuncs), call clutter_gst_player_deinit() to
-         * desallocate the resources created by clutter_gst_player_init().
+         * the dispose or finalize vfuncs), call `clutter_gst_player_deinit()` to
+         * desallocate the resources created by `clutter_gst_player_init()`.
          * @returns TRUE if the initialization was successfull, FALSE otherwise.
          */
         init(): boolean;
         /**
          * Set the audio stream to play. `index_` is the index of the stream
-         * in the list returned by clutter_gst_player_get_audio_streams().
+         * in the list returned by `clutter_gst_player_get_audio_streams()`.
          * @param index_ the index of the audio stream
          */
         set_audio_stream(index_: number): void;
+        /**
+         * @param mode a {@link ClutterGst.BufferingMode}
+         */
         set_buffering_mode(mode: BufferingMode | null): void;
         /**
          * Seeking can be done with several trade-offs. Clutter-gst defaults
-         * to %CLUTTER_GST_SEEK_FLAG_NONE.
-         * @param flags a combination of #ClutterGstSeekFlags
+         * to {@link ClutterGst.SeekFlags.NONE}.
+         * @param flags a combination of {@link ClutterGst.SeekFlags}
          */
         set_seek_flags(flags: SeekFlags | null): void;
         /**
          * Set the subtitles track to play. `index_` is the index of the stream
-         * in the list returned by clutter_gst_player_get_subtitle_tracks().
+         * in the list returned by `clutter_gst_player_get_subtitle_tracks()`.
          *
          * If `index_` is -1, the subtitles are turned off.
          * @param index_ the index of the subtitles track

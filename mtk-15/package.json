@@ -1,6 +1,6 @@
 {
     "name": "@girs/mtk-15",
-    "version": "15.0.0-4.0.0-beta.40",
+    "version": "15.0.0-4.0.0-beta.41",
     "description": "GJS TypeScript type definitions for Mtk-15, generated from library version 15.0.0",
     "type": "module",
     "module": "mtk-15.js",
@@ -31,10 +31,10 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "4.0.0-beta.40",
-      "@girs/graphene-1.0": "1.0.0-4.0.0-beta.40",
-      "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40",
-      "@girs/glib-2.0": "2.86.4-4.0.0-beta.40"    },
+      "@girs/gjs": "4.0.0-beta.41",
+      "@girs/graphene-1.0": "1.0.0-4.0.0-beta.41",
+      "@girs/gobject-2.0": "2.88.0-4.0.0-beta.41",
+      "@girs/glib-2.0": "2.88.0-4.0.0-beta.41"    },
     "devDependencies": {
       "typescript": "*"
     },

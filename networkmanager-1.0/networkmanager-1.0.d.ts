@@ -21,6 +21,7 @@ export namespace NetworkManager {
 
     /**
      * Indicates the 802.11 mode an access point or device is currently in.
+     * @gir-type Enum
      */
     enum __80211Mode {
         /**
@@ -48,9 +49,10 @@ export namespace NetworkManager {
     }
 
     /**
-     * #NMActiveConnectionState values indicate the state of a connection to a
+     * {@link NetworkManager.ActiveConnectionState} values indicate the state of a connection to a
      * specific network while it is starting, connected, or disconnecting from that
      * network.
+     * @gir-type Enum
      */
     enum ActiveConnectionState {
         /**
@@ -78,7 +80,8 @@ export namespace NetworkManager {
     }
 
     /**
-     * Describes errors that may result from operations involving a #NMConnection.
+     * Describes errors that may result from operations involving a {@link NetworkManager.Connection}.
+     * @gir-type Struct
      */
     class ConnectionError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -90,25 +93,25 @@ export namespace NetworkManager {
          */
         static UNKNOWNERROR: number;
         /**
-         * the #NMConnection object
-         *   did not contain the required #NMSettingConnection object, which must be
+         * the {@link NetworkManager.Connection} object
+         *   did not contain the required {@link NetworkManager.SettingConnection} object, which must be
          *   present for all connections
          */
         static CONNECTIONSETTINGNOTFOUND: number;
         /**
          * the 'type' property of the
          *   'connection' setting did not point to a valid connection base type; ie
-         *   it was not a hardware-related setting like #NMSettingWired or
-         *   #NMSettingWireless.
+         *   it was not a hardware-related setting like {@link NetworkManager.SettingWired} or
+         *   {@link NetworkManager.SettingWireless}.
          */
         static CONNECTIONTYPEINVALID: number;
         /**
-         * the #NMConnection object
-         *   did not contain the specified #NMSetting object
+         * the {@link NetworkManager.Connection} object
+         *   did not contain the specified {@link NetworkManager.Setting} object
          */
         static SETTINGNOTFOUND: number;
         /**
-         * the #NMConnection object contains
+         * the {@link NetworkManager.Connection} object contains
          *   a conflicting setting object
          */
         static INVALIDSETTING: number;
@@ -120,11 +123,15 @@ export namespace NetworkManager {
         // Static methods
 
         /**
-         * Registers an error quark for #NMConnection if necessary.
+         * Registers an error quark for {@link NetworkManager.Connection} if necessary.
          */
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     * @since 0.9.8.6
+     */
     enum ConnectivityState {
         /**
          * Network connectivity is unknown.
@@ -151,6 +158,9 @@ export namespace NetworkManager {
         FULL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum DeviceState {
         /**
          * the device's state is unknown
@@ -230,6 +240,7 @@ export namespace NetworkManager {
 
     /**
      * Device state change reason codes
+     * @gir-type Enum
      */
     enum DeviceStateReason {
         /**
@@ -488,8 +499,9 @@ export namespace NetworkManager {
     }
 
     /**
-     * #NMDeviceType values indicate the type of hardware represented by
-     * an #NMDevice.
+     * {@link NetworkManager.DeviceType} values indicate the type of hardware represented by
+     * an `NMDevice`.
+     * @gir-type Enum
      */
     enum DeviceType {
         /**
@@ -579,13 +591,17 @@ export namespace NetworkManager {
         VETH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Setting8021xCKFormat {
         export const $gtype: GObject.GType<Setting8021xCKFormat>;
     }
 
     /**
-     * #NMSetting8021xCKFormat values indicate the general type of a certificate
+     * {@link NetworkManager.Setting8021xCKFormat} values indicate the general type of a certificate
      * or private key
+     * @gir-type Enum
      */
     enum Setting8021xCKFormat {
         /**
@@ -608,14 +624,18 @@ export namespace NetworkManager {
         PKCS12,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Setting8021xCKScheme {
         export const $gtype: GObject.GType<Setting8021xCKScheme>;
     }
 
     /**
-     * #NMSetting8021xCKScheme values indicate how a certificate or private key is
+     * {@link NetworkManager.Setting8021xCKScheme} values indicate how a certificate or private key is
      * stored in the setting properties, either as a blob of the item's data, or as
      * a path to a certificate or private key file on the filesystem
+     * @gir-type Enum
      */
     enum Setting8021xCKScheme {
         /**
@@ -635,6 +655,9 @@ export namespace NetworkManager {
         PATH,
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Setting8021xError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -661,11 +684,14 @@ export namespace NetworkManager {
         // Static methods
 
         /**
-         * Registers an error quark for #NMSetting8021x if necessary.
+         * Registers an error quark for {@link NetworkManager.Setting8021x} if necessary.
          */
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class SettingAdslError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -692,11 +718,14 @@ export namespace NetworkManager {
         // Static methods
 
         /**
-         * Registers an error quark for #NMSettingAdsl if necessary.
+         * Registers an error quark for {@link NetworkManager.SettingAdsl} if necessary.
          */
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class SettingBluetoothError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -718,7 +747,7 @@ export namespace NetworkManager {
         /**
          * the connection
          * did not contain a required type setting, ie for DUN connections the connection
-         * must also contain an #NMSettingGsm or #NMSettingCdma as appropriate
+         * must also contain an {@link NetworkManager.SettingGsm} or {@link NetworkManager.SettingCdma} as appropriate
          */
         static TYPESETTINGNOTFOUND: number;
 
@@ -729,11 +758,14 @@ export namespace NetworkManager {
         // Static methods
 
         /**
-         * Registers an error quark for #NMSettingBluetooth if necessary.
+         * Registers an error quark for {@link NetworkManager.SettingBluetooth} if necessary.
          */
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class SettingBondError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -768,11 +800,14 @@ export namespace NetworkManager {
         // Static methods
 
         /**
-         * Registers an error quark for #NMSettingBond if necessary.
+         * Registers an error quark for {@link NetworkManager.SettingBond} if necessary.
          */
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class SettingBridgeError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -799,11 +834,14 @@ export namespace NetworkManager {
         // Static methods
 
         /**
-         * Registers an error quark for #NMSettingBridge if necessary.
+         * Registers an error quark for {@link NetworkManager.SettingBridge} if necessary.
          */
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class SettingBridgePortError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -830,11 +868,14 @@ export namespace NetworkManager {
         // Static methods
 
         /**
-         * Registers an error quark for #NMSettingBridgePort if necessary.
+         * Registers an error quark for {@link NetworkManager.SettingBridgePort} if necessary.
          */
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class SettingCdmaError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -854,7 +895,7 @@ export namespace NetworkManager {
          */
         static MISSINGPROPERTY: number;
         /**
-         * the required #NMSettingSerial
+         * the required {@link NetworkManager.SettingSerial}
          * is missing in the connection
          */
         static MISSINGSERIALSETTING: number;
@@ -866,11 +907,14 @@ export namespace NetworkManager {
         // Static methods
 
         /**
-         * Registers an error quark for #NMSettingCdma if necessary.
+         * Registers an error quark for {@link NetworkManager.SettingCdma} if necessary.
          */
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingCompareFlags {
         export const $gtype: GObject.GType<SettingCompareFlags>;
     }
@@ -878,6 +922,7 @@ export namespace NetworkManager {
     /**
      * These flags modify the comparison behavior when comparing two settings or
      * two connections.
+     * @gir-type Enum
      */
     enum SettingCompareFlags {
         /**
@@ -901,40 +946,41 @@ export namespace NetworkManager {
         /**
          * ignore secrets for which
          * the secret's flags indicate the secret is owned by a user secret agent
-         * (ie, the secret's flag includes `NM_SETTING_SECRET_FLAG_AGENT_OWNED)`
+         * (ie, the secret's flag includes `NM_SETTING_SECRET_FLAG_AGENT_OWNED`)
          */
         IGNORE_AGENT_OWNED_SECRETS,
         /**
          * ignore secrets for which
          * the secret's flags indicate the secret should not be saved to persistent
-         * storage (ie, the secret's flag includes `NM_SETTING_SECRET_FLAG_NOT_SAVED)`
+         * storage (ie, the secret's flag includes `NM_SETTING_SECRET_FLAG_NOT_SAVED`)
          */
         IGNORE_NOT_SAVED_SECRETS,
         /**
          * if this flag is set,
-         * nm_setting_diff() and nm_connection_diff() will also include properties that
+         * `nm_setting_diff()` and `nm_connection_diff()` will also include properties that
          * are set to their default value. See also `NM_SETTING_COMPARE_FLAG_DIFF_RESULT_NO_DEFAULT`.
          */
         DIFF_RESULT_WITH_DEFAULT,
         /**
          * if this flag is set,
-         * nm_setting_diff() and nm_connection_diff() will not include properties that
+         * `nm_setting_diff()` and `nm_connection_diff()` will not include properties that
          * are set to their default value. This is the opposite of
          * `NM_SETTING_COMPARE_FLAG_DIFF_RESULT_WITH_DEFAULT`. If both flags are set together,
          * `NM_SETTING_COMPARE_FLAG_DIFF_RESULT_WITH_DEFAULT` wins. If both flags are unset,
          * this means to exclude default properties if there is a setting to compare,
          * but include all properties, if the setting 'b' is missing. This is the legacy
-         * behaviour of libnm-util, where nm_setting_diff() behaved differently depending
+         * behaviour of libnm-util, where `nm_setting_diff()` behaved differently depending
          * on whether the setting 'b' was available. If `NM_SETTING_COMPARE_FLAG_DIFF_RESULT_WITH_DEFAULT`
-         * is set, nm_setting_diff() will also set the flags `NM_SETTING_DIFF_RESULT_IN_A_DEFAULT`
-         * and `NM_SETTING_DIFF_RESULT_IN_B_DEFAULT,` if the values are default values.
+         * is set, `nm_setting_diff()` will also set the flags `NM_SETTING_DIFF_RESULT_IN_A_DEFAULT`
+         * and `NM_SETTING_DIFF_RESULT_IN_B_DEFAULT`, if the values are default values.
          */
         DIFF_RESULT_NO_DEFAULT,
     }
 
     /**
      * Describes errors that may result from operations involving a
-     * #NMSettingConnection.
+     * {@link NetworkManager.SettingConnection}.
+     * @gir-type Struct
      */
     class SettingConnectionError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -956,9 +1002,9 @@ export namespace NetworkManager {
          */
         static MISSINGPROPERTY: number;
         /**
-         * the #NMSetting object
+         * the {@link NetworkManager.Setting} object
          *   referenced by the setting name contained in the
-         *   #NMSettingConnection:type property was not present in the #NMConnection
+         *   {@link NetworkManager.SettingConnection.type} property was not present in the {@link NetworkManager.Connection}
          */
         static TYPESETTINGNOTFOUND: number;
         /**
@@ -974,11 +1020,14 @@ export namespace NetworkManager {
         // Static methods
 
         /**
-         * Registers an error quark for #NMSettingConnection if necessary.
+         * Registers an error quark for {@link NetworkManager.SettingConnection} if necessary.
          */
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class SettingDcbError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -1005,17 +1054,22 @@ export namespace NetworkManager {
         // Static methods
 
         /**
-         * Registers an error quark for #NMSettingDcb if necessary.
+         * Registers an error quark for {@link NetworkManager.SettingDcb} if necessary.
          */
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingDcbFlags {
         export const $gtype: GObject.GType<SettingDcbFlags>;
     }
 
     /**
      * DCB feature flags.
+     * @gir-type Enum
+     * @since 0.9.10
      */
     enum SettingDcbFlags {
         /**
@@ -1037,12 +1091,16 @@ export namespace NetworkManager {
         WILLING,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingDiffResult {
         export const $gtype: GObject.GType<SettingDiffResult>;
     }
 
     /**
      * These values indicate the result of a setting difference operation.
+     * @gir-type Enum
      */
     enum SettingDiffResult {
         /**
@@ -1070,7 +1128,8 @@ export namespace NetworkManager {
     }
 
     /**
-     * Describes errors that may result from operations involving a #NMSetting.
+     * Describes errors that may result from operations involving a {@link NetworkManager.Setting}.
+     * @gir-type Struct
      */
     class SettingError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -1105,11 +1164,14 @@ export namespace NetworkManager {
         // Static methods
 
         /**
-         * Registers an error quark for #NMSetting if necessary.
+         * Registers an error quark for {@link NetworkManager.Setting} if necessary.
          */
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class SettingGenericError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -1136,11 +1198,14 @@ export namespace NetworkManager {
         // Static methods
 
         /**
-         * Registers an error quark for #NMSettingGeneric if necessary.
+         * Registers an error quark for {@link NetworkManager.SettingGeneric} if necessary.
          */
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class SettingGsmError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -1160,7 +1225,7 @@ export namespace NetworkManager {
          */
         static MISSINGPROPERTY: number;
         /**
-         * the required #NMSettingSerial
+         * the required {@link NetworkManager.SettingSerial}
          * is missing in the connection
          */
         static MISSINGSERIALSETTING: number;
@@ -1172,18 +1237,23 @@ export namespace NetworkManager {
         // Static methods
 
         /**
-         * Registers an error quark for #NMSettingGsm if necessary.
+         * Registers an error quark for {@link NetworkManager.SettingGsm} if necessary.
          */
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingGsmNetworkBand {
         export const $gtype: GObject.GType<SettingGsmNetworkBand>;
     }
 
     /**
-     * #NMSettingGsmNetworkBand values indicate the allowed frequency bands
+     * {@link NetworkManager.SettingGsmNetworkBand} values indicate the allowed frequency bands
      * the device may use when connecting to this network.
+     * @gir-type Enum
+     * @deprecated since 0.9.10: No longer used.
      */
     enum SettingGsmNetworkBand {
         /**
@@ -1248,13 +1318,18 @@ export namespace NetworkManager {
         U2600,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingGsmNetworkType {
         export const $gtype: GObject.GType<SettingGsmNetworkType>;
     }
 
     /**
-     * #NMSettingGsmNetworkType values indicate the allowed access technologies
+     * {@link NetworkManager.SettingGsmNetworkType} values indicate the allowed access technologies
      * the device may use when connecting to this network.
+     * @gir-type Enum
+     * @deprecated since 0.9.10: No longer used.
      */
     enum SettingGsmNetworkType {
         /**
@@ -1293,13 +1368,17 @@ export namespace NetworkManager {
         '4G',
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingHashFlags {
         export const $gtype: GObject.GType<SettingHashFlags>;
     }
 
     /**
      * These flags determine which properties are added to the resulting hash
-     * when calling nm_setting_to_hash().
+     * when calling `nm_setting_to_hash()`.
+     * @gir-type Enum
      */
     enum SettingHashFlags {
         /**
@@ -1316,6 +1395,9 @@ export namespace NetworkManager {
         ONLY_SECRETS,
     }
 
+    /**
+     * @gir-type Struct
+     */
     class SettingIP4ConfigError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -1347,11 +1429,14 @@ export namespace NetworkManager {
         // Static methods
 
         /**
-         * Registers an error quark for #NMSettingIP4Config if necessary.
+         * Registers an error quark for {@link NetworkManager.SettingIP4Config} if necessary.
          */
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class SettingIP6ConfigError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -1383,18 +1468,22 @@ export namespace NetworkManager {
         // Static methods
 
         /**
-         * Registers an error quark for #NMSettingIP6Config if necessary.
+         * Registers an error quark for {@link NetworkManager.SettingIP6Config} if necessary.
          */
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingIP6ConfigPrivacy {
         export const $gtype: GObject.GType<SettingIP6ConfigPrivacy>;
     }
 
     /**
-     * #NMSettingIP6ConfigPrivacy values indicate if and how IPv6 Privacy
+     * {@link NetworkManager.SettingIP6ConfigPrivacy} values indicate if and how IPv6 Privacy
      * Extensions are used (RFC4941).
+     * @gir-type Enum
      */
     enum SettingIP6ConfigPrivacy {
         /**
@@ -1417,6 +1506,9 @@ export namespace NetworkManager {
         PREFER_TEMP_ADDR,
     }
 
+    /**
+     * @gir-type Struct
+     */
     class SettingInfinibandError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -1443,11 +1535,14 @@ export namespace NetworkManager {
         // Static methods
 
         /**
-         * Registers an error quark for #NMSettingInfiniband if necessary.
+         * Registers an error quark for {@link NetworkManager.SettingInfiniband} if necessary.
          */
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class SettingOlpcMeshError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -1476,6 +1571,9 @@ export namespace NetworkManager {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class SettingPPPError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -1507,11 +1605,14 @@ export namespace NetworkManager {
         // Static methods
 
         /**
-         * Registers an error quark for #NMSettingPPP if necessary.
+         * Registers an error quark for {@link NetworkManager.SettingPPP} if necessary.
          */
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class SettingPPPOEError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -1543,11 +1644,14 @@ export namespace NetworkManager {
         // Static methods
 
         /**
-         * Registers an error quark for #NMSettingPPPOE if necessary.
+         * Registers an error quark for {@link NetworkManager.SettingPPPOE} if necessary.
          */
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SettingSecretFlags {
         export const $gtype: GObject.GType<SettingSecretFlags>;
     }
@@ -1556,6 +1660,7 @@ export namespace NetworkManager {
      * These flags indicate specific behavior related to handling of a secret.  Each
      * secret has a corresponding set of these flags which indicate how the secret
      * is to be stored and/or requested when it is needed.
+     * @gir-type Enum
      */
     enum SettingSecretFlags {
         /**
@@ -1583,6 +1688,9 @@ export namespace NetworkManager {
         NOT_REQUIRED,
     }
 
+    /**
+     * @gir-type Struct
+     */
     class SettingSerialError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -1603,7 +1711,7 @@ export namespace NetworkManager {
         static MISSINGPROPERTY: number;
         /**
          * one of the properties of the
-         * setting requires the connection to contain an #NMSettingPPP setting
+         * setting requires the connection to contain an {@link NetworkManager.SettingPPP} setting
          */
         static MISSINGPPPSETTING: number;
 
@@ -1614,11 +1722,14 @@ export namespace NetworkManager {
         // Static methods
 
         /**
-         * Registers an error quark for #NMSettingSerial if necessary.
+         * Registers an error quark for {@link NetworkManager.SettingSerial} if necessary.
          */
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class SettingTeamError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -1645,11 +1756,14 @@ export namespace NetworkManager {
         // Static methods
 
         /**
-         * Registers an error quark for #NMSettingTeam if necessary.
+         * Registers an error quark for {@link NetworkManager.SettingTeam} if necessary.
          */
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class SettingTeamPortError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -1676,11 +1790,14 @@ export namespace NetworkManager {
         // Static methods
 
         /**
-         * Registers an error quark for #NMSettingTeamPort if necessary.
+         * Registers an error quark for {@link NetworkManager.SettingTeamPort} if necessary.
          */
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class SettingVlanError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -1712,11 +1829,14 @@ export namespace NetworkManager {
         // Static methods
 
         /**
-         * Registers an error quark for #NMSettingVlan if necessary.
+         * Registers an error quark for {@link NetworkManager.SettingVlan} if necessary.
          */
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class SettingVpnError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -1743,11 +1863,14 @@ export namespace NetworkManager {
         // Static methods
 
         /**
-         * Registers an error quark for #NMSettingVPN if necessary.
+         * Registers an error quark for {@link NetworkManager.SettingVPN} if necessary.
          */
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class SettingWimaxError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -1774,11 +1897,14 @@ export namespace NetworkManager {
         // Static methods
 
         /**
-         * Registers an error quark for #NMSettingWimax if necessary.
+         * Registers an error quark for {@link NetworkManager.SettingWimax} if necessary.
          */
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class SettingWiredError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -1805,11 +1931,14 @@ export namespace NetworkManager {
         // Static methods
 
         /**
-         * Registers an error quark for #NMSettingWired if necessary.
+         * Registers an error quark for {@link NetworkManager.SettingWired} if necessary.
          */
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class SettingWirelessError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -1830,12 +1959,12 @@ export namespace NetworkManager {
         static MISSINGPROPERTY: number;
         /**
          * property values require
-         * the presence of an #NMSettingWirelessSecurity object in the connection
+         * the presence of an {@link NetworkManager.SettingWirelessSecurity} object in the connection
          */
         static MISSINGSECURITYSETTING: number;
         /**
          * the property channel was
-         * set to a value that requires the #NMSettingWireless:band property to be set
+         * set to a value that requires the {@link NetworkManager.SettingWireless.band} property to be set
          */
         static CHANNELREQUIRESBAND: number;
 
@@ -1846,11 +1975,14 @@ export namespace NetworkManager {
         // Static methods
 
         /**
-         * Registers an error quark for #NMSettingWireless if necessary.
+         * Registers an error quark for {@link NetworkManager.SettingWireless} if necessary.
          */
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class SettingWirelessSecurityError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -1871,7 +2003,7 @@ export namespace NetworkManager {
         static MISSINGPROPERTY: number;
         /**
          * a property contained
-         * a value that requires the connection to contain a #NMSetting8021x setting
+         * a value that requires the connection to contain a {@link NetworkManager.Setting8021x} setting
          */
         static MISSING8021XSETTING: number;
         /**
@@ -1898,13 +2030,14 @@ export namespace NetworkManager {
         // Static methods
 
         /**
-         * Registers an error quark for #NMSettingWired if necessary.
+         * Registers an error quark for {@link NetworkManager.SettingWired} if necessary.
          */
         static quark(): GLib.Quark;
     }
 
     /**
-     * #NMState values indicate the current overall networking state.
+     * {@link NetworkManager.State} values indicate the current overall networking state.
+     * @gir-type Enum
      */
     enum State {
         /**
@@ -1941,14 +2074,18 @@ export namespace NetworkManager {
         CONNECTED_GLOBAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UtilsSecurityType {
         export const $gtype: GObject.GType<UtilsSecurityType>;
     }
 
     /**
      * Describes generic security mechanisms that 802.11 access points may offer.
-     * Used with nm_utils_security_valid() for checking whether a given access
+     * Used with `nm_utils_security_valid()` for checking whether a given access
      * point is compatible with a network device.
+     * @gir-type Enum
      */
     enum UtilsSecurityType {
         /**
@@ -1993,6 +2130,7 @@ export namespace NetworkManager {
 
     /**
      * VPN connection states
+     * @gir-type Enum
      */
     enum VPNConnectionState {
         /**
@@ -2035,6 +2173,7 @@ export namespace NetworkManager {
 
     /**
      * VPN connection state reasons
+     * @gir-type Enum
      */
     enum VPNConnectionStateReason {
         /**
@@ -2101,6 +2240,7 @@ export namespace NetworkManager {
 
     /**
      * VPN plugin failure reasons
+     * @gir-type Enum
      */
     enum VPNPluginFailure {
         /**
@@ -2120,6 +2260,7 @@ export namespace NetworkManager {
 
     /**
      * VPN daemon states
+     * @gir-type Enum
      */
     enum VPNServiceState {
         /**
@@ -2152,12 +2293,16 @@ export namespace NetworkManager {
         STOPPED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VlanFlags {
         export const $gtype: GObject.GType<VlanFlags>;
     }
 
     /**
-     * #NMVlanFlags values control the behavior of the VLAN interface.
+     * {@link NetworkManager.VlanFlags} values control the behavior of the VLAN interface.
+     * @gir-type Enum
      */
     enum VlanFlags {
         /**
@@ -2183,6 +2328,9 @@ export namespace NetworkManager {
         MVRP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VlanPriorityMap {
         export const $gtype: GObject.GType<VlanPriorityMap>;
     }
@@ -2190,6 +2338,7 @@ export namespace NetworkManager {
     /**
      * A selector for traffic priority maps; these map Linux SKB priorities
      * to 802.1p priorities used in VLANs.
+     * @gir-type Enum
      */
     enum VlanPriorityMap {
         /**
@@ -2202,12 +2351,15 @@ export namespace NetworkManager {
         EGRESS_MAP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WepKeyType {
         export const $gtype: GObject.GType<WepKeyType>;
     }
 
     /**
-     * The #NMWepKeyType values specify how any WEP keys present in the setting
+     * The {@link NetworkManager.WepKeyType} values specify how any WEP keys present in the setting
      * are interpreted.  There are no standards governing how to hash the various WEP
      * key/passphrase formats into the actual WEP key.  Unfortunately some WEP keys
      * can be interpreted in multiple ways, requiring the setting to specify how to
@@ -2216,6 +2368,7 @@ export namespace NetworkManager {
      * ASCII keys are also valid WEP passphrases, but since passphrases and ASCII
      * keys are hashed differently to determine the actual WEP key the type must be
      * specified.
+     * @gir-type Enum
      */
     enum WepKeyType {
         /**
@@ -2413,10 +2566,12 @@ export namespace NetworkManager {
     const SETTING_DCB_APP_ISCSI_PRIORITY: string;
     /**
      * Indicates that the FCoE controller should use "fabric" mode (default)
+     * @since 0.9.10
      */
     const SETTING_DCB_FCOE_MODE_FABRIC: string;
     /**
      * Indicates that the FCoE controller should use "VN2VN" mode.
+     * @since 0.9.10
      */
     const SETTING_DCB_FCOE_MODE_VN2VN: string;
     const SETTING_DCB_PRIORITY_BANDWIDTH: string;
@@ -2433,7 +2588,8 @@ export namespace NetworkManager {
     const SETTING_GSM_APN: string;
     /**
      * #NM_SETTING_GSM_BANDS_MAX macro indicate the maximal value that can be used
-     * as the allowed frequency bands (#NMSettingGsm:allowed-bands property).
+     * as the allowed frequency bands ({@link NetworkManager.SettingGsm.allowed_bands} property).
+     * @deprecated since 0.9.10: No longer used.
      */
     const SETTING_GSM_BANDS_MAX: number;
     const SETTING_GSM_HOME_ONLY: string;
@@ -2632,6 +2788,7 @@ export namespace NetworkManager {
     /**
      * Indicates AP/master mode where the wireless device is started as an access
      * point/hotspot.
+     * @since 0.9.8
      */
     const SETTING_WIRELESS_MODE_AP: string;
     /**
@@ -2667,7 +2824,7 @@ export namespace NetworkManager {
     const SETTING_WIRELESS_TX_POWER: string;
     /**
      * The maximum length of hardware addresses handled by NetworkManager itself,
-     * nm_utils_hwaddr_len(), and nm_utils_hwaddr_aton().
+     * `nm_utils_hwaddr_len()`, and `nm_utils_hwaddr_aton()`.
      */
     const UTILS_HWADDR_LEN_MAX: number;
     const VLAN_FLAGS_ALL: number;
@@ -2702,139 +2859,146 @@ export namespace NetworkManager {
     const VPN_PLUGIN_IP6_CONFIG_PTP: string;
     const VPN_PLUGIN_IP6_CONFIG_ROUTES: string;
     /**
-     * Registers an error quark for #NMConnection if necessary.
-     * @returns the error quark used for #NMConnection errors.
+     * Registers an error quark for {@link NetworkManager.Connection} if necessary.
+     * @returns the error quark used for {@link NetworkManager.Connection} errors.
      */
     function connection_error_quark(): GLib.Quark;
     /**
-     * Registers an error quark for #NMSetting8021x if necessary.
-     * @returns the error quark used for #NMSetting8021x errors.
+     * Registers an error quark for {@link NetworkManager.Setting8021x} if necessary.
+     * @returns the error quark used for {@link NetworkManager.Setting8021x} errors.
      */
     function setting_802_1x_error_quark(): GLib.Quark;
     /**
-     * Registers an error quark for #NMSettingAdsl if necessary.
-     * @returns the error quark used for #NMSettingAdsl errors.
+     * Registers an error quark for {@link NetworkManager.SettingAdsl} if necessary.
+     * @returns the error quark used for {@link NetworkManager.SettingAdsl} errors.
      */
     function setting_adsl_error_quark(): GLib.Quark;
     /**
-     * Registers an error quark for #NMSettingBluetooth if necessary.
-     * @returns the error quark used for #NMSettingBluetooth errors.
+     * Registers an error quark for {@link NetworkManager.SettingBluetooth} if necessary.
+     * @returns the error quark used for {@link NetworkManager.SettingBluetooth} errors.
      */
     function setting_bluetooth_error_quark(): GLib.Quark;
     /**
-     * Registers an error quark for #NMSettingBond if necessary.
-     * @returns the error quark used for #NMSettingBond errors.
+     * Registers an error quark for {@link NetworkManager.SettingBond} if necessary.
+     * @returns the error quark used for {@link NetworkManager.SettingBond} errors.
      */
     function setting_bond_error_quark(): GLib.Quark;
     /**
-     * Registers an error quark for #NMSettingBridge if necessary.
-     * @returns the error quark used for #NMSettingBridge errors.
+     * Registers an error quark for {@link NetworkManager.SettingBridge} if necessary.
+     * @returns the error quark used for {@link NetworkManager.SettingBridge} errors.
+     * @since 0.9.8
      */
     function setting_bridge_error_quark(): GLib.Quark;
     /**
-     * Registers an error quark for #NMSettingBridgePort if necessary.
-     * @returns the error quark used for #NMSettingBridgePort errors.
+     * Registers an error quark for {@link NetworkManager.SettingBridgePort} if necessary.
+     * @returns the error quark used for {@link NetworkManager.SettingBridgePort} errors.
+     * @since 0.9.8
      */
     function setting_bridge_port_error_quark(): GLib.Quark;
     /**
-     * Registers an error quark for #NMSettingCdma if necessary.
-     * @returns the error quark used for #NMSettingCdma errors.
+     * Registers an error quark for {@link NetworkManager.SettingCdma} if necessary.
+     * @returns the error quark used for {@link NetworkManager.SettingCdma} errors.
      */
     function setting_cdma_error_quark(): GLib.Quark;
     /**
-     * Registers an error quark for #NMSettingConnection if necessary.
-     * @returns the error quark used for #NMSettingConnection errors.
+     * Registers an error quark for {@link NetworkManager.SettingConnection} if necessary.
+     * @returns the error quark used for {@link NetworkManager.SettingConnection} errors.
      */
     function setting_connection_error_quark(): GLib.Quark;
     /**
-     * Registers an error quark for #NMSettingDcb if necessary.
-     * @returns the error quark used for #NMSettingDcb errors.
+     * Registers an error quark for {@link NetworkManager.SettingDcb} if necessary.
+     * @returns the error quark used for {@link NetworkManager.SettingDcb} errors.
+     * @since 0.9.10
      */
     function setting_dcb_error_quark(): GLib.Quark;
     /**
-     * Registers an error quark for #NMSetting if necessary.
+     * Registers an error quark for {@link NetworkManager.Setting} if necessary.
      * @returns the error quark used for NMSetting errors.
      */
     function setting_error_quark(): GLib.Quark;
     /**
-     * Registers an error quark for #NMSettingGeneric if necessary.
-     * @returns the error quark used for #NMSettingGeneric errors.
+     * Registers an error quark for {@link NetworkManager.SettingGeneric} if necessary.
+     * @returns the error quark used for {@link NetworkManager.SettingGeneric} errors.
+     * @since 0.9.10
      */
     function setting_generic_error_quark(): GLib.Quark;
     /**
-     * Registers an error quark for #NMSettingGsm if necessary.
-     * @returns the error quark used for #NMSettingGsm errors.
+     * Registers an error quark for {@link NetworkManager.SettingGsm} if necessary.
+     * @returns the error quark used for {@link NetworkManager.SettingGsm} errors.
      */
     function setting_gsm_error_quark(): GLib.Quark;
     /**
-     * Registers an error quark for #NMSettingInfiniband if necessary.
-     * @returns the error quark used for #NMSettingInfiniband errors.
+     * Registers an error quark for {@link NetworkManager.SettingInfiniband} if necessary.
+     * @returns the error quark used for {@link NetworkManager.SettingInfiniband} errors.
      */
     function setting_infiniband_error_quark(): GLib.Quark;
     /**
-     * Registers an error quark for #NMSettingIP4Config if necessary.
-     * @returns the error quark used for #NMSettingIP4Config errors.
+     * Registers an error quark for {@link NetworkManager.SettingIP4Config} if necessary.
+     * @returns the error quark used for {@link NetworkManager.SettingIP4Config} errors.
      */
     function setting_ip4_config_error_quark(): GLib.Quark;
     /**
-     * Registers an error quark for #NMSettingIP6Config if necessary.
-     * @returns the error quark used for #NMSettingIP6Config errors.
+     * Registers an error quark for {@link NetworkManager.SettingIP6Config} if necessary.
+     * @returns the error quark used for {@link NetworkManager.SettingIP6Config} errors.
      */
     function setting_ip6_config_error_quark(): GLib.Quark;
     function setting_olpc_mesh_error_quark(): GLib.Quark;
     /**
-     * Registers an error quark for #NMSettingPPP if necessary.
-     * @returns the error quark used for #NMSettingPPP errors.
+     * Registers an error quark for {@link NetworkManager.SettingPPP} if necessary.
+     * @returns the error quark used for {@link NetworkManager.SettingPPP} errors.
      */
     function setting_ppp_error_quark(): GLib.Quark;
     /**
-     * Registers an error quark for #NMSettingPPPOE if necessary.
-     * @returns the error quark used for #NMSettingPPPOE errors.
+     * Registers an error quark for {@link NetworkManager.SettingPPPOE} if necessary.
+     * @returns the error quark used for {@link NetworkManager.SettingPPPOE} errors.
      */
     function setting_pppoe_error_quark(): GLib.Quark;
     /**
-     * Registers an error quark for #NMSettingSerial if necessary.
-     * @returns the error quark used for #NMSettingSerial errors.
+     * Registers an error quark for {@link NetworkManager.SettingSerial} if necessary.
+     * @returns the error quark used for {@link NetworkManager.SettingSerial} errors.
      */
     function setting_serial_error_quark(): GLib.Quark;
     /**
-     * Registers an error quark for #NMSettingTeam if necessary.
-     * @returns the error quark used for #NMSettingTeam errors.
+     * Registers an error quark for {@link NetworkManager.SettingTeam} if necessary.
+     * @returns the error quark used for {@link NetworkManager.SettingTeam} errors.
+     * @since 0.9.10
      */
     function setting_team_error_quark(): GLib.Quark;
     /**
-     * Registers an error quark for #NMSettingTeamPort if necessary.
-     * @returns the error quark used for #NMSettingTeamPort errors.
+     * Registers an error quark for {@link NetworkManager.SettingTeamPort} if necessary.
+     * @returns the error quark used for {@link NetworkManager.SettingTeamPort} errors.
+     * @since 0.9.10
      */
     function setting_team_port_error_quark(): GLib.Quark;
     /**
-     * Registers an error quark for #NMSettingVlan if necessary.
-     * @returns the error quark used for #NMSettingVlan errors.
+     * Registers an error quark for {@link NetworkManager.SettingVlan} if necessary.
+     * @returns the error quark used for {@link NetworkManager.SettingVlan} errors.
      */
     function setting_vlan_error_quark(): GLib.Quark;
     /**
-     * Registers an error quark for #NMSettingVPN if necessary.
-     * @returns the error quark used for #NMSettingVPN errors.
+     * Registers an error quark for {@link NetworkManager.SettingVPN} if necessary.
+     * @returns the error quark used for {@link NetworkManager.SettingVPN} errors.
      */
     function setting_vpn_error_quark(): GLib.Quark;
     /**
-     * Registers an error quark for #NMSettingWimax if necessary.
-     * @returns the error quark used for #NMSettingWimax errors.
+     * Registers an error quark for {@link NetworkManager.SettingWimax} if necessary.
+     * @returns the error quark used for {@link NetworkManager.SettingWimax} errors.
+     * @deprecated since 1.2: WiMAX is no longer supported.
      */
     function setting_wimax_error_quark(): GLib.Quark;
     /**
-     * Registers an error quark for #NMSettingWired if necessary.
-     * @returns the error quark used for #NMSettingWired errors.
+     * Registers an error quark for {@link NetworkManager.SettingWired} if necessary.
+     * @returns the error quark used for {@link NetworkManager.SettingWired} errors.
      */
     function setting_wired_error_quark(): GLib.Quark;
     /**
-     * Registers an error quark for #NMSettingWireless if necessary.
-     * @returns the error quark used for #NMSettingWireless errors.
+     * Registers an error quark for {@link NetworkManager.SettingWireless} if necessary.
+     * @returns the error quark used for {@link NetworkManager.SettingWireless} errors.
      */
     function setting_wireless_error_quark(): GLib.Quark;
     /**
-     * Registers an error quark for #NMSettingWired if necessary.
-     * @returns the error quark used for #NMSettingWired errors.
+     * Registers an error quark for {@link NetworkManager.SettingWired} if necessary.
+     * @returns the error quark used for {@link NetworkManager.SettingWired} errors.
      */
     function setting_wireless_security_error_quark(): GLib.Quark;
     /**
@@ -2843,7 +3007,8 @@ export namespace NetworkManager {
      * desired security type are valid for AP/Hotspot connections.
      * @param type the security type to check device capabilities against, e.g. #NMU_SEC_STATIC_WEP
      * @param wifi_caps bitfield of the capabilities of the specific Wi-Fi device, e.g. #NM_WIFI_DEVICE_CAP_CIPHER_WEP40
-     * @returns %TRUE if the device capabilities are compatible with the desired @type, %FALSE if they are not.
+     * @returns `true` if the device capabilities are compatible with the desired `type`, `false` if they are not.
+     * @since 0.9.8
      */
     function utils_ap_mode_security_valid(
         type: UtilsSecurityType | null,
@@ -2854,30 +3019,32 @@ export namespace NetworkManager {
      * If `final_len` is greater than -1, the returned string is terminated at
      * that index (returned_string[final_len] == '\0'),
      * @param bytes an array of bytes
-     * @param len the length of the @bytes array
+     * @param len the length of the `bytes` array
      * @param final_len an index where to cut off the returned string, or -1
-     * @returns the textual form of @bytes
+     * @returns the textual form of `bytes`
+     * @since 0.9.10
      */
     function utils_bin2hexstr(bytes: string, len: number, final_len: number): string;
     /**
      * Determines if a connection of type `virtual_type` can (in the
      * general case) work with connections of type `other_type`.
      *
-     * If `virtual_type` is %NM_TYPE_SETTING_VLAN, then this checks if
+     * If `virtual_type` is `NM_TYPE_SETTING_VLAN`, then this checks if
      * `other_type` is a valid type for the parent of a VLAN.
      *
-     * If `virtual_type` is a "master" type (eg, %NM_TYPE_SETTING_BRIDGE),
+     * If `virtual_type` is a "master" type (eg, `NM_TYPE_SETTING_BRIDGE`),
      * then this checks if `other_type` is a valid type for a slave of that
      * master.
      *
-     * Note that even if this returns %TRUE it is not guaranteed that
+     * Note that even if this returns `true` it is not guaranteed that
      * <emphasis>every</emphasis> connection of type `other_type` is
-     * compatible with `virtual_type;` it may depend on the exact
+     * compatible with `virtual_type`; it may depend on the exact
      * configuration of the two connections, or on the capabilities of an
      * underlying device driver.
      * @param virtual_type a virtual connection type
-     * @param other_type a connection type to test against @virtual_type
-     * @returns %TRUE or %FALSE
+     * @param other_type a connection type to test against `virtual_type`
+     * @returns `true` or `false`
+     * @since 0.9.10
      */
     function utils_check_virtual_device_compatibility(virtual_type: GObject.GType, other_type: GObject.GType): boolean;
     /**
@@ -2891,24 +3058,24 @@ export namespace NetworkManager {
      * representation of that character.  Intended for debugging only, should not
      * be used for display of SSIDs.
      * @param ssid pointer to a buffer containing the SSID data
-     * @param len length of the SSID data in @ssid
+     * @param len length of the SSID data in `ssid`
      * @returns pointer to the escaped SSID, which uses an internal static buffer and will be overwritten by subsequent calls to this function
      */
     function utils_escape_ssid(ssid: number, len: number): string;
     /**
      * Utility function to find out if the `filename` is in PKCS#<!-- -->12 format.
      * @param filename name of the file to test
-     * @returns %TRUE if the file is PKCS#<!-- -->12, %FALSE if it is not
+     * @returns `true` if the file is PKCS#<!-- -->12, `false` if it is not
      */
     function utils_file_is_pkcs12(filename: string): boolean;
     /**
      * Searches for a `progname` file in a list of search `paths`.
      * @param progname the helper program name, like "iptables"   Must be a non-empty string, without path separator (/).
      * @param try_first a custom path to try first before searching.   It is silently ignored if it is empty or not an absolute path.
-     * @param paths a %NULL terminated list of search paths.   Can be empty or %NULL, in which case only @try_first is checked.
-     * @param file_test_flags the flags passed to g_file_test() when searching   for @progname. Set it to 0 to skip the g_file_test().
-     * @param predicate if given, pass the file name to this function   for additional checks. This check is performed after the check for   @file_test_flags. You cannot omit both @file_test_flags and @predicate.
-     * @returns the full path to the helper, if found, or %NULL if not found.   The returned string is not owned by the caller, but later   invocations of the function might overwrite it.
+     * @param paths a `null` terminated list of search paths.   Can be empty or `null`, in which case only `try_first` is checked.
+     * @param file_test_flags the flags passed to `g_file_test()` when searching   for `progname`. Set it to 0 to skip the `g_file_test()`.
+     * @param predicate if given, pass the file name to this function   for additional checks. This check is performed after the check for   `file_test_flags`. You cannot omit both `file_test_flags` and `predicate`.
+     * @returns the full path to the helper, if found, or `null` if not found.   The returned string is not owned by the caller, but later   invocations of the function might overwrite it.
      */
     function utils_file_search_in_paths(
         progname: string,
@@ -2918,9 +3085,9 @@ export namespace NetworkManager {
         predicate: UtilsFileSearchInPathsPredicate,
     ): string;
     /**
-     * Utility function to duplicate a hash table of #GValues.
-     * @param hash a #GHashTable mapping string:GValue
-     * @returns a newly allocated duplicated #GHashTable, caller must free the returned hash with g_hash_table_unref() or g_hash_table_destroy()
+     * Utility function to duplicate a hash table of `GValues`.
+     * @param hash a {@link GLib.HashTable} mapping string:GValue
+     * @returns a newly allocated duplicated {@link GLib.HashTable}, caller must free the returned hash with `g_hash_table_unref()` or `g_hash_table_destroy()`
      */
     function utils_gvalue_hash_dup(
         hash: { [key: string]: any } | GLib.HashTable<any, any>,
@@ -2928,36 +3095,38 @@ export namespace NetworkManager {
     /**
      * Converts a hex string (2 characters) into its byte representation.
      * @param hex a string representing a hex byte
-     * @returns a byte, or -1 if @hex doesn't represent a hex byte
+     * @returns a byte, or -1 if `hex` doesn't represent a hex byte
+     * @since 0.9.10
      */
     function utils_hex2byte(hex: string): number;
     /**
      * Converts a hexadecimal string `hex` into a byte-array. The returned array
-     * length is `len/`2.
+     * length is `len`/2.
      * @param hex an hex string
-     * @param len the length of the @hex string (it has to be even)
-     * @returns a array of bytes, or %NULL on error
+     * @param len the length of the `hex` string (it has to be even)
+     * @returns a array of bytes, or `null` on error
+     * @since 0.9.10
      */
     function utils_hexstr2bin(hex: string, len: number): string;
     /**
-     * Parses `asc` and converts it to binary form in a #GByteArray. See
-     * nm_utils_hwaddr_aton() if you don't want a #GByteArray.
+     * Parses `asc` and converts it to binary form in a {@link GLib.ByteArray}. See
+     * `nm_utils_hwaddr_aton()` if you don't want a {@link GLib.ByteArray}.
      * @param asc the ASCII representation of a hardware address
      * @param type the type of address; either <literal>ARPHRD_ETHER</literal> or   <literal>ARPHRD_INFINIBAND</literal>
-     * @returns a new #GByteArray, or %NULL if @asc couldn't be parsed
+     * @returns a new {@link GLib.ByteArray}, or `null` if `asc` couldn't be parsed
      */
     function utils_hwaddr_atoba(asc: string, type: number): Uint8Array;
     /**
      * Parses `asc` and converts it to binary form in `buffer`. See
-     * nm_utils_hwaddr_atoba() if you'd rather have the result in a
-     * #GByteArray.
+     * `nm_utils_hwaddr_atoba()` if you'd rather have the result in a
+     * {@link GLib.ByteArray}.
      *
-     * See also nm_utils_hwaddr_aton_len(), which takes an output length
+     * See also `nm_utils_hwaddr_aton_len()`, which takes an output length
      * instead of a type.
      * @param asc the ASCII representation of a hardware address
      * @param type the type of address; either <literal>ARPHRD_ETHER</literal> or   <literal>ARPHRD_INFINIBAND</literal>
      * @param buffer buffer to store the result into
-     * @returns @buffer, or %NULL if @asc couldn't be parsed
+     * @returns `buffer`, or `null` if `asc` couldn't be parsed
      */
     function utils_hwaddr_aton(asc: string, type: number, buffer?: any | null): number;
     /**
@@ -2966,7 +3135,8 @@ export namespace NetworkManager {
      * @param asc the ASCII representation of a hardware address
      * @param buffer buffer to store the result into
      * @param length the expected length in bytes of the result and the size of the buffer in bytes.
-     * @returns @buffer, or %NULL if @asc couldn't be parsed   or would be shorter or longer than @length.
+     * @returns `buffer`, or `null` if `asc` couldn't be parsed   or would be shorter or longer than `length`.
+     * @since 0.9.10
      */
     function utils_hwaddr_aton_len(asc: string, buffer: any | null, length: number): number;
     /**
@@ -2978,18 +3148,19 @@ export namespace NetworkManager {
     /**
      * Converts `addr` to textual form.
      *
-     * See also nm_utils_hwaddr_ntoa_len(), which takes a length instead of
+     * See also `nm_utils_hwaddr_ntoa_len()`, which takes a length instead of
      * a type.
      * @param addr a binary hardware address
      * @param type the type of address; either <literal>ARPHRD_ETHER</literal> or   <literal>ARPHRD_INFINIBAND</literal>
-     * @returns the textual form of @addr
+     * @returns the textual form of `addr`
      */
     function utils_hwaddr_ntoa(addr: any | null, type: number): string;
     /**
      * Converts `addr` to textual form.
      * @param addr a binary hardware address
-     * @param length the length of @addr
-     * @returns the textual form of @addr
+     * @param length the length of `addr`
+     * @returns the textual form of `addr`
+     * @since 0.9.10
      */
     function utils_hwaddr_ntoa_len(addr: any | null, length: number): string;
     /**
@@ -2997,45 +3168,48 @@ export namespace NetworkManager {
      * <literal>ARPHRD_INFINIBAND</literal>) of the raw address given its length.
      * @param len the length of hardware address in bytes
      * @returns the type, either <literal>ARPHRD_ETHER</literal> or <literal>ARPHRD_INFINIBAND</literal>.  If the length is unexpected, return -1 (unsupported type/length).
+     * @deprecated This could not be extended to cover other types, since there is not a one-to-one mapping between types and lengths. This was mostly only used to get a type to pass to `nm_utils_hwaddr_ntoa()` or `nm_utils_hwaddr_aton()` when you only had a length; but you can just use `nm_utils_hwaddr_ntoa_len()` or `nm_utils_hwaddr_aton_len()` now instead.
      */
     function utils_hwaddr_type(len: number): number;
     /**
      * Parses `asc` to see if it is a valid hardware address of some type.
      * @param asc the ASCII representation of a hardware address
-     * @returns %TRUE if @asc appears to be a valid hardware address   of some type, %FALSE if not.
+     * @returns `true` if `asc` appears to be a valid hardware address   of some type, `false` if not.
+     * @since 0.9.10
      */
     function utils_hwaddr_valid(asc: string): boolean;
     /**
      * This function is a 1:1 copy of the kernel's interface validation
      * function in net/core/dev.c.
      * @param name Name of interface
-     * @returns %TRUE if interface name is valid, otherwise %FALSE is returned.
+     * @returns `true` if interface name is valid, otherwise `false` is returned.
+     * @since 0.9.8
      */
     function utils_iface_valid_name(name: string): boolean;
     /**
      * Initializes libnm-util; should be called when starting any program that
      * uses libnm-util.  This function can be called more than once.
-     * @returns %TRUE if the initialization was successful, %FALSE on failure.
+     * @returns `true` if the initialization was successful, `false` on failure.
      */
     function utils_init(): boolean;
     /**
-     * Utility function to convert a #GPtrArray of #GArrays of #guint32s representing
+     * Utility function to convert a {@link GLib.PtrArray} of `GArrays` of #guint32s representing
      * a list of NetworkManager IPv4 addresses (which is a tuple of address, gateway,
-     * and prefix) into a #GSList of #NMIP4Address objects.  The specific format of
-     * this serialization is not guaranteed to be stable and the #GArray may be
+     * and prefix) into a {@link GLib.SList} of {@link NetworkManager.IP4Address} objects.  The specific format of
+     * this serialization is not guaranteed to be stable and the {@link GLib.Array} may be
      * extended in the future.
-     * @param value #GValue containing a #GPtrArray of #GArrays of #guint32s
-     * @returns a newly allocated #GSList of #NMIP4Address objects
+     * @param value {@link GObject.Value} containing a {@link GLib.PtrArray} of `GArrays` of #guint32s
+     * @returns a newly allocated {@link GLib.SList} of {@link NetworkManager.IP4Address} objects
      */
     function utils_ip4_addresses_from_gvalue(value: GObject.Value | any): IP4Address[];
     /**
-     * Utility function to convert a #GSList of #NMIP4Address objects into a
-     * #GPtrArray of #GArrays of #guint32s representing a list of NetworkManager IPv4
+     * Utility function to convert a {@link GLib.SList} of {@link NetworkManager.IP4Address} objects into a
+     * {@link GLib.PtrArray} of `GArrays` of #guint32s representing a list of NetworkManager IPv4
      * addresses (which is a tuple of address, gateway, and prefix).   The specific
      * format of this serialization is not guaranteed to be stable and may be
      * extended in the future.
-     * @param list a list of #NMIP4Address objects
-     * @param value a pointer to a #GValue into which to place the converted addresses, which should be unset by the caller (when no longer needed) with g_value_unset().
+     * @param list a list of {@link NetworkManager.IP4Address} objects
+     * @param value a pointer to a {@link GObject.Value} into which to place the converted addresses, which should be unset by the caller (when no longer needed) with `g_value_unset()`.
      */
     function utils_ip4_addresses_to_gvalue(list: IP4Address[], value: GObject.Value | any): void;
     /**
@@ -3047,66 +3221,74 @@ export namespace NetworkManager {
      * @returns the default class prefix for the given IP
      */
     function utils_ip4_get_default_prefix(ip: number): number;
+    /**
+     * @param netmask an IPv4 netmask in network byte order
+     * @returns the CIDR prefix represented by the netmask
+     */
     function utils_ip4_netmask_to_prefix(netmask: number): number;
+    /**
+     * @param prefix a CIDR prefix
+     * @returns the netmask represented by the prefix, in network byte order
+     */
     function utils_ip4_prefix_to_netmask(prefix: number): number;
     /**
-     * Utility function to convert a #GPtrArray of #GArrays of #guint32s representing
+     * Utility function to convert a {@link GLib.PtrArray} of `GArrays` of #guint32s representing
      * a list of NetworkManager IPv4 routes (which is a tuple of route, next hop,
-     * prefix, and metric) into a #GSList of #NMIP4Route objects.  The specific
+     * prefix, and metric) into a {@link GLib.SList} of {@link NetworkManager.IP4Route} objects.  The specific
      * format of this serialization is not guaranteed to be stable and may be
      * extended in the future.
-     * @param value #GValue containing a #GPtrArray of #GArrays of #guint32s
-     * @returns a newly allocated #GSList of #NMIP4Route objects
+     * @param value {@link GObject.Value} containing a {@link GLib.PtrArray} of `GArrays` of #guint32s
+     * @returns a newly allocated {@link GLib.SList} of {@link NetworkManager.IP4Route} objects
      */
     function utils_ip4_routes_from_gvalue(value: GObject.Value | any): IP4Route[];
     /**
-     * Utility function to convert a #GSList of #NMIP4Route objects into a
-     * #GPtrArray of #GArrays of #guint32s representing a list of NetworkManager IPv4
+     * Utility function to convert a {@link GLib.SList} of {@link NetworkManager.IP4Route} objects into a
+     * {@link GLib.PtrArray} of `GArrays` of #guint32s representing a list of NetworkManager IPv4
      * routes (which is a tuple of route, next hop, prefix, and metric).   The
      * specific format of this serialization is not guaranteed to be stable and may
      * be extended in the future.
-     * @param list a list of #NMIP4Route objects
-     * @param value a pointer to a #GValue into which to place the converted routes, which should be unset by the caller (when no longer needed) with g_value_unset().
+     * @param list a list of {@link NetworkManager.IP4Route} objects
+     * @param value a pointer to a {@link GObject.Value} into which to place the converted routes, which should be unset by the caller (when no longer needed) with `g_value_unset()`.
      */
     function utils_ip4_routes_to_gvalue(list: IP4Route[], value: GObject.Value | any): void;
     /**
-     * Utility function to convert a #GPtrArray of #GValueArrays of (#GArray of guchars) and #guint32
+     * Utility function to convert a {@link GLib.PtrArray} of `GValueArrays` of ({@link GLib.Array} of guchars) and `guint32`
      * representing a list of NetworkManager IPv6 addresses (which is a tuple of address,
-     * prefix, and gateway), into a #GSList of #NMIP6Address objects.  The specific format of
-     * this serialization is not guaranteed to be stable and the #GValueArray may be
+     * prefix, and gateway), into a {@link GLib.SList} of {@link NetworkManager.IP6Address} objects.  The specific format of
+     * this serialization is not guaranteed to be stable and the {@link GObject.ValueArray} may be
      * extended in the future.
-     * @param value gvalue containing a GPtrArray of GValueArrays of (GArray of guchars) and #guint32
-     * @returns a newly allocated #GSList of #NMIP6Address objects
+     * @param value gvalue containing a GPtrArray of GValueArrays of (GArray of guchars) and `guint32`
+     * @returns a newly allocated {@link GLib.SList} of {@link NetworkManager.IP6Address} objects
      */
     function utils_ip6_addresses_from_gvalue(value: GObject.Value | any): IP6Address[];
     /**
-     * Utility function to convert a #GSList of #NMIP6Address objects into a
-     * #GPtrArray of #GValueArrays representing a list of NetworkManager IPv6 addresses
+     * Utility function to convert a {@link GLib.SList} of {@link NetworkManager.IP6Address} objects into a
+     * {@link GLib.PtrArray} of `GValueArrays` representing a list of NetworkManager IPv6 addresses
      * (which is a tuple of address, prefix, and gateway). The specific format of
      * this serialization is not guaranteed to be stable and may be extended in the
      * future.
-     * @param list a list of #NMIP6Address objects
-     * @param value a pointer to a #GValue into which to place the converted addresses, which should be unset by the caller (when no longer needed) with g_value_unset().
+     * @param list a list of {@link NetworkManager.IP6Address} objects
+     * @param value a pointer to a {@link GObject.Value} into which to place the converted addresses, which should be unset by the caller (when no longer needed) with `g_value_unset()`.
      */
     function utils_ip6_addresses_to_gvalue(list: IP6Address[], value: GObject.Value | any): void;
     /**
-     * Utility function #GPtrArray of #GValueArrays of (#GArray of #guchars), #guint32,
-     * (#GArray of #guchars), and #guint32 representing a list of NetworkManager IPv6
+     * Utility function {@link GLib.PtrArray} of `GValueArrays` of ({@link GLib.Array} of #guchars), `guint32`,
+     * ({@link GLib.Array} of #guchars), and `guint32` representing a list of NetworkManager IPv6
      * routes (which is a tuple of destination, prefix, next hop, and metric)
-     * into a #GSList of #NMIP6Route objects.  The specific format of this serialization
+     * into a {@link GLib.SList} of {@link NetworkManager.IP6Route} objects.  The specific format of this serialization
      * is not guaranteed to be stable and may be extended in the future.
-     * @param value #GValue containing a #GPtrArray of #GValueArrays of (#GArray of #guchars), #guint32, (#GArray of #guchars), and #guint32
-     * @returns a newly allocated #GSList of #NMIP6Route objects
+     * @param value {@link GObject.Value} containing a {@link GLib.PtrArray} of `GValueArrays` of ({@link GLib.Array} of #guchars), `guint32`, ({@link GLib.Array} of #guchars), and `guint32`
+     * @returns a newly allocated {@link GLib.SList} of {@link NetworkManager.IP6Route} objects
      */
     function utils_ip6_routes_from_gvalue(value: GObject.Value | any): IP6Route[];
     /**
-     * Utility function to convert a #GSList of #NMIP6Route objects into a #GPtrArray of
-     * #GValueArrays of (#GArray of #guchars), #guint32, (#GArray of #guchars), and #guint32
+     * Utility function to convert a {@link GLib.SList} of {@link NetworkManager.IP6Route} objects into a {@link GLib.PtrArray} of
+     * `GValueArrays` of ({@link GLib.Array} of #guchars), `guint32`, ({@link GLib.Array} of #guchars), and `guint32`
      * representing a list of NetworkManager IPv6 routes (which is a tuple of destination,
      * prefix, next hop, and metric).  The specific format of this serialization is not
      * guaranteed to be stable and may be extended in the future.
-     * @param list a list of #NMIP6Route objects
-     * @param value a pointer to a #GValue into which to place the converted routes, which should be unset by the caller (when no longer needed) with g_value_unset().
+     * @param list a list of {@link NetworkManager.IP6Route} objects
+     * @param value a pointer to a {@link GObject.Value} into which to place the converted routes, which should be unset by the caller (when no longer needed) with `g_value_unset()`.
      */
     function utils_ip6_routes_to_gvalue(list: IP6Route[], value: GObject.Value | any): void;
     /**
@@ -3114,14 +3296,15 @@ export namespace NetworkManager {
      * AP's SSID.  This function attempts to detect blank/empty SSIDs using a
      * number of known SSID-cloaking methods.
      * @param ssid pointer to a buffer containing the SSID data
-     * @param len length of the SSID data in @ssid
-     * @returns %TRUE if the SSID is "empty", %FALSE if it is not
+     * @param len length of the SSID data in `ssid`
+     * @returns `true` if the SSID is "empty", `false` if it is not
      */
     function utils_is_empty_ssid(ssid: number, len: number): boolean;
     /**
      * Checks if `str` is a UUID
      * @param str a string that might be a UUID
-     * @returns %TRUE if @str is a UUID, %FALSE if not
+     * @returns `true` if `str` is a UUID, `false` if not
+     * @since 0.9.8
      */
     function utils_is_uuid(str: string): boolean;
     /**
@@ -3151,8 +3334,8 @@ export namespace NetworkManager {
      * NULLs, even though that is functionally pointless.
      * @param ssid1 first SSID data to compare
      * @param ssid2 second SSID data to compare
-     * @param ignore_trailing_null %TRUE to ignore one trailing NULL byte
-     * @returns %TRUE if the SSIDs are the same, %FALSE if they are not
+     * @param ignore_trailing_null `true` to ignore one trailing NULL byte
+     * @returns `true` if the SSIDs are the same, `false` if they are not
      */
     function utils_same_ssid(
         ssid1: Uint8Array | string,
@@ -3165,15 +3348,15 @@ export namespace NetworkManager {
      * type, and AP capabilities intersect.
      *
      * NOTE: this function cannot handle checking security for AP/Hotspot mode;
-     * use nm_utils_ap_mode_security_valid() instead.
+     * use `nm_utils_ap_mode_security_valid()` instead.
      * @param type the security type to check AP flags and device capabilities against, e.g. #NMU_SEC_STATIC_WEP
      * @param wifi_caps bitfield of the capabilities of the specific Wi-Fi device, e.g. #NM_WIFI_DEVICE_CAP_CIPHER_WEP40
-     * @param have_ap whether the @ap_flags, @ap_wpa, and @ap_rsn arguments are valid
+     * @param have_ap whether the `ap_flags`, `ap_wpa`, and `ap_rsn` arguments are valid
      * @param adhoc whether the capabilities being tested are from an Ad-Hoc AP (IBSS)
      * @param ap_flags bitfield of AP capabilities, e.g. #NM_802_11_AP_FLAGS_PRIVACY
      * @param ap_wpa bitfield of AP capabilities derived from the AP's WPA beacon, e.g. (#NM_802_11_AP_SEC_PAIR_TKIP | #NM_802_11_AP_SEC_KEY_MGMT_PSK)
      * @param ap_rsn bitfield of AP capabilities derived from the AP's RSN/WPA2 beacon, e.g. (#NM_802_11_AP_SEC_PAIR_CCMP | #NM_802_11_AP_SEC_PAIR_TKIP)
-     * @returns %TRUE if the device capabilities and AP capabilities intersect and are compatible with the desired @type, %FALSE if they are not
+     * @returns `true` if the device capabilities and AP capabilities intersect and are compatible with the desired `type`, `false` if they are not
      */
     function utils_security_valid(
         type: UtilsSecurityType | null,
@@ -3208,21 +3391,25 @@ export namespace NetworkManager {
      * Again, this function should be used for debugging and display purposes
      * _only_.
      * @param ssid a byte array containing the SSID data
-     * @returns an allocated string containing a UTF-8 representation of the SSID, which must be freed by the caller using g_free(). Returns %NULL on errors.
+     * @returns an allocated string containing a UTF-8 representation of the SSID, which must be freed by the caller using `g_free()`. Returns `null` on errors.
      */
     function utils_ssid_to_utf8(ssid: Uint8Array | string): string;
+    /**
+     * @returns a newly allocated UUID suitable for use as the {@link NetworkManager.SettingConnection} object's {@link NetworkManager.SettingConnection.id}: property.  Should be freed with `g_free()`
+     */
     function utils_uuid_generate(): string;
     /**
-     * For a given `s,` this function will always return the same UUID.
+     * For a given `s`, this function will always return the same UUID.
      * @param s a string to use as the seed for the UUID
-     * @returns a newly allocated UUID suitable for use as the #NMSettingConnection object's #NMSettingConnection:id: property
+     * @returns a newly allocated UUID suitable for use as the {@link NetworkManager.SettingConnection} object's {@link NetworkManager.SettingConnection.id}: property
      */
     function utils_uuid_generate_from_string(s: string): string;
     /**
      * Checks if `key` is a valid WEP key
      * @param key a string that might be a WEP key
-     * @param wep_type the #NMWepKeyType type of the WEP key
-     * @returns %TRUE if @key is a WEP key, %FALSE if not
+     * @param wep_type the {@link NetworkManager.WepKeyType} type of the WEP key
+     * @returns `true` if `key` is a WEP key, `false` if not
+     * @since 0.9.8
      */
     function utils_wep_key_valid(key: string, wep_type: WepKeyType | null): boolean;
     /**
@@ -3250,29 +3437,43 @@ export namespace NetworkManager {
      * Utility function to verify Wi-Fi channel validity.
      * @param channel channel
      * @param band frequency band for wireless ("a" or "bg")
-     * @returns %TRUE or %FALSE
+     * @returns `true` or `false`
      */
     function utils_wifi_is_channel_valid(channel: number, band: string): boolean;
     /**
      * Checks if `psk` is a valid WPA PSK
      * @param psk a string that might be a WPA PSK
-     * @returns %TRUE if @psk is a WPA PSK, %FALSE if not
+     * @returns `true` if `psk` is a WPA PSK, `false` if not
+     * @since 0.9.8
      */
     function utils_wpa_psk_valid(psk: string): boolean;
+    /**
+     * @gir-type Callback
+     */
     interface SettingClearSecretsWithFlagsFn {
         (setting: Setting, secret: string, flags: SettingSecretFlags): boolean;
     }
+    /**
+     * @gir-type Callback
+     */
     interface SettingValueIterFn {
         (setting: Setting, key: string, value: GObject.Value | any, flags: GObject.ParamFlags): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface UtilsFileSearchInPathsPredicate {
         (filename: string): boolean;
     }
+    /**
+     * @gir-type Callback
+     */
     interface VPNIterFunc {
         (key: string, value: string): void;
     }
     /**
      * 802.11 access point flags.
+     * @gir-type Flags
      */
     enum __80211ApFlags {
         /**
@@ -3290,6 +3491,7 @@ export namespace NetworkManager {
      * 802.11 access point security and authentication flags.  These flags describe
      * the current security requirements of an access point as determined from the
      * access point's beacon.
+     * @gir-type Flags
      */
     enum __80211ApSecurityFlags {
         /**
@@ -3346,8 +3548,9 @@ export namespace NetworkManager {
     }
 
     /**
-     * #NMBluetoothCapabilities values indicate the usable capabilities of a
+     * {@link NetworkManager.BluetoothCapabilities} values indicate the usable capabilities of a
      * Bluetooth device.
+     * @gir-type Flags
      */
     enum BluetoothCapabilities {
         /**
@@ -3366,6 +3569,7 @@ export namespace NetworkManager {
 
     /**
      * General device capability flags.
+     * @gir-type Flags
      */
     enum DeviceCapabilities {
         /**
@@ -3387,10 +3591,11 @@ export namespace NetworkManager {
     }
 
     /**
-     * #NMDeviceModemCapabilities values indicate the generic radio access
+     * {@link NetworkManager.DeviceModemCapabilities} values indicate the generic radio access
      * technology families a modem device supports.  For more information on the
      * specific access technologies the device supports use the ModemManager D-Bus
      * API.
+     * @gir-type Flags
      */
     enum DeviceModemCapabilities {
         /**
@@ -3420,6 +3625,7 @@ export namespace NetworkManager {
 
     /**
      * 802.11 specific device encryption and authentication capabilities.
+     * @gir-type Flags
      */
     enum DeviceWifiCapabilities {
         /**
@@ -3475,8 +3681,28 @@ export namespace NetworkManager {
     namespace Connection {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * The ::changed signal is emitted when any property of any property
+             * (including secrets) of any setting of the connection is modified,
+             * or when settings are added or removed.
+             * @signal
+             * @since 0.9.10
+             * @run-first
+             */
             changed: () => void;
+            /**
+             * The ::secrets-cleared signal is emitted when the secrets of a connection
+             * are cleared.
+             * @signal
+             * @run-first
+             */
             'secrets-cleared': () => void;
+            /**
+             * The ::secrets-updated signal is emitted when the secrets of a setting
+             * have been changed.
+             * @signal
+             * @run-first
+             */
             'secrets-updated': (arg0: string) => void;
             'notify::path': (pspec: GObject.ParamSpec) => void;
         }
@@ -3491,6 +3717,7 @@ export namespace NetworkManager {
     /**
      * The NMConnection struct contains only private data.
      * It should only be accessed through the functions described below.
+     * @gir-type Class
      */
     class Connection extends GObject.Object {
         static $gtype: GObject.GType<Connection>;
@@ -3525,16 +3752,19 @@ export namespace NetworkManager {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Connection.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Connection.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Connection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Connection.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Connection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3544,17 +3774,17 @@ export namespace NetworkManager {
         // Static methods
 
         /**
-         * Create a new #NMSetting object of the desired type, given a setting name.
+         * Create a new {@link NetworkManager.Setting} object of the desired type, given a setting name.
          * @param name a setting name
          */
         static create_setting(name: string): Setting;
         /**
-         * Returns the #GType of the setting's class for a given setting name.
+         * Returns the {@link GObject.GType} of the setting's class for a given setting name.
          * @param name a setting name
          */
         static lookup_setting_type(name: string): GObject.GType;
         /**
-         * Returns the #GType of the setting's class for a given setting error quark.
+         * Returns the {@link GObject.GType} of the setting's class for a given setting error quark.
          * Useful for figuring out which setting a returned error is for.
          * @param error_quark a setting error quark
          */
@@ -3562,16 +3792,20 @@ export namespace NetworkManager {
 
         // Virtual methods
 
+        /**
+         * @param setting
+         * @virtual
+         */
         vfunc_secrets_updated(setting: string): void;
 
         // Methods
 
         /**
-         * Adds a #NMSetting to the connection, replacing any previous #NMSetting of the
-         * same name which has previously been added to the #NMConnection.  The
-         * connection takes ownership of the #NMSetting object and does not increase
+         * Adds a {@link NetworkManager.Setting} to the connection, replacing any previous {@link NetworkManager.Setting} of the
+         * same name which has previously been added to the {@link NetworkManager.Connection}.  The
+         * connection takes ownership of the {@link NetworkManager.Setting} object and does not increase
          * the setting object's reference count.
-         * @param setting the #NMSetting to add to the connection object
+         * @param setting the {@link NetworkManager.Setting} to add to the connection object
          */
         add_setting(setting: Setting): void;
         /**
@@ -3585,24 +3819,24 @@ export namespace NetworkManager {
          */
         clear_secrets_with_flags(func: SettingClearSecretsWithFlagsFn): void;
         /**
-         * Compares two #NMConnection objects for similarity, with comparison behavior
-         * modified by a set of flags.  See nm_setting_compare() for a description of
+         * Compares two {@link NetworkManager.Connection} objects for similarity, with comparison behavior
+         * modified by a set of flags.  See `nm_setting_compare()` for a description of
          * each flag's behavior.
-         * @param b a second #NMConnection to compare with the first
-         * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
-         * @returns %TRUE if the comparison succeeds, %FALSE if it does not
+         * @param b a second {@link NetworkManager.Connection} to compare with the first
+         * @param flags compare flags, e.g. {@link NetworkManager.SettingCompareFlags.EXACT}
+         * @returns `true` if the comparison succeeds, `false` if it does not
          */
         compare(b: Connection, flags: SettingCompareFlags | null): boolean;
         /**
-         * Compares two #NMConnection objects for similarity, with comparison behavior
-         * modified by a set of flags.  See nm_setting_compare() for a description of
+         * Compares two {@link NetworkManager.Connection} objects for similarity, with comparison behavior
+         * modified by a set of flags.  See `nm_setting_compare()` for a description of
          * each flag's behavior.  If the connections differ, settings and keys within
          * each setting that differ are added to the returned `out_settings` hash table.
          * No values are returned, only key names.
-         * @param b a second #NMConnection to compare with the first
-         * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
+         * @param b a second {@link NetworkManager.Connection} to compare with the first
+         * @param flags compare flags, e.g. {@link NetworkManager.SettingCompareFlags.EXACT}
          * @param out_settings if the connections differ, on return a hash table mapping setting names to second-level GHashTable (utf8 to guint32), which contains the key names that differ mapped to one or more of %NMSettingDiffResult as a bitfield
-         * @returns %TRUE if the connections contain the same values, %FALSE if they do not
+         * @returns `true` if the connections contain the same values, `false` if they do not
          */
         diff(
             b: Connection,
@@ -3616,211 +3850,211 @@ export namespace NetworkManager {
          */
         dump(): void;
         /**
-         * Duplicates a #NMConnection.
-         * @returns a new #NMConnection containing the same settings and properties as the source #NMConnection
+         * Duplicates a {@link NetworkManager.Connection}.
+         * @returns a new {@link NetworkManager.Connection} containing the same settings and properties as the source {@link NetworkManager.Connection}
          */
         duplicate(): Connection;
         /**
-         * Iterates over the properties of each #NMSetting object in the #NMConnection,
+         * Iterates over the properties of each {@link NetworkManager.Setting} object in the {@link NetworkManager.Connection},
          * calling the supplied user function for each property.
          * @param func user-supplied function called for each setting's property
          */
         for_each_setting_value(func: SettingValueIterFn): void;
         /**
-         * A shortcut to return the type from the connection's #NMSettingConnection.
+         * A shortcut to return the type from the connection's {@link NetworkManager.SettingConnection}.
          * @returns the type from the connection's 'connection' setting
          */
         get_connection_type(): string;
         /**
-         * A shortcut to return the ID from the connection's #NMSettingConnection.
+         * A shortcut to return the ID from the connection's {@link NetworkManager.SettingConnection}.
          * @returns the ID from the connection's 'connection' setting
          */
         get_id(): string;
         /**
          * Returns the interface name as stored in NMSettingConnection:interface_name.
-         * If the connection contains no NMSettingConnection, it will return %NULL.
+         * If the connection contains no NMSettingConnection, it will return `null`.
          *
          * For hardware devices and software devices created outside of NetworkManager,
          * this name is used to match the device. for software devices created by
          * NetworkManager, this is the name of the created interface.
-         * @returns Name of the kernel interface or %NULL
+         * @returns Name of the kernel interface or `null`
          */
         get_interface_name(): string;
         /**
          * Returns the connection's D-Bus path.
-         * @returns the D-Bus path of the connection, previously set by a call to nm_connection_set_path().
+         * @returns the D-Bus path of the connection, previously set by a call to `nm_connection_set_path()`.
          */
         get_path(): string;
         /**
-         * Gets the #NMSetting with the given #GType, if one has been previously added
-         * to the #NMConnection.
-         * @param setting_type the #GType of the setting object to return
-         * @returns the #NMSetting, or %NULL if no setting of that type was previously added to the #NMConnection
+         * Gets the {@link NetworkManager.Setting} with the given {@link GObject.GType}, if one has been previously added
+         * to the {@link NetworkManager.Connection}.
+         * @param setting_type the {@link GObject.GType} of the setting object to return
+         * @returns the {@link NetworkManager.Setting}, or `null` if no setting of that type was previously added to the {@link NetworkManager.Connection}
          */
         get_setting(setting_type: GObject.GType): Setting;
         /**
-         * A shortcut to return any #NMSetting8021x the connection might contain.
-         * @returns an #NMSetting8021x if the connection contains one, otherwise %NULL
+         * A shortcut to return any {@link NetworkManager.Setting8021x} the connection might contain.
+         * @returns an {@link NetworkManager.Setting8021x} if the connection contains one, otherwise `null`
          */
         get_setting_802_1x(): Setting8021x;
         /**
-         * A shortcut to return any #NMSettingAdsl the connection might contain.
-         * @returns an #NMSettingAdsl if the connection contains one, otherwise %NULL
+         * A shortcut to return any {@link NetworkManager.SettingAdsl} the connection might contain.
+         * @returns an {@link NetworkManager.SettingAdsl} if the connection contains one, otherwise `null`
          */
         get_setting_adsl(): SettingAdsl;
         /**
-         * A shortcut to return any #NMSettingBluetooth the connection might contain.
-         * @returns an #NMSettingBluetooth if the connection contains one, otherwise %NULL
+         * A shortcut to return any {@link NetworkManager.SettingBluetooth} the connection might contain.
+         * @returns an {@link NetworkManager.SettingBluetooth} if the connection contains one, otherwise `null`
          */
         get_setting_bluetooth(): SettingBluetooth;
         /**
-         * A shortcut to return any #NMSettingBond the connection might contain.
-         * @returns an #NMSettingBond if the connection contains one, otherwise %NULL
+         * A shortcut to return any {@link NetworkManager.SettingBond} the connection might contain.
+         * @returns an {@link NetworkManager.SettingBond} if the connection contains one, otherwise `null`
          */
         get_setting_bond(): SettingBond;
         /**
-         * A shortcut to return any #NMSettingBridge the connection might contain.
-         * @returns an #NMSettingBridge if the connection contains one, otherwise %NULL
+         * A shortcut to return any {@link NetworkManager.SettingBridge} the connection might contain.
+         * @returns an {@link NetworkManager.SettingBridge} if the connection contains one, otherwise `null`
          */
         get_setting_bridge(): SettingBridge;
         /**
-         * A shortcut to return any #NMSettingBridgePort the connection might contain.
-         * @returns an #NMSettingBridgePort if the connection contains one, otherwise %NULL
+         * A shortcut to return any {@link NetworkManager.SettingBridgePort} the connection might contain.
+         * @returns an {@link NetworkManager.SettingBridgePort} if the connection contains one, otherwise `null`
          */
         get_setting_bridge_port(): SettingBridgePort;
         /**
-         * Gets the #NMSetting with the given name, if one has been previously added
-         * the #NMConnection.
+         * Gets the {@link NetworkManager.Setting} with the given name, if one has been previously added
+         * the {@link NetworkManager.Connection}.
          * @param name a setting name
-         * @returns the #NMSetting, or %NULL if no setting with that name was previously added to the #NMConnection
+         * @returns the {@link NetworkManager.Setting}, or `null` if no setting with that name was previously added to the {@link NetworkManager.Connection}
          */
         get_setting_by_name(name: string): Setting;
         /**
-         * A shortcut to return any #NMSettingCdma the connection might contain.
-         * @returns an #NMSettingCdma if the connection contains one, otherwise %NULL
+         * A shortcut to return any {@link NetworkManager.SettingCdma} the connection might contain.
+         * @returns an {@link NetworkManager.SettingCdma} if the connection contains one, otherwise `null`
          */
         get_setting_cdma(): SettingCdma;
         /**
-         * A shortcut to return any #NMSettingConnection the connection might contain.
-         * @returns an #NMSettingConnection if the connection contains one, otherwise %NULL
+         * A shortcut to return any {@link NetworkManager.SettingConnection} the connection might contain.
+         * @returns an {@link NetworkManager.SettingConnection} if the connection contains one, otherwise `null`
          */
         get_setting_connection(): SettingConnection;
         /**
-         * A shortcut to return any #NMSettingDcb the connection might contain.
-         * @returns an #NMSettingDcb if the connection contains one, otherwise NULL
+         * A shortcut to return any {@link NetworkManager.SettingDcb} the connection might contain.
+         * @returns an {@link NetworkManager.SettingDcb} if the connection contains one, otherwise NULL
          */
         get_setting_dcb(): SettingDcb;
         /**
-         * A shortcut to return any #NMSettingGeneric the connection might contain.
-         * @returns an #NMSettingGeneric if the connection contains one, otherwise NULL
+         * A shortcut to return any {@link NetworkManager.SettingGeneric} the connection might contain.
+         * @returns an {@link NetworkManager.SettingGeneric} if the connection contains one, otherwise NULL
          */
         get_setting_generic(): SettingGeneric;
         /**
-         * A shortcut to return any #NMSettingGsm the connection might contain.
-         * @returns an #NMSettingGsm if the connection contains one, otherwise %NULL
+         * A shortcut to return any {@link NetworkManager.SettingGsm} the connection might contain.
+         * @returns an {@link NetworkManager.SettingGsm} if the connection contains one, otherwise `null`
          */
         get_setting_gsm(): SettingGsm;
         /**
-         * A shortcut to return any #NMSettingInfiniband the connection might contain.
-         * @returns an #NMSettingInfiniband if the connection contains one, otherwise %NULL
+         * A shortcut to return any {@link NetworkManager.SettingInfiniband} the connection might contain.
+         * @returns an {@link NetworkManager.SettingInfiniband} if the connection contains one, otherwise `null`
          */
         get_setting_infiniband(): SettingInfiniband;
         /**
-         * A shortcut to return any #NMSettingIP4Config the connection might contain.
-         * @returns an #NMSettingIP4Config if the connection contains one, otherwise %NULL
+         * A shortcut to return any {@link NetworkManager.SettingIP4Config} the connection might contain.
+         * @returns an {@link NetworkManager.SettingIP4Config} if the connection contains one, otherwise `null`
          */
         get_setting_ip4_config(): SettingIP4Config;
         /**
-         * A shortcut to return any #NMSettingIP6Config the connection might contain.
-         * @returns an #NMSettingIP6Config if the connection contains one, otherwise %NULL
+         * A shortcut to return any {@link NetworkManager.SettingIP6Config} the connection might contain.
+         * @returns an {@link NetworkManager.SettingIP6Config} if the connection contains one, otherwise `null`
          */
         get_setting_ip6_config(): SettingIP6Config;
         /**
-         * A shortcut to return any #NMSettingOlpcMesh the connection might contain.
-         * @returns an #NMSettingOlpcMesh if the connection contains one, otherwise %NULL
+         * A shortcut to return any {@link NetworkManager.SettingOlpcMesh} the connection might contain.
+         * @returns an {@link NetworkManager.SettingOlpcMesh} if the connection contains one, otherwise `null`
          */
         get_setting_olpc_mesh(): SettingOlpcMesh;
         /**
-         * A shortcut to return any #NMSettingPPP the connection might contain.
-         * @returns an #NMSettingPPP if the connection contains one, otherwise %NULL
+         * A shortcut to return any {@link NetworkManager.SettingPPP} the connection might contain.
+         * @returns an {@link NetworkManager.SettingPPP} if the connection contains one, otherwise `null`
          */
         get_setting_ppp(): SettingPPP;
         /**
-         * A shortcut to return any #NMSettingPPPOE the connection might contain.
-         * @returns an #NMSettingPPPOE if the connection contains one, otherwise %NULL
+         * A shortcut to return any {@link NetworkManager.SettingPPPOE} the connection might contain.
+         * @returns an {@link NetworkManager.SettingPPPOE} if the connection contains one, otherwise `null`
          */
         get_setting_pppoe(): SettingPPPOE;
         /**
-         * A shortcut to return any #NMSettingSerial the connection might contain.
-         * @returns an #NMSettingSerial if the connection contains one, otherwise %NULL
+         * A shortcut to return any {@link NetworkManager.SettingSerial} the connection might contain.
+         * @returns an {@link NetworkManager.SettingSerial} if the connection contains one, otherwise `null`
          */
         get_setting_serial(): SettingSerial;
         /**
-         * A shortcut to return any #NMSettingTeam the connection might contain.
-         * @returns an #NMSettingTeam if the connection contains one, otherwise %NULL
+         * A shortcut to return any {@link NetworkManager.SettingTeam} the connection might contain.
+         * @returns an {@link NetworkManager.SettingTeam} if the connection contains one, otherwise `null`
          */
         get_setting_team(): SettingTeam;
         /**
-         * A shortcut to return any #NMSettingTeamPort the connection might contain.
-         * @returns an #NMSettingTeamPort if the connection contains one, otherwise %NULL
+         * A shortcut to return any {@link NetworkManager.SettingTeamPort} the connection might contain.
+         * @returns an {@link NetworkManager.SettingTeamPort} if the connection contains one, otherwise `null`
          */
         get_setting_team_port(): SettingTeamPort;
         /**
-         * A shortcut to return any #NMSettingVlan the connection might contain.
-         * @returns an #NMSettingVlan if the connection contains one, otherwise %NULL
+         * A shortcut to return any {@link NetworkManager.SettingVlan} the connection might contain.
+         * @returns an {@link NetworkManager.SettingVlan} if the connection contains one, otherwise `null`
          */
         get_setting_vlan(): SettingVlan;
         /**
-         * A shortcut to return any #NMSettingVPN the connection might contain.
-         * @returns an #NMSettingVPN if the connection contains one, otherwise %NULL
+         * A shortcut to return any {@link NetworkManager.SettingVPN} the connection might contain.
+         * @returns an {@link NetworkManager.SettingVPN} if the connection contains one, otherwise `null`
          */
         get_setting_vpn(): SettingVPN;
         /**
-         * A shortcut to return any #NMSettingWimax the connection might contain.
-         * @returns an #NMSettingWimax if the connection contains one, otherwise %NULL
+         * A shortcut to return any {@link NetworkManager.SettingWimax} the connection might contain.
+         * @returns an {@link NetworkManager.SettingWimax} if the connection contains one, otherwise `null`
          */
         get_setting_wimax(): SettingWimax;
         /**
-         * A shortcut to return any #NMSettingWired the connection might contain.
-         * @returns an #NMSettingWired if the connection contains one, otherwise %NULL
+         * A shortcut to return any {@link NetworkManager.SettingWired} the connection might contain.
+         * @returns an {@link NetworkManager.SettingWired} if the connection contains one, otherwise `null`
          */
         get_setting_wired(): SettingWired;
         /**
-         * A shortcut to return any #NMSettingWireless the connection might contain.
-         * @returns an #NMSettingWireless if the connection contains one, otherwise %NULL
+         * A shortcut to return any {@link NetworkManager.SettingWireless} the connection might contain.
+         * @returns an {@link NetworkManager.SettingWireless} if the connection contains one, otherwise `null`
          */
         get_setting_wireless(): SettingWireless;
         /**
-         * A shortcut to return any #NMSettingWirelessSecurity the connection might contain.
-         * @returns an #NMSettingWirelessSecurity if the connection contains one, otherwise %NULL
+         * A shortcut to return any {@link NetworkManager.SettingWirelessSecurity} the connection might contain.
+         * @returns an {@link NetworkManager.SettingWirelessSecurity} if the connection contains one, otherwise `null`
          */
         get_setting_wireless_security(): SettingWirelessSecurity;
         /**
-         * A shortcut to return the UUID from the connection's #NMSettingConnection.
+         * A shortcut to return the UUID from the connection's {@link NetworkManager.SettingConnection}.
          * @returns the UUID from the connection's 'connection' setting
          */
         get_uuid(): string;
         /**
-         * Returns the name that nm_device_disambiguate_names() would
+         * Returns the name that `nm_device_disambiguate_names()` would
          * return for the virtual device that would be created for `connection`.
          * Eg, "VLAN (eth1.1)".
-         * @returns the name of @connection's device,   or %NULL if @connection is not a virtual connection type
+         * @returns the name of `connection`'s device,   or `null` if `connection` is not a virtual connection type
          */
         get_virtual_device_description(): string;
         /**
          * Returns the name of the virtual kernel interface which the connection
          * needs to use if specified in the settings. This function abstracts all
          * connection types which require this functionality. For all other
-         * connection types, this function will return %NULL.
-         * @returns Name of the kernel interface or %NULL
+         * connection types, this function will return `null`.
+         * @returns Name of the kernel interface or `null`
          */
         get_virtual_iface_name(): string;
         /**
          * A convenience function to check if the given `connection` is a particular
-         * type (ie wired, Wi-Fi, ppp, etc). Checks the #NMSettingConnection:type
+         * type (ie wired, Wi-Fi, ppp, etc). Checks the {@link NetworkManager.SettingConnection.type}
          * property of the connection and matches that against `type`.
-         * @param type a setting name to check the connection's type against (like %NM_SETTING_WIRELESS_SETTING_NAME or %NM_SETTING_WIRED_SETTING_NAME)
-         * @returns %TRUE if the connection is of the given @type, %FALSE if not
+         * @param type a setting name to check the connection's type against (like `NM_SETTING_WIRELESS_SETTING_NAME` or `NM_SETTING_WIRED_SETTING_NAME`)
+         * @returns `true` if the connection is of the given `type`, `false` if not
          */
         is_type(type: string): boolean;
         /**
@@ -3829,64 +4063,68 @@ export namespace NetworkManager {
          * intended as a guide to what secrets may be required, because in some
          * circumstances, there is no way to conclusively determine exactly which
          * secrets are needed.
-         * @returns the setting name of the #NMSetting object which has invalid or   missing secrets
+         * @returns the setting name of the {@link NetworkManager.Setting} object which has invalid or   missing secrets
          */
         need_secrets(): [string, string[] | null];
         /**
          * Does some basic normalization and fixup of well known inconsistencies
          * and deprecated fields. If the connection was modified in any way,
-         * the output parameter `modified` is set %TRUE.
+         * the output parameter `modified` is set `true`.
          *
-         * Finally the connection will be verified and %TRUE returns if the connection
+         * Finally the connection will be verified and `true` returns if the connection
          * is valid. As this function only performs some specific normalization steps
          * it cannot repair all connections. If the connection has errors that
          * cannot be normalized, the connection will not be modified.
-         * @param parameters a #GHashTable with normalization parameters to allow customization of the normalization by providing specific arguments. Unknown arguments will be ignored and the default will be used. The keys must be strings, hashed by g_str_hash() and g_str_equal() functions. The values are opaque and depend on the parameter name.
-         * @returns %TRUE if the connection is valid, %FALSE if it is not
+         * @param parameters a {@link GLib.HashTable} with normalization parameters to allow customization of the normalization by providing specific arguments. Unknown arguments will be ignored and the default will be used. The keys must be strings, hashed by `g_str_hash()` and `g_str_equal()` functions. The values are opaque and depend on the parameter name.
+         * @returns `true` if the connection is valid, `false` if it is not
          */
         normalize(parameters: GLib.HashTable<string, any> | null): [boolean, boolean];
         /**
-         * Removes the #NMSetting with the given #GType from the #NMConnection.  This
-         * operation dereferences the #NMSetting object.
-         * @param setting_type the #GType of the setting object to remove
+         * Removes the {@link NetworkManager.Setting} with the given {@link GObject.GType} from the {@link NetworkManager.Connection}.  This
+         * operation dereferences the {@link NetworkManager.Setting} object.
+         * @param setting_type the {@link GObject.GType} of the setting object to remove
          */
         remove_setting(setting_type: GObject.GType): void;
+        /**
+         * @param new_settings a {@link GLib.HashTable} of settings
+         * @returns `true` if the settings were valid and added to the connection, `false` if they were not
+         */
         replace_settings(new_settings: { [key: string]: any } | GLib.HashTable<string, GLib.HashTable>): boolean;
         /**
          * Deep-copies the settings of `new_conenction` and replaces the settings of `connection`
          * with the copied settings.
-         * @param new_connection a #NMConnection to replace the settings of @connection with
-         * @returns %TRUE if the settings were valid after replacing the connection, %FALSE if they were not. Regardless of whether %TRUE or %FALSE is returned, the connection is successfully replaced. %FALSE only means, that the connection does not verify at the end of the operation.
+         * @param new_connection a {@link NetworkManager.Connection} to replace the settings of `connection` with
+         * @returns `true` if the settings were valid after replacing the connection, `false` if they were not. Regardless of whether `true` or `false` is returned, the connection is successfully replaced. `false` only means, that the connection does not verify at the end of the operation.
          */
         replace_settings_from_connection(new_connection: Connection): boolean;
         /**
          * Sets the D-Bus path of the connection.  This property is not serialized, and
-         * is only for the reference of the caller.  Sets the #NMConnection:path
+         * is only for the reference of the caller.  Sets the {@link NetworkManager.Connection.path}
          * property.
          * @param path the D-Bus path of the connection as given by the settings service which provides the connection
          */
         set_path(path: string): void;
         /**
-         * Converts the #NMConnection into a #GHashTable describing the connection,
+         * Converts the {@link NetworkManager.Connection} into a {@link GLib.HashTable} describing the connection,
          * suitable for marshalling over D-Bus or serializing.  The hash table mapping
-         * is string:#GHashTable with each element in the returned hash representing
-         * a #NMSetting object.  The keys are setting object names, and the values
-         * are #GHashTables mapping string:GValue, each of which represents the
-         * properties of the #NMSetting object.
-         * @param flags hash flags, e.g. %NM_SETTING_HASH_FLAG_ALL
-         * @returns a new #GHashTable describing the connection, its settings, and each setting's properties.  The caller owns the hash table and must unref the hash table with g_hash_table_unref() when it is no longer needed.
+         * is string:{@link GLib.HashTable} with each element in the returned hash representing
+         * a {@link NetworkManager.Setting} object.  The keys are setting object names, and the values
+         * are `GHashTables` mapping string:GValue, each of which represents the
+         * properties of the {@link NetworkManager.Setting} object.
+         * @param flags hash flags, e.g. {@link NetworkManager.SettingHashFlags.ALL}
+         * @returns a new {@link GLib.HashTable} describing the connection, its settings, and each setting's properties.  The caller owns the hash table and must unref the hash table with `g_hash_table_unref()` when it is no longer needed.
          */
         to_hash(flags: SettingHashFlags | null): GLib.HashTable<string, GLib.HashTable>;
         /**
          * Update the specified setting's secrets, given a hash table of secrets
          * intended for that setting (deserialized from D-Bus for example).  Will also
          * extract the given setting's secrets hash if given a hash of hashes, as would
-         * be returned from nm_connection_to_hash().  If `setting_name` is %NULL, expects
-         * a fully serialized #NMConnection as returned by nm_connection_to_hash() and
+         * be returned from `nm_connection_to_hash()`.  If `setting_name` is `null`, expects
+         * a fully serialized {@link NetworkManager.Connection} as returned by `nm_connection_to_hash()` and
          * will update all secrets from all settings contained in `secrets`.
          * @param setting_name the setting object name to which the secrets apply
-         * @param secrets a #GHashTable mapping string:#GValue of setting property names and secrets of the given @setting_name
-         * @returns %TRUE if the secrets were successfully updated, %FALSE if the update failed (tried to update secrets for a setting that doesn't exist, etc)
+         * @param secrets a {@link GLib.HashTable} mapping string:{@link GObject.Value} of setting property names and secrets of the given `setting_name`
+         * @returns `true` if the secrets were successfully updated, `false` if the update failed (tried to update secrets for a setting that doesn't exist, etc)
          */
         update_secrets(
             setting_name: string,
@@ -3895,14 +4133,14 @@ export namespace NetworkManager {
         /**
          * Validates the connection and all its settings.  Each setting's properties
          * have allowed values, and some values are dependent on other values.  For
-         * example, if a Wi-Fi connection is security enabled, the #NMSettingWireless
+         * example, if a Wi-Fi connection is security enabled, the {@link NetworkManager.SettingWireless}
          * setting object's 'security' property must contain the setting name of the
-         * #NMSettingWirelessSecurity object, which must also be present in the
+         * {@link NetworkManager.SettingWirelessSecurity} object, which must also be present in the
          * connection for the connection to be valid.  As another example, the
-         * #NMSettingWired object's 'mac-address' property must be a validly formatted
-         * MAC address.  The returned #GError contains information about which
+         * {@link NetworkManager.SettingWired} object's 'mac-address' property must be a validly formatted
+         * MAC address.  The returned {@link GLib.Error} contains information about which
          * setting and which property failed validation, and how it failed validation.
-         * @returns %TRUE if the connection is valid, %FALSE if it is not
+         * @returns `true` if the connection is valid, `false` if it is not
          */
         verify(): boolean;
     }
@@ -3923,6 +4161,7 @@ export namespace NetworkManager {
     /**
      * The NMSetting struct contains only private data.
      * It should only be accessed through the functions described below.
+     * @gir-type Class
      */
     abstract class Setting extends GObject.Object {
         static $gtype: GObject.GType<Setting>;
@@ -3959,16 +4198,19 @@ export namespace NetworkManager {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Setting.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Setting.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Setting.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Setting.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Setting.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Setting.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3977,11 +4219,24 @@ export namespace NetworkManager {
 
         // Virtual methods
 
+        /**
+         * @param other
+         * @param prop_spec
+         * @param flags
+         * @virtual
+         */
         vfunc_compare_property(other: Setting, prop_spec: GObject.ParamSpec, flags: SettingCompareFlags): boolean;
+        /**
+         * @param secret_name
+         * @param verify_secret
+         * @param out_flags
+         * @virtual
+         */
         vfunc_get_secret_flags(secret_name: string, verify_secret: boolean, out_flags: SettingSecretFlags): boolean;
         /**
          * Returns the name of the virtual kernel interface which the connection
          * needs to use if specified in the settings.
+         * @virtual
          */
         vfunc_get_virtual_iface_name(): string;
         /**
@@ -3989,9 +4244,21 @@ export namespace NetworkManager {
          * to make a successful connection.  The returned hints are only intended as a
          * guide to what secrets may be required, because in some circumstances, there
          * is no way to conclusively determine exactly which secrets are needed.
+         * @virtual
          */
         vfunc_need_secrets(): string[];
+        /**
+         * @param secret_name
+         * @param verify_secret
+         * @param flags
+         * @virtual
+         */
         vfunc_set_secret_flags(secret_name: string, verify_secret: boolean, flags: SettingSecretFlags): boolean;
+        /**
+         * @param key
+         * @param value
+         * @virtual
+         */
         vfunc_update_one_secret(key: string, value: GObject.Value | any): number;
 
         // Methods
@@ -4008,25 +4275,25 @@ export namespace NetworkManager {
          */
         clear_secrets_with_flags(func: SettingClearSecretsWithFlagsFn): void;
         /**
-         * Compares two #NMSetting objects for similarity, with comparison behavior
-         * modified by a set of flags.  See the documentation for #NMSettingCompareFlags
+         * Compares two {@link NetworkManager.Setting} objects for similarity, with comparison behavior
+         * modified by a set of flags.  See the documentation for {@link NetworkManager.SettingCompareFlags}
          * for a description of each flag's behavior.
-         * @param b a second #NMSetting to compare with the first
-         * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
-         * @returns %TRUE if the comparison succeeds, %FALSE if it does not
+         * @param b a second {@link NetworkManager.Setting} to compare with the first
+         * @param flags compare flags, e.g. {@link NetworkManager.SettingCompareFlags.EXACT}
+         * @returns `true` if the comparison succeeds, `false` if it does not
          */
         compare(b: Setting, flags: SettingCompareFlags | null): boolean;
         /**
-         * Compares two #NMSetting objects for similarity, with comparison behavior
-         * modified by a set of flags.  See the documentation for #NMSettingCompareFlags
+         * Compares two {@link NetworkManager.Setting} objects for similarity, with comparison behavior
+         * modified by a set of flags.  See the documentation for {@link NetworkManager.SettingCompareFlags}
          * for a description of each flag's behavior.  If the settings differ, the keys
-         * of each setting that differ from the other are added to `results,` mapped to
-         * one or more #NMSettingDiffResult values.
-         * @param b a second #NMSetting to compare with the first
-         * @param flags compare flags, e.g. %NM_SETTING_COMPARE_FLAG_EXACT
-         * @param invert_results this parameter is used internally by libnm-util and should be set to %FALSE.  If %TRUE inverts the meaning of the #NMSettingDiffResult.
+         * of each setting that differ from the other are added to `results`, mapped to
+         * one or more {@link NetworkManager.SettingDiffResult} values.
+         * @param b a second {@link NetworkManager.Setting} to compare with the first
+         * @param flags compare flags, e.g. {@link NetworkManager.SettingCompareFlags.EXACT}
+         * @param invert_results this parameter is used internally by libnm-util and should be set to `false`.  If `true` inverts the meaning of the {@link NetworkManager.SettingDiffResult}.
          * @param results if the settings differ, on return a hash table mapping the differing keys to one or more %NMSettingDiffResult values OR-ed together.  If the settings do not differ, any hash table passed in is unmodified.  If no hash table is passed in and the settings differ, a new one is created and returned.
-         * @returns %TRUE if the settings contain the same values, %FALSE if they do not
+         * @returns `true` if the settings contain the same values, `false` if they do not
          */
         diff(
             b: Setting,
@@ -4035,33 +4302,33 @@ export namespace NetworkManager {
             results: { [key: string]: any } | GLib.HashTable<string, number>,
         ): [boolean, GLib.HashTable<string, number>];
         /**
-         * Duplicates a #NMSetting.
-         * @returns a new #NMSetting containing the same properties and values as the source #NMSetting
+         * Duplicates a {@link NetworkManager.Setting}.
+         * @returns a new {@link NetworkManager.Setting} containing the same properties and values as the source {@link NetworkManager.Setting}
          */
         duplicate(): Setting;
         /**
-         * Iterates over each property of the #NMSetting object, calling the supplied
+         * Iterates over each property of the {@link NetworkManager.Setting} object, calling the supplied
          * user function for each property.
          * @param func user-supplied function called for each property of the setting
          */
         enumerate_values(func: SettingValueIterFn): void;
         /**
-         * Returns the type name of the #NMSetting object
-         * @returns a string containing the type name of the #NMSetting object, like 'ppp' or 'wireless' or 'wired'.
+         * Returns the type name of the {@link NetworkManager.Setting} object
+         * @returns a string containing the type name of the {@link NetworkManager.Setting} object, like 'ppp' or 'wireless' or 'wired'.
          */
         get_name(): string;
         /**
-         * For a given secret, retrieves the #NMSettingSecretFlags describing how to
+         * For a given secret, retrieves the {@link NetworkManager.SettingSecretFlags} describing how to
          * handle that secret.
          * @param secret_name the secret key name to get flags for
-         * @param out_flags on success, the #NMSettingSecretFlags for the secret
-         * @returns %TRUE on success (if the given secret name was a valid property of this setting, and if that property is secret), %FALSE if not
+         * @param out_flags on success, the {@link NetworkManager.SettingSecretFlags} for the secret
+         * @returns `true` on success (if the given secret name was a valid property of this setting, and if that property is secret), `false` if not
          */
         get_secret_flags(secret_name: string, out_flags: SettingSecretFlags | null): boolean;
         /**
          * Returns the name of the virtual kernel interface which the connection
          * needs to use if specified in the settings.
-         * @returns Name of the virtual interface or %NULL if the setting does not support this feature
+         * @returns Name of the virtual interface or `null` if the setting does not support this feature
          */
         get_virtual_iface_name(): string;
         /**
@@ -4069,46 +4336,46 @@ export namespace NetworkManager {
          * to make a successful connection.  The returned hints are only intended as a
          * guide to what secrets may be required, because in some circumstances, there
          * is no way to conclusively determine exactly which secrets are needed.
-         * @returns a #GPtrArray containing the property names of secrets of the #NMSetting which may be required; the caller owns the array and must free it with g_ptr_array_free(), but must not free the elements.
+         * @returns a {@link GLib.PtrArray} containing the property names of secrets of the {@link NetworkManager.Setting} which may be required; the caller owns the array and must free it with `g_ptr_array_free()`, but must not free the elements.
          */
         need_secrets(): string[];
         /**
-         * For a given secret, stores the #NMSettingSecretFlags describing how to
+         * For a given secret, stores the {@link NetworkManager.SettingSecretFlags} describing how to
          * handle that secret.
          * @param secret_name the secret key name to set flags for
-         * @param flags the #NMSettingSecretFlags for the secret
-         * @returns %TRUE on success (if the given secret name was a valid property of this setting, and if that property is secret), %FALSE if not
+         * @param flags the {@link NetworkManager.SettingSecretFlags} for the secret
+         * @returns `true` on success (if the given secret name was a valid property of this setting, and if that property is secret), `false` if not
          */
         set_secret_flags(secret_name: string, flags: SettingSecretFlags | null): boolean;
         /**
-         * Converts the #NMSetting into a #GHashTable mapping each setting property
+         * Converts the {@link NetworkManager.Setting} into a {@link GLib.HashTable} mapping each setting property
          * name to a GValue describing that property, suitable for marshalling over
          * D-Bus or serializing.  The mapping is string to GValue.
-         * @param flags hash flags, e.g. %NM_SETTING_HASH_FLAG_ALL
-         * @returns a new #GHashTable describing the setting's properties
+         * @param flags hash flags, e.g. {@link NetworkManager.SettingHashFlags.ALL}
+         * @returns a new {@link GLib.HashTable} describing the setting's properties
          */
         to_hash(flags: SettingHashFlags | null): GLib.HashTable<string, GObject.Value>;
         /**
          * Convert the setting into a string.  For debugging purposes ONLY, should NOT
          * be used for serialization of the setting, or machine-parsed in any way. The
          * output format is not guaranteed to be stable and may change at any time.
-         * @returns an allocated string containing a textual representation of the setting's properties and values (including secrets!), which the caller should free with g_free()
+         * @returns an allocated string containing a textual representation of the setting's properties and values (including secrets!), which the caller should free with `g_free()`
          */
         to_string(): string;
         /**
          * Update the setting's secrets, given a hash table of secrets intended for that
          * setting (deserialized from D-Bus for example).
-         * @param secrets a #GHashTable mapping string to #GValue of setting property names and secrets
-         * @returns %TRUE if the secrets were successfully updated, %FALSE on failure to update one or more of the secrets.
+         * @param secrets a {@link GLib.HashTable} mapping string to {@link GObject.Value} of setting property names and secrets
+         * @returns `true` if the secrets were successfully updated, `false` on failure to update one or more of the secrets.
          */
         update_secrets(secrets: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): boolean;
         /**
          * Validates the setting.  Each setting's properties have allowed values, and
-         * some are dependent on other values (hence the need for `all_settings)`.  The
-         * returned #GError contains information about which property of the setting
+         * some are dependent on other values (hence the need for `all_settings`).  The
+         * returned {@link GLib.Error} contains information about which property of the setting
          * failed validation, and in what way that property failed validation.
-         * @param all_settings a #GSList of all settings     in the connection from which @setting came
-         * @returns %TRUE if the setting is valid, %FALSE if it is not
+         * @param all_settings a {@link GLib.SList} of all settings     in the connection from which `setting` came
+         * @returns `true` if the setting is valid, `false` if it is not
          */
         verify(all_settings: Setting[]): boolean;
     }
@@ -4188,6 +4455,9 @@ export namespace NetworkManager {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Setting8021x extends Setting {
         static $gtype: GObject.GType<Setting8021x>;
 
@@ -4210,14 +4480,14 @@ export namespace NetworkManager {
         /**
          * UTF-8 encoded path to a directory containing PEM or DER formatted
          * certificates to be added to the verification chain in addition to the
-         * certificate specified in the #NMSetting8021x:ca-cert property.
+         * certificate specified in the {@link NetworkManager.Setting8021x.ca_cert} property.
          */
         get ca_path(): string;
         set ca_path(val: string);
         /**
          * UTF-8 encoded path to a directory containing PEM or DER formatted
          * certificates to be added to the verification chain in addition to the
-         * certificate specified in the #NMSetting8021x:ca-cert property.
+         * certificate specified in the {@link NetworkManager.Setting8021x.ca_cert} property.
          */
         get caPath(): string;
         set caPath(val: string);
@@ -4239,34 +4509,34 @@ export namespace NetworkManager {
         set pacFile(val: string);
         /**
          * UTF-8 encoded password used for EAP authentication methods. If both the
-         * #NMSetting8021x:password property and the #NMSetting8021x:password-raw
-         * property are specified, #NMSetting8021x:password is preferred.
+         * {@link NetworkManager.Setting8021x.password} property and the {@link NetworkManager.Setting8021x.password_raw}
+         * property are specified, {@link NetworkManager.Setting8021x.password} is preferred.
          */
         get password(): string;
         set password(val: string);
         /**
-         * Flags indicating how to handle the #NMSetting8021x:password property.
+         * Flags indicating how to handle the {@link NetworkManager.Setting8021x.password} property.
          */
         get password_flags(): number;
         set password_flags(val: number);
         /**
-         * Flags indicating how to handle the #NMSetting8021x:password property.
+         * Flags indicating how to handle the {@link NetworkManager.Setting8021x.password} property.
          */
         get passwordFlags(): number;
         set passwordFlags(val: number);
         /**
-         * Flags indicating how to handle the #NMSetting8021x:password-raw property.
+         * Flags indicating how to handle the {@link NetworkManager.Setting8021x.password_raw} property.
          */
         get password_raw_flags(): number;
         set password_raw_flags(val: number);
         /**
-         * Flags indicating how to handle the #NMSetting8021x:password-raw property.
+         * Flags indicating how to handle the {@link NetworkManager.Setting8021x.password_raw} property.
          */
         get passwordRawFlags(): number;
         set passwordRawFlags(val: number);
         /**
          * Enables or disables in-line provisioning of EAP-FAST credentials when
-         * FAST is specified as the EAP method in the #NMSetting8021x:eap property.
+         * FAST is specified as the EAP method in the {@link NetworkManager.Setting8021x.eap} property.
          * Recognized values are "0" (disabled), "1" (allow unauthenticated
          * provisioning), "2" (allow authenticated provisioning), and "3" (allow
          * both authenticated and unauthenticated provisioning).  See the
@@ -4276,7 +4546,7 @@ export namespace NetworkManager {
         set phase1_fast_provisioning(val: string);
         /**
          * Enables or disables in-line provisioning of EAP-FAST credentials when
-         * FAST is specified as the EAP method in the #NMSetting8021x:eap property.
+         * FAST is specified as the EAP method in the {@link NetworkManager.Setting8021x.eap} property.
          * Recognized values are "0" (disabled), "1" (allow unauthenticated
          * provisioning), "2" (allow authenticated provisioning), and "3" (allow
          * both authenticated and unauthenticated provisioning).  See the
@@ -4302,7 +4572,7 @@ export namespace NetworkManager {
         set phase1Peaplabel(val: string);
         /**
          * Forces which PEAP version is used when PEAP is set as the EAP method in
-         * the #NMSetting8021x:eap property.  When unset, the version reported by
+         * the {@link NetworkManager.Setting8021x.eap} property.  When unset, the version reported by
          * the server will be used.  Sometimes when using older RADIUS servers, it
          * is necessary to force the client to use a particular PEAP version.  To do
          * so, this property may be set to "0" or "1" to force that specific PEAP
@@ -4312,7 +4582,7 @@ export namespace NetworkManager {
         set phase1_peapver(val: string);
         /**
          * Forces which PEAP version is used when PEAP is set as the EAP method in
-         * the #NMSetting8021x:eap property.  When unset, the version reported by
+         * the {@link NetworkManager.Setting8021x.eap} property.  When unset, the version reported by
          * the server will be used.  Sometimes when using older RADIUS servers, it
          * is necessary to force the client to use a particular PEAP version.  To do
          * so, this property may be set to "0" or "1" to force that specific PEAP
@@ -4323,7 +4593,7 @@ export namespace NetworkManager {
         /**
          * Specifies the allowed "phase 2" inner non-EAP authentication methods when
          * an EAP method that uses an inner TLS tunnel is specified in the
-         * #NMSetting8021x:eap property.  Recognized non-EAP "phase 2" methods are
+         * {@link NetworkManager.Setting8021x.eap} property.  Recognized non-EAP "phase 2" methods are
          * "pap", "chap", "mschap", "mschapv2", "gtc", "otp", "md5", and "tls".
          * Each "phase 2" inner method requires specific parameters for successful
          * authentication; see the wpa_supplicant documentation for more details.
@@ -4333,7 +4603,7 @@ export namespace NetworkManager {
         /**
          * Specifies the allowed "phase 2" inner non-EAP authentication methods when
          * an EAP method that uses an inner TLS tunnel is specified in the
-         * #NMSetting8021x:eap property.  Recognized non-EAP "phase 2" methods are
+         * {@link NetworkManager.Setting8021x.eap} property.  Recognized non-EAP "phase 2" methods are
          * "pap", "chap", "mschap", "mschapv2", "gtc", "otp", "md5", and "tls".
          * Each "phase 2" inner method requires specific parameters for successful
          * authentication; see the wpa_supplicant documentation for more details.
@@ -4343,7 +4613,7 @@ export namespace NetworkManager {
         /**
          * Specifies the allowed "phase 2" inner EAP-based authentication methods
          * when an EAP method that uses an inner TLS tunnel is specified in the
-         * #NMSetting8021x:eap property.  Recognized EAP-based "phase 2" methods are
+         * {@link NetworkManager.Setting8021x.eap} property.  Recognized EAP-based "phase 2" methods are
          * "md5", "mschapv2", "otp", "gtc", and "tls". Each "phase 2" inner method
          * requires specific parameters for successful authentication; see the
          * wpa_supplicant documentation for more details.
@@ -4353,7 +4623,7 @@ export namespace NetworkManager {
         /**
          * Specifies the allowed "phase 2" inner EAP-based authentication methods
          * when an EAP method that uses an inner TLS tunnel is specified in the
-         * #NMSetting8021x:eap property.  Recognized EAP-based "phase 2" methods are
+         * {@link NetworkManager.Setting8021x.eap} property.  Recognized EAP-based "phase 2" methods are
          * "md5", "mschapv2", "otp", "gtc", and "tls". Each "phase 2" inner method
          * requires specific parameters for successful authentication; see the
          * wpa_supplicant documentation for more details.
@@ -4363,46 +4633,46 @@ export namespace NetworkManager {
         /**
          * UTF-8 encoded path to a directory containing PEM or DER formatted
          * certificates to be added to the verification chain in addition to the
-         * certificate specified in the #NMSetting8021x:phase2-ca-cert property.
+         * certificate specified in the {@link NetworkManager.Setting8021x.phase2_ca_cert} property.
          */
         get phase2_ca_path(): string;
         set phase2_ca_path(val: string);
         /**
          * UTF-8 encoded path to a directory containing PEM or DER formatted
          * certificates to be added to the verification chain in addition to the
-         * certificate specified in the #NMSetting8021x:phase2-ca-cert property.
+         * certificate specified in the {@link NetworkManager.Setting8021x.phase2_ca_cert} property.
          */
         get phase2CaPath(): string;
         set phase2CaPath(val: string);
         /**
          * The password used to decrypt the "phase 2" private key specified in the
-         * #NMSetting8021x:phase2-private-key property when the private key either
+         * {@link NetworkManager.Setting8021x.phase2_private_key} property when the private key either
          * uses the path scheme, or is a PKCS#<!-- -->12 format key.  Setting this property
          * directly is not generally necessary except when returning secrets to
          * NetworkManager; it is generally set automatically when setting the
-         * private key by the nm_setting_802_1x_set_phase2_private_key() function.
+         * private key by the `nm_setting_802_1x_set_phase2_private_key()` function.
          */
         get phase2_private_key_password(): string;
         set phase2_private_key_password(val: string);
         /**
          * The password used to decrypt the "phase 2" private key specified in the
-         * #NMSetting8021x:phase2-private-key property when the private key either
+         * {@link NetworkManager.Setting8021x.phase2_private_key} property when the private key either
          * uses the path scheme, or is a PKCS#<!-- -->12 format key.  Setting this property
          * directly is not generally necessary except when returning secrets to
          * NetworkManager; it is generally set automatically when setting the
-         * private key by the nm_setting_802_1x_set_phase2_private_key() function.
+         * private key by the `nm_setting_802_1x_set_phase2_private_key()` function.
          */
         get phase2PrivateKeyPassword(): string;
         set phase2PrivateKeyPassword(val: string);
         /**
          * Flags indicating how to handle the
-         * #NMSetting8021x:phase2-private-key-password property.
+         * {@link NetworkManager.Setting8021x.phase2_private_key_password} property.
          */
         get phase2_private_key_password_flags(): number;
         set phase2_private_key_password_flags(val: number);
         /**
          * Flags indicating how to handle the
-         * #NMSetting8021x:phase2-private-key-password property.
+         * {@link NetworkManager.Setting8021x.phase2_private_key_password} property.
          */
         get phase2PrivateKeyPasswordFlags(): number;
         set phase2PrivateKeyPasswordFlags(val: number);
@@ -4428,43 +4698,43 @@ export namespace NetworkManager {
         get pin(): string;
         set pin(val: string);
         /**
-         * Flags indicating how to handle the #NMSetting8021x:pin property.
+         * Flags indicating how to handle the {@link NetworkManager.Setting8021x.pin} property.
          */
         get pin_flags(): number;
         set pin_flags(val: number);
         /**
-         * Flags indicating how to handle the #NMSetting8021x:pin property.
+         * Flags indicating how to handle the {@link NetworkManager.Setting8021x.pin} property.
          */
         get pinFlags(): number;
         set pinFlags(val: number);
         /**
          * The password used to decrypt the private key specified in the
-         * #NMSetting8021x:private-key property when the private key either uses the
+         * {@link NetworkManager.Setting8021x.private_key} property when the private key either uses the
          * path scheme, or if the private key is a PKCS#<!-- -->12 format key.  Setting this
          * property directly is not generally necessary except when returning
          * secrets to NetworkManager; it is generally set automatically when setting
-         * the private key by the nm_setting_802_1x_set_private_key() function.
+         * the private key by the `nm_setting_802_1x_set_private_key()` function.
          */
         get private_key_password(): string;
         set private_key_password(val: string);
         /**
          * The password used to decrypt the private key specified in the
-         * #NMSetting8021x:private-key property when the private key either uses the
+         * {@link NetworkManager.Setting8021x.private_key} property when the private key either uses the
          * path scheme, or if the private key is a PKCS#<!-- -->12 format key.  Setting this
          * property directly is not generally necessary except when returning
          * secrets to NetworkManager; it is generally set automatically when setting
-         * the private key by the nm_setting_802_1x_set_private_key() function.
+         * the private key by the `nm_setting_802_1x_set_private_key()` function.
          */
         get privateKeyPassword(): string;
         set privateKeyPassword(val: string);
         /**
-         * Flags indicating how to handle the #NMSetting8021x:private-key-password
+         * Flags indicating how to handle the {@link NetworkManager.Setting8021x.private_key_password}
          * property.
          */
         get private_key_password_flags(): number;
         set private_key_password_flags(val: number);
         /**
-         * Flags indicating how to handle the #NMSetting8021x:private-key-password
+         * Flags indicating how to handle the {@link NetworkManager.Setting8021x.private_key_password}
          * property.
          */
         get privateKeyPasswordFlags(): number;
@@ -4484,22 +4754,22 @@ export namespace NetworkManager {
         get subjectMatch(): string;
         set subjectMatch(val: string);
         /**
-         * When %TRUE, overrides the #NMSetting8021x:ca-path and
-         * #NMSetting8021x:phase2-ca-path properties using the system CA directory
+         * When `true`, overrides the {@link NetworkManager.Setting8021x.ca_path} and
+         * {@link NetworkManager.Setting8021x.phase2_ca_path} properties using the system CA directory
          * specified at configure time with the --system-ca-path switch.  The
          * certificates in this directory are added to the verification chain in
-         * addition to any certificates specified by the #NMSetting8021x:ca-cert and
-         * #NMSetting8021x:phase2-ca-cert properties.
+         * addition to any certificates specified by the {@link NetworkManager.Setting8021x.ca_cert} and
+         * {@link NetworkManager.Setting8021x.phase2_ca_cert} properties.
          */
         get system_ca_certs(): boolean;
         set system_ca_certs(val: boolean);
         /**
-         * When %TRUE, overrides the #NMSetting8021x:ca-path and
-         * #NMSetting8021x:phase2-ca-path properties using the system CA directory
+         * When `true`, overrides the {@link NetworkManager.Setting8021x.ca_path} and
+         * {@link NetworkManager.Setting8021x.phase2_ca_path} properties using the system CA directory
          * specified at configure time with the --system-ca-path switch.  The
          * certificates in this directory are added to the verification chain in
-         * addition to any certificates specified by the #NMSetting8021x:ca-cert and
-         * #NMSetting8021x:phase2-ca-cert properties.
+         * addition to any certificates specified by the {@link NetworkManager.Setting8021x.ca_cert} and
+         * {@link NetworkManager.Setting8021x.phase2_ca_cert} properties.
          */
         get systemCaCerts(): boolean;
         set systemCaCerts(val: boolean);
@@ -4523,16 +4793,19 @@ export namespace NetworkManager {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Setting8021x.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Setting8021x.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Setting8021x.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Setting8021x.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Setting8021x.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Setting8021x.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4546,15 +4819,15 @@ export namespace NetworkManager {
          * match is added, the altSubjectName of the remote authentication
          * server is not verified.
          * @param altsubject_match the altSubjectName to allow for this connection
-         * @returns %TRUE if the alternative subject name match was  successfully added, %FALSE if it was already allowed.
+         * @returns `true` if the alternative subject name match was  successfully added, `false` if it was already allowed.
          */
         add_altsubject_match(altsubject_match: string): boolean;
         /**
          * Adds an allowed EAP method.  The setting is not valid until at least one
-         * EAP method has been added.  See #NMSetting8021x:eap property for a list of
+         * EAP method has been added.  See {@link NetworkManager.Setting8021x.eap} property for a list of
          * allowed EAP methods.
          * @param eap the name of the EAP method to allow for this connection
-         * @returns %TRUE if the EAP method was successfully added, %FALSE if it was  not a valid method or if it was already allowed.
+         * @returns `true` if the EAP method was successfully added, `false` if it was  not a valid method or if it was already allowed.
          */
         add_eap_method(eap: string): boolean;
         /**
@@ -4562,7 +4835,7 @@ export namespace NetworkManager {
          * at least one match is added, the altSubjectName of the "phase 2"
          * remote authentication server is not verified.
          * @param phase2_altsubject_match the "phase 2" altSubjectName to allow for this connection
-         * @returns %TRUE if the "phase 2" alternative subject name match was  successfully added, %FALSE if it was already allowed.
+         * @returns `true` if the "phase 2" alternative subject name match was  successfully added, `false` if it was already allowed.
          */
         add_phase2_altsubject_match(phase2_altsubject_match: string): boolean;
         /**
@@ -4580,20 +4853,20 @@ export namespace NetworkManager {
         /**
          * Returns the altSubjectName match at index `i`.
          * @param i the zero-based index of the array of altSubjectName matches
-         * @returns the altSubjectName match at index @i
+         * @returns the altSubjectName match at index `i`
          */
         get_altsubject_match(i: number): string;
         /**
          * Returns the anonymous identifier used by some EAP methods (like TTLS) to
          * authenticate the user in the outer unencrypted "phase 1" authentication.  The
-         * inner "phase 2" authentication will use the #NMSetting8021x:identity in
+         * inner "phase 2" authentication will use the {@link NetworkManager.Setting8021x.identity} in
          * a secure form, if applicable for that EAP method.
          * @returns the anonymous identifier
          */
         get_anonymous_identity(): string;
         /**
          * Returns the CA certificate blob if the CA certificate is stored using the
-         * %NM_SETTING_802_1X_CK_SCHEME_BLOB scheme.  Not all EAP methods use a
+         * {@link NetworkManager.Setting8021xCKScheme.BLOB} scheme.  Not all EAP methods use a
          * CA certificate (LEAP for example), and those that can take advantage of the
          * CA certificate allow it to be unset.  Note that lack of a CA certificate
          * reduces security by allowing man-in-the-middle attacks, because the identity
@@ -4603,7 +4876,7 @@ export namespace NetworkManager {
         get_ca_cert_blob(): Uint8Array;
         /**
          * Returns the CA certificate path if the CA certificate is stored using the
-         * %NM_SETTING_802_1X_CK_SCHEME_PATH scheme.  Not all EAP methods use a
+         * {@link NetworkManager.Setting8021xCKScheme.PATH} scheme.  Not all EAP methods use a
          * CA certificate (LEAP for example), and those that can take advantage of the
          * CA certificate allow it to be unset.  Note that lack of a CA certificate
          * reduces security by allowing man-in-the-middle attacks, because the identity
@@ -4613,8 +4886,8 @@ export namespace NetworkManager {
         get_ca_cert_path(): string;
         /**
          * Returns the scheme used to store the CA certificate.  If the returned scheme
-         * is %NM_SETTING_802_1X_CK_SCHEME_BLOB, use nm_setting_802_1x_get_ca_cert_blob();
-         * if %NM_SETTING_802_1X_CK_SCHEME_PATH, use nm_setting_802_1x_get_ca_cert_path().
+         * is {@link NetworkManager.Setting8021xCKScheme.BLOB}, use `nm_setting_802_1x_get_ca_cert_blob()`;
+         * if {@link NetworkManager.Setting8021xCKScheme.PATH}, use `nm_setting_802_1x_get_ca_cert_path()`.
          * @returns scheme used to store the CA certificate (blob or path)
          */
         get_ca_cert_scheme(): Setting8021xCKScheme;
@@ -4622,7 +4895,7 @@ export namespace NetworkManager {
          * Returns the path of the CA certificate directory if previously set.  Systems
          * will often have a directory that contains multiple individual CA certificates
          * which the supplicant can then add to the verification chain.  This may be
-         * used in addition to the #NMSetting8021x:ca-cert property to add more CA
+         * used in addition to the {@link NetworkManager.Setting8021x.ca_cert} property to add more CA
          * certificates for verifying the network to client.
          * @returns the CA certificate directory path
          */
@@ -4643,15 +4916,15 @@ export namespace NetworkManager {
         get_client_cert_path(): string;
         /**
          * Returns the scheme used to store the client certificate.  If the returned scheme
-         * is %NM_SETTING_802_1X_CK_SCHEME_BLOB, use nm_setting_802_1x_get_client_cert_blob();
-         * if %NM_SETTING_802_1X_CK_SCHEME_PATH, use nm_setting_802_1x_get_client_cert_path().
+         * is {@link NetworkManager.Setting8021xCKScheme.BLOB}, use `nm_setting_802_1x_get_client_cert_blob()`;
+         * if {@link NetworkManager.Setting8021xCKScheme.PATH}, use `nm_setting_802_1x_get_client_cert_path()`.
          * @returns scheme used to store the client certificate (blob or path)
          */
         get_client_cert_scheme(): Setting8021xCKScheme;
         /**
          * Returns the name of the allowed EAP method at index `i`.
          * @param i the index of the EAP method name to return
-         * @returns the name of the allowed EAP method at index @i
+         * @returns the name of the allowed EAP method at index `i`
          */
         get_eap_method(i: number): string;
         /**
@@ -4662,22 +4935,22 @@ export namespace NetworkManager {
         get_identity(): string;
         /**
          * Returns the number of entries in the
-         * #NMSetting8021x:altsubject-matches property of this setting.
+         * {@link NetworkManager.Setting8021x.altsubject_matches} property of this setting.
          * @returns the number of altsubject-matches entries.
          */
         get_num_altsubject_matches(): number;
         /**
          * Returns the number of eap methods allowed for use when connecting to the
          * network.  Generally only one EAP method is used.  Use the functions
-         * nm_setting_802_1x_get_eap_method(), nm_setting_802_1x_add_eap_method(),
-         * and nm_setting_802_1x_remove_eap_method() for adding, removing, and retrieving
+         * `nm_setting_802_1x_get_eap_method()`, `nm_setting_802_1x_add_eap_method()`,
+         * and `nm_setting_802_1x_remove_eap_method()` for adding, removing, and retrieving
          * allowed EAP methods.
          * @returns the number of allowed EAP methods
          */
         get_num_eap_methods(): number;
         /**
          * Returns the number of entries in the
-         * #NMSetting8021x:phase2-altsubject-matches property of this setting.
+         * {@link NetworkManager.Setting8021x.phase2_altsubject_matches} property of this setting.
          * @returns the number of phase2-altsubject-matches entries.
          */
         get_num_phase2_altsubject_matches(): number;
@@ -4686,24 +4959,51 @@ export namespace NetworkManager {
          * @returns the PAC file
          */
         get_pac_file(): string;
+        /**
+         * @returns the password used by the authentication method, if any, as specified   by the {@link NetworkManager.Setting8021x.password} property
+         */
         get_password(): string;
+        /**
+         * @returns the {@link NetworkManager.SettingSecretFlags} pertaining to the {@link NetworkManager.Setting8021x.password}
+         */
         get_password_flags(): SettingSecretFlags;
+        /**
+         * @returns the password used by the authentication method as a UTF-8-encoded array of bytes, as specified by the {@link NetworkManager.Setting8021x.password_raw} property
+         */
         get_password_raw(): Uint8Array;
+        /**
+         * @returns the {@link NetworkManager.SettingSecretFlags} pertaining to the   {@link NetworkManager.Setting8021x.password_raw}
+         */
         get_password_raw_flags(): SettingSecretFlags;
+        /**
+         * @returns whether "phase 1" PEAP fast provisioning should be used, as specified  by the {@link NetworkManager.Setting8021x.phase1_fast_provisioning} property.  See the  wpa_supplicant documentation for more details.
+         */
         get_phase1_fast_provisioning(): string;
+        /**
+         * @returns whether the "phase 1" PEAP label is new-style or old-style, to be  used when authenticating with EAP-PEAP, as contained in the  {@link NetworkManager.Setting8021x.phase1_peaplabel} property.  Valid values are `null` (unset),  "0" (use old-style label), and "1" (use new-style label).  See the  wpa_supplicant documentation for more details.
+         */
         get_phase1_peaplabel(): string;
+        /**
+         * @returns the "phase 1" PEAP version to be used when authenticating with  EAP-PEAP as contained in the {@link NetworkManager.Setting8021x.phase1_peapver} property.  Valid  values are `null` (unset), "0" (PEAP version 0), and "1" (PEAP version 1).
+         */
         get_phase1_peapver(): string;
         /**
          * Returns the "phase 2" altSubjectName match at index `i`.
          * @param i the zero-based index of the array of "phase 2" altSubjectName matches
-         * @returns the "phase 2" altSubjectName match at index @i
+         * @returns the "phase 2" altSubjectName match at index `i`
          */
         get_phase2_altsubject_match(i: number): string;
+        /**
+         * @returns the "phase 2" non-EAP (ex MD5) allowed authentication method as   specified by the {@link NetworkManager.Setting8021x.phase2_auth} property.
+         */
         get_phase2_auth(): string;
+        /**
+         * @returns the "phase 2" EAP-based (ex TLS) allowed authentication method as   specified by the {@link NetworkManager.Setting8021x.phase2_autheap} property.
+         */
         get_phase2_autheap(): string;
         /**
          * Returns the "phase 2" CA certificate blob if the CA certificate is stored
-         * using the %NM_SETTING_802_1X_CK_SCHEME_BLOB scheme.  Not all EAP methods use
+         * using the {@link NetworkManager.Setting8021xCKScheme.BLOB} scheme.  Not all EAP methods use
          * a CA certificate (LEAP for example), and those that can take advantage of the
          * CA certificate allow it to be unset.  Note that lack of a CA certificate
          * reduces security by allowing man-in-the-middle attacks, because the identity
@@ -4713,7 +5013,7 @@ export namespace NetworkManager {
         get_phase2_ca_cert_blob(): Uint8Array;
         /**
          * Returns the "phase 2" CA certificate path if the CA certificate is stored
-         * using the %NM_SETTING_802_1X_CK_SCHEME_PATH scheme.  Not all EAP methods use
+         * using the {@link NetworkManager.Setting8021xCKScheme.PATH} scheme.  Not all EAP methods use
          * a CA certificate (LEAP for example), and those that can take advantage of the
          * CA certificate allow it to be unset.  Note that lack of a CA certificate
          * reduces security by allowing man-in-the-middle attacks, because the identity
@@ -4723,9 +5023,9 @@ export namespace NetworkManager {
         get_phase2_ca_cert_path(): string;
         /**
          * Returns the scheme used to store the "phase 2" CA certificate.  If the
-         * returned scheme is %NM_SETTING_802_1X_CK_SCHEME_BLOB, use
-         * nm_setting_802_1x_get_ca_cert_blob(); if %NM_SETTING_802_1X_CK_SCHEME_PATH,
-         * use nm_setting_802_1x_get_ca_cert_path().
+         * returned scheme is {@link NetworkManager.Setting8021xCKScheme.BLOB}, use
+         * `nm_setting_802_1x_get_ca_cert_blob()`; if {@link NetworkManager.Setting8021xCKScheme.PATH},
+         * use `nm_setting_802_1x_get_ca_cert_path()`.
          * @returns scheme used to store the "phase 2" CA certificate (blob or path)
          */
         get_phase2_ca_cert_scheme(): Setting8021xCKScheme;
@@ -4733,7 +5033,7 @@ export namespace NetworkManager {
          * Returns the path of the "phase 2" CA certificate directory if previously set.
          * Systems will often have a directory that contains multiple individual CA
          * certificates which the supplicant can then add to the verification chain.
-         * This may be used in addition to the #NMSetting8021x:phase2-ca-cert property
+         * This may be used in addition to the {@link NetworkManager.Setting8021x.phase2_ca_cert} property
          * to add more CA certificates for verifying the network to client.
          * @returns the "phase 2" CA certificate directory path
          */
@@ -4754,10 +5054,10 @@ export namespace NetworkManager {
         get_phase2_client_cert_path(): string;
         /**
          * Returns the scheme used to store the "phase 2" client certificate.  If the
-         * returned scheme is %NM_SETTING_802_1X_CK_SCHEME_BLOB, use
-         * nm_setting_802_1x_get_client_cert_blob(); if
-         * %NM_SETTING_802_1X_CK_SCHEME_PATH, use
-         * nm_setting_802_1x_get_client_cert_path().
+         * returned scheme is {@link NetworkManager.Setting8021xCKScheme.BLOB}, use
+         * `nm_setting_802_1x_get_client_cert_blob()`; if
+         * {@link NetworkManager.Setting8021xCKScheme.PATH}, use
+         * `nm_setting_802_1x_get_client_cert_path()`.
          * @returns scheme used to store the "phase 2" client certificate (blob or path)
          */
         get_phase2_client_cert_scheme(): Setting8021xCKScheme;
@@ -4772,8 +5072,17 @@ export namespace NetworkManager {
          * @returns the "phase 2" private key data
          */
         get_phase2_private_key_blob(): Uint8Array;
+        /**
+         * @returns the data format of the "phase 2" private key data stored in the   {@link NetworkManager.Setting8021x.phase2_private_key} property
+         */
         get_phase2_private_key_format(): Setting8021xCKFormat;
+        /**
+         * @returns the private key password used to decrypt the private key if  previously set with `nm_setting_802_1x_set_phase2_private_key()` or the  {@link NetworkManager.Setting8021x.phase2_private_key_password} property.
+         */
         get_phase2_private_key_password(): string;
+        /**
+         * @returns the {@link NetworkManager.SettingSecretFlags} pertaining to the {@link NetworkManager.Setting8021x.phase2_private_key_password}
+         */
         get_phase2_private_key_password_flags(): SettingSecretFlags;
         /**
          * Private keys are used to authenticate the connecting client to the network
@@ -4784,15 +5093,24 @@ export namespace NetworkManager {
         get_phase2_private_key_path(): string;
         /**
          * Returns the scheme used to store the "phase 2" private key.  If the returned
-         * scheme is %NM_SETTING_802_1X_CK_SCHEME_BLOB, use
-         * nm_setting_802_1x_get_client_cert_blob(); if
-         * %NM_SETTING_802_1X_CK_SCHEME_PATH, use
-         * nm_setting_802_1x_get_client_cert_path().
+         * scheme is {@link NetworkManager.Setting8021xCKScheme.BLOB}, use
+         * `nm_setting_802_1x_get_client_cert_blob()`; if
+         * {@link NetworkManager.Setting8021xCKScheme.PATH}, use
+         * `nm_setting_802_1x_get_client_cert_path()`.
          * @returns scheme used to store the "phase 2" private key (blob or path)
          */
         get_phase2_private_key_scheme(): Setting8021xCKScheme;
+        /**
+         * @returns the {@link NetworkManager.Setting8021x.phase2_subject_match} property. This is the substring to be matched against the subject of the "phase 2" authentication server certificate, or `null` no subject verification is to be performed.
+         */
         get_phase2_subject_match(): string;
+        /**
+         * @returns the PIN used by the authentication method, if any, as specified   by the {@link NetworkManager.Setting8021x.pin} property
+         */
         get_pin(): string;
+        /**
+         * @returns the {@link NetworkManager.SettingSecretFlags} pertaining to the {@link NetworkManager.Setting8021x.pin}
+         */
         get_pin_flags(): SettingSecretFlags;
         /**
          * Private keys are used to authenticate the connecting client to the network
@@ -4805,8 +5123,17 @@ export namespace NetworkManager {
          * @returns the private key data
          */
         get_private_key_blob(): Uint8Array;
+        /**
+         * @returns the data format of the private key data stored in the   {@link NetworkManager.Setting8021x.private_key} property
+         */
         get_private_key_format(): Setting8021xCKFormat;
+        /**
+         * @returns the private key password used to decrypt the private key if  previously set with `nm_setting_802_1x_set_private_key()`, or the  {@link NetworkManager.Setting8021x.private_key_password} property.
+         */
         get_private_key_password(): string;
+        /**
+         * @returns the {@link NetworkManager.SettingSecretFlags} pertaining to the {@link NetworkManager.Setting8021x.private_key_password}
+         */
         get_private_key_password_flags(): SettingSecretFlags;
         /**
          * Private keys are used to authenticate the connecting client to the network
@@ -4817,22 +5144,25 @@ export namespace NetworkManager {
         get_private_key_path(): string;
         /**
          * Returns the scheme used to store the private key.  If the returned scheme is
-         * %NM_SETTING_802_1X_CK_SCHEME_BLOB, use
-         * nm_setting_802_1x_get_client_cert_blob(); if
-         * %NM_SETTING_802_1X_CK_SCHEME_PATH, use
-         * nm_setting_802_1x_get_client_cert_path().
+         * {@link NetworkManager.Setting8021xCKScheme.BLOB}, use
+         * `nm_setting_802_1x_get_client_cert_blob()`; if
+         * {@link NetworkManager.Setting8021xCKScheme.PATH}, use
+         * `nm_setting_802_1x_get_client_cert_path()`.
          * @returns scheme used to store the private key (blob or path)
          */
         get_private_key_scheme(): Setting8021xCKScheme;
+        /**
+         * @returns the {@link NetworkManager.Setting8021x.subject_match} property. This is the substring to be matched against the subject of the authentication server certificate, or `null` no subject verification is to be performed.
+         */
         get_subject_match(): string;
         /**
-         * Sets the #NMSetting8021x:system-ca-certs property. The
-         * #NMSetting8021x:ca-path and #NMSetting8021x:phase2-ca-path
-         * properties are ignored if the #NMSetting8021x:system-ca-certs property is
-         * %TRUE, in which case a system-wide CA certificate directory specified at
+         * Sets the {@link NetworkManager.Setting8021x.system_ca_certs} property. The
+         * {@link NetworkManager.Setting8021x.ca_path} and {@link NetworkManager.Setting8021x.phase2_ca_path}
+         * properties are ignored if the {@link NetworkManager.Setting8021x.system_ca_certs} property is
+         * `true`, in which case a system-wide CA certificate directory specified at
          * compile time (using the --system-ca-path configure option) is used in place
          * of these properties.
-         * @returns %TRUE if a system CA certificate path should be used, %FALSE if not
+         * @returns `true` if a system CA certificate path should be used, `false` if not
          */
         get_system_ca_certs(): boolean;
         /**
@@ -4843,7 +5173,7 @@ export namespace NetworkManager {
         /**
          * Removes the allowed altSubjectName `altsubject_match`.
          * @param altsubject_match the altSubjectName to remove
-         * @returns %TRUE if the alternative subject name match was found and removed,          %FALSE if it was not.
+         * @returns `true` if the alternative subject name match was found and removed,          `false` if it was not.
          */
         remove_altsubject_match_by_value(altsubject_match: string): boolean;
         /**
@@ -4854,7 +5184,7 @@ export namespace NetworkManager {
         /**
          * Removes the allowed EAP method `method`.
          * @param eap the name of the EAP method to remove
-         * @returns %TRUE if the EAP method was founs and removed, %FALSE if it was not.
+         * @returns `true` if the EAP method was founs and removed, `false` if it was not.
          */
         remove_eap_method_by_value(eap: string): boolean;
         /**
@@ -4863,20 +5193,20 @@ export namespace NetworkManager {
          */
         remove_phase2_altsubject_match(i: number): void;
         /**
-         * Removes the allowed "phase 2" altSubjectName `phase2`_altsubject_match.
+         * Removes the allowed "phase 2" altSubjectName `phase2_altsubject_match`.
          * @param phase2_altsubject_match the "phase 2" altSubjectName to remove
-         * @returns %TRUE if the alternative subject name match for "phase 2" was found and removed,          %FALSE if it was not.
+         * @returns `true` if the alternative subject name match for "phase 2" was found and removed,          `false` if it was not.
          */
         remove_phase2_altsubject_match_by_value(phase2_altsubject_match: string): boolean;
         /**
-         * Reads a certificate from disk and sets the #NMSetting8021x:ca-cert property
-         * with the raw certificate data if using the %NM_SETTING_802_1X_CK_SCHEME_BLOB
+         * Reads a certificate from disk and sets the {@link NetworkManager.Setting8021x.ca_cert} property
+         * with the raw certificate data if using the {@link NetworkManager.Setting8021xCKScheme.BLOB}
          * scheme, or with the path to the certificate file if using the
-         * %NM_SETTING_802_1X_CK_SCHEME_PATH scheme.
-         * @param cert_path when @scheme is set to either %NM_SETTING_802_1X_CK_SCHEME_PATH   or %NM_SETTING_802_1X_CK_SCHEME_BLOB, pass the path of the CA certificate   file (PEM or DER format).  The path must be UTF-8 encoded; use   g_filename_to_utf8() to convert if needed.  Passing %NULL with any @scheme   clears the CA certificate.
+         * {@link NetworkManager.Setting8021xCKScheme.PATH} scheme.
+         * @param cert_path when `scheme` is set to either {@link NetworkManager.Setting8021xCKScheme.PATH}   or {@link NetworkManager.Setting8021xCKScheme.BLOB}, pass the path of the CA certificate   file (PEM or DER format).  The path must be UTF-8 encoded; use   `g_filename_to_utf8()` to convert if needed.  Passing `null` with any `scheme`   clears the CA certificate.
          * @param scheme desired storage scheme for the certificate
          * @param out_format on successful return, the type of the certificate added
-         * @returns %TRUE if the operation succeeded, %FALSE if it was unsuccessful
+         * @returns `true` if the operation succeeded, `false` if it was unsuccessful
          */
         set_ca_cert(
             cert_path: string,
@@ -4884,18 +5214,18 @@ export namespace NetworkManager {
             out_format: Setting8021xCKFormat | null,
         ): boolean;
         /**
-         * Reads a certificate from disk and sets the #NMSetting8021x:client-cert
+         * Reads a certificate from disk and sets the {@link NetworkManager.Setting8021x.client_cert}
          * property with the raw certificate data if using the
-         * %NM_SETTING_802_1X_CK_SCHEME_BLOB scheme, or with the path to the certificate
-         * file if using the %NM_SETTING_802_1X_CK_SCHEME_PATH scheme.
+         * {@link NetworkManager.Setting8021xCKScheme.BLOB} scheme, or with the path to the certificate
+         * file if using the {@link NetworkManager.Setting8021xCKScheme.PATH} scheme.
          *
          * Client certificates are used to identify the connecting client to the network
          * when EAP-TLS is used as either the "phase 1" or "phase 2" 802.1x
          * authentication method.
-         * @param cert_path when @scheme is set to either %NM_SETTING_802_1X_CK_SCHEME_PATH   or %NM_SETTING_802_1X_CK_SCHEME_BLOB, pass the path of the client   certificate file (PEM, DER, or PKCS#<!-- -->12 format).  The path must be UTF-8   encoded; use g_filename_to_utf8() to convert if needed.  Passing %NULL with   any @scheme clears the client certificate.
+         * @param cert_path when `scheme` is set to either {@link NetworkManager.Setting8021xCKScheme.PATH}   or {@link NetworkManager.Setting8021xCKScheme.BLOB}, pass the path of the client   certificate file (PEM, DER, or PKCS#<!-- -->12 format).  The path must be UTF-8   encoded; use `g_filename_to_utf8()` to convert if needed.  Passing `null` with   any `scheme` clears the client certificate.
          * @param scheme desired storage scheme for the certificate
          * @param out_format on successful return, the type of the certificate added
-         * @returns %TRUE if the operation succeeded, %FALSE if it was unsuccessful
+         * @returns `true` if the operation succeeded, `false` if it was unsuccessful
          */
         set_client_cert(
             cert_path: string,
@@ -4903,14 +5233,14 @@ export namespace NetworkManager {
             out_format: Setting8021xCKFormat | null,
         ): boolean;
         /**
-         * Reads a certificate from disk and sets the #NMSetting8021x:phase2-ca-cert
+         * Reads a certificate from disk and sets the {@link NetworkManager.Setting8021x.phase2_ca_cert}
          * property with the raw certificate data if using the
-         * %NM_SETTING_802_1X_CK_SCHEME_BLOB scheme, or with the path to the certificate
-         * file if using the %NM_SETTING_802_1X_CK_SCHEME_PATH scheme.
-         * @param cert_path when @scheme is set to either %NM_SETTING_802_1X_CK_SCHEME_PATH   or %NM_SETTING_802_1X_CK_SCHEME_BLOB, pass the path of the "phase2" CA   certificate file (PEM or DER format).  The path must be UTF-8 encoded; use   g_filename_to_utf8() to convert if needed.  Passing %NULL with any @scheme   clears the "phase2" CA certificate.
+         * {@link NetworkManager.Setting8021xCKScheme.BLOB} scheme, or with the path to the certificate
+         * file if using the {@link NetworkManager.Setting8021xCKScheme.PATH} scheme.
+         * @param cert_path when `scheme` is set to either {@link NetworkManager.Setting8021xCKScheme.PATH}   or {@link NetworkManager.Setting8021xCKScheme.BLOB}, pass the path of the "phase2" CA   certificate file (PEM or DER format).  The path must be UTF-8 encoded; use   `g_filename_to_utf8()` to convert if needed.  Passing `null` with any `scheme`   clears the "phase2" CA certificate.
          * @param scheme desired storage scheme for the certificate
          * @param out_format on successful return, the type of the certificate added
-         * @returns %TRUE if the operation succeeded, %FALSE if it was unsuccessful
+         * @returns `true` if the operation succeeded, `false` if it was unsuccessful
          */
         set_phase2_ca_cert(
             cert_path: string,
@@ -4918,18 +5248,18 @@ export namespace NetworkManager {
             out_format: Setting8021xCKFormat | null,
         ): boolean;
         /**
-         * Reads a certificate from disk and sets the #NMSetting8021x:phase2-client-cert
+         * Reads a certificate from disk and sets the {@link NetworkManager.Setting8021x.phase2_client_cert}
          * property with the raw certificate data if using the
-         * %NM_SETTING_802_1X_CK_SCHEME_BLOB scheme, or with the path to the certificate
-         * file if using the %NM_SETTING_802_1X_CK_SCHEME_PATH scheme.
+         * {@link NetworkManager.Setting8021xCKScheme.BLOB} scheme, or with the path to the certificate
+         * file if using the {@link NetworkManager.Setting8021xCKScheme.PATH} scheme.
          *
          * Client certificates are used to identify the connecting client to the network
          * when EAP-TLS is used as either the "phase 1" or "phase 2" 802.1x
          * authentication method.
-         * @param cert_path when @scheme is set to either %NM_SETTING_802_1X_CK_SCHEME_PATH   or %NM_SETTING_802_1X_CK_SCHEME_BLOB, pass the path of the "phase2" client   certificate file (PEM, DER, or PKCS#<!-- -->12 format).  The path must be UTF-8   encoded; use g_filename_to_utf8() to convert if needed.  Passing %NULL with   any @scheme clears the "phase2" client certificate.
+         * @param cert_path when `scheme` is set to either {@link NetworkManager.Setting8021xCKScheme.PATH}   or {@link NetworkManager.Setting8021xCKScheme.BLOB}, pass the path of the "phase2" client   certificate file (PEM, DER, or PKCS#<!-- -->12 format).  The path must be UTF-8   encoded; use `g_filename_to_utf8()` to convert if needed.  Passing `null` with   any `scheme` clears the "phase2" client certificate.
          * @param scheme desired storage scheme for the certificate
          * @param out_format on successful return, the type of the certificate added
-         * @returns %TRUE if the operation succeeded, %FALSE if it was unsuccessful
+         * @returns `true` if the operation succeeded, `false` if it was unsuccessful
          */
         set_phase2_client_cert(
             cert_path: string,
@@ -4942,14 +5272,14 @@ export namespace NetworkManager {
          * authentication method.
          *
          * This function reads a private key from disk and sets the
-         * #NMSetting8021x:phase2-private-key property with the private key file data if
-         * using the %NM_SETTING_802_1X_CK_SCHEME_BLOB scheme, or with the path to the
-         * private key file if using the %NM_SETTING_802_1X_CK_SCHEME_PATH scheme.
+         * {@link NetworkManager.Setting8021x.phase2_private_key} property with the private key file data if
+         * using the {@link NetworkManager.Setting8021xCKScheme.BLOB} scheme, or with the path to the
+         * private key file if using the {@link NetworkManager.Setting8021xCKScheme.PATH} scheme.
          *
          * If `password` is given, this function attempts to decrypt the private key to
          * verify that `password` is correct, and if it is, updates the
-         * #NMSetting8021x:phase2-private-key-password property with the given
-         * `password`.  If the decryption is unsuccessful, %FALSE is returned, `error` is
+         * {@link NetworkManager.Setting8021x.phase2_private_key_password} property with the given
+         * `password`.  If the decryption is unsuccessful, `false` is returned, `error` is
          * set, and no internal data is changed.  If no `password` is given, the private
          * key is assumed to be valid, no decryption is performed, and the password may
          * be set at a later time.
@@ -4958,11 +5288,11 @@ export namespace NetworkManager {
          * thus unencrypted private key data using the BLOB scheme may be readable by
          * unprivileged users.  Private keys should always be encrypted with a private
          * key password to prevent unauthorized access to unencrypted private key data.
-         * @param key_path when @scheme is set to either %NM_SETTING_802_1X_CK_SCHEME_PATH or   %NM_SETTING_802_1X_CK_SCHEME_BLOB, pass the path of the "phase2" private   key file (PEM, DER, or PKCS#<!-- -->12 format).  The path must be UTF-8 encoded;   use g_filename_to_utf8() to convert if needed.  Passing %NULL with any   @scheme clears the private key.
-         * @param password password used to decrypt the private key, or %NULL if the password   is unknown.  If the password is given but fails to decrypt the private key,   an error is returned.
+         * @param key_path when `scheme` is set to either {@link NetworkManager.Setting8021xCKScheme.PATH} or   {@link NetworkManager.Setting8021xCKScheme.BLOB}, pass the path of the "phase2" private   key file (PEM, DER, or PKCS#<!-- -->12 format).  The path must be UTF-8 encoded;   use `g_filename_to_utf8()` to convert if needed.  Passing `null` with any   `scheme` clears the private key.
+         * @param password password used to decrypt the private key, or `null` if the password   is unknown.  If the password is given but fails to decrypt the private key,   an error is returned.
          * @param scheme desired storage scheme for the private key
          * @param out_format on successful return, the type of the private key added
-         * @returns %TRUE if the operation succeeded, %FALSE if it was unsuccessful
+         * @returns `true` if the operation succeeded, `false` if it was unsuccessful
          */
         set_phase2_private_key(
             key_path: string,
@@ -4976,14 +5306,14 @@ export namespace NetworkManager {
          * authentication method.
          *
          * This function reads a private key from disk and sets the
-         * #NMSetting8021x:private-key property with the private key file data if using
-         * the %NM_SETTING_802_1X_CK_SCHEME_BLOB scheme, or with the path to the private
-         * key file if using the %NM_SETTING_802_1X_CK_SCHEME_PATH scheme.
+         * {@link NetworkManager.Setting8021x.private_key} property with the private key file data if using
+         * the {@link NetworkManager.Setting8021xCKScheme.BLOB} scheme, or with the path to the private
+         * key file if using the {@link NetworkManager.Setting8021xCKScheme.PATH} scheme.
          *
          * If `password` is given, this function attempts to decrypt the private key to
          * verify that `password` is correct, and if it is, updates the
-         * #NMSetting8021x:private-key-password property with the given `password`.  If
-         * the decryption is unsuccessful, %FALSE is returned, `error` is set, and no
+         * {@link NetworkManager.Setting8021x.private_key_password} property with the given `password`.  If
+         * the decryption is unsuccessful, `false` is returned, `error` is set, and no
          * internal data is changed.  If no `password` is given, the private key is
          * assumed to be valid, no decryption is performed, and the password may be set
          * at a later time.
@@ -4992,11 +5322,11 @@ export namespace NetworkManager {
          * unencrypted private key data using the BLOB scheme may be readable by
          * unprivileged users.  Private keys should always be encrypted with a private
          * key password to prevent unauthorized access to unencrypted private key data.
-         * @param key_path when @scheme is set to either %NM_SETTING_802_1X_CK_SCHEME_PATH or   %NM_SETTING_802_1X_CK_SCHEME_BLOB, pass the path of the private key file   (PEM, DER, or PKCS#<!-- -->12 format).  The path must be UTF-8 encoded; use   g_filename_to_utf8() to convert if needed.  Passing %NULL with any @scheme   clears the private key.
-         * @param password password used to decrypt the private key, or %NULL if the password   is unknown.  If the password is given but fails to decrypt the private key,   an error is returned.
+         * @param key_path when `scheme` is set to either {@link NetworkManager.Setting8021xCKScheme.PATH} or   {@link NetworkManager.Setting8021xCKScheme.BLOB}, pass the path of the private key file   (PEM, DER, or PKCS#<!-- -->12 format).  The path must be UTF-8 encoded; use   `g_filename_to_utf8()` to convert if needed.  Passing `null` with any `scheme`   clears the private key.
+         * @param password password used to decrypt the private key, or `null` if the password   is unknown.  If the password is given but fails to decrypt the private key,   an error is returned.
          * @param scheme desired storage scheme for the private key
          * @param out_format on successful return, the type of the private key added
-         * @returns %TRUE if the operation succeeded, %FALSE if it was unsuccessful
+         * @returns `true` if the operation succeeded, `false` if it was unsuccessful
          */
         set_private_key(
             key_path: string,
@@ -5033,6 +5363,9 @@ export namespace NetworkManager {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SettingAdsl extends Setting {
         static $gtype: GObject.GType<SettingAdsl>;
 
@@ -5049,12 +5382,12 @@ export namespace NetworkManager {
         get password(): string;
         set password(val: string);
         /**
-         * Flags indicating how to handle the #NMSettingAdsl:password property.
+         * Flags indicating how to handle the {@link NetworkManager.SettingAdsl.password} property.
          */
         get password_flags(): number;
         set password_flags(val: number);
         /**
-         * Flags indicating how to handle the #NMSettingAdsl:password property.
+         * Flags indicating how to handle the {@link NetworkManager.SettingAdsl.password} property.
          */
         get passwordFlags(): number;
         set passwordFlags(val: number);
@@ -5098,16 +5431,19 @@ export namespace NetworkManager {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SettingAdsl.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingAdsl.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SettingAdsl.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingAdsl.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SettingAdsl.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SettingAdsl.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5116,12 +5452,33 @@ export namespace NetworkManager {
 
         // Methods
 
+        /**
+         * @returns the {@link NetworkManager.SettingAdsl.encapsulation} property of the setting
+         */
         get_encapsulation(): string;
+        /**
+         * @returns the {@link NetworkManager.SettingAdsl.password} property of the setting
+         */
         get_password(): string;
+        /**
+         * @returns the {@link NetworkManager.SettingSecretFlags} pertaining to the {@link NetworkManager.SettingAdsl.password}
+         */
         get_password_flags(): SettingSecretFlags;
+        /**
+         * @returns the {@link NetworkManager.SettingAdsl.protocol} property of the setting
+         */
         get_protocol(): string;
+        /**
+         * @returns the {@link NetworkManager.SettingAdsl.username} property of the setting
+         */
         get_username(): string;
+        /**
+         * @returns the {@link NetworkManager.SettingAdsl.vci} property of the setting
+         */
         get_vci(): number;
+        /**
+         * @returns the {@link NetworkManager.SettingAdsl.vpi} property of the setting
+         */
         get_vpi(): number;
     }
 
@@ -5139,6 +5496,9 @@ export namespace NetworkManager {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SettingBluetooth extends Setting {
         static $gtype: GObject.GType<SettingBluetooth>;
 
@@ -5170,16 +5530,19 @@ export namespace NetworkManager {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SettingBluetooth.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingBluetooth.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SettingBluetooth.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingBluetooth.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SettingBluetooth.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SettingBluetooth.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5197,7 +5560,7 @@ export namespace NetworkManager {
         /**
          * Returns the connection method for communicating with the remote device (i.e.
          * either DUN to a DUN-capable device or PANU to a NAP-capable device).
-         * @returns the type, either %NM_SETTING_BLUETOOTH_TYPE_PANU or   %NM_SETTING_BLUETOOTH_TYPE_DUN
+         * @returns the type, either `NM_SETTING_BLUETOOTH_TYPE_PANU` or   `NM_SETTING_BLUETOOTH_TYPE_DUN`
          */
         get_connection_type(): string;
     }
@@ -5217,6 +5580,9 @@ export namespace NetworkManager {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SettingBond extends Setting {
         static $gtype: GObject.GType<SettingBond>;
 
@@ -5252,16 +5618,19 @@ export namespace NetworkManager {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SettingBond.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingBond.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SettingBond.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingBond.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SettingBond.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SettingBond.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5272,7 +5641,7 @@ export namespace NetworkManager {
 
         /**
          * Checks whether `name` is a valid bond option and `value` is a valid value for
-         * the `name`. If `value` is %NULL, the function only validates the option name.
+         * the `name`. If `value` is `null`, the function only validates the option name.
          * @param name the name of the option to validate
          * @param value the value of the option to validate
          */
@@ -5290,45 +5659,52 @@ export namespace NetworkManager {
          * that conflict with each other.
          * @param name name for the option
          * @param value value for the option
-         * @returns %TRUE if the option was valid and was added to the internal option list, %FALSE if it was not.
+         * @returns `true` if the option was valid and was added to the internal option list, `false` if it was not.
          */
         add_option(name: string, value: string): boolean;
+        /**
+         * @returns the {@link NetworkManager.SettingBond.interface_name} property of the setting
+         */
         get_interface_name(): string;
         /**
          * Returns the number of options that should be set for this bond when it
          * is activated. This can be used to retrieve each option individually
-         * using nm_setting_bond_get_option().
+         * using `nm_setting_bond_get_option()`.
          * @returns the number of bonding options
          */
         get_num_options(): number;
         /**
          * Given an index, return the value of the bonding option at that index.  Indexes
          * are *not* guaranteed to be static across modifications to options done by
-         * nm_setting_bond_add_option() and nm_setting_bond_remove_option(),
+         * `nm_setting_bond_add_option()` and `nm_setting_bond_remove_option()`,
          * and should not be used to refer to options except for short periods of time
          * such as during option iteration.
-         * @param idx index of the desired option, from 0 to nm_setting_bond_get_num_options() - 1
-         * @returns %TRUE on success if the index was valid and an option was found, %FALSE if the index was invalid (ie, greater than the number of options currently held by the setting)
+         * @param idx index of the desired option, from 0 to `nm_setting_bond_get_num_options()` - 1
+         * @returns `true` on success if the index was valid and an option was found, `false` if the index was invalid (ie, greater than the number of options currently held by the setting)
          */
         get_option(idx: number): [boolean, string, string];
         /**
          * Returns the value associated with the bonding option specified by
-         * `name,` if it exists.
+         * `name`, if it exists.
          * @param name the option name for which to retrieve the value
-         * @returns the value, or %NULL if the key/value pair was never added to the setting; the value is owned by the setting and must not be modified
+         * @returns the value, or `null` if the key/value pair was never added to the setting; the value is owned by the setting and must not be modified
          */
         get_option_by_name(name: string): string;
+        /**
+         * @param name the name of the option
+         * @returns the value of the bond option if not overridden by an entry in   the {@link NetworkManager.SettingBond.options} property.
+         */
         get_option_default(name: string): string;
         /**
          * Returns a list of valid bond options.
-         * @returns a %NULL-terminated array of strings of valid bond options.
+         * @returns a `null`-terminated array of strings of valid bond options.
          */
         get_valid_options(): string[];
         /**
          * Remove the bonding option referenced by `name` from the internal option
          * list.
          * @param name name of the option to remove
-         * @returns %TRUE if the option was found and removed from the internal option list, %FALSE if it was not.
+         * @returns `true` if the option was found and removed from the internal option list, `false` if it was not.
          */
         remove_option(name: string): boolean;
     }
@@ -5364,6 +5740,9 @@ export namespace NetworkManager {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SettingBridge extends Setting {
         static $gtype: GObject.GType<SettingBridge>;
 
@@ -5371,51 +5750,61 @@ export namespace NetworkManager {
 
         /**
          * The Ethernet MAC address aging time, in seconds.
+         * @since 0.9.8
          */
         get ageing_time(): number;
         set ageing_time(val: number);
         /**
          * The Ethernet MAC address aging time, in seconds.
+         * @since 0.9.8
          */
         get ageingTime(): number;
         set ageingTime(val: number);
         /**
          * The Spanning Tree Protocol (STP) forwarding delay, in seconds.
+         * @since 0.9.8
          */
         get forward_delay(): number;
         set forward_delay(val: number);
         /**
          * The Spanning Tree Protocol (STP) forwarding delay, in seconds.
+         * @since 0.9.8
          */
         get forwardDelay(): number;
         set forwardDelay(val: number);
         /**
          * The Spanning Tree Protocol (STP) hello time, in seconds.
+         * @since 0.9.8
          */
         get hello_time(): number;
         set hello_time(val: number);
         /**
          * The Spanning Tree Protocol (STP) hello time, in seconds.
+         * @since 0.9.8
          */
         get helloTime(): number;
         set helloTime(val: number);
         /**
          * The name of the virtual in-kernel bridging network interface
+         * @since 0.9.8
          */
         get interface_name(): string;
         set interface_name(val: string);
         /**
          * The name of the virtual in-kernel bridging network interface
+         * @since 0.9.8
          */
         get interfaceName(): string;
         set interfaceName(val: string);
         /**
          * The Spanning Tree Protocol (STP) maximum message age, in seconds.
+         * @since 0.9.8
          */
         get max_age(): number;
         set max_age(val: number);
         /**
          * The Spanning Tree Protocol (STP) maximum message age, in seconds.
+         * @since 0.9.8
          */
         get maxAge(): number;
         set maxAge(val: number);
@@ -5423,11 +5812,13 @@ export namespace NetworkManager {
          * Sets the Spanning Tree Protocol (STP) priority for this bridge.  Lower
          * values are "better"; the lowest priority bridge will be elected the root
          * bridge.
+         * @since 0.9.8
          */
         get priority(): number;
         set priority(val: number);
         /**
          * Controls whether Spanning Tree Protocol (STP) is enabled for this bridge.
+         * @since 0.9.8
          */
         get stp(): boolean;
         set stp(val: boolean);
@@ -5451,16 +5842,19 @@ export namespace NetworkManager {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SettingBridge.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingBridge.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SettingBridge.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingBridge.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SettingBridge.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SettingBridge.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5469,13 +5863,37 @@ export namespace NetworkManager {
 
         // Methods
 
+        /**
+         * @returns the {@link NetworkManager.SettingBridge.ageing_time} property of the setting
+         */
         get_ageing_time(): number;
+        /**
+         * @returns the {@link NetworkManager.SettingBridge.forward_delay} property of the setting
+         */
         get_forward_delay(): number;
+        /**
+         * @returns the {@link NetworkManager.SettingBridge.hello_time} property of the setting
+         */
         get_hello_time(): number;
+        /**
+         * @returns the {@link NetworkManager.SettingBridge.interface_name} property of the setting
+         */
         get_interface_name(): string;
+        /**
+         * @returns the {@link NetworkManager.SettingBridge.mac_address} property of the setting
+         */
         get_mac_address(): Uint8Array;
+        /**
+         * @returns the {@link NetworkManager.SettingBridge.max_age} property of the setting
+         */
         get_max_age(): number;
+        /**
+         * @returns the {@link NetworkManager.SettingBridge.priority} property of the setting
+         */
         get_priority(): number;
+        /**
+         * @returns the {@link NetworkManager.SettingBridge.stp} property of the setting
+         */
         get_stp(): boolean;
     }
 
@@ -5499,6 +5917,9 @@ export namespace NetworkManager {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SettingBridgePort extends Setting {
         static $gtype: GObject.GType<SettingBridgePort>;
 
@@ -5507,29 +5928,34 @@ export namespace NetworkManager {
         /**
          * Enables or disables "hairpin mode" for the port, which allows frames to
          * be sent back out through the port the frame was received on.
+         * @since 0.9.8
          */
         get hairpin_mode(): boolean;
         set hairpin_mode(val: boolean);
         /**
          * Enables or disables "hairpin mode" for the port, which allows frames to
          * be sent back out through the port the frame was received on.
+         * @since 0.9.8
          */
         get hairpinMode(): boolean;
         set hairpinMode(val: boolean);
         /**
          * The Spanning Tree Protocol (STP) port cost for destinations via this
          * port.
+         * @since 0.9.8
          */
         get path_cost(): number;
         set path_cost(val: number);
         /**
          * The Spanning Tree Protocol (STP) port cost for destinations via this
          * port.
+         * @since 0.9.8
          */
         get pathCost(): number;
         set pathCost(val: number);
         /**
          * The Spanning Tree Protocol (STP) priority of this bridge port.
+         * @since 0.9.8
          */
         get priority(): number;
         set priority(val: number);
@@ -5553,16 +5979,19 @@ export namespace NetworkManager {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SettingBridgePort.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingBridgePort.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SettingBridgePort.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingBridgePort.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SettingBridgePort.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SettingBridgePort.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5571,8 +6000,17 @@ export namespace NetworkManager {
 
         // Methods
 
+        /**
+         * @returns the {@link NetworkManager.SettingBridgePort.hairpin_mode} property of the setting
+         */
         get_hairpin_mode(): boolean;
+        /**
+         * @returns the {@link NetworkManager.SettingBridgePort.path_cost} property of the setting
+         */
         get_path_cost(): number;
+        /**
+         * @returns the {@link NetworkManager.SettingBridgePort.priority} property of the setting
+         */
         get_priority(): number;
     }
 
@@ -5597,6 +6035,9 @@ export namespace NetworkManager {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SettingCdma extends Setting {
         static $gtype: GObject.GType<SettingCdma>;
 
@@ -5617,12 +6058,12 @@ export namespace NetworkManager {
         get password(): string;
         set password(val: string);
         /**
-         * Flags indicating how to handle the #NMSettingCdma:password property.
+         * Flags indicating how to handle the {@link NetworkManager.SettingCdma.password} property.
          */
         get password_flags(): number;
         set password_flags(val: number);
         /**
-         * Flags indicating how to handle the #NMSettingCdma:password property.
+         * Flags indicating how to handle the {@link NetworkManager.SettingCdma.password} property.
          */
         get passwordFlags(): number;
         set passwordFlags(val: number);
@@ -5653,16 +6094,19 @@ export namespace NetworkManager {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SettingCdma.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingCdma.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SettingCdma.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingCdma.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SettingCdma.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SettingCdma.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5671,9 +6115,21 @@ export namespace NetworkManager {
 
         // Methods
 
+        /**
+         * @returns the {@link NetworkManager.SettingCdma.number} property of the setting
+         */
         get_number(): string;
+        /**
+         * @returns the {@link NetworkManager.SettingCdma.password} property of the setting
+         */
         get_password(): string;
+        /**
+         * @returns the {@link NetworkManager.SettingSecretFlags} pertaining to the {@link NetworkManager.SettingCdma.password}
+         */
         get_password_flags(): SettingSecretFlags;
+        /**
+         * @returns the {@link NetworkManager.SettingCdma.username} property of the setting
+         */
         get_username(): string;
     }
 
@@ -5718,6 +6174,7 @@ export namespace NetworkManager {
     /**
      * The NMSettingConnection struct contains only private data.
      * It should only be accessed through the functions described below.
+     * @gir-type Class
      */
     class SettingConnection extends Setting {
         static $gtype: GObject.GType<SettingConnection>;
@@ -5727,7 +6184,7 @@ export namespace NetworkManager {
         /**
          * Whether or not the connection should be automatically connected by
          * NetworkManager when the resources for the connection are available.
-         * %TRUE to automatically activate the connection, %FALSE to require manual
+         * `true` to automatically activate the connection, `false` to require manual
          * intervention to activate the connection.
          */
         get autoconnect(): boolean;
@@ -5735,12 +6192,14 @@ export namespace NetworkManager {
         /**
          * If greater than zero, delay success of IP addressing until either the
          * timeout is reached, or an IP gateway replies to a ping.
+         * @since 0.9.10
          */
         get gateway_ping_timeout(): number;
         set gateway_ping_timeout(val: number);
         /**
          * If greater than zero, delay success of IP addressing until either the
          * timeout is reached, or an IP gateway replies to a ping.
+         * @since 0.9.10
          */
         get gatewayPingTimeout(): number;
         set gatewayPingTimeout(val: number);
@@ -5762,6 +6221,7 @@ export namespace NetworkManager {
          * not be used. Setting this property restricts the interfaces a connection
          * can be used with, and if interface names change or are reordered the
          * connection may be applied to the wrong interface.
+         * @since 0.9.10
          */
         get interface_name(): string;
         set interface_name(val: string);
@@ -5777,6 +6237,7 @@ export namespace NetworkManager {
          * not be used. Setting this property restricts the interfaces a connection
          * can be used with, and if interface names change or are reordered the
          * connection may be applied to the wrong interface.
+         * @since 0.9.10
          */
         get interfaceName(): string;
         set interfaceName(val: string);
@@ -5786,29 +6247,29 @@ export namespace NetworkManager {
         get master(): string;
         set master(val: string);
         /**
-         * %FALSE if the connection can be modified using the provided settings
-         * service's D-Bus interface with the right privileges, or %TRUE if the
+         * `false` if the connection can be modified using the provided settings
+         * service's D-Bus interface with the right privileges, or `true` if the
          * connection is read-only and cannot be modified.
          */
         get read_only(): boolean;
         set read_only(val: boolean);
         /**
-         * %FALSE if the connection can be modified using the provided settings
-         * service's D-Bus interface with the right privileges, or %TRUE if the
+         * `false` if the connection can be modified using the provided settings
+         * service's D-Bus interface with the right privileges, or `true` if the
          * connection is read-only and cannot be modified.
          */
         get readOnly(): boolean;
         set readOnly(val: boolean);
         /**
          * Setting name of the device type of this slave's master connection (eg,
-         * %NM_SETTING_BOND_SETTING_NAME), or %NULL if this connection is not a
+         * `NM_SETTING_BOND_SETTING_NAME`), or `null` if this connection is not a
          * slave.
          */
         get slave_type(): string;
         set slave_type(val: string);
         /**
          * Setting name of the device type of this slave's master connection (eg,
-         * %NM_SETTING_BOND_SETTING_NAME), or %NULL if this connection is not a
+         * `NM_SETTING_BOND_SETTING_NAME`), or `null` if this connection is not a
          * slave.
          */
         get slaveType(): string;
@@ -5838,20 +6299,20 @@ export namespace NetworkManager {
          * with libuuid.  It should be assigned when the connection is created, and
          * never changed as long as the connection still applies to the same
          * network.  For example, it should not be changed when the
-         * #NMSettingConnection:id property or #NMSettingIP4Config changes, but
+         * {@link NetworkManager.SettingConnection.id} property or {@link NetworkManager.SettingIP4Config} changes, but
          * might need to be re-created when the Wi-Fi SSID, mobile broadband network
-         * provider, or #NMSettingConnection:type property changes.
+         * provider, or {@link NetworkManager.SettingConnection.type} property changes.
          *
          * The UUID must be in the format "2815492f-7e56-435e-b2e9-246bd7cdc664"
          * (ie, contains only hexadecimal characters and "-").  A suitable UUID may
-         * be generated by nm_utils_uuid_generate() or
-         * nm_utils_uuid_generate_from_string().
+         * be generated by `nm_utils_uuid_generate()` or
+         * `nm_utils_uuid_generate_from_string()`.
          */
         get uuid(): string;
         set uuid(val: string);
         /**
          * The trust level of a the connection.  Free form case-insensitive string
-         * (for example "Home", "Work", "Public").  %NULL or unspecified zone means
+         * (for example "Home", "Work", "Public").  `null` or unspecified zone means
          * the connection will be placed in the default zone as defined by the
          * firewall.
          */
@@ -5877,16 +6338,19 @@ export namespace NetworkManager {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SettingConnection.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingConnection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SettingConnection.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingConnection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SettingConnection.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SettingConnection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5898,93 +6362,107 @@ export namespace NetworkManager {
         /**
          * Adds a permission to the connection's permission list.  At this time, only
          * the "user" permission type is supported, and `pitem` must be a username. See
-         * #NMSettingConnection:permissions: for more details.
+         * {@link NetworkManager.SettingConnection.permissions}: for more details.
          * @param ptype the permission type; at this time only "user" is supported
-         * @param pitem the permission item formatted as required for @ptype
-         * @param detail unused at this time; must be %NULL
-         * @returns %TRUE if the permission was unique and was successfully added to the list, %FALSE if @ptype or @pitem was invalid or it the permission was already present in the list
+         * @param pitem the permission item formatted as required for `ptype`
+         * @param detail unused at this time; must be `null`
+         * @returns `true` if the permission was unique and was successfully added to the list, `false` if `ptype` or `pitem` was invalid or it the permission was already present in the list
          */
         add_permission(ptype: string, pitem: string, detail?: string | null): boolean;
         /**
          * Adds a new secondary connection UUID to the setting.
          * @param sec_uuid the secondary connection UUID to add
-         * @returns %TRUE if the secondary connection UUID was added; %FALSE if the UUID was already present
+         * @returns `true` if the secondary connection UUID was added; `false` if the UUID was already present
          */
         add_secondary(sec_uuid: string): boolean;
         /**
-         * Returns the #NMSettingConnection:autoconnect property of the connection.
+         * Returns the {@link NetworkManager.SettingConnection.autoconnect} property of the connection.
          * @returns the connection's autoconnect behavior
          */
         get_autoconnect(): boolean;
         /**
-         * Returns the #NMSettingConnection:type property of the connection.
+         * Returns the {@link NetworkManager.SettingConnection.type} property of the connection.
          * @returns the connection type
          */
         get_connection_type(): string;
+        /**
+         * @returns the value contained in the {@link NetworkManager.SettingConnection.gateway_ping_timeout} property.
+         */
         get_gateway_ping_timeout(): number;
         /**
-         * Returns the #NMSettingConnection:id property of the connection.
+         * Returns the {@link NetworkManager.SettingConnection.id} property of the connection.
          * @returns the connection ID
          */
         get_id(): string;
         /**
-         * Returns the #NMSettingConnection:interface-name property of the connection.
+         * Returns the {@link NetworkManager.SettingConnection.interface_name} property of the connection.
          * @returns the connection's interface name
          */
         get_interface_name(): string;
         /**
-         * Returns the #NMSettingConnection:master property of the connection.
+         * Returns the {@link NetworkManager.SettingConnection.master} property of the connection.
          * @returns interface name of the master device or UUID of the master connection.
          */
         get_master(): string;
         /**
-         * Returns the number of entries in the #NMSettingConnection:permissions
+         * Returns the number of entries in the {@link NetworkManager.SettingConnection.permissions}
          * property of this setting.
          * @returns the number of permissions entries
          */
         get_num_permissions(): number;
+        /**
+         * @returns the number of configured secondary connection UUIDs
+         */
         get_num_secondaries(): number;
         /**
-         * Retrieve one of the entries of the #NMSettingConnection:permissions property
+         * Retrieve one of the entries of the {@link NetworkManager.SettingConnection.permissions} property
          * of this setting.
          * @param idx the zero-based index of the permissions entry
          * @param out_ptype on return, the permission type (at this time, always "user")
-         * @param out_pitem on return, the permission item (formatted according to @ptype, see #NMSettingConnection:permissions for more detail
-         * @param out_detail on return, the permission detail (at this time, always %NULL)
-         * @returns %TRUE if a permission was returned, %FALSE if @idx was invalid
+         * @param out_pitem on return, the permission item (formatted according to `ptype`, see {@link NetworkManager.SettingConnection.permissions} for more detail
+         * @param out_detail on return, the permission detail (at this time, always `null`)
+         * @returns `true` if a permission was returned, `false` if `idx` was invalid
          */
         get_permission(idx: number, out_ptype: string, out_pitem: string, out_detail: string): boolean;
         /**
-         * Returns the #NMSettingConnection:read-only property of the connection.
-         * @returns %TRUE if the connection is read-only, %FALSE if it is not
+         * Returns the {@link NetworkManager.SettingConnection.read_only} property of the connection.
+         * @returns `true` if the connection is read-only, `false` if it is not
          */
         get_read_only(): boolean;
+        /**
+         * @param idx the zero-based index of the secondary connection UUID entry
+         * @returns the secondary connection UUID at index `idx`
+         */
         get_secondary(idx: number): string;
         /**
-         * Returns the #NMSettingConnection:slave-type property of the connection.
+         * Returns the {@link NetworkManager.SettingConnection.slave_type} property of the connection.
          * @returns the type of slave this connection is, if any
          */
         get_slave_type(): string;
         /**
-         * Returns the #NMSettingConnection:timestamp property of the connection.
+         * Returns the {@link NetworkManager.SettingConnection.timestamp} property of the connection.
          * @returns the connection's timestamp
          */
         get_timestamp(): number;
         /**
-         * Returns the #NMSettingConnection:uuid property of the connection.
+         * Returns the {@link NetworkManager.SettingConnection.uuid} property of the connection.
          * @returns the connection UUID
          */
         get_uuid(): string;
         /**
-         * Returns the #NMSettingConnection:zone property of the connection.
+         * Returns the {@link NetworkManager.SettingConnection.zone} property of the connection.
          * @returns the trust level of a connection
          */
         get_zone(): string;
+        /**
+         * @param type the setting name (ie #NM_SETTING_BOND_SETTING_NAME) to be matched against `setting`'s slave type
+         * @returns `true` if connection is of the given slave `type`
+         */
         is_slave_type(type: string): boolean;
         /**
          * Checks whether the given username is allowed to view/access this connection.
          * @param uname the user name to check permissions for
-         * @returns %TRUE if the requested user is allowed to view this connection, %FALSE if the given user is not allowed to view this connection
+         * @returns `true` if the requested user is allowed to view this connection, `false` if the given user is not allowed to view this connection
          */
         permissions_user_allowed(uname: string): boolean;
         /**
@@ -5995,11 +6473,11 @@ export namespace NetworkManager {
         /**
          * Removes the permission from the connection.
          * At this time, only the "user" permission type is supported, and `pitem` must
-         * be a username. See #NMSettingConnection:permissions: for more details.
+         * be a username. See {@link NetworkManager.SettingConnection.permissions}: for more details.
          * @param ptype the permission type; at this time only "user" is supported
-         * @param pitem the permission item formatted as required for @ptype
-         * @param detail unused at this time; must be %NULL
-         * @returns %TRUE if the permission was found and removed; %FALSE if it was not.
+         * @param pitem the permission item formatted as required for `ptype`
+         * @param detail unused at this time; must be `null`
+         * @returns `true` if the permission was found and removed; `false` if it was not.
          */
         remove_permission_by_value(ptype: string, pitem: string, detail?: string | null): boolean;
         /**
@@ -6010,7 +6488,7 @@ export namespace NetworkManager {
         /**
          * Removes the secondary coonnection UUID `sec_uuid`.
          * @param sec_uuid the secondary connection UUID to remove
-         * @returns %TRUE if the secondary connection UUID was found and removed; %FALSE if it was not.
+         * @returns `true` if the secondary connection UUID was found and removed; `false` if it was not.
          */
         remove_secondary_by_value(sec_uuid: string): boolean;
     }
@@ -6054,132 +6532,153 @@ export namespace NetworkManager {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SettingDcb extends Setting {
         static $gtype: GObject.GType<SettingDcb>;
 
         // Properties
 
         /**
-         * Specifies the #NMSettingDcbFlags for the DCB FCoE application.  Flags may
-         * be any combination of %NM_SETTING_DCB_FLAG_ENABLE,
-         * %NM_SETTING_DCB_FLAG_ADVERTISE, and %NM_SETTING_DCB_FLAG_WILLING.
+         * Specifies the {@link NetworkManager.SettingDcbFlags} for the DCB FCoE application.  Flags may
+         * be any combination of {@link NetworkManager.SettingDcbFlags.ENABLE},
+         * {@link NetworkManager.SettingDcbFlags.ADVERTISE}, and {@link NetworkManager.SettingDcbFlags.WILLING}.
+         * @since 0.9.10
          */
         get app_fcoe_flags(): number;
         set app_fcoe_flags(val: number);
         /**
-         * Specifies the #NMSettingDcbFlags for the DCB FCoE application.  Flags may
-         * be any combination of %NM_SETTING_DCB_FLAG_ENABLE,
-         * %NM_SETTING_DCB_FLAG_ADVERTISE, and %NM_SETTING_DCB_FLAG_WILLING.
+         * Specifies the {@link NetworkManager.SettingDcbFlags} for the DCB FCoE application.  Flags may
+         * be any combination of {@link NetworkManager.SettingDcbFlags.ENABLE},
+         * {@link NetworkManager.SettingDcbFlags.ADVERTISE}, and {@link NetworkManager.SettingDcbFlags.WILLING}.
+         * @since 0.9.10
          */
         get appFcoeFlags(): number;
         set appFcoeFlags(val: number);
         /**
-         * The FCoE controller mode; either %NM_SETTING_DCB_FCOE_MODE_FABRIC
-         * (default) or %NM_SETTING_DCB_FCOE_MODE_VN2VN.
+         * The FCoE controller mode; either `NM_SETTING_DCB_FCOE_MODE_FABRIC`
+         * (default) or `NM_SETTING_DCB_FCOE_MODE_VN2VN`.
+         * @since 0.9.10
          */
         get app_fcoe_mode(): string;
         set app_fcoe_mode(val: string);
         /**
-         * The FCoE controller mode; either %NM_SETTING_DCB_FCOE_MODE_FABRIC
-         * (default) or %NM_SETTING_DCB_FCOE_MODE_VN2VN.
+         * The FCoE controller mode; either `NM_SETTING_DCB_FCOE_MODE_FABRIC`
+         * (default) or `NM_SETTING_DCB_FCOE_MODE_VN2VN`.
+         * @since 0.9.10
          */
         get appFcoeMode(): string;
         set appFcoeMode(val: string);
         /**
          * The highest User Priority (0 - 7) which FCoE frames should use, or -1 for
-         * default priority.  Only used when the #NMSettingDcb:app-fcoe-flags
-         * property includes the %NM_SETTING_DCB_FLAG_ENABLE flag.
+         * default priority.  Only used when the {@link NetworkManager.SettingDcb.app_fcoe_flags}
+         * property includes the {@link NetworkManager.SettingDcbFlags.ENABLE} flag.
+         * @since 0.9.10
          */
         get app_fcoe_priority(): number;
         set app_fcoe_priority(val: number);
         /**
          * The highest User Priority (0 - 7) which FCoE frames should use, or -1 for
-         * default priority.  Only used when the #NMSettingDcb:app-fcoe-flags
-         * property includes the %NM_SETTING_DCB_FLAG_ENABLE flag.
+         * default priority.  Only used when the {@link NetworkManager.SettingDcb.app_fcoe_flags}
+         * property includes the {@link NetworkManager.SettingDcbFlags.ENABLE} flag.
+         * @since 0.9.10
          */
         get appFcoePriority(): number;
         set appFcoePriority(val: number);
         /**
-         * Specifies the #NMSettingDcbFlags for the DCB FIP application.  Flags may
-         * be any combination of %NM_SETTING_DCB_FLAG_ENABLE,
-         * %NM_SETTING_DCB_FLAG_ADVERTISE, and %NM_SETTING_DCB_FLAG_WILLING.
+         * Specifies the {@link NetworkManager.SettingDcbFlags} for the DCB FIP application.  Flags may
+         * be any combination of {@link NetworkManager.SettingDcbFlags.ENABLE},
+         * {@link NetworkManager.SettingDcbFlags.ADVERTISE}, and {@link NetworkManager.SettingDcbFlags.WILLING}.
+         * @since 0.9.10
          */
         get app_fip_flags(): number;
         set app_fip_flags(val: number);
         /**
-         * Specifies the #NMSettingDcbFlags for the DCB FIP application.  Flags may
-         * be any combination of %NM_SETTING_DCB_FLAG_ENABLE,
-         * %NM_SETTING_DCB_FLAG_ADVERTISE, and %NM_SETTING_DCB_FLAG_WILLING.
+         * Specifies the {@link NetworkManager.SettingDcbFlags} for the DCB FIP application.  Flags may
+         * be any combination of {@link NetworkManager.SettingDcbFlags.ENABLE},
+         * {@link NetworkManager.SettingDcbFlags.ADVERTISE}, and {@link NetworkManager.SettingDcbFlags.WILLING}.
+         * @since 0.9.10
          */
         get appFipFlags(): number;
         set appFipFlags(val: number);
         /**
          * The highest User Priority (0 - 7) which FIP frames should use, or -1 for
-         * default priority.  Only used when the #NMSettingDcb:app-fip-flags
-         * property includes the %NM_SETTING_DCB_FLAG_ENABLE flag.
+         * default priority.  Only used when the {@link NetworkManager.SettingDcb.app_fip_flags}
+         * property includes the {@link NetworkManager.SettingDcbFlags.ENABLE} flag.
+         * @since 0.9.10
          */
         get app_fip_priority(): number;
         set app_fip_priority(val: number);
         /**
          * The highest User Priority (0 - 7) which FIP frames should use, or -1 for
-         * default priority.  Only used when the #NMSettingDcb:app-fip-flags
-         * property includes the %NM_SETTING_DCB_FLAG_ENABLE flag.
+         * default priority.  Only used when the {@link NetworkManager.SettingDcb.app_fip_flags}
+         * property includes the {@link NetworkManager.SettingDcbFlags.ENABLE} flag.
+         * @since 0.9.10
          */
         get appFipPriority(): number;
         set appFipPriority(val: number);
         /**
-         * Specifies the #NMSettingDcbFlags for the DCB iSCSI application.  Flags
-         * may be any combination of %NM_SETTING_DCB_FLAG_ENABLE,
-         * %NM_SETTING_DCB_FLAG_ADVERTISE, and %NM_SETTING_DCB_FLAG_WILLING.
+         * Specifies the {@link NetworkManager.SettingDcbFlags} for the DCB iSCSI application.  Flags
+         * may be any combination of {@link NetworkManager.SettingDcbFlags.ENABLE},
+         * {@link NetworkManager.SettingDcbFlags.ADVERTISE}, and {@link NetworkManager.SettingDcbFlags.WILLING}.
+         * @since 0.9.10
          */
         get app_iscsi_flags(): number;
         set app_iscsi_flags(val: number);
         /**
-         * Specifies the #NMSettingDcbFlags for the DCB iSCSI application.  Flags
-         * may be any combination of %NM_SETTING_DCB_FLAG_ENABLE,
-         * %NM_SETTING_DCB_FLAG_ADVERTISE, and %NM_SETTING_DCB_FLAG_WILLING.
+         * Specifies the {@link NetworkManager.SettingDcbFlags} for the DCB iSCSI application.  Flags
+         * may be any combination of {@link NetworkManager.SettingDcbFlags.ENABLE},
+         * {@link NetworkManager.SettingDcbFlags.ADVERTISE}, and {@link NetworkManager.SettingDcbFlags.WILLING}.
+         * @since 0.9.10
          */
         get appIscsiFlags(): number;
         set appIscsiFlags(val: number);
         /**
          * The highest User Priority (0 - 7) which iSCSI frames should use, or -1
-         * for default priority. Only used when the #NMSettingDcb:app-iscsi-flags
-         * property includes the %NM_SETTING_DCB_FLAG_ENABLE flag.
+         * for default priority. Only used when the {@link NetworkManager.SettingDcb.app_iscsi_flags}
+         * property includes the {@link NetworkManager.SettingDcbFlags.ENABLE} flag.
+         * @since 0.9.10
          */
         get app_iscsi_priority(): number;
         set app_iscsi_priority(val: number);
         /**
          * The highest User Priority (0 - 7) which iSCSI frames should use, or -1
-         * for default priority. Only used when the #NMSettingDcb:app-iscsi-flags
-         * property includes the %NM_SETTING_DCB_FLAG_ENABLE flag.
+         * for default priority. Only used when the {@link NetworkManager.SettingDcb.app_iscsi_flags}
+         * property includes the {@link NetworkManager.SettingDcbFlags.ENABLE} flag.
+         * @since 0.9.10
          */
         get appIscsiPriority(): number;
         set appIscsiPriority(val: number);
         /**
-         * Specifies the #NMSettingDcbFlags for DCB Priority Flow Control (PFC).
-         * Flags may be any combination of %NM_SETTING_DCB_FLAG_ENABLE,
-         * %NM_SETTING_DCB_FLAG_ADVERTISE, and %NM_SETTING_DCB_FLAG_WILLING.
+         * Specifies the {@link NetworkManager.SettingDcbFlags} for DCB Priority Flow Control (PFC).
+         * Flags may be any combination of {@link NetworkManager.SettingDcbFlags.ENABLE},
+         * {@link NetworkManager.SettingDcbFlags.ADVERTISE}, and {@link NetworkManager.SettingDcbFlags.WILLING}.
+         * @since 0.9.10
          */
         get priority_flow_control_flags(): number;
         set priority_flow_control_flags(val: number);
         /**
-         * Specifies the #NMSettingDcbFlags for DCB Priority Flow Control (PFC).
-         * Flags may be any combination of %NM_SETTING_DCB_FLAG_ENABLE,
-         * %NM_SETTING_DCB_FLAG_ADVERTISE, and %NM_SETTING_DCB_FLAG_WILLING.
+         * Specifies the {@link NetworkManager.SettingDcbFlags} for DCB Priority Flow Control (PFC).
+         * Flags may be any combination of {@link NetworkManager.SettingDcbFlags.ENABLE},
+         * {@link NetworkManager.SettingDcbFlags.ADVERTISE}, and {@link NetworkManager.SettingDcbFlags.WILLING}.
+         * @since 0.9.10
          */
         get priorityFlowControlFlags(): number;
         set priorityFlowControlFlags(val: number);
         /**
-         * Specifies the #NMSettingDcbFlags for DCB Priority Groups.  Flags may be
-         * any combination of %NM_SETTING_DCB_FLAG_ENABLE,
-         * %NM_SETTING_DCB_FLAG_ADVERTISE, and %NM_SETTING_DCB_FLAG_WILLING.
+         * Specifies the {@link NetworkManager.SettingDcbFlags} for DCB Priority Groups.  Flags may be
+         * any combination of {@link NetworkManager.SettingDcbFlags.ENABLE},
+         * {@link NetworkManager.SettingDcbFlags.ADVERTISE}, and {@link NetworkManager.SettingDcbFlags.WILLING}.
+         * @since 0.9.10
          */
         get priority_group_flags(): number;
         set priority_group_flags(val: number);
         /**
-         * Specifies the #NMSettingDcbFlags for DCB Priority Groups.  Flags may be
-         * any combination of %NM_SETTING_DCB_FLAG_ENABLE,
-         * %NM_SETTING_DCB_FLAG_ADVERTISE, and %NM_SETTING_DCB_FLAG_WILLING.
+         * Specifies the {@link NetworkManager.SettingDcbFlags} for DCB Priority Groups.  Flags may be
+         * any combination of {@link NetworkManager.SettingDcbFlags.ENABLE},
+         * {@link NetworkManager.SettingDcbFlags.ADVERTISE}, and {@link NetworkManager.SettingDcbFlags.WILLING}.
+         * @since 0.9.10
          */
         get priorityGroupFlags(): number;
         set priorityGroupFlags(val: number);
@@ -6203,16 +6702,19 @@ export namespace NetworkManager {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SettingDcb.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingDcb.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SettingDcb.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingDcb.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SettingDcb.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SettingDcb.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6221,56 +6723,111 @@ export namespace NetworkManager {
 
         // Methods
 
+        /**
+         * @returns the {@link NetworkManager.SettingDcb.app_fcoe_flags} property of the setting
+         */
         get_app_fcoe_flags(): SettingDcbFlags;
+        /**
+         * @returns the {@link NetworkManager.SettingDcb.app_fcoe_mode} property of the setting
+         */
         get_app_fcoe_mode(): string;
+        /**
+         * @returns the {@link NetworkManager.SettingDcb.app_fcoe_priority} property of the setting
+         */
         get_app_fcoe_priority(): number;
+        /**
+         * @returns the {@link NetworkManager.SettingDcb.app_fip_flags} property of the setting
+         */
         get_app_fip_flags(): SettingDcbFlags;
+        /**
+         * @returns the {@link NetworkManager.SettingDcb.app_fip_priority} property of the setting
+         */
         get_app_fip_priority(): number;
+        /**
+         * @returns the {@link NetworkManager.SettingDcb.app_iscsi_flags} property of the setting
+         */
         get_app_iscsi_flags(): SettingDcbFlags;
+        /**
+         * @returns the {@link NetworkManager.SettingDcb.app_iscsi_priority} property of the setting
+         */
         get_app_iscsi_priority(): number;
+        /**
+         * @param user_priority the User Priority (0 - 7) to retrieve the group bandwidth percentage for
+         * @returns the allowed bandwidth percentage of `user_priority` in its priority group. These values are only valid when {@link NetworkManager.SettingDcb.priority_group_flags} includes the {@link NetworkManager.SettingDcbFlags.ENABLE} flag.
+         */
         get_priority_bandwidth(user_priority: number): number;
+        /**
+         * @param user_priority the User Priority (0 - 7) to retrieve flow control for
+         * @returns `true` if flow control is enabled for the given `user_priority`, `false` if not enabled
+         */
         get_priority_flow_control(user_priority: number): boolean;
+        /**
+         * @returns the {@link NetworkManager.SettingDcb.priority_flow_control_flags} property of the setting
+         */
         get_priority_flow_control_flags(): SettingDcbFlags;
+        /**
+         * @param group_id the priority group (0 - 7) to retrieve the bandwidth percentage for
+         * @returns the bandwidth percentage assigned to `group_id`.  These values are only valid when {@link NetworkManager.SettingDcb.priority_group_flags} includes the {@link NetworkManager.SettingDcbFlags.ENABLE} flag.
+         */
         get_priority_group_bandwidth(group_id: number): number;
+        /**
+         * @returns the {@link NetworkManager.SettingDcb.priority_group_flags} property of the setting
+         */
         get_priority_group_flags(): SettingDcbFlags;
+        /**
+         * @param user_priority the User Priority (0 - 7) to retrieve the group ID for
+         * @returns the group number `user_priority` is assigned to.  These values are only valid when {@link NetworkManager.SettingDcb.priority_group_flags} includes the {@link NetworkManager.SettingDcbFlags.ENABLE} flag.
+         */
         get_priority_group_id(user_priority: number): number;
+        /**
+         * @param user_priority the User Priority (0 - 7) to retrieve strict bandwidth for
+         * @returns `true` if `user_priority` may use all of the bandwidth allocated to its assigned group, or `false` if not. These values are only valid when {@link NetworkManager.SettingDcb.priority_group_flags} includes the {@link NetworkManager.SettingDcbFlags.ENABLE} flag.
+         */
         get_priority_strict_bandwidth(user_priority: number): boolean;
+        /**
+         * @param user_priority the User Priority (0 - 7) to retrieve the traffic class for
+         * @returns the traffic class assigned to `user_priority`. These values are only valid when {@link NetworkManager.SettingDcb.priority_group_flags} includes the {@link NetworkManager.SettingDcbFlags.ENABLE} flag.
+         */
         get_priority_traffic_class(user_priority: number): number;
         /**
-         * These values are only valid when #NMSettingDcb:priority-group-flags includes
-         * the %NM_SETTING_DCB_FLAG_ENABLE flag.
+         * These values are only valid when {@link NetworkManager.SettingDcb.priority_group_flags} includes
+         * the {@link NetworkManager.SettingDcbFlags.ENABLE} flag.
          * @param user_priority the User Priority (0 - 7) to set the bandwidth percentage for
-         * @param bandwidth_percent the bandwidth percentage (0 - 100) that @user_priority is allowed to use within its priority group
+         * @param bandwidth_percent the bandwidth percentage (0 - 100) that `user_priority` is allowed to use within its priority group
          */
         set_priority_bandwidth(user_priority: number, bandwidth_percent: number): void;
         /**
-         * These values are only valid when #NMSettingDcb:priority-flow-control includes
-         * the %NM_SETTING_DCB_FLAG_ENABLE flag.
+         * These values are only valid when {@link NetworkManager.SettingDcb.priority_flow_control} includes
+         * the {@link NetworkManager.SettingDcbFlags.ENABLE} flag.
          * @param user_priority the User Priority (0 - 7) to set flow control for
-         * @param enabled %TRUE to enable flow control for this priority, %FALSE to disable it
+         * @param enabled `true` to enable flow control for this priority, `false` to disable it
          */
         set_priority_flow_control(user_priority: number, enabled: boolean): void;
         /**
-         * These values are only valid when #NMSettingDcb:priority-group-flags includes
-         * the %NM_SETTING_DCB_FLAG_ENABLE flag.
+         * These values are only valid when {@link NetworkManager.SettingDcb.priority_group_flags} includes
+         * the {@link NetworkManager.SettingDcbFlags.ENABLE} flag.
          * @param group_id the priority group (0 - 7) to set the bandwidth percentage for
-         * @param bandwidth_percent the bandwidth percentage (0 - 100) to assign to @group_id to
+         * @param bandwidth_percent the bandwidth percentage (0 - 100) to assign to `group_id` to
          */
         set_priority_group_bandwidth(group_id: number, bandwidth_percent: number): void;
         /**
-         * These values are only valid when #NMSettingDcb:priority-group-flags includes
-         * the %NM_SETTING_DCB_FLAG_ENABLE flag.
+         * These values are only valid when {@link NetworkManager.SettingDcb.priority_group_flags} includes
+         * the {@link NetworkManager.SettingDcbFlags.ENABLE} flag.
          * @param user_priority the User Priority (0 - 7) to set flow control for
-         * @param group_id the group (0 - 7) to assign @user_priority to, or 15 for the unrestricted group.
+         * @param group_id the group (0 - 7) to assign `user_priority` to, or 15 for the unrestricted group.
          */
         set_priority_group_id(user_priority: number, group_id: number): void;
         /**
-         * These values are only valid when #NMSettingDcb:priority-group-flags includes
-         * the %NM_SETTING_DCB_FLAG_ENABLE flag.
+         * These values are only valid when {@link NetworkManager.SettingDcb.priority_group_flags} includes
+         * the {@link NetworkManager.SettingDcbFlags.ENABLE} flag.
          * @param user_priority the User Priority (0 - 7) to set strict bandwidth for
-         * @param strict %TRUE to allow @user_priority to use all the bandwidth allocated to its priority group, or %FALSE if not
+         * @param strict `true` to allow `user_priority` to use all the bandwidth allocated to its priority group, or `false` if not
          */
         set_priority_strict_bandwidth(user_priority: number, strict: boolean): void;
+        /**
+         * @param user_priority
+         * @param traffic_class
+         */
         set_priority_traffic_class(user_priority: number, traffic_class: number): void;
     }
 
@@ -6285,6 +6842,9 @@ export namespace NetworkManager {
         interface ConstructorProps extends Setting.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class SettingGeneric extends Setting {
         static $gtype: GObject.GType<SettingGeneric>;
 
@@ -6307,16 +6867,19 @@ export namespace NetworkManager {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SettingGeneric.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingGeneric.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SettingGeneric.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingGeneric.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SettingGeneric.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SettingGeneric.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6364,6 +6927,9 @@ export namespace NetworkManager {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SettingGsm extends Setting {
         static $gtype: GObject.GType<SettingGsm>;
 
@@ -6372,14 +6938,16 @@ export namespace NetworkManager {
         /**
          * Bitfield of allowed frequency bands.  Note that not all devices allow
          * frequency band control.  Permitted values are those specified by
-         * #NMSettingGsmNetworkBand.
+         * {@link NetworkManager.SettingGsmNetworkBand}.
+         * @deprecated since 0.9.10: No longer used. Band setting should be done by talking to ModemManager directly.
          */
         get allowed_bands(): number;
         set allowed_bands(val: number);
         /**
          * Bitfield of allowed frequency bands.  Note that not all devices allow
          * frequency band control.  Permitted values are those specified by
-         * #NMSettingGsmNetworkBand.
+         * {@link NetworkManager.SettingGsmNetworkBand}.
+         * @deprecated since 0.9.10: No longer used. Band setting should be done by talking to ModemManager directly.
          */
         get allowedBands(): number;
         set allowedBands(val: number);
@@ -6395,13 +6963,13 @@ export namespace NetworkManager {
         get apn(): string;
         set apn(val: string);
         /**
-         * When %TRUE, only connections to the home network will be allowed.
+         * When `true`, only connections to the home network will be allowed.
          * Connections to roaming networks will not be made.
          */
         get home_only(): boolean;
         set home_only(val: boolean);
         /**
-         * When %TRUE, only connections to the home network will be allowed.
+         * When `true`, only connections to the home network will be allowed.
          * Connections to roaming networks will not be made.
          */
         get homeOnly(): boolean;
@@ -6426,27 +6994,29 @@ export namespace NetworkManager {
         set networkId(val: string);
         /**
          * Network preference to force the device to only use specific network
-         * technologies. The permitted values are %NM_SETTING_GSM_NETWORK_TYPE_ANY,
-         * %NM_SETTING_GSM_NETWORK_TYPE_UMTS_HSPA,
-         * %NM_SETTING_GSM_NETWORK_TYPE_GPRS_EDGE,
-         * %NM_SETTING_GSM_NETWORK_TYPE_PREFER_UMTS_HSPA,
-         * %NM_SETTING_GSM_NETWORK_TYPE_PREFER_GPRS_EDGE,
-         * %NM_SETTING_GSM_NETWORK_TYPE_PREFER_4G, and
-         * %NM_SETTING_GSM_NETWORK_TYPE_4G.  Note that not all devices allow network
+         * technologies. The permitted values are {@link NetworkManager.SettingGsmNetworkType.ANY},
+         * {@link NetworkManager.SettingGsmNetworkType.UMTS_HSPA},
+         * {@link NetworkManager.SettingGsmNetworkType.GPRS_EDGE},
+         * {@link NetworkManager.SettingGsmNetworkType.PREFER_UMTS_HSPA},
+         * {@link NetworkManager.SettingGsmNetworkType.PREFER_GPRS_EDGE},
+         * {@link NetworkManager.SettingGsmNetworkType.PREFER_4G}, and
+         * {@link NetworkManager.SettingGsmNetworkType.4G}.  Note that not all devices allow network
          * preference control.
+         * @deprecated since 0.9.10: No longer used. Network type setting should be done by talking to ModemManager directly.
          */
         get network_type(): number;
         set network_type(val: number);
         /**
          * Network preference to force the device to only use specific network
-         * technologies. The permitted values are %NM_SETTING_GSM_NETWORK_TYPE_ANY,
-         * %NM_SETTING_GSM_NETWORK_TYPE_UMTS_HSPA,
-         * %NM_SETTING_GSM_NETWORK_TYPE_GPRS_EDGE,
-         * %NM_SETTING_GSM_NETWORK_TYPE_PREFER_UMTS_HSPA,
-         * %NM_SETTING_GSM_NETWORK_TYPE_PREFER_GPRS_EDGE,
-         * %NM_SETTING_GSM_NETWORK_TYPE_PREFER_4G, and
-         * %NM_SETTING_GSM_NETWORK_TYPE_4G.  Note that not all devices allow network
+         * technologies. The permitted values are {@link NetworkManager.SettingGsmNetworkType.ANY},
+         * {@link NetworkManager.SettingGsmNetworkType.UMTS_HSPA},
+         * {@link NetworkManager.SettingGsmNetworkType.GPRS_EDGE},
+         * {@link NetworkManager.SettingGsmNetworkType.PREFER_UMTS_HSPA},
+         * {@link NetworkManager.SettingGsmNetworkType.PREFER_GPRS_EDGE},
+         * {@link NetworkManager.SettingGsmNetworkType.PREFER_4G}, and
+         * {@link NetworkManager.SettingGsmNetworkType.4G}.  Note that not all devices allow network
          * preference control.
+         * @deprecated since 0.9.10: No longer used. Network type setting should be done by talking to ModemManager directly.
          */
         get networkType(): number;
         set networkType(val: number);
@@ -6466,12 +7036,12 @@ export namespace NetworkManager {
         get password(): string;
         set password(val: string);
         /**
-         * Flags indicating how to handle the #NMSettingGsm:password property.
+         * Flags indicating how to handle the {@link NetworkManager.SettingGsm.password} property.
          */
         get password_flags(): number;
         set password_flags(val: number);
         /**
-         * Flags indicating how to handle the #NMSettingGsm:password property.
+         * Flags indicating how to handle the {@link NetworkManager.SettingGsm.password} property.
          */
         get passwordFlags(): number;
         set passwordFlags(val: number);
@@ -6483,12 +7053,12 @@ export namespace NetworkManager {
         get pin(): string;
         set pin(val: string);
         /**
-         * Flags indicating how to handle the #NMSettingGsm:pin property.
+         * Flags indicating how to handle the {@link NetworkManager.SettingGsm.pin} property.
          */
         get pin_flags(): number;
         set pin_flags(val: number);
         /**
-         * Flags indicating how to handle the #NMSettingGsm:pin property.
+         * Flags indicating how to handle the {@link NetworkManager.SettingGsm.pin} property.
          */
         get pinFlags(): number;
         set pinFlags(val: number);
@@ -6519,16 +7089,19 @@ export namespace NetworkManager {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SettingGsm.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingGsm.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SettingGsm.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingGsm.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SettingGsm.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SettingGsm.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6537,16 +7110,49 @@ export namespace NetworkManager {
 
         // Methods
 
+        /**
+         * @returns the {@link NetworkManager.SettingGsm.allowed_bands} property of the setting
+         */
         get_allowed_bands(): number;
+        /**
+         * @returns the {@link NetworkManager.SettingGsm.apn} property of the setting
+         */
         get_apn(): string;
+        /**
+         * @returns the {@link NetworkManager.SettingGsm.home_only} property of the setting
+         */
         get_home_only(): boolean;
+        /**
+         * @returns the {@link NetworkManager.SettingGsm.network_id} property of the setting
+         */
         get_network_id(): string;
+        /**
+         * @returns the {@link NetworkManager.SettingGsm.network_type} property of the setting
+         */
         get_network_type(): number;
+        /**
+         * @returns the {@link NetworkManager.SettingGsm.number} property of the setting
+         */
         get_number(): string;
+        /**
+         * @returns the {@link NetworkManager.SettingGsm.password} property of the setting
+         */
         get_password(): string;
+        /**
+         * @returns the {@link NetworkManager.SettingSecretFlags} pertaining to the {@link NetworkManager.SettingGsm.password}
+         */
         get_password_flags(): SettingSecretFlags;
+        /**
+         * @returns the {@link NetworkManager.SettingGsm.pin} property of the setting
+         */
         get_pin(): string;
+        /**
+         * @returns the {@link NetworkManager.SettingSecretFlags} pertaining to the {@link NetworkManager.SettingGsm.pin}
+         */
         get_pin_flags(): SettingSecretFlags;
+        /**
+         * @returns the {@link NetworkManager.SettingGsm.username} property of the setting
+         */
         get_username(): string;
     }
 
@@ -6591,6 +7197,9 @@ export namespace NetworkManager {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SettingIP4Config extends Setting {
         static $gtype: GObject.GType<SettingIP4Config>;
 
@@ -6609,32 +7218,32 @@ export namespace NetworkManager {
         get dhcpClientId(): string;
         set dhcpClientId(val: string);
         /**
-         * If the #NMSettingIP4Config:dhcp-send-hostname property is %TRUE, then the
+         * If the {@link NetworkManager.SettingIP4Config.dhcp_send_hostname} property is `true`, then the
          * specified name will be sent to the DHCP server when acquiring a lease.
          */
         get dhcp_hostname(): string;
         set dhcp_hostname(val: string);
         /**
-         * If the #NMSettingIP4Config:dhcp-send-hostname property is %TRUE, then the
+         * If the {@link NetworkManager.SettingIP4Config.dhcp_send_hostname} property is `true`, then the
          * specified name will be sent to the DHCP server when acquiring a lease.
          */
         get dhcpHostname(): string;
         set dhcpHostname(val: string);
         /**
-         * If %TRUE, a hostname is sent to the DHCP server when acquiring a lease.
+         * If `true`, a hostname is sent to the DHCP server when acquiring a lease.
          * Some DHCP servers use this hostname to update DNS databases, essentially
          * providing a static hostname for the computer.  If the
-         * #NMSettingIP4Config:dhcp-hostname property is empty and this property is
-         * %TRUE, the current persistent hostname of the computer is sent.
+         * {@link NetworkManager.SettingIP4Config.dhcp_hostname} property is empty and this property is
+         * `true`, the current persistent hostname of the computer is sent.
          */
         get dhcp_send_hostname(): boolean;
         set dhcp_send_hostname(val: boolean);
         /**
-         * If %TRUE, a hostname is sent to the DHCP server when acquiring a lease.
+         * If `true`, a hostname is sent to the DHCP server when acquiring a lease.
          * Some DHCP servers use this hostname to update DNS databases, essentially
          * providing a static hostname for the computer.  If the
-         * #NMSettingIP4Config:dhcp-hostname property is empty and this property is
-         * %TRUE, the current persistent hostname of the computer is sent.
+         * {@link NetworkManager.SettingIP4Config.dhcp_hostname} property is empty and this property is
+         * `true`, the current persistent hostname of the computer is sent.
          */
         get dhcpSendHostname(): boolean;
         set dhcpSendHostname(val: boolean);
@@ -6651,52 +7260,52 @@ export namespace NetworkManager {
         get dhcpTimeout(): number;
         set dhcpTimeout(val: number);
         /**
-         * When the method is set to "auto" and this property to %TRUE,
+         * When the method is set to "auto" and this property to `true`,
          * automatically configured nameservers and search domains are ignored and
          * only nameservers and search domains specified in the
-         * #NMSettingIP4Config:dns and #NMSettingIP4Config:dns-search properties, if
+         * {@link NetworkManager.SettingIP4Config.dns} and {@link NetworkManager.SettingIP4Config.dns_search} properties, if
          * any, are used.
          */
         get ignore_auto_dns(): boolean;
         set ignore_auto_dns(val: boolean);
         /**
-         * When the method is set to "auto" and this property to %TRUE,
+         * When the method is set to "auto" and this property to `true`,
          * automatically configured nameservers and search domains are ignored and
          * only nameservers and search domains specified in the
-         * #NMSettingIP4Config:dns and #NMSettingIP4Config:dns-search properties, if
+         * {@link NetworkManager.SettingIP4Config.dns} and {@link NetworkManager.SettingIP4Config.dns_search} properties, if
          * any, are used.
          */
         get ignoreAutoDns(): boolean;
         set ignoreAutoDns(val: boolean);
         /**
-         * When the method is set to "auto" and this property to %TRUE,
+         * When the method is set to "auto" and this property to `true`,
          * automatically configured routes are ignored and only routes specified in
-         * the #NMSettingIP4Config:routes property, if any, are used.
+         * the {@link NetworkManager.SettingIP4Config.routes} property, if any, are used.
          */
         get ignore_auto_routes(): boolean;
         set ignore_auto_routes(val: boolean);
         /**
-         * When the method is set to "auto" and this property to %TRUE,
+         * When the method is set to "auto" and this property to `true`,
          * automatically configured routes are ignored and only routes specified in
-         * the #NMSettingIP4Config:routes property, if any, are used.
+         * the {@link NetworkManager.SettingIP4Config.routes} property, if any, are used.
          */
         get ignoreAutoRoutes(): boolean;
         set ignoreAutoRoutes(val: boolean);
         /**
-         * If %TRUE, allow overall network configuration to proceed even if IPv4
+         * If `true`, allow overall network configuration to proceed even if IPv4
          * configuration times out.  Note that at least one IP configuration must
          * succeed or overall network configuration will still fail.  For example,
-         * in IPv6-only networks, setting this property to %TRUE allows the overall
+         * in IPv6-only networks, setting this property to `true` allows the overall
          * network configuration to succeed if IPv4 configuration fails but IPv6
          * configuration completes successfully.
          */
         get may_fail(): boolean;
         set may_fail(val: boolean);
         /**
-         * If %TRUE, allow overall network configuration to proceed even if IPv4
+         * If `true`, allow overall network configuration to proceed even if IPv4
          * configuration times out.  Note that at least one IP configuration must
          * succeed or overall network configuration will still fail.  For example,
-         * in IPv6-only networks, setting this property to %TRUE allows the overall
+         * in IPv6-only networks, setting this property to `true` allows the overall
          * network configuration to succeed if IPv4 configuration fails but IPv6
          * configuration completes successfully.
          */
@@ -6719,13 +7328,13 @@ export namespace NetworkManager {
         get method(): string;
         set method(val: string);
         /**
-         * If %TRUE, this connection will never be the default IPv4 connection,
+         * If `true`, this connection will never be the default IPv4 connection,
          * meaning it will never be assigned the default route by NetworkManager.
          */
         get never_default(): boolean;
         set never_default(val: boolean);
         /**
-         * If %TRUE, this connection will never be the default IPv4 connection,
+         * If `true`, this connection will never be the default IPv4 connection,
          * meaning it will never be assigned the default route by NetworkManager.
          */
         get neverDefault(): boolean;
@@ -6739,6 +7348,7 @@ export namespace NetworkManager {
          * the default route.
          * As the linux kernel accepts zero (0) as a valid metric, zero is
          * a valid value.
+         * @since 1.0
          */
         get route_metric(): number;
         set route_metric(val: number);
@@ -6751,6 +7361,7 @@ export namespace NetworkManager {
          * the default route.
          * As the linux kernel accepts zero (0) as a valid metric, zero is
          * a valid value.
+         * @since 1.0
          */
         get routeMetric(): number;
         set routeMetric(val: number);
@@ -6774,16 +7385,19 @@ export namespace NetworkManager {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SettingIP4Config.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingIP4Config.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SettingIP4Config.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingIP4Config.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SettingIP4Config.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SettingIP4Config.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6796,26 +7410,26 @@ export namespace NetworkManager {
          * Adds a new IPv4 address and associated information to the setting.  The
          * given address is duplicated internally and is not changed by this function.
          * @param address the new address to add
-         * @returns %TRUE if the address was added; %FALSE if the address was already known.
+         * @returns `true` if the address was added; `false` if the address was already known.
          */
         add_address(address: IP4Address): boolean;
         /**
          * Adds a new DNS server to the setting.
          * @param dns the IPv4 address (network byte order) of the DNS server to add
-         * @returns %TRUE if the DNS server was added; %FALSE if the server was already known
+         * @returns `true` if the DNS server was added; `false` if the server was already known
          */
         add_dns(dns: number): boolean;
         /**
          * Adds a new DNS search domain to the setting.
          * @param dns_search the search domain to add
-         * @returns %TRUE if the DNS search domain was added; %FALSE if the search domain was already known
+         * @returns `true` if the DNS search domain was added; `false` if the search domain was already known
          */
         add_dns_search(dns_search: string): boolean;
         /**
          * Adds a new IPv4 route and associated information to the setting.  The
          * given route is duplicated internally and is not changed by this function.
          * @param route the route to add
-         * @returns %TRUE if the route was added; %FALSE if the route was already known.
+         * @returns `true` if the route was added; `false` if the route was already known.
          */
         add_route(route: IP4Route): boolean;
         /**
@@ -6834,67 +7448,98 @@ export namespace NetworkManager {
          * Removes all configured routes.
          */
         clear_routes(): void;
+        /**
+         * @param i index number of the address to return
+         * @returns the address at index `i`
+         */
         get_address(i: number): IP4Address;
         /**
-         * Returns the value contained in the #NMSettingIP4Config:dhcp-client-id
+         * Returns the value contained in the {@link NetworkManager.SettingIP4Config.dhcp_client_id}
          * property.
          * @returns the configured Client ID to send to the DHCP server when requesting addresses via DHCP.
          */
         get_dhcp_client_id(): string;
         /**
-         * Returns the value contained in the #NMSettingIP4Config:dhcp-hostname
+         * Returns the value contained in the {@link NetworkManager.SettingIP4Config.dhcp_hostname}
          * property.
          * @returns the configured hostname to send to the DHCP server
          */
         get_dhcp_hostname(): string;
         /**
-         * Returns the value contained in the #NMSettingIP4Config:dhcp-send-hostname
+         * Returns the value contained in the {@link NetworkManager.SettingIP4Config.dhcp_send_hostname}
          * property.
-         * @returns %TRUE if NetworkManager should send the machine hostname to the DHCP server when requesting addresses to allow the server to automatically update DNS information for this machine.
+         * @returns `true` if NetworkManager should send the machine hostname to the DHCP server when requesting addresses to allow the server to automatically update DNS information for this machine.
          */
         get_dhcp_send_hostname(): boolean;
         /**
-         * Returns the value contained in the #NMSettingIP4Config:dhcp-timeout
+         * Returns the value contained in the {@link NetworkManager.SettingIP4Config.dhcp_timeout}
          * property.
          * @returns The number of seconds after which unfinished DHCP transaction fails or zero for "default".
          */
         get_dhcp_timeout(): number;
+        /**
+         * @param i index number of the DNS server to return
+         * @returns the IPv4 address (network byte order) of the DNS server at index `i`
+         */
         get_dns(i: number): number;
+        /**
+         * @param i index number of the DNS search domain to return
+         * @returns the DNS search domain at index `i`
+         */
         get_dns_search(i: number): string;
         /**
-         * Returns the value contained in the #NMSettingIP4Config:ignore-auto-dns
+         * Returns the value contained in the {@link NetworkManager.SettingIP4Config.ignore_auto_dns}
          * property.
-         * @returns %TRUE if automatically configured (ie via DHCP) DNS information should be ignored.
+         * @returns `true` if automatically configured (ie via DHCP) DNS information should be ignored.
          */
         get_ignore_auto_dns(): boolean;
         /**
-         * Returns the value contained in the #NMSettingIP4Config:ignore-auto-routes
+         * Returns the value contained in the {@link NetworkManager.SettingIP4Config.ignore_auto_routes}
          * property.
-         * @returns %TRUE if automatically configured (ie via DHCP) routes should be ignored.
+         * @returns `true` if automatically configured (ie via DHCP) routes should be ignored.
          */
         get_ignore_auto_routes(): boolean;
         /**
-         * Returns the value contained in the #NMSettingIP4Config:may-fail
+         * Returns the value contained in the {@link NetworkManager.SettingIP4Config.may_fail}
          * property.
-         * @returns %TRUE if this connection doesn't require IPv4 addressing to complete for the connection to succeed.
+         * @returns `true` if this connection doesn't require IPv4 addressing to complete for the connection to succeed.
          */
         get_may_fail(): boolean;
+        /**
+         * @returns the {@link NetworkManager.SettingIP4Config.method} property of the setting
+         */
         get_method(): string;
         /**
-         * Returns the value contained in the #NMSettingIP4Config:never-default
+         * Returns the value contained in the {@link NetworkManager.SettingIP4Config.never_default}
          * property.
-         * @returns %TRUE if this connection should never be the default connection for IPv4 addressing
+         * @returns `true` if this connection should never be the default connection for IPv4 addressing
          */
         get_never_default(): boolean;
+        /**
+         * @returns the number of configured addresses
+         */
         get_num_addresses(): number;
+        /**
+         * @returns the number of configured DNS servers
+         */
         get_num_dns(): number;
+        /**
+         * @returns the number of configured DNS search domains
+         */
         get_num_dns_searches(): number;
+        /**
+         * @returns the number of configured routes
+         */
         get_num_routes(): number;
+        /**
+         * @param i index number of the route to return
+         * @returns the route at index `i`
+         */
         get_route(i: number): IP4Route;
         /**
-         * Returns the value contained in the #NMSettingIP4Config:route-metric
+         * Returns the value contained in the {@link NetworkManager.SettingIP4Config.route_metric}
          * property.
-         * @returns the route metric that is used for IPv4 routes that don't explicitly specify a metric. See #NMSettingIP4Config:route-metric for more details.
+         * @returns the route metric that is used for IPv4 routes that don't explicitly specify a metric. See {@link NetworkManager.SettingIP4Config.route_metric} for more details.
          */
         get_route_metric(): number;
         /**
@@ -6905,7 +7550,7 @@ export namespace NetworkManager {
         /**
          * Removes the address `address`.
          * @param address the IP address to remove
-         * @returns %TRUE if the address was found and removed; %FALSE if it was not.
+         * @returns `true` if the address was found and removed; `false` if it was not.
          */
         remove_address_by_value(address: IP4Address): boolean;
         /**
@@ -6916,7 +7561,7 @@ export namespace NetworkManager {
         /**
          * Removes the DNS server `dns`.
          * @param dns the DNS server to remove
-         * @returns %TRUE if the DNS server was found and removed; %FALSE if it was not. domain was already known
+         * @returns `true` if the DNS server was found and removed; `false` if it was not. domain was already known
          */
         remove_dns_by_value(dns: number): boolean;
         /**
@@ -6927,7 +7572,7 @@ export namespace NetworkManager {
         /**
          * Removes the DNS search domain `dns_search`.
          * @param dns_search the search domain to remove
-         * @returns %TRUE if the DNS search domain was found and removed; %FALSE if it was not. Since 0.9.10
+         * @returns `true` if the DNS search domain was found and removed; `false` if it was not. Since 0.9.10
          */
         remove_dns_search_by_value(dns_search: string): boolean;
         /**
@@ -6938,7 +7583,7 @@ export namespace NetworkManager {
         /**
          * Removes the route `route`.
          * @param route the route to remove
-         * @returns %TRUE if the route was found and removed; %FALSE if it was not.
+         * @returns `true` if the route was found and removed; `false` if it was not.
          */
         remove_route_by_value(route: IP4Route): boolean;
     }
@@ -6978,6 +7623,9 @@ export namespace NetworkManager {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SettingIP6Config extends Setting {
         static $gtype: GObject.GType<SettingIP6Config>;
 
@@ -6986,44 +7634,46 @@ export namespace NetworkManager {
         /**
          * The specified name will be sent to the DHCP server when acquiring a
          * lease.
+         * @since 0.9.8
          */
         get dhcp_hostname(): string;
         set dhcp_hostname(val: string);
         /**
          * The specified name will be sent to the DHCP server when acquiring a
          * lease.
+         * @since 0.9.8
          */
         get dhcpHostname(): string;
         set dhcpHostname(val: string);
         /**
          * When the method is set to "auto" or "dhcp" and this property is set to
-         * %TRUE, automatically configured nameservers and search domains are
+         * `true`, automatically configured nameservers and search domains are
          * ignored and only nameservers and search domains specified in the
-         * #NMSettingIP6Config:dns and #NMSettingIP6Config:dns-search properties, if
+         * {@link NetworkManager.SettingIP6Config.dns} and {@link NetworkManager.SettingIP6Config.dns_search} properties, if
          * any, are used.
          */
         get ignore_auto_dns(): boolean;
         set ignore_auto_dns(val: boolean);
         /**
          * When the method is set to "auto" or "dhcp" and this property is set to
-         * %TRUE, automatically configured nameservers and search domains are
+         * `true`, automatically configured nameservers and search domains are
          * ignored and only nameservers and search domains specified in the
-         * #NMSettingIP6Config:dns and #NMSettingIP6Config:dns-search properties, if
+         * {@link NetworkManager.SettingIP6Config.dns} and {@link NetworkManager.SettingIP6Config.dns_search} properties, if
          * any, are used.
          */
         get ignoreAutoDns(): boolean;
         set ignoreAutoDns(val: boolean);
         /**
          * When the method is set to "auto" or "dhcp" and this property is set to
-         * %TRUE, automatically configured routes are ignored and only routes
-         * specified in the #NMSettingIP6Config:routes property, if any, are used.
+         * `true`, automatically configured routes are ignored and only routes
+         * specified in the {@link NetworkManager.SettingIP6Config.routes} property, if any, are used.
          */
         get ignore_auto_routes(): boolean;
         set ignore_auto_routes(val: boolean);
         /**
          * When the method is set to "auto" or "dhcp" and this property is set to
-         * %TRUE, automatically configured routes are ignored and only routes
-         * specified in the #NMSettingIP6Config:routes property, if any, are used.
+         * `true`, automatically configured routes are ignored and only routes
+         * specified in the {@link NetworkManager.SettingIP6Config.routes} property, if any, are used.
          */
         get ignoreAutoRoutes(): boolean;
         set ignoreAutoRoutes(val: boolean);
@@ -7050,20 +7700,20 @@ export namespace NetworkManager {
         get ip6Privacy(): number;
         set ip6Privacy(val: number);
         /**
-         * If %TRUE, allow overall network configuration to proceed even if IPv6
+         * If `true`, allow overall network configuration to proceed even if IPv6
          * configuration times out.  Note that at least one IP configuration must
          * succeed or overall network configuration will still fail.  For example,
-         * in IPv4-only networks, setting this property to %TRUE allows the overall
+         * in IPv4-only networks, setting this property to `true` allows the overall
          * network configuration to succeed if IPv6 configuration fails but IPv4
          * configuration completes successfully.
          */
         get may_fail(): boolean;
         set may_fail(val: boolean);
         /**
-         * If %TRUE, allow overall network configuration to proceed even if IPv6
+         * If `true`, allow overall network configuration to proceed even if IPv6
          * configuration times out.  Note that at least one IP configuration must
          * succeed or overall network configuration will still fail.  For example,
-         * in IPv4-only networks, setting this property to %TRUE allows the overall
+         * in IPv4-only networks, setting this property to `true` allows the overall
          * network configuration to succeed if IPv6 configuration fails but IPv4
          * configuration completes successfully.
          */
@@ -7084,14 +7734,14 @@ export namespace NetworkManager {
         get method(): string;
         set method(val: string);
         /**
-         * If %TRUE, this connection will never be the default IPv6 connection,
+         * If `true`, this connection will never be the default IPv6 connection,
          * meaning it will never be assigned the default IPv6 route by
          * NetworkManager.
          */
         get never_default(): boolean;
         set never_default(val: boolean);
         /**
-         * If %TRUE, this connection will never be the default IPv6 connection,
+         * If `true`, this connection will never be the default IPv6 connection,
          * meaning it will never be assigned the default IPv6 route by
          * NetworkManager.
          */
@@ -7106,6 +7756,7 @@ export namespace NetworkManager {
          * the default route.
          * As the linux kernel replaces zero (0) by 1024 (user-default), setting
          * this property to 0 means effectively setting it to 1024.
+         * @since 1.0
          */
         get route_metric(): number;
         set route_metric(val: number);
@@ -7118,6 +7769,7 @@ export namespace NetworkManager {
          * the default route.
          * As the linux kernel replaces zero (0) by 1024 (user-default), setting
          * this property to 0 means effectively setting it to 1024.
+         * @since 1.0
          */
         get routeMetric(): number;
         set routeMetric(val: number);
@@ -7141,16 +7793,19 @@ export namespace NetworkManager {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SettingIP6Config.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingIP6Config.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SettingIP6Config.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingIP6Config.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SettingIP6Config.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SettingIP6Config.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7163,26 +7818,26 @@ export namespace NetworkManager {
          * Adds a new IPv6 address and associated information to the setting.  The
          * given address is duplicated internally and is not changed by this function.
          * @param address the new address to add
-         * @returns %TRUE if the address was added; %FALSE if the address was already known.
+         * @returns `true` if the address was added; `false` if the address was already known.
          */
         add_address(address: IP6Address): boolean;
         /**
          * Adds a new DNS server to the setting.
          * @param dns the IPv6 address of the DNS server to add
-         * @returns %TRUE if the DNS server was added; %FALSE if the server was already known
+         * @returns `true` if the DNS server was added; `false` if the server was already known
          */
         add_dns(dns?: any | null): boolean;
         /**
          * Adds a new DNS search domain to the setting.
          * @param dns_search the search domain to add
-         * @returns %TRUE if the DNS search domain was added; %FALSE if the search domain was already known
+         * @returns `true` if the DNS search domain was added; `false` if the search domain was already known
          */
         add_dns_search(dns_search: string): boolean;
         /**
          * Adds a new IPv6 route and associated information to the setting.  The
          * given route is duplicated internally and is not changed by this function.
          * @param route the route to add
-         * @returns %TRUE if the route was added; %FALSE if the route was already known.
+         * @returns `true` if the route was added; `false` if the route was already known.
          */
         add_route(route: IP6Route): boolean;
         /**
@@ -7201,55 +7856,86 @@ export namespace NetworkManager {
          * Removes all configured routes.
          */
         clear_routes(): void;
+        /**
+         * @param i index number of the address to return
+         * @returns the address at index `i`
+         */
         get_address(i: number): IP6Address;
         /**
-         * Returns the value contained in the #NMSettingIP6Config:dhcp-hostname
+         * Returns the value contained in the {@link NetworkManager.SettingIP6Config.dhcp_hostname}
          * property.
          * @returns the configured hostname to send to the DHCP server
          */
         get_dhcp_hostname(): string;
+        /**
+         * @param i index number of the DNS server to return
+         * @returns the IPv6 address of the DNS server at index `i`
+         */
         get_dns(i: number): any | null;
+        /**
+         * @param i index number of the DNS search domain to return
+         * @returns the DNS search domain at index `i`
+         */
         get_dns_search(i: number): string;
         /**
-         * Returns the value contained in the #NMSettingIP6Config:ignore-auto-dns
+         * Returns the value contained in the {@link NetworkManager.SettingIP6Config.ignore_auto_dns}
          * property.
-         * @returns %TRUE if automatically configured (ie via DHCP or router advertisements) DNS information should be ignored.
+         * @returns `true` if automatically configured (ie via DHCP or router advertisements) DNS information should be ignored.
          */
         get_ignore_auto_dns(): boolean;
         /**
-         * Returns the value contained in the #NMSettingIP6Config:ignore-auto-routes
+         * Returns the value contained in the {@link NetworkManager.SettingIP6Config.ignore_auto_routes}
          * property.
-         * @returns %TRUE if automatically configured (ie via DHCP) routes should be ignored.
+         * @returns `true` if automatically configured (ie via DHCP) routes should be ignored.
          */
         get_ignore_auto_routes(): boolean;
         /**
-         * Returns the value contained in the #NMSettingIP6Config:ip6-privacy
+         * Returns the value contained in the {@link NetworkManager.SettingIP6Config.ip6_privacy}
          * property.
-         * @returns IPv6 Privacy Extensions configuration value (#NMSettingIP6ConfigPrivacy).
+         * @returns IPv6 Privacy Extensions configuration value ({@link NetworkManager.SettingIP6ConfigPrivacy}).
          */
         get_ip6_privacy(): SettingIP6ConfigPrivacy;
         /**
-         * Returns the value contained in the #NMSettingIP6Config:may-fail
+         * Returns the value contained in the {@link NetworkManager.SettingIP6Config.may_fail}
          * property.
-         * @returns %TRUE if this connection doesn't require IPv6 addressing to complete for the connection to succeed.
+         * @returns `true` if this connection doesn't require IPv6 addressing to complete for the connection to succeed.
          */
         get_may_fail(): boolean;
+        /**
+         * @returns the {@link NetworkManager.SettingIP6Config.method} property of the setting
+         */
         get_method(): string;
         /**
-         * Returns the value contained in the #NMSettingIP6Config:never-default
+         * Returns the value contained in the {@link NetworkManager.SettingIP6Config.never_default}
          * property.
-         * @returns %TRUE if this connection should never be the default connection for IPv6 addressing
+         * @returns `true` if this connection should never be the default connection for IPv6 addressing
          */
         get_never_default(): boolean;
+        /**
+         * @returns the number of configured addresses
+         */
         get_num_addresses(): number;
+        /**
+         * @returns the number of configured DNS servers
+         */
         get_num_dns(): number;
+        /**
+         * @returns the number of configured DNS search domains
+         */
         get_num_dns_searches(): number;
+        /**
+         * @returns the number of configured routes
+         */
         get_num_routes(): number;
+        /**
+         * @param i index number of the route to return
+         * @returns the route at index `i`
+         */
         get_route(i: number): IP6Route;
         /**
-         * Returns the value contained in the #NMSettingIP6Config:route-metric
+         * Returns the value contained in the {@link NetworkManager.SettingIP6Config.route_metric}
          * property.
-         * @returns the route metric that is used for IPv6 routes that don't explicitly specify a metric. See #NMSettingIP6Config:route-metric for more details.
+         * @returns the route metric that is used for IPv6 routes that don't explicitly specify a metric. See {@link NetworkManager.SettingIP6Config.route_metric} for more details.
          */
         get_route_metric(): number;
         /**
@@ -7260,7 +7946,7 @@ export namespace NetworkManager {
         /**
          * Removes the address `address`.
          * @param address the address to remove
-         * @returns %TRUE if the address was found and removed; %FALSE if it was not.
+         * @returns `true` if the address was found and removed; `false` if it was not.
          */
         remove_address_by_value(address: IP6Address): boolean;
         /**
@@ -7271,7 +7957,7 @@ export namespace NetworkManager {
         /**
          * Removes the DNS server at index `i`.
          * @param dns the IPv6 address of the DNS server to remove
-         * @returns %TRUE if the DNS server was found and removed; %FALSE if it was not.
+         * @returns `true` if the DNS server was found and removed; `false` if it was not.
          */
         remove_dns_by_value(dns?: any | null): boolean;
         /**
@@ -7282,7 +7968,7 @@ export namespace NetworkManager {
         /**
          * Removes the DNS search domain `dns_search`.
          * @param dns_search the search domain to remove
-         * @returns %TRUE if the DNS search domain was found and removed; %FALSE if it was not. Since 0.9.10
+         * @returns `true` if the DNS search domain was found and removed; `false` if it was not. Since 0.9.10
          */
         remove_dns_search_by_value(dns_search: string): boolean;
         /**
@@ -7293,7 +7979,7 @@ export namespace NetworkManager {
         /**
          * Removes the route `route`.
          * @param route the route to remove
-         * @returns %TRUE if the route was found and removed; %FALSE if it was not.
+         * @returns `true` if the route was found and removed; `false` if it was not.
          */
         remove_route_by_value(route: IP6Route): boolean;
     }
@@ -7320,6 +8006,9 @@ export namespace NetworkManager {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SettingInfiniband extends Setting {
         static $gtype: GObject.GType<SettingInfiniband>;
 
@@ -7348,10 +8037,10 @@ export namespace NetworkManager {
         get pKey(): number;
         set pKey(val: number);
         /**
-         * The interface name of the parent device of this device. Normally %NULL,
-         * but if the #NMSettingInfiniband:p_key property is set, then you must
+         * The interface name of the parent device of this device. Normally `null`,
+         * but if the {@link NetworkManager.SettingInfiniband.p_key} property is set, then you must
          * specify the base device by setting either this property or
-         * #NMSettingInfiniband:mac-address.
+         * {@link NetworkManager.SettingInfiniband.mac_address}.
          */
         get parent(): string;
         set parent(val: string);
@@ -7387,16 +8076,19 @@ export namespace NetworkManager {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SettingInfiniband.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingInfiniband.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SettingInfiniband.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingInfiniband.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SettingInfiniband.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SettingInfiniband.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7405,7 +8097,13 @@ export namespace NetworkManager {
 
         // Methods
 
+        /**
+         * @returns the {@link NetworkManager.SettingInfiniband.mac_address} property of the setting
+         */
         get_mac_address(): Uint8Array;
+        /**
+         * @returns the {@link NetworkManager.SettingInfiniband.mtu} property of the setting
+         */
         get_mtu(): number;
         /**
          * Returns the P_Key to use for this device. A value of -1 means to
@@ -7441,6 +8139,9 @@ export namespace NetworkManager {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SettingOlpcMesh extends Setting {
         static $gtype: GObject.GType<SettingOlpcMesh>;
 
@@ -7471,16 +8172,19 @@ export namespace NetworkManager {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SettingOlpcMesh.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingOlpcMesh.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SettingOlpcMesh.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingOlpcMesh.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SettingOlpcMesh.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SettingOlpcMesh.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7554,6 +8258,9 @@ export namespace NetworkManager {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SettingPPP extends Setting {
         static $gtype: GObject.GType<SettingPPP>;
 
@@ -7567,9 +8274,9 @@ export namespace NetworkManager {
         get baud(): number;
         set baud(val: number);
         /**
-         * If %TRUE, specify that pppd should set the serial port to use hardware
+         * If `true`, specify that pppd should set the serial port to use hardware
          * flow control with RTS and CTS signals.  This value should normally be set
-         * to %FALSE.
+         * to `false`.
          */
         get crtscts(): boolean;
         set crtscts(val: boolean);
@@ -7606,13 +8313,13 @@ export namespace NetworkManager {
         get lcpEchoInterval(): number;
         set lcpEchoInterval(val: number);
         /**
-         * If %TRUE, stateful MPPE is used.  See pppd documentation for more
+         * If `true`, stateful MPPE is used.  See pppd documentation for more
          * information on stateful MPPE.
          */
         get mppe_stateful(): boolean;
         set mppe_stateful(val: boolean);
         /**
-         * If %TRUE, stateful MPPE is used.  See pppd documentation for more
+         * If `true`, stateful MPPE is used.  See pppd documentation for more
          * information on stateful MPPE.
          */
         get mppeStateful(): boolean;
@@ -7631,84 +8338,84 @@ export namespace NetworkManager {
         get mtu(): number;
         set mtu(val: number);
         /**
-         * If %TRUE, Van Jacobsen TCP header compression will not be requested.
+         * If `true`, Van Jacobsen TCP header compression will not be requested.
          */
         get no_vj_comp(): boolean;
         set no_vj_comp(val: boolean);
         /**
-         * If %TRUE, Van Jacobsen TCP header compression will not be requested.
+         * If `true`, Van Jacobsen TCP header compression will not be requested.
          */
         get noVjComp(): boolean;
         set noVjComp(val: boolean);
         /**
-         * If %TRUE, do not require the other side (usually the PPP server) to
-         * authenticate itself to the client.  If %FALSE, require authentication
-         * from the remote side.  In almost all cases, this should be %TRUE.
+         * If `true`, do not require the other side (usually the PPP server) to
+         * authenticate itself to the client.  If `false`, require authentication
+         * from the remote side.  In almost all cases, this should be `true`.
          */
         get noauth(): boolean;
         set noauth(val: boolean);
         /**
-         * If %TRUE, BSD compression will not be requested.
+         * If `true`, BSD compression will not be requested.
          */
         get nobsdcomp(): boolean;
         set nobsdcomp(val: boolean);
         /**
-         * If %TRUE, "deflate" compression will not be requested.
+         * If `true`, "deflate" compression will not be requested.
          */
         get nodeflate(): boolean;
         set nodeflate(val: boolean);
         /**
-         * If %TRUE, the CHAP authentication method will not be used.
+         * If `true`, the CHAP authentication method will not be used.
          */
         get refuse_chap(): boolean;
         set refuse_chap(val: boolean);
         /**
-         * If %TRUE, the CHAP authentication method will not be used.
+         * If `true`, the CHAP authentication method will not be used.
          */
         get refuseChap(): boolean;
         set refuseChap(val: boolean);
         /**
-         * If %TRUE, the EAP authentication method will not be used.
+         * If `true`, the EAP authentication method will not be used.
          */
         get refuse_eap(): boolean;
         set refuse_eap(val: boolean);
         /**
-         * If %TRUE, the EAP authentication method will not be used.
+         * If `true`, the EAP authentication method will not be used.
          */
         get refuseEap(): boolean;
         set refuseEap(val: boolean);
         /**
-         * If %TRUE, the MSCHAP authentication method will not be used.
+         * If `true`, the MSCHAP authentication method will not be used.
          */
         get refuse_mschap(): boolean;
         set refuse_mschap(val: boolean);
         /**
-         * If %TRUE, the MSCHAP authentication method will not be used.
+         * If `true`, the MSCHAP authentication method will not be used.
          */
         get refuseMschap(): boolean;
         set refuseMschap(val: boolean);
         /**
-         * If %TRUE, the MSCHAPv2 authentication method will not be used.
+         * If `true`, the MSCHAPv2 authentication method will not be used.
          */
         get refuse_mschapv2(): boolean;
         set refuse_mschapv2(val: boolean);
         /**
-         * If %TRUE, the MSCHAPv2 authentication method will not be used.
+         * If `true`, the MSCHAPv2 authentication method will not be used.
          */
         get refuseMschapv2(): boolean;
         set refuseMschapv2(val: boolean);
         /**
-         * If %TRUE, the PAP authentication method will not be used.
+         * If `true`, the PAP authentication method will not be used.
          */
         get refuse_pap(): boolean;
         set refuse_pap(val: boolean);
         /**
-         * If %TRUE, the PAP authentication method will not be used.
+         * If `true`, the PAP authentication method will not be used.
          */
         get refusePap(): boolean;
         set refusePap(val: boolean);
         /**
-         * If %TRUE, MPPE (Microsoft Point-to-Point Encryption) will be required for
+         * If `true`, MPPE (Microsoft Point-to-Point Encryption) will be required for
          * the PPP session.  If either 64-bit or 128-bit MPPE is not available the
          * session will fail.  Note that MPPE is not used on mobile broadband
          * connections.
@@ -7716,7 +8423,7 @@ export namespace NetworkManager {
         get require_mppe(): boolean;
         set require_mppe(val: boolean);
         /**
-         * If %TRUE, MPPE (Microsoft Point-to-Point Encryption) will be required for
+         * If `true`, MPPE (Microsoft Point-to-Point Encryption) will be required for
          * the PPP session.  If either 64-bit or 128-bit MPPE is not available the
          * session will fail.  Note that MPPE is not used on mobile broadband
          * connections.
@@ -7724,16 +8431,16 @@ export namespace NetworkManager {
         get requireMppe(): boolean;
         set requireMppe(val: boolean);
         /**
-         * If %TRUE, 128-bit MPPE (Microsoft Point-to-Point Encryption) will be
+         * If `true`, 128-bit MPPE (Microsoft Point-to-Point Encryption) will be
          * required for the PPP session, and the "require-mppe" property must also
-         * be set to %TRUE.  If 128-bit MPPE is not available the session will fail.
+         * be set to `true`.  If 128-bit MPPE is not available the session will fail.
          */
         get require_mppe_128(): boolean;
         set require_mppe_128(val: boolean);
         /**
-         * If %TRUE, 128-bit MPPE (Microsoft Point-to-Point Encryption) will be
+         * If `true`, 128-bit MPPE (Microsoft Point-to-Point Encryption) will be
          * required for the PPP session, and the "require-mppe" property must also
-         * be set to %TRUE.  If 128-bit MPPE is not available the session will fail.
+         * be set to `true`.  If 128-bit MPPE is not available the session will fail.
          */
         get requireMppe128(): boolean;
         set requireMppe128(val: boolean);
@@ -7757,16 +8464,19 @@ export namespace NetworkManager {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SettingPPP.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingPPP.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SettingPPP.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingPPP.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SettingPPP.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SettingPPP.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7775,23 +8485,77 @@ export namespace NetworkManager {
 
         // Methods
 
+        /**
+         * @returns the {@link NetworkManager.SettingPPP.baud} property of the setting
+         */
         get_baud(): number;
+        /**
+         * @returns the {@link NetworkManager.SettingPPP.crtscts} property of the setting
+         */
         get_crtscts(): boolean;
+        /**
+         * @returns the {@link NetworkManager.SettingPPP.lcp_echo_failure} property of the setting
+         */
         get_lcp_echo_failure(): number;
+        /**
+         * @returns the {@link NetworkManager.SettingPPP.lcp_echo_interval} property of the setting
+         */
         get_lcp_echo_interval(): number;
+        /**
+         * @returns the {@link NetworkManager.SettingPPP.mppe_stateful} property of the setting
+         */
         get_mppe_stateful(): boolean;
+        /**
+         * @returns the {@link NetworkManager.SettingPPP.mru} property of the setting
+         */
         get_mru(): number;
+        /**
+         * @returns the {@link NetworkManager.SettingPPP.mtu} property of the setting
+         */
         get_mtu(): number;
+        /**
+         * @returns the {@link NetworkManager.SettingPPP.no_vj_comp} property of the setting
+         */
         get_no_vj_comp(): boolean;
+        /**
+         * @returns the {@link NetworkManager.SettingPPP.noauth} property of the setting
+         */
         get_noauth(): boolean;
+        /**
+         * @returns the {@link NetworkManager.SettingPPP.nobsdcomp} property of the setting
+         */
         get_nobsdcomp(): boolean;
+        /**
+         * @returns the {@link NetworkManager.SettingPPP.nodeflate} property of the setting
+         */
         get_nodeflate(): boolean;
+        /**
+         * @returns the {@link NetworkManager.SettingPPP.refuse_chap} property of the setting
+         */
         get_refuse_chap(): boolean;
+        /**
+         * @returns the {@link NetworkManager.SettingPPP.refuse_eap} property of the setting
+         */
         get_refuse_eap(): boolean;
+        /**
+         * @returns the {@link NetworkManager.SettingPPP.refuse_mschap} property of the setting
+         */
         get_refuse_mschap(): boolean;
+        /**
+         * @returns the {@link NetworkManager.SettingPPP.refuse_mschapv2} property of the setting
+         */
         get_refuse_mschapv2(): boolean;
+        /**
+         * @returns the {@link NetworkManager.SettingPPP.refuse_pap} property of the setting
+         */
         get_refuse_pap(): boolean;
+        /**
+         * @returns the {@link NetworkManager.SettingPPP.require_mppe} property of the setting
+         */
         get_require_mppe(): boolean;
+        /**
+         * @returns the {@link NetworkManager.SettingPPP.require_mppe_128} property of the setting
+         */
         get_require_mppe_128(): boolean;
     }
 
@@ -7816,6 +8580,9 @@ export namespace NetworkManager {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SettingPPPOE extends Setting {
         static $gtype: GObject.GType<SettingPPPOE>;
 
@@ -7827,12 +8594,12 @@ export namespace NetworkManager {
         get password(): string;
         set password(val: string);
         /**
-         * Flags indicating how to handle the #NMSettingPPPOE:password property.
+         * Flags indicating how to handle the {@link NetworkManager.SettingPPPOE.password} property.
          */
         get password_flags(): number;
         set password_flags(val: number);
         /**
-         * Flags indicating how to handle the #NMSettingPPPOE:password property.
+         * Flags indicating how to handle the {@link NetworkManager.SettingPPPOE.password} property.
          */
         get passwordFlags(): number;
         set passwordFlags(val: number);
@@ -7869,16 +8636,19 @@ export namespace NetworkManager {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SettingPPPOE.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingPPPOE.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SettingPPPOE.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingPPPOE.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SettingPPPOE.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SettingPPPOE.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7887,9 +8657,21 @@ export namespace NetworkManager {
 
         // Methods
 
+        /**
+         * @returns the {@link NetworkManager.SettingPPPOE.password} property of the setting
+         */
         get_password(): string;
+        /**
+         * @returns the {@link NetworkManager.SettingSecretFlags} pertaining to the {@link NetworkManager.SettingPPPOE.password}
+         */
         get_password_flags(): SettingSecretFlags;
+        /**
+         * @returns the {@link NetworkManager.SettingPPPOE.service} property of the setting
+         */
         get_service(): string;
+        /**
+         * @returns the {@link NetworkManager.SettingPPPOE.username} property of the setting
+         */
         get_username(): string;
     }
 
@@ -7916,6 +8698,9 @@ export namespace NetworkManager {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SettingSerial extends Setting {
         static $gtype: GObject.GType<SettingSerial>;
 
@@ -7975,16 +8760,19 @@ export namespace NetworkManager {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SettingSerial.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingSerial.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SettingSerial.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingSerial.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SettingSerial.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SettingSerial.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7993,10 +8781,25 @@ export namespace NetworkManager {
 
         // Methods
 
+        /**
+         * @returns the {@link NetworkManager.SettingSerial.baud} property of the setting
+         */
         get_baud(): number;
+        /**
+         * @returns the {@link NetworkManager.SettingSerial.bits} property of the setting
+         */
         get_bits(): number;
+        /**
+         * @returns the {@link NetworkManager.SettingSerial.parity} property of the setting
+         */
         get_parity(): number;
+        /**
+         * @returns the {@link NetworkManager.SettingSerial.send_delay} property of the setting
+         */
         get_send_delay(): number;
+        /**
+         * @returns the {@link NetworkManager.SettingSerial.stopbits} property of the setting
+         */
         get_stopbits(): number;
     }
 
@@ -8017,6 +8820,9 @@ export namespace NetworkManager {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SettingTeam extends Setting {
         static $gtype: GObject.GType<SettingTeam>;
 
@@ -8060,16 +8866,19 @@ export namespace NetworkManager {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SettingTeam.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingTeam.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SettingTeam.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingTeam.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SettingTeam.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SettingTeam.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -8078,7 +8887,13 @@ export namespace NetworkManager {
 
         // Methods
 
+        /**
+         * @returns the {@link NetworkManager.SettingTeam.config} property of the setting
+         */
         get_config(): string;
+        /**
+         * @returns the {@link NetworkManager.SettingTeam.interface_name} property of the setting
+         */
         get_interface_name(): string;
     }
 
@@ -8096,6 +8911,9 @@ export namespace NetworkManager {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SettingTeamPort extends Setting {
         static $gtype: GObject.GType<SettingTeamPort>;
 
@@ -8129,16 +8947,19 @@ export namespace NetworkManager {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SettingTeamPort.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingTeamPort.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SettingTeamPort.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingTeamPort.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SettingTeamPort.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SettingTeamPort.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -8147,6 +8968,9 @@ export namespace NetworkManager {
 
         // Methods
 
+        /**
+         * @returns the {@link NetworkManager.SettingTeamPort.config} property of the setting
+         */
         get_config(): string;
     }
 
@@ -8170,13 +8994,16 @@ export namespace NetworkManager {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SettingVPN extends Setting {
         static $gtype: GObject.GType<SettingVPN>;
 
         // Properties
 
         /**
-         * If the VPN service supports persistence, and this property is %TRUE,
+         * If the VPN service supports persistence, and this property is `true`,
          * the VPN will attempt to stay connected across link changes and outages,
          * until explicitly disconnected.
          */
@@ -8236,16 +9063,19 @@ export namespace NetworkManager {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SettingVPN.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingVPN.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SettingVPN.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingVPN.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SettingVPN.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SettingVPN.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -8257,35 +9087,35 @@ export namespace NetworkManager {
         /**
          * Establishes a relationship between `key` and `item` internally in the
          * setting which may be retrieved later.  Should not be used to store passwords
-         * or other secrets, which is what nm_setting_vpn_add_secret() is for.
-         * @param key a name that uniquely identifies the given value @item
-         * @param item the value to be referenced by @key
+         * or other secrets, which is what `nm_setting_vpn_add_secret()` is for.
+         * @param key a name that uniquely identifies the given value `item`
+         * @param item the value to be referenced by `key`
          */
         add_data_item(key: string, item: string): void;
         /**
          * Establishes a relationship between `key` and `secret` internally in the
          * setting which may be retrieved later.
-         * @param key a name that uniquely identifies the given secret @secret
-         * @param secret the secret to be referenced by @key
+         * @param key a name that uniquely identifies the given secret `secret`
+         * @param secret the secret to be referenced by `key`
          */
         add_secret(key: string, secret: string): void;
         /**
          * Iterates all data items stored in this setting.  It is safe to add, remove,
-         * and modify data items inside `func,` though any additions or removals made
+         * and modify data items inside `func`, though any additions or removals made
          * during iteration will not be part of the iteration.
          * @param func an user provided function
          */
         foreach_data_item(func: VPNIterFunc): void;
         /**
          * Iterates all secrets stored in this setting.  It is safe to add, remove,
-         * and modify secrets inside `func,` though any additions or removals made during
+         * and modify secrets inside `func`, though any additions or removals made during
          * iteration will not be part of the iteration.
          * @param func an user provided function
          */
         foreach_secret(func: VPNIterFunc): void;
         /**
          * Retrieves the data item of a key/value relationship previously established
-         * by nm_setting_vpn_add_data_item().
+         * by `nm_setting_vpn_add_data_item()`.
          * @param key the name of the data item to retrieve
          * @returns the data item, if any
          */
@@ -8300,10 +9130,13 @@ export namespace NetworkManager {
          * @returns the number of VPN plugin specific secrets
          */
         get_num_secrets(): number;
+        /**
+         * @returns the {@link NetworkManager.SettingVPN.persistent} property of the setting
+         */
         get_persistent(): boolean;
         /**
          * Retrieves the secret of a key/value relationship previously established
-         * by nm_setting_vpn_add_secret().
+         * by `nm_setting_vpn_add_secret()`.
          * @param key the name of the secret to retrieve
          * @returns the secret, if any
          */
@@ -8314,19 +9147,22 @@ export namespace NetworkManager {
          * @returns the VPN plugin's service name
          */
         get_service_type(): string;
+        /**
+         * @returns the {@link NetworkManager.SettingVPN.user_name} property of the setting
+         */
         get_user_name(): string;
         /**
          * Deletes a key/value relationship previously established by
-         * nm_setting_vpn_add_data_item().
+         * `nm_setting_vpn_add_data_item()`.
          * @param key the name of the data item to remove
-         * @returns %TRUE if the data item was found and removed from the internal list, %FALSE if it was not.
+         * @returns `true` if the data item was found and removed from the internal list, `false` if it was not.
          */
         remove_data_item(key: string): boolean;
         /**
          * Deletes a key/value relationship previously established by
-         * nm_setting_vpn_add_secret().
+         * `nm_setting_vpn_add_secret()`.
          * @param key the name of the secret to remove
-         * @returns %TRUE if the secret was found and removed from the internal list, %FALSE if it was not.
+         * @returns `true` if the secret was found and removed from the internal list, `false` if it was not.
          */
         remove_secret(key: string): boolean;
     }
@@ -8352,6 +9188,9 @@ export namespace NetworkManager {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SettingVlan extends Setting {
         static $gtype: GObject.GType<SettingVlan>;
 
@@ -8359,10 +9198,10 @@ export namespace NetworkManager {
 
         /**
          * One or more flags which control the behavior and features of the VLAN
-         * interface.  Flags include %NM_VLAN_FLAG_REORDER_HEADERS (reordering of
-         * output packet headers), %NM_VLAN_FLAG_GVRP (use of the GVRP protocol),
-         * and %NM_VLAN_FLAG_LOOSE_BINDING (loose binding of the interface to its
-         * master device's operating state), %NM_VLAN_FLAG_MVRP (use of the MVRP
+         * interface.  Flags include {@link NetworkManager.VlanFlags.REORDER_HEADERS} (reordering of
+         * output packet headers), {@link NetworkManager.VlanFlags.GVRP} (use of the GVRP protocol),
+         * and {@link NetworkManager.VlanFlags.LOOSE_BINDING} (loose binding of the interface to its
+         * master device's operating state), {@link NetworkManager.VlanFlags.MVRP} (use of the MVRP
          * protocol).
          */
         get flags(): number;
@@ -8376,26 +9215,26 @@ export namespace NetworkManager {
         /**
          * If given, specifies the kernel name of the VLAN interface. If not given,
          * a default name will be constructed from the interface described by the
-         * parent interface and the #NMSettingVlan:id property, eg "eth2.1". The
-         * parent interface may be given by the #NMSettingVlan:parent property or by
-         * the #NMSettingWired:mac-address property of an #NMSettingWired setting.
+         * parent interface and the {@link NetworkManager.SettingVlan.id} property, eg "eth2.1". The
+         * parent interface may be given by the {@link NetworkManager.SettingVlan.parent} property or by
+         * the {@link NetworkManager.SettingWired.mac_address} property of an {@link NetworkManager.SettingWired} setting.
          */
         get interface_name(): string;
         set interface_name(val: string);
         /**
          * If given, specifies the kernel name of the VLAN interface. If not given,
          * a default name will be constructed from the interface described by the
-         * parent interface and the #NMSettingVlan:id property, eg "eth2.1". The
-         * parent interface may be given by the #NMSettingVlan:parent property or by
-         * the #NMSettingWired:mac-address property of an #NMSettingWired setting.
+         * parent interface and the {@link NetworkManager.SettingVlan.id} property, eg "eth2.1". The
+         * parent interface may be given by the {@link NetworkManager.SettingVlan.parent} property or by
+         * the {@link NetworkManager.SettingWired.mac_address} property of an {@link NetworkManager.SettingWired} setting.
          */
         get interfaceName(): string;
         set interfaceName(val: string);
         /**
          * If given, specifies the parent interface name or parent connection UUID
          * from which this VLAN interface should be created.  If this property is
-         * not specified, the connection must contain an #NMSettingWired setting
-         * with a #NMSettingWired:mac-address property.
+         * not specified, the connection must contain an {@link NetworkManager.SettingWired} setting
+         * with a {@link NetworkManager.SettingWired.mac_address} property.
          */
         get parent(): string;
         set parent(val: string);
@@ -8419,16 +9258,19 @@ export namespace NetworkManager {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SettingVlan.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingVlan.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SettingVlan.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingVlan.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SettingVlan.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SettingVlan.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -8438,8 +9280,8 @@ export namespace NetworkManager {
         // Methods
 
         /**
-         * Adds a priority mapping to the #NMSettingVlan:ingress_priority_map or
-         * #NMSettingVlan:egress_priority_map properties of the setting. If `from` is
+         * Adds a priority mapping to the {@link NetworkManager.SettingVlan.ingress_priority_map} or
+         * {@link NetworkManager.SettingVlan.egress_priority_map} properties of the setting. If `from` is
          * already in the given priority map, this function will overwrite the
          * existing entry with the new `to`.
          *
@@ -8449,71 +9291,83 @@ export namespace NetworkManager {
          * If `map` is #NM_VLAN_EGRESS_MAP then `from` is the Linux SKB priority value and
          * `to` is the outgoing 802.1q VLAN Priority Code Point (PCP) value.
          * @param map the type of priority map
-         * @param from the priority to map to @to
-         * @param to the priority to map @from to
-         * @returns %TRUE if the new priority mapping was successfully added to the list, %FALSE if error
+         * @param from the priority to map to `to`
+         * @param to the priority to map `from` to
+         * @returns `true` if the new priority mapping was successfully added to the list, `false` if error
          */
         add_priority(map: VlanPriorityMap | null, from: number, to: number): boolean;
         /**
-         * Adds a priority map entry into either the #NMSettingVlan:ingress_priority_map
-         * or the #NMSettingVlan:egress_priority_map properties.  The priority map maps
+         * Adds a priority map entry into either the {@link NetworkManager.SettingVlan.ingress_priority_map}
+         * or the {@link NetworkManager.SettingVlan.egress_priority_map} properties.  The priority map maps
          * the Linux SKB priorities to 802.1p priorities.
          * @param map the type of priority map
          * @param str the string which contains a priority map, like "3:7"
-         * @returns %TRUE if the entry was successfully added to the list, or it overwrote the old value, %FALSE if error
+         * @returns `true` if the entry was successfully added to the list, or it overwrote the old value, `false` if error
          */
         add_priority_str(map: VlanPriorityMap | null, str: string): boolean;
         /**
-         * Clear all the entries from #NMSettingVlan:ingress_priority_map or
-         * #NMSettingVlan:egress_priority_map properties.
+         * Clear all the entries from {@link NetworkManager.SettingVlan.ingress_priority_map} or
+         * {@link NetworkManager.SettingVlan.egress_priority_map} properties.
          * @param map the type of priority map
          */
         clear_priorities(map: VlanPriorityMap | null): void;
+        /**
+         * @returns the {@link NetworkManager.SettingVlan.flags} property of the setting
+         */
         get_flags(): number;
+        /**
+         * @returns the {@link NetworkManager.SettingVlan.id} property of the setting
+         */
         get_id(): number;
+        /**
+         * @returns the {@link NetworkManager.SettingVlan.interface_name} property of the setting
+         */
         get_interface_name(): string;
         /**
          * Returns the number of entries in the
-         * #NMSettingVlan:ingress_priority_map or #NMSettingVlan:egress_priority_map
+         * {@link NetworkManager.SettingVlan.ingress_priority_map} or {@link NetworkManager.SettingVlan.egress_priority_map}
          * properties of this setting.
          * @param map the type of priority map
          * @returns return the number of ingress/egress priority entries, -1 if error
          */
         get_num_priorities(map: VlanPriorityMap | null): number;
+        /**
+         * @returns the {@link NetworkManager.SettingVlan.parent} property of the setting
+         */
         get_parent(): string;
         /**
-         * Retrieve one of the entries of the #NMSettingVlan:ingress_priority_map
-         * or #NMSettingVlan:egress_priority_map properties of this setting.
+         * Retrieve one of the entries of the {@link NetworkManager.SettingVlan.ingress_priority_map}
+         * or {@link NetworkManager.SettingVlan.egress_priority_map} properties of this setting.
          * @param map the type of priority map
          * @param idx the zero-based index of the ingress/egress priority map entry
-         * @returns %TRUE if a priority map was returned, %FALSE if error
+         * @returns `true` if a priority map was returned, `false` if error
          */
         get_priority(map: VlanPriorityMap | null, idx: number): [boolean, number, number];
         /**
          * Removes the priority map at index `idx` from the
-         * #NMSettingVlan:ingress_priority_map or #NMSettingVlan:egress_priority_map
+         * {@link NetworkManager.SettingVlan.ingress_priority_map} or {@link NetworkManager.SettingVlan.egress_priority_map}
          * properties.
          * @param map the type of priority map
          * @param idx the zero-based index of the priority map to remove
          */
         remove_priority(map: VlanPriorityMap | null, idx: number): void;
         /**
-         * Removes the priority map `form:``to` from the #NMSettingVlan:ingress_priority_map
-         * or #NMSettingVlan:egress_priority_map (according to `map` argument)
+         * Removes the priority map `form`:`to` from the {@link NetworkManager.SettingVlan.ingress_priority_map}
+         * or {@link NetworkManager.SettingVlan.egress_priority_map} (according to `map` argument)
          * properties.
          * @param map the type of priority map
-         * @param from the priority to map to @to
-         * @param to the priority to map @from to
-         * @returns %TRUE if the priority mapping was found and removed; %FALSE if it was not.
+         * @param from the priority to map to `to`
+         * @param to the priority to map `from` to
+         * @returns `true` if the priority mapping was found and removed; `false` if it was not.
          */
         remove_priority_by_value(map: VlanPriorityMap | null, from: number, to: number): boolean;
         /**
-         * Removes the priority map `str` from the #NMSettingVlan:ingress_priority_map
-         * or #NMSettingVlan:egress_priority_map (according to `map` argument)
+         * Removes the priority map `str` from the {@link NetworkManager.SettingVlan.ingress_priority_map}
+         * or {@link NetworkManager.SettingVlan.egress_priority_map} (according to `map` argument)
          * properties.
          * @param map the type of priority map
          * @param str the string which contains a priority map, like "3:7"
-         * @returns %TRUE if the priority mapping was found and removed; %FALSE if it was not.
+         * @returns `true` if the priority mapping was found and removed; `false` if it was not.
          */
         remove_priority_str_by_value(map: VlanPriorityMap | null, str: string): boolean;
     }
@@ -8533,6 +9387,9 @@ export namespace NetworkManager {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SettingWimax extends Setting {
         static $gtype: GObject.GType<SettingWimax>;
 
@@ -8541,12 +9398,14 @@ export namespace NetworkManager {
         /**
          * Network Service Provider (NSP) name of the WiMAX network this connection
          * should use.
+         * @deprecated since 1.2: WiMAX is no longer supported.
          */
         get network_name(): string;
         set network_name(val: string);
         /**
          * Network Service Provider (NSP) name of the WiMAX network this connection
          * should use.
+         * @deprecated since 1.2: WiMAX is no longer supported.
          */
         get networkName(): string;
         set networkName(val: string);
@@ -8570,16 +9429,19 @@ export namespace NetworkManager {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SettingWimax.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingWimax.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SettingWimax.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingWimax.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SettingWimax.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SettingWimax.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -8628,21 +9490,24 @@ export namespace NetworkManager {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SettingWired extends Setting {
         static $gtype: GObject.GType<SettingWired>;
 
         // Properties
 
         /**
-         * If %TRUE, allow auto-negotiation of port speed and duplex mode.  If
-         * %FALSE, do not allow auto-negotiation, in which case the "speed" and
+         * If `true`, allow auto-negotiation of port speed and duplex mode.  If
+         * `false`, do not allow auto-negotiation, in which case the "speed" and
          * "duplex" properties should be set.
          */
         get auto_negotiate(): boolean;
         set auto_negotiate(val: boolean);
         /**
-         * If %TRUE, allow auto-negotiation of port speed and duplex mode.  If
-         * %FALSE, do not allow auto-negotiation, in which case the "speed" and
+         * If `true`, allow auto-negotiation of port speed and duplex mode.  If
+         * `false`, do not allow auto-negotiation, in which case the "speed" and
          * "duplex" properties should be set.
          */
         get autoNegotiate(): boolean;
@@ -8705,16 +9570,19 @@ export namespace NetworkManager {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SettingWired.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingWired.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SettingWired.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingWired.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SettingWired.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SettingWired.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -8724,9 +9592,9 @@ export namespace NetworkManager {
         // Methods
 
         /**
-         * Adds a new MAC address to the #NMSettingWired:mac-address-blacklist property.
+         * Adds a new MAC address to the {@link NetworkManager.SettingWired.mac_address_blacklist} property.
          * @param mac the MAC address string (hex-digits-and-colons notation) to blacklist
-         * @returns %TRUE if the MAC address was added; %FALSE if the MAC address is invalid or was already present
+         * @returns `true` if the MAC address was added; `false` if the MAC address is invalid or was already present
          */
         add_mac_blacklist_item(mac: string): boolean;
         /**
@@ -8736,28 +9604,56 @@ export namespace NetworkManager {
          * may already exist.
          * @param key key name for the option
          * @param value value for the option
-         * @returns %TRUE if the option was valid and was added to the internal option list, %FALSE if it was not.
+         * @returns `true` if the option was valid and was added to the internal option list, `false` if it was not.
          */
         add_s390_option(key: string, value: string): boolean;
         /**
          * Removes all blacklisted MAC addresses.
          */
         clear_mac_blacklist_items(): void;
+        /**
+         * @returns the {@link NetworkManager.SettingWired.auto_negotiate} property of the setting
+         */
         get_auto_negotiate(): boolean;
+        /**
+         * @returns the {@link NetworkManager.SettingWired.cloned_mac_address} property of the setting
+         */
         get_cloned_mac_address(): Uint8Array;
+        /**
+         * @returns the {@link NetworkManager.SettingWired.duplex} property of the setting
+         */
         get_duplex(): string;
+        /**
+         * @returns the {@link NetworkManager.SettingWired.mac_address} property of the setting
+         */
         get_mac_address(): Uint8Array;
+        /**
+         * @returns the {@link NetworkManager.SettingWired.mac_address_blacklist} property of the setting
+         */
         get_mac_address_blacklist(): GLib.SList;
+        /**
+         * @param idx the zero-based index of the MAC address entry
+         * @returns the blacklisted MAC address string (hex-digits-and-colons notation) at index `idx`
+         */
         get_mac_blacklist_item(idx: number): string;
+        /**
+         * @returns the {@link NetworkManager.SettingWired.mtu} property of the setting
+         */
         get_mtu(): number;
+        /**
+         * @returns the number of blacklisted MAC addresses
+         */
         get_num_mac_blacklist_items(): number;
         /**
          * Returns the number of s390-specific options that should be set for this
          * device when it is activated.  This can be used to retrieve each s390
-         * option individually using nm_setting_wired_get_s390_option().
+         * option individually using `nm_setting_wired_get_s390_option()`.
          * @returns the number of s390-specific device options
          */
         get_num_s390_options(): number;
+        /**
+         * @returns the {@link NetworkManager.SettingWired.port} property of the setting
+         */
         get_port(): string;
         /**
          * Returns the s390 device type this connection should apply to.  Will be one
@@ -8768,31 +9664,34 @@ export namespace NetworkManager {
         /**
          * Given an index, return the value of the s390 option at that index.  indexes
          * are *not* guaranteed to be static across modifications to options done by
-         * nm_setting_wired_add_s390_option() and nm_setting_wired_remove_s390_option(),
+         * `nm_setting_wired_add_s390_option()` and `nm_setting_wired_remove_s390_option()`,
          * and should not be used to refer to options except for short periods of time
          * such as during option iteration.
-         * @param idx index of the desired option, from 0 to nm_setting_wired_get_num_s390_options() - 1
-         * @returns %TRUE on success if the index was valid and an option was found, %FALSE if the index was invalid (ie, greater than the number of options currently held by the setting)
+         * @param idx index of the desired option, from 0 to `nm_setting_wired_get_num_s390_options()` - 1
+         * @returns `true` on success if the index was valid and an option was found, `false` if the index was invalid (ie, greater than the number of options currently held by the setting)
          */
         get_s390_option(idx: number): [boolean, string, string];
         /**
          * Returns the value associated with the s390-specific option specified by
-         * `key,` if it exists.
+         * `key`, if it exists.
          * @param key the key for which to retrieve the value
-         * @returns the value, or %NULL if the key/value pair was never added to the setting; the value is owned by the setting and must not be modified
+         * @returns the value, or `null` if the key/value pair was never added to the setting; the value is owned by the setting and must not be modified
          */
         get_s390_option_by_key(key: string): string;
         /**
          * Return the list of s390 subchannels that identify the device that this
          * connection is applicable to.  The connection should only be used in
          * conjunction with that device.
-         * @returns #GPtrArray of strings, each specifying one subchannel the s390 device uses to communicate to the host.
+         * @returns {@link GLib.PtrArray} of strings, each specifying one subchannel the s390 device uses to communicate to the host.
          */
         get_s390_subchannels(): string[];
+        /**
+         * @returns the {@link NetworkManager.SettingWired.speed} property of the setting
+         */
         get_speed(): number;
         /**
          * Returns a list of valid s390 options.
-         * @returns a %NULL-terminated array of strings of valid s390 options.
+         * @returns a `null`-terminated array of strings of valid s390 options.
          */
         get_valid_s390_options(): string[];
         /**
@@ -8803,14 +9702,14 @@ export namespace NetworkManager {
         /**
          * Removes the MAC address `mac` from the blacklist.
          * @param mac the MAC address string (hex-digits-and-colons notation) to remove from the blacklist
-         * @returns %TRUE if the MAC address was found and removed; %FALSE if it was not.
+         * @returns `true` if the MAC address was found and removed; `false` if it was not.
          */
         remove_mac_blacklist_item_by_value(mac: string): boolean;
         /**
          * Remove the s390-specific option referenced by `key` from the internal option
          * list.
          * @param key key name for the option to remove
-         * @returns %TRUE if the option was found and removed from the internal option list, %FALSE if it was not.
+         * @returns `true` if the option was found and removed from the internal option list, `false` if it was not.
          */
         remove_s390_option(key: string): boolean;
     }
@@ -8846,6 +9745,9 @@ export namespace NetworkManager {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SettingWireless extends Setting {
         static $gtype: GObject.GType<SettingWireless>;
 
@@ -8870,7 +9772,7 @@ export namespace NetworkManager {
         get channel(): number;
         set channel(val: number);
         /**
-         * If %TRUE, indicates this network is a non-broadcasting network that hides
+         * If `true`, indicates this network is a non-broadcasting network that hides
          * its SSID.  In this case various workarounds may take place, such as
          * probe-scanning the SSID for more reliable network discovery.  However,
          * these workarounds expose inherent insecurities with hidden SSID networks,
@@ -8891,10 +9793,11 @@ export namespace NetworkManager {
         get mtu(): number;
         set mtu(val: number);
         /**
-         * If set to %FALSE, Wi-Fi power saving behavior is disabled.  If set to
-         * %TRUE, Wi-Fi power saving behavior is enabled.  All other values are
+         * If set to `false`, Wi-Fi power saving behavior is disabled.  If set to
+         * `true`, Wi-Fi power saving behavior is enabled.  All other values are
          * reserved.  Note that even though only boolean values are allowed, the
          * property type is an unsigned integer to allow for future expansion.
+         * @since 1.2
          */
         get powersave(): number;
         set powersave(val: number);
@@ -8909,8 +9812,9 @@ export namespace NetworkManager {
         /**
          * If the wireless connection has any security restrictions, like 802.1x,
          * WEP, or WPA, set this property to
-         * %NM_SETTING_WIRELESS_SECURITY_SETTING_NAME and ensure the connection
-         * contains a valid #NMSettingWirelessSecurity setting.
+         * `NM_SETTING_WIRELESS_SECURITY_SETTING_NAME` and ensure the connection
+         * contains a valid {@link NetworkManager.SettingWirelessSecurity} setting.
+         * @deprecated since 0.9.10: No longer used. Security restrictions are recognized by the presence of a {@link NetworkManager.SettingWirelessSecurity} setting in the connection.
          */
         get security(): string;
         set security(val: string);
@@ -8948,16 +9852,19 @@ export namespace NetworkManager {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SettingWireless.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingWireless.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SettingWireless.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingWireless.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SettingWireless.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SettingWireless.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -8967,9 +9874,9 @@ export namespace NetworkManager {
         // Methods
 
         /**
-         * Adds a new MAC address to the #NMSettingWireless:mac-address-blacklist property.
+         * Adds a new MAC address to the {@link NetworkManager.SettingWireless.mac_address_blacklist} property.
          * @param mac the MAC address string (hex-digits-and-colons notation) to blacklist
-         * @returns %TRUE if the MAC address was added; %FALSE if the MAC address is invalid or was already present
+         * @returns `true` if the MAC address was added; `false` if the MAC address is invalid or was already present
          */
         add_mac_blacklist_item(mac: string): boolean;
         /**
@@ -8978,22 +9885,22 @@ export namespace NetworkManager {
          * no longer has much use. Actually, changes you make using this function will
          * not be preserved.
          * @param bssid the new BSSID to add to the list
-         * @returns %TRUE if @bssid was already known, %FALSE if not
+         * @returns `true` if `bssid` was already known, `false` if not
          */
         add_seen_bssid(bssid: string): boolean;
         /**
-         * Given a #NMSettingWireless and an optional #NMSettingWirelessSecurity,
+         * Given a {@link NetworkManager.SettingWireless} and an optional {@link NetworkManager.SettingWirelessSecurity},
          * determine if the configuration given by the settings is compatible with
          * the security of an access point using that access point's capability flags
          * and mode.  Useful for clients that wish to filter a set of connections
          * against a set of access points and determine which connections are
          * compatible with which access points.
-         * @param s_wireless_sec a #NMSettingWirelessSecurity or %NULL
+         * @param s_wireless_sec a {@link NetworkManager.SettingWirelessSecurity} or `null`
          * @param ap_flags the %NM80211ApFlags of the given access point
          * @param ap_wpa the %NM80211ApSecurityFlags of the given access point's WPA capabilities
          * @param ap_rsn the %NM80211ApSecurityFlags of the given access point's WPA2/RSN capabilities
          * @param ap_mode the 802.11 mode of the AP, either Ad-Hoc or Infrastructure
-         * @returns %TRUE if the given settings are compatible with the access point's security flags and mode, %FALSE if they are not.
+         * @returns `true` if the given settings are compatible with the access point's security flags and mode, `false` if they are not.
          */
         ap_security_compatible(
             s_wireless_sec: SettingWirelessSecurity,
@@ -9006,23 +9913,79 @@ export namespace NetworkManager {
          * Removes all blacklisted MAC addresses.
          */
         clear_mac_blacklist_items(): void;
+        /**
+         * @returns the {@link NetworkManager.SettingWireless.band} property of the setting
+         */
         get_band(): string;
+        /**
+         * @returns the {@link NetworkManager.SettingWireless.bssid} property of the setting
+         */
         get_bssid(): Uint8Array;
+        /**
+         * @returns the {@link NetworkManager.SettingWireless.channel} property of the setting
+         */
         get_channel(): number;
+        /**
+         * @returns the {@link NetworkManager.SettingWireless.cloned_mac_address} property of the setting
+         */
         get_cloned_mac_address(): Uint8Array;
+        /**
+         * @returns the {@link NetworkManager.SettingWireless.hidden} property of the setting
+         */
         get_hidden(): boolean;
+        /**
+         * @returns the {@link NetworkManager.SettingWireless.mac_address} property of the setting
+         */
         get_mac_address(): Uint8Array;
+        /**
+         * @returns the {@link NetworkManager.SettingWireless.mac_address_blacklist} property of the setting
+         */
         get_mac_address_blacklist(): GLib.SList;
+        /**
+         * @param idx the zero-based index of the MAC address entry
+         * @returns the blacklisted MAC address string (hex-digits-and-colons notation) at index `idx`
+         */
         get_mac_blacklist_item(idx: number): string;
+        /**
+         * @returns the {@link NetworkManager.SettingWireless.mode} property of the setting
+         */
         get_mode(): string;
+        /**
+         * @returns the {@link NetworkManager.SettingWireless.mtu} property of the setting
+         */
         get_mtu(): number;
+        /**
+         * @returns the number of blacklisted MAC addresses
+         */
         get_num_mac_blacklist_items(): number;
+        /**
+         * @returns the number of BSSIDs in the previously seen BSSID list
+         */
         get_num_seen_bssids(): number;
+        /**
+         * @returns the {@link NetworkManager.SettingWireless.powersave} property of the setting
+         */
         get_powersave(): number;
+        /**
+         * @returns the {@link NetworkManager.SettingWireless.rate} property of the setting
+         */
         get_rate(): number;
+        /**
+         * @returns the {@link NetworkManager.SettingWireless.security} property of the setting
+         */
         get_security(): string;
+        /**
+         * @param i index of a BSSID in the previously seen BSSID list
+         * @returns the BSSID at index `i`
+         */
         get_seen_bssid(i: number): string;
+        /**
+         * @returns the {@link NetworkManager.SettingWireless.ssid} property of the setting
+         */
         get_ssid(): Uint8Array;
+        /**
+         * @returns the {@link NetworkManager.SettingWireless.tx_power} property of the setting
+         */
         get_tx_power(): number;
         /**
          * Removes the MAC address at index `idx` from the blacklist.
@@ -9032,7 +9995,7 @@ export namespace NetworkManager {
         /**
          * Removes the MAC address `mac` from the blacklist.
          * @param mac the MAC address string (hex-digits-and-colons notation) to remove from the blacklist
-         * @returns %TRUE if the MAC address was found and removed; %FALSE if it was not.
+         * @returns `true` if the MAC address was found and removed; `false` if it was not.
          */
         remove_mac_blacklist_item_by_value(mac: string): boolean;
     }
@@ -9090,6 +10053,9 @@ export namespace NetworkManager {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SettingWirelessSecurity extends Setting {
         static $gtype: GObject.GType<SettingWirelessSecurity>;
 
@@ -9143,13 +10109,13 @@ export namespace NetworkManager {
         set leapPassword(val: string);
         /**
          * Flags indicating how to handle the
-         * #NMSettingWirelessSecurity:leap-password property.
+         * {@link NetworkManager.SettingWirelessSecurity.leap_password} property.
          */
         get leap_password_flags(): number;
         set leap_password_flags(val: number);
         /**
          * Flags indicating how to handle the
-         * #NMSettingWirelessSecurity:leap-password property.
+         * {@link NetworkManager.SettingWirelessSecurity.leap_password} property.
          */
         get leapPasswordFlags(): number;
         set leapPasswordFlags(val: number);
@@ -9176,36 +10142,36 @@ export namespace NetworkManager {
         get psk(): string;
         set psk(val: string);
         /**
-         * Flags indicating how to handle the #NMSettingWirelessSecurity:psk
+         * Flags indicating how to handle the {@link NetworkManager.SettingWirelessSecurity.psk}
          * property.
          */
         get psk_flags(): number;
         set psk_flags(val: number);
         /**
-         * Flags indicating how to handle the #NMSettingWirelessSecurity:psk
+         * Flags indicating how to handle the {@link NetworkManager.SettingWirelessSecurity.psk}
          * property.
          */
         get pskFlags(): number;
         set pskFlags(val: number);
         /**
-         * Flags indicating how to handle the #NMSettingWirelessSecurity:wep-key0,
-         * #NMSettingWirelessSecurity:wep-key1, #NMSettingWirelessSecurity:wep-key2,
-         * and #NMSettingWirelessSecurity:wep-key3 properties.
+         * Flags indicating how to handle the {@link NetworkManager.SettingWirelessSecurity.wep_key0},
+         * {@link NetworkManager.SettingWirelessSecurity.wep_key1}, {@link NetworkManager.SettingWirelessSecurity.wep_key2},
+         * and {@link NetworkManager.SettingWirelessSecurity.wep_key3} properties.
          */
         get wep_key_flags(): number;
         set wep_key_flags(val: number);
         /**
-         * Flags indicating how to handle the #NMSettingWirelessSecurity:wep-key0,
-         * #NMSettingWirelessSecurity:wep-key1, #NMSettingWirelessSecurity:wep-key2,
-         * and #NMSettingWirelessSecurity:wep-key3 properties.
+         * Flags indicating how to handle the {@link NetworkManager.SettingWirelessSecurity.wep_key0},
+         * {@link NetworkManager.SettingWirelessSecurity.wep_key1}, {@link NetworkManager.SettingWirelessSecurity.wep_key2},
+         * and {@link NetworkManager.SettingWirelessSecurity.wep_key3} properties.
          */
         get wepKeyFlags(): number;
         set wepKeyFlags(val: number);
         /**
          * Controls the interpretation of WEP keys.  Allowed values are
-         * %NM_WEP_KEY_TYPE_KEY, in which case the key is either a 10- or
+         * {@link NetworkManager.WepKeyType.KEY}, in which case the key is either a 10- or
          * 26-character hexadecimal string, or a 5- or 13-character ASCII password;
-         * or %NM_WEP_KEY_TYPE_PASSPHRASE, in which case the passphrase is provided
+         * or {@link NetworkManager.WepKeyType.PASSPHRASE}, in which case the passphrase is provided
          * as a string and will be hashed using the de-facto MD5 method to derive
          * the actual WEP key.
          */
@@ -9213,9 +10179,9 @@ export namespace NetworkManager {
         set wep_key_type(val: number);
         /**
          * Controls the interpretation of WEP keys.  Allowed values are
-         * %NM_WEP_KEY_TYPE_KEY, in which case the key is either a 10- or
+         * {@link NetworkManager.WepKeyType.KEY}, in which case the key is either a 10- or
          * 26-character hexadecimal string, or a 5- or 13-character ASCII password;
-         * or %NM_WEP_KEY_TYPE_PASSPHRASE, in which case the passphrase is provided
+         * or {@link NetworkManager.WepKeyType.PASSPHRASE}, in which case the passphrase is provided
          * as a string and will be hashed using the de-facto MD5 method to derive
          * the actual WEP key.
          */
@@ -9305,16 +10271,19 @@ export namespace NetworkManager {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SettingWirelessSecurity.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingWirelessSecurity.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SettingWirelessSecurity.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SettingWirelessSecurity.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SettingWirelessSecurity.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SettingWirelessSecurity.SignalSignatures[K]> extends [any, ...infer Q]
@@ -9331,7 +10300,7 @@ export namespace NetworkManager {
          * one or more of the encryption algorithms in the list will be considered
          * compatible with this connection.
          * @param group the encryption algorithm to add, one of "wep40", "wep104", "tkip", or "ccmp"
-         * @returns %TRUE if the algorithm was added to the list, %FALSE if it was already in the list
+         * @returns `true` if the algorithm was added to the list, `false` if it was already in the list
          */
         add_group(group: string): boolean;
         /**
@@ -9340,7 +10309,7 @@ export namespace NetworkManager {
          * one or more of the encryption algorithms in the list will be considered
          * compatible with this connection.
          * @param pairwise the encryption algorithm to add, one of "tkip" or "ccmp"
-         * @returns %TRUE if the algorithm was added to the list, %FALSE if it was already in the list
+         * @returns `true` if the algorithm was added to the list, `false` if it was already in the list
          */
         add_pairwise(pairwise: string): boolean;
         /**
@@ -9351,7 +10320,7 @@ export namespace NetworkManager {
          * by this connection only supports WPA2/RSN, the connection cannot be used
          * with the access point.
          * @param proto the protocol to add, one of "wpa" or "rsn"
-         * @returns %TRUE if the protocol was new and was added to the allowed protocol list, or %FALSE if it was already in the list
+         * @returns `true` if the protocol was new and was added to the allowed protocol list, or `false` if it was already in the list
          */
         add_proto(proto: string): boolean;
         /**
@@ -9369,34 +10338,81 @@ export namespace NetworkManager {
          * specified then all protocols are allowed.
          */
         clear_protos(): void;
+        /**
+         * @returns the {@link NetworkManager.SettingWirelessSecurity.auth_alg} property of the setting
+         */
         get_auth_alg(): string;
         /**
          * Returns the allowed groupwise encryption algorithm from allowed algorithm
          * list.
          * @param i index of an item in the allowed groupwise encryption algorithm list
-         * @returns the groupwise encryption algorithm at index @i
+         * @returns the groupwise encryption algorithm at index `i`
          */
         get_group(i: number): string;
+        /**
+         * @returns the {@link NetworkManager.SettingWirelessSecurity.key_mgmt} property of the setting
+         */
         get_key_mgmt(): string;
+        /**
+         * @returns the {@link NetworkManager.SettingWirelessSecurity.leap_password} property of the setting
+         */
         get_leap_password(): string;
+        /**
+         * @returns the {@link NetworkManager.SettingSecretFlags} pertaining to the {@link NetworkManager.SettingWirelessSecurity.leap_password}
+         */
         get_leap_password_flags(): SettingSecretFlags;
+        /**
+         * @returns the {@link NetworkManager.SettingWirelessSecurity.leap_username} property of the setting
+         */
         get_leap_username(): string;
+        /**
+         * @returns the number of groupwise encryption algorithms in the allowed list
+         */
         get_num_groups(): number;
+        /**
+         * @returns the number of pairwise encryption algorithms in the allowed list
+         */
         get_num_pairwise(): number;
+        /**
+         * @returns the number of security protocols this connection allows when connecting to secure Wi-Fi networks
+         */
         get_num_protos(): number;
         /**
          * Returns the allowed pairwise encryption algorithm from allowed algorithm
          * list.
          * @param i index of an item in the allowed pairwise encryption algorithm list
-         * @returns the pairwise encryption algorithm at index @i
+         * @returns the pairwise encryption algorithm at index `i`
          */
         get_pairwise(i: number): string;
+        /**
+         * @param i an index into the protocol list
+         * @returns the protocol at index `i`
+         */
         get_proto(i: number): string;
+        /**
+         * @returns the {@link NetworkManager.SettingWirelessSecurity.psk} property of the setting
+         */
         get_psk(): string;
+        /**
+         * @returns the {@link NetworkManager.SettingSecretFlags} pertaining to the {@link NetworkManager.SettingWirelessSecurity.psk}
+         */
         get_psk_flags(): SettingSecretFlags;
+        /**
+         * @param idx the WEP key index (0..3 inclusive)
+         * @returns the WEP key at the given index
+         */
         get_wep_key(idx: number): string;
+        /**
+         * @returns the {@link NetworkManager.SettingSecretFlags} pertaining to the all WEP keys
+         */
         get_wep_key_flags(): SettingSecretFlags;
+        /**
+         * @returns the {@link NetworkManager.SettingWirelessSecurity.wep_key_type} property of the setting
+         */
         get_wep_key_type(): WepKeyType;
+        /**
+         * @returns the {@link NetworkManager.SettingWirelessSecurity.wep_tx_keyidx} property of the setting
+         */
         get_wep_tx_keyidx(): number;
         /**
          * Removes an encryption algorithm from the allowed groupwise encryption
@@ -9408,7 +10424,7 @@ export namespace NetworkManager {
          * Removes an encryption algorithm from the allowed groupwise encryption
          * algorithm list.
          * @param group the encryption algorithm to remove, one of "wep40", "wep104", "tkip", or "ccmp"
-         * @returns %TRUE if the algorithm was found and removed; %FALSE if it was not.
+         * @returns `true` if the algorithm was found and removed; `false` if it was not.
          */
         remove_group_by_value(group: string): boolean;
         /**
@@ -9421,7 +10437,7 @@ export namespace NetworkManager {
          * Removes an encryption algorithm from the allowed pairwise encryption
          * algorithm list.
          * @param pairwise the encryption algorithm to remove, one of "tkip" or "ccmp"
-         * @returns %TRUE if the encryption algorithm was found and removed; %FALSE if it was not.
+         * @returns `true` if the encryption algorithm was found and removed; `false` if it was not.
          */
         remove_pairwise_by_value(pairwise: string): boolean;
         /**
@@ -9432,18 +10448,24 @@ export namespace NetworkManager {
         /**
          * Removes a protocol from the allowed protocol list.
          * @param proto the protocol to remove, one of "wpa" or "rsn"
-         * @returns %TRUE if the protocol was found and removed; %FALSE if it was not.
+         * @returns `true` if the protocol was found and removed; `false` if it was not.
          */
         remove_proto_by_value(proto: string): boolean;
         /**
          * Sets a WEP key in the given index.
          * @param idx the index of the key (0..3 inclusive)
-         * @param key the WEP key as a string, in either hexadecimal, ASCII, or passphrase form as determiend by the value of the #NMSettingWirelessSecurity:wep-key-type property.
+         * @param key the WEP key as a string, in either hexadecimal, ASCII, or passphrase form as determiend by the value of the {@link NetworkManager.SettingWirelessSecurity.wep_key_type} property.
          */
         set_wep_key(idx: number, key: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ConnectionClass = typeof Connection;
+    /**
+     * @gir-type Struct
+     */
     class IP4Address {
         static $gtype: GObject.GType<IP4Address>;
 
@@ -9456,14 +10478,14 @@ export namespace NetworkManager {
         // Methods
 
         /**
-         * Determines if two #NMIP4Address objects contain the same values.
-         * @param other the #NMIP4Address to compare @address to.
-         * @returns %TRUE if the objects contain the same values, %FALSE if they do not.
+         * Determines if two {@link NetworkManager.IP4Address} objects contain the same values.
+         * @param other the {@link NetworkManager.IP4Address} to compare `address` to.
+         * @returns `true` if the objects contain the same values, `false` if they do not.
          */
         compare(other: IP4Address): boolean;
         /**
-         * Copies a given #NMIP4Address object and returns the copy.
-         * @returns the copy of the given #NMIP4Address copy
+         * Copies a given {@link NetworkManager.IP4Address} object and returns the copy.
+         * @returns the copy of the given {@link NetworkManager.IP4Address} copy
          */
         dup(): IP4Address;
         /**
@@ -9508,6 +10530,9 @@ export namespace NetworkManager {
         unref(): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class IP4Route {
         static $gtype: GObject.GType<IP4Route>;
 
@@ -9520,14 +10545,14 @@ export namespace NetworkManager {
         // Methods
 
         /**
-         * Determines if two #NMIP4Route objects contain the same values.
-         * @param other the #NMIP4Route to compare @route to.
-         * @returns %TRUE if the objects contain the same values, %FALSE if they do not.
+         * Determines if two {@link NetworkManager.IP4Route} objects contain the same values.
+         * @param other the {@link NetworkManager.IP4Route} to compare `route` to.
+         * @returns `true` if the objects contain the same values, `false` if they do not.
          */
         compare(other: IP4Route): boolean;
         /**
-         * Copies a given #NMIP4Route object and returns the copy.
-         * @returns the copy of the given #NMIP4Route copy
+         * Copies a given {@link NetworkManager.IP4Route} object and returns the copy.
+         * @returns the copy of the given {@link NetworkManager.IP4Route} copy
          */
         dup(): IP4Route;
         /**
@@ -9583,6 +10608,9 @@ export namespace NetworkManager {
         unref(): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class IP6Address {
         static $gtype: GObject.GType<IP6Address>;
 
@@ -9595,14 +10623,14 @@ export namespace NetworkManager {
         // Methods
 
         /**
-         * Determines if two #NMIP6Address objects contain the same values.
-         * @param other the #NMIP6Address to compare @address to.
-         * @returns %TRUE if the objects contain the same values, %FALSE if they do not.
+         * Determines if two {@link NetworkManager.IP6Address} objects contain the same values.
+         * @param other the {@link NetworkManager.IP6Address} to compare `address` to.
+         * @returns `true` if the objects contain the same values, `false` if they do not.
          */
         compare(other: IP6Address): boolean;
         /**
-         * Copies a given #NMIP6Address object and returns the copy.
-         * @returns the copy of the given #NMIP6Address copy
+         * Copies a given {@link NetworkManager.IP6Address} object and returns the copy.
+         * @returns the copy of the given {@link NetworkManager.IP6Address} copy
          */
         dup(): IP6Address;
         /**
@@ -9646,6 +10674,9 @@ export namespace NetworkManager {
         unref(): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class IP6Route {
         static $gtype: GObject.GType<IP6Route>;
 
@@ -9658,14 +10689,14 @@ export namespace NetworkManager {
         // Methods
 
         /**
-         * Determines if two #NMIP6Route objects contain the same values.
-         * @param other the #NMIP6Route to compare @route to.
-         * @returns %TRUE if the objects contain the same values, %FALSE if they do not.
+         * Determines if two {@link NetworkManager.IP6Route} objects contain the same values.
+         * @param other the {@link NetworkManager.IP6Route} to compare `route` to.
+         * @returns `true` if the objects contain the same values, `false` if they do not.
          */
         compare(other: IP6Route): boolean;
         /**
-         * Copies a given #NMIP6Route object and returns the copy.
-         * @returns the copy of the given #NMIP6Route copy
+         * Copies a given {@link NetworkManager.IP6Route} object and returns the copy.
+         * @returns the copy of the given {@link NetworkManager.IP6Route} copy
          */
         dup(): IP6Route;
         /**
@@ -9721,32 +10752,113 @@ export namespace NetworkManager {
         unref(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type Setting8021xClass = typeof Setting8021x;
+    /**
+     * @gir-type Alias
+     */
     type SettingAdslClass = typeof SettingAdsl;
+    /**
+     * @gir-type Alias
+     */
     type SettingBluetoothClass = typeof SettingBluetooth;
+    /**
+     * @gir-type Alias
+     */
     type SettingBondClass = typeof SettingBond;
+    /**
+     * @gir-type Alias
+     */
     type SettingBridgeClass = typeof SettingBridge;
+    /**
+     * @gir-type Alias
+     */
     type SettingBridgePortClass = typeof SettingBridgePort;
+    /**
+     * @gir-type Alias
+     */
     type SettingCdmaClass = typeof SettingCdma;
+    /**
+     * @gir-type Alias
+     */
     type SettingClass = typeof Setting;
+    /**
+     * @gir-type Alias
+     */
     type SettingConnectionClass = typeof SettingConnection;
+    /**
+     * @gir-type Alias
+     */
     type SettingDcbClass = typeof SettingDcb;
+    /**
+     * @gir-type Alias
+     */
     type SettingGenericClass = typeof SettingGeneric;
+    /**
+     * @gir-type Alias
+     */
     type SettingGsmClass = typeof SettingGsm;
+    /**
+     * @gir-type Alias
+     */
     type SettingIP4ConfigClass = typeof SettingIP4Config;
+    /**
+     * @gir-type Alias
+     */
     type SettingIP6ConfigClass = typeof SettingIP6Config;
+    /**
+     * @gir-type Alias
+     */
     type SettingInfinibandClass = typeof SettingInfiniband;
+    /**
+     * @gir-type Alias
+     */
     type SettingOlpcMeshClass = typeof SettingOlpcMesh;
+    /**
+     * @gir-type Alias
+     */
     type SettingPPPClass = typeof SettingPPP;
+    /**
+     * @gir-type Alias
+     */
     type SettingPPPOEClass = typeof SettingPPPOE;
+    /**
+     * @gir-type Alias
+     */
     type SettingSerialClass = typeof SettingSerial;
+    /**
+     * @gir-type Alias
+     */
     type SettingTeamClass = typeof SettingTeam;
+    /**
+     * @gir-type Alias
+     */
     type SettingTeamPortClass = typeof SettingTeamPort;
+    /**
+     * @gir-type Alias
+     */
     type SettingVPNClass = typeof SettingVPN;
+    /**
+     * @gir-type Alias
+     */
     type SettingVlanClass = typeof SettingVlan;
+    /**
+     * @gir-type Alias
+     */
     type SettingWimaxClass = typeof SettingWimax;
+    /**
+     * @gir-type Alias
+     */
     type SettingWiredClass = typeof SettingWired;
+    /**
+     * @gir-type Alias
+     */
     type SettingWirelessClass = typeof SettingWireless;
+    /**
+     * @gir-type Alias
+     */
     type SettingWirelessSecurityClass = typeof SettingWirelessSecurity;
     /**
      * Name of the imported GIR library

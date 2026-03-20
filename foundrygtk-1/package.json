@@ -1,0 +1,70 @@
+{
+    "name": "@girs/foundrygtk-1",
+    "version": "1.0.0-4.0.0-beta.41",
+    "description": "GJS TypeScript type definitions for FoundryGtk-1, generated from library version 1.0.0",
+    "type": "module",
+    "module": "foundrygtk-1.js",
+    "main": "foundrygtk-1.js",
+    "exports": {
+      "./ambient": {
+        "types": "./foundrygtk-1-ambient.d.ts",
+        "import": "./foundrygtk-1-ambient.js",
+        "default": "./foundrygtk-1-ambient.js"
+      },
+      "./import": {
+        "types": "./foundrygtk-1-import.d.ts",
+        "import": "./foundrygtk-1-import.js",
+        "default": "./foundrygtk-1-import.js"
+      },
+      "./foundrygtk-1": {
+        "types": "./foundrygtk-1.d.ts",
+        "import": "./foundrygtk-1.js",
+        "default": "./foundrygtk-1.js"
+      },
+      ".": {
+        "types": "./index.d.ts",
+        "import": "./index.js",
+        "default": "./index.js"
+      }
+    },
+    "scripts": {
+      "test": "tsc --project tsconfig.json"
+    },
+    "dependencies": {
+      "@girs/gjs": "4.0.0-beta.41",
+      "@girs/peas-2": "2.0.0-4.0.0-beta.41",
+      "@girs/gio-2.0": "2.88.0-4.0.0-beta.41",
+      "@girs/gobject-2.0": "2.88.0-4.0.0-beta.41",
+      "@girs/glib-2.0": "2.88.0-4.0.0-beta.41",
+      "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.41",
+      "@girs/json-1.0": "1.10.8-4.0.0-beta.41",
+      "@girs/gtksource-5": "5.20.0-4.0.0-beta.41",
+      "@girs/gtk-4.0": "4.22.1-4.0.0-beta.41",
+      "@girs/gsk-4.0": "4.0.0-4.0.0-beta.41",
+      "@girs/graphene-1.0": "1.0.0-4.0.0-beta.41",
+      "@girs/gdk-4.0": "4.0.0-4.0.0-beta.41",
+      "@girs/cairo-1.0": "1.0.0-4.0.0-beta.41",
+      "@girs/pangocairo-1.0": "1.0.0-4.0.0-beta.41",
+      "@girs/pango-1.0": "1.57.0-4.0.0-beta.41",
+      "@girs/harfbuzz-0.0": "12.3.2-4.0.0-beta.41",
+      "@girs/freetype2-2.0": "2.0.0-4.0.0-beta.41",
+      "@girs/gdkpixbuf-2.0": "2.0.0-4.0.0-beta.41",
+      "@girs/foundry-1": "1.0.0-4.0.0-beta.41",
+      "@girs/dex-1": "1.0.0-4.0.0-beta.41"    },
+    "devDependencies": {
+      "typescript": "*"
+    },
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "FoundryGtk-1"],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/gjsify/types.git"
+    },
+    "bugs": {
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/foundrygtk-1#readme"
+}
+
+

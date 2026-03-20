@@ -21,21 +21,33 @@ export namespace Garcon {
      * Garcon-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     enum MenuLayoutMergeType {
         MENUS,
         FILES,
         ALL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum MenuMergeFileType {
         PATH,
         PARENT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MenuNodeType {
         export const $gtype: GObject.GType<MenuNodeType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum MenuNodeType {
         INVALID,
         MENU,
@@ -73,6 +85,7 @@ export namespace Garcon {
     /**
      * Macro for garcon_set_environment or garcon_set_environment_xdg
      * to set the Xfce Desktop Environment.
+     * @since 0.3.0
      */
     const ENVIRONMENT_XFCE: string;
     /**
@@ -120,22 +133,33 @@ export namespace Garcon {
      * @param required_major the required major version.
      * @param required_minor the required minor version.
      * @param required_micro the required micro version.
-     * @returns %NULL if the library is compatible with the given version,          or a string describing the version mismatch. The returned          string is owned by the library and must not be freed or          modified by the caller.
+     * @returns `null` if the library is compatible with the given version,          or a string describing the version mismatch. The returned          string is owned by the library and must not be freed or          modified by the caller.
      */
     function check_version(required_major: number, required_minor: number, required_micro: number): string;
+    /**
+     * @param filename name of .desktop file
+     */
     function config_build_paths(filename: string): string[];
     /**
      * Looks for the filename in the users' config directory and then
      * the system config directories.
      * @param filename relative filename of the config resource.
-     * @returns the absolute path to the first file in the search path,          that matches @filename or %NULL if no such          file or directory could be found.
+     * @returns the absolute path to the first file in the search path,          that matches `filename` or `null` if no such          file or directory could be found.
      */
     function config_lookup(filename: string): string;
     /**
-     * Get the environment set with garcon_set_environment().
-     * @returns Name of the desktop environment (e.g. XFCE, KDE, GNOME)          which is used or %NULL.
+     * Get the environment set with `garcon_set_environment()`.
+     * @returns Name of the desktop environment (e.g. XFCE, KDE, GNOME)          which is used or `null`.
      */
     function get_environment(): string;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function marshal_VOID__OBJECT_OBJECT(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -147,8 +171,8 @@ export namespace Garcon {
     /**
      * Sets (or unsets) the desktop environment for which menus will generated.
      * Menus and menu items belonging to other desktop environments will be
-     * ignored. If set to %NULL, all menu items are used.
-     * @param env Name of the desktop environment for which menus will        be generated (e.g. XFCE, KDE, GNOME or %NULL).
+     * ignored. If set to `null`, all menu items are used.
+     * @param env Name of the desktop environment for which menus will        be generated (e.g. XFCE, KDE, GNOME or `null`).
      */
     function set_environment(env: string): void;
     /**
@@ -157,12 +181,21 @@ export namespace Garcon {
      *
      * For `fallback_env` you can use for example #GARCON_ENVIRONMENT_XFCE.
      * @param fallback_env fallback value
+     * @since 0.3.0
      */
     function set_environment_xdg(fallback_env: string): void;
     namespace Menu {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
             'directory-changed': (arg0: MenuDirectory, arg1: MenuDirectory) => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'reload-required': () => void;
             'notify::directory': (pspec: GObject.ParamSpec) => void;
             'notify::file': (pspec: GObject.ParamSpec) => void;
@@ -176,6 +209,9 @@ export namespace Garcon {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Menu extends GObject.Object implements MenuElement {
         static $gtype: GObject.GType<Menu>;
 
@@ -187,7 +223,8 @@ export namespace Garcon {
         get directory(): MenuDirectory;
         set directory(val: MenuDirectory);
         /**
-         * The #GFile from which the %GarconMenu was loaded.
+         * The {@link Gio.File} from which the %GarconMenu was loaded.
+         * @construct-only
          */
         get file(): Gio.File;
 
@@ -214,16 +251,19 @@ export namespace Garcon {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Menu.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Menu.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Menu.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Menu.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Menu.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Menu.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -234,86 +274,87 @@ export namespace Garcon {
 
         /**
          * Adds `submenu` as a sub menu to `menu`.
-         * @param submenu a #GarconMenu
+         * @param submenu a {@link Garcon.Menu}
          */
         add_menu(submenu: Menu): void;
         /**
-         * Returns the #GarconMenuDirectory of `menu` or %NULL if `menu` has
+         * Returns the {@link Garcon.MenuDirectory} of `menu` or `null` if `menu` has
          * no valid directory element.
          *
          * The menu directory may contain a lot of useful information about
          * the menu like the display and icon name, desktop environments it
          * should show up in etc.
-         * @returns a #GarconMenuDirectory
+         * @returns a {@link Garcon.MenuDirectory}
          */
         get_directory(): MenuDirectory | null;
         /**
          * Get all the menu element in `menu`. This contains sub menus, menu items
          * and separators.
          *
-         * Returns a list of #GarconMenuItem or %NULL. Free the list with
-         * g_list_free().
+         * Returns a list of {@link Garcon.MenuItem} or `null`. Free the list with
+         * `g_list_free()`.
          */
         get_elements(): MenuItem[] | null;
         /**
          * Get the file for `menu`. It refers to the .menu file from which
          * `menu` was or will be loaded.
          *
-         * The returned object should be unreffed with g_object_unref()
+         * The returned object should be unreffed with `g_object_unref()`
          * when no longer needed.
-         * @returns a #GFile.
+         * @returns a {@link Gio.File}.
          */
         get_file(): Gio.File;
         /**
          * Get the item pool of the menu. This pool contains all items in this
          * menu (for that of its submenus).
-         * @returns a #GarconMenuItemPool.
+         * @returns a {@link Garcon.MenuItemPool}.
          */
         get_item_pool(): MenuItemPool;
         /**
-         * Returns all #GarconMenuItem included in `menu`. The items are
+         * Returns all {@link Garcon.MenuItem} included in `menu`. The items are
          * sorted by their display names in ascending order.
          *
          * The caller is responsible to free the returned list using
-         * g_list_free() when no longer needed.
-         * @returns list of #GarconMenuItem included in @menu.
+         * `g_list_free()` when no longer needed.
+         * @returns list of {@link Garcon.MenuItem} included in `menu`.
          */
         get_items(): MenuItem[];
         /**
          * Looks in `menu` for a submenu with `name` as name.
          * @param name a sub menu name
-         * @returns a #GarconMenu or %NULL.
+         * @returns a {@link Garcon.Menu} or `null`.
          */
         get_menu_with_name(name: string): Menu | null;
         /**
-         * Returns a sorted list of #GarconMenu submenus of `menu`. The list
-         * should be freed with g_list_free().
-         * @returns a sorted list of #GarconMenu.
+         * Returns a sorted list of {@link Garcon.Menu} submenus of `menu`. The list
+         * should be freed with `g_list_free()`.
+         * @returns a sorted list of {@link Garcon.Menu}.
          */
         get_menus(): Menu[];
         /**
-         * Returns the parent #GarconMenu or `menu`.
-         * @returns a #GarconMenu or %NULL if @menu is the root menu.
+         * Returns the parent {@link Garcon.Menu} or `menu`.
+         * @returns a {@link Garcon.Menu} or `null` if `menu` is the root menu.
          */
         get_parent(): Menu | null;
         /**
          * This function loads the entire menu tree from the file referred to
          * by `menu`. It resolves merges, moves and everything else defined
          * in the menu specification. The resulting tree information is
-         * stored within `menu` and can be accessed using the public #GarconMenu
+         * stored within `menu` and can be accessed using the public {@link Garcon.Menu}
          * API afterwards.
          *
          * `cancellable` can be used to handle blocking I/O when reading data
          * from files during the loading process.
          *
-         * `error` should either be NULL or point to a #GError return location
+         * `error` should either be NULL or point to a {@link GLib.Error} return location
          * where errors should be stored in.
-         * @param cancellable a #GCancellable
-         * @returns %TRUE if the menu was loaded successfully or          %FALSE if there was an error or the process was          cancelled.
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns `true` if the menu was loaded successfully or          `false` if there was an error or the process was          cancelled.
          */
         load(cancellable?: Gio.Cancellable | null): boolean;
-
-        // Inherited methods
+        /**
+         * @param b
+         */
         equal(b: MenuElement): boolean;
         get_comment(): string;
         get_icon_name(): string;
@@ -321,12 +362,34 @@ export namespace Garcon {
         get_no_display(): boolean;
         get_show_in_environment(): boolean;
         get_visible(): boolean;
+        /**
+         * @param other
+         * @virtual
+         */
         vfunc_equal(other: MenuElement): boolean;
+        /**
+         * @virtual
+         */
         vfunc_get_comment(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_icon_name(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_name(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_no_display(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_get_show_in_environment(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_get_visible(): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -341,32 +404,32 @@ export namespace Garcon {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -375,39 +438,39 @@ export namespace Garcon {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -418,13 +481,16 @@ export namespace Garcon {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -432,7 +498,7 @@ export namespace Garcon {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -440,9 +506,9 @@ export namespace Garcon {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -462,9 +528,9 @@ export namespace Garcon {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -477,34 +543,34 @@ export namespace Garcon {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -537,22 +603,22 @@ export namespace Garcon {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -561,8 +627,8 @@ export namespace Garcon {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -579,10 +645,10 @@ export namespace Garcon {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -597,13 +663,13 @@ export namespace Garcon {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -634,21 +700,21 @@ export namespace Garcon {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -658,33 +724,34 @@ export namespace Garcon {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -693,6 +760,7 @@ export namespace Garcon {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -701,12 +769,14 @@ export namespace Garcon {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -715,20 +785,22 @@ export namespace Garcon {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -740,6 +812,7 @@ export namespace Garcon {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -792,6 +865,9 @@ export namespace Garcon {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class MenuDirectory extends GObject.Object {
         static $gtype: GObject.GType<MenuDirectory>;
 
@@ -802,6 +878,9 @@ export namespace Garcon {
          */
         get comment(): string;
         set comment(val: string);
+        /**
+         * @construct-only
+         */
         get file(): Gio.File;
         /**
          * Icon associated with this directory.
@@ -848,16 +927,19 @@ export namespace Garcon {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MenuDirectory.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MenuDirectory.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MenuDirectory.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MenuDirectory.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MenuDirectory.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MenuDirectory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -868,76 +950,76 @@ export namespace Garcon {
 
         /**
          * Checks if both directories point to the same file.
-         * @param other a #GarconMenuDirectory
-         * @returns if files are equal %TRUE, else %FALSE.
+         * @param other a {@link Garcon.MenuDirectory}
+         * @returns if files are equal `true`, else `false`.
          */
         equal(other: MenuDirectory): boolean;
         /**
          * Get the comment of `directory`.
-         * @returns a the description for @directory.
+         * @returns a the description for `directory`.
          */
         get_comment(): string;
         /**
-         * Get the #GFile for `directory`. The returned object should be
-         * unreffed with g_object_unref() when no longer needed.
-         * @returns a #GFile
+         * Get the {@link Gio.File} for `directory`. The returned object should be
+         * unreffed with `g_object_unref()` when no longer needed.
+         * @returns a {@link Gio.File}
          */
         get_file(): Gio.File;
         /**
          * Whether `directory` should be hidden.
-         * For applications you want to call garcon_menu_directory_get_visible().
-         * @returns a the hidden key for @directory.
+         * For applications you want to call `garcon_menu_directory_get_visible()`.
+         * @returns a the hidden key for `directory`.
          */
         get_hidden(): boolean;
         /**
          * Get the icon name of `directory`.
-         * @returns a the icon-name key for @directory.
+         * @returns a the icon-name key for `directory`.
          */
         get_icon_name(): string;
         /**
          * Get the name of `directory`.
-         * @returns a the name for @directory.
+         * @returns a the name for `directory`.
          */
         get_name(): string;
         /**
          * Whether `directory` should be displayed.
-         * For applications you want to call garcon_menu_directory_get_visible().
-         * @returns a the no-display key for @directory.
+         * For applications you want to call `garcon_menu_directory_get_visible()`.
+         * @returns a the no-display key for `directory`.
          */
         get_no_display(): boolean;
         /**
          * Whether `directory` is visible in the current environment
-         * which has been set by garcon_set_environment().
-         * For applications you want to call garcon_menu_directory_get_visible().
-         * @returns %TRUE is visible in environment, else %FALSE.
+         * which has been set by `garcon_set_environment()`.
+         * For applications you want to call `garcon_menu_directory_get_visible()`.
+         * @returns `true` is visible in environment, else `false`.
          */
         get_show_in_environment(): boolean;
         /**
          * Check which runs the following checks:
-         * garcon_menu_directory_get_show_in_environment(),
-         * garcon_menu_directory_get_hidden() and
-         * garcon_menu_directory_get_no_display().
-         * @returns if visible %TRUE, else %FALSE.
+         * `garcon_menu_directory_get_show_in_environment()`,
+         * `garcon_menu_directory_get_hidden()` and
+         * `garcon_menu_directory_get_no_display()`.
+         * @returns if visible `true`, else `false`.
          */
         get_visible(): boolean;
         /**
          * Set the comment of `directory`.
-         * @param comment the new description for @directory.
+         * @param comment the new description for `directory`.
          */
         set_comment(comment: string): void;
         /**
          * Set the icon name of `directory`.
-         * @param icon_name the new icon name for @directory.
+         * @param icon_name the new icon name for `directory`.
          */
         set_icon_name(icon_name: string): void;
         /**
          * Set the name of `directory`.
-         * @param name the new name for @directory.
+         * @param name the new name for `directory`.
          */
         set_name(name: string): void;
         /**
          * Set the NoDisplay key of `directory`.
-         * @param no_display whether @directory should be displayed.
+         * @param no_display whether `directory` should be displayed.
          */
         set_no_display(no_display: boolean): void;
     }
@@ -945,6 +1027,11 @@ export namespace Garcon {
     namespace MenuItem {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted when {@link Garcon.MenuItem} has been reloaded.
+             * @signal
+             * @run-first
+             */
             changed: () => void;
             'notify::command': (pspec: GObject.ParamSpec) => void;
             'notify::comment': (pspec: GObject.ParamSpec) => void;
@@ -990,6 +1077,9 @@ export namespace Garcon {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class MenuItem extends GObject.Object implements MenuElement {
         static $gtype: GObject.GType<MenuItem>;
 
@@ -1017,7 +1107,8 @@ export namespace Garcon {
         get desktopId(): string;
         set desktopId(val: string);
         /**
-         * The #GFile from which the %GarconMenuItem was loaded.
+         * The {@link Gio.File} from which the %GarconMenuItem was loaded.
+         * @construct-only
          */
         get file(): Gio.File;
         /**
@@ -1135,16 +1226,19 @@ export namespace Garcon {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MenuItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MenuItem.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MenuItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MenuItem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MenuItem.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MenuItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1153,13 +1247,23 @@ export namespace Garcon {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_changed(): void;
 
         // Methods
 
         decrement_allocated(): void;
+        /**
+         * @param action_name
+         * @returns a {@link Garcon.MenuItemAction}
+         */
         get_action(action_name: string): MenuItemAction | null;
-        get_actions(): MenuItemAction[];
+        /**
+         * @returns list of action name
+         */
+        get_actions(): string[];
         get_allocated(): number;
         /**
          * Returns list of categories
@@ -1169,9 +1273,9 @@ export namespace Garcon {
         get_comment(): string;
         get_desktop_id(): string;
         /**
-         * Get the #GFile for `item`. The returned object should be
-         * unreffed with g_object_unref() when no longer needed.
-         * @returns a #GFile.
+         * Get the {@link Gio.File} for `item`. The returned object should be
+         * unreffed with `g_object_unref()` when no longer needed.
+         * @returns a {@link Gio.File}.
          */
         get_file(): Gio.File;
         get_generic_name(): string;
@@ -1185,43 +1289,134 @@ export namespace Garcon {
         get_show_in_environment(): boolean;
         get_try_exec(): string;
         get_uri(): string;
+        /**
+         * @param action_name
+         */
         has_action(action_name: string): boolean;
+        /**
+         * @param category
+         */
         has_category(category: string): boolean;
+        /**
+         * @param keyword
+         */
         has_keyword(keyword: string): boolean;
         increment_allocated(): void;
         only_show_in_environment(): boolean;
         ref(): void;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.ref
         ref(...args: never[]): any;
+        /**
+         * @param affects_the_outside
+         */
         reload(affects_the_outside: boolean): boolean;
+        /**
+         * @param file
+         * @param affects_the_outside
+         */
         reload_from_file(file: Gio.File, affects_the_outside: boolean): boolean;
+        /**
+         * @param action_name
+         * @param action
+         */
         set_action(action_name: string, action: MenuItemAction): void;
+        /**
+         * @param categories list of categories
+         */
         set_categories(categories: string[]): void;
+        /**
+         * @param command
+         */
         set_command(command: string): void;
+        /**
+         * @param comment
+         */
         set_comment(comment: string): void;
+        /**
+         * @param desktop_id
+         */
         set_desktop_id(desktop_id: string): void;
+        /**
+         * @param generic_name
+         */
         set_generic_name(generic_name: string): void;
+        /**
+         * @param hidden
+         */
         set_hidden(hidden: boolean): void;
+        /**
+         * @param icon_name
+         */
         set_icon_name(icon_name: string): void;
+        /**
+         * @param keywords list of keywords
+         */
         set_keywords(keywords: string[]): void;
+        /**
+         * @param name
+         */
         set_name(name: string): void;
+        /**
+         * @param no_display
+         */
         set_no_display(no_display: boolean): void;
+        /**
+         * @param path
+         */
         set_path(path: string): void;
+        /**
+         * @param prefers_non_default_gpu
+         */
         set_prefers_non_default_gpu(prefers_non_default_gpu: boolean): void;
+        /**
+         * @param requires_terminal
+         */
         set_requires_terminal(requires_terminal: boolean): void;
+        /**
+         * @param supports_startup_notification
+         */
         set_supports_startup_notification(supports_startup_notification: boolean): void;
+        /**
+         * @param try_exec
+         */
         set_try_exec(try_exec: string): void;
         unref(): void;
-
-        // Inherited methods
+        /**
+         * @param b
+         */
         equal(b: MenuElement): boolean;
         get_visible(): boolean;
+        /**
+         * @param other
+         * @virtual
+         */
         vfunc_equal(other: MenuElement): boolean;
+        /**
+         * @virtual
+         */
         vfunc_get_comment(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_icon_name(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_name(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_no_display(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_get_show_in_environment(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_get_visible(): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -1236,32 +1431,32 @@ export namespace Garcon {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -1270,39 +1465,39 @@ export namespace Garcon {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -1313,13 +1508,16 @@ export namespace Garcon {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -1327,7 +1525,7 @@ export namespace Garcon {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -1335,9 +1533,9 @@ export namespace Garcon {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -1357,9 +1555,9 @@ export namespace Garcon {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -1372,34 +1570,34 @@ export namespace Garcon {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1432,12 +1630,12 @@ export namespace Garcon {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -1446,8 +1644,8 @@ export namespace Garcon {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -1464,10 +1662,10 @@ export namespace Garcon {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -1482,13 +1680,13 @@ export namespace Garcon {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1519,21 +1717,21 @@ export namespace Garcon {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1542,24 +1740,25 @@ export namespace Garcon {
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1568,6 +1767,7 @@ export namespace Garcon {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1576,12 +1776,14 @@ export namespace Garcon {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1590,20 +1792,22 @@ export namespace Garcon {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1615,6 +1819,7 @@ export namespace Garcon {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -1662,6 +1867,9 @@ export namespace Garcon {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class MenuItemAction extends GObject.Object {
         static $gtype: GObject.GType<MenuItemAction>;
 
@@ -1707,16 +1915,19 @@ export namespace Garcon {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MenuItemAction.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MenuItemAction.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MenuItemAction.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MenuItemAction.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MenuItemAction.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MenuItemAction.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1725,6 +1936,9 @@ export namespace Garcon {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_changed(): void;
 
         // Methods
@@ -1733,10 +1947,22 @@ export namespace Garcon {
         get_icon_name(): string;
         get_name(): string;
         ref(): void;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.ref
         ref(...args: never[]): any;
+        /**
+         * @param command
+         */
         set_command(command: string): void;
+        /**
+         * @param icon_name
+         */
         set_icon_name(icon_name: string): void;
+        /**
+         * @param name
+         */
         set_name(name: string): void;
         unref(): void;
     }
@@ -1750,6 +1976,9 @@ export namespace Garcon {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class MenuItemCache extends GObject.Object {
         static $gtype: GObject.GType<MenuItemCache>;
 
@@ -1772,16 +2001,19 @@ export namespace Garcon {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MenuItemCache.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MenuItemCache.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MenuItemCache.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MenuItemCache.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MenuItemCache.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MenuItemCache.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1790,9 +2022,20 @@ export namespace Garcon {
 
         // Methods
 
+        /**
+         * @param func
+         */
         foreach(func: GLib.HFunc): void;
         invalidate(): void;
+        /**
+         * @param file
+         */
         invalidate_file(file: Gio.File): void;
+        /**
+         * @param uri URI to look for
+         * @param desktop_id desktop id to update
+         * @returns a {@link Garcon.MenuItem}
+         */
         lookup(uri: string, desktop_id: string): MenuItem | null;
     }
 
@@ -1805,6 +2048,9 @@ export namespace Garcon {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class MenuItemPool extends GObject.Object {
         static $gtype: GObject.GType<MenuItemPool>;
 
@@ -1827,16 +2073,19 @@ export namespace Garcon {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MenuItemPool.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MenuItemPool.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MenuItemPool.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MenuItemPool.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MenuItemPool.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MenuItemPool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1845,12 +2094,29 @@ export namespace Garcon {
 
         // Methods
 
+        /**
+         * @param node
+         */
         apply_exclude_rule(node: GLib.Node): void;
         clear(): void;
+        /**
+         * @param func
+         */
         foreach(func: GLib.HFunc): void;
         get_empty(): boolean;
+        /**
+         * @param item a {@link Garcon.MenuItem}
+         */
         insert(item: MenuItem): void;
+        /**
+         * @param desktop_id .desktop file
+         * @returns a {@link Garcon.MenuItem} object
+         */
         lookup(desktop_id: string): MenuItem;
+        /**
+         * @param file a GFile instance
+         * @returns a {@link Garcon.MenuItem} object
+         */
         lookup_file(file: Gio.File): MenuItem;
     }
 
@@ -1868,12 +2134,21 @@ export namespace Garcon {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class MenuMerger extends GObject.Object implements MenuTreeProvider {
         static $gtype: GObject.GType<MenuMerger>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get tree_provider(): MenuTreeProvider;
+        /**
+         * @construct-only
+         */
         get treeProvider(): MenuTreeProvider;
 
         /**
@@ -1895,16 +2170,19 @@ export namespace Garcon {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MenuMerger.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MenuMerger.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MenuMerger.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MenuMerger.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MenuMerger.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MenuMerger.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1913,10 +2191,16 @@ export namespace Garcon {
 
         // Methods
 
+        /**
+         * @param merge_files list of files to merge
+         * @param merge_dirs list of menu directories to merge
+         * @param cancellable
+         */
         run(merge_files: string[], merge_dirs: string[], cancellable?: Gio.Cancellable | null): boolean;
-
-        // Inherited methods
         get_file(): Gio.File;
+        /**
+         * @virtual
+         */
         vfunc_get_file(): Gio.File;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -1931,32 +2215,32 @@ export namespace Garcon {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -1965,39 +2249,39 @@ export namespace Garcon {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -2008,13 +2292,16 @@ export namespace Garcon {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -2022,7 +2309,7 @@ export namespace Garcon {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -2030,9 +2317,9 @@ export namespace Garcon {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -2052,9 +2339,9 @@ export namespace Garcon {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -2067,34 +2354,34 @@ export namespace Garcon {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -2127,22 +2414,22 @@ export namespace Garcon {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -2151,8 +2438,8 @@ export namespace Garcon {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -2169,10 +2456,10 @@ export namespace Garcon {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -2187,13 +2474,13 @@ export namespace Garcon {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -2224,21 +2511,21 @@ export namespace Garcon {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -2248,33 +2535,34 @@ export namespace Garcon {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -2283,6 +2571,7 @@ export namespace Garcon {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -2291,12 +2580,14 @@ export namespace Garcon {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -2305,20 +2596,22 @@ export namespace Garcon {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -2330,6 +2623,7 @@ export namespace Garcon {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -2373,6 +2667,9 @@ export namespace Garcon {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class MenuNode extends GObject.Object {
         static $gtype: GObject.GType<MenuNode>;
 
@@ -2402,16 +2699,19 @@ export namespace Garcon {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MenuNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MenuNode.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MenuNode.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MenuNode.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MenuNode.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MenuNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2420,31 +2720,99 @@ export namespace Garcon {
 
         // Static methods
 
+        /**
+         * @param tree
+         * @param other_tree
+         */
         static tree_compare(tree: GLib.Node, other_tree: GLib.Node): number;
+        /**
+         * @param tree
+         */
         static tree_free(tree: GLib.Node): void;
+        /**
+         * @param tree
+         */
         static tree_free_data(tree: GLib.Node): void;
+        /**
+         * @param tree
+         * @param type
+         */
         static tree_get_boolean_child(tree: GLib.Node, type: MenuNodeType): boolean;
+        /**
+         * @param tree a GNode
+         * @param type type for the menu nodes
+         * @param reverse
+         */
         static tree_get_child_nodes(tree: GLib.Node, type: MenuNodeType, reverse: boolean): GLib.Node[];
+        /**
+         * @param tree
+         */
         static tree_get_layout_merge_type(tree: GLib.Node): MenuLayoutMergeType;
+        /**
+         * @param tree
+         */
         static tree_get_merge_file_filename(tree: GLib.Node): string;
+        /**
+         * @param tree
+         */
         static tree_get_merge_file_type(tree: GLib.Node): MenuMergeFileType;
+        /**
+         * @param tree
+         */
         static tree_get_node_type(tree: GLib.Node): MenuNodeType;
+        /**
+         * @param tree
+         */
         static tree_get_string(tree: GLib.Node): string;
+        /**
+         * @param tree
+         * @param type
+         */
         static tree_get_string_child(tree: GLib.Node, type: MenuNodeType): string;
+        /**
+         * @param tree a {@link GLib.Node} instance
+         * @param type type for the menu nodes
+         * @param reverse
+         */
         static tree_get_string_children(tree: GLib.Node, type: MenuNodeType, reverse: boolean): GLib.Node[];
+        /**
+         * @param tree
+         * @param item
+         */
         static tree_rule_matches(tree: GLib.Node, item: MenuItem): boolean;
+        /**
+         * @param tree
+         * @param filename
+         */
         static tree_set_merge_file_filename(tree: GLib.Node, filename: string): void;
+        /**
+         * @param tree
+         * @param value
+         */
         static tree_set_string(tree: GLib.Node, value: string): void;
 
         // Methods
 
+        /**
+         * @param data
+         * @returns a {@link Garcon.MenuNode}
+         */
         copy(data?: any | null): MenuNode;
         get_merge_file_filename(): string;
         get_merge_file_type(): MenuMergeFileType;
         get_node_type(): MenuNodeType;
         get_string(): string;
+        /**
+         * @param filename
+         */
         set_merge_file_filename(filename: string): void;
+        /**
+         * @param type
+         */
         set_merge_file_type(type: MenuMergeFileType | null): void;
+        /**
+         * @param value
+         */
         set_string(value: string): void;
     }
 
@@ -2461,11 +2829,17 @@ export namespace Garcon {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class MenuParser extends GObject.Object implements MenuTreeProvider {
         static $gtype: GObject.GType<MenuParser>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get file(): Gio.File;
 
         /**
@@ -2487,16 +2861,19 @@ export namespace Garcon {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MenuParser.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MenuParser.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MenuParser.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MenuParser.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MenuParser.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MenuParser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2505,10 +2882,14 @@ export namespace Garcon {
 
         // Methods
 
+        /**
+         * @param cancellable
+         */
         run(cancellable?: Gio.Cancellable | null): boolean;
-
-        // Inherited methods
         get_file(): Gio.File;
+        /**
+         * @virtual
+         */
         vfunc_get_file(): Gio.File;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -2523,32 +2904,32 @@ export namespace Garcon {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -2557,39 +2938,39 @@ export namespace Garcon {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -2600,13 +2981,16 @@ export namespace Garcon {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -2614,7 +2998,7 @@ export namespace Garcon {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -2622,9 +3006,9 @@ export namespace Garcon {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -2644,9 +3028,9 @@ export namespace Garcon {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -2659,34 +3043,34 @@ export namespace Garcon {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -2719,22 +3103,22 @@ export namespace Garcon {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -2743,8 +3127,8 @@ export namespace Garcon {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -2761,10 +3145,10 @@ export namespace Garcon {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -2779,13 +3163,13 @@ export namespace Garcon {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -2816,21 +3200,21 @@ export namespace Garcon {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -2840,33 +3224,34 @@ export namespace Garcon {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -2875,6 +3260,7 @@ export namespace Garcon {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -2883,12 +3269,14 @@ export namespace Garcon {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -2897,20 +3285,22 @@ export namespace Garcon {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -2922,6 +3312,7 @@ export namespace Garcon {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -2960,6 +3351,9 @@ export namespace Garcon {
         interface ConstructorProps extends GObject.Object.ConstructorProps, MenuElement.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class MenuSeparator extends GObject.Object implements MenuElement {
         static $gtype: GObject.GType<MenuSeparator>;
 
@@ -2982,23 +3376,27 @@ export namespace Garcon {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MenuSeparator.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MenuSeparator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MenuSeparator.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MenuSeparator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MenuSeparator.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MenuSeparator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited methods
+        /**
+         * @param b
+         */
         equal(b: MenuElement): boolean;
         get_comment(): string;
         get_icon_name(): string;
@@ -3006,12 +3404,34 @@ export namespace Garcon {
         get_no_display(): boolean;
         get_show_in_environment(): boolean;
         get_visible(): boolean;
+        /**
+         * @param other
+         * @virtual
+         */
         vfunc_equal(other: MenuElement): boolean;
+        /**
+         * @virtual
+         */
         vfunc_get_comment(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_icon_name(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_name(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_no_display(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_get_show_in_environment(): boolean;
+        /**
+         * @virtual
+         */
         vfunc_get_visible(): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -3026,32 +3446,32 @@ export namespace Garcon {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -3060,39 +3480,39 @@ export namespace Garcon {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -3103,13 +3523,16 @@ export namespace Garcon {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -3117,7 +3540,7 @@ export namespace Garcon {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -3125,9 +3548,9 @@ export namespace Garcon {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -3147,9 +3570,9 @@ export namespace Garcon {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -3162,34 +3585,34 @@ export namespace Garcon {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -3222,22 +3645,22 @@ export namespace Garcon {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -3246,8 +3669,8 @@ export namespace Garcon {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -3264,10 +3687,10 @@ export namespace Garcon {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -3282,13 +3705,13 @@ export namespace Garcon {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -3319,21 +3742,21 @@ export namespace Garcon {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -3343,33 +3766,34 @@ export namespace Garcon {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -3378,6 +3802,7 @@ export namespace Garcon {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -3386,12 +3811,14 @@ export namespace Garcon {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -3400,20 +3827,22 @@ export namespace Garcon {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -3425,6 +3854,7 @@ export namespace Garcon {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -3454,50 +3884,113 @@ export namespace Garcon {
         stop_emission_by_name(detailedName: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MenuClass = typeof Menu;
+    /**
+     * @gir-type Alias
+     */
     type MenuDirectoryClass = typeof MenuDirectory;
+    /**
+     * @gir-type Struct
+     */
     abstract class MenuDirectoryPrivate {
         static $gtype: GObject.GType<MenuDirectoryPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MenuElementIface = typeof MenuElement;
+    /**
+     * @gir-type Alias
+     */
     type MenuItemActionClass = typeof MenuItemAction;
+    /**
+     * @gir-type Struct
+     */
     abstract class MenuItemActionPrivate {
         static $gtype: GObject.GType<MenuItemActionPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MenuItemCacheClass = typeof MenuItemCache;
+    /**
+     * @gir-type Struct
+     */
     abstract class MenuItemCachePrivate {
         static $gtype: GObject.GType<MenuItemCachePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MenuItemClass = typeof MenuItem;
+    /**
+     * @gir-type Alias
+     */
     type MenuItemPoolClass = typeof MenuItemPool;
+    /**
+     * @gir-type Struct
+     */
     abstract class MenuItemPoolPrivate {
         static $gtype: GObject.GType<MenuItemPoolPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class MenuItemPrivate {
         static $gtype: GObject.GType<MenuItemPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MenuMergerClass = typeof MenuMerger;
+    /**
+     * @gir-type Struct
+     */
     abstract class MenuMergerPrivate {
         static $gtype: GObject.GType<MenuMergerPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MenuNodeClass = typeof MenuNode;
+    /**
+     * @gir-type Alias
+     */
     type MenuParserClass = typeof MenuParser;
+    /**
+     * @gir-type Struct
+     */
     abstract class MenuParserPrivate {
         static $gtype: GObject.GType<MenuParserPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class MenuPrivate {
         static $gtype: GObject.GType<MenuPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MenuSeparatorClass = typeof MenuSeparator;
+    /**
+     * @gir-type Alias
+     */
     type MenuTreeProviderIface = typeof MenuTreeProvider;
+    /**
+     * @gir-type Struct
+     */
     class MenuNodeData {
         static $gtype: GObject.GType<MenuNodeData>;
     }
@@ -3510,12 +4003,34 @@ export namespace Garcon {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param other
+             * @virtual
+             */
             vfunc_equal(other: MenuElement): boolean;
+            /**
+             * @virtual
+             */
             vfunc_get_comment(): string;
+            /**
+             * @virtual
+             */
             vfunc_get_icon_name(): string;
+            /**
+             * @virtual
+             */
             vfunc_get_name(): string;
+            /**
+             * @virtual
+             */
             vfunc_get_no_display(): boolean;
+            /**
+             * @virtual
+             */
             vfunc_get_show_in_environment(): boolean;
+            /**
+             * @virtual
+             */
             vfunc_get_visible(): boolean;
         }
 
@@ -3528,9 +4043,15 @@ export namespace Garcon {
         $gtype: GObject.GType<MenuElement>;
         prototype: MenuElement;
     }
+    /**
+     * @gir-type Interface
+     */
     interface MenuElement extends GObject.Object, MenuElement.Interface {
         // Methods
 
+        /**
+         * @param b
+         */
         equal(b: MenuElement): boolean;
         get_comment(): string;
         get_icon_name(): string;
@@ -3552,6 +4073,9 @@ export namespace Garcon {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @virtual
+             */
             vfunc_get_file(): Gio.File;
         }
 
@@ -3564,6 +4088,9 @@ export namespace Garcon {
         $gtype: GObject.GType<MenuTreeProvider>;
         prototype: MenuTreeProvider;
     }
+    /**
+     * @gir-type Interface
+     */
     interface MenuTreeProvider extends GObject.Object, MenuTreeProvider.Interface {
         // Methods
 

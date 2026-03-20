@@ -17,7 +17,30 @@
     "inlineSources": false,
     "newLine": "LF",
     // Show diagnostics
-    "diagnostics": true
+    "diagnostics": true,
+    "paths": {
+      "@girs/xlib-2.0": [
+            "../xlib-2.0/index.d.ts"
+      ],
+      "@girs/mtk-15": [
+            "../mtk-15/index.d.ts"
+      ],
+      "@girs/graphene-1.0": [
+            "../graphene-1.0/index.d.ts"
+      ],
+      "@girs/gobject-2.0": [
+            "../gobject-2.0/index.d.ts"
+      ],
+      "@girs/glib-2.0": [
+            "../glib-2.0/index.d.ts"
+      ],
+      "@girs/gl-1.0": [
+            "../gl-1.0/index.d.ts"
+      ],
+      "@girs/gjs": [
+            "../gjs/index.d.ts"
+      ]
+}
   },
   "include": ["./cogl-15.d.ts"]
 }

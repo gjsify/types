@@ -22,7 +22,9 @@ export namespace GSystem {
 
     /**
      * Flags to define the behaviour of the standard input/output/error of
-     * a #GSSubprocess.
+     * a {@link GSystem.Subprocess}.
+     * @gir-type Enum
+     * @since 2.36
      */
     enum SubprocessStreamDisposition {
         /**
@@ -55,14 +57,33 @@ export namespace GSystem {
         name: string,
         cancellable?: Gio.Cancellable | null,
     ): [boolean, GLib.Variant];
+    /**
+     * @param dfd
+     * @param name
+     * @param xattrs
+     * @param cancellable
+     */
     function dfd_and_name_set_all_xattrs(
         dfd: number,
         name: string,
         xattrs: GLib.Variant,
         cancellable?: Gio.Cancellable | null,
     ): boolean;
+    /**
+     * @param dfd_iter
+     */
     function dirfd_iterator_clear(dfd_iter: DirFdIterator): void;
+    /**
+     * @param dfd
+     * @param path
+     * @param follow
+     * @param dfd_iter
+     */
     function dirfd_iterator_init_at(dfd: number, path: string, follow: boolean, dfd_iter: DirFdIterator): boolean;
+    /**
+     * @param dfd
+     * @param dfd_iter
+     */
     function dirfd_iterator_init_take_fd(dfd: number, dfd_iter: DirFdIterator): boolean;
     /**
      * Read all extended attributes from `fd` in a canonical sorted order, and
@@ -75,7 +96,7 @@ export namespace GSystem {
      */
     function fd_get_all_xattrs(fd: number, cancellable?: Gio.Cancellable | null): [boolean, GLib.Variant];
     /**
-     * For each attribute in `xattrs,` set its value on the file or
+     * For each attribute in `xattrs`, set its value on the file or
      * directory referred to by `fd`.  This function does not remove any
      * attributes not in `xattrs`.
      * @param fd File descriptor
@@ -84,28 +105,28 @@ export namespace GSystem {
      */
     function fd_set_all_xattrs(fd: number, xattrs: GLib.Variant, cancellable?: Gio.Cancellable | null): boolean;
     /**
-     * Merely wraps UNIX chmod().
+     * Merely wraps UNIX `chmod()`.
      * @param path Path to file
      * @param mode UNIX mode
-     * @param cancellable a #GCancellable
-     * @returns %TRUE on success, %FALSE on error
+     * @param cancellable a {@link Gio.Cancellable}
+     * @returns `true` on success, `false` on error
      */
     function file_chmod(path: Gio.File, mode: number, cancellable?: Gio.Cancellable | null): boolean;
     /**
-     * Merely wraps UNIX chown().
+     * Merely wraps UNIX `chown()`.
      * @param path Path to file
      * @param owner UNIX owner
      * @param group UNIX group
-     * @param cancellable a #GCancellable
-     * @returns %TRUE on success, %FALSE on error
+     * @param cancellable a {@link Gio.Cancellable}
+     * @returns `true` on success, `false` on error
      */
     function file_chown(path: Gio.File, owner: number, group: number, cancellable?: Gio.Cancellable | null): boolean;
     /**
-     * Like g_file_create(), except this function allows specifying the
+     * Like `g_file_create()`, except this function allows specifying the
      * access mode.  This allows atomically creating private files.
      * @param file Path to non-existent file
      * @param mode Unix access permissions
-     * @param cancellable a #GCancellable
+     * @param cancellable a {@link Gio.Cancellable}
      */
     function file_create(
         file: Gio.File,
@@ -113,30 +134,30 @@ export namespace GSystem {
         cancellable?: Gio.Cancellable | null,
     ): [boolean, Gio.OutputStream | null];
     /**
-     * Like g_file_make_directory(), except does not throw an error if the
+     * Like `g_file_make_directory()`, except does not throw an error if the
      * directory already exists.
      * @param dir Path to create as directory
      * @param with_parents Also create parent directories
-     * @param cancellable a #GCancellable
+     * @param cancellable a {@link Gio.Cancellable}
      */
     function file_ensure_directory(dir: Gio.File, with_parents: boolean, cancellable?: Gio.Cancellable | null): boolean;
     /**
-     * Wraps UNIX mkdir() function with support for `cancellable,` and
+     * Wraps UNIX `mkdir()` function with support for `cancellable`, and
      * uses `error` instead of errno.
      * @param dir Path to create as directory
      * @param mode Create directory with these permissions
-     * @param cancellable a #GCancellable
+     * @param cancellable a {@link Gio.Cancellable}
      */
     function file_ensure_directory_mode(dir: Gio.File, mode: number, cancellable?: Gio.Cancellable | null): boolean;
     /**
-     * This is a version of g_file_enumerator_next_file() that's easier to
-     * use correctly from C programs.  With g_file_enumerator_next_file(),
+     * This is a version of `g_file_enumerator_next_file()` that's easier to
+     * use correctly from C programs.  With `g_file_enumerator_next_file()`,
      * the gboolean return value signifies "end of iteration or error", which
-     * requires allocation of a temporary #GError.
+     * requires allocation of a temporary {@link GLib.Error}.
      *
-     * In contrast, with this function, a %FALSE return from
-     * gs_file_enumerator_iterate() <emphasis>always</emphasis> means
-     * "error".  End of iteration is signaled by `out_info` being %NULL.
+     * In contrast, with this function, a `false` return from
+     * `gs_file_enumerator_iterate()` <emphasis>always</emphasis> means
+     * "error".  End of iteration is signaled by `out_info` being `null`.
      *
      * Another crucial difference is that the references for `out_info` and
      * `out_child` are owned by `direnum` (they are cached as hidden
@@ -144,10 +165,10 @@ export namespace GSystem {
      * memory management significantly easier for C code in combination
      * with loops.
      *
-     * Finally, this function optionally allows retrieving a #GFile as
+     * Finally, this function optionally allows retrieving a {@link Gio.File} as
      * well.
      *
-     * The code pattern for correctly using gs_file_enumerator_iterate() from C
+     * The code pattern for correctly using `gs_file_enumerator_iterate()` from C
      * is:
      *
      *
@@ -167,8 +188,8 @@ export namespace GSystem {
      *   g_object_unref (direnum); // Note: frees the last `info`
      * ```
      *
-     * @param direnum an open #GFileEnumerator
-     * @param cancellable a #GCancellable
+     * @param direnum an open {@link Gio.FileEnumerator}
+     * @param cancellable a {@link Gio.Cancellable}
      */
     function file_enumerator_iterate(
         direnum: Gio.FileEnumerator,
@@ -180,43 +201,43 @@ export namespace GSystem {
      *
      * If the filesystem does not support extended attributes, `out_xattrs`
      * will have 0 elements, and this function will return successfully.
-     * @param f a #GFile
+     * @param f a {@link Gio.File}
      * @param cancellable Cancellable
      */
     function file_get_all_xattrs(f: Gio.File, cancellable?: Gio.Cancellable | null): [boolean, GLib.Variant];
     /**
-     * Like g_file_get_basename(), but returns a constant copy so callers
+     * Like `g_file_get_basename()`, but returns a constant copy so callers
      * don't need to free the result.
      * @param file
      */
     function file_get_basename_cached(file: Gio.File): string;
     /**
-     * Like g_file_get_path(), but returns a constant copy so callers
+     * Like `g_file_get_path()`, but returns a constant copy so callers
      * don't need to free the result.
      * @param file
      */
     function file_get_path_cached(file: Gio.File): string;
     /**
-     * Like gs_file_get_relative_path(), but does not mandate that
+     * Like `gs_file_get_relative_path()`, but does not mandate that
      * the two files have any parent in common. This function will
      * instead insert "../" where appropriate.
-     * @param one The first #GFile
-     * @param two The second #GFile
+     * @param one The first {@link Gio.File}
+     * @param two The second {@link Gio.File}
      * @returns The relative path between the two.
      */
     function file_get_relpath(one: Gio.File, two: Gio.File): string;
     /**
-     * Merely wraps UNIX lchown().
+     * Merely wraps UNIX `lchown()`.
      * @param path Path to file
      * @param owner UNIX owner
      * @param group UNIX group
-     * @param cancellable a #GCancellable
-     * @returns %TRUE on success, %FALSE on error
+     * @param cancellable a {@link Gio.Cancellable}
+     * @returns `true` on success, `false` on error
      */
     function file_lchown(path: Gio.File, owner: number, group: number, cancellable?: Gio.Cancellable | null): boolean;
     /**
-     * First tries to use the UNIX link() call, but if the files are on
-     * separate devices, fall back to copying via g_file_copy().
+     * First tries to use the UNIX `link()` call, but if the files are on
+     * separate devices, fall back to copying via `g_file_copy()`.
      *
      * The given `flags` have different semantics than those documented
      * when hardlinking is used.  Specifically, both
@@ -242,8 +263,8 @@ export namespace GSystem {
         cancellable?: Gio.Cancellable | null,
     ): boolean;
     /**
-     * This function is similar to gs_file_linkcopy(), except it also uses
-     * gs_file_sync_data() to ensure that `dest` is in stable storage
+     * This function is similar to `gs_file_linkcopy()`, except it also uses
+     * `gs_file_sync_data()` to ensure that `dest` is in stable storage
      * before it is moved into place.
      * @param src Source file
      * @param dest Destination file
@@ -257,30 +278,30 @@ export namespace GSystem {
         cancellable?: Gio.Cancellable | null,
     ): boolean;
     /**
-     * Like g_file_load_contents(), except validates the contents are
+     * Like `g_file_load_contents()`, except validates the contents are
      * UTF-8.
      * @param file Path to file whose contents must be UTF-8
      * @param cancellable
      */
     function file_load_contents_utf8(file: Gio.File, cancellable?: Gio.Cancellable | null): string;
     /**
-     * Return a #GBytes which references a readonly view of the contents of
-     * `file`.  This function uses #GMappedFile internally.
-     * @param file a #GFile
+     * Return a {@link GLib.Bytes} which references a readonly view of the contents of
+     * `file`.  This function uses {@link GLib.MappedFile} internally.
+     * @param file a {@link Gio.File}
      * @param cancellable
-     * @returns a newly referenced #GBytes
+     * @returns a newly referenced {@link GLib.Bytes}
      */
     function file_map_readonly(file: Gio.File, cancellable?: Gio.Cancellable | null): GLib.Bytes;
     /**
      * On success, sets `out_fd` to a file descriptor for the directory
-     * that can be used with UNIX functions such as openat().
+     * that can be used with UNIX functions such as `openat()`.
      * @param path Directory name
      * @param cancellable Cancellable
      */
     function file_open_dir_fd(path: Gio.File, cancellable?: Gio.Cancellable | null): [boolean, number];
     /**
      * On success, sets `out_fd` to a file descriptor for the directory
-     * that can be used with UNIX functions such as openat().
+     * that can be used with UNIX functions such as `openat()`.
      * @param parent_dfd Parent directory file descriptor
      * @param name Directory name
      * @param cancellable Cancellable
@@ -291,10 +312,10 @@ export namespace GSystem {
         cancellable?: Gio.Cancellable | null,
     ): [boolean, number];
     /**
-     * Like g_file_open_tmp(), except the file will be created in the
-     * provided `tmpdir,` and allows specification of the Unix `mode,` which
+     * Like `g_file_open_tmp()`, except the file will be created in the
+     * provided `tmpdir`, and allows specification of the Unix `mode`, which
      * means private files may be created.  Return values will be stored
-     * in `out_file,` and optionally `out_stream`.
+     * in `out_file`, and optionally `out_stream`.
      * @param tmpdir Directory to place temporary file
      * @param mode Default mode (will be affected by umask)
      * @param cancellable
@@ -305,10 +326,10 @@ export namespace GSystem {
         cancellable?: Gio.Cancellable | null,
     ): [boolean, Gio.File, Gio.OutputStream | null];
     /**
-     * Like g_file_open_tmp(), except the file will be created in the
-     * provided `tmpdir,` and allows specification of the Unix `mode,` which
+     * Like `g_file_open_tmp()`, except the file will be created in the
+     * provided `tmpdir`, and allows specification of the Unix `mode`, which
      * means private files may be created.  Return values will be stored
-     * in `out_name,` and optionally `out_stream`.
+     * in `out_name`, and optionally `out_stream`.
      * @param tmpdir_fd Directory to place temporary file
      * @param mode Default mode (will be affected by umask)
      * @param cancellable
@@ -319,39 +340,39 @@ export namespace GSystem {
         cancellable?: Gio.Cancellable | null,
     ): [boolean, string, Gio.OutputStream | null];
     /**
-     * Wrapper for openat() using %O_RDONLY with %O_NOATIME if available.
+     * Wrapper for `openat()` using `O_RDONLY` with `O_NOATIME` if available.
      * @param dfd File descriptor for directory
-     * @param name Pathname, relative to @dfd
+     * @param name Pathname, relative to `dfd`
      * @param cancellable Cancellable
      */
     function file_openat_noatime(dfd: number, name: string, cancellable?: Gio.Cancellable | null): [boolean, number];
     /**
-     * Like g_file_read(), but try to avoid updating the file's
+     * Like `g_file_read()`, but try to avoid updating the file's
      * access time.  This should be used by background scanning
      * components such as search indexers, antivirus programs, etc.
-     * @param file a #GFile
-     * @param cancellable a #GCancellable
-     * @returns A new input stream, or %NULL on error
+     * @param file a {@link Gio.File}
+     * @param cancellable a {@link Gio.Cancellable}
+     * @returns A new input stream, or `null` on error
      */
     function file_read_noatime(file: Gio.File, cancellable?: Gio.Cancellable | null): Gio.InputStream;
     /**
-     * Return a #GFile that contains the same path with symlinks
-     * followed. That is, it's a #GFile whose path is the result
-     * of calling realpath() on `file`.
-     * @param file A #GFile
-     * @returns A new #GFile or %NULL if @file is invalid
+     * Return a {@link Gio.File} that contains the same path with symlinks
+     * followed. That is, it's a {@link Gio.File} whose path is the result
+     * of calling `realpath()` on `file`.
+     * @param file A {@link Gio.File}
+     * @returns A new {@link Gio.File} or `null` if `file` is invalid
      */
     function file_realpath(file: Gio.File): Gio.File | null;
     /**
-     * This function wraps the raw Unix function rename().
+     * This function wraps the raw Unix function `rename()`.
      * @param from Current path
      * @param to New path
-     * @param cancellable a #GCancellable
-     * @returns %TRUE on success, %FALSE on error
+     * @param cancellable a {@link Gio.Cancellable}
+     * @returns `true` on success, `false` on error
      */
     function file_rename(from: Gio.File, to: Gio.File, cancellable?: Gio.Cancellable | null): boolean;
     /**
-     * For each attribute in `xattrs,` set its value on the file or
+     * For each attribute in `xattrs`, set its value on the file or
      * directory referred to by `file`.  This function does not remove any
      * attributes not in `xattrs`.
      * @param file File descriptor
@@ -360,20 +381,20 @@ export namespace GSystem {
      */
     function file_set_all_xattrs(file: Gio.File, xattrs: GLib.Variant, cancellable?: Gio.Cancellable | null): boolean;
     /**
-     * Wraps the UNIX fsync() function (or fdatasync(), if available), which
+     * Wraps the UNIX `fsync()` function (or `fdatasync()`, if available), which
      * ensures that the data in `file` is on non-volatile storage.
-     * @param file a #GFile
+     * @param file a {@link Gio.File}
      * @param cancellable
      */
     function file_sync_data(file: Gio.File, cancellable?: Gio.Cancellable | null): boolean;
     /**
-     * Like g_file_delete(), except this function does not follow Unix
+     * Like `g_file_delete()`, except this function does not follow Unix
      * symbolic links, and will delete a symbolic link even if it's
      * pointing to a nonexistent file.  In other words, this function
-     * merely wraps the raw Unix function unlink().
+     * merely wraps the raw Unix function `unlink()`.
      * @param path Path to file
-     * @param cancellable a #GCancellable
-     * @returns %TRUE on success, %FALSE on error
+     * @param cancellable a {@link Gio.Cancellable}
+     * @returns `true` on success, `false` on error
      */
     function file_unlink(path: Gio.File, cancellable?: Gio.Cancellable | null): boolean;
     /**
@@ -396,32 +417,32 @@ export namespace GSystem {
      */
     function log_structured(message: string, keys?: string[] | null): void;
     /**
-     * Like gs_log_structured(), but also print to standard output (if it
+     * Like `gs_log_structured()`, but also print to standard output (if it
      * is not already connected to the system log).
      * @param message A message to log
      * @param keys Optional structured data
      */
     function log_structured_print(message: string, keys?: string[] | null): void;
     /**
-     * Use openat() to open a directory, using a standard set of flags.
+     * Use `openat()` to open a directory, using a standard set of flags.
      * @param dfd File descriptor for origin directory
-     * @param path Pathname, relative to @dfd
+     * @param path Pathname, relative to `dfd`
      * @param follow Whether or not to follow symbolic links
      * @param out_fd
      */
     function opendirat(dfd: number, path: string, follow: boolean, out_fd: number): boolean;
     /**
-     * Use openat() to open a directory, using a standard set of flags.
+     * Use `openat()` to open a directory, using a standard set of flags.
      * This function sets errno.
      * @param dfd File descriptor for origin directory
-     * @param path Pathname, relative to @dfd
+     * @param path Pathname, relative to `dfd`
      * @param follow Whether or not to follow symbolic links
      */
     function opendirat_with_errno(dfd: number, path: string, follow: boolean): number;
     /**
-     * Set `error` to an error with domain %G_IO_ERROR, and code based on
+     * Set `error` to an error with domain `G_IO_ERROR`, and code based on
      * the value of `saved_errno`.  The error message is set using a
-     * literal return from g_strerror().
+     * literal return from `g_strerror()`.
      * @param error Error
      * @param saved_errno errno value
      */
@@ -432,7 +453,7 @@ export namespace GSystem {
      * @param src Source path
      * @param dest Destination path
      * @param cancellable
-     * @returns %TRUE on success
+     * @returns `true` on success
      */
     function shutil_cp_a(src: Gio.File, dest: Gio.File, cancellable?: Gio.Cancellable | null): boolean;
     /**
@@ -443,11 +464,11 @@ export namespace GSystem {
      * @param src Source path
      * @param dest Destination path
      * @param cancellable
-     * @returns %TRUE on success
+     * @returns `true` on success
      */
     function shutil_cp_al_or_fallback(src: Gio.File, dest: Gio.File, cancellable?: Gio.Cancellable | null): boolean;
     /**
-     * Recursively delete the filename referenced by `path;` it may be a
+     * Recursively delete the filename referenced by `path`; it may be a
      * file or directory.  No error is thrown if `path` does not exist.
      * @param path A file or directory
      * @param cancellable
@@ -455,7 +476,7 @@ export namespace GSystem {
     function shutil_rm_rf(path: Gio.File, cancellable?: Gio.Cancellable | null): boolean;
     /**
      * Recursively delete the filename referenced by the combination of
-     * the directory fd`dfd` and `path;` it may be a file or directory.  No
+     * the directory fd@dfd and `path`; it may be a file or directory.  No
      * error is thrown if `path` does not exist.
      * @param dfd A directory file descriptor, or -1 for current
      * @param path Path
@@ -466,7 +487,7 @@ export namespace GSystem {
      * Use this function when you want your code to behave differently
      * depeneding on whether your program was started as a systemd unit,
      * or e.g. interactively at a terminal.
-     * @returns %TRUE if stdout is (probably) connnected to the systemd journal
+     * @returns `true` if stdout is (probably) connnected to the systemd journal
      */
     function stdout_is_journal(): boolean;
     namespace Console {
@@ -480,12 +501,13 @@ export namespace GSystem {
 
     /**
      * First, this class offers API to access the standard input and
-     * output/error, streams as #GInputStream and #GOutputStream
+     * output/error, streams as {@link Gio.InputStream} and {@link Gio.OutputStream}
      * respectively.
      *
      * In the case where the process is connected to a controlling
-     * terminal, the gs_console_get() API is available, which exposes a
+     * terminal, the `gs_console_get()` API is available, which exposes a
      * number of additional features such as no-echo password reading.
+     * @gir-type Class
      */
     class Console extends GObject.Object {
         static $gtype: GObject.GType<Console>;
@@ -507,16 +529,19 @@ export namespace GSystem {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Console.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Console.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Console.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Console.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Console.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Console.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -527,9 +552,9 @@ export namespace GSystem {
 
         /**
          * If the current process has an interactive console, return the
-         * singleton #GSConsole instance.  On Unix, this is equivalent to
-         * isatty().  For all other cases, such as pipes, sockets, /dev/null,
-         * this function will return %NULL.
+         * singleton {@link GSystem.Console} instance.  On Unix, this is equivalent to
+         * `isatty()`.  For all other cases, such as pipes, sockets, /dev/null,
+         * this function will return `null`.
          */
         static get(): Console;
         static get_stderr(): Gio.OutputStream;
@@ -544,16 +569,16 @@ export namespace GSystem {
          * is called, `line` will be output normally.  Subsequent invocations
          * will overwrite the previous.
          *
-         * You must invoke gs_console_end_status_line() to return the console
+         * You must invoke `gs_console_end_status_line()` to return the console
          * to normal mode.  In particular, concurrent use of this function and
-         * the stream returned by gs_console_get_stdout() results in undefined
+         * the stream returned by `gs_console_get_stdout()` results in undefined
          * behavior.
          * @param line String to output
          * @param cancellable
          */
         begin_status_line(line: string, cancellable?: Gio.Cancellable | null): boolean;
         /**
-         * Complete a series of invocations of gs_console_begin_status_line(),
+         * Complete a series of invocations of `gs_console_begin_status_line()`,
          * returning the stream to normal mode.  The last printed status line
          * remains on the console; if this is not desired, print an empty
          * string to clear it before invoking this function.
@@ -565,7 +590,7 @@ export namespace GSystem {
          * a result string, then switch output echo back on.
          * @param prompt A string to output before reading the password
          * @param cancellable
-         * @returns A string, or %NULL on error
+         * @returns A string, or `null` on error
          */
         read_password(prompt: string, cancellable?: Gio.Cancellable | null): string;
     }
@@ -584,25 +609,30 @@ export namespace GSystem {
     }
 
     /**
-     * This class wraps the lower-level g_spawn_async_with_pipes() API,
+     * This class wraps the lower-level `g_spawn_async_with_pipes()` API,
      * providing a more modern GIO-style API, such as returning
-     * #GInputStream objects for child output pipes.
+     * {@link Gio.InputStream} objects for child output pipes.
      *
      * One major advantage that GIO brings over the core GLib library is
      * comprehensive API for asynchronous I/O, such
-     * g_output_stream_splice_async().  This makes GSubprocess
+     * `g_output_stream_splice_async()`.  This makes GSubprocess
      * significantly more powerful and flexible than equivalent APIs in
      * some other languages such as the <literal>subprocess.py</literal>
-     * included with Python.  For example, using #GSubprocess one could
+     * included with Python.  For example, using {@link Gio.Subprocess} one could
      * create two child processes, reading standard output from the first,
      * processing it, and writing to the input stream of the second, all
      * without blocking the main loop.
+     * @gir-type Class
      */
     class Subprocess extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Subprocess>;
 
         // Properties
 
+        /**
+         * @since 2.36
+         * @construct-only
+         */
         get context(): SubprocessContext;
 
         /**
@@ -631,16 +661,19 @@ export namespace GSystem {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Subprocess.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Subprocess.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Subprocess.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Subprocess.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Subprocess.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Subprocess.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -653,69 +686,78 @@ export namespace GSystem {
          * Use an operating-system specific method to attempt an immediate,
          * forceful termination of the process.  There is no mechanism to
          * determine whether or not the request itself was successful;
-         * however, you can use gs_subprocess_wait() to monitor the status of
+         * however, you can use `gs_subprocess_wait()` to monitor the status of
          * the process after calling this function.
          *
-         * On Unix, this function sends %SIGKILL.
+         * On Unix, this function sends `SIGKILL`.
          */
         force_exit(): void;
         /**
          * The identifier for this child process; it is valid as long as the
          * process `self` is referenced.  In particular, do
-         * <emphasis>not</emphasis> call g_spawn_close_pid() on this value;
+         * <emphasis>not</emphasis> call `g_spawn_close_pid()` on this value;
          * that is handled internally.
          *
          * On some Unix versions, it is possible for there to be a race
-         * condition where waitpid() may have been called to collect the child
+         * condition where `waitpid()` may have been called to collect the child
          * before any watches (such as that installed by
-         * gs_subprocess_add_watch()) have fired.  If you are planning to use
-         * native functions such as kill() on the pid, your program should
-         * gracefully handle an %ESRCH result to mitigate this.
+         * `gs_subprocess_add_watch()`) have fired.  If you are planning to use
+         * native functions such as `kill()` on the pid, your program should
+         * gracefully handle an `ESRCH` result to mitigate this.
          *
          * If you want to request process termination, using the high level
-         * gs_subprocess_request_exit() and gs_subprocess_force_exit() API is
+         * `gs_subprocess_request_exit()` and `gs_subprocess_force_exit()` API is
          * recommended.
          * @returns Operating-system specific identifier for child process
          */
         get_pid(): GLib.Pid;
+        /**
+         * @returns Pipe
+         */
         get_stderr_pipe(): Gio.InputStream;
+        /**
+         * @returns Pipe
+         */
         get_stdin_pipe(): Gio.OutputStream;
+        /**
+         * @returns Pipe
+         */
         get_stdout_pipe(): Gio.InputStream;
         /**
          * This API uses an operating-system specific mechanism to request
          * that the subprocess gracefully exit.  This API is not available on
          * all operating systems; for those not supported, it will do nothing
-         * and return %FALSE.  Portable code should handle this situation
+         * and return `false`.  Portable code should handle this situation
          * gracefully.  For example, if you are communicating via input or
          * output pipe with the child, many programs will automatically exit
          * when one of their standard input or output are closed.
          *
-         * On Unix, this API sends %SIGTERM.
+         * On Unix, this API sends `SIGTERM`.
          *
-         * A %TRUE return value does <emphasis>not</emphasis> mean the
+         * A `true` return value does <emphasis>not</emphasis> mean the
          * subprocess has exited, merely that an exit request was initiated.
-         * You can use gs_subprocess_add_watch() to monitor the status of the
+         * You can use `gs_subprocess_add_watch()` to monitor the status of the
          * process after calling this function.
          *
-         * This function returns %TRUE if the process has already exited.
-         * @returns %TRUE if the operation is supported, %FALSE otherwise.
+         * This function returns `true` if the process has already exited.
+         * @returns `true` if the operation is supported, `false` otherwise.
          */
         request_exit(): boolean;
         /**
          * Start an asynchronous wait for the subprocess `self` to exit.
-         * @param cancellable a #GCancellable
+         * @param cancellable a {@link Gio.Cancellable}
          */
         wait(cancellable?: Gio.Cancellable | null): globalThis.Promise<number>;
         /**
          * Start an asynchronous wait for the subprocess `self` to exit.
-         * @param cancellable a #GCancellable
-         * @param callback Invoked when process exits, or @cancellable is cancelled
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback Invoked when process exits, or `cancellable` is cancelled
          */
         wait(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Start an asynchronous wait for the subprocess `self` to exit.
-         * @param cancellable a #GCancellable
-         * @param callback Invoked when process exits, or @cancellable is cancelled
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback Invoked when process exits, or `cancellable` is cancelled
          */
         wait(
             cancellable?: Gio.Cancellable | null,
@@ -723,57 +765,55 @@ export namespace GSystem {
         ): globalThis.Promise<number> | void;
         /**
          * The exit status of the process will be stored in `out_exit_status`.
-         * See the documentation of g_spawn_check_exit_status() for more
+         * See the documentation of `g_spawn_check_exit_status()` for more
          * details.
          *
          * Note that `error` is not set if the process exits abnormally; you
-         * must use g_spawn_check_exit_status() for that.
-         * @param result a #GAsyncResult
+         * must use `g_spawn_check_exit_status()` for that.
+         * @param result a {@link Gio.AsyncResult}
          */
         wait_finish(result: Gio.AsyncResult): [boolean, number];
         /**
          * Synchronously wait for the subprocess to terminate, returning the
          * status code in `out_exit_status`.  See the documentation of
-         * g_spawn_check_exit_status() for how to interpret it.  Note that if
+         * `g_spawn_check_exit_status()` for how to interpret it.  Note that if
          * `error` is set, then `out_exit_status` will be left uninitialized.
-         * @param cancellable a #GCancellable
-         * @returns %TRUE on success, %FALSE if @cancellable was cancelled
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns `true` on success, `false` if `cancellable` was cancelled
          */
         wait_sync(cancellable?: Gio.Cancellable | null): [boolean, number];
         /**
-         * Combines gs_subprocess_wait_sync() with g_spawn_check_exit_status().
-         * @param cancellable a #GCancellable
-         * @returns %TRUE on success, %FALSE if process exited abnormally, or @cancellable was cancelled
+         * Combines `gs_subprocess_wait_sync()` with `g_spawn_check_exit_status()`.
+         * @param cancellable a {@link Gio.Cancellable}
+         * @returns `true` on success, `false` if process exited abnormally, or `cancellable` was cancelled
          */
         wait_sync_check(cancellable?: Gio.Cancellable | null): boolean;
-
-        // Inherited methods
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -783,40 +823,40 @@ export namespace GSystem {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
         init(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -826,11 +866,12 @@ export namespace GSystem {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -846,32 +887,32 @@ export namespace GSystem {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -880,39 +921,39 @@ export namespace GSystem {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -923,13 +964,16 @@ export namespace GSystem {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -937,7 +981,7 @@ export namespace GSystem {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -945,9 +989,9 @@ export namespace GSystem {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -967,9 +1011,9 @@ export namespace GSystem {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -982,34 +1026,34 @@ export namespace GSystem {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1042,22 +1086,22 @@ export namespace GSystem {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -1066,8 +1110,8 @@ export namespace GSystem {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -1084,10 +1128,10 @@ export namespace GSystem {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -1102,13 +1146,13 @@ export namespace GSystem {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1139,21 +1183,21 @@ export namespace GSystem {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1163,33 +1207,34 @@ export namespace GSystem {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1198,6 +1243,7 @@ export namespace GSystem {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1206,12 +1252,14 @@ export namespace GSystem {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1220,20 +1268,22 @@ export namespace GSystem {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1245,6 +1295,7 @@ export namespace GSystem {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -1292,10 +1343,11 @@ export namespace GSystem {
      * such as where its standard input and output will be directed, the
      * argument list, the environment, and more.
      *
-     * While the #GSSubprocess class has high level functions covering
+     * While the {@link GSystem.Subprocess} class has high level functions covering
      * popular cases, use of this class allows access to more advanced
      * options.  It can also be used to launch multiple subprocesses with
      * a similar configuration.
+     * @gir-type Class
      */
     class SubprocessContext extends GObject.Object {
         static $gtype: GObject.GType<SubprocessContext>;
@@ -1305,14 +1357,15 @@ export namespace GSystem {
         /**
          * Array of arguments passed to child process; must have at least
          * one element.  The first element has special handling - if it is
-         * an not absolute path ( as determined by g_path_is_absolute() ),
+         * an not absolute path ( as determined by `g_path_is_absolute()` ),
          * then the system search path will be used.  See
-         * %G_SPAWN_SEARCH_PATH.
+         * {@link GLib.SpawnFlags.SEARCH_PATH}.
          *
          * Note that in order to use the Unix-specific argv0 functionality,
          * you must use the setter function
-         * gs_subprocess_context_set_args_and_argv0().  For more information
-         * about this, see %G_SPAWN_FILE_AND_ARGV_ZERO.
+         * `gs_subprocess_context_set_args_and_argv0()`.  For more information
+         * about this, see {@link GLib.SpawnFlags.FILE_AND_ARGV_ZERO}.
+         * @since 2.36
          */
         get argv(): string[];
         set argv(val: string[]);
@@ -1338,16 +1391,19 @@ export namespace GSystem {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SubprocessContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SubprocessContext.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SubprocessContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SubprocessContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SubprocessContext.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SubprocessContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1366,22 +1422,25 @@ export namespace GSystem {
          * processes, independent of the standard streams.  For this function,
          * the pipe is set up so that the parent can read, and the child can
          * write.  For the opposite version, see
-         * gs_subprocess_context_open_pipe_write().
+         * `gs_subprocess_context_open_pipe_write()`.
          *
          * The returned `out_fdno` is the file descriptor number that the child
          * will see; you need to communicate this number via a separate
          * channel, such as the argument list.  For example, if you're using
          * this pipe to send a password, provide
          * <literal>--password-fd=&lt;fdno string&gt;</literal>.
-         * @returns %TRUE on success, %FALSE on error (and @error will be set)
+         * @returns `true` on success, `false` on error (and `error` will be set)
          */
         open_pipe_read(): [boolean, Gio.InputStream, number];
         /**
-         * Like gs_subprocess_context_open_pipe_read(), but returns a writable
+         * Like `gs_subprocess_context_open_pipe_read()`, but returns a writable
          * channel from which the child process can read.
-         * @returns %TRUE on success, %FALSE on error (and @error will be set)
+         * @returns `true` on success, `false` on error (and `error` will be set)
          */
         open_pipe_write(): [boolean, Gio.OutputStream, number];
+        /**
+         * @param cwd
+         */
         set_cwd(cwd: string): void;
         /**
          * Replace the environment that will be used for the child process.
@@ -1389,19 +1448,56 @@ export namespace GSystem {
          * @param environ Environment KEY=VALUE pairs
          */
         set_environment(environ: string[]): void;
+        /**
+         * @param keep_descriptors
+         */
         set_keep_descriptors(keep_descriptors: boolean): void;
+        /**
+         * @param search_path
+         * @param search_path_from_envp
+         */
         set_search_path(search_path: boolean, search_path_from_envp: boolean): void;
+        /**
+         * @param disposition
+         */
         set_stderr_disposition(disposition: SubprocessStreamDisposition | null): void;
+        /**
+         * @param fd
+         */
         set_stderr_fd(fd: number): void;
+        /**
+         * @param path
+         */
         set_stderr_file_path(path: string): void;
+        /**
+         * @param disposition
+         */
         set_stdin_disposition(disposition: SubprocessStreamDisposition | null): void;
+        /**
+         * @param fd
+         */
         set_stdin_fd(fd: number): void;
+        /**
+         * @param path
+         */
         set_stdin_file_path(path: string): void;
+        /**
+         * @param disposition
+         */
         set_stdout_disposition(disposition: SubprocessStreamDisposition | null): void;
+        /**
+         * @param fd
+         */
         set_stdout_fd(fd: number): void;
+        /**
+         * @param path
+         */
         set_stdout_file_path(path: string): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class DirFdIterator {
         static $gtype: GObject.GType<DirFdIterator>;
 

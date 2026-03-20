@@ -21,10 +21,17 @@ export namespace Notify {
      * Notify-0.7
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ClosedReason {
         export const $gtype: GObject.GType<ClosedReason>;
     }
 
+    /**
+     * @gir-type Enum
+     * @since 0.8.0
+     */
     enum ClosedReason {
         /**
          * Notification not closed.
@@ -40,7 +47,7 @@ export namespace Notify {
         DISMISSED,
         /**
          * It has been closed by a call to
-         *   [method`NotifyNotification`.close].
+         *   {@link NotifyNotification.close}.
          */
         API_REQUEST,
         /**
@@ -53,12 +60,16 @@ export namespace Notify {
         UNDEFIEND,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Urgency {
         export const $gtype: GObject.GType<Urgency>;
     }
 
     /**
      * The urgency level of the notification.
+     * @gir-type Enum
      */
     enum Urgency {
         /**
@@ -93,13 +104,15 @@ export namespace Notify {
      *
      * Requires server supporting specification version >= 1.2.
      *
-     * Hint [type`GLib`.VariantType]: [const`GLib`.VARIANT_TYPE_BOOLEAN] (`b`).
+     * Hint {@link GLib.VariantType}: {@link GLib.VARIANT_TYPE_BOOLEAN} (`b`).
+     * @since 0.8.8
      */
     const NOTIFICATION_HINT_ACTION_ICONS: string;
     /**
      * The type of notification this is.
      *
-     * Hint [type`GLib`.VariantType]: [const`GLib`.VARIANT_TYPE_STRING] (`s`).
+     * Hint {@link GLib.VariantType}: {@link GLib.VARIANT_TYPE_STRING} (`s`).
+     * @since 0.8.8
      */
     const NOTIFICATION_HINT_CATEGORY: string;
     /**
@@ -109,7 +122,8 @@ export namespace Notify {
      * can be used by the daemon to retrieve the correct icon for the application,
      * for logging purposes, etc.
      *
-     * Hint [type`GLib`.VariantType]: [const`GLib`.VARIANT_TYPE_STRING] (`s`).
+     * Hint {@link GLib.VariantType}: {@link GLib.VARIANT_TYPE_STRING} (`s`).
+     * @since 0.8.8
      */
     const NOTIFICATION_HINT_DESKTOP_ENTRY: string;
     /**
@@ -119,7 +133,8 @@ export namespace Notify {
      *
      * Requires server supporting specification version >= 1.2
      *
-     * [type`GLib`.VariantType]: `(iiibiiay)`
+     * {@link GLib.VariantType}: `(iiibiiay)`
+     * @since 0.8.8
      */
     const NOTIFICATION_HINT_IMAGE_DATA: string;
     /**
@@ -129,7 +144,8 @@ export namespace Notify {
      *
      * Requires server supporting specification version >= 1.1
      *
-     * [type`GLib`.VariantType]: `(iiibiiay)`
+     * {@link GLib.VariantType}: `(iiibiiay)`
+     * @since 0.8.8
      */
     const NOTIFICATION_HINT_IMAGE_DATA_LEGACY: string;
     /**
@@ -137,7 +153,8 @@ export namespace Notify {
      *
      * Requires server supporting specification version >= 1.2.
      *
-     * Hint [type`GLib`.VariantType]: [const`GLib`.VARIANT_TYPE_STRING] (`s`).
+     * Hint {@link GLib.VariantType}: {@link GLib.VARIANT_TYPE_STRING} (`s`).
+     * @since 0.8.8
      */
     const NOTIFICATION_HINT_IMAGE_PATH: string;
     /**
@@ -145,7 +162,8 @@ export namespace Notify {
      *
      * Requires server supporting specification version >= 1.1.
      *
-     * Hint [type`GLib`.VariantType]: [const`GLib`.VARIANT_TYPE_STRING] (`s`).
+     * Hint {@link GLib.VariantType}: {@link GLib.VARIANT_TYPE_STRING} (`s`).
+     * @since 0.8.8
      */
     const NOTIFICATION_HINT_IMAGE_PATH_LEGACY: string;
     /**
@@ -156,13 +174,15 @@ export namespace Notify {
      *
      * Requires server supporting specification version >= 1.2.
      *
-     * Hint [type`GLib`.VariantType]: [const`GLib`.VARIANT_TYPE_BOOLEAN] (`b`).
+     * Hint {@link GLib.VariantType}: {@link GLib.VARIANT_TYPE_BOOLEAN} (`b`).
+     * @since 0.8.8
      */
     const NOTIFICATION_HINT_RESIDENT: string;
     /**
      * The path to a sound file to play when the notification pops up.
      *
-     * Hint [type`GLib`.VariantType]: [const`GLib`.VARIANT_TYPE_STRING] (`s`).
+     * Hint {@link GLib.VariantType}: {@link GLib.VARIANT_TYPE_STRING} (`s`).
+     * @since 0.8.8
      */
     const NOTIFICATION_HINT_SOUND_FILE: string;
     /**
@@ -170,14 +190,16 @@ export namespace Notify {
      * to play when the notification pops up. Similar to icon-name, only for sounds.
      * An example would be "message-new-instant".
      *
-     * Hint [type`GLib`.VariantType]: [const`GLib`.VARIANT_TYPE_STRING] (`s`).
+     * Hint {@link GLib.VariantType}: {@link GLib.VARIANT_TYPE_STRING} (`s`).
+     * @since 0.8.8
      */
     const NOTIFICATION_HINT_SOUND_NAME: string;
     /**
      * Causes the server to suppress playing any sounds, if it has that ability.
      * This is usually set when the client itself is going to play its own sound.
      *
-     * Hint [type`GLib`.VariantType]: [const`GLib`.VARIANT_TYPE_BOOLEAN] (`b`).
+     * Hint {@link GLib.VariantType}: {@link GLib.VARIANT_TYPE_BOOLEAN} (`b`).
+     * @since 0.8.8
      */
     const NOTIFICATION_HINT_SUPPRESS_SOUND: string;
     /**
@@ -186,27 +208,31 @@ export namespace Notify {
      *
      * Requires server supporting specification version >= 1.2.
      *
-     * Hint [type`GLib`.VariantType]: [const`GLib`.VARIANT_TYPE_BOOLEAN] (`b`).
+     * Hint {@link GLib.VariantType}: {@link GLib.VARIANT_TYPE_BOOLEAN} (`b`).
+     * @since 0.8.8
      */
     const NOTIFICATION_HINT_TRANSIENT: string;
     /**
      * The urgency level.
      *
-     * Hint [type`GLib`.VariantType]: [const`GLib`.VARIANT_TYPE_BYTE] (`y`).
+     * Hint {@link GLib.VariantType}: {@link GLib.VARIANT_TYPE_BYTE} (`y`).
+     * @since 0.8.8
      */
     const NOTIFICATION_HINT_URGENCY: string;
     /**
      * Specifies the X location on the screen that the notification should point to.
      * The "y" hint must also be specified.
      *
-     * Hint [type`GLib`.VariantType]: [const`GLib`.VARIANT_TYPE_INT32] (`i`).
+     * Hint {@link GLib.VariantType}: {@link GLib.VARIANT_TYPE_INT32} (`i`).
+     * @since 0.8.8
      */
     const NOTIFICATION_HINT_X: string;
     /**
      * Specifies the Y location on the screen that the notification should point to.
      * The "x" hint must also be specified.
      *
-     * Hint [type`GLib`.VariantType]: [const`GLib`.VARIANT_TYPE_INT32] (`i`).
+     * Hint {@link GLib.VariantType}: {@link GLib.VARIANT_TYPE_INT32} (`i`).
+     * @since 0.8.8
      */
     const NOTIFICATION_HINT_Y: string;
     /**
@@ -223,12 +249,13 @@ export namespace Notify {
     const VERSION_MINOR: number;
     /**
      * Gets the application icon registered.
-     * @returns The registered application icon, set via [func@set_app_icon].
+     * @returns The registered application icon, set via {@link set_app_icon}.
+     * @since 0.8.4
      */
     function get_app_icon(): string;
     /**
      * Gets the application name registered.
-     * @returns The registered application name, passed to [func@init].
+     * @returns The registered application name, passed to {@link init}.
      */
     function get_app_name(): string;
     /**
@@ -245,27 +272,28 @@ export namespace Notify {
      * Synchronously queries the server for its information, specifically, the name,
      * vendor, server version, and the version of the notifications specification
      * that it is compliant with.
-     * @returns %TRUE if successful, and the variables passed will be set, %FALSE   on error. The returned strings must be freed with g_free
+     * @returns `true` if successful, and the variables passed will be set, `false`   on error. The returned strings must be freed with g_free
      */
     function get_server_info(): [boolean, string, string, string, string];
     /**
      * Initialized libnotify. This must be called before any other functions.
      *
-     * Starting from 0.8, if the provided `app_name` is %NULL, libnotify will
+     * Starting from 0.8, if the provided `app_name` is `null`, libnotify will
      * try to figure it out from the running application.
      * Before it was not allowed, and was causing libnotify not to be initialized.
      * @param app_name The name of the application initializing libnotify.
-     * @returns %TRUE if successful, or %FALSE on error.
+     * @returns `true` if successful, or `false` on error.
      */
     function init(app_name?: string | null): boolean;
     /**
      * Gets whether or not libnotify is initialized.
-     * @returns %TRUE if libnotify is initialized, or %FALSE otherwise.
+     * @returns `true` if libnotify is initialized, or `false` otherwise.
      */
     function is_initted(): boolean;
     /**
      * Sets the application icon.
      * @param app_icon The optional icon theme icon name or filename.
+     * @since 0.8.4
      */
     function set_app_icon(app_icon?: string | null): void;
     /**
@@ -280,12 +308,28 @@ export namespace Notify {
      * the rest of its lifecycle, typically just before exitting.
      */
     function uninit(): void;
+    /**
+     * @gir-type Callback
+     */
     interface ActionCallback {
         (notification: Notification, action: string): void;
     }
     namespace Notification {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted when the notification is closed.
+             *
+             * Note that when a {@link Notify.Notification} is used in a sandboxed
+             * environment where XDG Desktop Notification Portal is implicitly used,
+             * the signal `Notify.Notification::closed` is only emitted when
+             * the notification is closed in response to an user action response.
+             *
+             * NO signal will be emitted if the user or the daemon dismissed the
+             * notification for any other reason.
+             * @signal
+             * @run-first
+             */
             closed: () => void;
             'notify::app-icon': (pspec: GObject.ParamSpec) => void;
             'notify::app-name': (pspec: GObject.ParamSpec) => void;
@@ -316,12 +360,13 @@ export namespace Notify {
     /**
      * A passive pop-up notification.
      *
-     * #NotifyNotification represents a passive pop-up notification. It can
+     * {@link Notify.Notification} represents a passive pop-up notification. It can
      * contain summary text, body text, and an icon, as well as hints specifying
      * how the notification should be presented. The notification is rendered
      * by a notification daemon, and may present the notification in any number
      * of ways. As such, there is a clear separation of content and presentation,
      * and this API enforces that.
+     * @gir-type Class
      */
     class Notification extends GObject.Object {
         static $gtype: GObject.GType<Notification>;
@@ -330,21 +375,25 @@ export namespace Notify {
 
         /**
          * The icon of the application for the notification.
+         * @since 0.8.4
          */
         get app_icon(): string;
         set app_icon(val: string);
         /**
          * The icon of the application for the notification.
+         * @since 0.8.4
          */
         get appIcon(): string;
         set appIcon(val: string);
         /**
          * The name of the application for the notification.
+         * @since 0.7.3
          */
         get app_name(): string;
         set app_name(val: string);
         /**
          * The name of the application for the notification.
+         * @since 0.7.3
          */
         get appName(): string;
         set appName(val: string);
@@ -356,13 +405,15 @@ export namespace Notify {
         /**
          * The closed reason of the notification.
          *
-         * See [signal`Notification:`:closed].
+         * See `Notify.Notification::closed`.
+         * @read-only
          */
         get closed_reason(): number;
         /**
          * The closed reason of the notification.
          *
-         * See [signal`Notification:`:closed].
+         * See `Notify.Notification::closed`.
+         * @read-only
          */
         get closedReason(): number;
         /**
@@ -405,16 +456,19 @@ export namespace Notify {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Notification.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Notification.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Notification.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Notification.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Notification.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Notification.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -423,6 +477,9 @@ export namespace Notify {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_closed(): void;
 
         // Methods
@@ -447,7 +504,7 @@ export namespace Notify {
         clear_hints(): void;
         /**
          * Synchronously tells the notification server to hide the notification on the screen.
-         * @returns %TRUE on success, or %FALSE on error with @error filled in
+         * @returns `true` on success, or `false` on error with `error` filled in
          */
         close(): boolean;
         /**
@@ -455,48 +512,48 @@ export namespace Notify {
          * activation.
          *
          * If an an action is currently being activated, gets a
-         * a [class`Gio`.AppLaunchContext] that can be used to launch applications using
-         * the current activation token (see [method`Notification`.get_activation_token]).
+         * a {@link Gio.AppLaunchContext} that can be used to launch applications using
+         * the current activation token (see {@link Notification.get_activation_token}).
          *
-         * This function is intended to be used in a [callback`ActionCallback]` to get
+         * This function is intended to be used in a {@link ActionCallback} to get
          * the launch context for the activated action, if the notification daemon
          * supports it.
-         * @returns The [class@Gio.AppLaunchContext] for  the current activation token, or %NULL if unset
+         * @returns The {@link Gio.AppLaunchContext} for  the current activation token, or `null` if unset
          */
         get_activation_app_launch_context(): Gio.AppLaunchContext | null;
         /**
          * Gets the activation token of the notification.
          *
          * If an an action is currently being activated, return the activation token.
-         * This function is intended to be used in a [callback`ActionCallback]` to get
+         * This function is intended to be used in a {@link ActionCallback} to get
          * the activation token for the activated action, if the notification daemon
          * supports it.
-         * @returns The current activation token, or %NULL if none
+         * @returns The current activation token, or `null` if none
          */
         get_activation_token(): string | null;
         /**
          * Returns the closed reason code for the notification.
          *
-         * This is valid only after the [signal`Notification:`:closed] signal is emitted.
+         * This is valid only after the `Notify.Notification::closed` signal is emitted.
          *
-         * Since version 0.8.0 the returned value is of type [enum`ClosedReason]`.
-         * @returns An integer representing the closed reason code   (Since 0.8.0 it's also a [enum@ClosedReason]).
+         * Since version 0.8.0 the returned value is of type {@link ClosedReason}.
+         * @returns An integer representing the closed reason code   (Since 0.8.0 it's also a {@link ClosedReason}).
          */
         get_closed_reason(): number;
         /**
          * Sets the application icon for the notification.
          *
-         * If this function is not called or if `app_icon` is %NULL, the application icon
-         * will be set from the value set via [func`set_app_icon]`.
+         * If this function is not called or if `app_icon` is `null`, the application icon
+         * will be set from the value set via {@link set_app_icon}.
          * @param app_icon The optional icon theme icon name or filename.
          */
         set_app_icon(app_icon?: string | null): void;
         /**
          * Sets the application name for the notification.
          *
-         * If this function is not called or if `app_name` is %NULL, the application name
-         * will be set from the value used in [func`init]` or overridden with
-         * [func`set_app_name]`.
+         * If this function is not called or if `app_name` is `null`, the application name
+         * will be set from the value used in {@link init} or overridden with
+         * {@link set_app_name}.
          * @param app_name the localised application name
          */
         set_app_name(app_name?: string | null): void;
@@ -511,7 +568,7 @@ export namespace Notify {
         /**
          * Sets a hint for `key` with value `value`.
          *
-         * If `value` is %NULL, a previously set hint for `key` is unset.
+         * If `value` is `null`, a previously set hint for `key` is unset.
          *
          * If `value` is floating, it is consumed.
          * @param key the hint key
@@ -557,20 +614,20 @@ export namespace Notify {
          */
         set_hint_uint32(key: string, value: number): void;
         /**
-         * Sets the icon in the notification from a #GdkPixbuf.
+         * Sets the icon in the notification from a {@link GdkPixbuf.Pixbuf}.
          * @param icon The icon.
          */
         set_icon_from_pixbuf(icon: GdkPixbuf.Pixbuf): void;
         /**
-         * Sets the image in the notification from a [class`GdkPixbuf`.Pixbuf].
+         * Sets the image in the notification from a {@link GdkPixbuf.Pixbuf}.
          * @param pixbuf The image.
          */
         set_image_from_pixbuf(pixbuf: GdkPixbuf.Pixbuf): void;
         /**
          * Sets the timeout of the notification.
          *
-         * To set the default time, pass %NOTIFY_EXPIRES_DEFAULT as `timeout`. To set the
-         * notification to never expire, pass %NOTIFY_EXPIRES_NEVER.
+         * To set the default time, pass `NOTIFY_EXPIRES_DEFAULT` as `timeout`. To set the
+         * notification to never expire, pass `NOTIFY_EXPIRES_NEVER`.
          *
          * Note that the timeout may be ignored by the server.
          * @param timeout The timeout in milliseconds.
@@ -583,22 +640,25 @@ export namespace Notify {
         set_urgency(urgency: Urgency | null): void;
         /**
          * Tells the notification server to display the notification on the screen.
-         * @returns %TRUE if successful. On error, this will return %FALSE and set   @error.
+         * @returns `true` if successful. On error, this will return `false` and set   `error`.
          */
         show(): boolean;
         /**
          * Updates the notification text and icon.
          *
          * This won't send the update out and display it on the screen. For that, you
-         * will need to call [method`Notification`.show].
+         * will need to call {@link Notification.show}.
          * @param summary The new required summary text.
          * @param body The optional body text.
          * @param icon The optional icon theme icon name or filename.
-         * @returns %TRUE, unless an invalid parameter was passed.
+         * @returns `true`, unless an invalid parameter was passed.
          */
         update(summary: string, body?: string | null, icon?: string | null): boolean;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type NotificationClass = typeof Notification;
     /**
      * Name of the imported GIR library

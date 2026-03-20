@@ -29,10 +29,16 @@ export namespace XreaderDocument {
      * XreaderDocument-1.5
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AnnotationTextIcon {
         export const $gtype: GObject.GType<AnnotationTextIcon>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum AnnotationTextIcon {
         NOTE,
         COMMENT,
@@ -46,10 +52,16 @@ export namespace XreaderDocument {
         UNKNOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AnnotationTextMarkupType {
         export const $gtype: GObject.GType<AnnotationTextMarkupType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum AnnotationTextMarkupType {
         HIGHLIGHT,
         STRIKE_OUT,
@@ -57,10 +69,16 @@ export namespace XreaderDocument {
         SQUIGGLY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AnnotationType {
         export const $gtype: GObject.GType<AnnotationType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum AnnotationType {
         UNKNOWN,
         TEXT,
@@ -68,10 +86,16 @@ export namespace XreaderDocument {
         TEXT_MARKUP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CompressionType {
         export const $gtype: GObject.GType<CompressionType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum CompressionType {
         NONE,
         BZIP2,
@@ -79,6 +103,9 @@ export namespace XreaderDocument {
         LZMA,
     }
 
+    /**
+     * @gir-type Struct
+     */
     class DocumentError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -97,10 +124,16 @@ export namespace XreaderDocument {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DocumentLayout {
         export const $gtype: GObject.GType<DocumentLayout>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum DocumentLayout {
         SINGLE_PAGE,
         ONE_COLUMN,
@@ -110,10 +143,16 @@ export namespace XreaderDocument {
         TWO_PAGE_RIGHT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DocumentMode {
         export const $gtype: GObject.GType<DocumentMode>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum DocumentMode {
         NONE,
         USE_OC,
@@ -123,49 +162,79 @@ export namespace XreaderDocument {
         PRESENTATION,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FileExporterFormat {
         export const $gtype: GObject.GType<FileExporterFormat>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum FileExporterFormat {
         UNKNOWN,
         PS,
         PDF,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FormFieldButtonType {
         export const $gtype: GObject.GType<FormFieldButtonType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum FormFieldButtonType {
         PUSH,
         CHECK,
         RADIO,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FormFieldChoiceType {
         export const $gtype: GObject.GType<FormFieldChoiceType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum FormFieldChoiceType {
         COMBO,
         LIST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FormFieldTextType {
         export const $gtype: GObject.GType<FormFieldTextType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum FormFieldTextType {
         NORMAL,
         MULTILINE,
         FILE_SELECT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LinkActionType {
         export const $gtype: GObject.GType<LinkActionType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum LinkActionType {
         GOTO_DEST,
         GOTO_REMOTE,
@@ -175,10 +244,16 @@ export namespace XreaderDocument {
         LAYERS_STATE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LinkDestType {
         export const $gtype: GObject.GType<LinkDestType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum LinkDestType {
         PAGE,
         XYZ,
@@ -192,38 +267,62 @@ export namespace XreaderDocument {
         UNKNOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SelectionStyle {
         export const $gtype: GObject.GType<SelectionStyle>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum SelectionStyle {
         GLYPH,
         WORD,
         LINE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TransitionEffectAlignment {
         export const $gtype: GObject.GType<TransitionEffectAlignment>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum TransitionEffectAlignment {
         HORIZONTAL,
         VERTICAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TransitionEffectDirection {
         export const $gtype: GObject.GType<TransitionEffectDirection>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum TransitionEffectDirection {
         INWARD,
         OUTWARD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TransitionEffectType {
         export const $gtype: GObject.GType<TransitionEffectType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum TransitionEffectType {
         REPLACE,
         SPLIT,
@@ -255,22 +354,25 @@ export namespace XreaderDocument {
      */
     const MINOR_VERSION: number;
     function backends_manager_get_backends_dir(): string;
+    /**
+     * @param document
+     */
     function backends_manager_get_document_module_name(document: Document): string;
     function document_error_quark(): GLib.Quark;
     /**
      * Compresses the file at `uri`.
      *
-     * If `type` is %EV_COMPRESSION_NONE, it does nothing and returns %NULL.
+     * If `type` is {@link XreaderDocument.CompressionType.NONE}, it does nothing and returns `null`.
      *
      * Otherwise, it returns the filename of a
      * temporary file containing the compressed data from the file at `uri`.
      *
-     * On error it returns %NULL and fills in `error`.
+     * On error it returns `null` and fills in `error`.
      *
      * It is the caller's responsibility to unlink the temp file after use.
      * @param uri a file URI
      * @param type the compression type
-     * @returns a newly allocated string URI, or %NULL on error
+     * @returns a newly allocated string URI, or `null` on error
      */
     function file_compress(uri: string, type: CompressionType | null): string;
     /**
@@ -278,23 +380,26 @@ export namespace XreaderDocument {
      * being filled in.
      * @param uri the URI
      * @param fast whether to use fast MIME type detection
-     * @returns a newly allocated string with the MIME type of the file at   @uri, or %NULL on error or if the MIME type could not be determined
+     * @returns a newly allocated string with the MIME type of the file at   `uri`, or `null` on error or if the MIME type could not be determined
      */
     function file_get_mime_type(uri: string, fast: boolean): string;
+    /**
+     * @param file
+     */
     function file_is_temp(file: Gio.File): boolean;
     /**
      * Uncompresses the file at `uri`.
      *
-     * If `type` is %EV_COMPRESSION_NONE, it does nothing and returns %NULL.
+     * If `type` is {@link XreaderDocument.CompressionType.NONE}, it does nothing and returns `null`.
      *
      * Otherwise, it returns the filename of a
      * temporary file containing the decompressed data from the file at `uri`.
-     * On error it returns %NULL and fills in `error`.
+     * On error it returns `null` and fills in `error`.
      *
      * It is the caller's responsibility to unlink the temp file after use.
      * @param uri a file URI
      * @param type the compression type
-     * @returns a newly allocated string URI, or %NULL on error
+     * @returns a newly allocated string URI, or `null` on error
      */
     function file_uncompress(uri: string, type: CompressionType | null): string;
     /**
@@ -303,41 +408,60 @@ export namespace XreaderDocument {
      *
      * You must call this before calling any other function in the xreader
      * document library.
-     * @returns %TRUE if any backends were found; %FALSE otherwise
+     * @returns `true` if any backends were found; `false` otherwise
      */
     function init(): boolean;
     /**
      * Creates a temp directory in the xreader temp directory.
      * @param template a template string; must end in 'XXXXXX'
-     * @returns a newly allocated string with the temp directory name, or %NULL   on error with @error filled in
+     * @returns a newly allocated string with the temp directory name, or `null`   on error with `error` filled in
      */
     function mkdtemp(template: string): string;
     /**
      * Creates a temp file in the xreader temp directory.
      * @param template a template string; must contain 'XXXXXX', but not necessarily as a suffix
      * @param file_name a location to store the filename of the temp file
-     * @returns a file descriptor to the newly created temp file name, or %-1   on error with @error filled in
+     * @returns a file descriptor to the newly created temp file name, or %-1   on error with `error` filled in
      */
     function mkstemp(template: string, file_name: string): number;
+    /**
+     * @param a
+     * @param b
+     */
     function rect_cmp(a: Rectangle, b: Rectangle): number;
     /**
      * Shuts the xreader document library down.
      */
     function shutdown(): void;
+    /**
+     * @param file
+     */
     function tmp_file_unlink(file: Gio.File): void;
+    /**
+     * @param filename
+     */
     function tmp_filename_unlink(filename: string): void;
+    /**
+     * @param uri
+     */
     function tmp_uri_unlink(uri: string): void;
     /**
-     * Performs a g_file_copy() from `from` to `to`.
+     * Performs a `g_file_copy()` from `from` to `to`.
      * @param from the source URI
      * @param to the target URI
-     * @returns %TRUE on success, or %FALSE on error with @error filled in
+     * @returns `true` on success, or `false` on error with `error` filled in
      */
     function xfer_uri_simple(from: string, to: string): boolean;
+    /**
+     * @gir-type Flags
+     */
     export namespace AnnotationsSaveMask {
         export const $gtype: GObject.GType<AnnotationsSaveMask>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum AnnotationsSaveMask {
         NONE,
         CONTENTS,
@@ -354,10 +478,16 @@ export namespace XreaderDocument {
         ALL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DocumentInfoFields {
         export const $gtype: GObject.GType<DocumentInfoFields>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum DocumentInfoFields {
         TITLE,
         FORMAT,
@@ -379,10 +509,16 @@ export namespace XreaderDocument {
         LICENSE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DocumentPermissions {
         export const $gtype: GObject.GType<DocumentPermissions>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum DocumentPermissions {
         OK_TO_PRINT,
         OK_TO_MODIFY,
@@ -391,10 +527,16 @@ export namespace XreaderDocument {
         FULL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DocumentUIHints {
         export const $gtype: GObject.GType<DocumentUIHints>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum DocumentUIHints {
         HIDE_TOOLBAR,
         HIDE_MENUBAR,
@@ -405,10 +547,16 @@ export namespace XreaderDocument {
         DIRECTION_RTL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace FileExporterCapabilities {
         export const $gtype: GObject.GType<FileExporterCapabilities>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum FileExporterCapabilities {
         PAGE_SET,
         COPIES,
@@ -446,6 +594,9 @@ export namespace XreaderDocument {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class Annotation extends GObject.Object {
         static $gtype: GObject.GType<Annotation>;
 
@@ -459,7 +610,8 @@ export namespace XreaderDocument {
         get area(): Rectangle;
         set area(val: Rectangle);
         /**
-         * The colour of the annotation as a #GdkColor.
+         * The colour of the annotation as a {@link Gdk.Color}.
+         * @deprecated since 1.2.1: Use {@link XreaderDocument.Annotation.rgba} instead.
          */
         get color(): any;
         set color(val: any);
@@ -469,9 +621,13 @@ export namespace XreaderDocument {
         set modified(val: string);
         get name(): string;
         set name(val: string);
+        /**
+         * @construct-only
+         */
         set page(val: Page);
         /**
-         * The colour of the annotation as a #GdkRGBA.
+         * The colour of the annotation as a {@link Gdk.RGBA}.
+         * @since 1.2.1
          */
         get rgba(): Gdk.RGBA;
         set rgba(val: Gdk.RGBA);
@@ -493,16 +649,19 @@ export namespace XreaderDocument {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Annotation.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Annotation.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Annotation.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Annotation.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Annotation.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Annotation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -513,11 +672,14 @@ export namespace XreaderDocument {
 
         /**
          * Compare `annot` and `other`.
-         * @param other another #EvAnnotation
-         * @returns %TRUE if @annot is equal to @other, %FALSE otherwise
+         * @param other another {@link XreaderDocument.Annotation}
+         * @returns `true` if `annot` is equal to `other`, `false` otherwise
          */
         equal(other: Annotation): boolean;
         get_annotation_type(): AnnotationType;
+        /**
+         * @param area
+         */
         get_area(area: Rectangle): void;
         /**
          * Get the color of `annot`.
@@ -527,7 +689,7 @@ export namespace XreaderDocument {
          * Get the contents of `annot`. The contents of
          * `annot` is the text that is displayed in the annotation, or an
          * alternate description of the annotation's content for non-text annotations
-         * @returns a string with the contents of the annotation or %NULL if @annot has no contents.
+         * @returns a string with the contents of the annotation or `null` if `annot` has no contents.
          */
         get_contents(): string;
         /**
@@ -544,7 +706,7 @@ export namespace XreaderDocument {
         get_name(): string;
         /**
          * Get the page where `annot` appears.
-         * @returns the #EvPage where @annot appears
+         * @returns the {@link XreaderDocument.Page} where `annot` appears
          */
         get_page(): Page;
         /**
@@ -559,16 +721,16 @@ export namespace XreaderDocument {
         get_rgba(): Gdk.RGBA;
         /**
          * Set the area of the annotation to `area`.
-         * @param area a #EvRectangle
-         * @returns %TRUE if the area has been changed, %FALSE otherwise
+         * @param area a {@link XreaderDocument.Rectangle}
+         * @returns `true` if the area has been changed, `false` otherwise
          */
         set_area(area: Rectangle): boolean;
         /**
          * Set the color of the annotation to `color`. You can monitor
          * changes to the annotation's color by connecting to
          * notify::color signal on `annot`.
-         * @param color a #GdkColor
-         * @returns %TRUE  when the color has been changed, %FALSE otherwise.
+         * @param color a {@link Gdk.Color}
+         * @returns `true`  when the color has been changed, `false` otherwise.
          */
         set_color(color: Gdk.Color): boolean;
         /**
@@ -576,26 +738,26 @@ export namespace XreaderDocument {
          * changes in the annotation's  contents by connecting to
          * notify::contents signal of `annot`.
          * @param contents
-         * @returns %TRUE if the contents have been changed, %FALSE otherwise.
+         * @returns `true` if the contents have been changed, `false` otherwise.
          */
         set_contents(contents: string): boolean;
         /**
          * Set the last modification date of `annot` to `modified`. To
-         * set the last modification date using a #time_t, use
-         * ev_annotation_set_modified_from_time() instead. You can monitor
+         * set the last modification date using a `time_t`, use
+         * `ev_annotation_set_modified_from_time()` instead. You can monitor
          * changes to the last modification date by connecting to the
          * notify::modified signal on `annot`.
          * @param modified string with the last modification date.
-         * @returns %TRUE if the last modification date has been updated, %FALSE otherwise.
+         * @returns `true` if the last modification date has been updated, `false` otherwise.
          */
         set_modified(modified: string): boolean;
         /**
          * Set the last modification date of `annot` to `utime`.  You can
          * monitor changes to the last modification date by connectin to the
          * notify::modified sinal on `annot`.
-         * For the time-format used, see ev_document_misc_format_date().
-         * @param utime a #time_t
-         * @returns %TRUE if the last modified date has been updated, %FALSE otherwise.
+         * For the time-format used, see `ev_document_misc_format_date()`.
+         * @param utime a `time_t`
+         * @returns `true` if the last modified date has been updated, `false` otherwise.
          */
         set_modified_from_time(utime: number): boolean;
         /**
@@ -603,13 +765,13 @@ export namespace XreaderDocument {
          * You can monitor changes of the annotation name by connecting
          * to the notify::name signal on `annot`.
          * @param name
-         * @returns %TRUE when the name has been changed, %FALSE otherwise.
+         * @returns `true` when the name has been changed, `false` otherwise.
          */
         set_name(name: string): boolean;
         /**
          * Set the color of the annotation to `rgba`.
-         * @param rgba a #GdkRGBA
-         * @returns %TRUE if the color has been changed, %FALSE otherwise
+         * @param rgba a {@link Gdk.RGBA}
+         * @returns `true` if the color has been changed, `false` otherwise
          */
         set_rgba(rgba: Gdk.RGBA): boolean;
     }
@@ -640,6 +802,9 @@ export namespace XreaderDocument {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class AnnotationAttachment extends Annotation implements AnnotationMarkup {
         static $gtype: GObject.GType<AnnotationAttachment>;
 
@@ -667,16 +832,19 @@ export namespace XreaderDocument {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AnnotationAttachment.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AnnotationAttachment.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AnnotationAttachment.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AnnotationAttachment.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AnnotationAttachment.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AnnotationAttachment.SignalSignatures[K]> extends [any, ...infer Q]
@@ -687,70 +855,114 @@ export namespace XreaderDocument {
 
         // Methods
 
+        /**
+         * @returns an {@link XreaderDocument.Attachment}
+         */
         get_attachment(): Attachment;
+        /**
+         * @param attachment
+         */
         set_attachment(attachment: Attachment): boolean;
-
-        // Inherited properties
+        /** @category Inherited from XreaderDocument.AnnotationMarkup */
         // This accessor conflicts with a field or function name in a parent class or interface.
         can_have_popup: boolean | any;
+        /** @category Inherited from XreaderDocument.AnnotationMarkup */
         get canHavePopup(): boolean;
         set canHavePopup(val: boolean);
+        /** @category Inherited from XreaderDocument.AnnotationMarkup */
         // This accessor conflicts with a field or function name in a parent class or interface.
         has_popup: boolean | any;
+        /** @category Inherited from XreaderDocument.AnnotationMarkup */
         get hasPopup(): boolean;
         set hasPopup(val: boolean);
+        /** @category Inherited from XreaderDocument.AnnotationMarkup */
         get label(): string;
         set label(val: string);
+        /** @category Inherited from XreaderDocument.AnnotationMarkup */
         get opacity(): number;
         set opacity(val: number);
+        /** @category Inherited from XreaderDocument.AnnotationMarkup */
         get popup_is_open(): boolean;
         set popup_is_open(val: boolean);
+        /** @category Inherited from XreaderDocument.AnnotationMarkup */
         get popupIsOpen(): boolean;
         set popupIsOpen(val: boolean);
+        /** @category Inherited from XreaderDocument.AnnotationMarkup */
         get rectangle(): Rectangle;
         set rectangle(val: Rectangle);
         /**
          * The area of the page where the annotation is placed.
          *
          * Since 2.0.2
+         * @category Inherited from XreaderDocument.Annotation
          */
         get area(): Rectangle;
         set area(val: Rectangle);
         /**
-         * The colour of the annotation as a #GdkColor.
+         * The colour of the annotation as a {@link Gdk.Color}.
+         * @deprecated since 1.2.1: Use {@link XreaderDocument.Annotation.rgba} instead.
+         * @category Inherited from XreaderDocument.Annotation
          */
         get color(): any;
         set color(val: any);
+        /** @category Inherited from XreaderDocument.Annotation */
         get contents(): string;
         set contents(val: string);
+        /** @category Inherited from XreaderDocument.Annotation */
         get modified(): string;
         set modified(val: string);
+        /** @category Inherited from XreaderDocument.Annotation */
         get name(): string;
         set name(val: string);
+        /**
+         * @construct-only
+         * @category Inherited from XreaderDocument.Annotation
+         */
         set page(val: Page);
         /**
-         * The colour of the annotation as a #GdkRGBA.
+         * The colour of the annotation as a {@link Gdk.RGBA}.
+         * @since 1.2.1
+         * @category Inherited from XreaderDocument.Annotation
          */
         get rgba(): Gdk.RGBA;
         set rgba(val: Gdk.RGBA);
-
-        // Inherited methods
         get_label(): string;
         get_opacity(): number;
         get_popup_is_open(): boolean;
+        /**
+         * @param ev_rect
+         */
         get_rectangle(ev_rect: Rectangle): void;
+        /**
+         * @param has_popup
+         */
         set_has_popup(has_popup: boolean): boolean;
+        /**
+         * @param label
+         */
         set_label(label: string): boolean;
+        /**
+         * @param opacity
+         */
         set_opacity(opacity: number): boolean;
+        /**
+         * @param is_open
+         */
         set_popup_is_open(is_open: boolean): boolean;
+        /**
+         * @param ev_rect
+         */
         set_rectangle(ev_rect: Rectangle): boolean;
         /**
          * Compare `annot` and `other`.
-         * @param other another #EvAnnotation
-         * @returns %TRUE if @annot is equal to @other, %FALSE otherwise
+         * @param other another {@link XreaderDocument.Annotation}
+         * @returns `true` if `annot` is equal to `other`, `false` otherwise
          */
         equal(other: Annotation): boolean;
         get_annotation_type(): AnnotationType;
+        /**
+         * @param area
+         */
         get_area(area: Rectangle): void;
         /**
          * Get the color of `annot`.
@@ -760,7 +972,7 @@ export namespace XreaderDocument {
          * Get the contents of `annot`. The contents of
          * `annot` is the text that is displayed in the annotation, or an
          * alternate description of the annotation's content for non-text annotations
-         * @returns a string with the contents of the annotation or %NULL if @annot has no contents.
+         * @returns a string with the contents of the annotation or `null` if `annot` has no contents.
          */
         get_contents(): string;
         /**
@@ -777,7 +989,7 @@ export namespace XreaderDocument {
         get_name(): string;
         /**
          * Get the page where `annot` appears.
-         * @returns the #EvPage where @annot appears
+         * @returns the {@link XreaderDocument.Page} where `annot` appears
          */
         get_page(): Page;
         /**
@@ -792,16 +1004,16 @@ export namespace XreaderDocument {
         get_rgba(): Gdk.RGBA;
         /**
          * Set the area of the annotation to `area`.
-         * @param area a #EvRectangle
-         * @returns %TRUE if the area has been changed, %FALSE otherwise
+         * @param area a {@link XreaderDocument.Rectangle}
+         * @returns `true` if the area has been changed, `false` otherwise
          */
         set_area(area: Rectangle): boolean;
         /**
          * Set the color of the annotation to `color`. You can monitor
          * changes to the annotation's color by connecting to
          * notify::color signal on `annot`.
-         * @param color a #GdkColor
-         * @returns %TRUE  when the color has been changed, %FALSE otherwise.
+         * @param color a {@link Gdk.Color}
+         * @returns `true`  when the color has been changed, `false` otherwise.
          */
         set_color(color: Gdk.Color): boolean;
         /**
@@ -809,26 +1021,26 @@ export namespace XreaderDocument {
          * changes in the annotation's  contents by connecting to
          * notify::contents signal of `annot`.
          * @param contents
-         * @returns %TRUE if the contents have been changed, %FALSE otherwise.
+         * @returns `true` if the contents have been changed, `false` otherwise.
          */
         set_contents(contents: string): boolean;
         /**
          * Set the last modification date of `annot` to `modified`. To
-         * set the last modification date using a #time_t, use
-         * ev_annotation_set_modified_from_time() instead. You can monitor
+         * set the last modification date using a `time_t`, use
+         * `ev_annotation_set_modified_from_time()` instead. You can monitor
          * changes to the last modification date by connecting to the
          * notify::modified signal on `annot`.
          * @param modified string with the last modification date.
-         * @returns %TRUE if the last modification date has been updated, %FALSE otherwise.
+         * @returns `true` if the last modification date has been updated, `false` otherwise.
          */
         set_modified(modified: string): boolean;
         /**
          * Set the last modification date of `annot` to `utime`.  You can
          * monitor changes to the last modification date by connectin to the
          * notify::modified sinal on `annot`.
-         * For the time-format used, see ev_document_misc_format_date().
-         * @param utime a #time_t
-         * @returns %TRUE if the last modified date has been updated, %FALSE otherwise.
+         * For the time-format used, see `ev_document_misc_format_date()`.
+         * @param utime a `time_t`
+         * @returns `true` if the last modified date has been updated, `false` otherwise.
          */
         set_modified_from_time(utime: number): boolean;
         /**
@@ -836,13 +1048,13 @@ export namespace XreaderDocument {
          * You can monitor changes of the annotation name by connecting
          * to the notify::name signal on `annot`.
          * @param name
-         * @returns %TRUE when the name has been changed, %FALSE otherwise.
+         * @returns `true` when the name has been changed, `false` otherwise.
          */
         set_name(name: string): boolean;
         /**
          * Set the color of the annotation to `rgba`.
-         * @param rgba a #GdkRGBA
-         * @returns %TRUE if the color has been changed, %FALSE otherwise
+         * @param rgba a {@link Gdk.RGBA}
+         * @returns `true` if the color has been changed, `false` otherwise
          */
         set_rgba(rgba: Gdk.RGBA): boolean;
     }
@@ -876,6 +1088,9 @@ export namespace XreaderDocument {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class AnnotationText extends Annotation implements AnnotationMarkup {
         static $gtype: GObject.GType<AnnotationText>;
 
@@ -907,16 +1122,19 @@ export namespace XreaderDocument {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AnnotationText.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AnnotationText.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AnnotationText.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AnnotationText.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AnnotationText.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AnnotationText.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -927,70 +1145,114 @@ export namespace XreaderDocument {
 
         get_icon(): AnnotationTextIcon;
         get_is_open(): boolean;
+        /**
+         * @param icon
+         */
         set_icon(icon: AnnotationTextIcon | null): boolean;
+        /**
+         * @param is_open
+         */
         set_is_open(is_open: boolean): boolean;
-
-        // Inherited properties
+        /** @category Inherited from XreaderDocument.AnnotationMarkup */
         // This accessor conflicts with a field or function name in a parent class or interface.
         can_have_popup: boolean | any;
+        /** @category Inherited from XreaderDocument.AnnotationMarkup */
         get canHavePopup(): boolean;
         set canHavePopup(val: boolean);
+        /** @category Inherited from XreaderDocument.AnnotationMarkup */
         // This accessor conflicts with a field or function name in a parent class or interface.
         has_popup: boolean | any;
+        /** @category Inherited from XreaderDocument.AnnotationMarkup */
         get hasPopup(): boolean;
         set hasPopup(val: boolean);
+        /** @category Inherited from XreaderDocument.AnnotationMarkup */
         get label(): string;
         set label(val: string);
+        /** @category Inherited from XreaderDocument.AnnotationMarkup */
         get opacity(): number;
         set opacity(val: number);
+        /** @category Inherited from XreaderDocument.AnnotationMarkup */
         get popup_is_open(): boolean;
         set popup_is_open(val: boolean);
+        /** @category Inherited from XreaderDocument.AnnotationMarkup */
         get popupIsOpen(): boolean;
         set popupIsOpen(val: boolean);
+        /** @category Inherited from XreaderDocument.AnnotationMarkup */
         get rectangle(): Rectangle;
         set rectangle(val: Rectangle);
         /**
          * The area of the page where the annotation is placed.
          *
          * Since 2.0.2
+         * @category Inherited from XreaderDocument.Annotation
          */
         get area(): Rectangle;
         set area(val: Rectangle);
         /**
-         * The colour of the annotation as a #GdkColor.
+         * The colour of the annotation as a {@link Gdk.Color}.
+         * @deprecated since 1.2.1: Use {@link XreaderDocument.Annotation.rgba} instead.
+         * @category Inherited from XreaderDocument.Annotation
          */
         get color(): any;
         set color(val: any);
+        /** @category Inherited from XreaderDocument.Annotation */
         get contents(): string;
         set contents(val: string);
+        /** @category Inherited from XreaderDocument.Annotation */
         get modified(): string;
         set modified(val: string);
+        /** @category Inherited from XreaderDocument.Annotation */
         get name(): string;
         set name(val: string);
+        /**
+         * @construct-only
+         * @category Inherited from XreaderDocument.Annotation
+         */
         set page(val: Page);
         /**
-         * The colour of the annotation as a #GdkRGBA.
+         * The colour of the annotation as a {@link Gdk.RGBA}.
+         * @since 1.2.1
+         * @category Inherited from XreaderDocument.Annotation
          */
         get rgba(): Gdk.RGBA;
         set rgba(val: Gdk.RGBA);
-
-        // Inherited methods
         get_label(): string;
         get_opacity(): number;
         get_popup_is_open(): boolean;
+        /**
+         * @param ev_rect
+         */
         get_rectangle(ev_rect: Rectangle): void;
+        /**
+         * @param has_popup
+         */
         set_has_popup(has_popup: boolean): boolean;
+        /**
+         * @param label
+         */
         set_label(label: string): boolean;
+        /**
+         * @param opacity
+         */
         set_opacity(opacity: number): boolean;
+        /**
+         * @param is_open
+         */
         set_popup_is_open(is_open: boolean): boolean;
+        /**
+         * @param ev_rect
+         */
         set_rectangle(ev_rect: Rectangle): boolean;
         /**
          * Compare `annot` and `other`.
-         * @param other another #EvAnnotation
-         * @returns %TRUE if @annot is equal to @other, %FALSE otherwise
+         * @param other another {@link XreaderDocument.Annotation}
+         * @returns `true` if `annot` is equal to `other`, `false` otherwise
          */
         equal(other: Annotation): boolean;
         get_annotation_type(): AnnotationType;
+        /**
+         * @param area
+         */
         get_area(area: Rectangle): void;
         /**
          * Get the color of `annot`.
@@ -1000,7 +1262,7 @@ export namespace XreaderDocument {
          * Get the contents of `annot`. The contents of
          * `annot` is the text that is displayed in the annotation, or an
          * alternate description of the annotation's content for non-text annotations
-         * @returns a string with the contents of the annotation or %NULL if @annot has no contents.
+         * @returns a string with the contents of the annotation or `null` if `annot` has no contents.
          */
         get_contents(): string;
         /**
@@ -1017,7 +1279,7 @@ export namespace XreaderDocument {
         get_name(): string;
         /**
          * Get the page where `annot` appears.
-         * @returns the #EvPage where @annot appears
+         * @returns the {@link XreaderDocument.Page} where `annot` appears
          */
         get_page(): Page;
         /**
@@ -1032,16 +1294,16 @@ export namespace XreaderDocument {
         get_rgba(): Gdk.RGBA;
         /**
          * Set the area of the annotation to `area`.
-         * @param area a #EvRectangle
-         * @returns %TRUE if the area has been changed, %FALSE otherwise
+         * @param area a {@link XreaderDocument.Rectangle}
+         * @returns `true` if the area has been changed, `false` otherwise
          */
         set_area(area: Rectangle): boolean;
         /**
          * Set the color of the annotation to `color`. You can monitor
          * changes to the annotation's color by connecting to
          * notify::color signal on `annot`.
-         * @param color a #GdkColor
-         * @returns %TRUE  when the color has been changed, %FALSE otherwise.
+         * @param color a {@link Gdk.Color}
+         * @returns `true`  when the color has been changed, `false` otherwise.
          */
         set_color(color: Gdk.Color): boolean;
         /**
@@ -1049,26 +1311,26 @@ export namespace XreaderDocument {
          * changes in the annotation's  contents by connecting to
          * notify::contents signal of `annot`.
          * @param contents
-         * @returns %TRUE if the contents have been changed, %FALSE otherwise.
+         * @returns `true` if the contents have been changed, `false` otherwise.
          */
         set_contents(contents: string): boolean;
         /**
          * Set the last modification date of `annot` to `modified`. To
-         * set the last modification date using a #time_t, use
-         * ev_annotation_set_modified_from_time() instead. You can monitor
+         * set the last modification date using a `time_t`, use
+         * `ev_annotation_set_modified_from_time()` instead. You can monitor
          * changes to the last modification date by connecting to the
          * notify::modified signal on `annot`.
          * @param modified string with the last modification date.
-         * @returns %TRUE if the last modification date has been updated, %FALSE otherwise.
+         * @returns `true` if the last modification date has been updated, `false` otherwise.
          */
         set_modified(modified: string): boolean;
         /**
          * Set the last modification date of `annot` to `utime`.  You can
          * monitor changes to the last modification date by connectin to the
          * notify::modified sinal on `annot`.
-         * For the time-format used, see ev_document_misc_format_date().
-         * @param utime a #time_t
-         * @returns %TRUE if the last modified date has been updated, %FALSE otherwise.
+         * For the time-format used, see `ev_document_misc_format_date()`.
+         * @param utime a `time_t`
+         * @returns `true` if the last modified date has been updated, `false` otherwise.
          */
         set_modified_from_time(utime: number): boolean;
         /**
@@ -1076,13 +1338,13 @@ export namespace XreaderDocument {
          * You can monitor changes of the annotation name by connecting
          * to the notify::name signal on `annot`.
          * @param name
-         * @returns %TRUE when the name has been changed, %FALSE otherwise.
+         * @returns `true` when the name has been changed, `false` otherwise.
          */
         set_name(name: string): boolean;
         /**
          * Set the color of the annotation to `rgba`.
-         * @param rgba a #GdkRGBA
-         * @returns %TRUE if the color has been changed, %FALSE otherwise
+         * @param rgba a {@link Gdk.RGBA}
+         * @returns `true` if the color has been changed, `false` otherwise
          */
         set_rgba(rgba: Gdk.RGBA): boolean;
     }
@@ -1113,6 +1375,9 @@ export namespace XreaderDocument {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class AnnotationTextMarkup extends Annotation implements AnnotationMarkup {
         static $gtype: GObject.GType<AnnotationTextMarkup>;
 
@@ -1146,16 +1411,19 @@ export namespace XreaderDocument {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AnnotationTextMarkup.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AnnotationTextMarkup.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AnnotationTextMarkup.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AnnotationTextMarkup.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AnnotationTextMarkup.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AnnotationTextMarkup.SignalSignatures[K]> extends [any, ...infer Q]
@@ -1167,69 +1435,110 @@ export namespace XreaderDocument {
         // Methods
 
         get_markup_type(): AnnotationTextMarkupType;
+        /**
+         * @param markup_type
+         */
         set_markup_type(markup_type: AnnotationTextMarkupType | null): boolean;
-
-        // Inherited properties
+        /** @category Inherited from XreaderDocument.AnnotationMarkup */
         // This accessor conflicts with a field or function name in a parent class or interface.
         can_have_popup: boolean | any;
+        /** @category Inherited from XreaderDocument.AnnotationMarkup */
         get canHavePopup(): boolean;
         set canHavePopup(val: boolean);
+        /** @category Inherited from XreaderDocument.AnnotationMarkup */
         // This accessor conflicts with a field or function name in a parent class or interface.
         has_popup: boolean | any;
+        /** @category Inherited from XreaderDocument.AnnotationMarkup */
         get hasPopup(): boolean;
         set hasPopup(val: boolean);
+        /** @category Inherited from XreaderDocument.AnnotationMarkup */
         get label(): string;
         set label(val: string);
+        /** @category Inherited from XreaderDocument.AnnotationMarkup */
         get opacity(): number;
         set opacity(val: number);
+        /** @category Inherited from XreaderDocument.AnnotationMarkup */
         get popup_is_open(): boolean;
         set popup_is_open(val: boolean);
+        /** @category Inherited from XreaderDocument.AnnotationMarkup */
         get popupIsOpen(): boolean;
         set popupIsOpen(val: boolean);
+        /** @category Inherited from XreaderDocument.AnnotationMarkup */
         get rectangle(): Rectangle;
         set rectangle(val: Rectangle);
         /**
          * The area of the page where the annotation is placed.
          *
          * Since 2.0.2
+         * @category Inherited from XreaderDocument.Annotation
          */
         get area(): Rectangle;
         set area(val: Rectangle);
         /**
-         * The colour of the annotation as a #GdkColor.
+         * The colour of the annotation as a {@link Gdk.Color}.
+         * @deprecated since 1.2.1: Use {@link XreaderDocument.Annotation.rgba} instead.
+         * @category Inherited from XreaderDocument.Annotation
          */
         get color(): any;
         set color(val: any);
+        /** @category Inherited from XreaderDocument.Annotation */
         get contents(): string;
         set contents(val: string);
+        /** @category Inherited from XreaderDocument.Annotation */
         get modified(): string;
         set modified(val: string);
+        /** @category Inherited from XreaderDocument.Annotation */
         get name(): string;
         set name(val: string);
+        /**
+         * @construct-only
+         * @category Inherited from XreaderDocument.Annotation
+         */
         set page(val: Page);
         /**
-         * The colour of the annotation as a #GdkRGBA.
+         * The colour of the annotation as a {@link Gdk.RGBA}.
+         * @since 1.2.1
+         * @category Inherited from XreaderDocument.Annotation
          */
         get rgba(): Gdk.RGBA;
         set rgba(val: Gdk.RGBA);
-
-        // Inherited methods
         get_label(): string;
         get_opacity(): number;
         get_popup_is_open(): boolean;
+        /**
+         * @param ev_rect
+         */
         get_rectangle(ev_rect: Rectangle): void;
+        /**
+         * @param has_popup
+         */
         set_has_popup(has_popup: boolean): boolean;
+        /**
+         * @param label
+         */
         set_label(label: string): boolean;
+        /**
+         * @param opacity
+         */
         set_opacity(opacity: number): boolean;
+        /**
+         * @param is_open
+         */
         set_popup_is_open(is_open: boolean): boolean;
+        /**
+         * @param ev_rect
+         */
         set_rectangle(ev_rect: Rectangle): boolean;
         /**
          * Compare `annot` and `other`.
-         * @param other another #EvAnnotation
-         * @returns %TRUE if @annot is equal to @other, %FALSE otherwise
+         * @param other another {@link XreaderDocument.Annotation}
+         * @returns `true` if `annot` is equal to `other`, `false` otherwise
          */
         equal(other: Annotation): boolean;
         get_annotation_type(): AnnotationType;
+        /**
+         * @param area
+         */
         get_area(area: Rectangle): void;
         /**
          * Get the color of `annot`.
@@ -1239,7 +1548,7 @@ export namespace XreaderDocument {
          * Get the contents of `annot`. The contents of
          * `annot` is the text that is displayed in the annotation, or an
          * alternate description of the annotation's content for non-text annotations
-         * @returns a string with the contents of the annotation or %NULL if @annot has no contents.
+         * @returns a string with the contents of the annotation or `null` if `annot` has no contents.
          */
         get_contents(): string;
         /**
@@ -1256,7 +1565,7 @@ export namespace XreaderDocument {
         get_name(): string;
         /**
          * Get the page where `annot` appears.
-         * @returns the #EvPage where @annot appears
+         * @returns the {@link XreaderDocument.Page} where `annot` appears
          */
         get_page(): Page;
         /**
@@ -1271,16 +1580,16 @@ export namespace XreaderDocument {
         get_rgba(): Gdk.RGBA;
         /**
          * Set the area of the annotation to `area`.
-         * @param area a #EvRectangle
-         * @returns %TRUE if the area has been changed, %FALSE otherwise
+         * @param area a {@link XreaderDocument.Rectangle}
+         * @returns `true` if the area has been changed, `false` otherwise
          */
         set_area(area: Rectangle): boolean;
         /**
          * Set the color of the annotation to `color`. You can monitor
          * changes to the annotation's color by connecting to
          * notify::color signal on `annot`.
-         * @param color a #GdkColor
-         * @returns %TRUE  when the color has been changed, %FALSE otherwise.
+         * @param color a {@link Gdk.Color}
+         * @returns `true`  when the color has been changed, `false` otherwise.
          */
         set_color(color: Gdk.Color): boolean;
         /**
@@ -1288,26 +1597,26 @@ export namespace XreaderDocument {
          * changes in the annotation's  contents by connecting to
          * notify::contents signal of `annot`.
          * @param contents
-         * @returns %TRUE if the contents have been changed, %FALSE otherwise.
+         * @returns `true` if the contents have been changed, `false` otherwise.
          */
         set_contents(contents: string): boolean;
         /**
          * Set the last modification date of `annot` to `modified`. To
-         * set the last modification date using a #time_t, use
-         * ev_annotation_set_modified_from_time() instead. You can monitor
+         * set the last modification date using a `time_t`, use
+         * `ev_annotation_set_modified_from_time()` instead. You can monitor
          * changes to the last modification date by connecting to the
          * notify::modified signal on `annot`.
          * @param modified string with the last modification date.
-         * @returns %TRUE if the last modification date has been updated, %FALSE otherwise.
+         * @returns `true` if the last modification date has been updated, `false` otherwise.
          */
         set_modified(modified: string): boolean;
         /**
          * Set the last modification date of `annot` to `utime`.  You can
          * monitor changes to the last modification date by connectin to the
          * notify::modified sinal on `annot`.
-         * For the time-format used, see ev_document_misc_format_date().
-         * @param utime a #time_t
-         * @returns %TRUE if the last modified date has been updated, %FALSE otherwise.
+         * For the time-format used, see `ev_document_misc_format_date()`.
+         * @param utime a `time_t`
+         * @returns `true` if the last modified date has been updated, `false` otherwise.
          */
         set_modified_from_time(utime: number): boolean;
         /**
@@ -1315,13 +1624,13 @@ export namespace XreaderDocument {
          * You can monitor changes of the annotation name by connecting
          * to the notify::name signal on `annot`.
          * @param name
-         * @returns %TRUE when the name has been changed, %FALSE otherwise.
+         * @returns `true` when the name has been changed, `false` otherwise.
          */
         set_name(name: string): boolean;
         /**
          * Set the color of the annotation to `rgba`.
-         * @param rgba a #GdkRGBA
-         * @returns %TRUE if the color has been changed, %FALSE otherwise
+         * @param rgba a {@link Gdk.RGBA}
+         * @returns `true` if the color has been changed, `false` otherwise
          */
         set_rgba(rgba: Gdk.RGBA): boolean;
     }
@@ -1349,16 +1658,37 @@ export namespace XreaderDocument {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Attachment extends GObject.Object {
         static $gtype: GObject.GType<Attachment>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set ctime(val: GObject.GType);
+        /**
+         * @construct-only
+         */
         set data(val: any);
+        /**
+         * @construct-only
+         */
         set description(val: string);
+        /**
+         * @construct-only
+         */
         set mtime(val: GObject.GType);
+        /**
+         * @construct-only
+         */
         set name(val: string);
+        /**
+         * @construct-only
+         */
         set size(val: number);
 
         /**
@@ -1391,16 +1721,19 @@ export namespace XreaderDocument {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Attachment.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Attachment.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Attachment.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Attachment.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Attachment.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Attachment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1418,7 +1751,14 @@ export namespace XreaderDocument {
         get_mime_type(): string;
         get_modification_date(): GLib.DateTime;
         get_name(): string;
+        /**
+         * @param screen
+         * @param timestamp
+         */
         open(screen: Gdk.Screen, timestamp: number): boolean;
+        /**
+         * @param file
+         */
         save(file: Gio.File): boolean;
     }
 
@@ -1431,6 +1771,9 @@ export namespace XreaderDocument {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class Document extends GObject.Object {
         static $gtype: GObject.GType<Document>;
 
@@ -1456,16 +1799,19 @@ export namespace XreaderDocument {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Document.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Document.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Document.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Document.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Document.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Document.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1482,32 +1828,63 @@ export namespace XreaderDocument {
          *
          * Always add a "All documents" format.
          *
-         * If `document` is not %NULL, adds a #GtkFileFilter for `document'`s MIME type.
+         * If `document` is not `null`, adds a {@link Gtk.FileFilter} for `document`'s MIME type.
          *
-         * If `document` is %NULL, adds a #GtkFileFilter for each document type that xreader
+         * If `document` is `null`, adds a {@link Gtk.FileFilter} for each document type that xreader
          * can handle.
-         * @param chooser a #GtkFileChooser
-         * @param document a #EvDocument, or %NULL
+         * @param chooser a {@link Gtk.FileChooser}
+         * @param document a {@link XreaderDocument.Document}, or `null`
          */
         static factory_add_filters(chooser: Gtk.Widget, document: Document): void;
         /**
-         * Creates a #EvDocument for the document at `uri;` or, if no backend handling
+         * Creates a {@link XreaderDocument.Document} for the document at `uri`; or, if no backend handling
          * the document's type is found, or an error occurred on opening the document,
-         * returns %NULL and fills in `error`.
+         * returns `null` and fills in `error`.
          * If the document is encrypted, it is returned but also `error` is set to
-         * %EV_DOCUMENT_ERROR_ENCRYPTED.
+         * {@link XreaderDocument.DocumentError.ENCRYPTED}.
          * @param uri an URI
          */
         static factory_get_document(uri: string): Document;
         static fc_mutex_lock(): void;
         static fc_mutex_trylock(): boolean;
         static fc_mutex_unlock(): void;
+        /**
+         * @param page_width
+         * @param page_height
+         * @param border
+         */
         static misc_get_page_border_size(page_width: number, page_height: number, border: Gtk.Border): void;
+        /**
+         * @param widget
+         * @param x
+         * @param y
+         */
         static misc_get_pointer_position(widget: Gtk.Widget, x: number, y: number): void;
+        /**
+         * @param screen
+         * @param monitor
+         */
         static misc_get_screen_dpi(screen: Gdk.Screen, monitor: Gdk.Monitor): number;
+        /**
+         * @param window
+         */
         static misc_get_screen_dpi_at_window(window: Gtk.Window): number;
+        /**
+         * @param pixbuf
+         */
         static misc_invert_pixbuf(pixbuf: GdkPixbuf.Pixbuf): void;
+        /**
+         * @param surface
+         */
         static misc_invert_surface(surface: cairo.Surface): void;
+        /**
+         * @param cr
+         * @param widget
+         * @param area
+         * @param border
+         * @param highlight
+         * @param inverted_colors
+         */
         static misc_paint_one_page(
             cr: cairo.Context,
             widget: Gtk.Widget,
@@ -1516,7 +1893,16 @@ export namespace XreaderDocument {
             highlight: boolean,
             inverted_colors: boolean,
         ): void;
+        /**
+         * @param pixbuf
+         */
         static misc_surface_from_pixbuf(pixbuf: GdkPixbuf.Pixbuf): cairo.Surface;
+        /**
+         * @param surface
+         * @param dest_width
+         * @param dest_height
+         * @param dest_rotation
+         */
         static misc_surface_rotate_and_scale(
             surface: cairo.Surface,
             dest_width: number,
@@ -1526,46 +1912,105 @@ export namespace XreaderDocument {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_check_add_night_sheet(): void;
+        /**
+         * @param info
+         * @virtual
+         */
         vfunc_get_backend_info(info: DocumentBackendInfo): boolean;
+        /**
+         * @virtual
+         */
         vfunc_get_info(): DocumentInfo;
+        /**
+         * @virtual
+         */
         vfunc_get_n_pages(): number;
+        /**
+         * @param page
+         * @virtual
+         */
         vfunc_get_page_label(page: Page): string;
+        /**
+         * @param page
+         * @param width
+         * @param height
+         * @virtual
+         */
         vfunc_get_page_size(page: Page, width: number, height: number): void;
         /**
          * Loads `document` from `uri`.
          *
-         * On failure, %FALSE is returned and `error` is filled in.
+         * On failure, `false` is returned and `error` is filled in.
          * If the document is encrypted, EV_DEFINE_ERROR_ENCRYPTED is returned.
          * If the backend cannot load the specific document, EV_DOCUMENT_ERROR_INVALID
          * is returned. Other errors are possible too, depending on the backend
-         * used to load the document and the URI, e.g. #GIOError, #GFileError, and
-         * #GConvertError.
+         * used to load the document and the URI, e.g. {@link GLib.IOError}, {@link GLib.FileError}, and
+         * {@link GLib.ConvertError}.
          * @param uri the document's URI
+         * @virtual
          */
         vfunc_load(uri: string): boolean;
+        /**
+         * @param rc
+         * @virtual
+         */
         vfunc_render(rc: RenderContext): cairo.Surface;
         /**
          * Saves `document` to `uri`.
          * @param uri the target URI
+         * @virtual
          */
         vfunc_save(uri: string): boolean;
+        /**
+         * @virtual
+         */
         vfunc_support_synctex(): boolean;
+        /**
+         * @param night
+         * @virtual
+         */
         vfunc_toggle_night_mode(night: boolean): void;
 
         // Methods
 
         check_add_night_sheet(): void;
         check_dimensions(): boolean;
+        /**
+         * @param page_label
+         * @param page_index
+         */
         find_page_by_label(page_label: string, page_index: number): boolean;
+        /**
+         * @param info
+         */
         get_backend_info(info: DocumentBackendInfo): boolean;
         get_info(): DocumentInfo;
         get_max_label_len(): number;
+        /**
+         * @param width
+         * @param height
+         */
         get_max_page_size(width: number, height: number): void;
+        /**
+         * @param width
+         * @param height
+         */
         get_min_page_size(width: number, height: number): void;
         get_modified(): boolean;
         get_n_pages(): number;
+        /**
+         * @param page_index
+         */
         get_page_label(page_index: number): string;
+        /**
+         * @param page_index
+         * @param width
+         * @param height
+         */
         get_page_size(page_index: number, width: number, height: number): void;
         get_title(): string;
         get_uri(): string;
@@ -1575,34 +2020,43 @@ export namespace XreaderDocument {
         /**
          * Loads `document` from `uri`.
          *
-         * On failure, %FALSE is returned and `error` is filled in.
+         * On failure, `false` is returned and `error` is filled in.
          * If the document is encrypted, EV_DEFINE_ERROR_ENCRYPTED is returned.
          * If the backend cannot load the specific document, EV_DOCUMENT_ERROR_INVALID
          * is returned. Other errors are possible too, depending on the backend
-         * used to load the document and the URI, e.g. #GIOError, #GFileError, and
-         * #GConvertError.
+         * used to load the document and the URI, e.g. {@link GLib.IOError}, {@link GLib.FileError}, and
+         * {@link GLib.ConvertError}.
          * @param uri the document's URI
-         * @returns %TRUE on success, or %FALSE on failure.
+         * @returns `true` on success, or `false` on failure.
          */
         load(uri: string): boolean;
+        /**
+         * @param rc
+         */
         render(rc: RenderContext): cairo.Surface;
         /**
          * Saves `document` to `uri`.
          * @param uri the target URI
-         * @returns %TRUE on success, or %FALSE on error with @error filled in
+         * @returns `true` on success, or `false` on error with `error` filled in
          */
         save(uri: string): boolean;
+        /**
+         * @param modified
+         */
         set_modified(modified: boolean): void;
         /**
          * Peforms a Synctex backward search to obtain the TeX input file, line and
-         * (possibly) column  corresponding to the  position (`x,``y)` (in 72dpi
+         * (possibly) column  corresponding to the  position (`x`,`y`) (in 72dpi
          * coordinates) in the  `page` of `document`.
          * @param page_index
          * @param x
          * @param y
-         * @returns A pointer to the EvSourceLink structure that holds the result. @NULL if synctex is not enabled for the document or no result is found. The EvSourceLink pointer should be freed with g_free after it is used.
+         * @returns A pointer to the EvSourceLink structure that holds the result. `NULL` if synctex is not enabled for the document or no result is found. The EvSourceLink pointer should be freed with g_free after it is used.
          */
         synctex_backward_search(page_index: number, x: number, y: number): SourceLink;
+        /**
+         * @param night
+         */
         toggle_night_mode(night: boolean): void;
     }
 
@@ -1615,6 +2069,9 @@ export namespace XreaderDocument {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class FormField extends GObject.Object {
         static $gtype: GObject.GType<FormField>;
 
@@ -1643,16 +2100,19 @@ export namespace XreaderDocument {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FormField.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FormField.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FormField.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FormField.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FormField.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FormField.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1669,6 +2129,9 @@ export namespace XreaderDocument {
         interface ConstructorProps extends FormField.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class FormFieldButton extends FormField {
         static $gtype: GObject.GType<FormFieldButton>;
 
@@ -1697,16 +2160,19 @@ export namespace XreaderDocument {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FormFieldButton.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FormFieldButton.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FormFieldButton.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FormFieldButton.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FormFieldButton.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FormFieldButton.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1723,6 +2189,9 @@ export namespace XreaderDocument {
         interface ConstructorProps extends FormField.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class FormFieldChoice extends FormField {
         static $gtype: GObject.GType<FormFieldChoice>;
 
@@ -1756,16 +2225,19 @@ export namespace XreaderDocument {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FormFieldChoice.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FormFieldChoice.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FormFieldChoice.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FormFieldChoice.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FormFieldChoice.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FormFieldChoice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1782,6 +2254,9 @@ export namespace XreaderDocument {
         interface ConstructorProps extends FormField.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class FormFieldSignature extends FormField {
         static $gtype: GObject.GType<FormFieldSignature>;
 
@@ -1808,16 +2283,19 @@ export namespace XreaderDocument {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FormFieldSignature.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FormFieldSignature.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FormFieldSignature.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FormFieldSignature.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FormFieldSignature.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FormFieldSignature.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1834,6 +2312,9 @@ export namespace XreaderDocument {
         interface ConstructorProps extends FormField.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class FormFieldText extends FormField {
         static $gtype: GObject.GType<FormFieldText>;
 
@@ -1868,16 +2349,19 @@ export namespace XreaderDocument {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FormFieldText.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FormFieldText.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FormFieldText.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FormFieldText.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FormFieldText.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FormFieldText.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1894,6 +2378,9 @@ export namespace XreaderDocument {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Image extends GObject.Object {
         static $gtype: GObject.GType<Image>;
 
@@ -1922,16 +2409,19 @@ export namespace XreaderDocument {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Image.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Image.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Image.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Image.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1943,6 +2433,9 @@ export namespace XreaderDocument {
         get_id(): number;
         get_page(): number;
         get_tmp_uri(): string;
+        /**
+         * @param pixbuf
+         */
         save_tmp(pixbuf: GdkPixbuf.Pixbuf): string;
     }
 
@@ -1955,6 +2448,9 @@ export namespace XreaderDocument {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Layer extends GObject.Object {
         static $gtype: GObject.GType<Layer>;
 
@@ -1981,16 +2477,19 @@ export namespace XreaderDocument {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Layer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Layer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Layer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Layer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Layer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Layer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2018,12 +2517,21 @@ export namespace XreaderDocument {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Link extends GObject.Object {
         static $gtype: GObject.GType<Link>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get action(): LinkAction;
+        /**
+         * @construct-only
+         */
         get title(): string;
 
         /**
@@ -2045,16 +2553,19 @@ export namespace XreaderDocument {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Link.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Link.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Link.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Link.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Link.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Link.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2098,22 +2609,61 @@ export namespace XreaderDocument {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class LinkAction extends GObject.Object {
         static $gtype: GObject.GType<LinkAction>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get dest(): LinkDest;
+        /**
+         * @construct-only
+         */
         get filename(): string;
+        /**
+         * @construct-only
+         */
         get hide_list(): any;
+        /**
+         * @construct-only
+         */
         get hideList(): any;
+        /**
+         * @construct-only
+         */
         get name(): string;
+        /**
+         * @construct-only
+         */
         get params(): string;
+        /**
+         * @construct-only
+         */
         get show_list(): any;
+        /**
+         * @construct-only
+         */
         get showList(): any;
+        /**
+         * @construct-only
+         */
         get toggle_list(): any;
+        /**
+         * @construct-only
+         */
         get toggleList(): any;
+        /**
+         * @construct-only
+         */
         get type(): LinkActionType;
+        /**
+         * @construct-only
+         */
         get uri(): string;
 
         /**
@@ -2143,16 +2693,19 @@ export namespace XreaderDocument {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LinkAction.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LinkAction.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LinkAction.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LinkAction.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LinkAction.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LinkAction.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2161,6 +2714,9 @@ export namespace XreaderDocument {
 
         // Methods
 
+        /**
+         * @param b
+         */
         equal(b: LinkAction): boolean;
         get_action_type(): LinkActionType;
         get_filename(): string;
@@ -2201,21 +2757,57 @@ export namespace XreaderDocument {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class LinkDest extends GObject.Object {
         static $gtype: GObject.GType<LinkDest>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get bottom(): number;
+        /**
+         * @construct-only
+         */
         get change(): number;
+        /**
+         * @construct-only
+         */
         get left(): number;
+        /**
+         * @construct-only
+         */
         get named(): string;
+        /**
+         * @construct-only
+         */
         get page(): number;
+        /**
+         * @construct-only
+         */
         get page_label(): string;
+        /**
+         * @construct-only
+         */
         get pageLabel(): string;
+        /**
+         * @construct-only
+         */
         get right(): number;
+        /**
+         * @construct-only
+         */
         get top(): number;
+        /**
+         * @construct-only
+         */
         get type(): LinkDestType;
+        /**
+         * @construct-only
+         */
         get zoom(): number;
 
         /**
@@ -2261,16 +2853,19 @@ export namespace XreaderDocument {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LinkDest.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LinkDest.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LinkDest.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LinkDest.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LinkDest.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LinkDest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2279,15 +2874,27 @@ export namespace XreaderDocument {
 
         // Methods
 
+        /**
+         * @param b
+         */
         equal(b: LinkDest): boolean;
         get_bottom(): number;
         get_dest_type(): LinkDestType;
+        /**
+         * @param change_left
+         */
         get_left(change_left: boolean): number;
         get_named_dest(): string;
         get_page(): number;
         get_page_label(): string;
         get_right(): number;
+        /**
+         * @param change_top
+         */
         get_top(change_top: boolean): number;
+        /**
+         * @param change_zoom
+         */
         get_zoom(change_zoom: boolean): number;
     }
 
@@ -2300,6 +2907,9 @@ export namespace XreaderDocument {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Page extends GObject.Object {
         static $gtype: GObject.GType<Page>;
 
@@ -2329,16 +2939,19 @@ export namespace XreaderDocument {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Page.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Page.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Page.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Page.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Page.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Page.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2355,6 +2968,9 @@ export namespace XreaderDocument {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class RenderContext extends GObject.Object {
         static $gtype: GObject.GType<RenderContext>;
 
@@ -2383,16 +2999,19 @@ export namespace XreaderDocument {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RenderContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RenderContext.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RenderContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RenderContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RenderContext.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RenderContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2401,8 +3020,17 @@ export namespace XreaderDocument {
 
         // Methods
 
+        /**
+         * @param page
+         */
         set_page(page: Page): void;
+        /**
+         * @param rotation
+         */
         set_rotation(rotation: number): void;
+        /**
+         * @param scale
+         */
         set_scale(scale: number): void;
     }
 
@@ -2431,6 +3059,9 @@ export namespace XreaderDocument {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class TransitionEffect extends GObject.Object {
         static $gtype: GObject.GType<TransitionEffect>;
 
@@ -2468,16 +3099,19 @@ export namespace XreaderDocument {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TransitionEffect.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TransitionEffect.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TransitionEffect.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TransitionEffect.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TransitionEffect.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TransitionEffect.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2485,19 +3119,52 @@ export namespace XreaderDocument {
         emit(signal: string, ...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AnnotationAttachmentClass = typeof AnnotationAttachment;
+    /**
+     * @gir-type Alias
+     */
     type AnnotationClass = typeof Annotation;
+    /**
+     * @gir-type Alias
+     */
     type AnnotationMarkupInterface = typeof AnnotationMarkup;
+    /**
+     * @gir-type Alias
+     */
     type AnnotationTextClass = typeof AnnotationText;
+    /**
+     * @gir-type Alias
+     */
     type AnnotationTextMarkupClass = typeof AnnotationTextMarkup;
+    /**
+     * @gir-type Alias
+     */
     type AsyncRendererInterface = typeof AsyncRenderer;
+    /**
+     * @gir-type Alias
+     */
     type AttachmentClass = typeof Attachment;
+    /**
+     * @gir-type Struct
+     */
     abstract class AttachmentPrivate {
         static $gtype: GObject.GType<AttachmentPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DocumentAnnotationsInterface = typeof DocumentAnnotations;
+    /**
+     * @gir-type Alias
+     */
     type DocumentAttachmentsInterface = typeof DocumentAttachments;
+    /**
+     * @gir-type Struct
+     */
     class DocumentBackendInfo {
         static $gtype: GObject.GType<DocumentBackendInfo>;
 
@@ -2516,11 +3183,29 @@ export namespace XreaderDocument {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DocumentClass = typeof Document;
+    /**
+     * @gir-type Alias
+     */
     type DocumentFindInterface = typeof DocumentFind;
+    /**
+     * @gir-type Alias
+     */
     type DocumentFontsInterface = typeof DocumentFonts;
+    /**
+     * @gir-type Alias
+     */
     type DocumentFormsInterface = typeof DocumentForms;
+    /**
+     * @gir-type Alias
+     */
     type DocumentImagesInterface = typeof DocumentImages;
+    /**
+     * @gir-type Struct
+     */
     class DocumentInfo {
         static $gtype: GObject.GType<DocumentInfo>;
 
@@ -2551,7 +3236,13 @@ export namespace XreaderDocument {
         free(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DocumentLayersInterface = typeof DocumentLayers;
+    /**
+     * @gir-type Struct
+     */
     class DocumentLicense {
         static $gtype: GObject.GType<DocumentLicense>;
 
@@ -2582,16 +3273,40 @@ export namespace XreaderDocument {
         get_web_statement(): string;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DocumentLinksInterface = typeof DocumentLinks;
+    /**
+     * @gir-type Alias
+     */
     type DocumentPrintInterface = typeof DocumentPrint;
+    /**
+     * @gir-type Struct
+     */
     abstract class DocumentPrivate {
         static $gtype: GObject.GType<DocumentPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DocumentSecurityInterface = typeof DocumentSecurity;
+    /**
+     * @gir-type Alias
+     */
     type DocumentTextInterface = typeof DocumentText;
+    /**
+     * @gir-type Alias
+     */
     type DocumentThumbnailsInterface = typeof DocumentThumbnails;
+    /**
+     * @gir-type Alias
+     */
     type DocumentTransitionInterface = typeof DocumentTransition;
+    /**
+     * @gir-type Struct
+     */
     class FileExporterContext {
         static $gtype: GObject.GType<FileExporterContext>;
 
@@ -2607,37 +3322,88 @@ export namespace XreaderDocument {
         pages_per_sheet: number;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type FileExporterInterface = typeof FileExporter;
+    /**
+     * @gir-type Alias
+     */
     type FormFieldButtonClass = typeof FormFieldButton;
+    /**
+     * @gir-type Alias
+     */
     type FormFieldChoiceClass = typeof FormFieldChoice;
+    /**
+     * @gir-type Alias
+     */
     type FormFieldClass = typeof FormField;
+    /**
+     * @gir-type Alias
+     */
     type FormFieldSignatureClass = typeof FormFieldSignature;
+    /**
+     * @gir-type Alias
+     */
     type FormFieldTextClass = typeof FormFieldText;
+    /**
+     * @gir-type Alias
+     */
     type ImageClass = typeof Image;
+    /**
+     * @gir-type Struct
+     */
     abstract class ImagePrivate {
         static $gtype: GObject.GType<ImagePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type LayerClass = typeof Layer;
+    /**
+     * @gir-type Struct
+     */
     abstract class LayerPrivate {
         static $gtype: GObject.GType<LayerPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type LinkActionClass = typeof LinkAction;
+    /**
+     * @gir-type Struct
+     */
     abstract class LinkActionPrivate {
         static $gtype: GObject.GType<LinkActionPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type LinkClass = typeof Link;
+    /**
+     * @gir-type Alias
+     */
     type LinkDestClass = typeof LinkDest;
+    /**
+     * @gir-type Struct
+     */
     abstract class LinkDestPrivate {
         static $gtype: GObject.GType<LinkDestPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class LinkPrivate {
         static $gtype: GObject.GType<LinkPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Mapping {
         static $gtype: GObject.GType<Mapping>;
 
@@ -2656,19 +3422,35 @@ export namespace XreaderDocument {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class MappingList {
         static $gtype: GObject.GType<MappingList>;
 
         // Methods
 
+        /**
+         * @param x
+         * @param y
+         */
         get_data(x: number, y: number): any | null;
         get_page(): number;
         length(): number;
+        /**
+         * @param mapping
+         */
         remove(mapping: Mapping): void;
         unref(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PageClass = typeof Page;
+    /**
+     * @gir-type Struct
+     */
     class Point {
         static $gtype: GObject.GType<Point>;
 
@@ -2687,6 +3469,9 @@ export namespace XreaderDocument {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Rectangle {
         static $gtype: GObject.GType<Rectangle>;
 
@@ -2716,8 +3501,17 @@ export namespace XreaderDocument {
         free(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RenderContextClass = typeof RenderContext;
+    /**
+     * @gir-type Alias
+     */
     type SelectionInterface = typeof Selection;
+    /**
+     * @gir-type Struct
+     */
     class SourceLink {
         static $gtype: GObject.GType<SourceLink>;
 
@@ -2745,7 +3539,13 @@ export namespace XreaderDocument {
         free(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TransitionEffectClass = typeof TransitionEffect;
+    /**
+     * @gir-type Struct
+     */
     class TypeInfo {
         static $gtype: GObject.GType<TypeInfo>;
 
@@ -2784,6 +3584,9 @@ export namespace XreaderDocument {
         $gtype: GObject.GType<AnnotationMarkup>;
         prototype: AnnotationMarkup;
     }
+    /**
+     * @gir-type Interface
+     */
     interface AnnotationMarkup extends Annotation {
         // Properties
 
@@ -2811,11 +3614,29 @@ export namespace XreaderDocument {
         get_label(): string;
         get_opacity(): number;
         get_popup_is_open(): boolean;
+        /**
+         * @param ev_rect
+         */
         get_rectangle(ev_rect: Rectangle): void;
+        /**
+         * @param has_popup
+         */
         set_has_popup(has_popup: boolean): boolean;
+        /**
+         * @param label
+         */
         set_label(label: string): boolean;
+        /**
+         * @param opacity
+         */
         set_opacity(opacity: number): boolean;
+        /**
+         * @param is_open
+         */
         set_popup_is_open(is_open: boolean): boolean;
+        /**
+         * @param ev_rect
+         */
         set_rectangle(ev_rect: Rectangle): boolean;
     }
 
@@ -2831,7 +3652,17 @@ export namespace XreaderDocument {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param pixbuf
+             * @virtual
+             */
             vfunc_render_finished(pixbuf: GdkPixbuf.Pixbuf): void;
+            /**
+             * @param page
+             * @param scale
+             * @param rotation
+             * @virtual
+             */
             vfunc_render_pixbuf(page: number, scale: number, rotation: number): void;
         }
 
@@ -2844,9 +3675,17 @@ export namespace XreaderDocument {
         $gtype: GObject.GType<AsyncRenderer>;
         prototype: AsyncRenderer;
     }
+    /**
+     * @gir-type Interface
+     */
     interface AsyncRenderer extends GObject.Object, AsyncRenderer.Interface {
         // Methods
 
+        /**
+         * @param page
+         * @param scale
+         * @param rotation
+         */
         render_pixbuf(page: number, scale: number, rotation: number): void;
     }
 
@@ -2862,9 +3701,26 @@ export namespace XreaderDocument {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param annot
+             * @param rect
+             * @virtual
+             */
             vfunc_add_annotation(annot: Annotation, rect: Rectangle): void;
+            /**
+             * @virtual
+             */
             vfunc_document_is_modified(): boolean;
+            /**
+             * @param annot
+             * @virtual
+             */
             vfunc_remove_annotation(annot: Annotation): void;
+            /**
+             * @param annot
+             * @param mask
+             * @virtual
+             */
             vfunc_save_annotation(annot: Annotation, mask: AnnotationsSaveMask): void;
         }
 
@@ -2877,14 +3733,28 @@ export namespace XreaderDocument {
         $gtype: GObject.GType<DocumentAnnotations>;
         prototype: DocumentAnnotations;
     }
+    /**
+     * @gir-type Interface
+     */
     interface DocumentAnnotations extends GObject.Object, DocumentAnnotations.Interface {
         // Methods
 
+        /**
+         * @param annot
+         * @param rect
+         */
         add_annotation(annot: Annotation, rect: Rectangle): void;
         can_add_annotation(): boolean;
         can_remove_annotation(): boolean;
         document_is_modified(): boolean;
+        /**
+         * @param annot
+         */
         remove_annotation(annot: Annotation): void;
+        /**
+         * @param annot
+         * @param mask
+         */
         save_annotation(annot: Annotation, mask: AnnotationsSaveMask | null): void;
     }
 
@@ -2900,6 +3770,9 @@ export namespace XreaderDocument {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @virtual
+             */
             vfunc_has_attachments(): boolean;
         }
 
@@ -2912,6 +3785,9 @@ export namespace XreaderDocument {
         $gtype: GObject.GType<DocumentAttachments>;
         prototype: DocumentAttachments;
     }
+    /**
+     * @gir-type Interface
+     */
     interface DocumentAttachments extends GObject.Object, DocumentAttachments.Interface {
         // Methods
 
@@ -2930,6 +3806,12 @@ export namespace XreaderDocument {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param page
+             * @param text
+             * @param case_sensitive
+             * @virtual
+             */
             vfunc_check_for_hits(page: Page, text: string, case_sensitive: boolean): number;
         }
 
@@ -2942,9 +3824,17 @@ export namespace XreaderDocument {
         $gtype: GObject.GType<DocumentFind>;
         prototype: DocumentFind;
     }
+    /**
+     * @gir-type Interface
+     */
     interface DocumentFind extends GObject.Object, DocumentFind.Interface {
         // Methods
 
+        /**
+         * @param page
+         * @param text
+         * @param case_sensitive
+         */
         check_for_hits(page: Page, text: string, case_sensitive: boolean): number;
     }
 
@@ -2960,8 +3850,19 @@ export namespace XreaderDocument {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param model
+             * @virtual
+             */
             vfunc_fill_model(model: Gtk.TreeModel): void;
+            /**
+             * @virtual
+             */
             vfunc_get_progress(): number;
+            /**
+             * @param n_pages
+             * @virtual
+             */
             vfunc_scan(n_pages: number): boolean;
         }
 
@@ -2974,11 +3875,20 @@ export namespace XreaderDocument {
         $gtype: GObject.GType<DocumentFonts>;
         prototype: DocumentFonts;
     }
+    /**
+     * @gir-type Interface
+     */
     interface DocumentFonts extends GObject.Object, DocumentFonts.Interface {
         // Methods
 
+        /**
+         * @param model
+         */
         fill_model(model: Gtk.TreeModel): void;
         get_progress(): number;
+        /**
+         * @param n_pages
+         */
         scan(n_pages: number): boolean;
     }
 
@@ -2994,18 +3904,76 @@ export namespace XreaderDocument {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @virtual
+             */
             vfunc_document_is_modified(): boolean;
+            /**
+             * @param field
+             * @virtual
+             */
             vfunc_form_field_button_get_state(field: FormField): boolean;
+            /**
+             * @param field
+             * @param state
+             * @virtual
+             */
             vfunc_form_field_button_set_state(field: FormField, state: boolean): void;
+            /**
+             * @param field
+             * @param index
+             * @virtual
+             */
             vfunc_form_field_choice_get_item(field: FormField, index: number): string;
+            /**
+             * @param field
+             * @virtual
+             */
             vfunc_form_field_choice_get_n_items(field: FormField): number;
+            /**
+             * @param field
+             * @virtual
+             */
             vfunc_form_field_choice_get_text(field: FormField): string;
+            /**
+             * @param field
+             * @param index
+             * @virtual
+             */
             vfunc_form_field_choice_is_item_selected(field: FormField, index: number): boolean;
+            /**
+             * @param field
+             * @param index
+             * @virtual
+             */
             vfunc_form_field_choice_select_item(field: FormField, index: number): void;
+            /**
+             * @param field
+             * @param text
+             * @virtual
+             */
             vfunc_form_field_choice_set_text(field: FormField, text: string): void;
+            /**
+             * @param field
+             * @param index
+             * @virtual
+             */
             vfunc_form_field_choice_toggle_item(field: FormField, index: number): void;
+            /**
+             * @param field
+             * @virtual
+             */
             vfunc_form_field_choice_unselect_all(field: FormField): void;
+            /**
+             * @param field
+             * @virtual
+             */
             vfunc_form_field_text_get_text(field: FormField): string;
+            /**
+             * @param field
+             * @param text
+             * @virtual
+             */
             vfunc_form_field_text_set_text(field: FormField, text: string): void;
         }
 
@@ -3018,21 +3986,67 @@ export namespace XreaderDocument {
         $gtype: GObject.GType<DocumentForms>;
         prototype: DocumentForms;
     }
+    /**
+     * @gir-type Interface
+     */
     interface DocumentForms extends GObject.Object, DocumentForms.Interface {
         // Methods
 
         document_is_modified(): boolean;
+        /**
+         * @param field
+         */
         form_field_button_get_state(field: FormField): boolean;
+        /**
+         * @param field
+         * @param state
+         */
         form_field_button_set_state(field: FormField, state: boolean): void;
+        /**
+         * @param field
+         * @param index
+         */
         form_field_choice_get_item(field: FormField, index: number): string;
+        /**
+         * @param field
+         */
         form_field_choice_get_n_items(field: FormField): number;
+        /**
+         * @param field
+         */
         form_field_choice_get_text(field: FormField): string;
+        /**
+         * @param field
+         * @param index
+         */
         form_field_choice_is_item_selected(field: FormField, index: number): boolean;
+        /**
+         * @param field
+         * @param index
+         */
         form_field_choice_select_item(field: FormField, index: number): void;
+        /**
+         * @param field
+         * @param text
+         */
         form_field_choice_set_text(field: FormField, text: string): void;
+        /**
+         * @param field
+         * @param index
+         */
         form_field_choice_toggle_item(field: FormField, index: number): void;
+        /**
+         * @param field
+         */
         form_field_choice_unselect_all(field: FormField): void;
+        /**
+         * @param field
+         */
         form_field_text_get_text(field: FormField): string;
+        /**
+         * @param field
+         * @param text
+         */
         form_field_text_set_text(field: FormField, text: string): void;
     }
 
@@ -3050,6 +4064,9 @@ export namespace XreaderDocument {
         $gtype: GObject.GType<DocumentImages>;
         prototype: DocumentImages;
     }
+    /**
+     * @gir-type Interface
+     */
     interface DocumentImages extends GObject.Object {}
 
     export const DocumentImages: DocumentImagesNamespace & {
@@ -3064,9 +4081,24 @@ export namespace XreaderDocument {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @virtual
+             */
             vfunc_has_layers(): boolean;
+            /**
+             * @param layer
+             * @virtual
+             */
             vfunc_hide_layer(layer: Layer): void;
+            /**
+             * @param layer
+             * @virtual
+             */
             vfunc_layer_is_visible(layer: Layer): boolean;
+            /**
+             * @param layer
+             * @virtual
+             */
             vfunc_show_layer(layer: Layer): void;
         }
 
@@ -3079,12 +4111,24 @@ export namespace XreaderDocument {
         $gtype: GObject.GType<DocumentLayers>;
         prototype: DocumentLayers;
     }
+    /**
+     * @gir-type Interface
+     */
     interface DocumentLayers extends GObject.Object, DocumentLayers.Interface {
         // Methods
 
         has_layers(): boolean;
+        /**
+         * @param layer
+         */
         hide_layer(layer: Layer): void;
+        /**
+         * @param layer
+         */
         layer_is_visible(layer: Layer): boolean;
+        /**
+         * @param layer
+         */
         show_layer(layer: Layer): void;
     }
 
@@ -3100,7 +4144,14 @@ export namespace XreaderDocument {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param link_name
+             * @virtual
+             */
             vfunc_find_link_page(link_name: string): number;
+            /**
+             * @virtual
+             */
             vfunc_has_document_links(): boolean;
         }
 
@@ -3113,13 +4164,31 @@ export namespace XreaderDocument {
         $gtype: GObject.GType<DocumentLinks>;
         prototype: DocumentLinks;
     }
+    /**
+     * @gir-type Interface
+     */
     interface DocumentLinks extends GObject.Object, DocumentLinks.Interface {
         // Methods
 
+        /**
+         * @param link_name
+         */
         find_link_page(link_name: string): number;
+        /**
+         * @param dest
+         */
         get_dest_page(dest: LinkDest): number;
+        /**
+         * @param dest
+         */
         get_dest_page_label(dest: LinkDest): string;
+        /**
+         * @param link
+         */
         get_link_page(link: Link): number;
+        /**
+         * @param link
+         */
         get_link_page_label(link: Link): string;
         has_document_links(): boolean;
     }
@@ -3136,6 +4205,11 @@ export namespace XreaderDocument {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param page
+             * @param cr
+             * @virtual
+             */
             vfunc_print_page(page: Page, cr: cairo.Context): void;
         }
 
@@ -3148,9 +4222,16 @@ export namespace XreaderDocument {
         $gtype: GObject.GType<DocumentPrint>;
         prototype: DocumentPrint;
     }
+    /**
+     * @gir-type Interface
+     */
     interface DocumentPrint extends GObject.Object, DocumentPrint.Interface {
         // Methods
 
+        /**
+         * @param page
+         * @param cr
+         */
         print_page(page: Page, cr: cairo.Context): void;
     }
 
@@ -3166,7 +4247,14 @@ export namespace XreaderDocument {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @virtual
+             */
             vfunc_has_document_security(): boolean;
+            /**
+             * @param password
+             * @virtual
+             */
             vfunc_set_password(password: string): void;
         }
 
@@ -3179,10 +4267,16 @@ export namespace XreaderDocument {
         $gtype: GObject.GType<DocumentSecurity>;
         prototype: DocumentSecurity;
     }
+    /**
+     * @gir-type Interface
+     */
     interface DocumentSecurity extends GObject.Object, DocumentSecurity.Interface {
         // Methods
 
         has_document_security(): boolean;
+        /**
+         * @param password
+         */
         set_password(password: string): void;
     }
 
@@ -3198,8 +4292,22 @@ export namespace XreaderDocument {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param page
+             * @virtual
+             */
             vfunc_get_text(page: Page): string;
+            /**
+             * @param page
+             * @param areas
+             * @param n_areas
+             * @virtual
+             */
             vfunc_get_text_layout(page: Page, areas: Rectangle, n_areas: number): boolean;
+            /**
+             * @param page
+             * @virtual
+             */
             vfunc_get_text_mapping(page: Page): cairo.Region;
         }
 
@@ -3212,11 +4320,25 @@ export namespace XreaderDocument {
         $gtype: GObject.GType<DocumentText>;
         prototype: DocumentText;
     }
+    /**
+     * @gir-type Interface
+     */
     interface DocumentText extends GObject.Object, DocumentText.Interface {
         // Methods
 
+        /**
+         * @param page
+         */
         get_text(page: Page): string;
+        /**
+         * @param page
+         * @param areas
+         * @param n_areas
+         */
         get_text_layout(page: Page, areas: Rectangle, n_areas: number): boolean;
+        /**
+         * @param page
+         */
         get_text_mapping(page: Page): cairo.Region;
     }
 
@@ -3232,6 +4354,12 @@ export namespace XreaderDocument {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param rc
+             * @param width
+             * @param height
+             * @virtual
+             */
             vfunc_get_dimensions(rc: RenderContext, width: number, height: number): void;
         }
 
@@ -3244,9 +4372,17 @@ export namespace XreaderDocument {
         $gtype: GObject.GType<DocumentThumbnails>;
         prototype: DocumentThumbnails;
     }
+    /**
+     * @gir-type Interface
+     */
     interface DocumentThumbnails extends GObject.Object, DocumentThumbnails.Interface {
         // Methods
 
+        /**
+         * @param rc
+         * @param width
+         * @param height
+         */
         get_dimensions(rc: RenderContext, width: number, height: number): void;
     }
 
@@ -3262,6 +4398,10 @@ export namespace XreaderDocument {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param page
+             * @virtual
+             */
             vfunc_get_page_duration(page: number): number;
         }
 
@@ -3274,9 +4414,15 @@ export namespace XreaderDocument {
         $gtype: GObject.GType<DocumentTransition>;
         prototype: DocumentTransition;
     }
+    /**
+     * @gir-type Interface
+     */
     interface DocumentTransition extends GObject.Object, DocumentTransition.Interface {
         // Methods
 
+        /**
+         * @param page
+         */
         get_page_duration(page: number): number;
     }
 
@@ -3292,11 +4438,31 @@ export namespace XreaderDocument {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param fc
+             * @virtual
+             */
             vfunc_begin(fc: FileExporterContext): void;
+            /**
+             * @virtual
+             */
             vfunc_begin_page(): void;
+            /**
+             * @param rc
+             * @virtual
+             */
             vfunc_do_page(rc: RenderContext): void;
+            /**
+             * @virtual
+             */
             vfunc_end(): void;
+            /**
+             * @virtual
+             */
             vfunc_end_page(): void;
+            /**
+             * @virtual
+             */
             vfunc_get_capabilities(): FileExporterCapabilities;
         }
 
@@ -3309,11 +4475,20 @@ export namespace XreaderDocument {
         $gtype: GObject.GType<FileExporter>;
         prototype: FileExporter;
     }
+    /**
+     * @gir-type Interface
+     */
     interface FileExporter extends GObject.Object, FileExporter.Interface {
         // Methods
 
+        /**
+         * @param fc
+         */
         begin(fc: FileExporterContext): void;
         begin_page(): void;
+        /**
+         * @param rc
+         */
         do_page(rc: RenderContext): void;
         end(): void;
         end_page(): void;
@@ -3332,8 +4507,30 @@ export namespace XreaderDocument {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param page
+             * @param style
+             * @param points
+             * @virtual
+             */
             vfunc_get_selected_text(page: Page, style: SelectionStyle, points: Rectangle): string;
+            /**
+             * @param rc
+             * @param style
+             * @param points
+             * @virtual
+             */
             vfunc_get_selection_region(rc: RenderContext, style: SelectionStyle, points: Rectangle): cairo.Region;
+            /**
+             * @param rc
+             * @param surface
+             * @param points
+             * @param old_points
+             * @param style
+             * @param text
+             * @param base
+             * @virtual
+             */
             vfunc_render_selection(
                 rc: RenderContext,
                 surface: cairo.Surface,
@@ -3354,11 +4551,33 @@ export namespace XreaderDocument {
         $gtype: GObject.GType<Selection>;
         prototype: Selection;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Selection extends GObject.Object, Selection.Interface {
         // Methods
 
+        /**
+         * @param page
+         * @param style
+         * @param points
+         */
         get_selected_text(page: Page, style: SelectionStyle | null, points: Rectangle): string;
+        /**
+         * @param rc
+         * @param style
+         * @param points
+         */
         get_selection_region(rc: RenderContext, style: SelectionStyle | null, points: Rectangle): cairo.Region;
+        /**
+         * @param rc
+         * @param surface
+         * @param points
+         * @param old_points
+         * @param style
+         * @param text
+         * @param base
+         */
         render_selection(
             rc: RenderContext,
             surface: cairo.Surface,
@@ -3374,7 +4593,13 @@ export namespace XreaderDocument {
         new (): Selection; // This allows `obj instanceof Selection`
     };
 
+    /**
+     * @gir-type Alias
+     */
     type BackendPage = any;
+    /**
+     * @gir-type Alias
+     */
     type BackendPageDestroyFunc = GLib.DestroyNotify;
     /**
      * Name of the imported GIR library

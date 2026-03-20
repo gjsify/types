@@ -20,12 +20,17 @@ export namespace Mbim {
      * Mbim-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AccessMediaType {
         export const $gtype: GObject.GType<AccessMediaType>;
     }
 
     /**
      * Access type preference.
+     * @gir-type Enum
+     * @since 1.28
      */
     enum AccessMediaType {
         /**
@@ -42,12 +47,17 @@ export namespace Mbim {
         '3GPP_PREFERRED',
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ActivationCommand {
         export const $gtype: GObject.GType<ActivationCommand>;
     }
 
     /**
      * Activation Command.
+     * @gir-type Enum
+     * @since 1.0
      */
     enum ActivationCommand {
         /**
@@ -60,12 +70,17 @@ export namespace Mbim {
         ACTIVATE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ActivationState {
         export const $gtype: GObject.GType<ActivationState>;
     }
 
     /**
      * Activation State.
+     * @gir-type Enum
+     * @since 1.0
      */
     enum ActivationState {
         /**
@@ -90,12 +105,17 @@ export namespace Mbim {
         DEACTIVATING,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AtdsProviderPlmnMode {
         export const $gtype: GObject.GType<AtdsProviderPlmnMode>;
     }
 
     /**
      * Provider PLMN mode.
+     * @gir-type Enum
+     * @since 1.16
      */
     enum AtdsProviderPlmnMode {
         /**
@@ -112,12 +132,17 @@ export namespace Mbim {
         LTE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AtdsRatMode {
         export const $gtype: GObject.GType<AtdsRatMode>;
     }
 
     /**
      * RAT mode preferences.
+     * @gir-type Enum
+     * @since 1.16
      */
     enum AtdsRatMode {
         /**
@@ -138,12 +163,17 @@ export namespace Mbim {
         '4G_ONLY',
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AuthProtocol {
         export const $gtype: GObject.GType<AuthProtocol>;
     }
 
     /**
      * Auth Protocol.
+     * @gir-type Enum
+     * @since 1.0
      */
     enum AuthProtocol {
         /**
@@ -164,12 +194,17 @@ export namespace Mbim {
         MSCHAPV2,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CarrierLockCause {
         export const $gtype: GObject.GType<CarrierLockCause>;
     }
 
     /**
      * Carrier lock cause.
+     * @gir-type Enum
+     * @since 1.30
      */
     enum CarrierLockCause {
         /**
@@ -186,12 +221,17 @@ export namespace Mbim {
         SIM_LOCK_POLICY_MATCHED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CarrierLockModemState {
         export const $gtype: GObject.GType<CarrierLockModemState>;
     }
 
     /**
      * State of modem after a carrier lock state update.
+     * @gir-type Enum
+     * @since 1.30
      */
     enum CarrierLockModemState {
         /**
@@ -212,12 +252,17 @@ export namespace Mbim {
         REGISTERED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CarrierLockStatus {
         export const $gtype: GObject.GType<CarrierLockStatus>;
     }
 
     /**
      * Status of carrier lock.
+     * @gir-type Enum
+     * @since 1.30
      */
     enum CarrierLockStatus {
         /**
@@ -230,12 +275,17 @@ export namespace Mbim {
         APPLIED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CidAtds {
         export const $gtype: GObject.GType<CidAtds>;
     }
 
     /**
-     * MBIM commands in the %MBIM_SERVICE_ATDS service.
+     * MBIM commands in the {@link Mbim.Service.ATDS} service.
+     * @gir-type Enum
+     * @since 1.16
      */
     enum CidAtds {
         /**
@@ -264,12 +314,17 @@ export namespace Mbim {
         REGISTER_STATE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CidAuth {
         export const $gtype: GObject.GType<CidAuth>;
     }
 
     /**
-     * MBIM commands in the %MBIM_SERVICE_AUTH service.
+     * MBIM commands in the {@link Mbim.Service.AUTH} service.
+     * @gir-type Enum
+     * @since 1.0
      */
     enum CidAuth {
         /**
@@ -290,12 +345,17 @@ export namespace Mbim {
         SIM,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CidBasicConnect {
         export const $gtype: GObject.GType<CidBasicConnect>;
     }
 
     /**
-     * MBIM commands in the %MBIM_SERVICE_BASIC_CONNECT service.
+     * MBIM commands in the {@link Mbim.Service.BASIC_CONNECT} service.
+     * @gir-type Enum
+     * @since 1.0
      */
     enum CidBasicConnect {
         /**
@@ -392,12 +452,40 @@ export namespace Mbim {
         MULTICARRIER_PROVIDERS,
     }
 
+    /**
+     * @gir-type Enum
+     */
+    export namespace CidCompal {
+        export const $gtype: GObject.GType<CidCompal>;
+    }
+
+    /**
+     * MBIM commands in the {@link Mbim.Service.COMPAL} service.
+     * @gir-type Enum
+     * @since 1.32
+     */
+    enum CidCompal {
+        /**
+         * Unknown command.
+         */
+        UNKNOWN,
+        /**
+         * AT over MBIM message.
+         */
+        AT_COMMAND,
+    }
+
+    /**
+     * @gir-type Enum
+     */
     export namespace CidDss {
         export const $gtype: GObject.GType<CidDss>;
     }
 
     /**
-     * MBIM commands in the %MBIM_SERVICE_DSS service.
+     * MBIM commands in the {@link Mbim.Service.DSS} service.
+     * @gir-type Enum
+     * @since 1.0
      */
     enum CidDss {
         /**
@@ -410,12 +498,40 @@ export namespace Mbim {
         CONNECT,
     }
 
+    /**
+     * @gir-type Enum
+     */
+    export namespace CidFibocom {
+        export const $gtype: GObject.GType<CidFibocom>;
+    }
+
+    /**
+     * MBIM commands in the {@link Mbim.Service.FIBOCOM} service.
+     * @gir-type Enum
+     * @since 1.32
+     */
+    enum CidFibocom {
+        /**
+         * Unknown command.
+         */
+        UNKNOWN,
+        /**
+         * AT over MBIM message.
+         */
+        AT_COMMAND,
+    }
+
+    /**
+     * @gir-type Enum
+     */
     export namespace CidGoogle {
         export const $gtype: GObject.GType<CidGoogle>;
     }
 
     /**
-     * MBIM commands in the %MBIM_SERVICE_GOOGLE service.
+     * MBIM commands in the {@link Mbim.Service.GOOGLE} service.
+     * @gir-type Enum
+     * @since 1.30
      */
     enum CidGoogle {
         /**
@@ -428,12 +544,17 @@ export namespace Mbim {
         CARRIER_LOCK,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CidIntelFirmwareUpdate {
         export const $gtype: GObject.GType<CidIntelFirmwareUpdate>;
     }
 
     /**
-     * MBIM commands in the %MBIM_SERVICE_INTEL_FIRMWARE_UPDATE service.
+     * MBIM commands in the {@link Mbim.Service.INTEL_FIRMWARE_UPDATE} service.
+     * @gir-type Enum
+     * @since 1.16
      */
     enum CidIntelFirmwareUpdate {
         /**
@@ -446,12 +567,17 @@ export namespace Mbim {
         MODEM_REBOOT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CidIntelMutualAuthentication {
         export const $gtype: GObject.GType<CidIntelMutualAuthentication>;
     }
 
     /**
-     * MBIM commands in the %MBIM_SERVICE_INTEL_MUTUAL_AUTHENTICATION service.
+     * MBIM commands in the {@link Mbim.Service.INTEL_MUTUAL_AUTHENTICATION} service.
+     * @gir-type Enum
+     * @since 1.30
      */
     enum CidIntelMutualAuthentication {
         /**
@@ -464,12 +590,17 @@ export namespace Mbim {
         FCC_LOCK,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CidIntelThermalRf {
         export const $gtype: GObject.GType<CidIntelThermalRf>;
     }
 
     /**
-     * MBIM commands in the %MBIM_SERVICE_INTEL_THERMAL_RF service.
+     * MBIM commands in the {@link Mbim.Service.INTEL_THERMAL_RF} service.
+     * @gir-type Enum
+     * @since 1.28
      */
     enum CidIntelThermalRf {
         /**
@@ -482,12 +613,17 @@ export namespace Mbim {
         RFIM,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CidIntelTools {
         export const $gtype: GObject.GType<CidIntelTools>;
     }
 
     /**
-     * MBIM commands in the %MBIM_SERVICE_INTEL_TOOLS service.
+     * MBIM commands in the {@link Mbim.Service.INTEL_TOOLS} service.
+     * @gir-type Enum
+     * @since 1.30
      */
     enum CidIntelTools {
         /**
@@ -500,12 +636,17 @@ export namespace Mbim {
         TRACE_CONFIG,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CidMsBasicConnectExtensions {
         export const $gtype: GObject.GType<CidMsBasicConnectExtensions>;
     }
 
     /**
-     * MBIM commands in the %MBIM_SERVICE_MS_BASIC_CONNECT_EXTENSIONS service.
+     * MBIM commands in the {@link Mbim.Service.MS_BASIC_CONNECT_EXTENSIONS} service.
+     * @gir-type Enum
+     * @since 1.18
      */
     enum CidMsBasicConnectExtensions {
         /**
@@ -578,12 +719,17 @@ export namespace Mbim {
         WAKE_REASON,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CidMsFirmwareId {
         export const $gtype: GObject.GType<CidMsFirmwareId>;
     }
 
     /**
-     * MBIM commands in the %MBIM_SERVICE_MS_FIRMWARE_ID service.
+     * MBIM commands in the {@link Mbim.Service.MS_FIRMWARE_ID} service.
+     * @gir-type Enum
+     * @since 1.8
      */
     enum CidMsFirmwareId {
         /**
@@ -596,12 +742,17 @@ export namespace Mbim {
         GET,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CidMsHostShutdown {
         export const $gtype: GObject.GType<CidMsHostShutdown>;
     }
 
     /**
-     * MBIM commands in the %MBIM_SERVICE_MS_HOST_SHUTDOWN service.
+     * MBIM commands in the {@link Mbim.Service.MS_HOST_SHUTDOWN} service.
+     * @gir-type Enum
+     * @since 1.8
      */
     enum CidMsHostShutdown {
         /**
@@ -614,12 +765,17 @@ export namespace Mbim {
         NOTIFY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CidMsSar {
         export const $gtype: GObject.GType<CidMsSar>;
     }
 
     /**
-     * MBIM commands in the %MBIM_SERVICE_MS_SAR service.
+     * MBIM commands in the {@link Mbim.Service.MS_SAR} service.
+     * @gir-type Enum
+     * @since 1.26
      */
     enum CidMsSar {
         /**
@@ -636,12 +792,17 @@ export namespace Mbim {
         TRANSMISSION_STATUS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CidMsUiccLowLevelAccess {
         export const $gtype: GObject.GType<CidMsUiccLowLevelAccess>;
     }
 
     /**
-     * MBIM commands in the %MBIM_SERVICE_MS_UICC_LOW_LEVEL_ACCESS service.
+     * MBIM commands in the {@link Mbim.Service.MS_UICC_LOW_LEVEL_ACCESS} service.
+     * @gir-type Enum
+     * @since 1.26
      */
     enum CidMsUiccLowLevelAccess {
         /**
@@ -690,12 +851,17 @@ export namespace Mbim {
         READ_RECORD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CidMsVoiceExtensions {
         export const $gtype: GObject.GType<CidMsVoiceExtensions>;
     }
 
     /**
-     * MBIM commands in the %MBIM_SERVICE_MS_VOICE_EXTENSIONS service.
+     * MBIM commands in the {@link Mbim.Service.MS_VOICE_EXTENSIONS} service.
+     * @gir-type Enum
+     * @since 1.28
      */
     enum CidMsVoiceExtensions {
         /**
@@ -708,12 +874,17 @@ export namespace Mbim {
         NITZ,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CidPhonebook {
         export const $gtype: GObject.GType<CidPhonebook>;
     }
 
     /**
-     * MBIM commands in the %MBIM_SERVICE_PHONEBOOK service.
+     * MBIM commands in the {@link Mbim.Service.PHONEBOOK} service.
+     * @gir-type Enum
+     * @since 1.0
      */
     enum CidPhonebook {
         /**
@@ -738,12 +909,17 @@ export namespace Mbim {
         WRITE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CidProxyControl {
         export const $gtype: GObject.GType<CidProxyControl>;
     }
 
     /**
-     * MBIM commands in the %MBIM_SERVICE_PROXY_CONTROL service.
+     * MBIM commands in the {@link Mbim.Service.PROXY_CONTROL} service.
+     * @gir-type Enum
+     * @since 1.10
      */
     enum CidProxyControl {
         /**
@@ -760,12 +936,17 @@ export namespace Mbim {
         VERSION,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CidQdu {
         export const $gtype: GObject.GType<CidQdu>;
     }
 
     /**
-     * MBIM commands in the %MBIM_SERVICE_QDU service.
+     * MBIM commands in the {@link Mbim.Service.QDU} service.
+     * @gir-type Enum
+     * @since 1.26
      */
     enum CidQdu {
         /**
@@ -792,14 +973,23 @@ export namespace Mbim {
          * Read firmware version (Quectel specific). Since 1.28.
          */
         QUECTEL_READ_VERSION,
+        /**
+         * Send AT or system command by mbim port. Since 1.32.
+         */
+        COMMAND,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CidQmi {
         export const $gtype: GObject.GType<CidQmi>;
     }
 
     /**
-     * MBIM commands in the %MBIM_SERVICE_QMI service.
+     * MBIM commands in the {@link Mbim.Service.QMI} service.
+     * @gir-type Enum
+     * @since 1.14
      */
     enum CidQmi {
         /**
@@ -812,12 +1002,17 @@ export namespace Mbim {
         MSG,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CidQuectel {
         export const $gtype: GObject.GType<CidQuectel>;
     }
 
     /**
-     * MBIM commands in the %MBIM_SERVICE_QUECTEL service.
+     * MBIM commands in the {@link Mbim.Service.QUECTEL} service.
+     * @gir-type Enum
+     * @since 1.26.2
      */
     enum CidQuectel {
         /**
@@ -830,12 +1025,17 @@ export namespace Mbim {
         RADIO_STATE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CidSms {
         export const $gtype: GObject.GType<CidSms>;
     }
 
     /**
-     * MBIM commands in the %MBIM_SERVICE_SMS service.
+     * MBIM commands in the {@link Mbim.Service.SMS} service.
+     * @gir-type Enum
+     * @since 1.0
      */
     enum CidSms {
         /**
@@ -864,12 +1064,17 @@ export namespace Mbim {
         MESSAGE_STORE_STATUS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CidStk {
         export const $gtype: GObject.GType<CidStk>;
     }
 
     /**
-     * MBIM commands in the %MBIM_SERVICE_STK service.
+     * MBIM commands in the {@link Mbim.Service.STK} service.
+     * @gir-type Enum
+     * @since 1.0
      */
     enum CidStk {
         /**
@@ -890,12 +1095,17 @@ export namespace Mbim {
         ENVELOPE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CidUssd {
         export const $gtype: GObject.GType<CidUssd>;
     }
 
     /**
-     * MBIM commands in the %MBIM_SERVICE_USSD service.
+     * MBIM commands in the {@link Mbim.Service.USSD} service.
+     * @gir-type Enum
+     * @since 1.0
      */
     enum CidUssd {
         /**
@@ -908,12 +1118,17 @@ export namespace Mbim {
         USSD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Compression {
         export const $gtype: GObject.GType<Compression>;
     }
 
     /**
      * Compression.
+     * @gir-type Enum
+     * @since 1.0
      */
     enum Compression {
         /**
@@ -926,12 +1141,17 @@ export namespace Mbim {
         ENABLE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ContextIpType {
         export const $gtype: GObject.GType<ContextIpType>;
     }
 
     /**
      * Context IP Type.
+     * @gir-type Enum
+     * @since 1.0
      */
     enum ContextIpType {
         /**
@@ -956,6 +1176,9 @@ export namespace Mbim {
         IPV4_AND_IPV6,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ContextMediaType {
         export const $gtype: GObject.GType<ContextMediaType>;
     }
@@ -963,6 +1186,8 @@ export namespace Mbim {
     /**
      * Media type, specifying whether the modem is used for cellular or
      * iWLAN (Wi-Fi offload).
+     * @gir-type Enum
+     * @since 1.28
      */
     enum ContextMediaType {
         /**
@@ -979,12 +1204,17 @@ export namespace Mbim {
         ALL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ContextOperation {
         export const $gtype: GObject.GType<ContextOperation>;
     }
 
     /**
      * Command to run when updating context configuration.
+     * @gir-type Enum
+     * @since 1.28
      */
     enum ContextOperation {
         /**
@@ -1001,12 +1231,17 @@ export namespace Mbim {
         RESTORE_FACTORY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ContextRoamingControl {
         export const $gtype: GObject.GType<ContextRoamingControl>;
     }
 
     /**
      * Type of roaming control.
+     * @gir-type Enum
+     * @since 1.28
      */
     enum ContextRoamingControl {
         /**
@@ -1039,12 +1274,17 @@ export namespace Mbim {
         ALLOW_ALL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ContextSource {
         export const $gtype: GObject.GType<ContextSource>;
     }
 
     /**
      * Source of context creation.
+     * @gir-type Enum
+     * @since 1.18
      */
     enum ContextSource {
         /**
@@ -1069,12 +1309,17 @@ export namespace Mbim {
         DEVICE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ContextState {
         export const $gtype: GObject.GType<ContextState>;
     }
 
     /**
      * Status of the context, specifying whether it's enabled or disabled.
+     * @gir-type Enum
+     * @since 1.28
      */
     enum ContextState {
         /**
@@ -1087,12 +1332,17 @@ export namespace Mbim {
         ENABLED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ContextType {
         export const $gtype: GObject.GType<ContextType>;
     }
 
     /**
      * Enumeration of the generic MBIM context types.
+     * @gir-type Enum
+     * @since 1.0
      */
     enum ContextType {
         /**
@@ -1169,6 +1419,7 @@ export namespace Mbim {
 
     /**
      * Common errors that may be reported by libmbim-glib.
+     * @gir-type Struct
      */
     class CoreError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -1219,19 +1470,24 @@ export namespace Mbim {
         // Static methods
 
         /**
-         * Gets the nickname string for the #MbimCoreError specified at `val`.
+         * Gets the nickname string for the {@link Mbim.CoreError} specified at `val`.
          * @param val a MbimCoreError.
          */
         static get_string(val: CoreError): string;
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DefaultPduActivationHint {
         export const $gtype: GObject.GType<DefaultPduActivationHint>;
     }
 
     /**
      * Hint regarding the activation of the default PDU session.
+     * @gir-type Enum
+     * @since 1.28
      */
     enum DefaultPduActivationHint {
         /**
@@ -1244,12 +1500,17 @@ export namespace Mbim {
         LIKELY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DeviceType {
         export const $gtype: GObject.GType<DeviceType>;
     }
 
     /**
      * Type of device.
+     * @gir-type Enum
+     * @since 1.0
      */
     enum DeviceType {
         /**
@@ -1272,6 +1533,7 @@ export namespace Mbim {
 
     /**
      * DRX cycle settings.
+     * @gir-type Struct
      */
     class DrxCycle {
         static $gtype: GObject.GType<DrxCycle>;
@@ -1304,12 +1566,17 @@ export namespace Mbim {
         static '256': number;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DssLinkState {
         export const $gtype: GObject.GType<DssLinkState>;
     }
 
     /**
      * Action performed in the link state.
+     * @gir-type Enum
+     * @since 1.4
      */
     enum DssLinkState {
         /**
@@ -1322,12 +1589,17 @@ export namespace Mbim {
         ACTIVATE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace EmergencyModeState {
         export const $gtype: GObject.GType<EmergencyModeState>;
     }
 
     /**
      * Emergency mode state.
+     * @gir-type Enum
+     * @since 1.4
      */
     enum EmergencyModeState {
         /**
@@ -1340,12 +1612,17 @@ export namespace Mbim {
         ON,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace IntelBootMode {
         export const $gtype: GObject.GType<IntelBootMode>;
     }
 
     /**
      * Modem intel boot mode.
+     * @gir-type Enum
+     * @since 1.28
      */
     enum IntelBootMode {
         /**
@@ -1374,12 +1651,17 @@ export namespace Mbim {
         FAST_DOWNLOAD_MODE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace IntelServingCellInfo {
         export const $gtype: GObject.GType<IntelServingCellInfo>;
     }
 
     /**
      * Serving cell information.
+     * @gir-type Enum
+     * @since 1.28
      */
     enum IntelServingCellInfo {
         /**
@@ -1404,12 +1686,17 @@ export namespace Mbim {
         RADIO_OFF,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LadnInfo {
         export const $gtype: GObject.GType<LadnInfo>;
     }
 
     /**
      * Local Area Data Network (LADN) information state.
+     * @gir-type Enum
+     * @since 1.28
      */
     enum LadnInfo {
         /**
@@ -1422,12 +1709,17 @@ export namespace Mbim {
         REQUESTED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LteAttachContextOperation {
         export const $gtype: GObject.GType<LteAttachContextOperation>;
     }
 
     /**
      * Command to run when updating LTE attach configuration.
+     * @gir-type Enum
+     * @since 1.18
      */
     enum LteAttachContextOperation {
         /**
@@ -1440,12 +1732,17 @@ export namespace Mbim {
         RESTORE_FACTORY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LteAttachContextRoamingControl {
         export const $gtype: GObject.GType<LteAttachContextRoamingControl>;
     }
 
     /**
      * Type of roaming control.
+     * @gir-type Enum
+     * @since 1.18
      */
     enum LteAttachContextRoamingControl {
         /**
@@ -1462,12 +1759,17 @@ export namespace Mbim {
         NON_PARTNER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace LteAttachState {
         export const $gtype: GObject.GType<LteAttachState>;
     }
 
     /**
      * LTE attach state.
+     * @gir-type Enum
+     * @since 1.18
      */
     enum LteAttachState {
         /**
@@ -1480,12 +1782,17 @@ export namespace Mbim {
         ATTACHED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MessageCommandType {
         export const $gtype: GObject.GType<MessageCommandType>;
     }
 
     /**
      * Type of command message.
+     * @gir-type Enum
+     * @since 1.0
      */
     enum MessageCommandType {
         /**
@@ -1502,12 +1809,17 @@ export namespace Mbim {
         SET,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MessageType {
         export const $gtype: GObject.GType<MessageType>;
     }
 
     /**
      * Type of MBIM messages.
+     * @gir-type Enum
+     * @since 1.0
      */
     enum MessageType {
         /**
@@ -1552,6 +1864,9 @@ export namespace Mbim {
         INDICATE_STATUS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MicoMode {
         export const $gtype: GObject.GType<MicoMode>;
     }
@@ -1561,6 +1876,8 @@ export namespace Mbim {
      *
      * The `MBIM_MICO_MODE_DEFAULT` value should only be used in set operations, it
      * should never be returned by the module upon a query.
+     * @gir-type Enum
+     * @since 1.28
      */
     enum MicoMode {
         /**
@@ -1581,12 +1898,17 @@ export namespace Mbim {
         DEFAULT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ModemConfigurationStatus {
         export const $gtype: GObject.GType<ModemConfigurationStatus>;
     }
 
     /**
      * Modem configuration status.
+     * @gir-type Enum
+     * @since 1.28
      */
     enum ModemConfigurationStatus {
         /**
@@ -1603,12 +1925,17 @@ export namespace Mbim {
         COMPLETED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NetworkIdleHintState {
         export const $gtype: GObject.GType<NetworkIdleHintState>;
     }
 
     /**
      * Enable or disable network idle hint.
+     * @gir-type Enum
+     * @since 1.4
      */
     enum NetworkIdleHintState {
         /**
@@ -1621,12 +1948,17 @@ export namespace Mbim {
         ENABLED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NwError {
         export const $gtype: GObject.GType<NwError>;
     }
 
     /**
      * Network errors.
+     * @gir-type Enum
+     * @since 1.0
      */
     enum NwError {
         /**
@@ -1899,12 +2231,17 @@ export namespace Mbim {
         MULTIPLE_ACCESSES_TO_A_PDN_CONNECTION_NOT_ALLOWED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PacketServiceAction {
         export const $gtype: GObject.GType<PacketServiceAction>;
     }
 
     /**
      * Packet Service Action.
+     * @gir-type Enum
+     * @since 1.0
      */
     enum PacketServiceAction {
         /**
@@ -1917,12 +2254,17 @@ export namespace Mbim {
         DETACH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PacketServiceState {
         export const $gtype: GObject.GType<PacketServiceState>;
     }
 
     /**
      * Packet Service State.
+     * @gir-type Enum
+     * @since 1.0
      */
     enum PacketServiceState {
         /**
@@ -1947,12 +2289,17 @@ export namespace Mbim {
         DETACHED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PcoType {
         export const $gtype: GObject.GType<PcoType>;
     }
 
     /**
      * Type of PCO structure.
+     * @gir-type Enum
+     * @since 1.18
      */
     enum PcoType {
         /**
@@ -1965,12 +2312,17 @@ export namespace Mbim {
         PARTIAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PhonebookFlag {
         export const $gtype: GObject.GType<PhonebookFlag>;
     }
 
     /**
      * Flags to use when reading the phonebook.
+     * @gir-type Enum
+     * @since 1.4
      */
     enum PhonebookFlag {
         /**
@@ -1983,12 +2335,17 @@ export namespace Mbim {
         INDEX,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PhonebookState {
         export const $gtype: GObject.GType<PhonebookState>;
     }
 
     /**
      * Phonebook state.
+     * @gir-type Enum
+     * @since 1.4
      */
     enum PhonebookState {
         /**
@@ -2001,12 +2358,17 @@ export namespace Mbim {
         INITIALIZED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PhonebookWriteFlag {
         export const $gtype: GObject.GType<PhonebookWriteFlag>;
     }
 
     /**
      * Flags to use when writing the phonebook.
+     * @gir-type Enum
+     * @since 1.4
      */
     enum PhonebookWriteFlag {
         /**
@@ -2019,12 +2381,17 @@ export namespace Mbim {
         INDEX,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PinFormat {
         export const $gtype: GObject.GType<PinFormat>;
     }
 
     /**
      * Format of the expected PIN code.
+     * @gir-type Enum
+     * @since 1.0
      */
     enum PinFormat {
         /**
@@ -2041,12 +2408,17 @@ export namespace Mbim {
         ALPHANUMERIC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PinMode {
         export const $gtype: GObject.GType<PinMode>;
     }
 
     /**
      * Whether the lock is enabled or disabled.
+     * @gir-type Enum
+     * @since 1.0
      */
     enum PinMode {
         /**
@@ -2063,12 +2435,17 @@ export namespace Mbim {
         DISABLED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PinOperation {
         export const $gtype: GObject.GType<PinOperation>;
     }
 
     /**
      * Operation to perform on the PIN.
+     * @gir-type Enum
+     * @since 1.0
      */
     enum PinOperation {
         /**
@@ -2089,12 +2466,17 @@ export namespace Mbim {
         CHANGE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PinState {
         export const $gtype: GObject.GType<PinState>;
     }
 
     /**
      * PIN States.
+     * @gir-type Enum
+     * @since 1.0
      */
     enum PinState {
         /**
@@ -2107,12 +2489,17 @@ export namespace Mbim {
         LOCKED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PinType {
         export const $gtype: GObject.GType<PinType>;
     }
 
     /**
      * PIN Types.
+     * @gir-type Enum
+     * @since 1.0
      */
     enum PinType {
         /**
@@ -2199,6 +2586,7 @@ export namespace Mbim {
 
     /**
      * MBIM protocol errors.
+     * @gir-type Struct
      */
     class ProtocolError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -2249,19 +2637,24 @@ export namespace Mbim {
         // Static methods
 
         /**
-         * Gets the nickname string for the #MbimProtocolError specified at `val`.
+         * Gets the nickname string for the {@link Mbim.ProtocolError} specified at `val`.
          * @param val a MbimProtocolError.
          */
         static get_string(val: ProtocolError): string;
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace QduFileType {
         export const $gtype: GObject.GType<QduFileType>;
     }
 
     /**
      * QDU session result.
+     * @gir-type Enum
+     * @since 1.26
      */
     enum QduFileType {
         /**
@@ -2270,12 +2663,17 @@ export namespace Mbim {
         PACKAGE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace QduQuectelRebootType {
         export const $gtype: GObject.GType<QduQuectelRebootType>;
     }
 
     /**
      * QDU Quectel Reboot session type.
+     * @gir-type Enum
+     * @since 1.28
      */
     enum QduQuectelRebootType {
         /**
@@ -2284,12 +2682,17 @@ export namespace Mbim {
         EDL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace QduQuectelVersionType {
         export const $gtype: GObject.GType<QduQuectelVersionType>;
     }
 
     /**
      * QDU Quectel Read Version session type.
+     * @gir-type Enum
+     * @since 1.28
      */
     enum QduQuectelVersionType {
         /**
@@ -2298,12 +2701,17 @@ export namespace Mbim {
         ID,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace QduSessionAction {
         export const $gtype: GObject.GType<QduSessionAction>;
     }
 
     /**
      * Action performed for the session initialization.
+     * @gir-type Enum
+     * @since 1.26
      */
     enum QduSessionAction {
         /**
@@ -2316,12 +2724,17 @@ export namespace Mbim {
         STOP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace QduSessionResult {
         export const $gtype: GObject.GType<QduSessionResult>;
     }
 
     /**
      * QDU session result.
+     * @gir-type Enum
+     * @since 1.26
      */
     enum QduSessionResult {
         /**
@@ -2334,12 +2747,17 @@ export namespace Mbim {
         FAILURE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace QduSessionStatus {
         export const $gtype: GObject.GType<QduSessionStatus>;
     }
 
     /**
      * QDU session status.
+     * @gir-type Enum
+     * @since 1.26
      */
     enum QduSessionStatus {
         /**
@@ -2356,12 +2774,17 @@ export namespace Mbim {
         APPLY_UPDATE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace QduSessionType {
         export const $gtype: GObject.GType<QduSessionType>;
     }
 
     /**
      * QDU session types.
+     * @gir-type Enum
+     * @since 1.26
      */
     enum QduSessionType {
         /**
@@ -2374,12 +2797,63 @@ export namespace Mbim {
         LE,
     }
 
+    /**
+     * @gir-type Enum
+     */
+    export namespace QuectelCommandResponseStatus {
+        export const $gtype: GObject.GType<QuectelCommandResponseStatus>;
+    }
+
+    /**
+     * The status returned by sending commands via MBIM.
+     * @gir-type Enum
+     * @since 1.32
+     */
+    enum QuectelCommandResponseStatus {
+        /**
+         * Command return status OK.
+         */
+        OK,
+        /**
+         * Command return status FAIL.
+         */
+        FAIL,
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace QuectelCommandType {
+        export const $gtype: GObject.GType<QuectelCommandType>;
+    }
+
+    /**
+     * The types of commands sent via MBIM.
+     * @gir-type Enum
+     * @since 1.32
+     */
+    enum QuectelCommandType {
+        /**
+         * Command type is AT.
+         */
+        AT,
+        /**
+         * Command type is SYSTEM.
+         */
+        SYSTEM,
+    }
+
+    /**
+     * @gir-type Enum
+     */
     export namespace QuectelRadioSwitchState {
         export const $gtype: GObject.GType<QuectelRadioSwitchState>;
     }
 
     /**
      * Radio switch state.
+     * @gir-type Enum
+     * @since 1.26.2
      */
     enum QuectelRadioSwitchState {
         /**
@@ -2396,12 +2870,17 @@ export namespace Mbim {
         FCC_LOCKED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RadioSwitchState {
         export const $gtype: GObject.GType<RadioSwitchState>;
     }
 
     /**
      * Radio switch state.
+     * @gir-type Enum
+     * @since 1.0
      */
     enum RadioSwitchState {
         /**
@@ -2414,12 +2893,17 @@ export namespace Mbim {
         ON,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RegisterAction {
         export const $gtype: GObject.GType<RegisterAction>;
     }
 
     /**
      * Type of registration requested.
+     * @gir-type Enum
+     * @since 1.0
      */
     enum RegisterAction {
         /**
@@ -2432,12 +2916,17 @@ export namespace Mbim {
         MANUAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RegisterMode {
         export const $gtype: GObject.GType<RegisterMode>;
     }
 
     /**
      * Type of registration requested.
+     * @gir-type Enum
+     * @since 1.0
      */
     enum RegisterMode {
         /**
@@ -2454,12 +2943,17 @@ export namespace Mbim {
         MANUAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RegisterState {
         export const $gtype: GObject.GType<RegisterState>;
     }
 
     /**
      * Registration state.
+     * @gir-type Enum
+     * @since 1.0
      */
     enum RegisterState {
         /**
@@ -2492,12 +2986,17 @@ export namespace Mbim {
         DENIED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SarBackoffState {
         export const $gtype: GObject.GType<SarBackoffState>;
     }
 
     /**
      * SAR backoff state.
+     * @gir-type Enum
+     * @since 1.26
      */
     enum SarBackoffState {
         /**
@@ -2510,12 +3009,17 @@ export namespace Mbim {
         ENABLED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SarControlMode {
         export const $gtype: GObject.GType<SarControlMode>;
     }
 
     /**
      * SAR backoff mechanism control modes.
+     * @gir-type Enum
+     * @since 1.26
      */
     enum SarControlMode {
         /**
@@ -2528,12 +3032,17 @@ export namespace Mbim {
         OS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SarWifiHardwareState {
         export const $gtype: GObject.GType<SarWifiHardwareState>;
     }
 
     /**
      * Whether the Wi-Fi and cellular SAR are integrated at hardware level.
+     * @gir-type Enum
+     * @since 1.26
      */
     enum SarWifiHardwareState {
         /**
@@ -2546,12 +3055,17 @@ export namespace Mbim {
         NOT_INTEGRATED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Service {
         export const $gtype: GObject.GType<Service>;
     }
 
     /**
      * Enumeration of the generic MBIM services.
+     * @gir-type Enum
+     * @since 1.0
      */
     enum Service {
         /**
@@ -2650,14 +3164,27 @@ export namespace Mbim {
          * Google specific service. Since 1.30
          */
         GOOGLE,
+        /**
+         * Fibocom specific service. Since 1.32.
+         */
+        FIBOCOM,
+        /**
+         * Compal specific service. Since 1.32.
+         */
+        COMPAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SmsCdmaEncoding {
         export const $gtype: GObject.GType<SmsCdmaEncoding>;
     }
 
     /**
      * Type of encoding of a CDMA SMS.
+     * @gir-type Enum
+     * @since 1.4
      */
     enum SmsCdmaEncoding {
         /**
@@ -2702,12 +3229,17 @@ export namespace Mbim {
         GSM_7BIT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SmsCdmaLang {
         export const $gtype: GObject.GType<SmsCdmaLang>;
     }
 
     /**
      * Language of a CDMA SMS.
+     * @gir-type Enum
+     * @since 1.4
      */
     enum SmsCdmaLang {
         /**
@@ -2744,6 +3276,9 @@ export namespace Mbim {
         HEBREW,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SmsFlag {
         export const $gtype: GObject.GType<SmsFlag>;
     }
@@ -2751,6 +3286,8 @@ export namespace Mbim {
     /**
      * Flags to use when requesting to read SMS. `MBIM_SMS_FLAG_ALL` and
      * `MBIM_SMS_FLAG_NEW` are mandatory, all the others are optional.
+     * @gir-type Enum
+     * @since 1.4
      */
     enum SmsFlag {
         /**
@@ -2779,12 +3316,17 @@ export namespace Mbim {
         DRAFT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SmsFormat {
         export const $gtype: GObject.GType<SmsFormat>;
     }
 
     /**
      * SMS format.
+     * @gir-type Enum
+     * @since 1.4
      */
     enum SmsFormat {
         /**
@@ -2797,12 +3339,17 @@ export namespace Mbim {
         CDMA,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SmsStatus {
         export const $gtype: GObject.GType<SmsStatus>;
     }
 
     /**
      * Status of a SMS message.
+     * @gir-type Enum
+     * @since 1.4
      */
     enum SmsStatus {
         /**
@@ -2823,12 +3370,17 @@ export namespace Mbim {
         SENT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SmsStorageState {
         export const $gtype: GObject.GType<SmsStorageState>;
     }
 
     /**
      * State of the SMS storage.
+     * @gir-type Enum
+     * @since 1.4
      */
     enum SmsStorageState {
         /**
@@ -2843,6 +3395,7 @@ export namespace Mbim {
 
     /**
      * Status of the MBIM request.
+     * @gir-type Struct
      */
     class StatusError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -3022,6 +3575,18 @@ export namespace Mbim {
          */
         static SMSFORMATNOTSUPPORTED: number;
         /**
+         * Logical channel open not successful due to channels not available. Defined by Microsoft for UICC low level access. Since 1.32.
+         */
+        static NOLOGICALCHANNELS: number;
+        /**
+         * Logical channel open not successful due to SELECT failure. Defined by Microsoft for UICC low level access. Since 1.32.
+         */
+        static SELECTFAILED: number;
+        /**
+         * Logical channel number invalid. Defined by Microsoft for UICC low level access. Since 1.32.
+         */
+        static INVALIDLOGICALCHANNEL: number;
+        /**
          * Invalid signature. Defined by Google for the carrier lock operation. Since 1.30.
          */
         static INVALIDSIGNATURE: number;
@@ -3057,19 +3622,24 @@ export namespace Mbim {
         // Static methods
 
         /**
-         * Gets the nickname string for the #MbimStatusError specified at `val`.
+         * Gets the nickname string for the {@link Mbim.StatusError} specified at `val`.
          * @param val a MbimStatusError.
          */
         static get_string(val: StatusError): string;
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StkPacProfile {
         export const $gtype: GObject.GType<StkPacProfile>;
     }
 
     /**
      * Proactive command profile.
+     * @gir-type Enum
+     * @since 1.4
      */
     enum StkPacProfile {
         /**
@@ -3106,12 +3676,17 @@ export namespace Mbim {
         HANDLED_BY_HOST_FUNCTION_ABLE_TO_HANDLE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StkPacType {
         export const $gtype: GObject.GType<StkPacType>;
     }
 
     /**
      * Type of proactive command.
+     * @gir-type Enum
+     * @since 1.4
      */
     enum StkPacType {
         /**
@@ -3124,12 +3699,17 @@ export namespace Mbim {
         NOTIFICATION,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SubscriberReadyState {
         export const $gtype: GObject.GType<SubscriberReadyState>;
     }
 
     /**
      * Ready state of the subscriber.
+     * @gir-type Enum
+     * @since 1.0
      */
     enum SubscriberReadyState {
         /**
@@ -3167,12 +3747,17 @@ export namespace Mbim {
         NO_ESIM_PROFILE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TlvType {
         export const $gtype: GObject.GType<TlvType>;
     }
 
     /**
      * Type of the MBIM TLV.
+     * @gir-type Enum
+     * @since 1.28
      */
     enum TlvType {
         /**
@@ -3220,7 +3805,7 @@ export namespace Mbim {
          */
         WCHAR_STR,
         /**
-         * Array of 1 or more `guint1`6 entries.
+         * Array of 1 or more `guint16` entries.
          */
         UINT16_TBL,
         /**
@@ -3249,12 +3834,17 @@ export namespace Mbim {
         WAKE_PACKET,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TraceCommand {
         export const $gtype: GObject.GType<TraceCommand>;
     }
 
     /**
      * The trace command value.
+     * @gir-type Enum
+     * @since 1.30
      */
     enum TraceCommand {
         /**
@@ -3275,12 +3865,17 @@ export namespace Mbim {
         FLASH_INTERVAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TransmissionNotificationStatus {
         export const $gtype: GObject.GType<TransmissionNotificationStatus>;
     }
 
     /**
      * Whether modem channel transmission status notification is disabled or enabled.
+     * @gir-type Enum
+     * @since 1.26
      */
     enum TransmissionNotificationStatus {
         /**
@@ -3293,12 +3888,17 @@ export namespace Mbim {
         ENABLED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TransmissionState {
         export const $gtype: GObject.GType<TransmissionState>;
     }
 
     /**
      * Whether modem is having TX traffic every hysteresis timeout.
+     * @gir-type Enum
+     * @since 1.26
      */
     enum TransmissionState {
         /**
@@ -3311,12 +3911,17 @@ export namespace Mbim {
         ACTIVE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UiccApplicationType {
         export const $gtype: GObject.GType<UiccApplicationType>;
     }
 
     /**
      * Type of UICC application.
+     * @gir-type Enum
+     * @since 1.28
      */
     enum UiccApplicationType {
         /**
@@ -3349,12 +3954,17 @@ export namespace Mbim {
         ISIM,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UiccClassByteType {
         export const $gtype: GObject.GType<UiccClassByteType>;
     }
 
     /**
      * Specifies the type of class byte definition.
+     * @gir-type Enum
+     * @since 1.26
      */
     enum UiccClassByteType {
         /**
@@ -3367,12 +3977,17 @@ export namespace Mbim {
         EXTENDED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UiccFileAccessibility {
         export const $gtype: GObject.GType<UiccFileAccessibility>;
     }
 
     /**
      * The UICC file accessibility.
+     * @gir-type Enum
+     * @since 1.28
      */
     enum UiccFileAccessibility {
         /**
@@ -3389,12 +4004,17 @@ export namespace Mbim {
         SHAREABLE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UiccFileStructure {
         export const $gtype: GObject.GType<UiccFileStructure>;
     }
 
     /**
      * The UICC file structure.
+     * @gir-type Enum
+     * @since 1.28
      */
     enum UiccFileStructure {
         /**
@@ -3419,12 +4039,17 @@ export namespace Mbim {
         BER_TLV,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UiccFileType {
         export const $gtype: GObject.GType<UiccFileType>;
     }
 
     /**
      * The UICC file type.
+     * @gir-type Enum
+     * @since 1.28
      */
     enum UiccFileType {
         /**
@@ -3445,6 +4070,9 @@ export namespace Mbim {
         DF_OR_ADF,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UiccPassThroughAction {
         export const $gtype: GObject.GType<UiccPassThroughAction>;
     }
@@ -3452,6 +4080,8 @@ export namespace Mbim {
     /**
      * Pass through actions host can specify to modem. Upon reset
      * treats UICC as if pass through or as a regular UICC
+     * @gir-type Enum
+     * @since 1.26
      */
     enum UiccPassThroughAction {
         /**
@@ -3464,12 +4094,17 @@ export namespace Mbim {
         ENABLE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UiccPassThroughStatus {
         export const $gtype: GObject.GType<UiccPassThroughStatus>;
     }
 
     /**
      * Pass through status of the modem specifies to the host.
+     * @gir-type Enum
+     * @since 1.26
      */
     enum UiccPassThroughStatus {
         /**
@@ -3482,12 +4117,17 @@ export namespace Mbim {
         ENABLED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UiccSecureMessaging {
         export const $gtype: GObject.GType<UiccSecureMessaging>;
     }
 
     /**
      * Specifies whether apdu is exchanged using secure messaging.
+     * @gir-type Enum
+     * @since 1.26
      */
     enum UiccSecureMessaging {
         /**
@@ -3500,12 +4140,17 @@ export namespace Mbim {
         NO_HDR_AUTH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UiccSlotState {
         export const $gtype: GObject.GType<UiccSlotState>;
     }
 
     /**
      * MbimUiccSlotState
+     * @gir-type Enum
+     * @since 1.26
      */
     enum UiccSlotState {
         /**
@@ -3546,12 +4191,17 @@ export namespace Mbim {
         STATE_ACTIVE_ESIM_NO_PROFILES,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UssdAction {
         export const $gtype: GObject.GType<UssdAction>;
     }
 
     /**
      * USSD action.
+     * @gir-type Enum
+     * @since 1.4
      */
     enum UssdAction {
         /**
@@ -3568,12 +4218,17 @@ export namespace Mbim {
         CANCEL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UssdResponse {
         export const $gtype: GObject.GType<UssdResponse>;
     }
 
     /**
      * USSD response.
+     * @gir-type Enum
+     * @since 1.4
      */
     enum UssdResponse {
         /**
@@ -3602,12 +4257,17 @@ export namespace Mbim {
         NETWORK_TIMEOUT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UssdSessionState {
         export const $gtype: GObject.GType<UssdSessionState>;
     }
 
     /**
      * Session state.
+     * @gir-type Enum
+     * @since 1.4
      */
     enum UssdSessionState {
         /**
@@ -3620,12 +4280,17 @@ export namespace Mbim {
         EXISTING_SESSION,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VisibleProvidersAction {
         export const $gtype: GObject.GType<VisibleProvidersAction>;
     }
 
     /**
      * Type of action to perform when listing visible providers.
+     * @gir-type Enum
+     * @since 1.2
      */
     enum VisibleProvidersAction {
         /**
@@ -3638,12 +4303,17 @@ export namespace Mbim {
         RESTRICTED_SCAN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VoiceCallState {
         export const $gtype: GObject.GType<VoiceCallState>;
     }
 
     /**
      * Voice Call State.
+     * @gir-type Enum
+     * @since 1.0
      */
     enum VoiceCallState {
         /**
@@ -3660,12 +4330,17 @@ export namespace Mbim {
         HANG_UP,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace VoiceClass {
         export const $gtype: GObject.GType<VoiceClass>;
     }
 
     /**
      * Voice class.
+     * @gir-type Enum
+     * @since 1.0
      */
     enum VoiceClass {
         /**
@@ -3686,12 +4361,17 @@ export namespace Mbim {
         SIMULTANEOUS_VOICE_DATA,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WakeType {
         export const $gtype: GObject.GType<WakeType>;
     }
 
     /**
      * Wake type.
+     * @gir-type Enum
+     * @since 1.28
      */
     enum WakeType {
         /**
@@ -3710,745 +4390,901 @@ export namespace Mbim {
 
     const DBUS_ERROR_PREFIX: string;
     /**
-     * Symbol defining the #MbimDevice:device-consecutive-timeouts property.
+     * Symbol defining the {@link Mbim.Device.device_consecutive_timeouts} property.
+     * @since 1.28
      */
     const DEVICE_CONSECUTIVE_TIMEOUTS: string;
     /**
-     * Symbol defining the #MbimDevice:device-file property.
+     * Symbol defining the {@link Mbim.Device.device_file} property.
+     * @since 1.0
      */
     const DEVICE_FILE: string;
     /**
-     * Symbol defining the #MbimDevice:device-in-session property.
+     * Symbol defining the {@link Mbim.Device.device_in_session} property.
+     * @since 1.4
      */
     const DEVICE_IN_SESSION: string;
     /**
      * Symbol defining the maximum supported session id.
+     * @since 1.26
      */
     const DEVICE_SESSION_ID_MAX: number;
     /**
      * Symbol defining the minimum supported session id..
+     * @since 1.26
      */
     const DEVICE_SESSION_ID_MIN: number;
     /**
-     * Symbol defining the #MbimDevice::device-error signal.
+     * Symbol defining the {@link Mbim.Device.SignalSignatures.device_error | Mbim.Device::device-error} signal.
+     * @since 1.0
      */
     const DEVICE_SIGNAL_ERROR: string;
     /**
-     * Symbol defining the #MbimDevice::device-indicate-status signal.
+     * Symbol defining the {@link Mbim.Device.SignalSignatures.device_indicate_status | Mbim.Device::device-indicate-status} signal.
+     * @since 1.0
      */
     const DEVICE_SIGNAL_INDICATE_STATUS: string;
     /**
-     * Symbol defining the #MbimDevice::device-removed signal.
+     * Symbol defining the {@link Mbim.Device.SignalSignatures.device_removed | Mbim.Device::device-removed} signal.
+     * @since 1.10
      */
     const DEVICE_SIGNAL_REMOVED: string;
     /**
-     * Symbol defining the #MbimDevice:device-transaction-id property.
+     * Symbol defining the {@link Mbim.Device.device_transaction_id} property.
+     * @since 1.2
      */
     const DEVICE_TRANSACTION_ID: string;
     /**
      * Evaluates to the major version number of libmbim-glib which this source
      * is compiled against.
+     * @since 1.2
      */
     const MAJOR_VERSION: number;
     /**
      * Evaluates to the micro version number of libmbim-glib which this source
      * compiled against.
+     * @since 1.2
      */
     const MICRO_VERSION: number;
     /**
      * Evaluates to the minor version number of libmbim-glib which this source
      * is compiled against.
+     * @since 1.2
      */
     const MINOR_VERSION: number;
     /**
-     * Symbol defining the #MbimProxy:mbim-proxy-n-clients property.
+     * Symbol defining the {@link Mbim.Proxy.mbim_proxy_n_clients} property.
+     * @since 1.10
      */
     const PROXY_N_CLIENTS: string;
     /**
-     * Symbol defining the #MbimProxy:mbim-proxy-n-devices property.
+     * Symbol defining the {@link Mbim.Proxy.mbim_proxy_n_devices} property.
+     * @since 1.10
      */
     const PROXY_N_DEVICES: string;
     /**
-     * Symbol defining the default abstract socket name where the #MbimProxy will listen.
+     * Symbol defining the default abstract socket name where the {@link Mbim.Proxy} will listen.
+     * @since 1.10
      */
     const PROXY_SOCKET_PATH: string;
     /**
-     * Gets the nickname string for the #MbimAccessMediaType specified at `val`.
+     * Gets the nickname string for the {@link Mbim.AccessMediaType} specified at `val`.
      * @param val a MbimAccessMediaType.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.28
      */
     function access_media_type_get_string(val: AccessMediaType | null): string;
     /**
-     * Gets the nickname string for the #MbimActivationCommand specified at `val`.
+     * Gets the nickname string for the {@link Mbim.ActivationCommand} specified at `val`.
      * @param val a MbimActivationCommand.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.0
      */
     function activation_command_get_string(val: ActivationCommand | null): string;
     /**
-     * Gets the nickname string for the #MbimActivationState specified at `val`.
+     * Gets the nickname string for the {@link Mbim.ActivationState} specified at `val`.
      * @param val a MbimActivationState.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.0
      */
     function activation_state_get_string(val: ActivationState | null): string;
     /**
-     * Frees the memory allocated for the array of #MbimAtdsProvider structs.
-     * @param array a #NULL terminated array of #MbimAtdsProvider structs.
+     * Frees the memory allocated for the array of {@link Mbim.AtdsProvider} structs.
+     * @param array a `NULL` terminated array of {@link Mbim.AtdsProvider} structs.
+     * @since 1.16
      */
     function atds_provider_array_free(array: AtdsProviderArray): void;
     /**
-     * Gets the nickname string for the #MbimAtdsProviderPlmnMode specified at `val`.
+     * Gets the nickname string for the {@link Mbim.AtdsProviderPlmnMode} specified at `val`.
      * @param val a MbimAtdsProviderPlmnMode.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.16
      */
     function atds_provider_plmn_mode_get_string(val: AtdsProviderPlmnMode | null): string;
     /**
-     * Gets the nickname string for the #MbimAtdsRatMode specified at `val`.
+     * Gets the nickname string for the {@link Mbim.AtdsRatMode} specified at `val`.
      * @param val a MbimAtdsRatMode.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.16
      */
     function atds_rat_mode_get_string(val: AtdsRatMode | null): string;
     /**
-     * Gets the nickname string for the #MbimAuthProtocol specified at `val`.
+     * Gets the nickname string for the {@link Mbim.AuthProtocol} specified at `val`.
      * @param val a MbimAuthProtocol.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.0
      */
     function auth_protocol_get_string(val: AuthProtocol | null): string;
     /**
-     * Gets the nickname string for the #MbimCarrierLockCause specified at `val`.
+     * Gets the nickname string for the {@link Mbim.CarrierLockCause} specified at `val`.
      * @param val a MbimCarrierLockCause.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.30
      */
     function carrier_lock_cause_get_string(val: CarrierLockCause | null): string;
     /**
-     * Gets the nickname string for the #MbimCarrierLockModemState specified at `val`.
+     * Gets the nickname string for the {@link Mbim.CarrierLockModemState} specified at `val`.
      * @param val a MbimCarrierLockModemState.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.30
      */
     function carrier_lock_modem_state_get_string(val: CarrierLockModemState | null): string;
     /**
-     * Gets the nickname string for the #MbimCarrierLockStatus specified at `val`.
+     * Gets the nickname string for the {@link Mbim.CarrierLockStatus} specified at `val`.
      * @param val a MbimCarrierLockStatus.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.30
      */
     function carrier_lock_status_get_string(val: CarrierLockStatus | null): string;
     /**
-     * Frees the memory allocated for the array of #MbimCellInfoCdma structs.
-     * @param array a #NULL terminated array of #MbimCellInfoCdma structs.
+     * Frees the memory allocated for the array of {@link Mbim.CellInfoCdma} structs.
+     * @param array a `NULL` terminated array of {@link Mbim.CellInfoCdma} structs.
+     * @since 1.28
      */
     function cell_info_cdma_array_free(array: CellInfoCdmaArray): void;
     /**
-     * Frees the memory allocated for the array of #MbimCellInfoNeighboringGsm structs.
-     * @param array a #NULL terminated array of #MbimCellInfoNeighboringGsm structs.
+     * Frees the memory allocated for the array of {@link Mbim.CellInfoNeighboringGsm} structs.
+     * @param array a `NULL` terminated array of {@link Mbim.CellInfoNeighboringGsm} structs.
+     * @since 1.28
      */
     function cell_info_neighboring_gsm_array_free(array: CellInfoNeighboringGsmArray): void;
     /**
-     * Frees the memory allocated for the array of #MbimCellInfoNeighboringLte structs.
-     * @param array a #NULL terminated array of #MbimCellInfoNeighboringLte structs.
+     * Frees the memory allocated for the array of {@link Mbim.CellInfoNeighboringLte} structs.
+     * @param array a `NULL` terminated array of {@link Mbim.CellInfoNeighboringLte} structs.
+     * @since 1.28
      */
     function cell_info_neighboring_lte_array_free(array: CellInfoNeighboringLteArray): void;
     /**
-     * Frees the memory allocated for the array of #MbimCellInfoNeighboringNr structs.
-     * @param array a #NULL terminated array of #MbimCellInfoNeighboringNr structs.
+     * Frees the memory allocated for the array of {@link Mbim.CellInfoNeighboringNr} structs.
+     * @param array a `NULL` terminated array of {@link Mbim.CellInfoNeighboringNr} structs.
+     * @since 1.28
      */
     function cell_info_neighboring_nr_array_free(array: CellInfoNeighboringNrArray): void;
     /**
-     * Frees the memory allocated for the array of #MbimCellInfoNeighboringTdscdma structs.
-     * @param array a #NULL terminated array of #MbimCellInfoNeighboringTdscdma structs.
+     * Frees the memory allocated for the array of {@link Mbim.CellInfoNeighboringTdscdma} structs.
+     * @param array a `NULL` terminated array of {@link Mbim.CellInfoNeighboringTdscdma} structs.
+     * @since 1.28
      */
     function cell_info_neighboring_tdscdma_array_free(array: CellInfoNeighboringTdscdmaArray): void;
     /**
-     * Frees the memory allocated for the array of #MbimCellInfoNeighboringUmts structs.
-     * @param array a #NULL terminated array of #MbimCellInfoNeighboringUmts structs.
+     * Frees the memory allocated for the array of {@link Mbim.CellInfoNeighboringUmts} structs.
+     * @param array a `NULL` terminated array of {@link Mbim.CellInfoNeighboringUmts} structs.
+     * @since 1.28
      */
     function cell_info_neighboring_umts_array_free(array: CellInfoNeighboringUmtsArray): void;
     /**
-     * Frees the memory allocated for the array of #MbimCellInfoServingNr structs.
-     * @param array a #NULL terminated array of #MbimCellInfoServingNr structs.
+     * Frees the memory allocated for the array of {@link Mbim.CellInfoServingNr} structs.
+     * @param array a `NULL` terminated array of {@link Mbim.CellInfoServingNr} structs.
+     * @since 1.28
      */
     function cell_info_serving_nr_array_free(array: CellInfoServingNrArray): void;
     /**
      * Builds a string containing a comma-separated list of nicknames for
-     * each #MbimCellularClass in `mask`.
+     * each {@link Mbim.CellularClass} in `mask`.
      * @param mask bitmask of MbimCellularClass values.
-     * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
+     * @returns a string with the list of nicknames, or `null` if none given. The returned value should be freed with `g_free()`.
+     * @since 1.0
      */
     function cellular_class_build_string_from_mask(mask: CellularClass | null): string;
     /**
-     * Gets the nickname string for the #MbimCidAtds specified at `val`.
+     * Gets the nickname string for the {@link Mbim.CidAtds} specified at `val`.
      * @param val a MbimCidAtds.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.16
      */
     function cid_atds_get_string(val: CidAtds | null): string;
     /**
-     * Gets the nickname string for the #MbimCidAuth specified at `val`.
+     * Gets the nickname string for the {@link Mbim.CidAuth} specified at `val`.
      * @param val a MbimCidAuth.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.0
      */
     function cid_auth_get_string(val: CidAuth | null): string;
     /**
-     * Gets the nickname string for the #MbimCidBasicConnect specified at `val`.
+     * Gets the nickname string for the {@link Mbim.CidBasicConnect} specified at `val`.
      * @param val a MbimCidBasicConnect.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.0
      */
     function cid_basic_connect_get_string(val: CidBasicConnect | null): string;
     /**
      * Checks whether the given command allows notifying.
-     * @param service a #MbimService.
+     * @param service a {@link Mbim.Service}.
      * @param cid a command ID.
-     * @returns %TRUE if the command allows notifying, %FALSE otherwise.
+     * @returns `true` if the command allows notifying, `false` otherwise.
+     * @since 1.0
      */
     function cid_can_notify(service: Service | null, cid: number): boolean;
     /**
      * Checks whether the given command allows querying.
-     * @param service a #MbimService.
+     * @param service a {@link Mbim.Service}.
      * @param cid a command ID.
-     * @returns %TRUE if the command allows querying, %FALSE otherwise.
+     * @returns `true` if the command allows querying, `false` otherwise.
+     * @since 1.0
      */
     function cid_can_query(service: Service | null, cid: number): boolean;
     /**
      * Checks whether the given command allows setting.
-     * @param service a #MbimService.
+     * @param service a {@link Mbim.Service}.
      * @param cid a command ID.
-     * @returns %TRUE if the command allows setting, %FALSE otherwise.
+     * @returns `true` if the command allows setting, `false` otherwise.
+     * @since 1.0
      */
     function cid_can_set(service: Service | null, cid: number): boolean;
     /**
-     * Gets the nickname string for the #MbimCidDss specified at `val`.
+     * Gets the nickname string for the {@link Mbim.CidCompal} specified at `val`.
+     * @param val a MbimCidCompal.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.32
+     */
+    function cid_compal_get_string(val: CidCompal | null): string;
+    /**
+     * Gets the nickname string for the {@link Mbim.CidDss} specified at `val`.
      * @param val a MbimCidDss.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.0
      */
     function cid_dss_get_string(val: CidDss | null): string;
     /**
+     * Gets the nickname string for the {@link Mbim.CidFibocom} specified at `val`.
+     * @param val a MbimCidFibocom.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.32
+     */
+    function cid_fibocom_get_string(val: CidFibocom | null): string;
+    /**
      * Gets a printable string for the command specified by the `service` and the
      * `cid`.
-     * @param service a #MbimService.
+     * @param service a {@link Mbim.Service}.
      * @param cid a command ID.
      * @returns a constant string.
+     * @since 1.0
      */
     function cid_get_printable(service: Service | null, cid: number): string;
     /**
-     * Gets the nickname string for the #MbimCidGoogle specified at `val`.
+     * Gets the nickname string for the {@link Mbim.CidGoogle} specified at `val`.
      * @param val a MbimCidGoogle.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.30
      */
     function cid_google_get_string(val: CidGoogle | null): string;
     /**
-     * Gets the nickname string for the #MbimCidIntelFirmwareUpdate specified at `val`.
+     * Gets the nickname string for the {@link Mbim.CidIntelFirmwareUpdate} specified at `val`.
      * @param val a MbimCidIntelFirmwareUpdate.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.16
      */
     function cid_intel_firmware_update_get_string(val: CidIntelFirmwareUpdate | null): string;
     /**
-     * Gets the nickname string for the #MbimCidIntelMutualAuthentication specified at `val`.
+     * Gets the nickname string for the {@link Mbim.CidIntelMutualAuthentication} specified at `val`.
      * @param val a MbimCidIntelMutualAuthentication.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.30
      */
     function cid_intel_mutual_authentication_get_string(val: CidIntelMutualAuthentication | null): string;
     /**
-     * Gets the nickname string for the #MbimCidIntelThermalRf specified at `val`.
+     * Gets the nickname string for the {@link Mbim.CidIntelThermalRf} specified at `val`.
      * @param val a MbimCidIntelThermalRf.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.28
      */
     function cid_intel_thermal_rf_get_string(val: CidIntelThermalRf | null): string;
     /**
-     * Gets the nickname string for the #MbimCidIntelTools specified at `val`.
+     * Gets the nickname string for the {@link Mbim.CidIntelTools} specified at `val`.
      * @param val a MbimCidIntelTools.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.30
      */
     function cid_intel_tools_get_string(val: CidIntelTools | null): string;
     /**
-     * Gets the nickname string for the #MbimCidMsBasicConnectExtensions specified at `val`.
+     * Gets the nickname string for the {@link Mbim.CidMsBasicConnectExtensions} specified at `val`.
      * @param val a MbimCidMsBasicConnectExtensions.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.18
      */
     function cid_ms_basic_connect_extensions_get_string(val: CidMsBasicConnectExtensions | null): string;
     /**
-     * Gets the nickname string for the #MbimCidMsFirmwareId specified at `val`.
+     * Gets the nickname string for the {@link Mbim.CidMsFirmwareId} specified at `val`.
      * @param val a MbimCidMsFirmwareId.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.0
      */
     function cid_ms_firmware_id_get_string(val: CidMsFirmwareId | null): string;
     /**
-     * Gets the nickname string for the #MbimCidMsHostShutdown specified at `val`.
+     * Gets the nickname string for the {@link Mbim.CidMsHostShutdown} specified at `val`.
      * @param val a MbimCidMsHostShutdown.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.8
      */
     function cid_ms_host_shutdown_get_string(val: CidMsHostShutdown | null): string;
     /**
-     * Gets the nickname string for the #MbimCidMsSar specified at `val`.
+     * Gets the nickname string for the {@link Mbim.CidMsSar} specified at `val`.
      * @param val a MbimCidMsSar.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.26
      */
     function cid_ms_sar_get_string(val: CidMsSar | null): string;
     /**
-     * Gets the nickname string for the #MbimCidMsUiccLowLevelAccess specified at `val`.
+     * Gets the nickname string for the {@link Mbim.CidMsUiccLowLevelAccess} specified at `val`.
      * @param val a MbimCidMsUiccLowLevelAccess.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.26
      */
     function cid_ms_uicc_low_level_access_get_string(val: CidMsUiccLowLevelAccess | null): string;
     /**
-     * Gets the nickname string for the #MbimCidMsVoiceExtensions specified at `val`.
+     * Gets the nickname string for the {@link Mbim.CidMsVoiceExtensions} specified at `val`.
      * @param val a MbimCidMsVoiceExtensions.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.28
      */
     function cid_ms_voice_extensions_get_string(val: CidMsVoiceExtensions | null): string;
     /**
-     * Gets the nickname string for the #MbimCidPhonebook specified at `val`.
+     * Gets the nickname string for the {@link Mbim.CidPhonebook} specified at `val`.
      * @param val a MbimCidPhonebook.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.0
      */
     function cid_phonebook_get_string(val: CidPhonebook | null): string;
     /**
-     * Gets the nickname string for the #MbimCidProxyControl specified at `val`.
+     * Gets the nickname string for the {@link Mbim.CidProxyControl} specified at `val`.
      * @param val a MbimCidProxyControl.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.10
      */
     function cid_proxy_control_get_string(val: CidProxyControl | null): string;
     /**
-     * Gets the nickname string for the #MbimCidQdu specified at `val`.
+     * Gets the nickname string for the {@link Mbim.CidQdu} specified at `val`.
      * @param val a MbimCidQdu.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.26
      */
     function cid_qdu_get_string(val: CidQdu | null): string;
     /**
-     * Gets the nickname string for the #MbimCidQmi specified at `val`.
+     * Gets the nickname string for the {@link Mbim.CidQmi} specified at `val`.
      * @param val a MbimCidQmi.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.14
      */
     function cid_qmi_get_string(val: CidQmi | null): string;
     /**
-     * Gets the nickname string for the #MbimCidQuectel specified at `val`.
+     * Gets the nickname string for the {@link Mbim.CidQuectel} specified at `val`.
      * @param val a MbimCidQuectel.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.26.2
      */
     function cid_quectel_get_string(val: CidQuectel | null): string;
     /**
-     * Gets the nickname string for the #MbimCidSms specified at `val`.
+     * Gets the nickname string for the {@link Mbim.CidSms} specified at `val`.
      * @param val a MbimCidSms.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.0
      */
     function cid_sms_get_string(val: CidSms | null): string;
     /**
-     * Gets the nickname string for the #MbimCidStk specified at `val`.
+     * Gets the nickname string for the {@link Mbim.CidStk} specified at `val`.
      * @param val a MbimCidStk.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.0
      */
     function cid_stk_get_string(val: CidStk | null): string;
     /**
-     * Gets the nickname string for the #MbimCidUssd specified at `val`.
+     * Gets the nickname string for the {@link Mbim.CidUssd} specified at `val`.
      * @param val a MbimCidUssd.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.0
      */
     function cid_ussd_get_string(val: CidUssd | null): string;
     /**
-     * Gets the nickname string for the #MbimCompression specified at `val`.
+     * Gets the nickname string for the {@link Mbim.Compression} specified at `val`.
      * @param val a MbimCompression.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.0
      */
     function compression_get_string(val: Compression | null): string;
     /**
-     * Gets the nickname string for the #MbimContextIpType specified at `val`.
+     * Gets the nickname string for the {@link Mbim.ContextIpType} specified at `val`.
      * @param val a MbimContextIpType.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.0
      */
     function context_ip_type_get_string(val: ContextIpType | null): string;
     /**
-     * Gets the nickname string for the #MbimContextMediaType specified at `val`.
+     * Gets the nickname string for the {@link Mbim.ContextMediaType} specified at `val`.
      * @param val a MbimContextMediaType.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.28
      */
     function context_media_type_get_string(val: ContextMediaType | null): string;
     /**
-     * Gets the nickname string for the #MbimContextOperation specified at `val`.
+     * Gets the nickname string for the {@link Mbim.ContextOperation} specified at `val`.
      * @param val a MbimContextOperation.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.28
      */
     function context_operation_get_string(val: ContextOperation | null): string;
     /**
-     * Gets the nickname string for the #MbimContextRoamingControl specified at `val`.
+     * Gets the nickname string for the {@link Mbim.ContextRoamingControl} specified at `val`.
      * @param val a MbimContextRoamingControl.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.28
      */
     function context_roaming_control_get_string(val: ContextRoamingControl | null): string;
     /**
-     * Gets the nickname string for the #MbimContextSource specified at `val`.
+     * Gets the nickname string for the {@link Mbim.ContextSource} specified at `val`.
      * @param val a MbimContextSource.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.18
      */
     function context_source_get_string(val: ContextSource | null): string;
     /**
-     * Gets the nickname string for the #MbimContextState specified at `val`.
+     * Gets the nickname string for the {@link Mbim.ContextState} specified at `val`.
      * @param val a MbimContextState.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.28
      */
     function context_state_get_string(val: ContextState | null): string;
     /**
-     * Gets the nickname string for the #MbimContextType specified at `val`.
+     * Gets the nickname string for the {@link Mbim.ContextType} specified at `val`.
      * @param val a MbimContextType.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.0
      */
     function context_type_get_string(val: ContextType | null): string;
     /**
-     * Gets the nickname string for the #MbimCoreError specified at `val`.
+     * Gets the nickname string for the {@link Mbim.CoreError} specified at `val`.
      * @param val a MbimCoreError.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
      */
     function core_error_get_string(val: CoreError | null): string;
     function core_error_quark(): GLib.Quark;
     /**
      * Builds a string containing a comma-separated list of nicknames for
-     * each #MbimCtrlCaps in `mask`.
+     * each {@link Mbim.CtrlCaps} in `mask`.
      * @param mask bitmask of MbimCtrlCaps values.
-     * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
+     * @returns a string with the list of nicknames, or `null` if none given. The returned value should be freed with `g_free()`.
+     * @since 1.0
      */
     function ctrl_caps_build_string_from_mask(mask: CtrlCaps | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
-     * each #MbimDataClass in `mask`.
+     * each {@link Mbim.DataClass} in `mask`.
      * @param mask bitmask of MbimDataClass values.
-     * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
+     * @returns a string with the list of nicknames, or `null` if none given. The returned value should be freed with `g_free()`.
+     * @since 1.0
      */
     function data_class_build_string_from_mask(mask: DataClass | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
-     * each #MbimDataClassV3 in `mask`.
+     * each {@link Mbim.DataClassV3} in `mask`.
      * @param mask bitmask of MbimDataClassV3 values.
-     * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
+     * @returns a string with the list of nicknames, or `null` if none given. The returned value should be freed with `g_free()`.
+     * @since 1.28
      */
     function data_class_v3_build_string_from_mask(mask: DataClassV3 | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
-     * each #MbimDataSubclass in `mask`.
+     * each {@link Mbim.DataSubclass} in `mask`.
      * @param mask bitmask of MbimDataSubclass values.
-     * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
+     * @returns a string with the list of nicknames, or `null` if none given. The returned value should be freed with `g_free()`.
+     * @since 1.28
      */
     function data_subclass_build_string_from_mask(mask: DataSubclass | null): string;
     /**
-     * Gets the nickname string for the #MbimDefaultPduActivationHint specified at `val`.
+     * Gets the nickname string for the {@link Mbim.DefaultPduActivationHint} specified at `val`.
      * @param val a MbimDefaultPduActivationHint.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.28
      */
     function default_pdu_activation_hint_get_string(val: DefaultPduActivationHint | null): string;
     /**
-     * Frees the memory allocated for the array of #MbimDeviceServiceElement structs.
-     * @param array a #NULL terminated array of #MbimDeviceServiceElement structs.
+     * Frees the memory allocated for the array of {@link Mbim.DeviceServiceElement} structs.
+     * @param array a `NULL` terminated array of {@link Mbim.DeviceServiceElement} structs.
+     * @since 1.0
      */
     function device_service_element_array_free(array: DeviceServiceElementArray): void;
     /**
-     * Gets the nickname string for the #MbimDeviceType specified at `val`.
+     * Gets the nickname string for the {@link Mbim.DeviceType} specified at `val`.
      * @param val a MbimDeviceType.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.0
      */
     function device_type_get_string(val: DeviceType | null): string;
     /**
-     * Gets the nickname string for the #MbimDrxCycle specified at `val`.
+     * Gets the nickname string for the {@link Mbim.DrxCycle} specified at `val`.
      * @param val a MbimDrxCycle.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.28
      */
     function drx_cycle_get_string(val: DrxCycle | null): string;
     /**
-     * Gets the nickname string for the #MbimDssLinkState specified at `val`.
+     * Gets the nickname string for the {@link Mbim.DssLinkState} specified at `val`.
      * @param val a MbimDssLinkState.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.4
      */
     function dss_link_state_get_string(val: DssLinkState | null): string;
     /**
-     * Gets the nickname string for the #MbimEmergencyModeState specified at `val`.
+     * Gets the nickname string for the {@link Mbim.EmergencyModeState} specified at `val`.
      * @param val a MbimEmergencyModeState.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.4
      */
     function emergency_mode_state_get_string(val: EmergencyModeState | null): string;
     /**
-     * Frees the memory allocated for the array of #MbimEventEntry structs.
-     * @param array a #NULL terminated array of #MbimEventEntry structs.
+     * Frees the memory allocated for the array of {@link Mbim.EventEntry} structs.
+     * @param array a `NULL` terminated array of {@link Mbim.EventEntry} structs.
+     * @since 1.4
      */
     function event_entry_array_free(array: EventEntryArray): void;
     /**
      * Builds a string containing a comma-separated list of nicknames for
-     * each #MbimFrequencyRange in `mask`.
+     * each {@link Mbim.FrequencyRange} in `mask`.
      * @param mask bitmask of MbimFrequencyRange values.
-     * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
+     * @returns a string with the list of nicknames, or `null` if none given. The returned value should be freed with `g_free()`.
+     * @since 1.28
      */
     function frequency_range_build_string_from_mask(mask: FrequencyRange | null): string;
     /**
-     * Gets the nickname string for the #MbimIntelBootMode specified at `val`.
+     * Gets the nickname string for the {@link Mbim.IntelBootMode} specified at `val`.
      * @param val a MbimIntelBootMode.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.28
      */
     function intel_boot_mode_get_string(val: IntelBootMode | null): string;
     /**
-     * Frees the memory allocated for the array of #MbimIntelRfimFrequencyValue structs.
-     * @param array a #NULL terminated array of #MbimIntelRfimFrequencyValue structs.
+     * Frees the memory allocated for the array of {@link Mbim.IntelRfimFrequencyValue} structs.
+     * @param array a `NULL` terminated array of {@link Mbim.IntelRfimFrequencyValue} structs.
+     * @since 1.28
      */
     function intel_rfim_frequency_value_array_free(array: IntelRfimFrequencyValueArray): void;
     /**
-     * Gets the nickname string for the #MbimIntelServingCellInfo specified at `val`.
+     * Gets the nickname string for the {@link Mbim.IntelServingCellInfo} specified at `val`.
      * @param val a MbimIntelServingCellInfo.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.28
      */
     function intel_serving_cell_info_get_string(val: IntelServingCellInfo | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
-     * each #MbimIPConfigurationAvailableFlag in `mask`.
+     * each {@link Mbim.IPConfigurationAvailableFlag} in `mask`.
      * @param mask bitmask of MbimIPConfigurationAvailableFlag values.
-     * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
+     * @returns a string with the list of nicknames, or `null` if none given. The returned value should be freed with `g_free()`.
+     * @since 1.0
      */
     function ip_configuration_available_flag_build_string_from_mask(mask: IPConfigurationAvailableFlag | null): string;
     /**
-     * Frees the memory allocated for the array of #MbimIPv4Element structs.
-     * @param array a #NULL terminated array of #MbimIPv4Element structs.
+     * Frees the memory allocated for the array of {@link Mbim.IPv4Element} structs.
+     * @param array a `NULL` terminated array of {@link Mbim.IPv4Element} structs.
+     * @since 1.0
      */
     function ipv4_element_array_free(array: IPv4ElementArray): void;
     /**
-     * Frees the memory allocated for the array of #MbimIPv6Element structs.
-     * @param array a #NULL terminated array of #MbimIPv6Element structs.
+     * Frees the memory allocated for the array of {@link Mbim.IPv6Element} structs.
+     * @param array a `NULL` terminated array of {@link Mbim.IPv6Element} structs.
+     * @since 1.0
      */
     function ipv6_element_array_free(array: IPv6ElementArray): void;
     /**
-     * Gets the nickname string for the #MbimLadnInfo specified at `val`.
+     * Gets the nickname string for the {@link Mbim.LadnInfo} specified at `val`.
      * @param val a MbimLadnInfo.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.28
      */
     function ladn_info_get_string(val: LadnInfo | null): string;
     /**
-     * Frees the memory allocated for the array of #MbimLteAttachConfiguration structs.
-     * @param array a #NULL terminated array of #MbimLteAttachConfiguration structs.
+     * Frees the memory allocated for the array of {@link Mbim.LteAttachConfiguration} structs.
+     * @param array a `NULL` terminated array of {@link Mbim.LteAttachConfiguration} structs.
+     * @since 1.18
      */
     function lte_attach_configuration_array_free(array: LteAttachConfigurationArray): void;
     /**
-     * Gets the nickname string for the #MbimLteAttachContextOperation specified at `val`.
+     * Gets the nickname string for the {@link Mbim.LteAttachContextOperation} specified at `val`.
      * @param val a MbimLteAttachContextOperation.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.18
      */
     function lte_attach_context_operation_get_string(val: LteAttachContextOperation | null): string;
     /**
-     * Gets the nickname string for the #MbimLteAttachContextRoamingControl specified at `val`.
+     * Gets the nickname string for the {@link Mbim.LteAttachContextRoamingControl} specified at `val`.
      * @param val a MbimLteAttachContextRoamingControl.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.18
      */
     function lte_attach_context_roaming_control_get_string(val: LteAttachContextRoamingControl | null): string;
     /**
-     * Gets the nickname string for the #MbimLteAttachState specified at `val`.
+     * Gets the nickname string for the {@link Mbim.LteAttachState} specified at `val`.
      * @param val a MbimLteAttachState.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.18
      */
     function lte_attach_state_get_string(val: LteAttachState | null): string;
     /**
-     * Frees the memory allocated for the #MbimLteAttachStatus.
-     * @param _var a #MbimLteAttachStatus.
+     * Frees the memory allocated for the {@link Mbim.LteAttachStatus}.
+     * @param _var a {@link Mbim.LteAttachStatus}.
+     * @since 1.18
+     * @deprecated since 1.26
      */
     function lte_attach_status_free(_var: DeprecatedLteAttachStatus): void;
     /**
-     * Gets the nickname string for the #MbimMessageCommandType specified at `val`.
+     * Gets the nickname string for the {@link Mbim.MessageCommandType} specified at `val`.
      * @param val a MbimMessageCommandType.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.0
      */
     function message_command_type_get_string(val: MessageCommandType | null): string;
     /**
-     * Gets the nickname string for the #MbimMessageType specified at `val`.
+     * Gets the nickname string for the {@link Mbim.MessageType} specified at `val`.
      * @param val a MbimMessageType.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.0
      */
     function message_type_get_string(val: MessageType | null): string;
     /**
-     * Gets the nickname string for the #MbimMicoMode specified at `val`.
+     * Gets the nickname string for the {@link Mbim.MicoMode} specified at `val`.
      * @param val a MbimMicoMode.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.28
      */
     function mico_mode_get_string(val: MicoMode | null): string;
     /**
-     * Gets the nickname string for the #MbimModemConfigurationStatus specified at `val`.
+     * Gets the nickname string for the {@link Mbim.ModemConfigurationStatus} specified at `val`.
      * @param val a MbimModemConfigurationStatus.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.28
      */
     function modem_configuration_status_get_string(val: ModemConfigurationStatus | null): string;
     /**
-     * Gets the nickname string for the #MbimNetworkIdleHintState specified at `val`.
+     * Gets the nickname string for the {@link Mbim.NetworkIdleHintState} specified at `val`.
      * @param val a MbimNetworkIdleHintState.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.4
      */
     function network_idle_hint_state_get_string(val: NetworkIdleHintState | null): string;
     /**
-     * Gets the nickname string for the #MbimNwError specified at `val`.
+     * Gets the nickname string for the {@link Mbim.NwError} specified at `val`.
      * @param val a MbimNwError.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.0
      */
     function nw_error_get_string(val: NwError | null): string;
     /**
-     * Frees the memory allocated for the array of #MbimPacketFilter structs.
-     * @param array a #NULL terminated array of #MbimPacketFilter structs.
+     * Frees the memory allocated for the array of {@link Mbim.PacketFilter} structs.
+     * @param array a `NULL` terminated array of {@link Mbim.PacketFilter} structs.
+     * @since 1.4
      */
     function packet_filter_array_free(array: PacketFilterArray): void;
     /**
-     * Frees the memory allocated for the array of #MbimPacketFilterV3 structs.
-     * @param array a #NULL terminated array of #MbimPacketFilterV3 structs.
+     * Frees the memory allocated for the array of {@link Mbim.PacketFilterV3} structs.
+     * @param array a `NULL` terminated array of {@link Mbim.PacketFilterV3} structs.
+     * @since 1.28
      */
     function packet_filter_v3_array_free(array: PacketFilterV3Array): void;
     /**
-     * Gets the nickname string for the #MbimPacketServiceAction specified at `val`.
+     * Gets the nickname string for the {@link Mbim.PacketServiceAction} specified at `val`.
      * @param val a MbimPacketServiceAction.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.0
      */
     function packet_service_action_get_string(val: PacketServiceAction | null): string;
     /**
-     * Gets the nickname string for the #MbimPacketServiceState specified at `val`.
+     * Gets the nickname string for the {@link Mbim.PacketServiceState} specified at `val`.
      * @param val a MbimPacketServiceState.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.0
      */
     function packet_service_state_get_string(val: PacketServiceState | null): string;
     /**
-     * Gets the nickname string for the #MbimPcoType specified at `val`.
+     * Gets the nickname string for the {@link Mbim.PcoType} specified at `val`.
      * @param val a MbimPcoType.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.18
      */
     function pco_type_get_string(val: PcoType | null): string;
     /**
-     * Frees the memory allocated for the array of #MbimPhonebookEntry structs.
-     * @param array a #NULL terminated array of #MbimPhonebookEntry structs.
+     * Frees the memory allocated for the array of {@link Mbim.PhonebookEntry} structs.
+     * @param array a `NULL` terminated array of {@link Mbim.PhonebookEntry} structs.
+     * @since 1.4
      */
     function phonebook_entry_array_free(array: PhonebookEntryArray): void;
     /**
-     * Gets the nickname string for the #MbimPhonebookFlag specified at `val`.
+     * Gets the nickname string for the {@link Mbim.PhonebookFlag} specified at `val`.
      * @param val a MbimPhonebookFlag.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.4
      */
     function phonebook_flag_get_string(val: PhonebookFlag | null): string;
     /**
-     * Gets the nickname string for the #MbimPhonebookState specified at `val`.
+     * Gets the nickname string for the {@link Mbim.PhonebookState} specified at `val`.
      * @param val a MbimPhonebookState.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.4
      */
     function phonebook_state_get_string(val: PhonebookState | null): string;
     /**
-     * Gets the nickname string for the #MbimPhonebookWriteFlag specified at `val`.
+     * Gets the nickname string for the {@link Mbim.PhonebookWriteFlag} specified at `val`.
      * @param val a MbimPhonebookWriteFlag.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.4
      */
     function phonebook_write_flag_get_string(val: PhonebookWriteFlag | null): string;
     /**
-     * Gets the nickname string for the #MbimPinFormat specified at `val`.
+     * Gets the nickname string for the {@link Mbim.PinFormat} specified at `val`.
      * @param val a MbimPinFormat.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.0
      */
     function pin_format_get_string(val: PinFormat | null): string;
     /**
-     * Gets the nickname string for the #MbimPinMode specified at `val`.
+     * Gets the nickname string for the {@link Mbim.PinMode} specified at `val`.
      * @param val a MbimPinMode.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.0
      */
     function pin_mode_get_string(val: PinMode | null): string;
     /**
-     * Gets the nickname string for the #MbimPinOperation specified at `val`.
+     * Gets the nickname string for the {@link Mbim.PinOperation} specified at `val`.
      * @param val a MbimPinOperation.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.0
      */
     function pin_operation_get_string(val: PinOperation | null): string;
     /**
-     * Gets the nickname string for the #MbimPinState specified at `val`.
+     * Gets the nickname string for the {@link Mbim.PinState} specified at `val`.
      * @param val a MbimPinState.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.0
      */
     function pin_state_get_string(val: PinState | null): string;
     /**
-     * Gets the nickname string for the #MbimPinType specified at `val`.
+     * Gets the nickname string for the {@link Mbim.PinType} specified at `val`.
      * @param val a MbimPinType.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.0
      */
     function pin_type_get_string(val: PinType | null): string;
     /**
-     * Gets the nickname string for the #MbimProtocolError specified at `val`.
+     * Gets the nickname string for the {@link Mbim.ProtocolError} specified at `val`.
      * @param val a MbimProtocolError.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
      */
     function protocol_error_get_string(val: ProtocolError | null): string;
     function protocol_error_quark(): GLib.Quark;
     /**
-     * Frees the memory allocated for the array of #MbimProvider structs.
-     * @param array a #NULL terminated array of #MbimProvider structs.
+     * Frees the memory allocated for the array of {@link Mbim.Provider} structs.
+     * @param array a `NULL` terminated array of {@link Mbim.Provider} structs.
+     * @since 1.2
      */
     function provider_array_free(array: ProviderArray): void;
     /**
      * Builds a string containing a comma-separated list of nicknames for
-     * each #MbimProviderState in `mask`.
+     * each {@link Mbim.ProviderState} in `mask`.
      * @param mask bitmask of MbimProviderState values.
-     * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
+     * @returns a string with the list of nicknames, or `null` if none given. The returned value should be freed with `g_free()`.
+     * @since 1.2
      */
     function provider_state_build_string_from_mask(mask: ProviderState | null): string;
     /**
-     * Frees the memory allocated for the array of #MbimProvisionedContextElement structs.
-     * @param array a #NULL terminated array of #MbimProvisionedContextElement structs.
+     * Frees the memory allocated for the array of {@link Mbim.ProvisionedContextElement} structs.
+     * @param array a `NULL` terminated array of {@link Mbim.ProvisionedContextElement} structs.
+     * @since 1.0
      */
     function provisioned_context_element_array_free(array: ProvisionedContextElementArray): void;
     /**
-     * Frees the memory allocated for the array of #MbimProvisionedContextElementV2 structs.
-     * @param array a #NULL terminated array of #MbimProvisionedContextElementV2 structs.
+     * Frees the memory allocated for the array of {@link Mbim.ProvisionedContextElementV2} structs.
+     * @param array a `NULL` terminated array of {@link Mbim.ProvisionedContextElementV2} structs.
+     * @since 1.28
      */
     function provisioned_context_element_v2_array_free(array: ProvisionedContextElementV2Array): void;
     /**
-     * Gets the nickname string for the #MbimQduFileType specified at `val`.
+     * Gets the nickname string for the {@link Mbim.QduFileType} specified at `val`.
      * @param val a MbimQduFileType.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.26
      */
     function qdu_file_type_get_string(val: QduFileType | null): string;
     /**
-     * Gets the nickname string for the #MbimQduQuectelRebootType specified at `val`.
+     * Gets the nickname string for the {@link Mbim.QduQuectelRebootType} specified at `val`.
      * @param val a MbimQduQuectelRebootType.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.28
      */
     function qdu_quectel_reboot_type_get_string(val: QduQuectelRebootType | null): string;
     /**
-     * Gets the nickname string for the #MbimQduQuectelVersionType specified at `val`.
+     * Gets the nickname string for the {@link Mbim.QduQuectelVersionType} specified at `val`.
      * @param val a MbimQduQuectelVersionType.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.28
      */
     function qdu_quectel_version_type_get_string(val: QduQuectelVersionType | null): string;
     /**
-     * Gets the nickname string for the #MbimQduSessionAction specified at `val`.
+     * Gets the nickname string for the {@link Mbim.QduSessionAction} specified at `val`.
      * @param val a MbimQduSessionAction.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.26
      */
     function qdu_session_action_get_string(val: QduSessionAction | null): string;
     /**
-     * Gets the nickname string for the #MbimQduSessionResult specified at `val`.
+     * Gets the nickname string for the {@link Mbim.QduSessionResult} specified at `val`.
      * @param val a MbimQduSessionResult.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.26
      */
     function qdu_session_result_get_string(val: QduSessionResult | null): string;
     /**
-     * Gets the nickname string for the #MbimQduSessionStatus specified at `val`.
+     * Gets the nickname string for the {@link Mbim.QduSessionStatus} specified at `val`.
      * @param val a MbimQduSessionStatus.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.26
      */
     function qdu_session_status_get_string(val: QduSessionStatus | null): string;
     /**
-     * Gets the nickname string for the #MbimQduSessionType specified at `val`.
+     * Gets the nickname string for the {@link Mbim.QduSessionType} specified at `val`.
      * @param val a MbimQduSessionType.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.26
      */
     function qdu_session_type_get_string(val: QduSessionType | null): string;
     /**
-     * Gets the nickname string for the #MbimQuectelRadioSwitchState specified at `val`.
+     * Gets the nickname string for the {@link Mbim.QuectelCommandResponseStatus} specified at `val`.
+     * @param val a MbimQuectelCommandResponseStatus.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.32
+     */
+    function quectel_command_response_status_get_string(val: QuectelCommandResponseStatus | null): string;
+    /**
+     * Gets the nickname string for the {@link Mbim.QuectelCommandType} specified at `val`.
+     * @param val a MbimQuectelCommandType.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.32
+     */
+    function quectel_command_type_get_string(val: QuectelCommandType | null): string;
+    /**
+     * Gets the nickname string for the {@link Mbim.QuectelRadioSwitchState} specified at `val`.
      * @param val a MbimQuectelRadioSwitchState.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.26.2
      */
     function quectel_radio_switch_state_get_string(val: QuectelRadioSwitchState | null): string;
     /**
-     * Gets the nickname string for the #MbimRadioSwitchState specified at `val`.
+     * Gets the nickname string for the {@link Mbim.RadioSwitchState} specified at `val`.
      * @param val a MbimRadioSwitchState.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.0
      */
     function radio_switch_state_get_string(val: RadioSwitchState | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
-     * each #MbimReadyInfoFlag in `mask`.
+     * each {@link Mbim.ReadyInfoFlag} in `mask`.
      * @param mask bitmask of MbimReadyInfoFlag values.
-     * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
+     * @returns a string with the list of nicknames, or `null` if none given. The returned value should be freed with `g_free()`.
+     * @since 1.0
      */
     function ready_info_flag_build_string_from_mask(mask: ReadyInfoFlag | null): string;
     /**
-     * Gets the nickname string for the #MbimRegisterAction specified at `val`.
+     * Gets the nickname string for the {@link Mbim.RegisterAction} specified at `val`.
      * @param val a MbimRegisterAction.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.0
      */
     function register_action_get_string(val: RegisterAction | null): string;
     /**
@@ -4456,322 +5292,376 @@ export namespace Mbim {
      * @param uuid MbimUuid structure corresponding to service
      * @param nickname a printable name for service
      * @returns TRUE if service has been registered, FALSE otherwise.
+     * @since 1.10
      */
     function register_custom_service(uuid: Uuid, nickname: string): number;
     /**
-     * Gets the nickname string for the #MbimRegisterMode specified at `val`.
+     * Gets the nickname string for the {@link Mbim.RegisterMode} specified at `val`.
      * @param val a MbimRegisterMode.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.0
      */
     function register_mode_get_string(val: RegisterMode | null): string;
     /**
-     * Gets the nickname string for the #MbimRegisterState specified at `val`.
+     * Gets the nickname string for the {@link Mbim.RegisterState} specified at `val`.
      * @param val a MbimRegisterState.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.0
      */
     function register_state_get_string(val: RegisterState | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
-     * each #MbimRegistrationFlag in `mask`.
+     * each {@link Mbim.RegistrationFlag} in `mask`.
      * @param mask bitmask of MbimRegistrationFlag values.
-     * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
+     * @returns a string with the list of nicknames, or `null` if none given. The returned value should be freed with `g_free()`.
+     * @since 1.0
      */
     function registration_flag_build_string_from_mask(mask: RegistrationFlag | null): string;
     /**
-     * Frees the memory allocated for the array of #MbimRsrpSnrInfo structs.
-     * @param array a #NULL terminated array of #MbimRsrpSnrInfo structs.
+     * Frees the memory allocated for the array of {@link Mbim.RsrpSnrInfo} structs.
+     * @param array a `NULL` terminated array of {@link Mbim.RsrpSnrInfo} structs.
+     * @since 1.28
      */
     function rsrp_snr_info_array_free(array: RsrpSnrInfoArray): void;
     /**
-     * Gets the nickname string for the #MbimSarBackoffState specified at `val`.
+     * Gets the nickname string for the {@link Mbim.SarBackoffState} specified at `val`.
      * @param val a MbimSarBackoffState.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.26
      */
     function sar_backoff_state_get_string(val: SarBackoffState | null): string;
     /**
-     * Frees the memory allocated for the array of #MbimSarConfigState structs.
-     * @param array a #NULL terminated array of #MbimSarConfigState structs.
+     * Frees the memory allocated for the array of {@link Mbim.SarConfigState} structs.
+     * @param array a `NULL` terminated array of {@link Mbim.SarConfigState} structs.
+     * @since 1.26
      */
     function sar_config_state_array_free(array: SarConfigStateArray): void;
     /**
-     * Gets the nickname string for the #MbimSarControlMode specified at `val`.
+     * Gets the nickname string for the {@link Mbim.SarControlMode} specified at `val`.
      * @param val a MbimSarControlMode.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.26
      */
     function sar_control_mode_get_string(val: SarControlMode | null): string;
     /**
-     * Gets the nickname string for the #MbimSarWifiHardwareState specified at `val`.
+     * Gets the nickname string for the {@link Mbim.SarWifiHardwareState} specified at `val`.
      * @param val a MbimSarWifiHardwareState.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.26
      */
     function sar_wifi_hardware_state_get_string(val: SarWifiHardwareState | null): string;
     /**
-     * Gets the nickname string for the #MbimService specified at `val`.
+     * Gets the nickname string for the {@link Mbim.Service} specified at `val`.
      * @param val a MbimService.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.0
      */
     function service_get_string(val: Service | null): string;
     /**
      * Checks whether `id` is a custom or standard service.
      * @param id ID of the service
      * @returns TRUE if service is custom, FALSE otherwise.
+     * @since 1.10
      */
     function service_id_is_custom(id: number): boolean;
     /**
      * Gets the nickname string for the `service`.
      *
-     * As opposed to mbim_service_get_string(), this methods takes into account
+     * As opposed to `mbim_service_get_string()`, this methods takes into account
      * custom services that may have been registered by the user.
      * @param service a MbimService or custom service.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.10
      */
     function service_lookup_name(service: number): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
-     * each #MbimSimClass in `mask`.
+     * each {@link Mbim.SimClass} in `mask`.
      * @param mask bitmask of MbimSimClass values.
-     * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
+     * @returns a string with the list of nicknames, or `null` if none given. The returned value should be freed with `g_free()`.
+     * @since 1.0
      */
     function sim_class_build_string_from_mask(mask: SimClass | null): string;
     /**
-     * Frees the memory allocated for the array of #MbimSlot structs.
-     * @param array a #NULL terminated array of #MbimSlot structs.
+     * Frees the memory allocated for the array of {@link Mbim.Slot} structs.
+     * @param array a `NULL` terminated array of {@link Mbim.Slot} structs.
+     * @since 1.26
      */
     function slot_array_free(array: SlotArray): void;
     /**
      * Builds a string containing a comma-separated list of nicknames for
-     * each #MbimSmsCaps in `mask`.
+     * each {@link Mbim.SmsCaps} in `mask`.
      * @param mask bitmask of MbimSmsCaps values.
-     * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
+     * @returns a string with the list of nicknames, or `null` if none given. The returned value should be freed with `g_free()`.
+     * @since 1.0
      */
     function sms_caps_build_string_from_mask(mask: SmsCaps | null): string;
     /**
-     * Gets the nickname string for the #MbimSmsCdmaEncoding specified at `val`.
+     * Gets the nickname string for the {@link Mbim.SmsCdmaEncoding} specified at `val`.
      * @param val a MbimSmsCdmaEncoding.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.4
      */
     function sms_cdma_encoding_get_string(val: SmsCdmaEncoding | null): string;
     /**
-     * Gets the nickname string for the #MbimSmsCdmaLang specified at `val`.
+     * Gets the nickname string for the {@link Mbim.SmsCdmaLang} specified at `val`.
      * @param val a MbimSmsCdmaLang.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.4
      */
     function sms_cdma_lang_get_string(val: SmsCdmaLang | null): string;
     /**
-     * Frees the memory allocated for the array of #MbimSmsCdmaReadRecord structs.
-     * @param array a #NULL terminated array of #MbimSmsCdmaReadRecord structs.
+     * Frees the memory allocated for the array of {@link Mbim.SmsCdmaReadRecord} structs.
+     * @param array a `NULL` terminated array of {@link Mbim.SmsCdmaReadRecord} structs.
+     * @since 1.4
      */
     function sms_cdma_read_record_array_free(array: SmsCdmaReadRecordArray): void;
     /**
-     * Gets the nickname string for the #MbimSmsFlag specified at `val`.
+     * Gets the nickname string for the {@link Mbim.SmsFlag} specified at `val`.
      * @param val a MbimSmsFlag.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.4
      */
     function sms_flag_get_string(val: SmsFlag | null): string;
     /**
-     * Gets the nickname string for the #MbimSmsFormat specified at `val`.
+     * Gets the nickname string for the {@link Mbim.SmsFormat} specified at `val`.
      * @param val a MbimSmsFormat.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.4
      */
     function sms_format_get_string(val: SmsFormat | null): string;
     /**
-     * Frees the memory allocated for the array of #MbimSmsPduReadRecord structs.
-     * @param array a #NULL terminated array of #MbimSmsPduReadRecord structs.
+     * Frees the memory allocated for the array of {@link Mbim.SmsPduReadRecord} structs.
+     * @param array a `NULL` terminated array of {@link Mbim.SmsPduReadRecord} structs.
+     * @since 1.4
      */
     function sms_pdu_read_record_array_free(array: SmsPduReadRecordArray): void;
     /**
      * Builds a string containing a comma-separated list of nicknames for
-     * each #MbimSmsStatusFlag in `mask`.
+     * each {@link Mbim.SmsStatusFlag} in `mask`.
      * @param mask bitmask of MbimSmsStatusFlag values.
-     * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
+     * @returns a string with the list of nicknames, or `null` if none given. The returned value should be freed with `g_free()`.
+     * @since 1.4
      */
     function sms_status_flag_build_string_from_mask(mask: SmsStatusFlag | null): string;
     /**
-     * Gets the nickname string for the #MbimSmsStatusFlag specified at `val`.
+     * Gets the nickname string for the {@link Mbim.SmsStatusFlag} specified at `val`.
      * @param val a MbimSmsStatusFlag.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.4
+     * @deprecated since 1.30: Use `mbim_sms_status_flag_build_string_from_mask()` instead.
      */
     function sms_status_flag_get_string(val: SmsStatusFlag | null): string;
     /**
-     * Gets the nickname string for the #MbimSmsStatus specified at `val`.
+     * Gets the nickname string for the {@link Mbim.SmsStatus} specified at `val`.
      * @param val a MbimSmsStatus.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.4
      */
     function sms_status_get_string(val: SmsStatus | null): string;
     /**
-     * Gets the nickname string for the #MbimSmsStorageState specified at `val`.
+     * Gets the nickname string for the {@link Mbim.SmsStorageState} specified at `val`.
      * @param val a MbimSmsStorageState.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.4
      */
     function sms_storage_state_get_string(val: SmsStorageState | null): string;
     /**
-     * Gets the nickname string for the #MbimStatusError specified at `val`.
+     * Gets the nickname string for the {@link Mbim.StatusError} specified at `val`.
      * @param val a MbimStatusError.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
      */
     function status_error_get_string(val: StatusError | null): string;
     function status_error_quark(): GLib.Quark;
     /**
-     * Gets the nickname string for the #MbimStkPacProfile specified at `val`.
+     * Gets the nickname string for the {@link Mbim.StkPacProfile} specified at `val`.
      * @param val a MbimStkPacProfile.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.4
      */
     function stk_pac_profile_get_string(val: StkPacProfile | null): string;
     /**
-     * Gets the nickname string for the #MbimStkPacType specified at `val`.
+     * Gets the nickname string for the {@link Mbim.StkPacType} specified at `val`.
      * @param val a MbimStkPacType.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.4
      */
     function stk_pac_type_get_string(val: StkPacType | null): string;
     /**
-     * Gets the nickname string for the #MbimSubscriberReadyState specified at `val`.
+     * Gets the nickname string for the {@link Mbim.SubscriberReadyState} specified at `val`.
      * @param val a MbimSubscriberReadyState.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.0
      */
     function subscriber_ready_state_get_string(val: SubscriberReadyState | null): string;
     /**
      * Builds a string containing a comma-separated list of nicknames for
-     * each #MbimSubscriberReadyStatusFlag in `mask`.
+     * each {@link Mbim.SubscriberReadyStatusFlag} in `mask`.
      * @param mask bitmask of MbimSubscriberReadyStatusFlag values.
-     * @returns a string with the list of nicknames, or %NULL if none given. The returned value should be freed with g_free().
+     * @returns a string with the list of nicknames, or `null` if none given. The returned value should be freed with `g_free()`.
+     * @since 1.28
      */
     function subscriber_ready_status_flag_build_string_from_mask(mask: SubscriberReadyStatusFlag | null): string;
     /**
-     * Frees the memory allocated for the array of #MbimTerminalCapabilityInfo structs.
-     * @param array a #NULL terminated array of #MbimTerminalCapabilityInfo structs.
+     * Frees the memory allocated for the array of {@link Mbim.TerminalCapabilityInfo} structs.
+     * @param array a `NULL` terminated array of {@link Mbim.TerminalCapabilityInfo} structs.
+     * @since 1.26
      */
     function terminal_capability_info_array_free(array: TerminalCapabilityInfoArray): void;
     /**
-     * Gets the nickname string for the #MbimTlvType specified at `val`.
+     * Gets the nickname string for the {@link Mbim.TlvType} specified at `val`.
      * @param val a MbimTlvType.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.28
      */
     function tlv_type_get_string(val: TlvType | null): string;
     /**
-     * Gets the nickname string for the #MbimTraceCommand specified at `val`.
+     * Gets the nickname string for the {@link Mbim.TraceCommand} specified at `val`.
      * @param val a MbimTraceCommand.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.30
      */
     function trace_command_get_string(val: TraceCommand | null): string;
     /**
-     * Gets the nickname string for the #MbimTransmissionNotificationStatus specified at `val`.
+     * Gets the nickname string for the {@link Mbim.TransmissionNotificationStatus} specified at `val`.
      * @param val a MbimTransmissionNotificationStatus.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.26
      */
     function transmission_notification_status_get_string(val: TransmissionNotificationStatus | null): string;
     /**
-     * Gets the nickname string for the #MbimTransmissionState specified at `val`.
+     * Gets the nickname string for the {@link Mbim.TransmissionState} specified at `val`.
      * @param val a MbimTransmissionState.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.26
      */
     function transmission_state_get_string(val: TransmissionState | null): string;
     /**
-     * Frees the memory allocated for the array of #MbimUiccApplication structs.
-     * @param array a #NULL terminated array of #MbimUiccApplication structs.
+     * Frees the memory allocated for the array of {@link Mbim.UiccApplication} structs.
+     * @param array a `NULL` terminated array of {@link Mbim.UiccApplication} structs.
+     * @since 1.28
      */
     function uicc_application_array_free(array: UiccApplicationArray): void;
     /**
-     * Gets the nickname string for the #MbimUiccApplicationType specified at `val`.
+     * Gets the nickname string for the {@link Mbim.UiccApplicationType} specified at `val`.
      * @param val a MbimUiccApplicationType.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.28
      */
     function uicc_application_type_get_string(val: UiccApplicationType | null): string;
     /**
-     * Gets the nickname string for the #MbimUiccClassByteType specified at `val`.
+     * Gets the nickname string for the {@link Mbim.UiccClassByteType} specified at `val`.
      * @param val a MbimUiccClassByteType.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.26
      */
     function uicc_class_byte_type_get_string(val: UiccClassByteType | null): string;
     /**
-     * Gets the nickname string for the #MbimUiccFileAccessibility specified at `val`.
+     * Gets the nickname string for the {@link Mbim.UiccFileAccessibility} specified at `val`.
      * @param val a MbimUiccFileAccessibility.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.28
      */
     function uicc_file_accessibility_get_string(val: UiccFileAccessibility | null): string;
     /**
-     * Gets the nickname string for the #MbimUiccFileStructure specified at `val`.
+     * Gets the nickname string for the {@link Mbim.UiccFileStructure} specified at `val`.
      * @param val a MbimUiccFileStructure.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.28
      */
     function uicc_file_structure_get_string(val: UiccFileStructure | null): string;
     /**
-     * Gets the nickname string for the #MbimUiccFileType specified at `val`.
+     * Gets the nickname string for the {@link Mbim.UiccFileType} specified at `val`.
      * @param val a MbimUiccFileType.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.28
      */
     function uicc_file_type_get_string(val: UiccFileType | null): string;
     /**
-     * Gets the nickname string for the #MbimUiccPassThroughAction specified at `val`.
+     * Gets the nickname string for the {@link Mbim.UiccPassThroughAction} specified at `val`.
      * @param val a MbimUiccPassThroughAction.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.26
      */
     function uicc_pass_through_action_get_string(val: UiccPassThroughAction | null): string;
     /**
-     * Gets the nickname string for the #MbimUiccPassThroughStatus specified at `val`.
+     * Gets the nickname string for the {@link Mbim.UiccPassThroughStatus} specified at `val`.
      * @param val a MbimUiccPassThroughStatus.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.26
      */
     function uicc_pass_through_status_get_string(val: UiccPassThroughStatus | null): string;
     /**
-     * Gets the nickname string for the #MbimUiccSecureMessaging specified at `val`.
+     * Gets the nickname string for the {@link Mbim.UiccSecureMessaging} specified at `val`.
      * @param val a MbimUiccSecureMessaging.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.26
      */
     function uicc_secure_messaging_get_string(val: UiccSecureMessaging | null): string;
     /**
-     * Gets the nickname string for the #MbimUiccSlotState specified at `val`.
+     * Gets the nickname string for the {@link Mbim.UiccSlotState} specified at `val`.
      * @param val a MbimUiccSlotState.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.26
      */
     function uicc_slot_state_get_string(val: UiccSlotState | null): string;
     /**
      * Unregister a custom service.
      * @param id ID of the service to unregister.MbimUuid structure corresponding to service
      * @returns TRUE if service has been unregistered, FALSE otherwise.
+     * @since 1.10
      */
     function unregister_custom_service(id: number): boolean;
     /**
-     * Gets the nickname string for the #MbimUssdAction specified at `val`.
+     * Gets the nickname string for the {@link Mbim.UssdAction} specified at `val`.
      * @param val a MbimUssdAction.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.4
      */
     function ussd_action_get_string(val: UssdAction | null): string;
     /**
-     * Gets the nickname string for the #MbimUssdResponse specified at `val`.
+     * Gets the nickname string for the {@link Mbim.UssdResponse} specified at `val`.
      * @param val a MbimUssdResponse.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.4
      */
     function ussd_response_get_string(val: UssdResponse | null): string;
     /**
-     * Gets the nickname string for the #MbimUssdSessionState specified at `val`.
+     * Gets the nickname string for the {@link Mbim.UssdSessionState} specified at `val`.
      * @param val a MbimUssdSessionState.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.4
      */
     function ussd_session_state_get_string(val: UssdSessionState | null): string;
     /**
      * Checks whether personal info should be hidden when traces are enabled.
-     * @returns %TRUE to show personal info in trace, %FALSE otherwise.
+     * @returns `true` to show personal info in trace, `false` otherwise.
+     * @since 1.28
      */
     function utils_get_show_personal_info(): boolean;
     /**
      * Checks whether MBIM message traces are currently enabled.
-     * @returns %TRUE if traces are enabled, %FALSE otherwise.
+     * @returns `true` if traces are enabled, `false` otherwise.
+     * @since 1.0
      */
     function utils_get_traces_enabled(): boolean;
     /**
      * Sets whether personal info is printed when traces are enabled.
-     * @param show_personal_info %TRUE to show personal info in traces, %FALSE otherwise.
+     * @param show_personal_info `true` to show personal info in traces, `false` otherwise.
+     * @since 1.28
      */
     function utils_set_show_personal_info(show_personal_info: boolean): void;
     /**
      * Sets whether MBIM message traces are enabled or disabled.
-     * @param enabled %TRUE to enable traces, %FALSE to disable them.
+     * @param enabled `true` to enable traces, `false` to disable them.
+     * @since 1.0
      */
     function utils_set_traces_enabled(enabled: boolean): void;
     /**
      * Get the UUID corresponding to `context_type`.
-     * @param context_type a #MbimContextType.
-     * @returns a #MbimUuid.
+     * @param context_type a {@link Mbim.ContextType}.
+     * @returns a {@link Mbim.Uuid}.
+     * @since 1.0
      */
     function uuid_from_context_type(context_type: ContextType | null): Uuid;
     /**
@@ -4780,8 +5670,9 @@ export namespace Mbim {
      * Only ccepts `str` written with dashes separating items, e.g.:
      *  a289cc33-bcbb-8b4f-b6b0-133ec2aae6df
      * @param str a MBIM UUID.
-     * @param uuid pointer to the target #MbimUuid.
-     * @returns %TRUE if @uuid was correctly set, %FALSE otherwise.
+     * @param uuid pointer to the target {@link Mbim.Uuid}.
+     * @returns `true` if `uuid` was correctly set, `false` otherwise.
+     * @since 1.8
      */
     function uuid_from_printable(str: string, uuid: Uuid): boolean;
     /**
@@ -4789,40 +5680,50 @@ export namespace Mbim {
      *
      * The `service` needs to be either a generic one (including #MBIM_SERVICE_INVALID)
      * or a custom registered one.
-     * @param service a #MbimService.
-     * @returns a #MbimUuid.
+     * @param service a {@link Mbim.Service}.
+     * @returns a {@link Mbim.Uuid}.
+     * @since 1.0
      */
     function uuid_from_service(service: Service | null): Uuid;
     /**
-     * Gets the nickname string for the #MbimVisibleProvidersAction specified at `val`.
+     * Gets the nickname string for the {@link Mbim.VisibleProvidersAction} specified at `val`.
      * @param val a MbimVisibleProvidersAction.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.2
      */
     function visible_providers_action_get_string(val: VisibleProvidersAction | null): string;
     /**
-     * Gets the nickname string for the #MbimVoiceCallState specified at `val`.
+     * Gets the nickname string for the {@link Mbim.VoiceCallState} specified at `val`.
      * @param val a MbimVoiceCallState.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.0
      */
     function voice_call_state_get_string(val: VoiceCallState | null): string;
     /**
-     * Gets the nickname string for the #MbimVoiceClass specified at `val`.
+     * Gets the nickname string for the {@link Mbim.VoiceClass} specified at `val`.
      * @param val a MbimVoiceClass.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.0
      */
     function voice_class_get_string(val: VoiceClass | null): string;
     /**
-     * Gets the nickname string for the #MbimWakeType specified at `val`.
+     * Gets the nickname string for the {@link Mbim.WakeType} specified at `val`.
      * @param val a MbimWakeType.
-     * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
+     * @returns a string with the nickname, or `null` if not found. Do not free the returned value.
+     * @since 1.28
      */
     function wake_type_get_string(val: WakeType | null): string;
+    /**
+     * @gir-type Flags
+     */
     export namespace CellularClass {
         export const $gtype: GObject.GType<CellularClass>;
     }
 
     /**
      * Cellular class.
+     * @gir-type Flags
+     * @since 1.0
      */
     enum CellularClass {
         /**
@@ -4839,12 +5740,17 @@ export namespace Mbim {
         CDMA,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace CtrlCaps {
         export const $gtype: GObject.GType<CtrlCaps>;
     }
 
     /**
      * Control capabilities.
+     * @gir-type Flags
+     * @since 1.0
      */
     enum CtrlCaps {
         /**
@@ -4885,6 +5791,9 @@ export namespace Mbim {
         SIM_HOT_SWAP_CAPABLE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DataClass {
         export const $gtype: GObject.GType<DataClass>;
     }
@@ -4897,7 +5806,9 @@ export namespace Mbim {
      * report them without having enabled MBIM Extension v2.0 support.
      *
      * This type is updated in MBIM Extension v3.0 in a non-backwards compatible
-     * way, see #MbimDataClassV3.
+     * way, see {@link Mbim.DataClassV3}.
+     * @gir-type Flags
+     * @since 1.0
      */
     enum DataClass {
         /**
@@ -4970,6 +5881,9 @@ export namespace Mbim {
         CUSTOM,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DataClassV3 {
         export const $gtype: GObject.GType<DataClassV3>;
     }
@@ -4977,10 +5891,12 @@ export namespace Mbim {
     /**
      * Data class update in MBIMEx v3.0.
      *
-     * There is now a single flag for 5G, and the new #MbimDataSubclass helps to
+     * There is now a single flag for 5G, and the new {@link Mbim.DataSubclass} helps to
      * identify the specific 5G setup.
      *
-     * This type should be considered incompatible with #MbimDataClass.
+     * This type should be considered incompatible with {@link Mbim.DataClass}.
+     * @gir-type Flags
+     * @since 1.28
      */
     enum DataClassV3 {
         /**
@@ -5049,12 +5965,17 @@ export namespace Mbim {
         CUSTOM,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DataSubclass {
         export const $gtype: GObject.GType<DataSubclass>;
     }
 
     /**
      * Flags specifying the data subclass.
+     * @gir-type Flags
+     * @since 1.28
      */
     enum DataSubclass {
         /**
@@ -5085,6 +6006,8 @@ export namespace Mbim {
 
     /**
      * Flags to specify which actions to be performed when the device is open.
+     * @gir-type Flags
+     * @since 1.10
      */
     enum DeviceOpenFlags {
         /**
@@ -5107,6 +6030,7 @@ export namespace Mbim {
 
     /**
      * Frequency Range.
+     * @gir-type Struct
      */
     class FrequencyRange {
         static $gtype: GObject.GType<FrequencyRange>;
@@ -5127,12 +6051,17 @@ export namespace Mbim {
         static '2': number;
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace IPConfigurationAvailableFlag {
         export const $gtype: GObject.GType<IPConfigurationAvailableFlag>;
     }
 
     /**
      * Mask of available information about an IP address.
+     * @gir-type Flags
+     * @since 1.0
      */
     enum IPConfigurationAvailableFlag {
         /**
@@ -5157,12 +6086,17 @@ export namespace Mbim {
         MTU,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ProviderState {
         export const $gtype: GObject.GType<ProviderState>;
     }
 
     /**
      * State of the provider.
+     * @gir-type Flags
+     * @since 1.2
      */
     enum ProviderState {
         /**
@@ -5195,12 +6129,17 @@ export namespace Mbim {
         PREFERRED_MULTICARRIER,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ReadyInfoFlag {
         export const $gtype: GObject.GType<ReadyInfoFlag>;
     }
 
     /**
      * Flag specifying how the ready info is treated.
+     * @gir-type Flags
+     * @since 1.0
      */
     enum ReadyInfoFlag {
         /**
@@ -5213,12 +6152,17 @@ export namespace Mbim {
         PROTECT_UNIQUE_ID,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace RegistrationFlag {
         export const $gtype: GObject.GType<RegistrationFlag>;
     }
 
     /**
      * Registration flags.
+     * @gir-type Flags
+     * @since 1.0
      */
     enum RegistrationFlag {
         /**
@@ -5235,12 +6179,17 @@ export namespace Mbim {
         PACKET_SERVICE_AUTOMATIC_ATTACH,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SimClass {
         export const $gtype: GObject.GType<SimClass>;
     }
 
     /**
      * SIM class.
+     * @gir-type Flags
+     * @since 1.0
      */
     enum SimClass {
         /**
@@ -5257,12 +6206,17 @@ export namespace Mbim {
         REMOVABLE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SmsCaps {
         export const $gtype: GObject.GType<SmsCaps>;
     }
 
     /**
      * SMS capabilities.
+     * @gir-type Flags
+     * @since 1.0
      */
     enum SmsCaps {
         /**
@@ -5287,12 +6241,17 @@ export namespace Mbim {
         TEXT_SEND,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SmsStatusFlag {
         export const $gtype: GObject.GType<SmsStatusFlag>;
     }
 
     /**
      * SMS status flags.
+     * @gir-type Flags
+     * @since 1.4
      */
     enum SmsStatusFlag {
         /**
@@ -5309,12 +6268,17 @@ export namespace Mbim {
         NEW_MESSAGE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SubscriberReadyStatusFlag {
         export const $gtype: GObject.GType<SubscriberReadyStatusFlag>;
     }
 
     /**
      * Flags specifying SIM related details.
+     * @gir-type Flags
+     * @since 1.28
      */
     enum SubscriberReadyStatusFlag {
         /**
@@ -5338,8 +6302,20 @@ export namespace Mbim {
     namespace Device {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
             'device-error': (arg0: GLib.Error) => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'device-indicate-status': (arg0: Message) => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'device-removed': () => void;
             'notify::device-consecutive-timeouts': (pspec: GObject.ParamSpec) => void;
             'notify::device-file': (pspec: GObject.ParamSpec) => void;
@@ -5362,17 +6338,31 @@ export namespace Mbim {
     }
 
     /**
-     * The #MbimDevice structure contains private data and should only be accessed
+     * The {@link Mbim.Device} structure contains private data and should only be accessed
      * using the provided API.
+     * @gir-type Class
+     * @since 1.0
      */
     class Device extends GObject.Object implements Gio.AsyncInitable<Device> {
         static $gtype: GObject.GType<Device>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get device_consecutive_timeouts(): number;
+        /**
+         * @read-only
+         */
         get deviceConsecutiveTimeouts(): number;
+        /**
+         * @construct-only
+         */
         get device_file(): Gio.File;
+        /**
+         * @construct-only
+         */
         get deviceFile(): Gio.File;
         get device_in_session(): boolean;
         set device_in_session(val: boolean);
@@ -5405,16 +6395,19 @@ export namespace Mbim {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Device.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Device.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Device.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Device.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Device.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5424,12 +6417,12 @@ export namespace Mbim {
         // Static methods
 
         /**
-         * Asynchronously creates a #MbimDevice object to manage `file`.
+         * Asynchronously creates a {@link Mbim.Device} object to manage `file`.
          * When the operation is finished, `callback` will be invoked. You can then call
-         * mbim_device_new_finish() to get the result of the operation.
-         * @param file a #GFile.
-         * @param cancellable optional #GCancellable object, #NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the initialization is finished.
+         * `mbim_device_new_finish()` to get the result of the operation.
+         * @param file a {@link Gio.File}.
+         * @param cancellable optional {@link Gio.Cancellable} object, `NULL` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the initialization is finished.
          */
         static ['new'](
             file: Gio.File,
@@ -5445,21 +6438,21 @@ export namespace Mbim {
          * another using multiplexing.
          *
          * If the kernel driver doesn't allow this functionality, a
-         * %MBIM_CORE_ERROR_UNSUPPORTED error will be returned.
+         * {@link Mbim.CoreError.UNSUPPORTED} error will be returned.
          *
          * The operation may fail if the given interface name is not associated to the
-         * MBIM control port managed by the #MbimDevice.
+         * MBIM control port managed by the {@link Mbim.Device}.
          *
          * Depending on the kernel driver in use, the given `ifname_prefix` may be
          * ignored. The user should not assume that the returned link interface name is
          * prefixed with `ifname_prefix` as it may not be the case.
          *
          * When the operation is finished `callback` will be called. You can then call
-         * mbim_device_add_link_finish() to get the result of the operation.
+         * `mbim_device_add_link_finish()` to get the result of the operation.
          * @param session_id the session id for the link, in the   [#MBIM_DEVICE_SESSION_ID_MIN,#MBIM_DEVICE_SESSION_ID_MAX] range, or   #MBIM_DEVICE_SESSION_ID_AUTOMATIC to find the first available session id.
          * @param base_ifname the interface which the new link will be created on.
          * @param ifname_prefix the prefix suggested to be used for the name of the new link   created.
-         * @param cancellable a #GCancellable, or %NULL.
+         * @param cancellable a {@link Gio.Cancellable}, or `null`.
          */
         add_link(
             session_id: number,
@@ -5473,22 +6466,22 @@ export namespace Mbim {
          * another using multiplexing.
          *
          * If the kernel driver doesn't allow this functionality, a
-         * %MBIM_CORE_ERROR_UNSUPPORTED error will be returned.
+         * {@link Mbim.CoreError.UNSUPPORTED} error will be returned.
          *
          * The operation may fail if the given interface name is not associated to the
-         * MBIM control port managed by the #MbimDevice.
+         * MBIM control port managed by the {@link Mbim.Device}.
          *
          * Depending on the kernel driver in use, the given `ifname_prefix` may be
          * ignored. The user should not assume that the returned link interface name is
          * prefixed with `ifname_prefix` as it may not be the case.
          *
          * When the operation is finished `callback` will be called. You can then call
-         * mbim_device_add_link_finish() to get the result of the operation.
+         * `mbim_device_add_link_finish()` to get the result of the operation.
          * @param session_id the session id for the link, in the   [#MBIM_DEVICE_SESSION_ID_MIN,#MBIM_DEVICE_SESSION_ID_MAX] range, or   #MBIM_DEVICE_SESSION_ID_AUTOMATIC to find the first available session id.
          * @param base_ifname the interface which the new link will be created on.
          * @param ifname_prefix the prefix suggested to be used for the name of the new link   created.
-         * @param cancellable a #GCancellable, or %NULL.
-         * @param callback a #GAsyncReadyCallback to call when the operation is finished.
+         * @param cancellable a {@link Gio.Cancellable}, or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
          */
         add_link(
             session_id: number,
@@ -5503,22 +6496,22 @@ export namespace Mbim {
          * another using multiplexing.
          *
          * If the kernel driver doesn't allow this functionality, a
-         * %MBIM_CORE_ERROR_UNSUPPORTED error will be returned.
+         * {@link Mbim.CoreError.UNSUPPORTED} error will be returned.
          *
          * The operation may fail if the given interface name is not associated to the
-         * MBIM control port managed by the #MbimDevice.
+         * MBIM control port managed by the {@link Mbim.Device}.
          *
          * Depending on the kernel driver in use, the given `ifname_prefix` may be
          * ignored. The user should not assume that the returned link interface name is
          * prefixed with `ifname_prefix` as it may not be the case.
          *
          * When the operation is finished `callback` will be called. You can then call
-         * mbim_device_add_link_finish() to get the result of the operation.
+         * `mbim_device_add_link_finish()` to get the result of the operation.
          * @param session_id the session id for the link, in the   [#MBIM_DEVICE_SESSION_ID_MIN,#MBIM_DEVICE_SESSION_ID_MAX] range, or   #MBIM_DEVICE_SESSION_ID_AUTOMATIC to find the first available session id.
          * @param base_ifname the interface which the new link will be created on.
          * @param ifname_prefix the prefix suggested to be used for the name of the new link   created.
-         * @param cancellable a #GCancellable, or %NULL.
-         * @param callback a #GAsyncReadyCallback to call when the operation is finished.
+         * @param cancellable a {@link Gio.Cancellable}, or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
          */
         add_link(
             session_id: number,
@@ -5528,15 +6521,15 @@ export namespace Mbim {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
-         * Finishes an operation started with mbim_device_add_link().
-         * @param res a #GAsyncResult.
+         * Finishes an operation started with `mbim_device_add_link()`.
+         * @param res a {@link Gio.AsyncResult}.
          * @param session_id the session ID for the link created.
-         * @returns The name of the net interface created, %NULL if @error is set.
+         * @returns The name of the net interface created, `null` if `error` is set.
          */
         add_link_finish(res: Gio.AsyncResult, session_id: number): string;
         /**
          * Checks whether link management is supported by the kernel.
-         * @returns %TRUE if link management is supported, or %FALSE if @error is set.
+         * @returns `true` if link management is supported, or `false` if `error` is set.
          */
         check_link_supported(): boolean;
         /**
@@ -5544,26 +6537,26 @@ export namespace Mbim {
          * against the one given as input.
          * @param ms_mbimex_version_major major version number of the MS MBIMEx support.
          * @param ms_mbimex_version_minor minor version number of the MS MBIMEx support.
-         * @returns %TRUE if the version of the device instance is the same as or newer than the passed-in version.
+         * @returns `true` if the version of the device instance is the same as or newer than the passed-in version.
          */
         check_ms_mbimex_version(ms_mbimex_version_major: number, ms_mbimex_version_minor: number): boolean;
         /**
-         * Asynchronously closes a #MbimDevice for I/O.
+         * Asynchronously closes a {@link Mbim.Device} for I/O.
          *
          * When the operation is finished `callback` will be called. You can then call
-         * mbim_device_close_finish() to get the result of the operation.
+         * `mbim_device_close_finish()` to get the result of the operation.
          * @param timeout maximum time, in seconds, to wait for the device to be closed.
-         * @param cancellable optional #GCancellable object, #NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `NULL` to ignore.
          */
         close(timeout: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
-         * Asynchronously closes a #MbimDevice for I/O.
+         * Asynchronously closes a {@link Mbim.Device} for I/O.
          *
          * When the operation is finished `callback` will be called. You can then call
-         * mbim_device_close_finish() to get the result of the operation.
+         * `mbim_device_close_finish()` to get the result of the operation.
          * @param timeout maximum time, in seconds, to wait for the device to be closed.
-         * @param cancellable optional #GCancellable object, #NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the operation is finished.
+         * @param cancellable optional {@link Gio.Cancellable} object, `NULL` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
          */
         close(
             timeout: number,
@@ -5571,13 +6564,13 @@ export namespace Mbim {
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Asynchronously closes a #MbimDevice for I/O.
+         * Asynchronously closes a {@link Mbim.Device} for I/O.
          *
          * When the operation is finished `callback` will be called. You can then call
-         * mbim_device_close_finish() to get the result of the operation.
+         * `mbim_device_close_finish()` to get the result of the operation.
          * @param timeout maximum time, in seconds, to wait for the device to be closed.
-         * @param cancellable optional #GCancellable object, #NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the operation is finished.
+         * @param cancellable optional {@link Gio.Cancellable} object, `NULL` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
          */
         close(
             timeout: number,
@@ -5585,35 +6578,35 @@ export namespace Mbim {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Finishes an asynchronous close operation started with mbim_device_close().
-         * @param res a #GAsyncResult.
-         * @returns %TRUE if successful, %FALSE if @error is set.
+         * Finishes an asynchronous close operation started with `mbim_device_close()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @returns `true` if successful, `false` if `error` is set.
          */
         close_finish(res: Gio.AsyncResult): boolean;
         /**
-         * Forces the #MbimDevice to be closed.
-         * @returns %TRUE if @self if no error happens, otherwise %FALSE and @error is set.
+         * Forces the {@link Mbim.Device} to be closed.
+         * @returns `true` if `self` if no error happens, otherwise `false` and `error` is set.
          */
         close_force(): boolean;
         /**
-         * Asynchronously sends a #MbimMessage to the device.
+         * Asynchronously sends a {@link Mbim.Message} to the device.
          *
          * When the operation is finished `callback` will be called. You can then call
-         * mbim_device_command_finish() to get the result of the operation.
+         * `mbim_device_command_finish()` to get the result of the operation.
          * @param message the message to send.
          * @param timeout maximum time, in seconds, to wait for the response.
-         * @param cancellable a #GCancellable, or %NULL.
+         * @param cancellable a {@link Gio.Cancellable}, or `null`.
          */
         command(message: Message, timeout: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<Message>;
         /**
-         * Asynchronously sends a #MbimMessage to the device.
+         * Asynchronously sends a {@link Mbim.Message} to the device.
          *
          * When the operation is finished `callback` will be called. You can then call
-         * mbim_device_command_finish() to get the result of the operation.
+         * `mbim_device_command_finish()` to get the result of the operation.
          * @param message the message to send.
          * @param timeout maximum time, in seconds, to wait for the response.
-         * @param cancellable a #GCancellable, or %NULL.
-         * @param callback a #GAsyncReadyCallback to call when the operation is finished.
+         * @param cancellable a {@link Gio.Cancellable}, or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
          */
         command(
             message: Message,
@@ -5622,14 +6615,14 @@ export namespace Mbim {
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Asynchronously sends a #MbimMessage to the device.
+         * Asynchronously sends a {@link Mbim.Message} to the device.
          *
          * When the operation is finished `callback` will be called. You can then call
-         * mbim_device_command_finish() to get the result of the operation.
+         * `mbim_device_command_finish()` to get the result of the operation.
          * @param message the message to send.
          * @param timeout maximum time, in seconds, to wait for the response.
-         * @param cancellable a #GCancellable, or %NULL.
-         * @param callback a #GAsyncReadyCallback to call when the operation is finished.
+         * @param cancellable a {@link Gio.Cancellable}, or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
          */
         command(
             message: Message,
@@ -5638,20 +6631,20 @@ export namespace Mbim {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Message> | void;
         /**
-         * Finishes an operation started with mbim_device_command().
+         * Finishes an operation started with `mbim_device_command()`.
          *
-         * The returned #MbimMessage is ensured to be valid and complete (i.e. not a
-         * partial fragment). There is no need to call mbim_message_validate() again.
-         * @param res a #GAsyncResult.
-         * @returns a #MbimMessage response, or #NULL if @error is set. The returned value should be freed with mbim_message_unref().
+         * The returned {@link Mbim.Message} is ensured to be valid and complete (i.e. not a
+         * partial fragment). There is no need to call `mbim_message_validate()` again.
+         * @param res a {@link Gio.AsyncResult}.
+         * @returns a {@link Mbim.Message} response, or `NULL` if `error` is set. The returned value should be freed with `mbim_message_unref()`.
          */
         command_finish(res: Gio.AsyncResult): Message;
         /**
          * Asynchronously deletes all virtual network interfaces that have been previously
-         * created with mbim_device_add_link() in `base_ifname`.
+         * created with `mbim_device_add_link()` in `base_ifname`.
          *
          * When the operation is finished `callback` will be called. You can then call
-         * mbim_device_delete_link_finish() to get the result of the operation.
+         * `mbim_device_delete_link_finish()` to get the result of the operation.
          *
          * <note><para>
          * There is no guarantee that other processes haven't created new links by the
@@ -5660,15 +6653,15 @@ export namespace Mbim {
          * management.
          * </para></note>
          * @param base_ifname the interface where all links are available.
-         * @param cancellable a #GCancellable, or %NULL.
+         * @param cancellable a {@link Gio.Cancellable}, or `null`.
          */
         delete_all_links(base_ifname: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously deletes all virtual network interfaces that have been previously
-         * created with mbim_device_add_link() in `base_ifname`.
+         * created with `mbim_device_add_link()` in `base_ifname`.
          *
          * When the operation is finished `callback` will be called. You can then call
-         * mbim_device_delete_link_finish() to get the result of the operation.
+         * `mbim_device_delete_link_finish()` to get the result of the operation.
          *
          * <note><para>
          * There is no guarantee that other processes haven't created new links by the
@@ -5677,8 +6670,8 @@ export namespace Mbim {
          * management.
          * </para></note>
          * @param base_ifname the interface where all links are available.
-         * @param cancellable a #GCancellable, or %NULL.
-         * @param callback a #GAsyncReadyCallback to call when the operation is finished.
+         * @param cancellable a {@link Gio.Cancellable}, or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
          */
         delete_all_links(
             base_ifname: string,
@@ -5687,10 +6680,10 @@ export namespace Mbim {
         ): void;
         /**
          * Asynchronously deletes all virtual network interfaces that have been previously
-         * created with mbim_device_add_link() in `base_ifname`.
+         * created with `mbim_device_add_link()` in `base_ifname`.
          *
          * When the operation is finished `callback` will be called. You can then call
-         * mbim_device_delete_link_finish() to get the result of the operation.
+         * `mbim_device_delete_link_finish()` to get the result of the operation.
          *
          * <note><para>
          * There is no guarantee that other processes haven't created new links by the
@@ -5699,8 +6692,8 @@ export namespace Mbim {
          * management.
          * </para></note>
          * @param base_ifname the interface where all links are available.
-         * @param cancellable a #GCancellable, or %NULL.
-         * @param callback a #GAsyncReadyCallback to call when the operation is finished.
+         * @param cancellable a {@link Gio.Cancellable}, or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
          */
         delete_all_links(
             base_ifname: string,
@@ -5708,36 +6701,36 @@ export namespace Mbim {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Finishes an operation started with mbim_device_delete_all_links().
-         * @param res a #GAsyncResult.
-         * @returns %TRUE if successful, %FALSE if @error is set.
+         * Finishes an operation started with `mbim_device_delete_all_links()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @returns `true` if successful, `false` if `error` is set.
          */
         delete_all_links_finish(res: Gio.AsyncResult): boolean;
         /**
          * Asynchronously deletes a virtual network interface that has been previously
-         * created with mbim_device_add_link().
+         * created with `mbim_device_add_link()`.
          *
          * If the kernel driver doesn't allow this functionality, a
-         * %MBIM_CORE_ERROR_UNSUPPORTED error will be returned.
+         * {@link Mbim.CoreError.UNSUPPORTED} error will be returned.
          *
          * When the operation is finished `callback` will be called. You can then call
-         * mbim_device_delete_link_finish() to get the result of the operation.
+         * `mbim_device_delete_link_finish()` to get the result of the operation.
          * @param ifname the name of the link to remove.
-         * @param cancellable a #GCancellable, or %NULL.
+         * @param cancellable a {@link Gio.Cancellable}, or `null`.
          */
         delete_link(ifname: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously deletes a virtual network interface that has been previously
-         * created with mbim_device_add_link().
+         * created with `mbim_device_add_link()`.
          *
          * If the kernel driver doesn't allow this functionality, a
-         * %MBIM_CORE_ERROR_UNSUPPORTED error will be returned.
+         * {@link Mbim.CoreError.UNSUPPORTED} error will be returned.
          *
          * When the operation is finished `callback` will be called. You can then call
-         * mbim_device_delete_link_finish() to get the result of the operation.
+         * `mbim_device_delete_link_finish()` to get the result of the operation.
          * @param ifname the name of the link to remove.
-         * @param cancellable a #GCancellable, or %NULL.
-         * @param callback a #GAsyncReadyCallback to call when the operation is finished.
+         * @param cancellable a {@link Gio.Cancellable}, or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
          */
         delete_link(
             ifname: string,
@@ -5746,16 +6739,16 @@ export namespace Mbim {
         ): void;
         /**
          * Asynchronously deletes a virtual network interface that has been previously
-         * created with mbim_device_add_link().
+         * created with `mbim_device_add_link()`.
          *
          * If the kernel driver doesn't allow this functionality, a
-         * %MBIM_CORE_ERROR_UNSUPPORTED error will be returned.
+         * {@link Mbim.CoreError.UNSUPPORTED} error will be returned.
          *
          * When the operation is finished `callback` will be called. You can then call
-         * mbim_device_delete_link_finish() to get the result of the operation.
+         * `mbim_device_delete_link_finish()` to get the result of the operation.
          * @param ifname the name of the link to remove.
-         * @param cancellable a #GCancellable, or %NULL.
-         * @param callback a #GAsyncReadyCallback to call when the operation is finished.
+         * @param cancellable a {@link Gio.Cancellable}, or `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
          */
         delete_link(
             ifname: string,
@@ -5763,29 +6756,29 @@ export namespace Mbim {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Finishes an operation started with mbim_device_delete_link().
-         * @param res a #GAsyncResult.
-         * @returns %TRUE if successful, %FALSE if @error is set.
+         * Finishes an operation started with `mbim_device_delete_link()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @returns `true` if successful, `false` if `error` is set.
          */
         delete_link_finish(res: Gio.AsyncResult): boolean;
         /**
          * Gets the number of consecutive transaction timeouts in the device.
-         * @returns a #guint.
+         * @returns a `guint`.
          */
         get_consecutive_timeouts(): number;
         /**
          * Get the version number of the MS MBIMEx support.
          *
          * The reported version will be 1 if the initialization sequence to agree on
-         * which version to use hasn't been run (e.g. with mbim_device_open_full() and
-         * the explicit %MBIM_DEVICE_OPEN_FLAGS_MS_MBIMEX_V2 or
-         * %MBIM_DEVICE_OPEN_FLAGS_MS_MBIMEX_V3 flag).
-         * @param out_ms_mbimex_version_minor output location for the minor version number of  the MS MBIMEx support, or %NULL if not needed.
+         * which version to use hasn't been run (e.g. with `mbim_device_open_full()` and
+         * the explicit {@link Mbim.DeviceOpenFlags.MS_MBIMEX_V2} or
+         * {@link Mbim.DeviceOpenFlags.MS_MBIMEX_V3} flag).
+         * @param out_ms_mbimex_version_minor output location for the minor version number of  the MS MBIMEx support, or `null` if not needed.
          * @returns the major version number of the MS MBIMEx support.
          */
         get_ms_mbimex_version(out_ms_mbimex_version_minor: number): number;
         /**
-         * Acquire the next transaction ID of this #MbimDevice.
+         * Acquire the next transaction ID of this {@link Mbim.Device}.
          * The internal transaction ID gets incremented.
          * @returns the next transaction ID.
          */
@@ -5801,50 +6794,50 @@ export namespace Mbim {
          */
         get_path_display(): string;
         /**
-         * Acquire the transaction ID of this #MbimDevice without
+         * Acquire the transaction ID of this {@link Mbim.Device} without
          * incrementing the internal transaction ID.
          * @returns the current transaction ID.
          */
         get_transaction_id(): number;
         /**
-         * Checks whether the #MbimDevice is open for I/O.
-         * @returns %TRUE if @self is open, %FALSE otherwise.
+         * Checks whether the {@link Mbim.Device} is open for I/O.
+         * @returns `true` if `self` is open, `false` otherwise.
          */
         is_open(): boolean;
         /**
          * Synchronously lists all virtual network interfaces that have been previously
-         * created with mbim_device_add_link() in `base_ifname`.
+         * created with `mbim_device_add_link()` in `base_ifname`.
          * @param base_ifname the base interface.
-         * @returns %TRUE if successful, %FALSE if @error is set.
+         * @returns `true` if successful, `false` if `error` is set.
          */
         list_links(base_ifname: string): [boolean, string[]];
         /**
-         * Asynchronously opens a #MbimDevice for I/O.
+         * Asynchronously opens a {@link Mbim.Device} for I/O.
          *
          * When the operation is finished `callback` will be called. You can then call
-         * mbim_device_open_finish() to get the result of the operation.
+         * `mbim_device_open_finish()` to get the result of the operation.
          * @param timeout maximum time, in seconds, to wait for the device to be opened.
-         * @param cancellable optional #GCancellable object, #NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `NULL` to ignore.
          */
         open(timeout: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
-         * Asynchronously opens a #MbimDevice for I/O.
+         * Asynchronously opens a {@link Mbim.Device} for I/O.
          *
          * When the operation is finished `callback` will be called. You can then call
-         * mbim_device_open_finish() to get the result of the operation.
+         * `mbim_device_open_finish()` to get the result of the operation.
          * @param timeout maximum time, in seconds, to wait for the device to be opened.
-         * @param cancellable optional #GCancellable object, #NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the operation is finished.
+         * @param cancellable optional {@link Gio.Cancellable} object, `NULL` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
          */
         open(timeout: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
-         * Asynchronously opens a #MbimDevice for I/O.
+         * Asynchronously opens a {@link Mbim.Device} for I/O.
          *
          * When the operation is finished `callback` will be called. You can then call
-         * mbim_device_open_finish() to get the result of the operation.
+         * `mbim_device_open_finish()` to get the result of the operation.
          * @param timeout maximum time, in seconds, to wait for the device to be opened.
-         * @param cancellable optional #GCancellable object, #NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the operation is finished.
+         * @param cancellable optional {@link Gio.Cancellable} object, `NULL` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
          */
         open(
             timeout: number,
@@ -5852,22 +6845,22 @@ export namespace Mbim {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Finishes an asynchronous open operation started with mbim_device_open().
-         * @param res a #GAsyncResult.
-         * @returns %TRUE if successful, %FALSE if @error is set.
+         * Finishes an asynchronous open operation started with `mbim_device_open()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @returns `true` if successful, `false` if `error` is set.
          */
         open_finish(res: Gio.AsyncResult): boolean;
         /**
-         * Asynchronously opens a #MbimDevice for I/O.
+         * Asynchronously opens a {@link Mbim.Device} for I/O.
          *
-         * This method is an extension of the generic mbim_device_open(), which allows
-         * launching the #MbimDevice with proxy support.
+         * This method is an extension of the generic `mbim_device_open()`, which allows
+         * launching the {@link Mbim.Device} with proxy support.
          *
          * When the operation is finished `callback` will be called. You can then call
-         * mbim_device_open_full_finish() to get the result of the operation.
-         * @param flags a set of #MbimDeviceOpenFlags.
+         * `mbim_device_open_full_finish()` to get the result of the operation.
+         * @param flags a set of {@link Mbim.DeviceOpenFlags}.
          * @param timeout maximum time, in seconds, to wait for the device to be opened.
-         * @param cancellable optional #GCancellable object, #NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `NULL` to ignore.
          */
         open_full(
             flags: DeviceOpenFlags | null,
@@ -5875,17 +6868,17 @@ export namespace Mbim {
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
-         * Asynchronously opens a #MbimDevice for I/O.
+         * Asynchronously opens a {@link Mbim.Device} for I/O.
          *
-         * This method is an extension of the generic mbim_device_open(), which allows
-         * launching the #MbimDevice with proxy support.
+         * This method is an extension of the generic `mbim_device_open()`, which allows
+         * launching the {@link Mbim.Device} with proxy support.
          *
          * When the operation is finished `callback` will be called. You can then call
-         * mbim_device_open_full_finish() to get the result of the operation.
-         * @param flags a set of #MbimDeviceOpenFlags.
+         * `mbim_device_open_full_finish()` to get the result of the operation.
+         * @param flags a set of {@link Mbim.DeviceOpenFlags}.
          * @param timeout maximum time, in seconds, to wait for the device to be opened.
-         * @param cancellable optional #GCancellable object, #NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the operation is finished.
+         * @param cancellable optional {@link Gio.Cancellable} object, `NULL` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
          */
         open_full(
             flags: DeviceOpenFlags | null,
@@ -5894,17 +6887,17 @@ export namespace Mbim {
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Asynchronously opens a #MbimDevice for I/O.
+         * Asynchronously opens a {@link Mbim.Device} for I/O.
          *
-         * This method is an extension of the generic mbim_device_open(), which allows
-         * launching the #MbimDevice with proxy support.
+         * This method is an extension of the generic `mbim_device_open()`, which allows
+         * launching the {@link Mbim.Device} with proxy support.
          *
          * When the operation is finished `callback` will be called. You can then call
-         * mbim_device_open_full_finish() to get the result of the operation.
-         * @param flags a set of #MbimDeviceOpenFlags.
+         * `mbim_device_open_full_finish()` to get the result of the operation.
+         * @param flags a set of {@link Mbim.DeviceOpenFlags}.
          * @param timeout maximum time, in seconds, to wait for the device to be opened.
-         * @param cancellable optional #GCancellable object, #NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the operation is finished.
+         * @param cancellable optional {@link Gio.Cancellable} object, `NULL` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the operation is finished.
          */
         open_full(
             flags: DeviceOpenFlags | null,
@@ -5913,9 +6906,9 @@ export namespace Mbim {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Finishes an asynchronous open operation started with mbim_device_open_full().
-         * @param res a #GAsyncResult.
-         * @returns %TRUE if successful, %FALSE if @error is set.
+         * Finishes an asynchronous open operation started with `mbim_device_open_full()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @returns `true` if successful, `false` if `error` is set.
          */
         open_full_finish(res: Gio.AsyncResult): boolean;
         /**
@@ -5927,97 +6920,95 @@ export namespace Mbim {
          * and device, the message processing on this device instance may fail.
          *
          * This operation does not do any MBIMEx version exchange with the device,
-         * the only way to do that is with mbim_device_open_full() and the explicit
-         * %MBIM_DEVICE_OPEN_FLAGS_MS_MBIMEX_V2 or %MBIM_DEVICE_OPEN_FLAGS_MS_MBIMEX_V3
+         * the only way to do that is with `mbim_device_open_full()` and the explicit
+         * {@link Mbim.DeviceOpenFlags.MS_MBIMEX_V2} or {@link Mbim.DeviceOpenFlags.MS_MBIMEX_V3}
          * flag.
          * @param ms_mbimex_version_major major version number of the MS MBIMEx support.
          * @param ms_mbimex_version_minor minor version number of the MS MBIMEx support.
-         * @returns %TRUE if successful, %FALSE if @error is set.
+         * @returns `true` if successful, `false` if `error` is set.
          */
         set_ms_mbimex_version(ms_mbimex_version_major: number, ms_mbimex_version_minor: number): boolean;
-
-        // Inherited methods
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
         init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         init_async(
             io_priority: number,
@@ -6027,43 +7018,43 @@ export namespace Mbim {
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         init_async(
             io_priority: number,
@@ -6072,58 +7063,59 @@ export namespace Mbim {
         ): globalThis.Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
-         * See g_async_initable_init_async().
-         * @param res a #GAsyncResult.
-         * @returns %TRUE if successful. If an error has occurred, this function will return %FALSE and set @error appropriately if present.
+         * See `g_async_initable_init_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          */
         init_finish(res: Gio.AsyncResult): boolean;
         /**
          * Finishes the async construction for the various g_async_initable_new
-         * calls, returning the created object or %NULL on error.
-         * @param res the #GAsyncResult from the callback
-         * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
+         * calls, returning the created object or `null` on error.
+         * @param res the {@link Gio.AsyncResult} from the callback
+         * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          */
         new_finish(res: Gio.AsyncResult): Device;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @virtual
          */
         vfunc_init_async(
             io_priority: number,
@@ -6132,8 +7124,9 @@ export namespace Mbim {
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
-         * See g_async_initable_init_async().
-         * @param res a #GAsyncResult.
+         * See `g_async_initable_init_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
         /**
@@ -6149,32 +7142,32 @@ export namespace Mbim {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -6183,39 +7176,39 @@ export namespace Mbim {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -6226,13 +7219,16 @@ export namespace Mbim {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -6240,7 +7236,7 @@ export namespace Mbim {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -6248,9 +7244,9 @@ export namespace Mbim {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -6270,9 +7266,9 @@ export namespace Mbim {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -6285,34 +7281,34 @@ export namespace Mbim {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -6345,22 +7341,22 @@ export namespace Mbim {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -6369,8 +7365,8 @@ export namespace Mbim {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -6387,10 +7383,10 @@ export namespace Mbim {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -6405,13 +7401,13 @@ export namespace Mbim {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -6442,21 +7438,21 @@ export namespace Mbim {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -6466,33 +7462,34 @@ export namespace Mbim {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -6501,6 +7498,7 @@ export namespace Mbim {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -6509,12 +7507,14 @@ export namespace Mbim {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -6523,20 +7523,22 @@ export namespace Mbim {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -6548,6 +7550,7 @@ export namespace Mbim {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -6597,17 +7600,31 @@ export namespace Mbim {
     }
 
     /**
-     * The #MbimProxy structure contains private data and should only be accessed
+     * The {@link Mbim.Proxy} structure contains private data and should only be accessed
      * using the provided API.
+     * @gir-type Class
+     * @since 1.10
      */
     class Proxy extends GObject.Object {
         static $gtype: GObject.GType<Proxy>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get mbim_proxy_n_clients(): number;
+        /**
+         * @read-only
+         */
         get mbimProxyNClients(): number;
+        /**
+         * @read-only
+         */
         get mbim_proxy_n_devices(): number;
+        /**
+         * @read-only
+         */
         get mbimProxyNDevices(): number;
 
         /**
@@ -6629,16 +7646,19 @@ export namespace Mbim {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Proxy.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Proxy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Proxy.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Proxy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Proxy.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Proxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6648,6 +7668,8 @@ export namespace Mbim {
 
     /**
      * A MbimAtdsProvider element.
+     * @gir-type Struct
+     * @since 1.16
      */
     class AtdsProvider {
         static $gtype: GObject.GType<AtdsProvider>;
@@ -6677,14 +7699,16 @@ export namespace Mbim {
         // Static methods
 
         /**
-         * Frees the memory allocated for the array of #MbimAtdsProvider structs.
-         * @param array a #NULL terminated array of #MbimAtdsProvider structs.
+         * Frees the memory allocated for the array of {@link Mbim.AtdsProvider} structs.
+         * @param array a `NULL` terminated array of {@link Mbim.AtdsProvider} structs.
          */
         static array_free(array: AtdsProviderArray): void;
     }
 
     /**
      * A MbimCellInfoCdma element.
+     * @gir-type Struct
+     * @since 1.28
      */
     class CellInfoCdma {
         static $gtype: GObject.GType<CellInfoCdma>;
@@ -6720,14 +7744,16 @@ export namespace Mbim {
         // Static methods
 
         /**
-         * Frees the memory allocated for the array of #MbimCellInfoCdma structs.
-         * @param array a #NULL terminated array of #MbimCellInfoCdma structs.
+         * Frees the memory allocated for the array of {@link Mbim.CellInfoCdma} structs.
+         * @param array a `NULL` terminated array of {@link Mbim.CellInfoCdma} structs.
          */
         static array_free(array: CellInfoCdmaArray): void;
     }
 
     /**
      * A MbimCellInfoNeighboringGsm element.
+     * @gir-type Struct
+     * @since 1.28
      */
     class CellInfoNeighboringGsm {
         static $gtype: GObject.GType<CellInfoNeighboringGsm>;
@@ -6757,14 +7783,16 @@ export namespace Mbim {
         // Static methods
 
         /**
-         * Frees the memory allocated for the array of #MbimCellInfoNeighboringGsm structs.
-         * @param array a #NULL terminated array of #MbimCellInfoNeighboringGsm structs.
+         * Frees the memory allocated for the array of {@link Mbim.CellInfoNeighboringGsm} structs.
+         * @param array a `NULL` terminated array of {@link Mbim.CellInfoNeighboringGsm} structs.
          */
         static array_free(array: CellInfoNeighboringGsmArray): void;
     }
 
     /**
      * A MbimCellInfoNeighboringLte element.
+     * @gir-type Struct
+     * @since 1.28
      */
     class CellInfoNeighboringLte {
         static $gtype: GObject.GType<CellInfoNeighboringLte>;
@@ -6796,14 +7824,16 @@ export namespace Mbim {
         // Static methods
 
         /**
-         * Frees the memory allocated for the array of #MbimCellInfoNeighboringLte structs.
-         * @param array a #NULL terminated array of #MbimCellInfoNeighboringLte structs.
+         * Frees the memory allocated for the array of {@link Mbim.CellInfoNeighboringLte} structs.
+         * @param array a `NULL` terminated array of {@link Mbim.CellInfoNeighboringLte} structs.
          */
         static array_free(array: CellInfoNeighboringLteArray): void;
     }
 
     /**
      * A MbimCellInfoNeighboringNr element.
+     * @gir-type Struct
+     * @since 1.28
      */
     class CellInfoNeighboringNr {
         static $gtype: GObject.GType<CellInfoNeighboringNr>;
@@ -6837,14 +7867,16 @@ export namespace Mbim {
         // Static methods
 
         /**
-         * Frees the memory allocated for the array of #MbimCellInfoNeighboringNr structs.
-         * @param array a #NULL terminated array of #MbimCellInfoNeighboringNr structs.
+         * Frees the memory allocated for the array of {@link Mbim.CellInfoNeighboringNr} structs.
+         * @param array a `NULL` terminated array of {@link Mbim.CellInfoNeighboringNr} structs.
          */
         static array_free(array: CellInfoNeighboringNrArray): void;
     }
 
     /**
      * A MbimCellInfoNeighboringTdscdma element.
+     * @gir-type Struct
+     * @since 1.28
      */
     class CellInfoNeighboringTdscdma {
         static $gtype: GObject.GType<CellInfoNeighboringTdscdma>;
@@ -6878,14 +7910,16 @@ export namespace Mbim {
         // Static methods
 
         /**
-         * Frees the memory allocated for the array of #MbimCellInfoNeighboringTdscdma structs.
-         * @param array a #NULL terminated array of #MbimCellInfoNeighboringTdscdma structs.
+         * Frees the memory allocated for the array of {@link Mbim.CellInfoNeighboringTdscdma} structs.
+         * @param array a `NULL` terminated array of {@link Mbim.CellInfoNeighboringTdscdma} structs.
          */
         static array_free(array: CellInfoNeighboringTdscdmaArray): void;
     }
 
     /**
      * A MbimCellInfoNeighboringUmts element.
+     * @gir-type Struct
+     * @since 1.28
      */
     class CellInfoNeighboringUmts {
         static $gtype: GObject.GType<CellInfoNeighboringUmts>;
@@ -6919,14 +7953,16 @@ export namespace Mbim {
         // Static methods
 
         /**
-         * Frees the memory allocated for the array of #MbimCellInfoNeighboringUmts structs.
-         * @param array a #NULL terminated array of #MbimCellInfoNeighboringUmts structs.
+         * Frees the memory allocated for the array of {@link Mbim.CellInfoNeighboringUmts} structs.
+         * @param array a `NULL` terminated array of {@link Mbim.CellInfoNeighboringUmts} structs.
          */
         static array_free(array: CellInfoNeighboringUmtsArray): void;
     }
 
     /**
      * A MbimCellInfoServingGsm element.
+     * @gir-type Struct
+     * @since 1.28
      */
     class CellInfoServingGsm {
         static $gtype: GObject.GType<CellInfoServingGsm>;
@@ -6958,13 +7994,15 @@ export namespace Mbim {
         // Methods
 
         /**
-         * Frees the memory allocated for the #MbimCellInfoServingGsm.
+         * Frees the memory allocated for the {@link Mbim.CellInfoServingGsm}.
          */
         free(): void;
     }
 
     /**
      * A MbimCellInfoServingLte element.
+     * @gir-type Struct
+     * @since 1.28
      */
     class CellInfoServingLte {
         static $gtype: GObject.GType<CellInfoServingLte>;
@@ -6998,13 +8036,15 @@ export namespace Mbim {
         // Methods
 
         /**
-         * Frees the memory allocated for the #MbimCellInfoServingLte.
+         * Frees the memory allocated for the {@link Mbim.CellInfoServingLte}.
          */
         free(): void;
     }
 
     /**
      * A MbimCellInfoServingNr element.
+     * @gir-type Struct
+     * @since 1.28
      */
     class CellInfoServingNr {
         static $gtype: GObject.GType<CellInfoServingNr>;
@@ -7040,14 +8080,16 @@ export namespace Mbim {
         // Static methods
 
         /**
-         * Frees the memory allocated for the array of #MbimCellInfoServingNr structs.
-         * @param array a #NULL terminated array of #MbimCellInfoServingNr structs.
+         * Frees the memory allocated for the array of {@link Mbim.CellInfoServingNr} structs.
+         * @param array a `NULL` terminated array of {@link Mbim.CellInfoServingNr} structs.
          */
         static array_free(array: CellInfoServingNrArray): void;
     }
 
     /**
      * A MbimCellInfoServingTdscdma element.
+     * @gir-type Struct
+     * @since 1.28
      */
     class CellInfoServingTdscdma {
         static $gtype: GObject.GType<CellInfoServingTdscdma>;
@@ -7081,13 +8123,15 @@ export namespace Mbim {
         // Methods
 
         /**
-         * Frees the memory allocated for the #MbimCellInfoServingTdscdma.
+         * Frees the memory allocated for the {@link Mbim.CellInfoServingTdscdma}.
          */
         free(): void;
     }
 
     /**
      * A MbimCellInfoServingUmts element.
+     * @gir-type Struct
+     * @since 1.28
      */
     class CellInfoServingUmts {
         static $gtype: GObject.GType<CellInfoServingUmts>;
@@ -7127,11 +8171,14 @@ export namespace Mbim {
         // Methods
 
         /**
-         * Frees the memory allocated for the #MbimCellInfoServingUmts.
+         * Frees the memory allocated for the {@link Mbim.CellInfoServingUmts}.
          */
         free(): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class DeprecatedLteAttachStatus {
         static $gtype: GObject.GType<DeprecatedLteAttachStatus>;
 
@@ -7160,13 +8207,21 @@ export namespace Mbim {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DeviceClass = typeof Device;
+    /**
+     * @gir-type Struct
+     */
     abstract class DevicePrivate {
         static $gtype: GObject.GType<DevicePrivate>;
     }
 
     /**
      * A MbimDeviceServiceElement element.
+     * @gir-type Struct
+     * @since 1.0
      */
     class DeviceServiceElement {
         static $gtype: GObject.GType<DeviceServiceElement>;
@@ -7194,14 +8249,16 @@ export namespace Mbim {
         // Static methods
 
         /**
-         * Frees the memory allocated for the array of #MbimDeviceServiceElement structs.
-         * @param array a #NULL terminated array of #MbimDeviceServiceElement structs.
+         * Frees the memory allocated for the array of {@link Mbim.DeviceServiceElement} structs.
+         * @param array a `NULL` terminated array of {@link Mbim.DeviceServiceElement} structs.
          */
         static array_free(array: DeviceServiceElementArray): void;
     }
 
     /**
      * A MbimEventEntry element.
+     * @gir-type Struct
+     * @since 1.4
      */
     class EventEntry {
         static $gtype: GObject.GType<EventEntry>;
@@ -7225,14 +8282,16 @@ export namespace Mbim {
         // Static methods
 
         /**
-         * Frees the memory allocated for the array of #MbimEventEntry structs.
-         * @param array a #NULL terminated array of #MbimEventEntry structs.
+         * Frees the memory allocated for the array of {@link Mbim.EventEntry} structs.
+         * @param array a `NULL` terminated array of {@link Mbim.EventEntry} structs.
          */
         static array_free(array: EventEntryArray): void;
     }
 
     /**
      * An IPv4 address.
+     * @gir-type Struct
+     * @since 1.0
      */
     class IPv4 {
         static $gtype: GObject.GType<IPv4>;
@@ -7252,6 +8311,8 @@ export namespace Mbim {
 
     /**
      * A MbimIPv4Element element.
+     * @gir-type Struct
+     * @since 1.0
      */
     class IPv4Element {
         static $gtype: GObject.GType<IPv4Element>;
@@ -7273,14 +8334,16 @@ export namespace Mbim {
         // Static methods
 
         /**
-         * Frees the memory allocated for the array of #MbimIPv4Element structs.
-         * @param array a #NULL terminated array of #MbimIPv4Element structs.
+         * Frees the memory allocated for the array of {@link Mbim.IPv4Element} structs.
+         * @param array a `NULL` terminated array of {@link Mbim.IPv4Element} structs.
          */
         static array_free(array: IPv4ElementArray): void;
     }
 
     /**
      * An IPv6 address.
+     * @gir-type Struct
+     * @since 1.0
      */
     class IPv6 {
         static $gtype: GObject.GType<IPv6>;
@@ -7300,6 +8363,8 @@ export namespace Mbim {
 
     /**
      * A MbimIPv6Element element.
+     * @gir-type Struct
+     * @since 1.0
      */
     class IPv6Element {
         static $gtype: GObject.GType<IPv6Element>;
@@ -7321,14 +8386,16 @@ export namespace Mbim {
         // Static methods
 
         /**
-         * Frees the memory allocated for the array of #MbimIPv6Element structs.
-         * @param array a #NULL terminated array of #MbimIPv6Element structs.
+         * Frees the memory allocated for the array of {@link Mbim.IPv6Element} structs.
+         * @param array a `NULL` terminated array of {@link Mbim.IPv6Element} structs.
          */
         static array_free(array: IPv6ElementArray): void;
     }
 
     /**
      * A MbimIntelRfimFrequencyValue element.
+     * @gir-type Struct
+     * @since 1.28
      */
     class IntelRfimFrequencyValue {
         static $gtype: GObject.GType<IntelRfimFrequencyValue>;
@@ -7362,14 +8429,16 @@ export namespace Mbim {
         // Static methods
 
         /**
-         * Frees the memory allocated for the array of #MbimIntelRfimFrequencyValue structs.
-         * @param array a #NULL terminated array of #MbimIntelRfimFrequencyValue structs.
+         * Frees the memory allocated for the array of {@link Mbim.IntelRfimFrequencyValue} structs.
+         * @param array a `NULL` terminated array of {@link Mbim.IntelRfimFrequencyValue} structs.
          */
         static array_free(array: IntelRfimFrequencyValueArray): void;
     }
 
     /**
      * A MbimLteAttachConfiguration element.
+     * @gir-type Struct
+     * @since 1.18
      */
     class LteAttachConfiguration {
         static $gtype: GObject.GType<LteAttachConfiguration>;
@@ -7403,14 +8472,16 @@ export namespace Mbim {
         // Static methods
 
         /**
-         * Frees the memory allocated for the array of #MbimLteAttachConfiguration structs.
-         * @param array a #NULL terminated array of #MbimLteAttachConfiguration structs.
+         * Frees the memory allocated for the array of {@link Mbim.LteAttachConfiguration} structs.
+         * @param array a `NULL` terminated array of {@link Mbim.LteAttachConfiguration} structs.
          */
         static array_free(array: LteAttachConfigurationArray): void;
     }
 
     /**
      * An opaque type representing a MBIM message.
+     * @gir-type Struct
+     * @since 1.0
      */
     class Message {
         static $gtype: GObject.GType<Message>;
@@ -7453,6 +8524,8 @@ export namespace Mbim {
             command_type: MessageCommandType,
         ): Message;
 
+        static compal_at_command_query_new(command_req: Uint8Array | string): Message;
+
         static connect_query_new(
             session_id: number,
             activation_state: ActivationState,
@@ -7493,6 +8566,8 @@ export namespace Mbim {
         static emergency_mode_set_new(state: EmergencyModeState): Message;
 
         static error_new(transaction_id: number, error_status_code: ProtocolError): Message;
+
+        static fibocom_at_command_set_new(command_req: Uint8Array | string): Message;
 
         static function_error_new(transaction_id: number, error_status_code: ProtocolError): Message;
 
@@ -7795,6 +8870,8 @@ export namespace Mbim {
 
         static proxy_control_configuration_set_new(device_path: string, timeout: number): Message;
 
+        static qdu_command_set_new(command_type: QuectelCommandType, command_string: Uint8Array | string): Message;
+
         static qdu_file_open_query_new(): Message;
 
         static qdu_file_open_set_new(file_type: QduFileType, file_size: number): Message;
@@ -7873,22 +8950,22 @@ export namespace Mbim {
 
         /**
          * Parses and returns parameters of the 'Location' response command in the 'ATDS' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         atds_location_response_parse(): [boolean, number, number, number];
         /**
          * Parses and returns parameters of the 'Operators' response command in the 'ATDS' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         atds_operators_response_parse(): [boolean, number, AtdsProvider[] | null];
         /**
          * Parses and returns parameters of the 'RAT' response command in the 'ATDS' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         atds_rat_response_parse(): [boolean, AtdsRatMode | null];
         /**
          * Parses and returns parameters of the 'Register State' response command in the 'ATDS' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         atds_register_state_response_parse(): [
             boolean,
@@ -7904,12 +8981,12 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Signal' response command in the 'ATDS' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         atds_signal_response_parse(): [boolean, number, number, number, number, number, number, number];
         /**
          * Parses and returns parameters of the 'Aka' response command in the 'Auth' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         auth_aka_response_parse(): [
             boolean,
@@ -7921,7 +8998,7 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Akap' response command in the 'Auth' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         auth_akap_response_parse(): [
             boolean,
@@ -7933,83 +9010,88 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Sim' response command in the 'Auth' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         auth_sim_response_parse(): [boolean, number, number, number, number, number, number, number];
         /**
-         * Gets the result of the 'Close' operation in the %MBIM_MESSAGE_TYPE_CLOSE_DONE message.
-         * @returns %TRUE if the operation succeeded, %FALSE if @error is set.
+         * Gets the result of the 'Close' operation in the {@link Mbim.MessageType.CLOSE_DONE} message.
+         * @returns `true` if the operation succeeded, `false` if `error` is set.
          */
         close_done_get_result(): boolean;
         /**
-         * Get status code from the %MBIM_MESSAGE_TYPE_CLOSE_DONE message.
-         * @returns a #MbimStatusError.
+         * Get status code from the {@link Mbim.MessageType.CLOSE_DONE} message.
+         * @returns a {@link Mbim.StatusError}.
          */
         close_done_get_status_code(): StatusError;
         /**
          * Appends the contents of `buffer` to `self`.
          * @param buffer raw buffer to append to the message.
-         * @param buffer_size length of the data in @buffer.
+         * @param buffer_size length of the data in `buffer`.
          */
         command_append(buffer: number, buffer_size: number): void;
         /**
-         * Get the command id of a %MBIM_MESSAGE_TYPE_COMMAND_DONE message.
+         * Get the command id of a {@link Mbim.MessageType.COMMAND_DONE} message.
          * @returns a CID.
          */
         command_done_get_cid(): number;
         /**
-         * Gets the information buffer of the %MBIM_MESSAGE_TYPE_COMMAND_DONE message.
-         * @returns The raw data buffer, or #NULL if empty.
+         * Gets the information buffer of the {@link Mbim.MessageType.COMMAND_DONE} message.
+         * @returns The raw data buffer, or `NULL` if empty.
          */
         command_done_get_raw_information_buffer(): [number, number];
         /**
-         * Gets the result of the 'Command' operation in the %MBIM_MESSAGE_TYPE_COMMAND_DONE message.
-         * @returns %TRUE if the operation succeeded, %FALSE if @error is set.
+         * Gets the result of the 'Command' operation in the {@link Mbim.MessageType.COMMAND_DONE} message.
+         * @returns `true` if the operation succeeded, `false` if `error` is set.
          */
         command_done_get_result(): boolean;
         /**
-         * Get the service of a %MBIM_MESSAGE_TYPE_COMMAND_DONE message.
-         * @returns a #MbimService.
+         * Get the service of a {@link Mbim.MessageType.COMMAND_DONE} message.
+         * @returns a {@link Mbim.Service}.
          */
         command_done_get_service(): Service;
         /**
-         * Get the service UUID of a %MBIM_MESSAGE_TYPE_COMMAND_DONE message.
-         * @returns a #MbimUuid.
+         * Get the service UUID of a {@link Mbim.MessageType.COMMAND_DONE} message.
+         * @returns a {@link Mbim.Uuid}.
          */
         command_done_get_service_id(): Uuid;
         /**
-         * Get status code from the %MBIM_MESSAGE_TYPE_COMMAND_DONE message.
-         * @returns a #MbimStatusError.
+         * Get status code from the {@link Mbim.MessageType.COMMAND_DONE} message.
+         * @returns a {@link Mbim.StatusError}.
          */
         command_done_get_status_code(): StatusError;
         /**
-         * Get the command id of a %MBIM_MESSAGE_TYPE_COMMAND message.
+         * Get the command id of a {@link Mbim.MessageType.COMMAND} message.
          * @returns a CID.
          */
         command_get_cid(): number;
         /**
-         * Get the command type of a %MBIM_MESSAGE_TYPE_COMMAND message.
-         * @returns a #MbimMessageCommandType.
+         * Get the command type of a {@link Mbim.MessageType.COMMAND} message.
+         * @returns a {@link Mbim.MessageCommandType}.
          */
         command_get_command_type(): MessageCommandType;
         /**
-         * Gets the information buffer of the %MBIM_MESSAGE_TYPE_COMMAND message.
-         * @returns The raw data buffer, or #NULL if empty.
+         * Gets the information buffer of the {@link Mbim.MessageType.COMMAND} message.
+         * @returns The raw data buffer, or `NULL` if empty.
          */
         command_get_raw_information_buffer(): [number, number];
         /**
-         * Get the service of a %MBIM_MESSAGE_TYPE_COMMAND message.
-         * @returns a #MbimService.
+         * Get the service of a {@link Mbim.MessageType.COMMAND} message.
+         * @returns a {@link Mbim.Service}.
          */
         command_get_service(): Service;
         /**
-         * Get the service UUID of a %MBIM_MESSAGE_TYPE_COMMAND message.
-         * @returns a #MbimUuid.
+         * Get the service UUID of a {@link Mbim.MessageType.COMMAND} message.
+         * @returns a {@link Mbim.Uuid}.
          */
         command_get_service_id(): Uuid;
         /**
+         * Parses and returns parameters of the 'AT Command' response command in the 'Compal' service.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         */
+        compal_at_command_response_parse(): [boolean, Uint8Array | null];
+        /**
          * Parses and returns parameters of the 'Connect' notification command in the 'Basic Connect' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         connect_notification_parse(): [
             boolean,
@@ -8022,7 +9104,7 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Connect' response command in the 'Basic Connect' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         connect_response_parse(): [
             boolean,
@@ -8035,7 +9117,7 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Device Caps' response command in the 'Basic Connect' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         device_caps_response_parse(): [
             boolean,
@@ -8054,53 +9136,58 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Device Service Subscribe List' response command in the 'Basic Connect' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         device_service_subscribe_list_response_parse(): [boolean, number, EventEntry[] | null];
         /**
          * Create a new request for the 'Events' response command in the 'Basic Connect' service.
-         * @param events_count return location for a #guint32, or %NULL if the 'EventsCount' field is not needed.
-         * @param events return location for a newly allocated array of #MbimEventEntrys, or %NULL if the 'Events' field is not needed. Free the returned value with mbim_event_entry_array_free().
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @param events_count return location for a `guint32`, or `null` if the 'EventsCount' field is not needed.
+         * @param events return location for a newly allocated array of `MbimEventEntrys`, or `null` if the 'Events' field is not needed. Free the returned value with `mbim_event_entry_array_free()`.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         device_service_subscriber_list_response_parse(events_count: number, events: EventEntry): boolean;
         /**
          * Parses and returns parameters of the 'Device Services' response command in the 'Basic Connect' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         device_services_response_parse(): [boolean, number, number, DeviceServiceElement[] | null];
         /**
          * Parses and returns parameters of the 'Connect' response command in the 'DSS' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         dss_connect_response_parse(): boolean;
         /**
-         * Create a #MbimMessage with the same contents as `self`.
-         * @returns a newly created #MbimMessage, which should be freed with mbim_message_unref().
+         * Create a {@link Mbim.Message} with the same contents as `self`.
+         * @returns a newly created {@link Mbim.Message}, which should be freed with `mbim_message_unref()`.
          */
         dup(): Message;
         /**
          * Parses and returns parameters of the 'Emergency Mode' notification command in the 'Basic Connect' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         emergency_mode_notification_parse(): [boolean, EmergencyModeState | null];
         /**
          * Parses and returns parameters of the 'Emergency Mode' response command in the 'Basic Connect' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         emergency_mode_response_parse(): [boolean, EmergencyModeState | null];
         /**
-         * Get the error in a %MBIM_MESSAGE_TYPE_HOST_ERROR or
-         * %MBIM_MESSAGE_TYPE_FUNCTION_ERROR message.
-         * @returns a newly allocated #GError, which should be freed with g_error_free().
+         * Get the error in a {@link Mbim.MessageType.HOST_ERROR} or
+         * {@link Mbim.MessageType.FUNCTION_ERROR} message.
+         * @returns a newly allocated {@link GLib.Error}, which should be freed with `g_error_free()`.
          */
         error_get_error(): GLib.Error;
         /**
-         * Get the error code in a %MBIM_MESSAGE_TYPE_HOST_ERROR or
-         * %MBIM_MESSAGE_TYPE_FUNCTION_ERROR message.
-         * @returns a #MbimProtocolError.
+         * Get the error code in a {@link Mbim.MessageType.HOST_ERROR} or
+         * {@link Mbim.MessageType.FUNCTION_ERROR} message.
+         * @returns a {@link Mbim.ProtocolError}.
          */
         error_get_error_status_code(): ProtocolError;
+        /**
+         * Parses and returns parameters of the 'AT Command' response command in the 'Fibocom' service.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         */
+        fibocom_at_command_response_parse(): [boolean, Uint8Array | null];
         /**
          * Gets the whole message length.
          * @returns the length of the message.
@@ -8108,7 +9195,7 @@ export namespace Mbim {
         get_message_length(): number;
         /**
          * Gets the message type.
-         * @returns a #MbimMessageType.
+         * @returns a {@link Mbim.MessageType}.
          */
         get_message_type(): MessageType;
         /**
@@ -8118,19 +9205,19 @@ export namespace Mbim {
          * a fallback text with the error will be included in the generated printable
          * information instead.
          * @param line_prefix prefix string to use in each new generated line.
-         * @param headers_only %TRUE if only basic headers should be printed.
-         * @returns a newly allocated string, which should be freed with g_free().
+         * @param headers_only `true` if only basic headers should be printed.
+         * @returns a newly allocated string, which should be freed with `g_free()`.
          */
         get_printable(line_prefix: string, headers_only: boolean): string;
         /**
          * Gets a printable string with the contents of the whole MBIM message.
          *
-         * Unlike mbim_message_get_printable(), this method allows specifying the
+         * Unlike `mbim_message_get_printable()`, this method allows specifying the
          * MBIMEx version agreed between host and device, so that the correct
          * processing and parsing is done on messages in the newer MBIMEx versions.
          *
          * If `mbimex_version_major` < 2, this method behaves exactly as
-         * mbim_message_get_printable().
+         * `mbim_message_get_printable()`.
          *
          * If the specified `mbimex_version_major` is unsupported, an error will be
          * returned.
@@ -8141,8 +9228,8 @@ export namespace Mbim {
          * @param mbimex_version_major major version of the agreed MBIMEx support.
          * @param mbimex_version_minor minor version of the agreed MBIMEx support.
          * @param line_prefix prefix string to use in each new generated line.
-         * @param headers_only %TRUE if only basic headers should be printed.
-         * @returns a newly allocated string which should be freed with g_free(), or #NULL if @error is set.
+         * @param headers_only `true` if only basic headers should be printed.
+         * @returns a newly allocated string which should be freed with `g_free()`, or `NULL` if `error` is set.
          */
         get_printable_full(
             mbimex_version_major: number,
@@ -8151,8 +9238,8 @@ export namespace Mbim {
             headers_only: boolean,
         ): string;
         /**
-         * Gets the whole raw data buffer of the #MbimMessage.
-         * @returns The raw data buffer, or #NULL if @error is set.
+         * Gets the whole raw data buffer of the {@link Mbim.Message}.
+         * @returns The raw data buffer, or `NULL` if `error` is set.
          */
         get_raw(): [number, number];
         /**
@@ -8162,7 +9249,7 @@ export namespace Mbim {
         get_transaction_id(): number;
         /**
          * Parses and returns parameters of the 'Carrier Lock' notification command in the 'Google' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         google_carrier_lock_notification_parse(): [
             boolean,
@@ -8172,7 +9259,7 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Carrier Lock' response command in the 'Google' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         google_carrier_lock_response_parse(): [
             boolean,
@@ -8182,52 +9269,52 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Home Provider' response command in the 'Basic Connect' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         home_provider_response_parse(): [boolean, Provider | null];
         /**
-         * Get the command id of a %MBIM_MESSAGE_TYPE_INDICATE_STATUS message.
+         * Get the command id of a {@link Mbim.MessageType.INDICATE_STATUS} message.
          * @returns a CID.
          */
         indicate_status_get_cid(): number;
         /**
-         * Gets the information buffer of the %MBIM_MESSAGE_TYPE_INDICATE_STATUS message.
-         * @returns The raw data buffer, or #NULL if empty.
+         * Gets the information buffer of the {@link Mbim.MessageType.INDICATE_STATUS} message.
+         * @returns The raw data buffer, or `NULL` if empty.
          */
         indicate_status_get_raw_information_buffer(): [number, number];
         /**
-         * Get the service of a %MBIM_MESSAGE_TYPE_INDICATE_STATUS message.
-         * @returns a #MbimService.
+         * Get the service of a {@link Mbim.MessageType.INDICATE_STATUS} message.
+         * @returns a {@link Mbim.Service}.
          */
         indicate_status_get_service(): Service;
         /**
-         * Get the service UUID of a %MBIM_MESSAGE_TYPE_INDICATE_STATUS message.
-         * @returns a #MbimUuid.
+         * Get the service UUID of a {@link Mbim.MessageType.INDICATE_STATUS} message.
+         * @returns a {@link Mbim.Uuid}.
          */
         indicate_status_get_service_id(): Uuid;
         /**
          * Parses and returns parameters of the 'FCC Lock' response command in the 'Intel Mutual Authentication' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         intel_mutual_authentication_fcc_lock_response_parse(): [boolean, boolean, number];
         /**
          * Parses and returns parameters of the 'RFIM' notification command in the 'Intel Thermal RF' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         intel_thermal_rf_rfim_notification_parse(): [boolean, number, IntelRfimFrequencyValue[] | null];
         /**
          * Parses and returns parameters of the 'RFIM' response command in the 'Intel Thermal RF' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         intel_thermal_rf_rfim_response_parse(): [boolean, number, IntelRfimFrequencyValue[] | null];
         /**
          * Parses and returns parameters of the 'Trace Config' response command in the 'Intel Tools' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         intel_tools_trace_config_response_parse(): [boolean, TraceCommand | null, number];
         /**
          * Parses and returns parameters of the 'IP Configuration' notification command in the 'Basic Connect' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ip_configuration_notification_parse(): [
             boolean,
@@ -8249,7 +9336,7 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'IP Configuration' response command in the 'Basic Connect' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ip_configuration_response_parse(): [
             boolean,
@@ -8271,12 +9358,12 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'IP Packet Filters' response command in the 'Basic Connect' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ip_packet_filters_response_parse(): [boolean, number, number, PacketFilter[] | null];
         /**
          * Parses and returns parameters of the 'Base Stations Info' response command in the 'Ms Basic Connect Extensions' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_basic_connect_extensions_base_stations_info_response_parse(): [
             boolean,
@@ -8298,7 +9385,7 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Device Caps' response command in the 'Ms Basic Connect Extensions' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_basic_connect_extensions_device_caps_response_parse(): [
             boolean,
@@ -8318,27 +9405,27 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Device Reset' response command in the 'Ms Basic Connect Extensions' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_basic_connect_extensions_device_reset_response_parse(): boolean;
         /**
          * Parses and returns parameters of the 'Device Slot Mappings' response command in the 'Ms Basic Connect Extensions' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_basic_connect_extensions_device_slot_mappings_response_parse(): [boolean, number, Slot[] | null];
         /**
          * Parses and returns parameters of the 'Location Info Status' notification command in the 'Ms Basic Connect Extensions' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_basic_connect_extensions_location_info_status_notification_parse(): [boolean, number, number, number];
         /**
          * Parses and returns parameters of the 'Location Info Status' response command in the 'Ms Basic Connect Extensions' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_basic_connect_extensions_location_info_status_response_parse(): [boolean, number, number, number];
         /**
          * Parses and returns parameters of the 'Lte Attach Configuration' notification command in the 'Ms Basic Connect Extensions' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_basic_connect_extensions_lte_attach_configuration_notification_parse(): [
             boolean,
@@ -8347,7 +9434,7 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Lte Attach Configuration' response command in the 'Ms Basic Connect Extensions' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_basic_connect_extensions_lte_attach_configuration_response_parse(): [
             boolean,
@@ -8356,7 +9443,7 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Lte Attach Info' notification command in the 'Ms Basic Connect Extensions' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_basic_connect_extensions_lte_attach_info_notification_parse(): [
             boolean,
@@ -8370,7 +9457,7 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Lte Attach Info' response command in the 'Ms Basic Connect Extensions' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_basic_connect_extensions_lte_attach_info_response_parse(): [
             boolean,
@@ -8384,27 +9471,27 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Lte Attach Status' notification command in the 'Ms Basic Connect Extensions' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_basic_connect_extensions_lte_attach_status_notification_parse(): [boolean, DeprecatedLteAttachStatus | null];
         /**
          * Parses and returns parameters of the 'Lte Attach Status' response command in the 'Ms Basic Connect Extensions' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_basic_connect_extensions_lte_attach_status_response_parse(): [boolean, DeprecatedLteAttachStatus | null];
         /**
          * Parses and returns parameters of the 'PCO' notification command in the 'Ms Basic Connect Extensions' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_basic_connect_extensions_pco_notification_parse(): [boolean, PcoValue | null];
         /**
          * Parses and returns parameters of the 'PCO' response command in the 'Ms Basic Connect Extensions' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_basic_connect_extensions_pco_response_parse(): [boolean, PcoValue | null];
         /**
          * Parses and returns parameters of the 'Provisioned Contexts' notification command in the 'Ms Basic Connect Extensions' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_basic_connect_extensions_provisioned_contexts_notification_parse(): [
             boolean,
@@ -8413,7 +9500,7 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Provisioned Contexts' response command in the 'Ms Basic Connect Extensions' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_basic_connect_extensions_provisioned_contexts_response_parse(): [
             boolean,
@@ -8422,27 +9509,27 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Slot Info Status' notification command in the 'Ms Basic Connect Extensions' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_basic_connect_extensions_slot_info_status_notification_parse(): [boolean, number, UiccSlotState | null];
         /**
          * Parses and returns parameters of the 'Slot Info Status' response command in the 'Ms Basic Connect Extensions' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_basic_connect_extensions_slot_info_status_response_parse(): [boolean, number, UiccSlotState | null];
         /**
          * Parses and returns parameters of the 'Sys Caps' response command in the 'Ms Basic Connect Extensions' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_basic_connect_extensions_sys_caps_response_parse(): [boolean, number, number, number, number];
         /**
          * Parses and returns parameters of the 'Version' response command in the 'Ms Basic Connect Extensions V2' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_basic_connect_extensions_v2_version_response_parse(): [boolean, number, number];
         /**
          * Parses and returns parameters of the 'Base Stations Info' response command in the 'Ms Basic Connect Extensions V3' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_basic_connect_extensions_v3_base_stations_info_response_parse(): [
             boolean,
@@ -8469,7 +9556,7 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Device Caps' response command in the 'Ms Basic Connect Extensions V3' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_basic_connect_extensions_v3_device_caps_response_parse(): [
             boolean,
@@ -8495,7 +9582,7 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Lte Attach Info' notification command in the 'Ms Basic Connect Extensions V3' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_basic_connect_extensions_v3_lte_attach_info_notification_parse(): [
             boolean,
@@ -8510,7 +9597,7 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Lte Attach Info' response command in the 'Ms Basic Connect Extensions V3' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_basic_connect_extensions_v3_lte_attach_info_response_parse(): [
             boolean,
@@ -8525,7 +9612,7 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Modem Configuration' notification command in the 'Ms Basic Connect Extensions V3' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_basic_connect_extensions_v3_modem_configuration_notification_parse(): [
             boolean,
@@ -8535,7 +9622,7 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Modem Configuration' response command in the 'Ms Basic Connect Extensions V3' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_basic_connect_extensions_v3_modem_configuration_response_parse(): [
             boolean,
@@ -8545,7 +9632,7 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Registration Parameters' response command in the 'Ms Basic Connect Extensions V3' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_basic_connect_extensions_v3_registration_parameters_response_parse(): [
             boolean,
@@ -8558,12 +9645,12 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Wake Reason' response command in the 'Ms Basic Connect Extensions V3' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_basic_connect_extensions_v3_wake_reason_response_parse(): [boolean, WakeType | null, number, Tlv | null];
         /**
          * Parses and returns parameters of the 'Packet Service' notification command in the 'Ms Basic Connect V2' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_basic_connect_v2_packet_service_notification_parse(): [
             boolean,
@@ -8576,7 +9663,7 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Packet Service' response command in the 'Ms Basic Connect V2' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_basic_connect_v2_packet_service_response_parse(): [
             boolean,
@@ -8589,7 +9676,7 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Register State' notification command in the 'Ms Basic Connect V2' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_basic_connect_v2_register_state_notification_parse(): [
             boolean,
@@ -8606,7 +9693,7 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Register State' response command in the 'Ms Basic Connect V2' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_basic_connect_v2_register_state_response_parse(): [
             boolean,
@@ -8623,7 +9710,7 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Signal State' notification command in the 'Ms Basic Connect V2' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_basic_connect_v2_signal_state_notification_parse(): [
             boolean,
@@ -8637,7 +9724,7 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Signal State' response command in the 'Ms Basic Connect V2' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_basic_connect_v2_signal_state_response_parse(): [
             boolean,
@@ -8651,7 +9738,7 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Connect' notification command in the 'Ms Basic Connect V3' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_basic_connect_v3_connect_notification_parse(): [
             boolean,
@@ -8667,7 +9754,7 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Connect' response command in the 'Ms Basic Connect V3' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_basic_connect_v3_connect_response_parse(): [
             boolean,
@@ -8683,12 +9770,12 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'IP Packet Filters' response command in the 'Ms Basic Connect V3' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_basic_connect_v3_ip_packet_filters_response_parse(): [boolean, number, number, PacketFilterV3[] | null];
         /**
          * Parses and returns parameters of the 'Packet Service' notification command in the 'Ms Basic Connect V3' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_basic_connect_v3_packet_service_notification_parse(): [
             boolean,
@@ -8703,7 +9790,7 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Packet Service' response command in the 'Ms Basic Connect V3' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_basic_connect_v3_packet_service_response_parse(): [
             boolean,
@@ -8718,7 +9805,7 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Subscriber Ready Status' notification command in the 'Ms Basic Connect V3' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_basic_connect_v3_subscriber_ready_status_notification_parse(): [
             boolean,
@@ -8732,7 +9819,7 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Subscriber Ready Status' response command in the 'Ms Basic Connect V3' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_basic_connect_v3_subscriber_ready_status_response_parse(): [
             boolean,
@@ -8746,12 +9833,12 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Get' response command in the 'MS Firmware ID' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_firmware_id_get_response_parse(): [boolean, Uuid | null];
         /**
          * Parses and returns parameters of the 'Config' response command in the 'MS SAR' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_sar_config_response_parse(): [
             boolean,
@@ -8763,7 +9850,7 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Transmission status' notification command in the 'MS SAR' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_sar_transmission_status_notification_parse(): [
             boolean,
@@ -8773,7 +9860,7 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Transmission status' response command in the 'MS SAR' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_sar_transmission_status_response_parse(): [
             boolean,
@@ -8783,12 +9870,12 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'APDU' response command in the 'MS UICC Low Level Access' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_uicc_low_level_access_apdu_response_parse(): [boolean, number, Uint8Array | null];
         /**
          * Parses and returns parameters of the 'Application List' response command in the 'MS UICC Low Level Access' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_uicc_low_level_access_application_list_response_parse(): [
             boolean,
@@ -8800,17 +9887,17 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'ATR' response command in the 'MS UICC Low Level Access' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_uicc_low_level_access_atr_response_parse(): [boolean, Uint8Array | null];
         /**
          * Parses and returns parameters of the 'Close Channel' response command in the 'MS UICC Low Level Access' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_uicc_low_level_access_close_channel_response_parse(): [boolean, number];
         /**
          * Parses and returns parameters of the 'File Status' response command in the 'MS UICC Low Level Access' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_uicc_low_level_access_file_status_response_parse(): [
             boolean,
@@ -8829,27 +9916,27 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Open Channel' response command in the 'MS UICC Low Level Access' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_uicc_low_level_access_open_channel_response_parse(): [boolean, number, number, Uint8Array | null];
         /**
          * Parses and returns parameters of the 'Read Binary' response command in the 'MS UICC Low Level Access' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_uicc_low_level_access_read_binary_response_parse(): [boolean, number, number, number, Uint8Array | null];
         /**
          * Parses and returns parameters of the 'Read Record' response command in the 'MS UICC Low Level Access' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_uicc_low_level_access_read_record_response_parse(): [boolean, number, number, number, Uint8Array | null];
         /**
          * Parses and returns parameters of the 'Reset' response command in the 'MS UICC Low Level Access' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_uicc_low_level_access_reset_response_parse(): [boolean, UiccPassThroughStatus | null];
         /**
          * Parses and returns parameters of the 'Terminal Capability' response command in the 'MS UICC Low Level Access' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_uicc_low_level_access_terminal_capability_response_parse(): [
             boolean,
@@ -8858,7 +9945,7 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'NITZ' notification command in the 'MS Voice Extensions' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_voice_extensions_nitz_notification_parse(): [
             boolean,
@@ -8874,7 +9961,7 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'NITZ' response command in the 'MS Voice Extensions' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ms_voice_extensions_nitz_response_parse(): [
             boolean,
@@ -8890,38 +9977,38 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Multicarrier Providers' notification command in the 'Basic Connect' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         multicarrier_providers_notification_parse(): [boolean, number, Provider[] | null];
         /**
          * Parses and returns parameters of the 'Multicarrier Providers' response command in the 'Basic Connect' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         multicarrier_providers_response_parse(): [boolean, number, Provider[] | null];
         /**
          * Parses and returns parameters of the 'Network Idle Hint' response command in the 'Basic Connect' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         network_idle_hint_response_parse(): [boolean, NetworkIdleHintState | null];
         /**
-         * Gets the result of the 'Open' operation in the %MBIM_MESSAGE_TYPE_OPEN_DONE message.
-         * @returns %TRUE if the operation succeeded, %FALSE if @error is set.
+         * Gets the result of the 'Open' operation in the {@link Mbim.MessageType.OPEN_DONE} message.
+         * @returns `true` if the operation succeeded, `false` if `error` is set.
          */
         open_done_get_result(): boolean;
         /**
-         * Get status code from the %MBIM_MESSAGE_TYPE_OPEN_DONE message.
-         * @returns a #MbimStatusError.
+         * Get status code from the {@link Mbim.MessageType.OPEN_DONE} message.
+         * @returns a {@link Mbim.StatusError}.
          */
         open_done_get_status_code(): StatusError;
         /**
-         * Get the maximum control transfer set to be used in the #MbimMessage of type
-         * %MBIM_MESSAGE_TYPE_OPEN.
+         * Get the maximum control transfer set to be used in the {@link Mbim.Message} of type
+         * {@link Mbim.MessageType.OPEN}.
          * @returns the maximum control transfer.
          */
         open_get_max_control_transfer(): number;
         /**
          * Parses and returns parameters of the 'Packet Service' notification command in the 'Basic Connect' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         packet_service_notification_parse(): [
             boolean,
@@ -8933,42 +10020,42 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Packet Service' response command in the 'Basic Connect' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         packet_service_response_parse(): [boolean, number, PacketServiceState | null, DataClass | null, number, number];
         /**
          * Parses and returns parameters of the 'Packet Statistics' response command in the 'Basic Connect' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         packet_statistics_response_parse(): [boolean, number, number, number, number, number, number, number, number];
         /**
          * Parses and returns parameters of the 'Configuration' notification command in the 'Phonebook' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         phonebook_configuration_notification_parse(): [boolean, PhonebookState | null, number, number, number, number];
         /**
          * Parses and returns parameters of the 'Configuration' response command in the 'Phonebook' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         phonebook_configuration_response_parse(): [boolean, PhonebookState | null, number, number, number, number];
         /**
          * Parses and returns parameters of the 'Delete' response command in the 'Phonebook' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         phonebook_delete_response_parse(): boolean;
         /**
          * Parses and returns parameters of the 'Read' response command in the 'Phonebook' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         phonebook_read_response_parse(): [boolean, number, PhonebookEntry[] | null];
         /**
          * Parses and returns parameters of the 'Write' response command in the 'Phonebook' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         phonebook_write_response_parse(): boolean;
         /**
          * Parses and returns parameters of the 'Pin List' response command in the 'Basic Connect' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         pin_list_response_parse(): [
             boolean,
@@ -8985,62 +10072,67 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Pin' response command in the 'Basic Connect' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         pin_response_parse(): [boolean, PinType | null, PinState | null, number];
         /**
          * Parses and returns parameters of the 'Preferred Providers' notification command in the 'Basic Connect' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         preferred_providers_notification_parse(): [boolean, number, Provider[] | null];
         /**
          * Parses and returns parameters of the 'Preferred Providers' response command in the 'Basic Connect' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         preferred_providers_response_parse(): [boolean, number, Provider[] | null];
         /**
          * Parses and returns parameters of the 'Provisioned Contexts' notification command in the 'Basic Connect' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         provisioned_contexts_notification_parse(): [boolean, number, ProvisionedContextElement[] | null];
         /**
          * Parses and returns parameters of the 'Provisioned Contexts' response command in the 'Basic Connect' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         provisioned_contexts_response_parse(): [boolean, number, ProvisionedContextElement[] | null];
         /**
          * Parses and returns parameters of the 'Configuration' response command in the 'Proxy Control' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         proxy_control_configuration_response_parse(): boolean;
         /**
          * Parses and returns parameters of the 'Version' notification command in the 'Proxy Control' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         proxy_control_version_notification_parse(): [boolean, number, number];
         /**
+         * Parses and returns parameters of the 'Command' response command in the 'QDU' service.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
+         */
+        qdu_command_response_parse(): [boolean, QuectelCommandResponseStatus | null, Uint8Array | null];
+        /**
          * Parses and returns parameters of the 'File Open' response command in the 'QDU' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         qdu_file_open_response_parse(): [boolean, number, number];
         /**
          * Parses and returns parameters of the 'File Write' response command in the 'QDU' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         qdu_file_write_response_parse(): boolean;
         /**
          * Parses and returns parameters of the 'Quectel Read Version' response command in the 'QDU' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         qdu_quectel_read_version_response_parse(): [boolean, number, string];
         /**
          * Parses and returns parameters of the 'Quectel Reboot' response command in the 'QDU' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         qdu_quectel_reboot_response_parse(): boolean;
         /**
          * Parses and returns parameters of the 'Update Session' response command in the 'QDU' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         qdu_update_session_response_parse(): [
             boolean,
@@ -9053,37 +10145,37 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'msg' notification command in the 'QMI' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         qmi_msg_notification_parse(): [boolean, Uint8Array | null];
         /**
          * Parses and returns parameters of the 'msg' response command in the 'QMI' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         qmi_msg_response_parse(): [boolean, Uint8Array | null];
         /**
          * Parses and returns parameters of the 'Radio State' response command in the 'Quectel' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         quectel_radio_state_response_parse(): [boolean, QuectelRadioSwitchState | null];
         /**
          * Parses and returns parameters of the 'Radio State' notification command in the 'Basic Connect' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         radio_state_notification_parse(): [boolean, RadioSwitchState | null, RadioSwitchState | null];
         /**
          * Parses and returns parameters of the 'Radio State' response command in the 'Basic Connect' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         radio_state_response_parse(): [boolean, RadioSwitchState | null, RadioSwitchState | null];
         /**
          * Atomically increments the reference count of `self` by one.
-         * @returns the new reference to @self.
+         * @returns the new reference to `self`.
          */
         ref(): Message;
         /**
          * Parses and returns parameters of the 'Register State' notification command in the 'Basic Connect' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         register_state_notification_parse(): [
             boolean,
@@ -9099,7 +10191,7 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Register State' response command in the 'Basic Connect' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         register_state_response_parse(): [
             boolean,
@@ -9115,15 +10207,15 @@ export namespace Mbim {
         ];
         /**
          * Gets the result of the operation from the response message, which
-         * can be either a %MBIM_MESSAGE_TYPE_FUNCTION_ERROR message or a message of the
+         * can be either a {@link Mbim.MessageType.FUNCTION_ERROR} message or a message of the
          * specified `expected` type.
-         * @param expected expected #MbimMessageType if there isn't any error in the operation.
-         * @returns %TRUE if the operation succeeded, %FALSE if @error is set.
+         * @param expected expected {@link Mbim.MessageType} if there isn't any error in the operation.
+         * @returns `true` if the operation succeeded, `false` if `error` is set.
          */
         response_get_result(expected: MessageType | null): boolean;
         /**
          * Parses and returns parameters of the 'Service Activation' response command in the 'Basic Connect' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         service_activation_response_parse(): [boolean, NwError | null, Uint8Array | null];
         /**
@@ -9133,37 +10225,37 @@ export namespace Mbim {
         set_transaction_id(transaction_id: number): void;
         /**
          * Parses and returns parameters of the 'Signal State' notification command in the 'Basic Connect' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         signal_state_notification_parse(): [boolean, number, number, number, number, number];
         /**
          * Parses and returns parameters of the 'Signal State' response command in the 'Basic Connect' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         signal_state_response_parse(): [boolean, number, number, number, number, number];
         /**
          * Parses and returns parameters of the 'Configuration' response command in the 'SMS' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         sms_configuration_response_parse(): [boolean, SmsStorageState | null, SmsFormat | null, number, number, string];
         /**
          * Parses and returns parameters of the 'Delete' response command in the 'SMS' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         sms_delete_response_parse(): boolean;
         /**
          * Parses and returns parameters of the 'Message Store Status' notification command in the 'SMS' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         sms_message_store_status_notification_parse(): [boolean, SmsStatusFlag | null, number];
         /**
          * Parses and returns parameters of the 'Message Store Status' response command in the 'SMS' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         sms_message_store_status_response_parse(): [boolean, SmsStatusFlag | null, number];
         /**
          * Parses and returns parameters of the 'Read' notification command in the 'SMS' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         sms_read_notification_parse(): [
             boolean,
@@ -9174,7 +10266,7 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Read' response command in the 'SMS' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         sms_read_response_parse(): [
             boolean,
@@ -9185,32 +10277,32 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Send' response command in the 'SMS' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         sms_send_response_parse(): [boolean, number];
         /**
          * Parses and returns parameters of the 'Envelope' response command in the 'STK' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         stk_envelope_response_parse(): [boolean, Uint8Array | null];
         /**
          * Parses and returns parameters of the 'Pac' notification command in the 'STK' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         stk_pac_notification_parse(): [boolean, StkPacType | null, Uint8Array | null];
         /**
          * Parses and returns parameters of the 'Pac' response command in the 'STK' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         stk_pac_response_parse(): [boolean, Uint8Array | null];
         /**
          * Parses and returns parameters of the 'Terminal Response' response command in the 'STK' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         stk_terminal_response_response_parse(): [boolean, Uint8Array | null, number];
         /**
          * Parses and returns parameters of the 'Subscriber Ready Status' notification command in the 'Basic Connect' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         subscriber_ready_status_notification_parse(): [
             boolean,
@@ -9223,7 +10315,7 @@ export namespace Mbim {
         ];
         /**
          * Parses and returns parameters of the 'Subscriber Ready Status' response command in the 'Basic Connect' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         subscriber_ready_status_response_parse(): [
             boolean,
@@ -9241,12 +10333,12 @@ export namespace Mbim {
         unref(): void;
         /**
          * Parses and returns parameters of the '' notification command in the 'USSD' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ussd_notification_parse(): [boolean, UssdResponse | null, UssdSessionState | null, number, Uint8Array | null];
         /**
          * Parses and returns parameters of the '' response command in the 'USSD' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         ussd_response_parse(): [boolean, UssdResponse | null, UssdSessionState | null, number, Uint8Array | null];
         /**
@@ -9261,18 +10353,20 @@ export namespace Mbim {
          * This operation does not validate that the specific contents of a given
          * message type are available, that is done by the methods retrieving those
          * specific contents.
-         * @returns %TRUE if the message is valid, %FALSE if @error is set.
+         * @returns `true` if the message is valid, `false` if `error` is set.
          */
         validate(): boolean;
         /**
          * Parses and returns parameters of the 'Visible Providers' response command in the 'Basic Connect' service.
-         * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
+         * @returns `true` if the message was correctly parsed, `false` if `error` is set.
          */
         visible_providers_response_parse(): [boolean, number, Provider[] | null];
     }
 
     /**
      * A MbimPacketFilter element.
+     * @gir-type Struct
+     * @since 1.4
      */
     class PacketFilter {
         static $gtype: GObject.GType<PacketFilter>;
@@ -9296,14 +10390,16 @@ export namespace Mbim {
         // Static methods
 
         /**
-         * Frees the memory allocated for the array of #MbimPacketFilter structs.
-         * @param array a #NULL terminated array of #MbimPacketFilter structs.
+         * Frees the memory allocated for the array of {@link Mbim.PacketFilter} structs.
+         * @param array a `NULL` terminated array of {@link Mbim.PacketFilter} structs.
          */
         static array_free(array: PacketFilterArray): void;
     }
 
     /**
      * A MbimPacketFilterV3 element.
+     * @gir-type Struct
+     * @since 1.28
      */
     class PacketFilterV3 {
         static $gtype: GObject.GType<PacketFilterV3>;
@@ -9329,14 +10425,16 @@ export namespace Mbim {
         // Static methods
 
         /**
-         * Frees the memory allocated for the array of #MbimPacketFilterV3 structs.
-         * @param array a #NULL terminated array of #MbimPacketFilterV3 structs.
+         * Frees the memory allocated for the array of {@link Mbim.PacketFilterV3} structs.
+         * @param array a `NULL` terminated array of {@link Mbim.PacketFilterV3} structs.
          */
         static array_free(array: PacketFilterV3Array): void;
     }
 
     /**
      * A MbimPcoValue element.
+     * @gir-type Struct
+     * @since 1.18
      */
     class PcoValue {
         static $gtype: GObject.GType<PcoValue>;
@@ -9362,13 +10460,15 @@ export namespace Mbim {
         // Methods
 
         /**
-         * Frees the memory allocated for the #MbimPcoValue.
+         * Frees the memory allocated for the {@link Mbim.PcoValue}.
          */
         free(): void;
     }
 
     /**
      * A MbimPhonebookEntry element.
+     * @gir-type Struct
+     * @since 1.4
      */
     class PhonebookEntry {
         static $gtype: GObject.GType<PhonebookEntry>;
@@ -9392,14 +10492,16 @@ export namespace Mbim {
         // Static methods
 
         /**
-         * Frees the memory allocated for the array of #MbimPhonebookEntry structs.
-         * @param array a #NULL terminated array of #MbimPhonebookEntry structs.
+         * Frees the memory allocated for the array of {@link Mbim.PhonebookEntry} structs.
+         * @param array a `NULL` terminated array of {@link Mbim.PhonebookEntry} structs.
          */
         static array_free(array: PhonebookEntryArray): void;
     }
 
     /**
      * A MbimPinDesc element.
+     * @gir-type Struct
+     * @since 1.0
      */
     class PinDesc {
         static $gtype: GObject.GType<PinDesc>;
@@ -9425,13 +10527,15 @@ export namespace Mbim {
         // Methods
 
         /**
-         * Frees the memory allocated for the #MbimPinDesc.
+         * Frees the memory allocated for the {@link Mbim.PinDesc}.
          */
         free(): void;
     }
 
     /**
      * A MbimProvider element.
+     * @gir-type Struct
+     * @since 1.2
      */
     class Provider {
         static $gtype: GObject.GType<Provider>;
@@ -9461,21 +10565,23 @@ export namespace Mbim {
         // Static methods
 
         /**
-         * Frees the memory allocated for the array of #MbimProvider structs.
-         * @param array a #NULL terminated array of #MbimProvider structs.
+         * Frees the memory allocated for the array of {@link Mbim.Provider} structs.
+         * @param array a `NULL` terminated array of {@link Mbim.Provider} structs.
          */
         static array_free(array: ProviderArray): void;
 
         // Methods
 
         /**
-         * Frees the memory allocated for the #MbimProvider.
+         * Frees the memory allocated for the {@link Mbim.Provider}.
          */
         free(): void;
     }
 
     /**
      * A MbimProvisionedContextElement element.
+     * @gir-type Struct
+     * @since 1.0
      */
     class ProvisionedContextElement {
         static $gtype: GObject.GType<ProvisionedContextElement>;
@@ -9507,14 +10613,16 @@ export namespace Mbim {
         // Static methods
 
         /**
-         * Frees the memory allocated for the array of #MbimProvisionedContextElement structs.
-         * @param array a #NULL terminated array of #MbimProvisionedContextElement structs.
+         * Frees the memory allocated for the array of {@link Mbim.ProvisionedContextElement} structs.
+         * @param array a `NULL` terminated array of {@link Mbim.ProvisionedContextElement} structs.
          */
         static array_free(array: ProvisionedContextElementArray): void;
     }
 
     /**
      * A MbimProvisionedContextElementV2 element.
+     * @gir-type Struct
+     * @since 1.28
      */
     class ProvisionedContextElementV2 {
         static $gtype: GObject.GType<ProvisionedContextElementV2>;
@@ -9556,19 +10664,27 @@ export namespace Mbim {
         // Static methods
 
         /**
-         * Frees the memory allocated for the array of #MbimProvisionedContextElementV2 structs.
-         * @param array a #NULL terminated array of #MbimProvisionedContextElementV2 structs.
+         * Frees the memory allocated for the array of {@link Mbim.ProvisionedContextElementV2} structs.
+         * @param array a `NULL` terminated array of {@link Mbim.ProvisionedContextElementV2} structs.
          */
         static array_free(array: ProvisionedContextElementV2Array): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ProxyClass = typeof Proxy;
+    /**
+     * @gir-type Struct
+     */
     abstract class ProxyPrivate {
         static $gtype: GObject.GType<ProxyPrivate>;
     }
 
     /**
      * A MbimRsrpSnrInfo element.
+     * @gir-type Struct
+     * @since 1.28
      */
     class RsrpSnrInfo {
         static $gtype: GObject.GType<RsrpSnrInfo>;
@@ -9596,14 +10712,16 @@ export namespace Mbim {
         // Static methods
 
         /**
-         * Frees the memory allocated for the array of #MbimRsrpSnrInfo structs.
-         * @param array a #NULL terminated array of #MbimRsrpSnrInfo structs.
+         * Frees the memory allocated for the array of {@link Mbim.RsrpSnrInfo} structs.
+         * @param array a `NULL` terminated array of {@link Mbim.RsrpSnrInfo} structs.
          */
         static array_free(array: RsrpSnrInfoArray): void;
     }
 
     /**
      * A MbimSarConfigState element.
+     * @gir-type Struct
+     * @since 1.26
      */
     class SarConfigState {
         static $gtype: GObject.GType<SarConfigState>;
@@ -9625,14 +10743,16 @@ export namespace Mbim {
         // Static methods
 
         /**
-         * Frees the memory allocated for the array of #MbimSarConfigState structs.
-         * @param array a #NULL terminated array of #MbimSarConfigState structs.
+         * Frees the memory allocated for the array of {@link Mbim.SarConfigState} structs.
+         * @param array a `NULL` terminated array of {@link Mbim.SarConfigState} structs.
          */
         static array_free(array: SarConfigStateArray): void;
     }
 
     /**
      * A MbimSlot element.
+     * @gir-type Struct
+     * @since 1.26
      */
     class Slot {
         static $gtype: GObject.GType<Slot>;
@@ -9652,14 +10772,16 @@ export namespace Mbim {
         // Static methods
 
         /**
-         * Frees the memory allocated for the array of #MbimSlot structs.
-         * @param array a #NULL terminated array of #MbimSlot structs.
+         * Frees the memory allocated for the array of {@link Mbim.Slot} structs.
+         * @param array a `NULL` terminated array of {@link Mbim.Slot} structs.
          */
         static array_free(array: SlotArray): void;
     }
 
     /**
      * A MbimSmsCdmaReadRecord element.
+     * @gir-type Struct
+     * @since 1.4
      */
     class SmsCdmaReadRecord {
         static $gtype: GObject.GType<SmsCdmaReadRecord>;
@@ -9695,14 +10817,16 @@ export namespace Mbim {
         // Static methods
 
         /**
-         * Frees the memory allocated for the array of #MbimSmsCdmaReadRecord structs.
-         * @param array a #NULL terminated array of #MbimSmsCdmaReadRecord structs.
+         * Frees the memory allocated for the array of {@link Mbim.SmsCdmaReadRecord} structs.
+         * @param array a `NULL` terminated array of {@link Mbim.SmsCdmaReadRecord} structs.
          */
         static array_free(array: SmsCdmaReadRecordArray): void;
     }
 
     /**
      * A MbimSmsCdmaSendRecord element.
+     * @gir-type Struct
+     * @since 1.4
      */
     class SmsCdmaSendRecord {
         static $gtype: GObject.GType<SmsCdmaSendRecord>;
@@ -9732,13 +10856,15 @@ export namespace Mbim {
         // Methods
 
         /**
-         * Frees the memory allocated for the #MbimSmsCdmaSendRecord.
+         * Frees the memory allocated for the {@link Mbim.SmsCdmaSendRecord}.
          */
         free(): void;
     }
 
     /**
      * A MbimSmsPduReadRecord element.
+     * @gir-type Struct
+     * @since 1.4
      */
     class SmsPduReadRecord {
         static $gtype: GObject.GType<SmsPduReadRecord>;
@@ -9764,14 +10890,16 @@ export namespace Mbim {
         // Static methods
 
         /**
-         * Frees the memory allocated for the array of #MbimSmsPduReadRecord structs.
-         * @param array a #NULL terminated array of #MbimSmsPduReadRecord structs.
+         * Frees the memory allocated for the array of {@link Mbim.SmsPduReadRecord} structs.
+         * @param array a `NULL` terminated array of {@link Mbim.SmsPduReadRecord} structs.
          */
         static array_free(array: SmsPduReadRecordArray): void;
     }
 
     /**
      * A MbimSmsPduSendRecord element.
+     * @gir-type Struct
+     * @since 1.4
      */
     class SmsPduSendRecord {
         static $gtype: GObject.GType<SmsPduSendRecord>;
@@ -9793,13 +10921,15 @@ export namespace Mbim {
         // Methods
 
         /**
-         * Frees the memory allocated for the #MbimSmsPduSendRecord.
+         * Frees the memory allocated for the {@link Mbim.SmsPduSendRecord}.
          */
         free(): void;
     }
 
     /**
      * A MbimTai element.
+     * @gir-type Struct
+     * @since 1.28
      */
     class Tai {
         static $gtype: GObject.GType<Tai>;
@@ -9823,13 +10953,15 @@ export namespace Mbim {
         // Methods
 
         /**
-         * Frees the memory allocated for the #MbimTai.
+         * Frees the memory allocated for the {@link Mbim.Tai}.
          */
         free(): void;
     }
 
     /**
      * A MbimTerminalCapabilityInfo element.
+     * @gir-type Struct
+     * @since 1.26
      */
     class TerminalCapabilityInfo {
         static $gtype: GObject.GType<TerminalCapabilityInfo>;
@@ -9851,14 +10983,16 @@ export namespace Mbim {
         // Static methods
 
         /**
-         * Frees the memory allocated for the array of #MbimTerminalCapabilityInfo structs.
-         * @param array a #NULL terminated array of #MbimTerminalCapabilityInfo structs.
+         * Frees the memory allocated for the array of {@link Mbim.TerminalCapabilityInfo} structs.
+         * @param array a `NULL` terminated array of {@link Mbim.TerminalCapabilityInfo} structs.
          */
         static array_free(array: TerminalCapabilityInfoArray): void;
     }
 
     /**
      * An opaque type representing a MBIM TLV.
+     * @gir-type Struct
+     * @since 1.28
      */
     class Tlv {
         static $gtype: GObject.GType<Tlv>;
@@ -9874,41 +11008,41 @@ export namespace Mbim {
         // Methods
 
         /**
-         * Create a #MbimTlv with the same contents as `self`.
-         * @returns a newly created #MbimTlv, which should be freed with mbim_tlv_unref().
+         * Create a {@link Mbim.Tlv} with the same contents as `self`.
+         * @returns a newly created {@link Mbim.Tlv}, which should be freed with `mbim_tlv_unref()`.
          */
         dup(): Tlv;
         /**
-         * Gets the whole raw data buffer of the #MbimTlv.
-         * @returns The raw data buffer, or #NULL if @error is set.
+         * Gets the whole raw data buffer of the {@link Mbim.Tlv}.
+         * @returns The raw data buffer, or `NULL` if `error` is set.
          */
         get_raw(): [number, number];
         /**
          * Gets the TLV raw data.
-         * @returns The raw data buffer, or #NULL if empty.
+         * @returns The raw data buffer, or `NULL` if empty.
          */
         get_tlv_data(): [number, number];
         /**
          * Gets the message type.
-         * @returns a #MbimTlvType.
+         * @returns a {@link Mbim.TlvType}.
          */
         get_tlv_type(): TlvType;
         /**
-         * Get an array of #guint16 values with the contents in the #MbimTlv.
+         * Get an array of `guint16` values with the contents in the {@link Mbim.Tlv}.
          *
          * The method may return a successful return even with on empty arrays (i.e.
-         * with `array_size` set to 0 and `array` set to %NULL).
-         * @returns %TRUE if on success, %FALSE if @error is set.
+         * with `array_size` set to 0 and `array` set to `null`).
+         * @returns `true` if on success, `false` if `error` is set.
          */
         guint16_array_get(): [boolean, number, number];
         /**
          * Atomically increments the reference count of `self` by one.
-         * @returns the new reference to @self.
+         * @returns the new reference to `self`.
          */
         ref(): Tlv;
         /**
-         * Get a string with the contents in the #MbimTlv.
-         * @returns a newly created string, which should be freed with g_free(), or %NULL if @error is set.
+         * Get a string with the contents in the {@link Mbim.Tlv}.
+         * @returns a newly created string, which should be freed with `g_free()`, or `null` if `error` is set.
          */
         string_get(): string;
         /**
@@ -9920,19 +11054,21 @@ export namespace Mbim {
          * Get the contents of a wake command TLV.
          *
          * The method may return a successful return even with on empty payload (i.e.
-         * with `payload_size` set to 0 and `payload` set to %NULL).
-         * @returns %TRUE if on success, %FALSE if @error is set.
+         * with `payload_size` set to 0 and `payload` set to `null`).
+         * @returns `true` if on success, `false` if `error` is set.
          */
         wake_command_get(): [boolean, Uuid | null, number, number, number];
         /**
          * Get the contents of a wake packet TLV.
-         * @returns %TRUE if on success, %FALSE if @error is set.
+         * @returns `true` if on success, `false` if `error` is set.
          */
         wake_packet_get(): [boolean, number, number, number, number];
     }
 
     /**
      * A MbimUiccApplication element.
+     * @gir-type Struct
+     * @since 1.28
      */
     class UiccApplication {
         static $gtype: GObject.GType<UiccApplication>;
@@ -9964,14 +11100,16 @@ export namespace Mbim {
         // Static methods
 
         /**
-         * Frees the memory allocated for the array of #MbimUiccApplication structs.
-         * @param array a #NULL terminated array of #MbimUiccApplication structs.
+         * Frees the memory allocated for the array of {@link Mbim.UiccApplication} structs.
+         * @param array a `NULL` terminated array of {@link Mbim.UiccApplication} structs.
          */
         static array_free(array: UiccApplicationArray): void;
     }
 
     /**
      * A UUID as defined in MBIM.
+     * @gir-type Struct
+     * @since 1.0
      */
     class Uuid {
         static $gtype: GObject.GType<Uuid>;
@@ -10000,7 +11138,7 @@ export namespace Mbim {
 
         /**
          * Get the UUID corresponding to `context_type`.
-         * @param context_type a #MbimContextType.
+         * @param context_type a {@link Mbim.ContextType}.
          */
         static from_context_type(context_type: ContextType): Uuid;
         /**
@@ -10009,7 +11147,7 @@ export namespace Mbim {
          * Only ccepts `str` written with dashes separating items, e.g.:
          *  a289cc33-bcbb-8b4f-b6b0-133ec2aae6df
          * @param str a MBIM UUID.
-         * @param uuid pointer to the target #MbimUuid.
+         * @param uuid pointer to the target {@link Mbim.Uuid}.
          */
         static from_printable(str: string, uuid: Uuid): boolean;
         /**
@@ -10017,7 +11155,7 @@ export namespace Mbim {
          *
          * The `service` needs to be either a generic one (including #MBIM_SERVICE_INVALID)
          * or a custom registered one.
-         * @param service a #MbimService.
+         * @param service a {@link Mbim.Service}.
          */
         static from_service(service: Service): Uuid;
 
@@ -10025,58 +11163,183 @@ export namespace Mbim {
 
         /**
          * Compare two %MbimUuid values.
-         * @param b a #MbimUuid.
-         * @returns %TRUE if @a and @b are equal, %FALSE otherwise.
+         * @param b a {@link Mbim.Uuid}.
+         * @returns `true` if `a` and `b` are equal, `false` otherwise.
          */
         cmp(b: Uuid): boolean;
         /**
          * Get a string with the UUID.
-         * @returns a newly allocated string, which should be freed with g_free().
+         * @returns a newly allocated string, which should be freed with `g_free()`.
          */
         get_printable(): string;
         /**
          * Get the context type corresponding to `uuid`.
-         * @returns a #MbimContextType.
+         * @returns a {@link Mbim.ContextType}.
          */
         to_context_type(): ContextType;
         /**
          * Get the service corresponding to `uuid`.
-         * @returns a #MbimService.
+         * @returns a {@link Mbim.Service}.
          */
         to_service(): Service;
     }
 
+    /**
+     * A NULL-terminated array of MbimAtdsProvider elements.
+     * @gir-type Alias
+     */
     type AtdsProviderArray = AtdsProvider;
+    /**
+     * A NULL-terminated array of MbimCellInfoCdma elements.
+     * @gir-type Alias
+     */
     type CellInfoCdmaArray = CellInfoCdma;
+    /**
+     * A NULL-terminated array of MbimCellInfoNeighboringGsm elements.
+     * @gir-type Alias
+     */
     type CellInfoNeighboringGsmArray = CellInfoNeighboringGsm;
+    /**
+     * A NULL-terminated array of MbimCellInfoNeighboringLte elements.
+     * @gir-type Alias
+     */
     type CellInfoNeighboringLteArray = CellInfoNeighboringLte;
+    /**
+     * A NULL-terminated array of MbimCellInfoNeighboringNr elements.
+     * @gir-type Alias
+     */
     type CellInfoNeighboringNrArray = CellInfoNeighboringNr;
+    /**
+     * A NULL-terminated array of MbimCellInfoNeighboringTdscdma elements.
+     * @gir-type Alias
+     */
     type CellInfoNeighboringTdscdmaArray = CellInfoNeighboringTdscdma;
+    /**
+     * A NULL-terminated array of MbimCellInfoNeighboringUmts elements.
+     * @gir-type Alias
+     */
     type CellInfoNeighboringUmtsArray = CellInfoNeighboringUmts;
+    /**
+     * A NULL-terminated array of MbimCellInfoServingNr elements.
+     * @gir-type Alias
+     */
     type CellInfoServingNrArray = CellInfoServingNr;
+    /**
+     * @gir-type Alias
+     */
     type DeprecatedCidBasicConnect = number;
+    /**
+     * @gir-type Alias
+     */
     type DeprecatedCidMsBasicConnectExtensions = number;
+    /**
+     * @gir-type Alias
+     */
     type DeprecatedNwError = number;
+    /**
+     * @gir-type Alias
+     */
     type DeprecatedRegistrationFlag = number;
+    /**
+     * A NULL-terminated array of MbimDeviceServiceElement elements.
+     * @gir-type Alias
+     */
     type DeviceServiceElementArray = DeviceServiceElement;
+    /**
+     * A NULL-terminated array of MbimEventEntry elements.
+     * @gir-type Alias
+     */
     type EventEntryArray = EventEntry;
+    /**
+     * A NULL-terminated array of MbimIPv4Element elements.
+     * @gir-type Alias
+     */
     type IPv4ElementArray = IPv4Element;
+    /**
+     * A NULL-terminated array of MbimIPv6Element elements.
+     * @gir-type Alias
+     */
     type IPv6ElementArray = IPv6Element;
+    /**
+     * A NULL-terminated array of MbimIntelRfimFrequencyValue elements.
+     * @gir-type Alias
+     */
     type IntelRfimFrequencyValueArray = IntelRfimFrequencyValue;
+    /**
+     * A NULL-terminated array of MbimLteAttachConfiguration elements.
+     * @gir-type Alias
+     */
     type LteAttachConfigurationArray = LteAttachConfiguration;
+    /**
+     * LTE attach status information.
+     * @gir-type Alias
+     * @deprecated since 1.26
+     */
     type LteAttachStatus = DeprecatedLteAttachStatus;
+    /**
+     * A NULL-terminated array of MbimPacketFilter elements.
+     * @gir-type Alias
+     */
     type PacketFilterArray = PacketFilter;
+    /**
+     * A NULL-terminated array of MbimPacketFilterV3 elements.
+     * @gir-type Alias
+     */
     type PacketFilterV3Array = PacketFilterV3;
+    /**
+     * A NULL-terminated array of MbimPhonebookEntry elements.
+     * @gir-type Alias
+     */
     type PhonebookEntryArray = PhonebookEntry;
+    /**
+     * A NULL-terminated array of MbimProvider elements.
+     * @gir-type Alias
+     */
     type ProviderArray = Provider;
+    /**
+     * A NULL-terminated array of MbimProvisionedContextElement elements.
+     * @gir-type Alias
+     */
     type ProvisionedContextElementArray = ProvisionedContextElement;
+    /**
+     * A NULL-terminated array of MbimProvisionedContextElementV2 elements.
+     * @gir-type Alias
+     */
     type ProvisionedContextElementV2Array = ProvisionedContextElementV2;
+    /**
+     * A NULL-terminated array of MbimRsrpSnrInfo elements.
+     * @gir-type Alias
+     */
     type RsrpSnrInfoArray = RsrpSnrInfo;
+    /**
+     * A NULL-terminated array of MbimSarConfigState elements.
+     * @gir-type Alias
+     */
     type SarConfigStateArray = SarConfigState;
+    /**
+     * A NULL-terminated array of MbimSlot elements.
+     * @gir-type Alias
+     */
     type SlotArray = Slot;
+    /**
+     * A NULL-terminated array of MbimSmsCdmaReadRecord elements.
+     * @gir-type Alias
+     */
     type SmsCdmaReadRecordArray = SmsCdmaReadRecord;
+    /**
+     * A NULL-terminated array of MbimSmsPduReadRecord elements.
+     * @gir-type Alias
+     */
     type SmsPduReadRecordArray = SmsPduReadRecord;
+    /**
+     * A NULL-terminated array of MbimTerminalCapabilityInfo elements.
+     * @gir-type Alias
+     */
     type TerminalCapabilityInfoArray = TerminalCapabilityInfo;
+    /**
+     * A NULL-terminated array of MbimUiccApplication elements.
+     * @gir-type Alias
+     */
     type UiccApplicationArray = UiccApplication;
     /**
      * Name of the imported GIR library

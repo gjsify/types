@@ -29,6 +29,7 @@ export namespace Gly {
 
     /**
      * Errors that can appear while loading images.
+     * @gir-type Struct
      */
     class LoaderError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -51,17 +52,22 @@ export namespace Gly {
         // Static methods
 
         /**
-         * Error quark for [error`GlyLoaderError]`
+         * Error quark for {@link GlyLoaderError}
          */
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MemoryFormat {
         export const $gtype: GObject.GType<MemoryFormat>;
     }
 
     /**
      * Memory format
+     * @gir-type Enum
+     * @since 1.0
      */
     enum MemoryFormat {
         /**
@@ -158,6 +164,9 @@ export namespace Gly {
         G16,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SandboxSelector {
         export const $gtype: GObject.GType<SandboxSelector>;
     }
@@ -167,6 +176,8 @@ export namespace Gly {
      *
      * ::: warning
      *     Using `GLY_SANDBOX_SELECTOR_NOT_SANDBOXED` will disable an important security layer that sandboxes loaders. It is only intended for testing and development purposes.
+     * @gir-type Enum
+     * @since 1.0
      */
     enum SandboxSelector {
         /**
@@ -196,7 +207,7 @@ export namespace Gly {
     }
 
     /**
-     * Error quark for [error`GlyLoaderError]`
+     * Error quark for {@link GlyLoaderError}
      * @returns The error domain
      */
     function loader_error_quark(): GLib.Quark;
@@ -204,6 +215,7 @@ export namespace Gly {
      * Whether a memory format has an alpha channel
      * @param memory_format
      * @returns Returns `TRUE` if the memory format has an alpha channel
+     * @since 1.0
      */
     function memory_format_has_alpha(memory_format: MemoryFormat | null): boolean;
     /**
@@ -211,6 +223,7 @@ export namespace Gly {
      * premultiplied with the alpha value
      * @param memory_format
      * @returns Returns `TRUE` if color channels are premultiplied
+     * @since 1.0
      */
     function memory_format_is_premultiplied(memory_format: MemoryFormat | null): boolean;
     namespace Frame {
@@ -224,6 +237,8 @@ export namespace Gly {
 
     /**
      * A frame of an image often being the complete image.
+     * @gir-type Class
+     * @since 1.0
      */
     class Frame extends GObject.Object {
         static $gtype: GObject.GType<Frame>;
@@ -245,16 +260,19 @@ export namespace Gly {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Frame.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Frame.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Frame.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Frame.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Frame.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Frame.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -264,7 +282,7 @@ export namespace Gly {
         // Methods
 
         /**
-         * Image data arranged according to [method`Frame`.get_memory_format]
+         * Image data arranged according to {@link Frame.get_memory_format}
          * @returns Image data
          */
         get_buf_bytes(): GLib.Bytes;
@@ -281,7 +299,7 @@ export namespace Gly {
          */
         get_height(): number;
         /**
-         * Format of the image data in [method`Gly`.Frame.get_buf_bytes]
+         * Format of the image data in {@link Gly.Frame.get_buf_bytes}
          * @returns Format of image data
          */
         get_memory_format(): MemoryFormat;
@@ -308,6 +326,8 @@ export namespace Gly {
 
     /**
      * Image handle containing metadata and allowing frame requests.
+     * @gir-type Class
+     * @since 1.0
      */
     class Image extends GObject.Object {
         static $gtype: GObject.GType<Image>;
@@ -329,16 +349,19 @@ export namespace Gly {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Image.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Image.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Image.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Image.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -348,7 +371,7 @@ export namespace Gly {
         // Methods
 
         /**
-         * See [method`Image`.get_width]
+         * See {@link Image.get_width}
          * @returns height
          */
         get_height(): number;
@@ -362,7 +385,7 @@ export namespace Gly {
          *
          * This information is often correct. However, it should only be used for
          * an early rendering estimates. For everything else, the specific frame
-         * information should be used. See [method`Frame`.get_width].
+         * information should be used. See {@link Frame.get_width}.
          * @returns Width
          */
         get_width(): number;
@@ -371,23 +394,23 @@ export namespace Gly {
          *
          * For single still images, this can only be called once.
          * For animated images, this function will loop to the first frame, when the last frame is reached.
-         * @returns a new [class@Frame] on success, or `NULL` with @error filled in
+         * @returns a new {@link Frame} on success, or `NULL` with `error` filled in
          */
         next_frame(): Frame;
         /**
-         * Asynchronous version of [method`Image`.next_frame].
-         * @param cancellable A [class@Gio.Cancellable] to cancel the operation
+         * Asynchronous version of {@link Image.next_frame}.
+         * @param cancellable A {@link Gio.Cancellable} to cancel the operation
          */
         next_frame_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Frame>;
         /**
-         * Asynchronous version of [method`Image`.next_frame].
-         * @param cancellable A [class@Gio.Cancellable] to cancel the operation
+         * Asynchronous version of {@link Image.next_frame}.
+         * @param cancellable A {@link Gio.Cancellable} to cancel the operation
          * @param callback A callback to call when the operation is complete
          */
         next_frame_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
-         * Asynchronous version of [method`Image`.next_frame].
-         * @param cancellable A [class@Gio.Cancellable] to cancel the operation
+         * Asynchronous version of {@link Image.next_frame}.
+         * @param cancellable A {@link Gio.Cancellable} to cancel the operation
          * @param callback A callback to call when the operation is complete
          */
         next_frame_async(
@@ -395,8 +418,8 @@ export namespace Gly {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Frame> | void;
         /**
-         * Finishes the [method`Image`.next_frame_async] call.
-         * @param result a `GAsyncResult`
+         * Finishes the {@link Image.next_frame_async} call.
+         * @param result a {@link Gio.AsyncResult}
          * @returns Loaded frame.
          */
         next_frame_finish(result: Gio.AsyncResult): Frame;
@@ -421,9 +444,9 @@ export namespace Gly {
     }
 
     /**
-     * [class`Loader]` prepares loading an image.
+     * {@link Loader} prepares loading an image.
      *
-     * The following example shows how to obtain a [class`Gdk`.Texture]. It uses
+     * The following example shows how to obtain a {@link Gdk.Texture}. It uses
      * [GlyGtk4](https://gnome.pages.gitlab.gnome.org/glycin/libglycin-gtk4)
      * for this.
      *
@@ -443,6 +466,8 @@ export namespace Gly {
      *   }
      * }
      * ```
+     * @gir-type Class
+     * @since 1.0
      */
     class Loader extends GObject.Object {
         static $gtype: GObject.GType<Loader>;
@@ -451,6 +476,9 @@ export namespace Gly {
 
         get cancellable(): Gio.Cancellable;
         set cancellable(val: Gio.Cancellable);
+        /**
+         * @construct-only
+         */
         get file(): Gio.File;
         get sandbox_selector(): SandboxSelector;
         set sandbox_selector(val: SandboxSelector);
@@ -476,16 +504,19 @@ export namespace Gly {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Loader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Loader.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Loader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Loader.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Loader.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Loader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -495,24 +526,24 @@ export namespace Gly {
         // Methods
 
         /**
-         * Synchronously loads an image and returns an [class`Image]` when successful.
-         * @returns a new [class@Image] on success, or `NULL` with @error filled in
+         * Synchronously loads an image and returns an {@link Image} when successful.
+         * @returns a new {@link Image} on success, or `NULL` with `error` filled in
          */
         load(): Image;
         /**
-         * Asynchronous version of [method`Loader`.load].
-         * @param cancellable A [class@Gio.Cancellable] to cancel the operation
+         * Asynchronous version of {@link Loader.load}.
+         * @param cancellable A {@link Gio.Cancellable} to cancel the operation
          */
         load_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Image>;
         /**
-         * Asynchronous version of [method`Loader`.load].
-         * @param cancellable A [class@Gio.Cancellable] to cancel the operation
+         * Asynchronous version of {@link Loader.load}.
+         * @param cancellable A {@link Gio.Cancellable} to cancel the operation
          * @param callback A callback to call when the operation is complete
          */
         load_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
-         * Asynchronous version of [method`Loader`.load].
-         * @param cancellable A [class@Gio.Cancellable] to cancel the operation
+         * Asynchronous version of {@link Loader.load}.
+         * @param cancellable A {@link Gio.Cancellable} to cancel the operation
          * @param callback A callback to call when the operation is complete
          */
         load_async(
@@ -520,20 +551,29 @@ export namespace Gly {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<Image> | void;
         /**
-         * Finishes the [method`Image`.next_frame_async] call.
-         * @param result A `GAsyncResult`
+         * Finishes the {@link Image.next_frame_async} call.
+         * @param result A {@link Gio.AsyncResult}
          * @returns Loaded frame.
          */
         load_finish(result: Gio.AsyncResult): Image;
         /**
-         * Selects which sandbox mechanism should be used. The default without calling this function is [enum`SandboxSelector]``.AUTO`.
+         * Selects which sandbox mechanism should be used. The default without calling this function is {@link SandboxSelector}`.AUTO`.
          * @param sandbox_selector Method by which the sandbox mechanism is selected
          */
         set_sandbox_selector(sandbox_selector: SandboxSelector | null): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type FrameClass = typeof Frame;
+    /**
+     * @gir-type Alias
+     */
     type ImageClass = typeof Image;
+    /**
+     * @gir-type Alias
+     */
     type LoaderClass = typeof Loader;
     /**
      * Name of the imported GIR library

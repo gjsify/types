@@ -20,10 +20,16 @@ export namespace Cvc {
      * Cvc-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MixerControlState {
         export const $gtype: GObject.GType<MixerControlState>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum MixerControlState {
         CLOSED,
         READY,
@@ -31,10 +37,16 @@ export namespace Cvc {
         FAILED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MixerStreamState {
         export const $gtype: GObject.GType<MixerStreamState>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum MixerStreamState {
         INVALID,
         RUNNING,
@@ -42,20 +54,32 @@ export namespace Cvc {
         SUSPENDED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MixerUIDeviceDirection {
         export const $gtype: GObject.GType<MixerUIDeviceDirection>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum MixerUIDeviceDirection {
         INPUT,
         OUTPUT,
     }
 
     const MIXER_UI_DEVICE_INVALID: number;
+    /**
+     * @gir-type Flags
+     */
     export namespace HeadsetPortChoice {
         export const $gtype: GObject.GType<HeadsetPortChoice>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum HeadsetPortChoice {
         NONE,
         HEADPHONES,
@@ -66,6 +90,10 @@ export namespace Cvc {
     namespace ChannelMap {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
             'volume-changed': (arg0: boolean) => void;
         }
 
@@ -74,6 +102,9 @@ export namespace Cvc {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ChannelMap extends GObject.Object {
         static $gtype: GObject.GType<ChannelMap>;
 
@@ -96,16 +127,19 @@ export namespace Cvc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ChannelMap.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ChannelMap.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ChannelMap.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ChannelMap.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ChannelMap.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ChannelMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -114,6 +148,10 @@ export namespace Cvc {
 
         // Virtual methods
 
+        /**
+         * @param set
+         * @virtual
+         */
         vfunc_volume_changed(set: boolean): void;
 
         // Methods
@@ -127,9 +165,21 @@ export namespace Cvc {
         get_mapping(): string;
         get_num_channels(): number;
         get_volume(): number;
+        /**
+         * @param position
+         */
         has_position(position: number): boolean;
+        /**
+         * @param value
+         */
         set_balance(value: number): void;
+        /**
+         * @param value
+         */
         set_fade(value: number): void;
+        /**
+         * @param value
+         */
         set_lfe(value: number): void;
     }
 
@@ -161,22 +211,43 @@ export namespace Cvc {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class MixerCard extends GObject.Object {
         static $gtype: GObject.GType<MixerCard>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get human_profile(): string;
+        /**
+         * @read-only
+         */
         get humanProfile(): string;
         get icon_name(): string;
         set icon_name(val: string);
         get iconName(): string;
         set iconName(val: string);
+        /**
+         * @construct-only
+         */
         get id(): number;
+        /**
+         * @construct-only
+         */
         get index(): number;
         get name(): string;
         set name(val: string);
+        /**
+         * @construct-only
+         */
         get pa_context(): any;
+        /**
+         * @construct-only
+         */
         get paContext(): any;
         get profile(): string;
         set profile(val: string);
@@ -198,16 +269,19 @@ export namespace Cvc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MixerCard.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MixerCard.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MixerCard.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MixerCard.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MixerCard.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MixerCard.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -218,8 +292,8 @@ export namespace Cvc {
 
         /**
          * Change the profile in use on this card.
-         * @param profile the profile to change to or %NULL.
-         * @returns %TRUE if profile successfully changed or already using this profile.
+         * @param profile the profile to change to or `null`.
+         * @returns `true` if profile successfully changed or already using this profile.
          */
         change_profile(profile?: string | null): boolean;
         get_gicon(): Gio.Icon;
@@ -229,30 +303,105 @@ export namespace Cvc {
         get_name(): string;
         get_ports(): MixerCardPort[];
         get_profiles(): MixerCardProfile[];
+        /**
+         * @param name
+         */
         set_icon_name(name: string): boolean;
+        /**
+         * @param name
+         */
         set_name(name: string): boolean;
+        /**
+         * @param ports
+         */
         set_ports(ports: MixerCardPort[]): boolean;
+        /**
+         * @param profile
+         */
         set_profile(profile: string): boolean;
+        /**
+         * @param profiles
+         */
         set_profiles(profiles: MixerCardProfile[]): boolean;
     }
 
     namespace MixerControl {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
             'active-input-update': (arg0: number) => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'active-output-update': (arg0: number) => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'audio-device-selection-needed': (arg0: number, arg1: boolean, arg2: number) => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'card-added': (arg0: number) => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'card-removed': (arg0: number) => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'default-sink-changed': (arg0: number) => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'default-source-changed': (arg0: number) => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'input-added': (arg0: number) => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'input-removed': (arg0: number) => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'output-added': (arg0: number) => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'output-removed': (arg0: number) => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'state-changed': (arg0: number) => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'stream-added': (arg0: number) => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'stream-changed': (arg0: number) => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'stream-removed': (arg0: number) => void;
             'notify::name': (pspec: GObject.ParamSpec) => void;
         }
@@ -264,11 +413,17 @@ export namespace Cvc {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class MixerControl extends GObject.Object {
         static $gtype: GObject.GType<MixerControl>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get name(): string;
 
         /**
@@ -290,16 +445,19 @@ export namespace Cvc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MixerControl.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MixerControl.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MixerControl.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MixerControl.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MixerControl.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MixerControl.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -308,26 +466,99 @@ export namespace Cvc {
 
         // Virtual methods
 
+        /**
+         * @param id
+         * @virtual
+         */
         vfunc_active_input_update(id: number): void;
+        /**
+         * @param id
+         * @virtual
+         */
         vfunc_active_output_update(id: number): void;
+        /**
+         * @param id
+         * @param show_dialog
+         * @param choices
+         * @virtual
+         */
         vfunc_audio_device_selection_needed(id: number, show_dialog: boolean, choices: HeadsetPortChoice): void;
+        /**
+         * @param id
+         * @virtual
+         */
         vfunc_card_added(id: number): void;
+        /**
+         * @param id
+         * @virtual
+         */
         vfunc_card_removed(id: number): void;
+        /**
+         * @param id
+         * @virtual
+         */
         vfunc_default_sink_changed(id: number): void;
+        /**
+         * @param id
+         * @virtual
+         */
         vfunc_default_source_changed(id: number): void;
+        /**
+         * @param id
+         * @virtual
+         */
         vfunc_input_added(id: number): void;
+        /**
+         * @param id
+         * @virtual
+         */
         vfunc_input_removed(id: number): void;
+        /**
+         * @param id
+         * @virtual
+         */
         vfunc_output_added(id: number): void;
+        /**
+         * @param id
+         * @virtual
+         */
         vfunc_output_removed(id: number): void;
+        /**
+         * @param new_state
+         * @virtual
+         */
         vfunc_state_changed(new_state: MixerControlState): void;
+        /**
+         * @param id
+         * @virtual
+         */
         vfunc_stream_added(id: number): void;
+        /**
+         * @param id
+         * @virtual
+         */
         vfunc_stream_changed(id: number): void;
+        /**
+         * @param id
+         * @virtual
+         */
         vfunc_stream_removed(id: number): void;
 
         // Methods
 
+        /**
+         * @param input This method is called from the UI when the user selects a previously unselected device. - Firstly it queries the stream from the device.   - It assumes that if the stream is null that it cannot be a bluetooth or network stream (they never show unless they have valid sinks and sources)   In the scenario of a NULL stream on the device        - It fetches the device's preferred profile or if NULL the profile with the highest priority on that device.        - It then caches this device in control->priv->cached_desired_input_id so that when the update_source triggered          from when we attempt to change profile we will know exactly what device to highlight on that stream.        - It attempts to swap the profile on the card from that device and returns. - Next, it handles network or bluetooth streams that only require their stream to be made the default. - Next it deals with port changes so if the stream's active port is not the same as the port on the device   it will attempt to change the port on that stream to be same as the device. If this fails it will return. - Finally it will set this new stream to be the default stream and emit a signal for the UI confirming the active input device.
+         */
         change_input(input: MixerUIDevice): void;
+        /**
+         * @param output This method is called from the UI when the user selects a previously unselected device. - Firstly it queries the stream from the device.   - It assumes that if the stream is null that it cannot be a bluetooth or network stream (they never show unless they have valid sinks and sources)   In the scenario of a NULL stream on the device        - It fetches the device's preferred profile or if NULL the profile with the highest priority on that device.        - It then caches this device in control->priv->cached_desired_output_id so that when the update_sink triggered          from when we attempt to change profile we will know exactly what device to highlight on that stream.        - It attempts to swap the profile on the card from that device and returns. - Next, it handles network or bluetooth streams that only require their stream to be made the default. - Next it deals with port changes so if the stream's active port is not the same as the port on the device   it will attempt to change the port on that stream to be same as the device. If this fails it will return. - Finally it will set this new stream to be the default stream and emit a signal for the UI confirming the active output device.
+         */
         change_output(output: MixerUIDevice): void;
+        /**
+         * @param device
+         * @param profile Can be `null` if any profile present on this port is okay
+         * @returns This method will attempt to swap the profile on the card of the device with given profile name.  If successful it will set the preferred profile on that device so as we know the next time the user moves to that device it should have this profile active.
+         */
         change_profile_on_selected_device(device: MixerUIDevice, profile?: string | null): boolean;
         close(): boolean;
         get_cards(): MixerCard[];
@@ -339,18 +570,47 @@ export namespace Cvc {
         get_source_outputs(): MixerSourceOutput[];
         get_sources(): MixerSource[];
         get_state(): MixerControlState;
+        /**
+         * @param device
+         */
         get_stream_from_device(device: MixerUIDevice): MixerStream;
         get_streams(): MixerStream[];
         get_vol_max_amplified(): number;
         get_vol_max_norm(): number;
+        /**
+         * @param id
+         */
         lookup_card_id(id: number): MixerCard;
+        /**
+         * @param stream
+         * @returns a `GvcUIDevice` or `null`
+         */
         lookup_device_from_stream(stream: MixerStream): MixerUIDevice;
+        /**
+         * @param id
+         */
         lookup_input_id(id: number): MixerUIDevice;
+        /**
+         * @param id
+         */
         lookup_output_id(id: number): MixerUIDevice;
+        /**
+         * @param id
+         */
         lookup_stream_id(id: number): MixerStream;
         open(): boolean;
+        /**
+         * @param stream
+         */
         set_default_sink(stream: MixerStream): boolean;
+        /**
+         * @param stream
+         */
         set_default_source(stream: MixerStream): boolean;
+        /**
+         * @param id
+         * @param choices
+         */
         set_headset_port(id: number, choices: HeadsetPortChoice | null): void;
     }
 
@@ -386,6 +646,9 @@ export namespace Cvc {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class MixerEventRole extends MixerStream {
         static $gtype: GObject.GType<MixerEventRole>;
 
@@ -411,16 +674,19 @@ export namespace Cvc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MixerEventRole.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MixerEventRole.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MixerEventRole.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MixerEventRole.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MixerEventRole.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MixerEventRole.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -457,6 +723,9 @@ export namespace Cvc {
         interface ConstructorProps extends MixerStream.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class MixerSink extends MixerStream {
         static $gtype: GObject.GType<MixerSink>;
 
@@ -477,16 +746,19 @@ export namespace Cvc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MixerSink.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MixerSink.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MixerSink.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MixerSink.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MixerSink.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MixerSink.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -523,6 +795,9 @@ export namespace Cvc {
         interface ConstructorProps extends MixerStream.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class MixerSinkInput extends MixerStream {
         static $gtype: GObject.GType<MixerSinkInput>;
 
@@ -543,16 +818,19 @@ export namespace Cvc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MixerSinkInput.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MixerSinkInput.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MixerSinkInput.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MixerSinkInput.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MixerSinkInput.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MixerSinkInput.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -589,6 +867,9 @@ export namespace Cvc {
         interface ConstructorProps extends MixerStream.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class MixerSource extends MixerStream {
         static $gtype: GObject.GType<MixerSource>;
 
@@ -609,16 +890,19 @@ export namespace Cvc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MixerSource.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MixerSource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MixerSource.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MixerSource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MixerSource.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MixerSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -655,6 +939,9 @@ export namespace Cvc {
         interface ConstructorProps extends MixerStream.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class MixerSourceOutput extends MixerStream {
         static $gtype: GObject.GType<MixerSourceOutput>;
 
@@ -675,16 +962,19 @@ export namespace Cvc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MixerSourceOutput.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MixerSourceOutput.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MixerSourceOutput.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MixerSourceOutput.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MixerSourceOutput.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MixerSourceOutput.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -695,7 +985,15 @@ export namespace Cvc {
     namespace MixerStream {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
             'monitor-suspend': () => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'monitor-update': (arg0: number) => void;
             'notify::application-id': (pspec: GObject.ParamSpec) => void;
             'notify::can-decibel': (pspec: GObject.ParamSpec) => void;
@@ -754,6 +1052,9 @@ export namespace Cvc {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class MixerStream extends GObject.Object {
         static $gtype: GObject.GType<MixerStream>;
 
@@ -787,7 +1088,13 @@ export namespace Cvc {
         set icon_name(val: string);
         get iconName(): string;
         set iconName(val: string);
+        /**
+         * @construct-only
+         */
         get id(): number;
+        /**
+         * @construct-only
+         */
         get index(): number;
         get is_event_stream(): boolean;
         set is_event_stream(val: boolean);
@@ -803,7 +1110,13 @@ export namespace Cvc {
         set isVirtual(val: boolean);
         get name(): string;
         set name(val: string);
+        /**
+         * @construct-only
+         */
         get pa_context(): any;
+        /**
+         * @construct-only
+         */
         get paContext(): any;
         get port(): string;
         set port(val: string);
@@ -833,16 +1146,19 @@ export namespace Cvc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MixerStream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MixerStream.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MixerStream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MixerStream.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MixerStream.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MixerStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -851,25 +1167,52 @@ export namespace Cvc {
 
         // Virtual methods
 
+        /**
+         * @param is_muted
+         * @virtual
+         */
         vfunc_change_is_muted(is_muted: boolean): boolean;
+        /**
+         * @param port
+         * @virtual
+         */
         vfunc_change_port(port: string): boolean;
+        /**
+         * @virtual
+         */
         vfunc_monitor_suspend(): void;
+        /**
+         * @param v
+         * @virtual
+         */
         vfunc_monitor_update(v: number): void;
+        /**
+         * @param operation
+         * @virtual
+         */
         vfunc_push_volume(operation?: any | null): boolean;
 
         // Methods
 
+        /**
+         * @param is_muted
+         */
         change_is_muted(is_muted: boolean): boolean;
+        /**
+         * @param port
+         */
         change_port(port: string): boolean;
         create_monitor(): void;
         get_application_id(): string;
-        get_base_volume(): number;
         get_can_decibel(): boolean;
         get_card_index(): number;
         get_channel_map(): ChannelMap;
         get_decibel(): number;
         get_description(): string;
         get_form_factor(): string;
+        /**
+         * @returns a new {@link Gio.Icon}
+         */
         get_gicon(): Gio.Icon;
         get_icon_name(): string;
         get_id(): number;
@@ -880,26 +1223,76 @@ export namespace Cvc {
         get_ports(): MixerStreamPort[];
         get_state(): MixerStreamState;
         get_sysfs_path(): string;
-        get_volume(): number;
         is_running(): boolean;
         push_volume(): boolean;
         remove_monitor(): void;
+        /**
+         * @param application_id
+         */
         set_application_id(application_id: string): boolean;
+        /**
+         * @param base_volume
+         */
         set_base_volume(base_volume: number): boolean;
+        /**
+         * @param can_decibel
+         */
         set_can_decibel(can_decibel: boolean): boolean;
+        /**
+         * @param card_index
+         */
         set_card_index(card_index: number): boolean;
+        /**
+         * @param db
+         */
         set_decibel(db: number): boolean;
+        /**
+         * @param description
+         */
         set_description(description: string): boolean;
+        /**
+         * @param form_factor
+         */
         set_form_factor(form_factor: string): boolean;
+        /**
+         * @param name
+         */
         set_icon_name(name: string): boolean;
+        /**
+         * @param is_event_stream
+         */
         set_is_event_stream(is_event_stream: boolean): boolean;
+        /**
+         * @param is_muted
+         */
         set_is_muted(is_muted: boolean): boolean;
+        /**
+         * @param is_event_stream
+         */
         set_is_virtual(is_event_stream: boolean): boolean;
+        /**
+         * @param name
+         */
         set_name(name: string): boolean;
+        /**
+         * @param port
+         */
         set_port(port: string): boolean;
+        /**
+         * @param ports
+         */
         set_ports(ports: MixerStreamPort[]): boolean;
+        /**
+         * @param state
+         */
         set_state(state: MixerStreamState | null): boolean;
+        /**
+         * @param sysfs_path
+         */
         set_sysfs_path(sysfs_path: string): boolean;
+        /**
+         * @param volume
+         */
         set_volume(volume: number): boolean;
     }
 
@@ -934,6 +1327,9 @@ export namespace Cvc {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class MixerUIDevice extends GObject.Object {
         static $gtype: GObject.GType<MixerUIDevice>;
 
@@ -981,16 +1377,19 @@ export namespace Cvc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MixerUIDevice.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MixerUIDevice.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MixerUIDevice.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MixerUIDevice.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MixerUIDevice.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MixerUIDevice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1000,11 +1399,19 @@ export namespace Cvc {
         // Methods
 
         get_active_profile(): string;
+        /**
+         * @param selected The selected profile or its canonical name or `null` for any profile
+         * @param current The currently selected profile
+         * @returns a profile name, valid as long as the UI device profiles are.
+         */
         get_best_profile(selected: string | null, current: string): string;
         get_description(): string;
         get_gicon(): Gio.Icon;
         get_icon_name(): string;
         get_id(): number;
+        /**
+         * @param profile
+         */
         get_matching_profile(profile: string): string;
         get_origin(): string;
         get_port(): string;
@@ -1038,16 +1445,31 @@ export namespace Cvc {
          * @param in_profiles a list of GvcMixerCardProfile
          */
         set_profiles(in_profiles: MixerCardProfile[]): void;
+        /**
+         * @param profile
+         */
         set_user_preferred_profile(profile: string): void;
         should_profiles_be_hidden(): boolean;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ChannelMapClass = typeof ChannelMap;
+    /**
+     * @gir-type Struct
+     */
     abstract class ChannelMapPrivate {
         static $gtype: GObject.GType<ChannelMapPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MixerCardClass = typeof MixerCard;
+    /**
+     * @gir-type Struct
+     */
     class MixerCardPort {
         static $gtype: GObject.GType<MixerCardPort>;
 
@@ -1075,10 +1497,16 @@ export namespace Cvc {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class MixerCardPrivate {
         static $gtype: GObject.GType<MixerCardPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class MixerCardProfile {
         static $gtype: GObject.GType<MixerCardProfile>;
 
@@ -1106,40 +1534,86 @@ export namespace Cvc {
 
         // Methods
 
+        /**
+         * @param b
+         * @returns 1 if `a` has a higher priority, -1 if `b` has a higher priority, 0 if `a` and `b` have the same priority.
+         */
         compare(b: MixerCardProfile): number;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MixerControlClass = typeof MixerControl;
+    /**
+     * @gir-type Struct
+     */
     abstract class MixerControlPrivate {
         static $gtype: GObject.GType<MixerControlPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MixerEventRoleClass = typeof MixerEventRole;
+    /**
+     * @gir-type Struct
+     */
     abstract class MixerEventRolePrivate {
         static $gtype: GObject.GType<MixerEventRolePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MixerSinkClass = typeof MixerSink;
+    /**
+     * @gir-type Alias
+     */
     type MixerSinkInputClass = typeof MixerSinkInput;
+    /**
+     * @gir-type Struct
+     */
     abstract class MixerSinkInputPrivate {
         static $gtype: GObject.GType<MixerSinkInputPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class MixerSinkPrivate {
         static $gtype: GObject.GType<MixerSinkPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MixerSourceClass = typeof MixerSource;
+    /**
+     * @gir-type Alias
+     */
     type MixerSourceOutputClass = typeof MixerSourceOutput;
+    /**
+     * @gir-type Struct
+     */
     abstract class MixerSourceOutputPrivate {
         static $gtype: GObject.GType<MixerSourceOutputPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class MixerSourcePrivate {
         static $gtype: GObject.GType<MixerSourcePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MixerStreamClass = typeof MixerStream;
+    /**
+     * @gir-type Struct
+     */
     class MixerStreamPort {
         static $gtype: GObject.GType<MixerStreamPort>;
 
@@ -1162,11 +1636,20 @@ export namespace Cvc {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class MixerStreamPrivate {
         static $gtype: GObject.GType<MixerStreamPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MixerUIDeviceClass = typeof MixerUIDevice;
+    /**
+     * @gir-type Struct
+     */
     abstract class MixerUIDevicePrivate {
         static $gtype: GObject.GType<MixerUIDevicePrivate>;
     }

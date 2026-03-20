@@ -20,12 +20,16 @@ export namespace Ggit {
      * Ggit-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace BranchType {
         export const $gtype: GObject.GType<BranchType>;
     }
 
     /**
      * The type of a branch.
+     * @gir-type Enum
      */
     enum BranchType {
         /**
@@ -38,10 +42,16 @@ export namespace Ggit {
         REMOTE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CloneLocal {
         export const $gtype: GObject.GType<CloneLocal>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum CloneLocal {
         AUTO,
         LOCAL,
@@ -49,6 +59,9 @@ export namespace Ggit {
         NO_LINKS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ConfigLevel {
         export const $gtype: GObject.GType<ConfigLevel>;
     }
@@ -57,6 +70,7 @@ export namespace Ggit {
      * Priority level of a config file.
      * These priority levels correspond to the natural escalation logic
      * (from higher to lower) when searching for config entries in git.git.
+     * @gir-type Enum
      */
     enum ConfigLevel {
         /**
@@ -79,6 +93,7 @@ export namespace Ggit {
          * Repository specific configuration file.
          */
         LOCAL,
+        WORKTREE,
         /**
          * Application specific configuration file; freely defined by applications.
          */
@@ -89,12 +104,16 @@ export namespace Ggit {
         HIGHEST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DeltaType {
         export const $gtype: GObject.GType<DeltaType>;
     }
 
     /**
      * Describes the type of change the delta is.
+     * @gir-type Enum
      */
     enum DeltaType {
         /**
@@ -134,6 +153,9 @@ export namespace Ggit {
         CONFLICTED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DiffBinaryType {
         export const $gtype: GObject.GType<DiffBinaryType>;
     }
@@ -143,6 +165,7 @@ export namespace Ggit {
      * either the deflated full ("literal") contents of the file, or
      * the deflated binary delta between the two sides (whichever is
      * smaller).
+     * @gir-type Enum
      */
     enum DiffBinaryType {
         NONE,
@@ -150,12 +173,16 @@ export namespace Ggit {
         DELTA,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DiffFormatType {
         export const $gtype: GObject.GType<DiffFormatType>;
     }
 
     /**
      * Possible output formats for diff data.
+     * @gir-type Enum
      */
     enum DiffFormatType {
         /**
@@ -180,16 +207,20 @@ export namespace Ggit {
         NAME_STATUS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DiffLineType {
         export const $gtype: GObject.GType<DiffLineType>;
     }
 
     /**
      * These values describe where a line came from and will be passed to
-     * the #GgitDiffLineCallback when iterating over a diff.
+     * the {@link Ggit.DiffLineCallback} when iterating over a diff.
      *
      * The #GGIT_DIFF_LINE_FILE_HDR, #GGIT_DIFF_LINE_HUNK_HDR and
      * #GGIT_DIFF_LINE_BINARY values are only sent when the diff is being printed.
+     * @gir-type Enum
      */
     enum DiffLineType {
         /**
@@ -230,17 +261,24 @@ export namespace Ggit {
         BINARY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Direction {
         export const $gtype: GObject.GType<Direction>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum Direction {
         FETCH,
         PUSH,
     }
 
     /**
-     * Error codes for the %GGIT_ERROR error domain.
+     * Error codes for the `GGIT_ERROR` error domain.
+     * @gir-type Struct
      */
     class Error extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -285,15 +323,21 @@ export namespace Ggit {
         /**
          * Error domain for Ggit functions.
          * Errors in this domain will be from the GgitError enumeration.
-         * See #GError for information on error domains.
+         * See {@link GLib.Error} for information on error domains.
          */
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FileMode {
         export const $gtype: GObject.GType<FileMode>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum FileMode {
         UNREADABLE,
         TREE,
@@ -303,10 +347,16 @@ export namespace Ggit {
         COMMIT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MergeFileFavor {
         export const $gtype: GObject.GType<MergeFileFavor>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum MergeFileFavor {
         NORMAL,
         OURS,
@@ -314,12 +364,16 @@ export namespace Ggit {
         UNION,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PackbuilderStage {
         export const $gtype: GObject.GType<PackbuilderStage>;
     }
 
     /**
      * Valid stages for pack building.
+     * @gir-type Enum
      */
     enum PackbuilderStage {
         /**
@@ -332,12 +386,16 @@ export namespace Ggit {
         DELTAFICATION,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ProxyType {
         export const $gtype: GObject.GType<ProxyType>;
     }
 
     /**
      * The type of proxy to use.
+     * @gir-type Enum
      */
     enum ProxyType {
         /**
@@ -354,12 +412,16 @@ export namespace Ggit {
         SPECIFIED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RebaseOperationType {
         export const $gtype: GObject.GType<RebaseOperationType>;
     }
 
     /**
      * Type of rebase operation in-progress.
+     * @gir-type Enum
      */
     enum RebaseOperationType {
         /**
@@ -395,12 +457,16 @@ export namespace Ggit {
         EXEC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RefType {
         export const $gtype: GObject.GType<RefType>;
     }
 
     /**
      * Describes the type a reference is.
+     * @gir-type Enum
      */
     enum RefType {
         /**
@@ -421,12 +487,16 @@ export namespace Ggit {
         LISTALL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RemoteCompletionType {
         export const $gtype: GObject.GType<RemoteCompletionType>;
     }
 
     /**
      * Argument to the completion callback which tells it which operation finished.
+     * @gir-type Enum
      */
     enum RemoteCompletionType {
         /**
@@ -443,6 +513,9 @@ export namespace Ggit {
         ERROR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace RemoteDownloadTagsType {
         export const $gtype: GObject.GType<RemoteDownloadTagsType>;
     }
@@ -451,6 +524,7 @@ export namespace Ggit {
      * Automatic tag following option
      *
      * Lets us select the --tags option to use.
+     * @gir-type Enum
      */
     enum RemoteDownloadTagsType {
         /**
@@ -472,12 +546,16 @@ export namespace Ggit {
         ALL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ResetType {
         export const $gtype: GObject.GType<ResetType>;
     }
 
     /**
      * Describes the type of reset to perform.
+     * @gir-type Enum
      */
     enum ResetType {
         /**
@@ -495,18 +573,22 @@ export namespace Ggit {
         HARD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace StatusShow {
         export const $gtype: GObject.GType<StatusShow>;
     }
 
     /**
-     * Show options for #ggit_repository_file_status_foreach. Determines which
+     * Show options for `ggit_repository_file_status_foreach`. Determines which
      * files are included in the status.
+     * @gir-type Enum
      */
     enum StatusShow {
         /**
          * receive one callback for each file,
-         * even if the file is in both the index and the workdir (combining #GgitStatusFlags).
+         * even if the file is in both the index and the workdir (combining {@link Ggit.StatusFlags}).
          */
         INDEX_AND_WORKDIR,
         /**
@@ -519,12 +601,16 @@ export namespace Ggit {
         WORKDIR_ONLY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SubmoduleIgnore {
         export const $gtype: GObject.GType<SubmoduleIgnore>;
     }
 
     /**
      * Describes which submodules should be ignored.
+     * @gir-type Enum
      */
     enum SubmoduleIgnore {
         /**
@@ -549,6 +635,9 @@ export namespace Ggit {
         ALL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SubmoduleRecurse {
         export const $gtype: GObject.GType<SubmoduleRecurse>;
     }
@@ -556,6 +645,7 @@ export namespace Ggit {
     /**
      * Options for submodule recurse.
      * Represents the value of `submodule.$name.fetchRecurseSubmodules`
+     * @gir-type Enum
      */
     enum SubmoduleRecurse {
         /**
@@ -573,12 +663,16 @@ export namespace Ggit {
         ONDEMAND,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SubmoduleUpdate {
         export const $gtype: GObject.GType<SubmoduleUpdate>;
     }
 
     /**
      * Describes how a submodule should be updated.
+     * @gir-type Enum
      */
     enum SubmoduleUpdate {
         /**
@@ -606,12 +700,16 @@ export namespace Ggit {
         DEFAULT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TreeWalkMode {
         export const $gtype: GObject.GType<TreeWalkMode>;
     }
 
     /**
      * Describes in which order a tree walk should be performed.
+     * @gir-type Enum
      */
     enum TreeWalkMode {
         /**
@@ -629,15 +727,15 @@ export namespace Ggit {
      */
     const BUILD_TYPE: string;
     /**
-     * libgit2-glib major version component (e.g. 1 if %GGIT_VERSION is 1.2.3)
+     * libgit2-glib major version component (e.g. 1 if `GGIT_VERSION` is 1.2.3)
      */
     const MAJOR_VERSION: number;
     /**
-     * libgit2-glib micro version component (e.g. 3 if %GGIT_VERSION is 1.2.3)
+     * libgit2-glib micro version component (e.g. 3 if `GGIT_VERSION` is 1.2.3)
      */
     const MICRO_VERSION: number;
     /**
-     * libgit2-glib minor version component (e.g. 2 if %GGIT_VERSION is 1.2.3)
+     * libgit2-glib minor version component (e.g. 2 if `GGIT_VERSION` is 1.2.3)
      */
     const MINOR_VERSION: number;
     /**
@@ -648,12 +746,12 @@ export namespace Ggit {
     /**
      * Error domain for Ggit functions.
      * Errors in this domain will be from the GgitError enumeration.
-     * See #GError for information on error domains.
+     * See {@link GLib.Error} for information on error domains.
      */
     function error_quark(): GLib.Quark;
     /**
      * Gets the features of the library.
-     * @returns a #GgitFeatureFlags.
+     * @returns a {@link Ggit.FeatureFlags}.
      */
     function get_features(): FeatureFlags;
     /**
@@ -662,7 +760,7 @@ export namespace Ggit {
     function init(): void;
     /**
      * Prettify a commit message by removing excess whitespace and making sure the
-     * last line ends with a newline. If `strip_comments` is %TRUE, then lines
+     * last line ends with a newline. If `strip_comments` is `true`, then lines
      * starting with a `comment_char` will be removed.
      * @param message the message.
      * @param strip_comments whether to strip comments.
@@ -670,69 +768,135 @@ export namespace Ggit {
      * @returns the prettified message.
      */
     function message_prettify(message: string, strip_comments: boolean, comment_char: number): string;
+    /**
+     * @gir-type Callback
+     */
     interface ConfigCallback {
         (entry: ConfigEntry): number;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ConfigMatchCallback {
         (match_info: GLib.MatchInfo, value: string): number;
     }
+    /**
+     * @gir-type Callback
+     */
     interface CredAcquireCallback {
         (url: string, username_from_url: string | null, allowed_types: number, cred: Cred): number;
     }
+    /**
+     * @gir-type Callback
+     */
     interface DiffBinaryCallback {
         (delta: DiffDelta, binary: DiffBinary): number;
     }
+    /**
+     * @gir-type Callback
+     */
     interface DiffFileCallback {
         (delta: DiffDelta, progress: number): number;
     }
+    /**
+     * @gir-type Callback
+     */
     interface DiffHunkCallback {
         (delta: DiffDelta, hunk: DiffHunk): number;
     }
+    /**
+     * @gir-type Callback
+     */
     interface DiffLineCallback {
         (delta: DiffDelta, hunk: DiffHunk | null, line: DiffLine): number;
     }
+    /**
+     * @gir-type Callback
+     */
     interface DiffSimilarityMetricBufferSignatureCallback {
         (file: DiffFile, buf: string, buflen: number, out?: any | null): number;
     }
+    /**
+     * @gir-type Callback
+     */
     interface DiffSimilarityMetricFileSignatureCallback {
         (file: DiffFile, fullpath: string, out?: any | null): number;
     }
+    /**
+     * @gir-type Callback
+     */
     interface DiffSimilarityMetricFreeSignatureCallback {
         (signature?: any | null): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface DiffSimilarityMetricSimilarityCallback {
         (score: number, signature_a?: any | null, signature_b?: any | null): number;
     }
+    /**
+     * @gir-type Callback
+     */
     interface NoteCallback {
         (blob_id: OId, annotated_object_id: OId): number;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ReferencesCallback {
         (reference: Ref): number;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ReferencesNameCallback {
         (name: string): number;
     }
+    /**
+     * @gir-type Callback
+     */
     interface RemoteListCallback {
         (name: string, oid: OId, loid: OId, local: boolean): number;
     }
+    /**
+     * @gir-type Callback
+     */
     interface StashCallback {
         (index: number, message: string, stash_oid: OId): number;
     }
+    /**
+     * @gir-type Callback
+     */
     interface StatusCallback {
         (path: string, status_flags: StatusFlags): number;
     }
+    /**
+     * @gir-type Callback
+     */
     interface SubmoduleCallback {
         (submodule: Submodule, name: string): number;
     }
+    /**
+     * @gir-type Callback
+     */
     interface TagCallback {
         (name: string, tag_oid: OId): number;
     }
+    /**
+     * @gir-type Callback
+     */
     interface TransferProgressCallback {
         (stats: TransferProgress): number;
     }
+    /**
+     * @gir-type Callback
+     */
     interface TreeWalkCallback {
         (root: string, entry: TreeEntry): number;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace AttributeCheckFlags {
         export const $gtype: GObject.GType<AttributeCheckFlags>;
     }
@@ -741,6 +905,7 @@ export namespace Ggit {
      * Attribute check flags indicate the order in which to check for gitattributes.
      * git core uses `GGIT_ATTRIBUTE_CHECK_FILE_THEN_INDEX` for all operations,
      * except on checkout, where it uses `GGIT_ATTRIBUTE_CHECK_INDEX_THEN_FILE`.
+     * @gir-type Flags
      */
     enum AttributeCheckFlags {
         /**
@@ -761,10 +926,16 @@ export namespace Ggit {
         NO_SYSTEM,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace BlameFlags {
         export const $gtype: GObject.GType<BlameFlags>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum BlameFlags {
         /**
          * Normal blame, the default.
@@ -777,10 +948,16 @@ export namespace Ggit {
         TRACK_COPIES_SAME_FILE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace CheckoutNotifyFlags {
         export const $gtype: GObject.GType<CheckoutNotifyFlags>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum CheckoutNotifyFlags {
         NONE,
         CONFLICT,
@@ -791,12 +968,17 @@ export namespace Ggit {
         ALL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace CheckoutStrategy {
         export const $gtype: GObject.GType<CheckoutStrategy>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum CheckoutStrategy {
-        NONE,
         SAFE,
         FORCE,
         RECREATE_MISSING,
@@ -816,16 +998,23 @@ export namespace Ggit {
         CONFLICT_STYLE_DIFF3,
         DONT_REMOVE_EXISTING,
         DONT_WRITE_INDEX,
+        DRY_RUN,
+        CONFLICT_STYLE_ZDIFF3,
+        NONE,
         UPDATE_SUBMODULES,
         UPDATE_SUBMODULES_IF_CHANGED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace CreateFlags {
         export const $gtype: GObject.GType<CreateFlags>;
     }
 
     /**
      * Describes how something should be created.
+     * @gir-type Flags
      */
     enum CreateFlags {
         /**
@@ -838,10 +1027,16 @@ export namespace Ggit {
         FORCE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace Credtype {
         export const $gtype: GObject.GType<Credtype>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum Credtype {
         USERPASS_PLAINTEXT,
         SSH_KEY,
@@ -850,10 +1045,16 @@ export namespace Ggit {
         SSH_INTERACTIVE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DiffFindFlags {
         export const $gtype: GObject.GType<DiffFindFlags>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum DiffFindFlags {
         FIND_BY_CONFIG,
         FIND_RENAMES,
@@ -873,12 +1074,16 @@ export namespace Ggit {
         FIND_REMOVE_UNMODIFIED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DiffFlag {
         export const $gtype: GObject.GType<DiffFlag>;
     }
 
     /**
      * Describes the diff file and/or delta flags
+     * @gir-type Flags
      */
     enum DiffFlag {
         /**
@@ -895,21 +1100,31 @@ export namespace Ggit {
         VALID_ID,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DiffFormatEmailFlags {
         export const $gtype: GObject.GType<DiffFormatEmailFlags>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum DiffFormatEmailFlags {
         NONE,
         EXCLUDE_SUBJECT_PATCH_MARKER,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DiffOption {
         export const $gtype: GObject.GType<DiffOption>;
     }
 
     /**
      * How the diff should be generated.
+     * @gir-type Flags
      */
     enum DiffOption {
         /**
@@ -1016,16 +1231,25 @@ export namespace Ggit {
         SHOW_BINARY,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace FeatureFlags {
         export const $gtype: GObject.GType<FeatureFlags>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum FeatureFlags {
         THREADS,
         HTTPS,
         SSH,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace MergeFileFlags {
         export const $gtype: GObject.GType<MergeFileFlags>;
     }
@@ -1040,6 +1264,7 @@ export namespace Ggit {
      * GGIT_MERGE_FILE_IGNORE_WHITESPACE_EOL: Ignore whitespace at end of line.
      * GGIT_MERGE_FILE_DIFF_PATIENCE: Use the "patience diff" algorithm.
      * GGIT_MERGE_FILE_DIFF_MINIMAL: Take extra time to find minimal diff.
+     * @gir-type Flags
      */
     enum MergeFileFlags {
         DEFAULT,
@@ -1053,10 +1278,16 @@ export namespace Ggit {
         DIFF_MINIMAL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace MergeFlags {
         export const $gtype: GObject.GType<MergeFlags>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum MergeFlags {
         /**
          * detect renames that occur between the common
@@ -1083,12 +1314,16 @@ export namespace Ggit {
         NO_RECURSIVE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SortMode {
         export const $gtype: GObject.GType<SortMode>;
     }
 
     /**
      * The type of sorting mode for the revision walker.
+     * @gir-type Flags
      */
     enum SortMode {
         /**
@@ -1117,12 +1352,16 @@ export namespace Ggit {
         REVERSE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace StashFlags {
         export const $gtype: GObject.GType<StashFlags>;
     }
 
     /**
      * Describes how a stash should be applied.
+     * @gir-type Flags
      */
     enum StashFlags {
         /**
@@ -1146,12 +1385,16 @@ export namespace Ggit {
         INCLUDE_IGNORED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace StatusFlags {
         export const $gtype: GObject.GType<StatusFlags>;
     }
 
     /**
      * Describes a file's status.
+     * @gir-type Flags
      */
     enum StatusFlags {
         /**
@@ -1194,6 +1437,9 @@ export namespace Ggit {
         CONFLICTED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace StatusOption {
         export const $gtype: GObject.GType<StatusOption>;
     }
@@ -1215,7 +1461,8 @@ export namespace Ggit {
      * GGIT_STATUS_OPTION_SORT_CASE_SENSITIVELY: sort case sensitive.
      * GGIT_STATUS_OPTION_SORT_CASE_INSENSITIVELY: sort case insensitive.
      * GGIT_STATUS_OPTION_DEFAULT: default flags.
-     * Status options specified when using #ggit_repository_file_status_foreach.
+     * Status options specified when using `ggit_repository_file_status_foreach`.
+     * @gir-type Flags
      */
     enum StatusOption {
         INCLUDE_UNTRACKED,
@@ -1232,12 +1479,16 @@ export namespace Ggit {
         DEFAULT,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SubmoduleStatus {
         export const $gtype: GObject.GType<SubmoduleStatus>;
     }
 
     /**
      * FIXME
+     * @gir-type Flags
      */
     enum SubmoduleStatus {
         IN_HEAD,
@@ -1269,6 +1520,7 @@ export namespace Ggit {
 
     /**
      * Represents a blame.
+     * @gir-type Class
      */
     class Blame extends Native {
         static $gtype: GObject.GType<Blame>;
@@ -1290,16 +1542,19 @@ export namespace Ggit {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Blame.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Blame.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Blame.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Blame.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Blame.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Blame.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1310,13 +1565,13 @@ export namespace Ggit {
 
         /**
          * Get the blame options flags.
-         * @param blame_options a #GgitBlameOptions.
+         * @param blame_options a {@link Ggit.BlameOptions}.
          */
         static get_flags(blame_options: BlameOptions): BlameFlags;
         /**
          * Set the blame options flags.
-         * @param blame_options a #GgitBlameOptions.
-         * @param flags a #GgitBlameFlags.
+         * @param blame_options a {@link Ggit.BlameOptions}.
+         * @param flags a {@link Ggit.BlameFlags}.
          */
         static set_flags(blame_options: BlameOptions, flags: BlameFlags): void;
 
@@ -1329,12 +1584,18 @@ export namespace Ggit {
          * blame is very fast.
          *
          * Lines that differ between the buffer and the committed version are marked as
-         * having a zero id for their #ggit_blame_hunk_get_final_commit_id.
+         * having a zero id for their `ggit_blame_hunk_get_final_commit_id`.
          * @param buffer the contents of the file.
-         * @returns a #GgitBlame or %NULL.
+         * @returns a {@link Ggit.Blame} or `null`.
          */
         from_buffer(buffer: Uint8Array | string): Blame | null;
+        /**
+         * @param idx
+         */
         get_hunk_by_index(idx: number): BlameHunk;
+        /**
+         * @param line
+         */
         get_hunk_by_line(line: number): BlameHunk;
         get_hunk_count(): number;
     }
@@ -1352,6 +1613,7 @@ export namespace Ggit {
 
     /**
      * Represents a blob object.
+     * @gir-type Class
      */
     class Blob extends Object {
         static $gtype: GObject.GType<Blob>;
@@ -1373,16 +1635,19 @@ export namespace Ggit {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Blob.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Blob.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Blob.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Blob.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Blob.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Blob.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1398,12 +1663,12 @@ export namespace Ggit {
          * This pointer is owned internally by `object` and must
          * not be free'd. The pointer may be invalidated at a later
          * time.
-         * @returns the blob content or          %NULL if the blob does not have any content.
+         * @returns the blob content or          `null` if the blob does not have any content.
          */
         get_raw_content(): Uint8Array | null;
         /**
          * Check whether the blob is binary.
-         * @returns %TRUE if the blob is binary, %FALSE otherwise.
+         * @returns `true` if the blob is binary, `false` otherwise.
          */
         is_binary(): boolean;
     }
@@ -1423,12 +1688,16 @@ export namespace Ggit {
 
     /**
      * Represents a blob stream object.
+     * @gir-type Class
      */
     class BlobOutputStream extends Gio.OutputStream {
         static $gtype: GObject.GType<BlobOutputStream>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set repository(val: Repository);
 
         /**
@@ -1448,16 +1717,19 @@ export namespace Ggit {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BlobOutputStream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BlobOutputStream.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BlobOutputStream.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BlobOutputStream.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BlobOutputStream.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BlobOutputStream.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1469,8 +1741,8 @@ export namespace Ggit {
         /**
          * Get the id of the written blob. The blob id is only available after the
          * stream has been properly closed. If an error occurred while writing the blob,
-         * the %NULL is returned and `error` is set accordingly.
-         * @returns a #GgitOId or %NULL.
+         * the `null` is returned and `error` is set accordingly.
+         * @returns a {@link Ggit.OId} or `null`.
          */
         get_id(): OId | null;
     }
@@ -1488,6 +1760,7 @@ export namespace Ggit {
 
     /**
      * Represents a branch object.
+     * @gir-type Class
      */
     class Branch extends Ref {
         static $gtype: GObject.GType<Branch>;
@@ -1509,16 +1782,19 @@ export namespace Ggit {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Branch.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Branch.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Branch.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Branch.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Branch.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Branch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1531,35 +1807,35 @@ export namespace Ggit {
          * Deletes an existing branch reference.
          *
          * If the branch is successfully deleted, this object is
-         * not useful anymore and if should be freed with g_object_unref().
+         * not useful anymore and if should be freed with `g_object_unref()`.
          */
         ['delete'](): void;
         /**
          * Gets the name of the given local or remote branch.
-         * @returns the name of the given local or remote branch or %NULL.
+         * @returns the name of the given local or remote branch or `null`.
          */
         get_name(): string | null;
         /**
          * Gets the reference supporting the remote tracking branch,
          * given a local branch reference.
-         * @returns the reference supporting the remote tracking branch or %NULL.
+         * @returns the reference supporting the remote tracking branch or `null`.
          */
         get_upstream(): Ref | null;
         /**
          * Determines if the current local branch is pointed at by HEAD.
-         * @returns %TRUE if the current local branch is pointed at by HEAD.
+         * @returns `true` if the current local branch is pointed at by HEAD.
          */
         is_head(): boolean;
         /**
          * Moves/renames an existing branch reference.
          * @param new_branch_name target name of the branch once the move is performed; this name is validated for consistency.
-         * @param flags a #GgitCreateFlags.
-         * @returns the new branch or %NULL.
+         * @param flags a {@link Ggit.CreateFlags}.
+         * @returns the new branch or `null`.
          */
         move(new_branch_name: string, flags: CreateFlags | null): Branch | null;
         /**
          * Sets the upstream branch, for a given local branch reference
-         * @param upstream_branch_name name of the upstream branch; if %NULL unsets it.
+         * @param upstream_branch_name name of the upstream branch; if `null` unsets it.
          */
         set_upstream(upstream_branch_name: string): void;
     }
@@ -1608,6 +1884,7 @@ export namespace Ggit {
 
     /**
      * Represents the options used when doign a checkout.
+     * @gir-type Class
      */
     class CheckoutOptions extends GObject.Object {
         static $gtype: GObject.GType<CheckoutOptions>;
@@ -1680,16 +1957,19 @@ export namespace Ggit {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CheckoutOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CheckoutOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CheckoutOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CheckoutOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CheckoutOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CheckoutOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1698,6 +1978,14 @@ export namespace Ggit {
 
         // Virtual methods
 
+        /**
+         * @param why
+         * @param path
+         * @param baseline
+         * @param target
+         * @param workdir
+         * @virtual
+         */
         vfunc_notify(
             why: CheckoutNotifyFlags,
             path: string,
@@ -1705,20 +1993,30 @@ export namespace Ggit {
             target: DiffFile,
             workdir: DiffFile,
         ): number;
+        /**
+         * @param args
+         * @virtual
+         */
         // Conflicted with GObject.Object.vfunc_notify
         vfunc_notify(...args: never[]): any;
+        /**
+         * @param path
+         * @param completed_steps
+         * @param total_steps
+         * @virtual
+         */
         vfunc_progress(path: string, completed_steps: number, total_steps: number): void;
 
         // Methods
 
         /**
          * Get the checkout ancestor label.
-         * @returns the checkout ancestor label or %NULL.
+         * @returns the checkout ancestor label or `null`.
          */
         get_ancestor_label(): string | null;
         /**
          * Get the baseline, i.e. the expected content of workdir. Defaults to HEAD.
-         * @returns a #GgitTree or %NULL.
+         * @returns a {@link Ggit.Tree} or `null`.
          */
         get_baseline(): Tree | null;
         /**
@@ -1728,7 +2026,7 @@ export namespace Ggit {
         get_dir_mode(): number;
         /**
          * Get whether filters are disabled.
-         * @returns %TRUE if filters are disabled, %FALSE otherwise.
+         * @returns `true` if filters are disabled, `false` otherwise.
          */
         get_disable_filters(): boolean;
         /**
@@ -1744,32 +2042,32 @@ export namespace Ggit {
         get_file_open_flags(): number;
         /**
          * Get the checkout notify flags.
-         * @returns a #GgitCheckoutNotifyFlags.
+         * @returns a {@link Ggit.CheckoutNotifyFlags}.
          */
         get_notify_flags(): CheckoutNotifyFlags;
         /**
          * Get the checkout our label.
-         * @returns the checkout our label or %NULL.
+         * @returns the checkout our label or `null`.
          */
         get_our_label(): string | null;
         /**
          * Get the list of file paths to checkout.
-         * @returns a %NULL terminated list of file paths, or %NULL.
+         * @returns a `null` terminated list of file paths, or `null`.
          */
         get_paths(): string[] | null;
         /**
          * Get the checkout strategy.
-         * @returns a #GgitCheckoutStrategy.
+         * @returns a {@link Ggit.CheckoutStrategy}.
          */
         get_strategy(): CheckoutStrategy;
         /**
          * Get the checkout target directory.
-         * @returns the checkout target directory or %NULL.
+         * @returns the checkout target directory or `null`.
          */
         get_target_directory(): string | null;
         /**
          * Get the checkout their label.
-         * @returns the checkout their label or %NULL.
+         * @returns the checkout their label or `null`.
          */
         get_their_label(): string | null;
         /**
@@ -1779,8 +2077,8 @@ export namespace Ggit {
         set_ancestor_label(label?: string | null): void;
         /**
          * Set the baseline, i.e. the expected content of workdir. If `tree` is set
-         * to %NULL, the default (HEAD) will be used as the baseline.
-         * @param tree a #GgitTree.
+         * to `null`, the default (HEAD) will be used as the baseline.
+         * @param tree a {@link Ggit.Tree}.
          */
         set_baseline(tree?: Tree | null): void;
         /**
@@ -1806,7 +2104,7 @@ export namespace Ggit {
         set_file_open_flags(flags: number): void;
         /**
          * Set the checkout notify flags.
-         * @param flags a #GgitCheckoutNotifyFlags.
+         * @param flags a {@link Ggit.CheckoutNotifyFlags}.
          */
         set_notify_flags(flags: CheckoutNotifyFlags | null): void;
         /**
@@ -1815,14 +2113,14 @@ export namespace Ggit {
          */
         set_our_label(label?: string | null): void;
         /**
-         * Set the list of file paths to checkout. If `paths` is %NULL, then all files
+         * Set the list of file paths to checkout. If `paths` is `null`, then all files
          * will be checked out.
-         * @param paths a %NULL terminated list of paths.
+         * @param paths a `null` terminated list of paths.
          */
         set_paths(paths?: string[] | null): void;
         /**
          * Set the checkout strategy.
-         * @param strategy a #GgitCheckoutStrategy.
+         * @param strategy a {@link Ggit.CheckoutStrategy}.
          */
         set_strategy(strategy: CheckoutStrategy | null): void;
         /**
@@ -1858,6 +2156,7 @@ export namespace Ggit {
 
     /**
      * Represents the options used when doign a cherry-pick.
+     * @gir-type Class
      */
     class CherryPickOptions extends GObject.Object {
         static $gtype: GObject.GType<CherryPickOptions>;
@@ -1894,16 +2193,19 @@ export namespace Ggit {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CherryPickOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CherryPickOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CherryPickOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CherryPickOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CherryPickOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CherryPickOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1914,7 +2216,7 @@ export namespace Ggit {
 
         /**
          * Get the checkout options.
-         * @returns a #GgitCheckoutOptions.
+         * @returns a {@link Ggit.CheckoutOptions}.
          */
         get_checkout_options(): CheckoutOptions;
         /**
@@ -1924,12 +2226,12 @@ export namespace Ggit {
         get_mainline(): number;
         /**
          * Get the merge options.
-         * @returns a #GgitMergeOptions.
+         * @returns a {@link Ggit.MergeOptions}.
          */
         get_merge_options(): MergeOptions;
         /**
          * Set the checkout options.
-         * @param checkout_options a #GgitCheckoutOptions.
+         * @param checkout_options a {@link Ggit.CheckoutOptions}.
          */
         set_checkout_options(checkout_options?: CheckoutOptions | null): void;
         /**
@@ -1939,7 +2241,7 @@ export namespace Ggit {
         set_mainline(mainline: number): void;
         /**
          * Set the merge options.
-         * @param merge_options a #GgitMergeOptions.
+         * @param merge_options a {@link Ggit.MergeOptions}.
          */
         set_merge_options(merge_options?: MergeOptions | null): void;
     }
@@ -1955,6 +2257,7 @@ export namespace Ggit {
 
     /**
      * Represents the options used when cloning.
+     * @gir-type Class
      */
     class CloneOptions extends GObject.Object {
         static $gtype: GObject.GType<CloneOptions>;
@@ -1978,16 +2281,19 @@ export namespace Ggit {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CloneOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CloneOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CloneOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CloneOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CloneOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CloneOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1996,24 +2302,35 @@ export namespace Ggit {
 
         // Virtual methods
 
+        /**
+         * @param repository the repository.
+         * @param name the remote name.
+         * @param url the remote url.
+         * @virtual
+         */
         vfunc_create_remote(repository: Repository, name: string, url: string): Remote | null;
+        /**
+         * @param path the repository path.
+         * @param is_bare whether a bare repository should be created.
+         * @virtual
+         */
         vfunc_create_repository(path: string, is_bare: boolean): Repository | null;
 
         // Methods
 
         /**
-         * Gets the name of the branch to checkout or %NULL.
-         * @returns the name of the branch to checkout or %NULL.
+         * Gets the name of the branch to checkout or `null`.
+         * @returns the name of the branch to checkout or `null`.
          */
         get_checkout_branch(): string;
         /**
-         * Get the fetch options object or %NULL if not set.
-         * @returns the fetch options or %NULL.
+         * Get the fetch options object or `null` if not set.
+         * @returns the fetch options or `null`.
          */
         get_fetch_options(): FetchOptions;
         /**
          * Gets if the repository will be bare.
-         * @returns %TRUE to clone a bare repository.
+         * @returns `true` to clone a bare repository.
          */
         get_is_bare(): boolean;
         /**
@@ -2024,19 +2341,19 @@ export namespace Ggit {
          */
         get_local(): CloneLocal;
         /**
-         * Gives the name of the branch to checkout. %NULL means
+         * Gives the name of the branch to checkout. `null` means
          * use the remote's HEAD.
-         * @param checkout_branch the name of the branch to checkout or %NULL.
+         * @param checkout_branch the name of the branch to checkout or `null`.
          */
         set_checkout_branch(checkout_branch?: string | null): void;
         /**
          * Set the fetch options object.
-         * @param fetch_options a #GgitFetchOptions or %NULL.
+         * @param fetch_options a {@link Ggit.FetchOptions} or `null`.
          */
         set_fetch_options(fetch_options?: FetchOptions | null): void;
         /**
          * Sets whether to clone a bare repository.
-         * @param bare %TRUE to clone a bare repository.
+         * @param bare `true` to clone a bare repository.
          */
         set_is_bare(bare: boolean): void;
         /**
@@ -2061,6 +2378,7 @@ export namespace Ggit {
 
     /**
      * Represents a commit object.
+     * @gir-type Class
      */
     class Commit extends Object {
         static $gtype: GObject.GType<Commit>;
@@ -2082,16 +2400,19 @@ export namespace Ggit {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Commit.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Commit.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Commit.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Commit.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Commit.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Commit.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2101,20 +2422,20 @@ export namespace Ggit {
         // Methods
 
         /**
-         * Amend an existing commit. If `update_ref` is not %NULL, the given reference will
+         * Amend an existing commit. If `update_ref` is not `null`, the given reference will
          * be updated to point to the newly created commit. Use "HEAD" to update the
          * HEAD of the current branch and make it point to this commit.
          *
-         * If `message_encoding` is set to %NULL, "UTF-8" encoding is assumed for the
+         * If `message_encoding` is set to `null`, "UTF-8" encoding is assumed for the
          * provided `message`. Note that `message` will not be cleaned up automatically.
-         * You can use #ggit_message_prettify to do this yourself if needed.
+         * You can use `ggit_message_prettify` to do this yourself if needed.
          * @param update_ref name of the reference to update.
          * @param author author signature.
          * @param committer committer signature (and time of commit).
          * @param message_encoding message encoding.
          * @param message commit message.
          * @param tree the tree of objects to commit.
-         * @returns the #GgitOId of the created commit object, or %NULL in case of an error.
+         * @returns the {@link Ggit.OId} of the created commit object, or `null` in case of an error.
          */
         amend(
             update_ref: string | null,
@@ -2126,13 +2447,13 @@ export namespace Ggit {
         ): OId | null;
         /**
          * Gets the author of `commit`. The returned value must be free'd with
-         * g_object_unref().
+         * `g_object_unref()`.
          * @returns the author of the commit.
          */
         get_author(): Signature | null;
         /**
          * Gets the committer of `commit`. The returned value must be free'd with
-         * g_object_unref().
+         * `g_object_unref()`.
          * @returns the committer of the commit.
          */
         get_committer(): Signature | null;
@@ -2146,9 +2467,9 @@ export namespace Ggit {
          * Get the encoding for the message of a commit,
          * as a string representing a standard encoding name.
          *
-         * The encoding may be %NULL if the 'encoding' header
+         * The encoding may be `null` if the 'encoding' header
          * in the commit is missing; in that case UTF-8 is assumed.
-         * @returns the encoding of the commit message or %NULL.
+         * @returns the encoding of the commit message or `null`.
          */
         get_message_encoding(): string | null;
         /**
@@ -2156,7 +2477,7 @@ export namespace Ggit {
          * of the named commit object, following only the first parents.
          * Passing %0 to the `n` parameter returns another instance of `commit`.
          * @param n the requested ancestor.
-         * @returns the @n ancestor commit.
+         * @returns the `n` ancestor commit.
          */
         get_nth_ancestor(n: number): Commit | null;
         /**
@@ -2173,14 +2494,14 @@ export namespace Ggit {
         get_subject(): string | null;
         /**
          * Get the tree object for `commit`.
-         * @returns a #GgitTree.
+         * @returns a {@link Ggit.Tree}.
          */
         get_tree(): Tree | null;
         /**
-         * Get the #GgitOId of the tree of `commit`. Note that this is more efficient
-         * than getting the tree object with ggit_commit_get_tree() because no additional
+         * Get the {@link Ggit.OId} of the tree of `commit`. Note that this is more efficient
+         * than getting the tree object with `ggit_commit_get_tree()` because no additional
          * files need to be read from disk.
-         * @returns a #GgitOId.
+         * @returns a {@link Ggit.OId}.
          */
         get_tree_id(): OId | null;
     }
@@ -2202,13 +2523,20 @@ export namespace Ggit {
 
     /**
      * Represents the parents of a commit object.
+     * @gir-type Class
      */
     class CommitParents extends GObject.Object {
         static $gtype: GObject.GType<CommitParents>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get commit(): Commit;
+        /**
+         * @read-only
+         */
         get size(): number;
 
         /**
@@ -2230,16 +2558,19 @@ export namespace Ggit {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CommitParents.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CommitParents.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CommitParents.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CommitParents.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CommitParents.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CommitParents.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2249,15 +2580,15 @@ export namespace Ggit {
         // Methods
 
         /**
-         * Get the #GgitCommit of a parent.
+         * Get the {@link Ggit.Commit} of a parent.
          * @param idx the parent index.
-         * @returns a #GgitCommit.
+         * @returns a {@link Ggit.Commit}.
          */
         get(idx: number): Commit | null;
         /**
-         * Get the #GgitOId of a parent.
+         * Get the {@link Ggit.OId} of a parent.
          * @param idx the parent index.
-         * @returns a #GgitOId.
+         * @returns a {@link Ggit.OId}.
          */
         get_id(idx: number): OId | null;
         /**
@@ -2280,6 +2611,7 @@ export namespace Ggit {
 
     /**
      * Represents a git configuration.
+     * @gir-type Class
      */
     class Config extends Native {
         static $gtype: GObject.GType<Config>;
@@ -2307,16 +2639,19 @@ export namespace Ggit {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Config.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Config.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Config.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Config.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Config.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Config.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2329,17 +2664,17 @@ export namespace Ggit {
          * Find the file representing the users global git configuration. This file
          * is usually located at $HOME/.gitconfig. This function will try to guess
          * the full path to that file, if the file exists. The returned file may then
-         * be used with #ggit_config_new_from_file or #ggit_config_add_file. This
-         * function returns %NULL if the global config could not be found.
+         * be used with `ggit_config_new_from_file` or `ggit_config_add_file`. This
+         * function returns `null` if the global config could not be found.
          */
         static find_global(): Gio.File;
         /**
          * Find the file representing the systems global git configuration. This file
          * is usually located at /etc/gitconfig on UNIX type systems or
-         * %PROGRAMFILES%\Git\etc\gitconfig on windows. This function will try to guess
+         * `PROGRAMFILES`%\Git\etc\gitconfig on windows. This function will try to guess
          * the full path to that file, if the file exists. The returned file may then
-         * be used with #ggit_config_new_from_file or #ggit_config_add_file. This
-         * function returns %NULL if the system config could not be found.
+         * be used with `ggit_config_new_from_file` or `ggit_config_add_file`. This
+         * function returns `null` if the system config could not be found.
          */
         static find_system(): Gio.File;
 
@@ -2355,21 +2690,21 @@ export namespace Ggit {
          * Further queries on this config object will access each
          * of the config file instances in order (instances with
          * a higher priority level will be accessed first).
-         * @param file a #GFile.
-         * @param level a #GgitConfigLevel.
+         * @param file a {@link Gio.File}.
+         * @param level a {@link Ggit.ConfigLevel}.
          * @param force if a config file already exists for the given priority level, replace it.
          */
         add_file(file: Gio.File, level: ConfigLevel | null, force: boolean): void;
         /**
          * Delete a config variable from the config file.
          * @param name the configuration value.
-         * @returns %TRUE if the configuration value was deleted, %FALSE otherwise.
+         * @returns `true` if the configuration value was deleted, `false` otherwise.
          */
         delete_entry(name: string): boolean;
         /**
          * Call `callback` for each configuration value.
-         * @param callback a #GgitConfigCallback.
-         * @returns %TRUE if successfull, %FALSE otherwise
+         * @param callback a {@link Ggit.ConfigCallback}.
+         * @returns `true` if successfull, `false` otherwise
          */
         foreach(callback: ConfigCallback): boolean;
         /**
@@ -2379,9 +2714,9 @@ export namespace Ggit {
          */
         get_bool(name: string): boolean;
         /**
-         * Get #GgitConfigEntry of a config variable.
+         * Get {@link Ggit.ConfigEntry} of a config variable.
          * @param name the configuration name.
-         * @returns the entry of @name, or %NULL if such a value                           does not exist.
+         * @returns the entry of `name`, or `null` if such a value                           does not exist.
          */
         get_entry(name: string): ConfigEntry;
         /**
@@ -2399,63 +2734,63 @@ export namespace Ggit {
         /**
          * Get the configuration value of `name` as string.
          * @param name the name of the configuration value.
-         * @returns the string value of @name, or %NULL if such a value                        does not exist
+         * @returns the string value of `name`, or `null` if such a value                        does not exist
          */
         get_string(name: string): string | null;
         /**
          * Matches a configuration against a regular expression. `match_info` will
-         * contain the match information if the return value is not %NULL, otherwise
+         * contain the match information if the return value is not `null`, otherwise
          * `error` will be set.
-         * @param regex a #GRegex.
+         * @param regex a {@link GLib.Regex}.
          * @returns the value of that matched configuration
          */
         match(regex: GLib.Regex): [string | null, GLib.MatchInfo | null];
         /**
          * Call `callback` for all configurations matching `regex`.
-         * @param regex a #GRegex.
-         * @param callback a #GgitConfigMatchCallback.
-         * @returns %TRUE if matches were successfull, %FALSE otherwise
+         * @param regex a {@link GLib.Regex}.
+         * @param callback a {@link Ggit.ConfigMatchCallback}.
+         * @returns `true` if matches were successfull, `false` otherwise
          */
         match_foreach(regex: GLib.Regex, callback: ConfigMatchCallback): boolean;
         /**
          * Open a specific level config derived from a multi-level one.
          * @param level the level to open.
-         * @returns the configuration at @level, or %NULL.
+         * @returns the configuration at `level`, or `null`.
          */
         open_level(level: ConfigLevel | null): Config;
         /**
          * Set a boolean value.
          * @param name the name of the configuration value.
          * @param value the new value.
-         * @returns %TRUE if the value was successfully set, %FALSE otherwise.
+         * @returns `true` if the value was successfully set, `false` otherwise.
          */
         set_bool(name: string, value: boolean): boolean;
         /**
          * Set a int32 value.
          * @param name the name of the configuration value.
          * @param value the new value.
-         * @returns %TRUE if the value was successfully set, %FALSE otherwise.
+         * @returns `true` if the value was successfully set, `false` otherwise.
          */
         set_int32(name: string, value: number): boolean;
         /**
          * Set a int64 value.
          * @param name the name of the configuration value.
          * @param value the new value.
-         * @returns %TRUE if the value was successfully set, %FALSE otherwise.
+         * @returns `true` if the value was successfully set, `false` otherwise.
          */
         set_int64(name: string, value: number): boolean;
         /**
          * Set a new string value of a configuration.
          * @param name the name of the configuration value.
          * @param value the new value.
-         * @returns %TRUE if the value was successfully set, %FALSE otherwise.
+         * @returns `true` if the value was successfully set, `false` otherwise.
          */
         set_string(name: string, value: string): boolean;
         /**
          * Create a snapshot of the current state of the configuration,
          * which allows you to look into a consistent view of the configuration
          * for looking up complex values (e.g. a remote, submodule).
-         * @returns a new #GgitConfig, or %NULL if an error occurred.
+         * @returns a new {@link Ggit.Config}, or `null` if an error occurred.
          */
         snapshot(): Config;
     }
@@ -2473,6 +2808,7 @@ export namespace Ggit {
 
     /**
      * Represents a git credential.
+     * @gir-type Class
      */
     class Cred extends Native {
         static $gtype: GObject.GType<Cred>;
@@ -2494,16 +2830,19 @@ export namespace Ggit {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Cred.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Cred.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Cred.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Cred.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Cred.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Cred.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2529,13 +2868,20 @@ export namespace Ggit {
 
     /**
      * Represents a plain text credential.
+     * @gir-type Class
      */
     class CredPlaintext extends Cred implements Gio.Initable {
         static $gtype: GObject.GType<CredPlaintext>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get password(): string;
+        /**
+         * @construct-only
+         */
         get username(): string;
 
         /**
@@ -2557,16 +2903,19 @@ export namespace Ggit {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CredPlaintext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CredPlaintext.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CredPlaintext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CredPlaintext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CredPlaintext.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CredPlaintext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2577,34 +2926,32 @@ export namespace Ggit {
 
         get_password(): string;
         get_username(): string;
-
-        // Inherited methods
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -2614,40 +2961,40 @@ export namespace Ggit {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
         init(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -2657,11 +3004,12 @@ export namespace Ggit {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -2677,32 +3025,32 @@ export namespace Ggit {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -2711,39 +3059,39 @@ export namespace Ggit {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -2754,13 +3102,16 @@ export namespace Ggit {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -2768,7 +3119,7 @@ export namespace Ggit {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -2776,9 +3127,9 @@ export namespace Ggit {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -2798,9 +3149,9 @@ export namespace Ggit {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -2813,34 +3164,34 @@ export namespace Ggit {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -2873,22 +3224,22 @@ export namespace Ggit {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -2897,8 +3248,8 @@ export namespace Ggit {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -2915,10 +3266,10 @@ export namespace Ggit {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -2933,13 +3284,13 @@ export namespace Ggit {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -2970,21 +3321,21 @@ export namespace Ggit {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -2994,33 +3345,34 @@ export namespace Ggit {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -3029,6 +3381,7 @@ export namespace Ggit {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -3037,12 +3390,14 @@ export namespace Ggit {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -3051,20 +3406,22 @@ export namespace Ggit {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -3076,6 +3433,7 @@ export namespace Ggit {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -3121,12 +3479,16 @@ export namespace Ggit {
 
     /**
      * Represents a ssh interactive credential.
+     * @gir-type Class
      */
     class CredSshInteractive extends Cred implements Gio.Initable {
         static $gtype: GObject.GType<CredSshInteractive>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get username(): string;
 
         /**
@@ -3148,16 +3510,19 @@ export namespace Ggit {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CredSshInteractive.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CredSshInteractive.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CredSshInteractive.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CredSshInteractive.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CredSshInteractive.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CredSshInteractive.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3166,39 +3531,41 @@ export namespace Ggit {
 
         // Virtual methods
 
+        /**
+         * @param prompts a list of prompts.
+         * @virtual
+         */
         vfunc_prompt(prompts: CredSshInteractivePrompt[]): void;
 
         // Methods
 
         get_username(): string;
-
-        // Inherited methods
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -3208,40 +3575,40 @@ export namespace Ggit {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
         init(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -3251,11 +3618,12 @@ export namespace Ggit {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -3271,32 +3639,32 @@ export namespace Ggit {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -3305,39 +3673,39 @@ export namespace Ggit {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -3348,13 +3716,16 @@ export namespace Ggit {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -3362,7 +3733,7 @@ export namespace Ggit {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -3370,9 +3741,9 @@ export namespace Ggit {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -3392,9 +3763,9 @@ export namespace Ggit {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -3407,34 +3778,34 @@ export namespace Ggit {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -3467,22 +3838,22 @@ export namespace Ggit {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -3491,8 +3862,8 @@ export namespace Ggit {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -3509,10 +3880,10 @@ export namespace Ggit {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -3527,13 +3898,13 @@ export namespace Ggit {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -3564,21 +3935,21 @@ export namespace Ggit {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -3588,33 +3959,34 @@ export namespace Ggit {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -3623,6 +3995,7 @@ export namespace Ggit {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -3631,12 +4004,14 @@ export namespace Ggit {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -3645,20 +4020,22 @@ export namespace Ggit {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -3670,6 +4047,7 @@ export namespace Ggit {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -3715,12 +4093,16 @@ export namespace Ggit {
 
     /**
      * Represents a ssh key agent credential.
+     * @gir-type Class
      */
     class CredSshKeyFromAgent extends Cred implements Gio.Initable {
         static $gtype: GObject.GType<CredSshKeyFromAgent>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get username(): string;
 
         /**
@@ -3742,16 +4124,19 @@ export namespace Ggit {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CredSshKeyFromAgent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CredSshKeyFromAgent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CredSshKeyFromAgent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CredSshKeyFromAgent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CredSshKeyFromAgent.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CredSshKeyFromAgent.SignalSignatures[K]> extends [any, ...infer Q]
@@ -3764,37 +4149,35 @@ export namespace Ggit {
 
         /**
          * Gets the username for the credential.
-         * @returns the username or %NULL.
+         * @returns the username or `null`.
          */
         get_username(): string | null;
-
-        // Inherited methods
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -3804,40 +4187,40 @@ export namespace Ggit {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
         init(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -3847,11 +4230,12 @@ export namespace Ggit {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -3867,32 +4251,32 @@ export namespace Ggit {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -3901,39 +4285,39 @@ export namespace Ggit {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -3944,13 +4328,16 @@ export namespace Ggit {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -3958,7 +4345,7 @@ export namespace Ggit {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -3966,9 +4353,9 @@ export namespace Ggit {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -3988,9 +4375,9 @@ export namespace Ggit {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -4003,34 +4390,34 @@ export namespace Ggit {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -4063,22 +4450,22 @@ export namespace Ggit {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -4087,8 +4474,8 @@ export namespace Ggit {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -4105,10 +4492,10 @@ export namespace Ggit {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -4123,13 +4510,13 @@ export namespace Ggit {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -4160,21 +4547,21 @@ export namespace Ggit {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -4184,33 +4571,34 @@ export namespace Ggit {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -4219,6 +4607,7 @@ export namespace Ggit {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -4227,12 +4616,14 @@ export namespace Ggit {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -4241,20 +4632,22 @@ export namespace Ggit {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -4266,6 +4659,7 @@ export namespace Ggit {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -4311,12 +4705,16 @@ export namespace Ggit {
 
     /**
      * Represents a diff list.
+     * @gir-type Class
      */
     class Diff extends Native {
         static $gtype: GObject.GType<Diff>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get repository(): Repository;
 
         /**
@@ -4370,16 +4768,19 @@ export namespace Ggit {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Diff.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Diff.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Diff.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Diff.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Diff.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Diff.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4389,16 +4790,16 @@ export namespace Ggit {
         // Static methods
 
         /**
-         * Same as ggit_diff_blobs() but using a buffer.
-         * @param old_blob a #GgitBlob to diff from.
-         * @param old_as_path treat @old_blob as if it had this filename, or %NULL,
+         * Same as `ggit_diff_blobs()` but using a buffer.
+         * @param old_blob a {@link Ggit.Blob} to diff from.
+         * @param old_as_path treat `old_blob` as if it had this filename, or `null`,
          * @param buffer a buffer to diff to.
-         * @param buffer_as_path treat @buffer as if it had this filename, or %NULL,
-         * @param diff_options a #GgitDiffOptions, or %NULL.
-         * @param file_cb a #GgitDiffFileCallback.
-         * @param binary_cb a #GgitDiffBinaryCallback.
-         * @param hunk_cb a #GgitDiffHunkCallback.
-         * @param line_cb a #GgitDiffLineCallback.
+         * @param buffer_as_path treat `buffer` as if it had this filename, or `null`,
+         * @param diff_options a {@link Ggit.DiffOptions}, or `null`.
+         * @param file_cb a {@link Ggit.DiffFileCallback}.
+         * @param binary_cb a {@link Ggit.DiffBinaryCallback}.
+         * @param hunk_cb a {@link Ggit.DiffHunkCallback}.
+         * @param line_cb a {@link Ggit.DiffLineCallback}.
          */
         static blob_to_buffer(
             old_blob?: Blob | null,
@@ -4412,22 +4813,22 @@ export namespace Ggit {
             line_cb?: DiffLineCallback | null,
         ): void;
         /**
-         * Iterates over the diff calling `file_cb,` `binary_cb,` `hunk_cb` and `line_cb`.
+         * Iterates over the diff calling `file_cb`, `binary_cb`, `hunk_cb` and `line_cb`.
          *
-         * The #GgitDiffFile mode always be 0, path will be %NULL and when a blob is
-         * %NULL the oid will be 0.
+         * The {@link Ggit.DiffFile} mode always be 0, path will be `null` and when a blob is
+         * `null` the oid will be 0.
          *
-         * If `diff_options` is %NULL then the defaults specified in
-         * ggit_diff_options_new() are used.
-         * @param old_blob a #GgitBlob to diff from.
-         * @param old_as_path treat @old_blob as if it had this filename, or %NULL,
-         * @param new_blob a #GgitBlob to diff to.
-         * @param new_as_path treat @new_blob as if it had this filename, or %NULL,
-         * @param diff_options a #GgitDiffOptions, or %NULL.
-         * @param file_cb a #GgitDiffFileCallback.
-         * @param binary_cb a #GgitDiffBinaryCallback.
-         * @param hunk_cb a #GgitDiffHunkCallback.
-         * @param line_cb a #GgitDiffLineCallback.
+         * If `diff_options` is `null` then the defaults specified in
+         * `ggit_diff_options_new()` are used.
+         * @param old_blob a {@link Ggit.Blob} to diff from.
+         * @param old_as_path treat `old_blob` as if it had this filename, or `null`,
+         * @param new_blob a {@link Ggit.Blob} to diff to.
+         * @param new_as_path treat `new_blob` as if it had this filename, or `null`,
+         * @param diff_options a {@link Ggit.DiffOptions}, or `null`.
+         * @param file_cb a {@link Ggit.DiffFileCallback}.
+         * @param binary_cb a {@link Ggit.DiffBinaryCallback}.
+         * @param hunk_cb a {@link Ggit.DiffHunkCallback}.
+         * @param line_cb a {@link Ggit.DiffLineCallback}.
          */
         static blobs(
             old_blob?: Blob | null,
@@ -4445,17 +4846,17 @@ export namespace Ggit {
 
         /**
          * Transform `diff` marking file renames, copies, etc.. If `options` is set to
-         * %NULL, then the default options will be used.
-         * @param options a #GgitDiffFindOptions or %NULL.
-         * @returns %TRUE if there were no errors, %FALSE otherwise.
+         * `null`, then the default options will be used.
+         * @param options a {@link Ggit.DiffFindOptions} or `null`.
+         * @returns `true` if there were no errors, `false` otherwise.
          */
         find_similar(options?: DiffFindOptions | null): boolean;
         /**
-         * Iterates over the diff calling `file_cb,` `binary_cb,` `hunk_cb` and `line_cb`.
-         * @param file_cb a #GgitDiffFileCallback.
-         * @param binary_cb a #GgitDiffBinaryCallback.
-         * @param hunk_cb a #GgitDiffHunkCallback.
-         * @param line_cb a #GgitDiffLineCallback.
+         * Iterates over the diff calling `file_cb`, `binary_cb`, `hunk_cb` and `line_cb`.
+         * @param file_cb a {@link Ggit.DiffFileCallback}.
+         * @param binary_cb a {@link Ggit.DiffBinaryCallback}.
+         * @param hunk_cb a {@link Ggit.DiffHunkCallback}.
+         * @param line_cb a {@link Ggit.DiffLineCallback}.
          */
         foreach(
             file_cb?: DiffFileCallback | null,
@@ -4465,14 +4866,14 @@ export namespace Ggit {
         ): void;
         /**
          * Create an e-mail ready patch from a diff.
-         * @param options a #GgitDiffFormatEmailOptions.
-         * @returns the patch or %NULL if an error occurred.
+         * @param options a {@link Ggit.DiffFormatEmailOptions}.
+         * @returns the patch or `null` if an error occurred.
          */
         format_email(options: DiffFormatEmailOptions): string | null;
         /**
          * Get the delta at the specified index.
          * @param index the index.
-         * @returns a #GgitDiffDelta or %NULL.
+         * @returns a {@link Ggit.DiffDelta} or `null`.
          */
         get_delta(index: number): DiffDelta | null;
         /**
@@ -4482,13 +4883,13 @@ export namespace Ggit {
         get_num_deltas(): number;
         /**
          * Merges `from` into `onto` unless `error` is set.
-         * @param from the #GgitDiff to merge.
+         * @param from the {@link Ggit.Diff} to merge.
          */
         merge(from: Diff): void;
         /**
          * Iterates over `diff` generating text output like "git diff".
-         * @param type a #GgitDiffFormatType.
-         * @param print_cb a #GgitDiffLineCallback.
+         * @param type a {@link Ggit.DiffFormatType}.
+         * @param print_cb a {@link Ggit.DiffLineCallback}.
          */
         print(type: DiffFormatType | null, print_cb: DiffLineCallback): void;
     }
@@ -4522,6 +4923,7 @@ export namespace Ggit {
 
     /**
      * Represents options for finding diff similarity.
+     * @gir-type Class
      */
     class DiffFindOptions extends GObject.Object {
         static $gtype: GObject.GType<DiffFindOptions>;
@@ -4571,16 +4973,19 @@ export namespace Ggit {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DiffFindOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DiffFindOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DiffFindOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DiffFindOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DiffFindOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DiffFindOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4601,7 +5006,7 @@ export namespace Ggit {
         get_flags(): DiffFindFlags;
         /**
          * Get the find options metric.
-         * @returns a #GgitDiffSimilarityMetric or %NULL.
+         * @returns a {@link Ggit.DiffSimilarityMetric} or `null`.
          */
         get_metric(): DiffSimilarityMetric | null;
         /**
@@ -4626,12 +5031,12 @@ export namespace Ggit {
         set_copy_threshold(threshold: number): void;
         /**
          * Set the find options flags.
-         * @param flags a #GgitDiffFindFlags.
+         * @param flags a {@link Ggit.DiffFindFlags}.
          */
         set_flags(flags: DiffFindFlags | null): void;
         /**
          * Set the find options metric.
-         * @param metric a #GgitDiffSimilarityMetric.
+         * @param metric a {@link Ggit.DiffSimilarityMetric}.
          */
         set_metric(metric: DiffSimilarityMetric): void;
         /**
@@ -4678,6 +5083,9 @@ export namespace Ggit {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class DiffFormatEmailOptions extends GObject.Object {
         static $gtype: GObject.GType<DiffFormatEmailOptions>;
 
@@ -4721,16 +5129,19 @@ export namespace Ggit {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DiffFormatEmailOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DiffFormatEmailOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DiffFormatEmailOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DiffFormatEmailOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DiffFormatEmailOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DiffFormatEmailOptions.SignalSignatures[K]> extends [any, ...infer Q]
@@ -4743,7 +5154,7 @@ export namespace Ggit {
 
         /**
          * Get the author.
-         * @returns a #GgitSignature or %NULL.
+         * @returns a {@link Ggit.Signature} or `null`.
          */
         get_author(): Signature | null;
         /**
@@ -4753,12 +5164,12 @@ export namespace Ggit {
         get_body(): string | null;
         /**
          * Get the flags.
-         * @returns a #GgitDiffFormatEmailFlags.
+         * @returns a {@link Ggit.DiffFormatEmailFlags}.
          */
         get_flags(): DiffFormatEmailFlags;
         /**
          * Get the object id.
-         * @returns a #GgitOId or %NULL.
+         * @returns a {@link Ggit.OId} or `null`.
          */
         get_id(): OId | null;
         /**
@@ -4778,7 +5189,7 @@ export namespace Ggit {
         get_total_patches(): number;
         /**
          * Set the author.
-         * @param author a #GgitSignature.
+         * @param author a {@link Ggit.Signature}.
          */
         set_author(author?: Signature | null): void;
         /**
@@ -4788,12 +5199,12 @@ export namespace Ggit {
         set_body(body?: string | null): void;
         /**
          * Set the flags.
-         * @param flags a #GgitDiffFormatEmailFlags.
+         * @param flags a {@link Ggit.DiffFormatEmailFlags}.
          */
         set_flags(flags: DiffFormatEmailFlags | null): void;
         /**
          * Set the object id.
-         * @param id a #GgitOId.
+         * @param id a {@link Ggit.OId}.
          */
         set_id(id?: OId | null): void;
         /**
@@ -4841,7 +5252,8 @@ export namespace Ggit {
     }
 
     /**
-     * Represents the options used when creating a #GgitDiff.
+     * Represents the options used when creating a {@link Ggit.Diff}.
+     * @gir-type Class
      */
     class DiffOptions extends GObject.Object {
         static $gtype: GObject.GType<DiffOptions>;
@@ -4891,16 +5303,19 @@ export namespace Ggit {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DiffOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DiffOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DiffOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DiffOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DiffOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DiffOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4911,7 +5326,7 @@ export namespace Ggit {
 
         /**
          * Get the diff flags.
-         * @returns a #GgitDiffOption.
+         * @returns a {@link Ggit.DiffOption}.
          */
         get_flags(): DiffOption;
         /**
@@ -4926,22 +5341,22 @@ export namespace Ggit {
         get_n_interhunk_lines(): number;
         /**
          * Get the diff new-prefix string.
-         * @returns the new-prefix string or %NULL.
+         * @returns the new-prefix string or `null`.
          */
         get_new_prefix(): string | null;
         /**
          * Get the diff old-prefix string.
-         * @returns the old-prefix string or %NULL.
+         * @returns the old-prefix string or `null`.
          */
         get_old_prefix(): string | null;
         /**
          * Get the pathspec.
-         * @returns the pathspec or %NULL.
+         * @returns the pathspec or `null`.
          */
         get_pathspec(): string[] | null;
         /**
          * Set the diff flags.
-         * @param flags a #GgitDiffOption.
+         * @param flags a {@link Ggit.DiffOption}.
          */
         set_flags(flags: DiffOption | null): void;
         /**
@@ -4987,12 +5402,16 @@ export namespace Ggit {
 
     /**
      * Represents an index object.
+     * @gir-type Class
      */
     class Index extends Native implements Gio.Initable {
         static $gtype: GObject.GType<Index>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get file(): Gio.File;
 
         /**
@@ -5012,16 +5431,19 @@ export namespace Ggit {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Index.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Index.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Index.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Index.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Index.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Index.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5032,8 +5454,8 @@ export namespace Ggit {
 
         /**
          * Create a new bare Git index object as a memory representation of the Git
-         * index file in `file,` without a repository to back it.
-         * @param file a #GFile.
+         * index file in `file`, without a repository to back it.
+         * @param file a {@link Gio.File}.
          */
         static open(file: Gio.File): Index | null;
 
@@ -5041,15 +5463,15 @@ export namespace Ggit {
 
         /**
          * Add a file to the index.
-         * @param entry a #GgitIndexEntry.
-         * @returns %TRUE if the file was successfully added, %FALSE otherwise.
+         * @param entry a {@link Ggit.IndexEntry}.
+         * @returns `true` if the file was successfully added, `false` otherwise.
          */
         add(entry: IndexEntry): boolean;
         /**
          * Add a file to the index. The specified file must be in the working directory
          * and must exist and be readable.
          * @param file file to add.
-         * @returns %TRUE if the file was added to the index or %FALSE if there was an error.
+         * @returns `true` if the file was added to the index or `false` if there was an error.
          */
         add_file(file: Gio.File): boolean;
         /**
@@ -5058,27 +5480,27 @@ export namespace Ggit {
          * reside in the working directory. The specified path must exist and must be
          * readable.
          * @param path path to the file to add.
-         * @returns %TRUE if the file was added to the index or %FALSE if there was an error.
+         * @returns `true` if the file was added to the index or `false` if there was an error.
          */
         add_path(path: string): boolean;
         /**
          * Get the index entries enumerator.
-         * @returns a #GgitIndexEntries or %NULL.
+         * @returns a {@link Ggit.IndexEntries} or `null`.
          */
         get_entries(): IndexEntries | null;
         /**
          * Get the resolve undo entries enumerator.
-         * @returns a #GgitIndexEntriesResolveUndo or %NULL.
+         * @returns a {@link Ggit.IndexEntriesResolveUndo} or `null`.
          */
         get_entries_resolve_undo(): IndexEntriesResolveUndo | null;
         /**
-         * Get the #GgitRepository that owns the index.
-         * @returns the #GgitRepository that owns this index or %NULL.
+         * Get the {@link Ggit.Repository} that owns the index.
+         * @returns the {@link Ggit.Repository} that owns this index or `null`.
          */
         get_owner(): Repository | null;
         /**
          * Get whether the index has any conflicts.
-         * @returns %TRUE if the index has any conflicts, %FALSE otherwise.
+         * @returns `true` if the index has any conflicts, `false` otherwise.
          */
         has_conflicts(): boolean;
         /**
@@ -5094,20 +5516,20 @@ export namespace Ggit {
          * in-memory index data will be untouched. Be aware: if there are changes on
          * disk, unwritten in-memory changes are discarded.
          * @param force force read even if there are in-memory changes.
-         * @returns %TRUE if the index could be read from the file associated with the          index, %FALSE otherwise.
+         * @returns `true` if the index could be read from the file associated with the          index, `false` otherwise.
          */
         read(force: boolean): boolean;
         /**
          * Remove a file from the index (specified by position).
          * @param file the file to search.
          * @param stage the stage to search.
-         * @returns %TRUE if the file was successfully removed, %FALSE otherwise.
+         * @returns `true` if the file was successfully removed, `false` otherwise.
          */
         remove(file: Gio.File, stage: number): boolean;
         /**
          * Write an existing index object from memory back to disk using an atomic file
          * lock.
-         * @returns %TRUE if the index was successfully written to disk, %FALSE otherwise.
+         * @returns `true` if the index was successfully written to disk, `false` otherwise.
          */
         write(): boolean;
         /**
@@ -5115,45 +5537,43 @@ export namespace Ggit {
          * state of the index. The index must be associated to an existing repository
          * and must not contain any files in conflict. You can use the resulting tree
          * to for instance create a commit.
-         * @returns a #GgitOId or %NULL in case of an error.
+         * @returns a {@link Ggit.OId} or `null` in case of an error.
          */
         write_tree(): OId | null;
         /**
          * Write a new tree object to `repository` containing a representation of the current
          * state of the index. The index must not contain any files in conflict. You can use
          * the resulting tree to for instance create a commit.
-         * @param repository a #GgitRepository.
-         * @returns a #GgitOId or %NULL in case of an error.
+         * @param repository a {@link Ggit.Repository}.
+         * @returns a {@link Ggit.OId} or `null` in case of an error.
          */
         write_tree_to(repository: Repository): OId | null;
-
-        // Inherited methods
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -5163,40 +5583,40 @@ export namespace Ggit {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
         init(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -5206,11 +5626,12 @@ export namespace Ggit {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -5226,32 +5647,32 @@ export namespace Ggit {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -5260,39 +5681,39 @@ export namespace Ggit {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -5303,13 +5724,16 @@ export namespace Ggit {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -5317,7 +5741,7 @@ export namespace Ggit {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -5325,9 +5749,9 @@ export namespace Ggit {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -5347,9 +5771,9 @@ export namespace Ggit {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -5362,34 +5786,34 @@ export namespace Ggit {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -5422,22 +5846,22 @@ export namespace Ggit {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -5446,8 +5870,8 @@ export namespace Ggit {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -5464,10 +5888,10 @@ export namespace Ggit {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -5482,13 +5906,13 @@ export namespace Ggit {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -5519,21 +5943,21 @@ export namespace Ggit {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -5543,33 +5967,34 @@ export namespace Ggit {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -5578,6 +6003,7 @@ export namespace Ggit {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -5586,12 +6012,14 @@ export namespace Ggit {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -5600,20 +6028,22 @@ export namespace Ggit {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -5625,6 +6055,7 @@ export namespace Ggit {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -5667,6 +6098,7 @@ export namespace Ggit {
 
     /**
      * Represents a mailmap.
+     * @gir-type Class
      */
     class Mailmap extends Native {
         static $gtype: GObject.GType<Mailmap>;
@@ -5692,16 +6124,19 @@ export namespace Ggit {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Mailmap.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Mailmap.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Mailmap.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Mailmap.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Mailmap.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Mailmap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5711,9 +6146,9 @@ export namespace Ggit {
         // Methods
 
         /**
-         * Adds a new entry to `mailmap,` replacing `replace_name` and `replace_email`
-         * with `real_name` and `real_email` respectively.  If `replace_name` is %NULL,
-         * it is ignored during matching.  If either `real_name` or `real_email` is %NULL,
+         * Adds a new entry to `mailmap`, replacing `replace_name` and `replace_email`
+         * with `real_name` and `real_email` respectively.  If `replace_name` is `null`,
+         * it is ignored during matching.  If either `real_name` or `real_email` is `null`,
          * the respective field is not replaced.
          * @param real_name the real name of the person.
          * @param real_email the real email of the person.
@@ -5728,17 +6163,17 @@ export namespace Ggit {
         ): void;
         /**
          * Resolves `replace_name` and `replace_email` to `real_name` and `real_email`.
-         * If `mailmap` is #NULL, no substitution is performed.
+         * If `mailmap` is `NULL`, no substitution is performed.
          * @param replace_name the name to replace.
          * @param replace_email the email to replace.
          */
         resolve(replace_name: string, replace_email: string): [string, string];
         /**
          * Resolves `signature` to use the real name and email according to `mailmap`.
-         * If `mailmap` is #NULL, no substitution is performed, but a new signature is
+         * If `mailmap` is `NULL`, no substitution is performed, but a new signature is
          * still allocated and returned.
          * @param signature the commit signature as recorded.
-         * @returns The corrected signature or %NULL.
+         * @returns The corrected signature or `null`.
          */
         resolve_signature(signature: Signature): Signature | null;
     }
@@ -5758,12 +6193,16 @@ export namespace Ggit {
 
     /**
      * Represents a generic native object.
+     * @gir-type Class
      */
     abstract class Native extends ObjectFactoryBase {
         static $gtype: GObject.GType<Native>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set native(val: any);
 
         /**
@@ -5783,16 +6222,19 @@ export namespace Ggit {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Native.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Native.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Native.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Native.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Native.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Native.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5813,6 +6255,7 @@ export namespace Ggit {
 
     /**
      * Represents a generic object in a repository.
+     * @gir-type Class
      */
     abstract class Object extends Native {
         static $gtype: GObject.GType<Object>;
@@ -5834,16 +6277,19 @@ export namespace Ggit {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Object.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Object.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Object.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Object.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Object.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5853,13 +6299,13 @@ export namespace Ggit {
         // Methods
 
         /**
-         * Gets the #GgitOId of `object`.
-         * @returns the #GgitOId of the object or %NULL.
+         * Gets the {@link Ggit.OId} of `object`.
+         * @returns the {@link Ggit.OId} of the object or `null`.
          */
         get_id(): OId | null;
         /**
-         * Gets the #GgitRepository that owns `object`.
-         * @returns the #GgitRepository that owns this object or %NULL. The returned value must be free'd calling g_object_unref().
+         * Gets the {@link Ggit.Repository} that owns `object`.
+         * @returns the {@link Ggit.Repository} that owns this object or `null`. The returned value must be free'd calling `g_object_unref()`.
          */
         get_owner(): Repository | null;
     }
@@ -5875,6 +6321,7 @@ export namespace Ggit {
 
     /**
      * Represents an object factory.
+     * @gir-type Class
      */
     class ObjectFactory extends GObject.Object {
         static $gtype: GObject.GType<ObjectFactory>;
@@ -5896,16 +6343,19 @@ export namespace Ggit {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ObjectFactory.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ObjectFactory.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ObjectFactory.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ObjectFactory.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ObjectFactory.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ObjectFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5923,10 +6373,10 @@ export namespace Ggit {
 
         /**
          * Construct a new object.
-         * @param parent_class a #GObjectClass.
-         * @param basetype a #GType.
-         * @param construct_properties a list of #GObjectConstructParam.
-         * @returns a #GObject or %NULL.
+         * @param parent_class a {@link GObject.ObjectClass}.
+         * @param basetype a {@link GObject.GType}.
+         * @param construct_properties a list of {@link GObject.ObjectConstructParam}.
+         * @returns a {@link GObject.Object} or `null`.
          */
         construct<T = GObject.Object>(
             parent_class: typeof GObject.Object,
@@ -5936,15 +6386,15 @@ export namespace Ggit {
         /**
          * Register `subtype` as the instantiation class for `basetype`. Each time an
          * object of type `basetype` is going to be created, an instance of `subtype`
-         * is created instead. `basetype` must be subclassed from #GgitObjectFactoryBase.
-         * @param basetype a #GType.
-         * @param subtype a #GType.
+         * is created instead. `basetype` must be subclassed from {@link Ggit.ObjectFactoryBase}.
+         * @param basetype a {@link GObject.GType}.
+         * @param subtype a {@link GObject.GType}.
          */
         register(basetype: GObject.GType, subtype: GObject.GType): void;
         /**
          * Unregister a subtype from the factory.
-         * @param basetype a #GType.
-         * @param subtype a #GType.
+         * @param basetype a {@link GObject.GType}.
+         * @param subtype a {@link GObject.GType}.
          */
         unregister(basetype: GObject.GType, subtype: GObject.GType): void;
     }
@@ -5960,6 +6410,7 @@ export namespace Ggit {
 
     /**
      * Represents the base type for objects created by an object factory.
+     * @gir-type Class
      */
     abstract class ObjectFactoryBase extends GObject.Object {
         static $gtype: GObject.GType<ObjectFactoryBase>;
@@ -5981,16 +6432,19 @@ export namespace Ggit {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ObjectFactoryBase.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ObjectFactoryBase.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ObjectFactoryBase.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ObjectFactoryBase.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ObjectFactoryBase.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ObjectFactoryBase.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6009,6 +6463,7 @@ export namespace Ggit {
 
     /**
      * Represents a git proxy options.
+     * @gir-type Class
      */
     class ProxyOptions extends GObject.Object {
         static $gtype: GObject.GType<ProxyOptions>;
@@ -6032,16 +6487,19 @@ export namespace Ggit {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ProxyOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ProxyOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ProxyOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ProxyOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ProxyOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ProxyOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6066,6 +6524,7 @@ export namespace Ggit {
 
     /**
      * Represents a git push options.
+     * @gir-type Class
      */
     class PushOptions extends GObject.Object {
         static $gtype: GObject.GType<PushOptions>;
@@ -6096,16 +6555,19 @@ export namespace Ggit {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof PushOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PushOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof PushOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PushOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PushOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PushOptions.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6123,7 +6585,7 @@ export namespace Ggit {
         get_parallelism(): number;
         /**
          * gets the remote callbacks object
-         * @returns the object's id or %NULL.
+         * @returns the object's id or `null`.
          */
         get_remote_callbacks(): RemoteCallbacks | null;
         /**
@@ -6135,7 +6597,7 @@ export namespace Ggit {
         set_parallelism(parallelism: number): void;
         /**
          * Set the remote callbacks for the push options
-         * @param callbacks the #GgitRemoteCallbacks
+         * @param callbacks the {@link Ggit.RemoteCallbacks}
          */
         set_remote_callbacks(callbacks: RemoteCallbacks): void;
     }
@@ -6153,6 +6615,7 @@ export namespace Ggit {
 
     /**
      * Represents a rebase object.
+     * @gir-type Class
      */
     class Rebase extends Native {
         static $gtype: GObject.GType<Rebase>;
@@ -6174,16 +6637,19 @@ export namespace Ggit {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Rebase.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Rebase.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Rebase.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Rebase.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Rebase.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Rebase.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6199,24 +6665,24 @@ export namespace Ggit {
         abort(): void;
         /**
          * Commits the current patch.  You must have resolved any conflicts that
-         * were introduced during the patch application from the ggit_rebase_next()
+         * were introduced during the patch application from the `ggit_rebase_next()`
          * invocation.
-         * @param author a #GgitSignature or %NULL to keep the author from the original commit.
-         * @param committer a #GgitSignature.
-         * @param message the message for this commit, or %NULL to use the message from the original commit.
-         * @returns a #GgitOId of the newly created commit or %NULL.
+         * @param author a {@link Ggit.Signature} or `null` to keep the author from the original commit.
+         * @param committer a {@link Ggit.Signature}.
+         * @param message the message for this commit, or `null` to use the message from the original commit.
+         * @returns a {@link Ggit.OId} of the newly created commit or `null`.
          */
         commit(author: Signature | null, committer: Signature, message?: string | null): OId | null;
         /**
          * Finishes a rebase that is currently in progress once all patches have
          * been applied.
-         * @param signature the identity that is finishing the rebase or %NULL.
+         * @param signature the identity that is finishing the rebase or `null`.
          */
         finish(signature?: Signature | null): void;
         /**
          * Gets the rebase operation specified by `idx`.
          * @param idx The index of the rebase operation to retrieve.
-         * @returns The rebase operation or %NULL if @idx was out of bounds.
+         * @returns The rebase operation or `null` if `idx` was out of bounds.
          */
         get_operation_by_index(idx: number): RebaseOperation | null;
         /**
@@ -6227,7 +6693,7 @@ export namespace Ggit {
         /**
          * Gets the index of the rebase operation that is currently being applied.
          * If the first operation has not yet been applied (because you have
-         * called ggit_repository_rebase_init() but not yet ggit_rebase_next())
+         * called `ggit_repository_rebase_init()` but not yet `ggit_rebase_next()`)
          * then this returns `GGIT_REBASE_NO_OPERATION`.
          * @returns The index of the rebase operation currently being applied.
          */
@@ -6235,10 +6701,10 @@ export namespace Ggit {
         /**
          * Performs the next rebase operation and returns the information about it.
          * If the operation is one that applies a patch (which is any operation except
-         * `GGIT_REBASE_OPERATION_EXEC)` then the patch will be applied and the index and
+         * `GGIT_REBASE_OPERATION_EXEC`) then the patch will be applied and the index and
          * working directory will be updated with the changes. If there are conflicts,
          * you will need to address those before committing the changes.
-         * @returns the rebase operation that is to be performed next or %NULL.
+         * @returns the rebase operation that is to be performed next or `null`.
          */
         next(): RebaseOperation | null;
     }
@@ -6256,6 +6722,7 @@ export namespace Ggit {
 
     /**
      * Reprensents a git reference.
+     * @gir-type Class
      */
     class Ref extends Native {
         static $gtype: GObject.GType<Ref>;
@@ -6277,16 +6744,19 @@ export namespace Ggit {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Ref.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Ref.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Ref.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Ref.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Ref.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Ref.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6303,7 +6773,7 @@ export namespace Ggit {
          * and must start and end with a letter (e.g. HEAD, ORIG_HEAD).
          *
          * Valid refs/ names may contain any characters, except '~', '^', ':', '\', '?',
-         * '[', '*', ".." and "`{`", because they are interpreted by revparse.
+         * '[', '*', ".." and "@{", because they are interpreted by revparse.
          * @param name the name to validate.
          */
         static is_valid_name(name: string): boolean;
@@ -6320,23 +6790,23 @@ export namespace Ggit {
          */
         ['delete'](): void;
         /**
-         * Deletes the log for `ref,` on error `error` is set.
+         * Deletes the log for `ref`, on error `error` is set.
          */
         delete_log(): void;
         /**
-         * Gets the #GgitReflog for `ref`. The reflog will be created if it doesn't exist
+         * Gets the {@link Ggit.Reflog} for `ref`. The reflog will be created if it doesn't exist
          * yet.
-         * @returns the reflog or %NULL.
+         * @returns the reflog or `null`.
          */
         get_log(): Reflog | null;
         /**
          * Gets the full name of `ref`.
-         * @returns the full name of a reference or %NULL.
+         * @returns the full name of a reference or `null`.
          */
         get_name(): string | null;
         /**
          * Gets the repository where `ref` resides.
-         * @returns the repository where a reference resides or %NULL.
+         * @returns the repository where a reference resides or `null`.
          */
         get_owner(): Repository | null;
         /**
@@ -6347,50 +6817,50 @@ export namespace Ggit {
         get_reference_type(): RefType;
         /**
          * Gets the shorthand name of `ref`.
-         * @returns the shorthand name of a reference or %NULL.
+         * @returns the shorthand name of a reference or `null`.
          */
         get_shorthand(): string | null;
         /**
          * Get full name to the reference pointed to by a symbolic reference.
          * Only available if the reference is symbolic.
-         * @returns the name if available, %NULL otherwise.
+         * @returns the name if available, `null` otherwise.
          */
         get_symbolic_target(): string | null;
         /**
          * Get the OID pointed to by a direct reference.
          * Only available if the reference is direct (i.e. an object id reference,
          * not a symbolic one).
-         * @returns a new oid if available, %NULL otherwise.
+         * @returns a new oid if available, `null` otherwise.
          */
         get_target(): OId | null;
         /**
          * Get whether `ref` has an existing log.
-         * @returns %TRUE if @ref has a log, %FALSE otherwise.
+         * @returns `true` if `ref` has a log, `false` otherwise.
          */
         has_log(): boolean;
         /**
          * Check whether the reference is a branch.
-         * @returns %TRUE if the reference is a branch, %FALSE otherwise.
+         * @returns `true` if the reference is a branch, `false` otherwise.
          */
         is_branch(): boolean;
         /**
          * Check whether the reference is a note.
-         * @returns %TRUE if the reference is a note, %FALSE otherwise.
+         * @returns `true` if the reference is a note, `false` otherwise.
          */
         is_note(): boolean;
         /**
          * Check whether the reference is a remote.
-         * @returns %TRUE if the reference is a remote, %FALSE otherwise.
+         * @returns `true` if the reference is a remote, `false` otherwise.
          */
         is_remote(): boolean;
         /**
          * Check whether the reference is a tag.
-         * @returns %TRUE if the reference is a tag, %FALSE otherwise.
+         * @returns `true` if the reference is a tag, `false` otherwise.
          */
         is_tag(): boolean;
         /**
          * Convenient method to resolve a reference to an object.
-         * @returns a #GgitObject or %NULL.
+         * @returns a {@link Ggit.Object} or `null`.
          */
         lookup(): Object | null;
         /**
@@ -6402,7 +6872,7 @@ export namespace Ggit {
          * See `ggit_ref_create_symbolic()` for rules about valid names.
          *
          * If not error, `ref` will be deleted from disk and a
-         * new #GgitRef will be returned.
+         * new {@link Ggit.Ref} will be returned.
          *
          * The reference will be immediately renamed in-memory and on disk.
          *
@@ -6414,9 +6884,9 @@ export namespace Ggit {
          * reflog is enabled for the repository. We only rename
          * the reflog if it exists.
          * @param new_name the new name.
-         * @param force %TRUE to force the renaming.
+         * @param force `true` to force the renaming.
          * @param log_message The one line long message to be appended to the reflog.
-         * @returns a newly created #GgitRef or %NULL.
+         * @returns a newly created {@link Ggit.Ref} or `null`.
          */
         rename(new_name: string, force: boolean, log_message: string): Ref | null;
         /**
@@ -6427,7 +6897,7 @@ export namespace Ggit {
          *
          * If a direct reference is passed as an argument,
          * that reference is returned immediately.
-         * @returns the resolved reference to the peeled one or %NULL.
+         * @returns the resolved reference to the peeled one or `null`.
          */
         resolve(): Ref | null;
         /**
@@ -6441,7 +6911,7 @@ export namespace Ggit {
          * See `ggit_ref_create_symbolic()` for rules about valid names.
          * @param target The new target for the reference.
          * @param log_message The one line long message to be appended to the reflog.
-         * @returns the newly created #GgitRef or %NULL.
+         * @returns the newly created {@link Ggit.Ref} or `null`.
          */
         set_symbolic_target(target: string, log_message?: string | null): Ref | null;
         /**
@@ -6450,14 +6920,14 @@ export namespace Ggit {
          * this will fail.
          *
          * The new reference will be written to disk, overwriting the given reference.
-         * @param oid a #GgitOId.
+         * @param oid a {@link Ggit.OId}.
          * @param log_message The one line long message to be appended to the reflog.
-         * @returns the newly created #GgitRef or %NULL.
+         * @returns the newly created {@link Ggit.Ref} or `null`.
          */
         set_target(oid: OId, log_message?: string | null): Ref | null;
         /**
          * Get a string representation of the ref.
-         * @returns a string representation of the ref or %NULL.
+         * @returns a string representation of the ref or `null`.
          */
         to_string(): string | null;
     }
@@ -6475,6 +6945,7 @@ export namespace Ggit {
 
     /**
      * Represents a git remote.
+     * @gir-type Class
      */
     class Remote extends Native {
         static $gtype: GObject.GType<Remote>;
@@ -6500,16 +6971,19 @@ export namespace Ggit {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Remote.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Remote.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Remote.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Remote.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Remote.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Remote.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6534,6 +7008,9 @@ export namespace Ggit {
             proxy_options?: ProxyOptions | null,
             custom_headers?: string | null,
         ): void;
+        /**
+         * @param args
+         */
         connect(...args: never[]): any;
         /**
          * Closes the connection to the remote and frees the underlying
@@ -6545,43 +7022,43 @@ export namespace Ggit {
          * about which objects are missing and download the resulting packfile and
          * its index.
          * @param specs the ref specs.
-         * @param fetch_options a #GgitFetchOptions.
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * @param fetch_options a {@link Ggit.FetchOptions}.
+         * @returns `true` if successful, `false` otherwise.
          */
         download(specs: string[] | null, fetch_options: FetchOptions): boolean;
         /**
          * Check whether `remote` is connected.
-         * @returns %TRUE if it is connected.
+         * @returns `true` if it is connected.
          */
         get_connected(): boolean;
         /**
          * Get the list of fetch refspecs for the given remote.
-         * @returns a list of fetch refspecs or %NULL.
+         * @returns a list of fetch refspecs or `null`.
          */
         get_fetch_specs(): string[] | null;
         /**
          * Gets the remote's name.
-         * @returns the name of @remote or %NULL.
+         * @returns the name of `remote` or `null`.
          */
         get_name(): string | null;
         /**
          * Gets the repository where `remote` resides.
-         * @returns the repository where the remote resides or %NULL.
+         * @returns the repository where the remote resides or `null`.
          */
         get_owner(): Repository | null;
         /**
          * Get the list of push refspecs for the given remote.
-         * @returns a list of push refspecs or %NULL.
+         * @returns a list of push refspecs or `null`.
          */
         get_push_specs(): string[] | null;
         /**
          * Gets the remote's url.
-         * @returns the url of @remote or %NULL.
+         * @returns the url of `remote` or `null`.
          */
         get_url(): string | null;
         /**
          * Get a list of refs at the remote.
-         * @returns the remote heads or %NULL.
+         * @returns the remote heads or `null`.
          */
         list(): RemoteHead[] | null;
         /**
@@ -6594,17 +7071,17 @@ export namespace Ggit {
          * about which objects are missing, create a packfile with the missing
          * objects and send it.
          * @param specs the ref specs.
-         * @param push_options a #GgitPushOptions.
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * @param push_options a {@link Ggit.PushOptions}.
+         * @returns `true` if successful, `false` otherwise.
          */
         push(specs: string[] | null, push_options: PushOptions): boolean;
         /**
          * Update tips to the new state.
-         * @param callbacks a #GgitRemoteCallbacks.
-         * @param update_fetch_head whether to write to FETCH_HEAD. %TRUE to behave like git.
-         * @param tags_type what the behaviour for downloading tags is for this fetch. This is             ignored for push. This must be the same value passed to             ggit_remote_download().
-         * @param message reflog_message The message to insert into the reflogs. If                         %NULL and fetching, the default is "fetch <name>",                         where <name> is the name of the remote (or its url,                         for in-memory remotes). This parameter is ignored when pushing.
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * @param callbacks a {@link Ggit.RemoteCallbacks}.
+         * @param update_fetch_head whether to write to FETCH_HEAD. `true` to behave like git.
+         * @param tags_type what the behaviour for downloading tags is for this fetch. This is             ignored for push. This must be the same value passed to             `ggit_remote_download()`.
+         * @param message reflog_message The message to insert into the reflogs. If                         `null` and fetching, the default is "fetch <name>",                         where <name> is the name of the remote (or its url,                         for in-memory remotes). This parameter is ignored when pushing.
+         * @returns `true` if successful, `false` otherwise.
          */
         update_tips(
             callbacks: RemoteCallbacks,
@@ -6615,8 +7092,8 @@ export namespace Ggit {
         /**
          * Create a packfile and send it to the server
          * @param specs the ref specs.
-         * @param push_options a #GgitPushOptions
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * @param push_options a {@link Ggit.PushOptions}
+         * @returns `true` if successful, `false` otherwise.
          */
         upload(specs: string[] | null, push_options: PushOptions): boolean;
     }
@@ -6624,9 +7101,25 @@ export namespace Ggit {
     namespace RemoteCallbacks {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
             completion: (arg0: RemoteCompletionType) => void;
+            /**
+             * @signal
+             * @run-last
+             */
             progress: (arg0: string) => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'transfer-progress': (arg0: TransferProgress) => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'update-tips': (arg0: string, arg1: OId, arg2: OId) => void;
         }
 
@@ -6637,6 +7130,7 @@ export namespace Ggit {
 
     /**
      * Represents a git remote callbacks.
+     * @gir-type Class
      */
     class RemoteCallbacks extends GObject.Object {
         static $gtype: GObject.GType<RemoteCallbacks>;
@@ -6658,16 +7152,19 @@ export namespace Ggit {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RemoteCallbacks.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RemoteCallbacks.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RemoteCallbacks.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RemoteCallbacks.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RemoteCallbacks.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RemoteCallbacks.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6676,10 +7173,34 @@ export namespace Ggit {
 
         // Virtual methods
 
+        /**
+         * @param type
+         * @virtual
+         */
         vfunc_completion(type: RemoteCompletionType): void;
+        /**
+         * @param url the url.
+         * @param username_from_url the username extracted from the url.
+         * @param allowed_types the allowed credential types.
+         * @virtual
+         */
         vfunc_credentials(url: string, username_from_url: string | null, allowed_types: Credtype): Cred | null;
+        /**
+         * @param message
+         * @virtual
+         */
         vfunc_progress(message: string): void;
+        /**
+         * @param stats
+         * @virtual
+         */
         vfunc_transfer_progress(stats: TransferProgress): void;
+        /**
+         * @param refname
+         * @param a
+         * @param b
+         * @virtual
+         */
         vfunc_update_tips(refname: string, a: OId, b: OId): void;
     }
 
@@ -6714,20 +7235,45 @@ export namespace Ggit {
     /**
      * Represents an existing git repository including all of it's
      * object contents.
+     * @gir-type Class
      */
     class Repository extends Native implements Gio.Initable {
         static $gtype: GObject.GType<Repository>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get clone_options(): CloneOptions;
+        /**
+         * @construct-only
+         */
         get cloneOptions(): CloneOptions;
+        /**
+         * @read-only
+         */
         get head(): Ref;
+        /**
+         * @construct-only
+         */
         // This accessor conflicts with a field or function name in a parent class or interface.
         init: boolean | any;
+        /**
+         * @construct-only
+         */
         get is_bare(): boolean;
+        /**
+         * @construct-only
+         */
         get isBare(): boolean;
+        /**
+         * @construct-only
+         */
         get location(): Gio.File;
+        /**
+         * @construct-only
+         */
         get url(): string;
         get workdir(): Gio.File;
         set workdir(val: Gio.File);
@@ -6749,16 +7295,19 @@ export namespace Ggit {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Repository.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Repository.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Repository.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Repository.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Repository.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Repository.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6771,7 +7320,7 @@ export namespace Ggit {
          * Clones a new git repository in the given folder.
          * @param url url to fetch the repository from.
          * @param location the location of the repository.
-         * @param options a #GgitCloneOptions.
+         * @param options a {@link Ggit.CloneOptions}.
          */
         static clone(url: string, location: Gio.File, options?: CloneOptions | null): Repository | null;
         /**
@@ -6789,13 +7338,13 @@ export namespace Ggit {
          * and stops when a repository is found.
          * @param location the base location where the lookup starts.
          * @param across_fs indictaes whether lookup will work across filesystem devices.
-         * @param ceiling_dirs a list of absolute paths   at which lookup will stop when reached, or %NULL.
+         * @param ceiling_dirs a list of absolute paths   at which lookup will stop when reached, or `null`.
          */
         static discover_full(location: Gio.File, across_fs: boolean, ceiling_dirs?: string[] | null): Gio.File | null;
         /**
          * Creates a new git repository in the given folder.
          * @param location the location of the repository.
-         * @param is_bare if %TRUE, a git repository without a working directory is created           at the pointed path. If %FALSE, provided path will be considered as the working           directory into which the .git directory will be created.
+         * @param is_bare if `true`, a git repository without a working directory is created           at the pointed path. If `false`, provided path will be considered as the working           directory into which the .git directory will be created.
          */
         static init_repository(location: Gio.File, is_bare: boolean): Repository | null;
         /**
@@ -6822,18 +7371,18 @@ export namespace Ggit {
         // Methods
 
         /**
-         * Adds a fetch refspec to the `remote'`s configuration.
+         * Adds a fetch refspec to the `remote`'s configuration.
          * Adds `refspec` to the fetch list in the configuration. No
          * loaded remote instances will be affected.
-         * @param remote a #GgitRemote.
+         * @param remote a {@link Ggit.Remote}.
          * @param refspec the fetch refspec.
          */
         add_remote_fetch(remote: Remote, refspec: string): void;
         /**
-         * Adds a push refspec to `remote'`s configuration.
+         * Adds a push refspec to `remote`'s configuration.
          * Adds the given refspec to the push list in the configuration. No
          * loaded remote instances will be affected.
-         * @param remote a #GgitRemote.
+         * @param remote a {@link Ggit.Remote}.
          * @param refspec the push refspec.
          */
         add_remote_push(remote: Remote, refspec: string): void;
@@ -6841,57 +7390,57 @@ export namespace Ggit {
          * Get a blame for a single file.
          * @param file the file to blame.
          * @param blame_options blame options.
-         * @returns a #GgitBlame.
+         * @returns a {@link Ggit.Blame}.
          */
         blame_file(file: Gio.File, blame_options?: BlameOptions | null): Blame | null;
         /**
          * Update files in the working tree to reflect the contents of current HEAD. If
-         * `options` is %NULL, then the default checkout options will be used.
+         * `options` is `null`, then the default checkout options will be used.
          *
          * If the checkout was not successfull, then `error` will be set.
-         * @param options a #GgitCheckoutOptions or %NULL.
-         * @returns %TRUE if the checkout was successfull, %FALSE otherwise.
+         * @param options a {@link Ggit.CheckoutOptions} or `null`.
+         * @returns `true` if the checkout was successfull, `false` otherwise.
          */
         checkout_head(options?: CheckoutOptions | null): boolean;
         /**
          * Update files in the working tree to reflect the contents of the index. If
-         * `index` is %NULL, then the current index of the repository will be used. If
-         * `options` is %NULL, then the default checkout options will be used.
+         * `index` is `null`, then the current index of the repository will be used. If
+         * `options` is `null`, then the default checkout options will be used.
          *
          * If the checkout was not successfull, then `error` will be set.
-         * @param index a #GgitIndex or %NULL.
-         * @param options a #GgitCheckoutOptions or %NULL.
-         * @returns %TRUE if the checkout was successfull, %FALSE otherwise.
+         * @param index a {@link Ggit.Index} or `null`.
+         * @param options a {@link Ggit.CheckoutOptions} or `null`.
+         * @returns `true` if the checkout was successfull, `false` otherwise.
          */
         checkout_index(index?: Index | null, options?: CheckoutOptions | null): boolean;
         /**
          * Update files in the working tree to reflect the contents of the specified
-         * commit, tag or tree object. If `tree` is %NULL, then the current HEAD of the
-         * repository will be used. If `options` is %NULL, then the default checkout
+         * commit, tag or tree object. If `tree` is `null`, then the current HEAD of the
+         * repository will be used. If `options` is `null`, then the default checkout
          * options will be used.
          *
          * If the checkout was not successfull, then `error` will be set.
-         * @param tree a #GgitObject or %NULL.
-         * @param options a #GgitCheckoutOptions or %NULL.
-         * @returns %TRUE if the checkout was successfull, %FALSE otherwise.
+         * @param tree a {@link Ggit.Object} or `null`.
+         * @param options a {@link Ggit.CheckoutOptions} or `null`.
+         * @returns `true` if the checkout was successfull, `false` otherwise.
          */
         checkout_tree(tree?: Object | null, options?: CheckoutOptions | null): boolean;
         /**
          * Cherry pick the specified commit, making changes in the index and the working
          * directory.
-         * @param commit a #GgitCommit.
-         * @param options a #GgitCherryPickOptions.
-         * @returns %TRUE if the commit was cherry-picked successfully, %FALSE otherwise.
+         * @param commit a {@link Ggit.Commit}.
+         * @param options a {@link Ggit.CherryPickOptions}.
+         * @returns `true` if the commit was cherry-picked successfully, `false` otherwise.
          */
         cherry_pick(commit: Commit, options: CherryPickOptions): boolean;
         /**
-         * Cherry-picks the given `commit` against the provided `our_commit,` producing
+         * Cherry-picks the given `commit` against the provided `our_commit`, producing
          * and index that reflects the result of the cherry-pick.
-         * @param commit a #GgitCommit to cherry-pick.
-         * @param our_commit a #GgitCommit to cherry-pick on.
+         * @param commit a {@link Ggit.Commit} to cherry-pick.
+         * @param our_commit a {@link Ggit.Commit} to cherry-pick on.
          * @param mainline the parent of the commit, in case of a merge commit.
-         * @param merge_options a #GgitMergeOptions.
-         * @returns a #GgitIndex.
+         * @param merge_options a {@link Ggit.MergeOptions}.
+         * @returns a {@link Ggit.Index}.
          */
         cherry_pick_commit(
             commit: Commit,
@@ -6900,50 +7449,50 @@ export namespace Ggit {
             merge_options?: MergeOptions | null,
         ): Index | null;
         /**
-         * Create a new blob and return a #GOutputStream to write contents to the blob.
+         * Create a new blob and return a {@link Gio.OutputStream} to write contents to the blob.
          * This is an efficient way to create new blobs without copying data. The
          * blob id can be obtained from the blob output stream using
-         * #ggit_blob_output_stream_get_id, after you close the stream.
-         * @returns a #GgitBlobOutputStream.
+         * `ggit_blob_output_stream_get_id`, after you close the stream.
+         * @returns a {@link Ggit.BlobOutputStream}.
          */
         create_blob(): BlobOutputStream | null;
         /**
          * Write an in-memory buffer to the object database as a blob.
          * @param buffer the data.
-         * @returns the new #GgitOid of the written blob, or %NULL if writing the blob failed.
+         * @returns the new `GgitOid` of the written blob, or `null` if writing the blob failed.
          */
         create_blob_from_buffer(buffer: Uint8Array | string): OId | null;
         /**
          * Write a file to the object database as a blob.
          *
-         * Returns (transfer full) (nullable): the new #GgitOid of the written blob,
-         * or %NULL if writing the blob failed.
-         * @param file a #GFile.
+         * Returns (transfer full) (nullable): the new `GgitOid` of the written blob,
+         * or `null` if writing the blob failed.
+         * @param file a {@link Gio.File}.
          */
         create_blob_from_file(file: Gio.File): OId;
         /**
          * Write a path relative to the repository working directory to the object
          * database as a blob.
          * @param path the file path.
-         * @returns the new #GgitOid of the written blob, or %NULL if writing the blob failed.
+         * @returns the new `GgitOid` of the written blob, or `null` if writing the blob failed.
          */
         create_blob_from_path(path: string): OId | null;
         /**
          * Creates a new branch pointing at a target commit.
          * @param branch_name the name of the branch.
-         * @param target a #GgitObject.
-         * @param flags a #GgitCreateFlags.
-         * @returns the reference to which the branch                                        points, or %NULL in case of an error.
+         * @param target a {@link Ggit.Object}.
+         * @param flags a {@link Ggit.CreateFlags}.
+         * @returns the reference to which the branch                                        points, or `null` in case of an error.
          */
         create_branch(branch_name: string, target: Object, flags: CreateFlags | null): Branch | null;
         /**
-         * Create a new commit. If `update_ref` is not %NULL, the given reference will
+         * Create a new commit. If `update_ref` is not `null`, the given reference will
          * be updated to point to the newly created commit. Use "HEAD" to update the
          * HEAD of the current branch and make it point to this commit.
          *
-         * If `message_encoding` is set to %NULL, "UTF-8" encoding is assumed for the
+         * If `message_encoding` is set to `null`, "UTF-8" encoding is assumed for the
          * provided `message`. Note that `message` will not be cleaned up automatically.
-         * You can use #ggit_message_prettify to do this yourself if needed.
+         * You can use `ggit_message_prettify` to do this yourself if needed.
          * @param update_ref name of the reference to update.
          * @param author author signature.
          * @param committer committer signature (and time of commit).
@@ -6951,7 +7500,7 @@ export namespace Ggit {
          * @param message commit message.
          * @param tree the tree of objects to commit.
          * @param parents parent commits.
-         * @returns the #GgitOId of the created commit object, or %NULL in case of an error.
+         * @returns the {@link Ggit.OId} of the created commit object, or `null` in case of an error.
          */
         create_commit(
             update_ref: string | null,
@@ -6963,7 +7512,7 @@ export namespace Ggit {
             parents: Commit[],
         ): OId | null;
         /**
-         * Create a commit as with git_commit_create() but instead of writing it to the objectdb,
+         * Create a commit as with `git_commit_create()` but instead of writing it to the objectdb,
          * write the contents of the object into a buffer.
          * @param author author signature.
          * @param committer committer signature (and time of commit).
@@ -6971,7 +7520,7 @@ export namespace Ggit {
          * @param message commit message.
          * @param tree the tree of objects to commit.
          * @param parents parent commits.
-         * @returns the commit object content or %NULL in case of an error.
+         * @returns the commit object content or `null` in case of an error.
          */
         create_commit_buffer(
             author: Signature,
@@ -6982,13 +7531,13 @@ export namespace Ggit {
             parents: Commit[],
         ): string | null;
         /**
-         * Create a new commit. If `update_ref` is not %NULL, the given reference will
+         * Create a new commit. If `update_ref` is not `null`, the given reference will
          * be updated to point to the newly created commit. Use "HEAD" to update the
          * HEAD of the current branch and make it point to this commit.
          *
-         * If `message_encoding` is set to %NULL, "UTF-8" encoding is assumed for the
+         * If `message_encoding` is set to `null`, "UTF-8" encoding is assumed for the
          * provided `message`. Note that `message` will not be cleaned up automatically.
-         * You can use #ggit_message_prettify to do this yourself if needed.
+         * You can use `ggit_message_prettify` to do this yourself if needed.
          * @param update_ref name of the reference to update.
          * @param author author signature.
          * @param committer committer signature (and time of commit).
@@ -6996,7 +7545,7 @@ export namespace Ggit {
          * @param message commit message.
          * @param tree the tree of objects to commit.
          * @param parents parent commits.
-         * @returns the #GgitOId of the created commit object, or %NULL in case of an error.
+         * @returns the {@link Ggit.OId} of the created commit object, or `null` in case of an error.
          */
         create_commit_from_ids(
             update_ref: string | null,
@@ -7015,7 +7564,7 @@ export namespace Ggit {
          * @param commit_content the content of the unsigned commit.
          * @param signature the signature to add to the commit.
          * @param signature_field which header field should contain this signature. Leave `NULL` for the default of "gpgsig".
-         * @returns the #GgitOId of the created commit object, or %NULL in case of an error.
+         * @returns the {@link Ggit.OId} of the created commit object, or `null` in case of an error.
          */
         create_commit_with_signature(
             commit_content: string,
@@ -7023,45 +7572,45 @@ export namespace Ggit {
             signature_field?: string | null,
         ): OId | null;
         /**
-         * Create a new index entry. When `file` is not %NULL, the path of the returned
-         * entry (#ggit_index_entry_get_path) is set to the path of `file` relative to
+         * Create a new index entry. When `file` is not `null`, the path of the returned
+         * entry (`ggit_index_entry_get_path`) is set to the path of `file` relative to
          * the working directory of `repository`. The file must reside in the working
          * directory of `repository`. The file related
          * fields of the returned entry are also queried from this file (if the file exists).
          *
-         * If `id` is not %NULL, then the id of the returned entry is set to `id`
-         * (see #ggit_index_entry_get_id) which could point to a blob (for a file)
+         * If `id` is not `null`, then the id of the returned entry is set to `id`
+         * (see `ggit_index_entry_get_id`) which could point to a blob (for a file)
          * or a tree (for a directory).
-         * @param file a #GFile.
-         * @param id a #GgitOId.
-         * @returns a #GgitIndexEntry or %NULL when an error occurred.
+         * @param file a {@link Gio.File}.
+         * @param id a {@link Ggit.OId}.
+         * @returns a {@link Ggit.IndexEntry} or `null` when an error occurred.
          */
         create_index_entry_for_file(file?: Gio.File | null, id?: OId | null): IndexEntry | null;
         /**
-         * Create a new index entry. When `path` is not %NULL, the path of the returned
-         * entry (#ggit_index_entry_get_path) is set to `path`. The specified path can be
+         * Create a new index entry. When `path` is not `null`, the path of the returned
+         * entry (`ggit_index_entry_get_path`) is set to `path`. The specified path can be
          * either absolute or relative. In the case of
          * an absolute path, the path must reside within the working directory of
          * `repository`. The file related fields of the returned entry are also queried
          * from this path (if the file exists).
          *
-         * If `id` is not %NULL, then the id of the returned entry is set to `id`
-         * (see #ggit_index_entry_get_id) which could point to a blob (for a file)
+         * If `id` is not `null`, then the id of the returned entry is set to `id`
+         * (see `ggit_index_entry_get_id`) which could point to a blob (for a file)
          * or a tree (for a directory).
          * @param path a path.
-         * @param id a #GgitOId.
-         * @returns a #GgitIndexEntry or %NULL when an error occurred.
+         * @param id a {@link Ggit.OId}.
+         * @returns a {@link Ggit.IndexEntry} or `null` when an error occurred.
          */
         create_index_entry_for_path(path?: string | null, id?: OId | null): IndexEntry | null;
         /**
          * Adds a note for an object.
-         * @param notes_ref canonical name of the reference to use, or %NULL to use the default ref.
+         * @param notes_ref canonical name of the reference to use, or `null` to use the default ref.
          * @param author author signature.
          * @param committer committer signature.
          * @param id OID of the git object to decorate.
          * @param note content of the note to add for object oid.
          * @param force whether to overwrite existing note.
-         * @returns the OID for the note or %NULL in case of error.
+         * @returns the OID for the note or `null` in case of error.
          */
         create_note(
             notes_ref: string | null,
@@ -7075,9 +7624,9 @@ export namespace Ggit {
          * Creates a new object id reference.
          *
          * The reference will be created in the repository and written
-         * to the disk. The returned value must be freed with g_object_unref().
-         * @param name the name for the new #GgitRef.
-         * @param oid the #GgitOId pointed to by the reference.
+         * to the disk. The returned value must be freed with `g_object_unref()`.
+         * @param name the name for the new {@link Ggit.Ref}.
+         * @param oid the {@link Ggit.OId} pointed to by the reference.
          * @param log_message The one line long message to be appended to the reflog.
          * @returns the newly created reference.
          */
@@ -7086,15 +7635,15 @@ export namespace Ggit {
          * Adds a remote with the default fetch refspec to the repository's configuration.
          * @param name the name of the new remote.
          * @param url the url of the remote.
-         * @returns a new #GgitRemote or %NULL if there is an error.
+         * @returns a new {@link Ggit.Remote} or `null` if there is an error.
          */
         create_remote(name: string, url: string): Remote | null;
         /**
          * Creates a new symbolic reference.
          *
          * The reference will be created in the repository and written
-         * to the disk. The returned value must be freed with g_object_unref().
-         * @param name the name for the new #GgitRef.
+         * to the disk. The returned value must be freed with `g_object_unref()`.
+         * @param name the name for the new {@link Ggit.Ref}.
          * @param target the full name to the reference.
          * @param log_message The one line long message to be appended to the reflog.
          * @returns the newly created reference.
@@ -7103,11 +7652,11 @@ export namespace Ggit {
         /**
          * Create a new tag object.
          * @param tag_name the tag name.
-         * @param target a #GgitObject.
-         * @param tagger a #GgitSignature.
+         * @param target a {@link Ggit.Object}.
+         * @param tagger a {@link Ggit.Signature}.
          * @param message the tag message.
-         * @param flags a #GgitCreateFlags.
-         * @returns the id to which the tag points, or                                        %NULL in case of an error.
+         * @param flags a {@link Ggit.CreateFlags}.
+         * @returns the id to which the tag points, or                                        `null` in case of an error.
          */
         create_tag(
             tag_name: string,
@@ -7119,44 +7668,44 @@ export namespace Ggit {
         /**
          * Creates a new annotated tag.
          * @param tag_name the name of the tag.
-         * @param target a #GgitObject.
-         * @param signature a #GgitObject.
+         * @param target a {@link Ggit.Object}.
+         * @param signature a {@link Ggit.Object}.
          * @param message the tag message.
-         * @returns the id to which the tag points, or                                        %NULL in case of an error.
+         * @returns the id to which the tag points, or                                        `null` in case of an error.
          */
         create_tag_annotation(tag_name: string, target: Object, signature: Signature, message: string): OId | null;
         /**
          * Create a new tag from a buffer describing the tag object. The buffer must
          * be correctly formatted.
          * @param tag the tag buffer.
-         * @param flags a #GgitCreateFlags.
-         * @returns the id to which the tag points, or                                        %NULL in case of an error.
+         * @param flags a {@link Ggit.CreateFlags}.
+         * @returns the id to which the tag points, or                                        `null` in case of an error.
          */
         create_tag_from_buffer(tag: string, flags: CreateFlags | null): OId | null;
         /**
          * Creates a new lightweight tag.
          * @param tag_name the name of the tag.
-         * @param target a #GgitObject.
-         * @param flags a #GgitCreateFlags.
-         * @returns the id to which the tag points, or                                        %NULL in case of an error.
+         * @param target a {@link Ggit.Object}.
+         * @param flags a {@link Ggit.CreateFlags}.
+         * @returns the id to which the tag points, or                                        `null` in case of an error.
          */
         create_tag_lightweight(tag_name: string, target: Object, flags: CreateFlags | null): OId | null;
         /**
          * Create a new tree builder.
-         * @returns a new #GgitTreeBuilder, or %NULL if there was an error.
+         * @returns a new {@link Ggit.TreeBuilder}, or `null` if there was an error.
          */
         create_tree_builder(): TreeBuilder | null;
         /**
          * Create a tree builder for initialized with `tree`. To create an empty
-         * tree builder, use #ggit_repository_create_tree_builder instead.
-         * @param tree a #GgitTree.
-         * @returns a new #GgitTreeBuilder object, or %NULL if there was an error.
+         * tree builder, use `ggit_repository_create_tree_builder` instead.
+         * @param tree a {@link Ggit.Tree}.
+         * @returns a new {@link Ggit.TreeBuilder} object, or `null` if there was an error.
          */
         create_tree_builder_from_tree(tree: Tree): TreeBuilder | null;
         /**
          * Delete an existing tag reference by name.
          * @param name the name of the tag.
-         * @returns %TRUE if the tag was deleted successfully, %FALSE otherwise.
+         * @returns `true` if the tag was deleted successfully, `false` otherwise.
          */
         delete_tag(name: string): boolean;
         /**
@@ -7167,7 +7716,7 @@ export namespace Ggit {
         /**
          * Get a branch enumerator to enumerate over all branches of the specified
          * `list_type` in `repository`.
-         * @param list_type a #GgitBranchType.
+         * @param list_type a {@link Ggit.BranchType}.
          * @returns a branch enumerator.
          */
         enumerate_branches(list_type: BranchType | null): BranchEnumerator | null;
@@ -7184,10 +7733,10 @@ export namespace Ggit {
          * passed to this function. If the callback returns something other than
          * 0, the iteration will stop and `error` will be set.
          *
-         * Set `options` to %NULL to get the default status options.
-         * @param options status options, or %NULL.
-         * @param callback a #GgitStatusCallback.
-         * @returns %TRUE if there was no error, %FALSE otherwise
+         * Set `options` to `null` to get the default status options.
+         * @param options status options, or `null`.
+         * @param callback a {@link Ggit.StatusCallback}.
+         * @returns `true` if there was no error, `false` otherwise
          */
         file_status_foreach(options: StatusOptions | null, callback: StatusCallback): boolean;
         /**
@@ -7205,41 +7754,41 @@ export namespace Ggit {
          * Get the attribute value of the specified attribute for the given file.
          * @param path the relative path to the file.
          * @param name the name of the attribute.
-         * @param flags a #GgitAttributeCheckFlags.
-         * @returns the attribute value, or %NULL.
+         * @param flags a {@link Ggit.AttributeCheckFlags}.
+         * @returns the attribute value, or `null`.
          */
         get_attribute(path: string, name: string, flags: AttributeCheckFlags | null): string | null;
         /**
          * Get the config for a specific repository.
-         * @returns a #GgitConfig.
+         * @returns a {@link Ggit.Config}.
          */
         get_config(): Config | null;
         /**
          * Gets the default notes reference for `repository`. It defaults to
          * "refs/notes/commits".
-         * @returns the default notes reference for @repository.
+         * @returns the default notes reference for `repository`.
          */
         get_default_notes_ref(): string | null;
         /**
          * Check whether `com` mit is a descendant of `ancestor`. Note that if this
-         * function returns %FALSE, an error might have occurred. If so, `error` will
+         * function returns `false`, an error might have occurred. If so, `error` will
          * be set appropriately.
          * @param commit the commit.
          * @param ancestor the ancestor.
-         * @returns %TRUE if @commit is a descendant of @ancestor, or %FALSE otherwise.
+         * @returns `true` if `commit` is a descendant of `ancestor`, or `false` otherwise.
          */
         get_descendant_of(commit: OId, ancestor: OId): boolean;
         /**
          * Get and resolves the current HEAD reference of the repository. Note that the
          * returned ref is already resolved (if HEAD is symbolic). If you want to
-         * retrieve the symbolic ref called HEAD, then use #ggit_repository_lookup_reference
+         * retrieve the symbolic ref called HEAD, then use `ggit_repository_lookup_reference`
          * instead.
-         * @returns a #GgitRef
+         * @returns a {@link Ggit.Ref}
          */
         get_head(): Ref | null;
         /**
          * Get the index for a specific repository.
-         * @returns a #GgitIndex.
+         * @returns a {@link Ggit.Index}.
          */
         get_index(): Index | null;
         /**
@@ -7250,12 +7799,12 @@ export namespace Ggit {
         /**
          * Gets the status for a submodule.
          * This looks at a submodule and tries to determine the status.  It
-         * will return a combination of the %GGIT_SUBMODULE_STATUS values.
+         * will return a combination of the `GGIT_SUBMODULE_STATUS` values.
          * How deeply it examines the working directory to do this will depend
          * on `ignore`.
          * @param name the name of the submodule.
          * @param ignore the ignore rules to follow.
-         * @returns the #GgitSubmoduleStatus for @submodule.
+         * @returns the {@link Ggit.SubmoduleStatus} for `submodule`.
          */
         get_submodule_status(name: string, ignore: SubmoduleIgnore | null): SubmoduleStatus;
         /**
@@ -7268,23 +7817,23 @@ export namespace Ggit {
          *
          * An empty repository has just been initialized and contains
          * no commits.
-         * @returns %TRUE if the repository is empty.
+         * @returns `true` if the repository is empty.
          */
         is_empty(): boolean;
         /**
-         * Checks if `repository'`s HEAD is detached.
+         * Checks if `repository`'s HEAD is detached.
          *
          * A repository's HEAD is detached when it points directly to a commit
          * instead of a branch.
-         * @returns %TRUE if HEAD is detached.
+         * @returns `true` if HEAD is detached.
          */
         is_head_detached(): boolean;
         /**
-         * Checks if `repository'`s HEAD is an orphan.
+         * Checks if `repository`'s HEAD is an orphan.
          *
          * An orphan branch is one named from HEAD but doesn't exist in
          * the refs namespace, because it doesn't have any commit to point to.
-         * @returns %TRUE if the current branch is an orphan.
+         * @returns `true` if the current branch is an orphan.
          */
         is_head_unborn(): boolean;
         /**
@@ -7294,52 +7843,52 @@ export namespace Ggit {
         list_remotes(): string[] | null;
         /**
          * Fill a list with all the tags in the `repository`.
-         * @returns a list with the tags in @repository.
+         * @returns a list with the tags in `repository`.
          */
         list_tags(): string[] | null;
         /**
          * Fill a list with all the tags in the `repository` matching the provided
          * pattern. The pattern can use standard fnmatch syntax.
          * @param pattern a pattern to match.
-         * @returns a list with matching tags in @repository.
+         * @returns a list with matching tags in `repository`.
          */
         list_tags_match(pattern?: string | null): string[] | null;
         /**
          * Lookups a reference to one of the objects in the `repository`.
          *
-         * The generated reference must be freed with g_object_unref().
+         * The generated reference must be freed with `g_object_unref()`.
          *
          * The `gtype` must match the type of the object
          * in the odb; the method will fail otherwise.
-         * The special value %G_TYPE_NONE may be passed to let
+         * The special value `G_TYPE_NONE` may be passed to let
          * the method guess the object's type.
-         * @param oid a #GgitOId.
-         * @param gtype a #GType.
-         * @returns the found #GgitObject, or %NULL on error.
+         * @param oid a {@link Ggit.OId}.
+         * @param gtype a {@link GObject.GType}.
+         * @returns the found {@link Ggit.Object}, or `null` on error.
          */
         lookup(oid: OId, gtype: GObject.GType): Object | null;
         /**
          * Lookups a branch by its name in a repository.
-         * @param oid a #GgitOId.
-         * @returns a #GgitBlog pointer.
+         * @param oid a {@link Ggit.OId}.
+         * @returns a `GgitBlog` pointer.
          */
         lookup_blob(oid: OId): Blob | null;
         /**
          * Lookups a branch by its name in a repository.
          * @param branch_name the name of the branch.
-         * @param branch_type a #GgitBranchType.
+         * @param branch_type a {@link Ggit.BranchType}.
          * @returns a branch by its name in a repository.
          */
         lookup_branch(branch_name: string, branch_type: BranchType | null): Branch | null;
         /**
          * Lookups a branch by its name in a repository.
-         * @param oid a #GgitOId.
-         * @returns a #GgitCommit pointer.
+         * @param oid a {@link Ggit.OId}.
+         * @returns a {@link Ggit.Commit} pointer.
          */
         lookup_commit(oid: OId): Commit | null;
         /**
-         * Lookups a reference by its name in `repository`. The returned #GgitRef must
-         * be freed with g_object_unref().
+         * Lookups a reference by its name in `repository`. The returned {@link Ggit.Ref} must
+         * be freed with `g_object_unref()`.
          * @param name the long name for the reference (e.g. HEAD, ref/heads/master, refs/tags/v0.1.0, ...).
          * @returns the searched reference.
          */
@@ -7347,7 +7896,7 @@ export namespace Ggit {
         /**
          * Lookups a reference by its short name in `repository` applying the git precendence
          * rules to the given shorthand to determine which reference the user is referring to.
-         * The returned #GgitRef must be freed with g_object_unref().
+         * The returned {@link Ggit.Ref} must be freed with `g_object_unref()`.
          * @param short_name the short name for the reference (e.g. master, v0.1.0, ...).
          * @returns the searched reference.
          */
@@ -7355,26 +7904,26 @@ export namespace Ggit {
         /**
          * Gets the remote called `name`.
          * @param name the remote's name.
-         * @returns a new #GgitRemote or %NULL if there is an error.
+         * @returns a new {@link Ggit.Remote} or `null` if there is an error.
          */
         lookup_remote(name: string): Remote | null;
         /**
          * Lookups a submodule information by name or path. If the submodule
-         * does not exist, %NULL is returned and a GGIT_ERROR_NOTFOUND error set.
+         * does not exist, `null` is returned and a GGIT_ERROR_NOTFOUND error set.
          * @param name the name of the submodule.
-         * @returns a newly-allocated #GgitSubmodule.
+         * @returns a newly-allocated {@link Ggit.Submodule}.
          */
         lookup_submodule(name: string): Submodule | null;
         /**
          * Lookups a branch by its name in a repository.
-         * @param oid a #GgitOId.
-         * @returns a #GgitTag pointer.
+         * @param oid a {@link Ggit.OId}.
+         * @returns a {@link Ggit.Tag} pointer.
          */
         lookup_tag(oid: OId): Tag | null;
         /**
          * Lookups a branch by its name in a repository.
-         * @param oid a #GgitOId.
-         * @returns a #GgitTree pointer.
+         * @param oid a {@link Ggit.OId}.
+         * @returns a {@link Ggit.Tree} pointer.
          */
         lookup_tree(oid: OId): Tree | null;
         /**
@@ -7391,33 +7940,33 @@ export namespace Ggit {
          * Find the merge base between two commits
          * @param oid_one the oid of one of the commits.
          * @param oid_two the oid of the second of the commits
-         * @returns a new #GgitOId or %NULL if an error occurred.
+         * @returns a new {@link Ggit.OId} or `null` if an error occurred.
          */
         merge_base(oid_one: OId, oid_two: OId): OId | null;
         /**
-         * Merge two commits creating a #GgitIndex reflecting the result of the merge.
+         * Merge two commits creating a {@link Ggit.Index} reflecting the result of the merge.
          * @param our_commit the commit that reflects the destination tree.
          * @param their_commit the commit that reflects the source tree.
          * @param merge_options the merge options.
-         * @returns a new #GgitIndex or %NULL if an error occurred.
+         * @returns a new {@link Ggit.Index} or `null` if an error occurred.
          */
         merge_commits(our_commit: Commit, their_commit: Commit, merge_options: MergeOptions): Index | null;
         /**
-         * Merge two trees creating a #GgitIndex reflecting the result of the merge.
-         * @param ancestor_tree the common ancestor between the trees, or %NULL.
+         * Merge two trees creating a {@link Ggit.Index} reflecting the result of the merge.
+         * @param ancestor_tree the common ancestor between the trees, or `null`.
          * @param our_tree the tree that reflects the destination tree.
          * @param their_tree the tree that reflects the source tree.
          * @param merge_options the merge options.
-         * @returns a new #GgitIndex or %NULL if an error occurred.
+         * @returns a new {@link Ggit.Index} or `null` if an error occurred.
          */
         merge_trees(ancestor_tree: Tree, our_tree: Tree, their_tree: Tree, merge_options: MergeOptions): Index | null;
         /**
          * Loop over all the notes within a specified namespace
          * and issue a callback for each one.
          * If `callback` returns a non-zero value, this will stop looping.
-         * @param notes_ref canonical name of the reference to use, or %NULL to use the default ref.
-         * @param callback a #GgitNoteCallback.
-         * @returns %TRUE if there was no error, %FALSE otherwise.
+         * @param notes_ref canonical name of the reference to use, or `null` to use the default ref.
+         * @param callback a {@link Ggit.NoteCallback}.
+         * @returns `true` if there was no error, `false` otherwise.
          */
         note_foreach(notes_ref: string | null, callback: NoteCallback): boolean;
         /**
@@ -7426,26 +7975,26 @@ export namespace Ggit {
          * This acts similar to filtering performed when calling "git add ."
          * on the command line.
          * @param path A path within the repository.
-         * @returns %TRUE if @path should be ignored.
+         * @returns `true` if `path` should be ignored.
          */
         path_is_ignored(path: string): boolean;
         /**
          * Reads the note for an object.
-         * @param notes_ref canonical name of the reference to use, or %NULL to use the default ref.
+         * @param notes_ref canonical name of the reference to use, or `null` to use the default ref.
          * @param id OID of the git object to decorate.
-         * @returns the read note or %NULL in case of an error.
+         * @returns the read note or `null` in case of an error.
          */
         read_note(notes_ref: string | null, id: OId): Note | null;
         /**
          * Initializes a rebase operation to rebase the changes in `branch`
          * relative to `upstream` onto another branch. To begin the rebase
-         * process, call git_rebase_next(). When you have finished with this
-         * object, call g_object_unref().
-         * @param branch the terminal commit to rebase, or %NULL to rebase the current branch.
-         * @param upstream the commit to begin rebasing from, or %NULL to rebase all reachable commits.
-         * @param onto the branch to rebase onto, or %NULL to rebase onto the given upstream.
-         * @param options a #GgitRebaseOptions to specify how rebase is performed, or %NULL.
-         * @returns a newly allocated #GgitRebase.
+         * process, call `git_rebase_next()`. When you have finished with this
+         * object, call `g_object_unref()`.
+         * @param branch the terminal commit to rebase, or `null` to rebase the current branch.
+         * @param upstream the commit to begin rebasing from, or `null` to rebase all reachable commits.
+         * @param onto the branch to rebase onto, or `null` to rebase onto the given upstream.
+         * @param options a {@link Ggit.RebaseOptions} to specify how rebase is performed, or `null`.
+         * @returns a newly allocated {@link Ggit.Rebase}.
          */
         rebase_init(
             branch: AnnotatedCommit | null,
@@ -7455,9 +8004,9 @@ export namespace Ggit {
         ): Rebase | null;
         /**
          * Opens an existing rebase that was previously started by either an
-         * invocation of ggit_rebase_init() or by another client.
-         * @param options a #GgitRebaseOptions to specify how rebase is performed, or %NULL.
-         * @returns a newly allocated #GgitRebase.
+         * invocation of `ggit_rebase_init()` or by another client.
+         * @param options a {@link Ggit.RebaseOptions} to specify how rebase is performed, or `null`.
+         * @returns a newly allocated {@link Ggit.Rebase}.
          */
         rebase_open(options: RebaseOptions): Rebase | null;
         /**
@@ -7466,8 +8015,8 @@ export namespace Ggit {
          * To the callback is passed the reference and the data pointer
          * passed to this function. If the callback returns something other than
          * 0, the iteration will stop and `error` will be set.
-         * @param callback a #GgitReferencesCallback.
-         * @returns %TRUE if there was no error, %FALSE otherwise
+         * @param callback a {@link Ggit.ReferencesCallback}.
+         * @returns `true` if there was no error, `false` otherwise
          */
         references_foreach(callback: ReferencesCallback): boolean;
         /**
@@ -7476,23 +8025,23 @@ export namespace Ggit {
          * To the callback is passed the name of the reference and the data pointer
          * passed to this function. If the callback returns something other than
          * 0, the iteration will stop and `error` will be set.
-         * @param callback a #GgitReferencesNameCallback.
-         * @returns %TRUE if there was no error, %FALSE otherwise
+         * @param callback a {@link Ggit.ReferencesNameCallback}.
+         * @returns `true` if there was no error, `false` otherwise
          */
         references_foreach_name(callback: ReferencesNameCallback): boolean;
         /**
          * Removes the note for an object.
-         * @param notes_ref canonical name of the reference to use, or %NULL to use the default ref.
+         * @param notes_ref canonical name of the reference to use, or `null` to use the default ref.
          * @param author author signature.
          * @param committer committer signature.
          * @param id OID of the git object to decorate.
-         * @returns %TRUE if the note was removed from @id.
+         * @returns `true` if the note was removed from `id`.
          */
         remove_note(notes_ref: string | null, author: Signature, committer: Signature, id: OId): boolean;
         /**
          * Removes `remote` from the `repository`.
          * @param name the remote's name.
-         * @returns %TRUE if there was no error, %FALSE otherwise
+         * @returns `true` if there was no error, `false` otherwise
          */
         remove_remote(name: string): boolean;
         /**
@@ -7503,27 +8052,27 @@ export namespace Ggit {
          */
         rename_remote(name: string, new_name: string): string[] | null;
         /**
-         * Performs a reset of type `reset_type` on `repository` to `target,`
+         * Performs a reset of type `reset_type` on `repository` to `target`,
          * or `error` will be set.
-         * @param target the target #GgitObject which is a commit or a tag.
-         * @param reset_type the #GgitResetType to perform.
-         * @param checkout_options the #GgitCheckoutOptions to be used for a HARD reset.
+         * @param target the target {@link Ggit.Object} which is a commit or a tag.
+         * @param reset_type the {@link Ggit.ResetType} to perform.
+         * @param checkout_options the {@link Ggit.CheckoutOptions} to be used for a HARD reset.
          */
         reset(target: Object, reset_type: ResetType | null, checkout_options: CheckoutOptions): void;
         /**
          * Update some entries in the index from the target commit tree. The scope of
          * the updated entries is determined by the paths specified in `pathspecs`.
-         * Passing %NULL in `target` will result in removing entries in the index
+         * Passing `null` in `target` will result in removing entries in the index
          * matching the provided pathspecs.
-         * @param target the target #GgitObject which is a commit or a tag.
+         * @param target the target {@link Ggit.Object} which is a commit or a tag.
          * @param pathspecs a list of file paths to reset.
          */
         reset_default(target: Object | null, pathspecs: string[]): void;
         /**
          * Revert the given `commit` on top of the current working directory.
-         * @param commit a #GgitCommit.
-         * @param options a #GgitRevertOptions.
-         * @returns %TRUE if the revert was successfull, %FALSE otherwise.
+         * @param commit a {@link Ggit.Commit}.
+         * @param options a {@link Ggit.RevertOptions}.
+         * @returns `true` if the revert was successfull, `false` otherwise.
          */
         revert(commit: Commit, options: RevertOptions): boolean;
         /**
@@ -7531,53 +8080,61 @@ export namespace Ggit {
          * or the documentation for `git rev-parse` for information on the syntax
          * accepted.
          * @param spec the revision specification.
-         * @returns a #GgitObject or %NULL if the revision could not be found.
+         * @returns a {@link Ggit.Object} or `null` if the revision could not be found.
          */
         revparse(spec: string): Object | null;
         /**
          * Saves the local modifications to a new stash.
          * It returns the commit containing the stashed state.
          * This commit is also the target of the direct reference refs/stash.
-         * @param stasher a #GgitSignature.
-         * @param message description along with the stashed state or %NULL to be autogenerated.
-         * @param flags a #GgitStashFlags to control the stashing process.
+         * @param stasher a {@link Ggit.Signature}.
+         * @param message description along with the stashed state or `null` to be autogenerated.
+         * @param flags a {@link Ggit.StashFlags} to control the stashing process.
          * @returns a new object id of the commit containing the stashed state.
          */
         save_stash(stasher: Signature, message: string, flags: StashFlags | null): OId | null;
+        /**
+         * @param ref_name canonical name of the reference HEAD should point to.
+         * @returns `true` if head was successfully set, `false` otherwise.
+         */
         set_head(ref_name: string): boolean;
+        /**
+         * @param oid canonical Object id of the Commit the HEAD should point to.
+         * @returns `true` if head was successfully set, `false` otherwise.
+         */
         set_head_detached(oid: OId): boolean;
         /**
          * Sets url for the `remote` from the `repository`.
          * @param remote the remote name who's url is to be set.
          * @param url url of the remote.
-         * @returns %TRUE if there was no error, %FALSE otherwise
+         * @returns `true` if there was no error, `false` otherwise
          */
         set_remote_url(remote: string, url: string): boolean;
         /**
          * Sets the submodule.'name'.fetchRecurseSubmodules value for
          * the submodule. This setting won't affect any existing instances..
          * @param name the name of the submodule.
-         * @param fetch_recurse_submodules a #GgitSubmoduleRecurse.
+         * @param fetch_recurse_submodules a {@link Ggit.SubmoduleRecurse}.
          */
         set_submodule_fetch_recurse(name: string, fetch_recurse_submodules: SubmoduleRecurse | null): void;
         /**
          * Sets the ignore rule for the submodule in the configuration.
          * This does not affect any currently-loaded instances..
          * @param name the name of the submodule.
-         * @param ignore a #GgitSubmoduleIgnore.
+         * @param ignore a {@link Ggit.SubmoduleIgnore}.
          */
         set_submodule_ignore(name: string, ignore: SubmoduleIgnore | null): void;
         /**
          * Sets the update rule for the submodule in the configuration.
          * This setting won't affect any existing instances.
          * @param name the name of the submodule.
-         * @param update a #GgitSubmoduleUpdate.
+         * @param update a {@link Ggit.SubmoduleUpdate}.
          */
         set_submodule_update(name: string, update: SubmoduleUpdate | null): void;
         /**
          * Sets the URL for the submodule in the configuration.
          *
-         * After calling this, you may wish to call ggit_submodule_sync() to
+         * After calling this, you may wish to call `ggit_submodule_sync()` to
          * write the changes to the checked out submodule repository.
          * @param name the name of the submodule to configure.
          * @param url URL that should be used for the submodule.
@@ -7585,7 +8142,7 @@ export namespace Ggit {
         set_submodule_url(name: string, url: string): void;
         /**
          * Sets the working directory of the repository. If `update_gitlink` is set to
-         * %TRUE "core.worktree" will be set in the config if workdir is not the parent
+         * `true` "core.worktree" will be set in the config if workdir is not the parent
          * of the .git directory).
          * @param workdir the working directory.
          * @param update_gitlink create/update gitlink in workdir.
@@ -7594,8 +8151,8 @@ export namespace Ggit {
         /**
          * Loops over all the stashed states and issue a callback for each one.
          * If `callback` returns a non-zero value, this will stop looping.
-         * @param callback a #GgitStashCallback.
-         * @returns %TRUE if there was no error, %FALSE otherwise.
+         * @param callback a {@link Ggit.StashCallback}.
+         * @returns `true` if there was no error, `false` otherwise.
          */
         stash_foreach(callback: StashCallback): boolean;
         /**
@@ -7608,46 +8165,44 @@ export namespace Ggit {
          * NOTE: the submodule instance passed to the callback is only valid during
          * the call to ggit_repository_submodule_foreach and may not be used after the
          * call has finished.
-         * @param callback a #GgitStatusCallback.
-         * @returns %TRUE if there was no error, %FALSE otherwise
+         * @param callback a {@link Ggit.StatusCallback}.
+         * @returns `true` if there was no error, `false` otherwise
          */
         submodule_foreach(callback: SubmoduleCallback): boolean;
         /**
          * Get all the tags in the repository and run the provided callback on each. If
          * the callback returns something other than 0, the iteration will stop and
          * `error` will be set.
-         * @param callback a #GgitTagCallback.
-         * @returns %TRUE if there was no error, %FALSE otherwise
+         * @param callback a {@link Ggit.TagCallback}.
+         * @returns `true` if there was no error, `false` otherwise
          */
         tag_foreach(callback: TagCallback): boolean;
-
-        // Inherited methods
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -7657,11 +8212,12 @@ export namespace Ggit {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -7677,32 +8233,32 @@ export namespace Ggit {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -7711,39 +8267,39 @@ export namespace Ggit {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -7754,13 +8310,16 @@ export namespace Ggit {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -7768,7 +8327,7 @@ export namespace Ggit {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -7776,9 +8335,9 @@ export namespace Ggit {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -7798,9 +8357,9 @@ export namespace Ggit {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -7813,34 +8372,34 @@ export namespace Ggit {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -7873,22 +8432,22 @@ export namespace Ggit {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -7897,8 +8456,8 @@ export namespace Ggit {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -7915,10 +8474,10 @@ export namespace Ggit {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -7933,13 +8492,13 @@ export namespace Ggit {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -7970,21 +8529,21 @@ export namespace Ggit {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -7994,33 +8553,34 @@ export namespace Ggit {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -8029,6 +8589,7 @@ export namespace Ggit {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -8037,12 +8598,14 @@ export namespace Ggit {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -8051,20 +8614,22 @@ export namespace Ggit {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -8076,6 +8641,7 @@ export namespace Ggit {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -8121,6 +8687,7 @@ export namespace Ggit {
 
     /**
      * Represents a revision walker.
+     * @gir-type Class
      */
     class RevisionWalker extends Native implements Gio.Initable {
         static $gtype: GObject.GType<RevisionWalker>;
@@ -8149,16 +8716,19 @@ export namespace Ggit {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RevisionWalker.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RevisionWalker.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RevisionWalker.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RevisionWalker.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RevisionWalker.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RevisionWalker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -8169,7 +8739,7 @@ export namespace Ggit {
 
         /**
          * Gets the repository on which this walker is operating.
-         * @returns the repository on which this walker is operating or %NULL.
+         * @returns the repository on which this walker is operating or `null`.
          */
         get_repository(): Repository | null;
         /**
@@ -8180,7 +8750,7 @@ export namespace Ggit {
          *
          * The resolved commit and all its parents will be hidden from the
          * output on the revision walk.
-         * @param oid a #GgitOId.
+         * @param oid a {@link Ggit.OId}.
          */
         hide(oid: OId): void;
         /**
@@ -8211,7 +8781,7 @@ export namespace Ggit {
          * times at 0.3s on the git.git repo).
          *
          * The revision walker is reset when the walk is over.
-         * @returns the next commit from the revision walk or %NULL.
+         * @returns the next commit from the revision walk or `null`.
          */
         next(): OId | null;
         /**
@@ -8224,7 +8794,7 @@ export namespace Ggit {
          * when starting the revision walk. At least one commit
          * must be pushed the repository before a walk can
          * be started.
-         * @param oid a #GgitOId.
+         * @param oid a {@link Ggit.OId}.
          */
         push(oid: OId): void;
         /**
@@ -8268,37 +8838,35 @@ export namespace Ggit {
          * repository's contents.
          *
          * Changing the sorting mode resets the walker.
-         * @param sort_mode a #GgitSortMode value.
+         * @param sort_mode a {@link Ggit.SortMode} value.
          */
         set_sort_mode(sort_mode: SortMode | null): void;
-
-        // Inherited methods
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -8308,40 +8876,40 @@ export namespace Ggit {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
         init(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -8351,11 +8919,12 @@ export namespace Ggit {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -8371,32 +8940,32 @@ export namespace Ggit {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -8405,39 +8974,39 @@ export namespace Ggit {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -8448,13 +9017,16 @@ export namespace Ggit {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -8462,7 +9034,7 @@ export namespace Ggit {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -8470,9 +9042,9 @@ export namespace Ggit {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -8492,9 +9064,9 @@ export namespace Ggit {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -8507,34 +9079,34 @@ export namespace Ggit {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -8567,22 +9139,22 @@ export namespace Ggit {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -8591,8 +9163,8 @@ export namespace Ggit {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -8609,10 +9181,10 @@ export namespace Ggit {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -8627,13 +9199,13 @@ export namespace Ggit {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -8664,21 +9236,21 @@ export namespace Ggit {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -8688,33 +9260,34 @@ export namespace Ggit {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -8723,6 +9296,7 @@ export namespace Ggit {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -8731,12 +9305,14 @@ export namespace Ggit {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -8745,20 +9321,22 @@ export namespace Ggit {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -8770,6 +9348,7 @@ export namespace Ggit {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -8815,12 +9394,16 @@ export namespace Ggit {
 
     /**
      * Represents an action signature.
+     * @gir-type Class
      */
     class Signature extends Native {
         static $gtype: GObject.GType<Signature>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get encoding(): string;
 
         /**
@@ -8844,16 +9427,19 @@ export namespace Ggit {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Signature.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Signature.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Signature.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Signature.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Signature.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Signature.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -8864,28 +9450,28 @@ export namespace Ggit {
 
         /**
          * Create a copy of the signature.
-         * @returns a #GgitSignature or %NULL.
+         * @returns a {@link Ggit.Signature} or `null`.
          */
         copy(): Signature | null;
         /**
          * Gets the email of the person.
-         * @returns the email of the person or %NULL.
+         * @returns the email of the person or `null`.
          */
         get_email(): string | null;
         /**
          * Gets the name of the person.
-         * @returns the name of the person or %NULL.
+         * @returns the name of the person or `null`.
          */
         get_name(): string | null;
         /**
          * Gets the time when the action happened. Note that the time is returned in
-         * the timezone of the commit (see #ggit_signature_get_time_zone).
-         * @returns the time when the action happened or %NULL.
+         * the timezone of the commit (see `ggit_signature_get_time_zone`).
+         * @returns the time when the action happened or `null`.
          */
         get_time(): GLib.DateTime | null;
         /**
          * Gets the timezone in which the action happened.
-         * @returns the timezone in which the action happened or %NULL.
+         * @returns the timezone in which the action happened or `null`.
          */
         get_time_zone(): GLib.TimeZone | null;
     }
@@ -8909,6 +9495,7 @@ export namespace Ggit {
 
     /**
      * Represents options for a submodule update.
+     * @gir-type Class
      */
     class SubmoduleUpdateOptions extends GObject.Object {
         static $gtype: GObject.GType<SubmoduleUpdateOptions>;
@@ -8943,16 +9530,19 @@ export namespace Ggit {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SubmoduleUpdateOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SubmoduleUpdateOptions.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SubmoduleUpdateOptions.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SubmoduleUpdateOptions.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SubmoduleUpdateOptions.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SubmoduleUpdateOptions.SignalSignatures[K]> extends [any, ...infer Q]
@@ -8965,18 +9555,18 @@ export namespace Ggit {
 
         /**
          * Get the checkout options.
-         * @returns a #GgitCheckoutOptions or %NULL.
+         * @returns a {@link Ggit.CheckoutOptions} or `null`.
          */
         get_checkout_options(): CheckoutOptions | null;
         get_fetch_options(): FetchOptions;
         /**
          * Set the checkout options.
-         * @param checkout_options a #GgitCheckoutOptions.
+         * @param checkout_options a {@link Ggit.CheckoutOptions}.
          */
         set_checkout_options(checkout_options?: CheckoutOptions | null): void;
         /**
          * Sets the fetch options.
-         * @param fetch_options a #GgitFetchOptions.
+         * @param fetch_options a {@link Ggit.FetchOptions}.
          */
         set_fetch_options(fetch_options?: FetchOptions | null): void;
     }
@@ -8994,6 +9584,7 @@ export namespace Ggit {
 
     /**
      * Represents a tag object.
+     * @gir-type Class
      */
     class Tag extends Object {
         static $gtype: GObject.GType<Tag>;
@@ -9015,16 +9606,19 @@ export namespace Ggit {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Tag.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Tag.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Tag.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Tag.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Tag.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Tag.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -9035,41 +9629,41 @@ export namespace Ggit {
 
         /**
          * Gets the message of `tag`.
-         * @returns the message of the tag or %NULL.
+         * @returns the message of the tag or `null`.
          */
         get_message(): string | null;
         /**
          * Gets the name of `tag`.
-         * @returns the name of the tag or %NULL.
+         * @returns the name of the tag or `null`.
          */
         get_name(): string | null;
         /**
          * Get the tagger (author) of `tag`. The returned value must be free with
-         * g_object_unref().
-         * @returns the tagger (author) of the tag or %NULL.
+         * `g_object_unref()`.
+         * @returns the tagger (author) of the tag or `null`.
          */
         get_tagger(): Signature | null;
         /**
-         * Gets the target #GgitObject of `tag`.
+         * Gets the target {@link Ggit.Object} of `tag`.
          *
          * This method performs a repository lookup for the
          * given object and returns it.
-         * @returns the target #GgitObject of the tag or %NULL.
+         * @returns the target {@link Ggit.Object} of the tag or `null`.
          */
         get_target(): Object | null;
         /**
-         * Gets the target #GgitOId of `tag`.
-         * @returns the target #GgitOId of the tag or %NULL.
+         * Gets the target {@link Ggit.OId} of `tag`.
+         * @returns the target {@link Ggit.OId} of the tag or `null`.
          */
         get_target_id(): OId | null;
         /**
          * Get the target object type.
-         * @returns a #GType.
+         * @returns a {@link GObject.GType}.
          */
         get_target_type(): GObject.GType;
         /**
          * Recursively peel a tag until a non tag object is found.
-         * @returns a #GgitObject or %NULL.
+         * @returns a {@link Ggit.Object} or `null`.
          */
         peel(): Object | null;
     }
@@ -9087,6 +9681,7 @@ export namespace Ggit {
 
     /**
      * Represents a tree object.
+     * @gir-type Class
      */
     class Tree extends Object {
         static $gtype: GObject.GType<Tree>;
@@ -9108,16 +9703,19 @@ export namespace Ggit {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Tree.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Tree.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Tree.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Tree.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Tree.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Tree.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -9129,25 +9727,25 @@ export namespace Ggit {
         /**
          * Get a tree entry by index.
          * @param i the index of the entry.
-         * @returns a #GgitTreeEntry or %NULL.
+         * @returns a {@link Ggit.TreeEntry} or `null`.
          */
         get(i: number): TreeEntry | null;
         /**
          * Get a tree entry by name.
          * @param name a filename.
-         * @returns a #GgitTreeEntry or %NULL.
+         * @returns a {@link Ggit.TreeEntry} or `null`.
          */
         get_by_name(name: string): TreeEntry | null;
         /**
          * Retrieves a tree entry contained in a tree or in any of its subtrees,
          * given its relative path.
          * @param path a path.
-         * @returns a #GgitTreeEntry or %NULL.
+         * @returns a {@link Ggit.TreeEntry} or `null`.
          */
         get_by_path(path: string): TreeEntry | null;
         /**
-         * Get the #GgitOId of the tree.
-         * @returns a #GgitOId or %NULL.
+         * Get the {@link Ggit.OId} of the tree.
+         * @returns a {@link Ggit.OId} or `null`.
          */
         get_id(): OId | null;
         /**
@@ -9178,6 +9776,7 @@ export namespace Ggit {
 
     /**
      * Represents a tree object.
+     * @gir-type Class
      */
     class TreeBuilder extends Native {
         static $gtype: GObject.GType<TreeBuilder>;
@@ -9199,16 +9798,19 @@ export namespace Ggit {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TreeBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TreeBuilder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TreeBuilder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TreeBuilder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TreeBuilder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TreeBuilder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -9224,7 +9826,7 @@ export namespace Ggit {
         /**
          * Get an entry by path.
          * @param path the path to remove.
-         * @returns the #GGitTreeEntry or %NULL if no such entry exists.
+         * @returns the `GGitTreeEntry` or `null` if no such entry exists.
          */
         get_entry(path: string): TreeEntry | null;
         /**
@@ -9232,12 +9834,12 @@ export namespace Ggit {
          * already contains an entry for the given file, then this entry will be
          * overwritten.
          *
-         * Note that the returned #GgitTreeEntry is bound to the lifetime of the tree
+         * Note that the returned {@link Ggit.TreeEntry} is bound to the lifetime of the tree
          * builder and cannot be used after the tree builder has been freed.
          * @param filename the file name.
-         * @param oid the #GgitOId of the file blob to insert.
-         * @param file_mode a #GgitFileMode.
-         * @returns a #GgitTreeEntry or %NULL.
+         * @param oid the {@link Ggit.OId} of the file blob to insert.
+         * @param file_mode a {@link Ggit.FileMode}.
+         * @returns a {@link Ggit.TreeEntry} or `null`.
          */
         insert(filename: string, oid: OId, file_mode: FileMode | null): TreeEntry | null;
         /**
@@ -9247,13 +9849,14 @@ export namespace Ggit {
         remove(path: string): void;
         /**
          * Write the contents of the tree builder as a tree object.
-         * @returns the #GgitOId of the created tree object or %NULL.
+         * @returns the {@link Ggit.OId} of the created tree object or `null`.
          */
         write(): OId | null;
     }
 
     /**
      * Represents an annotated commit object.
+     * @gir-type Struct
      */
     class AnnotatedCommit {
         static $gtype: GObject.GType<AnnotatedCommit>;
@@ -9268,13 +9871,13 @@ export namespace Ggit {
 
         /**
          * Gets the commit ID that the given `annotated_commit` refs to.
-         * @returns the commit ID that the given @annotated_commit refs to or %NULL.
+         * @returns the commit ID that the given `annotated_commit` refs to or `null`.
          */
         get_id(): OId | null;
         /**
          * Atomically increments the reference count of `annotated_commit` by one.
          * This function is MT-safe and may be called from any thread.
-         * @returns a newly allocated #GgitAnnotatedCommit or %NULL.
+         * @returns a newly allocated {@link Ggit.AnnotatedCommit} or `null`.
          */
         ref(): AnnotatedCommit | null;
         /**
@@ -9284,9 +9887,13 @@ export namespace Ggit {
         unref(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type BlameClass = typeof Blame;
     /**
      * Represents a blame hunk.
+     * @gir-type Struct
      */
     abstract class BlameHunk {
         static $gtype: GObject.GType<BlameHunk>;
@@ -9295,12 +9902,12 @@ export namespace Ggit {
 
         /**
          * Get the id of the commit where this hunk was last changed.
-         * @returns a #GgitOId or %NULL.
+         * @returns a {@link Ggit.OId} or `null`.
          */
         get_final_commit_id(): OId | null;
         /**
          * Get the signature of the final version of the hunk.
-         * @returns a #GgitSignature or %NULL.
+         * @returns a {@link Ggit.Signature} or `null`.
          */
         get_final_signature(): Signature | null;
         /**
@@ -9317,37 +9924,37 @@ export namespace Ggit {
         /**
          * Get the id of the commit where the hunk was found. This is usually the same
          * the final commit id, except when #GGIT_BLAME_TRACK_COPIES_ANY_COMMIT was used.
-         * @returns a #GgitOId or %NULL.
+         * @returns a {@link Ggit.OId} or `null`.
          */
         get_orig_commit_id(): OId | null;
         /**
          * Get the path of the file where this hunk originated, as of the commit
-         * specified by #ggit_blame_hunk_get_orig_commit_id.
-         * @returns the path or %NULL.
+         * specified by `ggit_blame_hunk_get_orig_commit_id`.
+         * @returns the path or `null`.
          */
         get_orig_path(): string | null;
         /**
-         * Get the signature of the commit specified by #ggit_blame_hunk_get_orig_commit_id.
-         * @returns a #GgitSignature or %NULL.
+         * Get the signature of the commit specified by `ggit_blame_hunk_get_orig_commit_id`.
+         * @returns a {@link Ggit.Signature} or `null`.
          */
         get_orig_signature(): Signature | null;
         /**
          * Get the line number where the hunk begins in the file specified by
-         * #ggit_blame_hunk_get_orig_path at the commit specified by
-         * #ggit_blame_hunk_get_orig_commit_id. Line numbers start at 1.
+         * `ggit_blame_hunk_get_orig_path` at the commit specified by
+         * `ggit_blame_hunk_get_orig_commit_id`. Line numbers start at 1.
          * @returns the orig hunk line number.
          */
         get_orig_start_line_number(): number;
         /**
          * Get whether the hunk has been tracked to a boundary commit (the root,
-         * or the commit specified in #ggit_blame_options_set_oldest_commit).
+         * or the commit specified in `ggit_blame_options_set_oldest_commit`).
          * @returns whether the hunk is at a boundary commit.
          */
         is_boundary(): boolean;
         /**
          * Atomically increments the reference count of `blame_hunk` by one.
          * This function is MT-safe and may be called from any thread.
-         * @returns a #GgitBlameHunk or %NULL.
+         * @returns a {@link Ggit.BlameHunk} or `null`.
          */
         ref(): BlameHunk | null;
         /**
@@ -9359,6 +9966,7 @@ export namespace Ggit {
 
     /**
      * Represents blame options.
+     * @gir-type Struct
      */
     class BlameOptions {
         static $gtype: GObject.GType<BlameOptions>;
@@ -9372,8 +9980,8 @@ export namespace Ggit {
         // Methods
 
         /**
-         * Copies `blame_options` into a newly allocated #GgitBlameOptions.
-         * @returns a newly allocated #GgitBlameOptions or %NULL.
+         * Copies `blame_options` into a newly allocated {@link Ggit.BlameOptions}.
+         * @returns a newly allocated {@link Ggit.BlameOptions} or `null`.
          */
         copy(): BlameOptions | null;
         /**
@@ -9400,14 +10008,14 @@ export namespace Ggit {
         get_minimum_match_characters(): number;
         /**
          * Get the id of the newest commit to consider in the blame. The default
-         * value of %NULL indicates to use HEAD.
-         * @returns a #GgitOId or %NULL.
+         * value of `null` indicates to use HEAD.
+         * @returns a {@link Ggit.OId} or `null`.
          */
         get_newest_commit(): OId | null;
         /**
          * Get the id of the oldest commit to consider in the blame. Teh default value
-         * of %NULL indicates to used HEAD.
-         * @returns a #GgitOId or %NULL.
+         * of `null` indicates to used HEAD.
+         * @returns a {@link Ggit.OId} or `null`.
          */
         get_oldest_commit(): OId | null;
         /**
@@ -9429,25 +10037,35 @@ export namespace Ggit {
          */
         set_minimum_match_characters(characters: number): void;
         /**
-         * Set the id of the newest commit to consider in the blame. Specify %NULL to
+         * Set the id of the newest commit to consider in the blame. Specify `null` to
          * set the default value which indicates to use HEAD.
-         * @param oid a #GgitOId or %NULL.
+         * @param oid a {@link Ggit.OId} or `null`.
          */
         set_newest_commit(oid?: OId | null): void;
         /**
-         * Set the id of the oldest commit to consider in the blame. Specify %NULL to
+         * Set the id of the oldest commit to consider in the blame. Specify `null` to
          * set the default value which indicates to consider the first commit without
          * a parent.
-         * @param oid a #GgitOId.
+         * @param oid a {@link Ggit.OId}.
          */
         set_oldest_commit(oid?: OId | null): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type BlobClass = typeof Blob;
+    /**
+     * @gir-type Alias
+     */
     type BlobOutputStreamClass = typeof BlobOutputStream;
+    /**
+     * @gir-type Alias
+     */
     type BranchClass = typeof Branch;
     /**
      * Represents a branch enumerator.
+     * @gir-type Struct
      */
     abstract class BranchEnumerator {
         static $gtype: GObject.GType<BranchEnumerator>;
@@ -9455,34 +10073,56 @@ export namespace Ggit {
         // Methods
 
         /**
-         * Returns the currently being enumerated branch, or %NULL. Note that the
+         * Returns the currently being enumerated branch, or `null`. Note that the
          * returned GgitRef will be of type GgitBranch if the ref represents a local
          * branch.
-         * @returns the branch ref or %NULL.
+         * @returns the branch ref or `null`.
          */
         get(): Ref | null;
         /**
          * Get an iterator for the enumerator.
-         * @returns a #GgitBranchEnumerator or %NULL.
+         * @returns a {@link Ggit.BranchEnumerator} or `null`.
          */
         iterator(): BranchEnumerator | null;
         /**
          * Move the enumerator to the next branch.
-         * @returns %TRUE if there is a next branch, %FALSE otherwise.
+         * @returns `true` if there is a next branch, `false` otherwise.
          */
         next(): boolean;
+        /**
+         * @returns `enumerator` or `null`
+         */
         ref(): BranchEnumerator | null;
         unref(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CheckoutOptionsClass = typeof CheckoutOptions;
+    /**
+     * @gir-type Alias
+     */
     type CherryPickOptionsClass = typeof CherryPickOptions;
+    /**
+     * @gir-type Alias
+     */
     type CloneOptionsClass = typeof CloneOptions;
+    /**
+     * @gir-type Alias
+     */
     type CommitClass = typeof Commit;
+    /**
+     * @gir-type Alias
+     */
     type CommitParentsClass = typeof CommitParents;
+    /**
+     * @gir-type Alias
+     */
     type ConfigClass = typeof Config;
     /**
      * Represents a git configuration entry.
+     * @gir-type Struct
      */
     abstract class ConfigEntry {
         static $gtype: GObject.GType<ConfigEntry>;
@@ -9490,24 +10130,24 @@ export namespace Ggit {
         // Methods
 
         /**
-         * Gets the #GgitConfigLevel of `entry`.
-         * @returns the #GgitConfigLevel of @entry.
+         * Gets the {@link Ggit.ConfigLevel} of `entry`.
+         * @returns the {@link Ggit.ConfigLevel} of `entry`.
          */
         get_level(): ConfigLevel;
         /**
          * Gets the name of `entry`.
-         * @returns the name of @entry or %NULL.
+         * @returns the name of `entry` or `null`.
          */
         get_name(): string | null;
         /**
          * Gets the value of `entry`.
-         * @returns the value of @entry or %NULL.
+         * @returns the value of `entry` or `null`.
          */
         get_value(): string | null;
         /**
          * Atomically increments the reference count of `entry` by one.
          * This function is MT-safe and may be called from any thread.
-         * @returns a #GgitConfigEntry or %NULL.
+         * @returns a {@link Ggit.ConfigEntry} or `null`.
          */
         ref(): ConfigEntry | null;
         /**
@@ -9517,11 +10157,21 @@ export namespace Ggit {
         unref(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CredClass = typeof Cred;
+    /**
+     * @gir-type Alias
+     */
     type CredPlaintextClass = typeof CredPlaintext;
+    /**
+     * @gir-type Alias
+     */
     type CredSshInteractiveClass = typeof CredSshInteractive;
     /**
      * Represents a ssh interactive prompt.
+     * @gir-type Struct
      */
     class CredSshInteractivePrompt {
         static $gtype: GObject.GType<CredSshInteractivePrompt>;
@@ -9540,13 +10190,20 @@ export namespace Ggit {
         get_text(): string;
         is_masked(): boolean;
         ref(): CredSshInteractivePrompt;
+        /**
+         * @param response
+         */
         set_response(response: string): void;
         unref(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CredSshKeyFromAgentClass = typeof CredSshKeyFromAgent;
     /**
      * Represents a diff binary.
+     * @gir-type Struct
      */
     abstract class DiffBinary {
         static $gtype: GObject.GType<DiffBinary>;
@@ -9554,19 +10211,19 @@ export namespace Ggit {
         // Methods
 
         /**
-         * Gets the #GgitDiffBinaryFile new file for `binary`.
-         * @returns the contents of the new file or %NULL.
+         * Gets the {@link Ggit.DiffBinaryFile} new file for `binary`.
+         * @returns the contents of the new file or `null`.
          */
         get_new_file(): DiffBinaryFile | null;
         /**
-         * Gets the #GgitDiffBinaryFile old file for `binary`.
-         * @returns the contents of the old file or %NULL.
+         * Gets the {@link Ggit.DiffBinaryFile} old file for `binary`.
+         * @returns the contents of the old file or `null`.
          */
         get_old_file(): DiffBinaryFile | null;
         /**
          * Atomically increments the reference count of `binary` by one.
          * This function is MT-safe and may be called from any thread.
-         * @returns a #GgitDiffBinary or %NULL.
+         * @returns a {@link Ggit.DiffBinary} or `null`.
          */
         ref(): DiffBinary | null;
         /**
@@ -9578,6 +10235,7 @@ export namespace Ggit {
 
     /**
      * Represents a diff binary file.
+     * @gir-type Struct
      */
     abstract class DiffBinaryFile {
         static $gtype: GObject.GType<DiffBinaryFile>;
@@ -9585,14 +10243,14 @@ export namespace Ggit {
         // Methods
 
         /**
-         * Gets the #GgitDiffBinaryType for `file`.
+         * Gets the {@link Ggit.DiffBinaryType} for `file`.
          * @returns the file's binary type.
          */
         get_binary_type(): DiffBinaryType;
         /**
          * Get the binary data. This data should not be modified.
          * @param size location to return size of byte data.
-         * @returns a pointer to the binary data, or %NULL.
+         * @returns a pointer to the binary data, or `null`.
          */
         get_data(size?: number | null): number;
         /**
@@ -9603,7 +10261,7 @@ export namespace Ggit {
         /**
          * Atomically increments the reference count of `file` by one.
          * This function is MT-safe and may be called from any thread.
-         * @returns a #GgitDiffBinaryFile.
+         * @returns a {@link Ggit.DiffBinaryFile}.
          */
         ref(): DiffBinaryFile;
         /**
@@ -9613,9 +10271,13 @@ export namespace Ggit {
         unref(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DiffClass = typeof Diff;
     /**
      * Represents the changes done to one file.
+     * @gir-type Struct
      */
     abstract class DiffDelta {
         static $gtype: GObject.GType<DiffDelta>;
@@ -9629,12 +10291,12 @@ export namespace Ggit {
         get_flags(): DiffFlag;
         /**
          * Gets the new file for `delta`.
-         * @returns the delta's new file or %NULL.
+         * @returns the delta's new file or `null`.
          */
         get_new_file(): DiffFile | null;
         /**
          * Gets the old file for `delta`.
-         * @returns the delta's old file or %NULL.
+         * @returns the delta's old file or `null`.
          */
         get_old_file(): DiffFile | null;
         /**
@@ -9643,14 +10305,14 @@ export namespace Ggit {
          */
         get_similarity(): number;
         /**
-         * Gets the #GgitDeltaType for `delta`.
+         * Gets the {@link Ggit.DeltaType} for `delta`.
          * @returns the delta's status.
          */
         get_status(): DeltaType;
         /**
          * Atomically increments the reference count of `delta` by one.
          * This function is MT-safe and may be called from any thread.
-         * @returns a #GgitDiffDelta or %NULL.
+         * @returns a {@link Ggit.DiffDelta} or `null`.
          */
         ref(): DiffDelta | null;
         /**
@@ -9661,7 +10323,8 @@ export namespace Ggit {
     }
 
     /**
-     * Represents a file in a #GgitDiff.
+     * Represents a file in a {@link Ggit.Diff}.
+     * @gir-type Struct
      */
     abstract class DiffFile {
         static $gtype: GObject.GType<DiffFile>;
@@ -9669,7 +10332,7 @@ export namespace Ggit {
         // Methods
 
         /**
-         * Gets the #GgitDifflags for `file`.
+         * Gets the `GgitDifflags` for `file`.
          * @returns the file's flags.
          */
         get_flags(): DiffFlag;
@@ -9679,13 +10342,13 @@ export namespace Ggit {
          */
         get_mode(): number;
         /**
-         * Gets the #GgitOId for `file`.
-         * @returns the file's #GgitOId or %NULL.
+         * Gets the {@link Ggit.OId} for `file`.
+         * @returns the file's {@link Ggit.OId} or `null`.
          */
         get_oid(): OId | null;
         /**
-         * Gets the path of `file` or %NULL if it is unknown.
-         * @returns the file's path, or %NULL.
+         * Gets the path of `file` or `null` if it is unknown.
+         * @returns the file's path, or `null`.
          */
         get_path(): string | null;
         /**
@@ -9696,7 +10359,7 @@ export namespace Ggit {
         /**
          * Atomically increments the reference count of `file` by one.
          * This function is MT-safe and may be called from any thread.
-         * @returns a #GgitDiffFile or %NULL.
+         * @returns a {@link Ggit.DiffFile} or `null`.
          */
         ref(): DiffFile | null;
         /**
@@ -9706,10 +10369,17 @@ export namespace Ggit {
         unref(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DiffFindOptionsClass = typeof DiffFindOptions;
+    /**
+     * @gir-type Alias
+     */
     type DiffFormatEmailOptionsClass = typeof DiffFormatEmailOptions;
     /**
      * Represents the hunk of a diff.
+     * @gir-type Struct
      */
     abstract class DiffHunk {
         static $gtype: GObject.GType<DiffHunk>;
@@ -9740,7 +10410,7 @@ export namespace Ggit {
         /**
          * Atomically increments the reference count of `hunk` by one.
          * This function is MT-safe and may be called from any thread.
-         * @returns a #GgitDiffHunk or %NULL.
+         * @returns a {@link Ggit.DiffHunk} or `null`.
          */
         ref(): DiffHunk | null;
         /**
@@ -9752,6 +10422,7 @@ export namespace Ggit {
 
     /**
      * Represents the line of a diff.
+     * @gir-type Struct
      */
     abstract class DiffLine {
         static $gtype: GObject.GType<DiffLine>;
@@ -9779,19 +10450,19 @@ export namespace Ggit {
          */
         get_old_lineno(): number;
         /**
-         * Gets the #GgitDiffLineType value.
-         * @returns the #GgitDiffLineType value.
+         * Gets the {@link Ggit.DiffLineType} value.
+         * @returns the {@link Ggit.DiffLineType} value.
          */
         get_origin(): DiffLineType;
         /**
          * Get the content of the diff line as UTF-8 encoded text.
-         * @returns the content in utf-8 encoding or %NULL.
+         * @returns the content in utf-8 encoding or `null`.
          */
         get_text(): string | null;
         /**
          * Atomically increments the reference count of `line` by one.
          * This function is MT-safe and may be called from any thread.
-         * @returns a #GgitDiffLine or %NULL.
+         * @returns a {@link Ggit.DiffLine} or `null`.
          */
         ref(): DiffLine | null;
         /**
@@ -9801,9 +10472,13 @@ export namespace Ggit {
         unref(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DiffOptionsClass = typeof DiffOptions;
     /**
      * Represents a similarity metric.
+     * @gir-type Struct
      */
     class DiffSimilarityMetric {
         static $gtype: GObject.GType<DiffSimilarityMetric>;
@@ -9827,8 +10502,8 @@ export namespace Ggit {
         // Methods
 
         /**
-         * Copies `metric` into a newly allocated #GgitDiffSimilarityMetric.
-         * @returns a newly allocated #GgitDiffSimilarityMetric or %NULL.
+         * Copies `metric` into a newly allocated {@link Ggit.DiffSimilarityMetric}.
+         * @returns a newly allocated {@link Ggit.DiffSimilarityMetric} or `null`.
          */
         copy(): DiffSimilarityMetric | null;
         /**
@@ -9839,6 +10514,7 @@ export namespace Ggit {
 
     /**
      * Represents a git fetch options.
+     * @gir-type Struct
      */
     class FetchOptions {
         static $gtype: GObject.GType<FetchOptions>;
@@ -9852,8 +10528,8 @@ export namespace Ggit {
         // Methods
 
         /**
-         * Copies `fetch_options` into a newly allocated #GgitFetchOptions.
-         * @returns a newly allocated #GgitFetchOptions or %NULL.
+         * Copies `fetch_options` into a newly allocated {@link Ggit.FetchOptions}.
+         * @returns a newly allocated {@link Ggit.FetchOptions} or `null`.
          */
         copy(): FetchOptions | null;
         /**
@@ -9862,29 +10538,33 @@ export namespace Ggit {
         free(): void;
         /**
          * Get how tags are being handled when fetching/downloading.
-         * @returns a #GgitRemoteDownloadTagsType.
+         * @returns a {@link Ggit.RemoteDownloadTagsType}.
          */
         get_download_tags(): RemoteDownloadTagsType;
         /**
-         * Get the remote callbacks object or %NULL if not set.
-         * @returns the remote callbacks or %NULL.
+         * Get the remote callbacks object or `null` if not set.
+         * @returns the remote callbacks or `null`.
          */
         get_remote_callbacks(): RemoteCallbacks | null;
         /**
          * Set how tags are being handled when fetching/downloading.
-         * @param download_tags a #GgitRemoteDownloadTagsType.
+         * @param download_tags a {@link Ggit.RemoteDownloadTagsType}.
          */
         set_download_tags(download_tags: RemoteDownloadTagsType | null): void;
         /**
          * Set the fetch options object.
-         * @param callbacks a #GgitRemoteCallbacks or %NULL.
+         * @param callbacks a {@link Ggit.RemoteCallbacks} or `null`.
          */
         set_remote_callbacks(callbacks?: RemoteCallbacks | null): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type IndexClass = typeof Index;
     /**
      * Represents the entries in an index object.
+     * @gir-type Struct
      */
     abstract class IndexEntries {
         static $gtype: GObject.GType<IndexEntries>;
@@ -9892,29 +10572,29 @@ export namespace Ggit {
         // Methods
 
         /**
-         * Get a #GgitIndexEntry by index. Note that the returned #GgitIndexEntry is
+         * Get a {@link Ggit.IndexEntry} by index. Note that the returned {@link Ggit.IndexEntry} is
          * _only_ valid as long as:
          *
          * 1) The associated index has been closed
-         * 2) The entry has not been removed (see ggit_index_remove())
-         * 3) The index has not been refreshed (see ggit_index_read())
+         * 2) The entry has not been removed (see `ggit_index_remove()`)
+         * 3) The index has not been refreshed (see `ggit_index_read()`)
          *
-         * Changes to the #GgitIndexEntry will be reflected in the index once written
-         * back to disk using ggit_index_write().
+         * Changes to the {@link Ggit.IndexEntry} will be reflected in the index once written
+         * back to disk using `ggit_index_write()`.
          * @param idx the index of the entry.
-         * @returns a #GgitIndexEntry or %NULL if out of bounds.
+         * @returns a {@link Ggit.IndexEntry} or `null` if out of bounds.
          */
         get_by_index(idx: number): IndexEntry | null;
         /**
-         * Get a #GgitIndexEntry by index. Note that the returned #GgitIndexEntry is
+         * Get a {@link Ggit.IndexEntry} by index. Note that the returned {@link Ggit.IndexEntry} is
          * _only_ valid as long as:
          *
          * 1) The associated index has not been closed
-         * 2) The entry has not been removed (see ggit_index_remove())
-         * 3) The index has not been refreshed (see ggit_index_read())
+         * 2) The entry has not been removed (see `ggit_index_remove()`)
+         * 3) The index has not been refreshed (see `ggit_index_read()`)
          *
-         * Changes to the #GgitIndexEntry will be reflected in the index once written
-         * back to disk using ggit_index_write().
+         * Changes to the {@link Ggit.IndexEntry} will be reflected in the index once written
+         * back to disk using `ggit_index_write()`.
          *
          * `stage` indicates the stage to search the file for. Stages are used in the
          * index when merge conflicts occur, such that multiple versions of the same
@@ -9924,17 +10604,17 @@ export namespace Ggit {
          * file encountered in any stage.
          * @param file the path to search.
          * @param stage stage to search.
-         * @returns a #GgitIndexEntry or %NULL if it was not found.
+         * @returns a {@link Ggit.IndexEntry} or `null` if it was not found.
          */
         get_by_path(file: Gio.File, stage: number): IndexEntry | null;
         /**
          * Atomically increments the reference count of `entries` by one.
          * This function is MT-safe and may be called from any thread.
-         * @returns a #GgitIndexEntries or %NULL.
+         * @returns a {@link Ggit.IndexEntries} or `null`.
          */
         ref(): IndexEntries | null;
         /**
-         * Get the number of #GgitIndexEntry entries.
+         * Get the number of {@link Ggit.IndexEntry} entries.
          * @returns the number of entries.
          */
         size(): number;
@@ -9947,6 +10627,7 @@ export namespace Ggit {
 
     /**
      * Represents the resolve undo entries in an index object.
+     * @gir-type Struct
      */
     abstract class IndexEntriesResolveUndo {
         static $gtype: GObject.GType<IndexEntriesResolveUndo>;
@@ -9954,32 +10635,32 @@ export namespace Ggit {
         // Methods
 
         /**
-         * Get a #GgitIndexEntryResolveUndo by index. Note that the returned
-         * #GgitIndexEntryResolveUndo is _only_ valid as long as:
+         * Get a {@link Ggit.IndexEntryResolveUndo} by index. Note that the returned
+         * {@link Ggit.IndexEntryResolveUndo} is _only_ valid as long as:
          *
          * 1) The associated index has been closed
-         * 2) The entry has not been removed (see ggit_index_remove())
-         * 3) The index has not been refreshed (see ggit_index_read())
+         * 2) The entry has not been removed (see `ggit_index_remove()`)
+         * 3) The index has not been refreshed (see `ggit_index_read()`)
          * @param idx the index of the entry.
-         * @returns a #GgitIndexEntryResolveUndo or %NULL.
+         * @returns a {@link Ggit.IndexEntryResolveUndo} or `null`.
          */
         get(idx: number): IndexEntryResolveUndo | null;
         /**
          * Get an resolve_undo entry specified by path. The returned entry is read
          * only and should not be modified by the caller. If the entry could not be
-         * found, %NULL is returned.
-         * @param file a #GFile.
-         * @returns a #GgitIndexEntryResolveUndo or %NULL.
+         * found, `null` is returned.
+         * @param file a {@link Gio.File}.
+         * @returns a {@link Ggit.IndexEntryResolveUndo} or `null`.
          */
         get_by_file(file: Gio.File): IndexEntryResolveUndo | null;
         /**
          * Atomically increments the reference count of `entries` by one.
          * This function is MT-safe and may be called from any thread.
-         * @returns a #GgitIndexEntriesResolveUndo or %NULL.
+         * @returns a {@link Ggit.IndexEntriesResolveUndo} or `null`.
          */
         ref(): IndexEntriesResolveUndo | null;
         /**
-         * Get the number of #GgitIndexEntryResolveUndo entries.
+         * Get the number of {@link Ggit.IndexEntryResolveUndo} entries.
          * @returns the number of entries.
          */
         size(): number;
@@ -9992,6 +10673,7 @@ export namespace Ggit {
 
     /**
      * Represents an index entry object.
+     * @gir-type Struct
      */
     abstract class IndexEntry {
         static $gtype: GObject.GType<IndexEntry>;
@@ -10025,7 +10707,7 @@ export namespace Ggit {
         get_gid(): number;
         /**
          * Get the oid of the index entry.
-         * @returns the oid or %NULL.
+         * @returns the oid or `null`.
          */
         get_id(): OId | null;
         /**
@@ -10046,20 +10728,20 @@ export namespace Ggit {
         get_uid(): number;
         /**
          * Get whether the entry represents a conflict.
-         * @returns %TRUE if the entry is a conflict, or %FALSE otherwise.
+         * @returns `true` if the entry is a conflict, or `false` otherwise.
          */
         is_conflict(): boolean;
         /**
          * Atomically increments the reference count of `entry` by one.
          * This function is MT-safe and may be called from any thread.
-         * @returns a #GgitIndexEntry or %NULL.
+         * @returns a {@link Ggit.IndexEntry} or `null`.
          */
         ref(): IndexEntry | null;
         /**
          * Set the index entry to point to a given commit. This sets the index entry
          * id to the commit id, changes the mode to #GGIT_FILE_MODE_COMMIT and updates
          * the timestamps to when the commit was made.
-         * @param commit a #GgitCommit.
+         * @param commit a {@link Ggit.Commit}.
          */
         set_commit(commit: Commit): void;
         /**
@@ -10116,7 +10798,7 @@ export namespace Ggit {
         /**
          * Fill the entry fields from statting `file`.
          * @param file the file to stat.
-         * @returns %TRUE if the entry was filled from statting @file successfully, %FALSE otherwise.
+         * @returns `true` if the entry was filled from statting `file` successfully, `false` otherwise.
          */
         stat(file: Gio.File): boolean;
         /**
@@ -10128,6 +10810,7 @@ export namespace Ggit {
 
     /**
      * Represents an resolve undo index entry object.
+     * @gir-type Struct
      */
     abstract class IndexEntryResolveUndo {
         static $gtype: GObject.GType<IndexEntryResolveUndo>;
@@ -10136,13 +10819,13 @@ export namespace Ggit {
 
         /**
          * Get the file of the index entry.
-         * @returns a #GFile or %NULL.
+         * @returns a {@link Gio.File} or `null`.
          */
         get_file(): Gio.File | null;
         /**
          * Get the oid of the index entry.
          * @param stage the stage (0, 1 or 2).
-         * @returns the oid or %NULL.
+         * @returns the oid or `null`.
          */
         get_id(stage: number): OId | null;
         /**
@@ -10155,7 +10838,7 @@ export namespace Ggit {
         /**
          * Atomically increments the reference count of `entry` by one.
          * This function is MT-safe and may be called from any thread.
-         * @returns a #GgitIndexEntryResolveUndo or %NULL.
+         * @returns a {@link Ggit.IndexEntryResolveUndo} or `null`.
          */
         ref(): IndexEntryResolveUndo | null;
         /**
@@ -10165,9 +10848,13 @@ export namespace Ggit {
         unref(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MailmapClass = typeof Mailmap;
     /**
      * Represents the options used when merging.
+     * @gir-type Struct
      */
     class MergeOptions {
         static $gtype: GObject.GType<MergeOptions>;
@@ -10181,8 +10868,8 @@ export namespace Ggit {
         // Methods
 
         /**
-         * Copies `merge_options` into a newly allocated #GgitMergeOptions.
-         * @returns a newly allocated #GgitMergeOptions or %NULL.
+         * Copies `merge_options` into a newly allocated {@link Ggit.MergeOptions}.
+         * @returns a newly allocated {@link Ggit.MergeOptions} or `null`.
          */
         copy(): MergeOptions | null;
         /**
@@ -10205,7 +10892,7 @@ export namespace Ggit {
          */
         get_flags(): MergeFlags;
         /**
-         * Get the rename threshold (defaults to 50). If %GGIT_MERGE_TREE_FIND_RENAMES
+         * Get the rename threshold (defaults to 50). If `GGIT_MERGE_TREE_FIND_RENAMES`
          * is enabled, added files will be compared with deleted files to
          * determine their similarity. Files that are more similar than the rename
          * threshold (percentage-wise) will be treated as a rename.
@@ -10214,7 +10901,7 @@ export namespace Ggit {
         get_rename_threshold(): number;
         /**
          * Get the similarity metric.
-         * @returns the similarity metric, or %NULL.
+         * @returns the similarity metric, or `null`.
          */
         get_similarity_metric(): DiffSimilarityMetric | null;
         /**
@@ -10234,9 +10921,12 @@ export namespace Ggit {
          * @param file_flags the file flags.
          */
         set_file_flags(file_flags: MergeFileFlags | null): void;
+        /**
+         * @param flags
+         */
         set_flags(flags: MergeFlags | null): void;
         /**
-         * Set the rename threshold (defaults to 50). If %GGIT_MERGE_TREE_FIND_RENAMES
+         * Set the rename threshold (defaults to 50). If `GGIT_MERGE_TREE_FIND_RENAMES`
          * is enabled, added files will be compared with deleted files to
          * determine their similarity. Files that are more similar than the rename
          * threshold (percentage-wise) will be treated as a rename.
@@ -10244,8 +10934,8 @@ export namespace Ggit {
          */
         set_rename_threshold(rename_threshold: number): void;
         /**
-         * Set the similarity metric, or %NULL for the default similarity metric.
-         * @param metric a #GgitSimilarityMetric.
+         * Set the similarity metric, or `null` for the default similarity metric.
+         * @param metric a `GgitSimilarityMetric`.
          */
         set_similarity_metric(metric: DiffSimilarityMetric): void;
         /**
@@ -10257,9 +10947,13 @@ export namespace Ggit {
         set_target_limit(target_limit: number): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type NativeClass = typeof Native;
     /**
      * Represents a note object.
+     * @gir-type Struct
      */
     abstract class Note {
         static $gtype: GObject.GType<Note>;
@@ -10268,18 +10962,18 @@ export namespace Ggit {
 
         /**
          * Gets the note object's id.
-         * @returns the object's id or %NULL.
+         * @returns the object's id or `null`.
          */
         get_id(): OId | null;
         /**
          * Gets the note message.
-         * @returns the note message or %NULL.
+         * @returns the note message or `null`.
          */
         get_message(): string | null;
         /**
          * Atomically increments the reference count of `note` by one.
          * This function is MT-safe and may be called from any thread.
-         * @returns a #GgitNote or %NULL.
+         * @returns a {@link Ggit.Note} or `null`.
          */
         ref(): Note | null;
         /**
@@ -10291,6 +10985,7 @@ export namespace Ggit {
 
     /**
      * Represents a unique ID of any object.
+     * @gir-type Struct
      */
     class OId {
         static $gtype: GObject.GType<OId>;
@@ -10306,20 +11001,20 @@ export namespace Ggit {
         // Methods
 
         /**
-         * Compare two #GgitOId structures.
-         * @param b second #GgitOId.
+         * Compare two {@link Ggit.OId} structures.
+         * @param b second {@link Ggit.OId}.
          * @returns <0, 0, >0 if a < b, a == b, a > b.
          */
         compare(b: OId): number;
         /**
-         * Copies `oid` into a newly allocated #GgitOId.
-         * @returns a newly allocated #GgitOId.
+         * Copies `oid` into a newly allocated {@link Ggit.OId}.
+         * @returns a newly allocated {@link Ggit.OId}.
          */
         copy(): OId | null;
         /**
-         * Compares two #GgitOId for equality.
-         * @param b a #GgitOId.
-         * @returns %TRUE if @a and @b are equal, %FALSE otherwise
+         * Compares two {@link Ggit.OId} for equality.
+         * @param b a {@link Ggit.OId}.
+         * @returns `true` if `a` and `b` are equal, `false` otherwise
          */
         equal(b: OId): boolean;
         /**
@@ -10330,7 +11025,7 @@ export namespace Ggit {
          * Check whether the object id has a given prefix. Note that the prefix is
          * specified in hexadecimal ASCII.
          * @param prefix a prefix.
-         * @returns %TRUE if the id has the given prefix, %FALSE otherwise.
+         * @returns `true` if the id has the given prefix, `false` otherwise.
          */
         has_prefix(prefix: string): boolean;
         /**
@@ -10340,21 +11035,31 @@ export namespace Ggit {
         hash(): number;
         /**
          * Get whether the oid contains only zeros.
-         * @returns %TRUE if the oid contains only zeros, %FALSE otherwise.
+         * @returns `true` if the oid contains only zeros, `false` otherwise.
          */
         is_zero(): boolean;
         /**
          * Converts `oid` into a readable string.
-         * @returns a newly allocated string representing @oid or %NULL.
+         * @returns a newly allocated string representing `oid` or `null`.
          */
         to_string(): string | null;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ObjectClass = typeof Object;
+    /**
+     * @gir-type Alias
+     */
     type ObjectFactoryBaseClass = typeof ObjectFactoryBase;
+    /**
+     * @gir-type Alias
+     */
     type ObjectFactoryClass = typeof ObjectFactory;
     /**
      * Represents a patch object.
+     * @gir-type Struct
      */
     class Patch {
         static $gtype: GObject.GType<Patch>;
@@ -10383,18 +11088,18 @@ export namespace Ggit {
 
         /**
          * Get the diff delta corresponding to the patch.
-         * @returns the #GgitDiffDelta of the patch or %NULL.
+         * @returns the {@link Ggit.DiffDelta} of the patch or `null`.
          */
         get_delta(): DiffDelta | null;
         /**
-         * Get the `idx'`th hunk in the patch.
+         * Get the `idx`'th hunk in the patch.
          * @param idx the hunk index.
-         * @returns a new #GgitDiffHunk or %NULL on error.
+         * @returns a new {@link Ggit.DiffHunk} or `null` on error.
          */
         get_hunk(idx: number): DiffHunk | null;
         /**
          * Get the line statistics of the patch.
-         * @returns %TRUE if successfull, %FALSE otherwise.
+         * @returns `true` if successfull, `false` otherwise.
          */
         get_line_stats(): [boolean, number, number, number];
         /**
@@ -10411,18 +11116,18 @@ export namespace Ggit {
         /**
          * Atomically increments the reference count of `patch` by one.
          * This function is MT-safe and may be called from any thread.
-         * @returns a #GgitPatch or %NULL.
+         * @returns a {@link Ggit.Patch} or `null`.
          */
         ref(): Patch | null;
         /**
          * Write the contents of a patch to the provided stream.
-         * @param stream a #GOutputStream.
-         * @returns %TRUE if the patch was written successfully, %FALSE otherwise.
+         * @param stream a {@link Gio.OutputStream}.
+         * @returns `true` if the patch was written successfully, `false` otherwise.
          */
         to_stream(stream: Gio.OutputStream): boolean;
         /**
          * Gets the content of a patch as a single diff text.
-         * @returns the content of a patch as a single diff text or %NULL.
+         * @returns the content of a patch as a single diff text or `null`.
          */
         to_string(): string | null;
         /**
@@ -10432,11 +11137,21 @@ export namespace Ggit {
         unref(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ProxyOptionsClass = typeof ProxyOptions;
+    /**
+     * @gir-type Alias
+     */
     type PushOptionsClass = typeof PushOptions;
+    /**
+     * @gir-type Alias
+     */
     type RebaseClass = typeof Rebase;
     /**
      * Represents a rebase operation.
+     * @gir-type Struct
      */
     abstract class RebaseOperation {
         static $gtype: GObject.GType<RebaseOperation>;
@@ -10446,24 +11161,24 @@ export namespace Ggit {
         /**
          * Gets the executable the user has requested be run.  This will only
          * be populated for operations of type `GGIT_REBASE_OPERATION_EXEC`.
-         * @returns the executable the user has requested be run or %NULL.
+         * @returns the executable the user has requested be run or `null`.
          */
         get_exec(): string | null;
         /**
          * Gets the commit ID being cherry-picked. This will be populated for
          * all operations except those of type `GGIT_REBASE_OPERATION_EXEC`.
-         * @returns the commit ID being cherry-picked or %NULL.
+         * @returns the commit ID being cherry-picked or `null`.
          */
         get_id(): OId | null;
         /**
          * Gets the type of rebase operation.
-         * @returns a #GgitRebaseOperationType.
+         * @returns a {@link Ggit.RebaseOperationType}.
          */
         get_operation_type(): RebaseOperationType;
         /**
          * Atomically increments the reference count of `rebase_operation` by one.
          * This function is MT-safe and may be called from any thread.
-         * @returns a newly allocated #GgitRebaseOperation or %NULL.
+         * @returns a newly allocated {@link Ggit.RebaseOperation} or `null`.
          */
         ref(): RebaseOperation | null;
         /**
@@ -10475,6 +11190,7 @@ export namespace Ggit {
 
     /**
      * Represents the options used when rebasing.
+     * @gir-type Struct
      */
     class RebaseOptions {
         static $gtype: GObject.GType<RebaseOptions>;
@@ -10488,8 +11204,8 @@ export namespace Ggit {
         // Methods
 
         /**
-         * Copies `rebase_options` into a newly allocated #GgitRebaseOptions.
-         * @returns a newly allocated #GgitRebaseOptions or %NULL.
+         * Copies `rebase_options` into a newly allocated {@link Ggit.RebaseOptions}.
+         * @returns a newly allocated {@link Ggit.RebaseOptions} or `null`.
          */
         copy(): RebaseOptions | null;
         /**
@@ -10497,8 +11213,8 @@ export namespace Ggit {
          */
         free(): void;
         /**
-         * Get the checkout options object or %NULL if not set.
-         * @returns the checkout options or %NULL.
+         * Get the checkout options object or `null` if not set.
+         * @returns the checkout options or `null`.
          */
         get_checkout_options(): CheckoutOptions | null;
         /**
@@ -10508,13 +11224,16 @@ export namespace Ggit {
         get_quiet(): boolean;
         /**
          * Gets the the name of the notes reference used to rewrite notes for rebased
-         * commits when finishing the rebase or %NULL if not set.
-         * @returns the name of the notes reference or %NULL.
+         * commits when finishing the rebase or `null` if not set.
+         * @returns the name of the notes reference or `null`.
          */
         get_rewrite_notes_ref(): string | null;
+        /**
+         * @param checkout_options
+         */
         set_checkout_options(checkout_options: CheckoutOptions): void;
         /**
-         * Used by ggit_rebase_init(), this will instruct other clients working
+         * Used by `ggit_rebase_init()`, this will instruct other clients working
          * on this rebase that you want a quiet rebase experience, which they
          * may choose to provide in an application-specific manner.  This has no
          * effect upon libgit2-glib directly, but is provided for interoperability
@@ -10523,20 +11242,24 @@ export namespace Ggit {
          */
         set_quiet(quiet: boolean): void;
         /**
-         * Used by ggit_rebase_finish(), this is the name of the notes reference
+         * Used by `ggit_rebase_finish()`, this is the name of the notes reference
          * used to rewrite notes for rebased commits when finishing the rebase;
-         * if %NULL, the contents of the configuration option `notes.rewriteRef`
+         * if `null`, the contents of the configuration option `notes.rewriteRef`
          * is examined, unless the configuration option `notes.rewrite.rebase`
-         * is set to false.  If `notes.rewriteRef` is also %NULL, notes will
+         * is set to false.  If `notes.rewriteRef` is also `null`, notes will
          * not be rewritten.
          * @param rewrite_notes_ref the name of the notes reference.
          */
         set_rewrite_notes_ref(rewrite_notes_ref: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RefClass = typeof Ref;
     /**
      * Reprensents a git reference specification.
+     * @gir-type Struct
      */
     abstract class RefSpec {
         static $gtype: GObject.GType<RefSpec>;
@@ -10544,13 +11267,13 @@ export namespace Ggit {
         // Methods
 
         /**
-         * Gets the `refspec'`s destination.
-         * @returns the refspec's destination or %NULL.
+         * Gets the `refspec`'s destination.
+         * @returns the refspec's destination or `null`.
          */
         get_destination(): string | null;
         /**
-         * Gets the `refspec'`s source.
-         * @returns the refspec's source or %NULL.
+         * Gets the `refspec`'s source.
+         * @returns the refspec's source or `null`.
          */
         get_source(): string | null;
         /**
@@ -10561,7 +11284,7 @@ export namespace Ggit {
         /**
          * Atomically increments the reference count of `refspec` by one.
          * This function is MT-safe and may be called from any thread.
-         * @returns a #GgitRefSpec or %NULL.
+         * @returns a {@link Ggit.RefSpec} or `null`.
          */
         ref(): RefSpec | null;
         /**
@@ -10573,6 +11296,7 @@ export namespace Ggit {
 
     /**
      * Represents a reflog.
+     * @gir-type Struct
      */
     abstract class Reflog {
         static $gtype: GObject.GType<Reflog>;
@@ -10581,10 +11305,10 @@ export namespace Ggit {
 
         /**
          * Creates a reflog entry.
-         * @param oid a #GgitOId.
-         * @param committer a #GgitSignature.
+         * @param oid a {@link Ggit.OId}.
+         * @param committer a {@link Ggit.Signature}.
          * @param message the message.
-         * @returns %TRUE if the reflog was successfully created, or %FALSE if error is set.
+         * @returns `true` if the reflog was successfully created, or `false` if error is set.
          */
         append(oid: OId, committer: Signature, message: string): boolean;
         /**
@@ -10593,19 +11317,19 @@ export namespace Ggit {
          */
         get_entry_count(): number;
         /**
-         * Gets the #GgitReflogEntry at `idx` in `reflog,` or %NULL if not found.
+         * Gets the {@link Ggit.ReflogEntry} at `idx` in `reflog`, or `null` if not found.
          * @param idx the position to lookup.
-         * @returns the reflog entry at the index, or %NULL if not found.
+         * @returns the reflog entry at the index, or `null` if not found.
          */
         get_entry_from_index(idx: number): ReflogEntry | null;
         /**
          * Atomically increments the reference count of `reflog` by one.
          * This function is MT-safe and may be called from any thread.
-         * @returns the passed in #GgitReflog or %NULL.
+         * @returns the passed in {@link Ggit.Reflog} or `null`.
          */
         ref(): Reflog | null;
         /**
-         * Renames the reflog for to `new_name,` on error `error` is set.
+         * Renames the reflog for to `new_name`, on error `error` is set.
          * @param new_name the new name of the reference.
          */
         rename(new_name: string): boolean;
@@ -10616,13 +11340,14 @@ export namespace Ggit {
         unref(): void;
         /**
          * Write the reflog to disk.
-         * @returns %TRUE if the reflog was successfully written, or %FALSE on error.
+         * @returns `true` if the reflog was successfully written, or `false` on error.
          */
         write(): boolean;
     }
 
     /**
      * Represents a reflog entry.
+     * @gir-type Struct
      */
     abstract class ReflogEntry {
         static $gtype: GObject.GType<ReflogEntry>;
@@ -10630,29 +11355,29 @@ export namespace Ggit {
         // Methods
 
         /**
-         * Gets the committer as a #GgitSignature.
-         * @returns the committer or %NULL.
+         * Gets the committer as a {@link Ggit.Signature}.
+         * @returns the committer or `null`.
          */
         get_committer(): Signature | null;
         /**
          * Gets the message.
-         * @returns the message or %NULL.
+         * @returns the message or `null`.
          */
         get_message(): string | null;
         /**
-         * Gets the new #GgitOId.
-         * @returns the new oid or %NULL.
+         * Gets the new {@link Ggit.OId}.
+         * @returns the new oid or `null`.
          */
         get_new_id(): OId | null;
         /**
-         * Gets the old #GgitOId.
-         * @returns the old oid or %NULL.
+         * Gets the old {@link Ggit.OId}.
+         * @returns the old oid or `null`.
          */
         get_old_id(): OId | null;
         /**
          * Atomically increments the reference count of `reflog_entry` by one.
          * This function is MT-safe and may be called from any thread.
-         * @returns the passed in #GgitReflogEntry or %NULL.
+         * @returns the passed in {@link Ggit.ReflogEntry} or `null`.
          */
         ref(): ReflogEntry | null;
         /**
@@ -10662,10 +11387,17 @@ export namespace Ggit {
         unref(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RemoteCallbacksClass = typeof RemoteCallbacks;
+    /**
+     * @gir-type Alias
+     */
     type RemoteClass = typeof Remote;
     /**
      * Represents a git remote head.
+     * @gir-type Struct
      */
     abstract class RemoteHead {
         static $gtype: GObject.GType<RemoteHead>;
@@ -10674,17 +11406,17 @@ export namespace Ggit {
 
         /**
          * Get the local oid of the remote head.
-         * @returns the local oid or %NULL.
+         * @returns the local oid or `null`.
          */
         get_local_oid(): OId | null;
         /**
          * Get the remote head name.
-         * @returns the remote head name or %NULL.
+         * @returns the remote head name or `null`.
          */
         get_name(): string | null;
         /**
          * Get the remote oid of the remote head.
-         * @returns the remote oid or %NULL.
+         * @returns the remote oid or `null`.
          */
         get_oid(): OId | null;
         /**
@@ -10696,9 +11428,13 @@ export namespace Ggit {
         unref(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RepositoryClass = typeof Repository;
     /**
      * Represents the options used when reverting.
+     * @gir-type Struct
      */
     class RevertOptions {
         static $gtype: GObject.GType<RevertOptions>;
@@ -10716,8 +11452,8 @@ export namespace Ggit {
         // Methods
 
         /**
-         * Copies `revert_options` into a newly allocated #GgitRevertOptions.
-         * @returns a newly allocated #GgitRevertOptions or %NULL.
+         * Copies `revert_options` into a newly allocated {@link Ggit.RevertOptions}.
+         * @returns a newly allocated {@link Ggit.RevertOptions} or `null`.
          */
         copy(): RevertOptions | null;
         /**
@@ -10726,10 +11462,17 @@ export namespace Ggit {
         free(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RevisionWalkerClass = typeof RevisionWalker;
+    /**
+     * @gir-type Alias
+     */
     type SignatureClass = typeof Signature;
     /**
      * Represents the options used when creating getting file status.
+     * @gir-type Struct
      */
     class StatusOptions {
         static $gtype: GObject.GType<StatusOptions>;
@@ -10743,8 +11486,8 @@ export namespace Ggit {
         // Methods
 
         /**
-         * Copies `status_options` into a newly allocated #GgitStatusOptions.
-         * @returns a newly allocated #GgitStatusOptions or %NULL.
+         * Copies `status_options` into a newly allocated {@link Ggit.StatusOptions}.
+         * @returns a newly allocated {@link Ggit.StatusOptions} or `null`.
          */
         copy(): StatusOptions | null;
         /**
@@ -10755,6 +11498,7 @@ export namespace Ggit {
 
     /**
      * Represents a git submodule.
+     * @gir-type Struct
      */
     abstract class Submodule {
         static $gtype: GObject.GType<Submodule>;
@@ -10768,50 +11512,50 @@ export namespace Ggit {
         get_fetch_recurse(): boolean;
         get_head_id(): OId;
         /**
-         * Gets a #GgitSubmoduleIgnore. See see gitmodules(5) ignore.
-         * @returns the #GgitSubmoduleIgnore.
+         * Gets a {@link Ggit.SubmoduleIgnore}. See see gitmodules(5) ignore.
+         * @returns the {@link Ggit.SubmoduleIgnore}.
          */
         get_ignore(): SubmoduleIgnore;
         /**
-         * Gets the OID for the submodule in the index or %NULL if there is no index.
-         * @returns the OID for the submodule in the index or %NULL.
+         * Gets the OID for the submodule in the index or `null` if there is no index.
+         * @returns the OID for the submodule in the index or `null`.
          */
         get_index_id(): OId | null;
         /**
          * Gets the name of the submodule from .gitmodules.
-         * @returns the name of the submodule from .gitmodules or %NULL.
+         * @returns the name of the submodule from .gitmodules or `null`.
          */
         get_name(): string | null;
         /**
          * Gets the containing repository for a submodule.
-         * @returns the containing repository for a submodule or %NULL.
+         * @returns the containing repository for a submodule or `null`.
          */
         get_owner(): Repository | null;
         /**
          * Gets the path to the submodule from the repo working directory.
          * It is almost always the same as the name.
-         * See ggit_submodule_get_name().
-         * @returns the path to the submodule from the repo working directory or %NULL.
+         * See `ggit_submodule_get_name()`.
+         * @returns the path to the submodule from the repo working directory or `null`.
          */
         get_path(): string | null;
         /**
-         * Gets a #GgitSubmoduleUpdate. See see gitmodules(5) update.
-         * @returns the #GgitSubmoduleUpdate.
+         * Gets a {@link Ggit.SubmoduleUpdate}. See see gitmodules(5) update.
+         * @returns the {@link Ggit.SubmoduleUpdate}.
          */
         get_update(): SubmoduleUpdate;
         /**
-         * Gets the url for the submodule or %NULL if the submodule has been deleted
+         * Gets the url for the submodule or `null` if the submodule has been deleted
          * but not yet committed.
-         * @returns the url for the submodule or %NULL.
+         * @returns the url for the submodule or `null`.
          */
         get_url(): string | null;
         /**
          * Gets the OID for the submodule in the current working directory.
          * Corresponds to looking up 'HEAD' in the checked out submodule.
          * If there are pending changes in the index or anything
-         * else, this won't notice that.  You should call ggit_submodule_status()
+         * else, this won't notice that.  You should call `ggit_submodule_status()`
          * for a more complete picture about the state of the working directory.
-         * @returns the OID for the submodule in the current working directory or %NULL.
+         * @returns the OID for the submodule in the current working directory or `null`.
          */
         get_workdir_id(): OId | null;
         /**
@@ -10824,15 +11568,15 @@ export namespace Ggit {
         init(overwrite: boolean): void;
         /**
          * Open the repository for a submodule. Multiple calls to this function
-         * will return distinct #GgitRepository objects. Only submodules which are
+         * will return distinct {@link Ggit.Repository} objects. Only submodules which are
          * checked out in the working directory can be opened.
-         * @returns the opened #GgitRepository or %NULL in case of an                           error.
+         * @returns the opened {@link Ggit.Repository} or `null` in case of an                           error.
          */
         open(): Repository | null;
         /**
          * Atomically increments the reference count of `submodule` by one.
          * This function is MT-safe and may be called from any thread.
-         * @returns the passed in #GgitSubmodule or %NULL.
+         * @returns the passed in {@link Ggit.Submodule} or `null`.
          */
         ref(): Submodule | null;
         /**
@@ -10860,15 +11604,22 @@ export namespace Ggit {
          * (e.g. because fetchRecurseSubmodules isn't set), then the submodule is
          * fetched using the fetch options supplied in options.
          * @param init If the submodule is not initialized, setting this flag to true        will initialize the submodule before updating. Otherwise, this        will return an error if attempting to update an uninitialzed        repository. but setting this to true forces them to be updated.
-         * @param options a #GgitSubmoduleUpdateOptions object.
+         * @param options a {@link Ggit.SubmoduleUpdateOptions} object.
          */
         update(init: boolean, options: SubmoduleUpdateOptions): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SubmoduleUpdateOptionsClass = typeof SubmoduleUpdateOptions;
+    /**
+     * @gir-type Alias
+     */
     type TagClass = typeof Tag;
     /**
      * Represents transfering progress.
+     * @gir-type Struct
      */
     abstract class TransferProgress {
         static $gtype: GObject.GType<TransferProgress>;
@@ -10876,8 +11627,8 @@ export namespace Ggit {
         // Methods
 
         /**
-         * Copies `progress` into a newly allocated #GgitTransferProgress.
-         * @returns a newly allocated #GgitTransferProgress or %NULL.
+         * Copies `progress` into a newly allocated {@link Ggit.TransferProgress}.
+         * @returns a newly allocated {@link Ggit.TransferProgress} or `null`.
          */
         copy(): TransferProgress | null;
         /**
@@ -10906,10 +11657,17 @@ export namespace Ggit {
         get_total_objects(): number;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TreeBuilderClass = typeof TreeBuilder;
+    /**
+     * @gir-type Alias
+     */
     type TreeClass = typeof Tree;
     /**
      * Represents an entry in a tree.
+     * @gir-type Struct
      */
     abstract class TreeEntry {
         static $gtype: GObject.GType<TreeEntry>;
@@ -10917,29 +11675,29 @@ export namespace Ggit {
         // Methods
 
         /**
-         * Gets the #GgitFileMode of a tree entry.
-         * @returns the #GgitFileMode of a tree entry.
+         * Gets the {@link Ggit.FileMode} of a tree entry.
+         * @returns the {@link Ggit.FileMode} of a tree entry.
          */
         get_file_mode(): FileMode;
         /**
-         * Get the #GgitOId of the entry.
-         * @returns a #GgitOId or %NULL.
+         * Get the {@link Ggit.OId} of the entry.
+         * @returns a {@link Ggit.OId} or `null`.
          */
         get_id(): OId | null;
         /**
          * Get the name of the tree entry.
-         * @returns the name of the tree entry or %NULL.
+         * @returns the name of the tree entry or `null`.
          */
         get_name(): string | null;
         /**
          * Get the type of the tree entry object.
-         * @returns a #GType.
+         * @returns a {@link GObject.GType}.
          */
         get_object_type(): GObject.GType;
         /**
          * Atomically increments the reference count of `entry` by one.
          * This function is MT-safe and may be called from any thread.
-         * @returns a #GgitTreeEntry or %NULL.
+         * @returns a {@link Ggit.TreeEntry} or `null`.
          */
         ref(): TreeEntry | null;
         /**

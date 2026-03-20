@@ -2,6 +2,8 @@
     "entryPoints": ["./upowerglib-1.0.d.ts"],
     "readme": "./README.md",
     "name": "UPowerGlib-1.0",
-    "tsconfig": "./tsconfig.json"
+    "tsconfig": "./tsconfig.json",
+    "skipErrorChecking": true,
+    "highlightLanguages": ["typescript", "javascript", "c", "cpp", "xml", "bash", "json", "css"]
 }
 

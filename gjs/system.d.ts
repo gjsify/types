@@ -5,7 +5,7 @@ import type GObject from '@girs/gobject-2.0';
  * line. In C and other languages, this information is contained in the first element of
  * the platform's equivalent of argv, but GJS's ARGV only contains the
  * subsequent command-line arguments. In other words, `ARGV[0]` in GJS is the same as `argv[1]` in C.
- * @version Gjs 1.68
+ * @since 1.68
  */
 export const programInvocationName: string;
 
@@ -16,7 +16,7 @@ export const version: number;
 
 /**
  * The full path of the executed program.
- * @version Gjs 1.68
+ * @since 1.68
  */
 export const programPath: string | null;
 
@@ -24,7 +24,7 @@ export const programPath: string | null;
  * A list of arguments passed to the current process.
  * This is effectively an alias for the global `ARGV`, which is misleading in that
  * it is not equivalent to the platform'`s` argv.
- * @version Gjs 1.68
+ * @since 1.68
  */
 export const programArgs: string[];
 
@@ -46,7 +46,7 @@ export function addressOf(o: object): string;
  * See also {@link addressOf}
  * @param o Any {@link GObject.Object}-derived instance
  * @returns A hexadecimal string (e.g. `0xb4f170f0`)
- * @version Gjs 1.58
+ * @since 1.58
  */
 export function addressOfGObject(o: GObject.Object): string;
 
@@ -110,7 +110,7 @@ export function dumpHeap(path?: string): void;
  * Dump internal garbage collector statistics. If `path` is not given, GJS will
  * write the contents to `stdout`.
  * @param path Optional file path
- * @version Gjs 1.70
+ * @since 1.70
  * @example Output:
  * ```json
  * {

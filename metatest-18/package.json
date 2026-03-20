@@ -1,0 +1,69 @@
+{
+    "name": "@girs/metatest-18",
+    "version": "18.0.0-4.0.0-beta.41",
+    "description": "GJS TypeScript type definitions for MetaTest-18, generated from library version 18.0.0",
+    "type": "module",
+    "module": "metatest-18.js",
+    "main": "metatest-18.js",
+    "exports": {
+      "./ambient": {
+        "types": "./metatest-18-ambient.d.ts",
+        "import": "./metatest-18-ambient.js",
+        "default": "./metatest-18-ambient.js"
+      },
+      "./import": {
+        "types": "./metatest-18-import.d.ts",
+        "import": "./metatest-18-import.js",
+        "default": "./metatest-18-import.js"
+      },
+      "./metatest-18": {
+        "types": "./metatest-18.d.ts",
+        "import": "./metatest-18.js",
+        "default": "./metatest-18.js"
+      },
+      ".": {
+        "types": "./index.d.ts",
+        "import": "./index.js",
+        "default": "./index.js"
+      }
+    },
+    "scripts": {
+      "test": "tsc --project tsconfig.json"
+    },
+    "dependencies": {
+      "@girs/gjs": "4.0.0-beta.41",
+      "@girs/xlib-2.0": "2.0.0-4.0.0-beta.41",
+      "@girs/xfixes-4.0": "4.0.0-4.0.0-beta.41",
+      "@girs/mtk-18": "18.0.0-4.0.0-beta.41",
+      "@girs/graphene-1.0": "1.0.0-4.0.0-beta.41",
+      "@girs/gobject-2.0": "2.88.0-4.0.0-beta.41",
+      "@girs/glib-2.0": "2.88.0-4.0.0-beta.41",
+      "@girs/meta-18": "18.0.0-4.0.0-beta.41",
+      "@girs/gio-2.0": "2.88.0-4.0.0-beta.41",
+      "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.41",
+      "@girs/gdesktopenums-3.0": "3.0.0-4.0.0-beta.41",
+      "@girs/cogl-18": "18.0.0-4.0.0-beta.41",
+      "@girs/gl-1.0": "1.0.0-4.0.0-beta.41",
+      "@girs/clutter-18": "18.0.0-4.0.0-beta.41",
+      "@girs/pango-1.0": "1.57.0-4.0.0-beta.41",
+      "@girs/cairo-1.0": "1.0.0-4.0.0-beta.41",
+      "@girs/harfbuzz-0.0": "12.3.2-4.0.0-beta.41",
+      "@girs/freetype2-2.0": "2.0.0-4.0.0-beta.41",
+      "@girs/atk-1.0": "2.60.0-4.0.0-beta.41"    },
+    "devDependencies": {
+      "typescript": "*"
+    },
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "MetaTest-18"],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/gjsify/types.git"
+    },
+    "bugs": {
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/metatest-18#readme"
+}
+
+

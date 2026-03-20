@@ -14,7 +14,6 @@ import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
-import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type AppStream from '@girs/appstream-1.0';
 
 export namespace AppStreamCompose {
@@ -23,41 +22,8 @@ export namespace AppStreamCompose {
      */
 
     /**
-     * A drawing error.
-     */
-    class CanvasError extends GLib.Error {
-        static $gtype: GObject.GType<GLib.Error>;
-
-        // Static fields
-
-        /**
-         * Generic failure.
-         */
-        static FAILED: number;
-        /**
-         * Drawing operation failed.
-         */
-        static DRAWING: number;
-        /**
-         * Issue with font or font selection.
-         */
-        static FONT: number;
-        /**
-         * The requested action was not supported.
-         */
-        static UNSUPPORTED: number;
-
-        // Constructors
-
-        constructor(options: { message: string; code: number });
-
-        // Static methods
-
-        static quark(): GLib.Quark;
-    }
-
-    /**
      * A metadata composition error.
+     * @gir-type Struct
      */
     class ComposeError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -78,12 +44,16 @@ export namespace AppStreamCompose {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace IconState {
         export const $gtype: GObject.GType<IconState>;
     }
 
     /**
      * Designated state for an icon of a given size.
+     * @gir-type Enum
      */
     enum IconState {
         /**
@@ -106,6 +76,7 @@ export namespace AppStreamCompose {
 
     /**
      * An image processing error.
+     * @gir-type Struct
      */
     class ImageError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -130,12 +101,16 @@ export namespace AppStreamCompose {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ImageFormat {
         export const $gtype: GObject.GType<ImageFormat>;
     }
 
     /**
      * File format of an image.
+     * @gir-type Enum
      */
     enum ImageFormat {
         /**
@@ -147,13 +122,17 @@ export namespace AppStreamCompose {
          */
         PNG,
         /**
-         * JPEG format
+         * JPEG-XL format
          */
-        JPEG,
+        JXL,
         /**
-         * GIF format
+         * AVIF format
          */
-        GIF,
+        AVIF,
+        /**
+         * WebP format
+         */
+        WEBP,
         /**
          * SVG format
          */
@@ -163,13 +142,13 @@ export namespace AppStreamCompose {
          */
         SVGZ,
         /**
-         * WebP format
+         * JPEG format
          */
-        WEBP,
+        JPEG,
         /**
-         * AVIF format
+         * GIF format
          */
-        AVIF,
+        GIF,
         /**
          * XPM format
          */
@@ -188,7 +167,9 @@ export namespace AppStreamCompose {
      * @param checksum a MD5 hashsum as string generated from the component's combined metadata.
      */
     function build_component_global_id(component_id: string, checksum: string): string;
-    function canvas_error_quark(): GLib.Quark;
+    /**
+     * @returns An error quark.
+     */
     function compose_error_quark(): GLib.Quark;
     /**
      * Generate a filename from a web-URL that can be used to store the
@@ -199,14 +180,14 @@ export namespace AppStreamCompose {
     /**
      * Register a new hint tag. If a previous tag with the given name
      * already existed, the existing tag will not be replaced unless
-     * `overrideExisting` is set to %TRUE.
+     * `overrideExisting` is set to `true`.
      * Please be careful when overriding tags! Tag severities can not
      * be lowered by overriding a tag.
      * @param tag the tag-ID to add
-     * @param severity the tag severity as #AsIssueSeverity
+     * @param severity the tag severity as {@link AppStream.IssueSeverity}
      * @param explanation the tag explanatory message
      * @param overrideExisting whether an existing tag should be replaced
-     * @returns %TRUE if the tag was registered and did not exist previously.
+     * @returns `true` if the tag was registered and did not exist previously.
      */
     function globals_add_hint_tag(
         tag: string,
@@ -247,13 +228,13 @@ export namespace AppStreamCompose {
     /**
      * Retrieve the explanation template of the given hint tag.
      * @param tag
-     * @returns An explanation template, or %NULL if the tag was not found.
+     * @returns An explanation template, or `null` if the tag was not found.
      */
     function globals_hint_tag_explanation(tag: string): string;
     /**
      * Retrieve the severity of the given hint tag.
      * @param tag
-     * @returns An #AsIssueSeverity or %AS_ISSUE_SEVERITY_UNKNOWN if the tag did not exist          or has an unknown severity.
+     * @returns An {@link AppStream.IssueSeverity} or {@link AppStream.IssueSeverity.UNKNOWN} if the tag did not exist          or has an unknown severity.
      */
     function globals_hint_tag_severity(tag: string): AppStream.IssueSeverity;
     /**
@@ -279,49 +260,69 @@ export namespace AppStreamCompose {
     /**
      * Converts the text representation to an enumerated value.
      * @param state_str the string.
-     * @returns a #AscIconState
+     * @returns a {@link AppStreamCompose.IconState}
      */
     function icon_state_from_string(state_str: string): IconState;
     /**
      * Converts the enumerated value to an text representation.
-     * @param istate the #AscIconState.
-     * @returns string version of @istate
+     * @param istate the {@link AppStreamCompose.IconState}.
+     * @returns string version of `istate`
      */
     function icon_state_to_string(istate: IconState | null): string;
+    /**
+     * @returns An error quark.
+     */
     function image_error_quark(): GLib.Quark;
     /**
      * Returns the image format type based on the given file's filename.
      * @param fname the filename.
-     * @returns a #AscImageFormat or %ASC_IMAGE_FORMAT_UNKNOWN for unknown
+     * @returns a {@link AppStreamCompose.ImageFormat} or {@link AppStreamCompose.ImageFormat.UNKNOWN} for unknown
      */
     function image_format_from_filename(fname: string): ImageFormat;
     /**
      * Converts the text representation to an enumerated value.
      * @param str the string.
-     * @returns a #AscImageFormat or %ASC_IMAGE_FORMAT_UNKNOWN for unknown
+     * @returns a {@link AppStreamCompose.ImageFormat} or {@link AppStreamCompose.ImageFormat.UNKNOWN} for unknown
      */
     function image_format_from_string(str: string): ImageFormat;
     /**
      * Converts the enumerated value to an text representation.
      * @param format the %AscImageFormat.
-     * @returns string version of @format
+     * @returns string version of `format`
      */
     function image_format_to_string(format: ImageFormat | null): string;
     /**
-     * Optimizes a PNG graphic for size with optipng, if its binary
-     * is available and this feature is enabled.
-     * @param fname Filename of the PNG image to optimize.
+     * Renders SVG data from a stream to a file in a specific format.
+     * @param stream Input stream with SVG data.
+     * @param width Target width.
+     * @param height Target height.
+     * @param format Target image format, e.g. {@link AppStreamCompose.ImageFormat.PNG}
+     * @param filename Filename to write to.
+     * @returns `true` for success
      */
-    function optimize_png(fname: string): boolean;
-    function pixbuf_blur(src: GdkPixbuf.Pixbuf, radius: number, iterations: number): void;
-    function pixbuf_sharpen(src: GdkPixbuf.Pixbuf, radius: number, amount: number): void;
+    function render_svg_to_file(
+        stream: Gio.InputStream,
+        width: number,
+        height: number,
+        format: ImageFormat | null,
+        filename: string,
+    ): boolean;
+    /**
+     * @gir-type Callback
+     */
     interface CheckMetadataEarlyFn {
         (cres: Result, unit: Unit): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace ComposeFlags {
         export const $gtype: GObject.GType<ComposeFlags>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum ComposeFlags {
         NONE,
         USE_THREADS,
@@ -339,12 +340,16 @@ export namespace AppStreamCompose {
         NO_PARTIAL_URLS,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ImageLoadFlags {
         export const $gtype: GObject.GType<ImageLoadFlags>;
     }
 
     /**
      * The flags used for loading images.
+     * @gir-type Flags
      */
     enum ImageLoadFlags {
         /**
@@ -365,12 +370,16 @@ export namespace AppStreamCompose {
         ALWAYS_RESIZE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ImageSaveFlags {
         export const $gtype: GObject.GType<ImageSaveFlags>;
     }
 
     /**
      * The flags used for saving images.
+     * @gir-type Flags
      */
     enum ImageSaveFlags {
         /**
@@ -395,75 +404,6 @@ export namespace AppStreamCompose {
         BLUR,
     }
 
-    namespace Canvas {
-        // Signal signatures
-        interface SignalSignatures extends GObject.Object.SignalSignatures {}
-
-        // Constructor properties interface
-
-        interface ConstructorProps extends GObject.Object.ConstructorProps {}
-    }
-
-    class Canvas extends GObject.Object {
-        static $gtype: GObject.GType<Canvas>;
-
-        /**
-         * Compile-time signal type information.
-         *
-         * This instance property is generated only for TypeScript type checking.
-         * It is not defined at runtime and should not be accessed in JS code.
-         * @internal
-         */
-        $signals: Canvas.SignalSignatures;
-
-        // Constructors
-
-        constructor(properties?: Partial<Canvas.ConstructorProps>, ...args: any[]);
-
-        _init(...args: any[]): void;
-
-        static ['new'](width: number, height: number): Canvas;
-
-        // Signals
-
-        connect<K extends keyof Canvas.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Canvas.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        connect_after<K extends keyof Canvas.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, Canvas.SignalSignatures[K]>,
-        ): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-        emit<K extends keyof Canvas.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<Canvas.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
-        emit(signal: string, ...args: any[]): void;
-
-        // Methods
-
-        /**
-         * Gets the canvas height.
-         */
-        get_height(): number;
-        /**
-         * Gets the canvas width.
-         */
-        get_width(): number;
-        /**
-         * Render an SVG graphic from the SVG data provided.
-         * @param stream SVG data input stream.
-         */
-        render_svg(stream: Gio.InputStream): boolean;
-        /**
-         * Save canvas to PNG file.
-         * @param fname Filename to save to.
-         */
-        save_png(fname: string): boolean;
-    }
-
     namespace Compose {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {}
@@ -473,6 +413,9 @@ export namespace AppStreamCompose {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Compose extends GObject.Object {
         static $gtype: GObject.GType<Compose>;
 
@@ -495,16 +438,19 @@ export namespace AppStreamCompose {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Compose.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Compose.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Compose.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Compose.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Compose.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Compose.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -530,8 +476,8 @@ export namespace AppStreamCompose {
          */
         add_flags(flags: ComposeFlags | null): void;
         /**
-         * Add an #AscUnit as data source for metadata processing.
-         * @param unit The #AscUnit to add
+         * Add an {@link AppStreamCompose.Unit} as data source for metadata processing.
+         * @param unit The {@link AppStreamCompose.Unit} to add
          */
         add_unit(unit: Unit): void;
         /**
@@ -542,17 +488,17 @@ export namespace AppStreamCompose {
         /**
          * Perform final validation of generated data for the specified
          * result container.
-         * @param result the #AscResult to finalize
+         * @param result the {@link AppStreamCompose.Result} to finalize
          */
         finalize_result(result: Result): void;
         /**
          * Perform final validation of generated data.
          * Calling this function is not necessary, unless the final check was explicitly
-         * disabled using the %ASC_COMPOSE_FLAG_NO_FINAL_CHECK flag.
+         * disabled using the {@link AppStreamCompose.ComposeFlags.NO_FINAL_CHECK} flag.
          */
         finalize_results(): void;
         /**
-         * Get the CA file used to verify peers with, or %NULL for default.
+         * Get the CA file used to verify peers with, or `null` for default.
          */
         get_cainfo(): string;
         /**
@@ -574,7 +520,7 @@ export namespace AppStreamCompose {
         /**
          * Get the policy for how icons should be distributed to
          * any AppStream clients.
-         * @returns an #AscIconPolicy
+         * @returns an {@link AppStreamCompose.IconPolicy}
          */
         get_icon_policy(): IconPolicy;
         /**
@@ -583,7 +529,7 @@ export namespace AppStreamCompose {
         get_icons_result_dir(): string;
         /**
          * Get the unit we use for locale processing
-         * @returns The unit used for locale processing, or %NULL for default.
+         * @returns The unit used for locale processing, or `null` for default.
          */
         get_locale_unit(): Unit | null;
         /**
@@ -594,7 +540,7 @@ export namespace AppStreamCompose {
         get_max_screenshot_size(): number;
         /**
          * Get the media base URL to be used for the generated data,
-         * or %NULL if no media is cached.
+         * or `null` if no media is cached.
          */
         get_media_baseurl(): string;
         /**
@@ -616,7 +562,7 @@ export namespace AppStreamCompose {
         get_results(): Result[];
         /**
          * Check if the last run generated any errors (which will cause metadata to be ignored).
-         * @returns %TRUE if we had errors.
+         * @returns `true` if we had errors.
          */
         has_errors(): boolean;
         /**
@@ -637,13 +583,13 @@ export namespace AppStreamCompose {
         /**
          * Process the registered units and generate catalog metadata from
          * found components.
-         * @param cancellable a #GCancellable.
-         * @returns The results, or %NULL on error
+         * @param cancellable a {@link Gio.Cancellable}.
+         * @returns The results, or `null` on error
          */
         run(cancellable?: Gio.Cancellable | null): Result[];
         /**
          * Set a CA file holding one or more certificates to verify peers with
-         * for download operations performed by this #AscCompose.
+         * for download operations performed by this {@link AppStreamCompose.Compose}.
          * @param cainfo a valid file path
          */
         set_cainfo(cainfo: string): void;
@@ -653,24 +599,24 @@ export namespace AppStreamCompose {
          * This can be used to ignore unwanted components early on.
          *
          * The callback function may be called from any thread, so it needs to ensure thread safety on its own.
-         * @param func the #AscCheckMetainfoLoadResultFn function to be called
+         * @param func the `AscCheckMetainfoLoadResultFn` function to be called
          */
         set_check_metadata_early_func(func: CheckMetadataEarlyFn): void;
         /**
          * Set an output location where generated metadata should be saved.
-         * If this is set to %NULL, no metadata will be saved.
+         * If this is set to `null`, no metadata will be saved.
          * @param dir the metadata save location.
          */
         set_data_result_dir(dir: string): void;
         /**
          * Set compose flags bitfield that controls the enabled features
-         * for this #AscCompose.
+         * for this {@link AppStreamCompose.Compose}.
          * @param flags The compose flags bitfield.
          */
         set_flags(flags: ComposeFlags | null): void;
         /**
          * Set the format kind of the catalog metadata that we should generate.
-         * @param kind The format, e.g. %AS_FORMAT_KIND_XML
+         * @param kind The format, e.g. {@link AppStream.FormatKind.XML}
          */
         set_format(kind: AppStream.FormatKind | null): void;
         /**
@@ -681,7 +627,7 @@ export namespace AppStreamCompose {
         set_hints_result_dir(dir: string): void;
         /**
          * Set an icon policy object, overriding the existing one.
-         * @param policy an #AscIconPolicy instance
+         * @param policy an {@link AppStreamCompose.IconPolicy} instance
          */
         set_icon_policy(policy: IconPolicy): void;
         /**
@@ -706,7 +652,7 @@ export namespace AppStreamCompose {
          */
         set_max_screenshot_size(size_bytes: number): void;
         /**
-         * Set the media base URL for the generated metadata. Can be %NULL if no media
+         * Set the media base URL for the generated metadata. Can be `null` if no media
          * should be cached and the original URLs should be kept.
          * @param url the media base URL.
          */
@@ -738,6 +684,9 @@ export namespace AppStreamCompose {
         interface ConstructorProps extends Unit.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class DirectoryUnit extends Unit {
         static $gtype: GObject.GType<DirectoryUnit>;
 
@@ -763,16 +712,19 @@ export namespace AppStreamCompose {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DirectoryUnit.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DirectoryUnit.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DirectoryUnit.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DirectoryUnit.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DirectoryUnit.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DirectoryUnit.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -801,6 +753,9 @@ export namespace AppStreamCompose {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Hint extends GObject.Object {
         static $gtype: GObject.GType<Hint>;
 
@@ -825,16 +780,19 @@ export namespace AppStreamCompose {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Hint.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Hint.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Hint.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Hint.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Hint.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Hint.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -862,7 +820,7 @@ export namespace AppStreamCompose {
         /**
          * Returns a list with the flattened key/value pairs for this hint.
          * Values are located in uneven list entries, following their keys in even list entries.
-         * @returns A flattened #GPtrArray with the key/value pairs.
+         * @returns A flattened {@link GLib.PtrArray} with the key/value pairs.
          */
         get_explanation_vars_list(): string[];
         /**
@@ -873,11 +831,14 @@ export namespace AppStreamCompose {
          * Gets the unique tag for the type of this hint.
          */
         get_tag(): string;
+        /**
+         * @returns `true` if this hint describes an error.
+         */
         is_error(): boolean;
         /**
          * Check if this hint is valid (it requires at least a tag and a severity
          * in order to be considered valid).
-         * @returns %TRUE if this hint is valid.
+         * @returns `true` if this hint is valid.
          */
         is_valid(): boolean;
         /**
@@ -906,6 +867,9 @@ export namespace AppStreamCompose {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class IconPolicy extends GObject.Object {
         static $gtype: GObject.GType<IconPolicy>;
 
@@ -928,16 +892,19 @@ export namespace AppStreamCompose {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof IconPolicy.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, IconPolicy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof IconPolicy.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, IconPolicy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof IconPolicy.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<IconPolicy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -955,12 +922,12 @@ export namespace AppStreamCompose {
          * Sets a designated state for an icon of the given size.
          * @param icon_size the size of the icon to set policy for (e.g. 64 for 64x64px icons)
          * @param icon_scale the icon scale factor, e.g. 1
-         * @param state the designated #AscIconState
+         * @param state the designated {@link AppStreamCompose.IconState}
          */
         set_policy(icon_size: number, icon_scale: number, state: IconState | null): void;
         /**
          * Converts the current icon policy into a textual representation.
-         * @returns The icon policy serialized into a string. Free with g_free()
+         * @returns The icon policy serialized into a string. Free with `g_free()`
          */
         to_string(): string;
     }
@@ -974,6 +941,9 @@ export namespace AppStreamCompose {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Image extends GObject.Object {
         static $gtype: GObject.GType<Image>;
 
@@ -997,25 +967,29 @@ export namespace AppStreamCompose {
         static new_from_data(
             data: any | null,
             len: number,
-            dest_size: number,
-            compressed: boolean,
+            dest_width: number,
+            dest_height: number,
             flags: ImageLoadFlags,
+            format_hint: ImageFormat,
         ): Image;
 
-        static new_from_file(fname: string, dest_size: number, flags: ImageLoadFlags): Image;
+        static new_from_file(fname: string, dest_width: number, dest_height: number, flags: ImageLoadFlags): Image;
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Image.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Image.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Image.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Image.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Image.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1037,40 +1011,34 @@ export namespace AppStreamCompose {
          */
         get_height(): number;
         /**
-         * Gets the image pixbuf if set.
-         * @returns the #GdkPixbuf, or %NULL
-         */
-        get_pixbuf(): GdkPixbuf.Pixbuf;
-        /**
          * Gets the image width.
          */
         get_width(): number;
         /**
          * Reads an image from a file.
          * @param filename filename to read from
-         * @param dest_size The size of the constructed pixbuf, or 0 for the native size
-         * @param src_size_min The smallest source size allowed, or 0 for none
-         * @param flags a #AscImageLoadFlags, e.g. %ASC_IMAGE_LOAD_FLAG_NONE
-         * @returns %TRUE for success
+         * @param dest_width The suggested width of the constructed pixbuf, or 0 for the native size
+         * @param dest_height The suggested height of the constructed pixbuf, or 0 for the native size
+         * @param src_size_min The smallest source size (width or height) allowed, or 0 for no limit
+         * @param flags a {@link AppStreamCompose.ImageLoadFlags}, e.g. {@link AppStreamCompose.ImageLoadFlags.NONE}
+         * @returns `true` for success
          */
-        load_filename(filename: string, dest_size: number, src_size_min: number, flags: ImageLoadFlags | null): boolean;
+        load_filename(
+            filename: string,
+            dest_width: number,
+            dest_height: number,
+            src_size_min: number,
+            flags: ImageLoadFlags | null,
+        ): boolean;
         /**
          * Saves the image to a file.
          * @param filename filename to write to
          * @param width target width, or 0 for default
          * @param height target height, or 0 for default
-         * @param flags some #AscImageSaveFlags values, e.g. %ASC_IMAGE_SAVE_FLAG_PAD_16_9
-         * @returns %TRUE for success
+         * @param flags some {@link AppStreamCompose.ImageSaveFlags} values, e.g. {@link AppStreamCompose.ImageSaveFlags.PAD_16_9}
+         * @returns `true` for success
          */
         save_filename(filename: string, width: number, height: number, flags: ImageSaveFlags | null): boolean;
-        /**
-         * Resamples a pixbuf to a specific size.
-         * @param width target width, or 0 for default
-         * @param height target height, or 0 for default
-         * @param flags some #AscImageSaveFlags values, e.g. %ASC_IMAGE_SAVE_FLAG_PAD_16_9
-         * @returns A #GdkPixbuf of the specified size
-         */
-        save_pixbuf(width: number, height: number, flags: ImageSaveFlags | null): GdkPixbuf.Pixbuf;
         /**
          * Scale the image to the given size.
          * @param new_width The new width.
@@ -1095,11 +1063,6 @@ export namespace AppStreamCompose {
          * @param new_width The new width.
          */
         scale_to_width(new_width: number): void;
-        /**
-         * Sets the image pixbuf.
-         * @param pixbuf the #GdkPixbuf, or %NULL
-         */
-        set_pixbuf(pixbuf: GdkPixbuf.Pixbuf): void;
     }
 
     namespace Result {
@@ -1111,6 +1074,9 @@ export namespace AppStreamCompose {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Result extends GObject.Object {
         static $gtype: GObject.GType<Result>;
 
@@ -1133,16 +1099,19 @@ export namespace AppStreamCompose {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Result.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Result.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Result.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Result.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Result.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Result.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1153,52 +1122,58 @@ export namespace AppStreamCompose {
 
         /**
          * Add component to the results set.
-         * @param cpt The #AsComponent to add.
-         * @param bytes Source data used to generate the GCID hash, or %NULL if nonexistent.
-         * @returns %TRUE on success.
+         * @param cpt The {@link AppStream.Component} to add.
+         * @param bytes Source data used to generate the GCID hash, or `null` if nonexistent.
+         * @returns `true` on success.
          */
         add_component(cpt: AppStream.Component, bytes: GLib.Bytes | Uint8Array): boolean;
         /**
          * Add component to the results set, using string data.
-         * @param cpt The #AsComponent to add.
-         * @param data Source data used to generate the GCID hash, or %NULL if nonexistent.
-         * @returns %TRUE on success.
+         * @param cpt The {@link AppStream.Component} to add.
+         * @param data Source data used to generate the GCID hash, or `null` if nonexistent.
+         * @returns `true` on success.
          */
         add_component_with_string(cpt: AppStream.Component, data: string): boolean;
         /**
          * Add an issue hint for a component.
-         * @param component_id The component-ID of the affected #AsComponent
+         * @param component_id The component-ID of the affected {@link AppStream.Component}
          * @param tag AppStream Compose Issue hint tag
          * @param kv List of key-value pairs for replacement variables.
-         * @returns %TRUE if the added hint did not cause the component to be invalidated.
+         * @returns `true` if the added hint did not cause the component to be invalidated.
          */
         add_hint_by_cid(component_id: string, tag: string, kv: string): boolean;
         /**
          * Add an issue hint for a component.
-         * @param cpt The affected #AsComponent
+         * @param cpt The affected {@link AppStream.Component}
          * @param tag AppStream Compose Issue hint tag
          * @param kv List of key-value pairs for replacement variables.
-         * @returns %TRUE if the added hint did not cause the component to be invalidated.
+         * @returns `true` if the added hint did not cause the component to be invalidated.
          */
         add_hint(cpt: AppStream.Component, tag: string, kv: string): boolean;
+        /**
+         * @returns The amount of components found for this unit.
+         */
         components_count(): number;
         /**
-         * Gets all components this #AsResult instance contains.
-         * @returns An array of #AsComponent
+         * Gets all components this `AsResult` instance contains.
+         * @returns An array of {@link AppStream.Component}
          */
         fetch_components(): AppStream.Component[];
         /**
          * Get a list of all hints for all components that are registered with this result.
-         * @returns An array of #AscHint
+         * @returns An array of {@link AppStreamCompose.Hint}
          */
         fetch_hints_all(): Hint[];
         /**
          * Retrieve the global component-ID string for the given component-ID,
-         * as long as component with the given ID is registered with this #AscResult.
-         * Otherwise, %NULL is returned.
+         * as long as component with the given ID is registered with this {@link AppStreamCompose.Result}.
+         * Otherwise, `null` is returned.
          * @param cid Component ID to look for.
          */
         gcid_for_cid(cid: string): string;
+        /**
+         * @param cpt
+         */
         gcid_for_component(cpt: AppStream.Component): string;
         /**
          * Gets the ID name of the bundle (a package / Flatpak / any entity containing metadata)
@@ -1212,7 +1187,7 @@ export namespace AppStreamCompose {
         /**
          * Gets the component by its component-id-
          * @param cid Component ID to look for.
-         * @returns An #AsComponent
+         * @returns An {@link AppStream.Component}
          */
         get_component(cid: string): AppStream.Component;
         /**
@@ -1228,41 +1203,44 @@ export namespace AppStreamCompose {
         /**
          * Gets hints for a component with the given component-id.
          * @param cid Component ID to look for.
-         * @returns An array of #AscHint or %NULL
+         * @returns An array of {@link AppStreamCompose.Hint} or `null`
          */
         get_hints(cid: string): Hint[];
         /**
          * Test if a hint tag is associated with a given component in this result.
-         * @param cpt the #AsComponent to check
+         * @param cpt the {@link AppStream.Component} to check
          * @param tag the hint tag to check for
-         * @returns %TRUE if a hint with this tag exists for the selected component.
+         * @returns `true` if a hint with this tag exists for the selected component.
          */
         has_hint(cpt: AppStream.Component, tag: string): boolean;
+        /**
+         * @returns The amount of hints emitted for this unit.
+         */
         hints_count(): number;
         /**
-         * Check if an #AsComponent was set to be ignored in this result
+         * Check if an {@link AppStream.Component} was set to be ignored in this result
          * (usually due to errors).
          * @param cpt the component to check for.
-         * @returns %TRUE if the component is ignored.
+         * @returns `true` if the component is ignored.
          */
         is_ignored(cpt: AppStream.Component): boolean;
         /**
          * Remove a component from the results set.
-         * @param cpt The #AsComponent to remove.
-         * @returns %TRUE if the component was found and removed.
+         * @param cpt The {@link AppStream.Component} to remove.
+         * @returns `true` if the component was found and removed.
          */
         remove_component(cpt: AppStream.Component): boolean;
         /**
          * Remove a component from the results set.
          * @param cid a component-ID
-         * @returns %TRUE if the component was found and removed.
+         * @returns `true` if the component was found and removed.
          */
         remove_component_by_id(cid: string): boolean;
         /**
          * Remove a component from the results set.
-         * @param cpt The #AsComponent to remove.
-         * @param remove_gcid %TRUE if global component ID should be unregistered as well.
-         * @returns %TRUE if the component was found and removed.
+         * @param cpt The {@link AppStream.Component} to remove.
+         * @param remove_gcid `true` if global component ID should be unregistered as well.
+         * @returns `true` if the component was found and removed.
          */
         remove_component_full(cpt: AppStream.Component, remove_gcid: boolean): boolean;
         /**
@@ -1280,20 +1258,23 @@ export namespace AppStreamCompose {
          * @param kind
          */
         set_bundle_kind(kind: AppStream.BundleKind | null): void;
+        /**
+         * @returns `true` if this result means the analyzed unit was ignored entirely.
+         */
         unit_ignored(): boolean;
         /**
          * Update the global component ID for the given component.
-         * @param cpt The #AsComponent to edit.
-         * @param bytes The data to include in the global component ID, or %NULL
-         * @returns %TRUE if the component existed and was updated.
+         * @param cpt The {@link AppStream.Component} to edit.
+         * @param bytes The data to include in the global component ID, or `null`
+         * @returns `true` if the component existed and was updated.
          */
         update_component_gcid(cpt: AppStream.Component, bytes?: GLib.Bytes | null): boolean;
         /**
          * Update the global component ID for the given component.
          * This is a convenience method for %asc_result_update_component_gcid
-         * @param cpt The #AsComponent to edit.
-         * @param data The data as string to include in the global component ID, or %NULL
-         * @returns %TRUE if the component existed and was updated.
+         * @param cpt The {@link AppStream.Component} to edit.
+         * @param data The data as string to include in the global component ID, or `null`
+         * @returns `true` if the component existed and was updated.
          */
         update_component_gcid_with_string(cpt: AppStream.Component, data?: string | null): boolean;
     }
@@ -1307,6 +1288,9 @@ export namespace AppStreamCompose {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Unit extends GObject.Object {
         static $gtype: GObject.GType<Unit>;
 
@@ -1329,16 +1313,19 @@ export namespace AppStreamCompose {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Unit.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Unit.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Unit.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Unit.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Unit.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Unit.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1348,27 +1335,32 @@ export namespace AppStreamCompose {
         // Virtual methods
 
         /**
-         * Close this unit, possibly freeing its resources. Calls to read_data() or
-         * get_contents() may not produce results until open() is called again.
+         * Close this unit, possibly freeing its resources. Calls to `read_data()` or
+         * `get_contents()` may not produce results until `open()` is called again.
+         * @virtual
          */
         vfunc_close(): void;
         /**
-         * Returns %TRUE if the directory exists and files in it are readable.
+         * Returns `true` if the directory exists and files in it are readable.
          * @param dirname The directory name to check.
+         * @virtual
          */
         vfunc_dir_exists(dirname: string): boolean;
         /**
-         * Returns %TRUE if the filename exists and is readable using %asc_unit_read_data.
+         * Returns `true` if the filename exists and is readable using %asc_unit_read_data.
          * @param filename The filename to check.
+         * @virtual
          */
         vfunc_file_exists(filename: string): boolean;
         /**
          * Open this unit, populating its content listing.
+         * @virtual
          */
         vfunc_open(): boolean;
         /**
          * Read the contents of the selected file into memory and return them.
          * @param filename The file to read data for.
+         * @virtual
          */
         vfunc_read_data(filename: string): GLib.Bytes;
 
@@ -1382,17 +1374,17 @@ export namespace AppStreamCompose {
          */
         add_relevant_path(path: string): void;
         /**
-         * Close this unit, possibly freeing its resources. Calls to read_data() or
-         * get_contents() may not produce results until open() is called again.
+         * Close this unit, possibly freeing its resources. Calls to `read_data()` or
+         * `get_contents()` may not produce results until `open()` is called again.
          */
         close(): void;
         /**
-         * Returns %TRUE if the directory exists and files in it are readable.
+         * Returns `true` if the directory exists and files in it are readable.
          * @param dirname The directory name to check.
          */
         dir_exists(dirname: string): boolean;
         /**
-         * Returns %TRUE if the filename exists and is readable using %asc_unit_read_data.
+         * Returns `true` if the filename exists and is readable using %asc_unit_read_data.
          * @param filename The filename to check.
          */
         file_exists(filename: string): boolean;
@@ -1403,7 +1395,7 @@ export namespace AppStreamCompose {
         get_bundle_id(): string;
         /**
          * Gets the ID name of the bundle, normalized to be safe to use
-         * in filenames. This may *not* be the same name as set via asc_unit_get_bundle_id()
+         * in filenames. This may *not* be the same name as set via `asc_unit_get_bundle_id()`
          */
         get_bundle_id_safe(): string;
         /**
@@ -1457,16 +1449,28 @@ export namespace AppStreamCompose {
         set_user_data(user_data?: any | null): void;
     }
 
-    type CanvasClass = typeof Canvas;
+    /**
+     * @gir-type Alias
+     */
     type ComposeClass = typeof Compose;
+    /**
+     * @gir-type Alias
+     */
     type DirectoryUnitClass = typeof DirectoryUnit;
+    /**
+     * @gir-type Alias
+     */
     type HintClass = typeof Hint;
+    /**
+     * @gir-type Alias
+     */
     type IconPolicyClass = typeof IconPolicy;
     /**
-     * A #AscIconPolicyIter structure represents an iterator that can be used
-     * to iterate over the icon sizes / policy entries of an #AscIconPolicy.
-     * #AscIconPolicyIter structures are typically allocated on the stack and
-     * then initialized with asc_icon_policy_iter_init().
+     * A {@link AppStreamCompose.IconPolicyIter} structure represents an iterator that can be used
+     * to iterate over the icon sizes / policy entries of an {@link AppStreamCompose.IconPolicy}.
+     * {@link AppStreamCompose.IconPolicyIter} structures are typically allocated on the stack and
+     * then initialized with `asc_icon_policy_iter_init()`.
+     * @gir-type Struct
      */
     class IconPolicyIter {
         static $gtype: GObject.GType<IconPolicyIter>;
@@ -1480,9 +1484,9 @@ export namespace AppStreamCompose {
         /**
          * Initializes a policy iterator for the policy entry list and associates it
          * it with `ipolicy`.
-         * The #AscIconPolicyIter structure is typically allocated on the stack
+         * The {@link AppStreamCompose.IconPolicyIter} structure is typically allocated on the stack
          * and does not need to be freed explicitly.
-         * @param ipolicy an #AscIconPolicy
+         * @param ipolicy an {@link AppStreamCompose.IconPolicy}
          */
         init(ipolicy: IconPolicy): void;
         /**
@@ -1501,13 +1505,22 @@ export namespace AppStreamCompose {
          * }
          * ```
          *
-         * @returns %FALSE if the last entry has been reached.
+         * @returns `false` if the last entry has been reached.
          */
         next(): [boolean, number, number, IconState | null];
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ImageClass = typeof Image;
+    /**
+     * @gir-type Alias
+     */
     type ResultClass = typeof Result;
+    /**
+     * @gir-type Alias
+     */
     type UnitClass = typeof Unit;
     /**
      * Name of the imported GIR library

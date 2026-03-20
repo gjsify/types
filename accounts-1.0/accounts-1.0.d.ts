@@ -22,7 +22,8 @@ export namespace Accounts {
 
     /**
      * These identify the various errors that can occur with methods in
-     * libaccounts-glib that return a #GError.
+     * libaccounts-glib that return a {@link GLib.Error}.
+     * @gir-type Struct
      */
     class AccountsError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -65,6 +66,9 @@ export namespace Accounts {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum Error {
         DB,
         DISPOSED,
@@ -74,7 +78,8 @@ export namespace Accounts {
     }
 
     /**
-     * The source of a setting on a #AgAccount.
+     * The source of a setting on a {@link Accounts.Account}.
+     * @gir-type Enum
      */
     enum SettingSource {
         /**
@@ -95,34 +100,64 @@ export namespace Accounts {
     const MANAGER_INTERFACE: string;
     const MANAGER_OBJECT_PATH: string;
     const MANAGER_SERVICE_NAME: string;
+    /**
+     * Return the libaccounts-glib error domain.
+     * @returns the libaccounts-glib error domain.
+     */
     function accounts_error_quark(): GLib.Quark;
+    /**
+     * Return the libaccounts-glib error domain.
+     * @returns the libaccounts-glib error domain.
+     */
     function errors_quark(): GLib.Quark;
     /**
      * Frees the list `list`.
-     * @param list a #GList of providers returned by some function of this library.
+     * @param list a {@link GLib.List} of providers returned by some function of this library.
      */
     function provider_list_free(list: Provider[]): void;
     /**
      * Frees the list `list`.
-     * @param list a #GList of services returned by some function of this library.
+     * @param list a {@link GLib.List} of services returned by some function of this library.
      */
     function service_list_free(list: Service[]): void;
     /**
      * Frees the list `list`.
-     * @param list a #GList of service types returned by some function of this library, such as ag_manager_list_service_types().
+     * @param list a {@link GLib.List} of service types returned by some function of this library, such as `ag_manager_list_service_types()`.
      */
     function service_type_list_free(list: ServiceType[]): void;
+    /**
+     * @gir-type Callback
+     */
     interface AccountNotifyCb {
         (account: Account, key: string): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface AccountStoreCb {
         (account: Account, error: GLib.Error): void;
     }
     namespace Account {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted when the account has been deleted.
+             * @signal
+             * @run-last
+             */
             deleted: () => void;
+            /**
+             * Emitted when the account display name has changed.
+             * @signal
+             * @run-last
+             */
             'display-name-changed': () => void;
+            /**
+             * Emitted when the account "enabled" status was changed for one of its
+             * services, or for the account globally.
+             * @signal
+             * @run-last
+             */
             enabled: (arg0: string, arg1: boolean) => void;
             'notify::display-name': (pspec: GObject.ParamSpec) => void;
             'notify::enabled': (pspec: GObject.ParamSpec) => void;
@@ -147,6 +182,7 @@ export namespace Accounts {
 
     /**
      * Opaque structure. Use related accessor functions.
+     * @gir-type Class
      */
     class Account extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Account>;
@@ -155,27 +191,41 @@ export namespace Accounts {
 
         /**
          * The display name of the account.
+         * @since 1.4
+         * @read-only
          */
         get display_name(): string;
         /**
          * The display name of the account.
+         * @since 1.4
+         * @read-only
          */
         get displayName(): string;
         /**
          * Whether the account is currently enabled.
+         * @since 1.4
+         * @read-only
          */
         get enabled(): boolean;
+        /**
+         * @construct-only
+         */
         set foreign(val: boolean);
         /**
          * The AgAccountId for the account.
+         * @construct-only
          */
         get id(): number;
         /**
-         * The #AgManager from which the account was instantiated.
+         * The {@link Accounts.Manager} from which the account was instantiated.
+         * @since 1.4
+         * @construct-only
          */
         get manager(): Manager;
         /**
          * The ID of the provider for the account.
+         * @since 1.4
+         * @construct-only
          */
         get provider(): string;
 
@@ -196,16 +246,19 @@ export namespace Accounts {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Account.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Account.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Account.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Account.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Account.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Account.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -215,7 +268,7 @@ export namespace Accounts {
         // Methods
 
         /**
-         * Deletes the account. Call ag_account_store() in order to record the change
+         * Deletes the account. Call `ag_account_store()` in order to record the change
          * in the storage.
          */
         ['delete'](): void;
@@ -226,12 +279,12 @@ export namespace Accounts {
         get_display_name(): string;
         /**
          * Gets whether the selected service is enabled for `account`.
-         * @returns %TRUE if the selected service for @account is enabled, %FALSE otherwise.
+         * @returns `true` if the selected service for `account` is enabled, `false` otherwise.
          */
         get_enabled(): boolean;
         /**
-         * Get the #AgManager for `account`.
-         * @returns the #AgManager.
+         * Get the {@link Accounts.Manager} for `account`.
+         * @returns the {@link Accounts.Manager}.
          */
         get_manager(): Manager;
         /**
@@ -240,45 +293,45 @@ export namespace Accounts {
          */
         get_provider_name(): string;
         /**
-         * Gets the selected #AgService for `account`.
-         * @returns the selected service, or %NULL if no service is selected.
+         * Gets the selected {@link Accounts.Service} for `account`.
+         * @returns the selected service, or `null` if no service is selected.
          */
         get_selected_service(): Service;
         /**
          * Creates a new iterator. This method is useful for language bindings only.
-         * @param key_prefix enumerate only the settings whose key starts with @key_prefix.
-         * @returns an #AgAccountSettingIter.
+         * @param key_prefix enumerate only the settings whose key starts with `key_prefix`.
+         * @returns an {@link Accounts.AccountSettingIter}.
          */
         get_settings_iter(key_prefix?: string | null): AccountSettingIter;
         /**
-         * Gets the value of the configuration setting `key:` `value` must be a
-         * #GValue initialized to the type of the setting.
+         * Gets the value of the configuration setting `key`: `value` must be a
+         * {@link GObject.Value} initialized to the type of the setting.
          * @param key the name of the setting to retrieve.
-         * @param value an initialized #GValue to receive the setting's value.
-         * @returns one of #AgSettingSource: %AG_SETTING_SOURCE_NONE if the setting is not present, %AG_SETTING_SOURCE_ACCOUNT if the setting comes from the account configuration, or %AG_SETTING_SOURCE_PROFILE if the value comes as predefined in the profile.
+         * @param value an initialized {@link GObject.Value} to receive the setting's value.
+         * @returns one of {@link Accounts.SettingSource}: {@link Accounts.SettingSource.NONE} if the setting is not present, {@link Accounts.SettingSource.ACCOUNT} if the setting comes from the account configuration, or {@link Accounts.SettingSource.PROFILE} if the value comes as predefined in the profile.
          */
         get_value(key: string, value: GObject.Value | any): [SettingSource, unknown];
         /**
          * Gets the value of the configuration setting `key`.
          * @param key the name of the setting to retrieve.
-         * @returns a #GVariant holding the setting value, or %NULL. The returned #GVariant is owned by the account, and no guarantees are made about its lifetime. If the client wishes to keep it, it should call g_variant_ref() on it.
+         * @returns a {@link GLib.Variant} holding the setting value, or `null`. The returned {@link GLib.Variant} is owned by the account, and no guarantees are made about its lifetime. If the client wishes to keep it, it should call `g_variant_ref()` on it.
          */
         get_variant(key: string): [GLib.Variant, SettingSource | null];
         /**
          * Gets a list of services that are enabled for `account`.
-         * @returns a #GList of #AgService items representing all the services which are enabled. Must be free'd with ag_service_list_free().
+         * @returns a {@link GLib.List} of {@link Accounts.Service} items representing all the services which are enabled. Must be free'd with `ag_service_list_free()`.
          */
         list_enabled_services(): Service[];
         /**
-         * Get the list of services for `account`. If the #AgManager was created with
+         * Get the list of services for `account`. If the {@link Accounts.Manager} was created with
          * specified service_type this will return only services with this service_type.
-         * @returns a #GList of #AgService items representing all the services supported by this account. Must be free'd with ag_service_list_free().
+         * @returns a {@link GLib.List} of {@link Accounts.Service} items representing all the services supported by this account. Must be free'd with `ag_service_list_free()`.
          */
         list_services(): Service[];
         /**
-         * Get the list of services supported by `account,` filtered by `service_type`.
+         * Get the list of services supported by `account`, filtered by `service_type`.
          * @param service_type the service type which all the returned services should provide.
-         * @returns a #GList of #AgService items representing all the services supported by this account which provide @service_type. Must be free'd with ag_service_list_free().
+         * @returns a {@link GLib.List} of {@link Accounts.Service} items representing all the services supported by this account which provide `service_type`. Must be free'd with `ag_service_list_free()`.
          */
         list_services_by_type(service_type: string): Service[];
         /**
@@ -287,13 +340,13 @@ export namespace Accounts {
          */
         remove_watch(watch: AccountWatch): void;
         /**
-         * Selects the configuration of service `service:` from now on, all the
-         * subsequent calls on the #AgAccount configuration will act on the `service`.
-         * If `service` is %NULL, the global account configuration is selected.
+         * Selects the configuration of service `service`: from now on, all the
+         * subsequent calls on the {@link Accounts.Account} configuration will act on the `service`.
+         * If `service` is `null`, the global account configuration is selected.
          *
          * Note that if `account` is being shared with other code one must take special
          * care to make sure the desired service is always selected.
-         * @param service the #AgService to select.
+         * @param service the {@link Accounts.Service} to select.
          */
         select_service(service?: Service | null): void;
         /**
@@ -303,38 +356,38 @@ export namespace Accounts {
         set_display_name(display_name: string): void;
         /**
          * Sets the "enabled" flag on the selected service for `account`.
-         * @param enabled whether @account should be enabled.
+         * @param enabled whether `account` should be enabled.
          */
         set_enabled(enabled: boolean): void;
         /**
          * Sets the value of the configuration setting `key` to the value `value`.
-         * If `value` is %NULL, then the setting is unset.
+         * If `value` is `null`, then the setting is unset.
          * @param key the name of the setting to change.
-         * @param value a #GValue holding the new setting's value.
+         * @param value a {@link GObject.Value} holding the new setting's value.
          */
         set_value(key: string, value?: GObject.Value | null): void;
         /**
          * Sets the value of the configuration setting `key` to the value `value`.
          * If `value` has a floating reference, the `account` will take ownership
          * of it.
-         * If `value` is %NULL, then the setting is unset.
+         * If `value` is `null`, then the setting is unset.
          * @param key the name of the setting to change.
-         * @param value a #GVariant holding the new setting's value.
+         * @param value a {@link GLib.Variant} holding the new setting's value.
          */
         set_variant(key: string, value?: GLib.Variant | null): void;
         /**
          * Initializes `iter` to iterate over the account settings. If `key_prefix` is
-         * not %NULL, only keys whose names start with `key_prefix` will be iterated
+         * not `null`, only keys whose names start with `key_prefix` will be iterated
          * over.
-         * @param iter an uninitialized #AgAccountSettingIter structure.
-         * @param key_prefix enumerate only the settings whose key starts with @key_prefix.
+         * @param iter an uninitialized {@link Accounts.AccountSettingIter} structure.
+         * @param key_prefix enumerate only the settings whose key starts with `key_prefix`.
          */
         settings_iter_init(iter: AccountSettingIter, key_prefix?: string | null): void;
         /**
          * Creates signature of the `key` with given `token`. The account must be
          * stored prior to calling this function.
          * @param key the name of the key or prefix of the keys to be signed.
-         * @param token a signing token (%NULL-terminated string) for creating the signature. The application must possess (request) the token.
+         * @param token a signing token (`null`-terminated string) for creating the signature. The application must possess (request) the token.
          */
         sign(key: string, token: string): void;
         /**
@@ -346,20 +399,20 @@ export namespace Accounts {
         /**
          * Commit the changed account settings to the account database, and invoke
          * `callback` when the operation has been completed.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
         store_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Commit the changed account settings to the account database, and invoke
          * `callback` when the operation has been completed.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback function to be called when the settings have been written.
          */
         store_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Commit the changed account settings to the account database, and invoke
          * `callback` when the operation has been completed.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback function to be called when the settings have been written.
          */
         store_async(
@@ -369,19 +422,19 @@ export namespace Accounts {
         /**
          * Commit the changed account settings to the account database, and invoke
          * `callback` when the operation has been completed.
-         * @returns %TRUE on success, %FALSE on failure.
+         * @returns `true` on success, `false` on failure.
          */
         store_blocking(): boolean;
         /**
-         * Finishes the store operation started by ag_account_store_async().
-         * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to ag_account_store_async().
-         * @returns %TRUE on success, %FALSE otherwise.
+         * Finishes the store operation started by `ag_account_store_async()`.
+         * @param res A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `ag_account_store_async()`.
+         * @returns `true` on success, `false` otherwise.
          */
         store_finish(res: Gio.AsyncResult): boolean;
         /**
          * Get whether `service_type` is supported on `account`.
          * @param service_type the name of the service type to check for
-         * @returns %TRUE if @account supports the service type @service_type, %FALSE otherwise.
+         * @returns `true` if `account` supports the service type `service_type`, `false` otherwise.
          */
         supports_service(service_type: string): boolean;
         /**
@@ -389,7 +442,7 @@ export namespace Accounts {
          * and provides the aegis token which was used for signing the `key`.
          * @param key the name of the key or prefix of the keys to be verified.
          * @param token location to receive the pointer to aegis token.
-         * @returns %TRUE if the key is signed and the signature matches the value, %FALSE otherwise.
+         * @returns `true` if the key is signed and the signature matches the value, `false` otherwise.
          */
         verify(key: string, token: string): boolean;
         /**
@@ -397,54 +450,52 @@ export namespace Accounts {
          * and the signature is valid.
          * @param key the name of the key or prefix of the keys to be verified.
          * @param tokens array of aegis tokens.
-         * @returns %TRUE if the key is signed with any of the given tokens and the signature is valid, %FALSE otherwise.
+         * @returns `true` if the key is signed with any of the given tokens and the signature is valid, `false` otherwise.
          */
         verify_with_tokens(key: string, tokens: string): boolean;
         /**
-         * Installs a watch on all the keys under `key_prefix:` `callback` will be
+         * Installs a watch on all the keys under `key_prefix`: `callback` will be
          * invoked whenever the value of any of these keys changes (or a key is
          * removed).
          * @param key_prefix the prefix of the keys to watch.
-         * @param callback a #AgAccountNotifyCb callback to be called.
-         * @returns a #AgAccountWatch, which can then be used to remove this watch.
+         * @param callback a {@link Accounts.AccountNotifyCb} callback to be called.
+         * @returns a {@link Accounts.AccountWatch}, which can then be used to remove this watch.
          */
         watch_dir(key_prefix: string, callback: AccountNotifyCb): AccountWatch;
         /**
-         * Installs a watch on `key:` `callback` will be invoked whenever the value of
+         * Installs a watch on `key`: `callback` will be invoked whenever the value of
          * `key` changes (or the key is removed).
          * @param key the name of the key to watch.
-         * @param callback a #AgAccountNotifyCb callback to be called.
-         * @returns a #AgAccountWatch, which can then be used to remove this watch.
+         * @param callback a {@link Accounts.AccountNotifyCb} callback to be called.
+         * @returns a {@link Accounts.AccountWatch}, which can then be used to remove this watch.
          */
         watch_key(key: string, callback: AccountNotifyCb): AccountWatch;
-
-        // Inherited methods
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -454,40 +505,40 @@ export namespace Accounts {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
         init(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -497,11 +548,12 @@ export namespace Accounts {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -517,32 +569,32 @@ export namespace Accounts {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -551,39 +603,39 @@ export namespace Accounts {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -594,13 +646,16 @@ export namespace Accounts {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -608,7 +663,7 @@ export namespace Accounts {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -616,9 +671,9 @@ export namespace Accounts {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -638,9 +693,9 @@ export namespace Accounts {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -653,34 +708,34 @@ export namespace Accounts {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -713,22 +768,22 @@ export namespace Accounts {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -737,8 +792,8 @@ export namespace Accounts {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -755,10 +810,10 @@ export namespace Accounts {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -773,13 +828,13 @@ export namespace Accounts {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -810,21 +865,21 @@ export namespace Accounts {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -834,33 +889,34 @@ export namespace Accounts {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -869,6 +925,7 @@ export namespace Accounts {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -877,12 +934,14 @@ export namespace Accounts {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -891,20 +950,22 @@ export namespace Accounts {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -916,6 +977,7 @@ export namespace Accounts {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -948,7 +1010,19 @@ export namespace Accounts {
     namespace AccountService {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted when some setting has changed on the account service. You can
+             * use the `ag_account_service_get_changed_fields()` method to retrieve the
+             * list of the settings which have changed.
+             * @signal
+             * @run-last
+             */
             changed: () => void;
+            /**
+             * Emitted when the service enabled state changes.
+             * @signal
+             * @run-last
+             */
             enabled: (arg0: boolean) => void;
             'notify::account': (pspec: GObject.ParamSpec) => void;
             'notify::enabled': (pspec: GObject.ParamSpec) => void;
@@ -966,6 +1040,7 @@ export namespace Accounts {
 
     /**
      * Opaque structure. Use related accessor functions.
+     * @gir-type Class
      */
     class AccountService extends GObject.Object {
         static $gtype: GObject.GType<AccountService>;
@@ -973,19 +1048,25 @@ export namespace Accounts {
         // Properties
 
         /**
-         * The #AgAccount used by the account service.
+         * The {@link Accounts.Account} used by the account service.
+         * @since 1.4
+         * @construct-only
          */
         get account(): Account;
         /**
          * Whether the account service is currently enabled. The value of
-         * this property is %TRUE if and only if the underlying #AgAccount
-         * is enabled and the selected #AgService is enabled on it. If this
-         * property is %FALSE, applications should not try to use this
+         * this property is `true` if and only if the underlying {@link Accounts.Account}
+         * is enabled and the selected {@link Accounts.Service} is enabled on it. If this
+         * property is `false`, applications should not try to use this
          * object.
+         * @since 1.4
+         * @read-only
          */
         get enabled(): boolean;
         /**
-         * The #AgService used by the account service.
+         * The {@link Accounts.Service} used by the account service.
+         * @since 1.4
+         * @construct-only
          */
         get service(): Service;
 
@@ -1008,16 +1089,19 @@ export namespace Accounts {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AccountService.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AccountService.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AccountService.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AccountService.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AccountService.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AccountService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1028,91 +1112,91 @@ export namespace Accounts {
 
         /**
          * Iterates over the account keys. `iter` must be an iterator previously
-         * initialized with ag_account_service_settings_iter_init().
-         * @param iter an initialized #AgAccountSettingIter structure.
+         * initialized with `ag_account_service_settings_iter_init()`.
+         * @param iter an initialized {@link Accounts.AccountSettingIter} structure.
          */
         static settings_iter_next(iter: AccountSettingIter): [boolean, string, unknown];
 
         // Methods
 
         /**
-         * Get the #AgAccount associated with `self`.
-         * @returns the underlying #AgAccount. The reference count on it is not incremented, so if you need to use it beyond the lifetime of @self, you need to call g_object_ref() on it yourself.
+         * Get the {@link Accounts.Account} associated with `self`.
+         * @returns the underlying {@link Accounts.Account}. The reference count on it is not incremented, so if you need to use it beyond the lifetime of `self`, you need to call `g_object_ref()` on it yourself.
          */
         get_account(): Account;
         /**
          * Reads the authentication data stored in the account (merging the
          * service-specific settings with the global account settings) and returns an
-         * #AgAuthData structure.
+         * {@link Accounts.AuthData} structure.
          * The method and mechanism are read from the "auth/method" and
          * "auth/mechanism" keys, respectively. The authentication parameters are
          * found under the "auth/&lt;method&gt;/&lt;mechanism&gt;/" group.
-         * @returns a newly allocated #AgAuthData structure.
+         * @returns a newly allocated {@link Accounts.AuthData} structure.
          */
         get_auth_data(): AuthData;
         /**
          * This method should be called only in the context of a handler of the
-         * #AgAccountService::changed signal, and can be used to retrieve the set of
+         * {@link Accounts.AccountService.SignalSignatures.changed | Accounts.AccountService::changed} signal, and can be used to retrieve the set of
          * changes.
-         * @returns a newly allocated array of strings describing the keys of the fields which have been altered. It must be free'd with g_strfreev().
+         * @returns a newly allocated array of strings describing the keys of the fields which have been altered. It must be free'd with `g_strfreev()`.
          */
         get_changed_fields(): string[];
         /**
-         * Checks whether the underlying #AgAccount is enabled and the selected
-         * #AgService is enabled on it. If this method returns %FALSE, applications
+         * Checks whether the underlying {@link Accounts.Account} is enabled and the selected
+         * {@link Accounts.Service} is enabled on it. If this method returns `false`, applications
          * should not try to use this object.
-         * @returns %TRUE if the service is enabled, %FALSE otherwise.
+         * @returns `true` if the service is enabled, `false` otherwise.
          */
         get_enabled(): boolean;
         /**
-         * Get the #AgService associated with `self`.
-         * @returns the underlying #AgService. The reference count on it is not incremented, so if you need to use it beyond the lifetime of @self, you need to call ag_service_ref() on it yourself.
+         * Get the {@link Accounts.Service} associated with `self`.
+         * @returns the underlying {@link Accounts.Service}. The reference count on it is not incremented, so if you need to use it beyond the lifetime of `self`, you need to call `ag_service_ref()` on it yourself.
          */
         get_service(): Service;
         /**
          * Creates a new iterator. This method is useful for language bindings only.
-         * @param key_prefix enumerate only the settings whose key starts with @key_prefix.
-         * @returns an #AgAccountSettingIter.
+         * @param key_prefix enumerate only the settings whose key starts with `key_prefix`.
+         * @returns an {@link Accounts.AccountSettingIter}.
          */
         get_settings_iter(key_prefix?: string | null): AccountSettingIter;
         /**
-         * Gets the value of the configuration setting `key:` `value` must be a
-         * #GValue initialized to the type of the setting.
+         * Gets the value of the configuration setting `key`: `value` must be a
+         * {@link GObject.Value} initialized to the type of the setting.
          * @param key the name of the setting to retrieve.
-         * @param value an initialized #GValue to receive the setting's value.
-         * @returns one of <type>#AgSettingSource</type>: %AG_SETTING_SOURCE_NONE if the setting is not present, %AG_SETTING_SOURCE_ACCOUNT if the setting comes from the account configuration, or %AG_SETTING_SOURCE_PROFILE if the value comes as predefined in the profile.
+         * @param value an initialized {@link GObject.Value} to receive the setting's value.
+         * @returns one of <type>{@link Accounts.SettingSource}</type>: {@link Accounts.SettingSource.NONE} if the setting is not present, {@link Accounts.SettingSource.ACCOUNT} if the setting comes from the account configuration, or {@link Accounts.SettingSource.PROFILE} if the value comes as predefined in the profile.
          */
         get_value(key: string, value: GObject.Value | any): [SettingSource, unknown];
         /**
          * Gets the value of the configuration setting `key`.
          * @param key the name of the setting to retrieve.
-         * @returns a #GVariant holding the setting value, or %NULL. The returned #GVariant is owned by the account, and no guarantees are made about its lifetime. If the client wishes to keep it, it should call g_variant_ref() on it.
+         * @returns a {@link GLib.Variant} holding the setting value, or `null`. The returned {@link GLib.Variant} is owned by the account, and no guarantees are made about its lifetime. If the client wishes to keep it, it should call `g_variant_ref()` on it.
          */
         get_variant(key: string): [GLib.Variant, SettingSource | null];
         /**
          * Sets the value of the configuration setting `key` to the value `value`.
-         * If `value` is %NULL, then the setting is unset.
+         * If `value` is `null`, then the setting is unset.
          * @param key the name of the setting to change.
-         * @param value a #GValue holding the new setting's value.
+         * @param value a {@link GObject.Value} holding the new setting's value.
          */
         set_value(key: string, value?: GObject.Value | null): void;
         /**
          * Sets the value of the configuration setting `key` to the value `value`.
          * If `value` has a floating reference, the `account` will take ownership
          * of it.
-         * If `value` is %NULL, then the setting is unset.
+         * If `value` is `null`, then the setting is unset.
          * @param key the name of the setting to change.
-         * @param value a #GVariant holding the new setting's value.
+         * @param value a {@link GLib.Variant} holding the new setting's value.
          */
         set_variant(key: string, value?: GLib.Variant | null): void;
         /**
          * Initializes `iter` to iterate over the account settings. If `key_prefix` is
-         * not %NULL, only keys whose names start with `key_prefix` will be iterated
+         * not `null`, only keys whose names start with `key_prefix` will be iterated
          * over.
          * After calling this method, one would typically call
-         * ag_account_settings_iter_get_next() to read the settings one by one.
-         * @param iter an uninitialized #AgAccountSettingIter structure.
-         * @param key_prefix enumerate only the settings whose key starts with @key_prefix.
+         * `ag_account_settings_iter_get_next()` to read the settings one by one.
+         * @param iter an uninitialized {@link Accounts.AccountSettingIter} structure.
+         * @param key_prefix enumerate only the settings whose key starts with `key_prefix`.
          */
         settings_iter_init(iter: AccountSettingIter, key_prefix?: string | null): void;
     }
@@ -1120,9 +1204,43 @@ export namespace Accounts {
     namespace Manager {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted when a new account has been created; note that the account must
+             * have been stored in the database: the signal is not emitted just in
+             * response to `ag_manager_create_account()`.
+             * @signal
+             * @run-last
+             */
             'account-created': (arg0: number) => void;
+            /**
+             * Emitted when an account has been deleted.
+             * This signal is redundant with {@link Accounts.Account.SignalSignatures.deleted | Accounts.Account::deleted}, but it is convenient
+             * to provide full change notification with {@link Accounts.Manager}.
+             * @signal
+             * @run-last
+             */
             'account-deleted': (arg0: number) => void;
+            /**
+             * Emitted when particular service of an account has been updated.
+             * This signal is redundant with {@link Accounts.Account.SignalSignatures.deleted | Accounts.Account::deleted}, but it is convenient
+             * to provide full change notification with {@link Accounts.Manager}.
+             * @signal
+             * @run-last
+             */
             'account-updated': (arg0: number) => void;
+            /**
+             * If the manager has been created with `ag_manager_new_for_service_type()`,
+             * this signal will be emitted when an account (identified by `account_id`)
+             * has been modified in such a way that the application might be interested
+             * to start or stop using it: the "enabled" flag on the account or in some
+             * service supported by the account and matching the
+             * {@link Accounts.Manager.service_type} have changed.
+             * In practice, this signal might be emitted more often than when strictly
+             * needed; applications must call `ag_account_list_enabled_services()` or
+             * `ag_manager_list_enabled()` to get the current state.
+             * @signal
+             * @run-last
+             */
             'enabled-event': (arg0: number) => void;
             'notify::abort-on-db-timeout': (pspec: GObject.ParamSpec) => void;
             'notify::db-timeout': (pspec: GObject.ParamSpec) => void;
@@ -1146,6 +1264,7 @@ export namespace Accounts {
 
     /**
      * Opaque structure. Use related accessor functions.
+     * @gir-type Class
      */
     class Manager extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Manager>;
@@ -1173,31 +1292,35 @@ export namespace Accounts {
         get dbTimeout(): number;
         set dbTimeout(val: number);
         /**
-         * If the service type is set, certain operations on the #AgManager, such
-         * as ag_manager_list() and ag_manager_list_services(), will be restricted
+         * If the service type is set, certain operations on the {@link Accounts.Manager}, such
+         * as `ag_manager_list()` and `ag_manager_list_services()`, will be restricted
          * to only affect accounts or services with that service type.
+         * @construct-only
          */
         get service_type(): string;
         /**
-         * If the service type is set, certain operations on the #AgManager, such
-         * as ag_manager_list() and ag_manager_list_services(), will be restricted
+         * If the service type is set, certain operations on the {@link Accounts.Manager}, such
+         * as `ag_manager_list()` and `ag_manager_list_services()`, will be restricted
          * to only affect accounts or services with that service type.
+         * @construct-only
          */
         get serviceType(): string;
         /**
          * Whether to use D-Bus for inter-process change notification. Setting this
-         * property to %FALSE causes libaccounts not to emit the change
+         * property to `false` causes libaccounts not to emit the change
          * notification signals, and also not react to changes made by other
          * processes. Disabling D-Bus is only meant to be used for specific cases,
          * such as maintenance programs.
+         * @construct-only
          */
         get use_dbus(): boolean;
         /**
          * Whether to use D-Bus for inter-process change notification. Setting this
-         * property to %FALSE causes libaccounts not to emit the change
+         * property to `false` causes libaccounts not to emit the change
          * notification signals, and also not react to changes made by other
          * processes. Disabling D-Bus is only meant to be used for specific cases,
          * such as maintenance programs.
+         * @construct-only
          */
         get useDbus(): boolean;
 
@@ -1222,16 +1345,19 @@ export namespace Accounts {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Manager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Manager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Manager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Manager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Manager.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Manager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1241,38 +1367,42 @@ export namespace Accounts {
         // Static methods
 
         /**
-         * Frees the memory taken by a #GList of #AgAccountId allocated by #AgManager,
-         * such as by ag_manager_list(), ag_manager_list_enabled() or
-         * ag_manager_list_enabled_by_service_type().
-         * @param list a #GList returned from a #AgManager method which returns account IDs.
+         * Frees the memory taken by a {@link GLib.List} of {@link Accounts.AccountId} allocated by {@link Accounts.Manager},
+         * such as by `ag_manager_list()`, `ag_manager_list_enabled()` or
+         * `ag_manager_list_enabled_by_service_type()`.
+         * @param list a {@link GLib.List} returned from a {@link Accounts.Manager} method which returns account IDs.
          */
         static list_free(list: AccountId[]): void;
 
         // Virtual methods
 
+        /**
+         * @param id
+         * @virtual
+         */
         vfunc_account_deleted(id: AccountId): void;
 
         // Methods
 
         /**
          * Create a new account. The account is not stored in the database until
-         * ag_account_store() has successfully returned; the `id` field in the
-         * #AgAccount structure is also not meant to be valid until the account has
+         * `ag_account_store()` has successfully returned; the `id` field in the
+         * {@link Accounts.Account} structure is also not meant to be valid until the account has
          * been stored.
          * @param provider_name name of the provider of the account.
-         * @returns a new #AgAccount, or %NULL.
+         * @returns a new {@link Accounts.Account}, or `null`.
          */
         create_account(provider_name: string): Account;
         /**
          * Get whether the library will abort when a timeout error occurs.
-         * @returns %TRUE is the library will abort when a timeout error occurs, %FALSE otherwise.
+         * @returns `true` is the library will abort when a timeout error occurs, `false` otherwise.
          */
         get_abort_on_db_timeout(): boolean;
         /**
          * Instantiates the object representing the account identified by
          * `account_id`.
-         * @param account_id the #AgAccountId of the account.
-         * @returns an #AgAccount, on which the client must call g_object_unref() when it is no longer required, or %NULL if an error occurs.
+         * @param account_id the {@link Accounts.AccountId} of the account.
+         * @returns an {@link Accounts.Account}, on which the client must call `g_object_unref()` when it is no longer required, or `null` if an error occurs.
          */
         get_account(account_id: AccountId): Account;
         /**
@@ -1283,22 +1413,22 @@ export namespace Accounts {
          *   This method causes the loading of all the service settings for all the
          *   returned accounts (unless they have been loaded previously). If you are
          *   interested in a specific account/service, consider using
-         *   ag_manager_load_account() to first load the the account, and then create
+         *   `ag_manager_load_account()` to first load the the account, and then create
          *   the AgAccountService for that account only.
          *   </para>
          * </note>
-         * @returns a list of #AgAccountService objects. When done with it, call g_object_unref() on the list elements, and g_list_free() on the container.
+         * @returns a list of {@link Accounts.AccountService} objects. When done with it, call `g_object_unref()` on the list elements, and `g_list_free()` on the container.
          */
         get_account_services(): AccountService[];
         /**
          * Search for `application_name` in the list of applications, and return a new
-         * #AgApplication if a matching application was found.
+         * {@link Accounts.Application} if a matching application was found.
          * @param application_name the name of an application to search for
-         * @returns a new #AgApplication if one was found, %NULL otherwise
+         * @returns a new {@link Accounts.Application} if one was found, `null` otherwise
          */
         get_application(application_name: string): Application;
         /**
-         * Get the timeout of database operations for `manager,` in milliseconds.
+         * Get the timeout of database operations for `manager`, in milliseconds.
          * @returns the timeout (in milliseconds) for database operations.
          */
         get_db_timeout(): number;
@@ -1310,100 +1440,106 @@ export namespace Accounts {
          *   This method causes the loading of all the service settings for all the
          *   returned accounts (unless they have been loaded previously). If you are
          *   interested in a specific account/service, consider using
-         *   ag_manager_load_account() to first load the the account, and then create
+         *   `ag_manager_load_account()` to first load the the account, and then create
          *   the AgAccountService for that account only.
          *   </para>
          * </note>
-         * @returns a list of #AgAccountService objects. When done with it, call g_object_unref() on the list elements, and g_list_free() on the container.
+         * @returns a list of {@link Accounts.AccountService} objects. When done with it, call `g_object_unref()` on the list elements, and `g_list_free()` on the container.
          */
         get_enabled_account_services(): AccountService[];
         /**
          * Loads the provider identified by `provider_name`.
          * @param provider_name the name of the provider.
-         * @returns an #AgProvider, which must be free'd with ag_provider_unref() when no longer required.
+         * @returns an {@link Accounts.Provider}, which must be free'd with `ag_provider_unref()` when no longer required.
          */
         get_provider(provider_name: string): Provider;
         /**
          * Loads the service identified by `service_name`.
          * @param service_name the name of the service.
-         * @returns an #AgService, which must be free'd with ag_service_unref() when no longer required.
+         * @returns an {@link Accounts.Service}, which must be free'd with `ag_service_unref()` when no longer required.
          */
         get_service(service_name: string): Service;
         /**
          * Get the service type for `manager`.
-         * @returns the name of the service type for the supplied @manager.
+         * @returns the name of the service type for the supplied `manager`.
          */
         get_service_type(): string;
         /**
-         * Lists the accounts. If the #AgManager is created with a specified
-         * #AgManager:service-type, it will return only the accounts supporting this
+         * Lists the accounts. If the {@link Accounts.Manager} is created with a specified
+         * {@link Accounts.Manager.service_type}, it will return only the accounts supporting this
          * service type.
-         * @returns a #GList of #AgAccountId representing the accounts. Must be free'd with ag_manager_list_free() when no longer required.
+         * @returns a {@link GLib.List} of {@link Accounts.AccountId} representing the accounts. Must be free'd with `ag_manager_list_free()` when no longer required.
          */
         list(): AccountId[];
         /**
          * Lists the registered applications which support the given service.
-         * @param service the #AgService for which we want to get the applications list.
-         * @returns a #GList of all the applications which have declared support for the given service or for its service type.
+         * @param service the {@link Accounts.Service} for which we want to get the applications list.
+         * @returns a {@link GLib.List} of all the applications which have declared support for the given service or for its service type.
          */
         list_applications_by_service(service: Service): Application[];
         /**
          * Lists the accounts supporting the given service type.
          * @param service_type the name of the service type to check for.
-         * @returns a #GList of #AgAccountId representing the accounts. Must be free'd with ag_manager_list_free() when no longer required.
+         * @returns a {@link GLib.List} of {@link Accounts.AccountId} representing the accounts. Must be free'd with `ag_manager_list_free()` when no longer required.
          */
         list_by_service_type(service_type: string): AccountId[];
         /**
          * Lists the enabled accounts.
-         * @returns a #GList of the enabled #AgAccountId representing the accounts. Must be free'd with ag_manager_list_free() when no longer required.
+         * @returns a {@link GLib.List} of the enabled {@link Accounts.AccountId} representing the accounts. Must be free'd with `ag_manager_list_free()` when no longer required.
          */
         list_enabled(): AccountId[];
         /**
          * Lists the enabled accounts supporting the given service type.
          * @param service_type the name of the service type to check for.
-         * @returns a #GList of the enabled #AgAccountId representing the accounts. Must be free'd with ag_manager_list_free() when no longer required.
+         * @returns a {@link GLib.List} of the enabled {@link Accounts.AccountId} representing the accounts. Must be free'd with `ag_manager_list_free()` when no longer required.
          */
         list_enabled_by_service_type(service_type: string): AccountId[];
         /**
          * Gets a list of all the installed providers.
-         * @returns a list of #AgProvider, which must be then free'd with ag_provider_list_free().
+         * @returns a list of {@link Accounts.Provider}, which must be then free'd with `ag_provider_list_free()`.
          */
         list_providers(): Provider[];
         /**
          * Gets a list of all the installed service types.
-         * @returns a list of #AgServiceType, which must be free'd with ag_service_type_list_free() when no longer required.
+         * @returns a list of {@link Accounts.ServiceType}, which must be free'd with `ag_service_type_list_free()` when no longer required.
          */
         list_service_types(): ServiceType[];
         /**
          * Gets a list of all the installed services.
-         * If the #AgManager was created with a specified #AgManager:service_type
+         * If the {@link Accounts.Manager} was created with a specified {@link Accounts.Manager.service_type}
          * it will return only the installed services supporting that service type.
-         * @returns a list of #AgService, which must be free'd with ag_service_list_free() when no longer required.
+         * @returns a list of {@link Accounts.Service}, which must be free'd with `ag_service_list_free()` when no longer required.
          */
         list_services(): Service[];
+        /**
+         * Get the list of services that are supported by `application`.
+         * @param application a {@link Accounts.Application}.
+         * @returns a {@link GLib.List} of {@link Accounts.Service} items representing all the services which are supported. Must be free'd with `ag_service_list_free()`.
+         */
+        list_services_by_application(application: Application): Service[];
         /**
          * Gets a list of all the installed services where the service type name is
          * `service_type`.
          * @param service_type the type of the service.
-         * @returns a list of #AgService, which must be free'd with ag_service_list_free() when no longer required.
+         * @returns a list of {@link Accounts.Service}, which must be free'd with `ag_service_list_free()` when no longer required.
          */
         list_services_by_type(service_type: string): Service[];
         /**
          * Instantiates the object representing the account identified by
          * `account_id`.
-         * @param account_id the #AgAccountId of the account.
-         * @returns an #AgAccount, on which the client must call g_object_unref() when it is no longer required, or %NULL if an error occurs.
+         * @param account_id the {@link Accounts.AccountId} of the account.
+         * @returns an {@link Accounts.Account}, on which the client must call `g_object_unref()` when it is no longer required, or `null` if an error occurs.
          */
         load_account(account_id: AccountId): Account;
         /**
          * Instantiate the service type with the name `service_type`.
          * @param service_type the name of the service type.
-         * @returns an #AgServiceType, which must be free'd with ag_service_type_unref() when no longer required.
+         * @returns an {@link Accounts.ServiceType}, which must be free'd with `ag_service_type_unref()` when no longer required.
          */
         load_service_type(service_type: string): ServiceType;
         /**
          * Tells libaccounts whether it should make the client application abort when
-         * a timeout error occurs. The default is %FALSE.
+         * a timeout error occurs. The default is `false`.
          * @param abort whether to abort when a DB timeout occurs.
          */
         set_abort_on_db_timeout(abort: boolean): void;
@@ -1416,34 +1552,32 @@ export namespace Accounts {
          * @param timeout_ms the new timeout, in milliseconds.
          */
         set_db_timeout(timeout_ms: number): void;
-
-        // Inherited methods
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -1453,40 +1587,40 @@ export namespace Accounts {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
         init(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -1496,11 +1630,12 @@ export namespace Accounts {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -1516,32 +1651,32 @@ export namespace Accounts {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -1550,39 +1685,39 @@ export namespace Accounts {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -1593,13 +1728,16 @@ export namespace Accounts {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -1607,7 +1745,7 @@ export namespace Accounts {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -1615,9 +1753,9 @@ export namespace Accounts {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -1637,9 +1775,9 @@ export namespace Accounts {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -1652,34 +1790,34 @@ export namespace Accounts {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1712,22 +1850,22 @@ export namespace Accounts {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -1736,8 +1874,8 @@ export namespace Accounts {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -1754,10 +1892,10 @@ export namespace Accounts {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -1772,13 +1910,13 @@ export namespace Accounts {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1809,21 +1947,21 @@ export namespace Accounts {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1833,33 +1971,34 @@ export namespace Accounts {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1868,6 +2007,7 @@ export namespace Accounts {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1876,12 +2016,14 @@ export namespace Accounts {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1890,20 +2032,22 @@ export namespace Accounts {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1915,6 +2059,7 @@ export namespace Accounts {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -1944,18 +2089,31 @@ export namespace Accounts {
         stop_emission_by_name(detailedName: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AccountClass = typeof Account;
+    /**
+     * @gir-type Struct
+     */
     abstract class AccountPrivate {
         static $gtype: GObject.GType<AccountPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AccountServiceClass = typeof AccountService;
+    /**
+     * @gir-type Struct
+     */
     abstract class AccountServicePrivate {
         static $gtype: GObject.GType<AccountServicePrivate>;
     }
 
     /**
      * Iterator for account settings.
+     * @gir-type Struct
      */
     class AccountSettingIter {
         static $gtype: GObject.GType<AccountSettingIter>;
@@ -1967,26 +2125,27 @@ export namespace Accounts {
         // Methods
 
         /**
-         * Frees the memory associated with an #AgAccountSettingIter.
+         * Frees the memory associated with an {@link Accounts.AccountSettingIter}.
          */
         free(): void;
         /**
          * Iterates over the account keys. `iter` must be an iterator previously
-         * initialized with ag_account_settings_iter_init().
-         * @returns %TRUE if @key and @value have been set, %FALSE if we there are no more account settings to iterate over.
+         * initialized with `ag_account_settings_iter_init()`.
+         * @returns `true` if `key` and `value` have been set, `false` if we there are no more account settings to iterate over.
          */
         get_next(): [boolean, string, GLib.Variant];
         /**
          * Iterates over the account keys. `iter` must be an iterator previously
-         * initialized with ag_account_settings_iter_init().
-         * @returns %TRUE if @key and @value have been set, %FALSE if we there are no more account settings to iterate over.
+         * initialized with `ag_account_settings_iter_init()`.
+         * @returns `true` if `key` and `value` have been set, `false` if we there are no more account settings to iterate over.
          */
         next(): [boolean, string, unknown];
     }
 
     /**
-     * An opaque struct returned from ag_account_watch_dir() and
-     * ag_account_watch_key().
+     * An opaque struct returned from `ag_account_watch_dir()` and
+     * `ag_account_watch_key()`.
+     * @gir-type Struct
      */
     abstract class AccountWatch {
         static $gtype: GObject.GType<AccountWatch>;
@@ -1994,44 +2153,46 @@ export namespace Accounts {
 
     /**
      * Opaque structure. Use related accessor functions.
+     * @gir-type Struct
      */
-    class Application {
+    abstract class Application {
         static $gtype: GObject.GType<Application>;
 
         // Methods
 
         /**
-         * Get the description of the #AgApplication.
-         * @returns the description of @self.
+         * Get the description of the {@link Accounts.Application}.
+         * @returns the description of `self`.
          */
         get_description(): string;
         /**
-         * Get the #GDesktopAppInfo of the application.
-         * @returns the #GDesktopAppInfo for @self, or %NULL if failed.
-         */
-        get_desktop_app_info(): never;
-        /**
-         * Get the translation domain of the #AgApplication.
+         * Get the translation domain of the {@link Accounts.Application}.
          * @returns the translation domain.
          */
         get_i18n_domain(): string;
         /**
-         * Get the name of the #AgApplication.
-         * @returns the name of @self.
+         * Get the name of the {@link Accounts.Application}.
+         * @returns the name of `self`.
          */
         get_name(): string;
         /**
          * Get the description from the application XML file, for the specified
          * service; if not found, get the service-type description instead.
-         * @param service an #AgService.
+         * @param service an {@link Accounts.Service}.
          * @returns usage description of the service.
          */
         get_service_usage(service: Service): string;
         /**
          * Increment the reference count of `self`.
-         * @returns @self.
+         * @returns `self`.
          */
         ref(): Application;
+        /**
+         * Check whether the application supports the given service.
+         * @param service an {@link Accounts.Service}.
+         * @returns `true` if `service` is supported, `false` otherwise.
+         */
+        supports_service(service: Service): boolean;
         /**
          * Decrements the reference count of `self`. The item is destroyed when the
          * count gets to 0.
@@ -2041,8 +2202,9 @@ export namespace Accounts {
 
     /**
      * Opaque structure. Use related accessor functions.
+     * @gir-type Struct
      */
-    class AuthData {
+    abstract class AuthData {
         static $gtype: GObject.GType<AuthData>;
 
         // Methods
@@ -2054,8 +2216,8 @@ export namespace Accounts {
         get_credentials_id(): number;
         /**
          * Gets the authentication parameters.
-         * @param extra_parameters a #GVariant containing client-specific authentication parameters to be added to the returned dictionary.
-         * @returns a floating #GVariant of type %G_VARIANT_TYPE_VARDICT containing all the authentication parameters.
+         * @param extra_parameters a {@link GLib.Variant} containing client-specific authentication parameters to be added to the returned dictionary.
+         * @returns a floating {@link GLib.Variant} of type `G_VARIANT_TYPE_VARDICT` containing all the authentication parameters.
          */
         get_login_parameters(extra_parameters?: GLib.Variant | null): GLib.Variant;
         /**
@@ -2070,19 +2232,19 @@ export namespace Accounts {
         get_method(): string;
         /**
          * Gets the authentication parameters.
-         * @returns a #GHashTable containing all the authentication parameters.
+         * @returns a {@link GLib.HashTable} containing all the authentication parameters.
          */
         get_parameters(): GLib.HashTable<string, GObject.Value>;
         /**
          * Insert the given authentication parameters into the authentication data. If
          * some parameters were already present, the parameters passed with this method
          * take precedence.
-         * @param parameters a #GHashTable containing the authentication parameters to be added.
+         * @param parameters a {@link GLib.HashTable} containing the authentication parameters to be added.
          */
         insert_parameters(parameters: { [key: string]: any } | GLib.HashTable<string, GObject.Value>): void;
         /**
          * Increment the reference count of `self`.
-         * @returns @self.
+         * @returns `self`.
          */
         ref(): AuthData;
         /**
@@ -2092,35 +2254,42 @@ export namespace Accounts {
         unref(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ManagerClass = typeof Manager;
+    /**
+     * @gir-type Struct
+     */
     abstract class ManagerPrivate {
         static $gtype: GObject.GType<ManagerPrivate>;
     }
 
     /**
      * Opaque structure. Use related accessor functions.
+     * @gir-type Struct
      */
-    class Provider {
+    abstract class Provider {
         static $gtype: GObject.GType<Provider>;
 
         // Static methods
 
         /**
          * Frees the list `list`.
-         * @param list a #GList of providers returned by some function of this library.
+         * @param list a {@link GLib.List} of providers returned by some function of this library.
          */
         static list_free(list: Provider[]): void;
 
         // Methods
 
         /**
-         * Get the description of the #AgProvider.
-         * @returns the description of @provider, or %NULL upon failure.
+         * Get the description of the {@link Accounts.Provider}.
+         * @returns the description of `provider`, or `null` upon failure.
          */
         get_description(): string;
         /**
-         * Get the display name of the #AgProvider.
-         * @returns the display name of @provider.
+         * Get the display name of the {@link Accounts.Provider}.
+         * @returns the display name of `provider`.
          */
         get_display_name(): string;
         /**
@@ -2133,31 +2302,31 @@ export namespace Accounts {
          * Gets the contents of the XML provider file.  The buffer returned in `contents`
          * should not be modified or freed, and is guaranteed to be valid as long as
          * `provider` is referenced.
-         * If some error occurs, `contents` is set to %NULL.
+         * If some error occurs, `contents` is set to `null`.
          * @param contents location to receive the pointer to the file contents.
          */
         get_file_contents(contents: string): void;
         /**
-         * Get the translation domain of the #AgProvider.
+         * Get the translation domain of the {@link Accounts.Provider}.
          * @returns the translation domain.
          */
         get_i18n_domain(): string;
         /**
-         * Get the icon name of the #AgProvider.
+         * Get the icon name of the {@link Accounts.Provider}.
          * @returns the icon_name.
          */
         get_icon_name(): string;
         /**
-         * Get the name of the #AgProvider.
-         * @returns the name of @provider.
+         * Get the name of the {@link Accounts.Provider}.
+         * @returns the name of `provider`.
          */
         get_name(): string;
         /**
          * Get the name of the account plugin which manages all accounts created from
-         * this #AgProvider.
+         * this {@link Accounts.Provider}.
          * Some platforms might find it useful to store plugin names in the provider
          * XML files, especially when the same plugin can work for different providers.
-         * @returns the plugin name for @provider, or %NULL if a plugin name is not defined.
+         * @returns the plugin name for `provider`, or `null` if a plugin name is not defined.
          */
         get_plugin_name(): string;
         /**
@@ -2165,185 +2334,197 @@ export namespace Accounts {
          * Note that libaccounts itself does not enforce preventing the creation of
          * multiple accounts when this flag is set: the flag is only informative, and
          * its implementation is left to the client.
-         * @returns %FALSE if multiple accounts can be created from this provider, %TRUE otherwise.
+         * @returns `false` if multiple accounts can be created from this provider, `true` otherwise.
          */
         get_single_account(): boolean;
         /**
+         * Get list of tags specified for the {@link Accounts.Provider}.
+         * @returns {@link GLib.List} of tags for `provider`. The list must be freed with `g_list_free()`. Entries are owned by the {@link Accounts.Provider} type and must not be free'd.
+         */
+        get_tags(): string[];
+        /**
          * Check whether `domain` is supported by this provider, by matching it with the
-         * regex returned by ag_provider_get_domains_regex().
+         * regex returned by `ag_provider_get_domains_regex()`.
          * If the provider does not define a regular expression to match the supported
-         * domains, this function will return %FALSE.
+         * domains, this function will return `false`.
          * @param domain a domain name.
-         * @returns %TRUE if the given domain is supported, %FALSE otherwise.
+         * @returns `true` if the given domain is supported, `false` otherwise.
          */
         match_domain(domain: string): boolean;
         /**
          * Adds a reference to `provider`.
-         * @returns @provider.
+         * @returns `provider`.
          */
         ref(): Provider;
         /**
-         * Used to unreference the #AgProvider structure.
+         * Used to unreference the {@link Accounts.Provider} structure.
          */
         unref(): void;
     }
 
     /**
      * Opaque structure. Use related accessor functions.
+     * @gir-type Struct
      */
-    class Service {
+    abstract class Service {
         static $gtype: GObject.GType<Service>;
 
         // Static methods
 
         /**
          * Frees the list `list`.
-         * @param list a #GList of services returned by some function of this library.
+         * @param list a {@link GLib.List} of services returned by some function of this library.
          */
         static list_free(list: Service[]): void;
 
         // Methods
 
         /**
-         * Gets the description of the #AgService.
-         * @returns the description of @service, or %NULL upon failure.
+         * Gets the description of the {@link Accounts.Service}.
+         * @returns the description of `service`, or `null` upon failure.
          */
         get_description(): string;
         /**
-         * Gets the display name of the #AgService.
-         * @returns the display name of @service.
+         * Gets the display name of the {@link Accounts.Service}.
+         * @returns the display name of `service`.
          */
         get_display_name(): string;
         /**
          * Gets the contents of the XML service file.  The buffer returned in `contents`
          * should not be modified or freed, and is guaranteed to be valid as long as
-         * `service` is referenced. If `data_offset` is not %NULL, it is set to the
+         * `service` is referenced. If `data_offset` is not `null`, it is set to the
          * offset where the &lt;type_data&gt; element can be found.
-         * If some error occurs, `contents` is set to %NULL.
+         * If some error occurs, `contents` is set to `null`.
          * @param contents location to receive the pointer to the file contents.
          * @param data_offset pointer to receive the offset of the type data.
          */
         get_file_contents(contents: string, data_offset: number): void;
         /**
-         * Gets the translation domain of the #AgService.
+         * Gets the translation domain of the {@link Accounts.Service}.
          * @returns the name of the translation catalog.
          */
         get_i18n_domain(): string;
         /**
-         * Gets the icon name of the #AgService.
-         * @returns the name of the icon of @service.
+         * Gets the icon name of the {@link Accounts.Service}.
+         * @returns the name of the icon of `service`.
          */
         get_icon_name(): string;
         /**
-         * Gets the name of the #AgService.
-         * @returns the name of @service.
+         * Gets the name of the {@link Accounts.Service}.
+         * @returns the name of `service`.
          */
         get_name(): string;
         /**
-         * Gets the provider name of the #AgService.
-         * @returns the name of the provider of @service.
+         * Gets the provider name of the {@link Accounts.Service}.
+         * @returns the name of the provider of `service`.
          */
         get_provider(): string;
         /**
-         * Gets the service type of the #AgService.
-         * @returns the type of @service.
+         * Gets the service type of the {@link Accounts.Service}.
+         * @returns the type of `service`.
          */
         get_service_type(): string;
         /**
-         * Get list of tags specified for the #AgService. If the service has not
+         * Get list of tags specified for the {@link Accounts.Service}. If the service has not
          * defined tags, tags from the service type will be returned.
-         * @returns #GList of tags for @service. The list must be freed with g_list_free(). Entries are owned by the #AgService type and must not be free'd.
+         * @returns {@link GLib.List} of tags for `service`. The list must be freed with `g_list_free()`. Entries are owned by the {@link Accounts.Service} type and must not be free'd.
          */
         get_tags(): string[];
         /**
-         * Checks if the #AgService has the requested tag.
+         * Checks if the {@link Accounts.Service} has the requested tag.
          * @param tag tag to check for.
-         * @returns TRUE if #AgService has the tag, FALSE otherwise
+         * @returns TRUE if {@link Accounts.Service} has the tag, FALSE otherwise
          */
         has_tag(tag: string): boolean;
         /**
          * Adds a reference to `service`.
-         * @returns @service.
+         * @returns `service`.
          */
         ref(): Service;
         /**
-         * Used to unreference the #AgService structure.
+         * Used to unreference the {@link Accounts.Service} structure.
          */
         unref(): void;
     }
 
     /**
      * Opaque structure. Use related accessor functions.
+     * @gir-type Struct
      */
-    class ServiceType {
+    abstract class ServiceType {
         static $gtype: GObject.GType<ServiceType>;
 
         // Static methods
 
         /**
          * Frees the list `list`.
-         * @param list a #GList of service types returned by some function of this library, such as ag_manager_list_service_types().
+         * @param list a {@link GLib.List} of service types returned by some function of this library, such as `ag_manager_list_service_types()`.
          */
         static list_free(list: ServiceType[]): void;
 
         // Methods
 
         /**
-         * Get the description of the #AgServiceType.
-         * @returns the description of @service_type, or %NULL upon failure.
+         * Get the description of the {@link Accounts.ServiceType}.
+         * @returns the description of `service_type`, or `null` upon failure.
          */
         get_description(): string;
         /**
-         * Get the display name of the #AgServiceType.
-         * @returns the display name of @service_type.
+         * Get the display name of the {@link Accounts.ServiceType}.
+         * @returns the display name of `service_type`.
          */
         get_display_name(): string;
         /**
          * Gets the contents of the XML service type file.  The buffer returned in
          * `contents` should not be modified or freed, and is guaranteed to be valid as
          * long as `service_type` is referenced.
-         * If some error occurs, `contents` is set to %NULL.
+         * If some error occurs, `contents` is set to `null`.
          * @param contents location to receive the pointer to the file contents.
          * @param len location to receive the length of the file, in bytes.
          */
         get_file_contents(contents: string, len: number): void;
         /**
-         * Get the translation domain of the #AgServiceType.
+         * Get the translation domain of the {@link Accounts.ServiceType}.
          * @returns the translation domain.
          */
         get_i18n_domain(): string;
         /**
-         * Get the icon name of the #AgServiceType.
-         * @returns the name of the icon of @service_type.
+         * Get the icon name of the {@link Accounts.ServiceType}.
+         * @returns the name of the icon of `service_type`.
          */
         get_icon_name(): string;
         /**
-         * Get the name of the #AgServiceType.
-         * @returns the name of @service_type.
+         * Get the name of the {@link Accounts.ServiceType}.
+         * @returns the name of `service_type`.
          */
         get_name(): string;
         /**
-         * Get list of tags specified for the #AgServiceType.
-         * @returns #GList of tags for @service_type. The list must be freed with g_list_free(). Entries are owned by the #AgServiceType type and must not be free'd.
+         * Get list of tags specified for the {@link Accounts.ServiceType}.
+         * @returns {@link GLib.List} of tags for `service_type`. The list must be freed with `g_list_free()`. Entries are owned by the {@link Accounts.ServiceType} type and must not be free'd.
          */
         get_tags(): string[];
         /**
-         * Check if the #AgServiceType has the requested tag.
+         * Check if the {@link Accounts.ServiceType} has the requested tag.
          * @param tag the tag to check for.
-         * @returns TRUE if the #AgServiceType has the tag, FALSE otherwise
+         * @returns TRUE if the {@link Accounts.ServiceType} has the tag, FALSE otherwise
          */
         has_tag(tag: string): boolean;
         /**
          * Adds a reference to `service_type`.
-         * @returns @service_type.
+         * @returns `service_type`.
          */
         ref(): ServiceType;
         /**
-         * Used to unreference the #AgServiceType structure.
+         * Used to unreference the {@link Accounts.ServiceType} structure.
          */
         unref(): void;
     }
 
+    /**
+     * ID of an account. Often used when retrieving lists of accounts from
+     * {@link Accounts.Manager}.
+     * @gir-type Alias
+     */
     type AccountId = number;
     /**
      * Name of the imported GIR library

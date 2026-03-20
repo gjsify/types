@@ -15,7 +15,7 @@ import type Gio from '@girs/gio-2.0';
 import type GObject from '@girs/gobject-2.0';
 import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
-import type GIRepository from '@girs/girepository-2.0';
+import type GIRepository from '@girs/girepository-3.0';
 import type Gtk from '@girs/gtk-3.0';
 import type xlib from '@girs/xlib-2.0';
 import type Gdk from '@girs/gdk-3.0';
@@ -31,12 +31,15 @@ export namespace Budgie {
      * Budgie-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PopoverPositionPolicy {
         export const $gtype: GObject.GType<PopoverPositionPolicy>;
     }
 
     /**
-     * The BudgiePopoverPositionPolicy determines how the #BudgiePopover will be
+     * The BudgiePopoverPositionPolicy determines how the {@link Budgie.Popover} will be
      * placed on screen. The default policy (AUTOMATIC) will try to place the
      * popover at a sensible location relative to the parent widget, and point
      * the tail accordingly.
@@ -44,6 +47,7 @@ export namespace Budgie {
      * The TOPLEVEL_HINT policy is designed for use with panels + docks, where the
      * top level window owning the relative-to widget sets a CSS class on itself
      * in accordance with the screen edge, i.e. top, left, bottom, right.
+     * @gir-type Enum
      */
     enum PopoverPositionPolicy {
         /**
@@ -59,14 +63,18 @@ export namespace Budgie {
     const APPLET_KEY_ALIGN: string;
     const APPLET_KEY_NAME: string;
     const APPLET_KEY_POS: string;
+    /**
+     * @gir-type Flags
+     */
     export namespace PanelAction {
         export const $gtype: GObject.GType<PanelAction>;
     }
 
     /**
-     * BudgiePanelAction's are bitwise OR'd so that a #BudgieApplet may expose
+     * BudgiePanelAction's are bitwise OR'd so that a {@link Budgie.Applet} may expose
      * the actions that it supports, when the panel is interacted with in
      * a global fashion (such as via the D-BUS API)
+     * @gir-type Flags
      */
     enum PanelAction {
         NONE,
@@ -77,6 +85,9 @@ export namespace Budgie {
         MAX,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace PanelPosition {
         export const $gtype: GObject.GType<PanelPosition>;
     }
@@ -85,6 +96,7 @@ export namespace Budgie {
      * Each applet lives on a unique panel which can live on any one of
      * the 4 screen edges. Internally this is represented with a bitmask
      * to enable efficient screen management.
+     * @gir-type Flags
      */
     enum PanelPosition {
         /**
@@ -112,7 +124,21 @@ export namespace Budgie {
     namespace Applet {
         // Signal signatures
         interface SignalSignatures extends Gtk.EventBox.SignalSignatures {
+            /**
+             * Used to notify this applet of a change in the panel's placement
+             * on screen, so that it may adjust its own layout to better suit
+             * the geometry.
+             * @signal
+             * @action
+             * @run-last
+             */
             'panel-position-changed': (arg0: PanelPosition) => void;
+            /**
+             * Used to notify this applet of a change in the panel size
+             * @signal
+             * @action
+             * @run-last
+             */
             'panel-size-changed': (arg0: number, arg1: number, arg2: number) => void;
             'notify::settings-prefix': (pspec: GObject.ParamSpec) => void;
             'notify::settings-schema': (pspec: GObject.ParamSpec) => void;
@@ -179,6 +205,9 @@ export namespace Budgie {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Applet extends Gtk.EventBox implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Applet>;
 
@@ -225,7 +254,7 @@ export namespace Budgie {
         /**
          * The ID of the GSettings schema used by this applet
          *
-         * This only takes effect when you've also set #BudgieApplet:settings-prefix,
+         * This only takes effect when you've also set {@link Budgie.Applet.settings_prefix},
          * and is used by the panel managemen to both initialise and delete your per-instance
          * settings, respectively.
          *
@@ -241,7 +270,7 @@ export namespace Budgie {
         /**
          * The ID of the GSettings schema used by this applet
          *
-         * This only takes effect when you've also set #BudgieApplet:settings-prefix,
+         * This only takes effect when you've also set {@link Budgie.Applet.settings_prefix},
          * and is used by the panel managemen to both initialise and delete your per-instance
          * settings, respectively.
          *
@@ -284,16 +313,19 @@ export namespace Budgie {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Applet.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Applet.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Applet.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Applet.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Applet.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Applet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -304,12 +336,13 @@ export namespace Budgie {
 
         /**
          * For applets that need to expose settings, they should both override the
-         * #BudgieApplet::supports_settings method and return a new widget instance
+         * {@link Budgie.Applet.SignalSignatures.supports_settings | Budgie.Applet::supports_settings} method and return a new widget instance
          * whenever this function is invoked.
          *
          * This UI will live in the Raven sidebar within the Budgie Desktop, and
          * will be destroyed as soon as it's not being used. It's advisable to keep
          * this widget implementation light, and to prefer vertical space.
+         * @virtual
          */
         vfunc_get_settings_ui(): Gtk.Widget | null;
         /**
@@ -318,7 +351,7 @@ export namespace Budgie {
          *
          * To allow better integration between the Budgie Desktop, and the applets
          * that live within it, the panel will relay actions to applets that have
-         * set their #BudgieApplet:supported-actions to a matching bitmask.
+         * set their {@link Budgie.Applet.supported_actions} to a matching bitmask.
          *
          * For example, if we wish to listen for Menu Key events, we can simply do
          * the following in C:
@@ -344,7 +377,7 @@ export namespace Budgie {
          *
          * Likewise, a Vala implementation might look like the following:
          *
-         * ```<!-- language="Vala" -->
+         * ```vala
          *
          *      public override void invoke_action(Budgie.PanelAction action)
          *      {
@@ -355,28 +388,35 @@ export namespace Budgie {
          * ```
          *
          * @param action Action to invoke
+         * @virtual
          */
         vfunc_invoke_action(action: PanelAction): void;
+        /**
+         * @param position
+         * @virtual
+         */
         vfunc_panel_position_changed(position: PanelPosition): void;
         /**
          * Virtual panel_size_changed function
          * @param panel_size
          * @param icon_size
          * @param small_icon_size
+         * @virtual
          */
         vfunc_panel_size_changed(panel_size: number, icon_size: number, small_icon_size: number): void;
         /**
          * Implementations should override this to return TRUE if they support
          * a settings UI
+         * @virtual
          */
         vfunc_supports_settings(): boolean;
         /**
          * This virtual method should be implemented by panel applets that wish
-         * to support #GtkPopover's natively. As each Budgie Panel may house multiple
+         * to support {@link Gtk.Popover}'s natively. As each Budgie Panel may house multiple
          * GtkPopover widgets, each one must be registered with the `manager`.
          *
          * During this call, it is safe to store a reference to the `manager`. In
-         * this call you should invoke #BudgiePopoverManager::register_popover to
+         * this call you should invoke {@link Budgie.PopoverManager.SignalSignatures.register_popover | Budgie.PopoverManager::register_popover} to
          * register your popover with the panel manager.
          *
          * Each registered popover joins the global menu system of popovers in the
@@ -384,13 +424,14 @@ export namespace Budgie {
          * know when to expand and collapse the main panel harness to accommodate
          * the GtkPopover.
          * @param manager
+         * @virtual
          */
         vfunc_update_popovers(manager?: PopoverManager | null): void;
 
         // Methods
 
         /**
-         * If your #BudgiePlugin implementation passes the UUID to your BudgieApplet
+         * If your {@link Budgie.Plugin} implementation passes the UUID to your BudgieApplet
          * implementation on construction, you can take advantage of per-instance
          * settings.
          *
@@ -399,23 +440,23 @@ export namespace Budgie {
          * of your applet, each with their own configuration.
          *
          * To facilitate this, use this function to create a new relocatable settings
-         * instance using your UUID. Make sure you set the #BudgieApplet:settings-schema
-         * and #BudgieApplet:settings-prefix properties first.
+         * instance using your UUID. Make sure you set the {@link Budgie.Applet.settings_schema}
+         * and {@link Budgie.Applet.settings_prefix} properties first.
          * @param uuid UUID for this instance
-         * @returns A newly created #GSettings for this applet instance
+         * @returns A newly created {@link Gio.Settings} for this applet instance
          */
         get_applet_settings(uuid: string): Gio.Settings;
         /**
-         * Utility function for Python usage. See: #BudgieApplet:settings-prefix
+         * Utility function for Python usage. See: {@link Budgie.Applet.settings_prefix}
          */
         get_settings_prefix(): string;
         /**
-         * Utility function for Python usage. See #BudgieApplet:settings-schema
+         * Utility function for Python usage. See {@link Budgie.Applet.settings_schema}
          */
         get_settings_schema(): string;
         /**
          * For applets that need to expose settings, they should both override the
-         * #BudgieApplet::supports_settings method and return a new widget instance
+         * {@link Budgie.Applet.SignalSignatures.supports_settings | Budgie.Applet::supports_settings} method and return a new widget instance
          * whenever this function is invoked.
          *
          * This UI will live in the Raven sidebar within the Budgie Desktop, and
@@ -425,7 +466,7 @@ export namespace Budgie {
          */
         get_settings_ui(): Gtk.Widget | null;
         /**
-         * Utility function for Python bindings. See #BudgieApplet:supported-actions
+         * Utility function for Python bindings. See {@link Budgie.Applet.supported_actions}
          */
         get_supported_actions(): PanelAction;
         /**
@@ -434,7 +475,7 @@ export namespace Budgie {
          *
          * To allow better integration between the Budgie Desktop, and the applets
          * that live within it, the panel will relay actions to applets that have
-         * set their #BudgieApplet:supported-actions to a matching bitmask.
+         * set their {@link Budgie.Applet.supported_actions} to a matching bitmask.
          *
          * For example, if we wish to listen for Menu Key events, we can simply do
          * the following in C:
@@ -460,7 +501,7 @@ export namespace Budgie {
          *
          * Likewise, a Vala implementation might look like the following:
          *
-         * ```<!-- language="Vala" -->
+         * ```vala
          *
          *      public override void invoke_action(Budgie.PanelAction action)
          *      {
@@ -474,12 +515,12 @@ export namespace Budgie {
          */
         invoke_action(action: PanelAction | null): void;
         /**
-         * Utility function for Python usage. See: #BudgieApplet:settings-prefix
+         * Utility function for Python usage. See: {@link Budgie.Applet.settings_prefix}
          * @param prefix
          */
         set_settings_prefix(prefix: string): void;
         /**
-         * Utility function for Python usage. See #BudgieApplet:settings-schema
+         * Utility function for Python usage. See {@link Budgie.Applet.settings_schema}
          * @param schema
          */
         set_settings_schema(schema: string): void;
@@ -491,11 +532,11 @@ export namespace Budgie {
         supports_settings(): boolean;
         /**
          * This virtual method should be implemented by panel applets that wish
-         * to support #GtkPopover's natively. As each Budgie Panel may house multiple
+         * to support {@link Gtk.Popover}'s natively. As each Budgie Panel may house multiple
          * GtkPopover widgets, each one must be registered with the `manager`.
          *
          * During this call, it is safe to store a reference to the `manager`. In
-         * this call you should invoke #BudgiePopoverManager::register_popover to
+         * this call you should invoke {@link Budgie.PopoverManager.SignalSignatures.register_popover | Budgie.PopoverManager::register_popover} to
          * register your popover with the panel manager.
          *
          * Each registered popover joins the global menu system of popovers in the
@@ -505,8 +546,6 @@ export namespace Budgie {
          * @param manager
          */
         update_popovers(manager?: PopoverManager | null): void;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -520,32 +559,32 @@ export namespace Budgie {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -554,39 +593,39 @@ export namespace Budgie {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -597,13 +636,16 @@ export namespace Budgie {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -611,7 +653,7 @@ export namespace Budgie {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -619,9 +661,9 @@ export namespace Budgie {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -641,9 +683,9 @@ export namespace Budgie {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -656,34 +698,34 @@ export namespace Budgie {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -716,22 +758,22 @@ export namespace Budgie {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -740,8 +782,8 @@ export namespace Budgie {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -758,10 +800,10 @@ export namespace Budgie {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -776,13 +818,13 @@ export namespace Budgie {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -813,21 +855,21 @@ export namespace Budgie {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -837,33 +879,34 @@ export namespace Budgie {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -872,6 +915,7 @@ export namespace Budgie {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -880,12 +924,14 @@ export namespace Budgie {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -894,20 +940,22 @@ export namespace Budgie {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -919,6 +967,7 @@ export namespace Budgie {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -978,6 +1027,7 @@ export namespace Budgie {
     /**
      * This type is private to the panel implementation, and is used to monitor, track,
      * and control each applet instance.
+     * @gir-type Class
      */
     class AppletInfo extends GObject.Object {
         static $gtype: GObject.GType<AppletInfo>;
@@ -1022,16 +1072,19 @@ export namespace Budgie {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AppletInfo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AppletInfo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AppletInfo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AppletInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AppletInfo.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AppletInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1042,6 +1095,15 @@ export namespace Budgie {
     namespace Popover {
         // Signal signatures
         interface SignalSignatures extends Gtk.Window.SignalSignatures {
+            /**
+             * This signal is emitted when the popover has been dismissed, whether
+             * it was deliberately from the user's perspective, or implicitly
+             * through a toggling action, such as being rolled past in a
+             * {@link Budgie.PopoverManager} set of popovers.
+             * @signal
+             * @action
+             * @run-last
+             */
             closed: () => void;
             'notify::position-policy': (pspec: GObject.ParamSpec) => void;
             'notify::relative-to': (pspec: GObject.ParamSpec) => void;
@@ -1133,6 +1195,9 @@ export namespace Budgie {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Popover extends Gtk.Window implements Atk.ImplementorIface, Gtk.Buildable {
         static $gtype: GObject.GType<Popover>;
 
@@ -1175,16 +1240,19 @@ export namespace Budgie {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Popover.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Popover.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Popover.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Popover.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Popover.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Popover.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1195,6 +1263,7 @@ export namespace Budgie {
 
         /**
          * Virtual closed signal
+         * @virtual
          */
         vfunc_closed(): void;
 
@@ -1202,7 +1271,7 @@ export namespace Budgie {
 
         /**
          * Retrieve the currently active positioning policy for this popover
-         * @returns The #BudgiePopoverPositionPolicy currently in use
+         * @returns The {@link Budgie.PopoverPositionPolicy} currently in use
          */
         get_position_policy(): PopoverPositionPolicy;
         /**
@@ -1210,8 +1279,6 @@ export namespace Budgie {
          * @param policy New policy to set
          */
         set_position_policy(policy: PopoverPositionPolicy | null): void;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -1225,32 +1292,32 @@ export namespace Budgie {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -1259,39 +1326,39 @@ export namespace Budgie {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -1302,13 +1369,16 @@ export namespace Budgie {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -1316,7 +1386,7 @@ export namespace Budgie {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -1324,9 +1394,9 @@ export namespace Budgie {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -1346,9 +1416,9 @@ export namespace Budgie {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -1361,34 +1431,34 @@ export namespace Budgie {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1421,22 +1491,22 @@ export namespace Budgie {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -1445,8 +1515,8 @@ export namespace Budgie {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -1463,10 +1533,10 @@ export namespace Budgie {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -1481,13 +1551,13 @@ export namespace Budgie {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1518,21 +1588,21 @@ export namespace Budgie {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1542,33 +1612,34 @@ export namespace Budgie {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1577,6 +1648,7 @@ export namespace Budgie {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1585,12 +1657,14 @@ export namespace Budgie {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1599,20 +1673,22 @@ export namespace Budgie {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1624,6 +1700,7 @@ export namespace Budgie {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -1662,6 +1739,9 @@ export namespace Budgie {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class PopoverManager extends GObject.Object {
         static $gtype: GObject.GType<PopoverManager>;
 
@@ -1684,16 +1764,19 @@ export namespace Budgie {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof PopoverManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PopoverManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof PopoverManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PopoverManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PopoverManager.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PopoverManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1710,11 +1793,11 @@ export namespace Budgie {
          * This allows the panel to provide a "menubar" like functionality for interaction
          * with multiple popovers in a natural fashion.
          * @param parent_widget The widget that "owns" the popover (relative-to)
-         * @param popover The popover that will be shown when the @parent_widget is activated
+         * @param popover The popover that will be shown when the `parent_widget` is activated
          */
         register_popover(parent_widget: Gtk.Widget, popover: Popover): void;
         /**
-         * Show a #BudgiePopover on screen belonging to the specified `parent_widget`
+         * Show a {@link Budgie.Popover} on screen belonging to the specified `parent_widget`
          * @param parent_widget The widget owning the popover to be shown
          */
         show_popover(parent_widget: Gtk.Widget): void;
@@ -1726,23 +1809,50 @@ export namespace Budgie {
         unregister_popover(parent_widget: Gtk.Widget): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AppletClass = typeof Applet;
+    /**
+     * @gir-type Alias
+     */
     type AppletInfoClass = typeof AppletInfo;
+    /**
+     * @gir-type Struct
+     */
     abstract class AppletInfoPrivate {
         static $gtype: GObject.GType<AppletInfoPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class AppletPrivate {
         static $gtype: GObject.GType<AppletPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PluginIface = typeof Plugin;
+    /**
+     * @gir-type Alias
+     */
     type PopoverClass = typeof Popover;
+    /**
+     * @gir-type Alias
+     */
     type PopoverManagerClass = typeof PopoverManager;
+    /**
+     * @gir-type Struct
+     */
     abstract class PopoverManagerPrivate {
         static $gtype: GObject.GType<PopoverManagerPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class PopoverPrivate {
         static $gtype: GObject.GType<PopoverPrivate>;
     }
@@ -1755,6 +1865,10 @@ export namespace Budgie {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param uuid UUID for this new instance
+             * @virtual
+             */
             vfunc_get_panel_widget(uuid: string): Applet;
         }
 
@@ -1767,9 +1881,16 @@ export namespace Budgie {
         $gtype: GObject.GType<Plugin>;
         prototype: Plugin;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Plugin extends GObject.Object, Plugin.Interface {
         // Methods
 
+        /**
+         * @param uuid UUID for this new instance
+         * @returns A newly initialised panel widget
+         */
         get_panel_widget(uuid: string): Applet;
     }
 

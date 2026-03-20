@@ -17,10 +17,16 @@ export namespace CudaGst {
      * CudaGst-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     enum GLDeviceList {
         GL_DEVICE_LIST_ALL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum address_mode {
         WRAP,
         CLAMP,
@@ -28,11 +34,17 @@ export namespace CudaGst {
         BORDER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum array_format {
         INT8,
         INT16,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum device_attribute {
         TEXTURE_ALIGNMENT,
         UNIFIED_ADDRESSING,
@@ -42,8 +54,12 @@ export namespace CudaGst {
         HANDLE_TYPE_POSIX_FILE_DESCRIPTOR_SUPPORTED,
         HANDLE_TYPE_WIN32_HANDLE_SUPPORTED,
         HANDLE_TYPE_WIN32_KMT_HANDLE_SUPPORTED,
+        MEMORY_POOLS_SUPPORTED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum event_flags {
         DEFAULT,
         BLOCKING_SYNC,
@@ -51,17 +67,56 @@ export namespace CudaGst {
         INTERPROCESS,
     }
 
+    /**
+     * @gir-type Enum
+     */
+    enum externalMemoryHandleType {
+        OPAQUE_FD,
+        OPAQUE_WIN32,
+        OPAQUE_WIN32_KMT,
+        D3D12_HEAP,
+        D3D12_RESOURCE,
+        D3D11_RESOURCE,
+        D3D11_RESOURCE_KMT,
+        NVSCIBUF,
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    enum externalSemaphoreHandleType {
+        OPAQUE_FD,
+        OPAQUE_WIN32,
+        OPAQUE_WIN32_KMT,
+        D3D12_FENCE,
+        D3D11_FENCE,
+        NVSCISYNC,
+        D3D11_KEYED_MUTEX,
+        D3D11_KEYED_MUTEX_KMT,
+        TIMELINE_SEMAPHORE_FD,
+        TIMELINE_SEMAPHORE_WIN32,
+    }
+
+    /**
+     * @gir-type Enum
+     */
     enum filter_mode {
         POINT,
         LINEAR,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum graphicsMapResourceFlags {
         NONE,
         READ_ONLY,
         WRITE_DISCARD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum graphicsRegisterFlags {
         NONE,
         READ_ONLY,
@@ -70,10 +125,32 @@ export namespace CudaGst {
         TEXTURE_GATHER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ipcMem_flags {
         IPC_MEM_LAZY_ENABLE_PEER_ACCESS,
     }
 
+    /**
+     * @gir-type Enum
+     */
+    enum limit {
+        STACK_SIZE,
+        PRINTF_FIFO_SIZE,
+        MALLOC_HEAP_SIZE,
+        DEV_RUNTIME_SYNC_DEPTH,
+        DEV_RUNTIME_PENDING_LAUNCH_COUNT,
+        MAX_L2_FETCH_GRANULARITY,
+        PERSISTING_L2_CACHE_SIZE,
+        SHMEM_SIZE,
+        CIG_ENABLED,
+        CIG_SHMEM_FALLBACK_ENABLED,
+    }
+
+    /**
+     * @gir-type Enum
+     */
     enum memAccess_flags {
         NONE,
         READ,
@@ -81,11 +158,17 @@ export namespace CudaGst {
         MAX,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum memAllocationGranularity_flags {
         MINIMUM,
         RECOMMENDED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum memAllocationHandleType {
         NONE,
         POSIX_FILE_DESCRIPTOR,
@@ -94,18 +177,41 @@ export namespace CudaGst {
         MAX,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum memAllocationType {
         INVALID,
         PINNED,
         MAX,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum memLocationType {
         INVALID,
         DEVICE,
         MAX,
     }
 
+    /**
+     * @gir-type Enum
+     */
+    enum memPool_attribute {
+        REUSE_FOLLOW_EVENT_DEPENDENCIES,
+        REUSE_ALLOW_OPPORTUNISTIC,
+        REUSE_ALLOW_INTERNAL_DEPENDENCIES,
+        RELEASE_THRESHOLD,
+        RESERVED_MEM_CURRENT,
+        RESERVED_MEM_HIGH,
+        USED_MEM_CURRENT,
+        USED_MEM_HIGH,
+    }
+
+    /**
+     * @gir-type Enum
+     */
     enum memorytype {
         HOST,
         DEVICE,
@@ -113,10 +219,16 @@ export namespace CudaGst {
         UNIFIED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum resourceViewFormat {
         RES_VIEW_FORMAT_NONE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum resourcetype {
         ARRAY,
         MIPMAPPED_ARRAY,
@@ -124,6 +236,9 @@ export namespace CudaGst {
         PITCH2D,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum result {
         SUCCESS,
         ERROR_NO_DEVICE,
@@ -131,6 +246,9 @@ export namespace CudaGst {
         ERROR_NOT_SUPPORTED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum stream_flags {
         DEFAULT,
         NON_BLOCKING,
@@ -139,6 +257,60 @@ export namespace CudaGst {
     const IPC_HANDLE_SIZE: number;
     const TRSF_READ_AS_INTEGER: number;
     const VERSION: number;
+    /**
+     * @gir-type Struct
+     */
+    class DA_ARRAY3D_DESCRIPTOR {
+        static $gtype: GObject.GType<DA_ARRAY3D_DESCRIPTOR>;
+
+        // Fields
+
+        Width: number;
+        Height: number;
+        Depth: number;
+        Format: array_format;
+        NumChannels: number;
+        Flags: number;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class DA_EXTERNAL_MEMORY_BUFFER_DESC {
+        static $gtype: GObject.GType<DA_EXTERNAL_MEMORY_BUFFER_DESC>;
+
+        // Fields
+
+        flags: number;
+        reserved: number[];
+
+        // Constructors
+
+        constructor(
+            properties?: Partial<{
+                offset: number;
+                size: number;
+                flags: number;
+                reserved: number[];
+            }>,
+        );
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class DA_EXTERNAL_MEMORY_MIPMAPPED_ARRAY_DESC {
+        static $gtype: GObject.GType<DA_EXTERNAL_MEMORY_MIPMAPPED_ARRAY_DESC>;
+
+        // Fields
+
+        numLevels: number;
+        reserved: number[];
+    }
+
+    /**
+     * @gir-type Struct
+     */
     class DA_MEMCPY2D {
         static $gtype: GObject.GType<DA_MEMCPY2D>;
 
@@ -162,6 +334,9 @@ export namespace CudaGst {
         Height: number;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class DA_RESOURCE_DESC {
         static $gtype: GObject.GType<DA_RESOURCE_DESC>;
 
@@ -171,6 +346,9 @@ export namespace CudaGst {
         flags: number;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class DA_RESOURCE_VIEW_DESC {
         static $gtype: GObject.GType<DA_RESOURCE_VIEW_DESC>;
 
@@ -187,6 +365,9 @@ export namespace CudaGst {
         reserved: number[];
     }
 
+    /**
+     * @gir-type Struct
+     */
     class DA_TEXTURE_DESC {
         static $gtype: GObject.GType<DA_TEXTURE_DESC>;
 
@@ -204,6 +385,9 @@ export namespace CudaGst {
         reserved: number[];
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ipcEventHandle {
         static $gtype: GObject.GType<ipcEventHandle>;
 
@@ -220,6 +404,9 @@ export namespace CudaGst {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ipcMemHandle {
         static $gtype: GObject.GType<ipcMemHandle>;
 
@@ -236,6 +423,9 @@ export namespace CudaGst {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class memAccessDesc {
         static $gtype: GObject.GType<memAccessDesc>;
 
@@ -244,6 +434,9 @@ export namespace CudaGst {
         flags: memAccess_flags;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class memAllocationProp {
         static $gtype: GObject.GType<memAllocationProp>;
 
@@ -255,6 +448,9 @@ export namespace CudaGst {
         allocFlags: memAllocationPropAllocFlags;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class memAllocationPropAllocFlags {
         static $gtype: GObject.GType<memAllocationPropAllocFlags>;
 
@@ -277,6 +473,9 @@ export namespace CudaGst {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class memLocation {
         static $gtype: GObject.GType<memLocation>;
 
@@ -286,16 +485,76 @@ export namespace CudaGst {
         id: number;
     }
 
+    /**
+     * @gir-type Struct
+     */
+    class memPoolProps {
+        static $gtype: GObject.GType<memPoolProps>;
+
+        // Fields
+
+        allocType: memAllocationType;
+        handleTypes: memAllocationHandleType;
+        win32SecurityAttributes: any;
+        maxSize: number;
+        reserved: Uint8Array;
+    }
+
+    /**
+     * @gir-type Alias
+     */
     type array = any;
+    /**
+     * @gir-type Alias
+     */
     type context = any;
+    /**
+     * @gir-type Alias
+     */
     type device = number;
+    /**
+     * @gir-type Alias
+     */
     type deviceptr = never;
+    /**
+     * @gir-type Alias
+     */
     type event = any;
+    /**
+     * @gir-type Alias
+     */
+    type externalMemory = any;
+    /**
+     * @gir-type Alias
+     */
+    type externalSemaphore = any;
+    /**
+     * @gir-type Alias
+     */
     type __function = any;
+    /**
+     * @gir-type Alias
+     */
     type graphicsResource = any;
+    /**
+     * @gir-type Alias
+     */
+    type memoryPool = any;
+    /**
+     * @gir-type Alias
+     */
     type mipmappedArray = any;
+    /**
+     * @gir-type Alias
+     */
     type module = any;
+    /**
+     * @gir-type Alias
+     */
     type stream = any;
+    /**
+     * @gir-type Alias
+     */
     type texObject = number;
     /**
      * Name of the imported GIR library

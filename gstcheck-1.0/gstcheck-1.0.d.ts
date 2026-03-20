@@ -22,51 +22,51 @@ export namespace GstCheck {
 
     /**
      * Get one buffer from `pad`. Implemented via buffer probes. This function will
-     * block until the pipeline passes a buffer over `pad,` so for robust behavior
+     * block until the pipeline passes a buffer over `pad`, so for robust behavior
      * in unit tests, you need to use check's timeout to fail out in the case that a
      * buffer never arrives.
      *
-     * You must have previously called gst_buffer_straw_start_pipeline() on
+     * You must have previously called `gst_buffer_straw_start_pipeline()` on
      * `pipeline` and `pad`.
-     * @param bin the pipeline previously started via gst_buffer_straw_start_pipeline()
-     * @param pad the pad previously passed to gst_buffer_straw_start_pipeline()
-     * @returns the captured #GstBuffer.
+     * @param bin the pipeline previously started via `gst_buffer_straw_start_pipeline()`
+     * @param pad the pad previously passed to `gst_buffer_straw_start_pipeline()`
+     * @returns the captured {@link Gst.Buffer}.
      */
     function buffer_straw_get_buffer(bin: Gst.Element, pad: Gst.Pad): Gst.Buffer;
     /**
      * Sets up a pipeline for buffer sucking. This will allow you to call
-     * gst_buffer_straw_get_buffer() to access buffers as they pass over `pad`.
+     * `gst_buffer_straw_get_buffer()` to access buffers as they pass over `pad`.
      *
      * This function is normally used in unit tests that want to verify that a
      * particular element is outputting correct buffers. For example, you would make
-     * a pipeline via gst_parse_launch(), pull out the pad you want to monitor, then
-     * call gst_buffer_straw_get_buffer() to get the buffers that pass through `pad`.
+     * a pipeline via `gst_parse_launch()`, pull out the pad you want to monitor, then
+     * call `gst_buffer_straw_get_buffer()` to get the buffers that pass through `pad`.
      * The pipeline will block until you have sucked off the buffers.
      *
      * This function will set the state of `bin` to PLAYING; to clean up, be sure to
-     * call gst_buffer_straw_stop_pipeline().
+     * call `gst_buffer_straw_stop_pipeline()`.
      *
      * Note that you may not start two buffer straws at the same time. This function
      * is intended for unit tests, not general API use. In fact it calls fail_if
      * from libcheck, so you cannot use it outside unit tests.
      * @param bin the pipeline to run
-     * @param pad a pad on an element in @bin
+     * @param pad a pad on an element in `bin`
      */
     function buffer_straw_start_pipeline(bin: Gst.Element, pad: Gst.Pad): void;
     /**
      * Set `bin` to #GST_STATE_NULL and release resource allocated in
-     * gst_buffer_straw_start_pipeline().
+     * `gst_buffer_straw_start_pipeline()`.
      *
-     * You must have previously called gst_buffer_straw_start_pipeline() on
+     * You must have previously called `gst_buffer_straw_start_pipeline()` on
      * `pipeline` and `pad`.
-     * @param bin the pipeline previously started via gst_buffer_straw_start_pipeline()
-     * @param pad the pad previously passed to gst_buffer_straw_start_pipeline()
+     * @param bin the pipeline previously started via `gst_buffer_straw_start_pipeline()`
+     * @param pad the pad previously passed to `gst_buffer_straw_start_pipeline()`
      */
     function buffer_straw_stop_pipeline(bin: Gst.Element, pad: Gst.Pad): void;
     /**
      * Verifies that reference values and current values are equals in `list`.
      * @param list A list of GstCheckABIStruct to be verified
-     * @param have_abi_sizes Whether there is a reference ABI size already specified, if it is %FALSE and the `GST_ABI` environment variable is set, usable code for @list will be printed.
+     * @param have_abi_sizes Whether there is a reference ABI size already specified, if it is `false` and the `GST_ABI` environment variable is set, usable code for `list` will be printed.
      */
     function check_abi_list(list: CheckABIStruct, have_abi_sizes: boolean): void;
     /**
@@ -95,6 +95,7 @@ export namespace GstCheck {
      * Clear all filters added by `gst_check_add_log_filter`.
      *
      * MT safe.
+     * @since 1.12
      */
     function check_clear_log_filter(): void;
     /**
@@ -109,9 +110,9 @@ export namespace GstCheck {
      * and the data of the buffers. This function unrefs the buffers.
      * @param element_name name of the element that needs to be created
      * @param buffer_in push this buffer to the element
-     * @param caps_in the #GstCaps expected of the sinkpad of the element
+     * @param caps_in the {@link Gst.Caps} expected of the sinkpad of the element
      * @param buffer_out compare the result with this buffer
-     * @param caps_out the #GstCaps expected of the srcpad of the element
+     * @param caps_out the {@link Gst.Caps} expected of the srcpad of the element
      */
     function check_element_push_buffer(
         element_name: string,
@@ -131,9 +132,9 @@ export namespace GstCheck {
      * invalid buffer, when the final buffer is expected to fail, for example.
      * @param element_name name of the element that needs to be created
      * @param buffer_in a list of buffers that needs to be  pushed to the element
-     * @param caps_in the #GstCaps expected of the sinkpad of the element
+     * @param caps_in the {@link Gst.Caps} expected of the sinkpad of the element
      * @param buffer_out a list of buffers that we expect from the element
-     * @param caps_out the #GstCaps expected of the srcpad of the element
+     * @param caps_out the {@link Gst.Caps} expected of the srcpad of the element
      * @param last_flow_return the last buffer push needs to give this GstFlowReturn
      */
     function check_element_push_buffer_list(
@@ -144,7 +145,17 @@ export namespace GstCheck {
         caps_out: Gst.Caps,
         last_flow_return: Gst.FlowReturn | null,
     ): void;
+    /**
+     * @param argc
+     * @param argv
+     */
     function check_init(argc: number, argv: string): void;
+    /**
+     * @param message
+     * @param type
+     * @param domain
+     * @param code
+     */
     function check_message_error(
         message: Gst.Message,
         type: Gst.MessageType | null,
@@ -154,14 +165,16 @@ export namespace GstCheck {
     /**
      * Unrefs `object_to_unref` and checks that is has properly been
      * destroyed.
-     * @param object_to_unref The #GObject to unref
+     * @param object_to_unref The {@link GObject.Object} to unref
+     * @since 1.6
      */
     function check_object_destroyed_on_unref(object_to_unref?: any | null): void;
     /**
      * Remove a filter that has been added by `gst_check_add_log_filter`.
      *
      * MT safe.
-     * @param filter Filter returned by @gst_check_add_log_filter
+     * @param filter Filter returned by `gst_check_add_log_filter`
+     * @since 1.12
      */
     function check_remove_log_filter(filter: CheckLogFilter): void;
     /**
@@ -174,11 +187,11 @@ export namespace GstCheck {
      * Push stream-start, caps and segment event, which consist of the minimum
      * required events to allow streaming. Caps is optional to allow raw src
      * testing. If `element` has more than one src or sink pad, use
-     * gst_check_setup_events_with_stream_id() instead.
-     * @param srcpad The src #GstPad to push on
-     * @param element The #GstElement use to create the stream id
-     * @param caps #GstCaps in case caps event must be sent
-     * @param format The #GstFormat of the default segment to send
+     * `gst_check_setup_events_with_stream_id()` instead.
+     * @param srcpad The src {@link Gst.Pad} to push on
+     * @param element The {@link Gst.Element} use to create the stream id
+     * @param caps {@link Gst.Caps} in case caps event must be sent
+     * @param format The {@link Gst.Format} of the default segment to send
      */
     function check_setup_events(
         srcpad: Gst.Pad,
@@ -190,10 +203,10 @@ export namespace GstCheck {
      * Push stream-start, caps and segment event, which consist of the minimum
      * required events to allow streaming. Caps is optional to allow raw src
      * testing.
-     * @param srcpad The src #GstPad to push on
-     * @param element The #GstElement use to create the stream id
-     * @param caps #GstCaps in case caps event must be sent
-     * @param format The #GstFormat of the default segment to send
+     * @param srcpad The src {@link Gst.Pad} to push on
+     * @param element The {@link Gst.Element} use to create the stream id
+     * @param caps {@link Gst.Caps} in case caps event must be sent
+     * @param format The {@link Gst.Format} of the default segment to send
      * @param stream_id A unique identifier for the stream
      */
     function check_setup_events_with_stream_id(
@@ -204,40 +217,53 @@ export namespace GstCheck {
         stream_id: string,
     ): void;
     /**
-     * Does the same as #gst_check_setup_sink_pad_by_name with the <emphasis> name </emphasis> parameter equal to "src".
+     * Does the same as `gst_check_setup_sink_pad_by_name` with the <emphasis> name </emphasis> parameter equal to "src".
      * @param element element to setup pad on
      * @param tmpl pad template
-     * @returns a new pad that can be used to check the output of @element
+     * @returns a new pad that can be used to check the output of `element`
      */
     function check_setup_sink_pad(element: Gst.Element, tmpl: Gst.StaticPadTemplate): Gst.Pad;
     /**
-     * Creates a new sink pad (based on the given `tmpl)` and links it to the given `element` src pad
-     * (the pad that matches the given `name)`.
+     * Creates a new sink pad (based on the given `tmpl`) and links it to the given `element` src pad
+     * (the pad that matches the given `name`).
      * You can set event/chain/query functions on this pad to check the output of the `element`.
      * @param element element to setup pad on
      * @param tmpl pad template
-     * @param name Name of the @element src pad that will be linked to the sink pad that will be setup
-     * @returns a new pad that can be used to check the output of @element
+     * @param name Name of the `element` src pad that will be linked to the sink pad that will be setup
+     * @returns a new pad that can be used to check the output of `element`
      */
     function check_setup_sink_pad_by_name(element: Gst.Element, tmpl: Gst.StaticPadTemplate, name: string): Gst.Pad;
+    /**
+     * @param element element to setup pad on
+     * @param tmpl pad template
+     * @param name name
+     * @returns a new pad
+     * @since 1.4
+     */
     function check_setup_sink_pad_by_name_from_template(
         element: Gst.Element,
         tmpl: Gst.PadTemplate,
         name: string,
     ): Gst.Pad;
-    function check_setup_sink_pad_from_template(element: Gst.Element, tmpl: Gst.PadTemplate): Gst.Pad;
     /**
-     * Does the same as #gst_check_setup_src_pad_by_name with the <emphasis> name </emphasis> parameter equal to "sink".
      * @param element element to setup pad on
      * @param tmpl pad template
-     * @returns A new pad that can be used to inject data on @element
+     * @returns a new pad
+     * @since 1.4
+     */
+    function check_setup_sink_pad_from_template(element: Gst.Element, tmpl: Gst.PadTemplate): Gst.Pad;
+    /**
+     * Does the same as `gst_check_setup_src_pad_by_name` with the <emphasis> name </emphasis> parameter equal to "sink".
+     * @param element element to setup pad on
+     * @param tmpl pad template
+     * @returns A new pad that can be used to inject data on `element`
      */
     function check_setup_src_pad(element: Gst.Element, tmpl: Gst.StaticPadTemplate): Gst.Pad;
     /**
-     * Creates a new src pad (based on the given `tmpl)` and links it to the given `element` sink pad (the pad that matches the given `name)`.
-     * Before using the src pad to push data on `element` you need to call #gst_check_setup_events on the created src pad.
+     * Creates a new src pad (based on the given `tmpl`) and links it to the given `element` sink pad (the pad that matches the given `name`).
+     * Before using the src pad to push data on `element` you need to call `gst_check_setup_events` on the created src pad.
      *
-     * Example of how to push a buffer on `element:`
+     * Example of how to push a buffer on `element`:
      *
      *
      * ```c
@@ -268,54 +294,90 @@ export namespace GstCheck {
      * ```
      *
      *
-     * For very simple input/output test scenarios checkout #gst_check_element_push_buffer_list and #gst_check_element_push_buffer.
+     * For very simple input/output test scenarios checkout `gst_check_element_push_buffer_list` and `gst_check_element_push_buffer`.
      * @param element element to setup src pad on
      * @param tmpl pad template
-     * @param name Name of the @element sink pad that will be linked to the src pad that will be setup
-     * @returns A new pad that can be used to inject data on @element
+     * @param name Name of the `element` sink pad that will be linked to the src pad that will be setup
+     * @returns A new pad that can be used to inject data on `element`
      */
     function check_setup_src_pad_by_name(element: Gst.Element, tmpl: Gst.StaticPadTemplate, name: string): Gst.Pad;
+    /**
+     * @param element element to setup pad on
+     * @param tmpl pad template
+     * @param name name
+     * @returns a new pad
+     * @since 1.4
+     */
     function check_setup_src_pad_by_name_from_template(
         element: Gst.Element,
         tmpl: Gst.PadTemplate,
         name: string,
     ): Gst.Pad;
+    /**
+     * @param element element to setup pad on
+     * @param tmpl pad template
+     * @returns a new pad
+     * @since 1.4
+     */
     function check_setup_src_pad_from_template(element: Gst.Element, tmpl: Gst.PadTemplate): Gst.Pad;
+    /**
+     * @param element
+     */
     function check_teardown_element(element: Gst.Element): void;
+    /**
+     * @param element
+     * @param name
+     */
     function check_teardown_pad_by_name(element: Gst.Element, name: string): void;
+    /**
+     * @param element
+     */
     function check_teardown_sink_pad(element: Gst.Element): void;
+    /**
+     * @param element
+     */
     function check_teardown_src_pad(element: Gst.Element): void;
     /**
      * Sets up a data probe on the given pad which will raise assertions if the
      * data flow is inconsistent.
-     * @param consist The #GstStreamConsistency handle
-     * @param pad The #GstPad on which the dataflow will be checked.
-     * @returns %TRUE if the pad was added
+     * @param consist The {@link GstCheck.StreamConsistency} handle
+     * @param pad The {@link Gst.Pad} on which the dataflow will be checked.
+     * @returns `true` if the pad was added
      */
     function consistency_checker_add_pad(consist: StreamConsistency, pad: Gst.Pad): boolean;
     /**
      * Frees the allocated data and probes associated with `consist`.
-     * @param consist The #GstStreamConsistency to free.
+     * @param consist The {@link GstCheck.StreamConsistency} to free.
      */
     function consistency_checker_free(consist: StreamConsistency): void;
     /**
      * Reset the stream checker's internal variables.
-     * @param consist The #GstStreamConsistency to reset.
+     * @param consist The {@link GstCheck.StreamConsistency} to reset.
      */
     function consistency_checker_reset(consist: StreamConsistency): void;
     /**
-     * Stop the running #GstHarnessThread
+     * Stop the running {@link GstCheck.HarnessThread}
      *
      * MT safe.
-     * @param t a #GstHarnessThread
+     * @param t a {@link GstCheck.HarnessThread}
+     * @since 1.6
      */
     function harness_stress_thread_stop(t: HarnessThread): number;
+    /**
+     * @gir-type Callback
+     */
     interface CheckLogFilterFunc {
         (log_domain: string, log_level: GLib.LogLevelFlags, message: string): boolean;
     }
+    /**
+     * @gir-type Callback
+     */
     interface HarnessPrepareBufferFunc {
         (h: Harness, data?: any | null): Gst.Buffer;
     }
+    /**
+     * @gir-type Callback
+     */
     interface HarnessPrepareEventFunc {
         (h: Harness, data?: any | null): Gst.Event;
     }
@@ -342,15 +404,15 @@ export namespace GstCheck {
     }
 
     /**
-     * GstTestClock is an implementation of #GstClock which has different
-     * behaviour compared to #GstSystemClock. Time for #GstSystemClock advances
-     * according to the system time, while time for #GstTestClock changes only
-     * when gst_test_clock_set_time() or gst_test_clock_advance_time() are
-     * called. #GstTestClock provides unit tests with the possibility to
+     * GstTestClock is an implementation of {@link Gst.Clock} which has different
+     * behaviour compared to {@link Gst.SystemClock}. Time for {@link Gst.SystemClock} advances
+     * according to the system time, while time for {@link GstCheck.TestClock} changes only
+     * when `gst_test_clock_set_time()` or `gst_test_clock_advance_time()` are
+     * called. {@link GstCheck.TestClock} provides unit tests with the possibility to
      * precisely advance the time in a deterministic manner, independent of the
      * system time or any other external factors.
      *
-     * ## Advancing the time of a #GstTestClock
+     * ## Advancing the time of a {@link GstCheck.TestClock}
      *
      *
      * ```c
@@ -373,31 +435,31 @@ export namespace GstCheck {
      * ```
      *
      *
-     * #GstClock allows for setting up single shot or periodic clock notifications
+     * {@link Gst.Clock} allows for setting up single shot or periodic clock notifications
      * as well as waiting for these notifications synchronously (using
-     * gst_clock_id_wait()) or asynchronously (using gst_clock_id_wait_async() or
-     * gst_clock_id_wait_async()). This is used by many GStreamer elements,
-     * among them #GstBaseSrc and #GstBaseSink.
+     * `gst_clock_id_wait()`) or asynchronously (using `gst_clock_id_wait_async()` or
+     * `gst_clock_id_wait_async()`). This is used by many GStreamer elements,
+     * among them `GstBaseSrc` and `GstBaseSink`.
      *
-     * #GstTestClock keeps track of these clock notifications. By calling
-     * gst_test_clock_wait_for_next_pending_id() or
-     * gst_test_clock_wait_for_multiple_pending_ids() a unit tests may wait for the
+     * {@link GstCheck.TestClock} keeps track of these clock notifications. By calling
+     * `gst_test_clock_wait_for_next_pending_id()` or
+     * `gst_test_clock_wait_for_multiple_pending_ids()` a unit tests may wait for the
      * next one or several clock notifications to be requested. Additionally unit
      * tests may release blocked waits in a controlled fashion by calling
-     * gst_test_clock_process_next_clock_id(). This way a unit test can control the
+     * `gst_test_clock_process_next_clock_id()`. This way a unit test can control the
      * inaccuracy (jitter) of clock notifications, since the test can decide to
      * release blocked waits when the clock time has advanced exactly to, or past,
      * the requested clock notification time.
      *
      * There are also interfaces for determining if a notification belongs to a
-     * #GstTestClock or not, as well as getting the number of requested clock
+     * {@link GstCheck.TestClock} or not, as well as getting the number of requested clock
      * notifications so far.
      *
      * N.B.: When a unit test waits for a certain amount of clock notifications to
-     * be requested in gst_test_clock_wait_for_next_pending_id() or
-     * gst_test_clock_wait_for_multiple_pending_ids() then these functions may block
+     * be requested in `gst_test_clock_wait_for_next_pending_id()` or
+     * `gst_test_clock_wait_for_multiple_pending_ids()` then these functions may block
      * for a long time. If they block forever then the expected clock notifications
-     * were never requested from #GstTestClock, and so the assumptions in the code
+     * were never requested from {@link GstCheck.TestClock}, and so the assumptions in the code
      * of the unit test are wrong. The unit test case runner in gstcheck is
      * expected to catch these cases either by the default test case timeout or the
      * one set for the unit test by calling tcase_set_timeout\(\).
@@ -405,12 +467,12 @@ export namespace GstCheck {
      * The sample code below assumes that the element under test will delay a
      * buffer pushed on the source pad by some latency until it arrives on the sink
      * pad. Moreover it is assumed that the element will at some point call
-     * gst_clock_id_wait() to synchronously wait for a specific time. The first
+     * `gst_clock_id_wait()` to synchronously wait for a specific time. The first
      * buffer sent will arrive exactly on time only delayed by the latency. The
      * second buffer will arrive a little late (7ms) due to simulated jitter in the
      * clock notification.
      *
-     * ## Demonstration of how to work with clock notifications and #GstTestClock
+     * ## Demonstration of how to work with clock notifications and {@link GstCheck.TestClock}
      *
      *
      * ```c
@@ -487,9 +549,11 @@ export namespace GstCheck {
      * ```
      *
      *
-     * Since #GstTestClock is only supposed to be used in unit tests it calls
-     * g_assert(), g_assert_cmpint() or g_assert_cmpuint() to validate all function
+     * Since {@link GstCheck.TestClock} is only supposed to be used in unit tests it calls
+     * `g_assert()`, `g_assert_cmpint()` or `g_assert_cmpuint()` to validate all function
      * arguments. This will highlight any issues with the unit test code itself.
+     * @gir-type Class
+     * @since 1.2
      */
     class TestClock extends Gst.Clock {
         static $gtype: GObject.GType<TestClock>;
@@ -501,19 +565,21 @@ export namespace GstCheck {
         get clockType(): Gst.ClockType;
         set clockType(val: Gst.ClockType);
         /**
-         * When a #GstTestClock is constructed it will have a certain start time set.
-         * If the clock was created using gst_test_clock_new_with_start_time() then
+         * When a {@link GstCheck.TestClock} is constructed it will have a certain start time set.
+         * If the clock was created using `gst_test_clock_new_with_start_time()` then
          * this property contains the value of the `start_time` argument. If
-         * gst_test_clock_new() was called the clock started at time zero, and thus
+         * `gst_test_clock_new()` was called the clock started at time zero, and thus
          * this property contains the value 0.
+         * @construct-only
          */
         get start_time(): number;
         /**
-         * When a #GstTestClock is constructed it will have a certain start time set.
-         * If the clock was created using gst_test_clock_new_with_start_time() then
+         * When a {@link GstCheck.TestClock} is constructed it will have a certain start time set.
+         * If the clock was created using `gst_test_clock_new_with_start_time()` then
          * this property contains the value of the `start_time` argument. If
-         * gst_test_clock_new() was called the clock started at time zero, and thus
+         * `gst_test_clock_new()` was called the clock started at time zero, and thus
          * this property contains the value 0.
+         * @construct-only
          */
         get startTime(): number;
 
@@ -538,16 +604,19 @@ export namespace GstCheck {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TestClock.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TestClock.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TestClock.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TestClock.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TestClock.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TestClock.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -560,7 +629,7 @@ export namespace GstCheck {
          * Finds the latest time inside the list.
          *
          * MT safe.
-         * @param pending_list List     of of pending #GstClockIDs
+         * @param pending_list List     of of pending `GstClockIDs`
          */
         static id_list_get_latest_time(pending_list?: Gst.ClockID[] | null): Gst.ClockTime;
 
@@ -572,25 +641,25 @@ export namespace GstCheck {
          * `delta` which is negative or zero is a programming error.
          *
          * MT safe.
-         * @param delta a positive #GstClockTimeDiff to be added to the time of the clock
+         * @param delta a positive {@link Gst.ClockTimeDiff} to be added to the time of the clock
          */
         advance_time(delta: Gst.ClockTimeDiff): void;
         /**
          * A "crank" consists of three steps:
-         * 1: Wait for a #GstClockID to be registered with the #GstTestClock.
-         * 2: Advance the #GstTestClock to the time the #GstClockID is waiting, unless
+         * 1: Wait for a {@link Gst.ClockID} to be registered with the {@link GstCheck.TestClock}.
+         * 2: Advance the {@link GstCheck.TestClock} to the time the {@link Gst.ClockID} is waiting, unless
          *    the clock time is already passed the clock id (Since: 1.18).
-         * 3: Release the #GstClockID wait.
+         * 3: Release the {@link Gst.ClockID} wait.
          * A "crank" can be though of as the notion of
          * manually driving the clock forward to its next logical step.
-         * @returns %TRUE if the crank was successful, %FALSE otherwise. MT safe.
+         * @returns `true` if the crank was successful, `false` otherwise. MT safe.
          */
         crank(): boolean;
         /**
          * Retrieve the requested time for the next pending clock notification.
          *
          * MT safe.
-         * @returns a #GstClockTime set to the time of the next pending clock notification. If no clock notifications have been requested %GST_CLOCK_TIME_NONE will be returned.
+         * @returns a {@link Gst.ClockTime} set to the time of the next pending clock notification. If no clock notifications have been requested `GST_CLOCK_TIME_NONE` will be returned.
          */
         get_next_entry_time(): Gst.ClockTime;
         /**
@@ -598,8 +667,8 @@ export namespace GstCheck {
          * given by `id`.
          *
          * MT safe.
-         * @param id a #GstClockID clock notification
-         * @returns %TRUE if the clock has been asked to provide the given clock notification, %FALSE otherwise.
+         * @param id a {@link Gst.ClockID} clock notification
+         * @returns `true` if the clock has been asked to provide the given clock notification, `false` otherwise.
          */
         has_id(id: Gst.ClockID): boolean;
         /**
@@ -615,52 +684,52 @@ export namespace GstCheck {
          * be triggered given the current time of the `test_clock`.
          *
          * MT safe.
-         * @returns %TRUE if @pending_id is the next clock notification to be triggered, %FALSE otherwise.
+         * @returns `true` if `pending_id` is the next clock notification to be triggered, `false` otherwise.
          */
         peek_next_pending_id(): [boolean, Gst.ClockID | null];
         /**
          * Processes and releases the pending ID.
          *
          * MT safe.
-         * @param pending_id #GstClockID
+         * @param pending_id {@link Gst.ClockID}
          */
         process_id(pending_id: Gst.ClockID): boolean;
         /**
          * Processes and releases the pending IDs in the list.
          *
          * MT safe.
-         * @param pending_list List     of pending #GstClockIDs
+         * @param pending_list List     of pending `GstClockIDs`
          */
         process_id_list(pending_list?: Gst.ClockID[] | null): number;
         /**
          * MT safe.
-         * @returns a #GstClockID containing the next pending clock notification.
+         * @returns a {@link Gst.ClockID} containing the next pending clock notification.
          */
         process_next_clock_id(): Gst.ClockID | null;
         /**
          * Sets the time of `test_clock` to the time given by `new_time`. The time of
          * `test_clock` is monotonically increasing, therefore providing a `new_time`
          * which is earlier or equal to the time of the clock as given by
-         * gst_clock_get_time() is a programming error.
+         * `gst_clock_get_time()` is a programming error.
          *
          * MT safe.
-         * @param new_time a #GstClockTime later than that returned by gst_clock_get_time()
+         * @param new_time a {@link Gst.ClockTime} later than that returned by `gst_clock_get_time()`
          */
         set_time(new_time: Gst.ClockTime): void;
         /**
          * Blocks until at least `count` clock notifications have been requested from
-         * `test_clock,` or the timeout expires.
+         * `test_clock`, or the timeout expires.
          *
          * MT safe.
          * @param count the number of pending clock notifications to wait for
          * @param timeout_ms the timeout in milliseconds
-         * @returns a @gboolean %TRUE if the waits have been registered, %FALSE if not. (Could be that it timed out waiting or that more waits than waits was found)
+         * @returns a `gboolean` `true` if the waits have been registered, `false` if not. (Could be that it timed out waiting or that more waits than waits was found)
          */
         timed_wait_for_multiple_pending_ids(count: number, timeout_ms: number): [boolean, Gst.ClockID[] | null];
         /**
          * Blocks until at least `count` clock notifications have been requested from
          * `test_clock`. There is no timeout for this wait, see the main description of
-         * #GstTestClock.
+         * {@link GstCheck.TestClock}.
          *
          * MT safe.
          * @param count the number of pending clock notifications to wait for
@@ -668,7 +737,7 @@ export namespace GstCheck {
         wait_for_multiple_pending_ids(count: number): Gst.ClockID[] | null;
         /**
          * Waits until a clock notification is requested from `test_clock`. There is no
-         * timeout for this wait, see the main description of #GstTestClock. A reference
+         * timeout for this wait, see the main description of {@link GstCheck.TestClock}. A reference
          * to the pending clock notification is stored in `pending_id`.
          *
          * MT safe.
@@ -677,12 +746,15 @@ export namespace GstCheck {
         /**
          * Blocks until at least `count` clock notifications have been requested from
          * `test_clock`. There is no timeout for this wait, see the main description of
-         * #GstTestClock.
+         * {@link GstCheck.TestClock}.
          * @param count the number of pending clock notifications to wait for
          */
         wait_for_pending_id_count(count: number): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class CheckABIStruct {
         static $gtype: GObject.GType<CheckABIStruct>;
 
@@ -706,18 +778,19 @@ export namespace GstCheck {
     /**
      * Opaque structure containing data about a log filter
      * function.
+     * @gir-type Struct
      */
     abstract class CheckLogFilter {
         static $gtype: GObject.GType<CheckLogFilter>;
     }
 
     /**
-     * #GstHarness is meant to make writing unit test for GStreamer much easier.
-     * It can be thought of as a way of treating a #GstElement as a black box,
+     * {@link GstCheck.Harness} is meant to make writing unit test for GStreamer much easier.
+     * It can be thought of as a way of treating a {@link Gst.Element} as a black box,
      * deterministically feeding it data, and controlling what data it outputs.
      *
-     * The basic structure of #GstHarness is two "floating" #GstPads that connect
-     * to the harnessed #GstElement src and sink #GstPads like so:
+     * The basic structure of {@link GstCheck.Harness} is two "floating" `GstPads` that connect
+     * to the harnessed {@link Gst.Element} src and sink `GstPads` like so:
      *
      *
      * ```
@@ -731,19 +804,19 @@ export namespace GstCheck {
      * ```
      *
      *
-     * With this, you can now simulate any environment the #GstElement might find
-     * itself in. By specifying the #GstCaps of the harness #GstPads, using
-     * functions like gst_harness_set_src_caps() or gst_harness_set_sink_caps_str(),
-     * you can test how the #GstElement interacts with different caps sets.
+     * With this, you can now simulate any environment the {@link Gst.Element} might find
+     * itself in. By specifying the {@link Gst.Caps} of the harness `GstPads`, using
+     * functions like `gst_harness_set_src_caps()` or `gst_harness_set_sink_caps_str()`,
+     * you can test how the {@link Gst.Element} interacts with different caps sets.
      *
-     * Your harnessed #GstElement can of course also be a bin, and using
-     * gst_harness_new_parse() supporting standard gst-launch syntax, you can
+     * Your harnessed {@link Gst.Element} can of course also be a bin, and using
+     * `gst_harness_new_parse()` supporting standard gst-launch syntax, you can
      * easily test a whole pipeline instead of just one element.
      *
-     * You can then go on to push #GstBuffers and #GstEvents on to the srcpad,
-     * using functions like gst_harness_push() and gst_harness_push_event(), and
-     * then pull them out to examine them with gst_harness_pull() and
-     * gst_harness_pull_event().
+     * You can then go on to push `GstBuffers` and `GstEvents` on to the srcpad,
+     * using functions like `gst_harness_push()` and `gst_harness_push_event()`, and
+     * then pull them out to examine them with `gst_harness_pull()` and
+     * `gst_harness_pull_event()`.
      *
      * ## A simple buffer-in buffer-out example
      *
@@ -780,18 +853,18 @@ export namespace GstCheck {
      *   ```
      *
      *
-     * Another main feature of the #GstHarness is its integration with the
-     * #GstTestClock. Operating the #GstTestClock can be very challenging, but
-     * #GstHarness simplifies some of the most desired actions a lot, like wanting
-     * to manually advance the clock while at the same time releasing a #GstClockID
-     * that is waiting, with functions like gst_harness_crank_single_clock_wait().
+     * Another main feature of the {@link GstCheck.Harness} is its integration with the
+     * {@link GstCheck.TestClock}. Operating the {@link GstCheck.TestClock} can be very challenging, but
+     * {@link GstCheck.Harness} simplifies some of the most desired actions a lot, like wanting
+     * to manually advance the clock while at the same time releasing a {@link Gst.ClockID}
+     * that is waiting, with functions like `gst_harness_crank_single_clock_wait()`.
      *
-     * #GstHarness also supports sub-harnesses, as a way of generating and
-     * validating data. A sub-harness is another #GstHarness that is managed by
+     * {@link GstCheck.Harness} also supports sub-harnesses, as a way of generating and
+     * validating data. A sub-harness is another {@link GstCheck.Harness} that is managed by
      * the "parent" harness, and can either be created by using the standard
      * gst_harness_new type functions directly on the (GstHarness *)->src_harness,
-     * or using the much more convenient gst_harness_add_src() or
-     * gst_harness_add_sink_parse(). If you have a decoder-element you want to test,
+     * or using the much more convenient `gst_harness_add_src()` or
+     * `gst_harness_add_sink_parse()`. If you have a decoder-element you want to test,
      * (like vp8dec) it can be very useful to add a src-harness with both a
      * src-element (videotestsrc) and an encoder (vp8enc) to feed the decoder data
      * with different configurations, by simply doing:
@@ -810,6 +883,8 @@ export namespace GstCheck {
      * gst_harness_push_from_src (h);
      * ```
      *
+     * @gir-type Struct
+     * @since 1.6
      */
     class Harness {
         static $gtype: GObject.GType<Harness>;
@@ -823,41 +898,41 @@ export namespace GstCheck {
         // Static methods
 
         /**
-         * Stop the running #GstHarnessThread
+         * Stop the running {@link GstCheck.HarnessThread}
          *
          * MT safe.
-         * @param t a #GstHarnessThread
+         * @param t a {@link GstCheck.HarnessThread}
          */
         static stress_thread_stop(t: HarnessThread): number;
 
         // Methods
 
         /**
-         * Links the specified #GstPad the `GstHarness` srcpad.
+         * Links the specified {@link Gst.Pad} the `GstHarness` srcpad.
          *
          * MT safe.
-         * @param sinkpad a #GstPad to link to the harness srcpad
+         * @param sinkpad a {@link Gst.Pad} to link to the harness srcpad
          */
         add_element_sink_pad(sinkpad: Gst.Pad): void;
         /**
-         * Links the specified #GstPad the `GstHarness` sinkpad. This can be useful if
+         * Links the specified {@link Gst.Pad} the `GstHarness` sinkpad. This can be useful if
          * perhaps the srcpad did not exist at the time of creating the harness,
          * like a demuxer that provides a sometimes-pad after receiving data.
          *
          * MT safe.
-         * @param srcpad a #GstPad to link to the harness sinkpad
+         * @param srcpad a {@link Gst.Pad} to link to the harness sinkpad
          */
         add_element_src_pad(srcpad: Gst.Pad): void;
         /**
          * A convenience function to allows you to call gst_pad_add_probe on a
-         * #GstPad of a #GstElement that are residing inside the #GstHarness,
+         * {@link Gst.Pad} of a {@link Gst.Element} that are residing inside the {@link GstCheck.Harness},
          * by using normal gst_pad_add_probe syntax
          *
          * MT safe.
-         * @param element_name a #gchar with a #GstElementFactory name
-         * @param pad_name a #gchar with the name of the pad to attach the probe to
-         * @param mask a #GstPadProbeType (see gst_pad_add_probe)
-         * @param callback a #GstPadProbeCallback (see gst_pad_add_probe)
+         * @param element_name a `gchar` with a {@link Gst.ElementFactory} name
+         * @param pad_name a `gchar` with the name of the pad to attach the probe to
+         * @param mask a {@link Gst.PadProbeType} (see gst_pad_add_probe)
+         * @param callback a {@link Gst.PadProbeCallback} (see gst_pad_add_probe)
          */
         add_probe(
             element_name: string,
@@ -879,12 +954,12 @@ export namespace GstCheck {
          * directly create a sink-harness using the `sink_element_name` name specified.
          *
          * MT safe.
-         * @param sink_element_name a #gchar with the name of a #GstElement
+         * @param sink_element_name a `gchar` with the name of a {@link Gst.Element}
          */
         add_sink(sink_element_name: string): void;
         /**
          * Similar to gst_harness_add_src, this allows you to send the data coming out
-         * of your harnessed #GstElement to a sink-element, allowing to test different
+         * of your harnessed {@link Gst.Element} to a sink-element, allowing to test different
          * responses the element output might create in sink elements. An example might
          * be an existing sink providing some analytical data on the input it receives that
          * can be useful to your testing. If the goal is to test a sink-element itself,
@@ -893,7 +968,7 @@ export namespace GstCheck {
          * If a sink-harness already exists it will be replaced.
          *
          * MT safe.
-         * @param sink_harness a #GstHarness to be added as a sink-harness.
+         * @param sink_harness a {@link GstCheck.Harness} to be added as a sink-harness.
          */
         add_sink_harness(sink_harness: Harness): void;
         /**
@@ -901,7 +976,7 @@ export namespace GstCheck {
          * instead of just an element name. See gst_harness_add_src_parse for details.
          *
          * MT safe.
-         * @param launchline a #gchar with the name of a #GstElement
+         * @param launchline a `gchar` with the name of a {@link Gst.Element}
          */
         add_sink_parse(launchline: string): void;
         /**
@@ -909,13 +984,13 @@ export namespace GstCheck {
          * directly create a src-harness using the `src_element_name` name specified.
          *
          * MT safe.
-         * @param src_element_name a #gchar with the name of a #GstElement
-         * @param has_clock_wait a #gboolean specifying if the #GstElement uses gst_clock_wait_id internally.
+         * @param src_element_name a `gchar` with the name of a {@link Gst.Element}
+         * @param has_clock_wait a `gboolean` specifying if the {@link Gst.Element} uses gst_clock_wait_id internally.
          */
         add_src(src_element_name: string, has_clock_wait: boolean): void;
         /**
-         * A src-harness is a great way of providing the #GstHarness with data.
-         * By adding a src-type #GstElement, it is then easy to use functions like
+         * A src-harness is a great way of providing the {@link GstCheck.Harness} with data.
+         * By adding a src-type {@link Gst.Element}, it is then easy to use functions like
          * gst_harness_push_from_src or gst_harness_src_crank_and_push_many
          * to provide your harnessed element with input. The `has_clock_wait` variable
          * is a great way to control you src-element with, in that you can have it
@@ -925,107 +1000,107 @@ export namespace GstCheck {
          * If a src-harness already exists it will be replaced.
          *
          * MT safe.
-         * @param src_harness a #GstHarness to be added as a src-harness.
-         * @param has_clock_wait a #gboolean specifying if the #GstElement uses gst_clock_wait_id internally.
+         * @param src_harness a {@link GstCheck.Harness} to be added as a src-harness.
+         * @param has_clock_wait a `gboolean` specifying if the {@link Gst.Element} uses gst_clock_wait_id internally.
          */
         add_src_harness(src_harness: Harness, has_clock_wait: boolean): void;
         /**
          * Similar to gst_harness_add_src, this allows you to specify a launch-line,
-         * which can be useful for both having more then one #GstElement acting as your
+         * which can be useful for both having more then one {@link Gst.Element} acting as your
          * src (Like a src producing raw buffers, and then an encoder, providing encoded
          * data), but also by allowing you to set properties like "is-live" directly on
          * the elements.
          *
          * MT safe.
-         * @param launchline a #gchar describing a gst-launch type line
-         * @param has_clock_wait a #gboolean specifying if the #GstElement uses gst_clock_wait_id internally.
+         * @param launchline a `gchar` describing a gst-launch type line
+         * @param has_clock_wait a `gboolean` specifying if the {@link Gst.Element} uses gst_clock_wait_id internally.
          */
         add_src_parse(launchline: string, has_clock_wait: boolean): void;
         /**
-         * The number of #GstBuffers currently in the #GstHarness sinkpad #GAsyncQueue
+         * The number of `GstBuffers` currently in the {@link GstCheck.Harness} sinkpad {@link GLib.AsyncQueue}
          *
          * MT safe.
-         * @returns a #guint number of buffers in the queue
+         * @returns a `guint` number of buffers in the queue
          */
         buffers_in_queue(): number;
         /**
-         * The total number of #GstBuffers that has arrived on the #GstHarness sinkpad.
+         * The total number of `GstBuffers` that has arrived on the {@link GstCheck.Harness} sinkpad.
          * This number includes buffers that have been dropped as well as buffers
          * that have already been pulled out.
          *
          * MT safe.
-         * @returns a #guint number of buffers received
+         * @returns a `guint` number of buffers received
          */
         buffers_received(): number;
         /**
-         * Similar to gst_harness_crank_single_clock_wait(), this is the function to use
+         * Similar to `gst_harness_crank_single_clock_wait()`, this is the function to use
          * if your harnessed element(s) are using more then one gst_clock_id_wait.
-         * Failing to do so can (and will) make it racy which #GstClockID you actually
+         * Failing to do so can (and will) make it racy which {@link Gst.ClockID} you actually
          * are releasing, where as this function will process all the waits at the
          * same time, ensuring that one thread can't register another wait before
          * both are released.
          *
          * MT safe.
-         * @param waits a #guint describing the number of #GstClockIDs to crank
-         * @returns a @gboolean %TRUE if the "crank" was successful, %FALSE if not.
+         * @param waits a `guint` describing the number of `GstClockIDs` to crank
+         * @returns a `gboolean` `true` if the "crank" was successful, `false` if not.
          */
         crank_multiple_clock_waits(waits: number): boolean;
         /**
          * A "crank" consists of three steps:
-         * 1: Wait for a #GstClockID to be registered with the #GstTestClock.
-         * 2: Advance the #GstTestClock to the time the #GstClockID is waiting for.
-         * 3: Release the #GstClockID wait.
+         * 1: Wait for a {@link Gst.ClockID} to be registered with the {@link GstCheck.TestClock}.
+         * 2: Advance the {@link GstCheck.TestClock} to the time the {@link Gst.ClockID} is waiting for.
+         * 3: Release the {@link Gst.ClockID} wait.
          * Together, this provides an easy way to not have to think about the details
          * around clocks and time, but still being able to write deterministic tests
          * that are dependent on this. A "crank" can be though of as the notion of
          * manually driving the clock forward to its next logical step.
          *
          * MT safe.
-         * @returns a @gboolean %TRUE if the "crank" was successful, %FALSE if not.
+         * @returns a `gboolean` `true` if the "crank" was successful, `false` if not.
          */
         crank_single_clock_wait(): boolean;
         /**
-         * Allocates a buffer using a #GstBufferPool if present, or else using the
-         * configured #GstAllocator and #GstAllocationParams
+         * Allocates a buffer using a {@link Gst.BufferPool} if present, or else using the
+         * configured {@link Gst.Allocator} and {@link Gst.AllocationParams}
          *
          * MT safe.
-         * @param size a #gsize specifying the size of the buffer
-         * @returns a #GstBuffer of size @size
+         * @param size a `gsize` specifying the size of the buffer
+         * @returns a {@link Gst.Buffer} of size `size`
          */
         create_buffer(size: number): Gst.Buffer;
         /**
-         * Allows you to dump the #GstBuffers the #GstHarness sinkpad #GAsyncQueue
+         * Allows you to dump the `GstBuffers` the {@link GstCheck.Harness} sinkpad {@link GLib.AsyncQueue}
          * to a file.
          *
          * MT safe.
-         * @param filename a #gchar with a the name of a file
+         * @param filename a `gchar` with a the name of a file
          */
         dump_to_file(filename: string): void;
         /**
-         * The number of #GstEvents currently in the #GstHarness sinkpad #GAsyncQueue
+         * The number of `GstEvents` currently in the {@link GstCheck.Harness} sinkpad {@link GLib.AsyncQueue}
          *
          * MT safe.
-         * @returns a #guint number of events in the queue
+         * @returns a `guint` number of events in the queue
          */
         events_in_queue(): number;
         /**
-         * The total number of #GstEvents that has arrived on the #GstHarness sinkpad
+         * The total number of `GstEvents` that has arrived on the {@link GstCheck.Harness} sinkpad
          * This number includes events handled by the harness as well as events
          * that have already been pulled out.
          *
          * MT safe.
-         * @returns a #guint number of events received
+         * @returns a `guint` number of events received
          */
         events_received(): number;
         /**
          * Most useful in conjunction with gst_harness_new_parse, this will scan the
-         * #GstElements inside the #GstHarness, and check if any of them matches
+         * `GstElements` inside the {@link GstCheck.Harness}, and check if any of them matches
          * `element_name`. Typical usecase being that you need to access one of the
          * harnessed elements for properties and/or signals.
          *
          * MT safe.
-         * @param element_name a #gchar with a #GstElementFactory name
-         * @returns a #GstElement or %NULL if not found
+         * @param element_name a `gchar` with a {@link Gst.ElementFactory} name
+         * @returns a {@link Gst.Element} or `null` if not found
          */
         find_element(element_name: string): Gst.Element | null;
         /**
@@ -1036,72 +1111,72 @@ export namespace GstCheck {
          */
         get_allocator(): [Gst.Allocator | null, Gst.AllocationParams | null];
         /**
-         * Get the timestamp of the last #GstBuffer pushed on the #GstHarness srcpad,
+         * Get the timestamp of the last {@link Gst.Buffer} pushed on the {@link GstCheck.Harness} srcpad,
          * typically with gst_harness_push or gst_harness_push_from_src.
          *
          * MT safe.
-         * @returns a #GstClockTime with the timestamp or %GST_CLOCK_TIME_NONE if no #GstBuffer has been pushed on the #GstHarness srcpad
+         * @returns a {@link Gst.ClockTime} with the timestamp or `GST_CLOCK_TIME_NONE` if no {@link Gst.Buffer} has been pushed on the {@link GstCheck.Harness} srcpad
          */
         get_last_pushed_timestamp(): Gst.ClockTime;
         /**
-         * Get the #GstTestClock. Useful if specific operations on the testclock is
+         * Get the {@link GstCheck.TestClock}. Useful if specific operations on the testclock is
          * needed.
          *
          * MT safe.
-         * @returns a #GstTestClock, or %NULL if the testclock is not present.
+         * @returns a {@link GstCheck.TestClock}, or `null` if the testclock is not present.
          */
         get_testclock(): TestClock | null;
         /**
-         * This will set the harnessed #GstElement to %GST_STATE_PLAYING.
-         * #GstElements without a sink-#GstPad and with the %GST_ELEMENT_FLAG_SOURCE
-         * flag set is considered a src #GstElement
-         * Non-src #GstElements (like sinks and filters) are automatically set to
-         * playing by the #GstHarness, but src #GstElements are not to avoid them
+         * This will set the harnessed {@link Gst.Element} to {@link Gst.State.PLAYING}.
+         * `GstElements` without a sink-{@link Gst.Pad} and with the {@link Gst.ElementFlags.SOURCE}
+         * flag set is considered a src {@link Gst.Element}
+         * Non-src `GstElements` (like sinks and filters) are automatically set to
+         * playing by the {@link GstCheck.Harness}, but src `GstElements` are not to avoid them
          * starting to produce buffers.
-         * Hence, for src #GstElement you must call gst_harness_play() explicitly.
+         * Hence, for src {@link Gst.Element} you must call `gst_harness_play()` explicitly.
          *
          * MT safe.
          */
         play(): void;
         /**
-         * Pulls a #GstBuffer from the #GAsyncQueue on the #GstHarness sinkpad. The pull
+         * Pulls a {@link Gst.Buffer} from the {@link GLib.AsyncQueue} on the {@link GstCheck.Harness} sinkpad. The pull
          * will timeout in 60 seconds. This is the standard way of getting a buffer
-         * from a harnessed #GstElement.
+         * from a harnessed {@link Gst.Element}.
          *
          * MT safe.
-         * @returns a #GstBuffer or %NULL if timed out.
+         * @returns a {@link Gst.Buffer} or `null` if timed out.
          */
         pull(): Gst.Buffer | null;
         /**
-         * Pulls an #GstEvent from the #GAsyncQueue on the #GstHarness sinkpad.
+         * Pulls an {@link Gst.Event} from the {@link GLib.AsyncQueue} on the {@link GstCheck.Harness} sinkpad.
          * Timeouts after 60 seconds similar to gst_harness_pull.
          *
          * MT safe.
-         * @returns a #GstEvent or %NULL if timed out.
+         * @returns a {@link Gst.Event} or `null` if timed out.
          */
         pull_event(): Gst.Event | null;
         /**
-         * Pulls a #GstBuffer from the #GAsyncQueue on the #GstHarness sinkpad. The pull
+         * Pulls a {@link Gst.Buffer} from the {@link GLib.AsyncQueue} on the {@link GstCheck.Harness} sinkpad. The pull
          * will block until an EOS event is received, or timeout in 60 seconds.
          * MT safe.
-         * @returns %TRUE on success, %FALSE on timeout.
+         * @returns `true` on success, `false` on timeout.
          */
         pull_until_eos(): [boolean, Gst.Buffer | null];
         /**
-         * Pulls an #GstEvent from the #GAsyncQueue on the #GstHarness srcpad.
+         * Pulls an {@link Gst.Event} from the {@link GLib.AsyncQueue} on the {@link GstCheck.Harness} srcpad.
          * Timeouts after 60 seconds similar to gst_harness_pull.
          *
          * MT safe.
-         * @returns a #GstEvent or %NULL if timed out.
+         * @returns a {@link Gst.Event} or `null` if timed out.
          */
         pull_upstream_event(): Gst.Event | null;
         /**
-         * Pushes a #GstBuffer on the #GstHarness srcpad. The standard way of
+         * Pushes a {@link Gst.Buffer} on the {@link GstCheck.Harness} srcpad. The standard way of
          * interacting with an harnessed element.
          *
          * MT safe.
-         * @param buffer a #GstBuffer to push
-         * @returns a #GstFlowReturn with the result from the push
+         * @param buffer a {@link Gst.Buffer} to push
+         * @returns a {@link Gst.FlowReturn} with the result from the push
          */
         push(buffer: Gst.Buffer): Gst.FlowReturn;
         /**
@@ -1110,58 +1185,58 @@ export namespace GstCheck {
          * in, and inspect the outcome.
          *
          * MT safe.
-         * @param buffer a #GstBuffer to push
-         * @returns a #GstBuffer or %NULL if timed out.
+         * @param buffer a {@link Gst.Buffer} to push
+         * @returns a {@link Gst.Buffer} or `null` if timed out.
          */
         push_and_pull(buffer: Gst.Buffer): Gst.Buffer | null;
         /**
-         * Pushes an #GstEvent on the #GstHarness srcpad.
+         * Pushes an {@link Gst.Event} on the {@link GstCheck.Harness} srcpad.
          *
          * MT safe.
-         * @param event a #GstEvent to push
-         * @returns a #gboolean with the result from the push
+         * @param event a {@link Gst.Event} to push
+         * @returns a `gboolean` with the result from the push
          */
         push_event(event: Gst.Event): boolean;
         /**
-         * Transfer data from the src-#GstHarness to the main-#GstHarness. It consists
+         * Transfer data from the src-{@link GstCheck.Harness} to the main-{@link GstCheck.Harness}. It consists
          * of 4 steps:
          * 1: Make sure the src is started. (see: gst_harness_play)
          * 2: Crank the clock (see: gst_harness_crank_single_clock_wait)
-         * 3: Pull a #GstBuffer from the src-#GstHarness (see: gst_harness_pull)
-         * 4: Push the same #GstBuffer into the main-#GstHarness (see: gst_harness_push)
+         * 3: Pull a {@link Gst.Buffer} from the src-{@link GstCheck.Harness} (see: gst_harness_pull)
+         * 4: Push the same {@link Gst.Buffer} into the main-{@link GstCheck.Harness} (see: gst_harness_push)
          *
          * MT safe.
-         * @returns a #GstFlowReturn with the result of the push
+         * @returns a {@link Gst.FlowReturn} with the result of the push
          */
         push_from_src(): Gst.FlowReturn;
         /**
-         * Transfer one #GstBuffer from the main-#GstHarness to the sink-#GstHarness.
+         * Transfer one {@link Gst.Buffer} from the main-{@link GstCheck.Harness} to the sink-{@link GstCheck.Harness}.
          * See gst_harness_push_from_src for details.
          *
          * MT safe.
-         * @returns a #GstFlowReturn with the result of the push
+         * @returns a {@link Gst.FlowReturn} with the result of the push
          */
         push_to_sink(): Gst.FlowReturn;
         /**
-         * Pushes an #GstEvent on the #GstHarness sinkpad.
+         * Pushes an {@link Gst.Event} on the {@link GstCheck.Harness} sinkpad.
          *
          * MT safe.
-         * @param event a #GstEvent to push
-         * @returns a #gboolean with the result from the push
+         * @param event a {@link Gst.Event} to push
+         * @returns a `gboolean` with the result from the push
          */
         push_upstream_event(event: Gst.Event): boolean;
         /**
-         * Get the min latency reported by any harnessed #GstElement.
+         * Get the min latency reported by any harnessed {@link Gst.Element}.
          *
          * MT safe.
-         * @returns a #GstClockTime with min latency
+         * @returns a {@link Gst.ClockTime} with min latency
          */
         query_latency(): Gst.ClockTime;
         /**
          * Setting this will make the harness block in the chain-function, and
-         * then release when gst_harness_pull() or gst_harness_try_pull() is called.
+         * then release when `gst_harness_pull()` or `gst_harness_try_pull()` is called.
          * Can be useful when wanting to control a src-element that is not implementing
-         * gst_clock_id_wait() so it can't be controlled by the #GstTestClock, since
+         * `gst_clock_id_wait()` so it can't be controlled by the {@link GstCheck.TestClock}, since
          * it otherwise would produce buffers as fast as possible.
          *
          * MT safe.
@@ -1171,34 +1246,34 @@ export namespace GstCheck {
          * Sets the `GstHarness` srcpad and sinkpad caps.
          *
          * MT safe.
-         * @param _in a #GstCaps to set on the harness srcpad
-         * @param out a #GstCaps to set on the harness sinkpad
+         * @param _in a {@link Gst.Caps} to set on the harness srcpad
+         * @param out a {@link Gst.Caps} to set on the harness sinkpad
          */
         set_caps(_in: Gst.Caps, out: Gst.Caps): void;
         /**
          * Sets the `GstHarness` srcpad and sinkpad caps using strings.
          *
          * MT safe.
-         * @param _in a @gchar describing a #GstCaps to set on the harness srcpad
-         * @param out a @gchar describing a #GstCaps to set on the harness sinkpad
+         * @param _in a `gchar` describing a {@link Gst.Caps} to set on the harness srcpad
+         * @param out a `gchar` describing a {@link Gst.Caps} to set on the harness sinkpad
          */
         set_caps_str(_in: string, out: string): void;
         /**
-         * When set to %TRUE, instead of placing the buffers arriving from the harnessed
-         * #GstElement inside the sinkpads #GAsyncQueue, they are instead unreffed.
+         * When set to `true`, instead of placing the buffers arriving from the harnessed
+         * {@link Gst.Element} inside the sinkpads {@link GLib.AsyncQueue}, they are instead unreffed.
          *
          * MT safe.
-         * @param drop_buffers a #gboolean specifying to drop outgoing buffers or not
+         * @param drop_buffers a `gboolean` specifying to drop outgoing buffers or not
          */
         set_drop_buffers(drop_buffers: boolean): void;
         /**
-         * As a convenience, a src-harness will forward %GST_EVENT_STREAM_START,
-         * %GST_EVENT_CAPS and %GST_EVENT_SEGMENT to the main-harness if forwarding
+         * As a convenience, a src-harness will forward {@link Gst.EventType.STREAM_START},
+         * {@link Gst.EventType.CAPS} and {@link Gst.EventType.SEGMENT} to the main-harness if forwarding
          * is enabled, and forward any sticky-events from the main-harness to
-         * the sink-harness. It will also forward the %GST_QUERY_ALLOCATION.
+         * the sink-harness. It will also forward the {@link Gst.QueryType.ALLOCATION}.
          *
          * If forwarding is disabled, the user will have to either manually push
-         * these events from the src-harness using gst_harness_src_push_event(), or
+         * these events from the src-harness using `gst_harness_src_push_event()`, or
          * create and push them manually. While this will allow full control and
          * inspection of these events, for the most cases having forwarding enabled
          * will be sufficient when writing a test where the src-harness' main function
@@ -1207,13 +1282,13 @@ export namespace GstCheck {
          * Forwarding is enabled by default.
          *
          * MT safe.
-         * @param forwarding a #gboolean to enable/disable forwarding
+         * @param forwarding a `gboolean` to enable/disable forwarding
          */
         set_forwarding(forwarding: boolean): void;
         /**
-         * Sets the liveness reported by #GstHarness when receiving a latency-query.
-         * The default is %TRUE.
-         * @param is_live %TRUE for live, %FALSE for non-live
+         * Sets the liveness reported by {@link GstCheck.Harness} when receiving a latency-query.
+         * The default is `true`.
+         * @param is_live `true` for live, `false` for non-live
          */
         set_live(is_live: boolean): void;
         /**
@@ -1221,22 +1296,22 @@ export namespace GstCheck {
          * query.
          *
          * MT safe.
-         * @param allocator a #GstAllocator
-         * @param params a #GstAllocationParams
+         * @param allocator a {@link Gst.Allocator}
+         * @param params a {@link Gst.AllocationParams}
          */
         set_propose_allocator(allocator?: Gst.Allocator | null, params?: Gst.AllocationParams | null): void;
         /**
          * Sets the `GstHarness` sinkpad caps.
          *
          * MT safe.
-         * @param caps a #GstCaps to set on the harness sinkpad
+         * @param caps a {@link Gst.Caps} to set on the harness sinkpad
          */
         set_sink_caps(caps: Gst.Caps): void;
         /**
          * Sets the `GstHarness` sinkpad caps using a string.
          *
          * MT safe.
-         * @param str a @gchar describing a #GstCaps to set on the harness sinkpad
+         * @param str a `gchar` describing a {@link Gst.Caps} to set on the harness sinkpad
          */
         set_sink_caps_str(str: string): void;
         /**
@@ -1244,7 +1319,7 @@ export namespace GstCheck {
          * can legally be pushed from the harness to the element.
          *
          * MT safe.
-         * @param caps a #GstCaps to set on the harness srcpad
+         * @param caps a {@link Gst.Caps} to set on the harness srcpad
          */
         set_src_caps(caps: Gst.Caps): void;
         /**
@@ -1252,20 +1327,20 @@ export namespace GstCheck {
          * any buffers can legally be pushed from the harness to the element.
          *
          * MT safe.
-         * @param str a @gchar describing a #GstCaps to set on the harness srcpad
+         * @param str a `gchar` describing a {@link Gst.Caps} to set on the harness srcpad
          */
         set_src_caps_str(str: string): void;
         /**
-         * Advance the #GstTestClock to a specific time.
+         * Advance the {@link GstCheck.TestClock} to a specific time.
          *
          * MT safe.
-         * @param time a #GstClockTime to advance the clock to
-         * @returns a @gboolean %TRUE if the time could be set. %FALSE if not.
+         * @param time a {@link Gst.ClockTime} to advance the clock to
+         * @returns a `gboolean` `true` if the time could be set. `false` if not.
          */
         set_time(time: Gst.ClockTime): boolean;
         /**
-         * Sets the min latency reported by #GstHarness when receiving a latency-query
-         * @param latency a #GstClockTime specifying the latency
+         * Sets the min latency reported by {@link GstCheck.Harness} when receiving a latency-query
+         * @param latency a {@link Gst.ClockTime} specifying the latency
          */
         set_upstream_latency(latency: Gst.ClockTime): void;
         /**
@@ -1273,122 +1348,127 @@ export namespace GstCheck {
          * Will abort the pushing if any one push fails.
          *
          * MT safe.
-         * @param pushes a #gint with the number of calls to gst_harness_push_to_sink
-         * @returns a #GstFlowReturn with the result of the push
+         * @param pushes a `gint` with the number of calls to gst_harness_push_to_sink
+         * @returns a {@link Gst.FlowReturn} with the result of the push
          */
         sink_push_many(pushes: number): Gst.FlowReturn;
         /**
-         * Transfer data from the src-#GstHarness to the main-#GstHarness. Similar to
+         * Transfer data from the src-{@link GstCheck.Harness} to the main-{@link GstCheck.Harness}. Similar to
          * gst_harness_push_from_src, this variant allows you to specify how many cranks
          * and how many pushes to perform. This can be useful for both moving a lot
          * of data at the same time, as well as cases when one crank does not equal one
          * buffer to push and v.v.
          *
          * MT safe.
-         * @param cranks a #gint with the number of calls to gst_harness_crank_single_clock_wait
-         * @param pushes a #gint with the number of calls to gst_harness_push
-         * @returns a #GstFlowReturn with the result of the push
+         * @param cranks a `gint` with the number of calls to gst_harness_crank_single_clock_wait
+         * @param pushes a `gint` with the number of calls to gst_harness_push
+         * @returns a {@link Gst.FlowReturn} with the result of the push
          */
         src_crank_and_push_many(cranks: number, pushes: number): Gst.FlowReturn;
         /**
-         * Similar to what gst_harness_src_push does with #GstBuffers, this transfers
-         * a #GstEvent from the src-#GstHarness to the main-#GstHarness. Note that
-         * some #GstEvents are being transferred automagically. Look at sink_forward_pad
+         * Similar to what gst_harness_src_push does with `GstBuffers`, this transfers
+         * a {@link Gst.Event} from the src-{@link GstCheck.Harness} to the main-{@link GstCheck.Harness}. Note that
+         * some `GstEvents` are being transferred automagically. Look at sink_forward_pad
          * for details.
          *
          * MT safe.
-         * @returns a #gboolean with the result of the push
+         * @returns a `gboolean` with the result of the push
          */
         src_push_event(): boolean;
         /**
          * Pulls all pending data from the harness and returns it as a single buffer.
-         * @returns the data as a buffer. Unref with gst_buffer_unref()     when no longer needed.
+         * @returns the data as a buffer. Unref with `gst_buffer_unref()`     when no longer needed.
          */
         take_all_data_as_buffer(): Gst.Buffer;
         /**
-         * Pulls all pending data from the harness and returns it as a single #GBytes.
-         * @returns a pointer to the data, newly allocated. Free     with g_free() when no longer needed.
+         * Pulls all pending data from the harness and returns it as a single {@link GLib.Bytes}.
+         * @returns a pointer to the data, newly allocated. Free     with `g_free()` when no longer needed.
          */
         take_all_data(): GLib.Bytes;
         /**
-         * Tears down a `GstHarness,` freeing all resources allocated using it.
+         * Tears down a `GstHarness`, freeing all resources allocated using it.
          *
          * MT safe.
          */
         teardown(): void;
         /**
-         * Pulls a #GstBuffer from the #GAsyncQueue on the #GstHarness sinkpad. Unlike
+         * Pulls a {@link Gst.Buffer} from the {@link GLib.AsyncQueue} on the {@link GstCheck.Harness} sinkpad. Unlike
          * gst_harness_pull this will not wait for any buffers if not any are present,
-         * and return %NULL straight away.
+         * and return `null` straight away.
          *
          * MT safe.
-         * @returns a #GstBuffer or %NULL if no buffers are present in the #GAsyncQueue
+         * @returns a {@link Gst.Buffer} or `null` if no buffers are present in the {@link GLib.AsyncQueue}
          */
         try_pull(): Gst.Buffer | null;
         /**
-         * Pulls an #GstEvent from the #GAsyncQueue on the #GstHarness sinkpad.
+         * Pulls an {@link Gst.Event} from the {@link GLib.AsyncQueue} on the {@link GstCheck.Harness} sinkpad.
          * See gst_harness_try_pull for details.
          *
          * MT safe.
-         * @returns a #GstEvent or %NULL if no buffers are present in the #GAsyncQueue
+         * @returns a {@link Gst.Event} or `null` if no buffers are present in the {@link GLib.AsyncQueue}
          */
         try_pull_event(): Gst.Event | null;
         /**
-         * Pulls an #GstEvent from the #GAsyncQueue on the #GstHarness srcpad.
+         * Pulls an {@link Gst.Event} from the {@link GLib.AsyncQueue} on the {@link GstCheck.Harness} srcpad.
          * See gst_harness_try_pull for details.
          *
          * MT safe.
-         * @returns a #GstEvent or %NULL if no buffers are present in the #GAsyncQueue
+         * @returns a {@link Gst.Event} or `null` if no buffers are present in the {@link GLib.AsyncQueue}
          */
         try_pull_upstream_event(): Gst.Event | null;
         /**
-         * The number of #GstEvents currently in the #GstHarness srcpad #GAsyncQueue
+         * The number of `GstEvents` currently in the {@link GstCheck.Harness} srcpad {@link GLib.AsyncQueue}
          *
          * MT safe.
-         * @returns a #guint number of events in the queue
+         * @returns a `guint` number of events in the queue
          */
         upstream_events_in_queue(): number;
         /**
-         * The total number of #GstEvents that has arrived on the #GstHarness srcpad
+         * The total number of `GstEvents` that has arrived on the {@link GstCheck.Harness} srcpad
          * This number includes events handled by the harness as well as events
          * that have already been pulled out.
          *
          * MT safe.
-         * @returns a #guint number of events received
+         * @returns a `guint` number of events received
          */
         upstream_events_received(): number;
         /**
-         * Sets the system #GstClock on the `GstHarness` #GstElement
+         * Sets the system {@link Gst.Clock} on the `GstHarness` {@link Gst.Element}
          *
          * MT safe.
          */
         use_systemclock(): void;
         /**
-         * Sets the #GstTestClock on the #GstHarness #GstElement
+         * Sets the {@link GstCheck.TestClock} on the {@link GstCheck.Harness} {@link Gst.Element}
          *
          * MT safe.
          */
         use_testclock(): void;
         /**
-         * Waits for `timeout` seconds until `waits` number of #GstClockID waits is
-         * registered with the #GstTestClock. Useful for writing deterministic tests,
+         * Waits for `timeout` seconds until `waits` number of {@link Gst.ClockID} waits is
+         * registered with the {@link GstCheck.TestClock}. Useful for writing deterministic tests,
          * where you want to make sure that an expected number of waits have been
          * reached.
          *
          * MT safe.
-         * @param waits a #guint describing the numbers of #GstClockID registered with the #GstTestClock
-         * @param timeout a #guint describing how many seconds to wait for @waits to be true
-         * @returns a @gboolean %TRUE if the waits have been registered, %FALSE if not. (Could be that it timed out waiting or that more waits than waits was found)
+         * @param waits a `guint` describing the numbers of {@link Gst.ClockID} registered with the {@link GstCheck.TestClock}
+         * @param timeout a `guint` describing how many seconds to wait for `waits` to be true
+         * @returns a `gboolean` `true` if the waits have been registered, `false` if not. (Could be that it timed out waiting or that more waits than waits was found)
          */
         wait_for_clock_id_waits(waits: number, timeout: number): boolean;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class HarnessPrivate {
         static $gtype: GObject.GType<HarnessPrivate>;
     }
 
     /**
      * Opaque handle representing a GstHarness stress testing thread.
+     * @gir-type Struct
+     * @since 1.6
      */
     abstract class HarnessThread {
         static $gtype: GObject.GType<HarnessThread>;
@@ -1396,12 +1476,19 @@ export namespace GstCheck {
 
     /**
      * Opaque consistency checker handle.
+     * @gir-type Struct
      */
     abstract class StreamConsistency {
         static $gtype: GObject.GType<StreamConsistency>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TestClockClass = typeof TestClock;
+    /**
+     * @gir-type Struct
+     */
     abstract class TestClockPrivate {
         static $gtype: GObject.GType<TestClockPrivate>;
     }

@@ -30,6 +30,9 @@ export namespace Vte {
      * Vte-4-2.91
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Align {
         export const $gtype: GObject.GType<Align>;
     }
@@ -37,6 +40,8 @@ export namespace Vte {
     /**
      * An enumeration type that can be used to specify how the terminal
      * uses extra allocated space.
+     * @gir-type Enum
+     * @since 0.68
      */
     enum Align {
         /**
@@ -53,6 +58,9 @@ export namespace Vte {
         END,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CursorBlinkMode {
         export const $gtype: GObject.GType<CursorBlinkMode>;
     }
@@ -60,6 +68,7 @@ export namespace Vte {
     /**
      * An enumerated type which can be used to indicate the cursor blink mode
      * for the terminal.
+     * @gir-type Enum
      */
     enum CursorBlinkMode {
         /**
@@ -76,6 +85,9 @@ export namespace Vte {
         OFF,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CursorShape {
         export const $gtype: GObject.GType<CursorShape>;
     }
@@ -83,6 +95,7 @@ export namespace Vte {
     /**
      * An enumerated type which can be used to indicate what should the terminal
      * draw at the cursor position.
+     * @gir-type Enum
      */
     enum CursorShape {
         /**
@@ -100,6 +113,9 @@ export namespace Vte {
         UNDERLINE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace EraseBinding {
         export const $gtype: GObject.GType<EraseBinding>;
     }
@@ -108,6 +124,7 @@ export namespace Vte {
      * An enumerated type which can be used to indicate which string the terminal
      * should send to an application when the user presses the Delete or Backspace
      * keys.
+     * @gir-type Enum
      */
     enum EraseBinding {
         /**
@@ -123,7 +140,7 @@ export namespace Vte {
          */
         ASCII_DELETE,
         /**
-         * Send the "`@`7" control sequence.
+         * Send the "@@7" control sequence.
          */
         DELETE_SEQUENCE,
         /**
@@ -132,6 +149,9 @@ export namespace Vte {
         TTY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Format {
         export const $gtype: GObject.GType<Format>;
     }
@@ -139,6 +159,8 @@ export namespace Vte {
     /**
      * An enumeration type that can be used to specify the format the selection
      * should be copied to the clipboard in.
+     * @gir-type Enum
+     * @since 0.50
      */
     enum Format {
         /**
@@ -151,6 +173,9 @@ export namespace Vte {
         HTML,
     }
 
+    /**
+     * @gir-type Struct
+     */
     class PtyError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -172,8 +197,8 @@ export namespace Vte {
         // Static methods
 
         /**
-         * Error domain for VTE PTY errors. Errors in this domain will be from the #VtePtyError
-         * enumeration. See #GError for more information on error domains.
+         * Error domain for VTE PTY errors. Errors in this domain will be from the {@link Vte.PtyError}
+         * enumeration. See {@link GLib.Error} for more information on error domains.
          */
         static quark(): GLib.Quark;
     }
@@ -181,6 +206,7 @@ export namespace Vte {
     /**
      * An enum type for regex errors. In addition to the values listed above,
      * any PCRE2 error values may occur.
+     * @gir-type Struct
      */
     class RegexError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -207,6 +233,9 @@ export namespace Vte {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace TextBlinkMode {
         export const $gtype: GObject.GType<TextBlinkMode>;
     }
@@ -214,6 +243,8 @@ export namespace Vte {
     /**
      * An enumerated type which can be used to indicate whether the terminal allows
      * the text contents to be blinked.
+     * @gir-type Enum
+     * @since 0.52
      */
     enum TextBlinkMode {
         /**
@@ -234,6 +265,9 @@ export namespace Vte {
         ALWAYS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace WriteFlags {
         export const $gtype: GObject.GType<WriteFlags>;
     }
@@ -241,6 +275,7 @@ export namespace Vte {
     /**
      * A flag type to determine how terminal contents should be written
      * to an output stream.
+     * @gir-type Enum
      */
     enum WriteFlags {
         /**
@@ -266,30 +301,32 @@ export namespace Vte {
     const MINOR_VERSION: number;
     const REGEX_FLAGS_DEFAULT: number;
     /**
-     * Use this as a spawn flag (together with flags from #GSpawnFlags) in
-     * vte_pty_spawn_async().
+     * Use this as a spawn flag (together with flags from {@link GLib.SpawnFlags}) in
+     * `vte_pty_spawn_async()`.
      *
      * Normally, the spawned process inherits the environment from the parent
      * process; when this flag is used, only the environment variables passed
-     * to vte_pty_spawn_async() etc. are passed to the child process.
+     * to `vte_pty_spawn_async()` etc. are passed to the child process.
      */
     const SPAWN_NO_PARENT_ENVV: number;
     /**
-     * Use this as a spawn flag (together with flags from #GSpawnFlags) in
-     * vte_pty_spawn_async().
+     * Use this as a spawn flag (together with flags from {@link GLib.SpawnFlags}) in
+     * `vte_pty_spawn_async()`.
      *
-     * Prevents vte_pty_spawn_async() etc. from moving the newly created child
+     * Prevents `vte_pty_spawn_async()` etc. from moving the newly created child
      * process to a systemd user scope.
+     * @since 0.60
      */
     const SPAWN_NO_SYSTEMD_SCOPE: number;
     /**
-     * Use this as a spawn flag (together with flags from #GSpawnFlags) in
-     * vte_pty_spawn_async().
+     * Use this as a spawn flag (together with flags from {@link GLib.SpawnFlags}) in
+     * `vte_pty_spawn_async()`.
      *
-     * Requires vte_pty_spawn_async() etc. to move the newly created child
+     * Requires `vte_pty_spawn_async()` etc. to move the newly created child
      * process to a systemd user scope; if that fails, the whole spawn fails.
      *
      * This is supported on Linux only.
+     * @since 0.60
      */
     const SPAWN_REQUIRE_SYSTEMD_SCOPE: number;
     const TEST_FLAGS_ALL: number;
@@ -297,12 +334,14 @@ export namespace Vte {
     /**
      * Queries whether the legacy encoding `encoding` is supported.
      *
-     * If ICU support is not available, this function always returns %FALSE.
+     * If ICU support is not available, this function always returns `false`.
      *
      * Note that UTF-8 is always supported; you can select it by
-     * passing %NULL to vte_terminal_set_encoding().
+     * passing `null` to `vte_terminal_set_encoding()`.
      * @param encoding the name of the legacy encoding
-     * @returns %TRUE iff the legacy encoding @encoding is supported
+     * @returns `true` iff the legacy encoding `encoding` is supported
+     * @since 0.60
+     * @deprecated since 0.60
      */
     function get_encoding_supported(encoding: string): boolean;
     /**
@@ -310,66 +349,81 @@ export namespace Vte {
      *
      * If ICU support is not available, this returns an empty vector.
      * Note that UTF-8 is always supported; you can select it by
-     * passing %NULL to vte_terminal_set_encoding().
+     * passing `null` to `vte_terminal_set_encoding()`.
      * @param include_aliases whether to include alias names
-     * @returns the list of supported encodings; free with   g_strfreev()
+     * @returns the list of supported encodings; free with   `g_strfreev()`
+     * @since 0.60
+     * @deprecated since 0.60
      */
     function get_encodings(include_aliases: boolean): string[];
     /**
      * Gets features VTE was compiled with.
-     * @returns flags from #VteFeatureFlags
+     * @returns flags from {@link Vte.FeatureFlags}
+     * @since 0.62
      */
     function get_feature_flags(): FeatureFlags;
     /**
      * Gets a list of features vte was compiled with.
      * @returns a string with features
+     * @since 0.40
      */
     function get_features(): string;
     /**
      * Returns the major version of the VTE library at runtime.
-     * Contrast this with %VTE_MAJOR_VERSION which represents
+     * Contrast this with `VTE_MAJOR_VERSION` which represents
      * the version of the VTE library that the code was compiled
      * with.
      * @returns the major version
+     * @since 0.40
      */
     function get_major_version(): number;
     /**
      * Returns the micro version of the VTE library at runtime.
-     * Contrast this with %VTE_MICRO_VERSION which represents
+     * Contrast this with `VTE_MICRO_VERSION` which represents
      * the version of the VTE library that the code was compiled
      * with.
      * @returns the micro version
+     * @since 0.40
      */
     function get_micro_version(): number;
     /**
      * Returns the minor version of the VTE library at runtime.
-     * Contrast this with %VTE_MINOR_VERSION which represents
+     * Contrast this with `VTE_MINOR_VERSION` which represents
      * the version of the VTE library that the code was compiled
      * with.
      * @returns the minor version
+     * @since 0.40
      */
     function get_minor_version(): number;
     /**
-     * Gets the user's shell, or %NULL. In the latter case, the
+     * Gets the user's shell, or `null`. In the latter case, the
      * system default (usually "/bin/sh") should be used.
-     * @returns a newly allocated string with the   user's shell, or %NULL
+     * @returns a newly allocated string with the   user's shell, or `null`
      */
     function get_user_shell(): string;
     /**
-     * Error domain for VTE PTY errors. Errors in this domain will be from the #VtePtyError
-     * enumeration. See #GError for more information on error domains.
+     * Error domain for VTE PTY errors. Errors in this domain will be from the {@link Vte.PtyError}
+     * enumeration. See {@link GLib.Error} for more information on error domains.
      * @returns the error domain for VTE PTY errors
      */
     function pty_error_quark(): GLib.Quark;
     function regex_error_quark(): GLib.Quark;
+    /**
+     * @gir-type Callback
+     */
     interface SelectionFunc {
         (terminal: Terminal, column: number, row: number): boolean;
     }
+    /**
+     * @gir-type Callback
+     */
     interface TerminalSpawnAsyncCallback {
         (terminal: Terminal, pid: GLib.Pid, error: GLib.Error): void;
     }
     /**
      * An enumeration type for features.
+     * @gir-type Flags
+     * @since 0.62
      */
     enum FeatureFlags {
         /**
@@ -394,10 +448,16 @@ export namespace Vte {
         FLAGS_MASK,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace PtyFlags {
         export const $gtype: GObject.GType<PtyFlags>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum PtyFlags {
         /**
          * Unused. Deprecated: 0.38
@@ -421,12 +481,12 @@ export namespace Vte {
         NO_FALLBACK,
         /**
          * Do not start a new session for the child in
-         *   vte_pty_child_setup(). See man:setsid(2) for more information. Since: 0.58
+         *   `vte_pty_child_setup()`. See man:setsid(2) for more information. Since: 0.58
          */
         NO_SESSION,
         /**
          * Do not set the PTY as the controlling TTY for the child
-         *   in vte_pty_child_setup(). See man:tty_ioctl(4) for more information. Since: 0.58
+         *   in `vte_pty_child_setup()`. See man:tty_ioctl(4) for more information. Since: 0.58
          */
         NO_CTTY,
         /**
@@ -450,6 +510,9 @@ export namespace Vte {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Pty extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<Pty>;
 
@@ -457,10 +520,12 @@ export namespace Vte {
 
         /**
          * The file descriptor of the PTY master.
+         * @construct-only
          */
         get fd(): number;
         /**
          * Flags.
+         * @construct-only
          */
         get flags(): PtyFlags;
 
@@ -485,16 +550,19 @@ export namespace Vte {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Pty.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Pty.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Pty.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Pty.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Pty.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Pty.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -508,22 +576,25 @@ export namespace Vte {
          * Since 0.42 this is a no-op.
          */
         close(): void;
+        /**
+         * @returns the file descriptor of the PTY master in `pty`. The   file descriptor belongs to `pty` and must not be closed or have   its flags changed
+         */
         get_fd(): number;
         /**
          * Reads the pseudo terminal's window size.
          *
-         * If getting the window size failed, `error` will be set to a #GIOError.
-         * @returns %TRUE on success, %FALSE on failure with @error filled in
+         * If getting the window size failed, `error` will be set to a {@link GLib.IOError}.
+         * @returns `true` on success, `false` on failure with `error` filled in
          */
         get_size(): [boolean, number, number];
         /**
          * Attempts to resize the pseudo terminal's window size.  If successful, the
          * OS kernel will send <literal>SIGWINCH</literal> to the child process group.
          *
-         * If setting the window size failed, `error` will be set to a #GIOError.
+         * If setting the window size failed, `error` will be set to a {@link GLib.IOError}.
          * @param rows the desired number of rows
          * @param columns the desired number of columns
-         * @returns %TRUE on success, %FALSE on failure with @error filled in
+         * @returns `true` on success, `false` on failure with `error` filled in
          */
         set_size(rows: number, columns: number): boolean;
         /**
@@ -531,20 +602,20 @@ export namespace Vte {
          * use of the info.  Linux 2.6.5 or so defines IUTF8 to make the line
          * discipline do multibyte backspace correctly.
          * @param utf8 whether or not the pty is in UTF-8 mode
-         * @returns %TRUE on success, %FALSE on failure with @error filled in
+         * @returns `true` on success, `false` on failure with `error` filled in
          */
         set_utf8(utf8: boolean): boolean;
         /**
-         * Like vte_pty_spawn_with_fds_async(), except that this function does not
-         * allow passing file descriptors to the child process. See vte_pty_spawn_with_fds_async()
+         * Like `vte_pty_spawn_with_fds_async()`, except that this function does not
+         * allow passing file descriptors to the child process. See `vte_pty_spawn_with_fds_async()`
          * for more information.
-         * @param working_directory the name of a directory the command should start   in, or %NULL to use the current working directory
+         * @param working_directory the name of a directory the command should start   in, or `null` to use the current working directory
          * @param argv child's argument vector
-         * @param envv a list of environment   variables to be added to the environment before starting the process, or %NULL
-         * @param spawn_flags flags from #GSpawnFlags
-         * @param child_setup_data_destroy a #GDestroyNotify for @child_setup_data, or %NULL
+         * @param envv a list of environment   variables to be added to the environment before starting the process, or `null`
+         * @param spawn_flags flags from {@link GLib.SpawnFlags}
+         * @param child_setup_data_destroy a {@link GLib.DestroyNotify} for `child_setup_data`, or `null`
          * @param timeout a timeout value in ms, -1 for the default timeout, or G_MAXINT to wait indefinitely
-         * @param cancellable a #GCancellable, or %NULL
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
         spawn_async(
             working_directory: string | null,
@@ -555,48 +626,52 @@ export namespace Vte {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
         ): void;
+        /**
+         * @param result a {@link Gio.AsyncResult}
+         * @returns `true` on success, or `false` on error with `error` filled in
+         */
         spawn_finish(result: Gio.AsyncResult): [boolean, GLib.Pid | null];
         /**
          * Starts the specified command under the pseudo-terminal `pty`.
-         * The `argv` and `envv` lists should be %NULL-terminated.
+         * The `argv` and `envv` lists should be `null`-terminated.
          * The "TERM" environment variable is automatically set to a default value,
          * but can be overridden from `envv`.
          * `pty_flags` controls logging the session to the specified system log files.
          *
-         * Note also that %G_SPAWN_STDOUT_TO_DEV_NULL, %G_SPAWN_STDERR_TO_DEV_NULL,
-         * and %G_SPAWN_CHILD_INHERITS_STDIN are not supported in `spawn_flags,` since
+         * Note also that {@link GLib.SpawnFlags.STDOUT_TO_DEV_NULL}, {@link GLib.SpawnFlags.STDERR_TO_DEV_NULL},
+         * and {@link GLib.SpawnFlags.CHILD_INHERITS_STDIN} are not supported in `spawn_flags`, since
          * stdin, stdout and stderr of the child process will always be connected to
-         * the PTY. Also %G_SPAWN_LEAVE_DESCRIPTORS_OPEN is not supported; and
-         * %G_SPAWN_DO_NOT_REAP_CHILD will always be added to `spawn_flags`.
+         * the PTY. Also {@link GLib.SpawnFlags.LEAVE_DESCRIPTORS_OPEN} is not supported; and
+         * {@link GLib.SpawnFlags.DO_NOT_REAP_CHILD} will always be added to `spawn_flags`.
          *
-         * If `fds` is not %NULL, the child process will map the file descriptors from
-         * `fds` according to `map_fds;` `n_map_fds` must be less or equal to `n_fds`.
-         * This function will take ownership of the file descriptors in `fds;`
+         * If `fds` is not `null`, the child process will map the file descriptors from
+         * `fds` according to `map_fds`; `n_map_fds` must be less or equal to `n_fds`.
+         * This function will take ownership of the file descriptors in `fds`;
          * you must not use or close them after this call. All file descriptors in `fds`
          * must have the FD_CLOEXEC flag set on them; it will be unset in the child process
          * before calling man:execve(2). Note also that no file descriptor may be mapped
          * to stdin, stdout, or stderr (file descriptors 0, 1, or 2), since these will be
          * assigned to the PTY. All open file descriptors apart from those mapped as above
-         * will be closed when execve() is called.
+         * will be closed when `execve()` is called.
          *
-         * Beginning with 0.60, and on linux only, and unless %VTE_SPAWN_NO_SYSTEMD_SCOPE is
-         * passed in `spawn_flags,` the newly created child process will be moved to its own
-         * systemd user scope; and if %VTE_SPAWN_REQUIRE_SYSTEMD_SCOPE is passed, and creation
+         * Beginning with 0.60, and on linux only, and unless `VTE_SPAWN_NO_SYSTEMD_SCOPE` is
+         * passed in `spawn_flags`, the newly created child process will be moved to its own
+         * systemd user scope; and if `VTE_SPAWN_REQUIRE_SYSTEMD_SCOPE` is passed, and creation
          * of the systemd user scope fails, the whole spawn will fail.
          * You can override the options used for the systemd user scope by
          * providing a systemd override file for 'vte-spawn-.scope' unit. See man:systemd.unit(5)
          * for further information.
          *
-         * See vte_pty_new(), and vte_terminal_watch_child() for more information.
-         * @param working_directory the name of a directory the command should start   in, or %NULL to use the current working directory
+         * See `vte_pty_new()`, and `vte_terminal_watch_child()` for more information.
+         * @param working_directory the name of a directory the command should start   in, or `null` to use the current working directory
          * @param argv child's argument vector
-         * @param envv a list of environment   variables to be added to the environment before starting the process, or %NULL
-         * @param fds an array of file descriptors, or %NULL
-         * @param map_fds an array of integers, or %NULL
-         * @param spawn_flags flags from #GSpawnFlags
-         * @param child_setup_data_destroy a #GDestroyNotify for @child_setup_data, or %NULL
+         * @param envv a list of environment   variables to be added to the environment before starting the process, or `null`
+         * @param fds an array of file descriptors, or `null`
+         * @param map_fds an array of integers, or `null`
+         * @param spawn_flags flags from {@link GLib.SpawnFlags}
+         * @param child_setup_data_destroy a {@link GLib.DestroyNotify} for `child_setup_data`, or `null`
          * @param timeout a timeout value in ms, -1 for the default timeout, or G_MAXINT to wait indefinitely
-         * @param cancellable a #GCancellable, or %NULL
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
         spawn_with_fds_async(
             working_directory: string | null,
@@ -609,34 +684,32 @@ export namespace Vte {
             timeout: number,
             cancellable?: Gio.Cancellable | null,
         ): void;
-
-        // Inherited methods
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -646,40 +719,40 @@ export namespace Vte {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
         init(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -689,11 +762,12 @@ export namespace Vte {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -709,32 +783,32 @@ export namespace Vte {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -743,39 +817,39 @@ export namespace Vte {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -786,13 +860,16 @@ export namespace Vte {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -800,7 +877,7 @@ export namespace Vte {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -808,9 +885,9 @@ export namespace Vte {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -830,9 +907,9 @@ export namespace Vte {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -845,34 +922,34 @@ export namespace Vte {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -905,22 +982,22 @@ export namespace Vte {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -929,8 +1006,8 @@ export namespace Vte {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -947,10 +1024,10 @@ export namespace Vte {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -965,13 +1042,13 @@ export namespace Vte {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1002,21 +1079,21 @@ export namespace Vte {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1026,33 +1103,34 @@ export namespace Vte {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1061,6 +1139,7 @@ export namespace Vte {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1069,12 +1148,14 @@ export namespace Vte {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1083,20 +1164,22 @@ export namespace Vte {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1108,6 +1191,7 @@ export namespace Vte {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -1140,32 +1224,196 @@ export namespace Vte {
     namespace Terminal {
         // Signal signatures
         interface SignalSignatures extends Gtk.Widget.SignalSignatures {
+            /**
+             * This signal is emitted when the a child sends a bell request to the
+             * terminal.
+             * @signal
+             * @run-last
+             */
             bell: () => void;
+            /**
+             * Emitted whenever the cell size changes, e.g. due to a change in
+             * font, font-scale or cell-width/height-scale.
+             *
+             * Note that this signal should rather be called "cell-size-changed".
+             * @signal
+             * @run-last
+             */
             'char-size-changed': (arg0: number, arg1: number) => void;
+            /**
+             * This signal is emitted when the terminal detects that a child
+             * watched using `vte_terminal_watch_child()` has exited.
+             * @signal
+             * @run-last
+             */
             'child-exited': (arg0: number) => void;
+            /**
+             * Emitted whenever the terminal receives input from the user and
+             * prepares to send it to the child process.
+             * @signal
+             * @run-last
+             */
             commit: (arg0: string, arg1: number) => void;
+            /**
+             * Emitted whenever the visible appearance of the terminal has changed.
+             * Used primarily by `VteTerminalAccessible`.
+             * @signal
+             * @run-last
+             */
             'contents-changed': () => void;
+            /**
+             * Emitted whenever `vte_terminal_copy_clipboard()` is called.
+             * @signal
+             * @action
+             * @run-last
+             */
             'copy-clipboard': () => void;
+            /**
+             * Emitted when the current directory URI is modified.
+             * @signal
+             * @run-last
+             */
             'current-directory-uri-changed': () => void;
+            /**
+             * Emitted when the current file URI is modified.
+             * @signal
+             * @run-last
+             */
             'current-file-uri-changed': () => void;
+            /**
+             * Emitted whenever the cursor moves to a new character cell.  Used
+             * primarily by `VteTerminalAccessible`.
+             * @signal
+             * @run-last
+             */
             'cursor-moved': () => void;
+            /**
+             * Emitted when the user hits the '-' key while holding the Control key.
+             * @signal
+             * @run-last
+             */
             'decrease-font-size': () => void;
+            /**
+             * Never emitted.
+             * @signal
+             * @deprecated since 0.60
+             * @run-last
+             */
             'deiconify-window': () => void;
+            /**
+             * Emitted whenever the terminal's current encoding has changed.
+             *
+             * Note: support for non-UTF-8 is deprecated.
+             * @signal
+             * @run-last
+             */
             'encoding-changed': () => void;
+            /**
+             * Emitted when the terminal receives an end-of-file from a child which
+             * is running in the terminal.  This signal is frequently (but not
+             * always) emitted with a {@link Vte.Terminal.SignalSignatures.child_exited | Vte.Terminal::child-exited} signal.
+             * @signal
+             * @run-last
+             */
             eof: () => void;
+            /**
+             * Emitted when the hovered hyperlink changes.
+             *
+             * `uri` and `bbox` are owned by VTE, must not be modified, and might
+             * change after the signal handlers returns.
+             *
+             * The signal is not re-emitted when the bounding box changes for the
+             * same hyperlink. This might change in a future VTE version without notice.
+             * @signal
+             * @since 0.50
+             * @run-last
+             */
             'hyperlink-hover-uri-changed': (arg0: string, arg1: Gdk.Rectangle) => void;
+            /**
+             * @signal
+             * @deprecated since 0.54: This signal is never emitted.
+             * @run-last
+             */
             'icon-title-changed': () => void;
+            /**
+             * Never emitted.
+             * @signal
+             * @deprecated since 0.60
+             * @run-last
+             */
             'iconify-window': () => void;
+            /**
+             * Emitted when the user hits the '+' key while holding the Control key.
+             * @signal
+             * @run-last
+             */
             'increase-font-size': () => void;
+            /**
+             * Never emitted.
+             * @signal
+             * @deprecated since 0.60
+             * @run-last
+             */
             'lower-window': () => void;
+            /**
+             * Never emitted.
+             * @signal
+             * @deprecated since 0.60
+             * @run-last
+             */
             'maximize-window': () => void;
+            /**
+             * Never emitted.
+             * @signal
+             * @deprecated since 0.60
+             * @run-last
+             */
             'move-window': (arg0: number, arg1: number) => void;
+            /**
+             * Emitted whenever `vte_terminal_paste_clipboard()` is called.
+             * @signal
+             * @action
+             * @run-last
+             */
             'paste-clipboard': () => void;
+            /**
+             * Never emitted.
+             * @signal
+             * @deprecated since 0.60
+             * @run-last
+             */
             'raise-window': () => void;
+            /**
+             * Never emitted.
+             * @signal
+             * @deprecated since 0.60
+             * @run-last
+             */
             'refresh-window': () => void;
+            /**
+             * Emitted at the child application's request.
+             * @signal
+             * @run-last
+             */
             'resize-window': (arg0: number, arg1: number) => void;
+            /**
+             * Never emitted.
+             * @signal
+             * @deprecated since 0.60
+             * @run-last
+             */
             'restore-window': () => void;
+            /**
+             * Emitted whenever the contents of terminal's selection changes.
+             * @signal
+             * @run-last
+             */
             'selection-changed': () => void;
+            /**
+             * Emitted when the {@link Vte.Terminal.window_title} property is modified.
+             * @signal
+             * @run-last
+             */
             'window-title-changed': () => void;
             'notify::allow-bold': (pspec: GObject.ParamSpec) => void;
             'notify::allow-hyperlink': (pspec: GObject.ParamSpec) => void;
@@ -1326,6 +1574,9 @@ export namespace Vte {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Terminal extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Scrollable {
         static $gtype: GObject.GType<Terminal>;
 
@@ -1334,22 +1585,26 @@ export namespace Vte {
         /**
          * Controls whether or not the terminal will attempt to draw bold text,
          * by using a bold font variant.
+         * @deprecated since 0.60: There's probably no reason for this feature to exist.
          */
         get allow_bold(): boolean;
         set allow_bold(val: boolean);
         /**
          * Controls whether or not the terminal will attempt to draw bold text,
          * by using a bold font variant.
+         * @deprecated since 0.60: There's probably no reason for this feature to exist.
          */
         get allowBold(): boolean;
         set allowBold(val: boolean);
         /**
          * Controls whether or not hyperlinks (OSC 8 escape sequence) are recognized and displayed.
+         * @since 0.50
          */
         get allow_hyperlink(): boolean;
         set allow_hyperlink(val: boolean);
         /**
          * Controls whether or not hyperlinks (OSC 8 escape sequence) are recognized and displayed.
+         * @since 0.50
          */
         get allowHyperlink(): boolean;
         set allowHyperlink(val: boolean);
@@ -1381,6 +1636,7 @@ export namespace Vte {
          * Whether the SGR 1 attribute also switches to the bright counterpart
          * of the first 8 palette colors, in addition to making them bold (legacy behavior)
          * or if SGR 1 only enables bold and leaves the color intact.
+         * @since 0.52
          */
         get bold_is_bright(): boolean;
         set bold_is_bright(val: boolean);
@@ -1388,76 +1644,85 @@ export namespace Vte {
          * Whether the SGR 1 attribute also switches to the bright counterpart
          * of the first 8 palette colors, in addition to making them bold (legacy behavior)
          * or if SGR 1 only enables bold and leaves the color intact.
+         * @since 0.52
          */
         get boldIsBright(): boolean;
         set boldIsBright(val: boolean);
         /**
          * Scale factor for the cell height, to increase line spacing. (The font's height is not affected.)
+         * @since 0.52
          */
         get cell_height_scale(): number;
         set cell_height_scale(val: number);
         /**
          * Scale factor for the cell height, to increase line spacing. (The font's height is not affected.)
+         * @since 0.52
          */
         get cellHeightScale(): number;
         set cellHeightScale(val: number);
         /**
          * Scale factor for the cell width, to increase letter spacing. (The font's width is not affected.)
+         * @since 0.52
          */
         get cell_width_scale(): number;
         set cell_width_scale(val: number);
         /**
          * Scale factor for the cell width, to increase letter spacing. (The font's width is not affected.)
+         * @since 0.52
          */
         get cellWidthScale(): number;
         set cellWidthScale(val: number);
         /**
          * This setting controls whether ambiguous-width characters are narrow or wide.
-         * (Note that when using a non-UTF-8 encoding set via vte_terminal_set_encoding(),
+         * (Note that when using a non-UTF-8 encoding set via `vte_terminal_set_encoding()`,
          * the width of ambiguous-width characters is fixed and determined by the encoding
          * itself.)
          *
          * This setting only takes effect the next time the terminal is reset, either
-         * via escape sequence or with vte_terminal_reset().
+         * via escape sequence or with `vte_terminal_reset()`.
          */
         get cjk_ambiguous_width(): number;
         set cjk_ambiguous_width(val: number);
         /**
          * This setting controls whether ambiguous-width characters are narrow or wide.
-         * (Note that when using a non-UTF-8 encoding set via vte_terminal_set_encoding(),
+         * (Note that when using a non-UTF-8 encoding set via `vte_terminal_set_encoding()`,
          * the width of ambiguous-width characters is fixed and determined by the encoding
          * itself.)
          *
          * This setting only takes effect the next time the terminal is reset, either
-         * via escape sequence or with vte_terminal_reset().
+         * via escape sequence or with `vte_terminal_reset()`.
          */
         get cjkAmbiguousWidth(): number;
         set cjkAmbiguousWidth(val: number);
         /**
-         * The current directory URI, or %NULL if unset.
+         * The current directory URI, or `null` if unset.
+         * @read-only
          */
         get current_directory_uri(): string;
         /**
-         * The current directory URI, or %NULL if unset.
+         * The current directory URI, or `null` if unset.
+         * @read-only
          */
         get currentDirectoryUri(): string;
         /**
-         * The current file URI, or %NULL if unset.
+         * The current file URI, or `null` if unset.
+         * @read-only
          */
         get current_file_uri(): string;
         /**
-         * The current file URI, or %NULL if unset.
+         * The current file URI, or `null` if unset.
+         * @read-only
          */
         get currentFileUri(): string;
         /**
-         * Sets whether or not the cursor will blink. Using %VTE_CURSOR_BLINK_SYSTEM
-         * will use the #GtkSettings:gtk-cursor-blink setting.
+         * Sets whether or not the cursor will blink. Using {@link Vte.CursorBlinkMode.SYSTEM}
+         * will use the {@link Gtk.Settings.gtk_cursor_blink} setting.
          */
         get cursor_blink_mode(): CursorBlinkMode;
         set cursor_blink_mode(val: CursorBlinkMode);
         /**
-         * Sets whether or not the cursor will blink. Using %VTE_CURSOR_BLINK_SYSTEM
-         * will use the #GtkSettings:gtk-cursor-blink setting.
+         * Sets whether or not the cursor will blink. Using {@link Vte.CursorBlinkMode.SYSTEM}
+         * will use the {@link Gtk.Settings.gtk_cursor_blink} setting.
          */
         get cursorBlinkMode(): CursorBlinkMode;
         set cursorBlinkMode(val: CursorBlinkMode);
@@ -1485,11 +1750,13 @@ export namespace Vte {
         set deleteBinding(val: EraseBinding);
         /**
          * Controls whether or not the terminal will perform bidirectional text rendering.
+         * @since 0.58
          */
         get enable_bidi(): boolean;
         set enable_bidi(val: boolean);
         /**
          * Controls whether or not the terminal will perform bidirectional text rendering.
+         * @since 0.58
          */
         get enableBidi(): boolean;
         set enableBidi(val: boolean);
@@ -1499,21 +1766,25 @@ export namespace Vte {
         set enableFallbackScrolling(val: boolean);
         /**
          * Controls whether or not the terminal will shape Arabic text.
+         * @since 0.58
          */
         get enable_shaping(): boolean;
         set enable_shaping(val: boolean);
         /**
          * Controls whether or not the terminal will shape Arabic text.
+         * @since 0.58
          */
         get enableShaping(): boolean;
         set enableShaping(val: boolean);
         /**
          * Controls whether SIXEL image support is enabled.
+         * @since 0.62
          */
         get enable_sixel(): boolean;
         set enable_sixel(val: boolean);
         /**
          * Controls whether SIXEL image support is enabled.
+         * @since 0.62
          */
         get enableSixel(): boolean;
         set enableSixel(val: boolean);
@@ -1522,12 +1793,13 @@ export namespace Vte {
          * be encoded with.  For certain terminal types, applications executing in the
          * terminal can change the encoding.  The default is defined by the
          * application's locale settings.
+         * @deprecated since 0.54: Instead of using this, you should use a tool like   luit(1) when support for non-UTF-8 is required
          */
         get encoding(): string;
         set encoding(val: string);
         /**
          * Specifies the font used for rendering all text displayed by the terminal,
-         * overriding any fonts set using gtk_widget_modify_font().  The terminal
+         * overriding any fonts set using `gtk_widget_modify_font()`.  The terminal
          * will immediately attempt to load the desired font, retrieve its
          * metrics, and attempt to resize itself to keep the same number of rows
          * and columns.
@@ -1536,7 +1808,7 @@ export namespace Vte {
         set font_desc(val: Pango.FontDescription);
         /**
          * Specifies the font used for rendering all text displayed by the terminal,
-         * overriding any fonts set using gtk_widget_modify_font().  The terminal
+         * overriding any fonts set using `gtk_widget_modify_font()`.  The terminal
          * will immediately attempt to load the desired font, retrieve its
          * metrics, and attempt to resize itself to keep the same number of rows
          * and columns.
@@ -1554,14 +1826,26 @@ export namespace Vte {
         get fontScale(): number;
         set fontScale(val: number);
         /**
-         * The currently hovered hyperlink URI, or %NULL if unset.
+         * The currently hovered hyperlink URI, or `null` if unset.
+         * @since 0.50
+         * @read-only
          */
         get hyperlink_hover_uri(): string;
         /**
-         * The currently hovered hyperlink URI, or %NULL if unset.
+         * The currently hovered hyperlink URI, or `null` if unset.
+         * @since 0.50
+         * @read-only
          */
         get hyperlinkHoverUri(): string;
+        /**
+         * @deprecated since 0.54: This property is always `null`.
+         * @read-only
+         */
         get icon_title(): string;
+        /**
+         * @deprecated since 0.54: This property is always `null`.
+         * @read-only
+         */
         get iconTitle(): string;
         /**
          * Controls whether the terminal allows user input. When user input is disabled,
@@ -1599,12 +1883,14 @@ export namespace Vte {
         /**
          * Controls whether or not the terminal will rewrap its contents, including
          * the scrollback buffer, whenever the terminal's width changes.
+         * @deprecated since 0.58
          */
         get rewrap_on_resize(): boolean;
         set rewrap_on_resize(val: boolean);
         /**
          * Controls whether or not the terminal will rewrap its contents, including
          * the scrollback buffer, whenever the terminal's width changes.
+         * @deprecated since 0.58
          */
         get rewrapOnResize(): boolean;
         set rewrapOnResize(val: boolean);
@@ -1638,6 +1924,7 @@ export namespace Vte {
          * Controls whether the terminal's GtkAdjustment values unit is lines
          * or pixels. This can be enabled when the terminal is the child of a
          * GtkScrolledWindow to fix some bugs with its kinetic scrolling.
+         * @since 0.66
          */
         get scroll_unit_is_pixels(): boolean;
         set scroll_unit_is_pixels(val: boolean);
@@ -1645,6 +1932,7 @@ export namespace Vte {
          * Controls whether the terminal's GtkAdjustment values unit is lines
          * or pixels. This can be enabled when the terminal is the child of a
          * GtkScrolledWindow to fix some bugs with its kinetic scrolling.
+         * @since 0.66
          */
         get scrollUnitIsPixels(): boolean;
         set scrollUnitIsPixels(val: boolean);
@@ -1670,20 +1958,24 @@ export namespace Vte {
         set scrollbackLines(val: number);
         /**
          * Controls whether or not the terminal will allow blinking text.
+         * @since 0.52
          */
         get text_blink_mode(): TextBlinkMode;
         set text_blink_mode(val: TextBlinkMode);
         /**
          * Controls whether or not the terminal will allow blinking text.
+         * @since 0.52
          */
         get textBlinkMode(): TextBlinkMode;
         set textBlinkMode(val: TextBlinkMode);
         /**
          * The terminal's title.
+         * @read-only
          */
         get window_title(): string;
         /**
          * The terminal's title.
+         * @read-only
          */
         get windowTitle(): string;
         /**
@@ -1691,7 +1983,9 @@ export namespace Vte {
          * when doing word-wise selection, in addition to the default which only
          * considers alphanumeric characters part of a word.
          *
-         * If %NULL, a built-in set is used.
+         * If `null`, a built-in set is used.
+         * @since 0.40
+         * @read-only
          */
         get word_char_exceptions(): string;
         /**
@@ -1699,26 +1993,32 @@ export namespace Vte {
          * when doing word-wise selection, in addition to the default which only
          * considers alphanumeric characters part of a word.
          *
-         * If %NULL, a built-in set is used.
+         * If `null`, a built-in set is used.
+         * @since 0.40
+         * @read-only
          */
         get wordCharExceptions(): string;
         /**
          * The horizontal alignment of `terminal` within its allocation.
+         * @since 0.70
          */
         get xalign(): Align;
         set xalign(val: Align);
         /**
          * The horizontal fillment of `terminal` within its allocation.
+         * @since 0.70
          */
         get xfill(): boolean;
         set xfill(val: boolean);
         /**
          * The vertical alignment of `terminal` within its allocation
+         * @since 0.70
          */
         get yalign(): Align;
         set yalign(val: Align);
         /**
          * The vertical fillment of `terminal` within its allocation
+         * @since 0.70
          */
         get yfill(): boolean;
         set yfill(val: boolean);
@@ -1746,16 +2046,19 @@ export namespace Vte {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Terminal.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Terminal.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Terminal.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Terminal.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Terminal.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Terminal.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1764,38 +2067,115 @@ export namespace Vte {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_bell(): void;
+        /**
+         * @param char_width
+         * @param char_height
+         * @virtual
+         */
         vfunc_char_size_changed(char_width: number, char_height: number): void;
+        /**
+         * @param status
+         * @virtual
+         */
         vfunc_child_exited(status: number): void;
+        /**
+         * @param text
+         * @param size
+         * @virtual
+         */
         vfunc_commit(text: string, size: number): void;
+        /**
+         * @virtual
+         */
         vfunc_contents_changed(): void;
         /**
          * Places the selected text in the terminal in the #GDK_SELECTION_CLIPBOARD
          * selection.
+         * @virtual
          */
         vfunc_copy_clipboard(): void;
+        /**
+         * @virtual
+         */
         vfunc_cursor_moved(): void;
+        /**
+         * @virtual
+         */
         vfunc_decrease_font_size(): void;
+        /**
+         * @virtual
+         */
         vfunc_deiconify_window(): void;
+        /**
+         * @virtual
+         */
         vfunc_encoding_changed(): void;
+        /**
+         * @virtual
+         */
         vfunc_eof(): void;
+        /**
+         * @virtual
+         */
         vfunc_icon_title_changed(): void;
+        /**
+         * @virtual
+         */
         vfunc_iconify_window(): void;
+        /**
+         * @virtual
+         */
         vfunc_increase_font_size(): void;
+        /**
+         * @virtual
+         */
         vfunc_lower_window(): void;
+        /**
+         * @virtual
+         */
         vfunc_maximize_window(): void;
+        /**
+         * @param x
+         * @param y
+         * @virtual
+         */
         vfunc_move_window(x: number, y: number): void;
         /**
          * Sends the contents of the #GDK_SELECTION_CLIPBOARD selection to the
          * terminal's child. It's called on paste menu item, or when
          * user presses Shift+Insert.
+         * @virtual
          */
         vfunc_paste_clipboard(): void;
+        /**
+         * @virtual
+         */
         vfunc_raise_window(): void;
+        /**
+         * @virtual
+         */
         vfunc_refresh_window(): void;
+        /**
+         * @param width
+         * @param height
+         * @virtual
+         */
         vfunc_resize_window(width: number, height: number): void;
+        /**
+         * @virtual
+         */
         vfunc_restore_window(): void;
+        /**
+         * @virtual
+         */
         vfunc_selection_changed(): void;
+        /**
+         * @virtual
+         */
         vfunc_window_title_changed(): void;
 
         // Methods
@@ -1809,13 +2189,13 @@ export namespace Vte {
          * Places the selected text in the terminal in the #GDK_SELECTION_CLIPBOARD
          * selection in the form specified by `format`.
          *
-         * For all formats, the selection data (see #GtkSelectionData) will include the
-         * text targets (see gtk_target_list_add_text_targets() and
-         * gtk_selection_data_targets_includes_text()). For %VTE_FORMAT_HTML,
+         * For all formats, the selection data (see `GtkSelectionData`) will include the
+         * text targets (see `gtk_target_list_add_text_targets()` and
+         * `gtk_selection_data_targets_includes_text()`). For {@link Vte.Format.HTML},
          * the selection will also include the "text/html" target, which when requested,
          * returns the HTML data in UTF-16 with a U+FEFF BYTE ORDER MARK character at
          * the start.
-         * @param format a #VteFormat
+         * @param format a {@link Vte.Format}
          */
         copy_clipboard_format(format: Format | null): void;
         /**
@@ -1842,41 +2222,62 @@ export namespace Vte {
         /**
          * Checks whether or not the terminal will attempt to draw bold text,
          * by using a bold font variant.
-         * @returns %TRUE if bolding is enabled, %FALSE if not
+         * @returns `true` if bolding is enabled, `false` if not
          */
         get_allow_bold(): boolean;
         /**
          * Checks whether or not hyperlinks (OSC 8 escape sequence) are allowed.
-         * @returns %TRUE if hyperlinks are enabled, %FALSE if not
+         * @returns `true` if hyperlinks are enabled, `false` if not
          */
         get_allow_hyperlink(): boolean;
         /**
          * Checks whether or not the terminal will beep when the child outputs the
          * "bl" sequence.
-         * @returns %TRUE if audible bell is enabled, %FALSE if not
+         * @returns `true` if audible bell is enabled, `false` if not
          */
         get_audible_bell(): boolean;
         /**
          * Checks whether the SGR 1 attribute also switches to the bright counterpart
          * of the first 8 palette colors, in addition to making them bold (legacy behavior)
          * or if SGR 1 only enables bold and leaves the color intact.
-         * @returns %TRUE if bold also enables bright, %FALSE if not
+         * @returns `true` if bold also enables bright, `false` if not
          */
         get_bold_is_bright(): boolean;
+        /**
+         * @returns the terminal's cell height scale
+         */
         get_cell_height_scale(): number;
+        /**
+         * @returns the terminal's cell width scale
+         */
         get_cell_width_scale(): number;
+        /**
+         * @returns the height of a character cell Note that this method should rather be called vte_terminal_get_cell_height, because the return value takes cell-height-scale into account.
+         */
         get_char_height(): number;
+        /**
+         * @returns the width of a character cell Note that this method should rather be called vte_terminal_get_cell_width, because the return value takes cell-width-scale into account.
+         */
         get_char_width(): number;
         /**
          * Returns whether ambiguous-width characters are narrow or wide.
-         * (Note that when using a non-UTF-8 encoding set via vte_terminal_set_encoding(),
+         * (Note that when using a non-UTF-8 encoding set via `vte_terminal_set_encoding()`,
          * the width of ambiguous-width characters is fixed and determined by the encoding
          * itself.)
          * @returns 1 if ambiguous-width characters are narrow, or 2 if they are wide
          */
         get_cjk_ambiguous_width(): number;
+        /**
+         * @returns the number of columns
+         */
         get_column_count(): number;
+        /**
+         * @returns the URI of the current directory of the   process running in the terminal, or `null`
+         */
         get_current_directory_uri(): string | null;
+        /**
+         * @returns the URI of the current file the   process running in the terminal is operating on, or `null` if   not set
+         */
         get_current_file_uri(): string | null;
         /**
          * Returns the currently set cursor blink mode.
@@ -1897,19 +2298,25 @@ export namespace Vte {
         get_cursor_shape(): CursorShape;
         /**
          * Checks whether the terminal performs bidirectional text rendering.
-         * @returns %TRUE if BiDi is enabled, %FALSE if not
+         * @returns `true` if BiDi is enabled, `false` if not
          */
         get_enable_bidi(): boolean;
+        /**
+         * @returns `true` if fallback scrolling is enabled
+         */
         get_enable_fallback_scrolling(): boolean;
         /**
          * Checks whether the terminal shapes Arabic text.
-         * @returns %TRUE if Arabic shaping is enabled, %FALSE if not
+         * @returns `true` if Arabic shaping is enabled, `false` if not
          */
         get_enable_shaping(): boolean;
+        /**
+         * @returns `true` if SIXEL image support is enabled, `false` otherwise
+         */
         get_enable_sixel(): boolean;
         /**
          * Determines the name of the encoding in which the terminal expects data to be
-         * encoded, or %NULL if UTF-8 is in use.
+         * encoded, or `null` if UTF-8 is in use.
          * @returns the current encoding for the terminal
          */
         get_encoding(): string | null;
@@ -1918,17 +2325,23 @@ export namespace Vte {
          * used to draw text in the terminal.  The actual font takes the font scale
          * into account, this is not reflected in the return value, the unscaled
          * font is returned.
-         * @returns a #PangoFontDescription describing the font the terminal uses to render text at the default font scale of 1.0.
+         * @returns a {@link Pango.FontDescription} describing the font the terminal uses to render text at the default font scale of 1.0.
          */
         get_font(): Pango.FontDescription;
+        /**
+         * @returns the terminal's font scale
+         */
         get_font_scale(): number;
         /**
          * Checks if the terminal currently contains selected text.  Note that this
          * is different from determining if the terminal is the owner of any
-         * #GtkClipboard items.
-         * @returns %TRUE if part of the text in the terminal is selected.
+         * `GtkClipboard` items.
+         * @returns `true` if part of the text in the terminal is selected.
          */
         get_has_selection(): boolean;
+        /**
+         * @returns `null`
+         */
         get_icon_title(): string | null;
         /**
          * Returns whether the terminal allow user input.
@@ -1938,39 +2351,54 @@ export namespace Vte {
          * Determines the value of the terminal's mouse autohide setting.  When
          * autohiding is enabled, the mouse cursor will be hidden when the user presses
          * a key and shown when the user moves the mouse.  This setting can be changed
-         * using vte_terminal_set_mouse_autohide().
-         * @returns %TRUE if autohiding is enabled, %FALSE if not
+         * using `vte_terminal_set_mouse_autohide()`.
+         * @returns `true` if autohiding is enabled, `false` if not
          */
         get_mouse_autohide(): boolean;
         /**
-         * Returns the #VtePty of `terminal`.
-         * @returns a #VtePty, or %NULL
+         * Returns the {@link Vte.Pty} of `terminal`.
+         * @returns a {@link Vte.Pty}, or `null`
          */
         get_pty(): Pty;
         /**
          * Checks whether or not the terminal will rewrap its contents upon resize.
-         * @returns %TRUE if rewrapping is enabled, %FALSE if not
+         * @returns `true` if rewrapping is enabled, `false` if not
          */
         get_rewrap_on_resize(): boolean;
+        /**
+         * @returns the number of rows
+         */
         get_row_count(): number;
+        /**
+         * @returns whether or not the terminal will forcibly scroll to the bottom of the viewable history when the user presses a key.  Modifier keys do not trigger this behavior.
+         */
         get_scroll_on_keystroke(): boolean;
+        /**
+         * @returns whether or not the terminal will forcibly scroll to the bottom of the viewable history when the new data is received from the child.
+         */
         get_scroll_on_output(): boolean;
+        /**
+         * @returns `true` if the scroll unit is pixels; or `false` if the unit is lines
+         */
         get_scroll_unit_is_pixels(): boolean;
+        /**
+         * @returns length of the scrollback buffer used by the terminal. A negative value means "infinite scrollback".
+         */
         get_scrollback_lines(): number;
         /**
          * Extracts a view of the visible part of the terminal.  If `is_selected` is not
-         * %NULL, characters will only be read if `is_selected` returns %TRUE after being
-         * passed the column and row, respectively.  A #VteCharAttributes structure
+         * `null`, characters will only be read if `is_selected` returns `true` after being
+         * passed the column and row, respectively.  A {@link Vte.CharAttributes} structure
          * is added to `attributes` for each byte added to the returned string detailing
          * the character's position, colors, and other characteristics.
          *
          * This method is unaware of BiDi. The columns returned in `attributes` are
          * logical columns.
          *
-         * Note: since 0.68, passing a non-%NULL `array` parameter is deprecated. Starting with
-         * 0.70, passing a non-%NULL `array` parameter will make this function itself return %NULL.
-         * @param is_selected a #VteSelectionFunc callback
-         * @returns a newly allocated text string, or %NULL.
+         * Note: since 0.68, passing a non-`null` `array` parameter is deprecated. Starting with
+         * 0.70, passing a non-`null` `array` parameter will make this function itself return `null`.
+         * @param is_selected a {@link Vte.SelectionFunc} callback
+         * @returns a newly allocated text string, or `null`.
          */
         get_text(is_selected?: SelectionFunc | null): [string | null, CharAttributes[] | null];
         /**
@@ -1980,40 +2408,40 @@ export namespace Vte {
         get_text_blink_mode(): TextBlinkMode;
         /**
          * Extracts a view of the visible part of the terminal.  If `is_selected` is not
-         * %NULL, characters will only be read if `is_selected` returns %TRUE after being
-         * passed the column and row, respectively.  A #VteCharAttributes structure
+         * `null`, characters will only be read if `is_selected` returns `true` after being
+         * passed the column and row, respectively.  A {@link Vte.CharAttributes} structure
          * is added to `attributes` for each byte added to the returned string detailing
          * the character's position, colors, and other characteristics.
          *
          * This method is unaware of BiDi. The columns returned in `attributes` are
          * logical columns.
          *
-         * Note: since 0.68, passing a non-%NULL `array` parameter is deprecated. Starting with
-         * 0.70, passing a non-%NULL `array` parameter will make this function itself return %NULL.
-         * @param is_selected a #VteSelectionFunc callback
-         * @returns a newly allocated text string, or %NULL.
+         * Note: since 0.68, passing a non-`null` `array` parameter is deprecated. Starting with
+         * 0.70, passing a non-`null` `array` parameter will make this function itself return `null`.
+         * @param is_selected a {@link Vte.SelectionFunc} callback
+         * @returns a newly allocated text string, or `null`.
          */
         get_text_include_trailing_spaces(is_selected: SelectionFunc | null): [string, CharAttributes[]];
         /**
          * Extracts a view of the visible part of the terminal.  If `is_selected` is not
-         * %NULL, characters will only be read if `is_selected` returns %TRUE after being
-         * passed the column and row, respectively.  A #VteCharAttributes structure
+         * `null`, characters will only be read if `is_selected` returns `true` after being
+         * passed the column and row, respectively.  A {@link Vte.CharAttributes} structure
          * is added to `attributes` for each byte added to the returned string detailing
          * the character's position, colors, and other characteristics.  The
          * entire scrollback buffer is scanned, so it is possible to read the entire
          * contents of the buffer using this function.
          *
-         * This method is unaware of BiDi. The columns passed in `start_col` and `end_row,`
+         * This method is unaware of BiDi. The columns passed in `start_col` and `end_row`,
          * and returned in `attributes` are logical columns.
          *
-         * Note: since 0.68, passing a non-%NULL `array` parameter is deprecated. Starting with
-         * 0.70, passing a non-%NULL `array` parameter will make this function itself return %NULL.
+         * Note: since 0.68, passing a non-`null` `array` parameter is deprecated. Starting with
+         * 0.70, passing a non-`null` `array` parameter will make this function itself return `null`.
          * @param start_row first row to search for data
          * @param start_col first column to search for data
          * @param end_row last row to search for data
          * @param end_col last column to search for data
-         * @param is_selected a #VteSelectionFunc callback
-         * @returns a newly allocated text string, or %NULL.
+         * @param is_selected a {@link Vte.SelectionFunc} callback
+         * @returns a newly allocated text string, or `null`.
          */
         get_text_range(
             start_row: number,
@@ -2022,19 +2450,34 @@ export namespace Vte {
             end_col: number,
             is_selected?: SelectionFunc | null,
         ): [string | null, CharAttributes[] | null];
+        /**
+         * @returns the window title, or `null`
+         */
         get_window_title(): string | null;
         /**
          * Returns the set of characters which will be considered parts of a word
          * when doing word-wise selection, in addition to the default which only
          * considers alphanumeric characters part of a word.
          *
-         * If %NULL, a built-in set is used.
-         * @returns a string, or %NULL
+         * If `null`, a built-in set is used.
+         * @returns a string, or `null`
          */
         get_word_char_exceptions(): string | null;
+        /**
+         * @returns the horizontal alignment of `terminal` within its allocation
+         */
         get_xalign(): Align;
+        /**
+         * @returns the horizontal fillment of `terminal` within its allocation
+         */
         get_xfill(): boolean;
+        /**
+         * @returns the vertical alignment of `terminal` within its allocation
+         */
         get_yalign(): Align;
+        /**
+         * @returns the vertical fillment of `terminal` within its allocation
+         */
         get_yfill(): boolean;
         /**
          * Adds the regular expression `regex` to the list of matching expressions.  When the
@@ -2043,19 +2486,19 @@ export namespace Vte {
          *
          * Note that `regex` should have been created using the <literal>PCRE2_MULTILINE</literal>
          * flag.
-         * @param regex a #VteRegex
+         * @param regex a {@link Vte.Regex}
          * @param flags PCRE2 match flags, or 0
          * @returns an integer associated with this expression
          */
         match_add_regex(regex: Regex, flags: number): number;
         /**
          * Checks if the text in and around the specified position matches any of the
-         * regular expressions previously set using vte_terminal_match_add().  If a
-         * match exists, the text string is returned and if `tag` is not %NULL, the number
+         * regular expressions previously set using `vte_terminal_match_add()`.  If a
+         * match exists, the text string is returned and if `tag` is not `null`, the number
          * associated with the matched regular expression will be stored in `tag`.
          *
          * If more than one regular expression has been set with
-         * vte_terminal_match_add(), then expressions are checked in the order in
+         * `vte_terminal_match_add()`, then expressions are checked in the order in
          * which they were added.
          * @param column the text column
          * @param row the text row
@@ -2078,7 +2521,7 @@ export namespace Vte {
          * Sets which cursor the terminal will use if the pointer is over the pattern
          * specified by `tag`.  The terminal keeps a reference to `cursor`.
          * @param tag the tag of the regex which should use the specified cursor
-         * @param cursor the #GdkCursor which the terminal should use when the pattern is   highlighted, or %NULL to use the standard cursor
+         * @param cursor the {@link Gdk.Cursor} which the terminal should use when the pattern is   highlighted, or `null` to use the standard cursor
          */
         match_set_cursor(tag: number, cursor?: Gdk.Cursor | null): void;
         /**
@@ -2103,20 +2546,20 @@ export namespace Vte {
         paste_primary(): void;
         /**
          * Sends `text` to the terminal's child as if retrived from the clipboard,
-         * this differs from vte_terminal_feed_child() in that it may process
+         * this differs from `vte_terminal_feed_child()` in that it may process
          * `text` before passing it to the child (e.g. apply bracketed mode)
          * @param text a string to paste
          */
         paste_text(text: string): void;
         /**
-         * Creates a new #VtePty, sets the emulation property
-         * from #VteTerminal:emulation, and sets the size using
-         * `terminal'`s size.
+         * Creates a new {@link Vte.Pty}, sets the emulation property
+         * from {@link Vte.Terminal.emulation}, and sets the size using
+         * `terminal`'s size.
          *
-         * See vte_pty_new() for more information.
-         * @param flags flags from #VtePtyFlags
-         * @param cancellable a #GCancellable, or %NULL
-         * @returns a new #VtePty
+         * See `vte_pty_new()` for more information.
+         * @param flags flags from {@link Vte.PtyFlags}
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @returns a new {@link Vte.Pty}
          */
         pty_new_sync(flags: PtyFlags | null, cancellable?: Gio.Cancellable | null): Pty;
         /**
@@ -2130,24 +2573,30 @@ export namespace Vte {
         reset(clear_tabstops: boolean, clear_history: boolean): void;
         /**
          * Searches the next string matching the search regex set with
-         * vte_terminal_search_set_regex().
-         * @returns %TRUE if a match was found
+         * `vte_terminal_search_set_regex()`.
+         * @returns `true` if a match was found
          */
         search_find_next(): boolean;
         /**
          * Searches the previous string matching the search regex set with
-         * vte_terminal_search_set_regex().
-         * @returns %TRUE if a match was found
+         * `vte_terminal_search_set_regex()`.
+         * @returns `true` if a match was found
          */
         search_find_previous(): boolean;
+        /**
+         * @returns the search {@link Vte.Regex} regex set in `terminal`, or `null`
+         */
         search_get_regex(): Regex;
+        /**
+         * @returns whether searching will wrap around
+         */
         search_get_wrap_around(): boolean;
         /**
-         * Sets the regex to search for. Unsets the search regex when passed %NULL.
+         * Sets the regex to search for. Unsets the search regex when passed `null`.
          *
          * Note that `regex` should have been created using the
          * <literal>PCRE2_MULTILINE</literal> flag.
-         * @param regex a #VteRegex, or %NULL
+         * @param regex a {@link Vte.Regex}, or `null`
          * @param flags PCRE2 match flags, or 0
          */
         search_set_regex(regex: Regex | null, flags: number): void;
@@ -2164,32 +2613,32 @@ export namespace Vte {
         /**
          * Controls whether or not the terminal will attempt to draw bold text,
          * by using a bold font variant.
-         * @param allow_bold %TRUE if the terminal should attempt to draw bold text
+         * @param allow_bold `true` if the terminal should attempt to draw bold text
          */
         set_allow_bold(allow_bold: boolean): void;
         /**
          * Controls whether or not hyperlinks (OSC 8 escape sequence) are allowed.
-         * @param allow_hyperlink %TRUE if the terminal should allow hyperlinks
+         * @param allow_hyperlink `true` if the terminal should allow hyperlinks
          */
         set_allow_hyperlink(allow_hyperlink: boolean): void;
         /**
          * Controls whether or not the terminal will beep when the child outputs the
          * "bl" sequence.
-         * @param is_audible %TRUE if the terminal should beep
+         * @param is_audible `true` if the terminal should beep
          */
         set_audible_bell(is_audible: boolean): void;
         /**
          * Modifies the terminal's backspace key binding, which controls what
          * string or control sequence the terminal sends to its child when the user
          * presses the backspace key.
-         * @param binding a #VteEraseBinding for the backspace key
+         * @param binding a {@link Vte.EraseBinding} for the backspace key
          */
         set_backspace_binding(binding: EraseBinding | null): void;
         /**
          * Sets whether the SGR 1 attribute also switches to the bright counterpart
          * of the first 8 palette colors, in addition to making them bold (legacy behavior)
          * or if SGR 1 only enables bold and leaves the color intact.
-         * @param bold_is_bright %TRUE if bold should also enable bright
+         * @param bold_is_bright `true` if bold should also enable bright
          */
         set_bold_is_bright(bold_is_bright: boolean): void;
         /**
@@ -2210,7 +2659,7 @@ export namespace Vte {
         set_cell_width_scale(scale: number): void;
         /**
          * This setting controls whether ambiguous-width characters are narrow or wide.
-         * (Note that when using a non-UTF-8 encoding set via vte_terminal_set_encoding(),
+         * (Note that when using a non-UTF-8 encoding set via `vte_terminal_set_encoding()`,
          * the width of ambiguous-width characters is fixed and determined by the encoding
          * itself.)
          * @param width either 1 (narrow) or 2 (wide)
@@ -2225,22 +2674,22 @@ export namespace Vte {
         set_color_background(background: Gdk.RGBA): void;
         /**
          * Sets the color used to draw bold text in the default foreground color.
-         * If `bold` is %NULL then the default color is used.
-         * @param bold the new bold color or %NULL
+         * If `bold` is `null` then the default color is used.
+         * @param bold the new bold color or `null`
          */
         set_color_bold(bold?: Gdk.RGBA | null): void;
         /**
-         * Sets the background color for text which is under the cursor.  If %NULL, text
+         * Sets the background color for text which is under the cursor.  If `null`, text
          * under the cursor will be drawn with foreground and background colors
          * reversed.
-         * @param cursor_background the new color to use for the text cursor, or %NULL
+         * @param cursor_background the new color to use for the text cursor, or `null`
          */
         set_color_cursor(cursor_background?: Gdk.RGBA | null): void;
         /**
-         * Sets the foreground color for text which is under the cursor.  If %NULL, text
+         * Sets the foreground color for text which is under the cursor.  If `null`, text
          * under the cursor will be drawn with foreground and background colors
          * reversed.
-         * @param cursor_foreground the new color to use for the text cursor, or %NULL
+         * @param cursor_foreground the new color to use for the text cursor, or `null`
          */
         set_color_cursor_foreground(cursor_foreground?: Gdk.RGBA | null): void;
         /**
@@ -2249,19 +2698,19 @@ export namespace Vte {
          */
         set_color_foreground(foreground: Gdk.RGBA): void;
         /**
-         * Sets the background color for text which is highlighted.  If %NULL,
+         * Sets the background color for text which is highlighted.  If `null`,
          * it is unset.  If neither highlight background nor highlight foreground are set,
          * highlighted text (which is usually highlighted because it is selected) will
          * be drawn with foreground and background colors reversed.
-         * @param highlight_background the new color to use for highlighted text, or %NULL
+         * @param highlight_background the new color to use for highlighted text, or `null`
          */
         set_color_highlight(highlight_background?: Gdk.RGBA | null): void;
         /**
-         * Sets the foreground color for text which is highlighted.  If %NULL,
+         * Sets the foreground color for text which is highlighted.  If `null`,
          * it is unset.  If neither highlight background nor highlight foreground are set,
          * highlighted text (which is usually highlighted because it is selected) will
          * be drawn with foreground and background colors reversed.
-         * @param highlight_foreground the new color to use for highlighted text, or %NULL
+         * @param highlight_foreground the new color to use for highlighted text, or `null`
          */
         set_color_highlight_foreground(highlight_foreground?: Gdk.RGBA | null): void;
         /**
@@ -2271,23 +2720,23 @@ export namespace Vte {
          *
          * `palette_size` must be 0, 8, 16, 232 or 256.
          *
-         * If `foreground` is %NULL and `palette_size` is greater than 0, the new foreground
-         * color is taken from `palette[`7].  If `background` is %NULL and `palette_size` is
-         * greater than 0, the new background color is taken from `palette[`0].
-         * @param foreground the new foreground color, or %NULL
-         * @param background the new background color, or %NULL
+         * If `foreground` is `null` and `palette_size` is greater than 0, the new foreground
+         * color is taken from `palette`[7].  If `background` is `null` and `palette_size` is
+         * greater than 0, the new background color is taken from `palette`[0].
+         * @param foreground the new foreground color, or `null`
+         * @param background the new background color, or `null`
          * @param palette the color palette
          */
         set_colors(foreground?: Gdk.RGBA | null, background?: Gdk.RGBA | null, palette?: Gdk.RGBA[] | null): void;
         /**
-         * Sets whether or not the cursor will blink. Using %VTE_CURSOR_BLINK_SYSTEM
-         * will use the #GtkSettings::gtk-cursor-blink setting.
-         * @param mode the #VteCursorBlinkMode to use
+         * Sets whether or not the cursor will blink. Using {@link Vte.CursorBlinkMode.SYSTEM}
+         * will use the {@link Gtk.Settings.SignalSignatures.gtk_cursor_blink | Gtk.Settings::gtk-cursor-blink} setting.
+         * @param mode the {@link Vte.CursorBlinkMode} to use
          */
         set_cursor_blink_mode(mode: CursorBlinkMode | null): void;
         /**
          * Sets the shape of the cursor drawn.
-         * @param shape the #VteCursorShape to use
+         * @param shape the {@link Vte.CursorShape} to use
          */
         set_cursor_shape(shape: CursorShape | null): void;
         /**
@@ -2298,12 +2747,12 @@ export namespace Vte {
          * Modifies the terminal's delete key binding, which controls what
          * string or control sequence the terminal sends to its child when the user
          * presses the delete key.
-         * @param binding a #VteEraseBinding for the delete key
+         * @param binding a {@link Vte.EraseBinding} for the delete key
          */
         set_delete_binding(binding: EraseBinding | null): void;
         /**
          * Controls whether or not the terminal will perform bidirectional text rendering.
-         * @param enable_bidi %TRUE to enable BiDi support
+         * @param enable_bidi `true` to enable BiDi support
          */
         set_enable_bidi(enable_bidi: boolean): void;
         /**
@@ -2311,14 +2760,14 @@ export namespace Vte {
          * if the event was not otherwise consumed by it.
          *
          * This function is rarely useful, except when the terminal is added to a
-         * #GtkScrolledWindow, to perform kinetic scrolling (while vte itself does
+         * {@link Gtk.ScrolledWindow}, to perform kinetic scrolling (while vte itself does
          * not, yet, implement kinetic scrolling by itself).
          * @param enable whether to enable fallback scrolling
          */
         set_enable_fallback_scrolling(enable: boolean): void;
         /**
          * Controls whether or not the terminal will shape Arabic text.
-         * @param enable_shaping %TRUE to enable Arabic shaping
+         * @param enable_shaping `true` to enable Arabic shaping
          */
         set_enable_shaping(enable_shaping: boolean): void;
         /**
@@ -2329,22 +2778,22 @@ export namespace Vte {
         /**
          * Changes the encoding the terminal will expect data from the child to
          * be encoded with.  For certain terminal types, applications executing in the
-         * terminal can change the encoding. If `codeset` is %NULL, it uses "UTF-8".
+         * terminal can change the encoding. If `codeset` is `null`, it uses "UTF-8".
          *
          * Note: Support for non-UTF-8 is deprecated and may get removed altogether.
          * Instead of this function, you should use a wrapper like luit(1) when
          * spawning the child process.
-         * @param codeset target charset, or %NULL to use UTF-8
-         * @returns %TRUE if the encoding could be changed to the specified one,  or %FALSE with @error set to %G_CONVERT_ERROR_NO_CONVERSION.
+         * @param codeset target charset, or `null` to use UTF-8
+         * @returns `true` if the encoding could be changed to the specified one,  or `false` with `error` set to {@link GLib.ConvertError.NO_CONVERSION}.
          */
         set_encoding(codeset?: string | null): boolean;
         /**
          * Sets the font used for rendering all text displayed by the terminal,
-         * overriding any fonts set using gtk_widget_modify_font().  The terminal
+         * overriding any fonts set using `gtk_widget_modify_font()`.  The terminal
          * will immediately attempt to load the desired font, retrieve its
          * metrics, and attempt to resize itself to keep the same number of rows
          * and columns.  The font scale is applied to the specified font.
-         * @param font_desc a #PangoFontDescription for the desired font, or %NULL
+         * @param font_desc a {@link Pango.FontDescription} for the desired font, or `null`
          */
         set_font(font_desc?: Pango.FontDescription | null): void;
         /**
@@ -2363,20 +2812,20 @@ export namespace Vte {
          * Changes the value of the terminal's mouse autohide setting.  When autohiding
          * is enabled, the mouse cursor will be hidden when the user presses a key and
          * shown when the user moves the mouse.  This setting can be read using
-         * vte_terminal_get_mouse_autohide().
+         * `vte_terminal_get_mouse_autohide()`.
          * @param setting whether the mouse pointer should autohide
          */
         set_mouse_autohide(setting: boolean): void;
         /**
          * Sets `pty` as the PTY to use in `terminal`.
-         * Use %NULL to unset the PTY.
-         * @param pty a #VtePty, or %NULL
+         * Use `null` to unset the PTY.
+         * @param pty a {@link Vte.Pty}, or `null`
          */
         set_pty(pty?: Pty | null): void;
         /**
          * Controls whether or not the terminal will rewrap its contents, including
          * the scrollback history, whenever the terminal's width changes.
-         * @param rewrap %TRUE if the terminal should rewrap on resize
+         * @param rewrap `true` if the terminal should rewrap on resize
          */
         set_rewrap_on_resize(rewrap: boolean): void;
         /**
@@ -2396,7 +2845,7 @@ export namespace Vte {
          * Controls whether the terminal's scroll unit is lines or pixels.
          *
          * This function is rarely useful, except when the terminal is added to a
-         * #GtkScrolledWindow.
+         * {@link Gtk.ScrolledWindow}.
          * @param enable whether to use pixels as scroll unit
          */
         set_scroll_unit_is_pixels(enable: boolean): void;
@@ -2422,7 +2871,7 @@ export namespace Vte {
         set_size(columns: number, rows: number): void;
         /**
          * Controls whether or not the terminal will allow blinking text.
-         * @param text_blink_mode the #VteTextBlinkMode to use
+         * @param text_blink_mode the {@link Vte.TextBlinkMode} to use
          */
         set_text_blink_mode(text_blink_mode: TextBlinkMode | null): void;
         /**
@@ -2435,50 +2884,50 @@ export namespace Vte {
          * must occur only once, and if `exceptions` contains the character
          * U+002D HYPHEN-MINUS, it must be at the start of the string.
          *
-         * Use %NULL to reset the set of exception characters to the default.
-         * @param exceptions a string of ASCII punctuation characters, or %NULL
+         * Use `null` to reset the set of exception characters to the default.
+         * @param exceptions a string of ASCII punctuation characters, or `null`
          */
         set_word_char_exceptions(exceptions: string): void;
         /**
          * Sets the horizontal alignment of `terminal` within its allocation.
          *
-         * Note: %VTE_ALIGN_START_FILL is not supported, and will be treated
-         *   like %VTE_ALIGN_START.
-         * @param align alignment value from #VteAlign
+         * Note: `VTE_ALIGN_START_FILL` is not supported, and will be treated
+         *   like {@link Vte.Align.START}.
+         * @param align alignment value from {@link Vte.Align}
          */
         set_xalign(align: Align | null): void;
         /**
          * Sets the horizontal fillment of `terminal` within its allocation.
          *
-         * Note: %VTE_FILL_START_FILL is not supported, and will be treated
-         *   like %VTE_FILL_START.
-         * @param fill fillment value from #VteFill
+         * Note: `VTE_FILL_START_FILL` is not supported, and will be treated
+         *   like `VTE_FILL_START`.
+         * @param fill fillment value from `VteFill`
          */
         set_xfill(fill: boolean): void;
         /**
          * Sets the vertical alignment of `terminal` within its allocation.
-         * @param align alignment value from #VteAlign
+         * @param align alignment value from {@link Vte.Align}
          */
         set_yalign(align: Align | null): void;
         /**
          * Sets the vertical fillment of `terminal` within its allocation.
-         * @param fill fillment value from #VteFill
+         * @param fill fillment value from `VteFill`
          */
         set_yfill(fill: boolean): void;
         /**
-         * A convenience function that wraps creating the #VtePty and spawning
-         * the child process on it. Like vte_terminal_spawn_with_fds_async(),
+         * A convenience function that wraps creating the {@link Vte.Pty} and spawning
+         * the child process on it. Like `vte_terminal_spawn_with_fds_async()`,
          * except that this function does not allow passing file descriptors to
-         * the child process. See vte_terminal_spawn_with_fds_async() for more
+         * the child process. See `vte_terminal_spawn_with_fds_async()` for more
          * information.
-         * @param pty_flags flags from #VtePtyFlags
-         * @param working_directory the name of a directory the command should start   in, or %NULL to use the current working directory
+         * @param pty_flags flags from {@link Vte.PtyFlags}
+         * @param working_directory the name of a directory the command should start   in, or `null` to use the current working directory
          * @param argv child's argument vector
-         * @param envv a list of environment   variables to be added to the environment before starting the process, or %NULL
-         * @param spawn_flags flags from #GSpawnFlags
-         * @param child_setup_data_destroy a #GDestroyNotify for @child_setup_data, or %NULL
+         * @param envv a list of environment   variables to be added to the environment before starting the process, or `null`
+         * @param spawn_flags flags from {@link GLib.SpawnFlags}
+         * @param child_setup_data_destroy a {@link GLib.DestroyNotify} for `child_setup_data`, or `null`
          * @param timeout a timeout value in ms, -1 for the default timeout, or G_MAXINT to wait indefinitely
-         * @param cancellable a #GCancellable, or %NULL
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
         spawn_async(
             pty_flags: PtyFlags | null,
@@ -2492,15 +2941,15 @@ export namespace Vte {
         ): void;
         /**
          * Starts the specified command under a newly-allocated controlling
-         * pseudo-terminal.  The `argv` and `envv` lists should be %NULL-terminated.
+         * pseudo-terminal.  The `argv` and `envv` lists should be `null`-terminated.
          * The "TERM" environment variable is automatically set to a default value,
          * but can be overridden from `envv`.
          * `pty_flags` controls logging the session to the specified system log files.
          *
-         * Note that %G_SPAWN_DO_NOT_REAP_CHILD will always be added to `spawn_flags`.
+         * Note that {@link GLib.SpawnFlags.DO_NOT_REAP_CHILD} will always be added to `spawn_flags`.
          *
-         * Note also that %G_SPAWN_STDOUT_TO_DEV_NULL, %G_SPAWN_STDERR_TO_DEV_NULL,
-         * and %G_SPAWN_CHILD_INHERITS_STDIN are not supported in `spawn_flags,` since
+         * Note also that {@link GLib.SpawnFlags.STDOUT_TO_DEV_NULL}, {@link GLib.SpawnFlags.STDERR_TO_DEV_NULL},
+         * and {@link GLib.SpawnFlags.CHILD_INHERITS_STDIN} are not supported in `spawn_flags`, since
          * stdin, stdout and stderr of the child process will always be connected to
          * the PTY.
          *
@@ -2509,19 +2958,19 @@ export namespace Vte {
          * use a child setup function that unsets the FD_CLOEXEC flag on that file
          * descriptor.
          *
-         * See vte_pty_new(), g_spawn_async() and vte_terminal_watch_child() for more information.
+         * See `vte_pty_new()`, `g_spawn_async()` and `vte_terminal_watch_child()` for more information.
          *
          * Beginning with 0.52, sets PWD to `working_directory` in order to preserve symlink components.
-         * The caller should also make sure that symlinks were preserved while constructing the value of `working_directory,`
-         * e.g. by using vte_terminal_get_current_directory_uri(), g_get_current_dir() or get_current_dir_name().
-         * @param pty_flags flags from #VtePtyFlags
-         * @param working_directory the name of a directory the command should start   in, or %NULL to use the current working directory
+         * The caller should also make sure that symlinks were preserved while constructing the value of `working_directory`,
+         * e.g. by using `vte_terminal_get_current_directory_uri()`, `g_get_current_dir()` or `get_current_dir_name()`.
+         * @param pty_flags flags from {@link Vte.PtyFlags}
+         * @param working_directory the name of a directory the command should start   in, or `null` to use the current working directory
          * @param argv child's argument vector
-         * @param envv a list of environment   variables to be added to the environment before starting the process, or %NULL
-         * @param spawn_flags flags from #GSpawnFlags
-         * @param child_setup an extra child setup function to run in the child just before exec(), or %NULL
-         * @param cancellable a #GCancellable, or %NULL
-         * @returns %TRUE on success, or %FALSE on error with @error filled in
+         * @param envv a list of environment   variables to be added to the environment before starting the process, or `null`
+         * @param spawn_flags flags from {@link GLib.SpawnFlags}
+         * @param child_setup an extra child setup function to run in the child just before `exec()`, or `null`
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
+         * @returns `true` on success, or `false` on error with `error` filled in
          */
         spawn_sync(
             pty_flags: PtyFlags | null,
@@ -2533,25 +2982,25 @@ export namespace Vte {
             cancellable?: Gio.Cancellable | null,
         ): [boolean, GLib.Pid | null];
         /**
-         * A convenience function that wraps creating the #VtePty and spawning
-         * the child process on it. See vte_pty_new_sync(), vte_pty_spawn_with_fds_async(),
-         * and vte_pty_spawn_finish() for more information.
+         * A convenience function that wraps creating the {@link Vte.Pty} and spawning
+         * the child process on it. See `vte_pty_new_sync()`, `vte_pty_spawn_with_fds_async()`,
+         * and `vte_pty_spawn_finish()` for more information.
          *
          * When the operation is finished successfully, `callback` will be called
-         * with the child #GPid, and a %NULL #GError. The child PID will already be
-         * watched via vte_terminal_watch_child().
+         * with the child {@link GLib.Pid}, and a `null` {@link GLib.Error}. The child PID will already be
+         * watched via `vte_terminal_watch_child()`.
          *
-         * When the operation fails, `callback` will be called with a -1 #GPid,
-         * and a non-%NULL #GError containing the error information.
+         * When the operation fails, `callback` will be called with a -1 {@link GLib.Pid},
+         * and a non-`null` {@link GLib.Error} containing the error information.
          *
-         * Note that %G_SPAWN_STDOUT_TO_DEV_NULL, %G_SPAWN_STDERR_TO_DEV_NULL,
-         * and %G_SPAWN_CHILD_INHERITS_STDIN are not supported in `spawn_flags,` since
+         * Note that {@link GLib.SpawnFlags.STDOUT_TO_DEV_NULL}, {@link GLib.SpawnFlags.STDERR_TO_DEV_NULL},
+         * and {@link GLib.SpawnFlags.CHILD_INHERITS_STDIN} are not supported in `spawn_flags`, since
          * stdin, stdout and stderr of the child process will always be connected to
          * the PTY.
          *
-         * If `fds` is not %NULL, the child process will map the file descriptors from
-         * `fds` according to `map_fds;` `n_map_fds` must be less or equal to `n_fds`.
-         * This function will take ownership of the file descriptors in `fds;`
+         * If `fds` is not `null`, the child process will map the file descriptors from
+         * `fds` according to `map_fds`; `n_map_fds` must be less or equal to `n_fds`.
+         * This function will take ownership of the file descriptors in `fds`;
          * you must not use or close them after this call.
          *
          * Note that all  open file descriptors apart from those mapped as above
@@ -2559,34 +3008,34 @@ export namespace Vte {
          * open for use in the child process, you need to use a child setup function
          * that unsets the FD_CLOEXEC flag on that file descriptor manually.)
          *
-         * Beginning with 0.60, and on linux only, and unless %VTE_SPAWN_NO_SYSTEMD_SCOPE is
-         * passed in `spawn_flags,` the newly created child process will be moved to its own
-         * systemd user scope; and if %VTE_SPAWN_REQUIRE_SYSTEMD_SCOPE is passed, and creation
+         * Beginning with 0.60, and on linux only, and unless `VTE_SPAWN_NO_SYSTEMD_SCOPE` is
+         * passed in `spawn_flags`, the newly created child process will be moved to its own
+         * systemd user scope; and if `VTE_SPAWN_REQUIRE_SYSTEMD_SCOPE` is passed, and creation
          * of the systemd user scope fails, the whole spawn will fail.
          * You can override the options used for the systemd user scope by
          * providing a systemd override file for 'vte-spawn-.scope' unit. See man:systemd.unit(5)
          * for further information.
          *
          * Note that if `terminal` has been destroyed before the operation is called,
-         * `callback` will be called with a %NULL `terminal;` you must not do anything
-         * in the callback besides freeing any resources associated with `user_data,`
-         * but taking care not to access the now-destroyed #VteTerminal. Note that
+         * `callback` will be called with a `null` `terminal`; you must not do anything
+         * in the callback besides freeing any resources associated with `user_data`,
+         * but taking care not to access the now-destroyed {@link Vte.Terminal}. Note that
          * in this case, if spawning was successful, the child process will be aborted
          * automatically.
          *
          * Beginning with 0.52, sets PWD to `working_directory` in order to preserve symlink components.
-         * The caller should also make sure that symlinks were preserved while constructing the value of `working_directory,`
-         * e.g. by using vte_terminal_get_current_directory_uri(), g_get_current_dir() or get_current_dir_name().
-         * @param pty_flags flags from #VtePtyFlags
-         * @param working_directory the name of a directory the command should start   in, or %NULL to use the current working directory
+         * The caller should also make sure that symlinks were preserved while constructing the value of `working_directory`,
+         * e.g. by using `vte_terminal_get_current_directory_uri()`, `g_get_current_dir()` or `get_current_dir_name()`.
+         * @param pty_flags flags from {@link Vte.PtyFlags}
+         * @param working_directory the name of a directory the command should start   in, or `null` to use the current working directory
          * @param argv child's argument vector
-         * @param envv a list of environment   variables to be added to the environment before starting the process, or %NULL
-         * @param fds an array of file descriptors, or %NULL
-         * @param map_fds an array of integers, or %NULL
-         * @param spawn_flags flags from #GSpawnFlags
-         * @param child_setup_data_destroy a #GDestroyNotify for @child_setup_data, or %NULL
+         * @param envv a list of environment   variables to be added to the environment before starting the process, or `null`
+         * @param fds an array of file descriptors, or `null`
+         * @param map_fds an array of integers, or `null`
+         * @param spawn_flags flags from {@link GLib.SpawnFlags}
+         * @param child_setup_data_destroy a {@link GLib.DestroyNotify} for `child_setup_data`, or `null`
          * @param timeout a timeout value in ms, -1 for the default timeout, or G_MAXINT to wait indefinitely
-         * @param cancellable a #GCancellable, or %NULL
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
         spawn_with_fds_async(
             pty_flags: PtyFlags | null,
@@ -2605,95 +3054,99 @@ export namespace Vte {
          */
         unselect_all(): void;
         /**
-         * Watches `child_pid`. When the process exists, the #VteTerminal::child-exited
+         * Watches `child_pid`. When the process exists, the {@link Vte.Terminal.SignalSignatures.child_exited | Vte.Terminal::child-exited}
          * signal will be called with the child's exit status.
          *
-         * Prior to calling this function, a #VtePty must have been set in `terminal`
-         * using vte_terminal_set_pty().
-         * When the child exits, the terminal's #VtePty will be set to %NULL.
+         * Prior to calling this function, a {@link Vte.Pty} must have been set in `terminal`
+         * using `vte_terminal_set_pty()`.
+         * When the child exits, the terminal's {@link Vte.Pty} will be set to `null`.
          *
-         * Note: g_child_watch_add() or g_child_watch_add_full() must not have
-         * been called for `child_pid,` nor a #GSource for it been created with
-         * g_child_watch_source_new().
+         * Note: `g_child_watch_add()` or `g_child_watch_add_full()` must not have
+         * been called for `child_pid`, nor a {@link GLib.Source} for it been created with
+         * `g_child_watch_source_new()`.
          *
-         * Note: when using the g_spawn_async() family of functions,
-         * the %G_SPAWN_DO_NOT_REAP_CHILD flag MUST have been passed.
-         * @param child_pid a #GPid
+         * Note: when using the `g_spawn_async()` family of functions,
+         * the {@link GLib.SpawnFlags.DO_NOT_REAP_CHILD} flag MUST have been passed.
+         * @param child_pid a {@link GLib.Pid}
          */
         watch_child(child_pid: GLib.Pid): void;
         /**
          * Write contents of the current contents of `terminal` (including any
          * scrollback history) to `stream` according to `flags`.
          *
-         * If `cancellable` is not %NULL, then the operation can be cancelled by triggering
+         * If `cancellable` is not `null`, then the operation can be cancelled by triggering
          * the cancellable object from another thread. If the operation was cancelled,
-         * the error %G_IO_ERROR_CANCELLED will be returned in `error`.
+         * the error {@link Gio.IOErrorEnum.CANCELLED} will be returned in `error`.
          *
          * This is a synchronous operation and will make the widget (and input
          * processing) during the write operation, which may take a long time
          * depending on scrollback history and `stream` availability for writing.
-         * @param stream a #GOutputStream to write to
-         * @param flags a set of #VteWriteFlags
-         * @param cancellable a #GCancellable object, or %NULL
-         * @returns %TRUE on success, %FALSE if there was an error
+         * @param stream a {@link Gio.OutputStream} to write to
+         * @param flags a set of {@link Vte.WriteFlags}
+         * @param cancellable a {@link Gio.Cancellable} object, or `null`
+         * @returns `true` on success, `false` if there was an error
          */
         write_contents_sync(
             stream: Gio.OutputStream,
             flags: WriteFlags | null,
             cancellable?: Gio.Cancellable | null,
         ): boolean;
-
-        // Inherited properties
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
         set accessible_role(val: Gtk.AccessibleRole);
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
         set accessibleRole(val: Gtk.AccessibleRole);
         /**
-         * Horizontal `GtkAdjustment` of the scrollable widget.
+         * Horizontal {@link Gtk.Adjustment} of the scrollable widget.
          *
          * This adjustment is shared between the scrollable widget and its parent.
+         * @category Inherited from Gtk.Scrollable
          */
         get hadjustment(): Gtk.Adjustment;
         set hadjustment(val: Gtk.Adjustment);
         /**
          * Determines when horizontal scrolling should start.
+         * @category Inherited from Gtk.Scrollable
          */
         get hscroll_policy(): Gtk.ScrollablePolicy;
         set hscroll_policy(val: Gtk.ScrollablePolicy);
         /**
          * Determines when horizontal scrolling should start.
+         * @category Inherited from Gtk.Scrollable
          */
         get hscrollPolicy(): Gtk.ScrollablePolicy;
         set hscrollPolicy(val: Gtk.ScrollablePolicy);
         /**
-         * Vertical `GtkAdjustment` of the scrollable widget.
+         * Vertical {@link Gtk.Adjustment} of the scrollable widget.
          *
          * This adjustment is shared between the scrollable widget and its parent.
+         * @category Inherited from Gtk.Scrollable
          */
         get vadjustment(): Gtk.Adjustment;
         set vadjustment(val: Gtk.Adjustment);
         /**
          * Determines when vertical scrolling should start.
+         * @category Inherited from Gtk.Scrollable
          */
         get vscroll_policy(): Gtk.ScrollablePolicy;
         set vscroll_policy(val: Gtk.ScrollablePolicy);
         /**
          * Determines when vertical scrolling should start.
+         * @category Inherited from Gtk.Scrollable
          */
         get vscrollPolicy(): Gtk.ScrollablePolicy;
         set vscrollPolicy(val: Gtk.ScrollablePolicy);
-
-        // Inherited methods
         /**
          * Requests the user's screen reader to announce the given message.
          *
@@ -2708,6 +3161,17 @@ export namespace Vte {
          * @param priority the priority of the announcement
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
+        /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @returns the accessible identifier
+         */
+        get_accessible_id(): string | null;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -2728,7 +3192,7 @@ export namespace Vte {
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
@@ -2747,9 +3211,9 @@ export namespace Vte {
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
          */
@@ -2775,7 +3239,7 @@ export namespace Vte {
          * This function is meant to be used by accessible implementations that are
          * not part of the widget hierarchy, and but act as a logical bridge between
          * widgets. For instance, if a widget creates an object that holds metadata
-         * for each child, and you want that object to implement the `GtkAccessible`
+         * for each child, and you want that object to implement the {@link Gtk.Accessible}
          * interface, you will use this function to ensure that the parent of each
          * child widget is the metadata object, and the parent of each metadata
          * object is the container widget.
@@ -2794,7 +3258,7 @@ export namespace Vte {
         /**
          * Informs ATs that the platform state has changed.
          *
-         * This function should be used by `GtkAccessible` implementations that
+         * This function should be used by {@link Gtk.Accessible} implementations that
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
@@ -2803,7 +3267,7 @@ export namespace Vte {
         /**
          * Updates an array of accessible properties.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * property change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -2814,7 +3278,7 @@ export namespace Vte {
         /**
          * Updates an array of accessible relations.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * relation change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -2825,7 +3289,7 @@ export namespace Vte {
         /**
          * Updates an array of accessible states.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * state change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -2834,44 +3298,61 @@ export namespace Vte {
          */
         update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
         /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @virtual
+         */
+        vfunc_get_accessible_id(): string | null;
+        /**
          * Retrieves the accessible parent for an accessible object.
          *
          * This function returns `NULL` for top level widgets.
+         * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
         /**
          * Retrieves the implementation for the given accessible object.
+         * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
         /**
          * Gets the ID of the `buildable` object.
          *
-         * `GtkBuilder` sets the name based on the ID attribute
+         * {@link Gtk.Builder} sets the name based on the ID attribute
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
@@ -2879,18 +3360,20 @@ export namespace Vte {
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param child child to add
-         * @param type kind of child or %NULL
+         * @param type kind of child or `null`
+         * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
         /**
-         * Similar to gtk_buildable_parser_finished() but is
+         * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
-         * @param builder a `GtkBuilder`
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder}
+         * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @virtual
          */
         vfunc_custom_finished(
             builder: Gtk.Builder,
@@ -2901,10 +3384,11 @@ export namespace Vte {
         /**
          * Called at the end of each custom element handled by
          * the buildable.
-         * @param builder `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @virtual
          */
         vfunc_custom_tag_end(
             builder: Gtk.Builder,
@@ -2914,9 +3398,10 @@ export namespace Vte {
         ): void;
         /**
          * Called for each unknown element under `<child>`.
-         * @param builder a `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @virtual
          */
         vfunc_custom_tag_start(
             builder: Gtk.Builder,
@@ -2926,39 +3411,44 @@ export namespace Vte {
         /**
          * The getter corresponding to `set_id`. Implement this
          *   if you implement `set_id`.
+         * @virtual
          */
         vfunc_get_id(): string;
         /**
          * Retrieves the internal child called `childname` of the `buildable` object.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
         /**
          * Called when a builder finishes the parsing
          *  of a UI definition. It is normally not necessary to implement this,
-         *  unless you need to perform special cleanup actions. `GtkWindow` sets
-         *  the `GtkWidget:visible` property here.
+         *  unless you need to perform special cleanup actions. {@link Gtk.Window} sets
+         *  the {@link Gtk.Widget.visible} property here.
          * @param builder
+         * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
         /**
          * Sets a property of a buildable object.
-         *  It is normally not necessary to implement this, g_object_set_property()
-         *  is used by default. `GtkWindow` implements this to delay showing itself
-         *  (i.e. setting the [property`Gtk`.Widget:visible] property) until the whole
+         *  It is normally not necessary to implement this, `g_object_set_property()`
+         *  is used by default. {@link Gtk.Window} implements this to delay showing itself
+         *  (i.e. setting the {@link Gtk.Widget.visible} property) until the whole
          *  interface is created.
          * @param builder
          * @param name
          * @param value
+         * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
         /**
-         * Stores the id attribute given in the `GtkBuilder` UI definition.
-         *   `GtkWidget` stores the name as object data. Implement this method if your
+         * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
+         *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
          *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id
+         * @virtual
          */
         vfunc_set_id(id: string): void;
         /**
@@ -2968,53 +3458,53 @@ export namespace Vte {
          * An example for this would be treeview headers. GTK can use
          * this information to display overlaid graphics, like the
          * overshoot indication, at the right position.
-         * @returns %TRUE if @border has been set
+         * @returns `true` if `border` has been set
          */
         get_border(): [boolean, Gtk.Border];
         /**
-         * Retrieves the `GtkAdjustment` used for horizontal scrolling.
-         * @returns horizontal `GtkAdjustment`.
+         * Retrieves the {@link Gtk.Adjustment} used for horizontal scrolling.
+         * @returns horizontal {@link Gtk.Adjustment}.
          */
         get_hadjustment(): Gtk.Adjustment | null;
         /**
-         * Gets the horizontal `GtkScrollablePolicy`.
-         * @returns The horizontal `GtkScrollablePolicy`.
+         * Gets the horizontal {@link Gtk.ScrollablePolicy}.
+         * @returns The horizontal {@link Gtk.ScrollablePolicy}.
          */
         get_hscroll_policy(): Gtk.ScrollablePolicy;
         /**
-         * Retrieves the `GtkAdjustment` used for vertical scrolling.
-         * @returns vertical `GtkAdjustment`.
+         * Retrieves the {@link Gtk.Adjustment} used for vertical scrolling.
+         * @returns vertical {@link Gtk.Adjustment}.
          */
         get_vadjustment(): Gtk.Adjustment | null;
         /**
-         * Gets the vertical `GtkScrollablePolicy`.
-         * @returns The vertical `GtkScrollablePolicy`.
+         * Gets the vertical {@link Gtk.ScrollablePolicy}.
+         * @returns The vertical {@link Gtk.ScrollablePolicy}.
          */
         get_vscroll_policy(): Gtk.ScrollablePolicy;
         /**
-         * Sets the horizontal adjustment of the `GtkScrollable`.
-         * @param hadjustment a `GtkAdjustment`
+         * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
+         * @param hadjustment a {@link Gtk.Adjustment}
          */
         set_hadjustment(hadjustment?: Gtk.Adjustment | null): void;
         /**
-         * Sets the `GtkScrollablePolicy`.
+         * Sets the {@link Gtk.ScrollablePolicy}.
          *
          * The policy determines whether horizontal scrolling should start
          * below the minimum width or below the natural width.
-         * @param policy the horizontal `GtkScrollablePolicy`
+         * @param policy the horizontal {@link Gtk.ScrollablePolicy}
          */
         set_hscroll_policy(policy: Gtk.ScrollablePolicy | null): void;
         /**
-         * Sets the vertical adjustment of the `GtkScrollable`.
-         * @param vadjustment a `GtkAdjustment`
+         * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
+         * @param vadjustment a {@link Gtk.Adjustment}
          */
         set_vadjustment(vadjustment?: Gtk.Adjustment | null): void;
         /**
-         * Sets the `GtkScrollablePolicy`.
+         * Sets the {@link Gtk.ScrollablePolicy}.
          *
          * The policy determines whether vertical scrolling should start
          * below the minimum height or below the natural height.
-         * @param policy the vertical `GtkScrollablePolicy`
+         * @param policy the vertical {@link Gtk.ScrollablePolicy}
          */
         set_vscroll_policy(policy: Gtk.ScrollablePolicy | null): void;
         /**
@@ -3024,6 +3514,7 @@ export namespace Vte {
          * An example for this would be treeview headers. GTK can use
          * this information to display overlaid graphics, like the
          * overshoot indication, at the right position.
+         * @virtual
          */
         vfunc_get_border(): [boolean, Gtk.Border];
         /**
@@ -3039,32 +3530,32 @@ export namespace Vte {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -3073,39 +3564,39 @@ export namespace Vte {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -3116,13 +3607,16 @@ export namespace Vte {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -3130,7 +3624,7 @@ export namespace Vte {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -3138,9 +3632,9 @@ export namespace Vte {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -3160,9 +3654,9 @@ export namespace Vte {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -3175,34 +3669,34 @@ export namespace Vte {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -3235,22 +3729,22 @@ export namespace Vte {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -3259,8 +3753,8 @@ export namespace Vte {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -3277,10 +3771,10 @@ export namespace Vte {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -3295,13 +3789,13 @@ export namespace Vte {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -3332,21 +3826,21 @@ export namespace Vte {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -3356,33 +3850,34 @@ export namespace Vte {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -3391,6 +3886,7 @@ export namespace Vte {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -3399,12 +3895,14 @@ export namespace Vte {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -3413,20 +3911,22 @@ export namespace Vte {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -3438,6 +3938,7 @@ export namespace Vte {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -3467,6 +3968,10 @@ export namespace Vte {
         stop_emission_by_name(detailedName: string): void;
     }
 
+    /**
+     * @gir-type Struct
+     * @deprecated since 0.68
+     */
     class CharAttributes {
         static $gtype: GObject.GType<CharAttributes>;
 
@@ -3475,7 +3980,13 @@ export namespace Vte {
         constructor(properties?: Partial<{}>);
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PtyClass = typeof Pty;
+    /**
+     * @gir-type Struct
+     */
     class Regex {
         static $gtype: GObject.GType<Regex>;
 
@@ -3492,12 +4003,12 @@ export namespace Vte {
         /**
          * If the platform supports JITing, JIT compiles `regex`.
          * @param flags PCRE2 JIT flags, or 0
-         * @returns %TRUE if JITing succeeded (or PCRE2 was built without   JIT support), or %FALSE with @error filled in
+         * @returns `true` if JITing succeeded (or PCRE2 was built without   JIT support), or `false` with `error` filled in
          */
         jit(flags: number): boolean;
         /**
          * Increases the reference count of `regex` by one.
-         * @returns @regex
+         * @returns `regex`
          */
         ref(): Regex;
         /**
@@ -3505,18 +4016,24 @@ export namespace Vte {
          * @param subject the subject string
          * @param replacement the replacement string
          * @param flags PCRE2 match flags
-         * @returns the substituted string, or %NULL   if an error occurred
+         * @returns the substituted string, or `null`   if an error occurred
          */
         substitute(subject: string, replacement: string, flags: number): string;
         /**
          * Decreases the reference count of `regex` by one, and frees `regex`
          * if the refcount reaches zero.
-         * @returns %NULL
+         * @returns `null`
          */
         unref(): Regex;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TerminalClass = typeof Terminal;
+    /**
+     * @gir-type Struct
+     */
     abstract class TerminalClassPrivate {
         static $gtype: GObject.GType<TerminalClassPrivate>;
     }

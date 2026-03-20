@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/clapper-0.0)
 
 
-GJS TypeScript type definitions for Clapper-0.0, generated from library version 0.10.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.40.
+GJS TypeScript type definitions for Clapper-0.0, generated from library version 0.10.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.41.
 
 ## Install
 

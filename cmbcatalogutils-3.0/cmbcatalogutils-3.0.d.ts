@@ -29,6 +29,9 @@ export namespace CmbCatalogUtils {
      * CmbCatalogUtils-3.0
      */
 
+    /**
+     * @param accessible
+     */
     function a11y_action_get_name(accessible: Atk.Object): string;
     /**
      * Return internal child
@@ -38,24 +41,10 @@ export namespace CmbCatalogUtils {
      */
     function buildable_get_internal_child<T = GObject.Object>(buildable: Gtk.Buildable, childname: string): T;
     /**
-     * Return the list of properties declared in `name`
-     * @param name Class name
-     * @returns class properties
-     */
-    function get_class_properties(name: string): GObject.ParamSpec[];
-    /**
-     * Return the list of properties declared in `name` iface
-     * @param name Interface type name
-     * @returns iface properties
-     */
-    function get_iface_properties(name: string): GObject.ParamSpec[];
-    /**
-     * Return whether buildable implements add_child() or not
+     * Return whether buildable implements `add_child()` or not
      * @param buildable Object to check
      */
     function implements_buildable_add_child(buildable: GObject.Object): boolean;
-    function pspec_enum_get_default_nick(gtype: GObject.GType, default_value: number): string;
-    function pspec_flags_get_default_nick(gtype: GObject.GType, default_value: number): string;
     /**
      * Name of the imported GIR library
      * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188

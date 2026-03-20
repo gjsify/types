@@ -23,12 +23,47 @@ export namespace FcitxG {
     namespace Client {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emit when input method commit one string
+             * @signal
+             * @run-last
+             */
             'commit-string': (arg0: string) => void;
+            /**
+             * Emit when connected to fcitx and created ic
+             * @signal
+             * @run-last
+             */
             connected: () => void;
+            /**
+             * Emit when input method used in input context changed
+             * @signal
+             * @run-last
+             */
             'current-im': (arg0: string, arg1: string, arg2: string) => void;
+            /**
+             * Emit when input method need to delete surrounding text
+             * @signal
+             * @run-last
+             */
             'delete-surrounding-text': (arg0: number, arg1: number) => void;
+            /**
+             * Emit when input method ask for forward a key
+             * @signal
+             * @run-last
+             */
             'forward-key': (arg0: number, arg1: number, arg2: number) => void;
+            /**
+             * Emit when focus out happens on server side
+             * @signal
+             * @run-last
+             */
             'notify-focus-out': () => void;
+            /**
+             * Emit when input method needs to update the client-side user interface
+             * @signal
+             * @run-last
+             */
             'update-client-side-ui': (
                 arg0: PreeditItem[],
                 arg1: number,
@@ -40,6 +75,11 @@ export namespace FcitxG {
                 arg7: boolean,
                 arg8: boolean,
             ) => void;
+            /**
+             * Emit when input method needs to update formatted preedit
+             * @signal
+             * @run-last
+             */
             'update-formatted-preedit': (arg0: PreeditItem[], arg1: number) => void;
             'notify::watcher': (pspec: GObject.ParamSpec) => void;
         }
@@ -52,13 +92,17 @@ export namespace FcitxG {
     }
 
     /**
-     * A #FcitxGClient allow to create a input context via DBus
+     * A {@link FcitxG.Client} allow to create a input context via DBus
+     * @gir-type Class
      */
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set watcher(val: Watcher);
 
         /**
@@ -82,16 +126,19 @@ export namespace FcitxG {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Client.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Client.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Client.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -108,16 +155,19 @@ export namespace FcitxG {
          * tell fcitx current client has lost focus
          */
         focus_out(): void;
+        /**
+         * @returns the current uuid of input context.
+         */
         get_uuid(): number;
         /**
-         * Check #FcitxGClient is valid to communicate with Fcitx
-         * @returns #FcitxGClient is valid or not
+         * Check {@link FcitxG.Client} is valid to communicate with Fcitx
+         * @returns {@link FcitxG.Client} is valid or not
          */
         is_valid(): boolean;
         next_page(): void;
         prev_page(): void;
         /**
-         * use this function with #fcitx_g_client_process_key_finish
+         * use this function with `fcitx_g_client_process_key_finish`
          * @param keyval key value
          * @param keycode hardware key code
          * @param state key state
@@ -136,7 +186,7 @@ export namespace FcitxG {
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
-         * use this function with #fcitx_g_client_process_key_finish
+         * use this function with `fcitx_g_client_process_key_finish`
          * @param keyval key value
          * @param keycode hardware key code
          * @param state key state
@@ -157,7 +207,7 @@ export namespace FcitxG {
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * use this function with #fcitx_g_client_process_key_finish
+         * use this function with `fcitx_g_client_process_key_finish`
          * @param keyval key value
          * @param keycode hardware key code
          * @param state key state
@@ -178,7 +228,7 @@ export namespace FcitxG {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * use this function with #fcitx_g_client_process_key_async
+         * use this function with `fcitx_g_client_process_key_async`
          * @param res result
          * @returns process key result
          */
@@ -234,6 +284,11 @@ export namespace FcitxG {
          * @param program program name
          */
         set_program(program: string): void;
+        /**
+         * @param text surroundng text
+         * @param cursor cursor position coresponding to text
+         * @param anchor anchor position coresponding to text
+         */
         set_surrounding_text(text: string | null, cursor: number, anchor: number): void;
         /**
          * Set whether use ProcessKeyEventBatch if supports, default is true.
@@ -245,6 +300,11 @@ export namespace FcitxG {
     namespace Watcher {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emit when connected to fcitx and created ic
+             * @signal
+             * @run-last
+             */
             'availability-changed': (arg0: boolean) => void;
         }
 
@@ -255,6 +315,7 @@ export namespace FcitxG {
 
     /**
      * A FcitxGWatcher allow to create a input context via DBus
+     * @gir-type Class
      */
     class Watcher extends GObject.Object {
         static $gtype: GObject.GType<Watcher>;
@@ -278,16 +339,19 @@ export namespace FcitxG {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Watcher.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Watcher.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Watcher.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Watcher.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Watcher.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Watcher.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -297,15 +361,18 @@ export namespace FcitxG {
         // Methods
 
         /**
-         * self: A #FcitxGWatcher
-         * Return the current #GDBusConnection
-         * @returns #GDBusConnection for current connection
+         * self: A {@link FcitxG.Watcher}
+         * Return the current {@link Gio.DBusConnection}
+         * @returns {@link Gio.DBusConnection} for current connection
          */
         get_connection(): Gio.DBusConnection;
+        /**
+         * @returns an available service name.
+         */
         get_service_name(): string;
         is_service_available(): boolean;
         /**
-         * self: A #FcitxGWatcher
+         * self: A {@link FcitxG.Watcher}
          * watch: to monitor the portal service or not.
          * @param watch
          */
@@ -321,6 +388,9 @@ export namespace FcitxG {
         watch(): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class CandidateItem {
         static $gtype: GObject.GType<CandidateItem>;
 
@@ -339,11 +409,20 @@ export namespace FcitxG {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ClientClass = typeof Client;
+    /**
+     * @gir-type Struct
+     */
     abstract class ClientPrivate {
         static $gtype: GObject.GType<ClientPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class PreeditItem {
         static $gtype: GObject.GType<PreeditItem>;
 
@@ -362,6 +441,9 @@ export namespace FcitxG {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type WatcherClass = typeof Watcher;
     /**
      * Name of the imported GIR library

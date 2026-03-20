@@ -21,6 +21,9 @@ export namespace MyPaintGegl {
      * MyPaintGegl-1.6
      */
 
+    /**
+     * @gir-type Struct
+     */
     class TiledSurface {
         static $gtype: GObject.GType<TiledSurface>;
 
@@ -32,8 +35,14 @@ export namespace MyPaintGegl {
 
         // Methods
 
+        /**
+         * @returns The buffer this surface is backed by.
+         */
         get_buffer(): Gegl.Buffer;
         ['interface'](): MyPaint.Surface;
+        /**
+         * @param buffer The buffer which shall back this surface.
+         */
         set_buffer(buffer: Gegl.Buffer): void;
     }
 

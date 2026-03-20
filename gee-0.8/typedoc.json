@@ -2,6 +2,8 @@
     "entryPoints": ["./gee-0.8.d.ts"],
     "readme": "./README.md",
     "name": "Gee-0.8",
-    "tsconfig": "./tsconfig.json"
+    "tsconfig": "./tsconfig.json",
+    "skipErrorChecking": true,
+    "highlightLanguages": ["typescript", "javascript", "c", "cpp", "xml", "bash", "json", "css"]
 }
 

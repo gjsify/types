@@ -28,26 +28,101 @@ export namespace Anthy {
     const RECONVERT_AUTO: number;
     const RECONVERT_DISABLE: number;
     const UTF8_ENCODING: number;
+    /**
+     * @param arg0
+     * @param arg1
+     */
     function commit_prediction(arg0: anthy_context_t, arg1: number): number;
+    /**
+     * @param arg0
+     * @param arg1
+     * @param arg2
+     */
     function commit_segment(arg0: anthy_context_t, arg1: number, arg2: number): number;
+    /**
+     * @param arg0
+     * @param arg1
+     */
     function conf_override(arg0: string, arg1: string): void;
+    /**
+     * @param ac
+     * @param encoding
+     */
     function context_set_encoding(ac: anthy_context_t, encoding: number): number;
+    /**
+     * @param arg0
+     * @param arg1
+     * @param arg2
+     * @param arg3
+     */
     function get_prediction(arg0: anthy_context_t, arg1: number, arg2: string, arg3: number): number;
-    function get_prediction_stat(arg0: anthy_context_t, arg1: any): number;
+    /**
+     * @param arg0
+     * @param arg1
+     */
+    function get_prediction_stat(arg0: anthy_context_t, arg1?: any | null): number;
+    /**
+     * @param arg0
+     * @param arg1
+     * @param arg2
+     * @param arg3
+     * @param arg4
+     */
     function get_segment(arg0: anthy_context_t, arg1: number, arg2: number, arg3: string, arg4: number): number;
-    function get_segment_stat(arg0: anthy_context_t, arg1: number, arg2: any): number;
-    function get_stat(arg0: anthy_context_t, arg1: any): number;
+    /**
+     * @param arg0
+     * @param arg1
+     * @param arg2
+     */
+    function get_segment_stat(arg0: anthy_context_t, arg1: number, arg2?: any | null): number;
+    /**
+     * @param arg0
+     * @param arg1
+     */
+    function get_stat(arg0: anthy_context_t, arg1?: any | null): number;
     function get_version_string(): string;
     function init(): number;
+    /**
+     * @param arg0
+     */
     function print_context(arg0: anthy_context_t): void;
     function quit(): void;
+    /**
+     * @param arg0
+     */
     function release_context(arg0: anthy_context_t): void;
+    /**
+     * @param arg0
+     */
     function reset_context(arg0: anthy_context_t): void;
+    /**
+     * @param arg0
+     * @param arg1
+     * @param arg2
+     */
     function resize_segment(arg0: anthy_context_t, arg1: number, arg2: number): void;
+    /**
+     * @param arg0
+     */
     function set_personality(arg0: string): number;
+    /**
+     * @param arg0
+     * @param arg1
+     */
     function set_prediction_string(arg0: anthy_context_t, arg1: string): number;
+    /**
+     * @param ac
+     * @param mode
+     */
     function set_reconversion_mode(ac: anthy_context_t, mode: number): number;
+    /**
+     * @param arg0
+     * @param arg1
+     */
     function set_string(arg0: anthy_context_t, arg1: string): number;
+    /**
+     * @gir-type Callback
+     */
     interface logger {
         (level: number, arg1: string): void;
     }
@@ -61,7 +136,8 @@ export namespace Anthy {
     }
 
     /**
-     * An #AnthyGContext is an object that handles conversion strings.
+     * An {@link Anthy.GContext} is an object that handles conversion strings.
+     * @gir-type Class
      */
     class GContext extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<GContext>;
@@ -85,21 +161,32 @@ export namespace Anthy {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof GContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GContext.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof GContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof GContext.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<GContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
+
+        // Static methods
+
+        /**
+         * Set Anthy log level.
+         * @param level Log level
+         */
+        static set_logger(level: number): void;
 
         // Methods
 
@@ -175,15 +262,27 @@ export namespace Anthy {
         set_string(string: string): number;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type GContextClass = typeof GContext;
+    /**
+     * @gir-type Struct
+     */
     abstract class GContextPrivate {
         static $gtype: GObject.GType<GContextPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class anthy_context_t {
         static $gtype: GObject.GType<anthy_context_t>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class anthy_conv_stat {
         static $gtype: GObject.GType<anthy_conv_stat>;
 
@@ -200,6 +299,9 @@ export namespace Anthy {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class anthy_prediction_stat {
         static $gtype: GObject.GType<anthy_prediction_stat>;
 
@@ -216,6 +318,9 @@ export namespace Anthy {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class anthy_segment_stat {
         static $gtype: GObject.GType<anthy_segment_stat>;
 

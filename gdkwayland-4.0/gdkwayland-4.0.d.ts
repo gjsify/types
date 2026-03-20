@@ -27,6 +27,9 @@ export namespace GdkWayland {
      * GdkWayland-4.0
      */
 
+    /**
+     * @gir-type Callback
+     */
     interface WaylandToplevelExported {
         (toplevel: WaylandToplevel, handle: string): void;
     }
@@ -59,13 +62,14 @@ export namespace GdkWayland {
     }
 
     /**
-     * The Wayland implementation of `GdkDevice`.
+     * The Wayland implementation of {@link Gdk.Device}.
      *
-     * Beyond the regular [class`Gdk`.Device] API, the Wayland implementation
+     * Beyond the regular {@link Gdk.Device} API, the Wayland implementation
      * provides access to Wayland objects such as the `wl_seat` with
-     * [method`GdkWayland`.WaylandDevice.get_wl_seat], the `wl_keyboard` with
-     * [method`GdkWayland`.WaylandDevice.get_wl_keyboard] and the `wl_pointer` with
-     * [method`GdkWayland`.WaylandDevice.get_wl_pointer].
+     * {@link GdkWayland.WaylandDevice.get_wl_seat}, the `wl_keyboard` with
+     * {@link GdkWayland.WaylandDevice.get_wl_keyboard} and the `wl_pointer` with
+     * {@link GdkWayland.WaylandDevice.get_wl_pointer}.
+     * @gir-type Class
      */
     class WaylandDevice extends Gdk.Device {
         static $gtype: GObject.GType<WaylandDevice>;
@@ -87,16 +91,19 @@ export namespace GdkWayland {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof WaylandDevice.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WaylandDevice.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof WaylandDevice.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WaylandDevice.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WaylandDevice.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WaylandDevice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -108,17 +115,17 @@ export namespace GdkWayland {
         /**
          * Returns the `/dev/input/event*` path of this device.
          *
-         * For `GdkDevice`s that possibly coalesce multiple hardware
+         * For {@link Gdk.Device}s that possibly coalesce multiple hardware
          * devices (eg. mouse, keyboard, touch,...), this function
-         * will return %NULL.
+         * will return `null`.
          *
          * This is most notably implemented for devices of type
-         * %GDK_SOURCE_PEN, %GDK_SOURCE_TABLET_PAD.
+         * {@link Gdk.InputSource.PEN}, {@link Gdk.InputSource.TABLET_PAD}.
          * @returns the `/dev/input/event*`   path of this device
          */
         get_node_path(): string | null;
         /**
-         * Returns the `xkb_keymap` of a `GdkDevice`.
+         * Returns the `xkb_keymap` of a {@link Gdk.Device}.
          * @returns a `struct xkb_keymap`
          */
         get_xkb_keymap(): any | null;
@@ -140,15 +147,16 @@ export namespace GdkWayland {
     }
 
     /**
-     * The Wayland implementation of `GdkDisplay`.
+     * The Wayland implementation of {@link Gdk.Display}.
      *
-     * Beyond the regular [class`Gdk`.Display] API, the Wayland implementation
+     * Beyond the regular {@link Gdk.Display} API, the Wayland implementation
      * provides access to Wayland objects such as the `wl_display` with
-     * [method`GdkWayland`.WaylandDisplay.get_wl_display], the `wl_compositor` with
-     * [method`GdkWayland`.WaylandDisplay.get_wl_compositor].
+     * {@link GdkWayland.WaylandDisplay.get_wl_display}, the `wl_compositor` with
+     * {@link GdkWayland.WaylandDisplay.get_wl_compositor}.
      *
      * You can find out what Wayland globals are supported by a display
-     * with [method`GdkWayland`.WaylandDisplay.query_registry].
+     * with {@link GdkWayland.WaylandDisplay.query_registry}.
+     * @gir-type Class
      */
     class WaylandDisplay extends Gdk.Display {
         static $gtype: GObject.GType<WaylandDisplay>;
@@ -170,16 +178,19 @@ export namespace GdkWayland {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof WaylandDisplay.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WaylandDisplay.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof WaylandDisplay.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WaylandDisplay.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WaylandDisplay.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WaylandDisplay.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -196,7 +207,7 @@ export namespace GdkWayland {
         /**
          * Gets the startup notification ID for a Wayland display, or `NULL`
          * if no ID has been defined.
-         * @returns the startup notification ID for @display
+         * @returns the startup notification ID for `display`
          */
         get_startup_notification_id(): string | null;
         /**
@@ -217,11 +228,11 @@ export namespace GdkWayland {
          *
          * This is usually taken from the value of the `DESKTOP_STARTUP_ID`
          * environment variable, but in some cases (such as the application not
-         * being launched using exec()) it can come from other sources.
+         * being launched using `exec()`) it can come from other sources.
          *
          * The startup ID is also what is used to signal that the startup is
          * complete (for example, when opening a window or when calling
-         * [method`Gdk`.Display.notify_startup_complete]).
+         * {@link Gdk.Display.notify_startup_complete}).
          * @param startup_id the startup notification ID (must be valid utf8)
          */
         set_startup_notification_id(startup_id: string): void;
@@ -243,7 +254,8 @@ export namespace GdkWayland {
     }
 
     /**
-     * The Wayland implementation of `GdkGLContext`.
+     * The Wayland implementation of {@link Gdk.GLContext}.
+     * @gir-type Class
      */
     class WaylandGLContext extends Gdk.GLContext {
         static $gtype: GObject.GType<WaylandGLContext>;
@@ -265,16 +277,19 @@ export namespace GdkWayland {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof WaylandGLContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WaylandGLContext.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof WaylandGLContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WaylandGLContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WaylandGLContext.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WaylandGLContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -306,11 +321,12 @@ export namespace GdkWayland {
     }
 
     /**
-     * The Wayland implementation of `GdkMonitor`.
+     * The Wayland implementation of {@link Gdk.Monitor}.
      *
-     * Beyond the [class`Gdk`.Monitor] API, the Wayland implementation
+     * Beyond the {@link Gdk.Monitor} API, the Wayland implementation
      * offers access to the Wayland `wl_output` object with
-     * [method`GdkWayland`.WaylandMonitor.get_wl_output].
+     * {@link GdkWayland.WaylandMonitor.get_wl_output}.
+     * @gir-type Class
      */
     class WaylandMonitor extends Gdk.Monitor {
         static $gtype: GObject.GType<WaylandMonitor>;
@@ -332,16 +348,19 @@ export namespace GdkWayland {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof WaylandMonitor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WaylandMonitor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof WaylandMonitor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WaylandMonitor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WaylandMonitor.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WaylandMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -370,7 +389,8 @@ export namespace GdkWayland {
     }
 
     /**
-     * The Wayland implementation of `GdkPopup`.
+     * The Wayland implementation of {@link Gdk.Popup}.
+     * @gir-type Class
      */
     class WaylandPopup extends WaylandSurface implements Gdk.Popup {
         static $gtype: GObject.GType<WaylandPopup>;
@@ -392,83 +412,106 @@ export namespace GdkWayland {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof WaylandPopup.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WaylandPopup.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof WaylandPopup.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WaylandPopup.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WaylandPopup.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WaylandPopup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited properties
         /**
          * Whether to hide on outside clicks.
+         * @construct-only
+         * @category Inherited from Gdk.Popup
          */
         get autohide(): boolean;
         /**
          * The parent surface.
+         * @construct-only
+         * @category Inherited from Gdk.Popup
          */
         get parent(): Gdk.Surface;
         /**
-         * The mouse pointer for the `GdkSurface`.
+         * The mouse pointer for the {@link Gdk.Surface}.
+         * @category Inherited from Gdk.Surface
          */
         get cursor(): Gdk.Cursor;
         set cursor(val: Gdk.Cursor);
         /**
-         * The `GdkDisplay` connection of the surface.
+         * The {@link Gdk.Display} connection of the surface.
+         * @construct-only
+         * @category Inherited from Gdk.Surface
          */
         get display(): Gdk.Display;
         /**
-         * The `GdkFrameClock` of the surface.
+         * The {@link Gdk.FrameClock} of the surface.
+         * @construct-only
+         * @category Inherited from Gdk.Surface
          */
         get frame_clock(): Gdk.FrameClock;
         /**
-         * The `GdkFrameClock` of the surface.
+         * The {@link Gdk.FrameClock} of the surface.
+         * @construct-only
+         * @category Inherited from Gdk.Surface
          */
         get frameClock(): Gdk.FrameClock;
         /**
          * The height of the surface, in pixels.
+         * @read-only
+         * @category Inherited from Gdk.Surface
          */
         get height(): number;
         /**
          * Whether the surface is mapped.
+         * @read-only
+         * @category Inherited from Gdk.Surface
          */
         get mapped(): boolean;
         /**
          * The scale of the surface.
+         * @since 4.12
+         * @read-only
+         * @category Inherited from Gdk.Surface
          */
         get scale(): number;
         /**
          * The scale factor of the surface.
          *
          * The scale factor is the next larger integer,
-         * compared to [property`Gdk`.Surface:scale].
+         * compared to {@link Gdk.Surface.scale}.
+         * @read-only
+         * @category Inherited from Gdk.Surface
          */
         get scale_factor(): number;
         /**
          * The scale factor of the surface.
          *
          * The scale factor is the next larger integer,
-         * compared to [property`Gdk`.Surface:scale].
+         * compared to {@link Gdk.Surface.scale}.
+         * @read-only
+         * @category Inherited from Gdk.Surface
          */
         get scaleFactor(): number;
         /**
          * The width of the surface in pixels.
+         * @read-only
+         * @category Inherited from Gdk.Surface
          */
         get width(): number;
-
-        // Inherited methods
         /**
          * Returns whether this popup is set to hide on outside clicks.
-         * @returns %TRUE if @popup will autohide
+         * @returns `true` if `popup` will autohide
          */
         get_autohide(): boolean;
         /**
@@ -478,72 +521,72 @@ export namespace GdkWayland {
         get_parent(): Gdk.Surface | null;
         /**
          * Obtains the position of the popup relative to its parent.
-         * @returns the X coordinate of @popup position
+         * @returns the X coordinate of `popup` position
          */
         get_position_x(): number;
         /**
          * Obtains the position of the popup relative to its parent.
-         * @returns the Y coordinate of @popup position
+         * @returns the Y coordinate of `popup` position
          */
         get_position_y(): number;
         /**
          * Gets the current popup rectangle anchor.
          *
-         * The value returned may change after calling [method`Gdk`.Popup.present],
-         * or after the [signal`Gdk`.Surface::layout] signal is emitted.
-         * @returns the current rectangle anchor value of @popup
+         * The value returned may change after calling {@link Gdk.Popup.present},
+         * or after the `Gdk.Surface::layout` signal is emitted.
+         * @returns the current rectangle anchor value of `popup`
          */
         get_rect_anchor(): Gdk.Gravity;
         /**
          * Gets the current popup surface anchor.
          *
-         * The value returned may change after calling [method`Gdk`.Popup.present],
-         * or after the [signal`Gdk`.Surface::layout] signal is emitted.
-         * @returns the current surface anchor value of @popup
+         * The value returned may change after calling {@link Gdk.Popup.present},
+         * or after the `Gdk.Surface::layout` signal is emitted.
+         * @returns the current surface anchor value of `popup`
          */
         get_surface_anchor(): Gdk.Gravity;
         /**
-         * Present `popup` after having processed the `GdkPopupLayout` rules.
+         * Present `popup` after having processed the {@link Gdk.PopupLayout} rules.
          *
          * If the popup was previously not showing, it will be shown,
          * otherwise it will change position according to `layout`.
          *
          * After calling this function, the result should be handled in response
-         * to the [signal`Gdk`.Surface::layout] signal being emitted. The resulting
-         * popup position can be queried using [method`Gdk`.Popup.get_position_x],
-         * [method`Gdk`.Popup.get_position_y], and the resulting size will be sent as
-         * parameters in the layout signal. Use [method`Gdk`.Popup.get_rect_anchor]
-         * and [method`Gdk`.Popup.get_surface_anchor] to get the resulting anchors.
+         * to the `Gdk.Surface::layout` signal being emitted. The resulting
+         * popup position can be queried using {@link Gdk.Popup.get_position_x},
+         * {@link Gdk.Popup.get_position_y}, and the resulting size will be sent as
+         * parameters in the layout signal. Use {@link Gdk.Popup.get_rect_anchor}
+         * and {@link Gdk.Popup.get_surface_anchor} to get the resulting anchors.
          *
          * Presenting may fail, for example if the `popup` is set to autohide
          * and is immediately hidden upon being presented. If presenting failed,
-         * the [signal`Gdk`.Surface::layout] signal will not me emitted.
+         * the `Gdk.Surface::layout` signal will not me emitted.
          * @param width the unconstrained popup width to layout
          * @param height the unconstrained popup height to layout
-         * @param layout the `GdkPopupLayout` object used to layout
-         * @returns %FALSE if it failed to be presented, otherwise %TRUE.
+         * @param layout the {@link Gdk.PopupLayout} object used to layout
+         * @returns `false` if it failed to be presented, otherwise `true`.
          */
         present(width: number, height: number, layout: Gdk.PopupLayout): boolean;
         /**
          * Emits a short beep associated to `surface`.
          *
          * If the display of `surface` does not support per-surface beeps,
-         * emits a short beep on the display just as [method`Gdk`.Display.beep].
+         * emits a short beep on the display just as {@link Gdk.Display.beep}.
          */
         beep(): void;
         /**
-         * Creates a new `GdkCairoContext` for rendering on `surface`.
-         * @returns the newly created `GdkCairoContext`
+         * Creates a new {@link Gdk.CairoContext} for rendering on `surface`.
+         * @returns the newly created {@link Gdk.CairoContext}
          */
         create_cairo_context(): Gdk.CairoContext;
         /**
-         * Creates a new `GdkGLContext` for the `GdkSurface`.
+         * Creates a new {@link Gdk.GLContext} for the {@link Gdk.Surface}.
          *
          * The context is disconnected from any particular surface or surface.
-         * If the creation of the `GdkGLContext` failed, `error` will be set.
-         * Before using the returned `GdkGLContext`, you will need to
-         * call [method`Gdk`.GLContext.make_current] or [method`Gdk`.GLContext.realize].
-         * @returns the newly created `GdkGLContext`
+         * If the creation of the {@link Gdk.GLContext} failed, `error` will be set.
+         * Before using the returned {@link Gdk.GLContext}, you will need to
+         * call {@link Gdk.GLContext.make_current} or {@link Gdk.GLContext.realize}.
+         * @returns the newly created {@link Gdk.GLContext}
          */
         create_gl_context(): Gdk.GLContext;
         /**
@@ -552,9 +595,9 @@ export namespace GdkWayland {
          *
          * For example the new surface will have the same fallback resolution
          * and font options as `surface`. Generally, the new surface will also
-         * use the same backend as `surface,` unless that is not possible for
+         * use the same backend as `surface`, unless that is not possible for
          * some reason. The type of the returned surface may be examined with
-         * cairo_surface_get_type().
+         * `cairo_surface_get_type()`.
          *
          * Initially the surface contents are all 0 (transparent if contents
          * have transparency, black otherwise.)
@@ -565,17 +608,17 @@ export namespace GdkWayland {
          * @param content the content for the new surface
          * @param width width of the new surface
          * @param height height of the new surface
-         * @returns a pointer to the newly allocated surface. The caller   owns the surface and should call cairo_surface_destroy() when done   with it.
+         * @returns a pointer to the newly allocated surface. The caller   owns the surface and should call `cairo_surface_destroy()` when done   with it.
          */
         create_similar_surface(content: cairo.Content | null, width: number, height: number): cairo.Surface;
         /**
-         * Sets an error and returns %NULL.
-         * @returns %NULL
+         * Sets an error and returns `null`.
+         * @returns `null`
          */
         create_vulkan_context(): Gdk.VulkanContext;
         /**
          * Destroys the window system resources associated with `surface` and
-         * decrements `surface'`s reference count.
+         * decrements `surface`'s reference count.
          *
          * The window system resources for all children of `surface` are also
          * destroyed, but the children’s reference counts are not decremented.
@@ -586,26 +629,26 @@ export namespace GdkWayland {
          */
         destroy(): void;
         /**
-         * Retrieves a `GdkCursor` pointer for the cursor currently set on the
-         * `GdkSurface`.
+         * Retrieves a {@link Gdk.Cursor} pointer for the cursor currently set on the
+         * {@link Gdk.Surface}.
          *
-         * If the return value is %NULL then there is no custom cursor set on
+         * If the return value is `null` then there is no custom cursor set on
          * the surface, and it is using the cursor for its parent surface.
          *
-         * Use [method`Gdk`.Surface.set_cursor] to unset the cursor of the surface.
-         * @returns a `GdkCursor`
+         * Use {@link Gdk.Surface.set_cursor} to unset the cursor of the surface.
+         * @returns a {@link Gdk.Cursor}
          */
         get_cursor(): Gdk.Cursor | null;
         /**
-         * Retrieves a `GdkCursor` pointer for the `device` currently set on the
-         * specified `GdkSurface`.
+         * Retrieves a {@link Gdk.Cursor} pointer for the `device` currently set on the
+         * specified {@link Gdk.Surface}.
          *
-         * If the return value is %NULL then there is no custom cursor set on the
+         * If the return value is `null` then there is no custom cursor set on the
          * specified surface, and it is using the cursor for its parent surface.
          *
-         * Use [method`Gdk`.Surface.set_cursor] to unset the cursor of the surface.
-         * @param device a pointer `GdkDevice`
-         * @returns a `GdkCursor`
+         * Use {@link Gdk.Surface.set_cursor} to unset the cursor of the surface.
+         * @param device a pointer {@link Gdk.Device}
+         * @returns a {@link Gdk.Cursor}
          */
         get_device_cursor(device: Gdk.Device): Gdk.Cursor | null;
         /**
@@ -613,13 +656,13 @@ export namespace GdkWayland {
          *
          * The position is given in coordinates relative to the upper
          * left corner of `surface`.
-         * @param device pointer `GdkDevice` to query to
-         * @returns %TRUE if the device is over the surface
+         * @param device pointer {@link Gdk.Device} to query to
+         * @returns `true` if the device is over the surface
          */
         get_device_position(device: Gdk.Device): [boolean, number, number, Gdk.ModifierType | null];
         /**
-         * Gets the `GdkDisplay` associated with a `GdkSurface`.
-         * @returns the `GdkDisplay` associated with @surface
+         * Gets the {@link Gdk.Display} associated with a {@link Gdk.Surface}.
+         * @returns the {@link Gdk.Display} associated with `surface`
          */
         get_display(): Gdk.Display;
         /**
@@ -634,16 +677,16 @@ export namespace GdkWayland {
          * Returns the height of the given `surface`.
          *
          * Surface size is reported in ”application pixels”, not
-         * ”device pixels” (see [method`Gdk`.Surface.get_scale_factor]).
-         * @returns The height of @surface
+         * ”device pixels” (see {@link Gdk.Surface.get_scale_factor}).
+         * @returns The height of `surface`
          */
         get_height(): number;
         /**
          * Checks whether the surface has been mapped.
          *
-         * A surface is mapped with [method`Gdk`.Toplevel.present]
-         * or [method`Gdk`.Popup.present].
-         * @returns %TRUE if the surface is mapped
+         * A surface is mapped with {@link Gdk.Toplevel.present}
+         * or {@link Gdk.Popup.present}.
+         * @returns `true` if the surface is mapped
          */
         get_mapped(): boolean;
         /**
@@ -654,7 +697,7 @@ export namespace GdkWayland {
          * buffers with a resolution that is bigger than the surface size (e.g.
          * to show the surface on a high-resolution display, or in a magnifier).
          *
-         * Compare with [method`Gdk`.Surface.get_scale_factor], which returns the
+         * Compare with {@link Gdk.Surface.get_scale_factor}, which returns the
          * next larger integer.
          *
          * The scale may change during the lifetime of the surface.
@@ -680,8 +723,8 @@ export namespace GdkWayland {
          * Returns the width of the given `surface`.
          *
          * Surface size is reported in ”application pixels”, not
-         * ”device pixels” (see [method`Gdk`.Surface.get_scale_factor]).
-         * @returns The width of @surface
+         * ”device pixels” (see {@link Gdk.Surface.get_scale_factor}).
+         * @returns The width of `surface`
          */
         get_width(): number;
         /**
@@ -695,11 +738,11 @@ export namespace GdkWayland {
         hide(): void;
         /**
          * Check to see if a surface is destroyed.
-         * @returns %TRUE if the surface is destroyed
+         * @returns `true` if the surface is destroyed
          */
         is_destroyed(): boolean;
         /**
-         * Forces a [signal`Gdk`.Surface::render] signal emission for `surface`
+         * Forces a `Gdk.Surface::render` signal emission for `surface`
          * to be scheduled.
          *
          * This function is useful for implementations that track invalid
@@ -709,31 +752,31 @@ export namespace GdkWayland {
         /**
          * Request a layout phase from the surface's frame clock.
          *
-         * See [method`Gdk`.FrameClock.request_phase].
+         * See {@link Gdk.FrameClock.request_phase}.
          */
         request_layout(): void;
         /**
-         * Sets the default mouse pointer for a `GdkSurface`.
+         * Sets the default mouse pointer for a {@link Gdk.Surface}.
          *
-         * Passing %NULL for the `cursor` argument means that `surface` will use
+         * Passing `null` for the `cursor` argument means that `surface` will use
          * the cursor of its parent surface. Most surfaces should use this default.
          * Note that `cursor` must be for the same display as `surface`.
          *
-         * Use [ctor`Gdk`.Cursor.new_from_name] or [ctor`Gdk`.Cursor.new_from_texture]
-         * to create the cursor. To make the cursor invisible, use %GDK_BLANK_CURSOR.
-         * @param cursor a `GdkCursor`
+         * Use {@link Gdk.Cursor.new_from_name} or {@link Gdk.Cursor.new_from_texture}
+         * to create the cursor. To make the cursor invisible, use `GDK_BLANK_CURSOR`.
+         * @param cursor a {@link Gdk.Cursor}
          */
         set_cursor(cursor?: Gdk.Cursor | null): void;
         /**
-         * Sets a specific `GdkCursor` for a given device when it gets inside `surface`.
+         * Sets a specific {@link Gdk.Cursor} for a given device when it gets inside `surface`.
          *
-         * Passing %NULL for the `cursor` argument means that `surface` will use the
+         * Passing `null` for the `cursor` argument means that `surface` will use the
          * cursor of its parent surface. Most surfaces should use this default.
          *
-         * Use [ctor`Gdk`.Cursor.new_from_name] or [ctor`Gdk`.Cursor.new_from_texture]
-         * to create the cursor. To make the cursor invisible, use %GDK_BLANK_CURSOR.
-         * @param device a pointer `GdkDevice`
-         * @param cursor a `GdkCursor`
+         * Use {@link Gdk.Cursor.new_from_name} or {@link Gdk.Cursor.new_from_texture}
+         * to create the cursor. To make the cursor invisible, use `GDK_BLANK_CURSOR`.
+         * @param device a pointer {@link Gdk.Device}
+         * @param cursor a {@link Gdk.Cursor}
          */
         set_device_cursor(device: Gdk.Device, cursor: Gdk.Cursor): void;
         /**
@@ -749,13 +792,13 @@ export namespace GdkWayland {
          * allows for nicely antialiased borders, and the input region
          * controls where the surface is “clickable”.
          *
-         * Use [method`Gdk`.Display.supports_input_shapes] to find out if
+         * Use {@link Gdk.Display.supports_input_shapes} to find out if
          * a particular backend supports input regions.
-         * @param region region of surface to be reactive
+         * @param region region of surface to be reactive,   or `null` to make the entire surface reactive
          */
-        set_input_region(region: cairo.Region): void;
+        set_input_region(region?: cairo.Region | null): void;
         /**
-         * Marks a region of the `GdkSurface` as opaque.
+         * Marks a region of the {@link Gdk.Surface} as opaque.
          *
          * For optimisation purposes, compositing window managers may
          * like to not draw obscured regions of surfaces, or turn off blending
@@ -770,7 +813,7 @@ export namespace GdkWayland {
          * is opaque, as we know where the opaque regions are. If your surface
          * background is not opaque, please update this property in your
          * [GtkWidgetClass.css_changed](../gtk4/vfunc.Widget.css_changed.html) handler.
-         * @param region a region, or %NULL to make the entire   surface opaque
+         * @param region a region, or `null` to make the entire   surface opaque
          */
         set_opaque_region(region?: cairo.Region | null): void;
         /**
@@ -781,7 +824,7 @@ export namespace GdkWayland {
          * @param to the target surface
          * @param x coordinates to translate
          * @param y coordinates to translate
-         * @returns %TRUE if the coordinates were successfully translated
+         * @returns `true` if the coordinates were successfully translated
          */
         translate_coordinates(to: Gdk.Surface, x: number, y: number): [boolean, number, number];
     }
@@ -798,11 +841,12 @@ export namespace GdkWayland {
     }
 
     /**
-     * The Wayland implementation of `GdkSeat`.
+     * The Wayland implementation of {@link Gdk.Seat}.
      *
-     * Beyond the regular [class`Gdk`.Seat] API, the Wayland implementation
+     * Beyond the regular {@link Gdk.Seat} API, the Wayland implementation
      * provides access to the Wayland `wl_seat` object with
-     * [method`GdkWayland`.WaylandSeat.get_wl_seat].
+     * {@link GdkWayland.WaylandSeat.get_wl_seat}.
+     * @gir-type Class
      */
     class WaylandSeat extends Gdk.Seat {
         static $gtype: GObject.GType<WaylandSeat>;
@@ -824,16 +868,19 @@ export namespace GdkWayland {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof WaylandSeat.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WaylandSeat.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof WaylandSeat.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WaylandSeat.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WaylandSeat.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WaylandSeat.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -860,11 +907,12 @@ export namespace GdkWayland {
     }
 
     /**
-     * The Wayland implementation of `GdkSurface`.
+     * The Wayland implementation of {@link Gdk.Surface}.
      *
-     * Beyond the [class`Gdk`.Surface] API, the Wayland implementation offers
+     * Beyond the {@link Gdk.Surface} API, the Wayland implementation offers
      * access to the Wayland `wl_surface` object with
-     * [method`GdkWayland`.WaylandSurface.get_wl_surface].
+     * {@link GdkWayland.WaylandSurface.get_wl_surface}.
+     * @gir-type Class
      */
     class WaylandSurface extends Gdk.Surface {
         static $gtype: GObject.GType<WaylandSurface>;
@@ -886,16 +934,19 @@ export namespace GdkWayland {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof WaylandSurface.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WaylandSurface.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof WaylandSurface.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WaylandSurface.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WaylandSurface.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WaylandSurface.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -941,12 +992,13 @@ export namespace GdkWayland {
     }
 
     /**
-     * The Wayland implementation of `GdkToplevel`.
+     * The Wayland implementation of {@link Gdk.Toplevel}.
      *
-     * Beyond the [iface`Gdk`.Toplevel] API, the Wayland implementation
+     * Beyond the {@link Gdk.Toplevel} API, the Wayland implementation
      * has API to set up cross-process parent-child relationships between
-     * surfaces with [method`GdkWayland`.WaylandToplevel.export_handle] and
-     * [method`GdkWayland`.WaylandToplevel.set_transient_for_exported].
+     * surfaces with {@link GdkWayland.WaylandToplevel.export_handle} and
+     * {@link GdkWayland.WaylandToplevel.set_transient_for_exported}.
+     * @gir-type Class
      */
     class WaylandToplevel extends WaylandSurface implements Gdk.Toplevel {
         static $gtype: GObject.GType<WaylandToplevel>;
@@ -968,16 +1020,19 @@ export namespace GdkWayland {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof WaylandToplevel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WaylandToplevel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof WaylandToplevel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WaylandToplevel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WaylandToplevel.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WaylandToplevel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -987,7 +1042,7 @@ export namespace GdkWayland {
         // Methods
 
         /**
-         * Destroy a handle that was obtained with gdk_wayland_toplevel_export_handle().
+         * Destroy a handle that was obtained with `gdk_wayland_toplevel_export_handle()`.
          *
          * Note that this API depends on an unstable Wayland protocol,
          * and thus may require changes in the future.
@@ -1003,28 +1058,28 @@ export namespace GdkWayland {
          * It is an error to call this function on a surface that is already
          * exported.
          *
-         * When the handle is no longer needed, [method`GdkWayland`.WaylandToplevel.unexport_handle]
+         * When the handle is no longer needed, {@link GdkWayland.WaylandToplevel.unexport_handle}
          * should be called to clean up resources.
          *
          * The main purpose for obtaining a handle is to mark a surface
          * from another surface as transient for this one, see
-         * [method`GdkWayland`.WaylandToplevel.set_transient_for_exported].
+         * {@link GdkWayland.WaylandToplevel.set_transient_for_exported}.
          *
          * Before 4.12, this API could not safely be used multiple times,
          * since there was no reference counting for handles. Starting with
          * 4.12, every call to this function obtains a new handle, and every
-         * call to [method`GdkWayland`.WaylandToplevel.drop_exported_handle] drops
+         * call to {@link GdkWayland.WaylandToplevel.drop_exported_handle} drops
          * just the handle that it is given.
          *
          * Note that this API depends on an unstable Wayland protocol,
          * and thus may require changes in the future.
          * @param callback callback to call with the handle
-         * @returns %TRUE if the handle has been requested, %FALSE if   an error occurred.
+         * @returns `true` if the handle has been requested, `false` if   an error occurred.
          */
         export_handle(callback: WaylandToplevelExported): boolean;
         /**
-         * Sets the application id on a `GdkToplevel`.
-         * @param application_id the application id for the @toplevel
+         * Sets the application id on a {@link Gdk.Toplevel}.
+         * @param application_id the application id for the `toplevel`
          */
         set_application_id(application_id: string): void;
         /**
@@ -1032,52 +1087,57 @@ export namespace GdkWayland {
          * `parent_handle_str` refers.
          *
          * Typically, the handle will originate from a
-         * [method`GdkWayland`.WaylandToplevel.export_handle] call in another process.
+         * {@link GdkWayland.WaylandToplevel.export_handle} call in another process.
          *
          * Note that this API depends on an unstable Wayland protocol,
          * and thus may require changes in the future.
          * @param parent_handle_str an exported handle for a surface
-         * @returns %TRUE if the surface has been marked as transient,   %FALSE if an error occurred.
+         * @returns `true` if the surface has been marked as transient,   `false` if an error occurred.
          */
         set_transient_for_exported(parent_handle_str: string): boolean;
         /**
          * Destroys the handle that was obtained with
-         * gdk_wayland_toplevel_export_handle().
+         * `gdk_wayland_toplevel_export_handle()`.
          *
          * It is an error to call this function on a surface that
          * does not have a handle.
          *
          * Since 4.12, this function does nothing. Use
-         * [method`GdkWayland`.WaylandToplevel.drop_exported_handle] instead to drop a
-         * handle that was obtained with [method`GdkWayland`.WaylandToplevel.export_handle].
+         * {@link GdkWayland.WaylandToplevel.drop_exported_handle} instead to drop a
+         * handle that was obtained with {@link GdkWayland.WaylandToplevel.export_handle}.
          *
          * Note that this API depends on an unstable Wayland protocol,
          * and thus may require changes in the future.
          */
         unexport_handle(): void;
-
-        // Inherited properties
         /**
          * The capabilities that are available for this toplevel.
+         * @since 4.20
+         * @read-only
+         * @category Inherited from Gdk.Toplevel
          */
         get capabilities(): Gdk.ToplevelCapabilities;
         /**
          * Whether the window manager should add decorations.
+         * @category Inherited from Gdk.Toplevel
          */
         get decorated(): boolean;
         set decorated(val: boolean);
         /**
          * Whether the window manager should allow to close the surface.
+         * @category Inherited from Gdk.Toplevel
          */
         get deletable(): boolean;
         set deletable(val: boolean);
         /**
          * The fullscreen mode of the surface.
+         * @category Inherited from Gdk.Toplevel
          */
         get fullscreen_mode(): Gdk.FullscreenMode;
         set fullscreen_mode(val: Gdk.FullscreenMode);
         /**
          * The fullscreen mode of the surface.
+         * @category Inherited from Gdk.Toplevel
          */
         get fullscreenMode(): Gdk.FullscreenMode;
         set fullscreenMode(val: Gdk.FullscreenMode);
@@ -1091,117 +1151,151 @@ export namespace GdkWayland {
          *
          * This property is just a hint that may affect the result when negotiating
          * toplevel sizes with the windowing system. It does not affect interactive
-         * resizes started with [method`Gdk`.Toplevel.begin_resize].
+         * resizes started with {@link Gdk.Toplevel.begin_resize}.
+         * @since 4.20
+         * @category Inherited from Gdk.Toplevel
          */
         get gravity(): Gdk.Gravity;
         set gravity(val: Gdk.Gravity);
         /**
          * A list of textures to use as icon.
+         * @category Inherited from Gdk.Toplevel
          */
         get icon_list(): any;
         set icon_list(val: any);
         /**
          * A list of textures to use as icon.
+         * @category Inherited from Gdk.Toplevel
          */
         get iconList(): any;
         set iconList(val: any);
         /**
          * Whether the surface is modal.
+         * @category Inherited from Gdk.Toplevel
          */
         get modal(): boolean;
         set modal(val: boolean);
         /**
          * Whether the surface should inhibit keyboard shortcuts.
+         * @read-only
+         * @category Inherited from Gdk.Toplevel
          */
         get shortcuts_inhibited(): boolean;
         /**
          * Whether the surface should inhibit keyboard shortcuts.
+         * @read-only
+         * @category Inherited from Gdk.Toplevel
          */
         get shortcutsInhibited(): boolean;
         /**
          * The startup ID of the surface.
          *
-         * See [class`Gdk`.AppLaunchContext] for more information about
+         * See {@link Gdk.AppLaunchContext} for more information about
          * startup feedback.
+         * @category Inherited from Gdk.Toplevel
          */
         get startup_id(): string;
         set startup_id(val: string);
         /**
          * The startup ID of the surface.
          *
-         * See [class`Gdk`.AppLaunchContext] for more information about
+         * See {@link Gdk.AppLaunchContext} for more information about
          * startup feedback.
+         * @category Inherited from Gdk.Toplevel
          */
         get startupId(): string;
         set startupId(val: string);
         /**
          * The state of the toplevel.
+         * @read-only
+         * @category Inherited from Gdk.Toplevel
          */
         get state(): Gdk.ToplevelState;
         /**
          * The title of the surface.
+         * @category Inherited from Gdk.Toplevel
          */
         get title(): string;
         set title(val: string);
         /**
          * The transient parent of the surface.
+         * @category Inherited from Gdk.Toplevel
          */
         get transient_for(): Gdk.Surface;
         set transient_for(val: Gdk.Surface);
         /**
          * The transient parent of the surface.
+         * @category Inherited from Gdk.Toplevel
          */
         get transientFor(): Gdk.Surface;
         set transientFor(val: Gdk.Surface);
         /**
-         * The mouse pointer for the `GdkSurface`.
+         * The mouse pointer for the {@link Gdk.Surface}.
+         * @category Inherited from Gdk.Surface
          */
         get cursor(): Gdk.Cursor;
         set cursor(val: Gdk.Cursor);
         /**
-         * The `GdkDisplay` connection of the surface.
+         * The {@link Gdk.Display} connection of the surface.
+         * @construct-only
+         * @category Inherited from Gdk.Surface
          */
         get display(): Gdk.Display;
         /**
-         * The `GdkFrameClock` of the surface.
+         * The {@link Gdk.FrameClock} of the surface.
+         * @construct-only
+         * @category Inherited from Gdk.Surface
          */
         get frame_clock(): Gdk.FrameClock;
         /**
-         * The `GdkFrameClock` of the surface.
+         * The {@link Gdk.FrameClock} of the surface.
+         * @construct-only
+         * @category Inherited from Gdk.Surface
          */
         get frameClock(): Gdk.FrameClock;
         /**
          * The height of the surface, in pixels.
+         * @read-only
+         * @category Inherited from Gdk.Surface
          */
         get height(): number;
         /**
          * Whether the surface is mapped.
+         * @read-only
+         * @category Inherited from Gdk.Surface
          */
         get mapped(): boolean;
         /**
          * The scale of the surface.
+         * @since 4.12
+         * @read-only
+         * @category Inherited from Gdk.Surface
          */
         get scale(): number;
         /**
          * The scale factor of the surface.
          *
          * The scale factor is the next larger integer,
-         * compared to [property`Gdk`.Surface:scale].
+         * compared to {@link Gdk.Surface.scale}.
+         * @read-only
+         * @category Inherited from Gdk.Surface
          */
         get scale_factor(): number;
         /**
          * The scale factor of the surface.
          *
          * The scale factor is the next larger integer,
-         * compared to [property`Gdk`.Surface:scale].
+         * compared to {@link Gdk.Surface.scale}.
+         * @read-only
+         * @category Inherited from Gdk.Surface
          */
         get scaleFactor(): number;
         /**
          * The width of the surface in pixels.
+         * @read-only
+         * @category Inherited from Gdk.Surface
          */
         get width(): number;
-
-        // Inherited methods
         /**
          * Begins an interactive move operation.
          *
@@ -1210,7 +1304,7 @@ export namespace GdkWayland {
          * @param button the button being used to drag, or 0 for a keyboard-initiated drag
          * @param x surface X coordinate of mouse click that began the drag
          * @param y surface Y coordinate of mouse click that began the drag
-         * @param timestamp timestamp of mouse click that began the drag (use   [method@Gdk.Event.get_time])
+         * @param timestamp timestamp of mouse click that began the drag (use   {@link Gdk.Event.get_time})
          */
         begin_move(device: Gdk.Device, button: number, x: number, y: number, timestamp: number): void;
         /**
@@ -1222,7 +1316,7 @@ export namespace GdkWayland {
          * @param button the button being used to drag, or 0 for a keyboard-initiated drag
          * @param x surface X coordinate of mouse click that began the drag
          * @param y surface Y coordinate of mouse click that began the drag
-         * @param timestamp timestamp of mouse click that began the drag (use   [method@Gdk.Event.get_time])
+         * @param timestamp timestamp of mouse click that began the drag (use   {@link Gdk.Event.get_time})
          */
         begin_resize(
             edge: Gdk.SurfaceEdge | null,
@@ -1243,6 +1337,7 @@ export namespace GdkWayland {
         focus(timestamp: number): void;
         /**
          * The capabilities that are available for this toplevel.
+         * @returns the capabilities of the {@link Gdk.Toplevel}.
          */
         get_capabilities(): Gdk.ToplevelCapabilities;
         /**
@@ -1253,7 +1348,7 @@ export namespace GdkWayland {
         get_gravity(): Gdk.Gravity;
         /**
          * Gets the bitwise or of the currently active surface state flags,
-         * from the `GdkToplevelState` enumeration.
+         * from the {@link Gdk.ToplevelState} enumeration.
          * @returns surface state bitfield
          */
         get_state(): Gdk.ToplevelState;
@@ -1265,7 +1360,7 @@ export namespace GdkWayland {
          * of triggering system actions.
          *
          * If granted, the rerouting remains active until the default shortcuts
-         * processing is restored with [method`Gdk`.Toplevel.restore_system_shortcuts],
+         * processing is restored with {@link Gdk.Toplevel.restore_system_shortcuts},
          * or the request is revoked by the desktop environment, windowing system
          * or the user.
          *
@@ -1278,61 +1373,61 @@ export namespace GdkWayland {
          * or deny the request or even choose to ignore the request entirely.
          *
          * The caller can be notified whenever the request is granted or revoked
-         * by listening to the [property`Gdk`.Toplevel:shortcuts-inhibited] property.
-         * @param event the `GdkEvent` that is triggering the inhibit   request, or %NULL if none is available
+         * by listening to the {@link Gdk.Toplevel.shortcuts_inhibited} property.
+         * @param event the {@link Gdk.Event} that is triggering the inhibit   request, or `null` if none is available
          */
         inhibit_system_shortcuts(event?: Gdk.Event | null): void;
         /**
          * Asks to lower the `toplevel` below other windows.
          *
          * The windowing system may choose to ignore the request.
-         * @returns %TRUE if the surface was lowered
+         * @returns `true` if the surface was lowered
          */
         lower(): boolean;
         /**
          * Asks to minimize the `toplevel`.
          *
          * The windowing system may choose to ignore the request.
-         * @returns %TRUE if the surface was minimized
+         * @returns `true` if the surface was minimized
          */
         minimize(): boolean;
         /**
-         * Present `toplevel` after having processed the `GdkToplevelLayout` rules.
+         * Present `toplevel` after having processed the {@link Gdk.ToplevelLayout} rules.
          *
          * If the toplevel was previously not showing, it will be showed,
          * otherwise it will change layout according to `layout`.
          *
-         * GDK may emit the [signal`Gdk`.Toplevel::compute-size] signal to let
+         * GDK may emit the `Gdk.Toplevel::compute-size` signal to let
          * the user of this toplevel compute the preferred size of the toplevel
          * surface.
          *
          * Presenting is asynchronous and the specified layout parameters are not
          * guaranteed to be respected.
-         * @param layout the `GdkToplevelLayout` object used to layout
+         * @param layout the {@link Gdk.ToplevelLayout} object used to layout
          */
         present(layout: Gdk.ToplevelLayout): void;
         /**
          * Restore default system keyboard shortcuts which were previously
          * inhibited.
          *
-         * This undoes the effect of [method`Gdk`.Toplevel.inhibit_system_shortcuts].
+         * This undoes the effect of {@link Gdk.Toplevel.inhibit_system_shortcuts}.
          */
         restore_system_shortcuts(): void;
         /**
          * Sets the toplevel to be decorated.
          *
-         * Setting `decorated` to %FALSE hints the desktop environment
+         * Setting `decorated` to `false` hints the desktop environment
          * that the surface has its own, client-side decorations and
          * does not need to have window decorations added.
-         * @param decorated %TRUE to request decorations
+         * @param decorated `true` to request decorations
          */
         set_decorated(decorated: boolean): void;
         /**
          * Sets the toplevel to be deletable.
          *
-         * Setting `deletable` to %TRUE hints the desktop environment
+         * Setting `deletable` to `true` hints the desktop environment
          * that it should offer the user a way to close the surface.
-         * @param deletable %TRUE to request a delete button
+         * @param deletable `true` to request a delete button
          */
         set_deletable(deletable: boolean): void;
         /**
@@ -1363,8 +1458,8 @@ export namespace GdkWayland {
          * to handle modal surfaces in a special way.
          *
          * You should only use this on surfaces for which you have
-         * previously called [method`Gdk`.Toplevel.set_transient_for].
-         * @param modal %TRUE if the surface is modal, %FALSE otherwise.
+         * previously called {@link Gdk.Toplevel.set_transient_for}.
+         * @param modal `true` if the surface is modal, `false` otherwise.
          */
         set_modal(modal: boolean): void;
         /**
@@ -1381,7 +1476,7 @@ export namespace GdkWayland {
          *
          * The title maybe be displayed in the titlebar,
          * in lists of windows, etc.
-         * @param title title of @surface
+         * @param title title of `surface`
          */
         set_title(title: string): void;
         /**
@@ -1394,7 +1489,7 @@ export namespace GdkWayland {
          *
          * See [gtk_window_set_transient_for()](../gtk4/method.Window.set_transient_for.html)
          * if you’re using [GtkWindow](../gtk4/class.Window.html).
-         * @param parent another toplevel `GdkSurface`
+         * @param parent another toplevel {@link Gdk.Surface}
          */
         set_transient_for(parent: Gdk.Surface): void;
         /**
@@ -1404,19 +1499,19 @@ export namespace GdkWayland {
          * on traditional windows managed by the window manager. This is useful
          * for windows using client-side decorations, activating it with a
          * right-click on the window decorations.
-         * @param event a `GdkEvent` to show the menu for
-         * @returns %TRUE if the window menu was shown and %FALSE otherwise.
+         * @param event a {@link Gdk.Event} to show the menu for
+         * @returns `true` if the window menu was shown and `false` otherwise.
          */
         show_window_menu(event: Gdk.Event): boolean;
         /**
          * Returns whether the desktop environment supports
          * tiled window states.
-         * @returns %TRUE if the desktop environment supports tiled window states
+         * @returns `true` if the desktop environment supports tiled window states
          */
         supports_edge_constraints(): boolean;
         /**
          * Performs a title bar gesture.
-         * @param gesture a `GdkTitlebarGesture`
+         * @param gesture a {@link Gdk.TitlebarGesture}
          * @returns whether the gesture was performed
          */
         titlebar_gesture(gesture: Gdk.TitlebarGesture | null): boolean;
@@ -1424,22 +1519,22 @@ export namespace GdkWayland {
          * Emits a short beep associated to `surface`.
          *
          * If the display of `surface` does not support per-surface beeps,
-         * emits a short beep on the display just as [method`Gdk`.Display.beep].
+         * emits a short beep on the display just as {@link Gdk.Display.beep}.
          */
         beep(): void;
         /**
-         * Creates a new `GdkCairoContext` for rendering on `surface`.
-         * @returns the newly created `GdkCairoContext`
+         * Creates a new {@link Gdk.CairoContext} for rendering on `surface`.
+         * @returns the newly created {@link Gdk.CairoContext}
          */
         create_cairo_context(): Gdk.CairoContext;
         /**
-         * Creates a new `GdkGLContext` for the `GdkSurface`.
+         * Creates a new {@link Gdk.GLContext} for the {@link Gdk.Surface}.
          *
          * The context is disconnected from any particular surface or surface.
-         * If the creation of the `GdkGLContext` failed, `error` will be set.
-         * Before using the returned `GdkGLContext`, you will need to
-         * call [method`Gdk`.GLContext.make_current] or [method`Gdk`.GLContext.realize].
-         * @returns the newly created `GdkGLContext`
+         * If the creation of the {@link Gdk.GLContext} failed, `error` will be set.
+         * Before using the returned {@link Gdk.GLContext}, you will need to
+         * call {@link Gdk.GLContext.make_current} or {@link Gdk.GLContext.realize}.
+         * @returns the newly created {@link Gdk.GLContext}
          */
         create_gl_context(): Gdk.GLContext;
         /**
@@ -1448,9 +1543,9 @@ export namespace GdkWayland {
          *
          * For example the new surface will have the same fallback resolution
          * and font options as `surface`. Generally, the new surface will also
-         * use the same backend as `surface,` unless that is not possible for
+         * use the same backend as `surface`, unless that is not possible for
          * some reason. The type of the returned surface may be examined with
-         * cairo_surface_get_type().
+         * `cairo_surface_get_type()`.
          *
          * Initially the surface contents are all 0 (transparent if contents
          * have transparency, black otherwise.)
@@ -1461,17 +1556,17 @@ export namespace GdkWayland {
          * @param content the content for the new surface
          * @param width width of the new surface
          * @param height height of the new surface
-         * @returns a pointer to the newly allocated surface. The caller   owns the surface and should call cairo_surface_destroy() when done   with it.
+         * @returns a pointer to the newly allocated surface. The caller   owns the surface and should call `cairo_surface_destroy()` when done   with it.
          */
         create_similar_surface(content: cairo.Content | null, width: number, height: number): cairo.Surface;
         /**
-         * Sets an error and returns %NULL.
-         * @returns %NULL
+         * Sets an error and returns `null`.
+         * @returns `null`
          */
         create_vulkan_context(): Gdk.VulkanContext;
         /**
          * Destroys the window system resources associated with `surface` and
-         * decrements `surface'`s reference count.
+         * decrements `surface`'s reference count.
          *
          * The window system resources for all children of `surface` are also
          * destroyed, but the children’s reference counts are not decremented.
@@ -1482,26 +1577,26 @@ export namespace GdkWayland {
          */
         destroy(): void;
         /**
-         * Retrieves a `GdkCursor` pointer for the cursor currently set on the
-         * `GdkSurface`.
+         * Retrieves a {@link Gdk.Cursor} pointer for the cursor currently set on the
+         * {@link Gdk.Surface}.
          *
-         * If the return value is %NULL then there is no custom cursor set on
+         * If the return value is `null` then there is no custom cursor set on
          * the surface, and it is using the cursor for its parent surface.
          *
-         * Use [method`Gdk`.Surface.set_cursor] to unset the cursor of the surface.
-         * @returns a `GdkCursor`
+         * Use {@link Gdk.Surface.set_cursor} to unset the cursor of the surface.
+         * @returns a {@link Gdk.Cursor}
          */
         get_cursor(): Gdk.Cursor | null;
         /**
-         * Retrieves a `GdkCursor` pointer for the `device` currently set on the
-         * specified `GdkSurface`.
+         * Retrieves a {@link Gdk.Cursor} pointer for the `device` currently set on the
+         * specified {@link Gdk.Surface}.
          *
-         * If the return value is %NULL then there is no custom cursor set on the
+         * If the return value is `null` then there is no custom cursor set on the
          * specified surface, and it is using the cursor for its parent surface.
          *
-         * Use [method`Gdk`.Surface.set_cursor] to unset the cursor of the surface.
-         * @param device a pointer `GdkDevice`
-         * @returns a `GdkCursor`
+         * Use {@link Gdk.Surface.set_cursor} to unset the cursor of the surface.
+         * @param device a pointer {@link Gdk.Device}
+         * @returns a {@link Gdk.Cursor}
          */
         get_device_cursor(device: Gdk.Device): Gdk.Cursor | null;
         /**
@@ -1509,13 +1604,13 @@ export namespace GdkWayland {
          *
          * The position is given in coordinates relative to the upper
          * left corner of `surface`.
-         * @param device pointer `GdkDevice` to query to
-         * @returns %TRUE if the device is over the surface
+         * @param device pointer {@link Gdk.Device} to query to
+         * @returns `true` if the device is over the surface
          */
         get_device_position(device: Gdk.Device): [boolean, number, number, Gdk.ModifierType | null];
         /**
-         * Gets the `GdkDisplay` associated with a `GdkSurface`.
-         * @returns the `GdkDisplay` associated with @surface
+         * Gets the {@link Gdk.Display} associated with a {@link Gdk.Surface}.
+         * @returns the {@link Gdk.Display} associated with `surface`
          */
         get_display(): Gdk.Display;
         /**
@@ -1530,16 +1625,16 @@ export namespace GdkWayland {
          * Returns the height of the given `surface`.
          *
          * Surface size is reported in ”application pixels”, not
-         * ”device pixels” (see [method`Gdk`.Surface.get_scale_factor]).
-         * @returns The height of @surface
+         * ”device pixels” (see {@link Gdk.Surface.get_scale_factor}).
+         * @returns The height of `surface`
          */
         get_height(): number;
         /**
          * Checks whether the surface has been mapped.
          *
-         * A surface is mapped with [method`Gdk`.Toplevel.present]
-         * or [method`Gdk`.Popup.present].
-         * @returns %TRUE if the surface is mapped
+         * A surface is mapped with {@link Gdk.Toplevel.present}
+         * or {@link Gdk.Popup.present}.
+         * @returns `true` if the surface is mapped
          */
         get_mapped(): boolean;
         /**
@@ -1550,7 +1645,7 @@ export namespace GdkWayland {
          * buffers with a resolution that is bigger than the surface size (e.g.
          * to show the surface on a high-resolution display, or in a magnifier).
          *
-         * Compare with [method`Gdk`.Surface.get_scale_factor], which returns the
+         * Compare with {@link Gdk.Surface.get_scale_factor}, which returns the
          * next larger integer.
          *
          * The scale may change during the lifetime of the surface.
@@ -1576,8 +1671,8 @@ export namespace GdkWayland {
          * Returns the width of the given `surface`.
          *
          * Surface size is reported in ”application pixels”, not
-         * ”device pixels” (see [method`Gdk`.Surface.get_scale_factor]).
-         * @returns The width of @surface
+         * ”device pixels” (see {@link Gdk.Surface.get_scale_factor}).
+         * @returns The width of `surface`
          */
         get_width(): number;
         /**
@@ -1591,11 +1686,11 @@ export namespace GdkWayland {
         hide(): void;
         /**
          * Check to see if a surface is destroyed.
-         * @returns %TRUE if the surface is destroyed
+         * @returns `true` if the surface is destroyed
          */
         is_destroyed(): boolean;
         /**
-         * Forces a [signal`Gdk`.Surface::render] signal emission for `surface`
+         * Forces a `Gdk.Surface::render` signal emission for `surface`
          * to be scheduled.
          *
          * This function is useful for implementations that track invalid
@@ -1605,31 +1700,31 @@ export namespace GdkWayland {
         /**
          * Request a layout phase from the surface's frame clock.
          *
-         * See [method`Gdk`.FrameClock.request_phase].
+         * See {@link Gdk.FrameClock.request_phase}.
          */
         request_layout(): void;
         /**
-         * Sets the default mouse pointer for a `GdkSurface`.
+         * Sets the default mouse pointer for a {@link Gdk.Surface}.
          *
-         * Passing %NULL for the `cursor` argument means that `surface` will use
+         * Passing `null` for the `cursor` argument means that `surface` will use
          * the cursor of its parent surface. Most surfaces should use this default.
          * Note that `cursor` must be for the same display as `surface`.
          *
-         * Use [ctor`Gdk`.Cursor.new_from_name] or [ctor`Gdk`.Cursor.new_from_texture]
-         * to create the cursor. To make the cursor invisible, use %GDK_BLANK_CURSOR.
-         * @param cursor a `GdkCursor`
+         * Use {@link Gdk.Cursor.new_from_name} or {@link Gdk.Cursor.new_from_texture}
+         * to create the cursor. To make the cursor invisible, use `GDK_BLANK_CURSOR`.
+         * @param cursor a {@link Gdk.Cursor}
          */
         set_cursor(cursor?: Gdk.Cursor | null): void;
         /**
-         * Sets a specific `GdkCursor` for a given device when it gets inside `surface`.
+         * Sets a specific {@link Gdk.Cursor} for a given device when it gets inside `surface`.
          *
-         * Passing %NULL for the `cursor` argument means that `surface` will use the
+         * Passing `null` for the `cursor` argument means that `surface` will use the
          * cursor of its parent surface. Most surfaces should use this default.
          *
-         * Use [ctor`Gdk`.Cursor.new_from_name] or [ctor`Gdk`.Cursor.new_from_texture]
-         * to create the cursor. To make the cursor invisible, use %GDK_BLANK_CURSOR.
-         * @param device a pointer `GdkDevice`
-         * @param cursor a `GdkCursor`
+         * Use {@link Gdk.Cursor.new_from_name} or {@link Gdk.Cursor.new_from_texture}
+         * to create the cursor. To make the cursor invisible, use `GDK_BLANK_CURSOR`.
+         * @param device a pointer {@link Gdk.Device}
+         * @param cursor a {@link Gdk.Cursor}
          */
         set_device_cursor(device: Gdk.Device, cursor: Gdk.Cursor): void;
         /**
@@ -1645,13 +1740,13 @@ export namespace GdkWayland {
          * allows for nicely antialiased borders, and the input region
          * controls where the surface is “clickable”.
          *
-         * Use [method`Gdk`.Display.supports_input_shapes] to find out if
+         * Use {@link Gdk.Display.supports_input_shapes} to find out if
          * a particular backend supports input regions.
-         * @param region region of surface to be reactive
+         * @param region region of surface to be reactive,   or `null` to make the entire surface reactive
          */
-        set_input_region(region: cairo.Region): void;
+        set_input_region(region?: cairo.Region | null): void;
         /**
-         * Marks a region of the `GdkSurface` as opaque.
+         * Marks a region of the {@link Gdk.Surface} as opaque.
          *
          * For optimisation purposes, compositing window managers may
          * like to not draw obscured regions of surfaces, or turn off blending
@@ -1666,7 +1761,7 @@ export namespace GdkWayland {
          * is opaque, as we know where the opaque regions are. If your surface
          * background is not opaque, please update this property in your
          * [GtkWidgetClass.css_changed](../gtk4/vfunc.Widget.css_changed.html) handler.
-         * @param region a region, or %NULL to make the entire   surface opaque
+         * @param region a region, or `null` to make the entire   surface opaque
          */
         set_opaque_region(region?: cairo.Region | null): void;
         /**
@@ -1677,15 +1772,30 @@ export namespace GdkWayland {
          * @param to the target surface
          * @param x coordinates to translate
          * @param y coordinates to translate
-         * @returns %TRUE if the coordinates were successfully translated
+         * @returns `true` if the coordinates were successfully translated
          */
         translate_coordinates(to: Gdk.Surface, x: number, y: number): [boolean, number, number];
     }
 
+    /**
+     * @gir-type Alias
+     */
     type WaylandDeviceClass = typeof WaylandDevice;
+    /**
+     * @gir-type Alias
+     */
     type WaylandDisplayClass = typeof WaylandDisplay;
+    /**
+     * @gir-type Alias
+     */
     type WaylandGLContextClass = typeof WaylandGLContext;
+    /**
+     * @gir-type Alias
+     */
     type WaylandMonitorClass = typeof WaylandMonitor;
+    /**
+     * @gir-type Alias
+     */
     type WaylandSeatClass = typeof WaylandSeat;
     /**
      * Name of the imported GIR library

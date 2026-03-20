@@ -17,12 +17,18 @@ export namespace CDesktopEnums {
      * CDesktopEnums-3.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     enum BackgroundShading {
         SOLID,
         VERTICAL,
         HORIZONTAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum BackgroundStyle {
         NONE,
         WALLPAPER,
@@ -33,23 +39,35 @@ export namespace CDesktopEnums {
         SPANNED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum DeviceSendEvents {
         ENABLED,
         DISABLED,
         DISABLED_ON_EXTERNAL_MOUSE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum FocusMode {
         CLICK,
         SLOPPY,
         MOUSE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum FocusNewWindows {
         SMART,
         STRICT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum MagnifierLensShape {
         NONE,
         SQUARE,
@@ -57,6 +75,9 @@ export namespace CDesktopEnums {
         VERTICAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum MagnifierMouseTrackingMode {
         NONE,
         CENTERED,
@@ -64,6 +85,9 @@ export namespace CDesktopEnums {
         PUSH,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum MagnifierScreenPosition {
         NONE,
         FULL_SCREEN,
@@ -73,6 +97,9 @@ export namespace CDesktopEnums {
         RIGHT_HALF,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum MediaKeyType {
         MUTE,
         MUTE_QUIET,
@@ -131,6 +158,9 @@ export namespace CDesktopEnums {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum MouseDwellDirection {
         LEFT,
         RIGHT,
@@ -138,17 +168,26 @@ export namespace CDesktopEnums {
         DOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum MouseDwellMode {
         WINDOW,
         GESTURE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum NotificationScreenDisplay {
         PRIMARY_SCREEN,
         ACTIVE_SCREEN,
         FIXED_SCREEN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum PadButtonAction {
         NONE,
         HELP,
@@ -156,24 +195,36 @@ export namespace CDesktopEnums {
         KEYBINDING,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum PointerAccelProfile {
         DEFAULT,
         FLAT,
         ADAPTIVE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ProxyMode {
         NONE,
         MANUAL,
         AUTO,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ScreensaverMode {
         BLANK_ONLY,
         RANDOM,
         SINGLE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum StylusButtonAction {
         DEFAULT,
         MIDDLE,
@@ -183,11 +234,17 @@ export namespace CDesktopEnums {
         DISABLED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum TabletMapping {
         ABSOLUTE,
         RELATIVE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum TitlebarAction {
         TOGGLE_SHADE,
         TOGGLE_MAXIMIZE,
@@ -201,17 +258,26 @@ export namespace CDesktopEnums {
         MENU,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum TitlebarScrollAction {
         SHADE,
         OPACITY,
         NONE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ToolbarIconSize {
         SMALL,
         LARGE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ToolbarStyle {
         BOTH,
         BOTH_HORIZ,
@@ -219,6 +285,9 @@ export namespace CDesktopEnums {
         TEXT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum TouchpadClickMethod {
         DEFAULT,
         NONE,
@@ -226,12 +295,18 @@ export namespace CDesktopEnums {
         FINGERS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum TouchpadHandedness {
         RIGHT,
         LEFT,
         MOUSE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum VisualBellType {
         FULLSCREEN_FLASH,
         FRAME_FLASH,

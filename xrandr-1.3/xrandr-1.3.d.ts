@@ -17,30 +17,51 @@ export namespace xrandr {
      * xrandr-1.3
      */
 
+    /**
+     * @gir-type Struct
+     */
     class ScreenSize {
         static $gtype: GObject.GType<ScreenSize>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ScreenChangeNotifyEvent {
         static $gtype: GObject.GType<ScreenChangeNotifyEvent>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class NotifyEvent {
         static $gtype: GObject.GType<NotifyEvent>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ScreenResources {
         static $gtype: GObject.GType<ScreenResources>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class OutputChangeNotifyEvent {
         static $gtype: GObject.GType<OutputChangeNotifyEvent>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class CrtcChangeNotifyEvent {
         static $gtype: GObject.GType<CrtcChangeNotifyEvent>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class OutputPropertyNotifyEvent {
         static $gtype: GObject.GType<OutputPropertyNotifyEvent>;
     }

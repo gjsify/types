@@ -18,7 +18,13 @@ export namespace JSCore {
      */
 
     function EvaluateScript(): void;
+    /**
+     * @gir-type Alias
+     */
     type GlobalContextRef = unknown;
+    /**
+     * @gir-type Alias
+     */
     type ObjectRef = unknown;
     /**
      * Name of the imported GIR library

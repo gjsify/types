@@ -2,6 +2,8 @@
     "entryPoints": ["./tepl-5.d.ts"],
     "readme": "./README.md",
     "name": "Tepl-5",
-    "tsconfig": "./tsconfig.json"
+    "tsconfig": "./tsconfig.json",
+    "skipErrorChecking": true,
+    "highlightLanguages": ["typescript", "javascript", "c", "cpp", "xml", "bash", "json", "css"]
 }
 

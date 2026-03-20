@@ -26,49 +26,54 @@ export namespace PangoCairo {
 
     /**
      * Retrieves any font rendering options previously set with
-     * [func`PangoCairo`.context_set_font_options].
+     * {@link PangoCairo.context_set_font_options}.
      *
      * This function does not report options that are derived from
-     * the target surface by [func`update_context]`.
-     * @param context a `PangoContext`, from a pangocairo font map
-     * @returns the font options previously set on the   context, or %NULL if no options have been set. This value is   owned by the context and must not be modified or freed.
+     * the target surface by {@link update_context}.
+     * @param context a {@link Pango.Context}, from a pangocairo font map
+     * @returns the font options previously set on the   context, or `null` if no options have been set. This value is   owned by the context and must not be modified or freed.
+     * @since 1.10
      */
     function context_get_font_options(context: Pango.Context): cairo.FontOptions | null;
     /**
      * Gets the resolution for the context.
      *
-     * See [func`PangoCairo`.context_set_resolution]
-     * @param context a `PangoContext`, from a pangocairo font map
+     * See {@link PangoCairo.context_set_resolution}
+     * @param context a {@link Pango.Context}, from a pangocairo font map
      * @returns the resolution in "dots per inch". A negative value will   be returned if no resolution has previously been set.
+     * @since 1.10
      */
     function context_get_resolution(context: Pango.Context): number;
     /**
      * Sets the font options used when rendering text with this context.
      *
-     * These options override any options that [func`update_context]`
+     * These options override any options that {@link update_context}
      * derives from the target surface.
-     * @param context a `PangoContext`, from a pangocairo font map
-     * @param options a `cairo_font_options_t`, or %NULL to unset   any previously set options. A copy is made.
+     * @param context a {@link Pango.Context}, from a pangocairo font map
+     * @param options a `cairo_font_options_t`, or `null` to unset   any previously set options. A copy is made.
+     * @since 1.10
      */
     function context_set_font_options(context: Pango.Context, options?: cairo.FontOptions | null): void;
     /**
      * Sets the resolution for the context.
      *
-     * This is a scale factor between points specified in a `PangoFontDescription`
+     * This is a scale factor between points specified in a {@link Pango.FontDescription}
      * and Cairo units. The default value is 96, meaning that a 10 point font will
      * be 13 units high. (10 * 96. / 72. = 13.3).
-     * @param context a `PangoContext`, from a pangocairo font map
+     * @param context a {@link Pango.Context}, from a pangocairo font map
      * @param dpi the resolution in "dots per inch". (Physical inches aren't actually   involved; the terminology is conventional.) A 0 or negative value   means to use the resolution from the font map.
+     * @since 1.10
      */
     function context_set_resolution(context: Pango.Context, dpi: number): void;
     /**
      * Sets callback function for context to use for rendering attributes
-     * of type %PANGO_ATTR_SHAPE.
+     * of type {@link Pango.AttrType.SHAPE}.
      *
-     * See `PangoCairoShapeRendererFunc` for details.
-     * @param context a `PangoContext`, from a pangocairo font map
-     * @param func Callback function for rendering attributes of   type %PANGO_ATTR_SHAPE, or %NULL to disable shape rendering.
-     * @param dnotify Callback that will be called when the   context is freed to release @data
+     * See {@link PangoCairo.ShapeRendererFunc} for details.
+     * @param context a {@link Pango.Context}, from a pangocairo font map
+     * @param func Callback function for rendering attributes of   type {@link Pango.AttrType.SHAPE}, or `null` to disable shape rendering.
+     * @param dnotify Callback that will be called when the   context is freed to release `data`
+     * @since 1.18
      */
     function context_set_shape_renderer(
         context: Pango.Context,
@@ -80,14 +85,15 @@ export namespace PangoCairo {
      * and target surface of the Cairo context.
      *
      * This context can then be
-     * used to create a layout using [ctor`Pango`.Layout.new].
+     * used to create a layout using {@link Pango.Layout.new}.
      *
      * This function is a convenience function that creates a context using
      * the default font map, then updates it to `cr`. If you just need to
-     * create a layout for use with `cr` and do not need to access `PangoContext`
-     * directly, you can use [func`create_layout]` instead.
+     * create a layout for use with `cr` and do not need to access {@link Pango.Context}
+     * directly, you can use {@link create_layout} instead.
      * @param cr a Cairo context
-     * @returns the newly created `PangoContext`
+     * @returns the newly created {@link Pango.Context}
+     * @since 1.22
      */
     function create_context(cr: cairo.Context): Pango.Context;
     /**
@@ -95,16 +101,17 @@ export namespace PangoCairo {
      * and target surface of the Cairo context.
      *
      * This layout can then be used for text measurement with functions
-     * like [method`Pango`.Layout.get_size] or drawing with functions like
-     * [func`show_layout]`. If you change the transformation or target
-     * surface for `cr,` you need to call [func`update_layout]`.
+     * like {@link Pango.Layout.get_size} or drawing with functions like
+     * {@link show_layout}. If you change the transformation or target
+     * surface for `cr`, you need to call {@link update_layout}.
      *
      * This function is the most convenient way to use Cairo with Pango,
      * however it is slightly inefficient since it creates a separate
-     * `PangoContext` object for each layout. This might matter in an
+     * {@link Pango.Context} object for each layout. This might matter in an
      * application that was laying out large amounts of text.
      * @param cr a Cairo context
-     * @returns the newly created `PangoLayout`
+     * @returns the newly created {@link Pango.Layout}
+     * @since 1.10
      */
     function create_layout(cr: cairo.Context): Pango.Layout;
     /**
@@ -119,18 +126,19 @@ export namespace PangoCairo {
      * @param y The Y coordinate of one corner of the rectangle
      * @param width Non-negative width of the rectangle
      * @param height Non-negative height of the rectangle
+     * @since 1.14
      */
     function error_underline_path(cr: cairo.Context, x: number, y: number, width: number, height: number): void;
     /**
-     * Gets a default `PangoCairoFontMap` to use with Cairo.
+     * Gets a default {@link PangoCairo.FontMap} to use with Cairo.
      *
      * Note that the type of the returned object will depend on the
      * particular font backend Cairo was compiled to use; you generally
-     * should only use the `PangoFontMap` and `PangoCairoFontMap`
+     * should only use the {@link Pango.FontMap} and {@link PangoCairo.FontMap}
      * interfaces on the returned object.
      *
      * The default Cairo fontmap can be changed by using
-     * [method`PangoCairo`.FontMap.set_default]. This can be used to
+     * {@link PangoCairo.FontMap.set_default}. This can be used to
      * change the Cairo font backend that the default fontmap uses
      * for example.
      *
@@ -138,38 +146,41 @@ export namespace PangoCairo {
      * Each thread gets its own default fontmap. In this way, PangoCairo
      * can be used safely from multiple threads.
      * @returns the default PangoCairo fontmap  for the current thread. This object is owned by Pango and must  not be freed.
+     * @since 1.10
      */
     function font_map_get_default(): Pango.FontMap;
     /**
-     * Creates a new `PangoCairoFontMap` object.
+     * Creates a new {@link PangoCairo.FontMap} object.
      *
      * A fontmap is used to cache information about available fonts,
      * and holds certain global parameters such as the resolution.
-     * In most cases, you can use `func`PangoCairo`.font_map_get_default]
+     * In most cases, you can use `func@PangoCairo.font_map_get_default]
      * instead.
      *
      * Note that the type of the returned object will depend
      * on the particular font backend Cairo was compiled to use;
-     * You generally should only use the `PangoFontMap` and
-     * `PangoCairoFontMap` interfaces on the returned object.
+     * You generally should only use the {@link Pango.FontMap} and
+     * {@link PangoCairo.FontMap} interfaces on the returned object.
      *
      * You can override the type of backend returned by using an
-     * environment variable %PANGOCAIRO_BACKEND. Supported types,
+     * environment variable `PANGOCAIRO_BACKEND`. Supported types,
      * based on your build, are fc (fontconfig), win32, and coretext.
      * If requested type is not available, NULL is returned. Ie.
      * this is only useful for testing, when at least two backends
      * are compiled in.
-     * @returns the newly allocated `PangoFontMap`,   which should be freed with g_object_unref().
+     * @returns the newly allocated {@link Pango.FontMap},   which should be freed with `g_object_unref()`.
+     * @since 1.10
      */
     function font_map_new(): Pango.FontMap;
     /**
-     * Creates a new `PangoCairoFontMap` object of the type suitable
+     * Creates a new {@link PangoCairo.FontMap} object of the type suitable
      * to be used with cairo font backend of type `fonttype`.
      *
-     * In most cases one should simply use [func`PangoCairo`.FontMap.new], or
-     * in fact in most of those cases, just use [func`PangoCairo`.FontMap.get_default].
-     * @param fonttype desired #cairo_font_type_t
-     * @returns the newly allocated   `PangoFontMap` of suitable type which should be freed with   g_object_unref(), or %NULL if the requested cairo font backend   is not supported / compiled in.
+     * In most cases one should simply use {@link PangoCairo.FontMap.new}, or
+     * in fact in most of those cases, just use {@link PangoCairo.FontMap.get_default}.
+     * @param fonttype desired {@link cairo.FontType}
+     * @returns the newly allocated   {@link Pango.FontMap} of suitable type which should be freed with   `g_object_unref()`, or `null` if the requested cairo font backend   is not supported / compiled in.
+     * @since 1.18
      */
     function font_map_new_for_font_type(fonttype: cairo.FontType | null): Pango.FontMap | null;
     /**
@@ -179,28 +190,31 @@ export namespace PangoCairo {
      * The origin of the glyphs (the left edge of the baseline)
      * will be at the current point of the cairo context.
      * @param cr a Cairo context
-     * @param font a `PangoFont` from a `PangoCairoFontMap`
-     * @param glyphs a `PangoGlyphString`
+     * @param font a {@link Pango.Font} from a {@link PangoCairo.FontMap}
+     * @param glyphs a {@link Pango.GlyphString}
+     * @since 1.10
      */
     function glyph_string_path(cr: cairo.Context, font: Pango.Font, glyphs: Pango.GlyphString): void;
     /**
-     * Adds the text in `PangoLayoutLine` to the current path in the
+     * Adds the text in {@link Pango.LayoutLine} to the current path in the
      * specified cairo context.
      *
      * The origin of the glyphs (the left edge of the line) will be
      * at the current point of the cairo context.
      * @param cr a Cairo context
-     * @param line a `PangoLayoutLine`
+     * @param line a {@link Pango.LayoutLine}
+     * @since 1.10
      */
     function layout_line_path(cr: cairo.Context, line: Pango.LayoutLine): void;
     /**
-     * Adds the text in a `PangoLayout` to the current path in the
+     * Adds the text in a {@link Pango.Layout} to the current path in the
      * specified cairo context.
      *
-     * The top-left corner of the `PangoLayout` will be at the
+     * The top-left corner of the {@link Pango.Layout} will be at the
      * current point of the cairo context.
      * @param cr a Cairo context
      * @param layout a Pango layout
+     * @since 1.10
      */
     function layout_path(cr: cairo.Context, layout: Pango.Layout): void;
     /**
@@ -216,6 +230,7 @@ export namespace PangoCairo {
      * @param y The Y coordinate of one corner of the rectangle
      * @param width Non-negative width of the rectangle
      * @param height Non-negative height of the rectangle
+     * @since 1.14
      */
     function show_error_underline(cr: cairo.Context, x: number, y: number, width: number, height: number): void;
     /**
@@ -223,7 +238,7 @@ export namespace PangoCairo {
      *
      * embedding the text associated with the glyphs in the output if the
      * output format supports it (PDF for example), otherwise it acts
-     * similar to [func`show_glyph_string]`.
+     * similar to {@link show_glyph_string}.
      *
      * The origin of the glyphs (the left edge of the baseline) will
      * be drawn at the current point of the cairo context.
@@ -231,8 +246,9 @@ export namespace PangoCairo {
      * Note that `text` is the start of the text for layout, which is then
      * indexed by `glyph_item->item->offset`.
      * @param cr a Cairo context
-     * @param text the UTF-8 text that @glyph_item refers to
-     * @param glyph_item a `PangoGlyphItem`
+     * @param text the UTF-8 text that `glyph_item` refers to
+     * @param glyph_item a {@link Pango.GlyphItem}
+     * @since 1.22
      */
     function show_glyph_item(cr: cairo.Context, text: string, glyph_item: Pango.GlyphItem): void;
     /**
@@ -241,47 +257,55 @@ export namespace PangoCairo {
      * The origin of the glyphs (the left edge of the baseline) will
      * be drawn at the current point of the cairo context.
      * @param cr a Cairo context
-     * @param font a `PangoFont` from a `PangoCairoFontMap`
-     * @param glyphs a `PangoGlyphString`
+     * @param font a {@link Pango.Font} from a {@link PangoCairo.FontMap}
+     * @param glyphs a {@link Pango.GlyphString}
+     * @since 1.10
      */
     function show_glyph_string(cr: cairo.Context, font: Pango.Font, glyphs: Pango.GlyphString): void;
     /**
-     * Draws a `PangoLayout` in the specified cairo context.
+     * Draws a {@link Pango.Layout} in the specified cairo context.
      *
-     * The top-left corner of the `PangoLayout` will be drawn
+     * The top-left corner of the {@link Pango.Layout} will be drawn
      * at the current point of the cairo context.
      * @param cr a Cairo context
      * @param layout a Pango layout
+     * @since 1.10
      */
     function show_layout(cr: cairo.Context, layout: Pango.Layout): void;
     /**
-     * Draws a `PangoLayoutLine` in the specified cairo context.
+     * Draws a {@link Pango.LayoutLine} in the specified cairo context.
      *
      * The origin of the glyphs (the left edge of the line) will
      * be drawn at the current point of the cairo context.
      * @param cr a Cairo context
-     * @param line a `PangoLayoutLine`
+     * @param line a {@link Pango.LayoutLine}
+     * @since 1.10
      */
     function show_layout_line(cr: cairo.Context, line: Pango.LayoutLine): void;
     /**
-     * Updates a `PangoContext` previously created for use with Cairo to
+     * Updates a {@link Pango.Context} previously created for use with Cairo to
      * match the current transformation and target surface of a Cairo
      * context.
      *
      * If any layouts have been created for the context, it's necessary
-     * to call [method`Pango`.Layout.context_changed] on those layouts.
+     * to call {@link Pango.Layout.context_changed} on those layouts.
      * @param cr a Cairo context
-     * @param context a `PangoContext`, from a pangocairo font map
+     * @param context a {@link Pango.Context}, from a pangocairo font map
+     * @since 1.10
      */
     function update_context(cr: cairo.Context, context: Pango.Context): void;
     /**
-     * Updates the private `PangoContext` of a `PangoLayout` created with
-     * [func`create_layout]` to match the current transformation and target
+     * Updates the private {@link Pango.Context} of a {@link Pango.Layout} created with
+     * {@link create_layout} to match the current transformation and target
      * surface of a Cairo context.
      * @param cr a Cairo context
-     * @param layout a `PangoLayout`, from [func@create_layout]
+     * @param layout a {@link Pango.Layout}, from {@link create_layout}
+     * @since 1.10
      */
     function update_layout(cr: cairo.Context, layout: Pango.Layout): void;
+    /**
+     * @gir-type Callback
+     */
     interface ShapeRendererFunc {
         (cr: cairo.Context, attr: Pango.AttrShape, do_path: boolean): void;
     }
@@ -295,14 +319,23 @@ export namespace PangoCairo {
         $gtype: GObject.GType<Font>;
         prototype: Font;
     }
+    /**
+     * {@link PangoCairo.Font} is an interface exported by fonts for
+     * use with Cairo.
+     *
+     * The actual type of the font will depend on the particular
+     * font technology Cairo was compiled to use.
+     * @gir-type Interface
+     * @since 1.18
+     */
     interface Font extends Pango.Font {
         // Methods
 
         /**
          * Gets the `cairo_scaled_font_t` used by `font`.
          * The scaled font can be referenced and kept using
-         * cairo_scaled_font_reference().
-         * @returns the `cairo_scaled_font_t`   used by @font
+         * `cairo_scaled_font_reference()`.
+         * @returns the `cairo_scaled_font_t`   used by `font`
          */
         get_scaled_font(): cairo.ScaledFont | null;
     }
@@ -322,15 +355,15 @@ export namespace PangoCairo {
         prototype: FontMap;
 
         /**
-         * Gets a default `PangoCairoFontMap` to use with Cairo.
+         * Gets a default {@link PangoCairo.FontMap} to use with Cairo.
          *
          * Note that the type of the returned object will depend on the
          * particular font backend Cairo was compiled to use; you generally
-         * should only use the `PangoFontMap` and `PangoCairoFontMap`
+         * should only use the {@link Pango.FontMap} and {@link PangoCairo.FontMap}
          * interfaces on the returned object.
          *
          * The default Cairo fontmap can be changed by using
-         * [method`PangoCairo`.FontMap.set_default]. This can be used to
+         * {@link PangoCairo.FontMap.set_default}. This can be used to
          * change the Cairo font backend that the default fontmap uses
          * for example.
          *
@@ -340,20 +373,20 @@ export namespace PangoCairo {
          */
         get_default(): Pango.FontMap;
         /**
-         * Creates a new `PangoCairoFontMap` object.
+         * Creates a new {@link PangoCairo.FontMap} object.
          *
          * A fontmap is used to cache information about available fonts,
          * and holds certain global parameters such as the resolution.
-         * In most cases, you can use `func`PangoCairo`.font_map_get_default]
+         * In most cases, you can use `func@PangoCairo.font_map_get_default]
          * instead.
          *
          * Note that the type of the returned object will depend
          * on the particular font backend Cairo was compiled to use;
-         * You generally should only use the `PangoFontMap` and
-         * `PangoCairoFontMap` interfaces on the returned object.
+         * You generally should only use the {@link Pango.FontMap} and
+         * {@link PangoCairo.FontMap} interfaces on the returned object.
          *
          * You can override the type of backend returned by using an
-         * environment variable %PANGOCAIRO_BACKEND. Supported types,
+         * environment variable `PANGOCAIRO_BACKEND`. Supported types,
          * based on your build, are fc (fontconfig), win32, and coretext.
          * If requested type is not available, NULL is returned. Ie.
          * this is only useful for testing, when at least two backends
@@ -361,15 +394,24 @@ export namespace PangoCairo {
          */
         ['new'](): Pango.FontMap;
         /**
-         * Creates a new `PangoCairoFontMap` object of the type suitable
+         * Creates a new {@link PangoCairo.FontMap} object of the type suitable
          * to be used with cairo font backend of type `fonttype`.
          *
-         * In most cases one should simply use [func`PangoCairo`.FontMap.new], or
-         * in fact in most of those cases, just use [func`PangoCairo`.FontMap.get_default].
-         * @param fonttype desired #cairo_font_type_t
+         * In most cases one should simply use {@link PangoCairo.FontMap.new}, or
+         * in fact in most of those cases, just use {@link PangoCairo.FontMap.get_default}.
+         * @param fonttype desired {@link cairo.FontType}
          */
         new_for_font_type(fonttype: cairo.FontType): Pango.FontMap | null;
     }
+    /**
+     * {@link PangoCairo.FontMap} is an interface exported by font maps for
+     * use with Cairo.
+     *
+     * The actual type of the font map will depend on the particular
+     * font technology Cairo was compiled to use.
+     * @gir-type Interface
+     * @since 1.10
+     */
     interface FontMap extends Pango.FontMap {
         // Methods
 
@@ -381,12 +423,12 @@ export namespace PangoCairo {
         /**
          * Gets the resolution for the fontmap.
          *
-         * See [method`PangoCairo`.FontMap.set_resolution].
+         * See {@link PangoCairo.FontMap.set_resolution}.
          * @returns the resolution in "dots per inch"
          */
         get_resolution(): number;
         /**
-         * Sets a default `PangoCairoFontMap` to use with Cairo.
+         * Sets a default {@link PangoCairo.FontMap} to use with Cairo.
          *
          * This can be used to change the Cairo font backend that the
          * default fontmap uses for example. The old default font map
@@ -396,18 +438,18 @@ export namespace PangoCairo {
          * This function only changes the default fontmap for
          * the current thread. Default fontmaps of existing threads
          * are not changed. Default fontmaps of any new threads will
-         * still be created using [func`PangoCairo`.FontMap.new].
+         * still be created using {@link PangoCairo.FontMap.new}.
          *
-         * A value of %NULL for `fontmap` will cause the current default
+         * A value of `null` for `fontmap` will cause the current default
          * font map to be released and a new default font map to be created
-         * on demand, using [func`PangoCairo`.FontMap.new].
+         * on demand, using {@link PangoCairo.FontMap.new}.
          */
         set_default(): void;
         /**
          * Sets the resolution for the fontmap.
          *
          * This is a scale factor between
-         * points specified in a `PangoFontDescription` and Cairo units. The
+         * points specified in a {@link Pango.FontDescription} and Cairo units. The
          * default value is 96, meaning that a 10 point font will be 13
          * units high. (10 * 96. / 72. = 13.3).
          * @param dpi the resolution in "dots per inch". (Physical inches aren't actually   involved; the terminology is conventional.)

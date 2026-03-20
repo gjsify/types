@@ -29,76 +29,250 @@ export namespace Gucharmap {
      * Gucharmap-2.90
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CharmapPageType {
         export const $gtype: GObject.GType<CharmapPageType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum CharmapPageType {
+        /**
+         * Character table page
+         */
         CHARTABLE,
+        /**
+         * Character detail page
+         */
         DETAILS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UnicodeVersion {
         export const $gtype: GObject.GType<UnicodeVersion>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum UnicodeVersion {
+        /**
+         * Unassigned Unicode version
+         */
         UNASSIGNED,
+        /**
+         * Unicode version 1.1
+         */
         '1_1',
+        /**
+         * Unicode version 2.0
+         */
         '2_0',
+        /**
+         * Unicode version 2.1
+         */
         '2_1',
+        /**
+         * Unicode version 3.0
+         */
         '3_0',
+        /**
+         * Unicode version 3.1
+         */
         '3_1',
+        /**
+         * Unicode version 3.2
+         */
         '3_2',
+        /**
+         * Unicode version 4.0
+         */
         '4_0',
+        /**
+         * Unicode version 4.1
+         */
         '4_1',
+        /**
+         * Unicode version 5.0
+         */
         '5_0',
+        /**
+         * Unicode version 5.1
+         */
         '5_1',
+        /**
+         * Unicode version 5.2
+         */
         '5_2',
+        /**
+         * Unicode version 6.0
+         */
         '6_0',
+        /**
+         * Unicode version 6.1
+         */
         '6_1',
+        /**
+         * Unicode version 6.2
+         */
         '6_2',
+        /**
+         * Unicode version 6.3
+         */
         '6_3',
+        /**
+         * Unicode version 7.0
+         */
         '7_0',
+        /**
+         * Unicode version 8.0
+         */
         '8_0',
+        /**
+         * Unicode version 9.0
+         */
         '9_0',
+        /**
+         * Unicode version 10.0
+         */
         '10_0',
+        /**
+         * Unicode version 11.0
+         */
         '11_0',
+        /**
+         * Unicode version 12.0
+         */
         '12_0',
+        /**
+         * Unicode version 12.1
+         */
         '12_1',
+        /**
+         * Unicode version 13.0
+         */
         '13_0',
+        /**
+         * Unicode version 14.0
+         */
         '14_0',
+        /**
+         * Unicode version 15.0
+         */
         '15_0',
+        /**
+         * Unicode version 15.1
+         */
         '15_1',
+        /**
+         * Unicode version 16.0
+         */
+        '16_0',
+        /**
+         * Unicode version 17.0
+         */
+        '17_0',
+        /**
+         * Latest Unicode version
+         */
         LATEST,
     }
 
     const VERSION_MAJOR: number;
     const VERSION_MICRO: number;
     const VERSION_MINOR: number;
+    /**
+     * @param uc
+     */
     function get_nameslist_exes(uc: string): string;
+    /**
+     * @param uc
+     */
     function get_unicode_category_name(uc: string): string;
+    /**
+     * @param uc
+     */
     function get_unicode_data_name(uc: string): string;
     function get_unicode_data_name_count(): number;
+    /**
+     * @param uc
+     */
     function get_unicode_kCantonese(uc: string): string;
+    /**
+     * @param uc
+     */
     function get_unicode_kDefinition(uc: string): string;
+    /**
+     * @param uc
+     */
     function get_unicode_kHangul(uc: string): string;
+    /**
+     * @param uc
+     */
     function get_unicode_kJapaneseKun(uc: string): string;
+    /**
+     * @param uc
+     */
     function get_unicode_kJapaneseOn(uc: string): string;
+    /**
+     * @param uc
+     */
     function get_unicode_kKorean(uc: string): string;
+    /**
+     * @param uc
+     */
     function get_unicode_kMandarin(uc: string): string;
+    /**
+     * @param uc
+     */
     function get_unicode_kTang(uc: string): string;
+    /**
+     * @param uc
+     */
     function get_unicode_kVietnamese(uc: string): string;
+    /**
+     * @param uc
+     */
     function get_unicode_name(uc: string): string;
+    /**
+     * @param uc
+     */
     function get_unicode_version(uc: string): UnicodeVersion;
     function get_unihan_count(): number;
+    /**
+     * @param uc
+     */
     function unichar_isdefined(uc: string): boolean;
+    /**
+     * @param uc
+     */
     function unichar_isgraph(uc: string): boolean;
+    /**
+     * @param uc
+     * @param outbuf
+     */
     function unichar_to_printable_utf8(uc: string, outbuf: string): number;
+    /**
+     * @param uc
+     */
     function unichar_type(uc: string): GLib.UnicodeType;
+    /**
+     * @param uc
+     */
     function unichar_validate(uc: string): boolean;
     function unicode_get_locale_character(): string;
+    /**
+     * @param wc
+     */
     function unicode_get_script_for_char(wc: string): string;
+    /**
+     * @param version
+     */
     function unicode_version_to_string(version: UnicodeVersion | null): string;
     namespace BlockChaptersModel {
         // Signal signatures
@@ -116,6 +290,9 @@ export namespace Gucharmap {
                 Gtk.TreeSortable.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class BlockChaptersModel
         extends ChaptersModel
         implements Gtk.Buildable, Gtk.TreeDragDest, Gtk.TreeDragSource, Gtk.TreeModel, Gtk.TreeSortable
@@ -141,23 +318,24 @@ export namespace Gucharmap {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BlockChaptersModel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BlockChaptersModel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BlockChaptersModel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BlockChaptersModel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BlockChaptersModel.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BlockChaptersModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -171,32 +349,32 @@ export namespace Gucharmap {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -205,39 +383,39 @@ export namespace Gucharmap {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -248,13 +426,16 @@ export namespace Gucharmap {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -262,7 +443,7 @@ export namespace Gucharmap {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -270,9 +451,9 @@ export namespace Gucharmap {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -292,9 +473,9 @@ export namespace Gucharmap {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -307,34 +488,34 @@ export namespace Gucharmap {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -367,22 +548,22 @@ export namespace Gucharmap {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -391,8 +572,8 @@ export namespace Gucharmap {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -409,10 +590,10 @@ export namespace Gucharmap {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -427,13 +608,13 @@ export namespace Gucharmap {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -464,21 +645,21 @@ export namespace Gucharmap {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -488,33 +669,34 @@ export namespace Gucharmap {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -523,6 +705,7 @@ export namespace Gucharmap {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -531,12 +714,14 @@ export namespace Gucharmap {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -545,20 +730,22 @@ export namespace Gucharmap {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -570,6 +757,7 @@ export namespace Gucharmap {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -582,6 +770,9 @@ export namespace Gucharmap {
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+        /**
+         * @param args
+         */
         // Conflicted with Gtk.ListStore.set
         set(...args: never[]): any;
         /**
@@ -618,14 +809,29 @@ export namespace Gucharmap {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class BlockCodepointList extends CodepointList {
         static $gtype: GObject.GType<BlockCodepointList>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get first_codepoint(): number;
+        /**
+         * @construct-only
+         */
         get firstCodepoint(): number;
+        /**
+         * @construct-only
+         */
         get last_codepoint(): number;
+        /**
+         * @construct-only
+         */
         get lastCodepoint(): number;
 
         /**
@@ -647,16 +853,19 @@ export namespace Gucharmap {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BlockCodepointList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BlockCodepointList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BlockCodepointList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BlockCodepointList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BlockCodepointList.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BlockCodepointList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -680,6 +889,9 @@ export namespace Gucharmap {
                 Gtk.TreeSortable.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ChaptersModel
         extends Gtk.ListStore
         implements Gtk.Buildable, Gtk.TreeDragDest, Gtk.TreeDragSource, Gtk.TreeModel, Gtk.TreeSortable
@@ -703,16 +915,19 @@ export namespace Gucharmap {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ChaptersModel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ChaptersModel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ChaptersModel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ChaptersModel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ChaptersModel.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ChaptersModel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -721,38 +936,49 @@ export namespace Gucharmap {
 
         // Virtual methods
 
+        /**
+         * @param wc
+         * @param iter
+         * @virtual
+         */
         vfunc_character_to_iter(wc: string, iter: Gtk.TreeIter): boolean;
 
         // Methods
 
+        /**
+         * @param wc
+         * @param iter
+         */
         character_to_iter(wc: string, iter: Gtk.TreeIter): boolean;
         get_title(): string;
+        /**
+         * @param id
+         * @param _iter
+         */
         id_to_iter(id: string, _iter: Gtk.TreeIter): boolean;
-
-        // Inherited methods
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
-         * @param builder a #GtkBuilder
+         * @param builder a {@link Gtk.Builder}
          * @param child child to add
-         * @param type kind of child or %NULL
+         * @param type kind of child or `null`
          */
         add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
         /**
          * Constructs a child of `buildable` with the name `name`.
          *
-         * #GtkBuilder calls this function if a “constructor” has been
+         * {@link Gtk.Builder} calls this function if a “constructor” has been
          * specified in the UI definition.
-         * @param builder #GtkBuilder used to construct this object
+         * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
          * @returns the constructed child
          */
         construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
         /**
-         * This is similar to gtk_buildable_parser_finished() but is
+         * This is similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
-         * @param builder a #GtkBuilder
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder}
+         * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
          */
@@ -760,18 +986,18 @@ export namespace Gucharmap {
         /**
          * This is called at the end of each custom element handled by
          * the buildable.
-         * @param builder #GtkBuilder used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
          */
         custom_tag_end(builder: Gtk.Builder, child: GObject.Object | null, tagname: string, data?: any | null): void;
         /**
          * This is called for each unknown element under `<child>`.
-         * @param builder a #GtkBuilder used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
-         * @returns %TRUE if a object has a custom implementation, %FALSE          if it doesn't.
+         * @returns `true` if a object has a custom implementation, `false`          if it doesn't.
          */
         custom_tag_start(
             builder: Gtk.Builder,
@@ -780,7 +1006,7 @@ export namespace Gucharmap {
         ): [boolean, GLib.MarkupParser, any];
         /**
          * Get the internal child called `childname` of the `buildable` object.
-         * @param builder a #GtkBuilder
+         * @param builder a {@link Gtk.Builder}
          * @param childname name of child
          * @returns the internal child of the buildable object
          */
@@ -788,24 +1014,24 @@ export namespace Gucharmap {
         /**
          * Gets the name of the `buildable` object.
          *
-         * #GtkBuilder sets the name based on the
+         * {@link Gtk.Builder} sets the name based on the
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
-         * @returns the name set with gtk_buildable_set_name()
+         * @returns the name set with `gtk_buildable_set_name()`
          */
         get_name(): string;
         /**
          * Called when the builder finishes the parsing of a
          * [GtkBuilder UI definition][BUILDER-UI].
          * Note that this will be called once for each time
-         * gtk_builder_add_from_file() or gtk_builder_add_from_string()
+         * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
-         * @param builder a #GtkBuilder
+         * @param builder a {@link Gtk.Builder}
          */
         parser_finished(builder: Gtk.Builder): void;
         /**
          * Sets the property name `name` to `value` on the `buildable` object.
-         * @param builder a #GtkBuilder
+         * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
          */
@@ -818,27 +1044,30 @@ export namespace Gucharmap {
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
-         * @param builder a #GtkBuilder
+         * @param builder a {@link Gtk.Builder}
          * @param child child to add
-         * @param type kind of child or %NULL
+         * @param type kind of child or `null`
+         * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
         /**
          * Constructs a child of `buildable` with the name `name`.
          *
-         * #GtkBuilder calls this function if a “constructor” has been
+         * {@link Gtk.Builder} calls this function if a “constructor” has been
          * specified in the UI definition.
-         * @param builder #GtkBuilder used to construct this object
+         * @param builder {@link Gtk.Builder} used to construct this object
          * @param name name of child to construct
+         * @virtual
          */
         vfunc_construct_child<T = GObject.Object>(builder: Gtk.Builder, name: string): T;
         /**
-         * This is similar to gtk_buildable_parser_finished() but is
+         * This is similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
-         * @param builder a #GtkBuilder
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder}
+         * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @virtual
          */
         vfunc_custom_finished(
             builder: Gtk.Builder,
@@ -849,10 +1078,11 @@ export namespace Gucharmap {
         /**
          * This is called at the end of each custom element handled by
          * the buildable.
-         * @param builder #GtkBuilder used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @virtual
          */
         vfunc_custom_tag_end(
             builder: Gtk.Builder,
@@ -862,9 +1092,10 @@ export namespace Gucharmap {
         ): void;
         /**
          * This is called for each unknown element under `<child>`.
-         * @param builder a #GtkBuilder used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @virtual
          */
         vfunc_custom_tag_start(
             builder: Gtk.Builder,
@@ -873,148 +1104,158 @@ export namespace Gucharmap {
         ): [boolean, GLib.MarkupParser, any];
         /**
          * Get the internal child called `childname` of the `buildable` object.
-         * @param builder a #GtkBuilder
+         * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
         /**
          * Gets the name of the `buildable` object.
          *
-         * #GtkBuilder sets the name based on the
+         * {@link Gtk.Builder} sets the name based on the
          * [GtkBuilder UI definition][BUILDER-UI]
          * used to construct the `buildable`.
+         * @virtual
          */
         vfunc_get_name(): string;
         /**
          * Called when the builder finishes the parsing of a
          * [GtkBuilder UI definition][BUILDER-UI].
          * Note that this will be called once for each time
-         * gtk_builder_add_from_file() or gtk_builder_add_from_string()
+         * `gtk_builder_add_from_file()` or `gtk_builder_add_from_string()`
          * is called on a builder.
-         * @param builder a #GtkBuilder
+         * @param builder a {@link Gtk.Builder}
+         * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
         /**
          * Sets the property name `name` to `value` on the `buildable` object.
-         * @param builder a #GtkBuilder
+         * @param builder a {@link Gtk.Builder}
          * @param name name of property
          * @param value value of property
+         * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
         /**
          * Sets the name of the `buildable` object.
          * @param name name to set
+         * @virtual
          */
         vfunc_set_name(name: string): void;
         /**
-         * Asks the #GtkTreeDragDest to insert a row before the path `dest,`
+         * Asks the {@link Gtk.TreeDragDest} to insert a row before the path `dest`,
          * deriving the contents of the row from `selection_data`. If `dest` is
-         * outside the tree so that inserting before it is impossible, %FALSE
-         * will be returned. Also, %FALSE may be returned if the new row is
+         * outside the tree so that inserting before it is impossible, `false`
+         * will be returned. Also, `false` may be returned if the new row is
          * not created for some model-specific reason.  Should robustly handle
          * a `dest` no longer found in the model!
          * @param dest row to drop in front of
          * @param selection_data data to drop
-         * @returns whether a new row was created before position @dest
+         * @returns whether a new row was created before position `dest`
          */
         drag_data_received(dest: Gtk.TreePath, selection_data: Gtk.SelectionData): boolean;
         /**
-         * Determines whether a drop is possible before the given `dest_path,`
+         * Determines whether a drop is possible before the given `dest_path`,
          * at the same depth as `dest_path`. i.e., can we drop the data in
          * `selection_data` at that location. `dest_path` does not have to
-         * exist; the return value will almost certainly be %FALSE if the
+         * exist; the return value will almost certainly be `false` if the
          * parent of `dest_path` doesn’t exist, though.
          * @param dest_path destination row
          * @param selection_data the data being dragged
-         * @returns %TRUE if a drop is possible before @dest_path
+         * @returns `true` if a drop is possible before `dest_path`
          */
         row_drop_possible(dest_path: Gtk.TreePath, selection_data: Gtk.SelectionData): boolean;
         /**
-         * Asks the #GtkTreeDragDest to insert a row before the path `dest,`
+         * Asks the {@link Gtk.TreeDragDest} to insert a row before the path `dest`,
          * deriving the contents of the row from `selection_data`. If `dest` is
-         * outside the tree so that inserting before it is impossible, %FALSE
-         * will be returned. Also, %FALSE may be returned if the new row is
+         * outside the tree so that inserting before it is impossible, `false`
+         * will be returned. Also, `false` may be returned if the new row is
          * not created for some model-specific reason.  Should robustly handle
          * a `dest` no longer found in the model!
          * @param dest row to drop in front of
          * @param selection_data data to drop
+         * @virtual
          */
         vfunc_drag_data_received(dest: Gtk.TreePath, selection_data: Gtk.SelectionData): boolean;
         /**
-         * Determines whether a drop is possible before the given `dest_path,`
+         * Determines whether a drop is possible before the given `dest_path`,
          * at the same depth as `dest_path`. i.e., can we drop the data in
          * `selection_data` at that location. `dest_path` does not have to
-         * exist; the return value will almost certainly be %FALSE if the
+         * exist; the return value will almost certainly be `false` if the
          * parent of `dest_path` doesn’t exist, though.
          * @param dest_path destination row
          * @param selection_data the data being dragged
+         * @virtual
          */
         vfunc_row_drop_possible(dest_path: Gtk.TreePath, selection_data: Gtk.SelectionData): boolean;
         /**
-         * Asks the #GtkTreeDragSource to delete the row at `path,` because
-         * it was moved somewhere else via drag-and-drop. Returns %FALSE
+         * Asks the {@link Gtk.TreeDragSource} to delete the row at `path`, because
+         * it was moved somewhere else via drag-and-drop. Returns `false`
          * if the deletion fails because `path` no longer exists, or for
          * some model-specific reason. Should robustly handle a `path` no
          * longer found in the model!
          * @param path row that was being dragged
-         * @returns %TRUE if the row was successfully deleted
+         * @returns `true` if the row was successfully deleted
          */
         drag_data_delete(path: Gtk.TreePath): boolean;
         /**
-         * Asks the #GtkTreeDragSource to fill in `selection_data` with a
-         * representation of the row at `path`. `selection_data->`target gives
+         * Asks the {@link Gtk.TreeDragSource} to fill in `selection_data` with a
+         * representation of the row at `path`. `selection_data`->target gives
          * the required type of the data.  Should robustly handle a `path` no
          * longer found in the model!
          * @param path row that was dragged
-         * @param selection_data a #GtkSelectionData to fill with data                  from the dragged row
-         * @returns %TRUE if data of the required type was provided
+         * @param selection_data a {@link Gtk.SelectionData} to fill with data                  from the dragged row
+         * @returns `true` if data of the required type was provided
          */
         drag_data_get(path: Gtk.TreePath, selection_data: Gtk.SelectionData): boolean;
         /**
-         * Asks the #GtkTreeDragSource whether a particular row can be used as
+         * Asks the {@link Gtk.TreeDragSource} whether a particular row can be used as
          * the source of a DND operation. If the source doesn’t implement
          * this interface, the row is assumed draggable.
          * @param path row on which user is initiating a drag
-         * @returns %TRUE if the row can be dragged
+         * @returns `true` if the row can be dragged
          */
         row_draggable(path: Gtk.TreePath): boolean;
         /**
-         * Asks the #GtkTreeDragSource to delete the row at `path,` because
-         * it was moved somewhere else via drag-and-drop. Returns %FALSE
+         * Asks the {@link Gtk.TreeDragSource} to delete the row at `path`, because
+         * it was moved somewhere else via drag-and-drop. Returns `false`
          * if the deletion fails because `path` no longer exists, or for
          * some model-specific reason. Should robustly handle a `path` no
          * longer found in the model!
          * @param path row that was being dragged
+         * @virtual
          */
         vfunc_drag_data_delete(path: Gtk.TreePath): boolean;
         /**
-         * Asks the #GtkTreeDragSource to fill in `selection_data` with a
-         * representation of the row at `path`. `selection_data->`target gives
+         * Asks the {@link Gtk.TreeDragSource} to fill in `selection_data` with a
+         * representation of the row at `path`. `selection_data`->target gives
          * the required type of the data.  Should robustly handle a `path` no
          * longer found in the model!
          * @param path row that was dragged
-         * @param selection_data a #GtkSelectionData to fill with data                  from the dragged row
+         * @param selection_data a {@link Gtk.SelectionData} to fill with data                  from the dragged row
+         * @virtual
          */
         vfunc_drag_data_get(path: Gtk.TreePath, selection_data: Gtk.SelectionData): boolean;
         /**
-         * Asks the #GtkTreeDragSource whether a particular row can be used as
+         * Asks the {@link Gtk.TreeDragSource} whether a particular row can be used as
          * the source of a DND operation. If the source doesn’t implement
          * this interface, the row is assumed draggable.
          * @param path row on which user is initiating a drag
+         * @virtual
          */
         vfunc_row_draggable(path: Gtk.TreePath): boolean;
         /**
-         * Creates a new #GtkTreeModel, with `child_model` as the child_model
+         * Creates a new {@link Gtk.TreeModel}, with `child_model` as the child_model
          * and `root` as the virtual root.
-         * @param root A #GtkTreePath or %NULL.
-         * @returns A new #GtkTreeModel.
+         * @param root A {@link Gtk.TreePath} or `null`.
+         * @returns A new {@link Gtk.TreeModel}.
          */
         filter_new(root?: Gtk.TreePath | null): Gtk.TreeModel;
         /**
          * Calls func on each node in model in a depth-first fashion.
          *
-         * If `func` returns %TRUE, then the tree ceases to be walked,
-         * and gtk_tree_model_foreach() returns.
+         * If `func` returns `true`, then the tree ceases to be walked,
+         * and `gtk_tree_model_foreach()` returns.
          * @param func a function to be called on each row
          */
         foreach(func: Gtk.TreeModelForeachFunc): void;
@@ -1027,7 +1268,7 @@ export namespace Gucharmap {
         /**
          * Returns a set of flags supported by this interface.
          *
-         * The flags are a bitwise combination of #GtkTreeModelFlags.
+         * The flags are a bitwise combination of {@link Gtk.TreeModelFlags}.
          * The flags supported should not change during the lifetime
          * of the `tree_model`.
          * @returns the flags supported by this interface
@@ -1035,23 +1276,23 @@ export namespace Gucharmap {
         get_flags(): Gtk.TreeModelFlags;
         /**
          * Sets `iter` to a valid iterator pointing to `path`.  If `path` does
-         * not exist, `iter` is set to an invalid iterator and %FALSE is returned.
-         * @param path the #GtkTreePath-struct
-         * @returns %TRUE, if @iter was set
+         * not exist, `iter` is set to an invalid iterator and `false` is returned.
+         * @param path the {@link Gtk.TreePath}-struct
+         * @returns `true`, if `iter` was set
          */
         get_iter(path: Gtk.TreePath): [boolean, Gtk.TreeIter];
         /**
          * Initializes `iter` with the first iterator in the tree
-         * (the one at the path "0") and returns %TRUE. Returns
-         * %FALSE if the tree is empty.
-         * @returns %TRUE, if @iter was set
+         * (the one at the path "0") and returns `true`. Returns
+         * `false` if the tree is empty.
+         * @returns `true`, if `iter` was set
          */
         get_iter_first(): [boolean, Gtk.TreeIter];
         /**
-         * Sets `iter` to a valid iterator pointing to `path_string,` if it
-         * exists. Otherwise, `iter` is left invalid and %FALSE is returned.
-         * @param path_string a string representation of a #GtkTreePath-struct
-         * @returns %TRUE, if @iter was set
+         * Sets `iter` to a valid iterator pointing to `path_string`, if it
+         * exists. Otherwise, `iter` is left invalid and `false` is returned.
+         * @param path_string a string representation of a {@link Gtk.TreePath}-struct
+         * @returns `true`, if `iter` was set
          */
         get_iter_from_string(path_string: string): [boolean, Gtk.TreeIter];
         /**
@@ -1060,11 +1301,11 @@ export namespace Gucharmap {
          */
         get_n_columns(): number;
         /**
-         * Returns a newly-created #GtkTreePath-struct referenced by `iter`.
+         * Returns a newly-created {@link Gtk.TreePath}-struct referenced by `iter`.
          *
-         * This path should be freed with gtk_tree_path_free().
-         * @param iter the #GtkTreeIter-struct
-         * @returns a newly-created #GtkTreePath-struct
+         * This path should be freed with `gtk_tree_path_free()`.
+         * @param iter the {@link Gtk.TreeIter}-struct
+         * @returns a newly-created {@link Gtk.TreePath}-struct
          */
         get_path(iter: Gtk.TreeIter): Gtk.TreePath;
         /**
@@ -1073,90 +1314,90 @@ export namespace Gucharmap {
          * This string is a “:” separated list of numbers.
          * For example, “4:10:0:3” would be an acceptable
          * return value for this string.
-         * @param iter a #GtkTreeIter-struct
-         * @returns a newly-allocated string.     Must be freed with g_free().
+         * @param iter a {@link Gtk.TreeIter}-struct
+         * @returns a newly-allocated string.     Must be freed with `g_free()`.
          */
         get_string_from_iter(iter: Gtk.TreeIter): string;
         /**
          * Initializes and sets `value` to that at `column`.
          *
-         * When done with `value,` g_value_unset() needs to be called
+         * When done with `value`, `g_value_unset()` needs to be called
          * to free any allocated memory.
-         * @param iter the #GtkTreeIter-struct
+         * @param iter the {@link Gtk.TreeIter}-struct
          * @param column the column to lookup the value at
          */
         get_value(iter: Gtk.TreeIter, column: number): unknown;
         /**
          * Sets `iter` to point to the first child of `parent`.
          *
-         * If `parent` has no children, %FALSE is returned and `iter` is
+         * If `parent` has no children, `false` is returned and `iter` is
          * set to be invalid. `parent` will remain a valid node after this
          * function has been called.
          *
-         * If `parent` is %NULL returns the first node, equivalent to
+         * If `parent` is `null` returns the first node, equivalent to
          * `gtk_tree_model_get_iter_first (tree_model, iter);`
-         * @param parent the #GtkTreeIter-struct, or %NULL
-         * @returns %TRUE, if @iter has been set to the first child
+         * @param parent the {@link Gtk.TreeIter}-struct, or `null`
+         * @returns `true`, if `iter` has been set to the first child
          */
         iter_children(parent?: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
         /**
-         * Returns %TRUE if `iter` has children, %FALSE otherwise.
-         * @param iter the #GtkTreeIter-struct to test for children
-         * @returns %TRUE if @iter has children
+         * Returns `true` if `iter` has children, `false` otherwise.
+         * @param iter the {@link Gtk.TreeIter}-struct to test for children
+         * @returns `true` if `iter` has children
          */
         iter_has_child(iter: Gtk.TreeIter): boolean;
         /**
          * Returns the number of children that `iter` has.
          *
-         * As a special case, if `iter` is %NULL, then the number
+         * As a special case, if `iter` is `null`, then the number
          * of toplevel nodes is returned.
-         * @param iter the #GtkTreeIter-struct, or %NULL
-         * @returns the number of children of @iter
+         * @param iter the {@link Gtk.TreeIter}-struct, or `null`
+         * @returns the number of children of `iter`
          */
         iter_n_children(iter?: Gtk.TreeIter | null): number;
         /**
          * Sets `iter` to point to the node following it at the current level.
          *
-         * If there is no next `iter,` %FALSE is returned and `iter` is set
+         * If there is no next `iter`, `false` is returned and `iter` is set
          * to be invalid.
-         * @param iter the #GtkTreeIter-struct
-         * @returns %TRUE if @iter has been changed to the next node
+         * @param iter the {@link Gtk.TreeIter}-struct
+         * @returns `true` if `iter` has been changed to the next node
          */
         iter_next(iter: Gtk.TreeIter): boolean;
         /**
-         * Sets `iter` to be the child of `parent,` using the given index.
+         * Sets `iter` to be the child of `parent`, using the given index.
          *
          * The first index is 0. If `n` is too big, or `parent` has no children,
-         * `iter` is set to an invalid iterator and %FALSE is returned. `parent`
+         * `iter` is set to an invalid iterator and `false` is returned. `parent`
          * will remain a valid node after this function has been called. As a
-         * special case, if `parent` is %NULL, then the `n-th` root node
+         * special case, if `parent` is `null`, then the `n`-th root node
          * is set.
-         * @param parent the #GtkTreeIter-struct to get the child from, or %NULL.
+         * @param parent the {@link Gtk.TreeIter}-struct to get the child from, or `null`.
          * @param n the index of the desired child
-         * @returns %TRUE, if @parent has an @n-th child
+         * @returns `true`, if `parent` has an `n`-th child
          */
         iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
         /**
          * Sets `iter` to be the parent of `child`.
          *
          * If `child` is at the toplevel, and doesn’t have a parent, then
-         * `iter` is set to an invalid iterator and %FALSE is returned.
+         * `iter` is set to an invalid iterator and `false` is returned.
          * `child` will remain a valid node after this function has been
          * called.
          *
          * `iter` will be initialized before the lookup is performed, so `child`
          * and `iter` cannot point to the same memory location.
-         * @param child the #GtkTreeIter-struct
-         * @returns %TRUE, if @iter is set to the parent of @child
+         * @param child the {@link Gtk.TreeIter}-struct
+         * @returns `true`, if `iter` is set to the parent of `child`
          */
         iter_parent(child: Gtk.TreeIter): [boolean, Gtk.TreeIter];
         /**
          * Sets `iter` to point to the previous node at the current level.
          *
-         * If there is no previous `iter,` %FALSE is returned and `iter` is
+         * If there is no previous `iter`, `false` is returned and `iter` is
          * set to be invalid.
-         * @param iter the #GtkTreeIter-struct
-         * @returns %TRUE if @iter has been changed to the previous node
+         * @param iter the {@link Gtk.TreeIter}-struct
+         * @returns `true` if `iter` has been changed to the previous node
          */
         iter_previous(iter: Gtk.TreeIter): boolean;
         /**
@@ -1177,17 +1418,17 @@ export namespace Gucharmap {
          *
          * A model should be expected to be able to get an iter independent
          * of its reffed state.
-         * @param iter the #GtkTreeIter-struct
+         * @param iter the {@link Gtk.TreeIter}-struct
          */
         ref_node(iter: Gtk.TreeIter): void;
         /**
-         * Emits the #GtkTreeModel::row-changed signal on `tree_model`.
-         * @param path a #GtkTreePath-struct pointing to the changed row
-         * @param iter a valid #GtkTreeIter-struct pointing to the changed row
+         * Emits the {@link Gtk.TreeModel.SignalSignatures.row_changed | Gtk.TreeModel::row-changed} signal on `tree_model`.
+         * @param path a {@link Gtk.TreePath}-struct pointing to the changed row
+         * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the changed row
          */
         row_changed(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
         /**
-         * Emits the #GtkTreeModel::row-deleted signal on `tree_model`.
+         * Emits the {@link Gtk.TreeModel.SignalSignatures.row_deleted | Gtk.TreeModel::row-deleted} signal on `tree_model`.
          *
          * This should be called by models after a row has been removed.
          * The location pointed to by `path` should be the location that
@@ -1195,31 +1436,31 @@ export namespace Gucharmap {
          *
          * Nodes that are deleted are not unreffed, this means that any
          * outstanding references on the deleted node should not be released.
-         * @param path a #GtkTreePath-struct pointing to the previous location of     the deleted row
+         * @param path a {@link Gtk.TreePath}-struct pointing to the previous location of     the deleted row
          */
         row_deleted(path: Gtk.TreePath): void;
         /**
-         * Emits the #GtkTreeModel::row-has-child-toggled signal on
+         * Emits the {@link Gtk.TreeModel.SignalSignatures.row_has_child_toggled | Gtk.TreeModel::row-has-child-toggled} signal on
          * `tree_model`. This should be called by models after the child
          * state of a node changes.
-         * @param path a #GtkTreePath-struct pointing to the changed row
-         * @param iter a valid #GtkTreeIter-struct pointing to the changed row
+         * @param path a {@link Gtk.TreePath}-struct pointing to the changed row
+         * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the changed row
          */
         row_has_child_toggled(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
         /**
-         * Emits the #GtkTreeModel::row-inserted signal on `tree_model`.
-         * @param path a #GtkTreePath-struct pointing to the inserted row
-         * @param iter a valid #GtkTreeIter-struct pointing to the inserted row
+         * Emits the {@link Gtk.TreeModel.SignalSignatures.row_inserted | Gtk.TreeModel::row-inserted} signal on `tree_model`.
+         * @param path a {@link Gtk.TreePath}-struct pointing to the inserted row
+         * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the inserted row
          */
         row_inserted(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
         /**
-         * Emits the #GtkTreeModel::rows-reordered signal on `tree_model`.
+         * Emits the {@link Gtk.TreeModel.SignalSignatures.rows_reordered | Gtk.TreeModel::rows-reordered} signal on `tree_model`.
          *
          * This should be called by models when their rows have been
          * reordered.
-         * @param path a #GtkTreePath-struct pointing to the tree node whose children     have been reordered
-         * @param iter a valid #GtkTreeIter-struct pointing to the node     whose children have been reordered, or %NULL if the depth     of @path is 0
-         * @param new_order an array of integers     mapping the current position of each child to its old     position before the re-ordering,     i.e. @new_order`[newpos] = oldpos`
+         * @param path a {@link Gtk.TreePath}-struct pointing to the tree node whose children     have been reordered
+         * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the node     whose children have been reordered, or `null` if the depth     of `path` is 0
+         * @param new_order an array of integers     mapping the current position of each child to its old     position before the re-ordering,     i.e. `new_order``[newpos] = oldpos`
          */
         rows_reordered(path: Gtk.TreePath, iter: Gtk.TreeIter | null, new_order: number[]): void;
         /**
@@ -1228,115 +1469,128 @@ export namespace Gucharmap {
          * This is an optional method for models to implement.
          * To be more specific, models may ignore this call as it exists
          * primarily for performance reasons. For more information on what
-         * this means, see gtk_tree_model_ref_node().
+         * this means, see `gtk_tree_model_ref_node()`.
          *
          * Please note that nodes that are deleted are not unreffed.
-         * @param iter the #GtkTreeIter-struct
+         * @param iter the {@link Gtk.TreeIter}-struct
          */
         unref_node(iter: Gtk.TreeIter): void;
         /**
          * Returns the type of the column.
          * @param index_ the column index
+         * @virtual
          */
         vfunc_get_column_type(index_: number): GObject.GType;
         /**
          * Returns a set of flags supported by this interface.
          *
-         * The flags are a bitwise combination of #GtkTreeModelFlags.
+         * The flags are a bitwise combination of {@link Gtk.TreeModelFlags}.
          * The flags supported should not change during the lifetime
          * of the `tree_model`.
+         * @virtual
          */
         vfunc_get_flags(): Gtk.TreeModelFlags;
         /**
          * Sets `iter` to a valid iterator pointing to `path`.  If `path` does
-         * not exist, `iter` is set to an invalid iterator and %FALSE is returned.
-         * @param path the #GtkTreePath-struct
+         * not exist, `iter` is set to an invalid iterator and `false` is returned.
+         * @param path the {@link Gtk.TreePath}-struct
+         * @virtual
          */
         vfunc_get_iter(path: Gtk.TreePath): [boolean, Gtk.TreeIter];
         /**
          * Returns the number of columns supported by `tree_model`.
+         * @virtual
          */
         vfunc_get_n_columns(): number;
         /**
-         * Returns a newly-created #GtkTreePath-struct referenced by `iter`.
+         * Returns a newly-created {@link Gtk.TreePath}-struct referenced by `iter`.
          *
-         * This path should be freed with gtk_tree_path_free().
-         * @param iter the #GtkTreeIter-struct
+         * This path should be freed with `gtk_tree_path_free()`.
+         * @param iter the {@link Gtk.TreeIter}-struct
+         * @virtual
          */
         vfunc_get_path(iter: Gtk.TreeIter): Gtk.TreePath;
         /**
          * Initializes and sets `value` to that at `column`.
          *
-         * When done with `value,` g_value_unset() needs to be called
+         * When done with `value`, `g_value_unset()` needs to be called
          * to free any allocated memory.
-         * @param iter the #GtkTreeIter-struct
+         * @param iter the {@link Gtk.TreeIter}-struct
          * @param column the column to lookup the value at
+         * @virtual
          */
         vfunc_get_value(iter: Gtk.TreeIter, column: number): unknown;
         /**
          * Sets `iter` to point to the first child of `parent`.
          *
-         * If `parent` has no children, %FALSE is returned and `iter` is
+         * If `parent` has no children, `false` is returned and `iter` is
          * set to be invalid. `parent` will remain a valid node after this
          * function has been called.
          *
-         * If `parent` is %NULL returns the first node, equivalent to
+         * If `parent` is `null` returns the first node, equivalent to
          * `gtk_tree_model_get_iter_first (tree_model, iter);`
-         * @param parent the #GtkTreeIter-struct, or %NULL
+         * @param parent the {@link Gtk.TreeIter}-struct, or `null`
+         * @virtual
          */
         vfunc_iter_children(parent?: Gtk.TreeIter | null): [boolean, Gtk.TreeIter];
         /**
-         * Returns %TRUE if `iter` has children, %FALSE otherwise.
-         * @param iter the #GtkTreeIter-struct to test for children
+         * Returns `true` if `iter` has children, `false` otherwise.
+         * @param iter the {@link Gtk.TreeIter}-struct to test for children
+         * @virtual
          */
         vfunc_iter_has_child(iter: Gtk.TreeIter): boolean;
         /**
          * Returns the number of children that `iter` has.
          *
-         * As a special case, if `iter` is %NULL, then the number
+         * As a special case, if `iter` is `null`, then the number
          * of toplevel nodes is returned.
-         * @param iter the #GtkTreeIter-struct, or %NULL
+         * @param iter the {@link Gtk.TreeIter}-struct, or `null`
+         * @virtual
          */
         vfunc_iter_n_children(iter?: Gtk.TreeIter | null): number;
         /**
          * Sets `iter` to point to the node following it at the current level.
          *
-         * If there is no next `iter,` %FALSE is returned and `iter` is set
+         * If there is no next `iter`, `false` is returned and `iter` is set
          * to be invalid.
-         * @param iter the #GtkTreeIter-struct
+         * @param iter the {@link Gtk.TreeIter}-struct
+         * @virtual
          */
         vfunc_iter_next(iter: Gtk.TreeIter): boolean;
         /**
-         * Sets `iter` to be the child of `parent,` using the given index.
+         * Sets `iter` to be the child of `parent`, using the given index.
          *
          * The first index is 0. If `n` is too big, or `parent` has no children,
-         * `iter` is set to an invalid iterator and %FALSE is returned. `parent`
+         * `iter` is set to an invalid iterator and `false` is returned. `parent`
          * will remain a valid node after this function has been called. As a
-         * special case, if `parent` is %NULL, then the `n-th` root node
+         * special case, if `parent` is `null`, then the `n`-th root node
          * is set.
-         * @param parent the #GtkTreeIter-struct to get the child from, or %NULL.
+         * @param parent the {@link Gtk.TreeIter}-struct to get the child from, or `null`.
          * @param n the index of the desired child
+         * @virtual
          */
         vfunc_iter_nth_child(parent: Gtk.TreeIter | null, n: number): [boolean, Gtk.TreeIter];
         /**
          * Sets `iter` to be the parent of `child`.
          *
          * If `child` is at the toplevel, and doesn’t have a parent, then
-         * `iter` is set to an invalid iterator and %FALSE is returned.
+         * `iter` is set to an invalid iterator and `false` is returned.
          * `child` will remain a valid node after this function has been
          * called.
          *
          * `iter` will be initialized before the lookup is performed, so `child`
          * and `iter` cannot point to the same memory location.
-         * @param child the #GtkTreeIter-struct
+         * @param child the {@link Gtk.TreeIter}-struct
+         * @virtual
          */
         vfunc_iter_parent(child: Gtk.TreeIter): [boolean, Gtk.TreeIter];
         /**
          * Sets `iter` to point to the previous node at the current level.
          *
-         * If there is no previous `iter,` %FALSE is returned and `iter` is
+         * If there is no previous `iter`, `false` is returned and `iter` is
          * set to be invalid.
-         * @param iter the #GtkTreeIter-struct
+         * @param iter the {@link Gtk.TreeIter}-struct
+         * @virtual
          */
         vfunc_iter_previous(iter: Gtk.TreeIter): boolean;
         /**
@@ -1357,17 +1611,19 @@ export namespace Gucharmap {
          *
          * A model should be expected to be able to get an iter independent
          * of its reffed state.
-         * @param iter the #GtkTreeIter-struct
+         * @param iter the {@link Gtk.TreeIter}-struct
+         * @virtual
          */
         vfunc_ref_node(iter: Gtk.TreeIter): void;
         /**
-         * Emits the #GtkTreeModel::row-changed signal on `tree_model`.
-         * @param path a #GtkTreePath-struct pointing to the changed row
-         * @param iter a valid #GtkTreeIter-struct pointing to the changed row
+         * Emits the {@link Gtk.TreeModel.SignalSignatures.row_changed | Gtk.TreeModel::row-changed} signal on `tree_model`.
+         * @param path a {@link Gtk.TreePath}-struct pointing to the changed row
+         * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the changed row
+         * @virtual
          */
         vfunc_row_changed(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
         /**
-         * Emits the #GtkTreeModel::row-deleted signal on `tree_model`.
+         * Emits the {@link Gtk.TreeModel.SignalSignatures.row_deleted | Gtk.TreeModel::row-deleted} signal on `tree_model`.
          *
          * This should be called by models after a row has been removed.
          * The location pointed to by `path` should be the location that
@@ -1375,21 +1631,24 @@ export namespace Gucharmap {
          *
          * Nodes that are deleted are not unreffed, this means that any
          * outstanding references on the deleted node should not be released.
-         * @param path a #GtkTreePath-struct pointing to the previous location of     the deleted row
+         * @param path a {@link Gtk.TreePath}-struct pointing to the previous location of     the deleted row
+         * @virtual
          */
         vfunc_row_deleted(path: Gtk.TreePath): void;
         /**
-         * Emits the #GtkTreeModel::row-has-child-toggled signal on
+         * Emits the {@link Gtk.TreeModel.SignalSignatures.row_has_child_toggled | Gtk.TreeModel::row-has-child-toggled} signal on
          * `tree_model`. This should be called by models after the child
          * state of a node changes.
-         * @param path a #GtkTreePath-struct pointing to the changed row
-         * @param iter a valid #GtkTreeIter-struct pointing to the changed row
+         * @param path a {@link Gtk.TreePath}-struct pointing to the changed row
+         * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the changed row
+         * @virtual
          */
         vfunc_row_has_child_toggled(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
         /**
-         * Emits the #GtkTreeModel::row-inserted signal on `tree_model`.
-         * @param path a #GtkTreePath-struct pointing to the inserted row
-         * @param iter a valid #GtkTreeIter-struct pointing to the inserted row
+         * Emits the {@link Gtk.TreeModel.SignalSignatures.row_inserted | Gtk.TreeModel::row-inserted} signal on `tree_model`.
+         * @param path a {@link Gtk.TreePath}-struct pointing to the inserted row
+         * @param iter a valid {@link Gtk.TreeIter}-struct pointing to the inserted row
+         * @virtual
          */
         vfunc_row_inserted(path: Gtk.TreePath, iter: Gtk.TreeIter): void;
         /**
@@ -1398,62 +1657,63 @@ export namespace Gucharmap {
          * This is an optional method for models to implement.
          * To be more specific, models may ignore this call as it exists
          * primarily for performance reasons. For more information on what
-         * this means, see gtk_tree_model_ref_node().
+         * this means, see `gtk_tree_model_ref_node()`.
          *
          * Please note that nodes that are deleted are not unreffed.
-         * @param iter the #GtkTreeIter-struct
+         * @param iter the {@link Gtk.TreeIter}-struct
+         * @virtual
          */
         vfunc_unref_node(iter: Gtk.TreeIter): void;
         /**
          * Fills in `sort_column_id` and `order` with the current sort column and the
-         * order. It returns %TRUE unless the `sort_column_id` is
-         * %GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID or
-         * %GTK_TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID.
-         * @returns %TRUE if the sort column is not one of the special sort   column ids.
+         * order. It returns `true` unless the `sort_column_id` is
+         * `GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID` or
+         * `GTK_TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID`.
+         * @returns `true` if the sort column is not one of the special sort   column ids.
          */
         get_sort_column_id(): [boolean, number, Gtk.SortType];
         /**
-         * Returns %TRUE if the model has a default sort function. This is used
+         * Returns `true` if the model has a default sort function. This is used
          * primarily by GtkTreeViewColumns in order to determine if a model can
          * go back to the default state, or not.
-         * @returns %TRUE, if the model has a default sort function
+         * @returns `true`, if the model has a default sort function
          */
         has_default_sort_func(): boolean;
         /**
          * Sets the default comparison function used when sorting to be `sort_func`.
          * If the current sort column id of `sortable` is
-         * %GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID, then the model will sort using
+         * `GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID`, then the model will sort using
          * this function.
          *
-         * If `sort_func` is %NULL, then there will be no default comparison function.
+         * If `sort_func` is `null`, then there will be no default comparison function.
          * This means that once the model  has been sorted, it can’t go back to the
          * default state. In this case, when the current sort column id of `sortable`
-         * is %GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID, the model will be unsorted.
+         * is `GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID`, the model will be unsorted.
          * @param sort_func The comparison function
-         * @param destroy Destroy notifier of @user_data, or %NULL
+         * @param destroy Destroy notifier of `user_data`, or `null`
          */
         set_default_sort_func(sort_func: Gtk.TreeIterCompareFunc, destroy?: GLib.DestroyNotify | null): void;
         /**
          * Sets the current sort column to be `sort_column_id`. The `sortable` will
          * resort itself to reflect this change, after emitting a
-         * #GtkTreeSortable::sort-column-changed signal. `sort_column_id` may either be
+         * {@link Gtk.TreeSortable.SignalSignatures.sort_column_changed | Gtk.TreeSortable::sort-column-changed} signal. `sort_column_id` may either be
          * a regular column id, or one of the following special values:
          *
-         * - %GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID: the default sort function
+         * - `GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID`: the default sort function
          *   will be used, if it is set
          *
-         * - %GTK_TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID: no sorting will occur
+         * - `GTK_TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID`: no sorting will occur
          * @param sort_column_id the sort column id to set
          * @param order The sort order of the column
          */
         set_sort_column_id(sort_column_id: number, order: Gtk.SortType | null): void;
         /**
          * Sets the comparison function used when sorting to be `sort_func`. If the
-         * current sort column id of `sortable` is the same as `sort_column_id,` then
+         * current sort column id of `sortable` is the same as `sort_column_id`, then
          * the model will sort using this function.
          * @param sort_column_id the sort column id to set the function for
          * @param sort_func The comparison function
-         * @param destroy Destroy notifier of @user_data, or %NULL
+         * @param destroy Destroy notifier of `user_data`, or `null`
          */
         set_sort_func(
             sort_column_id: number,
@@ -1461,57 +1721,62 @@ export namespace Gucharmap {
             destroy?: GLib.DestroyNotify | null,
         ): void;
         /**
-         * Emits a #GtkTreeSortable::sort-column-changed signal on `sortable`.
+         * Emits a {@link Gtk.TreeSortable.SignalSignatures.sort_column_changed | Gtk.TreeSortable::sort-column-changed} signal on `sortable`.
          */
         sort_column_changed(): void;
         /**
          * Fills in `sort_column_id` and `order` with the current sort column and the
-         * order. It returns %TRUE unless the `sort_column_id` is
-         * %GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID or
-         * %GTK_TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID.
+         * order. It returns `true` unless the `sort_column_id` is
+         * `GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID` or
+         * `GTK_TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID`.
+         * @virtual
          */
         vfunc_get_sort_column_id(): [boolean, number, Gtk.SortType];
         /**
-         * Returns %TRUE if the model has a default sort function. This is used
+         * Returns `true` if the model has a default sort function. This is used
          * primarily by GtkTreeViewColumns in order to determine if a model can
          * go back to the default state, or not.
+         * @virtual
          */
         vfunc_has_default_sort_func(): boolean;
         /**
          * Sets the default comparison function used when sorting to be `sort_func`.
          * If the current sort column id of `sortable` is
-         * %GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID, then the model will sort using
+         * `GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID`, then the model will sort using
          * this function.
          *
-         * If `sort_func` is %NULL, then there will be no default comparison function.
+         * If `sort_func` is `null`, then there will be no default comparison function.
          * This means that once the model  has been sorted, it can’t go back to the
          * default state. In this case, when the current sort column id of `sortable`
-         * is %GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID, the model will be unsorted.
+         * is `GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID`, the model will be unsorted.
          * @param sort_func The comparison function
-         * @param destroy Destroy notifier of @user_data, or %NULL
+         * @param destroy Destroy notifier of `user_data`, or `null`
+         * @virtual
          */
         vfunc_set_default_sort_func(sort_func: Gtk.TreeIterCompareFunc, destroy?: GLib.DestroyNotify | null): void;
         /**
          * Sets the current sort column to be `sort_column_id`. The `sortable` will
          * resort itself to reflect this change, after emitting a
-         * #GtkTreeSortable::sort-column-changed signal. `sort_column_id` may either be
+         * {@link Gtk.TreeSortable.SignalSignatures.sort_column_changed | Gtk.TreeSortable::sort-column-changed} signal. `sort_column_id` may either be
          * a regular column id, or one of the following special values:
          *
-         * - %GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID: the default sort function
+         * - `GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID`: the default sort function
          *   will be used, if it is set
          *
-         * - %GTK_TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID: no sorting will occur
+         * - `GTK_TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID`: no sorting will occur
          * @param sort_column_id the sort column id to set
          * @param order The sort order of the column
+         * @virtual
          */
         vfunc_set_sort_column_id(sort_column_id: number, order: Gtk.SortType): void;
         /**
          * Sets the comparison function used when sorting to be `sort_func`. If the
-         * current sort column id of `sortable` is the same as `sort_column_id,` then
+         * current sort column id of `sortable` is the same as `sort_column_id`, then
          * the model will sort using this function.
          * @param sort_column_id the sort column id to set the function for
          * @param sort_func The comparison function
-         * @param destroy Destroy notifier of @user_data, or %NULL
+         * @param destroy Destroy notifier of `user_data`, or `null`
+         * @virtual
          */
         vfunc_set_sort_func(
             sort_column_id: number,
@@ -1519,7 +1784,8 @@ export namespace Gucharmap {
             destroy?: GLib.DestroyNotify | null,
         ): void;
         /**
-         * Emits a #GtkTreeSortable::sort-column-changed signal on `sortable`.
+         * Emits a {@link Gtk.TreeSortable.SignalSignatures.sort_column_changed | Gtk.TreeSortable::sort-column-changed} signal on `sortable`.
+         * @virtual
          */
         vfunc_sort_column_changed(): void;
         /**
@@ -1535,32 +1801,32 @@ export namespace Gucharmap {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -1569,39 +1835,39 @@ export namespace Gucharmap {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -1612,13 +1878,16 @@ export namespace Gucharmap {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -1626,7 +1895,7 @@ export namespace Gucharmap {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -1634,9 +1903,9 @@ export namespace Gucharmap {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -1656,9 +1925,9 @@ export namespace Gucharmap {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -1671,34 +1940,34 @@ export namespace Gucharmap {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1731,22 +2000,22 @@ export namespace Gucharmap {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -1755,8 +2024,8 @@ export namespace Gucharmap {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -1773,10 +2042,10 @@ export namespace Gucharmap {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -1791,13 +2060,13 @@ export namespace Gucharmap {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1828,21 +2097,21 @@ export namespace Gucharmap {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1852,33 +2121,34 @@ export namespace Gucharmap {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1887,6 +2157,7 @@ export namespace Gucharmap {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1895,12 +2166,14 @@ export namespace Gucharmap {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1909,20 +2182,22 @@ export namespace Gucharmap {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1934,6 +2209,7 @@ export namespace Gucharmap {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -1946,6 +2222,9 @@ export namespace Gucharmap {
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+        /**
+         * @param args
+         */
         // Conflicted with Gtk.ListStore.set
         set(...args: never[]): any;
         /**
@@ -2044,6 +2323,9 @@ export namespace Gucharmap {
                 Gtk.Scrollable.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ChaptersView extends Gtk.TreeView implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<ChaptersView>;
 
@@ -2066,16 +2348,19 @@ export namespace Gucharmap {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ChaptersView.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ChaptersView.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ChaptersView.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ChaptersView.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ChaptersView.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ChaptersView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2087,103 +2372,123 @@ export namespace Gucharmap {
         get_selected(): string;
         next(): void;
         previous(): void;
+        /**
+         * @param wc
+         */
         select_character(wc: string): boolean;
         select_locale(): boolean;
+        /**
+         * @param model
+         */
         set_model(model: ChaptersModel): void;
+        /**
+         * @param args
+         */
         // Conflicted with Gtk.TreeView.set_model
         set_model(...args: never[]): any;
-        set_selected(name: string): boolean;
-
-        // Inherited properties
         /**
-         * Horizontal #GtkAdjustment of the scrollable widget. This adjustment is
+         * @param name
+         */
+        set_selected(name: string): boolean;
+        /**
+         * Horizontal {@link Gtk.Adjustment} of the scrollable widget. This adjustment is
          * shared between the scrollable widget and its parent.
+         * @since 3.0
+         * @category Inherited from Gtk.Scrollable
          */
         get hadjustment(): Gtk.Adjustment;
         set hadjustment(val: Gtk.Adjustment);
         /**
          * Determines whether horizontal scrolling should start once the scrollable
          * widget is allocated less than its minimum width or less than its natural width.
+         * @since 3.0
+         * @category Inherited from Gtk.Scrollable
          */
         get hscroll_policy(): Gtk.ScrollablePolicy;
         set hscroll_policy(val: Gtk.ScrollablePolicy);
         /**
          * Determines whether horizontal scrolling should start once the scrollable
          * widget is allocated less than its minimum width or less than its natural width.
+         * @since 3.0
+         * @category Inherited from Gtk.Scrollable
          */
         get hscrollPolicy(): Gtk.ScrollablePolicy;
         set hscrollPolicy(val: Gtk.ScrollablePolicy);
         /**
-         * Verical #GtkAdjustment of the scrollable widget. This adjustment is shared
+         * Verical {@link Gtk.Adjustment} of the scrollable widget. This adjustment is shared
          * between the scrollable widget and its parent.
+         * @since 3.0
+         * @category Inherited from Gtk.Scrollable
          */
         get vadjustment(): Gtk.Adjustment;
         set vadjustment(val: Gtk.Adjustment);
         /**
          * Determines whether vertical scrolling should start once the scrollable
          * widget is allocated less than its minimum height or less than its natural height.
+         * @since 3.0
+         * @category Inherited from Gtk.Scrollable
          */
         get vscroll_policy(): Gtk.ScrollablePolicy;
         set vscroll_policy(val: Gtk.ScrollablePolicy);
         /**
          * Determines whether vertical scrolling should start once the scrollable
          * widget is allocated less than its minimum height or less than its natural height.
+         * @since 3.0
+         * @category Inherited from Gtk.Scrollable
          */
         get vscrollPolicy(): Gtk.ScrollablePolicy;
         set vscrollPolicy(val: Gtk.ScrollablePolicy);
-
-        // Inherited methods
         /**
          * Returns the size of a non-scrolling border around the
          * outside of the scrollable. An example for this would
          * be treeview headers. GTK+ can use this information to
          * display overlayed graphics, like the overshoot indication,
          * at the right position.
-         * @returns %TRUE if @border has been set
+         * @returns `true` if `border` has been set
          */
         get_border(): [boolean, Gtk.Border];
         /**
-         * Retrieves the #GtkAdjustment used for horizontal scrolling.
-         * @returns horizontal #GtkAdjustment.
+         * Retrieves the {@link Gtk.Adjustment} used for horizontal scrolling.
+         * @returns horizontal {@link Gtk.Adjustment}.
          */
         get_hadjustment(): Gtk.Adjustment;
         /**
-         * Gets the horizontal #GtkScrollablePolicy.
-         * @returns The horizontal #GtkScrollablePolicy.
+         * Gets the horizontal {@link Gtk.ScrollablePolicy}.
+         * @returns The horizontal {@link Gtk.ScrollablePolicy}.
          */
         get_hscroll_policy(): Gtk.ScrollablePolicy;
         /**
-         * Retrieves the #GtkAdjustment used for vertical scrolling.
-         * @returns vertical #GtkAdjustment.
+         * Retrieves the {@link Gtk.Adjustment} used for vertical scrolling.
+         * @returns vertical {@link Gtk.Adjustment}.
          */
         get_vadjustment(): Gtk.Adjustment;
         /**
-         * Gets the vertical #GtkScrollablePolicy.
-         * @returns The vertical #GtkScrollablePolicy.
+         * Gets the vertical {@link Gtk.ScrollablePolicy}.
+         * @returns The vertical {@link Gtk.ScrollablePolicy}.
          */
         get_vscroll_policy(): Gtk.ScrollablePolicy;
         /**
-         * Sets the horizontal adjustment of the #GtkScrollable.
-         * @param hadjustment a #GtkAdjustment
+         * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
+         * @param hadjustment a {@link Gtk.Adjustment}
          */
         set_hadjustment(hadjustment?: Gtk.Adjustment | null): void;
         /**
-         * Sets the #GtkScrollablePolicy to determine whether
+         * Sets the {@link Gtk.ScrollablePolicy} to determine whether
          * horizontal scrolling should start below the minimum width or
          * below the natural width.
-         * @param policy the horizontal #GtkScrollablePolicy
+         * @param policy the horizontal {@link Gtk.ScrollablePolicy}
          */
         set_hscroll_policy(policy: Gtk.ScrollablePolicy | null): void;
         /**
-         * Sets the vertical adjustment of the #GtkScrollable.
-         * @param vadjustment a #GtkAdjustment
+         * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
+         * @param vadjustment a {@link Gtk.Adjustment}
          */
         set_vadjustment(vadjustment?: Gtk.Adjustment | null): void;
         /**
-         * Sets the #GtkScrollablePolicy to determine whether
+         * Sets the {@link Gtk.ScrollablePolicy} to determine whether
          * vertical scrolling should start below the minimum height or
          * below the natural height.
-         * @param policy the vertical #GtkScrollablePolicy
+         * @param policy the vertical {@link Gtk.ScrollablePolicy}
          */
         set_vscroll_policy(policy: Gtk.ScrollablePolicy | null): void;
         /**
@@ -2192,6 +2497,7 @@ export namespace Gucharmap {
          * be treeview headers. GTK+ can use this information to
          * display overlayed graphics, like the overshoot indication,
          * at the right position.
+         * @virtual
          */
         vfunc_get_border(): [boolean, Gtk.Border];
         /**
@@ -2207,32 +2513,32 @@ export namespace Gucharmap {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -2241,39 +2547,39 @@ export namespace Gucharmap {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -2284,13 +2590,16 @@ export namespace Gucharmap {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -2298,7 +2607,7 @@ export namespace Gucharmap {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -2306,9 +2615,9 @@ export namespace Gucharmap {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -2328,9 +2637,9 @@ export namespace Gucharmap {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -2343,34 +2652,34 @@ export namespace Gucharmap {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -2403,22 +2712,22 @@ export namespace Gucharmap {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -2427,8 +2736,8 @@ export namespace Gucharmap {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -2445,10 +2754,10 @@ export namespace Gucharmap {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -2463,13 +2772,13 @@ export namespace Gucharmap {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -2500,21 +2809,21 @@ export namespace Gucharmap {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -2524,33 +2833,34 @@ export namespace Gucharmap {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -2559,6 +2869,7 @@ export namespace Gucharmap {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -2567,12 +2878,14 @@ export namespace Gucharmap {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -2581,20 +2894,22 @@ export namespace Gucharmap {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -2606,6 +2921,7 @@ export namespace Gucharmap {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -2638,7 +2954,15 @@ export namespace Gucharmap {
     namespace Charmap {
         // Signal signatures
         interface SignalSignatures extends Gtk.Paned.SignalSignatures {
+            /**
+             * @signal
+             * @run-first
+             */
             'link-clicked': (arg0: number, arg1: number) => void;
+            /**
+             * @signal
+             * @run-first
+             */
             'status-message': (arg0: string) => void;
             'notify::active-chapter': (pspec: GObject.ParamSpec) => void;
             'notify::active-character': (pspec: GObject.ParamSpec) => void;
@@ -2726,6 +3050,9 @@ export namespace Gucharmap {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Charmap extends Gtk.Paned implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<Charmap>;
 
@@ -2739,13 +3066,25 @@ export namespace Gucharmap {
         set active_character(val: number);
         get activeCharacter(): number;
         set activeCharacter(val: number);
+        /**
+         * @read-only
+         */
         get active_codepoint_list(): CodepointList;
+        /**
+         * @read-only
+         */
         get activeCodepointList(): CodepointList;
         get active_page(): number;
         set active_page(val: number);
         get activePage(): number;
         set activePage(val: number);
+        /**
+         * @write-only
+         */
         set chapters_model(val: ChaptersModel);
+        /**
+         * @write-only
+         */
         set chaptersModel(val: ChaptersModel);
         get font_desc(): Pango.FontDescription;
         set font_desc(val: Pango.FontDescription);
@@ -2779,16 +3118,19 @@ export namespace Gucharmap {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Charmap.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Charmap.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Charmap.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Charmap.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Charmap.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Charmap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2797,7 +3139,16 @@ export namespace Gucharmap {
 
         // Virtual methods
 
+        /**
+         * @param old_character
+         * @param new_character
+         * @virtual
+         */
         vfunc_link_clicked(old_character: string, new_character: string): void;
+        /**
+         * @param message
+         * @virtual
+         */
         vfunc_status_message(message: string): void;
 
         // Methods
@@ -2808,31 +3159,60 @@ export namespace Gucharmap {
         get_chapters_visible(): boolean;
         get_font_desc(): Pango.FontDescription;
         get_font_fallback(): boolean;
+        /**
+         * @param page
+         */
         get_page_visible(page: number): boolean;
         get_snap_pow2(): boolean;
         next_chapter(): void;
         previous_chapter(): void;
+        /**
+         * @param chapter
+         */
         set_active_chapter(chapter: string): void;
+        /**
+         * @param uc
+         */
         set_active_character(uc: string): void;
+        /**
+         * @param page
+         */
         set_active_page(page: number): void;
+        /**
+         * @param model
+         */
         set_chapters_model(model: ChaptersModel): void;
+        /**
+         * @param visible
+         */
         set_chapters_visible(visible: boolean): void;
+        /**
+         * @param font_desc
+         */
         set_font_desc(font_desc: Pango.FontDescription): void;
+        /**
+         * @param enable_font_fallback
+         */
         set_font_fallback(enable_font_fallback: boolean): void;
+        /**
+         * @param page
+         * @param visible
+         */
         set_page_visible(page: number, visible: boolean): void;
+        /**
+         * @param snap
+         */
         set_snap_pow2(snap: boolean): void;
-
-        // Inherited properties
         /**
          * The orientation of the orientable.
+         * @since 2.16
+         * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
-
-        // Inherited methods
         /**
          * Retrieves the orientation of the `orientable`.
-         * @returns the orientation of the @orientable.
+         * @returns the orientation of the `orientable`.
          */
         get_orientation(): Gtk.Orientation;
         /**
@@ -2853,32 +3233,32 @@ export namespace Gucharmap {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -2887,39 +3267,39 @@ export namespace Gucharmap {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -2930,13 +3310,16 @@ export namespace Gucharmap {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -2944,7 +3327,7 @@ export namespace Gucharmap {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -2952,9 +3335,9 @@ export namespace Gucharmap {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -2974,9 +3357,9 @@ export namespace Gucharmap {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -2989,34 +3372,34 @@ export namespace Gucharmap {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -3049,22 +3432,22 @@ export namespace Gucharmap {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -3073,8 +3456,8 @@ export namespace Gucharmap {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -3091,10 +3474,10 @@ export namespace Gucharmap {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -3109,13 +3492,13 @@ export namespace Gucharmap {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -3146,21 +3529,21 @@ export namespace Gucharmap {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -3170,33 +3553,34 @@ export namespace Gucharmap {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -3205,6 +3589,7 @@ export namespace Gucharmap {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -3213,12 +3598,14 @@ export namespace Gucharmap {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -3227,20 +3614,22 @@ export namespace Gucharmap {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -3252,6 +3641,7 @@ export namespace Gucharmap {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -3284,10 +3674,34 @@ export namespace Gucharmap {
     namespace Chartable {
         // Signal signatures
         interface SignalSignatures extends Gtk.DrawingArea.SignalSignatures {
+            /**
+             * @signal
+             * @action
+             * @run-last
+             */
             activate: () => void;
+            /**
+             * @signal
+             * @action
+             * @run-last
+             */
             'copy-clipboard': () => void;
+            /**
+             * @signal
+             * @action
+             * @run-last
+             */
             'move-cursor': (arg0: Gtk.MovementStep, arg1: number) => boolean | void;
+            /**
+             * @signal
+             * @action
+             * @run-last
+             */
             'paste-clipboard': () => void;
+            /**
+             * @signal
+             * @run-first
+             */
             'status-message': (arg0: string) => void;
             'notify::active-character': (pspec: GObject.ParamSpec) => void;
             'notify::codepoint-list': (pspec: GObject.ParamSpec) => void;
@@ -3367,6 +3781,9 @@ export namespace Gucharmap {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Chartable extends Gtk.DrawingArea implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<Chartable>;
 
@@ -3396,7 +3813,13 @@ export namespace Gucharmap {
         set zoom_enabled(val: boolean);
         get zoomEnabled(): boolean;
         set zoomEnabled(val: boolean);
+        /**
+         * @read-only
+         */
         get zoom_showing(): boolean;
+        /**
+         * @read-only
+         */
         get zoomShowing(): boolean;
 
         /**
@@ -3418,16 +3841,19 @@ export namespace Gucharmap {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Chartable.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Chartable.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Chartable.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Chartable.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Chartable.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Chartable.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3436,12 +3862,39 @@ export namespace Gucharmap {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_activate(): void;
+        /**
+         * @virtual
+         */
         vfunc_copy_clipboard(): void;
+        /**
+         * @param step
+         * @param count
+         * @virtual
+         */
         vfunc_move_cursor(step: Gtk.MovementStep, count: number): boolean;
+        /**
+         * @virtual
+         */
         vfunc_paste_clipboard(): void;
+        /**
+         * @param ch
+         * @virtual
+         */
         vfunc_set_active_char(ch: number): void;
+        /**
+         * @param hadjustment
+         * @param vadjustment
+         * @virtual
+         */
         vfunc_set_scroll_adjustments(hadjustment: Gtk.Adjustment, vadjustment: Gtk.Adjustment): void;
+        /**
+         * @param message
+         * @virtual
+         */
         vfunc_status_message(message: string): void;
 
         // Methods
@@ -3451,103 +3904,129 @@ export namespace Gucharmap {
         get_font_fallback(): boolean;
         get_snap_pow2(): boolean;
         get_zoom_enabled(): boolean;
-        set_active_character(wc: string): void;
-        set_codepoint_list(codepoint_list: CodepointList): void;
-        set_font_desc(font_desc: Pango.FontDescription): void;
-        set_font_fallback(enable_font_fallback: boolean): void;
-        set_snap_pow2(snap: boolean): void;
-        set_zoom_enabled(enabled: boolean): void;
-
-        // Inherited properties
         /**
-         * Horizontal #GtkAdjustment of the scrollable widget. This adjustment is
+         * @param wc
+         */
+        set_active_character(wc: string): void;
+        /**
+         * @param codepoint_list
+         */
+        set_codepoint_list(codepoint_list: CodepointList): void;
+        /**
+         * @param font_desc
+         */
+        set_font_desc(font_desc: Pango.FontDescription): void;
+        /**
+         * @param enable_font_fallback
+         */
+        set_font_fallback(enable_font_fallback: boolean): void;
+        /**
+         * @param snap
+         */
+        set_snap_pow2(snap: boolean): void;
+        /**
+         * @param enabled
+         */
+        set_zoom_enabled(enabled: boolean): void;
+        /**
+         * Horizontal {@link Gtk.Adjustment} of the scrollable widget. This adjustment is
          * shared between the scrollable widget and its parent.
+         * @since 3.0
+         * @category Inherited from Gtk.Scrollable
          */
         get hadjustment(): Gtk.Adjustment;
         set hadjustment(val: Gtk.Adjustment);
         /**
          * Determines whether horizontal scrolling should start once the scrollable
          * widget is allocated less than its minimum width or less than its natural width.
+         * @since 3.0
+         * @category Inherited from Gtk.Scrollable
          */
         get hscroll_policy(): Gtk.ScrollablePolicy;
         set hscroll_policy(val: Gtk.ScrollablePolicy);
         /**
          * Determines whether horizontal scrolling should start once the scrollable
          * widget is allocated less than its minimum width or less than its natural width.
+         * @since 3.0
+         * @category Inherited from Gtk.Scrollable
          */
         get hscrollPolicy(): Gtk.ScrollablePolicy;
         set hscrollPolicy(val: Gtk.ScrollablePolicy);
         /**
-         * Verical #GtkAdjustment of the scrollable widget. This adjustment is shared
+         * Verical {@link Gtk.Adjustment} of the scrollable widget. This adjustment is shared
          * between the scrollable widget and its parent.
+         * @since 3.0
+         * @category Inherited from Gtk.Scrollable
          */
         get vadjustment(): Gtk.Adjustment;
         set vadjustment(val: Gtk.Adjustment);
         /**
          * Determines whether vertical scrolling should start once the scrollable
          * widget is allocated less than its minimum height or less than its natural height.
+         * @since 3.0
+         * @category Inherited from Gtk.Scrollable
          */
         get vscroll_policy(): Gtk.ScrollablePolicy;
         set vscroll_policy(val: Gtk.ScrollablePolicy);
         /**
          * Determines whether vertical scrolling should start once the scrollable
          * widget is allocated less than its minimum height or less than its natural height.
+         * @since 3.0
+         * @category Inherited from Gtk.Scrollable
          */
         get vscrollPolicy(): Gtk.ScrollablePolicy;
         set vscrollPolicy(val: Gtk.ScrollablePolicy);
-
-        // Inherited methods
         /**
          * Returns the size of a non-scrolling border around the
          * outside of the scrollable. An example for this would
          * be treeview headers. GTK+ can use this information to
          * display overlayed graphics, like the overshoot indication,
          * at the right position.
-         * @returns %TRUE if @border has been set
+         * @returns `true` if `border` has been set
          */
         get_border(): [boolean, Gtk.Border];
         /**
-         * Retrieves the #GtkAdjustment used for horizontal scrolling.
-         * @returns horizontal #GtkAdjustment.
+         * Retrieves the {@link Gtk.Adjustment} used for horizontal scrolling.
+         * @returns horizontal {@link Gtk.Adjustment}.
          */
         get_hadjustment(): Gtk.Adjustment;
         /**
-         * Gets the horizontal #GtkScrollablePolicy.
-         * @returns The horizontal #GtkScrollablePolicy.
+         * Gets the horizontal {@link Gtk.ScrollablePolicy}.
+         * @returns The horizontal {@link Gtk.ScrollablePolicy}.
          */
         get_hscroll_policy(): Gtk.ScrollablePolicy;
         /**
-         * Retrieves the #GtkAdjustment used for vertical scrolling.
-         * @returns vertical #GtkAdjustment.
+         * Retrieves the {@link Gtk.Adjustment} used for vertical scrolling.
+         * @returns vertical {@link Gtk.Adjustment}.
          */
         get_vadjustment(): Gtk.Adjustment;
         /**
-         * Gets the vertical #GtkScrollablePolicy.
-         * @returns The vertical #GtkScrollablePolicy.
+         * Gets the vertical {@link Gtk.ScrollablePolicy}.
+         * @returns The vertical {@link Gtk.ScrollablePolicy}.
          */
         get_vscroll_policy(): Gtk.ScrollablePolicy;
         /**
-         * Sets the horizontal adjustment of the #GtkScrollable.
-         * @param hadjustment a #GtkAdjustment
+         * Sets the horizontal adjustment of the {@link Gtk.Scrollable}.
+         * @param hadjustment a {@link Gtk.Adjustment}
          */
         set_hadjustment(hadjustment?: Gtk.Adjustment | null): void;
         /**
-         * Sets the #GtkScrollablePolicy to determine whether
+         * Sets the {@link Gtk.ScrollablePolicy} to determine whether
          * horizontal scrolling should start below the minimum width or
          * below the natural width.
-         * @param policy the horizontal #GtkScrollablePolicy
+         * @param policy the horizontal {@link Gtk.ScrollablePolicy}
          */
         set_hscroll_policy(policy: Gtk.ScrollablePolicy | null): void;
         /**
-         * Sets the vertical adjustment of the #GtkScrollable.
-         * @param vadjustment a #GtkAdjustment
+         * Sets the vertical adjustment of the {@link Gtk.Scrollable}.
+         * @param vadjustment a {@link Gtk.Adjustment}
          */
         set_vadjustment(vadjustment?: Gtk.Adjustment | null): void;
         /**
-         * Sets the #GtkScrollablePolicy to determine whether
+         * Sets the {@link Gtk.ScrollablePolicy} to determine whether
          * vertical scrolling should start below the minimum height or
          * below the natural height.
-         * @param policy the vertical #GtkScrollablePolicy
+         * @param policy the vertical {@link Gtk.ScrollablePolicy}
          */
         set_vscroll_policy(policy: Gtk.ScrollablePolicy | null): void;
         /**
@@ -3556,6 +4035,7 @@ export namespace Gucharmap {
          * be treeview headers. GTK+ can use this information to
          * display overlayed graphics, like the overshoot indication,
          * at the right position.
+         * @virtual
          */
         vfunc_get_border(): [boolean, Gtk.Border];
         /**
@@ -3571,32 +4051,32 @@ export namespace Gucharmap {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -3605,39 +4085,39 @@ export namespace Gucharmap {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -3648,13 +4128,16 @@ export namespace Gucharmap {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -3662,7 +4145,7 @@ export namespace Gucharmap {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -3670,9 +4153,9 @@ export namespace Gucharmap {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -3692,9 +4175,9 @@ export namespace Gucharmap {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -3707,34 +4190,34 @@ export namespace Gucharmap {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -3767,22 +4250,22 @@ export namespace Gucharmap {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -3791,8 +4274,8 @@ export namespace Gucharmap {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -3809,10 +4292,10 @@ export namespace Gucharmap {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -3827,13 +4310,13 @@ export namespace Gucharmap {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -3864,21 +4347,21 @@ export namespace Gucharmap {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -3888,33 +4371,34 @@ export namespace Gucharmap {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -3923,6 +4407,7 @@ export namespace Gucharmap {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -3931,12 +4416,14 @@ export namespace Gucharmap {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -3945,20 +4432,22 @@ export namespace Gucharmap {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -3970,6 +4459,7 @@ export namespace Gucharmap {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -4008,6 +4498,9 @@ export namespace Gucharmap {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class CodepointList extends GObject.Object {
         static $gtype: GObject.GType<CodepointList>;
 
@@ -4028,16 +4521,19 @@ export namespace Gucharmap {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CodepointList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CodepointList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CodepointList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CodepointList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CodepointList.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CodepointList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4046,13 +4542,30 @@ export namespace Gucharmap {
 
         // Virtual methods
 
+        /**
+         * @param index
+         * @virtual
+         */
         vfunc_get_char(index: number): string;
+        /**
+         * @param wc
+         * @virtual
+         */
         vfunc_get_index(wc: string): number;
+        /**
+         * @virtual
+         */
         vfunc_get_last_index(): number;
 
         // Methods
 
+        /**
+         * @param index
+         */
         get_char(index: number): string;
+        /**
+         * @param wc
+         */
         get_index(wc: string): number;
         get_last_index(): number;
     }
@@ -4073,6 +4586,9 @@ export namespace Gucharmap {
                 Gtk.TreeSortable.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ScriptChaptersModel
         extends ChaptersModel
         implements Gtk.Buildable, Gtk.TreeDragDest, Gtk.TreeDragSource, Gtk.TreeModel, Gtk.TreeSortable
@@ -4098,16 +4614,19 @@ export namespace Gucharmap {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ScriptChaptersModel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ScriptChaptersModel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ScriptChaptersModel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ScriptChaptersModel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ScriptChaptersModel.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ScriptChaptersModel.SignalSignatures[K]> extends [any, ...infer Q]
@@ -4115,8 +4634,6 @@ export namespace Gucharmap {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -4130,32 +4647,32 @@ export namespace Gucharmap {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -4164,39 +4681,39 @@ export namespace Gucharmap {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -4207,13 +4724,16 @@ export namespace Gucharmap {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -4221,7 +4741,7 @@ export namespace Gucharmap {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -4229,9 +4749,9 @@ export namespace Gucharmap {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -4251,9 +4771,9 @@ export namespace Gucharmap {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -4266,34 +4786,34 @@ export namespace Gucharmap {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -4326,22 +4846,22 @@ export namespace Gucharmap {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -4350,8 +4870,8 @@ export namespace Gucharmap {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -4368,10 +4888,10 @@ export namespace Gucharmap {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -4386,13 +4906,13 @@ export namespace Gucharmap {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -4423,21 +4943,21 @@ export namespace Gucharmap {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -4447,33 +4967,34 @@ export namespace Gucharmap {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -4482,6 +5003,7 @@ export namespace Gucharmap {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -4490,12 +5012,14 @@ export namespace Gucharmap {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -4504,20 +5028,22 @@ export namespace Gucharmap {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -4529,6 +5055,7 @@ export namespace Gucharmap {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -4541,6 +5068,9 @@ export namespace Gucharmap {
          * @param properties Object containing the properties to set
          */
         set(properties: { [key: string]: any }): void;
+        /**
+         * @param args
+         */
         // Conflicted with Gtk.ListStore.set
         set(...args: never[]): any;
         /**
@@ -4569,6 +5099,9 @@ export namespace Gucharmap {
         interface ConstructorProps extends CodepointList.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ScriptCodepointList extends CodepointList {
         static $gtype: GObject.GType<ScriptCodepointList>;
 
@@ -4591,16 +5124,19 @@ export namespace Gucharmap {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ScriptCodepointList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ScriptCodepointList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ScriptCodepointList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ScriptCodepointList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ScriptCodepointList.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ScriptCodepointList.SignalSignatures[K]> extends [any, ...infer Q]
@@ -4611,52 +5147,115 @@ export namespace Gucharmap {
 
         // Methods
 
+        /**
+         * @param script
+         */
         append_script(script: string): boolean;
+        /**
+         * @param script
+         */
         set_script(script: string): boolean;
+        /**
+         * @param scripts
+         */
         set_scripts(scripts: string): boolean;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type BlockChaptersModelClass = typeof BlockChaptersModel;
+    /**
+     * @gir-type Struct
+     */
     abstract class BlockChaptersModelPrivate {
         static $gtype: GObject.GType<BlockChaptersModelPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type BlockCodepointListClass = typeof BlockCodepointList;
+    /**
+     * @gir-type Struct
+     */
     abstract class BlockCodepointListPrivate {
         static $gtype: GObject.GType<BlockCodepointListPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ChaptersModelClass = typeof ChaptersModel;
+    /**
+     * @gir-type Struct
+     */
     abstract class ChaptersModelPrivate {
         static $gtype: GObject.GType<ChaptersModelPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ChaptersViewClass = typeof ChaptersView;
+    /**
+     * @gir-type Struct
+     */
     abstract class ChaptersViewPrivate {
         static $gtype: GObject.GType<ChaptersViewPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CharmapClass = typeof Charmap;
+    /**
+     * @gir-type Struct
+     */
     abstract class CharmapPrivate {
         static $gtype: GObject.GType<CharmapPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ChartableClass = typeof Chartable;
+    /**
+     * @gir-type Struct
+     */
     abstract class ChartablePrivate {
         static $gtype: GObject.GType<ChartablePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CodepointListClass = typeof CodepointList;
+    /**
+     * @gir-type Struct
+     */
     abstract class CodepointListPrivate {
         static $gtype: GObject.GType<CodepointListPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ScriptChaptersModelClass = typeof ScriptChaptersModel;
+    /**
+     * @gir-type Struct
+     */
     abstract class ScriptChaptersModelPrivate {
         static $gtype: GObject.GType<ScriptChaptersModelPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ScriptCodepointListClass = typeof ScriptCodepointList;
+    /**
+     * @gir-type Struct
+     */
     abstract class ScriptCodepointListPrivate {
         static $gtype: GObject.GType<ScriptCodepointListPrivate>;
     }

@@ -24,10 +24,16 @@ export namespace Gc {
      * Gc-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Category {
         export const $gtype: GObject.GType<Category>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum Category {
         NONE,
         LETTER,
@@ -50,29 +56,68 @@ export namespace Gc {
         EMOJI_FLAGS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SearchError {
         export const $gtype: GObject.GType<SearchError>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum SearchError {
         FAILED,
         INVALID_STATE,
     }
 
+    /**
+     * @param chars a string consisting of UCS-4 characters
+     * @returns whether the character is composite
+     */
     function character_is_composite(chars: string): boolean;
+    /**
+     * @param chars a string consisting of UCS-4 characters
+     * @returns `true` if `chars` consists of invisible characters, `false` otherwise.
+     */
     function character_is_invisible(chars: string): boolean;
+    /**
+     * @param chars a string consisting of UCS-4 characters
+     * @returns a newly allocated character name of `uc`.
+     */
     function character_name(chars: string): string | null;
+    /**
+     * @returns an ISO639 two-letter language code
+     */
     function get_current_language(): string;
+    /**
+     * @param language a language name
+     * @returns a list of script names.
+     */
     function get_scripts_for_language(language: string): GLib.UnicodeScript[];
+    /**
+     * @param result a {@link Gc.SearchResult}
+     * @param index index of the character to get
+     * @returns the character at `index`
+     */
     function search_result_get(result: SearchResult, index: number): string;
     function search_result_get_type(): GObject.GType;
+    /**
+     * @gir-type Callback
+     */
     interface SearchFunc {
         (uc: string): boolean;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace SearchFlag {
         export const $gtype: GObject.GType<SearchFlag>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum SearchFlag {
         NONE,
         WORD,
@@ -93,12 +138,21 @@ export namespace Gc {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SearchContext extends GObject.Object {
         static $gtype: GObject.GType<SearchContext>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         set criteria(val: SearchCriteria);
+        /**
+         * @construct-only
+         */
         set flags(val: SearchFlag);
 
         /**
@@ -120,16 +174,19 @@ export namespace Gc {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SearchContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SearchContext.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SearchContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SearchContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SearchContext.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SearchContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -139,21 +196,45 @@ export namespace Gc {
         // Methods
 
         is_finished(): boolean;
+        /**
+         * @param max_matches
+         * @param cancellable
+         */
         search(max_matches: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<SearchResult>;
+        /**
+         * @param max_matches
+         * @param cancellable
+         * @param callback
+         */
         search(
             max_matches: number,
             cancellable: Gio.Cancellable | null,
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param max_matches
+         * @param cancellable
+         * @param callback
+         */
         search(
             max_matches: number,
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<SearchResult> | void;
+        /**
+         * @param result a {@link Gio.AsyncResult}.
+         * @returns an array of characters.
+         */
         search_finish(result: Gio.AsyncResult): SearchResult;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SearchContextClass = typeof SearchContext;
+    /**
+     * @gir-type Struct
+     */
     class SearchCriteria {
         static $gtype: GObject.GType<SearchCriteria>;
 
@@ -170,6 +251,9 @@ export namespace Gc {
         static new_scripts(scripts: GLib.UnicodeScript[]): SearchCriteria;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SearchResult = GLib.PtrArray;
     /**
      * Name of the imported GIR library

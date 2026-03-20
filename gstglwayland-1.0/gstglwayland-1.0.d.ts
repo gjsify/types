@@ -36,8 +36,9 @@ export namespace GstGLWayland {
     }
 
     /**
-     * the contents of a #GstGLDisplayWayland are private and should only be accessed
+     * the contents of a {@link GstGLWayland.GLDisplayWayland} are private and should only be accessed
      * through the provided API
+     * @gir-type Class
      */
     class GLDisplayWayland extends GstGL.GLDisplay {
         static $gtype: GObject.GType<GLDisplayWayland>;
@@ -74,16 +75,19 @@ export namespace GstGLWayland {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof GLDisplayWayland.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GLDisplayWayland.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof GLDisplayWayland.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GLDisplayWayland.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof GLDisplayWayland.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<GLDisplayWayland.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -91,6 +95,9 @@ export namespace GstGLWayland {
         emit(signal: string, ...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type GLDisplayWaylandClass = typeof GLDisplayWayland;
     /**
      * Name of the imported GIR library

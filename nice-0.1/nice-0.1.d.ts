@@ -22,6 +22,7 @@ export namespace Nice {
 
     /**
      * An enum representing the type of transport to use
+     * @gir-type Enum
      */
     enum CandidateTransport {
         /**
@@ -43,7 +44,8 @@ export namespace Nice {
     }
 
     /**
-     * An enum represneting the type of a candidate
+     * An enum representing the type of a candidate
+     * @gir-type Enum
      */
     enum CandidateType {
         /**
@@ -51,7 +53,7 @@ export namespace Nice {
          */
         HOST,
         /**
-         * A server reflexive candidate
+         * A server reflexive candidate (or a NAT-assisted candidate)
          */
         SERVER_REFLEXIVE,
         /**
@@ -65,21 +67,22 @@ export namespace Nice {
     }
 
     /**
-     * An enum to specify which compatible specifications the #NiceAgent should use.
-     * Use with nice_agent_new()
+     * An enum to specify which compatible specifications the {@link Nice.Agent} should use.
+     * Use with `nice_agent_new()`
      *
-     * <warning>`NICE_COMPATIBILITY_DRAFT1`9 is deprecated and should not be used
+     * <warning>`NICE_COMPATIBILITY_DRAFT19` is deprecated and should not be used
      * in newly-written code. It is kept for compatibility reasons and
-     * represents the same compatibility as `NICE_COMPATIBILITY_RFC5`245 </warning>
+     * represents the same compatibility as `NICE_COMPATIBILITY_RFC5245` </warning>
      *  <note>
      *    <para>
-     *    If `NICE_COMPATIBILITY_RFC5`245 compatibility mode is used for a non-reliable
+     *    If `NICE_COMPATIBILITY_RFC5245` compatibility mode is used for a non-reliable
      *    agent, then ICE-UDP will be used with higher priority and ICE-TCP will also
      *    be used when the UDP connectivity fails. If it is used with a reliable agent,
-     *    then ICE-UDP will be used with the TCP-Over-UDP (#PseudoTcpSocket) if ICE-TCP
+     *    then ICE-UDP will be used with the TCP-Over-UDP ({@link Nice.PseudoTcpSocket}) if ICE-TCP
      *    fails and ICE-UDP succeeds.
      *   </para>
      *  </note>
+     * @gir-type Enum
      */
     enum Compatibility {
         /**
@@ -120,7 +123,8 @@ export namespace Nice {
 
     /**
      * An enum representing the state of a component.
-     * <para> See also: #NiceAgent::component-state-changed </para>
+     * <para> See also: {@link Nice.Agent.SignalSignatures.component_state_changed | Nice.Agent::component-state-changed} </para>
+     * @gir-type Enum
      */
     enum ComponentState {
         /**
@@ -164,6 +168,7 @@ export namespace Nice {
      *    nice_agent_send (agent, stream_id, NICE_COMPONENT_TYPE_RTP, len, buf);
      *    </programlisting>
      *   </example>
+     * @gir-type Enum
      */
     enum ComponentType {
         /**
@@ -184,6 +189,8 @@ export namespace Nice {
      * messages. The aggressive mode is supposed to nominate a pair
      * faster, than the regular mode, potentially causing the nominated
      * pair to change until the connection check completes.
+     * @gir-type Enum
+     * @since 0.1.15
      */
     enum NominationMode {
         /**
@@ -199,7 +206,9 @@ export namespace Nice {
     /**
      * An enum to specify which proxy type to use for relaying.
      * Note that the proxies will only be used with TCP TURN relaying.
-     * <para> See also: #NiceAgent:proxy-type </para>
+     * <para> See also: {@link Nice.Agent.proxy_type} </para>
+     * @gir-type Enum
+     * @since 0.0.4
      */
     enum ProxyType {
         /**
@@ -222,6 +231,8 @@ export namespace Nice {
 
     /**
      * Valid values of debug levels to be set.
+     * @gir-type Enum
+     * @since 0.0.11
      */
     enum PseudoTcpDebugLevel {
         /**
@@ -240,8 +251,10 @@ export namespace Nice {
 
     /**
      * Options for which parts of a connection to shut down when calling
-     * pseudo_tcp_socket_shutdown(). These correspond to the values passed to POSIX
-     * shutdown().
+     * `pseudo_tcp_socket_shutdown()`. These correspond to the values passed to POSIX
+     * `shutdown()`.
+     * @gir-type Enum
+     * @since 0.1.8
      */
     enum PseudoTcpShutdown {
         /**
@@ -259,9 +272,11 @@ export namespace Nice {
     }
 
     /**
-     * An enum representing the state of the #PseudoTcpSocket. These states
+     * An enum representing the state of the {@link Nice.PseudoTcpSocket}. These states
      * correspond to the TCP states in RFC 793.
-     * <para> See also: #PseudoTcpSocket:state </para>
+     * <para> See also: {@link Nice.PseudoTcpSocket.state} </para>
+     * @gir-type Enum
+     * @since 0.0.11
      */
     enum PseudoTcpState {
         /**
@@ -320,8 +335,10 @@ export namespace Nice {
 
     /**
      * An enum representing the result value of the write operation requested by
-     * the #PseudoTcpSocket.
+     * the {@link Nice.PseudoTcpSocket}.
      * <para> See also: %PseudoTcpCallbacks:WritePacket </para>
+     * @gir-type Enum
+     * @since 0.0.11
      */
     enum PseudoTcpWriteResult {
         /**
@@ -341,6 +358,7 @@ export namespace Nice {
 
     /**
      * An enum representing the type of relay to use
+     * @gir-type Enum
      */
     enum RelayType {
         /**
@@ -358,9 +376,9 @@ export namespace Nice {
     }
 
     /**
-     * A hard limit for the number of remote candidates. This
-     * limit is enforced to protect against malevolent remote
-     * clients.
+     * Was a limit on the number of remote candidates one can set, but is
+     * no longer used by libnice itself.
+     * @deprecated since 0.1.20: Replace with dynamic value based on the {@link Nice.Agent.SignalSignatures.max_connectivity_checks | Nice.Agent::max-connectivity-checks} property
      */
     const AGENT_MAX_REMOTE_CANDIDATES: number;
     /**
@@ -382,22 +400,25 @@ export namespace Nice {
     /**
      * Useful for debugging functions, just returns a static string with the
      * candidate transport.
-     * @param transport a #NiceCandidateTransport
+     * @param transport a {@link Nice.CandidateTransport}
      * @returns a static string with the candidate transport
+     * @since 0.1.19
      */
     function candidate_transport_to_string(transport: CandidateTransport | null): string;
     /**
      * Useful for debugging functions, just returns a static string with the
      * candidate type.
-     * @param type a #NiceCandidateType
+     * @param type a {@link Nice.CandidateType}
      * @returns a static string with the candidate type
+     * @since 0.1.19
      */
     function candidate_type_to_string(type: CandidateType | null): string;
     /**
      * Returns a string representation of the state, generally to use in debug
      * messages.
-     * @param state a #NiceComponentState
-     * @returns a string representation of @state
+     * @param state a {@link Nice.ComponentState}
+     * @returns a string representation of `state`
+     * @since 0.1.6
      */
     function component_state_to_string(state: ComponentState | null): string;
     /**
@@ -421,7 +442,15 @@ export namespace Nice {
      */
     function debug_enable(with_stun: boolean): void;
     /**
-     * Retrieves the IP address of an interface by its name. If this fails, %NULL
+     * Returns the interface index match the local address passed. This can
+     * by used for APIs that need a specific address.
+     * @param addr A {@link Nice.Address} for a local interface
+     * @returns The interface index or 0 on error
+     * @since 0.1.20
+     */
+    function interfaces_get_if_index_by_addr(addr: Address): number;
+    /**
+     * Retrieves the IP address of an interface by its name. If this fails, `null`
      * is returned.
      * @param interface_name name of local interface
      * @returns a newly-allocated string with the IP address
@@ -429,36 +458,46 @@ export namespace Nice {
     function interfaces_get_ip_for_interface(interface_name: string): string | null;
     /**
      * Get the list of local interfaces
-     * @returns a newly-allocated #GList of strings. The caller must free it.
+     * @returns a newly-allocated {@link GLib.List} of strings. The caller must free it.
      */
     function interfaces_get_local_interfaces(): string[];
     /**
      * Get a list of local ipv4 interface addresses
      * @param include_loopback Include any loopback devices
-     * @returns a newly-allocated #GList of strings. The caller must free it.
+     * @returns a newly-allocated {@link GLib.List} of strings. The caller must free it.
      */
     function interfaces_get_local_ips(include_loopback: boolean): string[];
     /**
      * Sets the debug level to enable/disable normal/verbose debug messages.
      * @param level The level of debug to set
+     * @since 0.0.11
      */
     function pseudo_tcp_set_debug_level(level: PseudoTcpDebugLevel | null): void;
+    /**
+     * @gir-type Callback
+     */
     interface AgentRecvFunc {
         (agent: Agent, stream_id: number, component_id: number, len: number, buf: string): void;
     }
     /**
-     * These are options that can be passed to nice_agent_new_full(). They set
+     * These are options that can be passed to `nice_agent_new_full()`. They set
      * various properties on the agent. Not including them sets the property to
      * the other value.
+     * @gir-type Flags
+     * @since 0.1.15
      */
     enum AgentOption {
         /**
+         * No enabled options (Since: 0.1.19)
+         */
+        NONE,
+        /**
          * Enables regular nomination, default
-         *  is aggrssive mode (see #NiceNominationMode).
+         *  is aggrssive mode (see {@link Nice.NominationMode}).
          */
         REGULAR_NOMINATION,
         /**
-         * Enables reliable mode, possibly using PseudoTCP, *  see nice_agent_new_reliable().
+         * Enables reliable mode, possibly using PseudoTCP, *  see `nice_agent_new_reliable()`.
          */
         RELIABLE,
         /**
@@ -478,23 +517,138 @@ export namespace Nice {
          * Enable RFC 7675 consent freshness support. (Since: 0.1.19)
          */
         CONSENT_FRESHNESS,
+        /**
+         * Use bytestream mode for reliable TCP connections. (Since: 0.1.20)
+         */
+        BYTESTREAM_TCP,
+        /**
+         * When removing TURN port allocations on TURN server,
+         * don't do retransmissions and don't wait for a response. (Since: 0.1.23)
+         */
+        CLOSE_FORCED,
     }
 
     namespace Agent {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * This signal is fired whenever a stream has finished gathering its
+             * candidates after a call to `nice_agent_gather_candidates()`
+             * @signal
+             * @run-last
+             */
             'candidate-gathering-done': (arg0: number) => void;
+            /**
+             * This signal is fired whenever a component’s state changes. There are many
+             * valid state transitions.
+             *
+             * ![State transition diagram](states.png)
+             * @signal
+             * @run-last
+             */
             'component-state-changed': (arg0: number, arg1: number, arg2: number) => void;
+            /**
+             * This signal is fired when we received our first binding request from
+             * the peer.
+             * @signal
+             * @run-last
+             */
             'initial-binding-request-received': (arg0: number) => void;
+            /**
+             * This signal is fired when the agent discovers a new local candidate.
+             * When this signal is emitted, a matching {@link Nice.Agent.SignalSignatures.new_candidate_full | Nice.Agent::new-candidate-full} is
+             * also emitted with the candidate.
+             *
+             * See also: {@link Nice.Agent.SignalSignatures.candidate_gathering_done | Nice.Agent::candidate-gathering-done},
+             * {@link Nice.Agent.SignalSignatures.new_candidate_full | Nice.Agent::new-candidate-full}
+             * @signal
+             * @deprecated since 0.1.8: Use {@link Nice.Agent.SignalSignatures.new_candidate_full | Nice.Agent::new-candidate-full}
+             * @run-last
+             */
             'new-candidate': (arg0: number, arg1: number, arg2: string) => void;
+            /**
+             * This signal is fired when the agent discovers a new local candidate.
+             * When this signal is emitted, a matching {@link Nice.Agent.SignalSignatures.new_candidate | Nice.Agent::new-candidate} is
+             * also emitted with the candidate's foundation.
+             *
+             * See also: {@link Nice.Agent.SignalSignatures.candidate_gathering_done | Nice.Agent::candidate-gathering-done},
+             * {@link Nice.Agent.SignalSignatures.new_candidate | Nice.Agent::new-candidate}
+             * @signal
+             * @since 0.1.8
+             * @run-last
+             */
             'new-candidate-full': (arg0: Candidate) => void;
+            /**
+             * This signal is fired when the agent discovers a new remote
+             * candidate.  This can happen with peer reflexive candidates.  When
+             * this signal is emitted, a matching
+             * {@link Nice.Agent.SignalSignatures.new_remote_candidate_full | Nice.Agent::new-remote-candidate-full} is also emitted with the
+             * candidate.
+             *
+             * See also: {@link Nice.Agent.SignalSignatures.new_remote_candidate_full | Nice.Agent::new-remote-candidate-full}
+             * @signal
+             * @deprecated since 0.1.8: Use {@link Nice.Agent.SignalSignatures.new_remote_candidate_full | Nice.Agent::new-remote-candidate-full}
+             * @run-last
+             */
             'new-remote-candidate': (arg0: number, arg1: number, arg2: string) => void;
+            /**
+             * This signal is fired when the agent discovers a new remote candidate.
+             * This can happen with peer reflexive candidates.
+             * When this signal is emitted, a matching {@link Nice.Agent.SignalSignatures.new_remote_candidate | Nice.Agent::new-remote-candidate} is
+             * also emitted with the candidate's foundation.
+             *
+             * See also: {@link Nice.Agent.SignalSignatures.new_remote_candidate | Nice.Agent::new-remote-candidate}
+             * @signal
+             * @since 0.1.8
+             * @run-last
+             */
             'new-remote-candidate-full': (arg0: Candidate) => void;
+            /**
+             * This signal is fired once a candidate pair is selected for data
+             * transfer for a stream's component This is emitted along with
+             * {@link Nice.Agent.SignalSignatures.new_selected_pair_full | Nice.Agent::new-selected-pair-full} which has the whole candidate,
+             * the Foundation of a Candidate is not a unique identifier.
+             *
+             * See also: {@link Nice.Agent.SignalSignatures.new_selected_pair_full | Nice.Agent::new-selected-pair-full}
+             * @signal
+             * @deprecated since 0.1.8: Use {@link Nice.Agent.SignalSignatures.new_selected_pair_full | Nice.Agent::new-selected-pair-full}
+             * @run-last
+             */
             'new-selected-pair': (arg0: number, arg1: number, arg2: string, arg3: string) => void;
+            /**
+             * This signal is fired once a candidate pair is selected for data
+             * transfer for a stream's component. This is emitted along with
+             * {@link Nice.Agent.SignalSignatures.new_selected_pair | Nice.Agent::new-selected-pair}.
+             *
+             * See also: {@link Nice.Agent.SignalSignatures.new_selected_pair | Nice.Agent::new-selected-pair}
+             * @signal
+             * @since 0.1.8
+             * @run-last
+             */
             'new-selected-pair-full': (arg0: number, arg1: number, arg2: Candidate, arg3: Candidate) => void;
+            /**
+             * This signal is fired on {@link Nice.Agent} when the underlying transport becomes writable.
+             * This signal is only emitted when the `nice_agent_send()` function returns less
+             * bytes than requested to send (or -1) and once when the connection
+             * is established.
+             *
+             * Note: Since 0.1.23 this signal also fires for non-reliable transports.
+             * See https://gitlab.freedesktop.org/libnice/libnice/-/issues/202.
+             * @signal
+             * @since 0.0.11
+             * @run-last
+             */
             'reliable-transport-writable': (arg0: number, arg1: number) => void;
+            /**
+             * This signal is fired whenever one or more streams are removed from the
+             * `agent`.
+             * @signal
+             * @since 0.1.5
+             * @run-last
+             */
             'streams-removed': (arg0: number[]) => void;
             'notify::bytestream-tcp': (pspec: GObject.ParamSpec) => void;
+            'notify::close-forced': (pspec: GObject.ParamSpec) => void;
             'notify::compatibility': (pspec: GObject.ParamSpec) => void;
             'notify::consent-freshness': (pspec: GObject.ParamSpec) => void;
             'notify::controlling-mode': (pspec: GObject.ParamSpec) => void;
@@ -507,6 +661,7 @@ export namespace Nice {
             'notify::keepalive-conncheck': (pspec: GObject.ParamSpec) => void;
             'notify::main-context': (pspec: GObject.ParamSpec) => void;
             'notify::max-connectivity-checks': (pspec: GObject.ParamSpec) => void;
+            'notify::proxy-extra-headers': (pspec: GObject.ParamSpec) => void;
             'notify::proxy-ip': (pspec: GObject.ParamSpec) => void;
             'notify::proxy-password': (pspec: GObject.ParamSpec) => void;
             'notify::proxy-port': (pspec: GObject.ParamSpec) => void;
@@ -529,6 +684,8 @@ export namespace Nice {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             bytestream_tcp: boolean;
             bytestreamTcp: boolean;
+            close_forced: boolean;
+            closeForced: boolean;
             compatibility: number;
             consent_freshness: boolean;
             consentFreshness: boolean;
@@ -552,6 +709,8 @@ export namespace Nice {
             mainContext: any;
             max_connectivity_checks: number;
             maxConnectivityChecks: number;
+            proxy_extra_headers: GLib.HashTable<string, string>;
+            proxyExtraHeaders: GLib.HashTable<string, string>;
             proxy_ip: string;
             proxyIp: string;
             proxy_password: string;
@@ -584,8 +743,9 @@ export namespace Nice {
     }
 
     /**
-     * The #NiceAgent is the main GObject of the libnice library and represents
+     * The {@link Nice.Agent} is the main GObject of the libnice library and represents
      * the ICE agent.
+     * @gir-type Class
      */
     class Agent extends GObject.Object {
         static $gtype: GObject.GType<Agent>;
@@ -593,77 +753,94 @@ export namespace Nice {
         // Properties
 
         /**
-         * This property defines whether receive/send over a TCP or pseudo-TCP, in
+         * This property defines whether receive/send operations over a TCP socket, in
          * reliable mode, are considered as packetized or as bytestream.
          * In unreliable mode, every send/recv is considered as packetized, and
          * this property is ignored and cannot be set.
          * <para>
-         * In reliable mode, this property will always return %TRUE in the
-         * %NICE_COMPATIBILITY_GOOGLE compatibility mode.
+         * In reliable mode, this property will always return `true` in the
+         * {@link Nice.Compatibility.GOOGLE} compatibility mode.
          * </para>
-         * If the property is %TRUE, the stream is considered in bytestream mode
-         * and data can be read with any receive size. If the property is %FALSE, then
-         * the stream is considred packetized and each receive will return one packet
+         * If the property is `true`, the stream is considered in bytestream mode
+         * and data can be read with any receive size. If the property is `false`, then
+         * the stream is considered packetized and each receive will return one packet
          * of the same size as what was sent from the peer. If in packetized mode,
          * then doing a receive with a size smaller than the packet, will cause the
          * remaining bytes in the packet to be dropped, breaking the reliability
          * of the stream.
-         * <para>
-         * This property is currently read-only, and will become read/write once
-         * bytestream mode will be supported.
-         * </para>
+         * @since 0.1.8
          */
         get bytestream_tcp(): boolean;
+        set bytestream_tcp(val: boolean);
         /**
-         * This property defines whether receive/send over a TCP or pseudo-TCP, in
+         * This property defines whether receive/send operations over a TCP socket, in
          * reliable mode, are considered as packetized or as bytestream.
          * In unreliable mode, every send/recv is considered as packetized, and
          * this property is ignored and cannot be set.
          * <para>
-         * In reliable mode, this property will always return %TRUE in the
-         * %NICE_COMPATIBILITY_GOOGLE compatibility mode.
+         * In reliable mode, this property will always return `true` in the
+         * {@link Nice.Compatibility.GOOGLE} compatibility mode.
          * </para>
-         * If the property is %TRUE, the stream is considered in bytestream mode
-         * and data can be read with any receive size. If the property is %FALSE, then
-         * the stream is considred packetized and each receive will return one packet
+         * If the property is `true`, the stream is considered in bytestream mode
+         * and data can be read with any receive size. If the property is `false`, then
+         * the stream is considered packetized and each receive will return one packet
          * of the same size as what was sent from the peer. If in packetized mode,
          * then doing a receive with a size smaller than the packet, will cause the
          * remaining bytes in the packet to be dropped, breaking the reliability
          * of the stream.
-         * <para>
-         * This property is currently read-only, and will become read/write once
-         * bytestream mode will be supported.
-         * </para>
+         * @since 0.1.8
          */
         get bytestreamTcp(): boolean;
+        set bytestreamTcp(val: boolean);
+        /**
+         * Whether to omit performing retransmissions and wait for a response for the 0-lifetime
+         * refresh request that is sent by `nice_agent_close_async()`. This favors a quick shutdown of
+         * the agent at the risk of lingering TURN server port allocations.
+         * @since 0.1.23
+         * @construct-only
+         */
+        get close_forced(): boolean;
+        /**
+         * Whether to omit performing retransmissions and wait for a response for the 0-lifetime
+         * refresh request that is sent by `nice_agent_close_async()`. This favors a quick shutdown of
+         * the agent at the risk of lingering TURN server port allocations.
+         * @since 0.1.23
+         * @construct-only
+         */
+        get closeForced(): boolean;
         /**
          * The Nice agent can work in various compatibility modes depending on
          * what the application/peer needs.
-         * <para> See also: #NiceCompatibility</para>
+         * <para> See also: {@link Nice.Compatibility}</para>
+         * @construct-only
          */
         get compatibility(): number;
         /**
          * Whether to perform periodic consent freshness checks as specified in
-         * RFC 7675.  When %TRUE, the agent will periodically send binding requests
+         * RFC 7675.  When `true`, the agent will periodically send binding requests
          * to the peer to maintain the consent to send with the peer.  On receipt
          * of any authenticated error response, a component will immediately move
          * to the failed state.
          *
-         * Setting this property to %TRUE implies that 'keepalive-conncheck' should
-         * be %TRUE as well.
+         * Setting this property to `true` implies that 'keepalive-conncheck' should
+         * be `true` as well.
+         * @since 0.1.19
          */
         get consent_freshness(): boolean;
+        set consent_freshness(val: boolean);
         /**
          * Whether to perform periodic consent freshness checks as specified in
-         * RFC 7675.  When %TRUE, the agent will periodically send binding requests
+         * RFC 7675.  When `true`, the agent will periodically send binding requests
          * to the peer to maintain the consent to send with the peer.  On receipt
          * of any authenticated error response, a component will immediately move
          * to the failed state.
          *
-         * Setting this property to %TRUE implies that 'keepalive-conncheck' should
-         * be %TRUE as well.
+         * Setting this property to `true` implies that 'keepalive-conncheck' should
+         * be `true` as well.
+         * @since 0.1.19
          */
         get consentFreshness(): boolean;
+        set consentFreshness(val: boolean);
         /**
          * Whether the agent has the controlling role. This property should
          * be modified before gathering candidates, any modification occuring
@@ -682,7 +859,8 @@ export namespace Nice {
          * Force all traffic to go through a relay for added privacy, this
          * allows hiding the local IP address. When this is enabled, so
          * local candidates are available before relay servers have been set
-         * with nice_agent_set_relay_info().
+         * with `nice_agent_set_relay_info()`.
+         * @since 0.1.14
          */
         get force_relay(): boolean;
         set force_relay(val: boolean);
@@ -690,11 +868,18 @@ export namespace Nice {
          * Force all traffic to go through a relay for added privacy, this
          * allows hiding the local IP address. When this is enabled, so
          * local candidates are available before relay servers have been set
-         * with nice_agent_set_relay_info().
+         * with `nice_agent_set_relay_info()`.
+         * @since 0.1.14
          */
         get forceRelay(): boolean;
         set forceRelay(val: boolean);
+        /**
+         * @construct-only
+         */
         get full_mode(): boolean;
+        /**
+         * @construct-only
+         */
         get fullMode(): boolean;
         /**
          * Whether the agent should use ICE-TCP when gathering candidates.
@@ -705,17 +890,18 @@ export namespace Nice {
          * This option should be set before gathering candidates and should not be
          * modified afterwards.
          * </para>
-         * The #NiceAgent:ice-tcp property can be set at the same time as the
-         * #NiceAgent:ice-udp property, but both cannot be unset at the same time.
-         * If #NiceAgent:ice-udp is set to %FALSE, then this property cannot be set
-         * to %FALSE as well.
+         * The {@link Nice.Agent.ice_tcp} property can be set at the same time as the
+         * {@link Nice.Agent.ice_udp} property, but both cannot be unset at the same time.
+         * If {@link Nice.Agent.ice_udp} is set to `false`, then this property cannot be set
+         * to `false` as well.
          * <note>
          *    <para>
-         *    ICE-TCP is only supported for %NICE_COMPATIBILITY_RFC5245,
-         *    %NICE_COMPATIBILITY_OC2007 and %NICE_COMPATIBILITY_OC2007R2 compatibility
+         *    ICE-TCP is only supported for {@link Nice.Compatibility.RFC5245},
+         *    {@link Nice.Compatibility.OC2007} and {@link Nice.Compatibility.OC2007R2} compatibility
          *    modes.
          *    </para>
          * </note>
+         * @since 0.1.8
          */
         get ice_tcp(): boolean;
         set ice_tcp(val: boolean);
@@ -728,33 +914,36 @@ export namespace Nice {
          * This option should be set before gathering candidates and should not be
          * modified afterwards.
          * </para>
-         * The #NiceAgent:ice-tcp property can be set at the same time as the
-         * #NiceAgent:ice-udp property, but both cannot be unset at the same time.
-         * If #NiceAgent:ice-udp is set to %FALSE, then this property cannot be set
-         * to %FALSE as well.
+         * The {@link Nice.Agent.ice_tcp} property can be set at the same time as the
+         * {@link Nice.Agent.ice_udp} property, but both cannot be unset at the same time.
+         * If {@link Nice.Agent.ice_udp} is set to `false`, then this property cannot be set
+         * to `false` as well.
          * <note>
          *    <para>
-         *    ICE-TCP is only supported for %NICE_COMPATIBILITY_RFC5245,
-         *    %NICE_COMPATIBILITY_OC2007 and %NICE_COMPATIBILITY_OC2007R2 compatibility
+         *    ICE-TCP is only supported for {@link Nice.Compatibility.RFC5245},
+         *    {@link Nice.Compatibility.OC2007} and {@link Nice.Compatibility.OC2007R2} compatibility
          *    modes.
          *    </para>
          * </note>
+         * @since 0.1.8
          */
         get iceTcp(): boolean;
         set iceTcp(val: boolean);
         /**
          * Whether to perform Trickle ICE as per draft-ietf-ice-trickle-ice-21.
-         * When %TRUE, the agent will postpone changing a component state to
-         * %NICE_COMPONENT_STATE_FAILED until nice_agent_peer_candidate_gathering_done()
+         * When `true`, the agent will postpone changing a component state to
+         * {@link Nice.ComponentState.FAILED} until `nice_agent_peer_candidate_gathering_done()`
          * has been called with the ID of the component's stream.
+         * @since 0.1.16
          */
         get ice_trickle(): boolean;
         set ice_trickle(val: boolean);
         /**
          * Whether to perform Trickle ICE as per draft-ietf-ice-trickle-ice-21.
-         * When %TRUE, the agent will postpone changing a component state to
-         * %NICE_COMPONENT_STATE_FAILED until nice_agent_peer_candidate_gathering_done()
+         * When `true`, the agent will postpone changing a component state to
+         * {@link Nice.ComponentState.FAILED} until `nice_agent_peer_candidate_gathering_done()`
          * has been called with the ID of the component's stream.
+         * @since 0.1.16
          */
         get iceTrickle(): boolean;
         set iceTrickle(val: boolean);
@@ -767,10 +956,11 @@ export namespace Nice {
          * This option should be set before gathering candidates and should not be
          * modified afterwards.
          * </para>
-         * The #NiceAgent:ice-udp property can be set at the same time as the
-         * #NiceAgent:ice-tcp property, but both cannot be unset at the same time.
-         * If #NiceAgent:ice-tcp is set to %FALSE, then this property cannot be set
-         * to %FALSE as well.
+         * The {@link Nice.Agent.ice_udp} property can be set at the same time as the
+         * {@link Nice.Agent.ice_tcp} property, but both cannot be unset at the same time.
+         * If {@link Nice.Agent.ice_tcp} is set to `false`, then this property cannot be set
+         * to `false` as well.
+         * @since 0.1.8
          */
         get ice_udp(): boolean;
         set ice_udp(val: boolean);
@@ -783,10 +973,11 @@ export namespace Nice {
          * This option should be set before gathering candidates and should not be
          * modified afterwards.
          * </para>
-         * The #NiceAgent:ice-udp property can be set at the same time as the
-         * #NiceAgent:ice-tcp property, but both cannot be unset at the same time.
-         * If #NiceAgent:ice-tcp is set to %FALSE, then this property cannot be set
-         * to %FALSE as well.
+         * The {@link Nice.Agent.ice_udp} property can be set at the same time as the
+         * {@link Nice.Agent.ice_tcp} property, but both cannot be unset at the same time.
+         * If {@link Nice.Agent.ice_tcp} is set to `false`, then this property cannot be set
+         * to `false` as well.
+         * @since 0.1.8
          */
         get iceUdp(): boolean;
         set iceUdp(val: boolean);
@@ -818,6 +1009,7 @@ export namespace Nice {
          * emission of 'connected' and 'ready' agent signals, and will not
          * slow down the behaviour of the agent when the peer agent works
          * in a timely manner.
+         * @since 0.1.17
          */
         get idle_timeout(): number;
         set idle_timeout(val: number);
@@ -849,47 +1041,52 @@ export namespace Nice {
          * emission of 'connected' and 'ready' agent signals, and will not
          * slow down the behaviour of the agent when the peer agent works
          * in a timely manner.
+         * @since 0.1.17
          */
         get idleTimeout(): number;
         set idleTimeout(val: number);
         /**
          * Use binding requests as keepalives instead of binding
          * indications. This means that the keepalives may time out which
-         * will change the component state to %NICE_COMPONENT_STATE_FAILED.
+         * will change the component state to {@link Nice.ComponentState.FAILED}.
          *
          * Enabing this is a slight violation of RFC 5245 section 10 which
          * recommends using Binding Indications for keepalives.
          *
          * This is always enabled if the compatibility mode is
-         * %NICE_COMPATIBILITY_GOOGLE.
+         * {@link Nice.Compatibility.GOOGLE}.
          *
-         * This is always enabled if the 'consent-freshness' property is %TRUE
+         * This is always enabled if the 'consent-freshness' property is `true`
+         * @since 0.1.8
          */
         get keepalive_conncheck(): boolean;
         set keepalive_conncheck(val: boolean);
         /**
          * Use binding requests as keepalives instead of binding
          * indications. This means that the keepalives may time out which
-         * will change the component state to %NICE_COMPONENT_STATE_FAILED.
+         * will change the component state to {@link Nice.ComponentState.FAILED}.
          *
          * Enabing this is a slight violation of RFC 5245 section 10 which
          * recommends using Binding Indications for keepalives.
          *
          * This is always enabled if the compatibility mode is
-         * %NICE_COMPATIBILITY_GOOGLE.
+         * {@link Nice.Compatibility.GOOGLE}.
          *
-         * This is always enabled if the 'consent-freshness' property is %TRUE
+         * This is always enabled if the 'consent-freshness' property is `true`
+         * @since 0.1.8
          */
         get keepaliveConncheck(): boolean;
         set keepaliveConncheck(val: boolean);
         /**
          * A GLib main context is needed for all timeouts used by libnice.
-         * This is a property being set by the nice_agent_new() call.
+         * This is a property being set by the `nice_agent_new()` call.
+         * @construct-only
          */
         get main_context(): any;
         /**
          * A GLib main context is needed for all timeouts used by libnice.
-         * This is a property being set by the nice_agent_new() call.
+         * This is a property being set by the `nice_agent_new()` call.
+         * @construct-only
          */
         get mainContext(): any;
         get max_connectivity_checks(): number;
@@ -897,58 +1094,86 @@ export namespace Nice {
         get maxConnectivityChecks(): number;
         set maxConnectivityChecks(val: number);
         /**
+         * Optional extra headers to append to the HTTP proxy CONNECT request.
+         * Provided as key/value-pairs in hash table corresponding to
+         * header-name/header-value.
+         * @since 0.1.20
+         */
+        get proxy_extra_headers(): GLib.HashTable<string, string>;
+        set proxy_extra_headers(val: GLib.HashTable<string, string>);
+        /**
+         * Optional extra headers to append to the HTTP proxy CONNECT request.
+         * Provided as key/value-pairs in hash table corresponding to
+         * header-name/header-value.
+         * @since 0.1.20
+         */
+        get proxyExtraHeaders(): GLib.HashTable<string, string>;
+        set proxyExtraHeaders(val: GLib.HashTable<string, string>);
+        /**
          * The proxy server IP used to bypass a proxy firewall
+         * @since 0.0.4
          */
         get proxy_ip(): string;
         set proxy_ip(val: string);
         /**
          * The proxy server IP used to bypass a proxy firewall
+         * @since 0.0.4
          */
         get proxyIp(): string;
         set proxyIp(val: string);
         /**
          * The password used to authenticate with the proxy
+         * @since 0.0.4
          */
         get proxy_password(): string;
         set proxy_password(val: string);
         /**
          * The password used to authenticate with the proxy
+         * @since 0.0.4
          */
         get proxyPassword(): string;
         set proxyPassword(val: string);
         /**
          * The proxy server port used to bypass a proxy firewall
+         * @since 0.0.4
          */
         get proxy_port(): number;
         set proxy_port(val: number);
         /**
          * The proxy server port used to bypass a proxy firewall
+         * @since 0.0.4
          */
         get proxyPort(): number;
         set proxyPort(val: number);
         /**
          * The type of proxy set in the proxy-ip property
+         * @since 0.0.4
          */
         get proxy_type(): number;
         set proxy_type(val: number);
         /**
          * The type of proxy set in the proxy-ip property
+         * @since 0.0.4
          */
         get proxyType(): number;
         set proxyType(val: number);
         /**
          * The username used to authenticate with the proxy
+         * @since 0.0.4
          */
         get proxy_username(): string;
         set proxy_username(val: string);
         /**
          * The username used to authenticate with the proxy
+         * @since 0.0.4
          */
         get proxyUsername(): string;
         set proxyUsername(val: string);
         /**
          * Whether the agent is providing a reliable transport of messages (through
          * ICE-TCP or PseudoTCP over ICE-UDP)
+         * @since 0.0.11
+         * @construct-only
          */
         get reliable(): boolean;
         /**
@@ -956,10 +1181,11 @@ export namespace Nice {
          * used in the gathering stage, to find our local candidates.
          * This property is described as 'RTO' in the RFC 5389 and RFC 5245.
          * This timeout is doubled for each retransmission, until
-         * #NiceAgent:stun-max-retransmissions have been done,
+         * {@link Nice.Agent.stun_max_retransmissions} have been done,
          * with an exception for the last restransmission, where the timeout is
          * divided by two instead (RFC 5389 indicates that a customisable
          * multiplier 'Rm' to 'RTO' should be used).
+         * @since 0.1.15
          */
         get stun_initial_timeout(): number;
         set stun_initial_timeout(val: number);
@@ -968,10 +1194,11 @@ export namespace Nice {
          * used in the gathering stage, to find our local candidates.
          * This property is described as 'RTO' in the RFC 5389 and RFC 5245.
          * This timeout is doubled for each retransmission, until
-         * #NiceAgent:stun-max-retransmissions have been done,
+         * {@link Nice.Agent.stun_max_retransmissions} have been done,
          * with an exception for the last restransmission, where the timeout is
          * divided by two instead (RFC 5389 indicates that a customisable
          * multiplier 'Rm' to 'RTO' should be used).
+         * @since 0.1.15
          */
         get stunInitialTimeout(): number;
         set stunInitialTimeout(val: number);
@@ -985,6 +1212,7 @@ export namespace Nice {
          * a direct impact on the time needed to move from the CONNECTED state
          * to the READY state, and on the time needed to complete the GATHERING
          * state.
+         * @since 0.1.15
          */
         get stun_max_retransmissions(): number;
         set stun_max_retransmissions(val: number);
@@ -998,6 +1226,7 @@ export namespace Nice {
          * a direct impact on the time needed to move from the CONNECTED state
          * to the READY state, and on the time needed to complete the GATHERING
          * state.
+         * @since 0.1.15
          */
         get stunMaxRetransmissions(): number;
         set stunMaxRetransmissions(val: number);
@@ -1008,12 +1237,14 @@ export namespace Nice {
         /**
          * The initial timeout of the STUN binding requests used
          * for a reliable timer.
+         * @since 0.1.15
          */
         get stun_reliable_timeout(): number;
         set stun_reliable_timeout(val: number);
         /**
          * The initial timeout of the STUN binding requests used
          * for a reliable timer.
+         * @since 0.1.15
          */
         get stunReliableTimeout(): number;
         set stunReliableTimeout(val: number);
@@ -1046,18 +1277,21 @@ export namespace Nice {
         /**
          * Whether the agent should use UPnP to open a port in the router and
          * get the external IP
+         * @since 0.0.7
          */
         get upnp(): boolean;
         set upnp(val: boolean);
         /**
          * The maximum amount of time (in milliseconds) to wait for UPnP discovery to
-         * finish before signaling the #NiceAgent::candidate-gathering-done signal
+         * finish before signaling the {@link Nice.Agent.SignalSignatures.candidate_gathering_done | Nice.Agent::candidate-gathering-done} signal
+         * @since 0.0.7
          */
         get upnp_timeout(): number;
         set upnp_timeout(val: number);
         /**
          * The maximum amount of time (in milliseconds) to wait for UPnP discovery to
-         * finish before signaling the #NiceAgent::candidate-gathering-done signal
+         * finish before signaling the {@link Nice.Agent.SignalSignatures.candidate_gathering_done | Nice.Agent::candidate-gathering-done} signal
+         * @since 0.0.7
          */
         get upnpTimeout(): number;
         set upnpTimeout(val: number);
@@ -1085,16 +1319,19 @@ export namespace Nice {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Agent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Agent.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Agent.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Agent.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Agent.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Agent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1111,9 +1348,9 @@ export namespace Nice {
          * discover the local addresses available
          * </para>
          *
-         * See also: nice_agent_gather_candidates()
+         * See also: `nice_agent_gather_candidates()`
          * @param addr The address to listen to If the port is 0, then a random port will be chosen by the system
-         * @returns %TRUE on success, %FALSE on fatal (memory allocation) errors
+         * @returns `true` on success, `false` on fatal (memory allocation) errors
          */
         add_local_address(addr: Address): boolean;
         /**
@@ -1126,8 +1363,8 @@ export namespace Nice {
         /**
          * Asynchronously closes resources the agent has allocated on remote servers.
          *
-         * The agent will call the callback in the current #GMainContext in
-         * which this function is called. The #GAsyncResult in the callback
+         * The agent will call the callback in the current {@link GLib.MainContext} in
+         * which this function is called. The {@link Gio.AsyncResult} in the callback
          * can be ignored as this operation never fails.
          *
          * Calling this function before freeing the agent makes sure the allocated relay
@@ -1141,50 +1378,50 @@ export namespace Nice {
          * requests as specified in RFC 7675.
          *
          * A stream with a component in the consent-lost state can be reused by
-         * performing an ice restart with nice_agent_restart() or
-         * nice_agent_restart_stream().
+         * performing an ice restart with `nice_agent_restart()` or
+         * `nice_agent_restart_stream()`.
          *
          * Calling the function only has an effect when `agent` has been created with
          * `NICE_AGENT_OPTION_CONSENT_FRESHNESS`.
          * @param stream_id The ID of the stream
          * @param component_id The ID of the component
-         * @returns %FALSE if the stream or component could not be found or consent     freshness is not enabled, %TRUE otherwise
+         * @returns `false` if the stream or component could not be found or consent     freshness is not enabled, `true` otherwise
          */
         consent_lost(stream_id: number, component_id: number): boolean;
         /**
          * Forget all the relay servers previously added using
-         * nice_agent_set_relay_info(). Currently connected streams will keep
+         * `nice_agent_set_relay_info()`. Currently connected streams will keep
          * using the relay as long as they have not been restarted and haven't
          * succesfully negotiated a different path.
          * @param stream_id The ID of the stream
          * @param component_id The ID of the component
-         * @returns %FALSE if the component could not be found, %TRUE otherwise
+         * @returns `false` if the component could not be found, `true` otherwise
          */
         forget_relays(stream_id: number, component_id: number): boolean;
         /**
          * Allocate and start listening on local candidate ports and start the remote
          * candidate gathering process.
-         * Once done, #NiceAgent::candidate-gathering-done is called for the stream.
-         * As soon as this function is called, #NiceAgent::new-candidate signals may be
+         * Once done, {@link Nice.Agent.SignalSignatures.candidate_gathering_done | Nice.Agent::candidate-gathering-done} is called for the stream.
+         * As soon as this function is called, {@link Nice.Agent.SignalSignatures.new_candidate | Nice.Agent::new-candidate} signals may be
          * emitted, even before this function returns.
          *
-         * nice_agent_get_local_candidates() will only return non-empty results after
+         * `nice_agent_get_local_candidates()` will only return non-empty results after
          * calling this function.
          *
-         * <para>See also: nice_agent_add_local_address()</para>
-         * <para>See also: nice_agent_set_port_range()</para>
+         * <para>See also: `nice_agent_add_local_address()`</para>
+         * <para>See also: `nice_agent_set_port_range()`</para>
          * @param stream_id The ID of the stream to start
-         * @returns %FALSE if the stream ID is invalid or if a host candidate couldn't be allocated on the requested interfaces/ports; %TRUE otherwise  <note>    <para>     Local addresses can be previously set with nice_agent_add_local_address()   </para>   <para>     Since 0.0.5, If no local address was previously added, then the nice agent     will automatically detect the local address using     nice_interfaces_get_local_ips()    </para>  </note>
+         * @returns `false` if the stream ID is invalid or if a host candidate couldn't be allocated on the requested interfaces/ports; `true` otherwise  <note>    <para>     Local addresses can be previously set with `nice_agent_add_local_address()`   </para>   <para>     Since 0.0.5, If no local address was previously added, then the nice agent     will automatically detect the local address using     `nice_interfaces_get_local_ips()`    </para>  </note>
          */
         gather_candidates(stream_id: number): boolean;
         /**
          * Generate an SDP string representing a local candidate.
          *
-         * <para>See also: nice_agent_parse_remote_candidate_sdp() </para>
-         * <para>See also: nice_agent_generate_local_sdp() </para>
-         * <para>See also: nice_agent_generate_local_stream_sdp() </para>
+         * <para>See also: `nice_agent_parse_remote_candidate_sdp()` </para>
+         * <para>See also: `nice_agent_generate_local_sdp()` </para>
+         * <para>See also: `nice_agent_generate_local_stream_sdp()` </para>
          * @param candidate The candidate to generate
-         * @returns A string representing the SDP for the candidate. Must be freed with g_free() once done.
+         * @returns A string representing the SDP for the candidate. Must be freed with `g_free()` once done.
          */
         generate_local_candidate_sdp(candidate: Candidate): string;
         /**
@@ -1199,7 +1436,7 @@ export namespace Nice {
          *    <para>
          *     It is highly recommended to set names on the streams prior to calling this
          *     function. Unnamed streams will show up as '-' in the 'm' line, but the SDP
-         *     will not be parseable with nice_agent_parse_remote_sdp() if a stream is
+         *     will not be parseable with `nice_agent_parse_remote_sdp()` if a stream is
          *     unnamed.
          *    </para>
          *    <para>
@@ -1208,12 +1445,12 @@ export namespace Nice {
          *    </para>
          *  </note>
          *
-         * <para>See also: nice_agent_set_stream_name() </para>
-         * <para>See also: nice_agent_parse_remote_sdp() </para>
-         * <para>See also: nice_agent_generate_local_stream_sdp() </para>
-         * <para>See also: nice_agent_generate_local_candidate_sdp() </para>
-         * <para>See also: nice_agent_get_default_local_candidate() </para>
-         * @returns A string representing the local SDP. Must be freed with g_free() once done.
+         * <para>See also: `nice_agent_set_stream_name()` </para>
+         * <para>See also: `nice_agent_parse_remote_sdp()` </para>
+         * <para>See also: `nice_agent_generate_local_stream_sdp()` </para>
+         * <para>See also: `nice_agent_generate_local_candidate_sdp()` </para>
+         * <para>See also: `nice_agent_get_default_local_candidate()` </para>
+         * @returns A string representing the local SDP. Must be freed with `g_free()` once done.
          */
         generate_local_sdp(): string;
         /**
@@ -1235,21 +1472,21 @@ export namespace Nice {
          *    </para>
          *  </note>
          *
-         * <para>See also: nice_agent_set_stream_name() </para>
-         * <para>See also: nice_agent_parse_remote_stream_sdp() </para>
-         * <para>See also: nice_agent_generate_local_sdp() </para>
-         * <para>See also: nice_agent_generate_local_candidate_sdp() </para>
-         * <para>See also: nice_agent_get_default_local_candidate() </para>
+         * <para>See also: `nice_agent_set_stream_name()` </para>
+         * <para>See also: `nice_agent_parse_remote_stream_sdp()` </para>
+         * <para>See also: `nice_agent_generate_local_sdp()` </para>
+         * <para>See also: `nice_agent_generate_local_candidate_sdp()` </para>
+         * <para>See also: `nice_agent_get_default_local_candidate()` </para>
          * @param stream_id The ID of the stream
          * @param include_non_ice Whether or not to include non ICE specific lines (m=, c= and a=rtcp: lines)
-         * @returns A string representing the local SDP for the stream. Must be freed with g_free() once done.
+         * @returns A string representing the local SDP for the stream. Must be freed with `g_free()` once done.
          */
         generate_local_stream_sdp(stream_id: number, include_non_ice: boolean): string;
         /**
          * Retrieves the current state of a component.
          * @param stream_id The ID of the stream
          * @param component_id The ID of the component
-         * @returns the #NiceComponentState of the component and %NICE_COMPONENT_STATE_FAILED if the component was invalid.
+         * @returns the {@link Nice.ComponentState} of the component and {@link Nice.ComponentState.FAILED} if the component was invalid.
          */
         get_component_state(stream_id: number, component_id: number): ComponentState;
         /**
@@ -1265,21 +1502,21 @@ export namespace Nice {
          * </note>
          * @param stream_id The ID of the stream
          * @param component_id The ID of the component
-         * @returns The candidate to be used as the default candidate, or %NULL in case of error. Must be freed with nice_candidate_free() once done.
+         * @returns The candidate to be used as the default candidate, or `null` in case of error. Must be freed with `nice_candidate_free()` once done.
          */
         get_default_local_candidate(stream_id: number, component_id: number): Candidate;
         /**
-         * Gets a #GIOStream wrapper around the given stream and component in
+         * Gets a {@link Gio.IOStream} wrapper around the given stream and component in
          * `agent`. The I/O stream will be valid for as long as `stream_id` is valid.
-         * The #GInputStream and #GOutputStream implement #GPollableInputStream and
-         * #GPollableOutputStream.
+         * The {@link Gio.InputStream} and {@link Gio.OutputStream} implement {@link Gio.PollableInputStream} and
+         * {@link Gio.PollableOutputStream}.
          *
-         * This function may only be called on reliable #NiceAgents. It is a
+         * This function may only be called on reliable `NiceAgents`. It is a
          * programming error to try and create an I/O stream wrapper for an
          * unreliable stream.
          * @param stream_id The ID of the stream to wrap
          * @param component_id The ID of the component to wrap
-         * @returns A #GIOStream.
+         * @returns A {@link Gio.IOStream}.
          */
         get_io_stream(stream_id: number, component_id: number): Gio.IOStream;
         /**
@@ -1291,22 +1528,22 @@ export namespace Nice {
          *      The caller owns the returned GSList as well as the candidates contained
          *      within it.
          *      To get full results, the client should wait for the
-         *      #NiceAgent::candidate-gathering-done signal.
+         *      {@link Nice.Agent.SignalSignatures.candidate_gathering_done | Nice.Agent::candidate-gathering-done} signal.
          *    </para>
          *  </note>
          * @param stream_id The ID of the stream
          * @param component_id The ID of the component
-         * @returns a #GSList of #NiceCandidate objects representing the local candidates of @agent
+         * @returns a {@link GLib.SList} of {@link Nice.Candidate} objects representing the local candidates of `agent`
          */
         get_local_candidates(stream_id: number, component_id: number): Candidate[];
         /**
          * Gets the local credentials for stream `stream_id`. This may be called any time
-         * after creating a stream using nice_agent_add_stream().
+         * after creating a stream using `nice_agent_add_stream()`.
          *
          * An error will be returned if this is called for a non-existent stream, or if
-         * either of `ufrag` or `pwd` are %NULL.
+         * either of `ufrag` or `pwd` are `null`.
          * @param stream_id The ID of the stream
-         * @returns %TRUE on success, %FALSE on error.
+         * @returns `true` on success, `false` on error.
          */
         get_local_credentials(stream_id: number): [boolean, string, string];
         /**
@@ -1319,13 +1556,13 @@ export namespace Nice {
          *    </para>
          *    <para>
          *      The list of remote candidates can change during processing.
-         *      The client should register for the #NiceAgent::new-remote-candidate signal
+         *      The client should register for the {@link Nice.Agent.SignalSignatures.new_remote_candidate | Nice.Agent::new-remote-candidate} signal
          *      to get notified of new remote candidates.
          *    </para>
          *  </note>
          * @param stream_id The ID of the stream
          * @param component_id The ID of the component
-         * @returns a #GSList of #NiceCandidates objects representing the remote candidates set on the @agent
+         * @returns a {@link GLib.SList} of `NiceCandidates` objects representing the remote candidates set on the `agent`
          */
         get_remote_candidates(stream_id: number, component_id: number): Candidate[];
         /**
@@ -1335,7 +1572,7 @@ export namespace Nice {
          * @param component_id The ID of the component
          * @param local The local selected candidate
          * @param remote The remote selected candidate
-         * @returns %TRUE on success, %FALSE if there is no selected candidate pair
+         * @returns `true` on success, `false` if there is no selected candidate pair
          */
         get_selected_pair(stream_id: number, component_id: number, local: Candidate, remote: Candidate): boolean;
         /**
@@ -1353,49 +1590,49 @@ export namespace Nice {
          * application because the packets are encapsulated.
          * @param stream_id The ID of the stream
          * @param component_id The ID of the component
-         * @returns pointer to the #GSocket, or %NULL if there is no selected candidate or if the selected candidate is a relayed candidate.
+         * @returns pointer to the {@link Gio.Socket}, or `null` if there is no selected candidate or if the selected candidate is a relayed candidate.
          */
         get_selected_socket(stream_id: number, component_id: number): Gio.Socket | null;
         /**
          * Each component can have multiple sockets, this is an API to retrieve them all
          * to be able to set properties. Most of the sockets for a component are created when
-         * calling nice_agent_gather_candidates(), so this API should be called right after to
+         * calling `nice_agent_gather_candidates()`, so this API should be called right after to
          * able to set properties on the sockets before they are used.
          *
          * These sockets can be a mix of UDP & TCP sockets depending on the compatibility mode
          * and options that have been set.
          * @param stream_id The ID of the stream
          * @param component_id The ID of the component
-         * @returns An array containing all of the sockets for this component. Free with g_ptr_array_unref() when done.
+         * @returns An array containing all of the sockets for this component. Free with `g_ptr_array_unref()` when done.
          */
         get_sockets(stream_id: number, component_id: number): Gio.Socket[];
         /**
          * This function will return the name assigned to a stream.
          *
-         * <para>See also: nice_agent_set_stream_name()</para>
+         * <para>See also: `nice_agent_set_stream_name()`</para>
          * @param stream_id The ID of the stream to change
-         * @returns The name of the stream. The name is only valid while the stream exists or until it changes through a call to nice_agent_set_stream_name().
+         * @returns The name of the stream. The name is only valid while the stream exists or until it changes through a call to `nice_agent_set_stream_name()`.
          */
         get_stream_name(stream_id: number): string;
         /**
          * Parse an SDP string and extracts the candidate from it.
          *
-         * <para>See also: nice_agent_generate_local_candidate_sdp() </para>
-         * <para>See also: nice_agent_parse_remote_sdp() </para>
-         * <para>See also: nice_agent_parse_remote_stream_sdp() </para>
+         * <para>See also: `nice_agent_generate_local_candidate_sdp()` </para>
+         * <para>See also: `nice_agent_parse_remote_sdp()` </para>
+         * <para>See also: `nice_agent_parse_remote_stream_sdp()` </para>
          * @param stream_id The ID of the stream the candidate belongs to
          * @param sdp The remote SDP to parse
-         * @returns The parsed candidate or %NULL if there was an error.
+         * @returns The parsed candidate or `null` if there was an error.
          */
         parse_remote_candidate_sdp(stream_id: number, sdp: string): Candidate;
         /**
          * Parse an SDP string and extracts candidates and credentials from it and sets
          * them on the agent.
          *
-         * <para>See also: nice_agent_set_stream_name() </para>
-         * <para>See also: nice_agent_generate_local_sdp() </para>
-         * <para>See also: nice_agent_parse_remote_stream_sdp() </para>
-         * <para>See also: nice_agent_parse_remote_candidate_sdp() </para>
+         * <para>See also: `nice_agent_set_stream_name()` </para>
+         * <para>See also: `nice_agent_generate_local_sdp()` </para>
+         * <para>See also: `nice_agent_parse_remote_stream_sdp()` </para>
+         * <para>See also: `nice_agent_parse_remote_candidate_sdp()` </para>
          * @param sdp The remote SDP to parse
          * @returns The number of candidates added, negative on errors
          */
@@ -1404,14 +1641,14 @@ export namespace Nice {
          * Parse an SDP string representing a single stream and extracts candidates
          * and credentials from it.
          *
-         * <para>See also: nice_agent_generate_local_stream_sdp() </para>
-         * <para>See also: nice_agent_parse_remote_sdp() </para>
-         * <para>See also: nice_agent_parse_remote_candidate_sdp() </para>
+         * <para>See also: `nice_agent_generate_local_stream_sdp()` </para>
+         * <para>See also: `nice_agent_parse_remote_sdp()` </para>
+         * <para>See also: `nice_agent_parse_remote_candidate_sdp()` </para>
          * @param stream_id The ID of the stream to parse
          * @param sdp The remote SDP to parse
-         * @param ufrag Pointer to store the ice ufrag if non %NULL. Must be freed with g_free() after use
-         * @param pwd Pointer to store the ice password if non %NULL. Must be freed with g_free() after use
-         * @returns A #GSList of candidates parsed from the SDP, or %NULL in case of errors
+         * @param ufrag Pointer to store the ice ufrag if non `null`. Must be freed with `g_free()` after use
+         * @param pwd Pointer to store the ice password if non `null`. Must be freed with `g_free()` after use
+         * @returns A {@link GLib.SList} of candidates parsed from the SDP, or `null` in case of errors
          */
         parse_remote_stream_sdp(stream_id: number, sdp: string, ufrag: string, pwd: string): Candidate[];
         /**
@@ -1420,29 +1657,29 @@ export namespace Nice {
          *
          * This will allow the stream components without a successful connectivity check
          * to stop waiting for more candidates to come and finally transit into
-         * %NICE_COMPONENT_STATE_FAILED.
+         * {@link Nice.ComponentState.FAILED}.
          *
-         * Calling the function has an effect only when #NiceAgent:trickle-ice is %TRUE.
+         * Calling the function has an effect only when {@link Nice.Agent.trickle_ice} is `true`.
          * @param stream_id The ID of the stream
-         * @returns %FALSE if the stream could not be found, %TRUE otherwise
+         * @returns `false` if the stream could not be found, `true` otherwise
          */
         peer_candidate_gathering_done(stream_id: number): boolean;
         /**
-         * A single-message version of nice_agent_recv_messages().
+         * A single-message version of `nice_agent_recv_messages()`.
          * @param stream_id the ID of the stream to receive on
          * @param component_id the ID of the component to receive on
-         * @param cancellable a #GCancellable to allow the operation to be cancelled from another thread, or %NULL
-         * @returns the number of bytes written to @buf on success (guaranteed to be greater than 0 unless @buf_len is 0), 0 if in reliable mode and the remote peer closed the stream, or -1 on error
+         * @param cancellable a {@link Gio.Cancellable} to allow the operation to be cancelled from another thread, or `null`
+         * @returns the number of bytes written to `buf` on success (guaranteed to be greater than 0 unless `buf_len` is 0), 0 if in reliable mode and the remote peer closed the stream, or -1 on error
          */
         recv(stream_id: number, component_id: number, cancellable?: Gio.Cancellable | null): [number, Uint8Array];
         /**
          * Block on receiving data from the given stream/component combination on
-         * `agent,` returning only once exactly `n_messages` messages have been received
-         * and written into `messages,` the stream is closed by the other end or by
-         * calling nice_agent_remove_stream(), or `cancellable` is cancelled.
+         * `agent`, returning only once exactly `n_messages` messages have been received
+         * and written into `messages`, the stream is closed by the other end or by
+         * calling `nice_agent_remove_stream()`, or `cancellable` is cancelled.
          *
-         * Any STUN packets received will not be added to `messages;` instead,
-         * they'll be passed for processing to #NiceAgent itself. Since #NiceAgent
+         * Any STUN packets received will not be added to `messages`; instead,
+         * they'll be passed for processing to {@link Nice.Agent} itself. Since {@link Nice.Agent}
          * does not poll for messages on its own, it's therefore essential to keep
          * calling this function for ICE connection establishment to work.
          *
@@ -1450,29 +1687,29 @@ export namespace Nice {
          * all `n_messages` have been filled with received data (i.e. `messages` is
          * treated as a large, flat array of buffers). In non-reliable mode, it will
          * block until `n_messages` messages have been received, each of which does not
-         * have to fill all the buffers in its #NiceInputMessage. In the non-reliable
-         * case, each #NiceInputMessage must have enough buffers to contain an entire
+         * have to fill all the buffers in its {@link Nice.InputMessage}. In the non-reliable
+         * case, each {@link Nice.InputMessage} must have enough buffers to contain an entire
          * message (65536 bytes), or any excess data may be silently dropped.
          *
-         * For each received message, #NiceInputMessage::length will be set to the
+         * For each received message, {@link Nice.InputMessage.SignalSignatures.length | Nice.InputMessage::length} will be set to the
          * number of valid bytes stored in the message’s buffers. The bytes are stored
          * sequentially in the buffers; there are no gaps apart from at the end of the
-         * buffer array (in non-reliable mode). If non-%NULL on input,
-         * #NiceInputMessage::from will have the address of the sending peer stored in
+         * buffer array (in non-reliable mode). If non-`null` on input,
+         * {@link Nice.InputMessage.SignalSignatures.from | Nice.InputMessage::from} will have the address of the sending peer stored in
          * it. The base addresses, sizes, and number of buffers in each message will not
          * be modified in any case.
          *
-         * This must not be used in combination with nice_agent_attach_recv() on the
+         * This must not be used in combination with `nice_agent_attach_recv()` on the
          * same stream/component pair.
          *
          * If the stream/component pair doesn’t exist, or if a suitable candidate socket
-         * hasn’t yet been selected for it, a %G_IO_ERROR_BROKEN_PIPE error will be
-         * returned. A %G_IO_ERROR_CANCELLED error will be returned if the operation was
-         * cancelled. %G_IO_ERROR_FAILED will be returned for other errors.
+         * hasn’t yet been selected for it, a {@link Gio.IOErrorEnum.BROKEN_PIPE} error will be
+         * returned. A {@link Gio.IOErrorEnum.CANCELLED} error will be returned if the operation was
+         * cancelled. {@link Gio.IOErrorEnum.FAILED} will be returned for other errors.
          * @param stream_id the ID of the stream to receive on
          * @param component_id the ID of the component to receive on
-         * @param cancellable a #GCancellable to allow the operation to be cancelled from another thread, or %NULL
-         * @returns the number of valid messages written to @messages on success (guaranteed to be greater than 0 unless @n_messages is 0), 0 if the remote peer closed the stream, or -1 on error
+         * @param cancellable a {@link Gio.Cancellable} to allow the operation to be cancelled from another thread, or `null`
+         * @returns the number of valid messages written to `messages` on success (guaranteed to be greater than 0 unless `n_messages` is 0), 0 if the remote peer closed the stream, or -1 on error
          */
         recv_messages(
             stream_id: number,
@@ -1480,35 +1717,35 @@ export namespace Nice {
             cancellable?: Gio.Cancellable | null,
         ): [number, InputMessage[]];
         /**
-         * Try to receive data from the given stream/component combination on `agent,`
+         * Try to receive data from the given stream/component combination on `agent`,
          * without blocking. If receiving data would block, -1 is returned and
-         * %G_IO_ERROR_WOULD_BLOCK is set in `error`. If any other error occurs, -1 is
+         * {@link Gio.IOErrorEnum.WOULD_BLOCK} is set in `error`. If any other error occurs, -1 is
          * returned and `error` is set accordingly. Otherwise, 0 is returned if (and only
          * if) `n_messages` is 0. In all other cases, the number of valid messages stored
          * in `messages` is returned, and will be greater than 0.
          *
-         * This function behaves similarly to nice_agent_recv_messages(), except that it
+         * This function behaves similarly to `nice_agent_recv_messages()`, except that it
          * will not block on filling (in reliable mode) or receiving (in non-reliable
          * mode) exactly `n_messages` messages. In reliable mode, it will receive bytes
          * into `messages` until it would block; in non-reliable mode, it will receive
          * messages until it would block.
          *
-         * Any STUN packets received will not be added to `messages;` instead,
-         * they'll be passed for processing to #NiceAgent itself. Since #NiceAgent
+         * Any STUN packets received will not be added to `messages`; instead,
+         * they'll be passed for processing to {@link Nice.Agent} itself. Since {@link Nice.Agent}
          * does not poll for messages on its own, it's therefore essential to keep
          * calling this function for ICE connection establishment to work.
          *
          * As this function is non-blocking, `cancellable` is included only for parity
-         * with nice_agent_recv_messages(). If `cancellable` is cancelled before this
-         * function is called, a %G_IO_ERROR_CANCELLED error will be returned
+         * with `nice_agent_recv_messages()`. If `cancellable` is cancelled before this
+         * function is called, a {@link Gio.IOErrorEnum.CANCELLED} error will be returned
          * immediately.
          *
-         * This must not be used in combination with nice_agent_attach_recv() on the
+         * This must not be used in combination with `nice_agent_attach_recv()` on the
          * same stream/component pair.
          * @param stream_id the ID of the stream to receive on
          * @param component_id the ID of the component to receive on
-         * @param cancellable a #GCancellable to allow the operation to be cancelled from another thread, or %NULL
-         * @returns the number of valid messages written to @messages on success (guaranteed to be greater than 0 unless @n_messages is 0), 0 if in reliable mode and the remote peer closed the stream, or -1 on error
+         * @param cancellable a {@link Gio.Cancellable} to allow the operation to be cancelled from another thread, or `null`
+         * @returns the number of valid messages written to `messages` on success (guaranteed to be greater than 0 unless `n_messages` is 0), 0 if in reliable mode and the remote peer closed the stream, or -1 on error
          */
         recv_messages_nonblocking(
             stream_id: number,
@@ -1516,11 +1753,11 @@ export namespace Nice {
             cancellable?: Gio.Cancellable | null,
         ): [number, InputMessage[]];
         /**
-         * A single-message version of nice_agent_recv_messages_nonblocking().
+         * A single-message version of `nice_agent_recv_messages_nonblocking()`.
          * @param stream_id the ID of the stream to receive on
          * @param component_id the ID of the component to receive on
-         * @param cancellable a #GCancellable to allow the operation to be cancelled from another thread, or %NULL
-         * @returns the number of bytes received into @buf on success (guaranteed to be greater than 0 unless @buf_len is 0), 0 if in reliable mode and the remote peer closed the stream, or -1 on error
+         * @param cancellable a {@link Gio.Cancellable} to allow the operation to be cancelled from another thread, or `null`
+         * @returns the number of bytes received into `buf` on success (guaranteed to be greater than 0 unless `buf_len` is 0), 0 if in reliable mode and the remote peer closed the stream, or -1 on error
          */
         recv_nonblocking(
             stream_id: number,
@@ -1529,8 +1766,8 @@ export namespace Nice {
         ): [number, Uint8Array];
         /**
          * Remove and free a previously created data stream from `agent`. If any I/O
-         * streams have been created using nice_agent_get_io_stream(), they should be
-         * closed completely using g_io_stream_close() before this is called, or they
+         * streams have been created using `nice_agent_get_io_stream()`, they should be
+         * closed completely using `g_io_stream_close()` before this is called, or they
          * will get broken pipe errors.
          * @param stream_id The ID of the stream to remove
          */
@@ -1541,9 +1778,9 @@ export namespace Nice {
          * "ICE Restarts"), as well as when reacting (spec section 9.2.1.1.
          * "Detecting ICE Restart") to a restart.
          *
-         * If consent-freshness has been enabled on `agent,` as specified in RFC7675
+         * If consent-freshness has been enabled on `agent`, as specified in RFC7675
          * then restarting streams will restore the local consent.
-         * @returns %TRUE on success %FALSE on error
+         * @returns `true` on success `false` on error
          */
         restart(): boolean;
         /**
@@ -1552,13 +1789,13 @@ export namespace Nice {
          * "ICE Restarts"), as well as when reacting (spec section 9.2.1.1.
          * "Detecting ICE Restart") to a restart.
          *
-         * Unlike nice_agent_restart(), this applies to a single stream. It also
+         * Unlike `nice_agent_restart()`, this applies to a single stream. It also
          * does not generate a new tie breaker.
          *
-         * If consent-freshness has been enabled on `agent,` as specified in RFC7675
+         * If consent-freshness has been enabled on `agent`, as specified in RFC7675
          * then restart `stream_id` will restore the local consent for that stream.
          * @param stream_id The ID of the stream
-         * @returns %TRUE on success %FALSE on error
+         * @returns `true` on success `false` on error
          */
         restart_stream(stream_id: number): boolean;
         /**
@@ -1573,7 +1810,7 @@ export namespace Nice {
          *    In reliable mode, the -1 error value means either that you are not yet
          *    connected or that the send buffer is full (equivalent to EWOULDBLOCK).
          *    In both cases, you simply need to wait for the
-         *    #NiceAgent::reliable-transport-writable signal to be fired before resending
+         *    {@link Nice.Agent.SignalSignatures.reliable_transport_writable | Nice.Agent::reliable-transport-writable} signal to be fired before resending
          *    the data.
          *    </para>
          *    <para>
@@ -1596,10 +1833,10 @@ export namespace Nice {
         /**
          * Sends multiple messages on the socket identified by the given
          * stream/component pair. Transmission is non-blocking, so a
-         * %G_IO_ERROR_WOULD_BLOCK error may be returned if the send buffer is full.
+         * {@link Gio.IOErrorEnum.WOULD_BLOCK} error may be returned if the send buffer is full.
          *
-         * As with nice_agent_send(), the given component must be in
-         * %NICE_COMPONENT_STATE_READY or, as a special case, in any state if it was
+         * As with `nice_agent_send()`, the given component must be in
+         * {@link Nice.ComponentState.READY} or, as a special case, in any state if it was
          * previously ready and was then restarted.
          *
          * On success, the number of messages written to the socket will be returned,
@@ -1608,23 +1845,23 @@ export namespace Nice {
          * transmission would have blocked on the first message.
          *
          * In reliable mode, it is instead recommended to use
-         * nice_agent_send().  The return value can be less than `n_messages`
+         * `nice_agent_send()`.  The return value can be less than `n_messages`
          * or 0 even if it is still possible to send a partial message. In
          * this case, "nice-agent-writable" will never be triggered, so the
-         * application would have to use nice_agent_sent() to fill the buffer or have
+         * application would have to use `nice_agent_sent()` to fill the buffer or have
          * to retry sending at a later point.
          *
-         * On failure, -1 will be returned and `error` will be set. If the #NiceAgent is
-         * reliable and the socket is not yet connected, %G_IO_ERROR_BROKEN_PIPE will be
-         * returned; if the write buffer is full, %G_IO_ERROR_WOULD_BLOCK will be
-         * returned. In both cases, wait for the #NiceAgent::reliable-transport-writable
+         * On failure, -1 will be returned and `error` will be set. If the {@link Nice.Agent} is
+         * reliable and the socket is not yet connected, {@link Gio.IOErrorEnum.BROKEN_PIPE} will be
+         * returned; if the write buffer is full, {@link Gio.IOErrorEnum.WOULD_BLOCK} will be
+         * returned. In both cases, wait for the {@link Nice.Agent.SignalSignatures.reliable_transport_writable | Nice.Agent::reliable-transport-writable}
          * signal before trying again. If the given `stream_id` or `component_id` are
-         * invalid or not yet connected, %G_IO_ERROR_BROKEN_PIPE will be returned.
-         * %G_IO_ERROR_FAILED will be returned for other errors.
+         * invalid or not yet connected, {@link Gio.IOErrorEnum.BROKEN_PIPE} will be returned.
+         * {@link Gio.IOErrorEnum.FAILED} will be returned for other errors.
          * @param stream_id the ID of the stream to send to
          * @param component_id the ID of the component to send to
-         * @param messages array of messages to send, of at least @n_messages entries in length
-         * @param cancellable a #GCancellable to cancel the operation from another thread, or %NULL
+         * @param messages array of messages to send, of at least `n_messages` entries in length
+         * @param cancellable a {@link Gio.Cancellable} to cancel the operation from another thread, or `null`
          * @returns the number of messages sent (may be zero), or -1 on error
          */
         send_messages_nonblocking(
@@ -1646,17 +1883,17 @@ export namespace Nice {
          * @param stream_id The ID of the stream
          * @param ufrag nul-terminated string containing an ICE username fragment    (length must be between 22 and 256 chars)
          * @param pwd nul-terminated string containing an ICE password    (length must be between 4 and 256 chars)
-         * @returns %TRUE on success, %FALSE on error.
+         * @returns `true` on success, `false` on error.
          */
         set_local_credentials(stream_id: number, ufrag: string, pwd: string): boolean;
         /**
          * Sets a preferred port range for allocating host candidates.
          * <para>
          * If a local host candidate cannot be created on that port
-         * range, then the nice_agent_gather_candidates() call will fail.
+         * range, then the `nice_agent_gather_candidates()` call will fail.
          * </para>
          * <para>
-         * This MUST be called before nice_agent_gather_candidates()
+         * This MUST be called before `nice_agent_gather_candidates()`
          * </para>
          * @param stream_id The ID of the stream
          * @param component_id The ID of the component
@@ -1670,12 +1907,12 @@ export namespace Nice {
          * discovery process; one TCP and one UDP, for example.
          * @param stream_id The ID of the stream
          * @param component_id The ID of the component
-         * @param server_ip The IP address of the TURN server
+         * @param server_ip The address of the TURN server
          * @param server_port The port of the TURN server
          * @param username The TURN username to use for the allocate
          * @param password The TURN password to use for the allocate
          * @param type The type of relay to use
-         * @returns %TRUE if the TURN settings were accepted. %FALSE if the address was invalid.
+         * @returns `true` if the TURN settings were accepted. `false` if the address was invalid.
          */
         set_relay_info(
             stream_id: number,
@@ -1695,9 +1932,9 @@ export namespace Nice {
          *     for remote candidates.
          *    </para>
          *    <para>
-         *    You must first call nice_agent_gather_candidates() and wait for the
-         *    #NiceAgent::candidate-gathering-done signale before
-         *    calling nice_agent_set_remote_candidates()
+         *    You must first call `nice_agent_gather_candidates()` and wait for the
+         *    {@link Nice.Agent.SignalSignatures.candidate_gathering_done | Nice.Agent::candidate-gathering-done} signale before
+         *    calling `nice_agent_set_remote_candidates()`
          *    </para>
          *    <para>
          *     Since 0.1.3, there is no need to wait for the candidate-gathering-done signal.
@@ -1708,7 +1945,7 @@ export namespace Nice {
          *  </note>
          * @param stream_id The ID of the stream the candidates are for
          * @param component_id The ID of the component the candidates are for
-         * @param candidates a #GSList of #NiceCandidate items describing each candidate to add
+         * @param candidates a {@link GLib.SList} of {@link Nice.Candidate} items describing each candidate to add
          * @returns The number of candidates added, negative on errors (memory allocation error or invalid component)
          */
         set_remote_candidates(stream_id: number, component_id: number, candidates: Candidate[]): number;
@@ -1723,14 +1960,14 @@ export namespace Nice {
          *      Due to the native of peer-reflexive candidates, any agent using a per-stream
          *      credentials (RFC5245, WLM2009, OC2007R2 and DRAFT19) instead of
          *      per-candidate credentials (GOOGLE, MSN, OC2007), must
-         *      use the nice_agent_set_remote_credentials() API instead of setting the
+         *      use the `nice_agent_set_remote_credentials()` API instead of setting the
          *      username and password on the candidates.
          *    </para>
          *  </note>
          * @param stream_id The ID of the stream
          * @param ufrag nul-terminated string containing an ICE username fragment    (length must be between 22 and 256 chars)
          * @param pwd nul-terminated string containing an ICE password    (length must be between 4 and 256 chars)
-         * @returns %TRUE on success, %FALSE on error.
+         * @returns `true` on success, `false` on error.
          */
         set_remote_credentials(stream_id: number, ufrag: string, pwd: string): boolean;
         /**
@@ -1743,7 +1980,7 @@ export namespace Nice {
          * @param component_id The ID of the component
          * @param lfoundation The local foundation of the candidate to use
          * @param rfoundation The remote foundation of the candidate to use
-         * @returns %TRUE on success, %FALSE if the candidate pair cannot be found
+         * @returns `true` on success, `false` if the candidate pair cannot be found
          */
         set_selected_pair(stream_id: number, component_id: number, lfoundation: string, rfoundation: string): boolean;
         /**
@@ -1756,8 +1993,8 @@ export namespace Nice {
          * continue to be sent.
          * @param stream_id The ID of the stream
          * @param component_id The ID of the component
-         * @param candidate The #NiceCandidate to select
-         * @returns %TRUE on success, %FALSE on failure
+         * @param candidate The {@link Nice.Candidate} to select
+         * @returns `true` on success, `false` on failure
          */
         set_selected_remote_candidate(stream_id: number, component_id: number, candidate: Candidate): boolean;
         /**
@@ -1789,12 +2026,12 @@ export namespace Nice {
          * This is only useful when parsing and generating an SDP of the
          * candidates.
          *
-         * <para>See also: nice_agent_generate_local_sdp()</para>
-         * <para>See also: nice_agent_parse_remote_sdp()</para>
-         * <para>See also: nice_agent_get_stream_name()</para>
+         * <para>See also: `nice_agent_generate_local_sdp()`</para>
+         * <para>See also: `nice_agent_parse_remote_sdp()`</para>
+         * <para>See also: `nice_agent_get_stream_name()`</para>
          * @param stream_id The ID of the stream to change
-         * @param name The new name of the stream or %NULL
-         * @returns %TRUE if the name has been set. %FALSE in case of error (invalid stream or duplicate name).
+         * @param name The new name of the stream or `null`
+         * @returns `true` if the name has been set. `false` in case of error (invalid stream or duplicate name).
          */
         set_stream_name(stream_id: number, name: string): boolean;
         /**
@@ -1838,7 +2075,9 @@ export namespace Nice {
     }
 
     /**
-     * The #PseudoTcpSocket is the GObject implementing the Pseudo TCP Socket
+     * The {@link Nice.PseudoTcpSocket} is the GObject implementing the Pseudo TCP Socket
+     * @gir-type Class
+     * @since 0.0.11
      */
     class PseudoTcpSocket extends GObject.Object {
         static $gtype: GObject.GType<PseudoTcpSocket>;
@@ -1851,6 +2090,9 @@ export namespace Nice {
         set ackDelay(val: number);
         get callbacks(): any;
         set callbacks(val: any);
+        /**
+         * @construct-only
+         */
         get conversation(): number;
         get no_delay(): boolean;
         set no_delay(val: boolean);
@@ -1864,27 +2106,34 @@ export namespace Nice {
         set snd_buf(val: number);
         get sndBuf(): number;
         set sndBuf(val: number);
+        /**
+         * @read-only
+         */
         get state(): number;
         /**
          * Whether to support the FIN–ACK extension to the pseudo-TCP protocol for
          * this socket. The extension is only compatible with other libnice pseudo-TCP
          * stacks, and not with Jingle pseudo-TCP stacks. If enabled, support is
-         * negotiatied on connection setup, so it is safe for a #PseudoTcpSocket with
+         * negotiatied on connection setup, so it is safe for a {@link Nice.PseudoTcpSocket} with
          * support enabled to be used with one with it disabled, or with a Jingle
          * pseudo-TCP socket which doesn’t support it at all.
          *
          * Support is enabled by default.
+         * @since 0.1.8
+         * @construct-only
          */
         get support_fin_ack(): boolean;
         /**
          * Whether to support the FIN–ACK extension to the pseudo-TCP protocol for
          * this socket. The extension is only compatible with other libnice pseudo-TCP
          * stacks, and not with Jingle pseudo-TCP stacks. If enabled, support is
-         * negotiatied on connection setup, so it is safe for a #PseudoTcpSocket with
+         * negotiatied on connection setup, so it is safe for a {@link Nice.PseudoTcpSocket} with
          * support enabled to be used with one with it disabled, or with a Jingle
          * pseudo-TCP socket which doesn’t support it at all.
          *
          * Support is enabled by default.
+         * @since 0.1.8
+         * @construct-only
          */
         get supportFinAck(): boolean;
 
@@ -1907,16 +2156,19 @@ export namespace Nice {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof PseudoTcpSocket.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PseudoTcpSocket.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof PseudoTcpSocket.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PseudoTcpSocket.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PseudoTcpSocket.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PseudoTcpSocket.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1927,41 +2179,44 @@ export namespace Nice {
 
         /**
          * Returns if there is space in the send buffer to send any data.
-         * @returns %TRUE if data can be sent, %FALSE otherwise
+         * @returns `true` if data can be sent, `false` otherwise
          */
         can_send(): boolean;
         /**
-         * Close the socket for sending. If `force` is set to %FALSE, the socket will
-         * finish sending pending data before closing. If it is set to %TRUE, the socket
+         * Close the socket for sending. If `force` is set to `false`, the socket will
+         * finish sending pending data before closing. If it is set to `true`, the socket
          * will discard pending data and close the connection immediately (sending a TCP
          * RST segment).
          *
          * The socket will be closed in both directions – sending and receiving – and
          * any pending received data must be read before calling this function, by
-         * calling pseudo_tcp_socket_recv() until it blocks. If any pending data is in
-         * the receive buffer when pseudo_tcp_socket_close() is called, a TCP RST
+         * calling `pseudo_tcp_socket_recv()` until it blocks. If any pending data is in
+         * the receive buffer when `pseudo_tcp_socket_close()` is called, a TCP RST
          * segment will be sent to the peer to notify it of the data loss.
          *
          *  <note>
          *    <para>
          *      The %PseudoTcpCallbacks:PseudoTcpClosed callback will not be called once
          *      the socket gets closed. It is only used for aborted connection.
-         *      Instead, the socket gets closed when the pseudo_tcp_socket_get_next_clock()
+         *      Instead, the socket gets closed when the `pseudo_tcp_socket_get_next_clock()`
          *      function returns FALSE.
          *    </para>
          *  </note>
          *
-         * <para> See also: pseudo_tcp_socket_get_next_clock() </para>
-         * @param force %TRUE to close the socket forcefully, %FALSE to close it gracefully
+         * <para> See also: `pseudo_tcp_socket_get_next_clock()` </para>
+         * @param force `true` to close the socket forcefully, `false` to close it gracefully
          */
         close(force: boolean): void;
         /**
-         * Connects the #PseudoTcpSocket to the peer with the same conversation id.
+         * Connects the {@link Nice.PseudoTcpSocket} to the peer with the same conversation id.
          * The connection will only be successful after the
          * %PseudoTcpCallbacks:PseudoTcpOpened callback is called
-         * @returns %TRUE on success, %FALSE on failure (not in %TCP_LISTEN state) <para> See also: pseudo_tcp_socket_get_error() </para>
+         * @returns `true` on success, `false` on failure (not in `TCP_LISTEN` state) <para> See also: `pseudo_tcp_socket_get_error()` </para>
          */
         connect(): boolean;
+        /**
+         * @param args
+         */
         connect(...args: never[]): any;
         /**
          * Gets the number of bytes of data in the buffer that can be read without
@@ -1981,53 +2236,53 @@ export namespace Nice {
          *    <para>
          *      The return value can be :
          *      <para>
-         *        EINVAL (for pseudo_tcp_socket_connect()).
+         *        EINVAL (for `pseudo_tcp_socket_connect()`).
          *      </para>
          *      <para>
-         *        EWOULDBLOCK or ENOTCONN (for pseudo_tcp_socket_recv() and
-         *        pseudo_tcp_socket_send()).
+         *        EWOULDBLOCK or ENOTCONN (for `pseudo_tcp_socket_recv()` and
+         *        `pseudo_tcp_socket_send()`).
          *      </para>
          *    </para>
          *  </note>
-         * @returns The error code <para> See also: pseudo_tcp_socket_connect() </para> <para> See also: pseudo_tcp_socket_recv() </para> <para> See also: pseudo_tcp_socket_send() </para>
+         * @returns The error code <para> See also: `pseudo_tcp_socket_connect()` </para> <para> See also: `pseudo_tcp_socket_recv()` </para> <para> See also: `pseudo_tcp_socket_send()` </para>
          */
         get_error(): number;
         /**
          * Call this to determine the timeout needed before the next time call
-         * to pseudo_tcp_socket_notify_clock() should be made.
+         * to `pseudo_tcp_socket_notify_clock()` should be made.
          * @param timeout A pointer to be filled with the new timeout.
-         * @returns %TRUE if @timeout was filled, %FALSE if the socket is closed and ready to be destroyed. <para> See also: pseudo_tcp_socket_notify_clock() </para>
+         * @returns `true` if `timeout` was filled, `false` if the socket is closed and ready to be destroyed. <para> See also: `pseudo_tcp_socket_notify_clock()` </para>
          */
         get_next_clock(timeout: number): boolean;
         /**
          * Gets whether the socket is closed, with the shutdown handshake completed,
          * and both peers no longer able to read or write data to the connection.
-         * @returns %TRUE if the socket is closed in both directions, %FALSE otherwise
+         * @returns `true` if the socket is closed in both directions, `false` otherwise
          */
         is_closed(): boolean;
         /**
          * Gets whether the socket has been closed on the remote peer’s side of the
-         * connection (i.e. whether pseudo_tcp_socket_close() has been called there).
-         * This is guaranteed to return %TRUE if pseudo_tcp_socket_is_closed() returns
-         * %TRUE. It will not return %TRUE after pseudo_tcp_socket_close() is called
+         * connection (i.e. whether `pseudo_tcp_socket_close()` has been called there).
+         * This is guaranteed to return `true` if `pseudo_tcp_socket_is_closed()` returns
+         * `true`. It will not return `true` after `pseudo_tcp_socket_close()` is called
          * until a FIN segment is received from the remote peer.
-         * @returns %TRUE if the remote peer has closed its side of the connection, %FALSE otherwise
+         * @returns `true` if the remote peer has closed its side of the connection, `false` otherwise
          */
         is_closed_remotely(): boolean;
         /**
          * Start the processing of receiving data, pending data or syn/acks.
          * Call this based on timeout value returned by
-         * pseudo_tcp_socket_get_next_clock().
+         * `pseudo_tcp_socket_get_next_clock()`.
          * It's ok to call this too frequently.
          *
-         * <para> See also: pseudo_tcp_socket_get_next_clock() </para>
+         * <para> See also: `pseudo_tcp_socket_get_next_clock()` </para>
          */
         notify_clock(): void;
         /**
-         * Notify the #PseudoTcpSocket that a new message has arrived, and enqueue the
-         * data in its buffers to the #PseudoTcpSocket’s receive buffer.
-         * @param message A #NiceInputMessage containing the received data.
-         * @returns %TRUE if the packet was processed successfully, %FALSE otherwise
+         * Notify the {@link Nice.PseudoTcpSocket} that a new message has arrived, and enqueue the
+         * data in its buffers to the {@link Nice.PseudoTcpSocket}’s receive buffer.
+         * @param message A {@link Nice.InputMessage} containing the received data.
+         * @returns `true` if the packet was processed successfully, `false` otherwise
          */
         notify_message(message: InputMessage): boolean;
         /**
@@ -2036,10 +2291,10 @@ export namespace Nice {
          */
         notify_mtu(mtu: number): void;
         /**
-         * Notify the #PseudoTcpSocket when a new packet arrives
+         * Notify the {@link Nice.PseudoTcpSocket} when a new packet arrives
          * @param buffer The buffer containing the received data
-         * @param len The length of @buffer
-         * @returns %TRUE if the packet was processed successfully, %FALSE otherwise
+         * @param len The length of `buffer`
+         * @returns `true` if the packet was processed successfully, `false` otherwise
          */
         notify_packet(buffer: string, len: number): boolean;
         /**
@@ -2056,8 +2311,8 @@ export namespace Nice {
          *    </para>
          *  </note>
          * @param buffer The buffer to fill with received data
-         * @param len The length of @buffer
-         * @returns The number of bytes received or -1 in case of error <para> See also: pseudo_tcp_socket_get_error() </para>
+         * @param len The length of `buffer`
+         * @returns The number of bytes received or -1 in case of error <para> See also: `pseudo_tcp_socket_get_error()` </para>
          */
         recv(buffer: string, len: number): number;
         /**
@@ -2066,19 +2321,19 @@ export namespace Nice {
          *  <note>
          *    <para>
          *      If this function return -1 with EWOULDBLOCK as the error, or if the return
-         *      value is lower than `len,` then the %PseudoTcpCallbacks:PseudoTcpWritable
+         *      value is lower than `len`, then the %PseudoTcpCallbacks:PseudoTcpWritable
          *      callback will be called when the socket will become writable.
          *    </para>
          *  </note>
          * @param buffer The buffer with data to send
-         * @param len The length of @buffer
-         * @returns The number of bytes sent or -1 in case of error <para> See also: pseudo_tcp_socket_get_error() </para>
+         * @param len The length of `buffer`
+         * @returns The number of bytes sent or -1 in case of error <para> See also: `pseudo_tcp_socket_get_error()` </para>
          */
         send(buffer: string, len: number): number;
         /**
          * Sets the current monotonic time to be used by the TCP socket when calculating
          * timeouts and expiry times. If this function is not called, or is called with
-         * `current_time` as zero, g_get_monotonic_time() will be used. Otherwise, the
+         * `current_time` as zero, `g_get_monotonic_time()` will be used. Otherwise, the
          * specified `current_time` will be used until it is updated by calling this
          * function again.
          *
@@ -2089,24 +2344,31 @@ export namespace Nice {
         set_time(current_time: number): void;
         /**
          * Shut down sending, receiving, or both on the socket, depending on the value
-         * of `how`. The behaviour of pseudo_tcp_socket_send() and
-         * pseudo_tcp_socket_recv() will immediately change after this function returns
-         * (depending on the value of `how)`, though the socket may continue to process
+         * of `how`. The behaviour of `pseudo_tcp_socket_send()` and
+         * `pseudo_tcp_socket_recv()` will immediately change after this function returns
+         * (depending on the value of `how`), though the socket may continue to process
          * network traffic in the background even if sending or receiving data is
          * forbidden.
          *
-         * This is equivalent to the POSIX shutdown() function. Setting `how` to
-         * %PSEUDO_TCP_SHUTDOWN_RDWR is equivalent to calling pseudo_tcp_socket_close().
+         * This is equivalent to the POSIX `shutdown()` function. Setting `how` to
+         * {@link Nice.PseudoTcpShutdown.RDWR} is equivalent to calling `pseudo_tcp_socket_close()`.
          * @param how The directions of the connection to shut down.
          */
         shutdown(how: PseudoTcpShutdown | null): void;
     }
 
     /**
-     * The #NiceAddress structure that represents an IPv4 or IPv6 address.
+     * The {@link Nice.Address} structure that represents an IPv4 or IPv6 address.
+     * @gir-type Struct
      */
     class Address {
         static $gtype: GObject.GType<Address>;
+
+        // Constructors
+
+        constructor(properties?: Partial<{}>);
+
+        static ['new'](): Address;
 
         // Methods
 
@@ -2116,30 +2378,40 @@ export namespace Nice {
          */
         copy_to_sockaddr(sin?: any | null): void;
         /**
-         * Compares two #NiceAddress structures to see if they contain the same address
+         * Creates a new {@link Nice.Address} with the same address as `addr`
+         * @returns The new {@link Nice.Address}
+         */
+        dup(): Address;
+        /**
+         * Transforms the address `addr` into a newly allocated human readable string
+         * @returns the address string
+         */
+        dup_string(): string;
+        /**
+         * Compares two {@link Nice.Address} structures to see if they contain the same address
          * and the same port.
-         * @param b Second #NiceAddress to compare
-         * @returns %TRUE if @a and @b are the same address, %FALSE if they are different
+         * @param b Second {@link Nice.Address} to compare
+         * @returns `true` if `a` and `b` are the same address, `false` if they are different
          */
         equal(b: Address): boolean;
         /**
-         * Compares two #NiceAddress structures to see if they contain the same address,
+         * Compares two {@link Nice.Address} structures to see if they contain the same address,
          * ignoring the port.
-         * @param b Second #NiceAddress to compare
-         * @returns %TRUE if @a and @b are the same address, %FALSE if they are different
+         * @param b Second {@link Nice.Address} to compare
+         * @returns `true` if `a` and `b` are the same address, `false` if they are different
          */
         equal_no_port(b: Address): boolean;
         /**
-         * Frees a #NiceAddress created with nice_address_new() or nice_address_dup()
+         * Frees a {@link Nice.Address} created with `nice_address_new()` or `nice_address_dup()`
          */
         free(): void;
         /**
          * Retreive the port of `addr`
-         * @returns The port of @addr
+         * @returns The port of `addr`
          */
         get_port(): number;
         /**
-         * Initialize a #NiceAddress into an undefined address
+         * Initialize a {@link Nice.Address} into an undefined address
          */
         init(): void;
         /**
@@ -2148,13 +2420,18 @@ export namespace Nice {
          */
         ip_version(): number;
         /**
+         * Verifies if the address in `addr` is a link-local address or not
+         * @returns `true` if `addr` is a link-local address, `false` otherwise
+         */
+        is_linklocal(): boolean;
+        /**
          * Verifies if the address in `addr` is a private address or not
-         * @returns %TRUE if @addr is a private address, %FALSE otherwise
+         * @returns `true` if `addr` is a private address, `false` otherwise
          */
         is_private(): boolean;
         /**
-         * Validate whether the #NiceAddress `addr` is a valid IPv4 or IPv6 address
-         * @returns %TRUE if @addr is valid, %FALSE otherwise
+         * Validate whether the {@link Nice.Address} `addr` is a valid IPv4 or IPv6 address
+         * @returns `true` if `addr` is valid, `false` otherwise
          */
         is_valid(): boolean;
         /**
@@ -2165,7 +2442,7 @@ export namespace Nice {
         /**
          * Sets an IPv4 or IPv6 address from the string `str`
          * @param str The string to set
-         * @returns %TRUE if success, %FALSE on error
+         * @returns `true` if success, `false` on error
          */
         set_from_string(str: string): boolean;
         /**
@@ -2174,7 +2451,7 @@ export namespace Nice {
          *  <note>
          *   <para>
          *    This function will reset the port to 0, so make sure you call it before
-         *    nice_address_set_port()
+         *    `nice_address_set_port()`
          *   </para>
          *  </note>
          * @param addr_ipv4 The IPv4 address
@@ -2186,7 +2463,7 @@ export namespace Nice {
          *  <note>
          *   <para>
          *    This function will reset the port to 0, so make sure you call it before
-         *    nice_address_set_port()
+         *    `nice_address_set_port()`
          *   </para>
          *  </note>
          * @param addr_ipv6 The IPv6 address
@@ -2197,13 +2474,11 @@ export namespace Nice {
          * @param port The port to set
          */
         set_port(port: number): void;
-        /**
-         * Transforms the address `addr` into a human readable string
-         * @param dst The string to fill
-         */
-        to_string(dst: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AgentClass = typeof Agent;
     /**
      * A structure to represent an ICE candidate
@@ -2215,6 +2490,7 @@ export namespace Nice {
      *    value will represent the qvalue multiplied by 1000.
      *    </para>
      *  </note>
+     * @gir-type Struct
      */
     class Candidate {
         static $gtype: GObject.GType<Candidate>;
@@ -2241,34 +2517,47 @@ export namespace Nice {
         /**
          * Useful for debugging functions, just returns a static string with the
          * candidate transport.
-         * @param transport a #NiceCandidateTransport
+         * @param transport a {@link Nice.CandidateTransport}
          */
         static transport_to_string(transport: CandidateTransport): string;
         /**
          * Useful for debugging functions, just returns a static string with the
          * candidate type.
-         * @param type a #NiceCandidateType
+         * @param type a {@link Nice.CandidateType}
          */
         static type_to_string(type: CandidateType): string;
 
         // Methods
 
         /**
-         * Makes a copy of a #NiceCandidate
-         * @returns A new #NiceCandidate, a copy of @candidate
+         * Makes a copy of a {@link Nice.Candidate}
+         * @returns A new {@link Nice.Candidate}, a copy of `candidate`
          */
         copy(): Candidate;
         /**
          * Verifies that the candidates point to the same place, meaning they have
          * the same transport and the same address. It ignores all other aspects.
          * @param candidate2 A candidate
-         * @returns %TRUE if the candidates point to the same place
+         * @returns `true` if the candidates point to the same place
          */
         equal_target(candidate2: Candidate): boolean;
         /**
-         * Frees a #NiceCandidate
+         * Frees a {@link Nice.Candidate}
          */
         free(): void;
+        /**
+         * In case the given candidate is relayed through a TURN server, use this utility function to get
+         * its address.
+         * @param addr The {@link Nice.Address} to fill
+         */
+        relay_address(addr: Address): void;
+        /**
+         * In case the given candidate server-reflexive, use this utility function to get its address. The
+         * address will be filled only if the candidate was generated using an STUN server.
+         * @param addr The {@link Nice.Address} to fill
+         * @returns TRUE if it's a STUN created ICE candidate, or FALSE if the reflexed's server was not STUN.
+         */
+        stun_server_address(addr: Address): boolean;
     }
 
     /**
@@ -2278,13 +2567,15 @@ export namespace Nice {
      * packet as received from the OS.
      *
      * `n_buffers` may be -1 to indicate that `buffers` is terminated by a
-     * #GInputVector with a %NULL buffer pointer.
+     * {@link Gio.InputVector} with a `null` buffer pointer.
      *
-     * By providing arrays of #NiceInputMessages to functions like
-     * nice_agent_recv_messages(), multiple messages may be received with a single
+     * By providing arrays of `NiceInputMessages` to functions like
+     * `nice_agent_recv_messages()`, multiple messages may be received with a single
      * call, which is more efficient than making multiple calls in a loop. In this
-     * manner, nice_agent_recv_messages() is analogous to recvmmsg(); and
-     * #NiceInputMessage to struct mmsghdr.
+     * manner, `nice_agent_recv_messages()` is analogous to `recvmmsg()`; and
+     * {@link Nice.InputMessage} to struct mmsghdr.
+     * @gir-type Struct
+     * @since 0.1.5
      */
     class InputMessage {
         static $gtype: GObject.GType<InputMessage>;
@@ -2303,13 +2594,15 @@ export namespace Nice {
      * to send to the OS.
      *
      * `n_buffers` may be -1 to indicate that `buffers` is terminated by a
-     * #GOutputVector with a %NULL buffer pointer.
+     * {@link Gio.OutputVector} with a `null` buffer pointer.
      *
-     * By providing arrays of #NiceOutputMessages to functions like
-     * nice_agent_send_messages_nonblocking(), multiple messages may be transmitted
+     * By providing arrays of `NiceOutputMessages` to functions like
+     * `nice_agent_send_messages_nonblocking()`, multiple messages may be transmitted
      * with a single call, which is more efficient than making multiple calls in a
-     * loop. In this manner, nice_agent_send_messages_nonblocking() is analogous to
-     * sendmmsg(); and #NiceOutputMessage to struct mmsghdr.
+     * loop. In this manner, `nice_agent_send_messages_nonblocking()` is analogous to
+     * `sendmmsg()`; and {@link Nice.OutputMessage} to struct mmsghdr.
+     * @gir-type Struct
+     * @since 0.1.5
      */
     class OutputMessage {
         static $gtype: GObject.GType<OutputMessage>;
@@ -2331,8 +2624,10 @@ export namespace Nice {
 
     /**
      * A structure containing callbacks functions that will be called by the
-     * #PseudoTcpSocket when some events happen.
-     * <para> See also: #PseudoTcpWriteResult </para>
+     * {@link Nice.PseudoTcpSocket} when some events happen.
+     * <para> See also: {@link Nice.PseudoTcpWriteResult} </para>
+     * @gir-type Struct
+     * @since 0.0.11
      */
     class PseudoTcpCallbacks {
         static $gtype: GObject.GType<PseudoTcpCallbacks>;
@@ -2350,6 +2645,9 @@ export namespace Nice {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PseudoTcpSocketClass = typeof PseudoTcpSocket;
     /**
      * Name of the imported GIR library

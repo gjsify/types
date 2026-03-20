@@ -31,10 +31,17 @@ export namespace Tepl {
      * Tepl-4
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace CompressionType {
         export const $gtype: GObject.GType<CompressionType>;
     }
 
+    /**
+     * @gir-type Enum
+     * @since 1.0
+     */
     enum CompressionType {
         /**
          * plain text.
@@ -47,7 +54,8 @@ export namespace Tepl {
     }
 
     /**
-     * An error code used with the %TEPL_FILE_LOADER_ERROR domain.
+     * An error code used with the `TEPL_FILE_LOADER_ERROR` domain.
+     * @gir-type Struct
      */
     class FileLoaderError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -74,7 +82,8 @@ export namespace Tepl {
     }
 
     /**
-     * An error code used with the %TEPL_FILE_SAVER_ERROR domain.
+     * An error code used with the `TEPL_FILE_SAVER_ERROR` domain.
+     * @gir-type Struct
      */
     class FileSaverError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -101,10 +110,17 @@ export namespace Tepl {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace NewlineType {
         export const $gtype: GObject.GType<NewlineType>;
     }
 
+    /**
+     * @gir-type Enum
+     * @since 1.0
+     */
     enum NewlineType {
         /**
          * line feed, used on UNIX.
@@ -121,10 +137,17 @@ export namespace Tepl {
         CR_LF,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SelectionType {
         export const $gtype: GObject.GType<SelectionType>;
     }
 
+    /**
+     * @gir-type Enum
+     * @since 1.0
+     */
     enum SelectionType {
         /**
          * No selection.
@@ -142,22 +165,24 @@ export namespace Tepl {
     }
 
     /**
-     * Gets a list of all encodings known by #TeplEncoding.
-     * @returns a list of #TeplEncoding's.
+     * Gets a list of all encodings known by {@link Tepl.Encoding}.
+     * @returns a list of {@link Tepl.Encoding}'s.
+     * @since 2.0
      */
     function encoding_get_all(): Encoding[];
     /**
      * Gets the list of default candidate encodings to try when loading a file. See
-     * gtk_source_file_loader_set_candidate_encodings().
+     * `gtk_source_file_loader_set_candidate_encodings()`.
      *
      * This function returns a different list depending on the current locale (i.e.
      * language, country and default encoding). The UTF-8 encoding and the current
      * locale encoding are guaranteed to be present in the returned list.
      *
      * Note that the returned list doesn't contain all encodings known by
-     * #TeplEncoding, it is a limited list that contains only the encodings that
+     * {@link Tepl.Encoding}, it is a limited list that contains only the encodings that
      * have the most likelihood to fit for the current locale.
      * @returns the list of default candidate encodings.
+     * @since 2.0
      */
     function encoding_get_default_candidates(): Encoding[];
     function file_loader_error_quark(): GLib.Quark;
@@ -165,63 +190,69 @@ export namespace Tepl {
     /**
      * Free the resources allocated by Tepl. For example it unrefs the singleton
      * objects. It also properly shutdowns the metadata manager by calling
-     * tepl_metadata_manager_shutdown().
+     * `tepl_metadata_manager_shutdown()`.
      *
-     * This function also calls amtk_finalize() and gtk_source_finalize().
+     * This function also calls `amtk_finalize()` and `gtk_source_finalize()`.
      *
      * It is not mandatory to call this function, it's just to be friendlier to
      * memory debugging tools (but if you don't call this function and you use the
-     * metadata manager, you should call tepl_metadata_manager_shutdown()). This
-     * function is meant to be called at the end of main(). It can be called several
+     * metadata manager, you should call `tepl_metadata_manager_shutdown()`). This
+     * function is meant to be called at the end of `main()`. It can be called several
      * times.
+     * @since 3.0
      */
     function finalize(): void;
     /**
      * Initializes the Tepl library (e.g. for the internationalization).
      *
      * This function can be called several times, but is meant to be called at the
-     * beginning of main(), before any other Tepl function call.
+     * beginning of `main()`, before any other Tepl function call.
      *
-     * This function also calls amtk_init() and gtk_source_init().
+     * This function also calls `amtk_init()` and `gtk_source_init()`.
+     * @since 3.0
      */
     function init(): void;
     /**
-     * When a %G_IO_ERROR_CANT_CREATE_BACKUP error occurs while saving `location,`
+     * When a {@link Gio.IOErrorEnum.CANT_CREATE_BACKUP} error occurs while saving `location`,
      * offer two possible actions:
-     * - Save anyway: %GTK_RESPONSE_YES.
-     * - Don't save: %GTK_RESPONSE_CANCEL.
-     * @param location the #GFile for which the backup failed to be created.
-     * @param error must be a %G_IO_ERROR_CANT_CREATE_BACKUP.
-     * @returns the newly created #TeplInfoBar.
+     * - Save anyway: {@link Gtk.ResponseType.YES}.
+     * - Don't save: {@link Gtk.ResponseType.CANCEL}.
+     * @param location the {@link Gio.File} for which the backup failed to be created.
+     * @param error must be a {@link Gio.IOErrorEnum.CANT_CREATE_BACKUP}.
+     * @returns the newly created {@link Tepl.InfoBar}.
+     * @since 4.6
      */
     function io_error_info_bar_cant_create_backup(location: Gio.File, error: GLib.Error): InfoBar;
     /**
      * Creates a warning about `location` having changed on disk. The possible
      * actions:
-     * - Depending on `document_modified,` "Reload" or "Drop changes and reload":
-     *   %GTK_RESPONSE_OK.
-     * - A close button as added with gtk_info_bar_set_show_close_button().
-     * @param location the #GFile for which there has been an external modification.
-     * @param document_modified whether the document (e.g. the #GtkTextBuffer) has   unsaved modifications.
-     * @returns the newly created #TeplInfoBar.
+     * - Depending on `document_modified`, "Reload" or "Drop changes and reload":
+     *   {@link Gtk.ResponseType.OK}.
+     * - A close button as added with `gtk_info_bar_set_show_close_button()`.
+     * @param location the {@link Gio.File} for which there has been an external modification.
+     * @param document_modified whether the document (e.g. the {@link Gtk.TextBuffer}) has   unsaved modifications.
+     * @returns the newly created {@link Tepl.InfoBar}.
+     * @since 4.6
      */
     function io_error_info_bar_externally_modified(location: Gio.File, document_modified: boolean): InfoBar;
     /**
      * Creates a warning about `location` being already open in another window,
      * offering two possible actions:
-     * - Edit anyway: %GTK_RESPONSE_YES.
-     * - Don't edit: %GTK_RESPONSE_CANCEL.
-     * @param location the #GFile already open in another window.
-     * @returns the newly created #TeplInfoBar.
+     * - Edit anyway: {@link Gtk.ResponseType.YES}.
+     * - Don't edit: {@link Gtk.ResponseType.CANCEL}.
+     * @param location the {@link Gio.File} already open in another window.
+     * @returns the newly created {@link Tepl.InfoBar}.
+     * @since 4.6
      */
     function io_error_info_bar_file_already_open(location: Gio.File): InfoBar;
     /**
      * For file saving, creates a warning about invalid characters that can corrupt
      * the file. Possible actions:
-     * - Save anyway: %GTK_RESPONSE_YES.
-     * - Don't save: %GTK_RESPONSE_CANCEL.
+     * - Save anyway: {@link Gtk.ResponseType.YES}.
+     * - Don't save: {@link Gtk.ResponseType.CANCEL}.
      * @param location where to save the document.
-     * @returns the newly created #TeplInfoBar.
+     * @returns the newly created {@link Tepl.InfoBar}.
+     * @since 4.6
      */
     function io_error_info_bar_invalid_characters(location: Gio.File): InfoBar;
     /**
@@ -229,14 +260,15 @@ export namespace Tepl {
      * anywhere in the line.
      *
      * Possible use-case: to implement an action that inserts some text in a
-     * #GtkTextBuffer. If the text to insert spans multiple lines, it is usually
+     * {@link Gtk.TextBuffer}. If the text to insert spans multiple lines, it is usually
      * desired to keep the same indentation level.
-     * @param iter a #GtkTextIter.
-     * @returns the line indentation at @iter. Free with g_free().
+     * @param iter a {@link Gtk.TextIter}.
+     * @returns the line indentation at `iter`. Free with `g_free()`.
+     * @since 2.0
      */
     function iter_get_line_indentation(iter: Gtk.TextIter): string;
     /**
-     * Appends #GtkMenuItem's to `menu_shell` for the following #GAction's:
+     * Appends {@link Gtk.MenuItem}'s to `menu_shell` for the following {@link Gio.Action}'s:
      * - `"win.tepl-cut"`
      * - `"win.tepl-copy"`
      * - `"win.tepl-paste"`
@@ -245,44 +277,49 @@ export namespace Tepl {
      *
      * See the [list of GActions implemented in
      * TeplApplicationWindow][tepl-application-window-gactions]. This function
-     * correctly uses the %AMTK_FACTORY_IGNORE_ACCELS_FOR_APP flag to create the
-     * #GtkMenuItem's.
-     * @param menu_shell a #GtkMenuShell.
+     * correctly uses the {@link Amtk.FactoryFlags.IGNORE_ACCELS_FOR_APP} flag to create the
+     * {@link Gtk.MenuItem}'s.
+     * @param menu_shell a {@link Gtk.MenuShell}.
+     * @since 3.0
      */
     function menu_shell_append_edit_actions(menu_shell: Gtk.MenuShell): void;
     /**
      * This function initializes the metadata manager.
      *
      * The `metadata_path` must be different for each process. It is advised for your
-     * application to rely on #GApplication process uniqueness.
+     * application to rely on {@link Gio.Application} process uniqueness.
      *
      * A good place to store the metadata is in a sub-directory of the user data
-     * directory. See g_get_user_data_dir().
+     * directory. See `g_get_user_data_dir()`.
      * @param metadata_path the filename where the metadata is stored.
+     * @since 1.0
      */
     function metadata_manager_init(metadata_path: string): void;
     /**
      * This function saves synchronously metadata if they need to be saved, and
      * frees the internal data of the metadata manager.
      *
-     * See also tepl_finalize(), which calls this function.
+     * See also `tepl_finalize()`, which calls this function.
+     * @since 1.0
      */
     function metadata_manager_shutdown(): void;
     /**
-     * Synchronously creates parent directories of `file,` so that `file` can be
+     * Synchronously creates parent directories of `file`, so that `file` can be
      * saved.
      * @param file a file
-     * @param cancellable optional #GCancellable object, %NULL to ignore.
-     * @returns whether the directories are correctly created. %FALSE is returned on error.
+     * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+     * @returns whether the directories are correctly created. `false` is returned on error.
+     * @since 4.6
      */
     function utils_create_parent_directories(file: Gio.File, cancellable?: Gio.Cancellable | null): boolean;
     /**
      * Parse and break an uri apart in its individual components like the uri
      * scheme, user info, host, port and path. The return value pointer can be
-     * %NULL to ignore certain parts of the uri. If the function returns %TRUE, then
-     * all return value pointers should be freed using g_free().
+     * `null` to ignore certain parts of the uri. If the function returns `true`, then
+     * all return value pointers should be freed using `g_free()`.
      * @param uri the uri to decode
-     * @returns %TRUE if the uri could be properly decoded, %FALSE otherwise.
+     * @returns `true` if the uri could be properly decoded, `false` otherwise.
+     * @since 4.6
      */
     function utils_decode_uri(uri: string): [boolean, string, string, string, string, string];
     /**
@@ -293,38 +330,43 @@ export namespace Tepl {
      * - "path/to/file.pdf" returns ".pdf".
      * - "file" (without an extension) returns "" (the empty string).
      * @param filename a filename.
-     * @returns the @filename's extension with the dot, in lowercase. Free with g_free().
+     * @returns the `filename`'s extension with the dot, in lowercase. Free with `g_free()`.
+     * @since 4.4
      */
     function utils_get_file_extension(filename: string): string;
     /**
      * Returns `filename` without its extension. With the “extension” having the same
-     * definition as in tepl_utils_get_file_extension(); in other words it returns
+     * definition as in `tepl_utils_get_file_extension()`; in other words it returns
      * the other part of `filename`.
      * @param filename a filename.
-     * @returns the @filename without its extension. Free with g_free().
+     * @returns the `filename` without its extension. Free with `g_free()`.
+     * @since 4.4
      */
     function utils_get_file_shortname(filename: string): string;
     /**
      * Replaces the home directory with a tilde, if the home directory is present in
      * the `filename`.
      * @param filename the filename.
-     * @returns the new filename. Free with g_free().
+     * @returns the new filename. Free with `g_free()`.
+     * @since 4.4
      */
     function utils_replace_home_dir_with_tilde(filename: string): string;
     /**
-     * Like tepl_utils_str_middle_truncate() but the “…” character is at the end.
+     * Like `tepl_utils_str_middle_truncate()` but the “…” character is at the end.
      * @param str a UTF-8 string.
      * @param truncate_length truncate the string at that length, in UTF-8 characters   (not bytes).
-     * @returns the truncated string. Free with g_free().
+     * @returns the truncated string. Free with `g_free()`.
+     * @since 4.4
      */
     function utils_str_end_truncate(str: string, truncate_length: number): string;
     /**
-     * If `str` is longer than `truncate_length,` then this function returns `str`
+     * If `str` is longer than `truncate_length`, then this function returns `str`
      * truncated in the middle with a “…” character. Otherwise it just returns a
      * copy of `str`.
      * @param str a UTF-8 string.
      * @param truncate_length truncate the string at that length, in UTF-8 characters   (not bytes).
-     * @returns the truncated string. Free with g_free().
+     * @returns the truncated string. Free with `g_free()`.
+     * @since 4.4
      */
     function utils_str_middle_truncate(str: string, truncate_length: number): string;
     /**
@@ -340,15 +382,21 @@ export namespace Tepl {
      * @param string a string
      * @param search the search string
      * @param replacement the replacement string
-     * @returns A newly allocated string with the replacements. Free with g_free().
+     * @returns A newly allocated string with the replacements. Free with `g_free()`.
+     * @since 4.4
      */
     function utils_str_replace(string: string, search: string, replacement: string): string;
+    /**
+     * @gir-type Flags
+     */
     export namespace FileSaverFlags {
         export const $gtype: GObject.GType<FileSaverFlags>;
     }
 
     /**
-     * Flags to define the behavior of a #TeplFileSaver.
+     * Flags to define the behavior of a {@link Tepl.FileSaver}.
+     * @gir-type Flags
+     * @since 1.0
      */
     enum FileSaverFlags {
         /**
@@ -369,16 +417,21 @@ export namespace Tepl {
         CREATE_BACKUP,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace GutterRendererFoldsState {
         export const $gtype: GObject.GType<GutterRendererFoldsState>;
     }
 
     /**
-     * The folding state at a certain line in the #GtkTextBuffer.
+     * The folding state at a certain line in the {@link Gtk.TextBuffer}.
      *
-     * Since #TeplGutterRendererFolds has a flat view of the folding tree, some
-     * states can be combined; for example, %TEPL_GUTTER_RENDERER_FOLDS_STATE_END
-     * and %TEPL_GUTTER_RENDERER_FOLDS_STATE_CONTINUE.
+     * Since {@link Tepl.GutterRendererFolds} has a flat view of the folding tree, some
+     * states can be combined; for example, {@link Tepl.GutterRendererFoldsState.END}
+     * and {@link Tepl.GutterRendererFoldsState.CONTINUE}.
+     * @gir-type Flags
+     * @since 1.0
      */
     enum GutterRendererFoldsState {
         /**
@@ -414,6 +467,9 @@ export namespace Tepl {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class AbstractFactory extends GObject.Object {
         static $gtype: GObject.GType<AbstractFactory>;
 
@@ -434,16 +490,19 @@ export namespace Tepl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AbstractFactory.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AbstractFactory.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AbstractFactory.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AbstractFactory.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AbstractFactory.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AbstractFactory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -453,52 +512,66 @@ export namespace Tepl {
         // Static methods
 
         /**
-         * Gets the #TeplAbstractFactory singleton instance.
+         * Gets the {@link Tepl.AbstractFactory} singleton instance.
          *
-         * If tepl_abstract_factory_set_singleton() has not been called, the singleton
-         * is created with a #TeplAbstractFactory instance.
+         * If `tepl_abstract_factory_set_singleton()` has not been called, the singleton
+         * is created with a {@link Tepl.AbstractFactory} instance.
          */
         static get_singleton(): AbstractFactory;
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_create_file(): File;
         /**
-         * Creates a main #GtkApplicationWindow in the sense of
-         * tepl_application_window_is_main_window().
-         * @param app a #GtkApplication.
+         * Creates a main {@link Gtk.ApplicationWindow} in the sense of
+         * `tepl_application_window_is_main_window()`.
+         * @param app a {@link Gtk.Application}.
+         * @virtual
          */
         vfunc_create_main_window(app: Gtk.Application): Gtk.ApplicationWindow | null;
+        /**
+         * @virtual
+         */
         vfunc_create_tab(): Tab;
         /**
-         * Creates a new tab label for `tab,` suitable for gtk_notebook_set_tab_label().
-         * @param tab a #TeplTab.
+         * Creates a new tab label for `tab`, suitable for `gtk_notebook_set_tab_label()`.
+         * @param tab a {@link Tepl.Tab}.
+         * @virtual
          */
         vfunc_create_tab_label(tab: Tab): Gtk.Widget | null;
 
         // Methods
 
+        /**
+         * @returns a new {@link Tepl.File}.
+         */
         create_file(): File;
         /**
-         * Creates a main #GtkApplicationWindow in the sense of
-         * tepl_application_window_is_main_window().
-         * @param app a #GtkApplication.
-         * @returns a new main application window, or %NULL if the vfunc is not implemented.
+         * Creates a main {@link Gtk.ApplicationWindow} in the sense of
+         * `tepl_application_window_is_main_window()`.
+         * @param app a {@link Gtk.Application}.
+         * @returns a new main application window, or `null` if the vfunc is not implemented.
          */
         create_main_window(app: Gtk.Application): Gtk.ApplicationWindow | null;
+        /**
+         * @returns a new {@link Tepl.Tab}.
+         */
         create_tab(): Tab;
         /**
-         * Creates a new tab label for `tab,` suitable for gtk_notebook_set_tab_label().
-         * @param tab a #TeplTab.
-         * @returns a new #GtkWidget, or %NULL for the default tab label (“page N” with #GtkNotebook).
+         * Creates a new tab label for `tab`, suitable for `gtk_notebook_set_tab_label()`.
+         * @param tab a {@link Tepl.Tab}.
+         * @returns a new {@link Gtk.Widget}, or `null` for the default tab label (“page N” with {@link Gtk.Notebook}).
          */
         create_tab_label(tab: Tab): Gtk.Widget | null;
         /**
-         * Sets the #TeplAbstractFactory singleton. This should be called early in
-         * main(), for example just after calling tepl_init().
+         * Sets the {@link Tepl.AbstractFactory} singleton. This should be called early in
+         * `main()`, for example just after calling `tepl_init()`.
          *
          * This function must be called only once, before the first call to
-         * tepl_abstract_factory_get_singleton().
+         * `tepl_abstract_factory_get_singleton()`.
          *
          * Tepl takes ownership of the `factory` reference.
          */
@@ -514,6 +587,9 @@ export namespace Tepl {
         interface ConstructorProps extends AbstractFactory.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class AbstractFactoryVala extends AbstractFactory {
         static $gtype: GObject.GType<AbstractFactoryVala>;
 
@@ -534,16 +610,19 @@ export namespace Tepl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AbstractFactoryVala.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AbstractFactoryVala.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AbstractFactoryVala.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AbstractFactoryVala.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AbstractFactoryVala.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AbstractFactoryVala.SignalSignatures[K]> extends [any, ...infer Q]
@@ -555,27 +634,28 @@ export namespace Tepl {
         // Virtual methods
 
         /**
-         * Like tepl_abstract_factory_create_main_window(), but with a (transfer full)
+         * Like `tepl_abstract_factory_create_main_window()`, but with a (transfer full)
          * return value.
-         * @param app a #GtkApplication.
+         * @param app a {@link Gtk.Application}.
+         * @virtual
          */
         vfunc_create_main_window_vala(app: Gtk.Application): Gtk.ApplicationWindow | null;
 
         // Methods
 
         /**
-         * Like tepl_abstract_factory_create_main_window(), but with a (transfer full)
+         * Like `tepl_abstract_factory_create_main_window()`, but with a (transfer full)
          * return value.
-         * @param app a #GtkApplication.
-         * @returns a new main application window, or %NULL if the vfunc is not implemented.
+         * @param app a {@link Gtk.Application}.
+         * @returns a new main application window, or `null` if the vfunc is not implemented.
          */
         create_main_window_vala(app: Gtk.Application): Gtk.ApplicationWindow | null;
         /**
-         * Like tepl_abstract_factory_set_singleton(), but with (transfer none) for the
+         * Like `tepl_abstract_factory_set_singleton()`, but with (transfer none) for the
          * `factory_vala` parameter.
          *
          * Apparently Vala doesn't support (transfer full) for the self parameter,
-         * resulting to a double unref if tepl_abstract_factory_set_singleton() is
+         * resulting to a double unref if `tepl_abstract_factory_set_singleton()` is
          * called in Vala...
          */
         set_singleton_vala(): void;
@@ -594,13 +674,18 @@ export namespace Tepl {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Application extends GObject.Object {
         static $gtype: GObject.GType<Application>;
 
         // Properties
 
         /**
-         * The #GtkApplication.
+         * The {@link Gtk.Application}.
+         * @since 2.0
+         * @construct-only
          */
         get application(): Gtk.Application;
 
@@ -621,16 +706,19 @@ export namespace Tepl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Application.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Application.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Application.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Application.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Application.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -640,64 +728,67 @@ export namespace Tepl {
         // Static methods
 
         /**
-         * Convenience function that calls g_application_get_default() followed by
-         * tepl_application_get_from_gtk_application(). The object returned by
-         * g_application_get_default() must be a #GtkApplication.
+         * Convenience function that calls `g_application_get_default()` followed by
+         * `tepl_application_get_from_gtk_application()`. The object returned by
+         * `g_application_get_default()` must be a {@link Gtk.Application}.
          */
         static get_default(): Application;
         /**
-         * Returns the #TeplApplication of `gtk_app`. The returned object is guaranteed
+         * Returns the {@link Tepl.Application} of `gtk_app`. The returned object is guaranteed
          * to be the same for the lifetime of `gtk_app`.
-         * @param gtk_app a #GtkApplication.
+         * @param gtk_app a {@link Gtk.Application}.
          */
         static get_from_gtk_application(gtk_app: Gtk.Application): Application;
 
         // Methods
 
         /**
-         * Like gtk_application_get_active_window(), but returns the main window in the
-         * sense of tepl_application_window_is_main_window().
-         * @returns the active main #GtkApplicationWindow, or %NULL.
+         * Like `gtk_application_get_active_window()`, but returns the main window in the
+         * sense of `tepl_application_window_is_main_window()`.
+         * @returns the active main {@link Gtk.ApplicationWindow}, or `null`.
          */
         get_active_main_window(): Gtk.ApplicationWindow | null;
         /**
-         * Returns an initially empty #AmtkActionInfoStore reserved for the
-         * application-specific actions. Libraries should not add #AmtkActionInfo's to
+         * Returns an initially empty {@link Amtk.ActionInfoStore} reserved for the
+         * application-specific actions. Libraries should not add {@link Amtk.ActionInfo}'s to
          * this store. Libraries should provide their own store if they want to share
-         * #AmtkActionInfo's.
-         * @returns the #AmtkActionInfoStore reserved for the application.
+         * {@link Amtk.ActionInfo}'s.
+         * @returns the {@link Amtk.ActionInfoStore} reserved for the application.
          */
         get_app_action_info_store(): Amtk.ActionInfoStore;
+        /**
+         * @returns the {@link Gtk.Application} of `tepl_app`.
+         */
         get_application(): Gtk.Application;
         /**
-         * The returned #AmtkActionInfoStore contains #AmtkActionInfo's for all the
-         * #GAction's listed in the [class description of
+         * The returned {@link Amtk.ActionInfoStore} contains {@link Amtk.ActionInfo}'s for all the
+         * {@link Gio.Action}'s listed in the [class description of
          * TeplApplicationWindow][tepl-application-window-gactions] and the [class
          * description of TeplApplication][tepl-application-gactions].
-         * @returns the #AmtkActionInfoStore of the Tepl library.
+         * @returns the {@link Amtk.ActionInfoStore} of the Tepl library.
          */
         get_tepl_action_info_store(): Amtk.ActionInfoStore;
         /**
-         * Connects a generic function handler for the #GApplication::activate signal.
+         * Connects a generic function handler for the {@link Gio.Application.SignalSignatures.activate | Gio.Application::activate} signal.
          *
          * If no main windows exist, it creates one with
-         * tepl_abstract_factory_create_main_window(). If a main window already exists,
-         * it calls gtk_window_present() on the most recently focused window of the
+         * `tepl_abstract_factory_create_main_window()`. If a main window already exists,
+         * it calls `gtk_window_present()` on the most recently focused window of the
          * application.
          */
         handle_activate(): void;
         /**
-         * Connects a generic function handler for the #GApplication::open signal.
+         * Connects a generic function handler for the {@link Gio.Application.SignalSignatures.open | Gio.Application::open} signal.
          *
-         * It calls tepl_application_window_open_file() for each #GFile to open, on the
-         * active main window as returned by tepl_application_get_active_main_window().
-         * If the active main window is %NULL, it creates one with
-         * tepl_abstract_factory_create_main_window().
+         * It calls `tepl_application_window_open_file()` for each {@link Gio.File} to open, on the
+         * active main window as returned by `tepl_application_get_active_main_window()`.
+         * If the active main window is `null`, it creates one with
+         * `tepl_abstract_factory_create_main_window()`.
          */
         handle_open(): void;
         /**
-         * Calls g_application_open() with a single file and an empty hint.
-         * @param file a #GFile.
+         * Calls `g_application_open()` with a single file and an empty hint.
+         * @param file a {@link Gio.File}.
          */
         open_simple(file: Gio.File): void;
     }
@@ -722,48 +813,57 @@ export namespace Tepl {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ApplicationWindow extends GObject.Object implements TabGroup {
         static $gtype: GObject.GType<ApplicationWindow>;
 
         // Properties
 
         /**
-         * The #GtkApplicationWindow.
+         * The {@link Gtk.ApplicationWindow}.
+         * @since 2.0
+         * @construct-only
          */
         get application_window(): Gtk.ApplicationWindow;
         /**
-         * The #GtkApplicationWindow.
+         * The {@link Gtk.ApplicationWindow}.
+         * @since 2.0
+         * @construct-only
          */
         get applicationWindow(): Gtk.ApplicationWindow;
         /**
-         * Whether to handle the #GtkWindow:title. The title is probably not
-         * appropriate if a #GtkHeaderBar is used, the title is meant to be used
+         * Whether to handle the {@link Gtk.Window.title}. The title is probably not
+         * appropriate if a {@link Gtk.HeaderBar} is used, the title is meant to be used
          * only for applications with a traditional UI.
          *
-         * If %TRUE, the title will contain:
-         * - the #TeplBuffer:tepl-full-title of the active buffer.
-         * - if the active view is not #GtkTextView:editable, the
+         * If `true`, the title will contain:
+         * - the {@link Tepl.Buffer.tepl_full_title} of the active buffer.
+         * - if the active view is not {@link Gtk.TextView.editable}, the
          *   `"[Read-Only]"` string.
-         * - the application name as returned by g_get_application_name().
+         * - the application name as returned by `g_get_application_name()`.
          *
-         * If the active view is %NULL, the title contains only the application
+         * If the active view is `null`, the title contains only the application
          * name.
+         * @since 4.0
          */
         get handle_title(): boolean;
         set handle_title(val: boolean);
         /**
-         * Whether to handle the #GtkWindow:title. The title is probably not
-         * appropriate if a #GtkHeaderBar is used, the title is meant to be used
+         * Whether to handle the {@link Gtk.Window.title}. The title is probably not
+         * appropriate if a {@link Gtk.HeaderBar} is used, the title is meant to be used
          * only for applications with a traditional UI.
          *
-         * If %TRUE, the title will contain:
-         * - the #TeplBuffer:tepl-full-title of the active buffer.
-         * - if the active view is not #GtkTextView:editable, the
+         * If `true`, the title will contain:
+         * - the {@link Tepl.Buffer.tepl_full_title} of the active buffer.
+         * - if the active view is not {@link Gtk.TextView.editable}, the
          *   `"[Read-Only]"` string.
-         * - the application name as returned by g_get_application_name().
+         * - the application name as returned by `g_get_application_name()`.
          *
-         * If the active view is %NULL, the title contains only the application
+         * If the active view is `null`, the title contains only the application
          * name.
+         * @since 4.0
          */
         get handleTitle(): boolean;
         set handleTitle(val: boolean);
@@ -785,16 +885,19 @@ export namespace Tepl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ApplicationWindow.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ApplicationWindow.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ApplicationWindow.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ApplicationWindow.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ApplicationWindow.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ApplicationWindow.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -804,146 +907,176 @@ export namespace Tepl {
         // Static methods
 
         /**
-         * Returns the #TeplApplicationWindow of `gtk_window`. The returned object is
+         * Returns the {@link Tepl.ApplicationWindow} of `gtk_window`. The returned object is
          * guaranteed to be the same for the lifetime of `gtk_window`.
-         * @param gtk_window a #GtkApplicationWindow.
+         * @param gtk_window a {@link Gtk.ApplicationWindow}.
          */
         static get_from_gtk_application_window(gtk_window: Gtk.ApplicationWindow): ApplicationWindow;
         /**
-         * Returns %TRUE iff `gtk_window` has an associated #TeplTabGroup (i.e. if
-         * tepl_application_window_set_tab_group() has been called).
+         * Returns `true` iff `gtk_window` has an associated {@link Tepl.TabGroup} (i.e. if
+         * `tepl_application_window_set_tab_group()` has been called).
          *
-         * This function takes a #GtkApplicationWindow parameter to avoid creating the
-         * #TeplApplicationWindow object if it hasn't been created.
-         * @param gtk_window a #GtkApplicationWindow.
+         * This function takes a {@link Gtk.ApplicationWindow} parameter to avoid creating the
+         * {@link Tepl.ApplicationWindow} object if it hasn't been created.
+         * @param gtk_window a {@link Gtk.ApplicationWindow}.
          */
         static is_main_window(gtk_window: Gtk.ApplicationWindow): boolean;
 
         // Methods
 
+        /**
+         * @returns the {@link Gtk.ApplicationWindow} of `tepl_window`.
+         */
         get_application_window(): Gtk.ApplicationWindow;
+        /**
+         * @returns the value of the {@link Tepl.ApplicationWindow.handle_title} property.
+         */
         get_handle_title(): boolean;
         /**
-         * Gets the #GtkWindowGroup in which `tepl_window` resides.
+         * Gets the {@link Gtk.WindowGroup} in which `tepl_window` resides.
          *
          * You should call this function only on main windows, to add secondary windows
-         * to the #GtkWindowGroup.
-         * @returns the #GtkWindowGroup.
+         * to the {@link Gtk.WindowGroup}.
+         * @returns the {@link Gtk.WindowGroup}.
          */
         get_window_group(): Gtk.WindowGroup;
         /**
          * Opens a file in `tepl_window`. If the active tab is untouched (see
-         * tepl_buffer_is_untouched()), then the file is loaded in that tab. Otherwise a
+         * `tepl_buffer_is_untouched()`), then the file is loaded in that tab. Otherwise a
          * new tab is created.
          *
          * This function is asynchronous, the file loading is done with the
-         * tepl_tab_load_file() function. There is no way to know when the file loading
+         * `tepl_tab_load_file()` function. There is no way to know when the file loading
          * is finished.
-         * @param location a #GFile.
+         * @param location a {@link Gio.File}.
          * @param jump_to whether to set the tab where the file is loaded as the active tab.
          */
         open_file(location: Gio.File, jump_to: boolean): void;
         /**
-         * Sets the #TeplApplicationWindow:handle-title property.
+         * Sets the {@link Tepl.ApplicationWindow.handle_title} property.
          * @param handle_title the new value.
          */
         set_handle_title(handle_title: boolean): void;
         /**
-         * Sets the #TeplTabGroup of `tepl_window`. This function can be called only
-         * once, it is not possible to change the #TeplTabGroup afterwards (this
+         * Sets the {@link Tepl.TabGroup} of `tepl_window`. This function can be called only
+         * once, it is not possible to change the {@link Tepl.TabGroup} afterwards (this
          * restriction may be lifted in the future if there is a compelling use-case).
          *
-         * #TeplApplicationWindow implements the #TeplTabGroup interface by delegating
+         * {@link Tepl.ApplicationWindow} implements the {@link Tepl.TabGroup} interface by delegating
          * the requests to `tab_group`.
-         * @param tab_group a #TeplTabGroup.
+         * @param tab_group a {@link Tepl.TabGroup}.
          */
         set_tab_group(tab_group: TabGroup): void;
-
-        // Inherited properties
         /**
-         * The #TeplBuffer of the active tab.
+         * The {@link Tepl.Buffer} of the active tab.
+         * @since 3.0
+         * @read-only
+         * @category Inherited from Tepl.TabGroup
          */
         get active_buffer(): Buffer;
         /**
-         * The #TeplBuffer of the active tab.
+         * The {@link Tepl.Buffer} of the active tab.
+         * @since 3.0
+         * @read-only
+         * @category Inherited from Tepl.TabGroup
          */
         get activeBuffer(): Buffer;
         /**
-         * The #TeplTab currently shown.
+         * The {@link Tepl.Tab} currently shown.
+         * @since 3.0
+         * @category Inherited from Tepl.TabGroup
          */
         get active_tab(): Tab;
         set active_tab(val: Tab);
         /**
-         * The #TeplTab currently shown.
+         * The {@link Tepl.Tab} currently shown.
+         * @since 3.0
+         * @category Inherited from Tepl.TabGroup
          */
         get activeTab(): Tab;
         set activeTab(val: Tab);
         /**
-         * The #TeplView of the active tab.
+         * The {@link Tepl.View} of the active tab.
+         * @since 3.0
+         * @read-only
+         * @category Inherited from Tepl.TabGroup
          */
         get active_view(): View;
         /**
-         * The #TeplView of the active tab.
+         * The {@link Tepl.View} of the active tab.
+         * @since 3.0
+         * @read-only
+         * @category Inherited from Tepl.TabGroup
          */
         get activeView(): View;
-
-        // Inherited methods
         /**
          * Appends `tab` to `tab_group`.
-         * @param tab a #TeplTab.
-         * @param jump_to whether to set @tab as the active tab after appending it.
+         * @param tab a {@link Tepl.Tab}.
+         * @param jump_to whether to set `tab` as the active tab after appending it.
          */
         append_tab(tab: Tab, jump_to: boolean): void;
         /**
          * Convenience function.
-         * @returns the #TeplBuffer of the active tab.
+         * @returns the {@link Tepl.Buffer} of the active tab.
          */
         get_active_buffer(): Buffer | null;
+        /**
+         * @returns the {@link Tepl.Tab} currently shown in `tab_group`.
+         */
         get_active_tab(): Tab | null;
         /**
          * Convenience function.
-         * @returns the #TeplView of the active tab.
+         * @returns the {@link Tepl.View} of the active tab.
          */
         get_active_view(): View | null;
         /**
          * Convenience function.
-         * @returns like tepl_tab_group_get_tabs(), but returns #TeplBuffer's.
+         * @returns like `tepl_tab_group_get_tabs()`, but returns {@link Tepl.Buffer}'s.
          */
         get_buffers(): Buffer[];
         /**
-         * Gets the list of #TeplTab's contained in `tab_group`.
+         * Gets the list of {@link Tepl.Tab}'s contained in `tab_group`.
          *
-         * If `tab_group` contains non-#TeplTab children, those will not be present in the
+         * If `tab_group` contains non-{@link Tepl.Tab} children, those will not be present in the
          * returned list. In other words, it is <emphasis>not</emphasis> guaranteed that
-         * the index of a #TeplTab in the returned #GList has the same child index in
+         * the index of a {@link Tepl.Tab} in the returned {@link GLib.List} has the same child index in
          * the `tab_group` container.
-         * @returns the list of all the #TeplTab's contained in @tab_group.
+         * @returns the list of all the {@link Tepl.Tab}'s contained in `tab_group`.
          */
         get_tabs(): Tab[];
         /**
          * Convenience function.
-         * @returns like tepl_tab_group_get_tabs(), but returns #TeplView's.
+         * @returns like `tepl_tab_group_get_tabs()`, but returns {@link Tepl.View}'s.
          */
         get_views(): View[];
         /**
-         * Sets the #TeplTabGroup:active-tab. `tab` must be part of `tab_group`.
-         * @param tab a #TeplTab part of @tab_group.
+         * Sets the {@link Tepl.TabGroup.active_tab}. `tab` must be part of `tab_group`.
+         * @param tab a {@link Tepl.Tab} part of `tab_group`.
          */
         set_active_tab(tab: Tab): void;
+        /**
+         * @param tab
+         * @virtual
+         */
         vfunc_append_tab_vfunc(tab: Tab): void;
+        /**
+         * @virtual
+         */
         vfunc_get_active_tab(): Tab | null;
         /**
-         * Gets the list of #TeplTab's contained in `tab_group`.
+         * Gets the list of {@link Tepl.Tab}'s contained in `tab_group`.
          *
-         * If `tab_group` contains non-#TeplTab children, those will not be present in the
+         * If `tab_group` contains non-{@link Tepl.Tab} children, those will not be present in the
          * returned list. In other words, it is <emphasis>not</emphasis> guaranteed that
-         * the index of a #TeplTab in the returned #GList has the same child index in
+         * the index of a {@link Tepl.Tab} in the returned {@link GLib.List} has the same child index in
          * the `tab_group` container.
+         * @virtual
          */
         vfunc_get_tabs(): Tab[];
         /**
-         * Sets the #TeplTabGroup:active-tab. `tab` must be part of `tab_group`.
-         * @param tab a #TeplTab part of @tab_group.
+         * Sets the {@link Tepl.TabGroup.active_tab}. `tab` must be part of `tab_group`.
+         * @param tab a {@link Tepl.Tab} part of `tab_group`.
+         * @virtual
          */
         vfunc_set_active_tab(tab: Tab): void;
         /**
@@ -959,32 +1092,32 @@ export namespace Tepl {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -993,39 +1126,39 @@ export namespace Tepl {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -1036,13 +1169,16 @@ export namespace Tepl {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -1050,7 +1186,7 @@ export namespace Tepl {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -1058,9 +1194,9 @@ export namespace Tepl {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -1080,9 +1216,9 @@ export namespace Tepl {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -1095,34 +1231,34 @@ export namespace Tepl {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1155,22 +1291,22 @@ export namespace Tepl {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -1179,8 +1315,8 @@ export namespace Tepl {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -1197,10 +1333,10 @@ export namespace Tepl {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -1215,13 +1351,13 @@ export namespace Tepl {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1252,21 +1388,21 @@ export namespace Tepl {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1276,33 +1412,34 @@ export namespace Tepl {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1311,6 +1448,7 @@ export namespace Tepl {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1319,12 +1457,14 @@ export namespace Tepl {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1333,20 +1473,22 @@ export namespace Tepl {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1358,6 +1500,7 @@ export namespace Tepl {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -1390,6 +1533,16 @@ export namespace Tepl {
     namespace Buffer {
         // Signal signatures
         interface SignalSignatures extends GtkSource.Buffer.SignalSignatures {
+            /**
+             * The ::tepl-cursor-moved signal is emitted when the insert mark is
+             * moved explicitely or when the buffer changes (insert/delete).
+             *
+             * A typical use-case for this signal is to update the cursor position
+             * in a statusbar.
+             * @signal
+             * @since 2.0
+             * @run-first
+             */
             'tepl-cursor-moved': () => void;
             'notify::tepl-full-title': (pspec: GObject.ParamSpec) => void;
             'notify::tepl-short-title': (pspec: GObject.ParamSpec) => void;
@@ -1423,42 +1576,55 @@ export namespace Tepl {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Buffer extends GtkSource.Buffer {
         static $gtype: GObject.GType<Buffer>;
 
         // Properties
 
         /**
-         * The full title. See tepl_buffer_get_full_title().
+         * The full title. See `tepl_buffer_get_full_title()`.
+         * @since 3.0
+         * @read-only
          */
         get tepl_full_title(): string;
         /**
-         * The full title. See tepl_buffer_get_full_title().
+         * The full title. See `tepl_buffer_get_full_title()`.
+         * @since 3.0
+         * @read-only
          */
         get teplFullTitle(): string;
         /**
-         * The short title. See tepl_buffer_get_short_title().
+         * The short title. See `tepl_buffer_get_short_title()`.
+         * @since 3.0
+         * @read-only
          */
         get tepl_short_title(): string;
         /**
-         * The short title. See tepl_buffer_get_short_title().
+         * The short title. See `tepl_buffer_get_short_title()`.
+         * @since 3.0
+         * @read-only
          */
         get teplShortTitle(): string;
         /**
-         * The #GtkSourceBuffer:style-scheme ID, as a string. This property is
-         * useful for binding it to a #GSettings key.
+         * The {@link GtkSource.Buffer.style_scheme} ID, as a string. This property is
+         * useful for binding it to a {@link Gio.Settings} key.
          *
-         * When the #GtkSourceBuffer:style-scheme is %NULL,
-         * #TeplBuffer:tepl-style-scheme-id contains the empty string.
+         * When the {@link GtkSource.Buffer.style_scheme} is `null`,
+         * {@link Tepl.Buffer.tepl_style_scheme_id} contains the empty string.
+         * @since 2.0
          */
         get tepl_style_scheme_id(): string;
         set tepl_style_scheme_id(val: string);
         /**
-         * The #GtkSourceBuffer:style-scheme ID, as a string. This property is
-         * useful for binding it to a #GSettings key.
+         * The {@link GtkSource.Buffer.style_scheme} ID, as a string. This property is
+         * useful for binding it to a {@link Gio.Settings} key.
          *
-         * When the #GtkSourceBuffer:style-scheme is %NULL,
-         * #TeplBuffer:tepl-style-scheme-id contains the empty string.
+         * When the {@link GtkSource.Buffer.style_scheme} is `null`,
+         * {@link Tepl.Buffer.tepl_style_scheme_id} contains the empty string.
+         * @since 2.0
          */
         get teplStyleSchemeId(): string;
         set teplStyleSchemeId(val: string);
@@ -1482,16 +1648,19 @@ export namespace Tepl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Buffer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Buffer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Buffer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Buffer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Buffer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Buffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1500,34 +1669,43 @@ export namespace Tepl {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_tepl_cursor_moved(): void;
 
         // Methods
 
         /**
-         * Returns the #TeplFile of `buffer`. The returned object is guaranteed to be the
+         * Returns the {@link Tepl.File} of `buffer`. The returned object is guaranteed to be the
          * same for the lifetime of `buffer`.
          *
-         * #TeplBuffer creates the #TeplFile with tepl_abstract_factory_create_file().
-         * @returns the associated #TeplFile.
+         * {@link Tepl.Buffer} creates the {@link Tepl.File} with `tepl_abstract_factory_create_file()`.
+         * @returns the associated {@link Tepl.File}.
          */
         get_file(): File;
         /**
-         * Returns a title suitable for a #GtkWindow title. It contains (in that order):
-         * - the #TeplBuffer:tepl-short-title;
-         * - the directory path in parenthesis if the #TeplFile:location isn't
-         *   %NULL.
-         * @returns the @buffer full title. Free the return value with g_free() when no longer needed.
+         * Returns a title suitable for a {@link Gtk.Window} title. It contains (in that order):
+         * - the {@link Tepl.Buffer.tepl_short_title};
+         * - the directory path in parenthesis if the {@link Tepl.File.location} isn't
+         *   `null`.
+         * @returns the `buffer` full title. Free the return value with `g_free()` when no longer needed.
          */
         get_full_title(): string;
+        /**
+         * @returns the current {@link Tepl.SelectionType}.
+         */
         get_selection_type(): SelectionType;
         /**
          * Returns a title suitable for a tab label. It contains (in that order):
          * - '*' if the buffer is modified;
-         * - the #TeplFile:short-name;
-         * @returns the @buffer short title. Free the return value with g_free() when no longer needed.
+         * - the {@link Tepl.File.short_name};
+         * @returns the `buffer` short title. Free the return value with `g_free()` when no longer needed.
          */
         get_short_title(): string;
+        /**
+         * @returns the {@link Tepl.Buffer.tepl_style_scheme_id}. Free with `g_free()`.
+         */
         get_style_scheme_id(): string;
         /**
          * Returns whether `buffer` is untouched.
@@ -1535,18 +1713,18 @@ export namespace Tepl {
          * This function is for example useful to know if we can re-use this buffer to
          * load a file, instead of opening a new tab or window.
          *
-         * For this function to return %TRUE, the `buffer` must be empty, non-modified,
-         * the undo/redo #GtkSourceBuffer history must be empty, and the
-         * #TeplFile:location must be %NULL.
-         * @returns %TRUE if @buffer has not been touched, %FALSE otherwise.
+         * For this function to return `true`, the `buffer` must be empty, non-modified,
+         * the undo/redo {@link GtkSource.Buffer} history must be empty, and the
+         * {@link Tepl.File.location} must be `null`.
+         * @returns `true` if `buffer` has not been touched, `false` otherwise.
          */
         is_untouched(): boolean;
         /**
-         * Sets the #TeplBuffer:tepl-style-scheme-id property.
+         * Sets the {@link Tepl.Buffer.tepl_style_scheme_id} property.
          *
-         * The #GtkSourceStyleScheme is taken from the default
-         * #GtkSourceStyleSchemeManager as returned by
-         * gtk_source_style_scheme_manager_get_default().
+         * The {@link GtkSource.StyleScheme} is taken from the default
+         * {@link GtkSource.StyleSchemeManager} as returned by
+         * `gtk_source_style_scheme_manager_get_default()`.
          * @param style_scheme_id the new value.
          */
         set_style_scheme_id(style_scheme_id: string): void;
@@ -1579,6 +1757,9 @@ export namespace Tepl {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class File extends GObject.Object {
         static $gtype: GObject.GType<File>;
 
@@ -1586,46 +1767,65 @@ export namespace Tepl {
 
         /**
          * The compression type.
+         * @since 1.0
+         * @read-only
          */
         get compression_type(): CompressionType;
         /**
          * The compression type.
+         * @since 1.0
+         * @read-only
          */
         get compressionType(): CompressionType;
         /**
-         * The character encoding, initially %NULL. After a successful file
-         * loading or saving operation, the encoding is non-%NULL.
+         * The character encoding, initially `null`. After a successful file
+         * loading or saving operation, the encoding is non-`null`.
+         * @since 1.0
+         * @read-only
          */
         get encoding(): Encoding;
         /**
          * The location.
+         * @since 1.0
          */
         get location(): Gio.File;
         set location(val: Gio.File);
         /**
          * The line ending type.
+         * @since 1.0
+         * @read-only
          */
         get newline_type(): NewlineType;
         /**
          * The line ending type.
+         * @since 1.0
+         * @read-only
          */
         get newlineType(): NewlineType;
         /**
          * Whether the file is read-only or not. The value of this property is
          * not updated automatically (there is no file monitors).
+         * @since 1.0
+         * @read-only
          */
         get read_only(): boolean;
         /**
          * Whether the file is read-only or not. The value of this property is
          * not updated automatically (there is no file monitors).
+         * @since 1.0
+         * @read-only
          */
         get readOnly(): boolean;
         /**
-         * The file short name. See tepl_file_get_short_name().
+         * The file short name. See `tepl_file_get_short_name()`.
+         * @since 1.0
+         * @read-only
          */
         get short_name(): string;
         /**
-         * The file short name. See tepl_file_get_short_name().
+         * The file short name. See `tepl_file_get_short_name()`.
+         * @since 1.0
+         * @read-only
          */
         get shortName(): string;
 
@@ -1648,16 +1848,19 @@ export namespace Tepl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof File.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, File.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof File.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, File.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof File.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<File.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1667,77 +1870,89 @@ export namespace Tepl {
         // Methods
 
         /**
-         * If the #TeplFile:location isn't %NULL, adds its URI to the default
-         * #GtkRecentManager with gtk_recent_manager_add_item().
+         * If the {@link Tepl.File.location} isn't `null`, adds its URI to the default
+         * {@link Gtk.RecentManager} with `gtk_recent_manager_add_item()`.
          */
         add_uri_to_recent_manager(): void;
         /**
          * Checks synchronously the file on disk, to know whether the file is externally
          * modified, or has been deleted, and whether the file is read-only.
          *
-         * #TeplFile doesn't create a #GFileMonitor to track those properties, so
-         * this function needs to be called instead. Creating lots of #GFileMonitor's
+         * {@link Tepl.File} doesn't create a {@link Gio.FileMonitor} to track those properties, so
+         * this function needs to be called instead. Creating lots of {@link Gio.FileMonitor}'s
          * would take lots of resources.
          *
          * Since this function is synchronous, it is advised to call it only on local
-         * files. See tepl_file_is_local().
+         * files. See `tepl_file_is_local()`.
          */
         check_file_on_disk(): void;
+        /**
+         * @returns the compression type.
+         */
         get_compression_type(): CompressionType;
         /**
-         * The encoding is initially %NULL. After a successful file loading or saving
-         * operation, the encoding is non-%NULL.
+         * The encoding is initially `null`. After a successful file loading or saving
+         * operation, the encoding is non-`null`.
          * @returns the character encoding.
          */
         get_encoding(): Encoding;
+        /**
+         * @returns the associated {@link Tepl.FileMetadata}.
+         */
         get_file_metadata(): FileMetadata;
+        /**
+         * @returns the {@link Gio.File}.
+         */
         get_location(): Gio.File;
+        /**
+         * @returns the newline type.
+         */
         get_newline_type(): NewlineType;
         /**
-         * Gets the `file` short name. If the #TeplFile:location isn't %NULL,
+         * Gets the `file` short name. If the {@link Tepl.File.location} isn't `null`,
          * returns its display-name (see #G_FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME).
          * Otherwise returns "Untitled File N", with N the Nth untitled file of the
          * application, starting at 1. When an untitled file is closed, its number is
          * released and can be used by a later untitled file.
-         * @returns the @file short name.
+         * @returns the `file` short name.
          */
         get_short_name(): string;
         /**
          * Returns whether the file has been deleted. If the
-         * #TeplFile:location is %NULL, returns %FALSE.
+         * {@link Tepl.File.location} is `null`, returns `false`.
          *
          * To have an up-to-date value, you must first call
-         * tepl_file_check_file_on_disk().
+         * `tepl_file_check_file_on_disk()`.
          * @returns whether the file has been deleted.
          */
         is_deleted(): boolean;
         /**
          * Returns whether the file is externally modified. If the
-         * #TeplFile:location is %NULL, returns %FALSE.
+         * {@link Tepl.File.location} is `null`, returns `false`.
          *
          * To have an up-to-date value, you must first call
-         * tepl_file_check_file_on_disk().
+         * `tepl_file_check_file_on_disk()`.
          * @returns whether the file is externally modified.
          */
         is_externally_modified(): boolean;
         /**
-         * Returns whether the file is local. If the #TeplFile:location is %NULL,
-         * returns %FALSE.
+         * Returns whether the file is local. If the {@link Tepl.File.location} is `null`,
+         * returns `false`.
          * @returns whether the file is local.
          */
         is_local(): boolean;
         /**
          * Returns whether the file is read-only. If the
-         * #TeplFile:location is %NULL, returns %FALSE.
+         * {@link Tepl.File.location} is `null`, returns `false`.
          *
          * To have an up-to-date value, you must first call
-         * tepl_file_check_file_on_disk().
+         * `tepl_file_check_file_on_disk()`.
          * @returns whether the file is read-only.
          */
         is_readonly(): boolean;
         /**
          * Sets the location.
-         * @param location the new #GFile, or %NULL.
+         * @param location the new {@link Gio.File}, or `null`.
          */
         set_location(location?: Gio.File | null): void;
     }
@@ -1765,14 +1980,19 @@ export namespace Tepl {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class FileLoader extends GObject.Object {
         static $gtype: GObject.GType<FileLoader>;
 
         // Properties
 
         /**
-         * The #TeplBuffer to load the content into. The #TeplFileLoader object
+         * The {@link Tepl.Buffer} to load the content into. The {@link Tepl.FileLoader} object
          * has a weak reference to the buffer.
+         * @since 1.0
+         * @construct-only
          */
         get buffer(): Buffer;
         /**
@@ -1782,6 +2002,7 @@ export namespace Tepl {
          *
          * A small chunk size is better when loading a remote file with a slow
          * connection. For local files, the chunk size can be larger.
+         * @since 1.0
          */
         get chunk_size(): number;
         set chunk_size(val: number);
@@ -1792,34 +2013,41 @@ export namespace Tepl {
          *
          * A small chunk size is better when loading a remote file with a slow
          * connection. For local files, the chunk size can be larger.
+         * @since 1.0
          */
         get chunkSize(): number;
         set chunkSize(val: number);
         /**
-         * The #TeplFile. The #TeplFileLoader object has a weak
+         * The {@link Tepl.File}. The {@link Tepl.FileLoader} object has a weak
          * reference to the file.
+         * @since 1.0
+         * @construct-only
          */
         get file(): File;
         /**
-         * The #GFile to load. By default the location is taken from the
-         * #TeplFile at construction time.
+         * The {@link Gio.File} to load. By default the location is taken from the
+         * {@link Tepl.File} at construction time.
+         * @since 1.0
+         * @construct-only
          */
         get location(): Gio.File;
         /**
          * The maximum content size, in bytes. Keep in mind that all the
-         * content is loaded in memory, and when loaded into a #GtkTextBuffer
+         * content is loaded in memory, and when loaded into a {@link Gtk.TextBuffer}
          * it takes more memory than just the content size.
          *
          * Set to -1 for unlimited size.
+         * @since 1.0
          */
         get max_size(): number;
         set max_size(val: number);
         /**
          * The maximum content size, in bytes. Keep in mind that all the
-         * content is loaded in memory, and when loaded into a #GtkTextBuffer
+         * content is loaded in memory, and when loaded into a {@link Gtk.TextBuffer}
          * it takes more memory than just the content size.
          *
          * Set to -1 for unlimited size.
+         * @since 1.0
          */
         get maxSize(): number;
         set maxSize(val: number);
@@ -1843,16 +2071,19 @@ export namespace Tepl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FileLoader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileLoader.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FileLoader.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileLoader.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FileLoader.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FileLoader.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1861,21 +2092,42 @@ export namespace Tepl {
 
         // Methods
 
+        /**
+         * @returns the {@link Tepl.Buffer} to load the content into.
+         */
         get_buffer(): Buffer | null;
+        /**
+         * @returns the chunk size.
+         */
         get_chunk_size(): number;
+        /**
+         * @returns the detected file encoding, or `null`.
+         */
         get_encoding(): Encoding | null;
+        /**
+         * @returns the {@link Tepl.File}.
+         */
         get_file(): File | null;
+        /**
+         * @returns the {@link Gio.File} to load.
+         */
         get_location(): Gio.File | null;
+        /**
+         * @returns the maximum content size, or -1 for unlimited.
+         */
         get_max_size(): number;
+        /**
+         * @returns the detected newline type.
+         */
         get_newline_type(): NewlineType;
         /**
-         * Loads asynchronously the file content into the #TeplBuffer.
+         * Loads asynchronously the file content into the {@link Tepl.Buffer}.
          *
-         * See the #GAsyncResult documentation to know how to use this function.
-         * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param progress_callback function to call back with   progress information, or %NULL if progress information is not needed.
-         * @param progress_callback_notify function to call on   @progress_callback_data when the @progress_callback is no longer needed, or   %NULL.
+         * See the {@link Gio.AsyncResult} documentation to know how to use this function.
+         * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
+         * @param progress_callback_notify function to call on   `progress_callback_data` when the `progress_callback` is no longer needed, or   `null`.
          */
         load_async(
             io_priority: number,
@@ -1884,14 +2136,14 @@ export namespace Tepl {
             progress_callback_notify?: GLib.DestroyNotify | null,
         ): globalThis.Promise<boolean>;
         /**
-         * Loads asynchronously the file content into the #TeplBuffer.
+         * Loads asynchronously the file content into the {@link Tepl.Buffer}.
          *
-         * See the #GAsyncResult documentation to know how to use this function.
-         * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param progress_callback function to call back with   progress information, or %NULL if progress information is not needed.
-         * @param progress_callback_notify function to call on   @progress_callback_data when the @progress_callback is no longer needed, or   %NULL.
-         * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
+         * See the {@link Gio.AsyncResult} documentation to know how to use this function.
+         * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
+         * @param progress_callback_notify function to call on   `progress_callback_data` when the `progress_callback` is no longer needed, or   `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
         load_async(
             io_priority: number,
@@ -1901,14 +2153,14 @@ export namespace Tepl {
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Loads asynchronously the file content into the #TeplBuffer.
+         * Loads asynchronously the file content into the {@link Tepl.Buffer}.
          *
-         * See the #GAsyncResult documentation to know how to use this function.
-         * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param progress_callback function to call back with   progress information, or %NULL if progress information is not needed.
-         * @param progress_callback_notify function to call on   @progress_callback_data when the @progress_callback is no longer needed, or   %NULL.
-         * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
+         * See the {@link Gio.AsyncResult} documentation to know how to use this function.
+         * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
+         * @param progress_callback_notify function to call on   `progress_callback_data` when the `progress_callback` is no longer needed, or   `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
         load_async(
             io_priority: number,
@@ -1918,12 +2170,18 @@ export namespace Tepl {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Finishes a file loading started with tepl_file_loader_load_async().
-         * @param result a #GAsyncResult.
+         * Finishes a file loading started with `tepl_file_loader_load_async()`.
+         * @param result a {@link Gio.AsyncResult}.
          * @returns whether the content has been loaded successfully.
          */
         load_finish(result: Gio.AsyncResult): boolean;
+        /**
+         * @param chunk_size the new chunk size.
+         */
         set_chunk_size(chunk_size: number): void;
+        /**
+         * @param max_size the new maximum size, or -1 for unlimited.
+         */
         set_max_size(max_size: number): void;
     }
 
@@ -1940,13 +2198,18 @@ export namespace Tepl {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class FileMetadata extends GObject.Object {
         static $gtype: GObject.GType<FileMetadata>;
 
         // Properties
 
         /**
-         * The #TeplFile that the metadata belong to.
+         * The {@link Tepl.File} that the metadata belong to.
+         * @since 1.0
+         * @construct-only
          */
         get file(): File;
 
@@ -1969,16 +2232,19 @@ export namespace Tepl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FileMetadata.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileMetadata.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FileMetadata.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileMetadata.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FileMetadata.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FileMetadata.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1990,48 +2256,51 @@ export namespace Tepl {
         /**
          * Gets the value of a metadata stored in the `metadata` object memory.
          * @param key the name of the metadata.
-         * @returns the value of the metadata, or %NULL if the metadata   doesn't exist. Free with g_free().
+         * @returns the value of the metadata, or `null` if the metadata   doesn't exist. Free with `g_free()`.
          */
         get(key: string): string | null;
+        /**
+         * @returns the {@link Tepl.File} that the metadata belong to.
+         */
         get_file(): File;
         /**
-         * Loads synchronously the metadata from #TeplFile:location. The loaded
-         * metadata values can then be accessed with tepl_file_metadata_get().
+         * Loads synchronously the metadata from {@link Tepl.File.location}. The loaded
+         * metadata values can then be accessed with `tepl_file_metadata_get()`.
          *
          * If the metadata are loaded successfully, this function deletes all previous
          * metadata stored in the `metadata` object memory.
          *
-         * The file at #TeplFile:location, if non-%NULL, must exist on the
+         * The file at {@link Tepl.File.location}, if non-`null`, must exist on the
          * filesystem, otherwise an error is returned.
          *
-         * If #TeplFile:location is %NULL, %FALSE is simply returned.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * If {@link Tepl.File.location} is `null`, `false` is simply returned.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns whether the metadata was loaded successfully.
          */
         load(cancellable?: Gio.Cancellable | null): boolean;
         /**
-         * The asynchronous version of tepl_file_metadata_load().
+         * The asynchronous version of `tepl_file_metadata_load()`.
          *
          * If the metadata is loaded from the metadata manager (i.e. not with GVfs),
          * this function loads the metadata synchronously. A future version might fix
          * this.
          *
-         * See the #GAsyncResult documentation to know how to use this function.
-         * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * See the {@link Gio.AsyncResult} documentation to know how to use this function.
+         * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
         load_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
-         * The asynchronous version of tepl_file_metadata_load().
+         * The asynchronous version of `tepl_file_metadata_load()`.
          *
          * If the metadata is loaded from the metadata manager (i.e. not with GVfs),
          * this function loads the metadata synchronously. A future version might fix
          * this.
          *
-         * See the #GAsyncResult documentation to know how to use this function.
-         * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
+         * See the {@link Gio.AsyncResult} documentation to know how to use this function.
+         * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
         load_async(
             io_priority: number,
@@ -2039,16 +2308,16 @@ export namespace Tepl {
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * The asynchronous version of tepl_file_metadata_load().
+         * The asynchronous version of `tepl_file_metadata_load()`.
          *
          * If the metadata is loaded from the metadata manager (i.e. not with GVfs),
          * this function loads the metadata synchronously. A future version might fix
          * this.
          *
-         * See the #GAsyncResult documentation to know how to use this function.
-         * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
+         * See the {@link Gio.AsyncResult} documentation to know how to use this function.
+         * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
         load_async(
             io_priority: number,
@@ -2056,43 +2325,43 @@ export namespace Tepl {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Finishes the metadata loading started with tepl_file_metadata_load_async().
-         * @param result a #GAsyncResult.
+         * Finishes the metadata loading started with `tepl_file_metadata_load_async()`.
+         * @param result a {@link Gio.AsyncResult}.
          * @returns whether the metadata was loaded successfully.
          */
         load_finish(result: Gio.AsyncResult): boolean;
         /**
-         * Saves synchronously the metadata for #TeplFile:location.
+         * Saves synchronously the metadata for {@link Tepl.File.location}.
          *
-         * The file at #TeplFile:location, if non-%NULL, must exist on the
+         * The file at {@link Tepl.File.location}, if non-`null`, must exist on the
          * filesystem, otherwise an error is returned.
          *
-         * If #TeplFile:location is %NULL, %FALSE is simply returned.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * If {@link Tepl.File.location} is `null`, `false` is simply returned.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns whether the metadata was saved successfully.
          */
         save(cancellable?: Gio.Cancellable | null): boolean;
         /**
-         * The asynchronous version of tepl_file_metadata_save().
+         * The asynchronous version of `tepl_file_metadata_save()`.
          *
          * If the metadata is saved with the metadata manager (i.e. not with GVfs), this
          * function saves the metadata synchronously. A future version might fix this.
          *
-         * See the #GAsyncResult documentation to know how to use this function.
-         * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * See the {@link Gio.AsyncResult} documentation to know how to use this function.
+         * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
         save_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
-         * The asynchronous version of tepl_file_metadata_save().
+         * The asynchronous version of `tepl_file_metadata_save()`.
          *
          * If the metadata is saved with the metadata manager (i.e. not with GVfs), this
          * function saves the metadata synchronously. A future version might fix this.
          *
-         * See the #GAsyncResult documentation to know how to use this function.
-         * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
+         * See the {@link Gio.AsyncResult} documentation to know how to use this function.
+         * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
         save_async(
             io_priority: number,
@@ -2100,15 +2369,15 @@ export namespace Tepl {
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * The asynchronous version of tepl_file_metadata_save().
+         * The asynchronous version of `tepl_file_metadata_save()`.
          *
          * If the metadata is saved with the metadata manager (i.e. not with GVfs), this
          * function saves the metadata synchronously. A future version might fix this.
          *
-         * See the #GAsyncResult documentation to know how to use this function.
-         * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
+         * See the {@link Gio.AsyncResult} documentation to know how to use this function.
+         * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
         save_async(
             io_priority: number,
@@ -2116,8 +2385,8 @@ export namespace Tepl {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Finishes the metadata saving started with tepl_file_metadata_save_async().
-         * @param result a #GAsyncResult.
+         * Finishes the metadata saving started with `tepl_file_metadata_save_async()`.
+         * @param result a {@link Gio.AsyncResult}.
          * @returns whether the metadata was saved successfully.
          */
         save_finish(result: Gio.AsyncResult): boolean;
@@ -2128,9 +2397,12 @@ export namespace Tepl {
          * This function just stores the new metadata value in the `metadata` object
          * memory.
          * @param key the name of the metadata.
-         * @param value the value of the metadata, or %NULL to unset.
+         * @param value the value of the metadata, or `null` to unset.
          */
         set(key: string, value?: string | null): void;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.set
         set(...args: never[]): any;
     }
@@ -2162,53 +2434,68 @@ export namespace Tepl {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class FileSaver extends GObject.Object {
         static $gtype: GObject.GType<FileSaver>;
 
         // Properties
 
         /**
-         * The #TeplBuffer to save. The #TeplFileSaver object has a weak
+         * The {@link Tepl.Buffer} to save. The {@link Tepl.FileSaver} object has a weak
          * reference to the buffer.
+         * @since 1.0
+         * @construct-only
          */
         get buffer(): GtkSource.Buffer;
         /**
          * The compression type.
+         * @since 1.0
          */
         get compression_type(): GtkSource.CompressionType;
         set compression_type(val: GtkSource.CompressionType);
         /**
          * The compression type.
+         * @since 1.0
          */
         get compressionType(): GtkSource.CompressionType;
         set compressionType(val: GtkSource.CompressionType);
         /**
          * The file's encoding.
+         * @since 1.0
          */
         get encoding(): Encoding;
         set encoding(val: Encoding);
         /**
-         * The #TeplFile. The #TeplFileSaver object has a weak
+         * The {@link Tepl.File}. The {@link Tepl.FileSaver} object has a weak
          * reference to the file.
+         * @since 1.0
+         * @construct-only
          */
         get file(): File;
         /**
          * File saving flags.
+         * @since 1.0
          */
         get flags(): FileSaverFlags;
         set flags(val: FileSaverFlags);
         /**
-         * The #GFile where to save the buffer. By default the location is taken
-         * from the #TeplFile at construction time.
+         * The {@link Gio.File} where to save the buffer. By default the location is taken
+         * from the {@link Tepl.File} at construction time.
+         * @since 1.0
+         * @construct-only
          */
         get location(): Gio.File;
         /**
          * The newline type.
+         * @since 1.0
          */
         get newline_type(): GtkSource.NewlineType;
         set newline_type(val: GtkSource.NewlineType);
         /**
          * The newline type.
+         * @since 1.0
          */
         get newlineType(): GtkSource.NewlineType;
         set newlineType(val: GtkSource.NewlineType);
@@ -2238,16 +2525,19 @@ export namespace Tepl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FileSaver.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileSaver.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FileSaver.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileSaver.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FileSaver.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FileSaver.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2256,20 +2546,41 @@ export namespace Tepl {
 
         // Methods
 
+        /**
+         * @returns the {@link Tepl.Buffer} to save.
+         */
         get_buffer(): Buffer;
+        /**
+         * @returns the compression type.
+         */
         get_compression_type(): CompressionType;
+        /**
+         * @returns the encoding.
+         */
         get_encoding(): Encoding;
+        /**
+         * @returns the {@link Tepl.File}.
+         */
         get_file(): File;
+        /**
+         * @returns the flags.
+         */
         get_flags(): FileSaverFlags;
+        /**
+         * @returns the {@link Gio.File} where to save the buffer to.
+         */
         get_location(): Gio.File;
+        /**
+         * @returns the newline type.
+         */
         get_newline_type(): NewlineType;
         /**
-         * Saves asynchronously the buffer into the file. See the #GAsyncResult
+         * Saves asynchronously the buffer into the file. See the {@link Gio.AsyncResult}
          * documentation to know how to use this function.
-         * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param progress_callback function to call back with   progress information, or %NULL if progress information is not needed.
-         * @param progress_callback_notify function to call on   @progress_callback_data when the @progress_callback is no longer needed, or   %NULL.
+         * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
+         * @param progress_callback_notify function to call on   `progress_callback_data` when the `progress_callback` is no longer needed, or   `null`.
          */
         save_async(
             io_priority: number,
@@ -2278,13 +2589,13 @@ export namespace Tepl {
             progress_callback_notify?: GLib.DestroyNotify | null,
         ): globalThis.Promise<boolean>;
         /**
-         * Saves asynchronously the buffer into the file. See the #GAsyncResult
+         * Saves asynchronously the buffer into the file. See the {@link Gio.AsyncResult}
          * documentation to know how to use this function.
-         * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param progress_callback function to call back with   progress information, or %NULL if progress information is not needed.
-         * @param progress_callback_notify function to call on   @progress_callback_data when the @progress_callback is no longer needed, or   %NULL.
-         * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
+         * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
+         * @param progress_callback_notify function to call on   `progress_callback_data` when the `progress_callback` is no longer needed, or   `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
         save_async(
             io_priority: number,
@@ -2294,13 +2605,13 @@ export namespace Tepl {
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Saves asynchronously the buffer into the file. See the #GAsyncResult
+         * Saves asynchronously the buffer into the file. See the {@link Gio.AsyncResult}
          * documentation to know how to use this function.
-         * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param progress_callback function to call back with   progress information, or %NULL if progress information is not needed.
-         * @param progress_callback_notify function to call on   @progress_callback_data when the @progress_callback is no longer needed, or   %NULL.
-         * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
+         * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param progress_callback function to call back with   progress information, or `null` if progress information is not needed.
+         * @param progress_callback_notify function to call on   `progress_callback_data` when the `progress_callback` is no longer needed, or   `null`.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
         save_async(
             io_priority: number,
@@ -2310,34 +2621,37 @@ export namespace Tepl {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Finishes a file saving started with tepl_file_saver_save_async().
+         * Finishes a file saving started with `tepl_file_saver_save_async()`.
          *
-         * If the file has been saved successfully, the following #TeplFile
+         * If the file has been saved successfully, the following {@link Tepl.File}
          * properties will be updated: the location, the encoding, the newline type and
          * the compression type.
          *
-         * gtk_text_buffer_set_modified() is called with %FALSE if the file has been
+         * `gtk_text_buffer_set_modified()` is called with `false` if the file has been
          * saved successfully.
-         * @param result a #GAsyncResult.
+         * @param result a {@link Gio.AsyncResult}.
          * @returns whether the file was saved successfully.
          */
         save_finish(result: Gio.AsyncResult): boolean;
         /**
          * Sets the compression type. By default the compression type is taken from the
-         * #TeplFile.
+         * {@link Tepl.File}.
          * @param compression_type the new compression type.
          */
         set_compression_type(compression_type: CompressionType | null): void;
         /**
-         * Sets the encoding. If `encoding` is %NULL, the UTF-8 encoding will be set.
-         * By default the encoding is taken from the #TeplFile.
-         * @param encoding the new encoding, or %NULL for UTF-8.
+         * Sets the encoding. If `encoding` is `null`, the UTF-8 encoding will be set.
+         * By default the encoding is taken from the {@link Tepl.File}.
+         * @param encoding the new encoding, or `null` for UTF-8.
          */
         set_encoding(encoding?: Encoding | null): void;
+        /**
+         * @param flags the new flags.
+         */
         set_flags(flags: FileSaverFlags | null): void;
         /**
          * Sets the newline type. By default the newline type is taken from the
-         * #TeplFile.
+         * {@link Tepl.File}.
          * @param newline_type the new newline type.
          */
         set_newline_type(newline_type: NewlineType | null): void;
@@ -2358,18 +2672,24 @@ export namespace Tepl {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class FoldRegion extends GObject.Object {
         static $gtype: GObject.GType<FoldRegion>;
 
         // Properties
 
         /**
-         * The #GtkTextBuffer where the fold region is applied. The
-         * #TeplFoldRegion object has a weak reference to the buffer.
+         * The {@link Gtk.TextBuffer} where the fold region is applied. The
+         * {@link Tepl.FoldRegion} object has a weak reference to the buffer.
+         * @since 1.0
+         * @construct-only
          */
         get buffer(): Gtk.TextBuffer;
         /**
-         * Whether the #TeplFoldRegion is folded or not.
+         * Whether the {@link Tepl.FoldRegion} is folded or not.
+         * @since 1.0
          */
         get folded(): boolean;
         set folded(val: boolean);
@@ -2393,16 +2713,19 @@ export namespace Tepl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FoldRegion.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FoldRegion.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FoldRegion.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FoldRegion.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FoldRegion.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FoldRegion.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2412,16 +2735,22 @@ export namespace Tepl {
         // Methods
 
         /**
-         * Obtains iterators pointing to the start and end of the #TeplFoldRegion.
-         * @returns %TRUE on success, %FALSE otherwise.
+         * Obtains iterators pointing to the start and end of the {@link Tepl.FoldRegion}.
+         * @returns `true` on success, `false` otherwise.
          */
         get_bounds(): [boolean, Gtk.TextIter, Gtk.TextIter];
+        /**
+         * @returns the {@link Gtk.TextBuffer} where the fold region   is applied.
+         */
         get_buffer(): Gtk.TextBuffer | null;
+        /**
+         * @returns whether the {@link Tepl.FoldRegion} is folded.
+         */
         get_folded(): boolean;
         /**
-         * Sets the start and end of the #TeplFoldRegion.
-         * @param start a #GtkTextIter.
-         * @param end a #GtkTextIter.
+         * Sets the start and end of the {@link Tepl.FoldRegion}.
+         * @param start a {@link Gtk.TextIter}.
+         * @param end a {@link Gtk.TextIter}.
          */
         set_bounds(start: Gtk.TextIter, end: Gtk.TextIter): void;
         /**
@@ -2452,6 +2781,9 @@ export namespace Tepl {
         interface ConstructorProps extends GtkSource.GutterRenderer.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class GutterRendererFolds extends GtkSource.GutterRenderer {
         static $gtype: GObject.GType<GutterRendererFolds>;
 
@@ -2474,16 +2806,19 @@ export namespace Tepl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof GutterRendererFolds.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GutterRendererFolds.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof GutterRendererFolds.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GutterRendererFolds.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof GutterRendererFolds.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<GutterRendererFolds.SignalSignatures[K]> extends [any, ...infer Q]
@@ -2499,7 +2834,7 @@ export namespace Tepl {
          *
          * This function is intended to be called from a subclass' draw method before
          * chaining-up to its parent's draw method.
-         * @param state a #TeplGutterRendererFoldsState.
+         * @param state a {@link Tepl.GutterRendererFoldsState}.
          */
         set_state(state: GutterRendererFoldsState | null): void;
     }
@@ -2567,6 +2902,9 @@ export namespace Tepl {
                 Gtk.Orientable.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class InfoBar extends Gtk.InfoBar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<InfoBar>;
 
@@ -2591,16 +2929,19 @@ export namespace Tepl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof InfoBar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InfoBar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof InfoBar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InfoBar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof InfoBar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<InfoBar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2610,7 +2951,7 @@ export namespace Tepl {
         // Static methods
 
         /**
-         * Utility function to create a #GtkLabel suitable for a #GtkInfoBar. The
+         * Utility function to create a {@link Gtk.Label} suitable for a {@link Gtk.InfoBar}. The
          * wrapping and alignment is configured. The label is also set as selectable,
          * for example to copy an error message and search an explanation on the web.
          */
@@ -2619,27 +2960,27 @@ export namespace Tepl {
         // Methods
 
         /**
-         * Calls gtk_info_bar_set_show_close_button(), and additionnally closes the
-         * `info_bar` when the #GtkInfoBar::response signal is received with the
-         * `response_id` %GTK_RESPONSE_CLOSE.
+         * Calls `gtk_info_bar_set_show_close_button()`, and additionnally closes the
+         * `info_bar` when the {@link Gtk.InfoBar.SignalSignatures.response | Gtk.InfoBar::response} signal is received with the
+         * `response_id` {@link Gtk.ResponseType.CLOSE}.
          */
         add_close_button(): void;
         /**
          * Adds `content` to `info_bar`.
          *
-         * #TeplInfoBar has an internal container, to be able to add the icon and add
+         * {@link Tepl.InfoBar} has an internal container, to be able to add the icon and add
          * primary or secondary messages. The internal container is added to the content
-         * area, as returned by gtk_info_bar_get_content_area(). So if you use a
-         * #TeplInfoBar and you need to add a custom #GtkWidget, it is better to use
-         * this function instead of adding the #GtkWidget directly to the content area.
-         * @param content a #GtkWidget.
+         * area, as returned by `gtk_info_bar_get_content_area()`. So if you use a
+         * {@link Tepl.InfoBar} and you need to add a custom {@link Gtk.Widget}, it is better to use
+         * this function instead of adding the {@link Gtk.Widget} directly to the content area.
+         * @param content a {@link Gtk.Widget}.
          */
         add_content_widget(content: Gtk.Widget): void;
         /**
          * Adds an icon on the left, determined by the message type. So before calling
-         * this function, gtk_info_bar_set_message_type() must have been called.
+         * this function, `gtk_info_bar_set_message_type()` must have been called.
          *
-         * The icon is not updated when the message type changes. Another #TeplInfoBar
+         * The icon is not updated when the message type changes. Another {@link Tepl.InfoBar}
          * must be created in that case.
          */
         add_icon(): void;
@@ -2655,20 +2996,18 @@ export namespace Tepl {
         add_secondary_message(secondary_msg: string): void;
         /**
          * Sets the desired orientation (horizontal or vertical) for the action area as
-         * returned by gtk_info_bar_get_action_area(). The action area is where the
+         * returned by `gtk_info_bar_get_action_area()`. The action area is where the
          * buttons are placed.
          *
-         * The default value for a #TeplInfoBar is %GTK_ORIENTATION_VERTICAL. The reason
-         * is because with a small #GtkWindow, if 3 or more buttons are shown
+         * The default value for a {@link Tepl.InfoBar} is {@link Gtk.Orientation.VERTICAL}. The reason
+         * is because with a small {@link Gtk.Window}, if 3 or more buttons are shown
          * horizontally, there is not enough space for the text. And it can be worse
          * when the button labels are translated to another language. When the buttons
          * are packed vertically, there is usually no problem. A vertical action area
-         * also follows the original design of #GtkInfoBar.
+         * also follows the original design of {@link Gtk.InfoBar}.
          * @param buttons_orientation the desired orientation.
          */
         set_buttons_orientation(buttons_orientation: Gtk.Orientation | null): void;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -2682,32 +3021,32 @@ export namespace Tepl {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -2716,39 +3055,39 @@ export namespace Tepl {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -2759,13 +3098,16 @@ export namespace Tepl {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -2773,7 +3115,7 @@ export namespace Tepl {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -2781,9 +3123,9 @@ export namespace Tepl {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -2803,9 +3145,9 @@ export namespace Tepl {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -2818,34 +3160,34 @@ export namespace Tepl {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -2878,22 +3220,22 @@ export namespace Tepl {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -2902,8 +3244,8 @@ export namespace Tepl {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -2920,10 +3262,10 @@ export namespace Tepl {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -2938,13 +3280,13 @@ export namespace Tepl {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -2975,21 +3317,21 @@ export namespace Tepl {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -2999,33 +3341,34 @@ export namespace Tepl {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -3034,6 +3377,7 @@ export namespace Tepl {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -3042,12 +3386,14 @@ export namespace Tepl {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -3056,20 +3402,22 @@ export namespace Tepl {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -3081,6 +3429,7 @@ export namespace Tepl {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -3123,17 +3472,22 @@ export namespace Tepl {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class MetadataStore extends GObject.Object {
         static $gtype: GObject.GType<MetadataStore>;
 
         // Properties
 
         /**
-         * %TRUE when the metadata has been loaded, or when there has been at
+         * `true` when the metadata has been loaded, or when there has been at
          * least an attempt to load it (i.e. when
-         * tepl_metadata_store_load_finish() has been called).
+         * `tepl_metadata_store_load_finish()` has been called).
          *
-         * %FALSE otherwise.
+         * `false` otherwise.
+         * @since 4.6
+         * @read-only
          */
         get loaded(): boolean;
 
@@ -3154,16 +3508,19 @@ export namespace Tepl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MetadataStore.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MetadataStore.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MetadataStore.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MetadataStore.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MetadataStore.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MetadataStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3176,35 +3533,42 @@ export namespace Tepl {
 
         // Methods
 
+        /**
+         * @param location a {@link Gio.File}.
+         * @returns a {@link Gio.FileInfo} containing the metadata, under the "metadata" namespace. Or `null` if there is no metadata for `location`.
+         */
         get_metadata_for_location(location: Gio.File): Gio.FileInfo | null;
+        /**
+         * @returns the value of the {@link Tepl.MetadataStore.loaded} property.
+         */
         is_loaded(): boolean;
         /**
          * Loads asynchronously the content of the store file. You need to call
-         * tepl_metadata_store_set_store_file() before.
+         * `tepl_metadata_store_set_store_file()` before.
          *
-         * You can call this function only once. Once the #TeplMetadataStore is loaded
+         * You can call this function only once. Once the {@link Tepl.MetadataStore} is loaded
          * it cannot be loaded a second time. A good moment to call this function is on
-         * application startup. TODO "application startup": refer to #GApplication API,
+         * application startup. TODO "application startup": refer to {@link Gio.Application} API,
          * the exact startup phase.
          *
-         * See the #GAsyncResult documentation to know how to use this function.
-         * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * See the {@link Gio.AsyncResult} documentation to know how to use this function.
+         * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
         load_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Loads asynchronously the content of the store file. You need to call
-         * tepl_metadata_store_set_store_file() before.
+         * `tepl_metadata_store_set_store_file()` before.
          *
-         * You can call this function only once. Once the #TeplMetadataStore is loaded
+         * You can call this function only once. Once the {@link Tepl.MetadataStore} is loaded
          * it cannot be loaded a second time. A good moment to call this function is on
-         * application startup. TODO "application startup": refer to #GApplication API,
+         * application startup. TODO "application startup": refer to {@link Gio.Application} API,
          * the exact startup phase.
          *
-         * See the #GAsyncResult documentation to know how to use this function.
-         * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
+         * See the {@link Gio.AsyncResult} documentation to know how to use this function.
+         * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
         load_async(
             io_priority: number,
@@ -3213,17 +3577,17 @@ export namespace Tepl {
         ): void;
         /**
          * Loads asynchronously the content of the store file. You need to call
-         * tepl_metadata_store_set_store_file() before.
+         * `tepl_metadata_store_set_store_file()` before.
          *
-         * You can call this function only once. Once the #TeplMetadataStore is loaded
+         * You can call this function only once. Once the {@link Tepl.MetadataStore} is loaded
          * it cannot be loaded a second time. A good moment to call this function is on
-         * application startup. TODO "application startup": refer to #GApplication API,
+         * application startup. TODO "application startup": refer to {@link Gio.Application} API,
          * the exact startup phase.
          *
-         * See the #GAsyncResult documentation to know how to use this function.
-         * @param io_priority the I/O priority of the request. E.g. %G_PRIORITY_LOW,   %G_PRIORITY_DEFAULT or %G_PRIORITY_HIGH.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
+         * See the {@link Gio.AsyncResult} documentation to know how to use this function.
+         * @param io_priority the I/O priority of the request. E.g. `G_PRIORITY_LOW`,   `G_PRIORITY_DEFAULT` or `G_PRIORITY_HIGH`.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
         load_async(
             io_priority: number,
@@ -3231,25 +3595,25 @@ export namespace Tepl {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Finishes the metadata loading started with tepl_metadata_store_load_async().
+         * Finishes the metadata loading started with `tepl_metadata_store_load_async()`.
          *
          * Regardless of whether the operation was successful or not, calling this
-         * function sets the #TeplMetadataStore:loaded property to %TRUE.
-         * @param result a #GAsyncResult.
+         * function sets the {@link Tepl.MetadataStore.loaded} property to `true`.
+         * @param result a {@link Gio.AsyncResult}.
          * @returns whether the metadata was loaded successfully.
          */
         load_finish(result: Gio.AsyncResult): boolean;
         /**
          * Saves synchronously the metadata to the store file. You need to call
-         * tepl_metadata_store_set_store_file() before.
+         * `tepl_metadata_store_set_store_file()` before.
          *
          * An asynchronous version doesn't exist because this function is meant to be
-         * called on application shutdown. TODO: refer to #GApplication API, the exact
+         * called on application shutdown. TODO: refer to {@link Gio.Application} API, the exact
          * shutdown phase.
          *
          * This function respects the configuration as set with
-         * tepl_metadata_store_set_max_number_of_locations().
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * `tepl_metadata_store_set_max_number_of_locations()`.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @returns whether the metadata was saved successfully.
          */
         save(cancellable?: Gio.Cancellable | null): boolean;
@@ -3258,30 +3622,34 @@ export namespace Tepl {
          * fit most applications' needs.
          *
          * The purpose of having a maximum size is to avoid the store file (as set with
-         * tepl_metadata_store_set_store_file()) to grow indefinitely.
+         * `tepl_metadata_store_set_store_file()`) to grow indefinitely.
          *
-         * `max_number_of_locations` is the maximum number of #GFile locations for which
+         * `max_number_of_locations` is the maximum number of {@link Gio.File} locations for which
          * metadata are written to the store file. See
-         * tepl_metadata_store_set_metadata_for_location() (this sets the metadata for
+         * `tepl_metadata_store_set_metadata_for_location()` (this sets the metadata for
          * _one_ location).
          *
-         * Upon saving, the #TeplMetadataStore discards the least recently accessed
+         * Upon saving, the {@link Tepl.MetadataStore} discards the least recently accessed
          * metadata if needed.
          * @param max_number_of_locations the maximum size.
          */
         set_max_number_of_locations(max_number_of_locations: number): void;
+        /**
+         * @param location a {@link Gio.File}.
+         * @param metadata a {@link Gio.FileInfo} containing the metadata, or `null` to remove the metadata for `location`.
+         */
         set_metadata_for_location(location: Gio.File, metadata?: Gio.FileInfo | null): void;
         /**
          * The `store_file` must be different for each process. It is advised for your
-         * application to rely on #GApplication process uniqueness.
+         * application to rely on {@link Gio.Application} process uniqueness.
          *
          * A good place to store the metadata is in a sub-directory of the user data
-         * directory. See g_get_user_data_dir().
+         * directory. See `g_get_user_data_dir()`.
          *
          * Note that this function does no I/O. To load the metadata from the
-         * `store_file,` call tepl_metadata_store_load_async(). To save the metadata,
-         * call tepl_metadata_store_save().
-         * @param store_file the #GFile where the metadata is or will be stored.
+         * `store_file`, call `tepl_metadata_store_load_async()`. To save the metadata,
+         * call `tepl_metadata_store_save()`.
+         * @param store_file the {@link Gio.File} where the metadata is or will be stored.
          */
         set_store_file(store_file: Gio.File): void;
     }
@@ -3353,6 +3721,9 @@ export namespace Tepl {
                 TabGroup.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Notebook extends Gtk.Notebook implements Atk.ImplementorIface, Gtk.Buildable, TabGroup {
         static $gtype: GObject.GType<Notebook>;
 
@@ -3375,107 +3746,134 @@ export namespace Tepl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Notebook.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Notebook.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Notebook.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Notebook.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Notebook.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Notebook.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited properties
         /**
-         * The #TeplBuffer of the active tab.
+         * The {@link Tepl.Buffer} of the active tab.
+         * @since 3.0
+         * @read-only
+         * @category Inherited from Tepl.TabGroup
          */
         get active_buffer(): Buffer;
         /**
-         * The #TeplBuffer of the active tab.
+         * The {@link Tepl.Buffer} of the active tab.
+         * @since 3.0
+         * @read-only
+         * @category Inherited from Tepl.TabGroup
          */
         get activeBuffer(): Buffer;
         /**
-         * The #TeplTab currently shown.
+         * The {@link Tepl.Tab} currently shown.
+         * @since 3.0
+         * @category Inherited from Tepl.TabGroup
          */
         get active_tab(): Tab;
         set active_tab(val: Tab);
         /**
-         * The #TeplTab currently shown.
+         * The {@link Tepl.Tab} currently shown.
+         * @since 3.0
+         * @category Inherited from Tepl.TabGroup
          */
         get activeTab(): Tab;
         set activeTab(val: Tab);
         /**
-         * The #TeplView of the active tab.
+         * The {@link Tepl.View} of the active tab.
+         * @since 3.0
+         * @read-only
+         * @category Inherited from Tepl.TabGroup
          */
         get active_view(): View;
         /**
-         * The #TeplView of the active tab.
+         * The {@link Tepl.View} of the active tab.
+         * @since 3.0
+         * @read-only
+         * @category Inherited from Tepl.TabGroup
          */
         get activeView(): View;
-
-        // Inherited methods
         /**
          * Appends `tab` to `tab_group`.
-         * @param tab a #TeplTab.
-         * @param jump_to whether to set @tab as the active tab after appending it.
+         * @param tab a {@link Tepl.Tab}.
+         * @param jump_to whether to set `tab` as the active tab after appending it.
          */
         append_tab(tab: Tab, jump_to: boolean): void;
         /**
          * Convenience function.
-         * @returns the #TeplBuffer of the active tab.
+         * @returns the {@link Tepl.Buffer} of the active tab.
          */
         get_active_buffer(): Buffer | null;
+        /**
+         * @returns the {@link Tepl.Tab} currently shown in `tab_group`.
+         */
         get_active_tab(): Tab | null;
         /**
          * Convenience function.
-         * @returns the #TeplView of the active tab.
+         * @returns the {@link Tepl.View} of the active tab.
          */
         get_active_view(): View | null;
         /**
          * Convenience function.
-         * @returns like tepl_tab_group_get_tabs(), but returns #TeplBuffer's.
+         * @returns like `tepl_tab_group_get_tabs()`, but returns {@link Tepl.Buffer}'s.
          */
         get_buffers(): Buffer[];
         /**
-         * Gets the list of #TeplTab's contained in `tab_group`.
+         * Gets the list of {@link Tepl.Tab}'s contained in `tab_group`.
          *
-         * If `tab_group` contains non-#TeplTab children, those will not be present in the
+         * If `tab_group` contains non-{@link Tepl.Tab} children, those will not be present in the
          * returned list. In other words, it is <emphasis>not</emphasis> guaranteed that
-         * the index of a #TeplTab in the returned #GList has the same child index in
+         * the index of a {@link Tepl.Tab} in the returned {@link GLib.List} has the same child index in
          * the `tab_group` container.
-         * @returns the list of all the #TeplTab's contained in @tab_group.
+         * @returns the list of all the {@link Tepl.Tab}'s contained in `tab_group`.
          */
         get_tabs(): Tab[];
         /**
          * Convenience function.
-         * @returns like tepl_tab_group_get_tabs(), but returns #TeplView's.
+         * @returns like `tepl_tab_group_get_tabs()`, but returns {@link Tepl.View}'s.
          */
         get_views(): View[];
         /**
-         * Sets the #TeplTabGroup:active-tab. `tab` must be part of `tab_group`.
-         * @param tab a #TeplTab part of @tab_group.
+         * Sets the {@link Tepl.TabGroup.active_tab}. `tab` must be part of `tab_group`.
+         * @param tab a {@link Tepl.Tab} part of `tab_group`.
          */
         set_active_tab(tab: Tab): void;
+        /**
+         * @param tab
+         * @virtual
+         */
         vfunc_append_tab_vfunc(tab: Tab): void;
+        /**
+         * @virtual
+         */
         vfunc_get_active_tab(): Tab | null;
         /**
-         * Gets the list of #TeplTab's contained in `tab_group`.
+         * Gets the list of {@link Tepl.Tab}'s contained in `tab_group`.
          *
-         * If `tab_group` contains non-#TeplTab children, those will not be present in the
+         * If `tab_group` contains non-{@link Tepl.Tab} children, those will not be present in the
          * returned list. In other words, it is <emphasis>not</emphasis> guaranteed that
-         * the index of a #TeplTab in the returned #GList has the same child index in
+         * the index of a {@link Tepl.Tab} in the returned {@link GLib.List} has the same child index in
          * the `tab_group` container.
+         * @virtual
          */
         vfunc_get_tabs(): Tab[];
         /**
-         * Sets the #TeplTabGroup:active-tab. `tab` must be part of `tab_group`.
-         * @param tab a #TeplTab part of @tab_group.
+         * Sets the {@link Tepl.TabGroup.active_tab}. `tab` must be part of `tab_group`.
+         * @param tab a {@link Tepl.Tab} part of `tab_group`.
+         * @virtual
          */
         vfunc_set_active_tab(tab: Tab): void;
         /**
@@ -3491,32 +3889,32 @@ export namespace Tepl {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -3525,39 +3923,39 @@ export namespace Tepl {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -3568,13 +3966,16 @@ export namespace Tepl {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -3582,7 +3983,7 @@ export namespace Tepl {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -3590,9 +3991,9 @@ export namespace Tepl {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -3612,9 +4013,9 @@ export namespace Tepl {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -3627,34 +4028,34 @@ export namespace Tepl {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -3687,22 +4088,22 @@ export namespace Tepl {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -3711,8 +4112,8 @@ export namespace Tepl {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -3729,10 +4130,10 @@ export namespace Tepl {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -3747,13 +4148,13 @@ export namespace Tepl {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -3784,21 +4185,21 @@ export namespace Tepl {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -3808,33 +4209,34 @@ export namespace Tepl {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -3843,6 +4245,7 @@ export namespace Tepl {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -3851,12 +4254,14 @@ export namespace Tepl {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -3865,20 +4270,22 @@ export namespace Tepl {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -3890,6 +4297,7 @@ export namespace Tepl {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -3922,6 +4330,23 @@ export namespace Tepl {
     namespace Tab {
         // Signal signatures
         interface SignalSignatures extends Gtk.Grid.SignalSignatures {
+            /**
+             * The ::close-request signal is emitted when there is a request to
+             * close the {@link Tepl.Tab}, for example if the user clicks on a close button.
+             *
+             * The default object method handler does the following:
+             * - If the buffer is not modified (according to
+             *   `gtk_text_buffer_get_modified()`), close the tab.
+             * - Else, show a message dialog to propose to save the file before
+             *   closing.
+             *
+             * To override the default object method handler, either override the
+             * virtual function in a {@link Tepl.Tab} subclass or connect to the signal and
+             * call `g_signal_stop_emission_by_name()`.
+             * @signal
+             * @since 3.0
+             * @run-last
+             */
             'close-request': () => void;
             'notify::view': (pspec: GObject.ParamSpec) => void;
             'notify::baseline-row': (pspec: GObject.ParamSpec) => void;
@@ -3990,14 +4415,19 @@ export namespace Tepl {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Tab extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, TabGroup {
         static $gtype: GObject.GType<Tab>;
 
         // Properties
 
         /**
-         * The #TeplView contained in the tab. When this property is set, the
+         * The {@link Tepl.View} contained in the tab. When this property is set, the
          * ::pack_view virtual function is called.
+         * @since 3.0
+         * @construct-only
          */
         get view(): View;
 
@@ -4022,16 +4452,19 @@ export namespace Tepl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Tab.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Tab.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Tab.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Tab.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Tab.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Tab.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4040,8 +4473,19 @@ export namespace Tepl {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_close_request(): void;
+        /**
+         * @param info_bar
+         * @virtual
+         */
         vfunc_pack_info_bar(info_bar: Gtk.InfoBar): void;
+        /**
+         * @param view
+         * @virtual
+         */
         vfunc_pack_view(view: View): void;
 
         // Methods
@@ -4050,50 +4494,53 @@ export namespace Tepl {
          * Attaches `info_bar` to `tab`.
          *
          * This function calls the ::pack_info_bar virtual function.
-         * @param info_bar a #GtkInfoBar.
+         * @param info_bar a {@link Gtk.InfoBar}.
          */
         add_info_bar(info_bar: Gtk.InfoBar): void;
         /**
-         * A convenience function that calls gtk_text_view_get_buffer() on the
-         * #TeplTab:view associated with the `tab`.
-         * @returns the #TeplBuffer of the #TeplTab:view.
+         * A convenience function that calls `gtk_text_view_get_buffer()` on the
+         * {@link Tepl.Tab.view} associated with the `tab`.
+         * @returns the {@link Tepl.Buffer} of the {@link Tepl.Tab.view}.
          */
         get_buffer(): Buffer;
+        /**
+         * @returns the {@link Tepl.View} contained in `tab`.
+         */
         get_view(): View;
         /**
-         * Unconditionally loads a file in `tab,` regardless if there are unsaved changes
-         * in the #GtkTextBuffer. The previous buffer content is lost.
+         * Unconditionally loads a file in `tab`, regardless if there are unsaved changes
+         * in the {@link Gtk.TextBuffer}. The previous buffer content is lost.
          *
          * This function is asynchronous, there is no way to know when the file loading
          * is finished.
-         * @param location a #GFile.
+         * @param location a {@link Gio.File}.
          */
         load_file(location: Gio.File): void;
         /**
-         * Shows a #GtkFileChooser to save the `tab` to a different location, creates an
-         * appropriate #TeplFileSaver and asynchronously runs it.
+         * Shows a {@link Gtk.FileChooser} to save the `tab` to a different location, creates an
+         * appropriate {@link Tepl.FileSaver} and asynchronously runs it.
          *
-         * See the #GAsyncResult documentation to know how to use this function.
+         * See the {@link Gio.AsyncResult} documentation to know how to use this function.
          */
         save_as_async(): globalThis.Promise<boolean>;
         /**
-         * Shows a #GtkFileChooser to save the `tab` to a different location, creates an
-         * appropriate #TeplFileSaver and asynchronously runs it.
+         * Shows a {@link Gtk.FileChooser} to save the `tab` to a different location, creates an
+         * appropriate {@link Tepl.FileSaver} and asynchronously runs it.
          *
-         * See the #GAsyncResult documentation to know how to use this function.
-         * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
+         * See the {@link Gio.AsyncResult} documentation to know how to use this function.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
         save_as_async(callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
-         * Shows a #GtkFileChooser to save the `tab` to a different location, creates an
-         * appropriate #TeplFileSaver and asynchronously runs it.
+         * Shows a {@link Gtk.FileChooser} to save the `tab` to a different location, creates an
+         * appropriate {@link Tepl.FileSaver} and asynchronously runs it.
          *
-         * See the #GAsyncResult documentation to know how to use this function.
-         * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
+         * See the {@link Gio.AsyncResult} documentation to know how to use this function.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
         save_as_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
         /**
-         * The same as tepl_tab_save_as_async(), but without callback.
+         * The same as `tepl_tab_save_as_async()`, but without callback.
          *
          * This function is useful when you don't need to know:
          * - when the operation is finished;
@@ -4101,36 +4548,36 @@ export namespace Tepl {
          */
         save_as_async_simple(): void;
         /**
-         * Finishes a tab saving started with tepl_tab_save_as_async().
-         * @param result a #GAsyncResult.
+         * Finishes a tab saving started with `tepl_tab_save_as_async()`.
+         * @param result a {@link Gio.AsyncResult}.
          * @returns whether the tab was saved successfully.
          */
         save_as_finish(result: Gio.AsyncResult): boolean;
         /**
-         * Saves asynchronously the content of the `tab`. The #TeplFile:location must not
-         * be %NULL.
+         * Saves asynchronously the content of the `tab`. The {@link Tepl.File.location} must not
+         * be `null`.
          *
-         * See the #GAsyncResult documentation to know how to use this function.
+         * See the {@link Gio.AsyncResult} documentation to know how to use this function.
          */
         save_async(): globalThis.Promise<boolean>;
         /**
-         * Saves asynchronously the content of the `tab`. The #TeplFile:location must not
-         * be %NULL.
+         * Saves asynchronously the content of the `tab`. The {@link Tepl.File.location} must not
+         * be `null`.
          *
-         * See the #GAsyncResult documentation to know how to use this function.
-         * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
+         * See the {@link Gio.AsyncResult} documentation to know how to use this function.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
         save_async(callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
-         * Saves asynchronously the content of the `tab`. The #TeplFile:location must not
-         * be %NULL.
+         * Saves asynchronously the content of the `tab`. The {@link Tepl.File.location} must not
+         * be `null`.
          *
-         * See the #GAsyncResult documentation to know how to use this function.
-         * @param callback a #GAsyncReadyCallback to call when the request is   satisfied.
+         * See the {@link Gio.AsyncResult} documentation to know how to use this function.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is   satisfied.
          */
         save_async(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<boolean> | void;
         /**
-         * The same as tepl_tab_save_async(), but without callback.
+         * The same as `tepl_tab_save_async()`, but without callback.
          *
          * This function is useful when you don't need to know:
          * - when the operation is finished;
@@ -4138,49 +4585,63 @@ export namespace Tepl {
          */
         save_async_simple(): void;
         /**
-         * Finishes a tab saving started with tepl_tab_save_async().
-         * @param result a #GAsyncResult.
+         * Finishes a tab saving started with `tepl_tab_save_async()`.
+         * @param result a {@link Gio.AsyncResult}.
          * @returns whether the tab was saved successfully.
          */
         save_finish(result: Gio.AsyncResult): boolean;
-
-        // Inherited properties
         /**
          * The orientation of the orientable.
+         * @since 2.16
+         * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
         /**
-         * The #TeplBuffer of the active tab.
+         * The {@link Tepl.Buffer} of the active tab.
+         * @since 3.0
+         * @read-only
+         * @category Inherited from Tepl.TabGroup
          */
         get active_buffer(): Buffer;
         /**
-         * The #TeplBuffer of the active tab.
+         * The {@link Tepl.Buffer} of the active tab.
+         * @since 3.0
+         * @read-only
+         * @category Inherited from Tepl.TabGroup
          */
         get activeBuffer(): Buffer;
         /**
-         * The #TeplTab currently shown.
+         * The {@link Tepl.Tab} currently shown.
+         * @since 3.0
+         * @category Inherited from Tepl.TabGroup
          */
         get active_tab(): Tab;
         set active_tab(val: Tab);
         /**
-         * The #TeplTab currently shown.
+         * The {@link Tepl.Tab} currently shown.
+         * @since 3.0
+         * @category Inherited from Tepl.TabGroup
          */
         get activeTab(): Tab;
         set activeTab(val: Tab);
         /**
-         * The #TeplView of the active tab.
+         * The {@link Tepl.View} of the active tab.
+         * @since 3.0
+         * @read-only
+         * @category Inherited from Tepl.TabGroup
          */
         get active_view(): View;
         /**
-         * The #TeplView of the active tab.
+         * The {@link Tepl.View} of the active tab.
+         * @since 3.0
+         * @read-only
+         * @category Inherited from Tepl.TabGroup
          */
         get activeView(): View;
-
-        // Inherited methods
         /**
          * Retrieves the orientation of the `orientable`.
-         * @returns the orientation of the @orientable.
+         * @returns the orientation of the `orientable`.
          */
         get_orientation(): Gtk.Orientation;
         /**
@@ -4190,60 +4651,72 @@ export namespace Tepl {
         set_orientation(orientation: Gtk.Orientation | null): void;
         /**
          * Appends `tab` to `tab_group`.
-         * @param tab a #TeplTab.
-         * @param jump_to whether to set @tab as the active tab after appending it.
+         * @param tab a {@link Tepl.Tab}.
+         * @param jump_to whether to set `tab` as the active tab after appending it.
          */
         append_tab(tab: Tab, jump_to: boolean): void;
         /**
          * Convenience function.
-         * @returns the #TeplBuffer of the active tab.
+         * @returns the {@link Tepl.Buffer} of the active tab.
          */
         get_active_buffer(): Buffer | null;
+        /**
+         * @returns the {@link Tepl.Tab} currently shown in `tab_group`.
+         */
         get_active_tab(): Tab | null;
         /**
          * Convenience function.
-         * @returns the #TeplView of the active tab.
+         * @returns the {@link Tepl.View} of the active tab.
          */
         get_active_view(): View | null;
         /**
          * Convenience function.
-         * @returns like tepl_tab_group_get_tabs(), but returns #TeplBuffer's.
+         * @returns like `tepl_tab_group_get_tabs()`, but returns {@link Tepl.Buffer}'s.
          */
         get_buffers(): Buffer[];
         /**
-         * Gets the list of #TeplTab's contained in `tab_group`.
+         * Gets the list of {@link Tepl.Tab}'s contained in `tab_group`.
          *
-         * If `tab_group` contains non-#TeplTab children, those will not be present in the
+         * If `tab_group` contains non-{@link Tepl.Tab} children, those will not be present in the
          * returned list. In other words, it is <emphasis>not</emphasis> guaranteed that
-         * the index of a #TeplTab in the returned #GList has the same child index in
+         * the index of a {@link Tepl.Tab} in the returned {@link GLib.List} has the same child index in
          * the `tab_group` container.
-         * @returns the list of all the #TeplTab's contained in @tab_group.
+         * @returns the list of all the {@link Tepl.Tab}'s contained in `tab_group`.
          */
         get_tabs(): Tab[];
         /**
          * Convenience function.
-         * @returns like tepl_tab_group_get_tabs(), but returns #TeplView's.
+         * @returns like `tepl_tab_group_get_tabs()`, but returns {@link Tepl.View}'s.
          */
         get_views(): View[];
         /**
-         * Sets the #TeplTabGroup:active-tab. `tab` must be part of `tab_group`.
-         * @param tab a #TeplTab part of @tab_group.
+         * Sets the {@link Tepl.TabGroup.active_tab}. `tab` must be part of `tab_group`.
+         * @param tab a {@link Tepl.Tab} part of `tab_group`.
          */
         set_active_tab(tab: Tab): void;
+        /**
+         * @param tab
+         * @virtual
+         */
         vfunc_append_tab_vfunc(tab: Tab): void;
+        /**
+         * @virtual
+         */
         vfunc_get_active_tab(): Tab | null;
         /**
-         * Gets the list of #TeplTab's contained in `tab_group`.
+         * Gets the list of {@link Tepl.Tab}'s contained in `tab_group`.
          *
-         * If `tab_group` contains non-#TeplTab children, those will not be present in the
+         * If `tab_group` contains non-{@link Tepl.Tab} children, those will not be present in the
          * returned list. In other words, it is <emphasis>not</emphasis> guaranteed that
-         * the index of a #TeplTab in the returned #GList has the same child index in
+         * the index of a {@link Tepl.Tab} in the returned {@link GLib.List} has the same child index in
          * the `tab_group` container.
+         * @virtual
          */
         vfunc_get_tabs(): Tab[];
         /**
-         * Sets the #TeplTabGroup:active-tab. `tab` must be part of `tab_group`.
-         * @param tab a #TeplTab part of @tab_group.
+         * Sets the {@link Tepl.TabGroup.active_tab}. `tab` must be part of `tab_group`.
+         * @param tab a {@link Tepl.Tab} part of `tab_group`.
+         * @virtual
          */
         vfunc_set_active_tab(tab: Tab): void;
         /**
@@ -4259,32 +4732,32 @@ export namespace Tepl {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -4293,39 +4766,39 @@ export namespace Tepl {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -4336,13 +4809,16 @@ export namespace Tepl {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -4350,7 +4826,7 @@ export namespace Tepl {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -4358,9 +4834,9 @@ export namespace Tepl {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -4380,9 +4856,9 @@ export namespace Tepl {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -4395,34 +4871,34 @@ export namespace Tepl {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -4455,22 +4931,22 @@ export namespace Tepl {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -4479,8 +4955,8 @@ export namespace Tepl {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -4497,10 +4973,10 @@ export namespace Tepl {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -4515,13 +4991,13 @@ export namespace Tepl {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -4552,21 +5028,21 @@ export namespace Tepl {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -4576,33 +5052,34 @@ export namespace Tepl {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -4611,6 +5088,7 @@ export namespace Tepl {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -4619,12 +5097,14 @@ export namespace Tepl {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -4633,20 +5113,22 @@ export namespace Tepl {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -4658,6 +5140,7 @@ export namespace Tepl {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -4753,14 +5236,19 @@ export namespace Tepl {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class TabLabel extends Gtk.Grid implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
         static $gtype: GObject.GType<TabLabel>;
 
         // Properties
 
         /**
-         * The associated #TeplTab. #TeplTabLabel has a weak reference to the
-         * #TeplTab.
+         * The associated {@link Tepl.Tab}. {@link Tepl.TabLabel} has a weak reference to the
+         * {@link Tepl.Tab}.
+         * @since 3.0
+         * @construct-only
          */
         get tab(): Tab;
 
@@ -4786,16 +5274,19 @@ export namespace Tepl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TabLabel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TabLabel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TabLabel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TabLabel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TabLabel.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TabLabel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4804,29 +5295,33 @@ export namespace Tepl {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_get_tooltip_markup(): string;
 
         // Methods
 
+        /**
+         * @returns the {@link Tepl.TabLabel.tab}.
+         */
         get_tab(): Tab | null;
         /**
-         * Asks #TeplTabLabel to update its tooltip. The ::get_tooltip_markup virtual
+         * Asks {@link Tepl.TabLabel} to update its tooltip. The ::get_tooltip_markup virtual
          * function is called and the result is set with
-         * gtk_widget_set_tooltip_markup().
+         * `gtk_widget_set_tooltip_markup()`.
          */
         update_tooltip(): void;
-
-        // Inherited properties
         /**
          * The orientation of the orientable.
+         * @since 2.16
+         * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
-
-        // Inherited methods
         /**
          * Retrieves the orientation of the `orientable`.
-         * @returns the orientation of the @orientable.
+         * @returns the orientation of the `orientable`.
          */
         get_orientation(): Gtk.Orientation;
         /**
@@ -4847,32 +5342,32 @@ export namespace Tepl {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -4881,39 +5376,39 @@ export namespace Tepl {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -4924,13 +5419,16 @@ export namespace Tepl {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -4938,7 +5436,7 @@ export namespace Tepl {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -4946,9 +5444,9 @@ export namespace Tepl {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -4968,9 +5466,9 @@ export namespace Tepl {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -4983,34 +5481,34 @@ export namespace Tepl {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -5043,22 +5541,22 @@ export namespace Tepl {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -5067,8 +5565,8 @@ export namespace Tepl {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -5085,10 +5583,10 @@ export namespace Tepl {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -5103,13 +5601,13 @@ export namespace Tepl {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -5140,21 +5638,21 @@ export namespace Tepl {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -5164,33 +5662,34 @@ export namespace Tepl {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -5199,6 +5698,7 @@ export namespace Tepl {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -5207,12 +5707,14 @@ export namespace Tepl {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -5221,20 +5723,22 @@ export namespace Tepl {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -5246,6 +5750,7 @@ export namespace Tepl {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -5368,6 +5873,9 @@ export namespace Tepl {
                 Gtk.Scrollable.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class View extends GtkSource.View implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<View>;
 
@@ -5390,16 +5898,19 @@ export namespace Tepl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof View.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, View.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof View.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, View.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof View.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<View.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5417,23 +5928,23 @@ export namespace Tepl {
          */
         cut_clipboard(): void;
         /**
-         * Deletes the text currently selected in the #GtkTextBuffer associated
+         * Deletes the text currently selected in the {@link Gtk.TextBuffer} associated
          * to the view and then scrolls to the cursor position.
          */
         delete_selection(): void;
         /**
          * Places the cursor at the position returned by
-         * gtk_text_buffer_get_iter_at_line(), and scrolls to that position.
+         * `gtk_text_buffer_get_iter_at_line()`, and scrolls to that position.
          * @param line a line number, counting from 0.
-         * @returns %TRUE if the cursor has been moved exactly to @line, %FALSE if that   line didn't exist.
+         * @returns `true` if the cursor has been moved exactly to `line`, `false` if that   line didn't exist.
          */
         goto_line(line: number): boolean;
         /**
          * Places the cursor at the position returned by
-         * gtk_text_buffer_get_iter_at_line_offset(), and scrolls to that position.
+         * `gtk_text_buffer_get_iter_at_line_offset()`, and scrolls to that position.
          * @param line a line number, counting from 0.
          * @param line_offset the line offset, in characters (not bytes).
-         * @returns %TRUE if the cursor has been moved exactly to @line and   @line_offset, %FALSE if that position didn't exist.
+         * @returns `true` if the cursor has been moved exactly to `line` and   `line_offset`, `false` if that position didn't exist.
          */
         goto_line_offset(line: number, line_offset: number): boolean;
         /**
@@ -5458,8 +5969,6 @@ export namespace Tepl {
          * @param end_line end of the region to select.
          */
         select_lines(start_line: number, end_line: number): void;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -5473,32 +5982,32 @@ export namespace Tepl {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -5507,39 +6016,39 @@ export namespace Tepl {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -5550,13 +6059,16 @@ export namespace Tepl {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -5564,7 +6076,7 @@ export namespace Tepl {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -5572,9 +6084,9 @@ export namespace Tepl {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -5594,9 +6106,9 @@ export namespace Tepl {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -5609,34 +6121,34 @@ export namespace Tepl {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -5669,22 +6181,22 @@ export namespace Tepl {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -5693,8 +6205,8 @@ export namespace Tepl {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -5711,10 +6223,10 @@ export namespace Tepl {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -5729,13 +6241,13 @@ export namespace Tepl {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -5766,21 +6278,21 @@ export namespace Tepl {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -5790,33 +6302,34 @@ export namespace Tepl {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -5825,6 +6338,7 @@ export namespace Tepl {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -5833,12 +6347,14 @@ export namespace Tepl {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -5847,20 +6363,22 @@ export namespace Tepl {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -5872,6 +6390,7 @@ export namespace Tepl {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -5901,19 +6420,43 @@ export namespace Tepl {
         stop_emission_by_name(detailedName: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AbstractFactoryClass = typeof AbstractFactory;
+    /**
+     * @gir-type Alias
+     */
     type AbstractFactoryValaClass = typeof AbstractFactoryVala;
+    /**
+     * @gir-type Alias
+     */
     type ApplicationClass = typeof Application;
+    /**
+     * @gir-type Struct
+     */
     abstract class ApplicationPrivate {
         static $gtype: GObject.GType<ApplicationPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ApplicationWindowClass = typeof ApplicationWindow;
+    /**
+     * @gir-type Struct
+     */
     abstract class ApplicationWindowPrivate {
         static $gtype: GObject.GType<ApplicationWindowPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type BufferClass = typeof Buffer;
+    /**
+     * @gir-type Struct
+     */
     class Encoding {
         static $gtype: GObject.GType<Encoding>;
 
@@ -5930,100 +6473,157 @@ export namespace Tepl {
         // Static methods
 
         /**
-         * Gets a list of all encodings known by #TeplEncoding.
+         * Gets a list of all encodings known by {@link Tepl.Encoding}.
          */
         static get_all(): Encoding[];
         /**
          * Gets the list of default candidate encodings to try when loading a file. See
-         * gtk_source_file_loader_set_candidate_encodings().
+         * `gtk_source_file_loader_set_candidate_encodings()`.
          *
          * This function returns a different list depending on the current locale (i.e.
          * language, country and default encoding). The UTF-8 encoding and the current
          * locale encoding are guaranteed to be present in the returned list.
          *
          * Note that the returned list doesn't contain all encodings known by
-         * #TeplEncoding, it is a limited list that contains only the encodings that
+         * {@link Tepl.Encoding}, it is a limited list that contains only the encodings that
          * have the most likelihood to fit for the current locale.
          */
         static get_default_candidates(): Encoding[];
 
         // Methods
 
+        /**
+         * @returns a copy of `enc`.
+         */
         copy(): Encoding;
         /**
-         * Returns whether `enc1` and `enc2` are equal. It returns %TRUE iff:
-         * - Both `enc1` and `enc2` are %NULL;
+         * Returns whether `enc1` and `enc2` are equal. It returns `true` iff:
+         * - Both `enc1` and `enc2` are `null`;
          * - Or both `enc1` and `enc2` have a UTF-8 charset (see
-         *   tepl_encoding_is_utf8());
-         * - Or the charsets are equal according to g_ascii_strcasecmp() (because
+         *   `tepl_encoding_is_utf8()`);
+         * - Or the charsets are equal according to `g_ascii_strcasecmp()` (because
          *   iconv-compatible charsets are case insensitive).
-         * @param enc2 a #TeplEncoding, or %NULL.
-         * @returns whether @enc1 and @enc2 are equal.
+         * @param enc2 a {@link Tepl.Encoding}, or `null`.
+         * @returns whether `enc1` and `enc2` are equal.
          */
         equals(enc2?: Encoding | null): boolean;
         free(): void;
         /**
-         * Gets the character set of the #TeplEncoding, such as "UTF-8" or "ISO-8859-1".
-         * @returns the character set of the #TeplEncoding.
+         * Gets the character set of the {@link Tepl.Encoding}, such as "UTF-8" or "ISO-8859-1".
+         * @returns the character set of the {@link Tepl.Encoding}.
          */
         get_charset(): string;
         /**
-         * Gets the name of the #TeplEncoding such as "Unicode" or "Western". If the
-         * charset is unknown by #TeplEncoding, "Unknown" is returned. The return value
+         * Gets the name of the {@link Tepl.Encoding} such as "Unicode" or "Western". If the
+         * charset is unknown by {@link Tepl.Encoding}, "Unknown" is returned. The return value
          * is already translated by gettext.
-         * @returns the name of the #TeplEncoding.
+         * @returns the name of the {@link Tepl.Encoding}.
          */
         get_name(): string;
         /**
          * Returns whether `enc` is a UTF-8 encoding.
          *
-         * If `enc` was created with tepl_encoding_new_utf8(), the charset is "UTF-8".
+         * If `enc` was created with `tepl_encoding_new_utf8()`, the charset is "UTF-8".
          * But iconv supports other variants: "UTF8", "utf-8" and "utf8". This function
-         * returns %TRUE for all UTF-8 variants supported by iconv.
-         * @returns whether @enc is a UTF-8 encoding.
+         * returns `true` for all UTF-8 variants supported by iconv.
+         * @returns whether `enc` is a UTF-8 encoding.
          */
         is_utf8(): boolean;
         /**
          * Returns the encoding name with the charset in parenthesis, for example
          * "Unicode (UTF-8)". If the name is unknown, just the charset is returned. The
          * name is translated by gettext.
-         * @returns a string representation. Free with g_free() when no longer needed.
+         * @returns a string representation. Free with `g_free()` when no longer needed.
          */
         to_string(): string;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type FileClass = typeof File;
+    /**
+     * @gir-type Alias
+     */
     type FileLoaderClass = typeof FileLoader;
+    /**
+     * @gir-type Alias
+     */
     type FileMetadataClass = typeof FileMetadata;
+    /**
+     * @gir-type Alias
+     */
     type FileSaverClass = typeof FileSaver;
+    /**
+     * @gir-type Struct
+     */
     abstract class FileSaverPrivate {
         static $gtype: GObject.GType<FileSaverPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type FoldRegionClass = typeof FoldRegion;
+    /**
+     * @gir-type Alias
+     */
     type GutterRendererFoldsClass = typeof GutterRendererFolds;
+    /**
+     * @gir-type Alias
+     */
     type InfoBarClass = typeof InfoBar;
+    /**
+     * @gir-type Alias
+     */
     type MetadataStoreClass = typeof MetadataStore;
+    /**
+     * @gir-type Struct
+     */
     abstract class MetadataStorePrivate {
         static $gtype: GObject.GType<MetadataStorePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type NotebookClass = typeof Notebook;
+    /**
+     * @gir-type Struct
+     */
     abstract class NotebookPrivate {
         static $gtype: GObject.GType<NotebookPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TabClass = typeof Tab;
+    /**
+     * @gir-type Alias
+     */
     type TabGroupInterface = typeof TabGroup;
+    /**
+     * @gir-type Alias
+     */
     type TabLabelClass = typeof TabLabel;
+    /**
+     * @gir-type Struct
+     */
     abstract class TabLabelPrivate {
         static $gtype: GObject.GType<TabLabelPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class TabPrivate {
         static $gtype: GObject.GType<TabPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ViewClass = typeof View;
     namespace TabGroup {
         /**
@@ -6033,20 +6633,29 @@ export namespace Tepl {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param tab
+             * @virtual
+             */
             vfunc_append_tab_vfunc(tab: Tab): void;
+            /**
+             * @virtual
+             */
             vfunc_get_active_tab(): Tab | null;
             /**
-             * Gets the list of #TeplTab's contained in `tab_group`.
+             * Gets the list of {@link Tepl.Tab}'s contained in `tab_group`.
              *
-             * If `tab_group` contains non-#TeplTab children, those will not be present in the
+             * If `tab_group` contains non-{@link Tepl.Tab} children, those will not be present in the
              * returned list. In other words, it is <emphasis>not</emphasis> guaranteed that
-             * the index of a #TeplTab in the returned #GList has the same child index in
+             * the index of a {@link Tepl.Tab} in the returned {@link GLib.List} has the same child index in
              * the `tab_group` container.
+             * @virtual
              */
             vfunc_get_tabs(): Tab[];
             /**
-             * Sets the #TeplTabGroup:active-tab. `tab` must be part of `tab_group`.
-             * @param tab a #TeplTab part of @tab_group.
+             * Sets the {@link Tepl.TabGroup.active_tab}. `tab` must be part of `tab_group`.
+             * @param tab a {@link Tepl.Tab} part of `tab_group`.
+             * @virtual
              */
             vfunc_set_active_tab(tab: Tab): void;
         }
@@ -6067,33 +6676,46 @@ export namespace Tepl {
         $gtype: GObject.GType<TabGroup>;
         prototype: TabGroup;
     }
+    /**
+     * @gir-type Interface
+     */
     interface TabGroup extends GObject.Object, TabGroup.Interface {
         // Properties
 
         /**
-         * The #TeplBuffer of the active tab.
+         * The {@link Tepl.Buffer} of the active tab.
+         * @since 3.0
+         * @read-only
          */
         get active_buffer(): Buffer;
         /**
-         * The #TeplBuffer of the active tab.
+         * The {@link Tepl.Buffer} of the active tab.
+         * @since 3.0
+         * @read-only
          */
         get activeBuffer(): Buffer;
         /**
-         * The #TeplTab currently shown.
+         * The {@link Tepl.Tab} currently shown.
+         * @since 3.0
          */
         get active_tab(): Tab;
         set active_tab(val: Tab);
         /**
-         * The #TeplTab currently shown.
+         * The {@link Tepl.Tab} currently shown.
+         * @since 3.0
          */
         get activeTab(): Tab;
         set activeTab(val: Tab);
         /**
-         * The #TeplView of the active tab.
+         * The {@link Tepl.View} of the active tab.
+         * @since 3.0
+         * @read-only
          */
         get active_view(): View;
         /**
-         * The #TeplView of the active tab.
+         * The {@link Tepl.View} of the active tab.
+         * @since 3.0
+         * @read-only
          */
         get activeView(): View;
 
@@ -6101,44 +6723,47 @@ export namespace Tepl {
 
         /**
          * Appends `tab` to `tab_group`.
-         * @param tab a #TeplTab.
-         * @param jump_to whether to set @tab as the active tab after appending it.
+         * @param tab a {@link Tepl.Tab}.
+         * @param jump_to whether to set `tab` as the active tab after appending it.
          */
         append_tab(tab: Tab, jump_to: boolean): void;
         /**
          * Convenience function.
-         * @returns the #TeplBuffer of the active tab.
+         * @returns the {@link Tepl.Buffer} of the active tab.
          */
         get_active_buffer(): Buffer | null;
+        /**
+         * @returns the {@link Tepl.Tab} currently shown in `tab_group`.
+         */
         get_active_tab(): Tab | null;
         /**
          * Convenience function.
-         * @returns the #TeplView of the active tab.
+         * @returns the {@link Tepl.View} of the active tab.
          */
         get_active_view(): View | null;
         /**
          * Convenience function.
-         * @returns like tepl_tab_group_get_tabs(), but returns #TeplBuffer's.
+         * @returns like `tepl_tab_group_get_tabs()`, but returns {@link Tepl.Buffer}'s.
          */
         get_buffers(): Buffer[];
         /**
-         * Gets the list of #TeplTab's contained in `tab_group`.
+         * Gets the list of {@link Tepl.Tab}'s contained in `tab_group`.
          *
-         * If `tab_group` contains non-#TeplTab children, those will not be present in the
+         * If `tab_group` contains non-{@link Tepl.Tab} children, those will not be present in the
          * returned list. In other words, it is <emphasis>not</emphasis> guaranteed that
-         * the index of a #TeplTab in the returned #GList has the same child index in
+         * the index of a {@link Tepl.Tab} in the returned {@link GLib.List} has the same child index in
          * the `tab_group` container.
-         * @returns the list of all the #TeplTab's contained in @tab_group.
+         * @returns the list of all the {@link Tepl.Tab}'s contained in `tab_group`.
          */
         get_tabs(): Tab[];
         /**
          * Convenience function.
-         * @returns like tepl_tab_group_get_tabs(), but returns #TeplView's.
+         * @returns like `tepl_tab_group_get_tabs()`, but returns {@link Tepl.View}'s.
          */
         get_views(): View[];
         /**
-         * Sets the #TeplTabGroup:active-tab. `tab` must be part of `tab_group`.
-         * @param tab a #TeplTab part of @tab_group.
+         * Sets the {@link Tepl.TabGroup.active_tab}. `tab` must be part of `tab_group`.
+         * @param tab a {@link Tepl.Tab} part of `tab_group`.
          */
         set_active_tab(tab: Tab): void;
     }

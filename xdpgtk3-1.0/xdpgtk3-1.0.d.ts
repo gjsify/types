@@ -31,9 +31,9 @@ export namespace XdpGtk3 {
      */
 
     /**
-     * Creates a new [struct`Parent]` from `window`.
-     * @param window a [class@Gtk.Window]
-     * @returns a [struct@Parent]
+     * Creates a new {@link Parent} from `window`.
+     * @param window a {@link Gtk.Window}
+     * @returns a {@link Parent}
      */
     function parent_new_gtk(window: Gtk.Window): Xdp.Parent;
     /**

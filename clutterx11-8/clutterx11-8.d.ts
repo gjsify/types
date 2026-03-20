@@ -33,12 +33,17 @@ export namespace ClutterX11 {
      * ClutterX11-8
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace FilterReturn {
         export const $gtype: GObject.GType<FilterReturn>;
     }
 
     /**
-     * Return values for the #ClutterX11FilterFunc function.
+     * Return values for the {@link ClutterX11.FilterFunc} function.
+     * @gir-type Enum
+     * @since 0.6
      */
     enum FilterReturn {
         /**
@@ -60,29 +65,33 @@ export namespace ClutterX11 {
     /**
      * Retrieves the pointer to the default display.
      * @returns the default display
+     * @since 0.6
      */
     function get_default_display(): xlib.Display;
     /**
      * Gets the number of the default X Screen object.
      * @returns the number of the default screen
+     * @since 0.6
      */
     function get_default_screen(): number;
     /**
      * Retrieves whether the Clutter X11 backend will create stereo
      * stages if possible.
-     * @returns %TRUE if stereo stages are used if possible
+     * @returns `true` if stereo stages are used if possible
+     * @since 1.22
      */
     function get_use_stereo_stage(): boolean;
     /**
      * Sets the display connection Clutter should use; must be called
-     * before clutter_init(), clutter_init_with_args() or other functions
+     * before `clutter_init()`, `clutter_init_with_args()` or other functions
      * pertaining Clutter's initialization process.
      *
      * If you are parsing the command line arguments by retrieving Clutter's
-     * #GOptionGroup with clutter_get_option_group() and calling
-     * g_option_context_parse() yourself, you should also call
-     * clutter_x11_set_display() before g_option_context_parse().
+     * {@link GLib.OptionGroup} with `clutter_get_option_group()` and calling
+     * `g_option_context_parse()` yourself, you should also call
+     * `clutter_x11_set_display()` before `g_option_context_parse()`.
      * @param xdpy pointer to a X display connection.
+     * @since 0.8
      */
     function set_display(xdpy: xlib.Display): void;
     /**
@@ -90,32 +99,41 @@ export namespace ClutterX11 {
      * if possible, be created with the ability to support stereo drawing
      * (drawing separate images for the left and right eyes).
      *
-     * This function must be called before clutter_init() is called.
-     * During paint callbacks, cogl_framebuffer_is_stereo() can be called
-     * on the framebuffer retrieved by cogl_get_draw_framebuffer() to
+     * This function must be called before `clutter_init()` is called.
+     * During paint callbacks, `cogl_framebuffer_is_stereo()` can be called
+     * on the framebuffer retrieved by `cogl_get_draw_framebuffer()` to
      * determine if stereo support was successfully enabled, and
-     * cogl_framebuffer_set_stereo_mode() to determine which buffers
+     * `cogl_framebuffer_set_stereo_mode()` to determine which buffers
      * will be drawn to.
      *
      * Note that this function *does not* cause the stage to be drawn
      * multiple times with different perspective transformations and thus
      * appear in 3D, it simply enables individual ClutterActors to paint
      * different images for the left and and right eye.
-     * @param use_stereo %TRUE if the stereo stages should be used if possible.
+     * @param use_stereo `true` if the stereo stages should be used if possible.
+     * @since 1.22
      */
     function set_use_stereo_stage(use_stereo: boolean): void;
     /**
-     * Traps every X error until clutter_x11_untrap_x_errors() is called.
+     * Traps every X error until `clutter_x11_untrap_x_errors()` is called.
+     * @since 0.6
      */
     function trap_x_errors(): void;
     /**
      * Removes the X error trap and returns the current status.
      * @returns the trapped error code, or 0 for success
+     * @since 0.4
      */
     function untrap_x_errors(): number;
+    /**
+     * @gir-type Callback
+     */
     interface FilterFunc {
         (xev: xlib.XEvent, cev: Clutter.Event): FilterReturn;
     }
+    /**
+     * @gir-type Struct
+     */
     abstract class XInputDevice {
         static $gtype: GObject.GType<XInputDevice>;
     }

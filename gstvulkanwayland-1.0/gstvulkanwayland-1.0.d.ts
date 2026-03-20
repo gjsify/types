@@ -37,8 +37,10 @@ export namespace GstVulkanWayland {
     }
 
     /**
-     * the contents of a #GstVulkanDisplayWayland are private and should only be accessed
+     * the contents of a {@link GstVulkanWayland.VulkanDisplayWayland} are private and should only be accessed
      * through the provided API
+     * @gir-type Class
+     * @since 1.18
      */
     class VulkanDisplayWayland extends GstVulkan.VulkanDisplay {
         static $gtype: GObject.GType<VulkanDisplayWayland>;
@@ -75,16 +77,19 @@ export namespace GstVulkanWayland {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof VulkanDisplayWayland.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanDisplayWayland.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof VulkanDisplayWayland.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, VulkanDisplayWayland.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof VulkanDisplayWayland.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<VulkanDisplayWayland.SignalSignatures[K]> extends [any, ...infer Q]
@@ -94,6 +99,9 @@ export namespace GstVulkanWayland {
         emit(signal: string, ...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type VulkanDisplayWaylandClass = typeof VulkanDisplayWayland;
     /**
      * Name of the imported GIR library

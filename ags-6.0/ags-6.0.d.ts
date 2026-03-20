@@ -22,12 +22,16 @@ export namespace Ags {
      * Ags-6.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ByteOrder {
         export const $gtype: GObject.GType<ByteOrder>;
     }
 
     /**
      * Endianess.
+     * @gir-type Enum
      */
     enum ByteOrder {
         /**
@@ -41,7 +45,8 @@ export namespace Ags {
     }
 
     /**
-     * Enum values to indicated failures to used with #GError-struct.
+     * Enum values to indicated failures to used with {@link GLib.Error}-struct.
+     * @gir-type Enum
      */
     enum FileError {
         /**
@@ -50,6 +55,9 @@ export namespace Ags {
         FILE_ERROR_PARSER_FAILURE,
     }
 
+    /**
+     * @gir-type Struct
+     */
     class RegexUtilError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -76,12 +84,16 @@ export namespace Ags {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SeekType {
         export const $gtype: GObject.GType<SeekType>;
     }
 
     /**
      * Seek type.
+     * @gir-type Enum
      */
     enum SeekType {
         /**
@@ -98,6 +110,9 @@ export namespace Ags {
         SEEK_END,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum SolverPolynomialError {
         SYMBOL_MISMATCH,
         EXPONENT_MISMATCH,
@@ -105,12 +120,16 @@ export namespace Ags {
         EXPONENT_NOT_CONSTANT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SoundcardFormat {
         export const $gtype: GObject.GType<SoundcardFormat>;
     }
 
     /**
-     * #AgsSoundcardFormat specifies the audio data representation to be used.
+     * {@link Ags.SoundcardFormat} specifies the audio data representation to be used.
+     * @gir-type Enum
      */
     enum SoundcardFormat {
         /**
@@ -274,10 +293,11 @@ export namespace Ags {
     const UUID_STRING_DEFAULT_LENGTH: number;
     const VERSION: string;
     /**
-     * Read a #AgsComplex quantity of `cbuffer`.
+     * Read a {@link Ags.Complex} quantity of `cbuffer`.
      * @param cbuffer the character buffer
      * @param byte_order reverse order
-     * @returns the #AgsComplex value
+     * @returns the {@link Ags.Complex} value
+     * @since 3.0.0
      */
     function buffer_util_char_buffer_read_complex(cbuffer: number, byte_order: number): Complex;
     /**
@@ -285,6 +305,7 @@ export namespace Ags {
      * @param cbuffer the character buffer
      * @param byte_order reverse order
      * @returns the gdouble value
+     * @since 3.0.0
      */
     function buffer_util_char_buffer_read_double(cbuffer: number, byte_order: number): number;
     /**
@@ -292,6 +313,7 @@ export namespace Ags {
      * @param cbuffer the character buffer
      * @param byte_order reverse order
      * @returns the gfloat value
+     * @since 3.0.0
      */
     function buffer_util_char_buffer_read_float(cbuffer: number, byte_order: number): number;
     /**
@@ -299,6 +321,7 @@ export namespace Ags {
      * @param cbuffer the character buffer
      * @param byte_order reverse order
      * @returns the gint16 value
+     * @since 3.0.0
      */
     function buffer_util_char_buffer_read_s16(cbuffer: number, byte_order: number): number;
     /**
@@ -306,6 +329,7 @@ export namespace Ags {
      * @param cbuffer the character buffer
      * @param byte_order reverse order
      * @returns the gint32 value
+     * @since 3.0.0
      */
     function buffer_util_char_buffer_read_s24(cbuffer: number, byte_order: number): number;
     /**
@@ -313,6 +337,7 @@ export namespace Ags {
      * @param cbuffer the character buffer
      * @param byte_order reverse order
      * @returns the gint32 value
+     * @since 3.0.0
      */
     function buffer_util_char_buffer_read_s32(cbuffer: number, byte_order: number): number;
     /**
@@ -320,6 +345,7 @@ export namespace Ags {
      * @param cbuffer the character buffer
      * @param byte_order reverse order
      * @returns the gint64 value
+     * @since 3.0.0
      */
     function buffer_util_char_buffer_read_s64(cbuffer: number, byte_order: number): number;
     /**
@@ -327,6 +353,7 @@ export namespace Ags {
      * @param cbuffer the character buffer
      * @param byte_order reverse order, ignored here
      * @returns the gint8 value
+     * @since 3.0.0
      */
     function buffer_util_char_buffer_read_s8(cbuffer: number, byte_order: number): number;
     /**
@@ -334,13 +361,15 @@ export namespace Ags {
      * @param cbuffer the buffer to swap
      * @param word_size the word size
      * @param buffer_size the buffer size
+     * @since 3.0.0
      */
     function buffer_util_char_buffer_swap_bytes(cbuffer: number, word_size: number, buffer_size: number): void;
     /**
-     * Unpack `cbuffer` to a #AgsComplex buffer
+     * Unpack `cbuffer` to a {@link Ags.Complex} buffer
      * @param cbuffer the guchar buffer
      * @param buffer_size the buffer size
-     * @returns the #AgsComplex buffer
+     * @returns the {@link Ags.Complex} buffer
+     * @since 3.0.0
      */
     function buffer_util_char_buffer_to_complex(cbuffer: number, buffer_size: number): Complex;
     /**
@@ -348,6 +377,7 @@ export namespace Ags {
      * @param cbuffer the guchar buffer
      * @param buffer_size the buffer size
      * @returns the gdouble buffer
+     * @since 3.0.0
      */
     function buffer_util_char_buffer_to_double(cbuffer: number, buffer_size: number): number;
     /**
@@ -355,6 +385,7 @@ export namespace Ags {
      * @param cbuffer the guchar buffer
      * @param buffer_size the buffer size
      * @returns the gfloat buffer
+     * @since 3.0.0
      */
     function buffer_util_char_buffer_to_float(cbuffer: number, buffer_size: number): number;
     /**
@@ -362,6 +393,7 @@ export namespace Ags {
      * @param cbuffer the guchar buffer
      * @param buffer_size the buffer size
      * @returns the gint16 buffer
+     * @since 3.0.0
      */
     function buffer_util_char_buffer_to_s16(cbuffer: number, buffer_size: number): number;
     /**
@@ -369,6 +401,7 @@ export namespace Ags {
      * @param cbuffer the guchar buffer
      * @param buffer_size the buffer size
      * @returns the gint32 buffer
+     * @since 3.0.0
      */
     function buffer_util_char_buffer_to_s24(cbuffer: number, buffer_size: number): number;
     /**
@@ -376,6 +409,7 @@ export namespace Ags {
      * @param cbuffer the guchar buffer
      * @param buffer_size the buffer size
      * @returns the gint32 buffer
+     * @since 3.0.0
      */
     function buffer_util_char_buffer_to_s32(cbuffer: number, buffer_size: number): number;
     /**
@@ -383,6 +417,7 @@ export namespace Ags {
      * @param cbuffer the guchar buffer
      * @param buffer_size the buffer size
      * @returns the gint64 buffer
+     * @since 3.0.0
      */
     function buffer_util_char_buffer_to_s64(cbuffer: number, buffer_size: number): number;
     /**
@@ -390,13 +425,15 @@ export namespace Ags {
      * @param cbuffer the guchar buffer
      * @param buffer_size the buffer size
      * @returns the gint8 buffer
+     * @since 3.0.0
      */
     function buffer_util_char_buffer_to_s8(cbuffer: number, buffer_size: number): number;
     /**
-     * Write a #AgsComplex quantity to `cbuffer`.
+     * Write a {@link Ags.Complex} quantity to `cbuffer`.
      * @param cbuffer the character buffer
-     * @param value the #AgsComplex value
+     * @param value the {@link Ags.Complex} value
      * @param byte_order reverse order
+     * @since 3.0.0
      */
     function buffer_util_char_buffer_write_complex(cbuffer: number, value: Complex, byte_order: number): void;
     /**
@@ -404,6 +441,7 @@ export namespace Ags {
      * @param cbuffer the character buffer
      * @param value the gdouble value
      * @param byte_order reverse order
+     * @since 3.0.0
      */
     function buffer_util_char_buffer_write_double(cbuffer: number, value: number, byte_order: number): void;
     /**
@@ -411,6 +449,7 @@ export namespace Ags {
      * @param cbuffer the character buffer
      * @param value the gfloat value
      * @param byte_order reverse order
+     * @since 3.0.0
      */
     function buffer_util_char_buffer_write_float(cbuffer: number, value: number, byte_order: number): void;
     /**
@@ -418,6 +457,7 @@ export namespace Ags {
      * @param cbuffer the character buffer
      * @param value the gint16 value
      * @param byte_order reverse order
+     * @since 3.0.0
      */
     function buffer_util_char_buffer_write_s16(cbuffer: number, value: number, byte_order: number): void;
     /**
@@ -425,6 +465,7 @@ export namespace Ags {
      * @param cbuffer the character buffer
      * @param value the gint32 value
      * @param byte_order reverse order
+     * @since 3.0.0
      */
     function buffer_util_char_buffer_write_s24(cbuffer: number, value: number, byte_order: number): void;
     /**
@@ -432,6 +473,7 @@ export namespace Ags {
      * @param cbuffer the character buffer
      * @param value the gint32 value
      * @param byte_order reverse order
+     * @since 3.0.0
      */
     function buffer_util_char_buffer_write_s32(cbuffer: number, value: number, byte_order: number): void;
     /**
@@ -439,6 +481,7 @@ export namespace Ags {
      * @param cbuffer the character buffer
      * @param value the gint64 value
      * @param byte_order reverse order
+     * @since 3.0.0
      */
     function buffer_util_char_buffer_write_s64(cbuffer: number, value: number, byte_order: number): void;
     /**
@@ -446,13 +489,15 @@ export namespace Ags {
      * @param cbuffer the character buffer
      * @param value the gint8 value
      * @param byte_order reverse order
+     * @since 3.0.0
      */
     function buffer_util_char_buffer_write_s8(cbuffer: number, value: number, byte_order: number): void;
     /**
      * Pack `buffer` into an guchar buffer.
-     * @param buffer the #AgsComplex buffer
+     * @param buffer the {@link Ags.Complex} buffer
      * @param buffer_length the buffer length
      * @returns the guchar buffer
+     * @since 3.0.0
      */
     function buffer_util_complex_to_char_buffer(buffer: Complex, buffer_length: number): number;
     /**
@@ -460,6 +505,7 @@ export namespace Ags {
      * @param buffer the gdouble buffer
      * @param buffer_length the buffer length
      * @returns the guchar buffer
+     * @since 3.0.0
      */
     function buffer_util_double_to_char_buffer(buffer: number, buffer_length: number): number;
     /**
@@ -467,6 +513,7 @@ export namespace Ags {
      * @param buffer the gfloat buffer
      * @param buffer_length the buffer length
      * @returns the guchar buffer
+     * @since 3.0.0
      */
     function buffer_util_float_to_char_buffer(buffer: number, buffer_length: number): number;
     /**
@@ -474,6 +521,7 @@ export namespace Ags {
      * @param buffer the gint16 buffer
      * @param buffer_length the buffer length
      * @returns the guchar buffer
+     * @since 3.0.0
      */
     function buffer_util_s16_to_char_buffer(buffer: number, buffer_length: number): number;
     /**
@@ -481,6 +529,7 @@ export namespace Ags {
      * @param buffer the gint32 buffer
      * @param buffer_length the buffer length
      * @returns the guchar buffer
+     * @since 3.0.0
      */
     function buffer_util_s24_to_char_buffer(buffer: number, buffer_length: number): number;
     /**
@@ -488,6 +537,7 @@ export namespace Ags {
      * @param buffer the gint32 buffer
      * @param buffer_length the buffer length
      * @returns the guchar buffer
+     * @since 3.0.0
      */
     function buffer_util_s32_to_char_buffer(buffer: number, buffer_length: number): number;
     /**
@@ -495,6 +545,7 @@ export namespace Ags {
      * @param buffer the gint64 buffer
      * @param buffer_length the buffer length
      * @returns the guchar buffer
+     * @since 3.0.0
      */
     function buffer_util_s64_to_char_buffer(buffer: number, buffer_length: number): number;
     /**
@@ -502,8 +553,17 @@ export namespace Ags {
      * @param buffer the gint8 buffer
      * @param buffer_length the buffer length
      * @returns the guchar buffer
+     * @since 3.0.0
      */
     function buffer_util_s8_to_char_buffer(buffer: number, buffer_length: number): number;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_BOOLEAN__OBJECT_OBJECT(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -512,6 +572,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_BOOLEAN__POINTER_UINT(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -520,6 +588,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_BOOLEAN__UINT_POINTER(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -528,6 +604,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_BOOLEAN__VOID(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -536,6 +620,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_DOUBLE__DOUBLE_BOOLEAN(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -544,6 +636,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_INT64__OBJECT(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -552,6 +652,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_INT__VOID(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -560,6 +668,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_OBJECT__OBJECT(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -568,6 +684,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_OBJECT__OBJECT_OBJECT(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -576,6 +700,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_OBJECT__OBJECT_POINTER_POINTER(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -584,6 +716,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_OBJECT__OBJECT_POINTER_POINTER_POINTER(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -592,6 +732,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_OBJECT__STRING_STRING_STRING(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -600,6 +748,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_OBJECT__UINT_POINTER(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -608,6 +764,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_OBJECT__VOID(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -616,6 +780,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_POINTER__INT(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -624,6 +796,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_POINTER__INT_UINT(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -632,6 +812,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_POINTER__OBJECT(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -640,6 +828,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_POINTER__OBJECT_OBJECT(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -648,6 +844,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_POINTER__OBJECT_POINTER_INT64(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -656,6 +860,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_POINTER__OBJECT_POINTER_OBJECT_POINTER_STRING_STRING_STRING(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -664,6 +876,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_POINTER__OBJECT_POINTER_OBJECT_STRING_STRING_STRING(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -672,6 +892,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_POINTER__OBJECT_POINTER_POINTER_OBJECT_STRING_STRING_STRING(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -680,6 +908,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_POINTER__OBJECT_POINTER_UINT(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -688,6 +924,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_POINTER__OBJECT_STRING_STRING_STRING_POINTER(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -696,6 +940,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_POINTER__OBJECT_STRING_STRING_STRING_STRING_POINTER(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -704,6 +956,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_POINTER__OBJECT_STRING_STRING_STRING_STRING_UINT_POINTER_POINTER(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -712,6 +972,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_POINTER__OBJECT_STRING_STRING_STRING_UINT_POINTER_POINTER(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -720,6 +988,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_POINTER__POINTER(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -728,6 +1004,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_POINTER__POINTER_POINTER_POINTER(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -736,6 +1020,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_POINTER__POINTER_POINTER_UINT(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -744,6 +1036,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_POINTER__POINTER_STRING_STRING(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -752,6 +1052,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_POINTER__POINTER_UINT(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -760,6 +1068,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_POINTER__POINTER_UINT_POINTER_POINTER(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -768,6 +1084,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_POINTER__STRING_STRING(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -776,6 +1100,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_POINTER__STRING_STRING_STRING(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -784,6 +1116,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_POINTER__STRING_STRING_STRING_STRING(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -792,6 +1132,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_POINTER__UINT(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -800,6 +1148,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_POINTER__UINT_POINTER(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -808,6 +1164,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_POINTER__UINT_UINT(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -816,6 +1180,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_POINTER__VOID(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -824,6 +1196,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_STRING__POINTER_STRING_STRING_STRING_STRING_UINT_POINTER(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -832,6 +1212,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_STRING__STRING_STRING(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -840,6 +1228,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_UINT__INT_UINT_POINTER(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -848,6 +1244,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_UINT__VOID(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -856,6 +1260,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__BOOLEAN_POINTER(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -864,6 +1276,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__DOUBLE_DOUBLE(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -872,6 +1292,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__INT64_UINT(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -880,6 +1308,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__INT_POINTER(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -888,6 +1324,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__INT_UINT(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -896,6 +1340,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__INT_UINT_POINTER(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -904,6 +1356,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__OBJECT_OBJECT(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -912,6 +1372,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__OBJECT_OBJECT_OBJECT_INT_BOOLEAN(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -920,6 +1388,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__OBJECT_OBJECT_OBJECT_OBJECT_OBJECT_OBJECT_OBJECT_OBJECT(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -928,6 +1404,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__OBJECT_OBJECT_OBJECT_OBJECT_OBJECT_OBJECT_UINT_INT_BOOLEAN(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -936,6 +1420,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__OBJECT_UINT(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -944,6 +1436,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__OBJECT_UINT_UINT_UINT(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -952,6 +1452,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__POINTER_INT(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -960,6 +1468,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__POINTER_INT_INT_BOOLEAN(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -968,6 +1484,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__POINTER_INT_POINTER(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -976,6 +1500,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__POINTER_OBJECT_OBJECT_STRING_STRING_STRING_UINT_UINT_UINT_UINT_INT_UINT_UINT(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -984,6 +1516,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__POINTER_POINTER(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -992,6 +1532,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__POINTER_POINTER_POINTER(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -1000,6 +1548,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__POINTER_POINTER_UINT(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -1008,6 +1564,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__POINTER_STRING_STRING_STRING_INT(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -1016,6 +1580,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__POINTER_UINT(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -1024,6 +1596,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__POINTER_UINT_BOOLEAN(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -1032,6 +1612,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__POINTER_UINT_POINTER(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -1040,6 +1628,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__POINTER_UINT_UINT(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -1048,6 +1644,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__STRING_POINTER(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -1056,6 +1660,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__STRING_STRING_STRING(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -1064,6 +1676,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__STRING_UINT(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -1072,6 +1692,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__STRING_UINT_DOUBLE(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -1080,6 +1708,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__STRING_UINT_POINTER(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -1088,6 +1724,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__STRING_UINT_STRING_DOUBLE(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -1096,6 +1740,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__UINT64(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -1104,6 +1756,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__UINT_BOOLEAN(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -1112,6 +1772,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__UINT_DOUBLE(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -1120,6 +1788,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__UINT_DOUBLE_UINT(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -1128,6 +1804,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__UINT_INT(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -1136,6 +1820,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__UINT_POINTER_UINT(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -1144,6 +1836,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__UINT_STRING_UINT(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -1152,6 +1852,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__UINT_UINT(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -1160,6 +1868,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__UINT_UINT_BOOLEAN(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -1168,6 +1884,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__UINT_UINT_UINT(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -1176,6 +1900,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__UINT_UINT_UINT_UINT(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -1184,6 +1916,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__UINT_UINT_UINT_UINT_UINT(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -1192,6 +1932,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__UINT_UINT_UINT_UINT_UINT_UINT(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -1200,6 +1948,14 @@ export namespace Ags {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function cclosure_marshal_VOID__UINT_UINT_UINT_UINT_UINT_UINT_UINT(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -1209,236 +1965,279 @@ export namespace Ags {
         marshal_data?: any | null,
     ): void;
     /**
-     * Allocate #AgsComplex-struct
-     * @returns a new #AgsComplex-struct
+     * Allocate {@link Ags.Complex}-struct
+     * @returns a new {@link Ags.Complex}-struct
+     * @since 3.0.0
      */
     function complex_alloc(): Complex;
     /**
-     * Allocated #AgsControllerResource-struct.
+     * Allocated {@link Ags.ControllerResource}-struct.
      * @param group_id the group id
      * @param user_id the user id
      * @param access_mode the access mode
-     * @returns the newly allocated #AgsControllerResource-struct
+     * @returns the newly allocated {@link Ags.ControllerResource}-struct
+     * @since 3.0.0
      */
     function controller_resource_alloc(group_id: string, user_id: string, access_mode: number): any | null;
     /**
      * Free `controller_resource`.
-     * @param controller_resource the #AgsControllerResource-struct
+     * @param controller_resource the {@link Ags.ControllerResource}-struct
+     * @since 3.0.0
      */
     function controller_resource_free(controller_resource?: any | null): void;
     /**
      * Increase ref-count of `controller_resource`.
-     * @param controller_resource the #AgsControllerResource-struct
+     * @param controller_resource the {@link Ags.ControllerResource}-struct
+     * @since 3.0.0
      */
     function controller_resource_ref(controller_resource?: any | null): void;
     /**
      * Decrease ref-count of `controller_resource` and free it if ref-count drops to 0.
-     * @param controller_resource the #AgsControllerResource-struct
+     * @param controller_resource the {@link Ags.ControllerResource}-struct
+     * @since 3.0.0
      */
     function controller_resource_unref(controller_resource?: any | null): void;
     /**
      * Allocated a destroy entry.
      * @param ptr a pointer
-     * @param destroy_func the @ptr's destroy function
-     * @returns the allocated #AgsDestroyEntry
+     * @param destroy_func the `ptr`'s destroy function
+     * @returns the allocated {@link Ags.DestroyEntry}
+     * @since 3.0.0
      */
     function destroy_entry_alloc(ptr: any | null, destroy_func: DestroyFunc): any | null;
     /**
      * Run dispose and unref `gobject`.
-     * @param gobject the #GObject to destroy
+     * @param gobject the {@link GObject.Object} to destroy
+     * @since 3.0.0
      */
     function destroy_util_dispose_and_unref(gobject: GObject.Object): void;
     /**
      * Check host is Big Endian.
-     * @returns %TRUE if BE, otherwise %FALSE
+     * @returns `true` if BE, otherwise `false`
+     * @since 3.0.0
      */
     function endian_host_is_be(): boolean;
     /**
      * Check host is Little Endian.
-     * @returns %TRUE if LE, otherwise %FALSE
+     * @returns `true` if LE, otherwise `false`
+     * @since 3.0.0
      */
     function endian_host_is_le(): boolean;
     /**
      * Swaps the floating point numbers endianness.
      * @param x the float to swap
      * @returns the byte-swapped float
+     * @since 3.0.0
      */
     function endian_swap_float(x: number): number;
     /**
-     * Allocate #AgsFileUtil-struct
+     * Allocate {@link Ags.FileUtil}-struct
      * @param app_encoding the application encoding
      * @param encoding the file encoding
-     * @returns a new #AgsFileUtil-struct
+     * @returns a new {@link Ags.FileUtil}-struct
+     * @since 6.3.0
      */
     function file_util_alloc(app_encoding: string, encoding: string): FileUtil;
     /**
      * Get global value for `key`.
      * @param key the key as string
-     * @returns the #GValue-struct if @key found, otherwise %NULL
+     * @returns the {@link GObject.Value}-struct if `key` found, otherwise `null`
+     * @since 3.0.0
      */
     function globals_get(key: string): unknown;
     /**
      * Get globals hash table.
-     * @returns the #GHashTable containig globals
+     * @returns the {@link GLib.HashTable} containig globals
+     * @since 3.0.0
      */
     function globals_get_hash_table(): GLib.HashTable<string, GObject.Value>;
     /**
      * Set global key/value.
      * @param key the key as string
-     * @param value the #GValue-struct
+     * @param value the {@link GObject.Value}-struct
+     * @since 3.0.0
      */
     function globals_set(key: string, value: GObject.Value | any): void;
     /**
      * Creates a new string containing an UUID.
      * @returns the UUID as string
+     * @since 3.0.0
      */
     function id_generator_create_uuid(): string;
     /**
      * Find `gtype` within `list`.
-     * @param list the #GList-struct
-     * @param gtype the #GType to find
-     * @returns the next matching #GList-struct
+     * @param list the {@link GLib.List}-struct
+     * @param gtype the {@link GObject.GType} to find
+     * @returns the next matching {@link GLib.List}-struct
+     * @since 3.0.0
      */
     function list_util_find_type(list: GObject.Object[], gtype: GObject.GType): GObject.Object[];
     /**
-     * Alloc #AgsLoginInfo-struct.
-     * @returns the newly allocated #AgsLoginInfo-struct
+     * Alloc {@link Ags.LoginInfo}-struct.
+     * @returns the newly allocated {@link Ags.LoginInfo}-struct
+     * @since 3.0.0
      */
     function login_info_alloc(): any | null;
     /**
      * Free `login_info`.
-     * @param login_info the #AgsLoginInfo-struct
+     * @param login_info the {@link Ags.LoginInfo}-struct
+     * @since 3.0.0
      */
     function login_info_free(login_info?: any | null): void;
     /**
      * Increase ref-count of `login_info`.
-     * @param login_info the #AgsLoginInfo-struct
+     * @param login_info the {@link Ags.LoginInfo}-struct
+     * @since 3.0.0
      */
     function login_info_ref(login_info?: any | null): void;
     /**
      * Decrease ref-count of `login_info` and free it if ref-count drops to 0.
-     * @param login_info the #AgsLoginInfo-struct
+     * @param login_info the {@link Ags.LoginInfo}-struct
+     * @since 3.0.0
      */
     function login_info_unref(login_info?: any | null): void;
     /**
      * Compute `value` from `coefficient`.
      * @param coefficient the coefficient string
-     * @returns %TRUE on success, otherwise %FALSE
+     * @returns `true` on success, otherwise `false`
+     * @since 3.6.0
      */
     function math_util_coefficient_to_complex(coefficient: string): [boolean, Complex];
     /**
      * Find exponent parenthesis.
      * @param str the string
+     * @since 3.2.0
      */
     function math_util_find_exponent_parenthesis(str: string): [number, number, number, number];
     /**
      * Find next function.
      * @param str the string
-     * @returns the string offset matching function, otherwise %NULL
+     * @returns the string offset matching function, otherwise `null`
+     * @since 3.2.0
      */
     function math_util_find_function(str: string): string;
     /**
      * Find function parenthesis.
      * @param str the string
+     * @since 3.2.0
      */
     function math_util_find_function_parenthesis(str: string): [number, number, number, number];
     /**
      * Find all parenthesis.
      * @param str the string
+     * @since 3.2.0
      */
     function math_util_find_parenthesis_all(str: string): [number, number, number, number];
     /**
      * Find next symbol.
      * @param str the string
-     * @returns the string offset matching symbol, otherwise %NULL
+     * @returns the string offset matching symbol, otherwise `null`
+     * @since 3.2.0
      */
     function math_util_find_symbol(str: string): string;
     /**
      * Find term parenthesis.
      * @param str the string
+     * @since 3.2.0
      */
     function math_util_find_term_parenthesis(str: string): [number, number, number, number];
     /**
      * Test if `term` is a term.
      * @param term the term
-     * @returns %TRUE on success, otherwise %FALSE
+     * @returns `true` on success, otherwise `false`
+     * @since 3.2.0
      */
     function math_util_is_term(term: string): boolean;
     /**
      * Match coefficient including optional sign.
      * @param offset the string pointer
-     * @param end_ptr the end of @offset
-     * @returns %TRUE on success, otherwise %FALSE
+     * @param end_ptr the end of `offset`
+     * @returns `true` on success, otherwise `false`
+     * @since 3.6.0
      */
     function math_util_match_coefficient(offset: string, end_ptr: string): [boolean, string, string];
     /**
      * Match exponent with or without parenthesis.
      * @param offset the string pointer
-     * @param end_ptr the end of @offset
-     * @returns %TRUE on success, otherwise %FALSE
+     * @param end_ptr the end of `offset`
+     * @returns `true` on success, otherwise `false`
+     * @since 3.6.0
      */
     function math_util_match_exponent(offset: string, end_ptr: string): [boolean, string, string];
     /**
      * Match function.
      * @param offset the string pointer
-     * @param end_ptr the end of @offset
-     * @returns %TRUE on success, otherwise %FALSE
+     * @param end_ptr the end of `offset`
+     * @returns `true` on success, otherwise `false`
+     * @since 3.6.0
      */
     function math_util_match_function(offset: string, end_ptr: string): [boolean, string, string];
     /**
      * Match operator.
      * @param offset the string pointer
-     * @param end_ptr the end of @offset
-     * @returns %TRUE on success, otherwise %FALSE
+     * @param end_ptr the end of `offset`
+     * @returns `true` on success, otherwise `false`
+     * @since 3.6.0
      */
     function math_util_match_operator(offset: string, end_ptr: string): [boolean, string, string];
     /**
      * Match sign.
      * @param offset the string pointer
-     * @param end_ptr the end of @offset
-     * @returns %TRUE on success, otherwise %FALSE
+     * @param end_ptr the end of `offset`
+     * @returns `true` on success, otherwise `false`
+     * @since 3.6.0
      */
     function math_util_match_sign(offset: string, end_ptr: string): [boolean, string, string];
     /**
      * Match symbol including optional sign.
      * @param offset the string pointer
-     * @param end_ptr the end of @offset
-     * @returns %TRUE on success, otherwise %FALSE
+     * @param end_ptr the end of `offset`
+     * @returns `true` on success, otherwise `false`
+     * @since 3.6.0
      */
     function math_util_match_symbol(offset: string, end_ptr: string): [boolean, string, string];
+    /**
+     * @param coefficient
+     * @param value_count
+     */
     function math_util_multiply_coefficient_all(coefficient: string, value_count: number): Complex;
     /**
      * Split `polynomial` into coefficient, powers of symbols and summand.
      * @param polynomial the polynomial
+     * @since 3.2.0
      */
     function math_util_split_polynomial(polynomial: string): [string, string];
     /**
      * Split `sum` into summands.
      * @param sum the sum
+     * @since 3.2.0
      */
     function math_util_split_sum(sum: string): string;
     /**
      * Read of file.
-     * @param file the #GObject
+     * @param file the {@link GObject.Object}
      * @param node the node
-     * @param plugin the #AgsPlugin
+     * @param plugin the {@link Ags.Plugin}
+     * @since 3.0.0
      */
     function plugin_read(file: GObject.Object, node: libxml2.Node, plugin: Plugin): void;
     /**
      * Write to file.
-     * @param file the #GObject
+     * @param file the {@link GObject.Object}
      * @param parent the parent node
-     * @param plugin the #AgsPlugin
+     * @param plugin the {@link Ags.Plugin}
      * @returns the new node you created
+     * @since 3.0.0
      */
     function plugin_write(file: GObject.Object, parent: libxml2.Node, plugin: Plugin): libxml2.Node;
     /**
-     * Allocate #AgsRegexUtil-struct
+     * Allocate {@link Ags.RegexUtil}-struct
      * @param app_encoding the application encoding
      * @param encoding the input encoding
      * @param is_unichar is gunichar
      * @param is_unichar2 is gunichar2
-     * @returns a new #AgsRegexUtil-struct
+     * @returns a new {@link Ags.RegexUtil}-struct
+     * @since 6.3.2
      */
     function regex_util_alloc(
         app_encoding: string,
@@ -1448,78 +2247,90 @@ export namespace Ags {
     ): RegexUtil;
     function regex_util_error_quark(): GLib.Quark;
     /**
-     * Allocate #AgsSolverPath-struct
+     * Allocate {@link Ags.SolverPath}-struct
      * @param nth_column the nth-column
      * @param nth_row_a nth-row a
      * @param nth_row_b nth-row b
-     * @returns a new #AgsSolverPath-struct
+     * @returns a new {@link Ags.SolverPath}-struct
+     * @since 6.7.1
      */
     function solver_path_alloc(nth_column: number, nth_row_a: number, nth_row_b: number): SolverPath;
     /**
      * Get buffer size.
-     * @param config the #AgsConfig
+     * @param config the {@link Ags.Config}
      * @returns the buffer size
+     * @since 3.0.0
      */
     function soundcard_helper_config_get_buffer_size(config: Config): number;
     /**
      * Get cache buffer size.
-     * @param config the #AgsConfig
+     * @param config the {@link Ags.Config}
      * @returns the cache buffer size
+     * @since 6.10.4
      */
     function soundcard_helper_config_get_cache_buffer_size(config: Config): number;
     /**
      * Get dsp channels count.
-     * @param config the #AgsConfig
+     * @param config the {@link Ags.Config}
      * @returns the count of dsp channels
+     * @since 3.0.0
      */
     function soundcard_helper_config_get_dsp_channels(config: Config): number;
     /**
-     * Get format as #AgsSoundcardFormat-enum.
-     * @param config the #AgsConfig
+     * Get format as {@link Ags.SoundcardFormat}-enum.
+     * @param config the {@link Ags.Config}
      * @returns the format
+     * @since 3.0.0
      */
     function soundcard_helper_config_get_format(config: Config): number;
     /**
      * Get pcm channels count.
-     * @param config the #AgsConfig
+     * @param config the {@link Ags.Config}
      * @returns the count of pcm channels
+     * @since 3.0.0
      */
     function soundcard_helper_config_get_pcm_channels(config: Config): number;
     /**
      * Get samplerate.
-     * @param config the #AgsConfig
+     * @param config the {@link Ags.Config}
      * @returns the samplerate
+     * @since 3.0.0
      */
     function soundcard_helper_config_get_samplerate(config: Config): number;
     /**
      * Get use cache.
-     * @param config the #AgsConfig
-     * @returns if use cache %TRUE, otherwise %FALSE
+     * @param config the {@link Ags.Config}
+     * @returns if use cache `true`, otherwise `false`
+     * @since 6.10.4
      */
     function soundcard_helper_config_get_use_cache(config: Config): boolean;
     /**
      * Escape all occurence of single quotes.
      * @param str the string to escape
      * @returns the newly allocated string
+     * @since 3.0.0
      */
     function string_util_escape_single_quote(str: string): string;
     /**
      * String from mcoded7 encoding.
      * @param mcoded7_str the string to decode
      * @returns the newly allocated string
+     * @since 5.5.0
      */
     function string_util_from_mcoded7(mcoded7_str: string): string;
     /**
      * String to mcoded7 encoding.
      * @param str the string to encode
      * @returns the newly allocated string
+     * @since 5.5.0
      */
     function string_util_to_mcoded7(str: string): string;
     /**
      * Check occurence of `str` within `str_array`
      * @param str_array the string vector
      * @param str the string to match
-     * @returns %TRUE if found, else %FALSE
+     * @returns `true` if found, else `false`
+     * @since 3.0.0
      */
     function strv_contains(str_array: string[], str: string): boolean;
     /**
@@ -1527,7 +2338,8 @@ export namespace Ags {
      * sorted.
      * @param strv1 the string vector
      * @param strv2 an other string vector
-     * @returns %TRUE on success, otherwise %FALSE
+     * @returns `true` on success, otherwise `false`
+     * @since 3.2.1
      */
     function strv_equal(strv1: string, strv2: string): boolean;
     /**
@@ -1535,69 +2347,90 @@ export namespace Ags {
      * @param str_array the string vector
      * @param str the string to match
      * @returns the first matching position or -1, if not found
+     * @since 3.0.0
      */
     function strv_index(str_array: string[], str: string): number;
     /**
-     * Count the number of non-%NULL entries in the array.
+     * Count the number of non-`null` entries in the array.
      * @param str_array the string vector
      * @returns the length of the vector
+     * @since 3.0.0
      */
     function strv_length(str_array: string[]): number;
     /**
-     * Calculates uptime from `offset` by applying factors `bpm,` `delay` and `delay_factor`
+     * Calculates uptime from `offset` by applying factors `bpm`, `delay` and `delay_factor`
      * giving you the result as string.
      * @param offset the offset in tics
      * @param bpm the beats per minute
      * @param delay the buffer time as delay
      * @param delay_factor tact segmentation
      * @returns the string containing the time, a minus sign is prepend if factors   are invalid
+     * @since 3.0.0
      */
     function time_get_uptime_from_offset(offset: number, bpm: number, delay: number, delay_factor: number): string;
     /**
      * Nanosleep.
      * @param req the requisition to sleep
+     * @since 5.5.1
      */
     function time_nanosleep(req?: any | null): void;
     /**
      * Check `start_time` plus `timeout_delay` against current time.
      * @param start_time the start time #timespec-struct
      * @param timeout_delay the delay #timespec-struct
-     * @returns %TRUE if timeout expired, otherwise %FALSE
+     * @returns `true` if timeout expired, otherwise `false`
+     * @since 3.0.0
      */
     function time_timeout_expired(start_time?: any | null, timeout_delay?: any | null): boolean;
     /**
-     * Allocate #AgsUUID.
-     * @returns a new #AgsUUID
+     * Allocate {@link Ags.UUID}.
+     * @returns a new {@link Ags.UUID}
+     * @since 3.0.0
      */
     function uuid_alloc(): UUID;
     /**
-     * Retrieve #AgsUUID by parsing `str`.
+     * Retrieve {@link Ags.UUID} by parsing `str`.
      * @param str the UUID as string
-     * @returns the new #AgsUUID on success, otherwise %NULL
+     * @returns the new {@link Ags.UUID} on success, otherwise `null`
+     * @since 3.0.0
      */
     function uuid_from_string(str: string): UUID;
     /**
-     * Do loop and invoke ags_worker_thread_do_poll() unless flag
+     * Do loop and invoke `ags_worker_thread_do_poll()` unless flag
      * AGS_WORKER_THREAD_RUNNING was unset.
-     * @param ptr the #AgsWorkerThread
+     * @param ptr the {@link Ags.WorkerThread}
+     * @since 3.0.0
      */
     function woker_thread_do_poll_loop(ptr?: any | null): any | null;
+    /**
+     * @gir-type Callback
+     */
     interface DestroyFunc {
         (ptr?: any | null): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface FileResolve {
         (): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ReturnableThreadCallback {
         (returnable_thread: ReturnableThread, data?: any | null): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace ApplicationContextFlags {
         export const $gtype: GObject.GType<ApplicationContextFlags>;
     }
 
     /**
-     * Enum values to control the behavior or indicate internal state of #AgsApplicationContext by
+     * Enum values to control the behavior or indicate internal state of {@link Ags.ApplicationContext} by
      * enable/disable as flags.
+     * @gir-type Flags
      */
     enum ApplicationContextFlags {
         /**
@@ -1608,6 +2441,7 @@ export namespace Ags {
 
     /**
      * Enum values to specify particular state.
+     * @gir-type Flags
      */
     enum ConnectableFlags {
         /**
@@ -1620,13 +2454,17 @@ export namespace Ags {
         CONNECTED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace FileFlags {
         export const $gtype: GObject.GType<FileFlags>;
     }
 
     /**
-     * Enum values to control the behavior or indicate internal state of #AgsFile by
+     * Enum values to control the behavior or indicate internal state of {@link Ags.File} by
      * enable/disable as flags.
+     * @gir-type Flags
      */
     enum FileFlags {
         /**
@@ -1655,6 +2493,9 @@ export namespace Ags {
         FILE_WRITE_EMBEDDED_AUDIO,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace RegexUtilCompileFlags {
         export const $gtype: GObject.GType<RegexUtilCompileFlags>;
     }
@@ -1662,10 +2503,11 @@ export namespace Ags {
     /**
      * AGS_REGEX_UTIL_POSIX_EXTENDED_SYNTAX: extended regular expression syntax
      * AGS_REGEX_UTIL_CASE_INSENSITIVE: do not differentiate case
-     * AGS_REGEX_UTIL_NO_POSITION_REPORT_OF_MATCHES: the match_count and match_ptr parameters of ags_regex_util_execute() are ignored
+     * AGS_REGEX_UTIL_NO_POSITION_REPORT_OF_MATCHES: the match_count and match_ptr parameters of `ags_regex_util_execute()` are ignored
      * AGS_REGEX_UTIL_NO_NEWLINE_MATCH: do not match newlines as using match-any-character
-     * Enum values to control the behavior of ags_regex_util_compile() and related by
+     * Enum values to control the behavior of `ags_regex_util_compile()` and related by
      * enable/disable as flags.
+     * @gir-type Flags
      */
     enum RegexUtilCompileFlags {
         REGEX_UTIL_POSIX_EXTENDED_SYNTAX,
@@ -1674,6 +2516,9 @@ export namespace Ags {
         REGEX_UTIL_NO_NEWLINE_MATCH,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace RegexUtilExecuteFlags {
         export const $gtype: GObject.GType<RegexUtilExecuteFlags>;
     }
@@ -1682,8 +2527,9 @@ export namespace Ags {
      * AGS_REGEX_UTIL_NOT_BEGINNING_OF_LINE: match-beginning-of-line operator always fails, the beginning of of string should not be interpreted as beginning of line
      * AGS_REGEX_UTIL_NOT_END_OF_LINE: match-end-of-line operator always fails
      * AGS_REGEX_UTIL_START_END: use match_ptr[0].start_match_offset and match_ptr[0].end_match_offset as string length, allows the use of NUL bytes
-     * Enum values to control the behavior of ags_regex_util_execute() and such by
+     * Enum values to control the behavior of `ags_regex_util_execute()` and such by
      * enable/disable as flags.
+     * @gir-type Flags
      */
     enum RegexUtilExecuteFlags {
         REGEX_UTIL_NOT_BEGINNING_OF_LINE,
@@ -1691,13 +2537,17 @@ export namespace Ags {
         REGEX_UTIL_START_END,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ReturnableThreadFlags {
         export const $gtype: GObject.GType<ReturnableThreadFlags>;
     }
 
     /**
-     * Enum values to control the behavior or indicate internal state of #AgsReturnableThread by
+     * Enum values to control the behavior or indicate internal state of {@link Ags.ReturnableThread} by
      * enable/disable as flags.
+     * @gir-type Flags
      */
     enum ReturnableThreadFlags {
         /**
@@ -1709,17 +2559,21 @@ export namespace Ags {
          */
         RETURNABLE_THREAD_RESET,
         /**
-         * call #AgsThread::run() only one time
+         * call {@link Ags.Thread.SignalSignatures.run | Ags.Thread::run}() only one time
          */
         RETURNABLE_THREAD_RUN_ONCE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SecurityContextMode {
         export const $gtype: GObject.GType<SecurityContextMode>;
     }
 
     /**
-     * The #AgsSecurityContextMode specifies basic account permissions.
+     * The {@link Ags.SecurityContextMode} specifies basic account permissions.
+     * @gir-type Flags
      */
     enum SecurityContextMode {
         /**
@@ -1744,13 +2598,17 @@ export namespace Ags {
         SECURITY_CONTEXT_ACCOUNT_WRITE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ServerFlags {
         export const $gtype: GObject.GType<ServerFlags>;
     }
 
     /**
-     * Enum values to control the behavior or indicate internal state of #AgsServer by
+     * Enum values to control the behavior or indicate internal state of {@link Ags.Server} by
      * enable/disable as flags.
+     * @gir-type Flags
      */
     enum ServerFlags {
         /**
@@ -1783,12 +2641,16 @@ export namespace Ags {
         SERVER_AUTO_START,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SoundcardCapability {
         export const $gtype: GObject.GType<SoundcardCapability>;
     }
 
     /**
      * Enum values to tell about capability.
+     * @gir-type Flags
      */
     enum SoundcardCapability {
         /**
@@ -1805,13 +2667,17 @@ export namespace Ags {
         SOUNDCARD_CAPABILITY_DUPLEX,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace TaskCompletionFlags {
         export const $gtype: GObject.GType<TaskCompletionFlags>;
     }
 
     /**
-     * Enum values to control the behavior or indicate internal state of #AgsTaskCompletion by
+     * Enum values to control the behavior or indicate internal state of {@link Ags.TaskCompletion} by
      * enable/disable as flags.
+     * @gir-type Flags
      */
     enum TaskCompletionFlags {
         /**
@@ -1833,8 +2699,9 @@ export namespace Ags {
     }
 
     /**
-     * Enum values to control the behavior or indicate internal state of #AgsTask by
+     * Enum values to control the behavior or indicate internal state of {@link Ags.Task} by
      * enable/disable as flags.
+     * @gir-type Flags
      */
     enum TaskFlags {
         /**
@@ -1847,13 +2714,17 @@ export namespace Ags {
         CYCLIC,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ThreadApplicationContextFlags {
         export const $gtype: GObject.GType<ThreadApplicationContextFlags>;
     }
 
     /**
-     * Enum values to control the behavior or indicate internal state of #AgsThreadApplicationContext by
+     * Enum values to control the behavior or indicate internal state of {@link Ags.ThreadApplicationContext} by
      * enable/disable as sync_flags.
+     * @gir-type Flags
      */
     enum ThreadApplicationContextFlags {
         /**
@@ -1862,17 +2733,21 @@ export namespace Ags {
         THREAD_APPLICATION_CONTEXT_SINGLE_THREAD,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ThreadFlags {
         export const $gtype: GObject.GType<ThreadFlags>;
     }
 
     /**
-     * Enum values to control the behavior or indicate internal state of #AgsThread by
+     * Enum values to control the behavior or indicate internal state of {@link Ags.Thread} by
      * enable/disable as flags.
+     * @gir-type Flags
      */
     enum ThreadFlags {
         /**
-         * call g_object_unref() before g_thread_exit()
+         * call `g_object_unref()` before `g_thread_exit()`
          */
         THREAD_UNREF_ON_EXIT,
         /**
@@ -1901,13 +2776,17 @@ export namespace Ags {
         THREAD_TIME_ACCOUNTING,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ThreadPoolFlags {
         export const $gtype: GObject.GType<ThreadPoolFlags>;
     }
 
     /**
-     * Enum values to control the behavior or indicate internal state of #AgsThreadPool by
+     * Enum values to control the behavior or indicate internal state of {@link Ags.ThreadPool} by
      * enable/disable as sync_flags.
+     * @gir-type Flags
      */
     enum ThreadPoolFlags {
         /**
@@ -1920,13 +2799,17 @@ export namespace Ags {
         THREAD_POOL_RT_SETUP,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ThreadStatusFlags {
         export const $gtype: GObject.GType<ThreadStatusFlags>;
     }
 
     /**
-     * Enum values to control the behavior or indicate internal state of #AgsThread by
+     * Enum values to control the behavior or indicate internal state of {@link Ags.Thread} by
      * enable/disable as status flags.
+     * @gir-type Flags
      */
     enum ThreadStatusFlags {
         /**
@@ -1938,7 +2821,7 @@ export namespace Ags {
          */
         THREAD_STATUS_INITIAL_SYNC,
         /**
-         * the first call to #AgsThread:run()
+         * the first call to {@link Ags.Thread.run}()
          */
         THREAD_STATUS_INITIAL_RUN,
         /**
@@ -1983,13 +2866,17 @@ export namespace Ags {
         THREAD_STATUS_SYNCED_FREQ,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace ThreadSyncTicFlags {
         export const $gtype: GObject.GType<ThreadSyncTicFlags>;
     }
 
     /**
-     * Enum values to control the behavior or indicate internal state of #AgsThread by
+     * Enum values to control the behavior or indicate internal state of {@link Ags.Thread} by
      * enable/disable as sync tic flags.
+     * @gir-type Flags
      */
     enum ThreadSyncTicFlags {
         /**
@@ -2066,13 +2953,17 @@ export namespace Ags {
         THREAD_SYNC_TIC_DONE_8,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace TimestampFlags {
         export const $gtype: GObject.GType<TimestampFlags>;
     }
 
     /**
-     * Enum values to control the behavior or indicate internal state of #AgsTimestamp by
+     * Enum values to control the behavior or indicate internal state of {@link Ags.Timestamp} by
      * enable/disable as sync_flags.
+     * @gir-type Flags
      */
     enum TimestampFlags {
         /**
@@ -2089,13 +2980,17 @@ export namespace Ags {
         TIMESTAMP_OUTDATED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace TurtleFlags {
         export const $gtype: GObject.GType<TurtleFlags>;
     }
 
     /**
-     * Enum values to control the behavior or indicate internal state of #AgsTurtle by
+     * Enum values to control the behavior or indicate internal state of {@link Ags.Turtle} by
      * enable/disable as sync_flags.
+     * @gir-type Flags
      */
     enum TurtleFlags {
         /**
@@ -2104,13 +2999,17 @@ export namespace Ags {
         TURTLE_TOLOWER,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace WorkerThreadStatusFlags {
         export const $gtype: GObject.GType<WorkerThreadStatusFlags>;
     }
 
     /**
-     * Enum values to control the behavior or indicate internal state of #AgsWorkerThread by
+     * Enum values to control the behavior or indicate internal state of {@link Ags.WorkerThread} by
      * enable/disable as status flags.
+     * @gir-type Flags
      */
     enum WorkerThreadStatusFlags {
         /**
@@ -2134,10 +3033,43 @@ export namespace Ags {
     namespace ApplicationContext {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * The ::load-config notifies to load configuration.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             'load-config': () => void;
+            /**
+             * The ::prepare signal should be implemented to prepare
+             * your application context.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             prepare: () => void;
+            /**
+             * The ::quit notifies to load configuration.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             quit: () => void;
+            /**
+             * The ::register-types signal should be implemented to load
+             * your types.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             'register-types': () => void;
+            /**
+             * The ::setup signal should be implemented to setup
+             * your application context.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             setup: () => void;
             'notify::config': (pspec: GObject.ParamSpec) => void;
             'notify::file': (pspec: GObject.ParamSpec) => void;
@@ -2157,6 +3089,9 @@ export namespace Ags {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ApplicationContext extends GObject.Object implements Connectable {
         static $gtype: GObject.GType<ApplicationContext>;
 
@@ -2164,31 +3099,37 @@ export namespace Ags {
 
         /**
          * The assigned config.
+         * @since 3.0.0
          */
         get config(): GObject.Object;
         set config(val: GObject.Object);
         /**
          * The assigned file.
+         * @since 3.0.0
          */
         get file(): GObject.Object;
         set file(val: GObject.Object);
         /**
          * The assigned main-loop.
+         * @since 3.0.0
          */
         get main_loop(): GObject.Object;
         set main_loop(val: GObject.Object);
         /**
          * The assigned main-loop.
+         * @since 3.0.0
          */
         get mainLoop(): GObject.Object;
         set mainLoop(val: GObject.Object);
         /**
          * The assigned task launcher.
+         * @since 3.0.0
          */
         get task_launcher(): GObject.Object;
         set task_launcher(val: GObject.Object);
         /**
          * The assigned task launcher.
+         * @since 3.0.0
          */
         get taskLauncher(): GObject.Object;
         set taskLauncher(val: GObject.Object);
@@ -2229,11 +3170,13 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect_after<K extends keyof ApplicationContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ApplicationContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ApplicationContext.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ApplicationContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2251,22 +3194,27 @@ export namespace Ags {
 
         /**
          * Signal to load and parse configuration.
+         * @virtual
          */
         vfunc_load_config(): void;
         /**
          * Prepare `application_context`.
+         * @virtual
          */
         vfunc_prepare(): void;
         /**
-         * Calls exit()
+         * Calls `exit()`
+         * @virtual
          */
         vfunc_quit(): void;
         /**
          * Notification to register your types.
+         * @virtual
          */
         vfunc_register_types(): void;
         /**
          * Setup `application_context`.
+         * @virtual
          */
         vfunc_setup(): void;
 
@@ -2281,7 +3229,7 @@ export namespace Ags {
          */
         prepare(): void;
         /**
-         * Calls exit()
+         * Calls `exit()`
          */
         quit(): void;
         /**
@@ -2289,7 +3237,7 @@ export namespace Ags {
          */
         register_types(): void;
         /**
-         * Enable a feature of #AgsApplicationContext.
+         * Enable a feature of {@link Ags.ApplicationContext}.
          * @param flags see enum AgsApplicationContextFlags
          */
         set_flags(flags: ApplicationContextFlags | null): void;
@@ -2300,7 +3248,7 @@ export namespace Ags {
         /**
          * Test `flags` to be set on `application_context`.
          * @param flags the flags
-         * @returns %TRUE if flags are set, else %FALSE
+         * @returns `true` if flags are set, else `false`
          */
         test_flags(flags: ApplicationContextFlags | null): boolean;
         /**
@@ -2308,8 +3256,6 @@ export namespace Ags {
          * @param flags see enum AgsApplicationContextFlags
          */
         unset_flags(flags: ApplicationContextFlags | null): void;
-
-        // Inherited methods
         /**
          * Add connectable to registry.
          */
@@ -2318,6 +3264,9 @@ export namespace Ags {
          * Connect the connectable.
          */
         connect(): void;
+        /**
+         * @param args
+         */
         connect(...args: never[]): any;
         /**
          * Disconnect the connectable.
@@ -2335,17 +3284,17 @@ export namespace Ags {
         disconnect_connection(connection: GObject.Object): void;
         /**
          * Get UUID of `connectable`.
-         * @returns the assigned #AgsUUID
+         * @returns the assigned {@link Ags.UUID}
          */
         get_uuid(): UUID;
         /**
          * Check the connectable to have resources.
-         * @returns %TRUE if @connectable can be added to registry, otherwise %FALSE.
+         * @returns `true` if `connectable` can be added to registry, otherwise `false`.
          */
         has_resource(): boolean;
         /**
          * Check if the `connectable` was connected.
-         * @returns %TRUE if is connected, otherwise %FALSE.
+         * @returns `true` if is connected, otherwise `false`.
          */
         is_connected(): boolean;
         /**
@@ -2369,57 +3318,70 @@ export namespace Ags {
         xml_parse(node: libxml2.Node): void;
         /**
          * Add connectable to registry.
+         * @virtual
          */
         vfunc_add_to_registry(): void;
         /**
          * Connect the connectable.
+         * @virtual
          */
         vfunc_connect(): void;
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @virtual
          */
         vfunc_connect_connection(connection: GObject.Object): void;
         /**
          * Disconnect the connectable.
+         * @virtual
          */
         vfunc_disconnect(): void;
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @virtual
          */
         vfunc_disconnect_connection(connection: GObject.Object): void;
         /**
          * Get UUID of `connectable`.
+         * @virtual
          */
         vfunc_get_uuid(): UUID;
         /**
          * Check the connectable to have resources.
+         * @virtual
          */
         vfunc_has_resource(): boolean;
         /**
          * Check if the `connectable` was connected.
+         * @virtual
          */
         vfunc_is_connected(): boolean;
         /**
          * Connect the connectable.
+         * @virtual
          */
         vfunc_is_ready(): boolean;
         /**
          * List resources as an XML element and return it.
+         * @virtual
          */
         vfunc_list_resource(): libxml2.Node;
         /**
          * Remove connectable from registry.
+         * @virtual
          */
         vfunc_remove_from_registry(): void;
         /**
          * Compose an XML element and return it.
+         * @virtual
          */
         vfunc_xml_compose(): libxml2.Node;
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
+         * @virtual
          */
         vfunc_xml_parse(node: libxml2.Node): void;
         /**
@@ -2435,32 +3397,32 @@ export namespace Ags {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -2469,39 +3431,39 @@ export namespace Ags {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -2512,13 +3474,16 @@ export namespace Ags {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -2526,7 +3491,7 @@ export namespace Ags {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -2534,9 +3499,9 @@ export namespace Ags {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -2556,9 +3521,9 @@ export namespace Ags {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -2571,34 +3536,34 @@ export namespace Ags {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -2631,22 +3596,22 @@ export namespace Ags {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -2655,8 +3620,8 @@ export namespace Ags {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -2673,10 +3638,10 @@ export namespace Ags {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -2691,13 +3656,13 @@ export namespace Ags {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -2728,21 +3693,21 @@ export namespace Ags {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -2752,33 +3717,34 @@ export namespace Ags {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -2787,6 +3753,7 @@ export namespace Ags {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -2795,12 +3762,14 @@ export namespace Ags {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -2809,20 +3778,22 @@ export namespace Ags {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -2834,6 +3805,7 @@ export namespace Ags {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -2869,6 +3841,9 @@ export namespace Ags {
         interface ConstructorProps extends SecurityContext.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class AuthSecurityContext extends SecurityContext {
         static $gtype: GObject.GType<AuthSecurityContext>;
 
@@ -2895,16 +3870,19 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AuthSecurityContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AuthSecurityContext.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AuthSecurityContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AuthSecurityContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AuthSecurityContext.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AuthSecurityContext.SignalSignatures[K]> extends [any, ...infer Q]
@@ -2930,6 +3908,9 @@ export namespace Ags {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class AuthenticationManager extends GObject.Object {
         static $gtype: GObject.GType<AuthenticationManager>;
 
@@ -2958,16 +3939,19 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AuthenticationManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AuthenticationManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AuthenticationManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AuthenticationManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AuthenticationManager.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AuthenticationManager.SignalSignatures[K]> extends [any, ...infer Q]
@@ -2987,12 +3971,12 @@ export namespace Ags {
 
         /**
          * Add `authentication` to `authentication_manager`.
-         * @param authentication the #GObject implementing #AgsAuthentication
+         * @param authentication the {@link GObject.Object} implementing {@link Ags.Authentication}
          */
         add_authentication(authentication: GObject.Object): void;
         /**
          * Get authentication.
-         * @returns the #GList-struct containing #GObject implementing #AgsAuthentication
+         * @returns the {@link GLib.List}-struct containing {@link GObject.Object} implementing {@link Ags.Authentication}
          */
         get_authentication(): GObject.Object[];
         /**
@@ -3001,7 +3985,7 @@ export namespace Ags {
          * @param realm the realm
          * @param login the login
          * @param security_token the security token
-         * @returns the digest as string, or %NULL if not available
+         * @returns the digest as string, or `null` if not available
          */
         get_digest(authentication_module: string, realm: string, login: string, security_token: string): string;
         /**
@@ -3012,7 +3996,7 @@ export namespace Ags {
         /**
          * Insert `login` as key and `login_info` as its value.
          * @param login the login
-         * @param login_info the #AgsLoginInfo-struct
+         * @param login_info the {@link Ags.LoginInfo}-struct
          */
         insert_login(login: string, login_info: LoginInfo): void;
         /**
@@ -3020,7 +4004,7 @@ export namespace Ags {
          * @param security_context the security context
          * @param user_uuid the user's UUID
          * @param security_token the security token
-         * @returns %TRUE if active, otherwise %FALSE
+         * @returns `true` if active, otherwise `false`
          */
         is_session_active(security_context: GObject.Object, user_uuid: string, security_token: string): boolean;
         /**
@@ -3028,26 +4012,26 @@ export namespace Ags {
          * @param authentication_module the authentication module
          * @param login the login
          * @param password the password
-         * @returns %TRUE if login was successful, otherwise %FALSE
+         * @returns `true` if login was successful, otherwise `false`
          */
         login(authentication_module: string, login: string, password: string): [boolean, string, string];
         /**
          * Logout.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param login the login
          * @param security_token the security token
-         * @returns %TRUE if logout was successful, otherwise %FALSE
+         * @returns `true` if logout was successful, otherwise `false`
          */
         logout(security_context: GObject.Object, login: string, security_token: string): boolean;
         /**
          * Lookup `login`.
          * @param login the login
-         * @returns the user #AgsLoginInfo-struct or %NULL
+         * @returns the user {@link Ags.LoginInfo}-struct or `null`
          */
         lookup_login(login: string): any | null;
         /**
          * Remove `authentication` from `authentication_manager`.
-         * @param authentication the #GObject implementing #AgsAuthentication
+         * @param authentication the {@link GObject.Object} implementing {@link Ags.Authentication}
          */
         remove_authentication(authentication: GObject.Object): void;
         /**
@@ -3066,6 +4050,9 @@ export namespace Ags {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class BusinessGroupManager extends GObject.Object {
         static $gtype: GObject.GType<BusinessGroupManager>;
 
@@ -3093,16 +4080,19 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BusinessGroupManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BusinessGroupManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BusinessGroupManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BusinessGroupManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BusinessGroupManager.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BusinessGroupManager.SignalSignatures[K]> extends [any, ...infer Q]
@@ -3122,17 +4112,17 @@ export namespace Ags {
 
         /**
          * Add `business_group` to `business_group_manager`.
-         * @param business_group the #GObject implementing #AgsBusinessGroup
+         * @param business_group the {@link GObject.Object} implementing {@link Ags.BusinessGroup}
          */
         add_business_group(business_group: GObject.Object): void;
         /**
          * Get business_group.
-         * @returns the #GList-struct containing #GObject implementing #AgsBusinessGroup
+         * @returns the {@link GLib.List}-struct containing {@link GObject.Object} implementing {@link Ags.BusinessGroup}
          */
         get_business_group(): GObject.Object[];
         /**
          * Remove `business_group` from `business_group_manager`.
-         * @param business_group the #GObject implementing #AgsBusinessGroup
+         * @param business_group the {@link GObject.Object} implementing {@link Ags.BusinessGroup}
          */
         remove_business_group(business_group: GObject.Object): void;
     }
@@ -3146,6 +4136,9 @@ export namespace Ags {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class CertificateManager extends GObject.Object {
         static $gtype: GObject.GType<CertificateManager>;
 
@@ -3173,16 +4166,19 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CertificateManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CertificateManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CertificateManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CertificateManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CertificateManager.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CertificateManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3200,17 +4196,17 @@ export namespace Ags {
 
         /**
          * Add `certificate` to `certificate_manager`.
-         * @param certificate the #GObject implementing #AgsCertificate
+         * @param certificate the {@link GObject.Object} implementing {@link Ags.Certificate}
          */
         add_certificate(certificate: GObject.Object): void;
         /**
          * Get certificate.
-         * @returns the #GList-struct containing #GObject implementing #AgsCertificate
+         * @returns the {@link GLib.List}-struct containing {@link GObject.Object} implementing {@link Ags.Certificate}
          */
         get_certificate(): GObject.Object[];
         /**
          * Get public and private key file.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the user's UUID
          * @param security_token the security token
          * @param domain the domain to find
@@ -3225,7 +4221,7 @@ export namespace Ags {
         ): [string, string];
         /**
          * Remove `certificate` from `certificate_manager`.
-         * @param certificate the #GObject implementing #AgsCertificate
+         * @param certificate the {@link GObject.Object} implementing {@link Ags.Certificate}
          */
         remove_certificate(certificate: GObject.Object): void;
     }
@@ -3233,8 +4229,26 @@ export namespace Ags {
     namespace Config {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * The ::get-value signal notifies about value been getting.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             'get-value': (arg0: string, arg1: string) => string;
+            /**
+             * The ::load-defaults signal notifies about loading defaults
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             'load-defaults': () => void;
+            /**
+             * The ::set-value signal notifies about value been setting.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             'set-value': (arg0: string, arg1: string, arg2: string) => void;
         }
 
@@ -3243,6 +4257,9 @@ export namespace Ags {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Config extends GObject.Object {
         static $gtype: GObject.GType<Config>;
 
@@ -3272,16 +4289,19 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Config.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Config.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Config.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Config.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Config.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Config.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3301,17 +4321,20 @@ export namespace Ags {
          * Retrieve config by `group` and `key`.
          * @param group the config group identifier
          * @param key the key of the property
+         * @virtual
          */
         vfunc_get_value(group: string, key: string): string;
         /**
          * Load configuration from default values.
+         * @virtual
          */
         vfunc_load_defaults(): void;
         /**
-         * Set config by `group` and `key,` applying `value`.
+         * Set config by `group` and `key`, applying `value`.
          * @param group the config group identifier
          * @param key the key of the property
          * @param value the value to set
+         * @virtual
          */
         vfunc_set_value(group: string, key: string, value: string): void;
 
@@ -3348,7 +4371,7 @@ export namespace Ags {
          */
         save(): void;
         /**
-         * Set config by `group` and `key,` applying `value`.
+         * Set config by `group` and `key`, applying `value`.
          * @param group the config group identifier
          * @param key the key of the property
          * @param value the value to set
@@ -3378,6 +4401,9 @@ export namespace Ags {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Controller extends GObject.Object {
         static $gtype: GObject.GType<Controller>;
 
@@ -3385,16 +4411,19 @@ export namespace Ags {
 
         /**
          * The context path provided.
+         * @since 3.0.0
          */
         get context_path(): string;
         set context_path(val: string);
         /**
          * The context path provided.
+         * @since 3.0.0
          */
         get contextPath(): string;
         set contextPath(val: string);
         /**
-         * The assigned #AgsServer
+         * The assigned {@link Ags.Server}
+         * @since 3.0.0
          */
         get server(): Server;
         set server(val: Server);
@@ -3422,16 +4451,19 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Controller.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Controller.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Controller.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Controller.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Controller.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Controller.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3442,8 +4474,9 @@ export namespace Ags {
 
         /**
          * Query `security_context` for `login`.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param login the login to query
+         * @virtual
          */
         vfunc_query_security_context(security_context: GObject.Object, login: string): boolean;
 
@@ -3452,20 +4485,20 @@ export namespace Ags {
         /**
          * Add `controller_resource` with key `resource_name` to hash table.
          * @param resource_name the resource name as string
-         * @param controller_resource the #AgsControllerResource-struct
+         * @param controller_resource the {@link Ags.ControllerResource}-struct
          */
         add_resource(resource_name: string, controller_resource?: any | null): void;
         /**
          * Lookup key `resource_name` in hash table.
          * @param resource_name the resource name as string
-         * @returns the matching #AgsControllerResource-struct
+         * @returns the matching {@link Ags.ControllerResource}-struct
          */
         lookup_resource(resource_name: string): any | null;
         /**
          * Query `security_context` for `login`.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param login the login to query
-         * @returns %TRUE if allowed to proceed, otherwise %FALSE
+         * @returns `true` if allowed to proceed, otherwise `false`
          */
         query_security_context(security_context: GObject.Object, login: string): boolean;
         /**
@@ -3478,6 +4511,12 @@ export namespace Ags {
     namespace Conversion {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * The ::convert signal notifies about converted value.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             convert: (arg0: number, arg1: boolean) => number;
             'notify::description': (pspec: GObject.ParamSpec) => void;
             'notify::name': (pspec: GObject.ParamSpec) => void;
@@ -3491,6 +4530,9 @@ export namespace Ags {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Conversion extends GObject.Object {
         static $gtype: GObject.GType<Conversion>;
 
@@ -3498,11 +4540,13 @@ export namespace Ags {
 
         /**
          * The description of the conversion.
+         * @since 3.0.0
          */
         get description(): string;
         set description(val: string);
         /**
          * The name of the conversion.
+         * @since 3.0.0
          */
         get name(): string;
         set name(val: string);
@@ -3530,16 +4574,19 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Conversion.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Conversion.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Conversion.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Conversion.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Conversion.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Conversion.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3549,18 +4596,19 @@ export namespace Ags {
         // Virtual methods
 
         /**
-         * Convert a value if `reverse` is %FALSE then use the target format
-         * otherwise if %TRUE convert back to original format.
+         * Convert a value if `reverse` is `false` then use the target format
+         * otherwise if `true` convert back to original format.
          * @param x the value to convert
          * @param reverse the direction to convert
+         * @virtual
          */
         vfunc_convert(x: number, reverse: boolean): number;
 
         // Methods
 
         /**
-         * Convert a value if `reverse` is %FALSE then use the target format
-         * otherwise if %TRUE convert back to original format.
+         * Convert a value if `reverse` is `false` then use the target format
+         * otherwise if `true` convert back to original format.
          * @param x the value to convert
          * @param reverse the direction to convert
          * @returns the converted value as gdouble
@@ -3581,6 +4629,9 @@ export namespace Ags {
         interface ConstructorProps extends WorkerThread.ConstructorProps, Connectable.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class DestroyWorker extends WorkerThread implements Connectable {
         static $gtype: GObject.GType<DestroyWorker>;
 
@@ -3609,11 +4660,13 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect_after<K extends keyof DestroyWorker.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DestroyWorker.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DestroyWorker.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DestroyWorker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3624,7 +4677,7 @@ export namespace Ags {
 
         /**
          * Add `ptr` for destruction using `destroy_func`.
-         * @param destroy_worker the #AgsDestroyWorker
+         * @param destroy_worker the {@link Ags.DestroyWorker}
          * @param ptr the gpointer to destroy
          * @param destroy_func the AgsDestroyFunc
          */
@@ -3633,8 +4686,6 @@ export namespace Ags {
          * Get your destroy worker instance.
          */
         static get_instance(): DestroyWorker;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -3648,32 +4699,32 @@ export namespace Ags {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -3682,39 +4733,39 @@ export namespace Ags {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -3725,13 +4776,16 @@ export namespace Ags {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -3739,7 +4793,7 @@ export namespace Ags {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -3747,9 +4801,9 @@ export namespace Ags {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -3769,9 +4823,9 @@ export namespace Ags {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -3784,34 +4838,34 @@ export namespace Ags {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -3844,22 +4898,22 @@ export namespace Ags {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -3868,8 +4922,8 @@ export namespace Ags {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -3886,10 +4940,10 @@ export namespace Ags {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -3904,13 +4958,13 @@ export namespace Ags {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -3941,21 +4995,21 @@ export namespace Ags {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -3965,33 +5019,34 @@ export namespace Ags {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -4000,6 +5055,7 @@ export namespace Ags {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -4008,12 +5064,14 @@ export namespace Ags {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -4022,20 +5080,22 @@ export namespace Ags {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -4047,6 +5107,7 @@ export namespace Ags {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -4054,6 +5115,9 @@ export namespace Ags {
          * @param id Handler ID of the handler to be disconnected
          */
         disconnect(id: number): void;
+        /**
+         * @param args
+         */
         // Conflicted with Ags.Connectable.disconnect
         disconnect(...args: never[]): any;
         /**
@@ -4081,14 +5145,66 @@ export namespace Ags {
     namespace File {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Open `file` with appropriate filename.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             open: (arg0: any | null) => void;
+            /**
+             * Open `file` from a buffer containing the file.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             'open-from-data': (arg0: string, arg1: number, arg2: any | null) => void;
+            /**
+             * Read a XML document from disk with specified filename.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             read: () => void;
+            /**
+             * Resolve XPath expressions to their counterpart the newly created
+             * instances refering to.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             'read-resolve': () => void;
+            /**
+             * Hook after reading XML document to update or start the application.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             'read-start': () => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'rw-open': (arg0: boolean, arg1: any | null) => void;
+            /**
+             * Write XML Document to disk.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             write: () => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'write-concurrent': () => void;
+            /**
+             * Resolve references and generate thus XPath expressions just
+             * before writing to disk.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             'write-resolve': () => void;
             'notify::audio-encoding': (pspec: GObject.ParamSpec) => void;
             'notify::audio-format': (pspec: GObject.ParamSpec) => void;
@@ -4111,6 +5227,9 @@ export namespace Ags {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class File extends GObject.Object {
         static $gtype: GObject.GType<File>;
 
@@ -4118,41 +5237,49 @@ export namespace Ags {
 
         /**
          * The encoding to use for embedding audio data.
+         * @since 3.0.0
          */
         get audio_encoding(): string;
         set audio_encoding(val: string);
         /**
          * The encoding to use for embedding audio data.
+         * @since 3.0.0
          */
         get audioEncoding(): string;
         set audioEncoding(val: string);
         /**
          * The format of embedded audio data.
+         * @since 3.0.0
          */
         get audio_format(): string;
         set audio_format(val: string);
         /**
          * The format of embedded audio data.
+         * @since 3.0.0
          */
         get audioFormat(): string;
         set audioFormat(val: string);
         /**
          * The charset encoding to use.
+         * @since 3.0.0
          */
         get encoding(): string;
         set encoding(val: string);
         /**
          * The assigned filename to open and read from.
+         * @since 3.0.0
          */
         get filename(): string;
         set filename(val: string);
         /**
          * The assigned xml-doc.
+         * @since 3.0.0
          */
         get xml_doc(): any;
         set xml_doc(val: any);
         /**
          * The assigned xml-doc.
+         * @since 3.0.0
          */
         get xmlDoc(): any;
         set xmlDoc(val: any);
@@ -4198,16 +5325,19 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof File.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, File.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof File.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, File.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof File.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<File.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4227,35 +5357,48 @@ export namespace Ags {
 
         /**
          * Opens the file specified by :filename property.
+         * @virtual
          */
         vfunc_open(): void;
         /**
          * Opens the file provided by `data`.
          * @param data a buffer containing the XML document
          * @param length the buffer length
+         * @virtual
          */
         vfunc_open_from_data(data: string, length: number): void;
         /**
          * Read XML document from disk.
+         * @virtual
          */
         vfunc_read(): void;
+        /**
+         * @virtual
+         */
         vfunc_read_resolve(): void;
         /**
          * Update or start the application.
+         * @virtual
          */
         vfunc_read_start(): void;
         /**
          * Opens the file specified by :filename property in read-write mode.
-         * @param create if %TRUE create the file as needed
+         * @param create if `true` create the file as needed
+         * @virtual
          */
         vfunc_rw_open(create: boolean): void;
         /**
          * Write the XML document to disk.
+         * @virtual
          */
         vfunc_write(): void;
+        /**
+         * @virtual
+         */
         vfunc_write_concurrent(): void;
         /**
          * Resolve references to XPath expressions.
+         * @virtual
          */
         vfunc_write_resolve(): void;
 
@@ -4268,12 +5411,12 @@ export namespace Ags {
         add_id_ref(id_ref: GObject.Object): void;
         /**
          * Add `file_launch` for later invoking.
-         * @param file_launch a #AgsFileLaunch
+         * @param file_launch a {@link Ags.FileLaunch}
          */
         add_launch(file_launch: GObject.Object): void;
         /**
          * Add `file_lookup` for later invoking.
-         * @param file_lookup a #AgsFileLookup
+         * @param file_lookup a {@link Ags.FileLookup}
          */
         add_lookup(file_lookup: GObject.Object): void;
         /**
@@ -4283,19 +5426,19 @@ export namespace Ags {
         /**
          * Find a reference by its XML node.
          * @param node a XML node
-         * @returns the matching #GObject
+         * @returns the matching {@link GObject.Object}
          */
         find_id_ref_by_node<T = GObject.Object>(node: libxml2.Node): T;
         /**
          * Find a reference matching `ref`.
          * @param ref a %gpointer
-         * @returns the matching #GObject
+         * @returns the matching {@link GObject.Object}
          */
         find_id_ref_by_reference<T = GObject.Object>(ref?: any | null): T;
         /**
          * Lookup a reference by `xpath`.
          * @param xpath a XPath expression
-         * @returns the matching #GObject
+         * @returns the matching {@link GObject.Object}
          */
         find_id_ref_by_xpath<T = GObject.Object>(xpath: string): T;
         /**
@@ -4342,7 +5485,15 @@ export namespace Ags {
          * Read XML document from disk.
          */
         read(): void;
+        /**
+         * @param node
+         * @param application_context
+         */
         read_application_context(node: libxml2.Node, application_context: GObject.Object): void;
+        /**
+         * @param node
+         * @param ags_config
+         */
         read_config(node: libxml2.Node, ags_config: GObject.Object): void;
         read_resolve(): void;
         /**
@@ -4351,7 +5502,7 @@ export namespace Ags {
         read_start(): void;
         /**
          * Opens the file specified by :filename property in read-write mode.
-         * @param create if %TRUE create the file as needed
+         * @param create if `true` create the file as needed
          */
         rw_open(create: boolean): void;
         /**
@@ -4383,8 +5534,16 @@ export namespace Ags {
          * Write the XML document to disk.
          */
         write(): void;
+        /**
+         * @param parent
+         * @param application_context
+         */
         write_application_context(parent: libxml2.Node, application_context: GObject.Object): void;
         write_concurrent(): void;
+        /**
+         * @param parent
+         * @param ags_config
+         */
         write_config(parent: libxml2.Node, ags_config: GObject.Object): void;
         /**
          * Resolve references to XPath expressions.
@@ -4446,6 +5605,12 @@ export namespace Ags {
     namespace FileIdRef {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Signal ::resolved to notify about resolved :reference.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             resolved: () => void;
             'notify::file': (pspec: GObject.ParamSpec) => void;
             'notify::node': (pspec: GObject.ParamSpec) => void;
@@ -4463,28 +5628,35 @@ export namespace Ags {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class FileIdRef extends GObject.Object {
         static $gtype: GObject.GType<FileIdRef>;
 
         // Properties
 
         /**
-         * The #AgsFile this #AgsFileIdRef belongs to.
+         * The {@link Ags.File} this {@link Ags.FileIdRef} belongs to.
+         * @since 3.0.0
          */
         get file(): GObject.Object;
         set file(val: GObject.Object);
         /**
-         * The assigned xmlNode being referred by this #AgsFileIdRef.
+         * The assigned xmlNode being referred by this {@link Ags.FileIdRef}.
+         * @since 3.0.0
          */
         get node(): any;
         set node(val: any);
         /**
-         * The object referred by this #AgsFileIdRef.
+         * The object referred by this {@link Ags.FileIdRef}.
+         * @since 3.0.0
          */
         get reference(): any;
         set reference(val: any);
         /**
-         * The XPath short-cut that can be used with this #AgsFileIdRef.
+         * The XPath short-cut that can be used with this {@link Ags.FileIdRef}.
+         * @since 3.0.0
          */
         get xpath(): string;
         set xpath(val: string);
@@ -4515,16 +5687,19 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FileIdRef.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileIdRef.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FileIdRef.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileIdRef.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FileIdRef.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FileIdRef.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4535,6 +5710,7 @@ export namespace Ags {
 
         /**
          * Notify about resolved reference.
+         * @virtual
          */
         vfunc_resolved(): void;
 
@@ -4549,6 +5725,12 @@ export namespace Ags {
     namespace FileLaunch {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Signal ::start to notify about start :reference.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             start: () => void;
             'notify::file': (pspec: GObject.ParamSpec) => void;
             'notify::node': (pspec: GObject.ParamSpec) => void;
@@ -4564,23 +5746,29 @@ export namespace Ags {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class FileLaunch extends GObject.Object {
         static $gtype: GObject.GType<FileLaunch>;
 
         // Properties
 
         /**
-         * The #AgsFile this #AgsFileLaunch belongs to.
+         * The {@link Ags.File} this {@link Ags.FileLaunch} belongs to.
+         * @since 3.0.0
          */
         get file(): GObject.Object;
         set file(val: GObject.Object);
         /**
-         * The assigned xmlNode being referred by this #AgsFileLaunch.
+         * The assigned xmlNode being referred by this {@link Ags.FileLaunch}.
+         * @since 3.0.0
          */
         get node(): any;
         set node(val: any);
         /**
-         * The object referred by this #AgsFileLaunch.
+         * The object referred by this {@link Ags.FileLaunch}.
+         * @since 3.0.0
          */
         get reference(): any;
         set reference(val: any);
@@ -4608,16 +5796,19 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FileLaunch.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileLaunch.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FileLaunch.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileLaunch.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FileLaunch.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FileLaunch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4627,14 +5818,15 @@ export namespace Ags {
         // Virtual methods
 
         /**
-         * Start #AgsFileLaunch to fulfill a task.
+         * Start {@link Ags.FileLaunch} to fulfill a task.
+         * @virtual
          */
         vfunc_start(): void;
 
         // Methods
 
         /**
-         * Start #AgsFileLaunch to fulfill a task.
+         * Start {@link Ags.FileLaunch} to fulfill a task.
          */
         start(): void;
     }
@@ -4654,18 +5846,23 @@ export namespace Ags {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class FileLink extends GObject.Object implements Plugin {
         static $gtype: GObject.GType<FileLink>;
 
         // Properties
 
         /**
-         * The data this #AgsFileLink contains.
+         * The data this {@link Ags.FileLink} contains.
+         * @since 3.0.0
          */
         get data(): string;
         set data(val: string);
         /**
-         * The filename this #AgsFileLink refers.
+         * The filename this {@link Ags.FileLink} refers.
+         * @since 3.0.0
          */
         get filename(): string;
         set filename(val: string);
@@ -4697,16 +5894,19 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FileLink.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileLink.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FileLink.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileLink.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FileLink.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FileLink.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4720,6 +5920,9 @@ export namespace Ags {
          * @returns the data
          */
         get_data(): string;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.get_data
         get_data(...args: never[]): any;
         /**
@@ -4737,8 +5940,6 @@ export namespace Ags {
          * @param filename the filename
          */
         set_filename(filename: string): void;
-
-        // Inherited methods
         /**
          * Retrieve the build id of the plugin.
          * @returns the plugins build id
@@ -4791,47 +5992,57 @@ export namespace Ags {
         set_xml_type(xml_type: string): void;
         /**
          * Retrieve the build id of the plugin.
+         * @virtual
          */
         vfunc_get_build_id(): string;
         /**
          * Retrieve the name of the plugin.
+         * @virtual
          */
         vfunc_get_name(): string;
         /**
          * Retrieve the ports of the plugin.
+         * @virtual
          */
         vfunc_get_ports(): GObject.Object[];
         /**
          * Retrieve the version of the plugin.
+         * @virtual
          */
         vfunc_get_version(): string;
         /**
          * Retrieve the xml type of the plugin.
+         * @virtual
          */
         vfunc_get_xml_type(): string;
         /**
          * Set the build id of the plugin.
          * @param build_id the build id of plugin
+         * @virtual
          */
         vfunc_set_build_id(build_id: string): void;
         /**
          * Set the name of the plugin.
          * @param name the name of plugin
+         * @virtual
          */
         vfunc_set_name(name: string): void;
         /**
          * Set the build id of the plugin.
          * @param ports the build id of plugin
+         * @virtual
          */
         vfunc_set_ports(ports: GObject.Object[]): void;
         /**
          * Set the version of the plugin.
          * @param version the version of plugin
+         * @virtual
          */
         vfunc_set_version(version: string): void;
         /**
          * Set the build id of the plugin.
          * @param xml_type the build id of plugin
+         * @virtual
          */
         vfunc_set_xml_type(xml_type: string): void;
         /**
@@ -4847,32 +6058,32 @@ export namespace Ags {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -4881,39 +6092,39 @@ export namespace Ags {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -4924,13 +6135,16 @@ export namespace Ags {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -4938,7 +6152,7 @@ export namespace Ags {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -4962,9 +6176,9 @@ export namespace Ags {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -4977,34 +6191,34 @@ export namespace Ags {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -5037,22 +6251,22 @@ export namespace Ags {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -5061,8 +6275,8 @@ export namespace Ags {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -5082,13 +6296,13 @@ export namespace Ags {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -5119,21 +6333,21 @@ export namespace Ags {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -5143,33 +6357,34 @@ export namespace Ags {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -5178,6 +6393,7 @@ export namespace Ags {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -5186,12 +6402,14 @@ export namespace Ags {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -5200,20 +6418,22 @@ export namespace Ags {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -5225,6 +6445,7 @@ export namespace Ags {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -5257,6 +6478,10 @@ export namespace Ags {
     namespace FileLookup {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
             resolve: () => void;
             'notify::file': (pspec: GObject.ParamSpec) => void;
             'notify::node': (pspec: GObject.ParamSpec) => void;
@@ -5272,6 +6497,9 @@ export namespace Ags {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class FileLookup extends GObject.Object {
         static $gtype: GObject.GType<FileLookup>;
 
@@ -5310,16 +6538,19 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FileLookup.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileLookup.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FileLookup.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileLookup.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FileLookup.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FileLookup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5329,15 +6560,15 @@ export namespace Ags {
         // Static methods
 
         /**
-         * Find #AgsFileLookup by #xmlNode
-         * @param file_lookup the #GList-struct containing #AgsFileLookup
+         * Find {@link Ags.FileLookup} by #xmlNode
+         * @param file_lookup the {@link GLib.List}-struct containing {@link Ags.FileLookup}
          * @param node a #xmlNode
          */
         static find_by_node(file_lookup: FileLookup[], node: libxml2.Node): FileLookup[];
         /**
-         * Find #AgsFileLookup by `ref`
-         * @param file_lookup the #GList-struct containing #AgsFileLookup
-         * @param ref a #gpointer
+         * Find {@link Ags.FileLookup} by `ref`
+         * @param file_lookup the {@link GLib.List}-struct containing {@link Ags.FileLookup}
+         * @param ref a `gpointer`
          */
         static find_by_reference(file_lookup: FileLookup[], ref?: any | null): FileLookup[];
 
@@ -5345,6 +6576,7 @@ export namespace Ags {
 
         /**
          * The ::resolve signal.
+         * @virtual
          */
         vfunc_resolve(): void;
 
@@ -5359,6 +6591,12 @@ export namespace Ags {
     namespace FrontController {
         // Signal signatures
         interface SignalSignatures extends Controller.SignalSignatures {
+            /**
+             * Do a request on the front controller.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             'do-request': (
                 arg0: GObject.Object,
                 arg1: any | null,
@@ -5376,6 +6614,9 @@ export namespace Ags {
         interface ConstructorProps extends Controller.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class FrontController extends Controller {
         static $gtype: GObject.GType<FrontController>;
 
@@ -5402,16 +6643,19 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FrontController.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FrontController.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FrontController.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FrontController.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FrontController.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FrontController.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5422,12 +6666,13 @@ export namespace Ags {
 
         /**
          * Do a XML-RPC request for the given `path` with `query`.
-         * @param msg the #SoupServerMessage
-         * @param query the #GHashTable
-         * @param security_context the #AgsSecurityContext
+         * @param msg the {@link Soup.ServerMessage}
+         * @param query the {@link GLib.HashTable}
+         * @param security_context the {@link Ags.SecurityContext}
          * @param path the context path to access
          * @param login the login
          * @param security_token the security token
+         * @virtual
          */
         vfunc_do_request(
             msg: Soup.ServerMessage,
@@ -5442,13 +6687,13 @@ export namespace Ags {
 
         /**
          * Do a XML-RPC request for the given `path` with `query`.
-         * @param msg the #SoupServerMessage
-         * @param query the #GHashTable
-         * @param security_context the #AgsSecurityContext
+         * @param msg the {@link Soup.ServerMessage}
+         * @param query the {@link GLib.HashTable}
+         * @param security_context the {@link Ags.SecurityContext}
          * @param path the context path to access
          * @param login the login
          * @param security_token the security token
-         * @returns the response on success, otherwise %NULL.
+         * @returns the response on success, otherwise `null`.
          */
         do_request(
             msg: Soup.ServerMessage,
@@ -5480,6 +6725,9 @@ export namespace Ags {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Function extends GObject.Object {
         static $gtype: GObject.GType<Function>;
 
@@ -5487,31 +6735,37 @@ export namespace Ags {
 
         /**
          * The normalized function.
+         * @since 3.0.0
          */
         get normalized_function(): string;
         set normalized_function(val: string);
         /**
          * The normalized function.
+         * @since 3.0.0
          */
         get normalizedFunction(): string;
         set normalizedFunction(val: string);
         /**
          * The pivot table.
+         * @since 3.0.0
          */
         get pivot_table(): any;
         set pivot_table(val: any);
         /**
          * The pivot table.
+         * @since 3.0.0
          */
         get pivotTable(): any;
         set pivotTable(val: any);
         /**
          * The source function.
+         * @since 3.0.0
          */
         get source_function(): string;
         set source_function(val: string);
         /**
          * The source function.
+         * @since 3.0.0
          */
         get sourceFunction(): string;
         set sourceFunction(val: string);
@@ -5550,16 +6804,19 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Function.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Function.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Function.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Function.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Function.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Function.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -5570,12 +6827,12 @@ export namespace Ags {
 
         /**
          * Add `solver_matrix` to `function`.
-         * @param solver_matrix the #AgsSolverMatrix
+         * @param solver_matrix the {@link Ags.SolverMatrix}
          */
         add_matrix(solver_matrix: SolverMatrix): void;
         /**
          * Remove `solver_matrix` from `function`.
-         * @param solver_matrix the #AgsSolverMatrix
+         * @param solver_matrix the {@link Ags.SolverMatrix}
          */
         remove_matrix(solver_matrix: SolverMatrix): void;
     }
@@ -5594,6 +6851,9 @@ export namespace Ags {
             extends Thread.ConstructorProps, Connectable.ConstructorProps, MainLoop.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class GenericMainLoop extends Thread implements Connectable, MainLoop {
         static $gtype: GObject.GType<GenericMainLoop>;
 
@@ -5627,18 +6887,18 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect_after<K extends keyof GenericMainLoop.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GenericMainLoop.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof GenericMainLoop.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<GenericMainLoop.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited methods
         /**
          * Add connectable to registry.
          */
@@ -5647,6 +6907,9 @@ export namespace Ags {
          * Connect the connectable.
          */
         connect(): void;
+        /**
+         * @param args
+         */
         connect(...args: never[]): any;
         /**
          * Disconnect the connectable.
@@ -5664,22 +6927,22 @@ export namespace Ags {
         disconnect_connection(connection: GObject.Object): void;
         /**
          * Get UUID of `connectable`.
-         * @returns the assigned #AgsUUID
+         * @returns the assigned {@link Ags.UUID}
          */
         get_uuid(): UUID;
         /**
          * Check the connectable to have resources.
-         * @returns %TRUE if @connectable can be added to registry, otherwise %FALSE.
+         * @returns `true` if `connectable` can be added to registry, otherwise `false`.
          */
         has_resource(): boolean;
         /**
          * Check if the `connectable` was connected.
-         * @returns %TRUE if is connected, otherwise %FALSE.
+         * @returns `true` if is connected, otherwise `false`.
          */
         is_connected(): boolean;
         /**
          * Connect the connectable.
-         * @returns %TRUE if is added to registry, otherwise %FALSE.
+         * @returns `true` if is added to registry, otherwise `false`.
          */
         is_ready(): boolean;
         /**
@@ -5703,57 +6966,70 @@ export namespace Ags {
         xml_parse(node: libxml2.Node): void;
         /**
          * Add connectable to registry.
+         * @virtual
          */
         vfunc_add_to_registry(): void;
         /**
          * Connect the connectable.
+         * @virtual
          */
         vfunc_connect(): void;
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @virtual
          */
         vfunc_connect_connection(connection: GObject.Object): void;
         /**
          * Disconnect the connectable.
+         * @virtual
          */
         vfunc_disconnect(): void;
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @virtual
          */
         vfunc_disconnect_connection(connection: GObject.Object): void;
         /**
          * Get UUID of `connectable`.
+         * @virtual
          */
         vfunc_get_uuid(): UUID;
         /**
          * Check the connectable to have resources.
+         * @virtual
          */
         vfunc_has_resource(): boolean;
         /**
          * Check if the `connectable` was connected.
+         * @virtual
          */
         vfunc_is_connected(): boolean;
         /**
          * Connect the connectable.
+         * @virtual
          */
         vfunc_is_ready(): boolean;
         /**
          * List resources as an XML element and return it.
+         * @virtual
          */
         vfunc_list_resource(): libxml2.Node;
         /**
          * Remove connectable from registry.
+         * @virtual
          */
         vfunc_remove_from_registry(): void;
         /**
          * Compose an XML element and return it.
+         * @virtual
          */
         vfunc_xml_compose(): libxml2.Node;
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
+         * @virtual
          */
         vfunc_xml_parse(node: libxml2.Node): void;
         /**
@@ -5776,12 +7052,12 @@ export namespace Ags {
         inc_queued_critical_region(): void;
         /**
          * Set main loop is in critical region.
-         * @param is_critical_region set %TRUE if critical region
+         * @param is_critical_region set `true` if critical region
          */
         set_critical_region(is_critical_region: boolean): void;
         /**
          * Set thread tree is syncing.
-         * @param is_syncing set %TRUE if syncing
+         * @param is_syncing set `true` if syncing
          */
         set_syncing(is_syncing: boolean): void;
         /**
@@ -5792,40 +7068,49 @@ export namespace Ags {
         /**
          * Change frequency.
          * @param frequency the new frequency
+         * @virtual
          */
         vfunc_change_frequency(frequency: number): void;
         /**
          * Decrement thread needs access to main loop's critical region field.
+         * @virtual
          */
         vfunc_dec_queued_critical_region(): void;
         /**
          * Retrieve the tree mutex.
+         * @virtual
          */
         vfunc_get_tree_lock(): GLib.RecMutex;
         /**
          * Increment thread needs access to main loop's critical region field.
+         * @virtual
          */
         vfunc_inc_queued_critical_region(): void;
         /**
          * Check if main loop is in critical region.
+         * @virtual
          */
         vfunc_is_critical_region(): boolean;
         /**
          * Check if thread tree is syncing.
+         * @virtual
          */
         vfunc_is_syncing(): boolean;
         /**
          * Set main loop is in critical region.
-         * @param is_critical_region set %TRUE if critical region
+         * @param is_critical_region set `true` if critical region
+         * @virtual
          */
         vfunc_set_critical_region(is_critical_region: boolean): void;
         /**
          * Set thread tree is syncing.
-         * @param is_syncing set %TRUE if syncing
+         * @param is_syncing set `true` if syncing
+         * @virtual
          */
         vfunc_set_syncing(is_syncing: boolean): void;
         /**
          * Test main loop may enter critical region.
+         * @virtual
          */
         vfunc_test_queued_critical_region(): number;
         /**
@@ -5841,32 +7126,32 @@ export namespace Ags {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -5875,39 +7160,39 @@ export namespace Ags {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -5918,13 +7203,16 @@ export namespace Ags {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -5932,7 +7220,7 @@ export namespace Ags {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -5940,9 +7228,9 @@ export namespace Ags {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -5962,9 +7250,9 @@ export namespace Ags {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -5977,34 +7265,34 @@ export namespace Ags {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -6037,22 +7325,22 @@ export namespace Ags {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -6061,8 +7349,8 @@ export namespace Ags {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -6079,10 +7367,10 @@ export namespace Ags {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -6097,13 +7385,13 @@ export namespace Ags {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -6134,21 +7422,21 @@ export namespace Ags {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -6158,33 +7446,34 @@ export namespace Ags {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -6193,6 +7482,7 @@ export namespace Ags {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -6201,12 +7491,14 @@ export namespace Ags {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -6215,20 +7507,22 @@ export namespace Ags {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -6240,6 +7534,7 @@ export namespace Ags {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -6273,6 +7568,9 @@ export namespace Ags {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Log extends GObject.Object {
         static $gtype: GObject.GType<Log>;
 
@@ -6301,16 +7599,19 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Log.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Log.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Log.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Log.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Log.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Log.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6332,8 +7633,8 @@ export namespace Ags {
          */
         add_message(str: string): void;
         /**
-         * Get log messages as #GList-struct containing strings.
-         * @returns the #GList-struct containing log messages
+         * Get log messages as {@link GLib.List}-struct containing strings.
+         * @returns the {@link GLib.List}-struct containing log messages
          */
         get_messages(): string[];
     }
@@ -6347,6 +7648,9 @@ export namespace Ags {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class MessageDelivery extends GObject.Object {
         static $gtype: GObject.GType<MessageDelivery>;
 
@@ -6374,16 +7678,19 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MessageDelivery.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MessageDelivery.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MessageDelivery.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MessageDelivery.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MessageDelivery.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MessageDelivery.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6393,78 +7700,78 @@ export namespace Ags {
         // Static methods
 
         /**
-         * Get the #AgsMessageDelivery instance.
+         * Get the {@link Ags.MessageDelivery} instance.
          */
         static get_instance(): MessageDelivery;
 
         // Methods
 
         /**
-         * Add `message` to an #AgsMessageQueue specified by `sender_namespace`.
+         * Add `message` to an {@link Ags.MessageQueue} specified by `sender_namespace`.
          * @param sender_namespace the sender namespace as string
-         * @param message_envelope the #AgsMessageEnvelope
+         * @param message_envelope the {@link Ags.MessageEnvelope}
          */
         add_message_envelope(sender_namespace: string, message_envelope: GObject.Object): void;
         /**
          * Add `message_queue` to `message_delivery`.
-         * @param message_queue the #AgsMessageQueue
+         * @param message_queue the {@link Ags.MessageQueue}
          */
         add_message_queue(message_queue: GObject.Object): void;
         /**
-         * Find `recipient` for `recipient_namespace` matching #AgsMessageQueue. If `recipient_namespace` equals %NULL match
+         * Find `recipient` for `recipient_namespace` matching {@link Ags.MessageQueue}. If `recipient_namespace` equals `null` match
          * all available message queues.
-         * @param recipient_namespace the recipient namespace as string, maybe %NULL
-         * @param recipient the recipient as #GObject
-         * @returns all matching #AgsMessageEnvelope as #GList-struct
+         * @param recipient_namespace the recipient namespace as string, maybe `null`
+         * @param recipient the recipient as {@link GObject.Object}
+         * @returns all matching {@link Ags.MessageEnvelope} as {@link GLib.List}-struct
          */
         find_recipient(recipient_namespace: string, recipient: GObject.Object): MessageEnvelope[];
         /**
-         * Find recipient namespace of #AgsMessageQueue in `message_delivery`.
+         * Find recipient namespace of {@link Ags.MessageQueue} in `message_delivery`.
          * @param recipient_namespace the recipient namespace as string to find
-         * @returns the matching #GList-struct containing #AgsMessageQueue or %NULL
+         * @returns the matching {@link GLib.List}-struct containing {@link Ags.MessageQueue} or `null`
          */
         find_recipient_namespace(recipient_namespace: string): MessageQueue[];
         /**
-         * Find `sender` for `recipient_namespace` matching #AgsMessageQueue. If `recipient_namespace` equals %NULL match
+         * Find `sender` for `recipient_namespace` matching {@link Ags.MessageQueue}. If `recipient_namespace` equals `null` match
          * all available message queues.
-         * @param recipient_namespace the recipient namespace as string, maybe %NULL
-         * @param sender the sender as #GObject
-         * @returns all matching #AgsMessageEnvelope as #GList-struct
+         * @param recipient_namespace the recipient namespace as string, maybe `null`
+         * @param sender the sender as {@link GObject.Object}
+         * @returns all matching {@link Ags.MessageEnvelope} as {@link GLib.List}-struct
          */
         find_sender(recipient_namespace: string, sender: GObject.Object): MessageEnvelope[];
         /**
-         * Find sender namespace of #AgsMessageQueue in `message_delivery`.
+         * Find sender namespace of {@link Ags.MessageQueue} in `message_delivery`.
          * @param sender_namespace the sender namespace as string to find
-         * @returns the matching #GList-struct containing #AgsMessageQueue or %NULL
+         * @returns the matching {@link GLib.List}-struct containing {@link Ags.MessageQueue} or `null`
          */
         find_sender_namespace(sender_namespace: string): MessageQueue[];
         /**
          * Get message queue of `message_delivery`.
-         * @returns the #GList-struct containing #AgsMessageQueue
+         * @returns the {@link GLib.List}-struct containing {@link Ags.MessageQueue}
          */
         get_message_queue(): MessageQueue[];
         /**
-         * Query `xpath` for `recipient_namespace` matching #AgsMessageQueue. If `recipient_namespace` equals %NULL match
+         * Query `xpath` for `recipient_namespace` matching {@link Ags.MessageQueue}. If `recipient_namespace` equals `null` match
          * all available message queues.
-         * @param recipient_namespace the recipient namespace as string, maybe %NULL
+         * @param recipient_namespace the recipient namespace as string, maybe `null`
          * @param xpath the xpath to query
-         * @returns all matching #AgsMessageEnvelope as #GList-struct
+         * @returns all matching {@link Ags.MessageEnvelope} as {@link GLib.List}-struct
          */
         query_message(recipient_namespace: string, xpath: string): MessageEnvelope[];
         /**
-         * Remove `message` from an #AgsMessageQueue specified by `sender_namespace`.
+         * Remove `message` from an {@link Ags.MessageQueue} specified by `sender_namespace`.
          * @param sender_namespace the sender namespace as string
-         * @param message_envelope the #AgsMessageEnvelope
+         * @param message_envelope the {@link Ags.MessageEnvelope}
          */
         remove_message_envelope(sender_namespace: string, message_envelope: GObject.Object): void;
         /**
          * Remove `message_queue` to `message_delivery`.
-         * @param message_queue the #AgsMessageQueue
+         * @param message_queue the {@link Ags.MessageQueue}
          */
         remove_message_queue(message_queue: GObject.Object): void;
         /**
          * Set `message_queue` of `message_delivery`.
-         * @param message_queue the #GList-struct containing #AgsMessageQueue
+         * @param message_queue the {@link GLib.List}-struct containing {@link Ags.MessageQueue}
          */
         set_message_queue(message_queue: MessageQueue[]): void;
     }
@@ -6487,6 +7794,9 @@ export namespace Ags {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class MessageEnvelope extends GObject.Object {
         static $gtype: GObject.GType<MessageEnvelope>;
 
@@ -6494,21 +7804,25 @@ export namespace Ags {
 
         /**
          * The assigned recipient.
+         * @since 3.0.0
          */
         get recipient(): GObject.Object;
         set recipient(val: GObject.Object);
         /**
          * The assigned sender.
+         * @since 3.0.0
          */
         get sender(): GObject.Object;
         set sender(val: GObject.Object);
         /**
          * The assigned xml-doc.
+         * @since 3.0.0
          */
         get xml_doc(): any;
         set xml_doc(val: any);
         /**
          * The assigned xml-doc.
+         * @since 3.0.0
          */
         get xmlDoc(): any;
         set xmlDoc(val: any);
@@ -6548,16 +7862,19 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MessageEnvelope.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MessageEnvelope.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MessageEnvelope.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MessageEnvelope.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MessageEnvelope.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MessageEnvelope.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6574,8 +7891,8 @@ export namespace Ags {
         /**
          * Get parameters.
          * @param n_params return location of parameter count
-         * @param parameter_name return location %NULL terminated string vector containing parameter name
-         * @param value return location of #GValue-struct array containing values
+         * @param parameter_name return location `null` terminated string vector containing parameter name
+         * @param value return location of {@link GObject.Value}-struct array containing values
          */
         get_parameter(n_params: number, parameter_name: string, value: GObject.Value | any): void;
         /**
@@ -6607,6 +7924,9 @@ export namespace Ags {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class MessageQueue extends GObject.Object {
         static $gtype: GObject.GType<MessageQueue>;
 
@@ -6614,21 +7934,25 @@ export namespace Ags {
 
         /**
          * The assigned namespace of recipient.
+         * @since 3.0.0
          */
         get recipient_namespace(): string;
         set recipient_namespace(val: string);
         /**
          * The assigned namespace of recipient.
+         * @since 3.0.0
          */
         get recipientNamespace(): string;
         set recipientNamespace(val: string);
         /**
          * The assigned namespace of sender.
+         * @since 3.0.0
          */
         get sender_namespace(): string;
         set sender_namespace(val: string);
         /**
          * The assigned namespace of sender.
+         * @since 3.0.0
          */
         get senderNamespace(): string;
         set senderNamespace(val: string);
@@ -6657,16 +7981,19 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MessageQueue.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MessageQueue.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MessageQueue.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MessageQueue.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MessageQueue.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MessageQueue.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6677,24 +8004,24 @@ export namespace Ags {
 
         /**
          * Add `message` to `message_queue`.
-         * @param message_envelope the #AgsMessageEnvelope
+         * @param message_envelope the {@link Ags.MessageEnvelope}
          */
         add_message_envelope(message_envelope: GObject.Object): void;
         /**
-         * Find `recipient` in `message_queue'`s messages.
-         * @param recipient the recipient as #GObject
-         * @returns all matching #AgsMessageEnvelope as #GList-struct
+         * Find `recipient` in `message_queue`'s messages.
+         * @param recipient the recipient as {@link GObject.Object}
+         * @returns all matching {@link Ags.MessageEnvelope} as {@link GLib.List}-struct
          */
         find_recipient(recipient: GObject.Object): MessageEnvelope[];
         /**
-         * Find `sender` in `message_queue'`s messages.
-         * @param sender the sender as #GObject
-         * @returns all matching #AgsMessageEnvelope as #GList-struct
+         * Find `sender` in `message_queue`'s messages.
+         * @param sender the sender as {@link GObject.Object}
+         * @returns all matching {@link Ags.MessageEnvelope} as {@link GLib.List}-struct
          */
         find_sender(sender: GObject.Object): MessageEnvelope[];
         /**
          * Get message envelope of `message_queue`.
-         * @returns the #GList-struct containing #AgsMessageEnvelope
+         * @returns the {@link GLib.List}-struct containing {@link Ags.MessageEnvelope}
          */
         get_message_envelope(): MessageEnvelope[];
         /**
@@ -6708,19 +8035,19 @@ export namespace Ags {
          */
         get_sender_namespace(): string;
         /**
-         * Query `xpath` in `message_queue'`s messages.
+         * Query `xpath` in `message_queue`'s messages.
          * @param xpath the XPath as string
-         * @returns all matching #AgsMessageEnvelope as #GList-struct
+         * @returns all matching {@link Ags.MessageEnvelope} as {@link GLib.List}-struct
          */
         query_message(xpath: string): MessageEnvelope[];
         /**
          * Remove `message` from `message_queue`.
-         * @param message_envelope the #AgsMessageEnvelope
+         * @param message_envelope the {@link Ags.MessageEnvelope}
          */
         remove_message_envelope(message_envelope: GObject.Object): void;
         /**
          * Set `message_envelope` of `message_queue`.
-         * @param message_envelope the #GList-struct containing #AgsMessageEnvelope
+         * @param message_envelope the {@link GLib.List}-struct containing {@link Ags.MessageEnvelope}
          */
         set_message_envelope(message_envelope: MessageEnvelope[]): void;
         /**
@@ -6744,6 +8071,9 @@ export namespace Ags {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class PasswordStoreManager extends GObject.Object {
         static $gtype: GObject.GType<PasswordStoreManager>;
 
@@ -6772,16 +8102,19 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof PasswordStoreManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PasswordStoreManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof PasswordStoreManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PasswordStoreManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PasswordStoreManager.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PasswordStoreManager.SignalSignatures[K]> extends [any, ...infer Q]
@@ -6801,24 +8134,24 @@ export namespace Ags {
 
         /**
          * Add `password_store` to `password_store_manager`.
-         * @param password_store the #GObject implementing #AgsPasswordStore
+         * @param password_store the {@link GObject.Object} implementing {@link Ags.PasswordStore}
          */
         add_password_store(password_store: GObject.Object): void;
         /**
          * Check `password` to be valid for `user_uuid`.
          * @param user_uuid the user uuid
          * @param password the password
-         * @returns %TRUE if password matches, otherwise %FALSE
+         * @returns `true` if password matches, otherwise `false`
          */
         check_password(user_uuid: string, password: string): boolean;
         /**
          * Get password_store.
-         * @returns the #GList-struct containing #GObject implementing #AgsPasswordStore
+         * @returns the {@link GLib.List}-struct containing {@link GObject.Object} implementing {@link Ags.PasswordStore}
          */
         get_password_store(): GObject.Object[];
         /**
          * Remove `password_store` from `password_store_manager`.
-         * @param password_store the #GObject implementing #AgsPasswordStore
+         * @param password_store the {@link GObject.Object} implementing {@link Ags.PasswordStore}
          */
         remove_password_store(password_store: GObject.Object): void;
     }
@@ -6826,8 +8159,26 @@ export namespace Ags {
     namespace Priority {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * The ::get-value signal notifies about value been getting.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             'get-value': (arg0: string, arg1: string) => string;
+            /**
+             * The ::load-defaults signal notifies about loading defaults
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             'load-defaults': () => void;
+            /**
+             * The ::set-value signal notifies about value been setting.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             'set-value': (arg0: string, arg1: string, arg2: string) => void;
         }
 
@@ -6836,6 +8187,9 @@ export namespace Ags {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Priority extends GObject.Object {
         static $gtype: GObject.GType<Priority>;
 
@@ -6865,16 +8219,19 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Priority.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Priority.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Priority.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Priority.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Priority.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Priority.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -6894,17 +8251,20 @@ export namespace Ags {
          * Retrieve priority by `group` and `key`.
          * @param group the priority group identifier
          * @param key the key of the property
+         * @virtual
          */
         vfunc_get_value(group: string, key: string): string;
         /**
          * Load priorities from default values.
+         * @virtual
          */
         vfunc_load_defaults(): void;
         /**
-         * Set priority by `group` and `key,` applying `value`.
+         * Set priority by `group` and `key`, applying `value`.
          * @param group the priority group identifier
          * @param key the key of the property
          * @param value the value to set
+         * @virtual
          */
         vfunc_set_value(group: string, key: string, value: string): void;
 
@@ -6927,7 +8287,7 @@ export namespace Ags {
          */
         load_from_file(filename: string): void;
         /**
-         * Set priority by `group` and `key,` applying `value`.
+         * Set priority by `group` and `key`, applying `value`.
          * @param group the priority group identifier
          * @param key the key of the property
          * @param value the value to set
@@ -6948,13 +8308,17 @@ export namespace Ags {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Registry extends GObject.Object {
         static $gtype: GObject.GType<Registry>;
 
         // Properties
 
         /**
-         * The assigned #AgsServer
+         * The assigned {@link Ags.Server}
+         * @since 3.0.0
          */
         get server(): Server;
         set server(val: Server);
@@ -6985,16 +8349,19 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Registry.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Registry.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Registry.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Registry.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Registry.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Registry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7005,7 +8372,7 @@ export namespace Ags {
 
         /**
          * Add `registry_entry` to `registry`.
-         * @param registry_entry the #AgsRegistryEntry-struct to add
+         * @param registry_entry the {@link Ags.RegistryEntry}-struct to add
          */
         add_entry(registry_entry: RegistryEntry): void;
     }
@@ -7013,6 +8380,13 @@ export namespace Ags {
     namespace ReturnableThread {
         // Signal signatures
         interface SignalSignatures extends Thread.SignalSignatures {
+            /**
+             * The ::safe-run is invoked durin AgsThread::run as
+             * a context safe wrapper.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             'safe-run': () => void;
             'notify::thread-pool': (pspec: GObject.ParamSpec) => void;
             'notify::delay': (pspec: GObject.ParamSpec) => void;
@@ -7028,18 +8402,23 @@ export namespace Ags {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ReturnableThread extends Thread implements Connectable {
         static $gtype: GObject.GType<ReturnableThread>;
 
         // Properties
 
         /**
-         * The assigned #AgsThreadPool providing default settings.
+         * The assigned {@link Ags.ThreadPool} providing default settings.
+         * @since 3.0.0
          */
         get thread_pool(): GObject.Object;
         set thread_pool(val: GObject.Object);
         /**
-         * The assigned #AgsThreadPool providing default settings.
+         * The assigned {@link Ags.ThreadPool} providing default settings.
+         * @since 3.0.0
          */
         get threadPool(): GObject.Object;
         set threadPool(val: GObject.Object);
@@ -7073,11 +8452,13 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect_after<K extends keyof ReturnableThread.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ReturnableThread.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ReturnableThread.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ReturnableThread.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7086,6 +8467,9 @@ export namespace Ags {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_safe_run(): void;
 
         // Methods
@@ -7105,14 +8489,20 @@ export namespace Ags {
          * @param flags the flags
          */
         set_flags(flags: ReturnableThreadFlags | null): void;
+        /**
+         * @param args
+         */
         // Conflicted with Ags.Thread.set_flags
         set_flags(...args: never[]): any;
         /**
          * Test `flags` to be set on `returnable_thread`.
          * @param flags the flags
-         * @returns %TRUE if flags are set, else %FALSE
+         * @returns `true` if flags are set, else `false`
          */
         test_flags(flags: ReturnableThreadFlags | null): boolean;
+        /**
+         * @param args
+         */
         // Conflicted with Ags.Thread.test_flags
         test_flags(...args: never[]): any;
         /**
@@ -7120,10 +8510,11 @@ export namespace Ags {
          * @param flags the flags
          */
         unset_flags(flags: ReturnableThreadFlags | null): void;
+        /**
+         * @param args
+         */
         // Conflicted with Ags.Thread.unset_flags
         unset_flags(...args: never[]): any;
-
-        // Inherited methods
         /**
          * Add connectable to registry.
          */
@@ -7132,6 +8523,9 @@ export namespace Ags {
          * Connect the connectable.
          */
         connect(): void;
+        /**
+         * @param args
+         */
         connect(...args: never[]): any;
         /**
          * Disconnect the connectable.
@@ -7149,22 +8543,22 @@ export namespace Ags {
         disconnect_connection(connection: GObject.Object): void;
         /**
          * Get UUID of `connectable`.
-         * @returns the assigned #AgsUUID
+         * @returns the assigned {@link Ags.UUID}
          */
         get_uuid(): UUID;
         /**
          * Check the connectable to have resources.
-         * @returns %TRUE if @connectable can be added to registry, otherwise %FALSE.
+         * @returns `true` if `connectable` can be added to registry, otherwise `false`.
          */
         has_resource(): boolean;
         /**
          * Check if the `connectable` was connected.
-         * @returns %TRUE if is connected, otherwise %FALSE.
+         * @returns `true` if is connected, otherwise `false`.
          */
         is_connected(): boolean;
         /**
          * Connect the connectable.
-         * @returns %TRUE if is added to registry, otherwise %FALSE.
+         * @returns `true` if is added to registry, otherwise `false`.
          */
         is_ready(): boolean;
         /**
@@ -7188,57 +8582,70 @@ export namespace Ags {
         xml_parse(node: libxml2.Node): void;
         /**
          * Add connectable to registry.
+         * @virtual
          */
         vfunc_add_to_registry(): void;
         /**
          * Connect the connectable.
+         * @virtual
          */
         vfunc_connect(): void;
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @virtual
          */
         vfunc_connect_connection(connection: GObject.Object): void;
         /**
          * Disconnect the connectable.
+         * @virtual
          */
         vfunc_disconnect(): void;
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @virtual
          */
         vfunc_disconnect_connection(connection: GObject.Object): void;
         /**
          * Get UUID of `connectable`.
+         * @virtual
          */
         vfunc_get_uuid(): UUID;
         /**
          * Check the connectable to have resources.
+         * @virtual
          */
         vfunc_has_resource(): boolean;
         /**
          * Check if the `connectable` was connected.
+         * @virtual
          */
         vfunc_is_connected(): boolean;
         /**
          * Connect the connectable.
+         * @virtual
          */
         vfunc_is_ready(): boolean;
         /**
          * List resources as an XML element and return it.
+         * @virtual
          */
         vfunc_list_resource(): libxml2.Node;
         /**
          * Remove connectable from registry.
+         * @virtual
          */
         vfunc_remove_from_registry(): void;
         /**
          * Compose an XML element and return it.
+         * @virtual
          */
         vfunc_xml_compose(): libxml2.Node;
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
+         * @virtual
          */
         vfunc_xml_parse(node: libxml2.Node): void;
         /**
@@ -7254,32 +8661,32 @@ export namespace Ags {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -7288,39 +8695,39 @@ export namespace Ags {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -7331,13 +8738,16 @@ export namespace Ags {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -7345,7 +8755,7 @@ export namespace Ags {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -7353,9 +8763,9 @@ export namespace Ags {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -7375,9 +8785,9 @@ export namespace Ags {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -7390,34 +8800,34 @@ export namespace Ags {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -7450,22 +8860,22 @@ export namespace Ags {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -7474,8 +8884,8 @@ export namespace Ags {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -7492,10 +8902,10 @@ export namespace Ags {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -7510,13 +8920,13 @@ export namespace Ags {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -7547,21 +8957,21 @@ export namespace Ags {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -7571,33 +8981,34 @@ export namespace Ags {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -7606,6 +9017,7 @@ export namespace Ags {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -7614,12 +9026,14 @@ export namespace Ags {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -7628,20 +9042,22 @@ export namespace Ags {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -7653,6 +9069,7 @@ export namespace Ags {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -7690,6 +9107,9 @@ export namespace Ags {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SecurityContext extends GObject.Object {
         static $gtype: GObject.GType<SecurityContext>;
 
@@ -7697,6 +9117,7 @@ export namespace Ags {
 
         /**
          * The assigned certificates as string.
+         * @since 3.0.0
          */
         get certs(): string;
         set certs(val: string);
@@ -7727,16 +9148,19 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SecurityContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SecurityContext.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SecurityContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SecurityContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SecurityContext.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SecurityContext.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7752,12 +9176,12 @@ export namespace Ags {
         add_server_context(server_context: string): void;
         /**
          * Get business group of `security_context`.
-         * @returns the string vector containing business group or %NULL
+         * @returns the string vector containing business group or `null`
          */
         get_business_group(): string[];
         /**
          * Get business group of `security_context`.
-         * @returns the string vector containing business group or %NULL
+         * @returns the string vector containing business group or `null`
          */
         get_server_context(): string[];
         /**
@@ -7769,7 +9193,7 @@ export namespace Ags {
         /**
          * Remove `server_context` from `security_context`.
          * @param server_context the server context
-         * @returns %TRUE on success, otherwise %FALSE
+         * @returns `true` on success, otherwise `false`
          */
         remove_server_context(server_context: string): boolean;
     }
@@ -7777,8 +9201,26 @@ export namespace Ags {
     namespace Server {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * The ::listen signal is emited during listen of server.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             listen: () => boolean | void;
+            /**
+             * The ::start signal is emitted as the server starts.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             start: () => void;
+            /**
+             * The ::stop signal is emitted as the server stops.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             stop: () => void;
             'notify::controller': (pspec: GObject.ParamSpec) => void;
             'notify::domain': (pspec: GObject.ParamSpec) => void;
@@ -7806,58 +9248,71 @@ export namespace Ags {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Server extends GObject.Object {
         static $gtype: GObject.GType<Server>;
 
         // Properties
 
         /**
-         * The assigned #AgsController providing default settings.
+         * The assigned {@link Ags.Controller} providing default settings.
+         * @since 3.0.0
          */
         get controller(): Controller[];
         set controller(val: Controller[]);
         /**
          * The domain to use.
+         * @since 3.0.0
          */
         get domain(): string;
         set domain(val: string);
         /**
-         * The assigned #AgsFrontController.
+         * The assigned {@link Ags.FrontController}.
+         * @since 3.0.0
          */
         get front_controller(): FrontController;
         set front_controller(val: FrontController);
         /**
-         * The assigned #AgsFrontController.
+         * The assigned {@link Ags.FrontController}.
+         * @since 3.0.0
          */
         get frontController(): FrontController;
         set frontController(val: FrontController);
         /**
          * The IPv4 address as string of the server.
+         * @since 3.0.0
          */
         get ip4(): string;
         set ip4(val: string);
         /**
          * The IPv6 address as string of the server.
+         * @since 3.0.0
          */
         get ip6(): string;
         set ip6(val: string);
         /**
          * The path to use.
+         * @since 4.0.0
          */
         get path(): string;
         set path(val: string);
         /**
          * The realm to use.
+         * @since 3.0.0
          */
         get realm(): string;
         set realm(val: string);
         /**
          * The server port to use.
+         * @since 3.0.0
          */
         get server_port(): number;
         set server_port(val: number);
         /**
          * The server port to use.
+         * @since 3.0.0
          */
         get serverPort(): number;
         set serverPort(val: number);
@@ -7897,16 +9352,19 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Server.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Server.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Server.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Server.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Server.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Server.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -7917,14 +9375,17 @@ export namespace Ags {
 
         /**
          * Listen as  server.
+         * @virtual
          */
         vfunc_listen(): boolean;
         /**
          * Start the XMLRPC-C abyss server.
+         * @virtual
          */
         vfunc_start(): void;
         /**
          * Stop the XMLRPC-C abyss server.
+         * @virtual
          */
         vfunc_stop(): void;
 
@@ -7932,22 +9393,22 @@ export namespace Ags {
 
         /**
          * Add `controller` to `server`.
-         * @param controller the #AgsController
+         * @param controller the {@link Ags.Controller}
          */
         add_controller(controller: GObject.Object): void;
         /**
          * Listen as  server.
-         * @returns %TRUE as a new connection was initiated, otherwise %FALSE
+         * @returns `true` as a new connection was initiated, otherwise `false`
          */
         listen(): boolean;
         /**
          * Remove `controller` from `server`.
-         * @param controller the #AgsController
+         * @param controller the {@link Ags.Controller}
          */
         remove_controller(controller: GObject.Object): void;
         /**
          * Enable a feature of `server`.
-         * @param flags see #AgsServerFlags-enum
+         * @param flags see {@link Ags.ServerFlags}-enum
          */
         set_flags(flags: ServerFlags | null): void;
         /**
@@ -7961,12 +9422,12 @@ export namespace Ags {
         /**
          * Test `flags` to be set on `server`.
          * @param flags the flags
-         * @returns %TRUE if flags are set, else %FALSE
+         * @returns `true` if flags are set, else `false`
          */
         test_flags(flags: ServerFlags | null): boolean;
         /**
          * Disable a feature of `server`.
-         * @param flags see #AgsServerFlags-enum
+         * @param flags see {@link Ags.ServerFlags}-enum
          */
         unset_flags(flags: ServerFlags | null): void;
     }
@@ -7990,6 +9451,9 @@ export namespace Ags {
                 ServiceProvider.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ServerApplicationContext
         extends ApplicationContext
         implements ConcurrencyProvider, Connectable, ServiceProvider
@@ -8028,11 +9492,13 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect_after<K extends keyof ServerApplicationContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ServerApplicationContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ServerApplicationContext.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ServerApplicationContext.SignalSignatures[K]> extends [any, ...infer Q]
@@ -8040,82 +9506,88 @@ export namespace Ags {
                 : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited methods
         /**
          * Get main loop of application context.
-         * @returns the #AgsThread implementing #AgsMainLoop
+         * @returns the {@link Ags.Thread} implementing {@link Ags.MainLoop}
          */
         get_main_loop(): Thread;
         /**
          * Get task launcher of application context.
-         * @returns the #AgsTaskLauncher
+         * @returns the {@link Ags.TaskLauncher}
          */
         get_task_launcher(): TaskLauncher;
         /**
          * Get thread pool of application context.
-         * @returns the #AgsThreadPool
+         * @returns the {@link Ags.ThreadPool}
          */
         get_thread_pool(): ThreadPool;
         /**
          * Get workers of application context.
-         * @returns the #GList-struct containing workers
+         * @returns the {@link GLib.List}-struct containing workers
          */
         get_worker(): WorkerThread[];
         /**
          * Set main loop of application context.
-         * @param main_loop the #AgsThread implementing #AgsMainLoop
+         * @param main_loop the {@link Ags.Thread} implementing {@link Ags.MainLoop}
          */
         set_main_loop(main_loop: Thread): void;
         /**
          * Set task launcher of application context.
-         * @param task_launcher the #AgsTaskLauncher
+         * @param task_launcher the {@link Ags.TaskLauncher}
          */
         set_task_launcher(task_launcher: TaskLauncher): void;
         /**
          * Set thread pool of application context.
-         * @param thread_pool the #AgsThreadPool
+         * @param thread_pool the {@link Ags.ThreadPool}
          */
         set_thread_pool(thread_pool: ThreadPool): void;
         /**
          * Set workers of application context.
-         * @param worker the #GList-struct containing workers
+         * @param worker the {@link GLib.List}-struct containing workers
          */
         set_worker(worker: WorkerThread[]): void;
         /**
          * Get main loop of application context.
+         * @virtual
          */
         vfunc_get_main_loop(): Thread;
         /**
          * Get task launcher of application context.
+         * @virtual
          */
         vfunc_get_task_launcher(): TaskLauncher;
         /**
          * Get thread pool of application context.
+         * @virtual
          */
         vfunc_get_thread_pool(): ThreadPool;
         /**
          * Get workers of application context.
+         * @virtual
          */
         vfunc_get_worker(): WorkerThread[];
         /**
          * Set main loop of application context.
-         * @param main_loop the #AgsThread implementing #AgsMainLoop
+         * @param main_loop the {@link Ags.Thread} implementing {@link Ags.MainLoop}
+         * @virtual
          */
         vfunc_set_main_loop(main_loop: Thread): void;
         /**
          * Set task launcher of application context.
-         * @param task_launcher the #AgsTaskLauncher
+         * @param task_launcher the {@link Ags.TaskLauncher}
+         * @virtual
          */
         vfunc_set_task_launcher(task_launcher: TaskLauncher): void;
         /**
          * Set thread pool of application context.
-         * @param thread_pool the #AgsThreadPool
+         * @param thread_pool the {@link Ags.ThreadPool}
+         * @virtual
          */
         vfunc_set_thread_pool(thread_pool: ThreadPool): void;
         /**
          * Set workers of application context.
-         * @param worker the #GList-struct containing workers
+         * @param worker the {@link GLib.List}-struct containing workers
+         * @virtual
          */
         vfunc_set_worker(worker: WorkerThread[]): void;
         /**
@@ -8126,6 +9598,9 @@ export namespace Ags {
          * Connect the connectable.
          */
         connect(): void;
+        /**
+         * @param args
+         */
         connect(...args: never[]): any;
         /**
          * Disconnect the connectable.
@@ -8143,17 +9618,17 @@ export namespace Ags {
         disconnect_connection(connection: GObject.Object): void;
         /**
          * Get UUID of `connectable`.
-         * @returns the assigned #AgsUUID
+         * @returns the assigned {@link Ags.UUID}
          */
         get_uuid(): UUID;
         /**
          * Check the connectable to have resources.
-         * @returns %TRUE if @connectable can be added to registry, otherwise %FALSE.
+         * @returns `true` if `connectable` can be added to registry, otherwise `false`.
          */
         has_resource(): boolean;
         /**
          * Check if the `connectable` was connected.
-         * @returns %TRUE if is connected, otherwise %FALSE.
+         * @returns `true` if is connected, otherwise `false`.
          */
         is_connected(): boolean;
         /**
@@ -8177,90 +9652,107 @@ export namespace Ags {
         xml_parse(node: libxml2.Node): void;
         /**
          * Add connectable to registry.
+         * @virtual
          */
         vfunc_add_to_registry(): void;
         /**
          * Connect the connectable.
+         * @virtual
          */
         vfunc_connect(): void;
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @virtual
          */
         vfunc_connect_connection(connection: GObject.Object): void;
         /**
          * Disconnect the connectable.
+         * @virtual
          */
         vfunc_disconnect(): void;
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @virtual
          */
         vfunc_disconnect_connection(connection: GObject.Object): void;
         /**
          * Get UUID of `connectable`.
+         * @virtual
          */
         vfunc_get_uuid(): UUID;
         /**
          * Check the connectable to have resources.
+         * @virtual
          */
         vfunc_has_resource(): boolean;
         /**
          * Check if the `connectable` was connected.
+         * @virtual
          */
         vfunc_is_connected(): boolean;
         /**
          * Connect the connectable.
+         * @virtual
          */
         vfunc_is_ready(): boolean;
         /**
          * List resources as an XML element and return it.
+         * @virtual
          */
         vfunc_list_resource(): libxml2.Node;
         /**
          * Remove connectable from registry.
+         * @virtual
          */
         vfunc_remove_from_registry(): void;
         /**
          * Compose an XML element and return it.
+         * @virtual
          */
         vfunc_xml_compose(): libxml2.Node;
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
+         * @virtual
          */
         vfunc_xml_parse(node: libxml2.Node): void;
         /**
          * Get server.
-         * @returns the #GList-struct containing #AgsServer
+         * @returns the {@link GLib.List}-struct containing {@link Ags.Server}
          */
         get_server(): Server[];
         /**
          * Set registry.
-         * @param registry the #AgsRegistry
+         * @param registry the {@link Ags.Registry}
          */
         set_registry(registry: Registry): void;
         /**
          * Set server.
-         * @param server the #GList-struct containing #AgsServer
+         * @param server the {@link GLib.List}-struct containing {@link Ags.Server}
          */
         set_server(server: Server[]): void;
         /**
          * Get server.
+         * @virtual
          */
         vfunc_get_server(): Server[];
         /**
          * Check if is operating.
+         * @virtual
          */
         vfunc_is_operating(): boolean;
         /**
          * Set registry.
-         * @param registry the #AgsRegistry
+         * @param registry the {@link Ags.Registry}
+         * @virtual
          */
         vfunc_set_registry(registry: Registry): void;
         /**
          * Set server.
-         * @param server the #GList-struct containing #AgsServer
+         * @param server the {@link GLib.List}-struct containing {@link Ags.Server}
+         * @virtual
          */
         vfunc_set_server(server: Server[]): void;
         /**
@@ -8276,32 +9768,32 @@ export namespace Ags {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -8310,39 +9802,39 @@ export namespace Ags {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -8353,13 +9845,16 @@ export namespace Ags {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -8367,7 +9862,7 @@ export namespace Ags {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -8375,9 +9870,9 @@ export namespace Ags {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -8397,9 +9892,9 @@ export namespace Ags {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -8412,34 +9907,34 @@ export namespace Ags {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -8472,22 +9967,22 @@ export namespace Ags {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -8496,8 +9991,8 @@ export namespace Ags {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -8514,10 +10009,10 @@ export namespace Ags {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -8532,13 +10027,13 @@ export namespace Ags {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -8569,21 +10064,21 @@ export namespace Ags {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -8593,33 +10088,34 @@ export namespace Ags {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -8628,6 +10124,7 @@ export namespace Ags {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -8636,12 +10133,14 @@ export namespace Ags {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -8650,20 +10149,22 @@ export namespace Ags {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -8675,6 +10176,7 @@ export namespace Ags {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -8708,6 +10210,9 @@ export namespace Ags {
         interface ConstructorProps extends GObject.Object.ConstructorProps, Connectable.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ServerStatus extends GObject.Object implements Connectable {
         static $gtype: GObject.GType<ServerStatus>;
 
@@ -8738,18 +10243,18 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect_after<K extends keyof ServerStatus.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ServerStatus.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ServerStatus.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ServerStatus.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited methods
         /**
          * Add connectable to registry.
          */
@@ -8758,6 +10263,9 @@ export namespace Ags {
          * Connect the connectable.
          */
         connect(): void;
+        /**
+         * @param args
+         */
         connect(...args: never[]): any;
         /**
          * Disconnect the connectable.
@@ -8775,22 +10283,22 @@ export namespace Ags {
         disconnect_connection(connection: GObject.Object): void;
         /**
          * Get UUID of `connectable`.
-         * @returns the assigned #AgsUUID
+         * @returns the assigned {@link Ags.UUID}
          */
         get_uuid(): UUID;
         /**
          * Check the connectable to have resources.
-         * @returns %TRUE if @connectable can be added to registry, otherwise %FALSE.
+         * @returns `true` if `connectable` can be added to registry, otherwise `false`.
          */
         has_resource(): boolean;
         /**
          * Check if the `connectable` was connected.
-         * @returns %TRUE if is connected, otherwise %FALSE.
+         * @returns `true` if is connected, otherwise `false`.
          */
         is_connected(): boolean;
         /**
          * Connect the connectable.
-         * @returns %TRUE if is added to registry, otherwise %FALSE.
+         * @returns `true` if is added to registry, otherwise `false`.
          */
         is_ready(): boolean;
         /**
@@ -8814,57 +10322,70 @@ export namespace Ags {
         xml_parse(node: libxml2.Node): void;
         /**
          * Add connectable to registry.
+         * @virtual
          */
         vfunc_add_to_registry(): void;
         /**
          * Connect the connectable.
+         * @virtual
          */
         vfunc_connect(): void;
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @virtual
          */
         vfunc_connect_connection(connection: GObject.Object): void;
         /**
          * Disconnect the connectable.
+         * @virtual
          */
         vfunc_disconnect(): void;
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @virtual
          */
         vfunc_disconnect_connection(connection: GObject.Object): void;
         /**
          * Get UUID of `connectable`.
+         * @virtual
          */
         vfunc_get_uuid(): UUID;
         /**
          * Check the connectable to have resources.
+         * @virtual
          */
         vfunc_has_resource(): boolean;
         /**
          * Check if the `connectable` was connected.
+         * @virtual
          */
         vfunc_is_connected(): boolean;
         /**
          * Connect the connectable.
+         * @virtual
          */
         vfunc_is_ready(): boolean;
         /**
          * List resources as an XML element and return it.
+         * @virtual
          */
         vfunc_list_resource(): libxml2.Node;
         /**
          * Remove connectable from registry.
+         * @virtual
          */
         vfunc_remove_from_registry(): void;
         /**
          * Compose an XML element and return it.
+         * @virtual
          */
         vfunc_xml_compose(): libxml2.Node;
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
+         * @virtual
          */
         vfunc_xml_parse(node: libxml2.Node): void;
         /**
@@ -8880,32 +10401,32 @@ export namespace Ags {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -8914,39 +10435,39 @@ export namespace Ags {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -8957,13 +10478,16 @@ export namespace Ags {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -8971,7 +10495,7 @@ export namespace Ags {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -8979,9 +10503,9 @@ export namespace Ags {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -9001,9 +10525,9 @@ export namespace Ags {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -9016,34 +10540,34 @@ export namespace Ags {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -9076,22 +10600,22 @@ export namespace Ags {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -9100,8 +10624,8 @@ export namespace Ags {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -9118,10 +10642,10 @@ export namespace Ags {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -9136,13 +10660,13 @@ export namespace Ags {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -9173,21 +10697,21 @@ export namespace Ags {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -9197,33 +10721,34 @@ export namespace Ags {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -9232,6 +10757,7 @@ export namespace Ags {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -9240,12 +10766,14 @@ export namespace Ags {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -9254,20 +10782,22 @@ export namespace Ags {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -9279,6 +10809,7 @@ export namespace Ags {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -9326,6 +10857,9 @@ export namespace Ags {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SolverMatrix extends GObject.Object {
         static $gtype: GObject.GType<SolverMatrix>;
 
@@ -9333,37 +10867,49 @@ export namespace Ags {
 
         /**
          * The column count of the term table.
+         * @since 3.9.3
+         * @read-only
          */
         get column_count(): number;
         /**
          * The column count of the term table.
+         * @since 3.9.3
+         * @read-only
          */
         get columnCount(): number;
         /**
          * The row count of the term table.
+         * @since 3.9.3
+         * @read-only
          */
         get row_count(): number;
         /**
          * The row count of the term table.
+         * @since 3.9.3
+         * @read-only
          */
         get rowCount(): number;
         /**
          * The assigned solver path.
+         * @since 6.7.1
          */
         get solver_path(): any;
         set solver_path(val: any);
         /**
          * The assigned solver path.
+         * @since 6.7.1
          */
         get solverPath(): any;
         set solverPath(val: any);
         /**
          * The assigned source-function.
+         * @since 3.9.3
          */
         get source_function(): string;
         set source_function(val: string);
         /**
          * The assigned source-function.
+         * @since 3.9.3
          */
         get sourceFunction(): string;
         set sourceFunction(val: string);
@@ -9394,16 +10940,19 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SolverMatrix.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SolverMatrix.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SolverMatrix.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SolverMatrix.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SolverMatrix.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SolverMatrix.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -9432,7 +10981,7 @@ export namespace Ags {
         get_source_function(): string;
         /**
          * Insert `solver_vector` to `solver_matrix`.
-         * @param solver_vector the #AgsSolverVector
+         * @param solver_vector the {@link Ags.SolverVector}
          * @param position the position
          */
         insert_vector(solver_vector: SolverVector, position: number): void;
@@ -9443,7 +10992,7 @@ export namespace Ags {
         parse(source_function: string): void;
         /**
          * Remove `solver_vector` from `solver_matrix`.
-         * @param solver_vector the #AgsSolverVector
+         * @param solver_vector the {@link Ags.SolverVector}
          */
         remove_vector(solver_vector: SolverVector): void;
         /**
@@ -9487,6 +11036,9 @@ export namespace Ags {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SolverPolynomial extends GObject.Object {
         static $gtype: GObject.GType<SolverPolynomial>;
 
@@ -9494,38 +11046,49 @@ export namespace Ags {
 
         /**
          * The assigned coefficient.
+         * @since 3.2.0
          */
         get coefficient(): string;
         set coefficient(val: string);
         /**
          * Coefficient value.
+         * @since 3.2.0
          */
         get coefficient_value(): Complex;
         set coefficient_value(val: Complex);
         /**
          * Coefficient value.
+         * @since 3.2.0
          */
         get coefficientValue(): Complex;
         set coefficientValue(val: Complex);
         /**
          * The assigned exponent.
+         * @since 3.2.0
+         * @read-only
          */
         get exponent(): any;
         /**
          * Exponent value.
+         * @since 3.2.0
+         * @read-only
          */
         get exponent_value(): any;
         /**
          * Exponent value.
+         * @since 3.2.0
+         * @read-only
          */
         get exponentValue(): any;
         /**
          * The assigned polynomial.
+         * @since 3.2.0
          */
         get polynomial(): string;
         set polynomial(val: string);
         /**
          * The assigned symbol.
+         * @since 3.2.0
          */
         get symbol(): any;
         set symbol(val: any);
@@ -9554,16 +11117,19 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SolverPolynomial.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SolverPolynomial.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SolverPolynomial.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SolverPolynomial.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SolverPolynomial.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SolverPolynomial.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -9578,21 +11144,21 @@ export namespace Ags {
 
         /**
          * Perform addition of `polynomial_a` and `polynomial_b`. Both summands need to have the very same
-         * symbol and exponent, otherwise %NULL returned and error is appropriately set.
+         * symbol and exponent, otherwise `null` returned and error is appropriately set.
          * @param polynomial_b the second summand
-         * @returns the newly instantiated #AgsSolverPolynomial or %NULL
+         * @returns the newly instantiated {@link Ags.SolverPolynomial} or `null`
          */
         add(polynomial_b: SolverPolynomial): SolverPolynomial;
         /**
          * Perform division of `polynomial_a` and `polynomial_b`.
          * @param polynomial_b the divisor
-         * @returns the newly instantiated #AgsSolverPolynomial or %NULL
+         * @returns the newly instantiated {@link Ags.SolverPolynomial} or `null`
          */
         divide(polynomial_b: SolverPolynomial): SolverPolynomial;
         /**
          * Perform raising power of `polynomial_a` and `polynomial_b`.
          * @param polynomial_b the index of root
-         * @returns the newly instantiated #AgsSolverPolynomial or %NULL
+         * @returns the newly instantiated {@link Ags.SolverPolynomial} or `null`
          */
         extract_root(polynomial_b: SolverPolynomial): SolverPolynomial;
         /**
@@ -9623,7 +11189,7 @@ export namespace Ags {
         /**
          * Perform multiplication of `polynomial_a` and `polynomial_b`.
          * @param polynomial_b the second factor
-         * @returns the newly instantiated #AgsSolverPolynomial or %NULL
+         * @returns the newly instantiated {@link Ags.SolverPolynomial} or `null`
          */
         multiply(polynomial_b: SolverPolynomial): SolverPolynomial;
         /**
@@ -9634,7 +11200,7 @@ export namespace Ags {
         /**
          * Perform raising power of `polynomial_a` and `polynomial_b`.
          * @param polynomial_b the exponent
-         * @returns the newly instantiated #AgsSolverPolynomial or %NULL
+         * @returns the newly instantiated {@link Ags.SolverPolynomial} or `null`
          */
         raise_power(polynomial_b: SolverPolynomial): SolverPolynomial;
         /**
@@ -9654,9 +11220,9 @@ export namespace Ags {
         set_polynomial(polynomial: string): void;
         /**
          * Perform subtraction of `polynomial_a` and `polynomial_b`. Both minuend and subtrahend need to have the very same
-         * symbol and exponent, otherwise %NULL returned and error is appropriately set.
+         * symbol and exponent, otherwise `null` returned and error is appropriately set.
          * @param polynomial_b the subtrahend
-         * @returns the newly instantiated #AgsSolverPolynomial or %NULL
+         * @returns the newly instantiated {@link Ags.SolverPolynomial} or `null`
          */
         subtract(polynomial_b: SolverPolynomial): SolverPolynomial;
         /**
@@ -9682,6 +11248,9 @@ export namespace Ags {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class SolverVector extends GObject.Object {
         static $gtype: GObject.GType<SolverVector>;
 
@@ -9689,19 +11258,25 @@ export namespace Ags {
 
         /**
          * The polynomial count of the term table.
+         * @since 3.9.3
+         * @read-only
          */
         get polynomial_count(): number;
         /**
          * The polynomial count of the term table.
+         * @since 3.9.3
+         * @read-only
          */
         get polynomialCount(): number;
         /**
          * The assigned source-polynomial.
+         * @since 3.9.3
          */
         get source_polynomial(): string;
         set source_polynomial(val: string);
         /**
          * The assigned source-polynomial.
+         * @since 3.9.3
          */
         get sourcePolynomial(): string;
         set sourcePolynomial(val: string);
@@ -9732,16 +11307,19 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SolverVector.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SolverVector.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SolverVector.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SolverVector.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SolverVector.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SolverVector.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -9762,13 +11340,13 @@ export namespace Ags {
         get_source_polynomial(): string;
         /**
          * Insert `solver_polynomial` to `solver_vector`.
-         * @param solver_polynomial the #AgsSolverPolynomial
+         * @param solver_polynomial the {@link Ags.SolverPolynomial}
          * @param position the position
          */
         insert_polynomial(solver_polynomial: SolverPolynomial, position: number): void;
         /**
          * Remove `solver_polynomial` from `solver_vector`.
-         * @param solver_polynomial the #AgsSolverPolynomial
+         * @param solver_polynomial the {@link Ags.SolverPolynomial}
          */
         remove_polynomial(solver_polynomial: SolverPolynomial): void;
         /**
@@ -9781,7 +11359,19 @@ export namespace Ags {
     namespace Task {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * The ::failure signal is emited if ::launch fails
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             failure: (arg0: any | null) => void;
+            /**
+             * The ::launch signal is emited in a thread safe context
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             launch: () => void;
             'notify::task-launcher': (pspec: GObject.ParamSpec) => void;
         }
@@ -9794,18 +11384,23 @@ export namespace Ags {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Task extends GObject.Object {
         static $gtype: GObject.GType<Task>;
 
         // Properties
 
         /**
-         * The assigned #AgsTaskLauncher
+         * The assigned {@link Ags.TaskLauncher}
+         * @since 3.0.0
          */
         get task_launcher(): TaskLauncher;
         set task_launcher(val: TaskLauncher);
         /**
-         * The assigned #AgsTaskLauncher
+         * The assigned {@link Ags.TaskLauncher}
+         * @since 3.0.0
          */
         get taskLauncher(): TaskLauncher;
         set taskLauncher(val: TaskLauncher);
@@ -9835,16 +11430,19 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Task.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Task.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Task.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Task.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Task.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Task.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -9855,11 +11453,13 @@ export namespace Ags {
 
         /**
          * Signals failure of task.
-         * @param error is %NULL on success
+         * @param error is `null` on success
+         * @virtual
          */
         vfunc_failure(error: GLib.Error): void;
         /**
          * Intercept task.
+         * @virtual
          */
         vfunc_launch(): void;
 
@@ -9867,7 +11467,7 @@ export namespace Ags {
 
         /**
          * Signals failure of task.
-         * @param error is %NULL on success
+         * @param error is `null` on success
          */
         failure(error: GLib.Error): void;
         /**
@@ -9875,14 +11475,14 @@ export namespace Ags {
          */
         launch(): void;
         /**
-         * Enable a feature of #AgsTask.
+         * Enable a feature of {@link Ags.Task}.
          * @param flags see enum AgsTaskFlags
          */
         set_flags(flags: TaskFlags | null): void;
         /**
          * Test `flags` to be set on `task`.
          * @param flags the flags
-         * @returns %TRUE if flags are set, else %FALSE
+         * @returns `true` if flags are set, else `false`
          */
         test_flags(flags: TaskFlags | null): boolean;
         /**
@@ -9895,6 +11495,12 @@ export namespace Ags {
     namespace TaskCompletion {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * The ::complete signal is emited as a task was finished
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             complete: () => void;
             'notify::task': (pspec: GObject.ParamSpec) => void;
         }
@@ -9906,6 +11512,9 @@ export namespace Ags {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class TaskCompletion extends GObject.Object implements Connectable {
         static $gtype: GObject.GType<TaskCompletion>;
 
@@ -9913,6 +11522,7 @@ export namespace Ags {
 
         /**
          * The assigned task.
+         * @since 3.0.0
          */
         get task(): GObject.Object;
         set task(val: GObject.Object);
@@ -9944,11 +11554,13 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect_after<K extends keyof TaskCompletion.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TaskCompletion.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TaskCompletion.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TaskCompletion.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -9959,6 +11571,7 @@ export namespace Ags {
 
         /**
          * Emit ::complete signal
+         * @virtual
          */
         vfunc_complete(): void;
 
@@ -9969,14 +11582,14 @@ export namespace Ags {
          */
         complete(): void;
         /**
-         * Enable a feature of #AgsTaskCompletion.
+         * Enable a feature of {@link Ags.TaskCompletion}.
          * @param flags see enum AgsTaskCompletionFlags
          */
         set_flags(flags: TaskCompletionFlags | null): void;
         /**
          * Test `flags` to be set on `task_completion`.
          * @param flags the flags
-         * @returns %TRUE if flags are set, else %FALSE
+         * @returns `true` if flags are set, else `false`
          */
         test_flags(flags: TaskCompletionFlags | null): boolean;
         /**
@@ -9984,8 +11597,6 @@ export namespace Ags {
          * @param flags see enum AgsTaskCompletionFlags
          */
         unset_flags(flags: TaskCompletionFlags | null): void;
-
-        // Inherited methods
         /**
          * Add connectable to registry.
          */
@@ -9994,6 +11605,9 @@ export namespace Ags {
          * Connect the connectable.
          */
         connect(): void;
+        /**
+         * @param args
+         */
         connect(...args: never[]): any;
         /**
          * Disconnect the connectable.
@@ -10011,22 +11625,22 @@ export namespace Ags {
         disconnect_connection(connection: GObject.Object): void;
         /**
          * Get UUID of `connectable`.
-         * @returns the assigned #AgsUUID
+         * @returns the assigned {@link Ags.UUID}
          */
         get_uuid(): UUID;
         /**
          * Check the connectable to have resources.
-         * @returns %TRUE if @connectable can be added to registry, otherwise %FALSE.
+         * @returns `true` if `connectable` can be added to registry, otherwise `false`.
          */
         has_resource(): boolean;
         /**
          * Check if the `connectable` was connected.
-         * @returns %TRUE if is connected, otherwise %FALSE.
+         * @returns `true` if is connected, otherwise `false`.
          */
         is_connected(): boolean;
         /**
          * Connect the connectable.
-         * @returns %TRUE if is added to registry, otherwise %FALSE.
+         * @returns `true` if is added to registry, otherwise `false`.
          */
         is_ready(): boolean;
         /**
@@ -10050,57 +11664,70 @@ export namespace Ags {
         xml_parse(node: libxml2.Node): void;
         /**
          * Add connectable to registry.
+         * @virtual
          */
         vfunc_add_to_registry(): void;
         /**
          * Connect the connectable.
+         * @virtual
          */
         vfunc_connect(): void;
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @virtual
          */
         vfunc_connect_connection(connection: GObject.Object): void;
         /**
          * Disconnect the connectable.
+         * @virtual
          */
         vfunc_disconnect(): void;
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @virtual
          */
         vfunc_disconnect_connection(connection: GObject.Object): void;
         /**
          * Get UUID of `connectable`.
+         * @virtual
          */
         vfunc_get_uuid(): UUID;
         /**
          * Check the connectable to have resources.
+         * @virtual
          */
         vfunc_has_resource(): boolean;
         /**
          * Check if the `connectable` was connected.
+         * @virtual
          */
         vfunc_is_connected(): boolean;
         /**
          * Connect the connectable.
+         * @virtual
          */
         vfunc_is_ready(): boolean;
         /**
          * List resources as an XML element and return it.
+         * @virtual
          */
         vfunc_list_resource(): libxml2.Node;
         /**
          * Remove connectable from registry.
+         * @virtual
          */
         vfunc_remove_from_registry(): void;
         /**
          * Compose an XML element and return it.
+         * @virtual
          */
         vfunc_xml_compose(): libxml2.Node;
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
+         * @virtual
          */
         vfunc_xml_parse(node: libxml2.Node): void;
         /**
@@ -10116,32 +11743,32 @@ export namespace Ags {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -10150,39 +11777,39 @@ export namespace Ags {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -10193,13 +11820,16 @@ export namespace Ags {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -10207,7 +11837,7 @@ export namespace Ags {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -10215,9 +11845,9 @@ export namespace Ags {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -10237,9 +11867,9 @@ export namespace Ags {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -10252,34 +11882,34 @@ export namespace Ags {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -10312,22 +11942,22 @@ export namespace Ags {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -10336,8 +11966,8 @@ export namespace Ags {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -10354,10 +11984,10 @@ export namespace Ags {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -10372,13 +12002,13 @@ export namespace Ags {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -10409,21 +12039,21 @@ export namespace Ags {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -10433,33 +12063,34 @@ export namespace Ags {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -10468,6 +12099,7 @@ export namespace Ags {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -10476,12 +12108,14 @@ export namespace Ags {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -10490,20 +12124,22 @@ export namespace Ags {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -10515,6 +12151,7 @@ export namespace Ags {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -10542,6 +12179,12 @@ export namespace Ags {
     namespace TaskLauncher {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * The ::run signal is invoked to run {@link Ags.TaskLauncher.task}
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             run: () => void;
         }
 
@@ -10550,6 +12193,9 @@ export namespace Ags {
         interface ConstructorProps extends GObject.Object.ConstructorProps, Connectable.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class TaskLauncher extends GObject.Object implements Connectable {
         static $gtype: GObject.GType<TaskLauncher>;
 
@@ -10581,11 +12227,13 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect_after<K extends keyof TaskLauncher.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TaskLauncher.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TaskLauncher.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TaskLauncher.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -10596,6 +12244,7 @@ export namespace Ags {
 
         /**
          * Run tasks.
+         * @virtual
          */
         vfunc_run(): void;
 
@@ -10603,27 +12252,27 @@ export namespace Ags {
 
         /**
          * Add `cyclic_task` to `task_launcher`.
-         * @param cyclic_task the cyclic #AgsTask
+         * @param cyclic_task the cyclic {@link Ags.Task}
          */
         add_cyclic_task(cyclic_task: Task): void;
         /**
          * Add `task` to `task_launcher`.
-         * @param task the #AgsTask
+         * @param task the {@link Ags.Task}
          */
         add_task(task: Task): void;
         /**
          * Add all `list` to `task_launcher`.
-         * @param list the #GList-struct containing #AgsTask
+         * @param list the {@link GLib.List}-struct containing {@link Ags.Task}
          */
         add_task_all(list: Task[]): void;
         /**
          * Attach `task_launcher` to `main_context`.
-         * @param main_context the #GMainContext-struct
+         * @param main_context the {@link GLib.MainContext}-struct
          */
         attach(main_context: GLib.MainContext): void;
         /**
          * Remove `cyclic_task` from `task_launcher`.
-         * @param cyclic_task the cyclic #AgsTask
+         * @param cyclic_task the cyclic {@link Ags.Task}
          */
         remove_cyclic_task(cyclic_task: Task): void;
         /**
@@ -10634,8 +12283,6 @@ export namespace Ags {
          * Sync run tasks.
          */
         sync_run(): void;
-
-        // Inherited methods
         /**
          * Add connectable to registry.
          */
@@ -10644,6 +12291,9 @@ export namespace Ags {
          * Connect the connectable.
          */
         connect(): void;
+        /**
+         * @param args
+         */
         connect(...args: never[]): any;
         /**
          * Disconnect the connectable.
@@ -10661,22 +12311,22 @@ export namespace Ags {
         disconnect_connection(connection: GObject.Object): void;
         /**
          * Get UUID of `connectable`.
-         * @returns the assigned #AgsUUID
+         * @returns the assigned {@link Ags.UUID}
          */
         get_uuid(): UUID;
         /**
          * Check the connectable to have resources.
-         * @returns %TRUE if @connectable can be added to registry, otherwise %FALSE.
+         * @returns `true` if `connectable` can be added to registry, otherwise `false`.
          */
         has_resource(): boolean;
         /**
          * Check if the `connectable` was connected.
-         * @returns %TRUE if is connected, otherwise %FALSE.
+         * @returns `true` if is connected, otherwise `false`.
          */
         is_connected(): boolean;
         /**
          * Connect the connectable.
-         * @returns %TRUE if is added to registry, otherwise %FALSE.
+         * @returns `true` if is added to registry, otherwise `false`.
          */
         is_ready(): boolean;
         /**
@@ -10700,57 +12350,70 @@ export namespace Ags {
         xml_parse(node: libxml2.Node): void;
         /**
          * Add connectable to registry.
+         * @virtual
          */
         vfunc_add_to_registry(): void;
         /**
          * Connect the connectable.
+         * @virtual
          */
         vfunc_connect(): void;
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @virtual
          */
         vfunc_connect_connection(connection: GObject.Object): void;
         /**
          * Disconnect the connectable.
+         * @virtual
          */
         vfunc_disconnect(): void;
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @virtual
          */
         vfunc_disconnect_connection(connection: GObject.Object): void;
         /**
          * Get UUID of `connectable`.
+         * @virtual
          */
         vfunc_get_uuid(): UUID;
         /**
          * Check the connectable to have resources.
+         * @virtual
          */
         vfunc_has_resource(): boolean;
         /**
          * Check if the `connectable` was connected.
+         * @virtual
          */
         vfunc_is_connected(): boolean;
         /**
          * Connect the connectable.
+         * @virtual
          */
         vfunc_is_ready(): boolean;
         /**
          * List resources as an XML element and return it.
+         * @virtual
          */
         vfunc_list_resource(): libxml2.Node;
         /**
          * Remove connectable from registry.
+         * @virtual
          */
         vfunc_remove_from_registry(): void;
         /**
          * Compose an XML element and return it.
+         * @virtual
          */
         vfunc_xml_compose(): libxml2.Node;
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
+         * @virtual
          */
         vfunc_xml_parse(node: libxml2.Node): void;
         /**
@@ -10766,32 +12429,32 @@ export namespace Ags {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -10800,39 +12463,39 @@ export namespace Ags {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -10843,13 +12506,16 @@ export namespace Ags {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -10857,7 +12523,7 @@ export namespace Ags {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -10865,9 +12531,9 @@ export namespace Ags {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -10887,9 +12553,9 @@ export namespace Ags {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -10902,34 +12568,34 @@ export namespace Ags {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -10962,22 +12628,22 @@ export namespace Ags {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -10986,8 +12652,8 @@ export namespace Ags {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -11004,10 +12670,10 @@ export namespace Ags {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -11022,13 +12688,13 @@ export namespace Ags {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -11059,21 +12725,21 @@ export namespace Ags {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -11083,33 +12749,34 @@ export namespace Ags {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -11118,6 +12785,7 @@ export namespace Ags {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -11126,12 +12794,14 @@ export namespace Ags {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -11140,20 +12810,22 @@ export namespace Ags {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -11165,6 +12837,7 @@ export namespace Ags {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -11192,9 +12865,33 @@ export namespace Ags {
     namespace Thread {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * The ::clock() signal is invoked every thread tic.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             clock: () => number;
+            /**
+             * The ::run() signal is invoked during run loop.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             run: () => void;
+            /**
+             * The ::start() signal is invoked as thread started.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             start: () => void;
+            /**
+             * The ::stop() signal is invoked as `thread` stopped.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             stop: () => void;
             'notify::delay': (pspec: GObject.ParamSpec) => void;
             'notify::frequency': (pspec: GObject.ParamSpec) => void;
@@ -11211,6 +12908,9 @@ export namespace Ags {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Thread extends GObject.Object implements Connectable {
         static $gtype: GObject.GType<Thread>;
 
@@ -11218,21 +12918,25 @@ export namespace Ags {
 
         /**
          * The delay until next tic.
+         * @since 3.0.0
          */
         get delay(): number;
         set delay(val: number);
         /**
          * The frequency to run at in Hz.
+         * @since 3.0.0
          */
         get frequency(): number;
         set frequency(val: number);
         /**
          * The max-frequency to run at in Hz.
+         * @since 3.0.0
          */
         get max_precision(): number;
         set max_precision(val: number);
         /**
          * The max-frequency to run at in Hz.
+         * @since 3.0.0
          */
         get maxPrecision(): number;
         set maxPrecision(val: number);
@@ -11270,11 +12974,13 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect_after<K extends keyof Thread.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Thread.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Thread.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Thread.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -11296,19 +13002,23 @@ export namespace Ags {
 
         /**
          * Clock the thread.
+         * @virtual
          */
         vfunc_clock(): number;
         /**
          * Only for internal use of ags_thread_loop but you may want to set the your very own
          * class function namely your thread's routine.
+         * @virtual
          */
         vfunc_run(): void;
         /**
          * Start the thread.
+         * @virtual
          */
         vfunc_start(): void;
         /**
          * Stop the threads loop by unsetting AGS_THREAD_STATUS_RUNNING flag.
+         * @virtual
          */
         vfunc_stop(): void;
 
@@ -11327,18 +13037,18 @@ export namespace Ags {
          */
         add_child_extended(child: Thread, no_start: boolean, no_wait: boolean): void;
         /**
-         * Add `child` to `thread'`s start queue.
-         * @param child the child #AgsThread to start
+         * Add `child` to `thread`'s start queue.
+         * @param child the child {@link Ags.Thread} to start
          */
         add_start_queue(child: Thread): void;
         /**
-         * Add `child` to `thread'`s start queue.
-         * @param child the children as #GList-struct containing #AgsThread to start
+         * Add `child` to `thread`'s start queue.
+         * @param child the children as {@link GLib.List}-struct containing {@link Ags.Thread} to start
          */
         add_start_queue_all(child: Thread[]): void;
         /**
          * Get children thread.
-         * @returns the children #AgsThread
+         * @returns the children {@link Ags.Thread}
          */
         children(): Thread;
         /**
@@ -11357,13 +13067,13 @@ export namespace Ags {
         /**
          * Find `gtype` as descendant of `thread`. If its a descendant thread,
          * the ref-count is increased.
-         * @param gtype the #GType-struct
-         * @returns the matching #AgsThread
+         * @param gtype the {@link GObject.GType}-struct
+         * @returns the matching {@link Ags.Thread}
          */
         find_type(gtype: GObject.GType): Thread;
         /**
          * Retrieve first sibling.
-         * @returns the very first #AgsThread within same tree level
+         * @returns the very first {@link Ags.Thread} within same tree level
          */
         first(): Thread;
         /**
@@ -11388,14 +13098,20 @@ export namespace Ags {
         get_max_precision(): number;
         /**
          * Retrieve toplevel thread.
-         * @returns the toplevevel #AgsThread
+         * @returns the toplevevel {@link Ags.Thread}
          */
         get_toplevel(): Thread;
+        /**
+         * @param current_sync_tic
+         */
         is_current_ready(current_sync_tic: number): boolean;
+        /**
+         * @param current_sync_tic
+         */
         is_tree_ready_recursive(current_sync_tic: number): boolean;
         /**
          * Retrieve last sibling.
-         * @returns the very last @AgsThread within same tree level
+         * @returns the very last `AgsThread` within same tree level
          */
         last(): Thread;
         /**
@@ -11404,19 +13120,25 @@ export namespace Ags {
         lock(): void;
         /**
          * Get next thread.
-         * @returns the next #AgsThread
+         * @returns the next {@link Ags.Thread}
          */
         next(): Thread;
         /**
          * Get parent thread.
-         * @returns the parent #AgsThread
+         * @returns the parent {@link Ags.Thread}
          */
         parent(): Thread;
+        /**
+         * @param current_sync_tic
+         */
         prepare_current_sync(current_sync_tic: number): void;
+        /**
+         * @param current_sync_tic
+         */
         prepare_tree_sync_recursive(current_sync_tic: number): void;
         /**
          * Get prev thread.
-         * @returns the prev #AgsThread
+         * @returns the prev {@link Ags.Thread}
          */
         prev(): Thread;
         /**
@@ -11429,6 +13151,9 @@ export namespace Ags {
          * class function namely your thread's routine.
          */
         run(): void;
+        /**
+         * @param current_sync_tic
+         */
         set_current_sync(current_sync_tic: number): void;
         /**
          * Set current sync-tic.
@@ -11465,6 +13190,9 @@ export namespace Ags {
          * @param sync_tic_flags the sync-tic flags
          */
         set_sync_tic_flags(sync_tic_flags: ThreadSyncTicFlags | null): void;
+        /**
+         * @param current_sync_tic
+         */
         set_tree_sync_recursive(current_sync_tic: number): void;
         /**
          * Start the thread.
@@ -11477,26 +13205,26 @@ export namespace Ags {
         /**
          * Test `flags` to be set on `thread`.
          * @param flags the flags
-         * @returns %TRUE if flags are set, else %FALSE
+         * @returns `true` if flags are set, else `false`
          */
         test_flags(flags: ThreadFlags | null): boolean;
         /**
          * Test `status_flags` to be set on `thread`.
          * @param status_flags the status flags
-         * @returns %TRUE if status flags are set, else %FALSE
+         * @returns `true` if status flags are set, else `false`
          */
         test_status_flags(status_flags: ThreadStatusFlags | null): boolean;
         /**
          * Test `sync_tic_flags` to be set on `thread`.
          * @param sync_tic_flags the sync-tic flags
-         * @returns %TRUE if sync-tic flags are set, else %FALSE
+         * @returns `true` if sync-tic flags are set, else `false`
          */
         test_sync_tic_flags(sync_tic_flags: ThreadSyncTicFlags | null): boolean;
         /**
          * Locks the threads own mutex if available and sets the
-         * appropriate flag and returning %TRUE. Otherwise return %FALSE
+         * appropriate flag and returning `true`. Otherwise return `false`
          * without lock.
-         * @returns %TRUE on success, otherwise %FALSE
+         * @returns `true` on success, otherwise `false`
          */
         trylock(): boolean;
         /**
@@ -11518,8 +13246,6 @@ export namespace Ags {
          * @param sync_tic_flags the sync-tic flags
          */
         unset_sync_tic_flags(sync_tic_flags: ThreadSyncTicFlags | null): void;
-
-        // Inherited methods
         /**
          * Add connectable to registry.
          */
@@ -11528,6 +13254,9 @@ export namespace Ags {
          * Connect the connectable.
          */
         connect(): void;
+        /**
+         * @param args
+         */
         connect(...args: never[]): any;
         /**
          * Disconnect the connectable.
@@ -11545,22 +13274,22 @@ export namespace Ags {
         disconnect_connection(connection: GObject.Object): void;
         /**
          * Get UUID of `connectable`.
-         * @returns the assigned #AgsUUID
+         * @returns the assigned {@link Ags.UUID}
          */
         get_uuid(): UUID;
         /**
          * Check the connectable to have resources.
-         * @returns %TRUE if @connectable can be added to registry, otherwise %FALSE.
+         * @returns `true` if `connectable` can be added to registry, otherwise `false`.
          */
         has_resource(): boolean;
         /**
          * Check if the `connectable` was connected.
-         * @returns %TRUE if is connected, otherwise %FALSE.
+         * @returns `true` if is connected, otherwise `false`.
          */
         is_connected(): boolean;
         /**
          * Connect the connectable.
-         * @returns %TRUE if is added to registry, otherwise %FALSE.
+         * @returns `true` if is added to registry, otherwise `false`.
          */
         is_ready(): boolean;
         /**
@@ -11584,57 +13313,70 @@ export namespace Ags {
         xml_parse(node: libxml2.Node): void;
         /**
          * Add connectable to registry.
+         * @virtual
          */
         vfunc_add_to_registry(): void;
         /**
          * Connect the connectable.
+         * @virtual
          */
         vfunc_connect(): void;
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @virtual
          */
         vfunc_connect_connection(connection: GObject.Object): void;
         /**
          * Disconnect the connectable.
+         * @virtual
          */
         vfunc_disconnect(): void;
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @virtual
          */
         vfunc_disconnect_connection(connection: GObject.Object): void;
         /**
          * Get UUID of `connectable`.
+         * @virtual
          */
         vfunc_get_uuid(): UUID;
         /**
          * Check the connectable to have resources.
+         * @virtual
          */
         vfunc_has_resource(): boolean;
         /**
          * Check if the `connectable` was connected.
+         * @virtual
          */
         vfunc_is_connected(): boolean;
         /**
          * Connect the connectable.
+         * @virtual
          */
         vfunc_is_ready(): boolean;
         /**
          * List resources as an XML element and return it.
+         * @virtual
          */
         vfunc_list_resource(): libxml2.Node;
         /**
          * Remove connectable from registry.
+         * @virtual
          */
         vfunc_remove_from_registry(): void;
         /**
          * Compose an XML element and return it.
+         * @virtual
          */
         vfunc_xml_compose(): libxml2.Node;
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
+         * @virtual
          */
         vfunc_xml_parse(node: libxml2.Node): void;
         /**
@@ -11650,32 +13392,32 @@ export namespace Ags {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -11684,39 +13426,39 @@ export namespace Ags {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -11727,13 +13469,16 @@ export namespace Ags {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -11741,7 +13486,7 @@ export namespace Ags {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -11749,9 +13494,9 @@ export namespace Ags {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -11771,9 +13516,9 @@ export namespace Ags {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -11786,34 +13531,34 @@ export namespace Ags {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -11846,22 +13591,22 @@ export namespace Ags {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -11870,8 +13615,8 @@ export namespace Ags {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -11888,10 +13633,10 @@ export namespace Ags {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -11906,13 +13651,13 @@ export namespace Ags {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -11943,21 +13688,21 @@ export namespace Ags {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -11967,33 +13712,34 @@ export namespace Ags {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -12002,6 +13748,7 @@ export namespace Ags {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -12010,12 +13757,14 @@ export namespace Ags {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -12024,20 +13773,22 @@ export namespace Ags {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -12049,6 +13800,7 @@ export namespace Ags {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -12095,6 +13847,9 @@ export namespace Ags {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ThreadApplicationContext extends ApplicationContext implements ConcurrencyProvider, Connectable {
         static $gtype: GObject.GType<ThreadApplicationContext>;
 
@@ -12102,11 +13857,13 @@ export namespace Ags {
 
         /**
          * The assigned thread pool.
+         * @since 3.0.0
          */
         get thread_pool(): ThreadPool;
         set thread_pool(val: ThreadPool);
         /**
          * The assigned thread pool.
+         * @since 3.0.0
          */
         get threadPool(): ThreadPool;
         set threadPool(val: ThreadPool);
@@ -12138,11 +13895,13 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect_after<K extends keyof ThreadApplicationContext.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ThreadApplicationContext.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ThreadApplicationContext.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ThreadApplicationContext.SignalSignatures[K]> extends [any, ...infer Q]
@@ -12153,83 +13912,92 @@ export namespace Ags {
 
         // Static methods
 
+        /**
+         * @param application_context
+         */
         static register_types(application_context: ApplicationContext): void;
-
-        // Inherited methods
         /**
          * Get main loop of application context.
-         * @returns the #AgsThread implementing #AgsMainLoop
+         * @returns the {@link Ags.Thread} implementing {@link Ags.MainLoop}
          */
         get_main_loop(): Thread;
         /**
          * Get task launcher of application context.
-         * @returns the #AgsTaskLauncher
+         * @returns the {@link Ags.TaskLauncher}
          */
         get_task_launcher(): TaskLauncher;
         /**
          * Get thread pool of application context.
-         * @returns the #AgsThreadPool
+         * @returns the {@link Ags.ThreadPool}
          */
         get_thread_pool(): ThreadPool;
         /**
          * Get workers of application context.
-         * @returns the #GList-struct containing workers
+         * @returns the {@link GLib.List}-struct containing workers
          */
         get_worker(): WorkerThread[];
         /**
          * Set main loop of application context.
-         * @param main_loop the #AgsThread implementing #AgsMainLoop
+         * @param main_loop the {@link Ags.Thread} implementing {@link Ags.MainLoop}
          */
         set_main_loop(main_loop: Thread): void;
         /**
          * Set task launcher of application context.
-         * @param task_launcher the #AgsTaskLauncher
+         * @param task_launcher the {@link Ags.TaskLauncher}
          */
         set_task_launcher(task_launcher: TaskLauncher): void;
         /**
          * Set thread pool of application context.
-         * @param thread_pool the #AgsThreadPool
+         * @param thread_pool the {@link Ags.ThreadPool}
          */
         set_thread_pool(thread_pool: ThreadPool): void;
         /**
          * Set workers of application context.
-         * @param worker the #GList-struct containing workers
+         * @param worker the {@link GLib.List}-struct containing workers
          */
         set_worker(worker: WorkerThread[]): void;
         /**
          * Get main loop of application context.
+         * @virtual
          */
         vfunc_get_main_loop(): Thread;
         /**
          * Get task launcher of application context.
+         * @virtual
          */
         vfunc_get_task_launcher(): TaskLauncher;
         /**
          * Get thread pool of application context.
+         * @virtual
          */
         vfunc_get_thread_pool(): ThreadPool;
         /**
          * Get workers of application context.
+         * @virtual
          */
         vfunc_get_worker(): WorkerThread[];
         /**
          * Set main loop of application context.
-         * @param main_loop the #AgsThread implementing #AgsMainLoop
+         * @param main_loop the {@link Ags.Thread} implementing {@link Ags.MainLoop}
+         * @virtual
          */
         vfunc_set_main_loop(main_loop: Thread): void;
         /**
          * Set task launcher of application context.
-         * @param task_launcher the #AgsTaskLauncher
+         * @param task_launcher the {@link Ags.TaskLauncher}
+         * @virtual
          */
         vfunc_set_task_launcher(task_launcher: TaskLauncher): void;
         /**
          * Set thread pool of application context.
-         * @param thread_pool the #AgsThreadPool
+         * @param thread_pool the {@link Ags.ThreadPool}
+         * @virtual
          */
         vfunc_set_thread_pool(thread_pool: ThreadPool): void;
         /**
          * Set workers of application context.
-         * @param worker the #GList-struct containing workers
+         * @param worker the {@link GLib.List}-struct containing workers
+         * @virtual
          */
         vfunc_set_worker(worker: WorkerThread[]): void;
         /**
@@ -12240,6 +14008,9 @@ export namespace Ags {
          * Connect the connectable.
          */
         connect(): void;
+        /**
+         * @param args
+         */
         connect(...args: never[]): any;
         /**
          * Disconnect the connectable.
@@ -12257,17 +14028,17 @@ export namespace Ags {
         disconnect_connection(connection: GObject.Object): void;
         /**
          * Get UUID of `connectable`.
-         * @returns the assigned #AgsUUID
+         * @returns the assigned {@link Ags.UUID}
          */
         get_uuid(): UUID;
         /**
          * Check the connectable to have resources.
-         * @returns %TRUE if @connectable can be added to registry, otherwise %FALSE.
+         * @returns `true` if `connectable` can be added to registry, otherwise `false`.
          */
         has_resource(): boolean;
         /**
          * Check if the `connectable` was connected.
-         * @returns %TRUE if is connected, otherwise %FALSE.
+         * @returns `true` if is connected, otherwise `false`.
          */
         is_connected(): boolean;
         /**
@@ -12291,57 +14062,70 @@ export namespace Ags {
         xml_parse(node: libxml2.Node): void;
         /**
          * Add connectable to registry.
+         * @virtual
          */
         vfunc_add_to_registry(): void;
         /**
          * Connect the connectable.
+         * @virtual
          */
         vfunc_connect(): void;
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @virtual
          */
         vfunc_connect_connection(connection: GObject.Object): void;
         /**
          * Disconnect the connectable.
+         * @virtual
          */
         vfunc_disconnect(): void;
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @virtual
          */
         vfunc_disconnect_connection(connection: GObject.Object): void;
         /**
          * Get UUID of `connectable`.
+         * @virtual
          */
         vfunc_get_uuid(): UUID;
         /**
          * Check the connectable to have resources.
+         * @virtual
          */
         vfunc_has_resource(): boolean;
         /**
          * Check if the `connectable` was connected.
+         * @virtual
          */
         vfunc_is_connected(): boolean;
         /**
          * Connect the connectable.
+         * @virtual
          */
         vfunc_is_ready(): boolean;
         /**
          * List resources as an XML element and return it.
+         * @virtual
          */
         vfunc_list_resource(): libxml2.Node;
         /**
          * Remove connectable from registry.
+         * @virtual
          */
         vfunc_remove_from_registry(): void;
         /**
          * Compose an XML element and return it.
+         * @virtual
          */
         vfunc_xml_compose(): libxml2.Node;
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
+         * @virtual
          */
         vfunc_xml_parse(node: libxml2.Node): void;
         /**
@@ -12357,32 +14141,32 @@ export namespace Ags {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -12391,39 +14175,39 @@ export namespace Ags {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -12434,13 +14218,16 @@ export namespace Ags {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -12448,7 +14235,7 @@ export namespace Ags {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -12456,9 +14243,9 @@ export namespace Ags {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -12478,9 +14265,9 @@ export namespace Ags {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -12493,34 +14280,34 @@ export namespace Ags {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -12553,22 +14340,22 @@ export namespace Ags {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -12577,8 +14364,8 @@ export namespace Ags {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -12595,10 +14382,10 @@ export namespace Ags {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -12613,13 +14400,13 @@ export namespace Ags {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -12650,21 +14437,21 @@ export namespace Ags {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -12674,33 +14461,34 @@ export namespace Ags {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -12709,6 +14497,7 @@ export namespace Ags {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -12717,12 +14506,14 @@ export namespace Ags {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -12731,20 +14522,22 @@ export namespace Ags {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -12756,6 +14549,7 @@ export namespace Ags {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -12783,6 +14577,12 @@ export namespace Ags {
     namespace ThreadPool {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * The ::start() signal is invoked in order to started the pool.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             start: () => void;
             'notify::max-threads': (pspec: GObject.ParamSpec) => void;
             'notify::max-unused-threads': (pspec: GObject.ParamSpec) => void;
@@ -12798,6 +14598,9 @@ export namespace Ags {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ThreadPool extends GObject.Object {
         static $gtype: GObject.GType<ThreadPool>;
 
@@ -12805,21 +14608,25 @@ export namespace Ags {
 
         /**
          * The maximum amount of threads available.
+         * @since 3.0.0
          */
         get max_threads(): number;
         set max_threads(val: number);
         /**
          * The maximum amount of threads available.
+         * @since 3.0.0
          */
         get maxThreads(): number;
         set maxThreads(val: number);
         /**
          * The maximum amount of unused threads available.
+         * @since 3.0.0
          */
         get max_unused_threads(): number;
         set max_unused_threads(val: number);
         /**
          * The maximum amount of unused threads available.
+         * @since 3.0.0
          */
         get maxUnusedThreads(): number;
         set maxUnusedThreads(val: number);
@@ -12852,16 +14659,19 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ThreadPool.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ThreadPool.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ThreadPool.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ThreadPool.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ThreadPool.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ThreadPool.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -12872,15 +14682,16 @@ export namespace Ags {
 
         /**
          * Start the thread pool.
+         * @virtual
          */
         vfunc_start(): void;
 
         // Methods
 
         /**
-         * Pull a previously instantiated #AgsReturnableThread. Note this
+         * Pull a previously instantiated {@link Ags.ReturnableThread}. Note this
          * function may block until a new thread is available.
-         * @returns a new #AgsThread
+         * @returns a new {@link Ags.Thread}
          */
         pull(): Thread;
         /**
@@ -12898,6 +14709,9 @@ export namespace Ags {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Timestamp extends GObject.Object {
         static $gtype: GObject.GType<Timestamp>;
 
@@ -12927,16 +14741,19 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Timestamp.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Timestamp.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Timestamp.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Timestamp.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Timestamp.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Timestamp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -12973,7 +14790,7 @@ export namespace Ags {
         /**
          * Test `flags` to be set.
          * @param flags the flags
-         * @returns if @flags set returning %TRUE otherwise %FALSE
+         * @returns if `flags` set returning `true` otherwise `false`
          */
         test_flags(flags: TimestampFlags | null): boolean;
         /**
@@ -12999,6 +14816,9 @@ export namespace Ags {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Turtle extends GObject.Object {
         static $gtype: GObject.GType<Turtle>;
 
@@ -13006,16 +14826,19 @@ export namespace Ags {
 
         /**
          * The assigned filename.
+         * @since 3.0.0
          */
         get filename(): string;
         set filename(val: string);
         /**
          * The assigned xml-doc.
+         * @since 3.0.0
          */
         get xml_doc(): any;
         set xml_doc(val: any);
         /**
          * The assigned xml-doc.
+         * @since 3.0.0
          */
         get xmlDoc(): any;
         set xmlDoc(val: any);
@@ -13044,16 +14867,19 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Turtle.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Turtle.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Turtle.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Turtle.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Turtle.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Turtle.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -13065,332 +14891,338 @@ export namespace Ags {
         /**
          * Match anon.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static match_anon(offset: string, end_ptr: string): [boolean, string, string];
         /**
          * Match blank node label.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static match_blank_node_label(offset: string, end_ptr: string): [boolean, string, string];
         /**
          * Match boolean.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static match_boolean(offset: string, end_ptr: string): [boolean, string, string];
         /**
          * Match decimal.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static match_decimal(offset: string, end_ptr: string): [boolean, string, string];
         /**
          * Match double.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static match_double(offset: string, end_ptr: string): [boolean, string, string];
         /**
          * Match echar.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static match_echar(offset: string, end_ptr: string): [boolean, string, string];
         /**
          * Match exponent.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static match_exponent(offset: string, end_ptr: string): [boolean, string, string];
         /**
          * Match hex.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static match_hex(offset: string, end_ptr: string): [boolean, string, string];
         /**
          * Match integer.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static match_integer(offset: string, end_ptr: string): [boolean, string, string];
         /**
          * Match iriref.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static match_iriref(offset: string, end_ptr: string): [boolean, string, string];
         /**
          * Match langtag.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static match_langtag(offset: string, end_ptr: string): [boolean, string, string];
         /**
          * Match percent.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static match_percent(offset: string, end_ptr: string): [boolean, string, string];
         /**
          * Match plx.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static match_plx(offset: string, end_ptr: string): [boolean, string, string];
         /**
          * Match pn chars.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static match_pn_chars(offset: string, end_ptr: string): [boolean, string, string];
         /**
          * Match pn chars base.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static match_pn_chars_base(offset: string, end_ptr: string): [boolean, string, string];
         /**
          * Match pn chars u.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static match_pn_chars_u(offset: string, end_ptr: string): [boolean, string, string];
         /**
          * Match uchar.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static match_pn_local(offset: string, end_ptr: string): [boolean, string, string];
+        /**
+         * @param offset
+         * @param end_ptr
+         * @param start_offset
+         * @param end_offset
+         */
         static match_pn_local_esc(offset: string, end_ptr: string, start_offset: string, end_offset: string): boolean;
         /**
          * Match pn prefix.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static match_pn_prefix(offset: string, end_ptr: string): [boolean, string, string];
         /**
          * Match pname-ln.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static match_pname_ln(offset: string, end_ptr: string): [boolean, string, string];
         /**
          * Match match pname-ns.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static match_pname_ns(offset: string, end_ptr: string): [boolean, string, string];
         /**
          * Match string.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static match_string(offset: string, end_ptr: string): [boolean, string, string];
         /**
          * Match string literal long quote.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static match_string_literal_long_quote(offset: string, end_ptr: string): [boolean, string, string];
         /**
          * Match string literal long single quote.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static match_string_literal_long_single_quote(offset: string, end_ptr: string): [boolean, string, string];
         /**
          * Match string literal quote.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static match_string_literal_quote(offset: string, end_ptr: string): [boolean, string, string];
         /**
          * Match string literal single quote.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static match_string_literal_single_quote(offset: string, end_ptr: string): [boolean, string, string];
         /**
          * Match uchar.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static match_uchar(offset: string, end_ptr: string): [boolean, string, string];
         /**
          * Match ws.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static match_ws(offset: string, end_ptr: string): [boolean, string, string];
         /**
          * Read anon value.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static read_anon(offset: string, end_ptr: string): string;
         /**
          * Read blank node label value.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static read_blank_node_label(offset: string, end_ptr: string): string;
         /**
          * Read boolean value.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static read_boolean(offset: string, end_ptr: string): string;
         /**
          * Read decimal value.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static read_decimal(offset: string, end_ptr: string): string;
         /**
          * Read double value.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static read_double(offset: string, end_ptr: string): string;
         /**
          * Read echar value.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static read_echar(offset: string, end_ptr: string): string;
         /**
          * Read exponent value.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static read_exponent(offset: string, end_ptr: string): string;
         /**
          * Read hex value.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static read_hex(offset: string, end_ptr: string): string;
         /**
          * Read integer value.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static read_integer(offset: string, end_ptr: string): string;
         /**
          * Read iriref value.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static read_iriref(offset: string, end_ptr: string): string;
         /**
          * Read langtag value.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static read_langtag(offset: string, end_ptr: string): string;
         /**
          * Read percent value.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static read_percent(offset: string, end_ptr: string): string;
         /**
          * Read plx value.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static read_plx(offset: string, end_ptr: string): string;
         /**
          * Read prefixed-name chars value.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static read_pn_chars(offset: string, end_ptr: string): string;
         /**
          * Read prefixed-name chars base value.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static read_pn_chars_base(offset: string, end_ptr: string): string;
         /**
          * Read prefixed-name chars underscore value.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static read_pn_chars_u(offset: string, end_ptr: string): string;
         /**
          * Read prefixed-name local value.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static read_pn_local(offset: string, end_ptr: string): string;
         /**
          * Read prefixed name local escapes.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static read_pn_local_esc(offset: string, end_ptr: string): string;
         /**
          * Read prefixe-name prefix value.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static read_pn_prefix(offset: string, end_ptr: string): string;
         /**
          * Read prefixed-name localized name value.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static read_pname_ln(offset: string, end_ptr: string): string;
         /**
          * Read prefixed-name namespace value.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static read_pname_ns(offset: string, end_ptr: string): string;
         /**
          * Read string value.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static read_string(offset: string, end_ptr: string): string;
         /**
          * Read string literal long quote value.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static read_string_literal_long_quote(offset: string, end_ptr: string): string;
         /**
          * Read string literal long single quote value.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static read_string_literal_long_single_quote(offset: string, end_ptr: string): string;
         /**
          * Read string literal quote value.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static read_string_literal_quote(offset: string, end_ptr: string): string;
         /**
          * Read string literal single quote value.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static read_string_literal_single_quote(offset: string, end_ptr: string): string;
         /**
          * Read uchar value.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static read_uchar(offset: string, end_ptr: string): string;
         /**
          * Read ws value.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static read_ws(offset: string, end_ptr: string): string;
 
@@ -13399,14 +15231,14 @@ export namespace Ags {
         /**
          * Lookup XPath expression withing `turtle`.
          * @param xpath a XPath expression as string
-         * @returns a #GList-struct containing xmlNode
+         * @returns a {@link GLib.List}-struct containing xmlNode
          */
         find_xpath(xpath: string): libxml2.Node[];
         /**
          * Lookup XPath expression from `context_node` withing `turtle`.
          * @param xpath a XPath expression as string
          * @param context_node a #xmlNode-struct
-         * @returns a #GList-struct containing xmlNode
+         * @returns a {@link GLib.List}-struct containing xmlNode
          */
         find_xpath_with_context_node(xpath: string, context_node: libxml2.Node): libxml2.Node[];
         /**
@@ -13414,6 +15246,9 @@ export namespace Ags {
          * @returns a #xmlDoc pointer
          */
         load(): libxml2.Doc;
+        /**
+         * @param str
+         */
         string_convert(str: string): string;
     }
 
@@ -13426,6 +15261,9 @@ export namespace Ags {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class TurtleManager extends GObject.Object {
         static $gtype: GObject.GType<TurtleManager>;
 
@@ -13453,16 +15291,19 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TurtleManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TurtleManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TurtleManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TurtleManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TurtleManager.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TurtleManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -13472,7 +15313,7 @@ export namespace Ags {
         // Static methods
 
         /**
-         * Get instance of #AgsTurtleManager.
+         * Get instance of {@link Ags.TurtleManager}.
          */
         static get_instance(): TurtleManager;
 
@@ -13480,13 +15321,13 @@ export namespace Ags {
 
         /**
          * Adds `turtle` to `turtle_manager`.
-         * @param turtle the #AgsTurtle
+         * @param turtle the {@link Ags.Turtle}
          */
         add(turtle: GObject.Object): void;
         /**
          * Find `filename` in `turtle_manager`.
          * @param filename the filename as string
-         * @returns the matching #AgsTurtle, or %NULL
+         * @returns the matching {@link Ags.Turtle}, or `null`
          */
         find<T = GObject.Object>(filename: string): T;
     }
@@ -13494,6 +15335,13 @@ export namespace Ags {
     namespace WorkerThread {
         // Signal signatures
         interface SignalSignatures extends Thread.SignalSignatures {
+            /**
+             * The ::do_poll() signal runs independently of ::run() but
+             * might be synchronized using a conditional lock.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             'do-poll': () => void;
             'notify::delay': (pspec: GObject.ParamSpec) => void;
             'notify::frequency': (pspec: GObject.ParamSpec) => void;
@@ -13505,6 +15353,9 @@ export namespace Ags {
         interface ConstructorProps extends Thread.ConstructorProps, Connectable.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class WorkerThread extends Thread implements Connectable {
         static $gtype: GObject.GType<WorkerThread>;
 
@@ -13532,11 +15383,13 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect_after<K extends keyof WorkerThread.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WorkerThread.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WorkerThread.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WorkerThread.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -13547,6 +15400,7 @@ export namespace Ags {
 
         /**
          * Do poll your work. It is called of the worker thread.
+         * @virtual
          */
         vfunc_do_poll(): void;
 
@@ -13561,14 +15415,20 @@ export namespace Ags {
          * @param status_flags status flags
          */
         set_status_flags(status_flags: WorkerThreadStatusFlags | null): void;
+        /**
+         * @param args
+         */
         // Conflicted with Ags.Thread.set_status_flags
         set_status_flags(...args: never[]): any;
         /**
          * Test `status_flags` of `worker_thread`.
          * @param status_flags status flags
-         * @returns %TRUE if status flags set, otherwise %FALSE
+         * @returns `true` if status flags set, otherwise `false`
          */
         test_status_flags(status_flags: WorkerThreadStatusFlags | null): boolean;
+        /**
+         * @param args
+         */
         // Conflicted with Ags.Thread.test_status_flags
         test_status_flags(...args: never[]): any;
         /**
@@ -13576,10 +15436,11 @@ export namespace Ags {
          * @param status_flags status flags
          */
         unset_status_flags(status_flags: WorkerThreadStatusFlags | null): void;
+        /**
+         * @param args
+         */
         // Conflicted with Ags.Thread.unset_status_flags
         unset_status_flags(...args: never[]): any;
-
-        // Inherited methods
         /**
          * Add connectable to registry.
          */
@@ -13588,6 +15449,9 @@ export namespace Ags {
          * Connect the connectable.
          */
         connect(): void;
+        /**
+         * @param args
+         */
         connect(...args: never[]): any;
         /**
          * Disconnect the connectable.
@@ -13605,22 +15469,22 @@ export namespace Ags {
         disconnect_connection(connection: GObject.Object): void;
         /**
          * Get UUID of `connectable`.
-         * @returns the assigned #AgsUUID
+         * @returns the assigned {@link Ags.UUID}
          */
         get_uuid(): UUID;
         /**
          * Check the connectable to have resources.
-         * @returns %TRUE if @connectable can be added to registry, otherwise %FALSE.
+         * @returns `true` if `connectable` can be added to registry, otherwise `false`.
          */
         has_resource(): boolean;
         /**
          * Check if the `connectable` was connected.
-         * @returns %TRUE if is connected, otherwise %FALSE.
+         * @returns `true` if is connected, otherwise `false`.
          */
         is_connected(): boolean;
         /**
          * Connect the connectable.
-         * @returns %TRUE if is added to registry, otherwise %FALSE.
+         * @returns `true` if is added to registry, otherwise `false`.
          */
         is_ready(): boolean;
         /**
@@ -13644,57 +15508,70 @@ export namespace Ags {
         xml_parse(node: libxml2.Node): void;
         /**
          * Add connectable to registry.
+         * @virtual
          */
         vfunc_add_to_registry(): void;
         /**
          * Connect the connectable.
+         * @virtual
          */
         vfunc_connect(): void;
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @virtual
          */
         vfunc_connect_connection(connection: GObject.Object): void;
         /**
          * Disconnect the connectable.
+         * @virtual
          */
         vfunc_disconnect(): void;
         /**
          * Disconnect the connectable.
          * @param connection the connection
+         * @virtual
          */
         vfunc_disconnect_connection(connection: GObject.Object): void;
         /**
          * Get UUID of `connectable`.
+         * @virtual
          */
         vfunc_get_uuid(): UUID;
         /**
          * Check the connectable to have resources.
+         * @virtual
          */
         vfunc_has_resource(): boolean;
         /**
          * Check if the `connectable` was connected.
+         * @virtual
          */
         vfunc_is_connected(): boolean;
         /**
          * Connect the connectable.
+         * @virtual
          */
         vfunc_is_ready(): boolean;
         /**
          * List resources as an XML element and return it.
+         * @virtual
          */
         vfunc_list_resource(): libxml2.Node;
         /**
          * Remove connectable from registry.
+         * @virtual
          */
         vfunc_remove_from_registry(): void;
         /**
          * Compose an XML element and return it.
+         * @virtual
          */
         vfunc_xml_compose(): libxml2.Node;
         /**
          * Parse `node` as XML element and apply it.
          * @param node the #xmlNode-struct
+         * @virtual
          */
         vfunc_xml_parse(node: libxml2.Node): void;
         /**
@@ -13710,32 +15587,32 @@ export namespace Ags {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -13744,39 +15621,39 @@ export namespace Ags {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -13787,13 +15664,16 @@ export namespace Ags {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -13801,7 +15681,7 @@ export namespace Ags {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -13809,9 +15689,9 @@ export namespace Ags {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -13831,9 +15711,9 @@ export namespace Ags {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -13846,34 +15726,34 @@ export namespace Ags {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -13906,22 +15786,22 @@ export namespace Ags {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -13930,8 +15810,8 @@ export namespace Ags {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -13948,10 +15828,10 @@ export namespace Ags {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -13966,13 +15846,13 @@ export namespace Ags {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -14003,21 +15883,21 @@ export namespace Ags {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -14027,33 +15907,34 @@ export namespace Ags {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -14062,6 +15943,7 @@ export namespace Ags {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -14070,12 +15952,14 @@ export namespace Ags {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -14084,20 +15968,22 @@ export namespace Ags {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -14109,6 +15995,7 @@ export namespace Ags {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -14142,6 +16029,9 @@ export namespace Ags {
         interface ConstructorProps extends GObject.Object.ConstructorProps, Authentication.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class XmlAuthentication extends GObject.Object implements Authentication {
         static $gtype: GObject.GType<XmlAuthentication>;
 
@@ -14171,16 +16061,19 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof XmlAuthentication.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, XmlAuthentication.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof XmlAuthentication.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, XmlAuthentication.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof XmlAuthentication.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<XmlAuthentication.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -14192,7 +16085,7 @@ export namespace Ags {
         /**
          * Find ags-srv-auth xmlNode containing `user_uuid`.
          * @param user_uuid the user UUID
-         * @returns the matching xmlNode or %NULL
+         * @returns the matching xmlNode or `null`
          */
         find_user_uuid(user_uuid: string): libxml2.Node;
         /**
@@ -14200,8 +16093,6 @@ export namespace Ags {
          * @param filename the filename
          */
         open_filename(filename: string): void;
-
-        // Inherited methods
         /**
          * Generate token.
          * @returns the generated token
@@ -14209,7 +16100,7 @@ export namespace Ags {
         generate_token(): string;
         /**
          * Available authentication modules.
-         * @returns a %NULL terminated array of strings of available authentication modules
+         * @returns a `null` terminated array of strings of available authentication modules
          */
         get_authentication_module(): string[];
         /**
@@ -14222,33 +16113,35 @@ export namespace Ags {
         get_digest(realm: string, login: string, security_token: string): string;
         /**
          * Check session.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the user's UUID
          * @param security_token the security token
-         * @returns %TRUE if session active, otherwise %FALSE
+         * @returns `true` if session active, otherwise `false`
          */
         is_session_active(security_context: GObject.Object, user_uuid: string, security_token: string): boolean;
         /**
          * Login.
          * @param login the login
          * @param password the password
-         * @returns %TRUE on success, otherwise %FALSE
+         * @returns `true` on success, otherwise `false`
          */
         login(login: string, password: string): [boolean, string, string];
         /**
          * Logout.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param login the login
          * @param security_token the security token
-         * @returns %TRUE on success, otherwise %FALSE
+         * @returns `true` on success, otherwise `false`
          */
         logout(security_context: GObject.Object, login: string, security_token: string): boolean;
         /**
          * Generate token.
+         * @virtual
          */
         vfunc_generate_token(): string;
         /**
          * Available authentication modules.
+         * @virtual
          */
         vfunc_get_authentication_module(): string[];
         /**
@@ -14256,26 +16149,30 @@ export namespace Ags {
          * @param realm the realm
          * @param login the login
          * @param security_token the security token
+         * @virtual
          */
         vfunc_get_digest(realm: string, login: string, security_token: string): string;
         /**
          * Check session.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the user's UUID
          * @param security_token the security token
+         * @virtual
          */
         vfunc_is_session_active(security_context: GObject.Object, user_uuid: string, security_token: string): boolean;
         /**
          * Login.
          * @param login the login
          * @param password the password
+         * @virtual
          */
         vfunc_login(login: string, password: string): [boolean, string, string];
         /**
          * Logout.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param login the login
          * @param security_token the security token
+         * @virtual
          */
         vfunc_logout(security_context: GObject.Object, login: string, security_token: string): boolean;
         /**
@@ -14291,32 +16188,32 @@ export namespace Ags {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -14325,39 +16222,39 @@ export namespace Ags {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -14368,13 +16265,16 @@ export namespace Ags {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -14382,7 +16282,7 @@ export namespace Ags {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -14390,9 +16290,9 @@ export namespace Ags {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -14412,9 +16312,9 @@ export namespace Ags {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -14427,34 +16327,34 @@ export namespace Ags {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -14487,22 +16387,22 @@ export namespace Ags {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -14511,8 +16411,8 @@ export namespace Ags {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -14529,10 +16429,10 @@ export namespace Ags {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -14547,13 +16447,13 @@ export namespace Ags {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -14584,21 +16484,21 @@ export namespace Ags {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -14608,33 +16508,34 @@ export namespace Ags {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -14643,6 +16544,7 @@ export namespace Ags {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -14651,12 +16553,14 @@ export namespace Ags {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -14665,20 +16569,22 @@ export namespace Ags {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -14690,6 +16596,7 @@ export namespace Ags {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -14728,6 +16635,9 @@ export namespace Ags {
         interface ConstructorProps extends GObject.Object.ConstructorProps, BusinessGroup.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class XmlBusinessGroup extends GObject.Object implements BusinessGroup {
         static $gtype: GObject.GType<XmlBusinessGroup>;
 
@@ -14757,16 +16667,19 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof XmlBusinessGroup.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, XmlBusinessGroup.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof XmlBusinessGroup.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, XmlBusinessGroup.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof XmlBusinessGroup.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<XmlBusinessGroup.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -14780,11 +16693,9 @@ export namespace Ags {
          * @param filename the filename
          */
         open_filename(filename: string): void;
-
-        // Inherited methods
         /**
          * Get business group name.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the user's UUID
          * @param security_token the security token
          * @param group_uuid the group's UUID
@@ -14798,15 +16709,15 @@ export namespace Ags {
         ): string;
         /**
          * Get group UUID as string vector.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the users unique identifier
          * @param security_token the security token
-         * @returns the group UUIDs as %NULL terminated string array
+         * @returns the group UUIDs as `null` terminated string array
          */
         get_group_uuid(security_context: GObject.Object, user_uuid: string, security_token: string): string[];
         /**
-         * Get business group name as %NULL terminated string array.
-         * @param security_context the #AgsSecurityContext
+         * Get business group name as `null` terminated string array.
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the user's UUID
          * @param security_token the security token
          * @param group_uuid the business group's UUID
@@ -14820,7 +16731,7 @@ export namespace Ags {
         ): string[];
         /**
          * Set business group name.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the user's UUID
          * @param security_token the security token
          * @param group_uuid the group's UUID
@@ -14834,8 +16745,8 @@ export namespace Ags {
             group_name: string,
         ): void;
         /**
-         * Set business group of user names as %NULL terminated string array.
-         * @param security_context the #AgsSecurityContext
+         * Set business group of user names as `null` terminated string array.
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the user's UUID
          * @param security_token the security token
          * @param group_uuid the business group's UUID
@@ -14850,10 +16761,11 @@ export namespace Ags {
         ): void;
         /**
          * Get business group name.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the user's UUID
          * @param security_token the security token
          * @param group_uuid the group's UUID
+         * @virtual
          */
         vfunc_get_group_name(
             security_context: GObject.Object,
@@ -14863,17 +16775,19 @@ export namespace Ags {
         ): string;
         /**
          * Get group UUID as string vector.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the users unique identifier
          * @param security_token the security token
+         * @virtual
          */
         vfunc_get_group_uuid(security_context: GObject.Object, user_uuid: string, security_token: string): string[];
         /**
-         * Get business group name as %NULL terminated string array.
-         * @param security_context the #AgsSecurityContext
+         * Get business group name as `null` terminated string array.
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the user's UUID
          * @param security_token the security token
          * @param group_uuid the business group's UUID
+         * @virtual
          */
         vfunc_get_user(
             security_context: GObject.Object,
@@ -14883,11 +16797,12 @@ export namespace Ags {
         ): string[];
         /**
          * Set business group name.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the user's UUID
          * @param security_token the security token
          * @param group_uuid the group's UUID
          * @param group_name the business group's name to set
+         * @virtual
          */
         vfunc_set_group_name(
             security_context: GObject.Object,
@@ -14897,12 +16812,13 @@ export namespace Ags {
             group_name: string,
         ): void;
         /**
-         * Set business group of user names as %NULL terminated string array.
-         * @param security_context the #AgsSecurityContext
+         * Set business group of user names as `null` terminated string array.
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the user's UUID
          * @param security_token the security token
          * @param group_uuid the business group's UUID
          * @param user the string array containing user names
+         * @virtual
          */
         vfunc_set_user(
             security_context: GObject.Object,
@@ -14924,32 +16840,32 @@ export namespace Ags {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -14958,39 +16874,39 @@ export namespace Ags {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -15001,13 +16917,16 @@ export namespace Ags {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -15015,7 +16934,7 @@ export namespace Ags {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -15023,9 +16942,9 @@ export namespace Ags {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -15045,9 +16964,9 @@ export namespace Ags {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -15060,34 +16979,34 @@ export namespace Ags {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -15120,22 +17039,22 @@ export namespace Ags {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -15144,8 +17063,8 @@ export namespace Ags {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -15162,10 +17081,10 @@ export namespace Ags {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -15180,13 +17099,13 @@ export namespace Ags {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -15217,21 +17136,21 @@ export namespace Ags {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -15241,33 +17160,34 @@ export namespace Ags {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -15276,6 +17196,7 @@ export namespace Ags {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -15284,12 +17205,14 @@ export namespace Ags {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -15298,20 +17221,22 @@ export namespace Ags {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -15323,6 +17248,7 @@ export namespace Ags {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -15361,6 +17287,9 @@ export namespace Ags {
         interface ConstructorProps extends GObject.Object.ConstructorProps, Certificate.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class XmlCertificate extends GObject.Object implements Certificate {
         static $gtype: GObject.GType<XmlCertificate>;
 
@@ -15390,16 +17319,19 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof XmlCertificate.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, XmlCertificate.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof XmlCertificate.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, XmlCertificate.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof XmlCertificate.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<XmlCertificate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -15413,19 +17345,17 @@ export namespace Ags {
          * @param filename the filename
          */
         open_filename(filename: string): void;
-
-        // Inherited methods
         /**
          * Get cert UUID as string vector.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the users unique identifier
          * @param security_token the security token
-         * @returns the cert UUIDs as %NULL terminated string array
+         * @returns the cert UUIDs as `null` terminated string array
          */
         get_cert_uuid(security_context: GObject.Object, user_uuid: string, security_token: string): string[];
         /**
          * Get domain.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
@@ -15439,7 +17369,7 @@ export namespace Ags {
         ): string;
         /**
          * Get key type.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
@@ -15453,7 +17383,7 @@ export namespace Ags {
         ): string;
         /**
          * Get private key file.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
@@ -15467,7 +17397,7 @@ export namespace Ags {
         ): string;
         /**
          * Get public key file.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
@@ -15481,7 +17411,7 @@ export namespace Ags {
         ): string;
         /**
          * Set domain.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
@@ -15496,7 +17426,7 @@ export namespace Ags {
         ): void;
         /**
          * Set key type.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
@@ -15511,7 +17441,7 @@ export namespace Ags {
         ): void;
         /**
          * Set private key file.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
@@ -15526,7 +17456,7 @@ export namespace Ags {
         ): void;
         /**
          * Set public key file.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
@@ -15541,17 +17471,19 @@ export namespace Ags {
         ): void;
         /**
          * Get cert UUID as string vector.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the users unique identifier
          * @param security_token the security token
+         * @virtual
          */
         vfunc_get_cert_uuid(security_context: GObject.Object, user_uuid: string, security_token: string): string[];
         /**
          * Get domain.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
+         * @virtual
          */
         vfunc_get_domain(
             security_context: GObject.Object,
@@ -15561,10 +17493,11 @@ export namespace Ags {
         ): string;
         /**
          * Get key type.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
+         * @virtual
          */
         vfunc_get_key_type(
             security_context: GObject.Object,
@@ -15574,10 +17507,11 @@ export namespace Ags {
         ): string;
         /**
          * Get private key file.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
+         * @virtual
          */
         vfunc_get_private_key_file(
             security_context: GObject.Object,
@@ -15587,10 +17521,11 @@ export namespace Ags {
         ): string;
         /**
          * Get public key file.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
+         * @virtual
          */
         vfunc_get_public_key_file(
             security_context: GObject.Object,
@@ -15600,11 +17535,12 @@ export namespace Ags {
         ): string;
         /**
          * Set domain.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
          * @param domain the domain
+         * @virtual
          */
         vfunc_set_domain(
             security_context: GObject.Object,
@@ -15615,11 +17551,12 @@ export namespace Ags {
         ): void;
         /**
          * Set key type.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
          * @param key_type the key type
+         * @virtual
          */
         vfunc_set_key_type(
             security_context: GObject.Object,
@@ -15630,11 +17567,12 @@ export namespace Ags {
         ): void;
         /**
          * Set private key file.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
          * @param private_key_file the private key file
+         * @virtual
          */
         vfunc_set_private_key_file(
             security_context: GObject.Object,
@@ -15645,11 +17583,12 @@ export namespace Ags {
         ): void;
         /**
          * Set public key file.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
          * @param public_key_file the public key file
+         * @virtual
          */
         vfunc_set_public_key_file(
             security_context: GObject.Object,
@@ -15671,32 +17610,32 @@ export namespace Ags {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -15705,39 +17644,39 @@ export namespace Ags {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -15748,13 +17687,16 @@ export namespace Ags {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -15762,7 +17704,7 @@ export namespace Ags {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -15770,9 +17712,9 @@ export namespace Ags {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -15792,9 +17734,9 @@ export namespace Ags {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -15807,34 +17749,34 @@ export namespace Ags {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -15867,22 +17809,22 @@ export namespace Ags {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -15891,8 +17833,8 @@ export namespace Ags {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -15909,10 +17851,10 @@ export namespace Ags {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -15927,13 +17869,13 @@ export namespace Ags {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -15964,21 +17906,21 @@ export namespace Ags {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -15988,33 +17930,34 @@ export namespace Ags {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -16023,6 +17966,7 @@ export namespace Ags {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -16031,12 +17975,14 @@ export namespace Ags {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -16045,20 +17991,22 @@ export namespace Ags {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -16070,6 +18018,7 @@ export namespace Ags {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -16108,6 +18057,9 @@ export namespace Ags {
         interface ConstructorProps extends GObject.Object.ConstructorProps, PasswordStore.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class XmlPasswordStore extends GObject.Object implements PasswordStore {
         static $gtype: GObject.GType<XmlPasswordStore>;
 
@@ -16137,16 +18089,19 @@ export namespace Ags {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof XmlPasswordStore.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, XmlPasswordStore.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof XmlPasswordStore.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, XmlPasswordStore.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof XmlPasswordStore.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<XmlPasswordStore.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -16158,7 +18113,7 @@ export namespace Ags {
         /**
          * Find ags-srv-user xmlNode containing `login`.
          * @param login the login
-         * @returns the matching xmlNode or %NULL
+         * @returns the matching xmlNode or `null`
          */
         find_login(login: string): libxml2.Node;
         /**
@@ -16166,8 +18121,6 @@ export namespace Ags {
          * @param filename the filename
          */
         open_filename(filename: string): void;
-
-        // Inherited methods
         /**
          * Encrypt password.
          * @param password the password
@@ -16177,7 +18130,7 @@ export namespace Ags {
         encrypt_password(password: string, salt: string): string;
         /**
          * Get login name.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @returns the login name
@@ -16185,7 +18138,7 @@ export namespace Ags {
         get_login_name(security_context: GObject.Object, user_uuid: string, security_token: string): string;
         /**
          * Get password.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the user UUID
          * @param security_token the security token
          * @returns the password
@@ -16193,7 +18146,7 @@ export namespace Ags {
         get_password(security_context: GObject.Object, user_uuid: string, security_token: string): string;
         /**
          * Set login name.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @param login_name the login name
@@ -16206,7 +18159,7 @@ export namespace Ags {
         ): void;
         /**
          * Set password.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the user UUID
          * @param security_token the security token
          * @param password the password
@@ -16221,28 +18174,32 @@ export namespace Ags {
          * Encrypt password.
          * @param password the password
          * @param salt your salt
+         * @virtual
          */
         vfunc_encrypt_password(password: string, salt: string): string;
         /**
          * Get login name.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the users unique identifier
          * @param security_token the security token
+         * @virtual
          */
         vfunc_get_login_name(security_context: GObject.Object, user_uuid: string, security_token: string): string;
         /**
          * Get password.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the user UUID
          * @param security_token the security token
+         * @virtual
          */
         vfunc_get_password(security_context: GObject.Object, user_uuid: string, security_token: string): string;
         /**
          * Set login name.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @param login_name the login name
+         * @virtual
          */
         vfunc_set_login_name(
             security_context: GObject.Object,
@@ -16252,10 +18209,11 @@ export namespace Ags {
         ): void;
         /**
          * Set password.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the user UUID
          * @param security_token the security token
          * @param password the password
+         * @virtual
          */
         vfunc_set_password(
             security_context: GObject.Object,
@@ -16276,32 +18234,32 @@ export namespace Ags {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -16310,39 +18268,39 @@ export namespace Ags {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -16353,13 +18311,16 @@ export namespace Ags {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -16367,7 +18328,7 @@ export namespace Ags {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -16375,9 +18336,9 @@ export namespace Ags {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -16397,9 +18358,9 @@ export namespace Ags {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -16412,34 +18373,34 @@ export namespace Ags {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -16472,22 +18433,22 @@ export namespace Ags {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -16496,8 +18457,8 @@ export namespace Ags {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -16514,10 +18475,10 @@ export namespace Ags {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -16532,13 +18493,13 @@ export namespace Ags {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -16569,21 +18530,21 @@ export namespace Ags {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -16593,33 +18554,34 @@ export namespace Ags {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -16628,6 +18590,7 @@ export namespace Ags {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -16636,12 +18599,14 @@ export namespace Ags {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -16650,20 +18615,22 @@ export namespace Ags {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -16675,6 +18642,7 @@ export namespace Ags {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -16704,18 +18672,36 @@ export namespace Ags {
         stop_emission_by_name(detailedName: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ApplicableInterface = typeof Applicable;
+    /**
+     * @gir-type Alias
+     */
     type ApplicationContextClass = typeof ApplicationContext;
+    /**
+     * @gir-type Alias
+     */
     type AuthSecurityContextClass = typeof AuthSecurityContext;
+    /**
+     * @gir-type Alias
+     */
     type AuthenticationInterface = typeof Authentication;
+    /**
+     * @gir-type Alias
+     */
     type AuthenticationManagerClass = typeof AuthenticationManager;
+    /**
+     * @gir-type Struct
+     */
     abstract class BufferUtil {
         static $gtype: GObject.GType<BufferUtil>;
 
         // Static methods
 
         /**
-         * Read a #AgsComplex quantity of `cbuffer`.
+         * Read a {@link Ags.Complex} quantity of `cbuffer`.
          * @param cbuffer the character buffer
          * @param byte_order reverse order
          */
@@ -16770,7 +18756,7 @@ export namespace Ags {
          */
         static char_buffer_swap_bytes(cbuffer: number, word_size: number, buffer_size: number): void;
         /**
-         * Unpack `cbuffer` to a #AgsComplex buffer
+         * Unpack `cbuffer` to a {@link Ags.Complex} buffer
          * @param cbuffer the guchar buffer
          * @param buffer_size the buffer size
          */
@@ -16818,9 +18804,9 @@ export namespace Ags {
          */
         static char_buffer_to_s8(cbuffer: number, buffer_size: number): number;
         /**
-         * Write a #AgsComplex quantity to `cbuffer`.
+         * Write a {@link Ags.Complex} quantity to `cbuffer`.
          * @param cbuffer the character buffer
-         * @param value the #AgsComplex value
+         * @param value the {@link Ags.Complex} value
          * @param byte_order reverse order
          */
         static char_buffer_write_complex(cbuffer: number, value: Complex, byte_order: number): void;
@@ -16875,7 +18861,7 @@ export namespace Ags {
         static char_buffer_write_s8(cbuffer: number, value: number, byte_order: number): void;
         /**
          * Pack `buffer` into an guchar buffer.
-         * @param buffer the #AgsComplex buffer
+         * @param buffer the {@link Ags.Complex} buffer
          * @param buffer_length the buffer length
          */
         static complex_to_char_buffer(buffer: Complex, buffer_length: number): number;
@@ -16923,10 +18909,25 @@ export namespace Ags {
         static s8_to_char_buffer(buffer: number, buffer_length: number): number;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type BusinessGroupInterface = typeof BusinessGroup;
+    /**
+     * @gir-type Alias
+     */
     type BusinessGroupManagerClass = typeof BusinessGroupManager;
+    /**
+     * @gir-type Alias
+     */
     type CertificateInterface = typeof Certificate;
+    /**
+     * @gir-type Alias
+     */
     type CertificateManagerClass = typeof CertificateManager;
+    /**
+     * @gir-type Struct
+     */
     class Complex {
         static $gtype: GObject.GType<Complex>;
 
@@ -16947,7 +18948,7 @@ export namespace Ags {
         // Static methods
 
         /**
-         * Allocate #AgsComplex-struct
+         * Allocate {@link Ags.Complex}-struct
          */
         static alloc(): Complex;
 
@@ -16955,7 +18956,7 @@ export namespace Ags {
 
         /**
          * Create a copy of `ptr`.
-         * @returns a pointer of the new #AgsComplex-struct
+         * @returns a pointer of the new {@link Ags.Complex}-struct
          */
         copy(): any | null;
         /**
@@ -16974,12 +18975,25 @@ export namespace Ags {
         set_term(real: number, imag: number): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ConcurrencyProviderInterface = typeof ConcurrencyProvider;
+    /**
+     * @gir-type Alias
+     */
     type ConfigClass = typeof Config;
+    /**
+     * @gir-type Alias
+     */
     type ConnectableInterface = typeof Connectable;
+    /**
+     * @gir-type Alias
+     */
     type ControllerClass = typeof Controller;
     /**
      * Specifing attributes of resources.
+     * @gir-type Struct
      */
     class ControllerResource {
         static $gtype: GObject.GType<ControllerResource>;
@@ -17005,7 +19019,7 @@ export namespace Ags {
         // Static methods
 
         /**
-         * Allocated #AgsControllerResource-struct.
+         * Allocated {@link Ags.ControllerResource}-struct.
          * @param group_id the group id
          * @param user_id the user id
          * @param access_mode the access mode
@@ -17013,26 +19027,36 @@ export namespace Ags {
         static alloc(group_id: string, user_id: string, access_mode: number): any | null;
         /**
          * Free `controller_resource`.
-         * @param controller_resource the #AgsControllerResource-struct
+         * @param controller_resource the {@link Ags.ControllerResource}-struct
          */
         static free(controller_resource?: any | null): void;
         /**
          * Increase ref-count of `controller_resource`.
-         * @param controller_resource the #AgsControllerResource-struct
+         * @param controller_resource the {@link Ags.ControllerResource}-struct
          */
         static ref(controller_resource?: any | null): void;
         /**
          * Decrease ref-count of `controller_resource` and free it if ref-count drops to 0.
-         * @param controller_resource the #AgsControllerResource-struct
+         * @param controller_resource the {@link Ags.ControllerResource}-struct
          */
         static unref(controller_resource?: any | null): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ConversionClass = typeof Conversion;
+    /**
+     * @gir-type Alias
+     */
     type CountableInterface = typeof Countable;
+    /**
+     * @gir-type Alias
+     */
     type CursorInterface = typeof Cursor;
     /**
      * The struct to specify an entry to destroy.
+     * @gir-type Struct
      */
     class DestroyEntry {
         static $gtype: GObject.GType<DestroyEntry>;
@@ -17054,11 +19078,14 @@ export namespace Ags {
         /**
          * Allocated a destroy entry.
          * @param ptr a pointer
-         * @param destroy_func the @ptr's destroy function
+         * @param destroy_func the `ptr`'s destroy function
          */
         static alloc(ptr: any | null, destroy_func: DestroyFunc): any | null;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class DestroyUtil {
         static $gtype: GObject.GType<DestroyUtil>;
 
@@ -17066,17 +19093,38 @@ export namespace Ags {
 
         /**
          * Run dispose and unref `gobject`.
-         * @param gobject the #GObject to destroy
+         * @param gobject the {@link GObject.Object} to destroy
          */
         static dispose_and_unref(gobject: GObject.Object): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DestroyWorkerClass = typeof DestroyWorker;
+    /**
+     * @gir-type Alias
+     */
     type FileClass = typeof File;
+    /**
+     * @gir-type Alias
+     */
     type FileIdRefClass = typeof FileIdRef;
+    /**
+     * @gir-type Alias
+     */
     type FileLaunchClass = typeof FileLaunch;
+    /**
+     * @gir-type Alias
+     */
     type FileLinkClass = typeof FileLink;
+    /**
+     * @gir-type Alias
+     */
     type FileLookupClass = typeof FileLookup;
+    /**
+     * @gir-type Struct
+     */
     class FileUtil {
         static $gtype: GObject.GType<FileUtil>;
 
@@ -17089,7 +19137,7 @@ export namespace Ags {
         // Static methods
 
         /**
-         * Allocate #AgsFileUtil-struct
+         * Allocate {@link Ags.FileUtil}-struct
          * @param app_encoding the application encoding
          * @param encoding the file encoding
          */
@@ -17099,7 +19147,7 @@ export namespace Ags {
 
         /**
          * Create a copy of `ptr`.
-         * @returns a pointer of the new #AgsFileUtil-struct
+         * @returns a pointer of the new {@link Ags.FileUtil}-struct
          */
         copy(): any | null;
         /**
@@ -17218,12 +19266,27 @@ export namespace Ags {
          * @returns the newly allocated string
          */
         put_uint64(value: number): string;
+        /**
+         * @param file_version
+         */
         set_file_version(file_version: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type FrontControllerClass = typeof FrontController;
+    /**
+     * @gir-type Alias
+     */
     type FunctionClass = typeof Function;
+    /**
+     * @gir-type Alias
+     */
     type GenericMainLoopClass = typeof GenericMainLoop;
+    /**
+     * @gir-type Struct
+     */
     abstract class ListUtil {
         static $gtype: GObject.GType<ListUtil>;
 
@@ -17231,13 +19294,19 @@ export namespace Ags {
 
         /**
          * Find `gtype` within `list`.
-         * @param list the #GList-struct
-         * @param gtype the #GType to find
+         * @param list the {@link GLib.List}-struct
+         * @param gtype the {@link GObject.GType} to find
          */
         static find_type(list: GObject.Object[], gtype: GObject.GType): GObject.Object[];
     }
 
+    /**
+     * @gir-type Alias
+     */
     type LogClass = typeof Log;
+    /**
+     * @gir-type Struct
+     */
     class LoginInfo {
         static $gtype: GObject.GType<LoginInfo>;
 
@@ -17251,27 +19320,33 @@ export namespace Ags {
         // Static methods
 
         /**
-         * Alloc #AgsLoginInfo-struct.
+         * Alloc {@link Ags.LoginInfo}-struct.
          */
         static alloc(): any | null;
         /**
          * Free `login_info`.
-         * @param login_info the #AgsLoginInfo-struct
+         * @param login_info the {@link Ags.LoginInfo}-struct
          */
         static free(login_info?: any | null): void;
         /**
          * Increase ref-count of `login_info`.
-         * @param login_info the #AgsLoginInfo-struct
+         * @param login_info the {@link Ags.LoginInfo}-struct
          */
         static ref(login_info?: any | null): void;
         /**
          * Decrease ref-count of `login_info` and free it if ref-count drops to 0.
-         * @param login_info the #AgsLoginInfo-struct
+         * @param login_info the {@link Ags.LoginInfo}-struct
          */
         static unref(login_info?: any | null): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MainLoopInterface = typeof MainLoop;
+    /**
+     * @gir-type Struct
+     */
     abstract class MathUtil {
         static $gtype: GObject.GType<MathUtil>;
 
@@ -17320,39 +19395,43 @@ export namespace Ags {
         /**
          * Match coefficient including optional sign.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static match_coefficient(offset: string, end_ptr: string): [boolean, string, string];
         /**
          * Match exponent with or without parenthesis.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static match_exponent(offset: string, end_ptr: string): [boolean, string, string];
         /**
          * Match function.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static match_function(offset: string, end_ptr: string): [boolean, string, string];
         /**
          * Match operator.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static match_operator(offset: string, end_ptr: string): [boolean, string, string];
         /**
          * Match sign.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static match_sign(offset: string, end_ptr: string): [boolean, string, string];
         /**
          * Match symbol including optional sign.
          * @param offset the string pointer
-         * @param end_ptr the end of @offset
+         * @param end_ptr the end of `offset`
          */
         static match_symbol(offset: string, end_ptr: string): [boolean, string, string];
+        /**
+         * @param coefficient
+         * @param value_count
+         */
         static multiply_coefficient_all(coefficient: string, value_count: number): Complex;
         /**
          * Split `polynomial` into coefficient, powers of symbols and summand.
@@ -17366,16 +19445,49 @@ export namespace Ags {
         static split_sum(sum: string): string;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MessageDeliveryClass = typeof MessageDelivery;
+    /**
+     * @gir-type Alias
+     */
     type MessageEnvelopeClass = typeof MessageEnvelope;
+    /**
+     * @gir-type Alias
+     */
     type MessageQueueClass = typeof MessageQueue;
+    /**
+     * @gir-type Alias
+     */
     type MutableInterface = typeof Mutable;
+    /**
+     * @gir-type Alias
+     */
     type PasswordStoreInterface = typeof PasswordStore;
+    /**
+     * @gir-type Alias
+     */
     type PasswordStoreManagerClass = typeof PasswordStoreManager;
+    /**
+     * @gir-type Alias
+     */
     type PluginControllerInterface = typeof PluginController;
+    /**
+     * @gir-type Alias
+     */
     type PluginInterface = typeof Plugin;
+    /**
+     * @gir-type Alias
+     */
     type PortletInterface = typeof Portlet;
+    /**
+     * @gir-type Alias
+     */
     type PriorityClass = typeof Priority;
+    /**
+     * @gir-type Struct
+     */
     class RegexMatch {
         static $gtype: GObject.GType<RegexMatch>;
 
@@ -17389,6 +19501,9 @@ export namespace Ags {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class RegexUtil {
         static $gtype: GObject.GType<RegexUtil>;
 
@@ -17404,7 +19519,7 @@ export namespace Ags {
         // Static methods
 
         /**
-         * Allocate #AgsRegexUtil-struct
+         * Allocate {@link Ags.RegexUtil}-struct
          * @param app_encoding the application encoding
          * @param encoding the input encoding
          * @param is_unichar is gunichar
@@ -17419,12 +19534,12 @@ export namespace Ags {
          * Compile `regex_str` by respecting `compile_flags`.
          * @param regex_str the regular expression
          * @param compile_flags the compile flags
-         * @returns %TRUE on success, otherwise %FALSE
+         * @returns `true` on success, otherwise `false`
          */
         compile(regex_str: string, compile_flags: number): boolean;
         /**
          * Create a copy of `ptr`.
-         * @returns a pointer of the new #AgsRegexUtil-struct
+         * @returns a pointer of the new {@link Ags.RegexUtil}-struct
          */
         copy(): any | null;
         /**
@@ -17433,7 +19548,7 @@ export namespace Ags {
          * @param match_count the match count
          * @param match the regex match
          * @param execute_flags the execute flags
-         * @returns %TRUE on success, otherwise %FALSE
+         * @returns `true` on success, otherwise `false`
          */
         execute(str: string, match_count: number, match: RegexMatch, execute_flags: number): boolean;
         /**
@@ -17442,7 +19557,7 @@ export namespace Ags {
          * @param match_count the match count
          * @param match the regex match
          * @param execute_flags the execute flags
-         * @returns %TRUE on success, otherwise %FALSE
+         * @returns `true` on success, otherwise `false`
          */
         execute_unichar(str: string, match_count: number, match: RegexMatch, execute_flags: number): boolean;
         /**
@@ -17451,7 +19566,7 @@ export namespace Ags {
          * @param match_count the match count
          * @param match the regex match
          * @param execute_flags the execute flags
-         * @returns %TRUE on success, otherwise %FALSE
+         * @returns `true` on success, otherwise `false`
          */
         execute_unichar2(str: number, match_count: number, match: RegexMatch, execute_flags: number): boolean;
         /**
@@ -17481,9 +19596,13 @@ export namespace Ags {
         match_get_offset(match: RegexMatch, nth_match: number): [number, number];
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RegistryClass = typeof Registry;
     /**
-     * #AgsRegistryEntry is an entry that you might want to lookup remotely.
+     * {@link Ags.RegistryEntry} is an entry that you might want to lookup remotely.
+     * @gir-type Struct
      */
     class RegistryEntry {
         static $gtype: GObject.GType<RegistryEntry>;
@@ -17500,14 +19619,33 @@ export namespace Ags {
         free(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ReturnableThreadClass = typeof ReturnableThread;
+    /**
+     * @gir-type Alias
+     */
     type SecurityContextClass = typeof SecurityContext;
+    /**
+     * @gir-type Alias
+     */
     type SeekableInterface = typeof Seekable;
+    /**
+     * @gir-type Alias
+     */
     type SequencerInterface = typeof Sequencer;
+    /**
+     * @gir-type Alias
+     */
     type ServerApplicationContextClass = typeof ServerApplicationContext;
+    /**
+     * @gir-type Alias
+     */
     type ServerClass = typeof Server;
     /**
-     * #AgsServerInfo does identify the server and provides some basic information about it.
+     * {@link Ags.ServerInfo} does identify the server and provides some basic information about it.
+     * @gir-type Struct
      */
     class ServerInfo {
         static $gtype: GObject.GType<ServerInfo>;
@@ -17527,9 +19665,21 @@ export namespace Ags {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ServerStatusClass = typeof ServerStatus;
+    /**
+     * @gir-type Alias
+     */
     type ServiceProviderInterface = typeof ServiceProvider;
+    /**
+     * @gir-type Alias
+     */
     type SolverMatrixClass = typeof SolverMatrix;
+    /**
+     * @gir-type Struct
+     */
     class SolverPath {
         static $gtype: GObject.GType<SolverPath>;
 
@@ -17552,7 +19702,7 @@ export namespace Ags {
         // Static methods
 
         /**
-         * Allocate #AgsSolverPath-struct
+         * Allocate {@link Ags.SolverPath}-struct
          * @param nth_column the nth-column
          * @param nth_row_a nth-row a
          * @param nth_row_b nth-row b
@@ -17563,7 +19713,7 @@ export namespace Ags {
 
         /**
          * Create a copy of `ptr`.
-         * @returns a pointer of the new #AgsSolverPath-struct
+         * @returns a pointer of the new {@link Ags.SolverPath}-struct
          */
         copy(): any | null;
         /**
@@ -17602,10 +19752,25 @@ export namespace Ags {
         set_nth_row_b(nth_row_b: number): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SolverPolynomialClass = typeof SolverPolynomial;
+    /**
+     * @gir-type Alias
+     */
     type SolverVectorClass = typeof SolverVector;
+    /**
+     * @gir-type Alias
+     */
     type SoundServerInterface = typeof SoundServer;
+    /**
+     * @gir-type Alias
+     */
     type SoundcardInterface = typeof Soundcard;
+    /**
+     * @gir-type Struct
+     */
     abstract class StringUtil {
         static $gtype: GObject.GType<StringUtil>;
 
@@ -17628,16 +19793,49 @@ export namespace Ags {
         static to_mcoded7(str: string): string;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TactableInterface = typeof Tactable;
+    /**
+     * @gir-type Alias
+     */
     type TaskClass = typeof Task;
+    /**
+     * @gir-type Alias
+     */
     type TaskCompletionClass = typeof TaskCompletion;
+    /**
+     * @gir-type Alias
+     */
     type TaskLauncherClass = typeof TaskLauncher;
+    /**
+     * @gir-type Alias
+     */
     type ThreadApplicationContextClass = typeof ThreadApplicationContext;
+    /**
+     * @gir-type Alias
+     */
     type ThreadClass = typeof Thread;
+    /**
+     * @gir-type Alias
+     */
     type ThreadPoolClass = typeof ThreadPool;
+    /**
+     * @gir-type Alias
+     */
     type TimestampClass = typeof Timestamp;
+    /**
+     * @gir-type Alias
+     */
     type TurtleClass = typeof Turtle;
+    /**
+     * @gir-type Alias
+     */
     type TurtleManagerClass = typeof TurtleManager;
+    /**
+     * @gir-type Struct
+     */
     class UUID {
         static $gtype: GObject.GType<UUID>;
 
@@ -17656,11 +19854,11 @@ export namespace Ags {
         // Static methods
 
         /**
-         * Allocate #AgsUUID.
+         * Allocate {@link Ags.UUID}.
          */
         static alloc(): UUID;
         /**
-         * Retrieve #AgsUUID by parsing `str`.
+         * Retrieve {@link Ags.UUID} by parsing `str`.
          * @param str the UUID as string
          */
         static from_string(str: string): UUID;
@@ -17669,13 +19867,13 @@ export namespace Ags {
 
         /**
          * Compare `a` with `b`.
-         * @param b another #AgsUUID
+         * @param b another {@link Ags.UUID}
          * @returns 0 on success, otherwise a value less or greater than 0
          */
         compare(b: UUID): number;
         /**
          * Create a copy of `ptr`.
-         * @returns a pointer of the new #AgsUUID
+         * @returns a pointer of the new {@link Ags.UUID}
          */
         copy(): any | null;
         /**
@@ -17688,15 +19886,30 @@ export namespace Ags {
         generate(): void;
         /**
          * Get string representation of `ptr`.
-         * @returns the UUID as string if @ptr not %NULL, else %NULL
+         * @returns the UUID as string if `ptr` not `null`, else `null`
          */
         to_string(): string;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type WorkerThreadClass = typeof WorkerThread;
+    /**
+     * @gir-type Alias
+     */
     type XmlAuthenticationClass = typeof XmlAuthentication;
+    /**
+     * @gir-type Alias
+     */
     type XmlBusinessGroupClass = typeof XmlBusinessGroup;
+    /**
+     * @gir-type Alias
+     */
     type XmlCertificateClass = typeof XmlCertificate;
+    /**
+     * @gir-type Alias
+     */
     type XmlPasswordStoreClass = typeof XmlPasswordStore;
     namespace Applicable {
         /**
@@ -17708,15 +19921,18 @@ export namespace Ags {
 
             /**
              * Apply all changes done so far.
+             * @virtual
              */
             vfunc_apply(): void;
             /**
              * Reset all changes within the user interface.
+             * @virtual
              */
             vfunc_reset(): void;
             /**
              * Update behaviour.
-             * @param update if %TRUE do ::reset after ::apply
+             * @param update if `true` do ::reset after ::apply
+             * @virtual
              */
             vfunc_set_update(update: boolean): void;
         }
@@ -17730,6 +19946,9 @@ export namespace Ags {
         $gtype: GObject.GType<Applicable>;
         prototype: Applicable;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Applicable extends GObject.Object, Applicable.Interface {
         // Methods
 
@@ -17743,7 +19962,7 @@ export namespace Ags {
         reset(): void;
         /**
          * Update behaviour.
-         * @param update if %TRUE do ::reset after ::apply
+         * @param update if `true` do ::reset after ::apply
          */
         set_update(update: boolean): void;
     }
@@ -17762,10 +19981,12 @@ export namespace Ags {
 
             /**
              * Generate token.
+             * @virtual
              */
             vfunc_generate_token(): string;
             /**
              * Available authentication modules.
+             * @virtual
              */
             vfunc_get_authentication_module(): string[];
             /**
@@ -17773,13 +19994,15 @@ export namespace Ags {
              * @param realm the realm
              * @param login the login
              * @param security_token the security token
+             * @virtual
              */
             vfunc_get_digest(realm: string, login: string, security_token: string): string;
             /**
              * Check session.
-             * @param security_context the #AgsSecurityContext
+             * @param security_context the {@link Ags.SecurityContext}
              * @param user_uuid the user's UUID
              * @param security_token the security token
+             * @virtual
              */
             vfunc_is_session_active(
                 security_context: GObject.Object,
@@ -17790,13 +20013,15 @@ export namespace Ags {
              * Login.
              * @param login the login
              * @param password the password
+             * @virtual
              */
             vfunc_login(login: string, password: string): [boolean, string, string];
             /**
              * Logout.
-             * @param security_context the #AgsSecurityContext
+             * @param security_context the {@link Ags.SecurityContext}
              * @param login the login
              * @param security_token the security token
+             * @virtual
              */
             vfunc_logout(security_context: GObject.Object, login: string, security_token: string): boolean;
         }
@@ -17810,6 +20035,9 @@ export namespace Ags {
         $gtype: GObject.GType<Authentication>;
         prototype: Authentication;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Authentication extends GObject.Object, Authentication.Interface {
         // Methods
 
@@ -17820,7 +20048,7 @@ export namespace Ags {
         generate_token(): string;
         /**
          * Available authentication modules.
-         * @returns a %NULL terminated array of strings of available authentication modules
+         * @returns a `null` terminated array of strings of available authentication modules
          */
         get_authentication_module(): string[];
         /**
@@ -17833,25 +20061,25 @@ export namespace Ags {
         get_digest(realm: string, login: string, security_token: string): string;
         /**
          * Check session.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the user's UUID
          * @param security_token the security token
-         * @returns %TRUE if session active, otherwise %FALSE
+         * @returns `true` if session active, otherwise `false`
          */
         is_session_active(security_context: GObject.Object, user_uuid: string, security_token: string): boolean;
         /**
          * Login.
          * @param login the login
          * @param password the password
-         * @returns %TRUE on success, otherwise %FALSE
+         * @returns `true` on success, otherwise `false`
          */
         login(login: string, password: string): [boolean, string, string];
         /**
          * Logout.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param login the login
          * @param security_token the security token
-         * @returns %TRUE on success, otherwise %FALSE
+         * @returns `true` on success, otherwise `false`
          */
         logout(security_context: GObject.Object, login: string, security_token: string): boolean;
     }
@@ -17870,10 +20098,11 @@ export namespace Ags {
 
             /**
              * Get business group name.
-             * @param security_context the #AgsSecurityContext
+             * @param security_context the {@link Ags.SecurityContext}
              * @param user_uuid the user's UUID
              * @param security_token the security token
              * @param group_uuid the group's UUID
+             * @virtual
              */
             vfunc_get_group_name(
                 security_context: GObject.Object,
@@ -17883,17 +20112,19 @@ export namespace Ags {
             ): string;
             /**
              * Get group UUID as string vector.
-             * @param security_context the #AgsSecurityContext
+             * @param security_context the {@link Ags.SecurityContext}
              * @param user_uuid the users unique identifier
              * @param security_token the security token
+             * @virtual
              */
             vfunc_get_group_uuid(security_context: GObject.Object, user_uuid: string, security_token: string): string[];
             /**
-             * Get business group name as %NULL terminated string array.
-             * @param security_context the #AgsSecurityContext
+             * Get business group name as `null` terminated string array.
+             * @param security_context the {@link Ags.SecurityContext}
              * @param user_uuid the user's UUID
              * @param security_token the security token
              * @param group_uuid the business group's UUID
+             * @virtual
              */
             vfunc_get_user(
                 security_context: GObject.Object,
@@ -17903,11 +20134,12 @@ export namespace Ags {
             ): string[];
             /**
              * Set business group name.
-             * @param security_context the #AgsSecurityContext
+             * @param security_context the {@link Ags.SecurityContext}
              * @param user_uuid the user's UUID
              * @param security_token the security token
              * @param group_uuid the group's UUID
              * @param group_name the business group's name to set
+             * @virtual
              */
             vfunc_set_group_name(
                 security_context: GObject.Object,
@@ -17917,12 +20149,13 @@ export namespace Ags {
                 group_name: string,
             ): void;
             /**
-             * Set business group of user names as %NULL terminated string array.
-             * @param security_context the #AgsSecurityContext
+             * Set business group of user names as `null` terminated string array.
+             * @param security_context the {@link Ags.SecurityContext}
              * @param user_uuid the user's UUID
              * @param security_token the security token
              * @param group_uuid the business group's UUID
              * @param user the string array containing user names
+             * @virtual
              */
             vfunc_set_user(
                 security_context: GObject.Object,
@@ -17942,12 +20175,15 @@ export namespace Ags {
         $gtype: GObject.GType<BusinessGroup>;
         prototype: BusinessGroup;
     }
+    /**
+     * @gir-type Interface
+     */
     interface BusinessGroup extends GObject.Object, BusinessGroup.Interface {
         // Methods
 
         /**
          * Get business group name.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the user's UUID
          * @param security_token the security token
          * @param group_uuid the group's UUID
@@ -17961,15 +20197,15 @@ export namespace Ags {
         ): string;
         /**
          * Get group UUID as string vector.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the users unique identifier
          * @param security_token the security token
-         * @returns the group UUIDs as %NULL terminated string array
+         * @returns the group UUIDs as `null` terminated string array
          */
         get_group_uuid(security_context: GObject.Object, user_uuid: string, security_token: string): string[];
         /**
-         * Get business group name as %NULL terminated string array.
-         * @param security_context the #AgsSecurityContext
+         * Get business group name as `null` terminated string array.
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the user's UUID
          * @param security_token the security token
          * @param group_uuid the business group's UUID
@@ -17983,7 +20219,7 @@ export namespace Ags {
         ): string[];
         /**
          * Set business group name.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the user's UUID
          * @param security_token the security token
          * @param group_uuid the group's UUID
@@ -17997,8 +20233,8 @@ export namespace Ags {
             group_name: string,
         ): void;
         /**
-         * Set business group of user names as %NULL terminated string array.
-         * @param security_context the #AgsSecurityContext
+         * Set business group of user names as `null` terminated string array.
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the user's UUID
          * @param security_token the security token
          * @param group_uuid the business group's UUID
@@ -18027,17 +20263,19 @@ export namespace Ags {
 
             /**
              * Get cert UUID as string vector.
-             * @param security_context the #AgsSecurityContext
+             * @param security_context the {@link Ags.SecurityContext}
              * @param user_uuid the users unique identifier
              * @param security_token the security token
+             * @virtual
              */
             vfunc_get_cert_uuid(security_context: GObject.Object, user_uuid: string, security_token: string): string[];
             /**
              * Get domain.
-             * @param security_context the #AgsSecurityContext
+             * @param security_context the {@link Ags.SecurityContext}
              * @param user_uuid the users unique identifier
              * @param security_token the security token
              * @param cert_uuid the cert's UUID
+             * @virtual
              */
             vfunc_get_domain(
                 security_context: GObject.Object,
@@ -18047,10 +20285,11 @@ export namespace Ags {
             ): string;
             /**
              * Get key type.
-             * @param security_context the #AgsSecurityContext
+             * @param security_context the {@link Ags.SecurityContext}
              * @param user_uuid the users unique identifier
              * @param security_token the security token
              * @param cert_uuid the cert's UUID
+             * @virtual
              */
             vfunc_get_key_type(
                 security_context: GObject.Object,
@@ -18060,10 +20299,11 @@ export namespace Ags {
             ): string;
             /**
              * Get private key file.
-             * @param security_context the #AgsSecurityContext
+             * @param security_context the {@link Ags.SecurityContext}
              * @param user_uuid the users unique identifier
              * @param security_token the security token
              * @param cert_uuid the cert's UUID
+             * @virtual
              */
             vfunc_get_private_key_file(
                 security_context: GObject.Object,
@@ -18073,10 +20313,11 @@ export namespace Ags {
             ): string;
             /**
              * Get public key file.
-             * @param security_context the #AgsSecurityContext
+             * @param security_context the {@link Ags.SecurityContext}
              * @param user_uuid the users unique identifier
              * @param security_token the security token
              * @param cert_uuid the cert's UUID
+             * @virtual
              */
             vfunc_get_public_key_file(
                 security_context: GObject.Object,
@@ -18086,11 +20327,12 @@ export namespace Ags {
             ): string;
             /**
              * Set domain.
-             * @param security_context the #AgsSecurityContext
+             * @param security_context the {@link Ags.SecurityContext}
              * @param user_uuid the users unique identifier
              * @param security_token the security token
              * @param cert_uuid the cert's UUID
              * @param domain the domain
+             * @virtual
              */
             vfunc_set_domain(
                 security_context: GObject.Object,
@@ -18101,11 +20343,12 @@ export namespace Ags {
             ): void;
             /**
              * Set key type.
-             * @param security_context the #AgsSecurityContext
+             * @param security_context the {@link Ags.SecurityContext}
              * @param user_uuid the users unique identifier
              * @param security_token the security token
              * @param cert_uuid the cert's UUID
              * @param key_type the key type
+             * @virtual
              */
             vfunc_set_key_type(
                 security_context: GObject.Object,
@@ -18116,11 +20359,12 @@ export namespace Ags {
             ): void;
             /**
              * Set private key file.
-             * @param security_context the #AgsSecurityContext
+             * @param security_context the {@link Ags.SecurityContext}
              * @param user_uuid the users unique identifier
              * @param security_token the security token
              * @param cert_uuid the cert's UUID
              * @param private_key_file the private key file
+             * @virtual
              */
             vfunc_set_private_key_file(
                 security_context: GObject.Object,
@@ -18131,11 +20375,12 @@ export namespace Ags {
             ): void;
             /**
              * Set public key file.
-             * @param security_context the #AgsSecurityContext
+             * @param security_context the {@link Ags.SecurityContext}
              * @param user_uuid the users unique identifier
              * @param security_token the security token
              * @param cert_uuid the cert's UUID
              * @param public_key_file the public key file
+             * @virtual
              */
             vfunc_set_public_key_file(
                 security_context: GObject.Object,
@@ -18155,20 +20400,23 @@ export namespace Ags {
         $gtype: GObject.GType<Certificate>;
         prototype: Certificate;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Certificate extends GObject.Object, Certificate.Interface {
         // Methods
 
         /**
          * Get cert UUID as string vector.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the users unique identifier
          * @param security_token the security token
-         * @returns the cert UUIDs as %NULL terminated string array
+         * @returns the cert UUIDs as `null` terminated string array
          */
         get_cert_uuid(security_context: GObject.Object, user_uuid: string, security_token: string): string[];
         /**
          * Get domain.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
@@ -18182,7 +20430,7 @@ export namespace Ags {
         ): string;
         /**
          * Get key type.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
@@ -18196,7 +20444,7 @@ export namespace Ags {
         ): string;
         /**
          * Get private key file.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
@@ -18210,7 +20458,7 @@ export namespace Ags {
         ): string;
         /**
          * Get public key file.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
@@ -18224,7 +20472,7 @@ export namespace Ags {
         ): string;
         /**
          * Set domain.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
@@ -18239,7 +20487,7 @@ export namespace Ags {
         ): void;
         /**
          * Set key type.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
@@ -18254,7 +20502,7 @@ export namespace Ags {
         ): void;
         /**
          * Set private key file.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
@@ -18269,7 +20517,7 @@ export namespace Ags {
         ): void;
         /**
          * Set public key file.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @param cert_uuid the cert's UUID
@@ -18298,38 +20546,46 @@ export namespace Ags {
 
             /**
              * Get main loop of application context.
+             * @virtual
              */
             vfunc_get_main_loop(): Thread;
             /**
              * Get task launcher of application context.
+             * @virtual
              */
             vfunc_get_task_launcher(): TaskLauncher;
             /**
              * Get thread pool of application context.
+             * @virtual
              */
             vfunc_get_thread_pool(): ThreadPool;
             /**
              * Get workers of application context.
+             * @virtual
              */
             vfunc_get_worker(): WorkerThread[];
             /**
              * Set main loop of application context.
-             * @param main_loop the #AgsThread implementing #AgsMainLoop
+             * @param main_loop the {@link Ags.Thread} implementing {@link Ags.MainLoop}
+             * @virtual
              */
             vfunc_set_main_loop(main_loop: Thread): void;
             /**
              * Set task launcher of application context.
-             * @param task_launcher the #AgsTaskLauncher
+             * @param task_launcher the {@link Ags.TaskLauncher}
+             * @virtual
              */
             vfunc_set_task_launcher(task_launcher: TaskLauncher): void;
             /**
              * Set thread pool of application context.
-             * @param thread_pool the #AgsThreadPool
+             * @param thread_pool the {@link Ags.ThreadPool}
+             * @virtual
              */
             vfunc_set_thread_pool(thread_pool: ThreadPool): void;
             /**
              * Set workers of application context.
-             * @param worker the #GList-struct containing workers
+             * @param worker the {@link GLib.List}-struct containing workers
+             * @virtual
              */
             vfunc_set_worker(worker: WorkerThread[]): void;
         }
@@ -18343,47 +20599,50 @@ export namespace Ags {
         $gtype: GObject.GType<ConcurrencyProvider>;
         prototype: ConcurrencyProvider;
     }
+    /**
+     * @gir-type Interface
+     */
     interface ConcurrencyProvider extends GObject.Object, ConcurrencyProvider.Interface {
         // Methods
 
         /**
          * Get main loop of application context.
-         * @returns the #AgsThread implementing #AgsMainLoop
+         * @returns the {@link Ags.Thread} implementing {@link Ags.MainLoop}
          */
         get_main_loop(): Thread;
         /**
          * Get task launcher of application context.
-         * @returns the #AgsTaskLauncher
+         * @returns the {@link Ags.TaskLauncher}
          */
         get_task_launcher(): TaskLauncher;
         /**
          * Get thread pool of application context.
-         * @returns the #AgsThreadPool
+         * @returns the {@link Ags.ThreadPool}
          */
         get_thread_pool(): ThreadPool;
         /**
          * Get workers of application context.
-         * @returns the #GList-struct containing workers
+         * @returns the {@link GLib.List}-struct containing workers
          */
         get_worker(): WorkerThread[];
         /**
          * Set main loop of application context.
-         * @param main_loop the #AgsThread implementing #AgsMainLoop
+         * @param main_loop the {@link Ags.Thread} implementing {@link Ags.MainLoop}
          */
         set_main_loop(main_loop: Thread): void;
         /**
          * Set task launcher of application context.
-         * @param task_launcher the #AgsTaskLauncher
+         * @param task_launcher the {@link Ags.TaskLauncher}
          */
         set_task_launcher(task_launcher: TaskLauncher): void;
         /**
          * Set thread pool of application context.
-         * @param thread_pool the #AgsThreadPool
+         * @param thread_pool the {@link Ags.ThreadPool}
          */
         set_thread_pool(thread_pool: ThreadPool): void;
         /**
          * Set workers of application context.
-         * @param worker the #GList-struct containing workers
+         * @param worker the {@link GLib.List}-struct containing workers
          */
         set_worker(worker: WorkerThread[]): void;
     }
@@ -18402,57 +20661,70 @@ export namespace Ags {
 
             /**
              * Add connectable to registry.
+             * @virtual
              */
             vfunc_add_to_registry(): void;
             /**
              * Connect the connectable.
+             * @virtual
              */
             vfunc_connect(): void;
             /**
              * Disconnect the connectable.
              * @param connection the connection
+             * @virtual
              */
             vfunc_connect_connection(connection: GObject.Object): void;
             /**
              * Disconnect the connectable.
+             * @virtual
              */
             vfunc_disconnect(): void;
             /**
              * Disconnect the connectable.
              * @param connection the connection
+             * @virtual
              */
             vfunc_disconnect_connection(connection: GObject.Object): void;
             /**
              * Get UUID of `connectable`.
+             * @virtual
              */
             vfunc_get_uuid(): UUID;
             /**
              * Check the connectable to have resources.
+             * @virtual
              */
             vfunc_has_resource(): boolean;
             /**
              * Check if the `connectable` was connected.
+             * @virtual
              */
             vfunc_is_connected(): boolean;
             /**
              * Connect the connectable.
+             * @virtual
              */
             vfunc_is_ready(): boolean;
             /**
              * List resources as an XML element and return it.
+             * @virtual
              */
             vfunc_list_resource(): libxml2.Node;
             /**
              * Remove connectable from registry.
+             * @virtual
              */
             vfunc_remove_from_registry(): void;
             /**
              * Compose an XML element and return it.
+             * @virtual
              */
             vfunc_xml_compose(): libxml2.Node;
             /**
              * Parse `node` as XML element and apply it.
              * @param node the #xmlNode-struct
+             * @virtual
              */
             vfunc_xml_parse(node: libxml2.Node): void;
         }
@@ -18466,6 +20738,9 @@ export namespace Ags {
         $gtype: GObject.GType<Connectable>;
         prototype: Connectable;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Connectable extends GObject.Object, Connectable.Interface {
         // Methods
 
@@ -18477,6 +20752,9 @@ export namespace Ags {
          * Connect the connectable.
          */
         connect(): void;
+        /**
+         * @param args
+         */
         connect(...args: never[]): any;
         /**
          * Disconnect the connectable.
@@ -18494,22 +20772,22 @@ export namespace Ags {
         disconnect_connection(connection: GObject.Object): void;
         /**
          * Get UUID of `connectable`.
-         * @returns the assigned #AgsUUID
+         * @returns the assigned {@link Ags.UUID}
          */
         get_uuid(): UUID;
         /**
          * Check the connectable to have resources.
-         * @returns %TRUE if @connectable can be added to registry, otherwise %FALSE.
+         * @returns `true` if `connectable` can be added to registry, otherwise `false`.
          */
         has_resource(): boolean;
         /**
          * Check if the `connectable` was connected.
-         * @returns %TRUE if is connected, otherwise %FALSE.
+         * @returns `true` if is connected, otherwise `false`.
          */
         is_connected(): boolean;
         /**
          * Connect the connectable.
-         * @returns %TRUE if is added to registry, otherwise %FALSE.
+         * @returns `true` if is added to registry, otherwise `false`.
          */
         is_ready(): boolean;
         /**
@@ -18547,18 +20825,22 @@ export namespace Ags {
 
             /**
              * Retrieve current position of MIDI.
+             * @virtual
              */
             vfunc_get_midi_counter(): number;
             /**
              * Retrieve current position of notation.
+             * @virtual
              */
             vfunc_get_notation_counter(): number;
             /**
              * Retrieve current position of sequencer.
+             * @virtual
              */
             vfunc_get_sequencer_counter(): number;
             /**
              * Retrieve current position of wave.
+             * @virtual
              */
             vfunc_get_wave_counter(): number;
         }
@@ -18572,6 +20854,9 @@ export namespace Ags {
         $gtype: GObject.GType<Countable>;
         prototype: Countable;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Countable extends GObject.Object, Countable.Interface {
         // Methods
 
@@ -18611,50 +20896,62 @@ export namespace Ags {
 
             /**
              * Get BPM.
+             * @virtual
              */
             vfunc_get_bpm(): number;
             /**
              * Get current.
+             * @virtual
              */
             vfunc_get_current(): GObject.Object[];
             /**
              * Get current as copy.
+             * @virtual
              */
             vfunc_get_current_copy(): GObject.Object[];
             /**
              * Get the default offset.
+             * @virtual
              */
             vfunc_get_default_offset(): number;
             /**
              * Get delay.
+             * @virtual
              */
             vfunc_get_delay(): number;
             /**
              * Get delay counter.
+             * @virtual
              */
             vfunc_get_delay_counter(): number;
             /**
              * Get duration.
+             * @virtual
              */
             vfunc_get_duration(): number;
             /**
              * Get next.
+             * @virtual
              */
             vfunc_get_next(): GObject.Object[];
             /**
              * Get offset.
+             * @virtual
              */
             vfunc_get_offset(): number;
             /**
              * Get prev.
+             * @virtual
              */
             vfunc_get_prev(): GObject.Object[];
             /**
              * Get offset counter rate.
+             * @virtual
              */
             vfunc_get_rate(): number;
             /**
              * Get the tact.
+             * @virtual
              */
             vfunc_get_tact(): number;
         }
@@ -18668,6 +20965,9 @@ export namespace Ags {
         $gtype: GObject.GType<Cursor>;
         prototype: Cursor;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Cursor extends GObject.Object, Cursor.Interface {
         // Methods
 
@@ -18678,12 +20978,12 @@ export namespace Ags {
         get_bpm(): number;
         /**
          * Get current.
-         * @returns the #GList-struct pointing to current
+         * @returns the {@link GLib.List}-struct pointing to current
          */
         get_current(): GObject.Object[];
         /**
          * Get current as copy.
-         * @returns the #GList-struct of current as copy
+         * @returns the {@link GLib.List}-struct of current as copy
          */
         get_current_copy(): GObject.Object[];
         /**
@@ -18708,7 +21008,7 @@ export namespace Ags {
         get_duration(): number;
         /**
          * Get next.
-         * @returns the #GList-struct pointing to next
+         * @returns the {@link GLib.List}-struct pointing to next
          */
         get_next(): GObject.Object[];
         /**
@@ -18718,7 +21018,7 @@ export namespace Ags {
         get_offset(): number;
         /**
          * Get prev.
-         * @returns the #GList-struct pointing to previous
+         * @returns the {@link GLib.List}-struct pointing to previous
          */
         get_prev(): GObject.Object[];
         /**
@@ -18747,40 +21047,49 @@ export namespace Ags {
             /**
              * Change frequency.
              * @param frequency the new frequency
+             * @virtual
              */
             vfunc_change_frequency(frequency: number): void;
             /**
              * Decrement thread needs access to main loop's critical region field.
+             * @virtual
              */
             vfunc_dec_queued_critical_region(): void;
             /**
              * Retrieve the tree mutex.
+             * @virtual
              */
             vfunc_get_tree_lock(): GLib.RecMutex;
             /**
              * Increment thread needs access to main loop's critical region field.
+             * @virtual
              */
             vfunc_inc_queued_critical_region(): void;
             /**
              * Check if main loop is in critical region.
+             * @virtual
              */
             vfunc_is_critical_region(): boolean;
             /**
              * Check if thread tree is syncing.
+             * @virtual
              */
             vfunc_is_syncing(): boolean;
             /**
              * Set main loop is in critical region.
-             * @param is_critical_region set %TRUE if critical region
+             * @param is_critical_region set `true` if critical region
+             * @virtual
              */
             vfunc_set_critical_region(is_critical_region: boolean): void;
             /**
              * Set thread tree is syncing.
-             * @param is_syncing set %TRUE if syncing
+             * @param is_syncing set `true` if syncing
+             * @virtual
              */
             vfunc_set_syncing(is_syncing: boolean): void;
             /**
              * Test main loop may enter critical region.
+             * @virtual
              */
             vfunc_test_queued_critical_region(): number;
         }
@@ -18794,6 +21103,9 @@ export namespace Ags {
         $gtype: GObject.GType<MainLoop>;
         prototype: MainLoop;
     }
+    /**
+     * @gir-type Interface
+     */
     interface MainLoop extends GObject.Object, MainLoop.Interface {
         // Methods
 
@@ -18817,22 +21129,22 @@ export namespace Ags {
         inc_queued_critical_region(): void;
         /**
          * Check if main loop is in critical region.
-         * @returns %TRUE if sync in progress, otherwise %FALSE
+         * @returns `true` if sync in progress, otherwise `false`
          */
         is_critical_region(): boolean;
         /**
          * Check if thread tree is syncing.
-         * @returns %TRUE if sync in progress, otherwise %FALSE
+         * @returns `true` if sync in progress, otherwise `false`
          */
         is_syncing(): boolean;
         /**
          * Set main loop is in critical region.
-         * @param is_critical_region set %TRUE if critical region
+         * @param is_critical_region set `true` if critical region
          */
         set_critical_region(is_critical_region: boolean): void;
         /**
          * Set thread tree is syncing.
-         * @param is_syncing set %TRUE if syncing
+         * @param is_syncing set `true` if syncing
          */
         set_syncing(is_syncing: boolean): void;
         /**
@@ -18856,7 +21168,8 @@ export namespace Ags {
 
             /**
              * Mute a class instance.
-             * @param muted if %TRUE then muted, else playing
+             * @param muted if `true` then muted, else playing
+             * @virtual
              */
             vfunc_set_muted(muted: boolean): void;
         }
@@ -18870,12 +21183,15 @@ export namespace Ags {
         $gtype: GObject.GType<Mutable>;
         prototype: Mutable;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Mutable extends GObject.Object, Mutable.Interface {
         // Methods
 
         /**
          * Mute a class instance.
-         * @param muted if %TRUE then muted, else playing
+         * @param muted if `true` then muted, else playing
          */
         set_muted(muted: boolean): void;
     }
@@ -18896,28 +21212,32 @@ export namespace Ags {
              * Encrypt password.
              * @param password the password
              * @param salt your salt
+             * @virtual
              */
             vfunc_encrypt_password(password: string, salt: string): string;
             /**
              * Get login name.
-             * @param security_context the #AgsSecurityContext
+             * @param security_context the {@link Ags.SecurityContext}
              * @param user_uuid the users unique identifier
              * @param security_token the security token
+             * @virtual
              */
             vfunc_get_login_name(security_context: GObject.Object, user_uuid: string, security_token: string): string;
             /**
              * Get password.
-             * @param security_context the #AgsSecurityContext
+             * @param security_context the {@link Ags.SecurityContext}
              * @param user_uuid the user UUID
              * @param security_token the security token
+             * @virtual
              */
             vfunc_get_password(security_context: GObject.Object, user_uuid: string, security_token: string): string;
             /**
              * Set login name.
-             * @param security_context the #AgsSecurityContext
+             * @param security_context the {@link Ags.SecurityContext}
              * @param user_uuid the users unique identifier
              * @param security_token the security token
              * @param login_name the login name
+             * @virtual
              */
             vfunc_set_login_name(
                 security_context: GObject.Object,
@@ -18927,10 +21247,11 @@ export namespace Ags {
             ): void;
             /**
              * Set password.
-             * @param security_context the #AgsSecurityContext
+             * @param security_context the {@link Ags.SecurityContext}
              * @param user_uuid the user UUID
              * @param security_token the security token
              * @param password the password
+             * @virtual
              */
             vfunc_set_password(
                 security_context: GObject.Object,
@@ -18949,6 +21270,9 @@ export namespace Ags {
         $gtype: GObject.GType<PasswordStore>;
         prototype: PasswordStore;
     }
+    /**
+     * @gir-type Interface
+     */
     interface PasswordStore extends GObject.Object, PasswordStore.Interface {
         // Methods
 
@@ -18961,7 +21285,7 @@ export namespace Ags {
         encrypt_password(password: string, salt: string): string;
         /**
          * Get login name.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @returns the login name
@@ -18969,7 +21293,7 @@ export namespace Ags {
         get_login_name(security_context: GObject.Object, user_uuid: string, security_token: string): string;
         /**
          * Get password.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the user UUID
          * @param security_token the security token
          * @returns the password
@@ -18977,7 +21301,7 @@ export namespace Ags {
         get_password(security_context: GObject.Object, user_uuid: string, security_token: string): string;
         /**
          * Set login name.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the users unique identifier
          * @param security_token the security token
          * @param login_name the login name
@@ -18990,7 +21314,7 @@ export namespace Ags {
         ): void;
         /**
          * Set password.
-         * @param security_context the #AgsSecurityContext
+         * @param security_context the {@link Ags.SecurityContext}
          * @param user_uuid the user UUID
          * @param security_token the security token
          * @param password the password
@@ -19017,47 +21341,57 @@ export namespace Ags {
 
             /**
              * Retrieve the build id of the plugin.
+             * @virtual
              */
             vfunc_get_build_id(): string;
             /**
              * Retrieve the name of the plugin.
+             * @virtual
              */
             vfunc_get_name(): string;
             /**
              * Retrieve the ports of the plugin.
+             * @virtual
              */
             vfunc_get_ports(): GObject.Object[];
             /**
              * Retrieve the version of the plugin.
+             * @virtual
              */
             vfunc_get_version(): string;
             /**
              * Retrieve the xml type of the plugin.
+             * @virtual
              */
             vfunc_get_xml_type(): string;
             /**
              * Set the build id of the plugin.
              * @param build_id the build id of plugin
+             * @virtual
              */
             vfunc_set_build_id(build_id: string): void;
             /**
              * Set the name of the plugin.
              * @param name the name of plugin
+             * @virtual
              */
             vfunc_set_name(name: string): void;
             /**
              * Set the build id of the plugin.
              * @param ports the build id of plugin
+             * @virtual
              */
             vfunc_set_ports(ports: GObject.Object[]): void;
             /**
              * Set the version of the plugin.
              * @param version the version of plugin
+             * @virtual
              */
             vfunc_set_version(version: string): void;
             /**
              * Set the build id of the plugin.
              * @param xml_type the build id of plugin
+             * @virtual
              */
             vfunc_set_xml_type(xml_type: string): void;
         }
@@ -19073,19 +21407,22 @@ export namespace Ags {
 
         /**
          * Read of file.
-         * @param file the #GObject
+         * @param file the {@link GObject.Object}
          * @param node the node
-         * @param plugin the #AgsPlugin
+         * @param plugin the {@link Ags.Plugin}
          */
         read(file: GObject.Object, node: libxml2.Node, plugin: Plugin): void;
         /**
          * Write to file.
-         * @param file the #GObject
+         * @param file the {@link GObject.Object}
          * @param parent the parent node
-         * @param plugin the #AgsPlugin
+         * @param plugin the {@link Ags.Plugin}
          */
         write(file: GObject.Object, parent: libxml2.Node, plugin: Plugin): libxml2.Node;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Plugin extends GObject.Object, Plugin.Interface {
         // Methods
 
@@ -19155,12 +21492,13 @@ export namespace Ags {
 
             /**
              * Do request.
-             * @param msg the #SoupServerMessage
-             * @param query the #GHashTable
-             * @param security_context the #AgsSecurityContext
+             * @param msg the {@link Soup.ServerMessage}
+             * @param query the {@link GLib.HashTable}
+             * @param security_context the {@link Ags.SecurityContext}
              * @param path the context path to access
              * @param login the login
              * @param security_token the security token
+             * @virtual
              */
             vfunc_do_request(
                 msg: Soup.ServerMessage,
@@ -19181,18 +21519,21 @@ export namespace Ags {
         $gtype: GObject.GType<PluginController>;
         prototype: PluginController;
     }
+    /**
+     * @gir-type Interface
+     */
     interface PluginController extends GObject.Object, PluginController.Interface {
         // Methods
 
         /**
          * Do request.
-         * @param msg the #SoupServerMessage
-         * @param query the #GHashTable
-         * @param security_context the #AgsSecurityContext
+         * @param msg the {@link Soup.ServerMessage}
+         * @param query the {@link GLib.HashTable}
+         * @param security_context the {@link Ags.SecurityContext}
          * @param path the context path to access
          * @param login the login
          * @param security_token the security token
-         * @returns the #GList-struct containing #AgsResponse
+         * @returns the {@link GLib.List}-struct containing `AgsResponse`
          */
         do_request(
             msg: Soup.ServerMessage,
@@ -19218,27 +21559,32 @@ export namespace Ags {
 
             /**
              * Get port.
+             * @virtual
              */
             vfunc_get_port<T = GObject.Object>(): T;
             /**
              * Retrieve thread-safe properties.
+             * @virtual
              */
             vfunc_list_safe_properties(): string[];
             /**
              * Get property thread safe.
              * @param property_name propertie's name
-             * @param value the #GValue
+             * @param value the {@link GObject.Value}
+             * @virtual
              */
             vfunc_safe_get_property(property_name: string, value: GObject.Value | any): void;
             /**
              * Set property thread safe.
              * @param property_name propertie's name
-             * @param value the #GValue
+             * @param value the {@link GObject.Value}
+             * @virtual
              */
             vfunc_safe_set_property(property_name: string, value: GObject.Value | any): void;
             /**
              * Set port.
-             * @param port the #GObject
+             * @param port the {@link GObject.Object}
+             * @virtual
              */
             vfunc_set_port(port: GObject.Object): void;
         }
@@ -19252,34 +21598,37 @@ export namespace Ags {
         $gtype: GObject.GType<Portlet>;
         prototype: Portlet;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Portlet extends GObject.Object, Portlet.Interface {
         // Methods
 
         /**
          * Get port.
-         * @returns the #GObject
+         * @returns the {@link GObject.Object}
          */
         get_port<T = GObject.Object>(): T;
         /**
          * Retrieve thread-safe properties.
-         * @returns a #GList containing properties
+         * @returns a {@link GLib.List} containing properties
          */
         list_safe_properties(): string[];
         /**
          * Get property thread safe.
          * @param property_name propertie's name
-         * @param value the #GValue
+         * @param value the {@link GObject.Value}
          */
         safe_get_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Set property thread safe.
          * @param property_name propertie's name
-         * @param value the #GValue
+         * @param value the {@link GObject.Value}
          */
         safe_set_property(property_name: string, value: GObject.Value | any): void;
         /**
          * Set port.
-         * @param port the #GObject
+         * @param port the {@link GObject.Object}
          */
         set_port(port: GObject.Object): void;
     }
@@ -19299,7 +21648,8 @@ export namespace Ags {
             /**
              * Seek.
              * @param offset the offset
-             * @param whence the direction, see #AgsSeekType-enum
+             * @param whence the direction, see {@link Ags.SeekType}-enum
+             * @virtual
              */
             vfunc_seek(offset: number, whence: number): void;
         }
@@ -19313,13 +21663,16 @@ export namespace Ags {
         $gtype: GObject.GType<Seekable>;
         prototype: Seekable;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Seekable extends GObject.Object, Seekable.Interface {
         // Methods
 
         /**
          * Seek.
          * @param offset the offset
-         * @param whence the direction, see #AgsSeekType-enum
+         * @param whence the direction, see {@link Ags.SeekType}-enum
          */
         seek(offset: number, whence: number): void;
     }
@@ -19338,112 +21691,137 @@ export namespace Ags {
 
             /**
              * Get current playback bpm.
+             * @virtual
              */
             vfunc_get_bpm(): number;
             /**
              * Get current playback buffer.
              * @param buffer_length the buffer's length
+             * @virtual
              */
             vfunc_get_buffer(buffer_length: number): any | null;
             /**
              * Get current playback delay factor.
+             * @virtual
              */
             vfunc_get_delay_factor(): number;
             /**
              * Get device.
+             * @virtual
              */
             vfunc_get_device(): string;
             /**
              * Get future playback buffer.
              * @param buffer_length the buffer's length
+             * @virtual
              */
             vfunc_get_next_buffer(buffer_length: number): any | null;
             /**
              * Get current playback note offset.
+             * @virtual
              */
             vfunc_get_note_offset(): number;
             /**
              * Get start playback note offset.
+             * @virtual
              */
             vfunc_get_start_note_offset(): number;
             /**
              * Get playing.
+             * @virtual
              */
             vfunc_is_playing(): boolean;
             /**
              * Get recording.
+             * @virtual
              */
             vfunc_is_recording(): boolean;
             /**
              * Get starting.
+             * @virtual
              */
             vfunc_is_starting(): boolean;
             /**
              * Retrieve `card_id` and `card_name` as a list of strings.
+             * @virtual
              */
             vfunc_list_cards(): [string[], string[]];
             /**
              * Lock `buffer`.
              * @param buffer the buffer to lock
+             * @virtual
              */
             vfunc_lock_buffer(buffer?: any | null): void;
             /**
              * Callback when counter expires minor note offset.
              * @param note_offset the note offset
+             * @virtual
              */
             vfunc_offset_changed(note_offset: number): void;
             /**
              * Plays the current buffer of sequencer.
+             * @virtual
              */
             vfunc_play(): void;
             /**
              * Initializes the sequencer for playback.
+             * @virtual
              */
             vfunc_play_init(): void;
             /**
              * Records the current buffer of sequencer.
+             * @virtual
              */
             vfunc_record(): void;
             /**
              * Initializes the sequencer for recording.
+             * @virtual
              */
             vfunc_record_init(): void;
             /**
              * Set current playback bpm.
              * @param bpm the bpm to set
+             * @virtual
              */
             vfunc_set_bpm(bpm: number): void;
             /**
              * Set current playback delay factor.
              * @param delay_factor the delay factor to set
+             * @virtual
              */
             vfunc_set_delay_factor(delay_factor: number): void;
             /**
              * Set device.
              * @param card_id the device to set
+             * @virtual
              */
             vfunc_set_device(card_id: string): void;
             /**
              * Set current playback note offset.
              * @param note_offset the note offset to set
+             * @virtual
              */
             vfunc_set_note_offset(note_offset: number): void;
             /**
              * Set start playback note offset.
              * @param start_note_offset the start note offset to set
+             * @virtual
              */
             vfunc_set_start_note_offset(start_note_offset: number): void;
             /**
              * Stops the sequencer from playing to it.
+             * @virtual
              */
             vfunc_stop(): void;
             /**
              * Every call to play may generate a tic.
+             * @virtual
              */
             vfunc_tic(): void;
             /**
              * Unlock `buffer`.
              * @param buffer the buffer to unlock
+             * @virtual
              */
             vfunc_unlock_buffer(buffer?: any | null): void;
         }
@@ -19457,6 +21835,9 @@ export namespace Ags {
         $gtype: GObject.GType<Sequencer>;
         prototype: Sequencer;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Sequencer extends GObject.Object, Sequencer.Interface {
         // Methods
 
@@ -19499,17 +21880,17 @@ export namespace Ags {
         get_start_note_offset(): number;
         /**
          * Get playing.
-         * @returns %TRUE if playing, else %FALSE
+         * @returns `true` if playing, else `false`
          */
         is_playing(): boolean;
         /**
          * Get recording.
-         * @returns %TRUE if recording, else %FALSE
+         * @returns `true` if recording, else `false`
          */
         is_recording(): boolean;
         /**
          * Get starting.
-         * @returns %TRUE if starting, else %FALSE
+         * @returns `true` if starting, else `false`
          */
         is_starting(): boolean;
         /**
@@ -19596,20 +21977,24 @@ export namespace Ags {
 
             /**
              * Get server.
+             * @virtual
              */
             vfunc_get_server(): Server[];
             /**
              * Check if is operating.
+             * @virtual
              */
             vfunc_is_operating(): boolean;
             /**
              * Set registry.
-             * @param registry the #AgsRegistry
+             * @param registry the {@link Ags.Registry}
+             * @virtual
              */
             vfunc_set_registry(registry: Registry): void;
             /**
              * Set server.
-             * @param server the #GList-struct containing #AgsServer
+             * @param server the {@link GLib.List}-struct containing {@link Ags.Server}
+             * @virtual
              */
             vfunc_set_server(server: Server[]): void;
         }
@@ -19623,27 +22008,30 @@ export namespace Ags {
         $gtype: GObject.GType<ServiceProvider>;
         prototype: ServiceProvider;
     }
+    /**
+     * @gir-type Interface
+     */
     interface ServiceProvider extends GObject.Object, ServiceProvider.Interface {
         // Methods
 
         /**
          * Get server.
-         * @returns the #GList-struct containing #AgsServer
+         * @returns the {@link GLib.List}-struct containing {@link Ags.Server}
          */
         get_server(): Server[];
         /**
          * Check if is operating.
-         * @returns %TRUE if operating, otherwise %FALSE
+         * @returns `true` if operating, otherwise `false`
          */
         is_operating(): boolean;
         /**
          * Set registry.
-         * @param registry the #AgsRegistry
+         * @param registry the {@link Ags.Registry}
          */
         set_registry(registry: Registry): void;
         /**
          * Set server.
-         * @param server the #GList-struct containing #AgsServer
+         * @param server the {@link GLib.List}-struct containing {@link Ags.Server}
          */
         set_server(server: Server[]): void;
     }
@@ -19663,58 +22051,74 @@ export namespace Ags {
             /**
              * Gets the ports of `sound_server`.
              * @param port_count the number of ports returned
+             * @virtual
              */
             vfunc_get_ports(port_count: number): number;
             /**
              * Gets the sequencer of `sound_server` associated with `client_uuid`.
              * @param client_uuid the client uuid
+             * @virtual
              */
             vfunc_get_sequencer(client_uuid: string): GObject.Object[];
             /**
              * Gets the soundcard of `sound_server` associated with `client_uuid`.
              * @param client_uuid the client uuid
+             * @virtual
              */
             vfunc_get_soundcard(client_uuid: string): GObject.Object[];
             /**
              * Gets the URL of `sound_server`.
+             * @virtual
              */
             vfunc_get_url(): string;
             /**
              * Fetches `sequencer` of `sound_server`.
-             * @param is_output if %TRUE the used as sink, else as source
+             * @param is_output if `true` the used as sink, else as source
+             * @virtual
              */
             vfunc_register_sequencer<T = GObject.Object>(is_output: boolean): T;
             /**
              * Fetches `soundcard` of `sound_server`.
-             * @param is_output if %TRUE the used as sink, else as source
+             * @param is_output if `true` the used as sink, else as source
+             * @virtual
              */
             vfunc_register_soundcard<T = GObject.Object>(is_output: boolean): T;
+            /**
+             * @param ports
+             * @param port_count
+             * @virtual
+             */
             vfunc_set_ports(ports: number, port_count: number): void;
             /**
              * Sets the sequencer at `client_uuid`.
              * @param client_uuid the location to fetch from
              * @param sequencer the sequencer to set
+             * @virtual
              */
             vfunc_set_sequencer(client_uuid: string, sequencer: GObject.Object[]): void;
             /**
              * Sets the soundcard at `client_uuid`.
              * @param client_uuid the location to fetch from
              * @param soundcard the soundcard to set
+             * @virtual
              */
             vfunc_set_soundcard(client_uuid: string, soundcard: GObject.Object[]): void;
             /**
              * Sets the url of `sound_server`.
              * @param url the url to set
+             * @virtual
              */
             vfunc_set_url(url: string): void;
             /**
              * Releases `sequencer` in `sound_server`.
-             * @param sequencer the #AgsSequencer
+             * @param sequencer the {@link Ags.Sequencer}
+             * @virtual
              */
             vfunc_unregister_sequencer(sequencer: GObject.Object): void;
             /**
              * Releases `soundcard` in `sound_server`.
-             * @param soundcard the #AgsSoundcard
+             * @param soundcard the {@link Ags.Soundcard}
+             * @virtual
              */
             vfunc_unregister_soundcard(soundcard: GObject.Object): void;
         }
@@ -19728,25 +22132,28 @@ export namespace Ags {
         $gtype: GObject.GType<SoundServer>;
         prototype: SoundServer;
     }
+    /**
+     * @gir-type Interface
+     */
     interface SoundServer extends GObject.Object, SoundServer.Interface {
         // Methods
 
         /**
          * Gets the ports of `sound_server`.
          * @param port_count the number of ports returned
-         * @returns the port as string %NULL-terminated array
+         * @returns the port as string `null`-terminated array
          */
         get_ports(port_count: number): number;
         /**
          * Gets the sequencer of `sound_server` associated with `client_uuid`.
          * @param client_uuid the client uuid
-         * @returns the sequencer as #GList-struct
+         * @returns the sequencer as {@link GLib.List}-struct
          */
         get_sequencer(client_uuid: string): GObject.Object[];
         /**
          * Gets the soundcard of `sound_server` associated with `client_uuid`.
          * @param client_uuid the client uuid
-         * @returns the soundcard as #GList-struct
+         * @returns the soundcard as {@link GLib.List}-struct
          */
         get_soundcard(client_uuid: string): GObject.Object[];
         /**
@@ -19756,16 +22163,20 @@ export namespace Ags {
         get_url(): string;
         /**
          * Fetches `sequencer` of `sound_server`.
-         * @param is_output if %TRUE the used as sink, else as source
-         * @returns a new #AgsSequencer
+         * @param is_output if `true` the used as sink, else as source
+         * @returns a new {@link Ags.Sequencer}
          */
         register_sequencer<T = GObject.Object>(is_output: boolean): T;
         /**
          * Fetches `soundcard` of `sound_server`.
-         * @param is_output if %TRUE the used as sink, else as source
-         * @returns a new #AgsSoundcard
+         * @param is_output if `true` the used as sink, else as source
+         * @returns a new {@link Ags.Soundcard}
          */
         register_soundcard<T = GObject.Object>(is_output: boolean): T;
+        /**
+         * @param port
+         * @param port_count
+         */
         set_ports(port: number, port_count: number): void;
         /**
          * Sets the sequencer at `client_uuid`.
@@ -19786,12 +22197,12 @@ export namespace Ags {
         set_url(url: string): void;
         /**
          * Releases `sequencer` in `sound_server`.
-         * @param sequencer the #AgsSequencer
+         * @param sequencer the {@link Ags.Sequencer}
          */
         unregister_sequencer(sequencer: GObject.Object): void;
         /**
          * Releases `soundcard` in `sound_server`.
-         * @param soundcard the #AgsSoundcard
+         * @param soundcard the {@link Ags.Soundcard}
          */
         unregister_soundcard(soundcard: GObject.Object): void;
     }
@@ -19810,75 +22221,92 @@ export namespace Ags {
 
             /**
              * Get current playback delay.
+             * @virtual
              */
             vfunc_get_absolute_delay(): number;
             /**
              * Get current playback attack.
+             * @virtual
              */
             vfunc_get_attack(): number;
             /**
              * Get current playback bpm.
+             * @virtual
              */
             vfunc_get_bpm(): number;
             /**
              * Get current playback buffer.
+             * @virtual
              */
             vfunc_get_buffer(): any | null;
             /**
-             * Retrieve #AgsSoundcardCapability-enum information.
+             * Retrieve {@link Ags.SoundcardCapability}-enum information.
+             * @virtual
              */
             vfunc_get_capability(): SoundcardCapability;
             /**
              * Get current playback delay.
+             * @virtual
              */
             vfunc_get_delay(): number;
             /**
              * Get current playback note offset.
+             * @virtual
              */
             vfunc_get_delay_counter(): number;
             /**
              * Get current playback delay factor.
+             * @virtual
              */
             vfunc_get_delay_factor(): number;
             /**
              * Get device.
+             * @virtual
              */
             vfunc_get_device(): string;
             /**
              * Get loop parameters of `soundcard`.
+             * @virtual
              */
             vfunc_get_loop(): [number, number, boolean];
             /**
              * Get current playback loop offset.
+             * @virtual
              */
             vfunc_get_loop_offset(): number;
             /**
              * Get future playback buffer.
+             * @virtual
              */
             vfunc_get_next_buffer(): any | null;
             /**
              * Get current playback note 256th attack.
              * @param note_256th_attack_lower the return location of attack lower range
              * @param note_256th_attack_upper the return location of attack upper range
+             * @virtual
              */
             vfunc_get_note_256th_attack(note_256th_attack_lower: number, note_256th_attack_upper: number): void;
             /**
-             * Get current playback note 256th attack position within 16 times %AGS_SOUNDCARD_DEFAULT_PERIOD.
+             * Get current playback note 256th attack position within 16 times `AGS_SOUNDCARD_DEFAULT_PERIOD`.
              * @param note_256th_attack_position the note 256th attack position
+             * @virtual
              */
             vfunc_get_note_256th_attack_at_position(note_256th_attack_position: number): number;
             /**
              * Get note 256th attack of current 16th pulse.
+             * @virtual
              */
             vfunc_get_note_256th_attack_of_16th_pulse(): number;
             /**
              * Get note 256th attack position of current 16th pulse.
+             * @virtual
              */
             vfunc_get_note_256th_attack_of_16th_pulse_position(): number;
             /**
-             * Get current playback note 256th attack position within 16 times %AGS_SOUNDCARD_DEFAULT_PERIOD.
+             * Get current playback note 256th attack position within 16 times `AGS_SOUNDCARD_DEFAULT_PERIOD`.
              * @param note_256th_attack_position_lower the return location of attack position lower range
              * @param note_256th_attack_position_upper the return location of attack position upper range
+             * @virtual
              */
             vfunc_get_note_256th_attack_position(
                 note_256th_attack_position_lower: number,
@@ -19888,117 +22316,143 @@ export namespace Ags {
              * Get current playback note 256th offset.
              * @param note_256th_offset_lower the return location of offset lower range
              * @param note_256th_offset_upper the return location of offset upper range
+             * @virtual
              */
             vfunc_get_note_256th_offset(note_256th_offset_lower: number, note_256th_offset_upper: number): void;
             /**
              * Get current playback note offset.
+             * @virtual
              */
             vfunc_get_note_offset(): number;
             /**
              * Get current playback note offset.
+             * @virtual
              */
             vfunc_get_note_offset_absolute(): number;
             /**
              * Get presets.
+             * @virtual
              */
             vfunc_get_presets(): [number, number, number, SoundcardFormat];
             /**
              * Get future playback buffer.
+             * @virtual
              */
             vfunc_get_prev_buffer(): any | null;
             /**
              * Get start playback note offset.
+             * @virtual
              */
             vfunc_get_start_note_offset(): number;
             /**
              * Get sub block count.
+             * @virtual
              */
             vfunc_get_sub_block_count(): number;
             /**
              * Get playback time as string.
+             * @virtual
              */
             vfunc_get_uptime(): string;
             /**
              * Get available.
+             * @virtual
              */
             vfunc_is_available(): boolean;
             /**
              * Get playing.
+             * @virtual
              */
             vfunc_is_playing(): boolean;
             /**
              * Get recording.
+             * @virtual
              */
             vfunc_is_recording(): boolean;
             /**
              * Get starting.
+             * @virtual
              */
             vfunc_is_starting(): boolean;
             /**
              * Retrieve `card_id` and `card_name` as a list of strings.
+             * @virtual
              */
             vfunc_list_cards(): [string[], string[]];
             /**
              * Lock `buffer`.
              * @param buffer the buffer to lock
+             * @virtual
              */
             vfunc_lock_buffer(buffer?: any | null): void;
             /**
              * Callback when counter expires minor note offset.
              * @param note_offset the current note offset
+             * @virtual
              */
             vfunc_offset_changed(note_offset: number): void;
             /**
              * Retrieve detailed information of `card_id` soundcard.
              * @param card_id the selected soundcard by its string identifier
+             * @virtual
              */
             vfunc_pcm_info(card_id: string): [number, number, number, number, number, number];
             /**
              * Plays the current buffer of soundcard.
+             * @virtual
              */
             vfunc_play(): void;
             /**
              * Initializes the soundcard for playback.
+             * @virtual
              */
             vfunc_play_init(): void;
             /**
              * Records the current buffer of soundcard.
+             * @virtual
              */
             vfunc_record(): void;
             /**
              * Initializes the soundcard for recordback.
+             * @virtual
              */
             vfunc_record_init(): void;
             /**
              * Set current playback bpm.
              * @param bpm the bpm to set
+             * @virtual
              */
             vfunc_set_bpm(bpm: number): void;
             /**
              * Set current playback delay factor.
              * @param delay_factor the delay factor to set
+             * @virtual
              */
             vfunc_set_delay_factor(delay_factor: number): void;
             /**
              * Set device.
              * @param card_id the device to set
+             * @virtual
              */
             vfunc_set_device(card_id: string): void;
             /**
              * Set loop parameters of `soundcard`.
              * @param loop_left loop position of region
              * @param loop_right loop position of region
-             * @param do_loop if %TRUE do loop, else don't loop
+             * @param do_loop if `true` do loop, else don't loop
+             * @virtual
              */
             vfunc_set_loop(loop_left: number, loop_right: number, do_loop: boolean): void;
             /**
              * Set current playback note offset.
              * @param note_offset the note offset to set
+             * @virtual
              */
             vfunc_set_note_offset(note_offset: number): void;
             /**
              * Set current playback note offset.
              * @param note_offset the note offset to set
+             * @virtual
              */
             vfunc_set_note_offset_absolute(note_offset: number): void;
             /**
@@ -20007,36 +22461,43 @@ export namespace Ags {
              * @param rate the samplerate
              * @param buffer_size the buffer size
              * @param format the format
+             * @virtual
              */
             vfunc_set_presets(channels: number, rate: number, buffer_size: number, format: SoundcardFormat): void;
             /**
              * Set start playback note offset.
              * @param start_note_offset the start note offset to set
+             * @virtual
              */
             vfunc_set_start_note_offset(start_note_offset: number): void;
             /**
              * Stops the soundcard from playing to it.
+             * @virtual
              */
             vfunc_stop(): void;
             /**
              * Every call to play may generate a tic.
+             * @virtual
              */
             vfunc_tic(): void;
             /**
              * Trylock sub block.
              * @param buffer the buffer to lock
              * @param sub_block and its sub block
+             * @virtual
              */
             vfunc_trylock_sub_block(buffer: any | null, sub_block: number): boolean;
             /**
              * Unlock `buffer`.
              * @param buffer the buffer to unlock
+             * @virtual
              */
             vfunc_unlock_buffer(buffer?: any | null): void;
             /**
              * Unlock sub block.
              * @param buffer the buffer to lock
              * @param sub_block and its sub block
+             * @virtual
              */
             vfunc_unlock_sub_block(buffer: any | null, sub_block: number): void;
         }
@@ -20052,40 +22513,43 @@ export namespace Ags {
 
         /**
          * Get buffer size.
-         * @param config the #AgsConfig
+         * @param config the {@link Ags.Config}
          */
         helper_config_get_buffer_size(config: Config): number;
         /**
          * Get cache buffer size.
-         * @param config the #AgsConfig
+         * @param config the {@link Ags.Config}
          */
         helper_config_get_cache_buffer_size(config: Config): number;
         /**
          * Get dsp channels count.
-         * @param config the #AgsConfig
+         * @param config the {@link Ags.Config}
          */
         helper_config_get_dsp_channels(config: Config): number;
         /**
-         * Get format as #AgsSoundcardFormat-enum.
-         * @param config the #AgsConfig
+         * Get format as {@link Ags.SoundcardFormat}-enum.
+         * @param config the {@link Ags.Config}
          */
         helper_config_get_format(config: Config): number;
         /**
          * Get pcm channels count.
-         * @param config the #AgsConfig
+         * @param config the {@link Ags.Config}
          */
         helper_config_get_pcm_channels(config: Config): number;
         /**
          * Get samplerate.
-         * @param config the #AgsConfig
+         * @param config the {@link Ags.Config}
          */
         helper_config_get_samplerate(config: Config): number;
         /**
          * Get use cache.
-         * @param config the #AgsConfig
+         * @param config the {@link Ags.Config}
          */
         helper_config_get_use_cache(config: Config): boolean;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Soundcard extends GObject.Object, Soundcard.Interface {
         // Methods
 
@@ -20110,7 +22574,7 @@ export namespace Ags {
          */
         get_buffer(): any | null;
         /**
-         * Retrieve #AgsSoundcardCapability-enum information.
+         * Retrieve {@link Ags.SoundcardCapability}-enum information.
          * @returns the capablities flags
          */
         get_capability(): SoundcardCapability;
@@ -20155,7 +22619,7 @@ export namespace Ags {
          */
         get_note_256th_attack(note_256th_attack_lower: number, note_256th_attack_upper: number): void;
         /**
-         * Get current playback note 256th attack position within 16 times %AGS_SOUNDCARD_DEFAULT_PERIOD.
+         * Get current playback note 256th attack position within 16 times `AGS_SOUNDCARD_DEFAULT_PERIOD`.
          * @param note_256th_attack_position the note 256th attack position
          */
         get_note_256th_attack_at_position(note_256th_attack_position: number): number;
@@ -20170,7 +22634,7 @@ export namespace Ags {
          */
         get_note_256th_attack_of_16th_pulse_position(): number;
         /**
-         * Get current playback note 256th attack position within 16 times %AGS_SOUNDCARD_DEFAULT_PERIOD.
+         * Get current playback note 256th attack position within 16 times `AGS_SOUNDCARD_DEFAULT_PERIOD`.
          * @param note_256th_attack_position_lower the return location of attack position lower range
          * @param note_256th_attack_position_upper the return location of attack position upper range
          */
@@ -20220,22 +22684,22 @@ export namespace Ags {
         get_uptime(): string;
         /**
          * Get available.
-         * @returns %TRUE if available, else %FALSE
+         * @returns `true` if available, else `false`
          */
         is_available(): boolean;
         /**
          * Get playing.
-         * @returns %TRUE if playing, else %FALSE
+         * @returns `true` if playing, else `false`
          */
         is_playing(): boolean;
         /**
          * Get recording.
-         * @returns %TRUE if recording, else %FALSE
+         * @returns `true` if recording, else `false`
          */
         is_recording(): boolean;
         /**
          * Get starting.
-         * @returns %TRUE if starting, else %FALSE
+         * @returns `true` if starting, else `false`
          */
         is_starting(): boolean;
         /**
@@ -20292,7 +22756,7 @@ export namespace Ags {
          * Set loop parameters of `soundcard`.
          * @param loop_left loop position of region
          * @param loop_right loop position of region
-         * @param do_loop if %TRUE do loop, else don't loop
+         * @param do_loop if `true` do loop, else don't loop
          */
         set_loop(loop_left: number, loop_right: number, do_loop: boolean): void;
         /**
@@ -20330,7 +22794,7 @@ export namespace Ags {
          * Trylock sub block.
          * @param buffer the buffer to lock
          * @param sub_block and its sub block
-         * @returns %TRUE on success, otherwise %FALSE
+         * @returns `true` on success, otherwise `false`
          */
         trylock_sub_block(buffer: any | null, sub_block: number): boolean;
         /**
@@ -20362,56 +22826,68 @@ export namespace Ags {
              * Change bpm.
              * @param new_bpm the new bpm
              * @param old_bpm the old bpm
+             * @virtual
              */
             vfunc_change_bpm(new_bpm: number, old_bpm: number): void;
             /**
              * Change midi duration.
              * @param midi_duration the duration
+             * @virtual
              */
             vfunc_change_midi_duration(midi_duration: number): void;
             /**
              * Change notation duration.
              * @param notation_duration the duration
+             * @virtual
              */
             vfunc_change_notation_duration(notation_duration: number): void;
             /**
              * Change sequencer duration.
              * @param sequencer_duration the duration
+             * @virtual
              */
             vfunc_change_sequencer_duration(sequencer_duration: number): void;
             /**
              * Change tact.
              * @param new_tact the new tact
              * @param old_tact the old tact
+             * @virtual
              */
             vfunc_change_tact(new_tact: number, old_tact: number): void;
             /**
              * Change wave duration.
              * @param wave_duration the duration
+             * @virtual
              */
             vfunc_change_wave_duration(wave_duration: number): void;
             /**
              * Get bpm.
+             * @virtual
              */
             vfunc_get_bpm(): number;
             /**
              * Get midi duration.
+             * @virtual
              */
             vfunc_get_midi_duration(): number;
             /**
              * Get notation duration.
+             * @virtual
              */
             vfunc_get_notation_duration(): number;
             /**
              * Get sequencer duration.
+             * @virtual
              */
             vfunc_get_sequencer_duration(): number;
             /**
              * Get tact.
+             * @virtual
              */
             vfunc_get_tact(): number;
             /**
              * Get wave duration.
+             * @virtual
              */
             vfunc_get_wave_duration(): number;
         }
@@ -20425,6 +22901,9 @@ export namespace Ags {
         $gtype: GObject.GType<Tactable>;
         prototype: Tactable;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Tactable extends GObject.Object, Tactable.Interface {
         // Methods
 

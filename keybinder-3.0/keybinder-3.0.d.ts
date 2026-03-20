@@ -23,10 +23,14 @@ export namespace Keybinder {
      * time the key combination is pressed.
      * @param keystring an accelerator description (gtk_accelerator_parse() format)
      * @param handler callback function
-     * @param notify called when @handler is unregistered
-     * @returns %TRUE if the accelerator could be grabbed
+     * @param notify called when `handler` is unregistered
+     * @returns `true` if the accelerator could be grabbed
+     * @since 0.3.0
      */
     function bind(keystring: string, handler: Handler, notify?: GLib.DestroyNotify | null): boolean;
+    /**
+     * @returns the current event timestamp
+     */
     function get_current_event_time(): number;
     /**
      * Initialize the keybinder library.
@@ -44,22 +48,29 @@ export namespace Keybinder {
      * "Ctrl+Shift+1". These two examples are not equal on all keymaps.
      *
      * The cooked accelerator keyvalue and modifiers are provided by the
-     * function gdk_keymap_translate_keyboard_state()
+     * function `gdk_keymap_translate_keyboard_state()`
      *
      * Cooked accelerators are useful if you receive keystrokes from GTK to bind,
      * but raw accelerators can be useful if you or the user inputs accelerators as
      * text.
      *
      * Default: Enabled. Should be set before binding anything.
-     * @param use_cooked if %FALSE disable cooked accelerators
+     * @param use_cooked if `false` disable cooked accelerators
      */
     function set_use_cooked_accelerators(use_cooked: boolean): void;
+    /**
+     * @returns TRUE if keybindings are supported
+     */
     function supported(): boolean;
     /**
      * Unregister all previously bound callbacks for this keystring.
      * @param keystring an accelerator description (gtk_accelerator_parse() format)
+     * @since 0.3.0
      */
     function unbind(keystring: string): void;
+    /**
+     * @gir-type Callback
+     */
     interface Handler {
         (keystring: string): void;
     }

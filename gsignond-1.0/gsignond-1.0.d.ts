@@ -22,6 +22,7 @@ export namespace GSignond {
 
     /**
      * This enum provides a list of errors that plugins and extensions can use.
+     * @gir-type Struct
      */
     class Error extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -194,13 +195,17 @@ export namespace GSignond {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace PluginState {
         export const $gtype: GObject.GType<PluginState>;
     }
 
     /**
-     * The plugin provides state updates by emitting #GSignondPlugin::status-changed
+     * The plugin provides state updates by emitting {@link GSignond.Plugin.SignalSignatures.status_changed | GSignond.Plugin::status-changed}
      * signal with this enum and a string describing what happened.
+     * @gir-type Enum
      */
     enum PluginState {
         /**
@@ -255,6 +260,7 @@ export namespace GSignond {
 
     /**
      * This enum defines errors that may happen during user interaction.
+     * @gir-type Enum
      */
     enum SignonuiError {
         /**
@@ -309,6 +315,7 @@ export namespace GSignond {
 
     /**
      * Policy setting to define how plugins should handle interaction with the user.
+     * @gir-type Enum
      */
     enum UiPolicy {
         /**
@@ -341,8 +348,8 @@ export namespace GSignond {
     const CONFIG_GENERAL: string;
     /**
      * Converts the GVariant to GError.
-     * @param _var instance of #GVariant
-     * @returns #GError object if successful, %NULL otherwise.
+     * @param _var instance of {@link GLib.Variant}
+     * @returns {@link GLib.Error} object if successful, `null` otherwise.
      */
     function error_new_from_variant(_var: GLib.Variant): GLib.Error | null;
     /**
@@ -351,8 +358,8 @@ export namespace GSignond {
     function error_quark(): GLib.Quark;
     /**
      * Converts the GError to GVariant.
-     * @param error instance of #GError
-     * @returns #GVariant object if successful, %NULL otherwise.
+     * @param error instance of {@link GLib.Error}
+     * @returns {@link GLib.Variant} object if successful, `null` otherwise.
      */
     function error_to_variant(error: GLib.Error): GLib.Variant | null;
     /**
@@ -368,17 +375,17 @@ export namespace GSignond {
      */
     function is_host_in_domain(host: string, domain: string): boolean;
     /**
-     * Create a #GIOStream from two file descriptors
+     * Create a {@link Gio.IOStream} from two file descriptors
      * @param in_fd a UNIX file descriptor
      * @param out_fd a UNIX file descriptor
-     * @param close_fds %TRUE to close the file descriptor when done
-     * @returns a new #GIOStream
+     * @param close_fds `true` to close the file descriptor when done
+     * @returns a new {@link Gio.IOStream}
      */
     function new_io_stream_from_fd(in_fd: number, out_fd: number, close_fds: boolean): Gio.IOStream;
     /**
-     * Builds a #GSignondSecurityContext item from a GVariant of type "(ss)".
-     * @param variant GVariant item with a #GSignondSecurityContext construct.
-     * @returns #GSignondSecurityContext item.
+     * Builds a {@link GSignond.SecurityContext} item from a GVariant of type "(ss)".
+     * @param variant GVariant item with a {@link GSignond.SecurityContext} construct.
+     * @returns {@link GSignond.SecurityContext} item.
      */
     function security_context_from_variant(variant: GLib.Variant): SecurityContext;
     /**
@@ -389,10 +396,10 @@ export namespace GSignond {
     function sequence_to_array(seq: GLib.Sequence): string[];
     /**
      * This function securely wipes the contents of the directory by calling
-     * gsignond_wipe_file() on each file. It also removes links and empty directories but
+     * `gsignond_wipe_file()` on each file. It also removes links and empty directories but
      * does not recursively wipe them.
      * @param dirname directory to wipe
-     * @returns %TRUE if wiping and removal was successful.
+     * @returns `true` if wiping and removal was successful.
      */
     function wipe_directory(dirname: string): boolean;
     /**
@@ -416,13 +423,17 @@ export namespace GSignond {
     }
 
     /**
-     * Opaque #GSignondAccessControlManager data structure.
+     * Opaque {@link GSignond.AccessControlManager} data structure.
+     * @gir-type Class
      */
     class AccessControlManager extends GObject.Object {
         static $gtype: GObject.GType<AccessControlManager>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get config(): Config;
 
         /**
@@ -442,16 +453,19 @@ export namespace GSignond {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AccessControlManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AccessControlManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AccessControlManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AccessControlManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AccessControlManager.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AccessControlManager.SignalSignatures[K]> extends [any, ...infer Q]
@@ -464,22 +478,24 @@ export namespace GSignond {
 
         /**
          * Checks if the specified peer is allowed to set the specified access
-         * control list. gsignond_access_control_manager_peer_is_owner_of_identity()
+         * control list. `gsignond_access_control_manager_peer_is_owner_of_identity()`
          * is used before calling this method to verify identity ownership.
          *
-         * The default implementation always returns %TRUE.
+         * The default implementation always returns `true`.
          * @param peer_ctx security context of the peer connection.
          * @param identity_acl access control list for the identity.
+         * @virtual
          */
         vfunc_acl_is_valid(peer_ctx: SecurityContext, identity_acl: SecurityContext[]): boolean;
         /**
          * Checks if specified peer is allowed to access the specified identity.
          *
-         * The default implementation goes over items in `identity_acl,` using
-         * gsignond_security_context_check() to check them against `peer_ctx`.
+         * The default implementation goes over items in `identity_acl`, using
+         * `gsignond_security_context_check()` to check them against `peer_ctx`.
          * @param peer_ctx security context of the peer connection.
          * @param owner_ctx security context of the identity owner.
-         * @param identity_acl access control list for the identity in question. Includes the @owner_ctx as well.
+         * @param identity_acl access control list for the identity in question. Includes the `owner_ctx` as well.
+         * @virtual
          */
         vfunc_peer_is_allowed_to_use_identity(
             peer_ctx: SecurityContext,
@@ -489,10 +505,11 @@ export namespace GSignond {
         /**
          * Checks if the peer specified in `peer_ctx` is the owner of the identity.
          *
-         * The default implementation is using gsignond_security_context_check()
+         * The default implementation is using `gsignond_security_context_check()`
          * to check `peer_ctx` against `owner_ctx` directly.
          * @param peer_ctx security context of the peer connection.
          * @param owner_ctx security context of the identity owner.
+         * @virtual
          */
         vfunc_peer_is_owner_of_identity(peer_ctx: SecurityContext, owner_ctx: SecurityContext): boolean;
         /**
@@ -500,7 +517,7 @@ export namespace GSignond {
          * has a special management access to all stored identities and is able to
          * perform deletion of all identities from storage.
          *
-         * The default implementation returns a context either set in #GSignondConfig,
+         * The default implementation returns a context either set in {@link GSignond.Config},
          * or if not set, a value specified through a configure --enable-keychain
          * option (see
          * <link linkend="gsignond-building">Building gsignond</link>), or if that is not
@@ -509,18 +526,20 @@ export namespace GSignond {
          * If gSSO was compiled
          * with --enable-debug and SSO_KEYCHAIN_SYSCTX environment variable is set, then
          * the value of that variable is used to set the returned system context instead.
+         * @virtual
          */
         vfunc_security_context_of_keychain(): SecurityContext;
         /**
-         * Retrieves and sets #GSignondSecurityContext of the specified peer.
+         * Retrieves and sets {@link GSignond.SecurityContext} of the specified peer.
          *
          * The default implementation sets the app context as it was passed, and sets
          * the system context to the binary path of the process that is determined from
          * `peer_fd` and `peer_service` parameters.
          * @param peer_ctx instance of security context to be set.
          * @param peer_fd file descriptor of the peer connection if using peer-to-peer dbus, -1 otherwise.
-         * @param peer_service g_dbus_method_invocation_get_sender() of the peer connection, if not using peer-to-peer dbus, NULL otherwise
+         * @param peer_service `g_dbus_method_invocation_get_sender()` of the peer connection, if not using peer-to-peer dbus, NULL otherwise
          * @param peer_app_ctx application context of the peer connection.
+         * @virtual
          */
         vfunc_security_context_of_peer(
             peer_ctx: SecurityContext,
@@ -533,24 +552,24 @@ export namespace GSignond {
 
         /**
          * Checks if the specified peer is allowed to set the specified access
-         * control list. gsignond_access_control_manager_peer_is_owner_of_identity()
+         * control list. `gsignond_access_control_manager_peer_is_owner_of_identity()`
          * is used before calling this method to verify identity ownership.
          *
-         * The default implementation always returns %TRUE.
+         * The default implementation always returns `true`.
          * @param peer_ctx security context of the peer connection.
          * @param identity_acl access control list for the identity.
-         * @returns %TRUE if the ACL is valid, %FALSE otherwise.
+         * @returns `true` if the ACL is valid, `false` otherwise.
          */
         acl_is_valid(peer_ctx: SecurityContext, identity_acl: SecurityContext[]): boolean;
         /**
          * Checks if specified peer is allowed to access the specified identity.
          *
-         * The default implementation goes over items in `identity_acl,` using
-         * gsignond_security_context_check() to check them against `peer_ctx`.
+         * The default implementation goes over items in `identity_acl`, using
+         * `gsignond_security_context_check()` to check them against `peer_ctx`.
          * @param peer_ctx security context of the peer connection.
          * @param owner_ctx security context of the identity owner.
-         * @param identity_acl access control list for the identity in question. Includes the @owner_ctx as well.
-         * @returns %TRUE if the peer is allowed to use the identity, %FALSE otherwise.
+         * @param identity_acl access control list for the identity in question. Includes the `owner_ctx` as well.
+         * @returns `true` if the peer is allowed to use the identity, `false` otherwise.
          */
         peer_is_allowed_to_use_identity(
             peer_ctx: SecurityContext,
@@ -560,11 +579,11 @@ export namespace GSignond {
         /**
          * Checks if the peer specified in `peer_ctx` is the owner of the identity.
          *
-         * The default implementation is using gsignond_security_context_check()
+         * The default implementation is using `gsignond_security_context_check()`
          * to check `peer_ctx` against `owner_ctx` directly.
          * @param peer_ctx security context of the peer connection.
          * @param owner_ctx security context of the identity owner.
-         * @returns %TRUE if the peer is the owner to use the identity, %FALSE otherwise.
+         * @returns `true` if the peer is the owner to use the identity, `false` otherwise.
          */
         peer_is_owner_of_identity(peer_ctx: SecurityContext, owner_ctx: SecurityContext): boolean;
         /**
@@ -572,7 +591,7 @@ export namespace GSignond {
          * has a special management access to all stored identities and is able to
          * perform deletion of all identities from storage.
          *
-         * The default implementation returns a context either set in #GSignondConfig,
+         * The default implementation returns a context either set in {@link GSignond.Config},
          * or if not set, a value specified through a configure --enable-keychain
          * option (see
          * <link linkend="gsignond-building">Building gsignond</link>), or if that is not
@@ -585,14 +604,14 @@ export namespace GSignond {
          */
         security_context_of_keychain(): SecurityContext;
         /**
-         * Retrieves and sets #GSignondSecurityContext of the specified peer.
+         * Retrieves and sets {@link GSignond.SecurityContext} of the specified peer.
          *
          * The default implementation sets the app context as it was passed, and sets
          * the system context to the binary path of the process that is determined from
          * `peer_fd` and `peer_service` parameters.
          * @param peer_ctx instance of security context to be set.
          * @param peer_fd file descriptor of the peer connection if using peer-to-peer dbus, -1 otherwise.
-         * @param peer_service g_dbus_method_invocation_get_sender() of the peer connection, if not using peer-to-peer dbus, NULL otherwise
+         * @param peer_service `g_dbus_method_invocation_get_sender()` of the peer connection, if not using peer-to-peer dbus, NULL otherwise
          * @param peer_app_ctx application context of the peer connection.
          */
         security_context_of_peer(
@@ -614,6 +633,7 @@ export namespace GSignond {
 
     /**
      * Opaque structure for the object.
+     * @gir-type Class
      */
     class Config extends GObject.Object {
         static $gtype: GObject.GType<Config>;
@@ -637,16 +657,19 @@ export namespace GSignond {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Config.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Config.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Config.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Config.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Config.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Config.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -664,7 +687,7 @@ export namespace GSignond {
         /**
          * Get a string configuration value.
          * @param key the key name
-         * @returns the value corresponding to the key as string. If the key does not exist, %NULL is returned.
+         * @returns the value corresponding to the key as string. If the key does not exist, `null` is returned.
          */
         get_string(key: string): string | null;
         /**
@@ -691,7 +714,8 @@ export namespace GSignond {
     }
 
     /**
-     * Opaque #GSignondCredentials data structure.
+     * Opaque {@link GSignond.Credentials} data structure.
+     * @gir-type Class
      */
     class Credentials extends GObject.Object {
         static $gtype: GObject.GType<Credentials>;
@@ -715,16 +739,19 @@ export namespace GSignond {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Credentials.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Credentials.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Credentials.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Credentials.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Credentials.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Credentials.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -736,7 +763,7 @@ export namespace GSignond {
         /**
          * Compares elements of two GSignondCredentials object for equality.
          * @param two the second credential to be compared.
-         * @returns %TRUE if id, username and password are same for both credential objects, %FALSE otherwise.
+         * @returns `true` if id, username and password are same for both credential objects, `false` otherwise.
          */
         equal(two: Credentials): boolean;
         /**
@@ -745,41 +772,44 @@ export namespace GSignond {
          */
         get_id(): number;
         /**
-         * Gets the password from the #GSignondCredentials object
-         * @returns the password if the object is valid, %NULL otherwise.
+         * Gets the password from the {@link GSignond.Credentials} object
+         * @returns the password if the object is valid, `null` otherwise.
          */
         get_password(): string | null;
         /**
-         * Gets the username of the #GSignondCredentials object
-         * @returns the username if the object is valid, %NULL otherwise.
+         * Gets the username of the {@link GSignond.Credentials} object
+         * @returns the username if the object is valid, `null` otherwise.
          */
         get_username(): string | null;
         /**
-         * Sets the data of the #GSignondCredentials.
+         * Sets the data of the {@link GSignond.Credentials}.
          * @param id the identity id associated with the credentials.
          * @param username the username.
          * @param password the password.
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * @returns `true` if successful, `false` otherwise.
          */
         set_data(id: number, username: string, password: string): boolean;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.set_data
         set_data(...args: never[]): any;
         /**
-         * Sets the identity id of the #GSignondCredentials object
+         * Sets the identity id of the {@link GSignond.Credentials} object
          * @param id the id.
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * @returns `true` if successful, `false` otherwise.
          */
         set_id(id: number): boolean;
         /**
          * Sets the password of the GSignondCredentials object
          * @param password the password.
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * @returns `true` if successful, `false` otherwise.
          */
         set_password(password?: string | null): boolean;
         /**
          * Sets the username of the GSignondCredentials object
          * @param username the username.
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * @returns `true` if successful, `false` otherwise.
          */
         set_username(username?: string | null): boolean;
     }
@@ -794,7 +824,8 @@ export namespace GSignond {
     }
 
     /**
-     * Opaque #GSignondDictionary data structure.
+     * Opaque {@link GSignond.Dictionary} data structure.
+     * @gir-type Class
      */
     class Dictionary extends GObject.Object {
         static $gtype: GObject.GType<Dictionary>;
@@ -820,16 +851,19 @@ export namespace GSignond {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Dictionary.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Dictionary.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Dictionary.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Dictionary.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Dictionary.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Dictionary.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -841,139 +875,142 @@ export namespace GSignond {
         /**
          * Checks if the `dict` contains `key`.
          * @param key key to check
-         * @returns %TRUE if found, %FALSE otherwise.
+         * @returns `true` if found, `false` otherwise.
          */
         contains(key: string): boolean;
         /**
          * Creates a copy of the dictionary.
-         * @returns #GSignondDictionary object containing the same keys and values than @other.
+         * @returns {@link GSignond.Dictionary} object containing the same keys and values than `other`.
          */
         copy(): Dictionary;
         /**
-         * Retrieves a #GVariant value from the dictionary. This can be used to retrieve
+         * Retrieves a {@link GLib.Variant} value from the dictionary. This can be used to retrieve
          * a value of an arbitrary type, and then convert it manually to a specific type
-         * using #GVariant methods. For most commonly used types, also getters that
+         * using {@link GLib.Variant} methods. For most commonly used types, also getters that
          * return the specific type directly are provided (gsignond_dictionary_get_string()
          * and similar).
          * @param key the key to look up in the dictionary
-         * @returns the value; %NULL is returned in case of failure (for example if the entry corresponding to the supplied key doesn't exist).
+         * @returns the value; `null` is returned in case of failure (for example if the entry corresponding to the supplied key doesn't exist).
          */
         get(key: string): GLib.Variant | null;
         /**
          * Retrieves a gboolean value.
          * @param key key to look up
-         * @returns %TRUE if the value was retrieved successfully, %FALSE otherwise.
+         * @returns `true` if the value was retrieved successfully, `false` otherwise.
          */
         get_boolean(key: string): [boolean, boolean];
         /**
          * Retrieves a int32 value.
          * @param key key to look up
-         * @returns %TRUE if the value was retrieved successfully, %FALSE otherwise.
+         * @returns `true` if the value was retrieved successfully, `false` otherwise.
          */
         get_int32(key: string): [boolean, number];
         /**
          * Retrieves a int64 value.
          * @param key key to look up
-         * @returns %TRUE if the value was retrieved successfully, %FALSE otherwise.
+         * @returns `true` if the value was retrieved successfully, `false` otherwise.
          */
         get_int64(key: string): [boolean, number];
         /**
          * Retrieves a string value.
          * @param key key to look up
-         * @returns the value if it was retrieved successfully, %NULL otherwise.
+         * @returns the value if it was retrieved successfully, `null` otherwise.
          */
         get_string(key: string): string | null;
         /**
-         * Get the #GHashTable associated to the #GSignondDictionary.
+         * Get the {@link GLib.HashTable} associated to the {@link GSignond.Dictionary}.
          *
          * It should not be modified.
-         * @returns The #GHashTable contained into the #GSignondDictionary.
+         * @returns The {@link GLib.HashTable} contained into the {@link GSignond.Dictionary}.
          */
         get_table(): GLib.HashTable<string, GLib.Variant>;
         /**
          * Retrieves a uint32 value.
          * @param key key to look up
-         * @returns %TRUE if the value was retrieved successfully, %FALSE otherwise.
+         * @returns `true` if the value was retrieved successfully, `false` otherwise.
          */
         get_uint32(key: string): [boolean, number];
         /**
          * Retrieves a uint64 value.
          * @param key key to look up
-         * @returns %TRUE if the value was retrieved successfully, %FALSE otherwise.
+         * @returns `true` if the value was retrieved successfully, `false` otherwise.
          */
         get_uint64(key: string): [boolean, number];
         /**
          * Removes key-value pair in the dictionary as per key.
          * @param key key which needs to be removed from the dictionary
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * @returns `true` if successful, `false` otherwise.
          */
         remove(key: string): boolean;
         /**
          * Adds or replaces key-value pair in the dictionary. This allows to set a value
-         * of an arbitrary type: it first needs to be converted to a #GVariant. For most
+         * of an arbitrary type: it first needs to be converted to a {@link GLib.Variant}. For most
          * commonly used types also type-specific setters are provided.
          * @param key key to be set
          * @param value value to be set
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * @returns `true` if successful, `false` otherwise.
          */
         set(key: string, value: GLib.Variant): boolean;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         /**
          * Sets or replaces a gboolean value in the dictionary.
          * @param key key to set
          * @param value value to set
-         * @returns %TRUE if the value was set or replaced successfully, %FALSE otherwise.
+         * @returns `true` if the value was set or replaced successfully, `false` otherwise.
          */
         set_boolean(key: string, value: boolean): boolean;
         /**
          * Sets or replaces a int32 value in the dictionary.
          * @param key key to set
          * @param value value to set
-         * @returns %TRUE if the value was set or replaced successfully, %FALSE otherwise.
+         * @returns `true` if the value was set or replaced successfully, `false` otherwise.
          */
         set_int32(key: string, value: number): boolean;
         /**
          * Sets or replaces a int64 value in the dictionary.
          * @param key key to set
          * @param value value to set
-         * @returns %TRUE if the value was set or replaced successfully, %FALSE otherwise.
+         * @returns `true` if the value was set or replaced successfully, `false` otherwise.
          */
         set_int64(key: string, value: number): boolean;
         /**
          * Sets or replaces a string value in the dictionary.
          * @param key key to set
          * @param value value to set
-         * @returns %TRUE if the value was set or replaced successfully, %FALSE otherwise.
+         * @returns `true` if the value was set or replaced successfully, `false` otherwise.
          */
         set_string(key: string, value: string): boolean;
         /**
          * Sets or replaces a uint32 value in the dictionary.
          * @param key key to set
          * @param value value to set
-         * @returns %TRUE if the value was set or replaced successfully, %FALSE otherwise.
+         * @returns `true` if the value was set or replaced successfully, `false` otherwise.
          */
         set_uint32(key: string, value: number): boolean;
         /**
          * Sets or replaces a uint64 value in the dictionary.
          * @param key key to set
          * @param value value to set
-         * @returns %TRUE if the value was set or replaced successfully, %FALSE otherwise.
+         * @returns `true` if the value was set or replaced successfully, `false` otherwise.
          */
         set_uint64(key: string, value: number): boolean;
         /**
-         * Converts the #GSignondDictionary to a #GVariant. The result can be serialized
-         * or put into another #GSignondDictionary using gsignond_dictionary_set().
-         * @returns #GVariant object if successful, %NULL otherwise.
+         * Converts the {@link GSignond.Dictionary} to a {@link GLib.Variant}. The result can be serialized
+         * or put into another {@link GSignond.Dictionary} using `gsignond_dictionary_set()`.
+         * @returns {@link GLib.Variant} object if successful, `null` otherwise.
          */
         to_variant(): GLib.Variant | null;
         /**
-         * Converts the #GSignondDictionary to a #GVariantBuilder of type
+         * Converts the {@link GSignond.Dictionary} to a {@link GLib.VariantBuilder} of type
          * G_VARIANT_TYPE_VARDICT.
          *
-         * Caller should use g_variant_builder_unref() on the return value when it is
+         * Caller should use `g_variant_builder_unref()` on the return value when it is
          * no longer needed.
-         * @returns #GVariantBuilder if successful, %NULL otherwise.
+         * @returns {@link GLib.VariantBuilder} if successful, `null` otherwise.
          */
         to_variant_builder(): GLib.VariantBuilder | null;
     }
@@ -988,7 +1025,8 @@ export namespace GSignond {
     }
 
     /**
-     * Opaque #GSignondExtension data structure.
+     * Opaque {@link GSignond.Extension} data structure.
+     * @gir-type Class
      */
     class Extension extends GObject.Object {
         static $gtype: GObject.GType<Extension>;
@@ -1010,16 +1048,19 @@ export namespace GSignond {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Extension.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Extension.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Extension.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Extension.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Extension.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Extension.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1030,22 +1071,31 @@ export namespace GSignond {
 
         /**
          * Factory method to get a singleton access control manager object. See
-         * #GSignondAccessControlManager for the description of the default implementation.
+         * {@link GSignond.AccessControlManager} for the description of the default implementation.
          * @param config configuration object instance.
+         * @virtual
          */
         vfunc_get_access_control_manager(config: Config): AccessControlManager;
+        /**
+         * @virtual
+         */
         vfunc_get_extension_name(): string;
+        /**
+         * @virtual
+         */
         vfunc_get_extension_version(): number;
         /**
          * Factory method to get a singleton secret storage object. See
-         * #GSignondSecretStorage for the description of the default implementation.
+         * {@link GSignond.SecretStorage} for the description of the default implementation.
          * @param config configuration object instance.
+         * @virtual
          */
         vfunc_get_secret_storage(config: Config): SecretStorage;
         /**
          * Factory method to get a singleton storage manager object. See
-         * #GSignondStorageManager for the description of the default implementation.
+         * {@link GSignond.StorageManager} for the description of the default implementation.
          * @param config configuration object instance.
+         * @virtual
          */
         vfunc_get_storage_manager(config: Config): StorageManager;
 
@@ -1053,7 +1103,7 @@ export namespace GSignond {
 
         /**
          * Factory method to get a singleton access control manager object. See
-         * #GSignondAccessControlManager for the description of the default implementation.
+         * {@link GSignond.AccessControlManager} for the description of the default implementation.
          * @param config configuration object instance.
          * @returns access control manager object instance.
          */
@@ -1066,14 +1116,14 @@ export namespace GSignond {
         get_name(): string;
         /**
          * Factory method to get a singleton secret storage object. See
-         * #GSignondSecretStorage for the description of the default implementation.
+         * {@link GSignond.SecretStorage} for the description of the default implementation.
          * @param config configuration object instance.
          * @returns secret storage object instance.
          */
         get_secret_storage(config: Config): SecretStorage;
         /**
          * Factory method to get a singleton storage manager object. See
-         * #GSignondStorageManager for the description of the default implementation.
+         * {@link GSignond.StorageManager} for the description of the default implementation.
          * @param config configuration object instance.
          * @returns storage manager object instance.
          */
@@ -1099,13 +1149,17 @@ export namespace GSignond {
     }
 
     /**
-     * Opaque #GSignondSecretStorage data structure.
+     * Opaque {@link GSignond.SecretStorage} data structure.
+     * @gir-type Class
      */
     class SecretStorage extends GObject.Object {
         static $gtype: GObject.GType<SecretStorage>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get config(): Config;
 
         /**
@@ -1125,16 +1179,19 @@ export namespace GSignond {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SecretStorage.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SecretStorage.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SecretStorage.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SecretStorage.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SecretStorage.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SecretStorage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1146,33 +1203,40 @@ export namespace GSignond {
         /**
          * Checks whether the given credentials match what is stored in the database.
          * @param creds the credentials that are being checked.
+         * @virtual
          */
         vfunc_check_credentials(creds: Credentials): boolean;
         /**
          * Removes all stored secrets from the database.
+         * @virtual
          */
         vfunc_clear_db(): boolean;
         /**
-         * Closes the database. To reopen it, call gsignond_secret_storage_open_db().
+         * Closes the database. To reopen it, call `gsignond_secret_storage_open_db()`.
+         * @virtual
          */
         vfunc_close_db(): boolean;
         /**
          * Retrieves the last occurred error that has occurred
+         * @virtual
          */
         vfunc_get_last_error(): GLib.Error;
         /**
          * Checks if the database is open or not.
+         * @virtual
          */
         vfunc_is_open_db(): boolean;
         /**
          * Loads the credentials from the database.
          * @param id the identity id whose credentials are being loaded.
+         * @virtual
          */
         vfunc_load_credentials(id: number): Credentials | null;
         /**
          * Loads the secret data associated with a given identity and method.
          * @param id the identity id whose data are fetched
          * @param method the authentication method the data is used for.
+         * @virtual
          */
         vfunc_load_data(id: number, method: number): Dictionary;
         /**
@@ -1182,22 +1246,26 @@ export namespace GSignond {
          * to determine database location in the filesystem.
          *
          * The default implementation is using SQLite for the storage.
+         * @virtual
          */
         vfunc_open_db(): boolean;
         /**
          * Remove the credentials for the given identity.
          * @param id the identity whose credentials are being updated.
+         * @virtual
          */
         vfunc_remove_credentials(id: number): boolean;
         /**
          * Removes secret data associated with a given id/method.
          * @param id the identity whose data are fetched.
          * @param method the authentication method the data is used for.
+         * @virtual
          */
         vfunc_remove_data(id: number, method: number): boolean;
         /**
          * Stores/updates the credentials for the given identity.
          * @param creds the credentials that are being updated.
+         * @virtual
          */
         vfunc_update_credentials(creds: Credentials): boolean;
         /**
@@ -1206,6 +1274,7 @@ export namespace GSignond {
          * @param id the identity whose data are fetched.
          * @param method the authentication method the data is used for.
          * @param data the data to update
+         * @virtual
          */
         vfunc_update_data(id: number, method: number, data: Dictionary): boolean;
 
@@ -1214,33 +1283,33 @@ export namespace GSignond {
         /**
          * Checks whether the given credentials match what is stored in the database.
          * @param creds the credentials that are being checked.
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * @returns `true` if successful, `false` otherwise.
          */
         check_credentials(creds: Credentials): boolean;
         /**
          * Removes all stored secrets from the database.
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * @returns `true` if successful, `false` otherwise.
          */
         clear_db(): boolean;
         /**
-         * Closes the database. To reopen it, call gsignond_secret_storage_open_db().
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * Closes the database. To reopen it, call `gsignond_secret_storage_open_db()`.
+         * @returns `true` if successful, `false` otherwise.
          */
         close_db(): boolean;
         /**
          * Retrieves the last occurred error that has occurred
-         * @returns last occurred #GError
+         * @returns last occurred {@link GLib.Error}
          */
         get_last_error(): GLib.Error;
         /**
          * Checks if the database is open or not.
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * @returns `true` if successful, `false` otherwise.
          */
         is_open_db(): boolean;
         /**
          * Loads the credentials from the database.
          * @param id the identity id whose credentials are being loaded.
-         * @returns #GSignondCredentials if successful, %NULL otherwise.
+         * @returns {@link GSignond.Credentials} if successful, `null` otherwise.
          */
         load_credentials(id: number): Credentials | null;
         /**
@@ -1257,26 +1326,26 @@ export namespace GSignond {
          * to determine database location in the filesystem.
          *
          * The default implementation is using SQLite for the storage.
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * @returns `true` if successful, `false` otherwise.
          */
         open_db(): boolean;
         /**
          * Remove the credentials for the given identity.
          * @param id the identity whose credentials are being updated.
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * @returns `true` if successful, `false` otherwise.
          */
         remove_credentials(id: number): boolean;
         /**
          * Removes secret data associated with a given id/method.
          * @param id the identity whose data are fetched.
          * @param method the authentication method the data is used for.
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * @returns `true` if successful, `false` otherwise.
          */
         remove_data(id: number, method: number): boolean;
         /**
          * Stores/updates the credentials for the given identity.
          * @param creds the credentials that are being updated.
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * @returns `true` if successful, `false` otherwise.
          */
         update_credentials(creds: Credentials): boolean;
         /**
@@ -1285,7 +1354,7 @@ export namespace GSignond {
          * @param id the identity whose data are fetched.
          * @param method the authentication method the data is used for.
          * @param data the data to update
-         * @returns %TRUE if successful, %FALSE otherwise.
+         * @returns `true` if successful, `false` otherwise.
          */
         update_data(id: number, method: number, data: Dictionary): boolean;
     }
@@ -1300,7 +1369,8 @@ export namespace GSignond {
     }
 
     /**
-     * Opaque #GSignondSessionData data structure.
+     * Opaque {@link GSignond.SessionData} data structure.
+     * @gir-type Class
      */
     class SessionData extends Dictionary {
         static $gtype: GObject.GType<SessionData>;
@@ -1326,16 +1396,19 @@ export namespace GSignond {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SessionData.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SessionData.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SessionData.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SessionData.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SessionData.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SessionData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1346,7 +1419,7 @@ export namespace GSignond {
 
         /**
          * Creates a copy of the dictionary session data.
-         * @returns #GSignondSessionData object if the copy was successful, NULL otherwise.
+         * @returns {@link GSignond.SessionData} object if the copy was successful, NULL otherwise.
          */
         copy(): SessionData;
         /**
@@ -1363,7 +1436,7 @@ export namespace GSignond {
         /**
          * A getter for a network timeout setting associated with the authentication session.
          * This can be used to change the default timeout in case of unresponsive servers.
-         * @returns whether the key-value pair exists in the @data dictionary or not.
+         * @returns whether the key-value pair exists in the `data` dictionary or not.
          */
         get_network_timeout(): [boolean, number];
         /**
@@ -1374,7 +1447,7 @@ export namespace GSignond {
          * A getter for a renew token property associated with the authentication session.
          * This property tells the plugin to discard any cached tokens and start
          * the authentication process anew.
-         * @returns whether the key-value pair exists in the @data dictionary or not.
+         * @returns whether the key-value pair exists in the `data` dictionary or not.
          */
         get_renew_token(): [boolean, boolean];
         /**
@@ -1384,7 +1457,7 @@ export namespace GSignond {
         /**
          * A getter for UI policy setting associated with the authentication session.
          * The UI policy indicates how the authentication plugin should interact with the user.
-         * @returns whether the key-value pair exists in the @data dictionary or not.
+         * @returns whether the key-value pair exists in the `data` dictionary or not.
          */
         get_ui_policy(): [boolean, UiPolicy];
         /**
@@ -1395,12 +1468,12 @@ export namespace GSignond {
          * A getter for a window id setting associated with the authentication session.
          * This can be used to embed the user interaction window produced by the authentication
          * session into an application window.
-         * @returns whether the key-value pair exists in the @data dictionary or not.
+         * @returns whether the key-value pair exists in the `data` dictionary or not.
          */
         get_window_id(): [boolean, number];
         /**
          * A setter for a list of realms allowed for the identity use.
-         * @param realms a #GSequence if allowed realms
+         * @param realms a {@link GLib.Sequence} if allowed realms
          */
         set_allowed_realms(realms: GLib.Sequence): void;
         /**
@@ -1469,10 +1542,11 @@ export namespace GSignond {
     }
 
     /**
-     * #GSignondSignonuiData is simply a typedef for #GSignondDictionary, which
+     * {@link GSignond.SignonuiData} is simply a typedef for {@link GSignond.Dictionary}, which
      * means the developers may also freely use methods associated with that structure,
-     * in particular for creating a #GSignondSignonuiData object with
-     * gsignond_dictionary_new().
+     * in particular for creating a {@link GSignond.SignonuiData} object with
+     * `gsignond_dictionary_new()`.
+     * @gir-type Class
      */
     class SignonuiData extends Dictionary {
         static $gtype: GObject.GType<SignonuiData>;
@@ -1498,16 +1572,19 @@ export namespace GSignond {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SignonuiData.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SignonuiData.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SignonuiData.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SignonuiData.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SignonuiData.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SignonuiData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1518,7 +1595,7 @@ export namespace GSignond {
 
         /**
          * Creates a copy of the dictionary session data.
-         * @returns a new #GSignondSignonuiData object copied from @other.
+         * @returns a new {@link GSignond.SignonuiData} object copied from `other`.
          */
         copy(): SignonuiData;
         /**
@@ -1540,7 +1617,7 @@ export namespace GSignond {
          * A getter for the confirm mode. In confirm mode the user is asked to enter
          * an old password (which is compared to the supplied password), and a new password twice
          * (which is returned).
-         * @returns whether this property exists in the @data dictionary or not.
+         * @returns whether this property exists in the `data` dictionary or not.
          */
         get_confirm(): [boolean, boolean];
         /**
@@ -1575,24 +1652,24 @@ export namespace GSignond {
         /**
          * A getter for the UI interaction error. Signon UI sets this to `SIGNONUI_ERROR_NONE` if
          * there were no errors.
-         * @returns whether this property exists in the @data dictionary or not.
+         * @returns whether this property exists in the `data` dictionary or not.
          */
         get_query_error(): [boolean, SignonuiError];
         /**
          * A getter for the query password property. It indicates whether the signon UI
          * should ask the user for a password (and return it in the password property).
-         * @returns whether this property exists in the @data dictionary or not.
+         * @returns whether this property exists in the `data` dictionary or not.
          */
         get_query_password(): [boolean, boolean];
         /**
          * A getter for the query username property. It indicates whether the signon UI
          * should ask the user for a username (and return it in the username property).
-         * @returns whether this property exists in the @data dictionary or not.
+         * @returns whether this property exists in the `data` dictionary or not.
          */
         get_query_username(): [boolean, boolean];
         /**
          * A getter for whether the password should be remembered.
-         * @returns whether this property exists in the @data dictionary or not.
+         * @returns whether this property exists in the `data` dictionary or not.
          */
         get_remember_password(): [boolean, boolean];
         /**
@@ -1746,13 +1823,17 @@ export namespace GSignond {
     }
 
     /**
-     * Opaque #GSignondStorageManager data structure.
+     * Opaque {@link GSignond.StorageManager} data structure.
+     * @gir-type Class
      */
     class StorageManager extends GObject.Object {
         static $gtype: GObject.GType<StorageManager>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get config(): Config;
 
         /**
@@ -1776,16 +1857,19 @@ export namespace GSignond {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof StorageManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StorageManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof StorageManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StorageManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof StorageManager.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<StorageManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1795,62 +1879,68 @@ export namespace GSignond {
         // Virtual methods
 
         /**
-         * Destroys all the encryption keys and wipes the storage. gsignond_wipe_directory()
+         * Destroys all the encryption keys and wipes the storage. `gsignond_wipe_directory()`
          * is typically used for the latter.
+         * @virtual
          */
         vfunc_delete_storage(): boolean;
         /**
          * Checks if the encrypted storage filesystem is currently mounted.
+         * @virtual
          */
         vfunc_filesystem_is_mounted(): boolean;
         /**
          * Initialize encryption storage. This means making sure that the
          * necessary directories under #GSIGNOND_CONFIG_GENERAL_STORAGE_PATH exist and are accessible.
+         * @virtual
          */
         vfunc_initialize_storage(): boolean;
         /**
          * Mounts an encrypted storage and returns the filesystem path of the storage
-         * mount point. This path will be set in #GSignondConfig as
+         * mount point. This path will be set in {@link GSignond.Config} as
          * #GSIGNOND_CONFIG_GENERAL_SECURE_DIR and used to access the secret database via
-         * #GSignondSecretStorage.
+         * {@link GSignond.SecretStorage}.
          *
          * The default implemenation does nothing, and immediately returns the path for the
          * secret database.
+         * @virtual
          */
         vfunc_mount_filesystem(): string;
         /**
          * Checks if the storage has been initialized.
+         * @virtual
          */
         vfunc_storage_is_initialized(): boolean;
         /**
          * Unmounts a previously mounted encrypted storage filesystem.
+         * @virtual
          */
         vfunc_unmount_filesystem(): boolean;
 
         // Methods
 
         /**
-         * Destroys all the encryption keys and wipes the storage. gsignond_wipe_directory()
+         * Destroys all the encryption keys and wipes the storage. `gsignond_wipe_directory()`
          * is typically used for the latter.
-         * @returns %TRUE if the storage has been deleted, %FALSE otherwise.
+         * @returns `true` if the storage has been deleted, `false` otherwise.
          */
         delete_storage(): boolean;
         /**
          * Checks if the encrypted storage filesystem is currently mounted.
-         * @returns %TRUE if the filesystem is mounted, %FALSE otherwise.
+         * @returns `true` if the filesystem is mounted, `false` otherwise.
          */
         filesystem_is_mounted(): boolean;
         /**
          * Initialize encryption storage. This means making sure that the
          * necessary directories under #GSIGNOND_CONFIG_GENERAL_STORAGE_PATH exist and are accessible.
-         * @returns %TRUE if the storage has been initialized, %FALSE otherwise.
+         * @returns `true` if the storage has been initialized, `false` otherwise.
          */
         initialize_storage(): boolean;
         /**
          * Mounts an encrypted storage and returns the filesystem path of the storage
-         * mount point. This path will be set in #GSignondConfig as
+         * mount point. This path will be set in {@link GSignond.Config} as
          * #GSIGNOND_CONFIG_GENERAL_SECURE_DIR and used to access the secret database via
-         * #GSignondSecretStorage.
+         * {@link GSignond.SecretStorage}.
          *
          * The default implemenation does nothing, and immediately returns the path for the
          * secret database.
@@ -1859,31 +1949,61 @@ export namespace GSignond {
         mount_filesystem(): string;
         /**
          * Checks if the storage has been initialized.
-         * @returns %TRUE if the storage has been initialized, %FALSE otherwise.
+         * @returns `true` if the storage has been initialized, `false` otherwise.
          */
         storage_is_initialized(): boolean;
         /**
          * Unmounts a previously mounted encrypted storage filesystem.
-         * @returns %TRUE if the filesystem has been unmounted, %FALSE otherwise.
+         * @returns `true` if the filesystem has been unmounted, `false` otherwise.
          */
         unmount_filesystem(): boolean;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AccessControlManagerClass = typeof AccessControlManager;
+    /**
+     * @gir-type Struct
+     */
     abstract class AccessControlManagerPrivate {
         static $gtype: GObject.GType<AccessControlManagerPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ConfigClass = typeof Config;
+    /**
+     * @gir-type Alias
+     */
     type CredentialsClass = typeof Credentials;
+    /**
+     * @gir-type Alias
+     */
     type DictionaryClass = typeof Dictionary;
+    /**
+     * @gir-type Alias
+     */
     type ExtensionClass = typeof Extension;
+    /**
+     * @gir-type Alias
+     */
     type PluginInterface = typeof Plugin;
+    /**
+     * @gir-type Alias
+     */
     type SecretStorageClass = typeof SecretStorage;
+    /**
+     * @gir-type Struct
+     */
     abstract class SecretStoragePrivate {
         static $gtype: GObject.GType<SecretStoragePrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class SecurityContext {
         static $gtype: GObject.GType<SecurityContext>;
 
@@ -1908,8 +2028,8 @@ export namespace GSignond {
         // Static methods
 
         /**
-         * Builds a #GSignondSecurityContext item from a GVariant of type "(ss)".
-         * @param variant GVariant item with a #GSignondSecurityContext construct.
+         * Builds a {@link GSignond.SecurityContext} item from a GVariant of type "(ss)".
+         * @param variant GVariant item with a {@link GSignond.SecurityContext} construct.
          */
         static from_variant(variant: GLib.Variant): SecurityContext;
 
@@ -1918,18 +2038,18 @@ export namespace GSignond {
         /**
          * Check if `test` is covered by `reference`.
          * @param test security context item to be checked.
-         * @returns TRUE if contexts are equal or the @reference has a wildcard system context, or if system contexts are equal and @reference has a wildcard application context, otherwise FALSE. If either or both contexts are NULL, FALSE is returned.
+         * @returns TRUE if contexts are equal or the `reference` has a wildcard system context, or if system contexts are equal and `reference` has a wildcard application context, otherwise FALSE. If either or both contexts are NULL, FALSE is returned.
          */
         check(test: SecurityContext): boolean;
         /**
-         * Compare two #GSignondSecurityContext items in a similar way to strcmp().
+         * Compare two {@link GSignond.SecurityContext} items in a similar way to `strcmp()`.
          * @param ctx2 second item to compare.
          * @returns negative if ctx1 < ctx2, 0 if ctx1 == ctx2 and positive if ctx1 > ctx2.
          */
         compare(ctx2: SecurityContext): number;
         /**
          * Copies a security context item.
-         * @returns a copy of the #GSignondSecurityContext item.
+         * @returns a copy of the {@link GSignond.SecurityContext} item.
          */
         copy(): SecurityContext;
         /**
@@ -1938,44 +2058,56 @@ export namespace GSignond {
         free(): void;
         /**
          * Get the application context part of
-         * the #GSignondSecurityContext.
+         * the {@link GSignond.SecurityContext}.
          * @returns application context.
          */
         get_application_context(): string;
         /**
          * Get the system context partof the
-         * #GSignondSecurityContext.
+         * {@link GSignond.SecurityContext}.
          * @returns system context.
          */
         get_system_context(): string;
         /**
-         * Compare two #GSignondSecurityContext items match.
+         * Compare two {@link GSignond.SecurityContext} items match.
          * @param ctx2 second item to compare.
          * @returns TRUE if contexts are equal or if either side has a wildcard match for system context, or if system contexts are equal and either side has a wildcard match for the app context, otherwise FALSE. Two NULL contexts match.
          */
         match(ctx2: SecurityContext): boolean;
         /**
          * Sets the application context part of
-         * the #GSignondSecurityContext.
+         * the {@link GSignond.SecurityContext}.
          * @param application_context application security context.
          */
         set_application_context(application_context: string): void;
         /**
          * Sets the system context part of the
-         * #GSignondSecurityContext.
+         * {@link GSignond.SecurityContext}.
          * @param system_context system security context.
          */
         set_system_context(system_context: string): void;
         /**
-         * Build a GVariant of type "(ss)" from a #GSignondSecurityContext item.
-         * @returns GVariant construct of a #GSignondSecurityContext.
+         * Build a GVariant of type "(ss)" from a {@link GSignond.SecurityContext} item.
+         * @returns GVariant construct of a {@link GSignond.SecurityContext}.
          */
         to_variant(): GLib.Variant;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SessionDataClass = typeof SessionData;
+    /**
+     * @gir-type Alias
+     */
     type SignonuiDataClass = typeof SignonuiData;
+    /**
+     * @gir-type Alias
+     */
     type StorageManagerClass = typeof StorageManager;
+    /**
+     * @gir-type Struct
+     */
     abstract class StorageManagerPrivate {
         static $gtype: GObject.GType<StorageManagerPrivate>;
     }
@@ -1990,27 +2122,31 @@ export namespace GSignond {
 
             /**
              * This method cancels an ongoing authentication session. The plugin implementations
-             * should issue a #GSignondPlugin::error signal with #GSIGNOND_ERROR_SESSION_CANCELED
+             * should issue a {@link GSignond.Plugin.SignalSignatures.error | GSignond.Plugin::error} signal with #GSIGNOND_ERROR_SESSION_CANCELED
              * error, and prepare for a new authentication session.
+             * @virtual
              */
             vfunc_cancel(): void;
             /**
              * This method asks the plugin to refresh the UI. The plugin responds with
-             * #GSignondPlugin::refreshed signal.
+             * {@link GSignond.Plugin.SignalSignatures.refreshed | GSignond.Plugin::refreshed} signal.
              * @param ui_data UI refresh parameters
+             * @virtual
              */
             vfunc_refresh(ui_data: SignonuiData): void;
             /**
              * This method provides the plugin with additional parameters for the session
-             * after the plugin has asked for it via #GSignondPlugin::response signal.
+             * after the plugin has asked for it via {@link GSignond.Plugin.SignalSignatures.response | GSignond.Plugin::response} signal.
              * @param session_data additional parameters for the session
+             * @virtual
              */
             vfunc_request(session_data: SessionData): void;
             /**
              * This method starts a new authentication session.
              * @param session_data parameters for the session
-             * @param identity_method_cache data from persistent storage, saved previously via #GSignondPlugin::store signal
+             * @param identity_method_cache data from persistent storage, saved previously via {@link GSignond.Plugin.SignalSignatures.store | GSignond.Plugin::store} signal
              * @param mechanism mechanism to use for the authentication
+             * @virtual
              */
             vfunc_request_initial(
                 session_data: SessionData,
@@ -2019,8 +2155,9 @@ export namespace GSignond {
             ): void;
             /**
              * This method provides the plugin with the results of UI interaction
-             * after the plugin has asked for it via #GSignondPlugin::user-action-required signal.
+             * after the plugin has asked for it via {@link GSignond.Plugin.SignalSignatures.user_action_required | GSignond.Plugin::user-action-required} signal.
              * @param ui_data results of UI interaction
+             * @virtual
              */
             vfunc_user_action_finished(ui_data: SignonuiData): void;
         }
@@ -2037,6 +2174,10 @@ export namespace GSignond {
         $gtype: GObject.GType<Plugin>;
         prototype: Plugin;
     }
+    /**
+     * Opaque {@link GSignond.Plugin} data structure.
+     * @gir-type Interface
+     */
     interface Plugin extends GObject.Object, Plugin.Interface {
         // Properties
 
@@ -2044,11 +2185,13 @@ export namespace GSignond {
          * This property holds a list of authentication mechanisms that the plugin
          * implements, all specified within the authentication method. For example,
          * OAuth plugin could implement "oauth1" and "oauth2" mechanisms.
+         * @read-only
          */
         get mechanisms(): string[];
         /**
          * This property holds a plugin type, or authentication method it implements
          * (for example "oauth" or "sasl").
+         * @read-only
          */
         get type(): string;
 
@@ -2056,74 +2199,74 @@ export namespace GSignond {
 
         /**
          * This method cancels an ongoing authentication session. The plugin implementations
-         * should issue a #GSignondPlugin::error signal with #GSIGNOND_ERROR_SESSION_CANCELED
+         * should issue a {@link GSignond.Plugin.SignalSignatures.error | GSignond.Plugin::error} signal with #GSIGNOND_ERROR_SESSION_CANCELED
          * error, and prepare for a new authentication session.
          */
         cancel(): void;
         /**
-         * Plugin implementations should use this to issue #GSignondPlugin::error
+         * Plugin implementations should use this to issue {@link GSignond.Plugin.SignalSignatures.error | GSignond.Plugin::error}
          * signal. This method should not be used otherwise.
          * @param error the error
          */
         error(error: GLib.Error): void;
         /**
          * This method asks the plugin to refresh the UI. The plugin responds with
-         * #GSignondPlugin::refreshed signal.
+         * {@link GSignond.Plugin.SignalSignatures.refreshed | GSignond.Plugin::refreshed} signal.
          * @param ui_data UI refresh parameters
          */
         refresh(ui_data: SignonuiData): void;
         /**
-         * Plugin implementations should use this to issue #GSignondPlugin::refreshed
+         * Plugin implementations should use this to issue {@link GSignond.Plugin.SignalSignatures.refreshed | GSignond.Plugin::refreshed}
          * signal. This method should not be used otherwise.
          * @param ui_data UI data
          */
         refreshed(ui_data: SignonuiData): void;
         /**
          * This method provides the plugin with additional parameters for the session
-         * after the plugin has asked for it via #GSignondPlugin::response signal.
+         * after the plugin has asked for it via {@link GSignond.Plugin.SignalSignatures.response | GSignond.Plugin::response} signal.
          * @param session_data additional parameters for the session
          */
         request(session_data: SessionData): void;
         /**
          * This method starts a new authentication session.
          * @param session_data parameters for the session
-         * @param identity_method_cache data from persistent storage, saved previously via #GSignondPlugin::store signal
+         * @param identity_method_cache data from persistent storage, saved previously via {@link GSignond.Plugin.SignalSignatures.store | GSignond.Plugin::store} signal
          * @param mechanism mechanism to use for the authentication
          */
         request_initial(session_data: SessionData, identity_method_cache: Dictionary, mechanism: string): void;
         /**
-         * Plugin implementations should use this to issue #GSignondPlugin::response
+         * Plugin implementations should use this to issue {@link GSignond.Plugin.SignalSignatures.response | GSignond.Plugin::response}
          * signal. This method should not be used otherwise.
          * @param session_data session data
          */
         response(session_data: SessionData): void;
         /**
-         * Plugin implementations should use this to issue #GSignondPlugin::response-final
+         * Plugin implementations should use this to issue {@link GSignond.Plugin.SignalSignatures.response_final | GSignond.Plugin::response-final}
          * signal. This method should not be used otherwise.
          * @param session_data session data
          */
         response_final(session_data: SessionData): void;
         /**
-         * Plugin implementations should use this to issue #GSignondPlugin::status-changed
+         * Plugin implementations should use this to issue {@link GSignond.Plugin.SignalSignatures.status_changed | GSignond.Plugin::status-changed}
          * signal. This method should not be used otherwise.
          * @param state the new state
          * @param message the message
          */
         status_changed(state: PluginState | null, message: string): void;
         /**
-         * Plugin implementations should use this to issue #GSignondPlugin::store
+         * Plugin implementations should use this to issue {@link GSignond.Plugin.SignalSignatures.store | GSignond.Plugin::store}
          * signal. This method should not be used otherwise.
          * @param identity_method_cache data to store
          */
         store(identity_method_cache: Dictionary): void;
         /**
          * This method provides the plugin with the results of UI interaction
-         * after the plugin has asked for it via #GSignondPlugin::user-action-required signal.
+         * after the plugin has asked for it via {@link GSignond.Plugin.SignalSignatures.user_action_required | GSignond.Plugin::user-action-required} signal.
          * @param ui_data results of UI interaction
          */
         user_action_finished(ui_data: SignonuiData): void;
         /**
-         * Plugin implementations should use this to issue #GSignondPlugin::user-action-required
+         * Plugin implementations should use this to issue {@link GSignond.Plugin.SignalSignatures.user_action_required | GSignond.Plugin::user-action-required}
          * signal. This method should not be used otherwise.
          * @param ui_data UI data
          */

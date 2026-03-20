@@ -20,27 +20,49 @@ export namespace SocialWebClient {
      * SocialWebClient-0.25
      */
 
+    /**
+     * @gir-type Callback
+     */
     interface ClientGetServicesCallback {
         (client: Client, services: string[]): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ClientIsOnlineCallback {
         (client: Client, online: boolean): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ClientServiceContactsQueryOpenViewCallback {
         (query: ClientService, contact_view?: ClientContactView | null): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ClientServiceGetCapabilitiesCallback {
         (service: ClientService, caps: string[], error: GLib.Error): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ClientServiceQueryOpenViewCallback {
         (query: ClientService, item_view?: ClientItemView | null): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ClientServiceUpdateStatusCallback {
         (service: ClientService, error: GLib.Error): void;
     }
     namespace Client {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             * @run-first
+             */
             'online-changed': (arg0: boolean) => void;
         }
 
@@ -49,6 +71,9 @@ export namespace SocialWebClient {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Client extends GObject.Object {
         static $gtype: GObject.GType<Client>;
 
@@ -71,16 +96,19 @@ export namespace SocialWebClient {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Client.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Client.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Client.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -89,16 +117,34 @@ export namespace SocialWebClient {
 
         // Methods
 
+        /**
+         * @param service_name
+         */
         get_service(service_name: string): ClientService;
+        /**
+         * @param cb
+         */
         get_services(cb: ClientGetServicesCallback): void;
+        /**
+         * @param cb
+         */
         is_online(cb: ClientIsOnlineCallback): void;
     }
 
     namespace ClientContactView {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             'contacts-added': (arg0: Contact[]) => void;
+            /**
+             * @signal
+             */
             'contacts-changed': (arg0: Contact[]) => void;
+            /**
+             * @signal
+             */
             'contacts-removed': (arg0: Contact[]) => void;
             'notify::object-path': (pspec: GObject.ParamSpec) => void;
         }
@@ -111,12 +157,21 @@ export namespace SocialWebClient {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ClientContactView extends GObject.Object {
         static $gtype: GObject.GType<ClientContactView>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get object_path(): string;
+        /**
+         * @construct-only
+         */
         get objectPath(): string;
 
         /**
@@ -136,16 +191,19 @@ export namespace SocialWebClient {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ClientContactView.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClientContactView.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ClientContactView.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClientContactView.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ClientContactView.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ClientContactView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -163,8 +221,17 @@ export namespace SocialWebClient {
     namespace ClientItemView {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
             'items-added': (arg0: Item[]) => void;
+            /**
+             * @signal
+             */
             'items-changed': (arg0: Item[]) => void;
+            /**
+             * @signal
+             */
             'items-removed': (arg0: Item[]) => void;
             'notify::object-path': (pspec: GObject.ParamSpec) => void;
         }
@@ -177,12 +244,21 @@ export namespace SocialWebClient {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ClientItemView extends GObject.Object {
         static $gtype: GObject.GType<ClientItemView>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get object_path(): string;
+        /**
+         * @construct-only
+         */
         get objectPath(): string;
 
         /**
@@ -202,16 +278,19 @@ export namespace SocialWebClient {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ClientItemView.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClientItemView.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ClientItemView.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClientItemView.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ClientItemView.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ClientItemView.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -235,6 +314,9 @@ export namespace SocialWebClient {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ClientLastfm extends GObject.Object {
         static $gtype: GObject.GType<ClientLastfm>;
 
@@ -257,16 +339,19 @@ export namespace SocialWebClient {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ClientLastfm.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClientLastfm.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ClientLastfm.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClientLastfm.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ClientLastfm.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ClientLastfm.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -275,6 +360,14 @@ export namespace SocialWebClient {
 
         // Methods
 
+        /**
+         * @param artist
+         * @param album
+         * @param track
+         * @param length
+         * @param tracknumber
+         * @param musicbrainz_id
+         */
         now_playing(
             artist: string,
             album: string,
@@ -283,6 +376,17 @@ export namespace SocialWebClient {
             tracknumber: number,
             musicbrainz_id: string,
         ): void;
+        /**
+         * @param artist
+         * @param album
+         * @param track
+         * @param time
+         * @param source
+         * @param rating
+         * @param length
+         * @param tracknumber
+         * @param musicbrainz_id
+         */
         submit_track(
             artist: string,
             album: string,
@@ -299,9 +403,25 @@ export namespace SocialWebClient {
     namespace ClientService {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             * @run-first
+             */
             'avatar-retrieved': (arg0: string) => void;
+            /**
+             * @signal
+             * @run-first
+             */
             'capabilities-changed': (arg0: string[]) => void;
+            /**
+             * @signal
+             * @run-first
+             */
             'status-updated': (arg0: boolean) => void;
+            /**
+             * @signal
+             * @run-first
+             */
             'user-changed': () => void;
         }
 
@@ -310,6 +430,9 @@ export namespace SocialWebClient {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ClientService extends GObject.Object {
         static $gtype: GObject.GType<ClientService>;
 
@@ -330,16 +453,19 @@ export namespace SocialWebClient {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ClientService.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClientService.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ClientService.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClientService.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ClientService.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ClientService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -348,18 +474,45 @@ export namespace SocialWebClient {
 
         // Static methods
 
+        /**
+         * @param caps
+         * @param cap
+         */
         static has_cap(caps: string[], cap: string): boolean;
 
         // Virtual methods
 
+        /**
+         * @param path
+         * @virtual
+         */
         vfunc_avatar_retrieved(path: string): void;
+        /**
+         * @param caps
+         * @virtual
+         */
         vfunc_capabilities_changed(caps: string): void;
+        /**
+         * @param success
+         * @virtual
+         */
         vfunc_status_updated(success: boolean): void;
+        /**
+         * @virtual
+         */
         vfunc_user_changed(): void;
 
         // Methods
 
+        /**
+         * @param uid
+         */
         banishable_hide_item(uid: string): void;
+        /**
+         * @param query
+         * @param params
+         * @param cb
+         */
         contacts_query_open_view(
             query: string,
             params: { [key: string]: any } | GLib.HashTable<string, string>,
@@ -367,30 +520,74 @@ export namespace SocialWebClient {
         ): void;
         credentials_updated(): void;
         get_display_name(): string;
+        /**
+         * @param cb
+         */
         get_dynamic_capabilities(cb: ClientServiceGetCapabilitiesCallback): void;
         get_name(): string;
+        /**
+         * @param cb
+         */
         get_static_capabilities(cb: ClientServiceGetCapabilitiesCallback): void;
+        /**
+         * @param query
+         * @param params
+         * @param cb
+         */
         query_open_view(
             query: string,
             params: { [key: string]: any } | GLib.HashTable<string, string>,
             cb: ClientServiceQueryOpenViewCallback,
         ): void;
         request_avatar(): void;
+        /**
+         * @param cb
+         * @param status_msg
+         */
         update_status(cb: ClientServiceUpdateStatusCallback, status_msg: string): void;
+        /**
+         * @param cb
+         * @param status_msg
+         * @param fields
+         */
         update_status_with_fields(
             cb: ClientServiceUpdateStatusCallback,
             status_msg: string,
             fields: { [key: string]: any } | GLib.HashTable<string, string>,
         ): void;
+        /**
+         * @param res
+         */
         upload_photo_finish(res: Gio.AsyncResult): boolean;
+        /**
+         * @param res
+         */
         upload_video_finish(res: Gio.AsyncResult): boolean;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ClientClass = typeof Client;
+    /**
+     * @gir-type Alias
+     */
     type ClientContactViewClass = typeof ClientContactView;
+    /**
+     * @gir-type Alias
+     */
     type ClientItemViewClass = typeof ClientItemView;
+    /**
+     * @gir-type Alias
+     */
     type ClientLastfmClass = typeof ClientLastfm;
+    /**
+     * @gir-type Alias
+     */
     type ClientServiceClass = typeof ClientService;
+    /**
+     * @gir-type Struct
+     */
     class Contact {
         static $gtype: GObject.GType<Contact>;
 
@@ -417,14 +614,26 @@ export namespace SocialWebClient {
         // Methods
 
         free(): void;
+        /**
+         * @param key
+         */
         get_value(key: string): string;
+        /**
+         * @param key
+         */
         get_value_all(key: string): string[];
+        /**
+         * @param key
+         */
         has_key(key: string): boolean;
         is_from_cache(): boolean;
         ref(): Contact;
         unref(): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Item {
         static $gtype: GObject.GType<Item>;
 
@@ -451,7 +660,13 @@ export namespace SocialWebClient {
         // Methods
 
         free(): void;
+        /**
+         * @param key
+         */
         get_value(key: string): string;
+        /**
+         * @param key
+         */
         has_key(key: string): boolean;
         is_from_cache(): boolean;
         ref(): Item;

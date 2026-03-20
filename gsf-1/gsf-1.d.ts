@@ -21,6 +21,9 @@ export namespace Gsf {
      * Gsf-1
      */
 
+    /**
+     * @gir-type Enum
+     */
     enum ClipFormat {
         /**
          * Windows clipboard format
@@ -48,6 +51,9 @@ export namespace Gsf {
         UNKNOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ClipFormatWindows {
         /**
          * error
@@ -71,6 +77,9 @@ export namespace Gsf {
         ENHANCED_METAFILE,
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Error extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
 
@@ -90,12 +99,16 @@ export namespace Gsf {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace OutputCsvQuotingMode {
         export const $gtype: GObject.GType<OutputCsvQuotingMode>;
     }
 
     /**
      * Controls when to add quotes around fields.
+     * @gir-type Enum
      */
     enum OutputCsvQuotingMode {
         /**
@@ -114,6 +127,7 @@ export namespace Gsf {
 
     /**
      * Controls the handling of character data within a parser node.
+     * @gir-type Enum
      */
     enum XMLContent {
         /**
@@ -134,6 +148,9 @@ export namespace Gsf {
         '2ND',
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ZipCompressionMethod {
         STORED,
         SHRUNK,
@@ -394,6 +411,10 @@ export namespace Gsf {
      */
     const META_NAME_SPREADSHEET_COUNT: string;
     /**
+     * (String) Current status of the content. Can be related to signature or user set in the document.
+     */
+    const META_NAME_STATUS: string;
+    /**
      * (String) The topic of the content of the resource,
      * <emphasis>typically</emphasis> including keywords.
      */
@@ -433,7 +454,7 @@ export namespace Gsf {
      * @param _in input stream
      * @param len max length of data to decode
      * @param out output stream
-     * @param state holds the number of bits that are stored in @save
+     * @param state holds the number of bits that are stored in `save`
      * @param save leftover bits that have not yet been decoded
      * @returns the number of bytes converted
      */
@@ -450,7 +471,7 @@ export namespace Gsf {
      * @param _in Data to be encoded
      * @param break_lines Whether to use line breaks
      * @param out Encoded data.
-     * @param state holds the number of bits that are stored in @save
+     * @param state holds the number of bits that are stored in `save`
      * @param save leftover bits that have not yet been decoded
      * @returns a count of the number of bytes in the final block.
      */
@@ -464,7 +485,7 @@ export namespace Gsf {
     /**
      * Encodes data from `data` back into `data` using base64 encoding.
      * @param data data stream
-     * @param len max length of data to encode
+     * @param len length of data to encode
      * @returns the number of bytes encoded
      */
     function base64_encode_simple(data: Uint8Array | string, len: number): number;
@@ -476,7 +497,7 @@ export namespace Gsf {
      * @param len max length of data to decode
      * @param break_lines Whether to use line breaks
      * @param out output stream
-     * @param state holds the number of bits that are stored in @save
+     * @param state holds the number of bits that are stored in `save`
      * @param save leftover bits that have not yet been decoded
      * @returns the number of bytes encoded
      */
@@ -488,12 +509,18 @@ export namespace Gsf {
         state: number,
         save: number,
     ): [number, number, number];
+    /**
+     * @param flag
+     */
     function debug_flag(flag: string): boolean;
     /**
      * A debugging utility to dump the content of `meta` via g_print
-     * @param meta #GsfDocMetaData
+     * @param meta {@link Gsf.DocMetaData}
      */
     function doc_meta_dump(meta: DocMetaData): void;
+    /**
+     * @returns the {@link GLib.Quark} used to identify libgsf errors in {@link GLib.Error} structures. 	Specific error codes come from the {@link Gsf.Error} enumeration.
+     */
     function error_quark(): GLib.Quark;
     /**
      * Extracts the extension from the end of a filename (the part after the final
@@ -506,8 +533,8 @@ export namespace Gsf {
      * A utility wrapper to make sure filenames are valid utf8.
      * Caller must g_free the result.
      * @param filename file name suitable for open(2).
-     * @param quoted if %TRUE, the resulting utf8 file name will be quoted    (unless it is invalid).
-     * @returns @filename using utf-8 encoding for display
+     * @param quoted if `true`, the resulting utf8 file name will be quoted    (unless it is invalid).
+     * @returns `filename` using utf-8 encoding for display
      */
     function filename_to_utf8(filename: string, quoted: boolean): string;
     /**
@@ -516,7 +543,7 @@ export namespace Gsf {
     function init(): void;
     /**
      * Initializes the GSF library and associates it with a type module `mod`.
-     * @param module #GTypeModule.
+     * @param module {@link GObject.TypeModule}.
      */
     function init_dynamic(module: GObject.TypeModule): void;
     /**
@@ -556,7 +583,13 @@ export namespace Gsf {
      * @param len how many bytes will be dumped.
      */
     function mem_dump(ptr: number, len: number): void;
+    /**
+     * @param codepage
+     */
     function msole_codepage_to_lid(codepage: number): number;
+    /**
+     * @returns our best guess at the applicable windows code page based on an 	environment variable or the current locale.
+     */
     function msole_iconv_win_codepage(): number;
     /**
      * Decompresses an LZ compressed stream.
@@ -565,19 +598,41 @@ export namespace Gsf {
      * @returns A GByteArray that the caller is responsible for freeing
      */
     function msole_inflate(input: Input, offset: gsf_off_t): Uint8Array;
+    /**
+     * @param lid numerical language id
+     * @returns the xx_YY style string (can be just xx or xxx) for the given LID.  If the LID is not found, is set to 0x0400, or is set to 0x0000, will return "-none-"
+     */
     function msole_language_for_lid(lid: number): string;
+    /**
+     * @param lang Language id, i.e., locale name.
+     * @returns the LID (Language Identifier) for the input language. 	If lang is `null`, return 0x0400 ("-none-"), and not 0x0000 ("no proofing")
+     */
     function msole_lid_for_language(lang?: string | null): number;
+    /**
+     * @param lid numerical language id
+     * @returns our best guess at the codepage for the given language id
+     */
     function msole_lid_to_codepage(lid: number): number;
+    /**
+     * @param lid numerical language id
+     * @returns the Iconv codepage string for the given LID.
+     */
     function msole_lid_to_codepage_str(lid: number): string;
+    /**
+     * @returns the used ODF namespace
+     * @since 1.14.24
+     */
     function odf_get_ns(): XMLInNS;
     /**
      * Gives the ODF version used by libgsf when writing Open Document files.
      * @returns the ODF version: 102.
+     * @since 1.14.24
      */
     function odf_get_version(): number;
     /**
      * Gives the ODF version used by libgsf when writing Open Document files.
      * @returns the ODF version as a string: "1.2".
+     * @since 1.14.24
      */
     function odf_get_version_string(): string;
     function open_pkg_error_id(): number;
@@ -585,39 +640,51 @@ export namespace Gsf {
      * New in 1.14.9
      *
      * Walks each relationship associated with `opkg` and calls `func` with `user_data`.
-     * @param opkg #GsfInput
-     * @param func #GsfOpenPkgIter
+     * @param opkg {@link Gsf.Input}
+     * @param func {@link Gsf.OpenPkgIter}
      */
     function open_pkg_foreach_rel(opkg: Input, func: OpenPkgIter): void;
+    /**
+     * @param opkg {@link Gsf.Input}
+     * @param rel {@link Gsf.OpenPkgRel}
+     * @returns a new {@link Gsf.Input} which the called needs to unref, or `null` and sets `err`
+     */
     function open_pkg_open_rel(opkg: Input, rel: OpenPkgRel): Input;
     /**
      * New in 1.14.7
      *
-     * Open `opkg'`s relation `id`
-     * @param opkg #GsfInput
+     * Open `opkg`'s relation `id`
+     * @param opkg {@link Gsf.Input}
      * @param id target id
-     * @returns A new GsfInput or %NULL, and sets @err if possible.
+     * @returns A new GsfInput or `null`, and sets `err` if possible.
      */
     function open_pkg_open_rel_by_id(opkg: Input, id: string): Input;
     /**
      * New in 1.14.9
      *
-     * Open one of `opkg'`s relationships with type=`type`.
-     * @param opkg #GsfInput
+     * Open one of `opkg`'s relationships with type=`type`.
+     * @param opkg {@link Gsf.Input}
      * @param type target type
-     * @returns A new GsfInput or %NULL, and sets @err if possible.
+     * @returns A new GsfInput or `null`, and sets `err` if possible.
      */
     function open_pkg_open_rel_by_type(opkg: Input, type: string): Input;
     /**
      * Convenience function to parse a related part.
-     * @param xin #GsfXMLIn
+     * @param xin {@link Gsf.XMLIn}
      * @param id target id
-     * @param dtd #GsfXMLInNode
-     * @param ns #GsfXMLInNS
-     * @returns %NULL on success or a #GError on failure.
+     * @param dtd {@link Gsf.XMLInNode}
+     * @param ns {@link Gsf.XMLInNS}
+     * @returns `null` on success or a {@link GLib.Error} on failure.
      */
     function open_pkg_parse_rel_by_id(xin: XMLIn, id: string, dtd: XMLInNode, ns: XMLInNS): GLib.Error;
+    /**
+     * @param name
+     * @param params
+     */
     function property_settings_find(name: string, params: GObject.Parameter[]): GObject.Parameter;
+    /**
+     * @param params
+     */
     function property_settings_free(params: GObject.Parameter[]): void;
     /**
      * De-intializes the GSF library
@@ -631,18 +698,21 @@ export namespace Gsf {
      */
     function shutdown_dynamic(module: GObject.TypeModule): void;
     /**
-     * This function returns the array of values inside #GsfDocPropVector.
+     * This function returns the array of values inside {@link Gsf.DocPropVector}.
      * No additional references are created.
-     * @param value A GValue of type #GsfDocPropVector.
-     * @returns A #GArray of #GValue
+     * @param value A GValue of type {@link Gsf.DocPropVector}.
+     * @returns A {@link GLib.Array} of {@link GObject.Value}
      */
     function value_get_docprop_array(value: GObject.Value | any): GObject.Value[] | null;
+    /**
+     * @param value
+     */
     function value_get_docprop_varray(value: GObject.Value | any): GObject.ValueArray;
     /**
      * This function returns a pointer to the GsfDocPropVector structure in `value`.
      * No additional references are created.
-     * @param value A GValue of type #GsfDocPropVector.
-     * @returns A pointer to the #GsfDocPropVector structure in @value
+     * @param value A GValue of type {@link Gsf.DocPropVector}.
+     * @returns A pointer to the {@link Gsf.DocPropVector} structure in `value`
      */
     function value_get_docprop_vector(value: GObject.Value | any): DocPropVector;
     /**
@@ -656,10 +726,10 @@ export namespace Gsf {
     function vba_inflate(input: Input, offset: gsf_off_t, size: number, add_null_terminator: boolean): number;
     /**
      * Dumps the document `cur` into `output`.
-     * @param output #GsfOutput
+     * @param output {@link Gsf.Output}
      * @param cur #xmlDocPtr
      * @param encoding The encoding to use.
-     * @param format %TRUE to reformat the output.
+     * @param format `true` to reformat the output.
      * @returns status from xmlSaveFormatFileTo.
      */
     function xmlDocFormatDump(output: Output, cur: libxml2.Doc, encoding: string | null, format: boolean): number;
@@ -668,19 +738,36 @@ export namespace Gsf {
      * @param res Result value
      * @param t Type of data
      * @param str Value string
-     * @returns True when parsing of @str as a value of type @t was succesfull; false otherwise.
+     * @returns True when parsing of `str` as a value of type `t` was succesfull; false otherwise.
      */
     function xml_gvalue_from_str(res: GObject.Value | any, t: GObject.GType, str: string): boolean;
+    /**
+     * @param input {@link Gsf.Input}
+     * @param func {@link Gsf.XMLProbeFunc}
+     * @returns TRUE on success.
+     */
     function xml_probe(input: Input, func: XMLProbeFunc): boolean;
+    /**
+     * @gir-type Callback
+     */
     interface OpenPkgIter {
         (opkg: Input, rel: OpenPkgRel): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface XMLInExtDtor {
         (xin: XMLIn, old_state?: any | null): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface XMLInUnknownFunc {
         (xin: XMLIn, elem: libxml2.Char, attrs: libxml2.Char): boolean;
     }
+    /**
+     * @gir-type Callback
+     */
     interface XMLProbeFunc {
         (
             name: libxml2.Char,
@@ -702,6 +789,9 @@ export namespace Gsf {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Blob extends GObject.Object {
         static $gtype: GObject.GType<Blob>;
 
@@ -728,16 +818,19 @@ export namespace Gsf {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Blob.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Blob.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Blob.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Blob.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Blob.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Blob.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -748,7 +841,7 @@ export namespace Gsf {
 
         /**
          * Queries the size in bytes of the data stored in the blob.
-         * @returns Size in bytes, or 0 if the data is %NULL.
+         * @returns Size in bytes, or 0 if the data is `null`.
          */
         get_size(): number;
         /**
@@ -756,7 +849,7 @@ export namespace Gsf {
          * copy the data for you; it returns a pointer to the actual buffer
          * which the blob uses internally, so you should not free this buffer
          * on your own.
-         * @returns Pointer to the data stored in the blob, or %NULL if the size of the data is zero.
+         * @returns Pointer to the data stored in the blob, or `null` if the size of the data is zero.
          */
         peek_data(): any | null;
     }
@@ -770,6 +863,9 @@ export namespace Gsf {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ClipData extends GObject.Object {
         static $gtype: GObject.GType<ClipData>;
 
@@ -796,16 +892,19 @@ export namespace Gsf {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ClipData.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClipData.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ClipData.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClipData.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ClipData.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ClipData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -815,31 +914,31 @@ export namespace Gsf {
         // Methods
 
         /**
-         * Queries the data blob that actually stores a #GsfClipData's binary data.
-         * @returns A new reference to the #GsfBlob that stores this @clip_data's binary data.  You must use g_object_unref() to dispose of that data blob when you are done with it.
+         * Queries the data blob that actually stores a {@link Gsf.ClipData}'s binary data.
+         * @returns A new reference to the {@link Gsf.Blob} that stores this `clip_data`'s binary data.  You must use `g_object_unref()` to dispose of that data blob when you are done with it.
          */
         get_data_blob(): Blob;
         /**
-         * Queries the clipboard data format of a #GsfClipData.  The format refers to the data
-         * blob inside the `clip_data;` use gsf_clip_data_get_data_blob() to get that data blob.
-         * @returns The format in which the #GsfClipData's data blob is stored.
+         * Queries the clipboard data format of a {@link Gsf.ClipData}.  The format refers to the data
+         * blob inside the `clip_data`; use `gsf_clip_data_get_data_blob()` to get that data blob.
+         * @returns The format in which the {@link Gsf.ClipData}'s data blob is stored.
          */
         get_format(): ClipFormat;
         /**
-         * Queries the Windows clipboard data format for a #GsfClipData.  The `clip_data` must
+         * Queries the Windows clipboard data format for a {@link Gsf.ClipData}.  The `clip_data` must
          * have been created with #GSF_CLIP_FORMAT_WINDOWS_CLIPBOARD.
-         * @returns A #GsfClipFormatWindows value. Possible errors: #GSF_ERROR_INVALID_DATA if the data blob in the @clip_data is smaller than it should be; in this case GSF_CLIP_FORMAT_WINDOWS_ERROR will be returned.
+         * @returns A {@link Gsf.ClipFormatWindows} value. Possible errors: #GSF_ERROR_INVALID_DATA if the data blob in the `clip_data` is smaller than it should be; in this case GSF_CLIP_FORMAT_WINDOWS_ERROR will be returned.
          */
         get_windows_clipboard_format(): ClipFormatWindows;
         /**
-         * Queries a pointer directly to the clipboard data of a #GsfClipData.  The
+         * Queries a pointer directly to the clipboard data of a {@link Gsf.ClipData}.  The
          * resulting pointer is not necessarily the same data pointer that was passed to
-         * gsf_blob_new() prior to creating the `clip_data`.  For example, if the data is
+         * `gsf_blob_new()` prior to creating the `clip_data`.  For example, if the data is
          * in #GSF_CLIP_FORMAT_WINDOWS_CLIPBOARD format, then it will have extra header
          * bytes in front of the actual metafile data.  This function will skip over
          * those header bytes if necessary and return a pointer to the "real" data.
          * @param ret_size Location to return the size of the returned data buffer.
-         * @returns Pointer to the real clipboard data.  The size in bytes of this buffer is returned in the @ret_size argument.
+         * @returns Pointer to the real clipboard data.  The size in bytes of this buffer is returned in the `ret_size` argument.
          */
         peek_real_data(ret_size: number): any | null;
     }
@@ -856,6 +955,7 @@ export namespace Gsf {
     /**
      * Class representing information about a document, such as creator and time of
      * last modification.
+     * @gir-type Class
      */
     class DocMetaData extends GObject.Object {
         static $gtype: GObject.GType<DocMetaData>;
@@ -879,16 +979,19 @@ export namespace Gsf {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DocMetaData.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DocMetaData.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DocMetaData.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DocMetaData.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DocMetaData.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DocMetaData.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -904,29 +1007,33 @@ export namespace Gsf {
         foreach(func: GLib.HFunc): void;
         /**
          * Take ownership of `name` and `value` and insert a property into `meta`.
-         * If a property exists with `name,` it is replaced (The link is lost)
+         * If a property exists with `name`, it is replaced (The link is lost)
          * @param name the id.
-         * @param value #GValue
+         * @param value {@link GObject.Value}
          */
         insert(name: string, value: GObject.Value | any): void;
+        /**
+         * @param name
+         * @returns the property with `name` in `meta`.  The caller can modify the property value and link but not the name.
+         */
         lookup(name: string): DocProp | null;
         /**
          * Extend `xin` so that it can parse a subtree in OpenDoc metadata format
-         * @param doc #GsfXMLInDoc
+         * @param doc {@link Gsf.XMLInDoc}
          */
         odf_subtree(doc: XMLIn): void;
         /**
          * Read a stream formated as a set of MS OLE properties from `in` and store the
          * results in `accum`.
-         * @param _in #GsfInput
-         * @returns A #GError if there was an error.
+         * @param _in {@link Gsf.Input}
+         * @returns A {@link GLib.Error} if there was an error.
          */
         read_from_msole(_in: Input): GLib.Error;
         /**
          * Read an OpenDocument metadata stream from `input` and store the properties
          * into `md`.  Overwrite any existing properties with the same id.
-         * @param input #GsfInput
-         * @returns a #GError if there is a problem.
+         * @param input {@link Gsf.Input}
+         * @returns a {@link GLib.Error} if there is a problem.
          */
         read_from_odf(input: Input): GLib.Error;
         /**
@@ -935,10 +1042,29 @@ export namespace Gsf {
          * @param name the non-null string name of the property
          */
         remove(name: string): void;
+        /**
+         * @returns the number of items in this collection
+         */
         size(): number;
+        /**
+         * @param name
+         * @returns the property with `name` in `meta`.
+         */
         steal(name: string): DocProp | null;
+        /**
+         * @param prop {@link Gsf.DocProp}
+         */
         store(prop: DocProp): void;
+        /**
+         * @param out {@link Gsf.Output}
+         * @param doc_not_component a kludge to differentiate DocumentSummary from Summary
+         * @returns `true` on success;
+         */
         write_to_msole(out: Output, doc_not_component: boolean): boolean;
+        /**
+         * @param output a pointer to a {@link Gsf.Output}.
+         * @returns `true` if no error occured.
+         */
         write_to_odf(output: XMLOut): boolean;
     }
 
@@ -951,6 +1077,9 @@ export namespace Gsf {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class DocPropVector extends GObject.Object {
         static $gtype: GObject.GType<DocPropVector>;
 
@@ -973,16 +1102,19 @@ export namespace Gsf {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DocPropVector.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DocPropVector.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DocPropVector.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DocPropVector.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DocPropVector.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DocPropVector.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -993,7 +1125,7 @@ export namespace Gsf {
 
         /**
          * Insert a copy of `value` as the last element of `vector`.
-         * @param value The GValue to add to @vector
+         * @param value The GValue to add to `vector`
          */
         append(value: GObject.Value | any): void;
         /**
@@ -1024,6 +1156,7 @@ export namespace Gsf {
 
     /**
      * Class representing an input file.
+     * @gir-type Class
      */
     abstract class Infile extends Input {
         static $gtype: GObject.GType<Infile>;
@@ -1045,16 +1178,19 @@ export namespace Gsf {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Infile.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Infile.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Infile.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Infile.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Infile.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Infile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1063,7 +1199,14 @@ export namespace Gsf {
 
         // Virtual methods
 
+        /**
+         * @param i zero-based index of child to find.
+         * @virtual
+         */
         vfunc_name_by_index(i: number): string | null;
+        /**
+         * @virtual
+         */
         vfunc_num_children(): number;
 
         // Methods
@@ -1077,12 +1220,12 @@ export namespace Gsf {
          * words, this function finds the "foo/bar/baz" child.
          *
          * New in 1.14.9.
-         * @param names A %NULL terminated array of names (e.g. from g_strsplit)
+         * @param names A `null` terminated array of names (e.g. from g_strsplit)
          * @returns a newly created child which must be unrefed.
          */
         child_by_aname(names: string[]): Input;
         /**
-         * TODO : For 2.0 api will change to include a #GError.
+         * TODO : For 2.0 api will change to include a {@link GLib.Error}.
          * @param i target index
          * @returns a newly created child which must be unrefed.
          */
@@ -1092,12 +1235,19 @@ export namespace Gsf {
          * works for an immediate child.  If you need to go several levels
          * down use gsf_infile_child_by_aname, for example.
          *
-         * TODO : For 2.0 api will change to include a #GError.
+         * TODO : For 2.0 api will change to include a {@link GLib.Error}.
          * @param name target name
          * @returns a newly created child which must be unrefed.
          */
         child_by_name(name: string): Input;
+        /**
+         * @param i zero-based index of child to find.
+         * @returns the utf8 encoded name of the `i`-th child
+         */
         name_by_index(i: number): string | null;
+        /**
+         * @returns the number of children the storage has, or -1 if the storage can not 	have children.
+         */
         num_children(): number;
     }
 
@@ -1118,6 +1268,9 @@ export namespace Gsf {
         interface ConstructorProps extends Infile.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class InfileMSOle extends Infile {
         static $gtype: GObject.GType<InfileMSOle>;
 
@@ -1140,16 +1293,19 @@ export namespace Gsf {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof InfileMSOle.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InfileMSOle.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof InfileMSOle.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InfileMSOle.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof InfileMSOle.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<InfileMSOle.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1161,10 +1317,9 @@ export namespace Gsf {
         /**
          * Retrieves the 16 byte indentifier (often a GUID in MS Windows apps)
          * stored within the directory associated with `ole` and stores it in `res`.
-         * @param res 16 byte identifier (often a GUID in MS Windows apps)
          * @returns TRUE on success
          */
-        get_class_id(res: number): boolean;
+        get_class_id(): [boolean, Uint8Array];
     }
 
     namespace InfileMSVBA {
@@ -1184,6 +1339,9 @@ export namespace Gsf {
         interface ConstructorProps extends Infile.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class InfileMSVBA extends Infile {
         static $gtype: GObject.GType<InfileMSVBA>;
 
@@ -1206,16 +1364,19 @@ export namespace Gsf {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof InfileMSVBA.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InfileMSVBA.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof InfileMSVBA.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InfileMSVBA.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof InfileMSVBA.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<InfileMSVBA.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1226,12 +1387,12 @@ export namespace Gsf {
 
         /**
          * a collection of names and source code.
-         * @returns A #GHashTable of names and source code (unknown encoding).
+         * @returns A {@link GLib.HashTable} of names and source code (unknown encoding).
          */
         get_modules(): GLib.HashTable<string, any> | null;
         /**
          * A collection of names and source code which the caller is responsible for destroying.
-         * @returns A #GHashTable of names and source code (unknown encoding).
+         * @returns A {@link GLib.HashTable} of names and source code (unknown encoding).
          */
         steal_modules(): GLib.HashTable<string, any> | null;
     }
@@ -1253,6 +1414,9 @@ export namespace Gsf {
         interface ConstructorProps extends Infile.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class InfileStdio extends Infile {
         static $gtype: GObject.GType<InfileStdio>;
 
@@ -1275,16 +1439,19 @@ export namespace Gsf {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof InfileStdio.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InfileStdio.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof InfileStdio.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InfileStdio.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof InfileStdio.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<InfileStdio.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1312,11 +1479,17 @@ export namespace Gsf {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class InfileTar extends Infile {
         static $gtype: GObject.GType<InfileTar>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get source(): Input;
 
         /**
@@ -1338,16 +1511,19 @@ export namespace Gsf {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof InfileTar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InfileTar.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof InfileTar.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InfileTar.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof InfileTar.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<InfileTar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1383,6 +1559,9 @@ export namespace Gsf {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class InfileZip extends Infile {
         static $gtype: GObject.GType<InfileZip>;
 
@@ -1390,15 +1569,29 @@ export namespace Gsf {
 
         /**
          * Controls the level of compression used for new members.
+         * @read-only
          */
         get compression_level(): number;
         /**
          * Controls the level of compression used for new members.
+         * @read-only
          */
         get compressionLevel(): number;
+        /**
+         * @construct-only
+         */
         set internal_parent(val: InfileZip);
+        /**
+         * @construct-only
+         */
         set internalParent(val: InfileZip);
+        /**
+         * @construct-only
+         */
         get source(): Input;
+        /**
+         * @read-only
+         */
         get zip64(): boolean;
 
         /**
@@ -1420,16 +1613,19 @@ export namespace Gsf {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof InfileZip.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InfileZip.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof InfileZip.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InfileZip.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof InfileZip.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<InfileZip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1464,6 +1660,7 @@ export namespace Gsf {
 
     /**
      * Class representing an input stream.
+     * @gir-type Class
      */
     abstract class Input extends GObject.Object {
         static $gtype: GObject.GType<Input>;
@@ -1471,30 +1668,39 @@ export namespace Gsf {
         // Properties
 
         /**
-         * The container, optionally %NULL, in which this input lives.
+         * The container, optionally `null`, in which this input lives.
+         * @read-only
          */
         get container(): Infile;
         /**
-         * %TRUE if the end of the file has been reached.
+         * `true` if the end of the file has been reached.
+         * @read-only
          */
         get eof(): boolean;
         /**
          * The time the input was last updated.  This represents the
          * timestamp from the originating file or `GsfInfile` member.
          * It is not supported by all derived classes.
+         * @read-only
          */
         get modtime(): GLib.DateTime;
+        /**
+         * @read-only
+         */
         get name(): string;
         /**
          * The current position in the input.
+         * @read-only
          */
         get position(): number;
         /**
          * The number of bytes remaining in the file.
+         * @read-only
          */
         get remaining(): number;
         /**
          * The total number of bytes in the file.
+         * @read-only
          */
         get size(): number;
 
@@ -1522,16 +1728,19 @@ export namespace Gsf {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Input.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Input.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Input.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Input.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Input.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Input.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1546,8 +1755,9 @@ export namespace Gsf {
 
         /**
          * Duplicates `input` leaving the new one at the same offset.
+         * @virtual
          */
-        vfunc_Dup(): Input | null;
+        vfunc_Dup(): Input;
         /**
          * UNIMPLEMENTED BY ANY BACKEND
          * 	and it is probably unnecessary.   gsf_input_get_container provides
@@ -1556,12 +1766,14 @@ export namespace Gsf {
          * Attempts to open a 'sibling' of `input`.  The caller is responsible for
          * managing the resulting object.
          * @param name name.
+         * @virtual
          */
         vfunc_OpenSibling(name: string): Input;
         /**
          * Move the current location in the input stream.
          * @param offset target offset
          * @param whence determines whether the offset is relative to the beginning or          the end of the stream, or to the current location.
+         * @virtual
          */
         vfunc_Seek(offset: gsf_off_t, whence: GLib.SeekType): boolean;
 
@@ -1572,26 +1784,29 @@ export namespace Gsf {
          * current positions. So if you want to be sure to copy *everything*,
          * make sure to call gsf_input_seek (input, 0, G_SEEK_SET) and
          * gsf_output_seek (output, 0, G_SEEK_SET) first, if applicable.
-         * @param output a non-null #GsfOutput
-         * @returns %TRUE on success
+         * @param output {@link Gsf.Output}
+         * @returns `true` on success
          */
         copy(output: Output): boolean;
         /**
-         * Dumps `input'`s contents to STDOUT, optionally in hex format.
-         * @param dump_as_hex If %TRUE, dump in hexidecmal format
+         * Dumps `input`'s contents to STDOUT, optionally in hex format.
+         * @param dump_as_hex If `true`, dump in hexidecmal format
          */
         dump(dump_as_hex: boolean): void;
         /**
          * Duplicates `input` leaving the new one at the same offset.
          * @returns the duplicate
          */
-        dup(): Input | null;
+        dup(): Input;
         /**
          * A utility routine that attempts to find the VBA file withint a stream.
          * @returns a GsfInfile
          */
         find_vba(): InfileMSVBA | null;
-        get_modtime(): GLib.DateTime;
+        /**
+         * @returns A {@link GLib.DateTime} representing when the input was last modified, or `null` if not known.
+         */
+        get_modtime(): GLib.DateTime | null;
         /**
          * Read `num_bytes`.  Does not change the current position if there
          * is an error.  Will only read if the entire amount can be read.
@@ -1603,35 +1818,46 @@ export namespace Gsf {
          * Move the current location in the input stream.
          * @param offset target offset
          * @param whence determines whether the offset is relative to the beginning or          the end of the stream, or to the current location.
-         * @returns %TRUE on error.
+         * @returns `true` on error.
          */
         seek(offset: gsf_off_t, whence: GLib.SeekType | null): boolean;
         /**
          * Emulate forward seeks by reading.
          * @param pos absolute position to seek to
-         * @returns %TRUE if the emulation failed.
+         * @returns `true` if the emulation failed.
          */
         seek_emulate(pos: gsf_off_t): boolean;
+        /**
+         * @param container
+         * @returns `true` if the assignment was ok.
+         */
         set_container(container?: Infile | null): boolean;
         /**
          * protected.
          * @param modtime the new modification time.
-         * @returns %TRUE if the assignment was ok.
+         * @returns `true` if the assignment was ok.
          */
         set_modtime(modtime?: GLib.DateTime | null): boolean;
+        /**
+         * @param st
+         */
         set_modtime_from_stat(st?: any | null): boolean;
         /**
          * protected.
          * @param name the new name of the stream
-         * @returns %TRUE if the assignment was ok.
+         * @returns `true` if the assignment was ok.
          */
         set_name(name?: string | null): boolean;
         /**
          * protected.
          * @param filename the (fs-sys encoded) filename
-         * @returns %TRUE if the assignment was ok.
+         * @returns `true` if the assignment was ok.
          */
         set_name_from_filename(filename: string): boolean;
+        /**
+         * @param size the size of the stream
+         * @returns `true` if the assignment was ok.
+         */
         set_size(size: gsf_off_t): boolean;
         /**
          * UNIMPLEMENTED BY ANY BACKEND
@@ -1641,9 +1867,12 @@ export namespace Gsf {
          * Attempts to open a 'sibling' of `input`.  The caller is responsible for
          * managing the resulting object.
          * @param name name.
-         * @returns A related #GsfInput
+         * @returns A related {@link Gsf.Input}
          */
         sibling(name: string): Input;
+        /**
+         * @returns the current offset in the file.
+         */
         tell(): gsf_off_t;
         /**
          * This functions takes ownership of the incoming reference and yields a
@@ -1678,14 +1907,29 @@ export namespace Gsf {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class InputGZip extends Input {
         static $gtype: GObject.GType<InputGZip>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get raw(): boolean;
+        /**
+         * @construct-only
+         */
         get source(): Input;
+        /**
+         * @construct-only
+         */
         get uncompressed_size(): number;
+        /**
+         * @construct-only
+         */
         get uncompressedSize(): number;
 
         /**
@@ -1707,16 +1951,19 @@ export namespace Gsf {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof InputGZip.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InputGZip.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof InputGZip.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InputGZip.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof InputGZip.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<InputGZip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1741,6 +1988,9 @@ export namespace Gsf {
         interface ConstructorProps extends Input.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class InputGio extends Input {
         static $gtype: GObject.GType<InputGio>;
 
@@ -1767,16 +2017,19 @@ export namespace Gsf {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof InputGio.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InputGio.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof InputGio.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InputGio.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof InputGio.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<InputGio.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1807,13 +2060,25 @@ export namespace Gsf {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class InputHTTP extends Input {
         static $gtype: GObject.GType<InputHTTP>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get content_type(): string;
+        /**
+         * @construct-only
+         */
         get contentType(): string;
+        /**
+         * @construct-only
+         */
         get url(): string;
 
         /**
@@ -1835,16 +2100,19 @@ export namespace Gsf {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof InputHTTP.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InputHTTP.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof InputHTTP.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InputHTTP.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof InputHTTP.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<InputHTTP.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1853,7 +2121,13 @@ export namespace Gsf {
 
         // Methods
 
+        /**
+         * @returns an allocated string containing the Content-Type field of the HTTP response.
+         */
         get_content_type(): string;
+        /**
+         * @returns an allocated string containing the URL used for input.
+         */
         get_url(): string;
     }
 
@@ -1874,6 +2148,9 @@ export namespace Gsf {
         interface ConstructorProps extends Input.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class InputMemory extends Input {
         static $gtype: GObject.GType<InputMemory>;
 
@@ -1902,16 +2179,19 @@ export namespace Gsf {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof InputMemory.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InputMemory.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof InputMemory.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InputMemory.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof InputMemory.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<InputMemory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1936,6 +2216,9 @@ export namespace Gsf {
         interface ConstructorProps extends Input.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class InputProxy extends Input {
         static $gtype: GObject.GType<InputProxy>;
 
@@ -1960,16 +2243,19 @@ export namespace Gsf {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof InputProxy.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InputProxy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof InputProxy.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InputProxy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof InputProxy.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<InputProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1994,6 +2280,9 @@ export namespace Gsf {
         interface ConstructorProps extends Input.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class InputStdio extends Input {
         static $gtype: GObject.GType<InputStdio>;
 
@@ -2018,16 +2307,19 @@ export namespace Gsf {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof InputStdio.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InputStdio.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof InputStdio.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InputStdio.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof InputStdio.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<InputStdio.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2052,6 +2344,9 @@ export namespace Gsf {
         interface ConstructorProps extends Input.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class InputTextline extends Input {
         static $gtype: GObject.GType<InputTextline>;
 
@@ -2074,16 +2369,19 @@ export namespace Gsf {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof InputTextline.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InputTextline.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof InputTextline.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InputTextline.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof InputTextline.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<InputTextline.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2096,14 +2394,14 @@ export namespace Gsf {
          * A utility routine to read things line by line from the underlying source.
          * Trailing newlines and carriage returns are stripped, and the resultant buffer
          * can be edited.
-         * @returns the string read, or %NULL on eof.
+         * @returns the string read, or `null` on eof.
          */
         ascii_gets(): Uint8Array | null;
         /**
          * A utility routine to read things line by line from the underlying source.
          * Trailing newlines and carriage returns are stripped, and the resultant buffer
          * can be edited.
-         * @returns the string read, or %NULL on eof.
+         * @returns the string read, or `null` on eof.
          */
         utf8_gets(): Uint8Array | null;
     }
@@ -2124,12 +2422,21 @@ export namespace Gsf {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ODFOut extends XMLOut {
         static $gtype: GObject.GType<ODFOut>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get odf_version(): number;
+        /**
+         * @construct-only
+         */
         get odfVersion(): number;
 
         /**
@@ -2154,16 +2461,19 @@ export namespace Gsf {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ODFOut.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ODFOut.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ODFOut.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ODFOut.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ODFOut.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ODFOut.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2193,7 +2503,8 @@ export namespace Gsf {
     }
 
     /**
-     * Class representing an output file, counterpart to #GsfInfile.
+     * Class representing an output file, counterpart to {@link Gsf.Infile}.
+     * @gir-type Class
      */
     abstract class Outfile extends Output {
         static $gtype: GObject.GType<Outfile>;
@@ -2215,16 +2526,19 @@ export namespace Gsf {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Outfile.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Outfile.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Outfile.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Outfile.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Outfile.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Outfile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2233,13 +2547,18 @@ export namespace Gsf {
 
         // Methods
 
+        /**
+         * @param name The name of the new child to create
+         * @param is_dir `true` to create a directory, `false` to create a plain file
+         * @returns a newly created child
+         */
         new_child(name: string, is_dir: boolean): Output;
         /**
          * A convenience wrapper to create a child in `dir` of `content_type` then create
          * a `type` relation to `parent`
          * @param name target name
-         * @param content_type non-%NULL content type
-         * @param parent #GsfOutfile
+         * @param content_type non-`null` content type
+         * @param parent {@link Gsf.Outfile}
          * @param type target type
          * @returns the new part.
          */
@@ -2271,15 +2590,33 @@ export namespace Gsf {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class OutfileMSOle extends Outfile {
         static $gtype: GObject.GType<OutfileMSOle>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get big_block_size(): number;
+        /**
+         * @construct-only
+         */
         get bigBlockSize(): number;
+        /**
+         * @construct-only
+         */
         get sink(): Output;
+        /**
+         * @construct-only
+         */
         get small_block_size(): number;
+        /**
+         * @construct-only
+         */
         get smallBlockSize(): number;
 
         /**
@@ -2303,16 +2640,19 @@ export namespace Gsf {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof OutfileMSOle.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OutfileMSOle.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof OutfileMSOle.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OutfileMSOle.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof OutfileMSOle.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<OutfileMSOle.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2324,7 +2664,7 @@ export namespace Gsf {
         /**
          * Write `clsid` to the directory associated with `ole`.
          * @param clsid Identifier (often a GUID in MS Windows apps)
-         * @returns %TRUE on success.
+         * @returns `true` on success.
          */
         set_class_id(clsid: Uint8Array | string): boolean;
     }
@@ -2354,15 +2694,33 @@ export namespace Gsf {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class OutfileOpenPkg extends Outfile {
         static $gtype: GObject.GType<OutfileOpenPkg>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get content_type(): string;
+        /**
+         * @construct-only
+         */
         get contentType(): string;
+        /**
+         * @construct-only
+         */
         get is_dir(): boolean;
+        /**
+         * @construct-only
+         */
         get isDir(): boolean;
+        /**
+         * @construct-only
+         */
         get sink(): Outfile;
 
         /**
@@ -2384,16 +2742,19 @@ export namespace Gsf {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof OutfileOpenPkg.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OutfileOpenPkg.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof OutfileOpenPkg.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OutfileOpenPkg.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof OutfileOpenPkg.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<OutfileOpenPkg.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2411,15 +2772,18 @@ export namespace Gsf {
         add_extern_rel(target: string, content_type: string): string;
         /**
          * Create a relationship between `child` and `parent` of `type`.
-         * @param parent #GsfOutfileOpenPkg
+         * @param parent {@link Gsf.OutfileOpenPkg}
          * @param type target type
-         * @returns the relID which the caller does not own 	but will live as long as @parent.
+         * @returns the relID which the caller does not own 	but will live as long as `parent`.
          */
         relate(parent: OutfileOpenPkg, type: string): string;
+        /**
+         * @param content_type
+         */
         set_content_type(content_type: string): void;
         /**
-         * Assigns a GsfOutput (`sink)` to store the package into.
-         * @param sink #GsfOutput
+         * Assigns a GsfOutput (`sink`) to store the package into.
+         * @param sink {@link Gsf.Output}
          */
         set_sink(sink: Output): void;
     }
@@ -2440,6 +2804,9 @@ export namespace Gsf {
         interface ConstructorProps extends Outfile.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class OutfileStdio extends Outfile {
         static $gtype: GObject.GType<OutfileStdio>;
 
@@ -2462,16 +2829,19 @@ export namespace Gsf {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof OutfileStdio.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OutfileStdio.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof OutfileStdio.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OutfileStdio.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof OutfileStdio.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<OutfileStdio.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2509,18 +2879,45 @@ export namespace Gsf {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class OutfileZip extends Outfile {
         static $gtype: GObject.GType<OutfileZip>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get compression_level(): number;
+        /**
+         * @construct-only
+         */
         get compressionLevel(): number;
+        /**
+         * @construct-only
+         */
         get deflate_level(): number;
+        /**
+         * @construct-only
+         */
         get deflateLevel(): number;
+        /**
+         * @construct-only
+         */
         get entry_name(): string;
+        /**
+         * @construct-only
+         */
         get entryName(): string;
+        /**
+         * @construct-only
+         */
         get sink(): Output;
+        /**
+         * @construct-only
+         */
         get zip64(): number;
 
         /**
@@ -2542,16 +2939,19 @@ export namespace Gsf {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof OutfileZip.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OutfileZip.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof OutfileZip.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OutfileZip.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof OutfileZip.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<OutfileZip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2560,6 +2960,9 @@ export namespace Gsf {
 
         // Methods
 
+        /**
+         * @param method
+         */
         set_compression_method(method: ZipCompressionMethod | null): boolean;
     }
 
@@ -2588,7 +2991,8 @@ export namespace Gsf {
     }
 
     /**
-     * Class representing an output stream, counterpart to #GsfInput.
+     * Class representing an output stream, counterpart to {@link Gsf.Input}.
+     * @gir-type Class
      */
     abstract class Output extends GObject.Object {
         static $gtype: GObject.GType<Output>;
@@ -2596,33 +3000,38 @@ export namespace Gsf {
         // Properties
 
         /**
-         * The container, optionally %NULL, in which this output lives.
+         * The container, optionally `null`, in which this output lives.
          */
         get container(): Outfile;
         set container(val: Outfile);
         /**
-         * %TRUE if the output has been closed.
+         * `true` if the output has been closed.
+         * @read-only
          */
         get is_closed(): boolean;
         /**
-         * %TRUE if the output has been closed.
+         * `true` if the output has been closed.
+         * @read-only
          */
         get isClosed(): boolean;
         /**
          * The time the output was last updated.  This must be set on object
          * construction and represents the timestamp to put on the resulting
-         * file or #GsfOutfile member.  Not all derived classes will actually
+         * file or {@link Gsf.Outfile} member.  Not all derived classes will actually
          * do anything with this property.
+         * @construct-only
          */
         get modtime(): GLib.DateTime;
         get name(): string;
         set name(val: string);
         /**
          * The current position in the output.
+         * @read-only
          */
         get position(): number;
         /**
          * The current file size.
+         * @read-only
          */
         get size(): number;
 
@@ -2653,16 +3062,19 @@ export namespace Gsf {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Output.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Output.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Output.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Output.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Output.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Output.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2672,29 +3084,40 @@ export namespace Gsf {
         // Static methods
 
         static error_id(): GLib.Quark;
+        /**
+         * @param wrapper
+         * @param wrapee
+         */
         static unwrap(wrapper: GObject.Object, wrapee: Output): boolean;
+        /**
+         * @param wrapper
+         * @param wrapee
+         */
         static wrap(wrapper: GObject.Object, wrapee: Output): boolean;
 
         // Virtual methods
 
         /**
          * Close a stream.
+         * @virtual
          */
         vfunc_Close(): boolean;
         /**
          * Reposition in output stream `output`. `whence` specifies what the offset is
-         * relative to: the beginning of the stream (%G_SEEK_SET), current position in
-         * the stream (%G_SEEK_CUR) or the end of the stream (%G_SEEK_END).
+         * relative to: the beginning of the stream ({@link GLib.SeekType.SET}), current position in
+         * the stream ({@link GLib.SeekType.CUR}) or the end of the stream ({@link GLib.SeekType.END}).
          * This function is similar to
          * <citerefentry><refentrytitle>fseek</refentrytitle>
          * <manvolnum>3</manvolnum></citerefentry>.
          * @param offset Relative amount to reposition
          * @param whence What the offset is relative to.
+         * @virtual
          */
         vfunc_Seek(offset: gsf_off_t, whence: GLib.SeekType): boolean;
         /**
          * Write `num_bytes` of `data` to `output`.
          * @param data Data to write.
+         * @virtual
          */
         vfunc_Write(data: Uint8Array | string): boolean;
 
@@ -2702,53 +3125,63 @@ export namespace Gsf {
 
         /**
          * Close a stream.
-         * @returns %FALSE on error
+         * @returns `false` on error
          */
         close(): boolean;
+        /**
+         * @returns the last error logged on the output
+         */
         error(): GLib.Error | null;
+        /**
+         * @returns A {@link GLib.DateTime} representing when the output was last modified
+         */
         get_modtime(): GLib.DateTime | null;
         /**
          * Like fputs, this assumes that the line already ends with a newline
          * @param line Nul terminated string to write
-         * @returns %TRUE if successful, %FALSE if not
+         * @returns `true` if successful, `false` if not
          */
         puts(line: string): boolean;
         /**
          * Reposition in output stream `output`. `whence` specifies what the offset is
-         * relative to: the beginning of the stream (%G_SEEK_SET), current position in
-         * the stream (%G_SEEK_CUR) or the end of the stream (%G_SEEK_END).
+         * relative to: the beginning of the stream ({@link GLib.SeekType.SET}), current position in
+         * the stream ({@link GLib.SeekType.CUR}) or the end of the stream ({@link GLib.SeekType.END}).
          * This function is similar to
          * <citerefentry><refentrytitle>fseek</refentrytitle>
          * <manvolnum>3</manvolnum></citerefentry>.
          * @param offset Relative amount to reposition
          * @param whence What the offset is relative to.
-         * @returns %FALSE on error.
+         * @returns `false` on error.
          */
         seek(offset: gsf_off_t, whence: GLib.SeekType | null): boolean;
         /**
          * <note>This is a utility routine that should only be used by derived
          * outputs.</note>
-         * @param container #GsfOutfile
-         * @returns %TRUE if the assignment was ok.
+         * @param container {@link Gsf.Outfile}
+         * @returns `true` if the assignment was ok.
          */
         set_container(container?: Outfile | null): boolean;
+        /**
+         * @param modtime the new modification time.
+         * @returns `true` if the assignment was ok.
+         */
         set_modtime(modtime?: GLib.DateTime | null): boolean;
         /**
          * <note>This is a utility routine that should only be used by derived
          * outputs.</note>
          * @param name the new name
-         * @returns %TRUE if the assignment was ok.
+         * @returns `true` if the assignment was ok.
          */
         set_name(name?: string | null): boolean;
         /**
          * <note>This is a utility routine that should only be used by derived
          * outputs.</note>
          * @param filename the (fs-sys encoded) filename
-         * @returns %TRUE if the assignment was ok.
+         * @returns `true` if the assignment was ok.
          */
         set_name_from_filename(filename?: string | null): boolean;
         /**
-         * Tell the current position in `output,` similar to
+         * Tell the current position in `output`, similar to
          * <citerefentry><refentrytitle>ftell</refentrytitle>
          * <manvolnum>3</manvolnum></citerefentry>.
          * @returns the current position in the file
@@ -2757,7 +3190,7 @@ export namespace Gsf {
         /**
          * Write `num_bytes` of `data` to `output`.
          * @param data Data to write.
-         * @returns %FALSE on error.
+         * @returns `false` on error.
          */
         write(data: Uint8Array | string): boolean;
     }
@@ -2778,6 +3211,9 @@ export namespace Gsf {
         interface ConstructorProps extends Output.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class OutputBzip extends Output {
         static $gtype: GObject.GType<OutputBzip>;
 
@@ -2800,16 +3236,19 @@ export namespace Gsf {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof OutputBzip.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OutputBzip.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof OutputBzip.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OutputBzip.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof OutputBzip.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<OutputBzip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2851,6 +3290,9 @@ export namespace Gsf {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class OutputCsv extends Output {
         static $gtype: GObject.GType<OutputCsv>;
 
@@ -2903,16 +3345,19 @@ export namespace Gsf {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof OutputCsv.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OutputCsv.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof OutputCsv.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OutputCsv.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof OutputCsv.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<OutputCsv.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2922,6 +3367,10 @@ export namespace Gsf {
         // Methods
 
         write_eol(): boolean;
+        /**
+         * @param field
+         * @param len
+         */
         write_field(field: string, len: number): boolean;
     }
 
@@ -2949,6 +3398,9 @@ export namespace Gsf {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class OutputGZip extends Output {
         static $gtype: GObject.GType<OutputGZip>;
 
@@ -2958,7 +3410,13 @@ export namespace Gsf {
         set deflate_level(val: number);
         get deflateLevel(): number;
         set deflateLevel(val: number);
+        /**
+         * @construct-only
+         */
         get raw(): boolean;
+        /**
+         * @construct-only
+         */
         get sink(): Output;
 
         /**
@@ -2980,16 +3438,19 @@ export namespace Gsf {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof OutputGZip.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OutputGZip.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof OutputGZip.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OutputGZip.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof OutputGZip.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<OutputGZip.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3013,6 +3474,9 @@ export namespace Gsf {
         interface ConstructorProps extends Output.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class OutputGio extends Output {
         static $gtype: GObject.GType<OutputGio>;
 
@@ -3039,16 +3503,19 @@ export namespace Gsf {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof OutputGio.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OutputGio.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof OutputGio.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OutputGio.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof OutputGio.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<OutputGio.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3072,6 +3539,9 @@ export namespace Gsf {
         interface ConstructorProps extends Output.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class OutputIOChannel extends Output {
         static $gtype: GObject.GType<OutputIOChannel>;
 
@@ -3094,16 +3564,19 @@ export namespace Gsf {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof OutputIOChannel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OutputIOChannel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof OutputIOChannel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OutputIOChannel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof OutputIOChannel.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<OutputIOChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3138,6 +3611,9 @@ export namespace Gsf {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class OutputIconv extends Output {
         static $gtype: GObject.GType<OutputIconv>;
 
@@ -3150,10 +3626,25 @@ export namespace Gsf {
          */
         get fallback(): string;
         set fallback(val: string);
+        /**
+         * @construct-only
+         */
         get input_charset(): string;
+        /**
+         * @construct-only
+         */
         get inputCharset(): string;
+        /**
+         * @construct-only
+         */
         get output_charset(): string;
+        /**
+         * @construct-only
+         */
         get outputCharset(): string;
+        /**
+         * @construct-only
+         */
         get sink(): Output;
 
         /**
@@ -3175,16 +3666,19 @@ export namespace Gsf {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof OutputIconv.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OutputIconv.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof OutputIconv.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OutputIconv.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof OutputIconv.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<OutputIconv.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3208,6 +3702,9 @@ export namespace Gsf {
         interface ConstructorProps extends Output.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class OutputMemory extends Output {
         static $gtype: GObject.GType<OutputMemory>;
 
@@ -3230,16 +3727,19 @@ export namespace Gsf {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof OutputMemory.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OutputMemory.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof OutputMemory.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OutputMemory.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof OutputMemory.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<OutputMemory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3248,7 +3748,13 @@ export namespace Gsf {
 
         // Methods
 
+        /**
+         * @returns The data that has been written to `mem`
+         */
         get_bytes(): Uint8Array | null;
+        /**
+         * @returns The data that has been written to `mem`. The caller takes ownership and the buffer belonging to `mem` is set to `null`.
+         */
         steal_bytes(): Uint8Array | null;
     }
 
@@ -3268,6 +3774,9 @@ export namespace Gsf {
         interface ConstructorProps extends Output.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class OutputStdio extends Output {
         static $gtype: GObject.GType<OutputStdio>;
 
@@ -3290,16 +3799,19 @@ export namespace Gsf {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof OutputStdio.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OutputStdio.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof OutputStdio.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OutputStdio.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof OutputStdio.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<OutputStdio.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3316,6 +3828,9 @@ export namespace Gsf {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class SharedMemory extends GObject.Object {
         static $gtype: GObject.GType<SharedMemory>;
 
@@ -3348,16 +3863,19 @@ export namespace Gsf {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SharedMemory.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SharedMemory.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SharedMemory.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SharedMemory.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SharedMemory.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SharedMemory.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3382,6 +3900,9 @@ export namespace Gsf {
         interface ConstructorProps extends Infile.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class StructuredBlob extends Infile {
         static $gtype: GObject.GType<StructuredBlob>;
 
@@ -3402,16 +3923,19 @@ export namespace Gsf {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof StructuredBlob.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StructuredBlob.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof StructuredBlob.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, StructuredBlob.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof StructuredBlob.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<StructuredBlob.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3421,8 +3945,8 @@ export namespace Gsf {
         // Static methods
 
         /**
-         * Create a tree of binary blobs with unknown content from a #GsfInput or
-         * #GsfInfile and store it in a newly created #GsfStructuredBlob.
+         * Create a tree of binary blobs with unknown content from a {@link Gsf.Input} or
+         * {@link Gsf.Infile} and store it in a newly created {@link Gsf.StructuredBlob}.
          * @param input An input (potentially a GsfInfile) holding the blob
          */
         static read(input: Input): StructuredBlob;
@@ -3432,8 +3956,8 @@ export namespace Gsf {
         /**
          * Dumps structured blob `blob` onto the `container`.  Will fail if the output is
          * not an Outfile and blob has multiple streams.
-         * @param container #GsfOutfile
-         * @returns %TRUE on success.
+         * @param container {@link Gsf.Outfile}
+         * @returns `true` on success.
          */
         write(container: Outfile): boolean;
     }
@@ -3454,6 +3978,9 @@ export namespace Gsf {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class XMLOut extends GObject.Object {
         static $gtype: GObject.GType<XMLOut>;
 
@@ -3463,6 +3990,9 @@ export namespace Gsf {
         set pretty_print(val: boolean);
         get prettyPrint(): boolean;
         set prettyPrint(val: boolean);
+        /**
+         * @construct-only
+         */
         get sink(): Output;
 
         /**
@@ -3490,16 +4020,19 @@ export namespace Gsf {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof XMLOut.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, XMLOut.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof XMLOut.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, XMLOut.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof XMLOut.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<XMLOut.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3510,20 +4043,20 @@ export namespace Gsf {
 
         /**
          * Dump `len` bytes in `data` into the content of node `id` using base64
-         * @param id tag id, or %NULL for node content
+         * @param id tag id, or `null` for node content
          * @param data Data to be written
          */
         add_base64(id: string | null, data: Uint8Array | string): void;
         /**
          * dump boolean value `val` to an attribute named `id` or as the nodes content
          * Use '1' or '0' to simplify import
-         * @param id tag id, or %NULL for node content
+         * @param id tag id, or `null` for node content
          * @param val a boolean
          */
         add_bool(id: string | null, val: boolean): void;
         /**
          * dump Color `r`.`g`.`b` to an attribute named `id` or as the nodes content
-         * @param id tag id, or %NULL for node content
+         * @param id tag id, or `null` for node content
          * @param r Red value
          * @param g Green value
          * @param b Blue value
@@ -3531,9 +4064,9 @@ export namespace Gsf {
         add_color(id: string | null, r: number, g: number, b: number): void;
         /**
          * dump `val_utf8` to an attribute named `id` or as the nodes content escaping
-         * characters as necessary.  If `val_utf8` is %NULL do nothing (no warning, no
+         * characters as necessary.  If `val_utf8` is `null` do nothing (no warning, no
          * output)
-         * @param id tag id, or %NULL for node content
+         * @param id tag id, or `null` for node content
          * @param val_utf8 a utf8 encoded string
          */
         add_cstr(id?: string | null, val_utf8?: string | null): void;
@@ -3541,15 +4074,15 @@ export namespace Gsf {
          * dump `val_utf8` to an attribute named `id` without checking to see if
          * the content needs escaping.  A useful performance enhancement when
          * the application knows that structure of the content well.  If
-         * `val_utf8` is %NULL do nothing (no warning, no output)
-         * @param id tag id, or %NULL for node content
+         * `val_utf8` is `null` do nothing (no warning, no output)
+         * @param id tag id, or `null` for node content
          * @param val_utf8 a utf8 encoded string to export
          */
         add_cstr_unchecked(id?: string | null, val_utf8?: string | null): void;
         /**
          * Output the name of value `val` of enumeration type `etype`.
-         * @param id tag id, or %NULL for node content
-         * @param etype #GType
+         * @param id tag id, or `null` for node content
+         * @param etype {@link GObject.GType}
          * @param val enum element number
          */
         add_enum(id: string | null, etype: GObject.GType, val: number): void;
@@ -3557,7 +4090,7 @@ export namespace Gsf {
          * dump float value `val` to an attribute named `id` or as the nodes
          * content with precision `precision`.  The number will be formattted
          * according to the "C" locale.
-         * @param id tag id, or %NULL for node content
+         * @param id tag id, or `null` for node content
          * @param val the value
          * @param precision the number of significant digits to use, -1 meaning "enough".
          */
@@ -3565,20 +4098,20 @@ export namespace Gsf {
         /**
          * Output the value of `val` as a string.  Does NOT store any type information
          * with the string, just thevalue.
-         * @param id tag id, or %NULL for node content
-         * @param val #GValue
+         * @param id tag id, or `null` for node content
+         * @param val {@link GObject.Value}
          */
         add_gvalue(id: string | null, val: GObject.Value | any): void;
         /**
          * dump integer value `val` to an attribute named `id` or as the nodes content
-         * @param id tag id, or %NULL for node content
+         * @param id tag id, or `null` for node content
          * @param val the value
          */
         add_int(id: string | null, val: number): void;
         /**
          * dump unsigned integer value `val` to an attribute named `id` or as the nodes
          * content
-         * @param id tag id, or %NULL for node content
+         * @param id tag id, or `null` for node content
          * @param val the value
          */
         add_uint(id: string | null, val: number): void;
@@ -3588,16 +4121,23 @@ export namespace Gsf {
          */
         end_element(): string;
         /**
-         * Get the #GsfOutput we are writing to..
-         * @returns #GsfInput
+         * Get the {@link Gsf.Output} we are writing to..
+         * @returns {@link Gsf.Input}
          */
         get_output(): Output | null;
+        /**
+         * @returns the current state of the pretty-print flag.  Note, that gsf_xml_out_set_pretty_print will return the same value.
+         */
         get_pretty_print(): boolean;
         /**
          * Store some optional &lt;!DOCTYPE .. &gt; content
          * @param type the document type declaration
          */
         set_doc_type(type: string): void;
+        /**
+         * @param pp new state of pretty-print flag.
+         * @returns the previous state of the pretty-print flag.
+         */
         set_pretty_print(pp: boolean): boolean;
         /**
          * Convenience routine to output a simple `id` element with content `content`.
@@ -3620,24 +4160,37 @@ export namespace Gsf {
          */
         simple_int_element(id: string, val: number): void;
         /**
-         * Output a start element `id,` if necessary preceeded by an XML declaration.
+         * Output a start element `id`, if necessary preceeded by an XML declaration.
          * @param id Element name
          */
         start_element(id: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type BlobClass = typeof Blob;
+    /**
+     * @gir-type Struct
+     */
     abstract class BlobPrivate {
         static $gtype: GObject.GType<BlobPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ClipDataClass = typeof ClipData;
+    /**
+     * @gir-type Struct
+     */
     abstract class ClipDataPrivate {
         static $gtype: GObject.GType<ClipDataPrivate>;
     }
 
     /**
      * Class representing a properties of a document.
+     * @gir-type Struct
      */
     class DocProp {
         static $gtype: GObject.GType<DocProp>;
@@ -3659,24 +4212,46 @@ export namespace Gsf {
          * Release the given property.
          */
         free(): void;
+        /**
+         * @returns the current link descriptor of `prop`.
+         */
         get_link(): string | null;
+        /**
+         * @returns the name of the property
+         */
         get_name(): string;
+        /**
+         * @returns the value of the property, the caller should not modify the result.
+         */
         get_val(): unknown;
         /**
-         * Sets `prop'`s link to `link`
+         * Sets `prop`'s link to `link`
          * @param link a link.
          */
         set_link(link?: string | null): void;
         /**
-         * Assigns `val` to `prop,` and unsets and frees the current value.
-         * @param val #GValue
+         * Assigns `val` to `prop`, and unsets and frees the current value.
+         * @param val {@link GObject.Value}
          */
         set_val(val: GObject.Value | any): void;
+        /**
+         * @param val {@link GObject.Value}
+         * @returns the current value of `prop`, and replaces 	it with `val`.
+         */
         swap_val(val: GObject.Value | any): unknown;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type InfileClass = typeof Infile;
+    /**
+     * @gir-type Alias
+     */
     type InputClass = typeof Input;
+    /**
+     * @gir-type Struct
+     */
     class MSOleSortingKey {
         static $gtype: GObject.GType<MSOleSortingKey>;
 
@@ -3688,31 +4263,65 @@ export namespace Gsf {
 
         // Methods
 
+        /**
+         * @param b
+         */
         cmp(b: MSOleSortingKey): number;
         free(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ODFOutClass = typeof ODFOut;
+    /**
+     * @gir-type Struct
+     */
     abstract class OpenPkgRel {
         static $gtype: GObject.GType<OpenPkgRel>;
 
         // Methods
 
+        /**
+         * @returns The target of `rel`.
+         */
         get_target(): string;
+        /**
+         * @returns The type of `rel`.
+         */
         get_type(): string;
+        /**
+         * @returns `true` if `rel` has mode 'External'
+         */
         is_extern(): boolean;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class OpenPkgRels {
         static $gtype: GObject.GType<OpenPkgRels>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type OutfileClass = typeof Outfile;
+    /**
+     * @gir-type Alias
+     */
     type OutputClass = typeof Output;
+    /**
+     * @gir-type Alias
+     */
     type OutputCsvClass = typeof OutputCsv;
+    /**
+     * @gir-type Alias
+     */
     type OutputIconvClass = typeof OutputIconv;
     /**
      * A point in time.
+     * @gir-type Struct
      */
     class Timestamp {
         static $gtype: GObject.GType<Timestamp>;
@@ -3741,18 +4350,18 @@ export namespace Gsf {
 
         /**
          * Produce a string representation (ISO 8601 format) of `stamp`.
-         * @returns a string representation of @stamp. When @stamp is invalid, the representation is "&lt;invalid&gt;".
+         * @returns a string representation of `stamp`. When `stamp` is invalid, the representation is "&lt;invalid&gt;".
          */
         as_string(): string;
         /**
          * Copies a timestamp.
-         * @returns a separate copy of @stamp.
+         * @returns a separate copy of `stamp`.
          */
         copy(): Timestamp;
         /**
          * Compare timestamps `a` and `b`.
          * @param b another timestamp
-         * @returns true if @a and @b represent the same point in time; false otherwise.
+         * @returns true if `a` and `b` represent the same point in time; false otherwise.
          */
         equal(b: Timestamp): boolean;
         /**
@@ -3763,21 +4372,30 @@ export namespace Gsf {
         /**
          * Parser for time stamps.  Requires a ISO 8601 formatted string.
          * @param spec The string to parse
-         * @returns %TRUE on success
+         * @returns `true` on success
          */
         load_from_string(spec: string): number;
+        /**
+         * @param t
+         */
         set_time(t: number): void;
         /**
          * Calls g_value_set_box (value, stamp);
-         * @param value #GValue
+         * @param value {@link GObject.Value}
          */
         to_value(value: GObject.Value | any): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class XMLBlob {
         static $gtype: GObject.GType<XMLBlob>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class XMLIn {
         static $gtype: GObject.GType<XMLIn>;
 
@@ -3792,7 +4410,7 @@ export namespace Gsf {
          * According to `state` is `str` in the namespace `ns_id` ?
          * @param str string to check
          * @param ns_id the namespace id
-         * @returns a pointer to @str after the namespace if successful, otherwise %NULL.
+         * @returns a pointer to `str` after the namespace if successful, otherwise `null`.
          */
         check_ns(str: string, ns_id: number): string | null;
         /**
@@ -3801,19 +4419,19 @@ export namespace Gsf {
          */
         get_input(): Input;
         /**
-         * Checks to see if `str` is the same as `ns_id:`:`name` with either an explicit
+         * Checks to see if `str` is the same as `ns_id`::`name` with either an explicit
          * namespace or the current default namespace.
          * @param str The potentially namespace qualified node name.
          * @param ns_id The name space id to check
          * @param name The target node name
-         * @returns %TRUE if @str == @ns_id:@name according to @state.
+         * @returns `true` if `str` == `ns_id`:`name` according to `state`.
          */
         namecmp(str: string, ns_id: number, name: string): boolean;
         /**
          * Take the first node from `doc` as the current node and call its start handler.
-         * @param doc #GsfXMLInDoc
+         * @param doc {@link Gsf.XMLInDoc}
          * @param new_state arbitrary content for the parser
-         * @param dtor #GsfXMLInExtDtor
+         * @param dtor {@link Gsf.XMLInExtDtor}
          * @param attrs array of xmlChar const *
          */
         push_state(doc: XMLInDoc, new_state: any | null, dtor: XMLInExtDtor, attrs: string[]): void;
@@ -3827,6 +4445,9 @@ export namespace Gsf {
         set_silent_unknowns(silent: boolean): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class XMLInDoc {
         static $gtype: GObject.GType<XMLInDoc>;
 
@@ -3840,7 +4461,7 @@ export namespace Gsf {
 
         /**
          * Adds additional nodes to the structure of `doc`
-         * @param nodes %NULL terminated array of #GsfXMLInNode
+         * @param nodes `null` terminated array of {@link Gsf.XMLInNode}
          */
         add_nodes(nodes: XMLInNode[]): void;
         /**
@@ -3850,9 +4471,9 @@ export namespace Gsf {
         /**
          * Read an xml document from `input` and parse based on the the descriptor in
          * `doc`
-         * @param input #GsfInput
+         * @param input {@link Gsf.Input}
          * @param user_state arbitrary content stored in the parser
-         * @returns %FALSE on error
+         * @returns `false` on error
          */
         parse(input: Input, user_state?: any | null): boolean;
         /**
@@ -3862,6 +4483,9 @@ export namespace Gsf {
         set_unknown_handler(handler: XMLInUnknownFunc): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class XMLInNS {
         static $gtype: GObject.GType<XMLInNS>;
 
@@ -3880,6 +4504,9 @@ export namespace Gsf {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class XMLInNode {
         static $gtype: GObject.GType<XMLInNode>;
 
@@ -3894,7 +4521,18 @@ export namespace Gsf {
         share_children_with_parent: number;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type XMLOutClass = typeof XMLOut;
+    /**
+     * Data type to represent offsets (positions) within a data stream.
+     *
+     * FIXME:
+     * gsf_off_t is really supposed to be the widest type off_t can be configured
+     * to on the platform
+     * @gir-type Alias
+     */
     type gsf_off_t = number;
     /**
      * Name of the imported GIR library

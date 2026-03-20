@@ -23,10 +23,14 @@ export namespace Keybinder {
      * time the key combination is pressed.
      * @param keystring an accelerator description (gtk_accelerator_parse() format)
      * @param handler callback function
-     * @param notify called when @handler is unregistered
-     * @returns %TRUE if the accelerator could be grabbed
+     * @param notify called when `handler` is unregistered
+     * @returns `true` if the accelerator could be grabbed
+     * @since 0.3.0
      */
     function bind(keystring: string, handler: Handler, notify?: GLib.DestroyNotify | null): boolean;
+    /**
+     * @returns the current event timestamp
+     */
     function get_current_event_time(): number;
     /**
      * Initialize the keybinder library.
@@ -38,8 +42,12 @@ export namespace Keybinder {
     /**
      * Unregister all previously bound callbacks for this keystring.
      * @param keystring an accelerator description (gtk_accelerator_parse() format)
+     * @since 0.3.0
      */
     function unbind(keystring: string): void;
+    /**
+     * @gir-type Callback
+     */
     interface Handler {
         (keystring: string): void;
     }

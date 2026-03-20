@@ -31,25 +31,40 @@ export namespace AgsGui {
      * AgsGui-6.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     enum DialAction {
         INCREMENT,
         DECREMENT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ExpanderFlags {
         EXPANDER_DRAW_BORDER,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum FileWidgetFileAction {
         OPEN,
         SAVE_AS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum FileWidgetFileFilter {
         NONE,
         BY_SUFFIX,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum LevelAction {
         STEP_UP,
         STEP_DOWN,
@@ -57,10 +72,16 @@ export namespace AgsGui {
         PAGE_DOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum LevelButtonState {
         LEVEL_BUTTON_1_PRESSED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum LevelDataFormat {
         S8,
         S16,
@@ -72,16 +93,25 @@ export namespace AgsGui {
         COMPLEX,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum PianoAction {
         MOVE_CURSOR_UP,
         MOVE_CURSOR_DOWN,
         HIT_KEY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum PianoButtonState {
         PIANO_BUTTON_1_PRESSED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum PianoOctave {
         C,
         CIS,
@@ -97,10 +127,16 @@ export namespace AgsGui {
         H,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum PlotFillFlags {
         PLOT_FILL_REPLACE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ScaleAction {
         STEP_UP,
         STEP_DOWN,
@@ -108,19 +144,31 @@ export namespace AgsGui {
         PAGE_DOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ScaleButtonState {
         SCALE_BUTTON_1_PRESSED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ScaleFlags {
         SCALE_LOGARITHMIC,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ScaleLayout {
         VERTICAL,
         HORIZONTAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum TempoAction {
         STEP_UP,
         STEP_DOWN,
@@ -128,10 +176,16 @@ export namespace AgsGui {
         PAGE_DOWN,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum TempoButtonState {
         TEMPO_BUTTON_1_PRESSED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum TempoLayout {
         VERTICAL,
         HORIZONTAL,
@@ -362,166 +416,200 @@ export namespace AgsGui {
     const TEMPO_DEFAULT_VALUE: number;
     const TEMPO_DEFAULT_WIDTH_REQUEST: number;
     /**
-     * Allocate #AgsExpanderChild-struct.
+     * Allocate {@link AgsGui.ExpanderChild}-struct.
      * @param x the x position
      * @param y the y position
      * @param width the width
      * @param height the height
-     * @returns the new #AgsExpanderChild-struct
+     * @returns the new {@link AgsGui.ExpanderChild}-struct
+     * @since 3.0.0
      */
     function expander_child_alloc(x: number, y: number, width: number, height: number): any | null;
     /**
      * Free `expander_child`.
-     * @param expander_child the #AgsExpanderChild-struct
+     * @param expander_child the {@link AgsGui.ExpanderChild}-struct
+     * @since 3.2.2
      */
     function expander_child_free(expander_child?: any | null): void;
     /**
-     * Allocate #AgsExpanderSetChild-struct.
+     * Allocate {@link AgsGui.ExpanderSetChild}-struct.
      * @param x the x position
      * @param y the y position
      * @param width the width
      * @param height the height
-     * @returns the new #AgsExpanderSetChild-struct
+     * @returns the new {@link AgsGui.ExpanderSetChild}-struct
+     * @since 3.0.0
      */
     function expander_set_child_alloc(x: number, y: number, width: number, height: number): any | null;
     /**
      * Free `expander_set_child`.
-     * @param expander_set_child the #AgsExpanderSetChild-struct
+     * @param expander_set_child the {@link AgsGui.ExpanderSetChild}-struct
+     * @since 3.2.2
      */
     function expander_set_child_free(expander_set_child?: any | null): void;
     /**
-     * Allocate #AgsPlot-struct.
+     * Allocate {@link AgsGui.Plot}-struct.
      * @param n_points number of points
      * @param n_bitmaps number of bitmaps
      * @param n_pixmaps number of pixmaps
-     * @returns the newly allocated #AgsPlot-struct
+     * @returns the newly allocated {@link AgsGui.Plot}-struct
+     * @since 3.0.0
      */
     function plot_alloc(n_points: number, n_bitmaps: number, n_pixmaps: number): any | null;
     /**
      * Free `plot`.
-     * @param plot the #AgsPlot-struct
+     * @param plot the {@link AgsGui.Plot}-struct
+     * @since 3.0.0
      */
     function plot_free(plot?: any | null): void;
     /**
      * Get bitmaps.
-     * @param plot the #AgsPlot-struct
+     * @param plot the {@link AgsGui.Plot}-struct
      * @returns bitmap field
+     * @since 3.2.0
      */
     function plot_get_bitmap(plot?: any | null): number;
     /**
      * Get bitmap colors.
-     * @param plot the #AgsPlot-struct
+     * @param plot the {@link AgsGui.Plot}-struct
      * @returns bitmap color field
+     * @since 3.2.0
      */
     function plot_get_bitmap_color(plot?: any | null): number;
     /**
      * Get join points.
-     * @param plot the #AgsPlot-struct
+     * @param plot the {@link AgsGui.Plot}-struct
      * @returns join_points field
+     * @since 3.2.0
      */
     function plot_get_join_points(plot?: any | null): boolean;
     /**
      * Get number of bitmaps.
-     * @param plot the #AgsPlot-struct
+     * @param plot the {@link AgsGui.Plot}-struct
      * @returns n_bitmaps field
+     * @since 3.2.0
      */
     function plot_get_n_bitmaps(plot?: any | null): number;
     /**
      * Get number of pixmaps.
-     * @param plot the #AgsPlot-struct
+     * @param plot the {@link AgsGui.Plot}-struct
      * @returns n_pixmaps field
+     * @since 3.2.0
      */
     function plot_get_n_pixmaps(plot?: any | null): number;
     /**
      * Get number of points.
-     * @param plot the #AgsPlot-struct
+     * @param plot the {@link AgsGui.Plot}-struct
      * @returns n_points field
+     * @since 3.2.0
      */
     function plot_get_n_points(plot?: any | null): number;
     /**
      * Get pixmaps.
-     * @param plot the #AgsPlot-struct
+     * @param plot the {@link AgsGui.Plot}-struct
      * @returns pixmap field
+     * @since 3.2.0
      */
     function plot_get_pixmap(plot?: any | null): number;
     /**
      * Get points.
-     * @param plot the #AgsPlot-struct
+     * @param plot the {@link AgsGui.Plot}-struct
      * @returns point field
+     * @since 3.2.0
      */
     function plot_get_point(plot?: any | null): number;
     /**
      * Get point colors.
-     * @param plot the #AgsPlot-struct
+     * @param plot the {@link AgsGui.Plot}-struct
      * @returns point color field
+     * @since 3.2.0
      */
     function plot_get_point_color(plot?: any | null): number;
     /**
      * Get point labels.
-     * @param plot the #AgsPlot-struct
+     * @param plot the {@link AgsGui.Plot}-struct
      * @returns point label field
+     * @since 3.2.0
      */
     function plot_get_point_label(plot?: any | null): string[];
     /**
      * Set bitmap field of `plot`.
-     * @param plot the #AgsPlot-struct
+     * @param plot the {@link AgsGui.Plot}-struct
      * @param bitmap the bitmaps
+     * @since 3.2.0
      */
     function plot_set_bitmap(plot: any | null, bitmap: number): void;
     /**
      * Set bitmap color field of `plot`.
-     * @param plot the #AgsPlot-struct
+     * @param plot the {@link AgsGui.Plot}-struct
      * @param bitmap_color the bitmaps colors as array of RGB value
+     * @since 3.2.0
      */
     function plot_set_bitmap_color(plot: any | null, bitmap_color: number): void;
     /**
      * Set join_points field of `plot`.
-     * @param plot the #AgsPlot-struct
-     * @param join_points if %TRUE join points, otherwise not
+     * @param plot the {@link AgsGui.Plot}-struct
+     * @param join_points if `true` join points, otherwise not
+     * @since 3.2.0
      */
     function plot_set_join_points(plot: any | null, join_points: boolean): void;
     /**
      * Set n_bitmaps field of `plot`.
-     * @param plot the #AgsPlot-struct
+     * @param plot the {@link AgsGui.Plot}-struct
      * @param n_bitmaps the number of bitmaps
+     * @since 3.2.0
      */
     function plot_set_n_bitmaps(plot: any | null, n_bitmaps: number): void;
     /**
      * Set n_pixmaps field of `plot`.
-     * @param plot the #AgsPlot-struct
+     * @param plot the {@link AgsGui.Plot}-struct
      * @param n_pixmaps the number of pixmaps
+     * @since 3.2.0
      */
     function plot_set_n_pixmaps(plot: any | null, n_pixmaps: number): void;
     /**
      * Set n_points field of `plot`.
-     * @param plot the #AgsPlot-struct
+     * @param plot the {@link AgsGui.Plot}-struct
      * @param n_points the number of points
+     * @since 3.2.0
      */
     function plot_set_n_points(plot: any | null, n_points: number): void;
     /**
      * Set pixmap field of `plot`.
-     * @param plot the #AgsPlot-struct
+     * @param plot the {@link AgsGui.Plot}-struct
      * @param pixmap the pixmaps
+     * @since 3.2.0
      */
     function plot_set_pixmap(plot: any | null, pixmap: number): void;
     /**
      * Set point field of `plot`.
-     * @param plot the #AgsPlot-struct
+     * @param plot the {@link AgsGui.Plot}-struct
      * @param point the points as array of coordinates
+     * @since 3.2.0
      */
     function plot_set_point(plot: any | null, point: number): void;
     /**
      * Set point color field of `plot`.
-     * @param plot the #AgsPlot-struct
+     * @param plot the {@link AgsGui.Plot}-struct
      * @param point_color the points colors as array of RGB value
+     * @since 3.2.0
      */
     function plot_set_point_color(plot: any | null, point_color: number): void;
     /**
      * Set point label field of `plot`.
-     * @param plot the #AgsPlot-struct
+     * @param plot the {@link AgsGui.Plot}-struct
      * @param point_label the points labels as string vector
+     * @since 3.2.0
      */
     function plot_set_point_label(plot: any | null, point_label: string): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function widget_cclosure_marshal_OBJECT__VOID(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -530,6 +618,14 @@ export namespace AgsGui {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function widget_cclosure_marshal_VOID__OBJECT_INT(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -538,6 +634,14 @@ export namespace AgsGui {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @param closure
+     * @param return_value
+     * @param n_param_values
+     * @param param_values
+     * @param invocation_hint
+     * @param marshal_data
+     */
     function widget_cclosure_marshal_VOID__STRING_INT(
         closure: GObject.Closure,
         return_value: GObject.Value | any,
@@ -546,18 +650,33 @@ export namespace AgsGui {
         invocation_hint?: any | null,
         marshal_data?: any | null,
     ): void;
+    /**
+     * @gir-type Callback
+     */
     interface CartesianLabelFunc {
         (value: number, data?: any | null): string;
     }
+    /**
+     * @gir-type Callback
+     */
     interface CartesianScaleFunc {
         (value: number, data?: any | null): number;
     }
+    /**
+     * @gir-type Callback
+     */
     interface CartesianStepConversionFunc {
         (current: number, is_abscissae: boolean, data?: any | null): number;
     }
+    /**
+     * @gir-type Callback
+     */
     interface CartesianTranslateFunc {
         (x: number, y: number, ret_x: number, ret_y: number, data?: any | null): void;
     }
+    /**
+     * @gir-type Flags
+     */
     enum CartesianFlags {
         ABSCISSAE,
         ORDINATE,
@@ -569,6 +688,9 @@ export namespace AgsGui {
         Y_LABEL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum DialFlags {
         WITH_BUTTONS,
         MOUSE_BUTTON_PRESSED,
@@ -580,6 +702,9 @@ export namespace AgsGui {
         INVERSE_LIGHT,
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum ExpanderSetFlags {
         GHOST,
         LEFT_ENDING,
@@ -588,6 +713,9 @@ export namespace AgsGui {
         RIGHT_CONNECTOR,
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum FileWidgetFlags {
         APP_SANDBOX,
         WITH_MULTI_SELECTION,
@@ -595,16 +723,25 @@ export namespace AgsGui {
         HIDDEN_FILES_VISIBLE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum IconLinkFlags {
         HIGHLIGHT,
         SHOW_CONTEXT_MENU,
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum InputDialogFlags {
         STRING_INPUT,
         SPIN_BUTTON_INPUT,
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum LevelKeyMask {
         L_CONTROL,
         R_CONTROL,
@@ -612,11 +749,17 @@ export namespace AgsGui {
         R_SHIFT,
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum PianoFlags {
         FULL_SCALE,
         OCTAVE_SCALE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum ScaleKeyMask {
         L_CONTROL,
         R_CONTROL,
@@ -624,6 +767,9 @@ export namespace AgsGui {
         R_SHIFT,
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum TempoKeyMask {
         L_CONTROL,
         R_CONTROL,
@@ -833,6 +979,9 @@ export namespace AgsGui {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Cartesian extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Cartesian>;
 
@@ -840,496 +989,595 @@ export namespace AgsGui {
 
         /**
          * The center of lines
+         * @since 3.0.0
          */
         get center(): number;
         set center(val: number);
         /**
          * The font's size to draw labels and units.
+         * @since 3.0.0
          */
         get font_size(): number;
         set font_size(val: number);
         /**
          * The font's size to draw labels and units.
+         * @since 3.0.0
          */
         get fontSize(): number;
         set fontSize(val: number);
         /**
          * The line width.
+         * @since 3.0.0
          */
         get line_width(): number;
         set line_width(val: number);
         /**
          * The line width.
+         * @since 3.0.0
          */
         get lineWidth(): number;
         set lineWidth(val: number);
         /**
-         * The #GList-struct containig #AgsPlot.
+         * The {@link GLib.List}-struct containig {@link AgsGui.Plot}.
+         * @since 4.0.0
          */
         get plot(): any;
         set plot(val: any);
         /**
          * The points radius.
+         * @since 3.0.0
          */
         get point_radius(): number;
         set point_radius(val: number);
         /**
          * The points radius.
+         * @since 3.0.0
          */
         get pointRadius(): number;
         set pointRadius(val: number);
         /**
          * The cairo surface.
+         * @since 4.0.0
          */
         get surface(): any;
         set surface(val: any);
         /**
          * The data to pass to translate function.
+         * @since 4.0.0
          */
         get translate_data(): any;
         set translate_data(val: any);
         /**
          * The data to pass to translate function.
+         * @since 4.0.0
          */
         get translateData(): any;
         set translateData(val: any);
         /**
          * The scale factor to use with x big scale function.
+         * @since 4.0.0
          */
         get x_big_scale_factor(): number;
         set x_big_scale_factor(val: number);
         /**
          * The scale factor to use with x big scale function.
+         * @since 4.0.0
          */
         get xBigScaleFactor(): number;
         set xBigScaleFactor(val: number);
         /**
          * The x end.
+         * @since 3.0.0
          */
         get x_end(): number;
         set x_end(val: number);
         /**
          * The x end.
+         * @since 3.0.0
          */
         get xEnd(): number;
         set xEnd(val: number);
         /**
          * The x labels as a string array.
+         * @since 3.0.0
          */
         get x_label(): any;
         set x_label(val: any);
         /**
          * The x labels as a string array.
+         * @since 3.0.0
          */
         get xLabel(): any;
         set xLabel(val: any);
         /**
          * The data to pass to x label conversion function.
+         * @since 4.0.0
          */
         get x_label_data(): any;
         set x_label_data(val: any);
         /**
          * The data to pass to x label conversion function.
+         * @since 4.0.0
          */
         get xLabelData(): any;
         set xLabelData(val: any);
         /**
          * The factor to use with x label function.
+         * @since 4.0.0
          */
         get x_label_factor(): number;
         set x_label_factor(val: number);
         /**
          * The factor to use with x label function.
+         * @since 4.0.0
          */
         get xLabelFactor(): number;
         set xLabelFactor(val: number);
         /**
          * The precision to use with x label function.
+         * @since 4.0.0
          */
         get x_label_precision(): number;
         set x_label_precision(val: number);
         /**
          * The precision to use with x label function.
+         * @since 4.0.0
          */
         get xLabelPrecision(): number;
         set xLabelPrecision(val: number);
         /**
          * The x label start position.
+         * @since 3.0.0
          */
         get x_label_start(): number;
         set x_label_start(val: number);
         /**
          * The x label start position.
+         * @since 3.0.0
          */
         get xLabelStart(): number;
         set xLabelStart(val: number);
         /**
          * The x label step width.
+         * @since 3.0.0
          */
         get x_label_step_width(): number;
         set x_label_step_width(val: number);
         /**
          * The x label step width.
+         * @since 3.0.0
          */
         get xLabelStepWidth(): number;
         set xLabelStepWidth(val: number);
         /**
          * The horizontal x margin.
+         * @since 3.0.0
          */
         get x_margin(): number;
         set x_margin(val: number);
         /**
          * The horizontal x margin.
+         * @since 3.0.0
          */
         get xMargin(): number;
         set xMargin(val: number);
         /**
          * The data to pass to x scale conversion function.
+         * @since 4.0.0
          */
         get x_scale_data(): any;
         set x_scale_data(val: any);
         /**
          * The data to pass to x scale conversion function.
+         * @since 4.0.0
          */
         get xScaleData(): any;
         set xScaleData(val: any);
         /**
          * The width of a x scale step.
+         * @since 3.0.0
          */
         get x_scale_step_width(): number;
         set x_scale_step_width(val: number);
         /**
          * The width of a x scale step.
+         * @since 3.0.0
          */
         get xScaleStepWidth(): number;
         set xScaleStepWidth(val: number);
         /**
          * The scale factor to use with x small scale function.
+         * @since 4.0.0
          */
         get x_small_scale_factor(): number;
         set x_small_scale_factor(val: number);
         /**
          * The scale factor to use with x small scale function.
+         * @since 4.0.0
          */
         get xSmallScaleFactor(): number;
         set xSmallScaleFactor(val: number);
         /**
          * The x start.
+         * @since 3.0.0
          */
         get x_start(): number;
         set x_start(val: number);
         /**
          * The x start.
+         * @since 3.0.0
          */
         get xStart(): number;
         set xStart(val: number);
         /**
          * The x step.
+         * @since 3.0.0
          */
         get x_step(): number;
         set x_step(val: number);
         /**
          * The x step.
+         * @since 3.0.0
          */
         get xStep(): number;
         set xStep(val: number);
         /**
          * The data to pass to x step conversion function.
+         * @since 4.0.0
          */
         get x_step_data(): any;
         set x_step_data(val: any);
         /**
          * The data to pass to x step conversion function.
+         * @since 4.0.0
          */
         get xStepData(): any;
         set xStepData(val: any);
         /**
          * The step factor to use with x step conversion function.
+         * @since 4.0.0
          */
         get x_step_factor(): number;
         set x_step_factor(val: number);
         /**
          * The step factor to use with x step conversion function.
+         * @since 4.0.0
          */
         get xStepFactor(): number;
         set xStepFactor(val: number);
         /**
          * The width of a x step.
+         * @since 3.0.0
          */
         get x_step_width(): number;
         set x_step_width(val: number);
         /**
          * The width of a x step.
+         * @since 3.0.0
          */
         get xStepWidth(): number;
         set xStepWidth(val: number);
         /**
          * The x translate point.
+         * @since 4.0.0
          */
         get x_translate_point(): number;
         set x_translate_point(val: number);
         /**
          * The x translate point.
+         * @since 4.0.0
          */
         get xTranslatePoint(): number;
         set xTranslatePoint(val: number);
         /**
          * The x unit label.
+         * @since 3.0.0
          */
         get x_unit(): string;
         set x_unit(val: string);
         /**
          * The x unit label.
+         * @since 3.0.0
          */
         get xUnit(): string;
         set xUnit(val: string);
         /**
          * The x unit's size.
+         * @since 4.0.0
          */
         get x_unit_size(): number;
         set x_unit_size(val: number);
         /**
          * The x unit's size.
+         * @since 4.0.0
          */
         get xUnitSize(): number;
         set xUnitSize(val: number);
         /**
          * The x unit's x0 position.
+         * @since 3.0.0
          */
         get x_unit_x0(): number;
         set x_unit_x0(val: number);
         /**
          * The x unit's x0 position.
+         * @since 3.0.0
          */
         get xUnitX0(): number;
         set xUnitX0(val: number);
         /**
          * The x unit's y0 position.
+         * @since 3.0.0
          */
         get x_unit_y0(): number;
         set x_unit_y0(val: number);
         /**
          * The x unit's y0 position.
+         * @since 3.0.0
          */
         get xUnitY0(): number;
         set xUnitY0(val: number);
         /**
          * The scale factor to use with y big scale function.
+         * @since 4.0.0
          */
         get y_big_scale_factor(): number;
         set y_big_scale_factor(val: number);
         /**
          * The scale factor to use with y big scale function.
+         * @since 4.0.0
          */
         get yBigScaleFactor(): number;
         set yBigScaleFactor(val: number);
         /**
          * The y end.
+         * @since 3.0.0
          */
         get y_end(): number;
         set y_end(val: number);
         /**
          * The y end.
+         * @since 3.0.0
          */
         get yEnd(): number;
         set yEnd(val: number);
         /**
          * The y labels as a string array.
+         * @since 3.0.0
          */
         get y_label(): any;
         set y_label(val: any);
         /**
          * The y labels as a string array.
+         * @since 3.0.0
          */
         get yLabel(): any;
         set yLabel(val: any);
         /**
          * The data to pass to y label conversion function.
+         * @since 4.0.0
          */
         get y_label_data(): any;
         set y_label_data(val: any);
         /**
          * The data to pass to y label conversion function.
+         * @since 4.0.0
          */
         get yLabelData(): any;
         set yLabelData(val: any);
         /**
          * The factor to use with y label function.
+         * @since 4.0.0
          */
         get y_label_factor(): number;
         set y_label_factor(val: number);
         /**
          * The factor to use with y label function.
+         * @since 4.0.0
          */
         get yLabelFactor(): number;
         set yLabelFactor(val: number);
         /**
          * The precision to use with y label function.
+         * @since 4.0.0
          */
         get y_label_precision(): number;
         set y_label_precision(val: number);
         /**
          * The precision to use with y label function.
+         * @since 4.0.0
          */
         get yLabelPrecision(): number;
         set yLabelPrecision(val: number);
         /**
          * The y label start position.
+         * @since 3.0.0
          */
         get y_label_start(): number;
         set y_label_start(val: number);
         /**
          * The y label start position.
+         * @since 3.0.0
          */
         get yLabelStart(): number;
         set yLabelStart(val: number);
         /**
          * The y label step height.
+         * @since 3.0.0
          */
         get y_label_step_height(): number;
         set y_label_step_height(val: number);
         /**
          * The y label step height.
+         * @since 3.0.0
          */
         get yLabelStepHeight(): number;
         set yLabelStepHeight(val: number);
         /**
          * The horizontal y margin.
+         * @since 3.0.0
          */
         get y_margin(): number;
         set y_margin(val: number);
         /**
          * The horizontal y margin.
+         * @since 3.0.0
          */
         get yMargin(): number;
         set yMargin(val: number);
         /**
          * The data to pass to y scale conversion function.
+         * @since 4.0.0
          */
         get y_scale_data(): any;
         set y_scale_data(val: any);
         /**
          * The data to pass to y scale conversion function.
+         * @since 4.0.0
          */
         get yScaleData(): any;
         set yScaleData(val: any);
         /**
          * The height of a y scale step.
+         * @since 3.0.0
          */
         get y_scale_step_height(): number;
         set y_scale_step_height(val: number);
         /**
          * The height of a y scale step.
+         * @since 3.0.0
          */
         get yScaleStepHeight(): number;
         set yScaleStepHeight(val: number);
         /**
          * The scale factor to use with y small scale function.
+         * @since 4.0.0
          */
         get y_small_scale_factor(): number;
         set y_small_scale_factor(val: number);
         /**
          * The scale factor to use with y small scale function.
+         * @since 4.0.0
          */
         get ySmallScaleFactor(): number;
         set ySmallScaleFactor(val: number);
         /**
          * The y start.
+         * @since 3.0.0
          */
         get y_start(): number;
         set y_start(val: number);
         /**
          * The y start.
+         * @since 3.0.0
          */
         get yStart(): number;
         set yStart(val: number);
         /**
          * The y step.
+         * @since 3.0.0
          */
         get y_step(): number;
         set y_step(val: number);
         /**
          * The y step.
+         * @since 3.0.0
          */
         get yStep(): number;
         set yStep(val: number);
         /**
          * The data to pass to y step conversion function.
+         * @since 4.0.0
          */
         get y_step_data(): any;
         set y_step_data(val: any);
         /**
          * The data to pass to y step conversion function.
+         * @since 4.0.0
          */
         get yStepData(): any;
         set yStepData(val: any);
         /**
          * The step factor to use with y step conversion function.
+         * @since 4.0.0
          */
         get y_step_factor(): number;
         set y_step_factor(val: number);
         /**
          * The step factor to use with y step conversion function.
+         * @since 4.0.0
          */
         get yStepFactor(): number;
         set yStepFactor(val: number);
         /**
          * The height of a y step.
+         * @since 3.0.0
          */
         get y_step_height(): number;
         set y_step_height(val: number);
         /**
          * The height of a y step.
+         * @since 3.0.0
          */
         get yStepHeight(): number;
         set yStepHeight(val: number);
         /**
          * The y translate point.
+         * @since 4.0.0
          */
         get y_translate_point(): number;
         set y_translate_point(val: number);
         /**
          * The y translate point.
+         * @since 4.0.0
          */
         get yTranslatePoint(): number;
         set yTranslatePoint(val: number);
         /**
          * The y unit label.
+         * @since 3.0.0
          */
         get y_unit(): string;
         set y_unit(val: string);
         /**
          * The y unit label.
+         * @since 3.0.0
          */
         get yUnit(): string;
         set yUnit(val: string);
         /**
          * The y unit's size.
+         * @since 4.0.0
          */
         get y_unit_size(): number;
         set y_unit_size(val: number);
         /**
          * The y unit's size.
+         * @since 4.0.0
          */
         get yUnitSize(): number;
         set yUnitSize(val: number);
         /**
          * The y unit's x0 position.
+         * @since 3.0.0
          */
         get y_unit_x0(): number;
         set y_unit_x0(val: number);
         /**
          * The y unit's x0 position.
+         * @since 3.0.0
          */
         get yUnitX0(): number;
         set yUnitX0(val: number);
         /**
          * The y unit's y0 position.
+         * @since 3.0.0
          */
         get y_unit_y0(): number;
         set y_unit_y0(val: number);
         /**
          * The y unit's y0 position.
+         * @since 3.0.0
          */
         get yUnitY0(): number;
         set yUnitY0(val: number);
@@ -1358,16 +1606,19 @@ export namespace AgsGui {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Cartesian.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Cartesian.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Cartesian.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Cartesian.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Cartesian.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Cartesian.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1387,43 +1638,43 @@ export namespace AgsGui {
          * Perform linear translation.
          * @param x the x position
          * @param y the y position
-         * @param data the #AgsCartesian
+         * @param data the {@link AgsGui.Cartesian}
          */
         static linear_translate_func(x: number, y: number, data?: any | null): [number, number];
         /**
          * Labeling function of x big scale
          * @param value the value
-         * @param data the #AgsCartesian
+         * @param data the {@link AgsGui.Cartesian}
          */
         static linear_x_big_scale_func(value: number, data?: any | null): number;
         /**
          * Format x label `value` appropriately.
          * @param value the value
-         * @param data the #AgsCartesian
+         * @param data the {@link AgsGui.Cartesian}
          */
         static linear_x_label_func(value: number, data?: any | null): string;
         /**
          * Labeling function of x small scale
          * @param value the value
-         * @param data the #AgsCartesian
+         * @param data the {@link AgsGui.Cartesian}
          */
         static linear_x_small_scale_func(value: number, data?: any | null): number;
         /**
          * Labeling function of y big scale
          * @param value the value
-         * @param data the #AgsCartesian
+         * @param data the {@link AgsGui.Cartesian}
          */
         static linear_y_big_scale_func(value: number, data?: any | null): number;
         /**
          * Format y label `value` appropriately.
          * @param value the value
-         * @param data the #AgsCartesian
+         * @param data the {@link AgsGui.Cartesian}
          */
         static linear_y_label_func(value: number, data?: any | null): string;
         /**
          * Labeling function of y small scale
          * @param value the value
-         * @param data the #AgsCartesian
+         * @param data the {@link AgsGui.Cartesian}
          */
         static linear_y_small_scale_func(value: number, data?: any | null): number;
 
@@ -1431,11 +1682,11 @@ export namespace AgsGui {
 
         /**
          * Add `plot` to `cartesian`.
-         * @param plot the #AgsPlot-struct
+         * @param plot the {@link AgsGui.Plot}-struct
          */
         add_plot(plot?: any | null): void;
         /**
-         * Fill x label if `do_x_label,` otherwise y label.
+         * Fill x label if `do_x_label`, otherwise y label.
          * @param do_x_label do x label
          */
         fill_label(do_x_label: boolean): void;
@@ -1644,13 +1895,13 @@ export namespace AgsGui {
          */
         get_y_unit_y0(): number;
         /**
-         * Reallocate x label if `do_x_label,` otherwise y label.
+         * Reallocate x label if `do_x_label`, otherwise y label.
          * @param do_x_label do x label
          */
         reallocate_label(do_x_label: boolean): void;
         /**
          * Remove `plot` from `cartesian`.
-         * @param plot the #AgsPlot-struct
+         * @param plot the {@link AgsGui.Plot}-struct
          */
         remove_plot(plot?: any | null): void;
         /**
@@ -1853,24 +2104,22 @@ export namespace AgsGui {
          * @param y_unit_y0 the y unit y0
          */
         set_y_unit_y0(y_unit_y0: number): void;
-
-        // Inherited properties
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
         set accessible_role(val: Gtk.AccessibleRole);
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
         set accessibleRole(val: Gtk.AccessibleRole);
-
-        // Inherited methods
         /**
          * Requests the user's screen reader to announce the given message.
          *
@@ -1885,6 +2134,17 @@ export namespace AgsGui {
          * @param priority the priority of the announcement
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
+        /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @returns the accessible identifier
+         */
+        get_accessible_id(): string | null;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -1905,7 +2165,7 @@ export namespace AgsGui {
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
@@ -1924,9 +2184,9 @@ export namespace AgsGui {
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
          */
@@ -1952,7 +2212,7 @@ export namespace AgsGui {
          * This function is meant to be used by accessible implementations that are
          * not part of the widget hierarchy, and but act as a logical bridge between
          * widgets. For instance, if a widget creates an object that holds metadata
-         * for each child, and you want that object to implement the `GtkAccessible`
+         * for each child, and you want that object to implement the {@link Gtk.Accessible}
          * interface, you will use this function to ensure that the parent of each
          * child widget is the metadata object, and the parent of each metadata
          * object is the container widget.
@@ -1971,7 +2231,7 @@ export namespace AgsGui {
         /**
          * Informs ATs that the platform state has changed.
          *
-         * This function should be used by `GtkAccessible` implementations that
+         * This function should be used by {@link Gtk.Accessible} implementations that
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
@@ -1980,7 +2240,7 @@ export namespace AgsGui {
         /**
          * Updates an array of accessible properties.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * property change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -1991,7 +2251,7 @@ export namespace AgsGui {
         /**
          * Updates an array of accessible relations.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * relation change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -2002,7 +2262,7 @@ export namespace AgsGui {
         /**
          * Updates an array of accessible states.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * state change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -2011,44 +2271,61 @@ export namespace AgsGui {
          */
         update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
         /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @virtual
+         */
+        vfunc_get_accessible_id(): string | null;
+        /**
          * Retrieves the accessible parent for an accessible object.
          *
          * This function returns `NULL` for top level widgets.
+         * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
         /**
          * Retrieves the implementation for the given accessible object.
+         * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
         /**
          * Gets the ID of the `buildable` object.
          *
-         * `GtkBuilder` sets the name based on the ID attribute
+         * {@link Gtk.Builder} sets the name based on the ID attribute
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
@@ -2056,18 +2333,20 @@ export namespace AgsGui {
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param child child to add
-         * @param type kind of child or %NULL
+         * @param type kind of child or `null`
+         * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
         /**
-         * Similar to gtk_buildable_parser_finished() but is
+         * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
-         * @param builder a `GtkBuilder`
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder}
+         * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @virtual
          */
         vfunc_custom_finished(
             builder: Gtk.Builder,
@@ -2078,10 +2357,11 @@ export namespace AgsGui {
         /**
          * Called at the end of each custom element handled by
          * the buildable.
-         * @param builder `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @virtual
          */
         vfunc_custom_tag_end(
             builder: Gtk.Builder,
@@ -2091,9 +2371,10 @@ export namespace AgsGui {
         ): void;
         /**
          * Called for each unknown element under `<child>`.
-         * @param builder a `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @virtual
          */
         vfunc_custom_tag_start(
             builder: Gtk.Builder,
@@ -2103,39 +2384,44 @@ export namespace AgsGui {
         /**
          * The getter corresponding to `set_id`. Implement this
          *   if you implement `set_id`.
+         * @virtual
          */
         vfunc_get_id(): string;
         /**
          * Retrieves the internal child called `childname` of the `buildable` object.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
         /**
          * Called when a builder finishes the parsing
          *  of a UI definition. It is normally not necessary to implement this,
-         *  unless you need to perform special cleanup actions. `GtkWindow` sets
-         *  the `GtkWidget:visible` property here.
+         *  unless you need to perform special cleanup actions. {@link Gtk.Window} sets
+         *  the {@link Gtk.Widget.visible} property here.
          * @param builder
+         * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
         /**
          * Sets a property of a buildable object.
-         *  It is normally not necessary to implement this, g_object_set_property()
-         *  is used by default. `GtkWindow` implements this to delay showing itself
-         *  (i.e. setting the [property`Gtk`.Widget:visible] property) until the whole
+         *  It is normally not necessary to implement this, `g_object_set_property()`
+         *  is used by default. {@link Gtk.Window} implements this to delay showing itself
+         *  (i.e. setting the {@link Gtk.Widget.visible} property) until the whole
          *  interface is created.
          * @param builder
          * @param name
          * @param value
+         * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
         /**
-         * Stores the id attribute given in the `GtkBuilder` UI definition.
-         *   `GtkWidget` stores the name as object data. Implement this method if your
+         * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
+         *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
          *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id
+         * @virtual
          */
         vfunc_set_id(id: string): void;
         /**
@@ -2151,32 +2437,32 @@ export namespace AgsGui {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -2185,39 +2471,39 @@ export namespace AgsGui {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -2228,13 +2514,16 @@ export namespace AgsGui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -2242,7 +2531,7 @@ export namespace AgsGui {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -2250,9 +2539,9 @@ export namespace AgsGui {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -2272,9 +2561,9 @@ export namespace AgsGui {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -2287,34 +2576,34 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -2347,22 +2636,22 @@ export namespace AgsGui {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -2371,8 +2660,8 @@ export namespace AgsGui {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -2389,10 +2678,10 @@ export namespace AgsGui {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -2407,13 +2696,13 @@ export namespace AgsGui {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -2444,21 +2733,21 @@ export namespace AgsGui {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -2468,33 +2757,34 @@ export namespace AgsGui {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -2503,6 +2793,7 @@ export namespace AgsGui {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -2511,12 +2802,14 @@ export namespace AgsGui {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -2525,20 +2818,22 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -2550,6 +2845,7 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -2582,6 +2878,12 @@ export namespace AgsGui {
     namespace Dial {
         // Signal signatures
         interface SignalSignatures extends Gtk.Widget.SignalSignatures {
+            /**
+             * The ::value-changed signal notifies adjustment value changed.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             'value-changed': () => void;
             'notify::adjustment': (pspec: GObject.ParamSpec) => void;
             'notify::button-height': (pspec: GObject.ParamSpec) => void;
@@ -2657,6 +2959,9 @@ export namespace AgsGui {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Dial extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Dial>;
 
@@ -2664,81 +2969,97 @@ export namespace AgsGui {
 
         /**
          * The adjustment storing current value and boundaries.
+         * @since 3.0.0
          */
         get adjustment(): GObject.Object;
         set adjustment(val: GObject.Object);
         /**
          * The buttons height.
+         * @since 3.0.0
          */
         get button_height(): number;
         set button_height(val: number);
         /**
          * The buttons height.
+         * @since 3.0.0
          */
         get buttonHeight(): number;
         set buttonHeight(val: number);
         /**
          * The buttons width.
+         * @since 3.0.0
          */
         get button_width(): number;
         set button_width(val: number);
         /**
          * The buttons width.
+         * @since 3.0.0
          */
         get buttonWidth(): number;
         set buttonWidth(val: number);
         /**
          * The font size of the buttons.
+         * @since 3.0.0
          */
         get font_size(): number;
         set font_size(val: number);
         /**
          * The font size of the buttons.
+         * @since 3.0.0
          */
         get fontSize(): number;
         set fontSize(val: number);
         /**
          * The button's margin left.
+         * @since 3.0.0
          */
         get margin_left(): number;
         set margin_left(val: number);
         /**
          * The button's margin left.
+         * @since 3.0.0
          */
         get marginLeft(): number;
         set marginLeft(val: number);
         /**
          * The button's margin right.
+         * @since 3.0.0
          */
         get margin_right(): number;
         set margin_right(val: number);
         /**
          * The button's margin right.
+         * @since 3.0.0
          */
         get marginRight(): number;
         set marginRight(val: number);
         /**
          * The outline strength of the knob.
+         * @since 3.0.0
          */
         get outline_strength(): number;
         set outline_strength(val: number);
         /**
          * The outline strength of the knob.
+         * @since 3.0.0
          */
         get outlineStrength(): number;
         set outlineStrength(val: number);
         /**
          * The radius of the knob.
+         * @since 3.0.0
          */
         get radius(): number;
         set radius(val: number);
         /**
          * The precision of the scale.
+         * @since 3.0.0
          */
         get scale_precision(): number;
         set scale_precision(val: number);
         /**
          * The precision of the scale.
+         * @since 3.0.0
          */
         get scalePrecision(): number;
         set scalePrecision(val: number);
@@ -2774,16 +3095,19 @@ export namespace AgsGui {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Dial.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Dial.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Dial.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Dial.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Dial.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Dial.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2794,6 +3118,7 @@ export namespace AgsGui {
 
         /**
          * draws the widget
+         * @virtual
          */
         vfunc_value_changed(): void;
 
@@ -2801,7 +3126,7 @@ export namespace AgsGui {
 
         /**
          * Get adjustment of `dial`.
-         * @returns the #GtkAdjustment
+         * @returns the {@link Gtk.Adjustment}
          */
         get_adjustment(): Gtk.Adjustment;
         /**
@@ -2851,7 +3176,7 @@ export namespace AgsGui {
         get_value(): number;
         /**
          * Set adjustment of `dial`.
-         * @param adjustment the #GtkAdjustment
+         * @param adjustment the {@link Gtk.Adjustment}
          */
         set_adjustment(adjustment: Gtk.Adjustment): void;
         /**
@@ -2903,24 +3228,22 @@ export namespace AgsGui {
          * draws the widget
          */
         value_changed(): void;
-
-        // Inherited properties
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
         set accessible_role(val: Gtk.AccessibleRole);
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
         set accessibleRole(val: Gtk.AccessibleRole);
-
-        // Inherited methods
         /**
          * Requests the user's screen reader to announce the given message.
          *
@@ -2935,6 +3258,17 @@ export namespace AgsGui {
          * @param priority the priority of the announcement
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
+        /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @returns the accessible identifier
+         */
+        get_accessible_id(): string | null;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -2955,7 +3289,7 @@ export namespace AgsGui {
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
@@ -2974,9 +3308,9 @@ export namespace AgsGui {
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
          */
@@ -3002,7 +3336,7 @@ export namespace AgsGui {
          * This function is meant to be used by accessible implementations that are
          * not part of the widget hierarchy, and but act as a logical bridge between
          * widgets. For instance, if a widget creates an object that holds metadata
-         * for each child, and you want that object to implement the `GtkAccessible`
+         * for each child, and you want that object to implement the {@link Gtk.Accessible}
          * interface, you will use this function to ensure that the parent of each
          * child widget is the metadata object, and the parent of each metadata
          * object is the container widget.
@@ -3021,7 +3355,7 @@ export namespace AgsGui {
         /**
          * Informs ATs that the platform state has changed.
          *
-         * This function should be used by `GtkAccessible` implementations that
+         * This function should be used by {@link Gtk.Accessible} implementations that
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
@@ -3030,7 +3364,7 @@ export namespace AgsGui {
         /**
          * Updates an array of accessible properties.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * property change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -3041,7 +3375,7 @@ export namespace AgsGui {
         /**
          * Updates an array of accessible relations.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * relation change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -3052,7 +3386,7 @@ export namespace AgsGui {
         /**
          * Updates an array of accessible states.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * state change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -3061,44 +3395,61 @@ export namespace AgsGui {
          */
         update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
         /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @virtual
+         */
+        vfunc_get_accessible_id(): string | null;
+        /**
          * Retrieves the accessible parent for an accessible object.
          *
          * This function returns `NULL` for top level widgets.
+         * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
         /**
          * Retrieves the implementation for the given accessible object.
+         * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
         /**
          * Gets the ID of the `buildable` object.
          *
-         * `GtkBuilder` sets the name based on the ID attribute
+         * {@link Gtk.Builder} sets the name based on the ID attribute
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
@@ -3106,18 +3457,20 @@ export namespace AgsGui {
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param child child to add
-         * @param type kind of child or %NULL
+         * @param type kind of child or `null`
+         * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
         /**
-         * Similar to gtk_buildable_parser_finished() but is
+         * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
-         * @param builder a `GtkBuilder`
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder}
+         * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @virtual
          */
         vfunc_custom_finished(
             builder: Gtk.Builder,
@@ -3128,10 +3481,11 @@ export namespace AgsGui {
         /**
          * Called at the end of each custom element handled by
          * the buildable.
-         * @param builder `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @virtual
          */
         vfunc_custom_tag_end(
             builder: Gtk.Builder,
@@ -3141,9 +3495,10 @@ export namespace AgsGui {
         ): void;
         /**
          * Called for each unknown element under `<child>`.
-         * @param builder a `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @virtual
          */
         vfunc_custom_tag_start(
             builder: Gtk.Builder,
@@ -3153,39 +3508,44 @@ export namespace AgsGui {
         /**
          * The getter corresponding to `set_id`. Implement this
          *   if you implement `set_id`.
+         * @virtual
          */
         vfunc_get_id(): string;
         /**
          * Retrieves the internal child called `childname` of the `buildable` object.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
         /**
          * Called when a builder finishes the parsing
          *  of a UI definition. It is normally not necessary to implement this,
-         *  unless you need to perform special cleanup actions. `GtkWindow` sets
-         *  the `GtkWidget:visible` property here.
+         *  unless you need to perform special cleanup actions. {@link Gtk.Window} sets
+         *  the {@link Gtk.Widget.visible} property here.
          * @param builder
+         * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
         /**
          * Sets a property of a buildable object.
-         *  It is normally not necessary to implement this, g_object_set_property()
-         *  is used by default. `GtkWindow` implements this to delay showing itself
-         *  (i.e. setting the [property`Gtk`.Widget:visible] property) until the whole
+         *  It is normally not necessary to implement this, `g_object_set_property()`
+         *  is used by default. {@link Gtk.Window} implements this to delay showing itself
+         *  (i.e. setting the {@link Gtk.Widget.visible} property) until the whole
          *  interface is created.
          * @param builder
          * @param name
          * @param value
+         * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
         /**
-         * Stores the id attribute given in the `GtkBuilder` UI definition.
-         *   `GtkWidget` stores the name as object data. Implement this method if your
+         * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
+         *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
          *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id
+         * @virtual
          */
         vfunc_set_id(id: string): void;
         /**
@@ -3201,32 +3561,32 @@ export namespace AgsGui {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -3235,39 +3595,39 @@ export namespace AgsGui {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -3278,13 +3638,16 @@ export namespace AgsGui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -3292,7 +3655,7 @@ export namespace AgsGui {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -3300,9 +3663,9 @@ export namespace AgsGui {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -3322,9 +3685,9 @@ export namespace AgsGui {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -3337,34 +3700,34 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -3397,22 +3760,22 @@ export namespace AgsGui {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -3421,8 +3784,8 @@ export namespace AgsGui {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -3439,10 +3802,10 @@ export namespace AgsGui {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -3457,13 +3820,13 @@ export namespace AgsGui {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -3494,21 +3857,21 @@ export namespace AgsGui {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -3518,33 +3881,34 @@ export namespace AgsGui {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -3553,6 +3917,7 @@ export namespace AgsGui {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -3561,12 +3926,14 @@ export namespace AgsGui {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -3575,20 +3942,22 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -3600,6 +3969,7 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -3685,6 +4055,9 @@ export namespace AgsGui {
                 Gtk.Orientable.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Expander extends Gtk.Box implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<Expander>;
 
@@ -3715,16 +4088,19 @@ export namespace AgsGui {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Expander.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Expander.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Expander.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Expander.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Expander.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Expander.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3734,8 +4110,8 @@ export namespace AgsGui {
         // Methods
 
         /**
-         * Adds a #GtkWidget to #AgsExpander
-         * @param widget the child #GtkWidget
+         * Adds a {@link Gtk.Widget} to {@link AgsGui.Expander}
+         * @param widget the child {@link Gtk.Widget}
          * @param x x-position
          * @param y y-position
          * @param width allocation width
@@ -3744,27 +4120,24 @@ export namespace AgsGui {
         add(widget: Gtk.Widget, x: number, y: number, width: number, height: number): void;
         /**
          * Find `child` of `expander`.
-         * @param child the #GtkWidget
-         * @returns the matching #AgsExpanderChild-struct
+         * @param child the {@link Gtk.Widget}
+         * @returns the matching {@link AgsGui.ExpanderChild}-struct
          */
         child_find(child: Gtk.Widget): any | null;
         /**
-         * Removes a #GtkWidget of #AgsExpander
-         * @param widget the child #GtkWidget
+         * Removes a {@link Gtk.Widget} of {@link AgsGui.Expander}
+         * @param widget the child {@link Gtk.Widget}
          */
         remove(widget: Gtk.Widget): void;
-
-        // Inherited properties
         /**
          * The orientation of the orientable.
+         * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
-
-        // Inherited methods
         /**
          * Retrieves the orientation of the `orientable`.
-         * @returns the orientation of the @orientable
+         * @returns the orientation of the `orientable`
          */
         get_orientation(): Gtk.Orientation;
         /**
@@ -3785,32 +4158,32 @@ export namespace AgsGui {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -3819,39 +4192,39 @@ export namespace AgsGui {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -3862,13 +4235,16 @@ export namespace AgsGui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -3876,7 +4252,7 @@ export namespace AgsGui {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -3884,9 +4260,9 @@ export namespace AgsGui {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -3906,9 +4282,9 @@ export namespace AgsGui {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -3921,34 +4297,34 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -3981,22 +4357,22 @@ export namespace AgsGui {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -4005,8 +4381,8 @@ export namespace AgsGui {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -4023,10 +4399,10 @@ export namespace AgsGui {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -4041,13 +4417,13 @@ export namespace AgsGui {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -4078,21 +4454,21 @@ export namespace AgsGui {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -4102,33 +4478,34 @@ export namespace AgsGui {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -4137,6 +4514,7 @@ export namespace AgsGui {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -4145,12 +4523,14 @@ export namespace AgsGui {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -4159,20 +4539,22 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -4184,6 +4566,7 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -4270,6 +4653,9 @@ export namespace AgsGui {
                 Gtk.Orientable.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ExpanderSet extends Gtk.Grid implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<ExpanderSet>;
 
@@ -4299,16 +4685,19 @@ export namespace AgsGui {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ExpanderSet.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ExpanderSet.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ExpanderSet.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ExpanderSet.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ExpanderSet.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ExpanderSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4318,8 +4707,8 @@ export namespace AgsGui {
         // Methods
 
         /**
-         * Adds a #GtkWidget to #AgsExpanderSet
-         * @param widget the child #GtkWidget
+         * Adds a {@link Gtk.Widget} to {@link AgsGui.ExpanderSet}
+         * @param widget the child {@link Gtk.Widget}
          * @param x x-position
          * @param y y-position
          * @param width allocation width
@@ -4328,27 +4717,24 @@ export namespace AgsGui {
         add(widget: Gtk.Widget, x: number, y: number, width: number, height: number): void;
         /**
          * Find `child` of `expander_set`.
-         * @param child the #GtkWidget
-         * @returns the matching #AgsExpanderSetChild-struct
+         * @param child the {@link Gtk.Widget}
+         * @returns the matching {@link AgsGui.ExpanderSetChild}-struct
          */
         child_find(child: Gtk.Widget): any | null;
         /**
-         * Removes a #GtkWidget of #AgsExpanderSet
-         * @param widget the child #GtkWidget
+         * Removes a {@link Gtk.Widget} of {@link AgsGui.ExpanderSet}
+         * @param widget the child {@link Gtk.Widget}
          */
         remove(widget: Gtk.Widget): void;
-
-        // Inherited properties
         /**
          * The orientation of the orientable.
+         * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
-
-        // Inherited methods
         /**
          * Retrieves the orientation of the `orientable`.
-         * @returns the orientation of the @orientable
+         * @returns the orientation of the `orientable`
          */
         get_orientation(): Gtk.Orientation;
         /**
@@ -4369,32 +4755,32 @@ export namespace AgsGui {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -4403,39 +4789,39 @@ export namespace AgsGui {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -4446,13 +4832,16 @@ export namespace AgsGui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -4460,7 +4849,7 @@ export namespace AgsGui {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -4468,9 +4857,9 @@ export namespace AgsGui {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -4490,9 +4879,9 @@ export namespace AgsGui {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -4505,34 +4894,34 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -4565,22 +4954,22 @@ export namespace AgsGui {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -4589,8 +4978,8 @@ export namespace AgsGui {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -4607,10 +4996,10 @@ export namespace AgsGui {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -4625,13 +5014,13 @@ export namespace AgsGui {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -4662,21 +5051,21 @@ export namespace AgsGui {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -4686,33 +5075,34 @@ export namespace AgsGui {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -4721,6 +5111,7 @@ export namespace AgsGui {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -4729,12 +5120,14 @@ export namespace AgsGui {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -4743,20 +5136,22 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -4768,6 +5163,7 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -4800,6 +5196,12 @@ export namespace AgsGui {
     namespace FileDialog {
         // Signal signatures
         interface SignalSignatures extends Gtk.Window.SignalSignatures {
+            /**
+             * The ::response signal notifies about window interaction.
+             * @signal
+             * @since 6.6.0
+             * @run-last
+             */
             response: (arg0: number) => void;
             'notify::file-widget': (pspec: GObject.ParamSpec) => void;
             'notify::application': (pspec: GObject.ParamSpec) => void;
@@ -4881,6 +5283,9 @@ export namespace AgsGui {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class FileDialog
         extends Gtk.Window
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Native, Gtk.Root, Gtk.ShortcutManager
@@ -4923,16 +5328,19 @@ export namespace AgsGui {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FileDialog.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileDialog.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FileDialog.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileDialog.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FileDialog.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FileDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4944,6 +5352,7 @@ export namespace AgsGui {
         /**
          * Response `file_dialog` due to user action.
          * @param response_id the response id
+         * @virtual
          */
         vfunc_response(response_id: number): void;
 
@@ -4954,14 +5363,13 @@ export namespace AgsGui {
          * @param response_id the response id
          */
         response(response_id: number): void;
-
-        // Inherited properties
         /**
          * Whether the widget or any of its descendents can accept
          * the input focus.
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @category Inherited from Gtk.Widget
          */
         get can_focus(): boolean;
         set can_focus(val: boolean);
@@ -4971,26 +5379,31 @@ export namespace AgsGui {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @category Inherited from Gtk.Widget
          */
         get canFocus(): boolean;
         set canFocus(val: boolean);
         /**
          * Whether the widget can receive pointer events.
+         * @category Inherited from Gtk.Widget
          */
         get can_target(): boolean;
         set can_target(val: boolean);
         /**
          * Whether the widget can receive pointer events.
+         * @category Inherited from Gtk.Widget
          */
         get canTarget(): boolean;
         set canTarget(val: boolean);
         /**
          * A list of css classes applied to this widget.
+         * @category Inherited from Gtk.Widget
          */
         get css_classes(): string[];
         set css_classes(val: string[]);
         /**
          * A list of css classes applied to this widget.
+         * @category Inherited from Gtk.Widget
          */
         get cssClasses(): string[];
         set cssClasses(val: string[]);
@@ -4999,6 +5412,8 @@ export namespace AgsGui {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
+         * @category Inherited from Gtk.Widget
          */
         get css_name(): string;
         /**
@@ -5006,10 +5421,13 @@ export namespace AgsGui {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
+         * @category Inherited from Gtk.Widget
          */
         get cssName(): string;
         /**
          * The cursor used by `widget`.
+         * @category Inherited from Gtk.Widget
          */
         get cursor(): Gdk.Cursor;
         set cursor(val: Gdk.Cursor);
@@ -5017,6 +5435,7 @@ export namespace AgsGui {
          * Whether the widget should grab focus when it is clicked with the mouse.
          *
          * This property is only relevant for widgets that can take focus.
+         * @category Inherited from Gtk.Widget
          */
         get focus_on_click(): boolean;
         set focus_on_click(val: boolean);
@@ -5024,52 +5443,65 @@ export namespace AgsGui {
          * Whether the widget should grab focus when it is clicked with the mouse.
          *
          * This property is only relevant for widgets that can take focus.
+         * @category Inherited from Gtk.Widget
          */
         get focusOnClick(): boolean;
         set focusOnClick(val: boolean);
         /**
          * Whether this widget itself will accept the input focus.
+         * @category Inherited from Gtk.Widget
          */
         get focusable(): boolean;
         set focusable(val: boolean);
         /**
          * How to distribute horizontal space if widget gets extra space.
+         * @category Inherited from Gtk.Widget
          */
         get halign(): Gtk.Align;
         set halign(val: Gtk.Align);
         /**
          * Whether the widget is the default widget.
+         * @read-only
+         * @category Inherited from Gtk.Widget
          */
         get has_default(): boolean;
         /**
          * Whether the widget is the default widget.
+         * @read-only
+         * @category Inherited from Gtk.Widget
          */
         get hasDefault(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
+         * @category Inherited from Gtk.Widget
          */
         get has_focus(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
+         * @category Inherited from Gtk.Widget
          */
         get hasFocus(): boolean;
         /**
-         * Enables or disables the emission of the [signal`Gtk`.Widget::query-tooltip]
+         * Enables or disables the emission of the `Gtk.Widget::query-tooltip`
          * signal on `widget`.
          *
          * A true value indicates that `widget` can have a tooltip, in this case
-         * the widget will be queried using [signal`Gtk`.Widget::query-tooltip] to
+         * the widget will be queried using `Gtk.Widget::query-tooltip` to
          * determine whether it will provide a tooltip or not.
+         * @category Inherited from Gtk.Widget
          */
         get has_tooltip(): boolean;
         set has_tooltip(val: boolean);
         /**
-         * Enables or disables the emission of the [signal`Gtk`.Widget::query-tooltip]
+         * Enables or disables the emission of the `Gtk.Widget::query-tooltip`
          * signal on `widget`.
          *
          * A true value indicates that `widget` can have a tooltip, in this case
-         * the widget will be queried using [signal`Gtk`.Widget::query-tooltip] to
+         * the widget will be queried using `Gtk.Widget::query-tooltip` to
          * determine whether it will provide a tooltip or not.
+         * @category Inherited from Gtk.Widget
          */
         get hasTooltip(): boolean;
         set hasTooltip(val: boolean);
@@ -5077,6 +5509,7 @@ export namespace AgsGui {
          * Overrides for height request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @category Inherited from Gtk.Widget
          */
         get height_request(): number;
         set height_request(val: number);
@@ -5084,39 +5517,45 @@ export namespace AgsGui {
          * Overrides for height request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @category Inherited from Gtk.Widget
          */
         get heightRequest(): number;
         set heightRequest(val: number);
         /**
          * Whether to expand horizontally.
+         * @category Inherited from Gtk.Widget
          */
         get hexpand(): boolean;
         set hexpand(val: boolean);
         /**
          * Whether to use the `hexpand` property.
+         * @category Inherited from Gtk.Widget
          */
         get hexpand_set(): boolean;
         set hexpand_set(val: boolean);
         /**
          * Whether to use the `hexpand` property.
+         * @category Inherited from Gtk.Widget
          */
         get hexpandSet(): boolean;
         set hexpandSet(val: boolean);
         /**
-         * The [class`Gtk`.LayoutManager] instance to use to compute
+         * The {@link Gtk.LayoutManager} instance to use to compute
          * the preferred size of the widget, and allocate its children.
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @category Inherited from Gtk.Widget
          */
         get layout_manager(): Gtk.LayoutManager;
         set layout_manager(val: Gtk.LayoutManager);
         /**
-         * The [class`Gtk`.LayoutManager] instance to use to compute
+         * The {@link Gtk.LayoutManager} instance to use to compute
          * the preferred size of the widget, and allocate its children.
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @category Inherited from Gtk.Widget
          */
         get layoutManager(): Gtk.LayoutManager;
         set layoutManager(val: Gtk.LayoutManager);
@@ -5126,7 +5565,9 @@ export namespace AgsGui {
          *
          * Global event controllers will not handle events with targets
          * inside the widget, unless they are set up to ignore propagation
-         * limits. See [method`Gtk`.EventController.set_propagation_limit].
+         * limits. See {@link Gtk.EventController.set_propagation_limit}.
+         * @since 4.18
+         * @category Inherited from Gtk.Widget
          */
         get limit_events(): boolean;
         set limit_events(val: boolean);
@@ -5136,7 +5577,9 @@ export namespace AgsGui {
          *
          * Global event controllers will not handle events with targets
          * inside the widget, unless they are set up to ignore propagation
-         * limits. See [method`Gtk`.EventController.set_propagation_limit].
+         * limits. See {@link Gtk.EventController.set_propagation_limit}.
+         * @since 4.18
+         * @category Inherited from Gtk.Widget
          */
         get limitEvents(): boolean;
         set limitEvents(val: boolean);
@@ -5145,7 +5588,8 @@ export namespace AgsGui {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get margin_bottom(): number;
         set margin_bottom(val: number);
@@ -5154,7 +5598,8 @@ export namespace AgsGui {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get marginBottom(): number;
         set marginBottom(val: number);
@@ -5166,7 +5611,8 @@ export namespace AgsGui {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get margin_end(): number;
         set margin_end(val: number);
@@ -5178,7 +5624,8 @@ export namespace AgsGui {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get marginEnd(): number;
         set marginEnd(val: number);
@@ -5190,7 +5637,8 @@ export namespace AgsGui {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get margin_start(): number;
         set margin_start(val: number);
@@ -5202,7 +5650,8 @@ export namespace AgsGui {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get marginStart(): number;
         set marginStart(val: number);
@@ -5211,7 +5660,8 @@ export namespace AgsGui {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get margin_top(): number;
         set margin_top(val: number);
@@ -5220,17 +5670,20 @@ export namespace AgsGui {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get marginTop(): number;
         set marginTop(val: number);
         /**
          * The name of the widget.
+         * @category Inherited from Gtk.Widget
          */
         get name(): string;
         set name(val: string);
         /**
          * The requested opacity of the widget.
+         * @category Inherited from Gtk.Widget
          */
         get opacity(): number;
         set opacity(val: number);
@@ -5239,39 +5692,51 @@ export namespace AgsGui {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @category Inherited from Gtk.Widget
          */
         get overflow(): Gtk.Overflow;
         set overflow(val: Gtk.Overflow);
         /**
          * The parent widget of this widget.
+         * @read-only
+         * @category Inherited from Gtk.Widget
          */
         get parent(): Gtk.Widget;
         /**
          * Whether the widget will receive the default action when it is focused.
+         * @category Inherited from Gtk.Widget
          */
         get receives_default(): boolean;
         set receives_default(val: boolean);
         /**
          * Whether the widget will receive the default action when it is focused.
+         * @category Inherited from Gtk.Widget
          */
         get receivesDefault(): boolean;
         set receivesDefault(val: boolean);
         /**
-         * The `GtkRoot` widget of the widget tree containing this widget.
+         * The {@link Gtk.Root} widget of the widget tree containing this widget.
          *
          * This will be `NULL` if the widget is not contained in a root widget.
+         * @read-only
+         * @category Inherited from Gtk.Widget
          */
         get root(): Gtk.Root;
         /**
          * The scale factor of the widget.
+         * @read-only
+         * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
         /**
          * The scale factor of the widget.
+         * @read-only
+         * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
         /**
          * Whether the widget responds to input.
+         * @category Inherited from Gtk.Widget
          */
         get sensitive(): boolean;
         set sensitive(val: boolean);
@@ -5279,16 +5744,17 @@ export namespace AgsGui {
          * Sets the text of tooltip to be the given string, which is marked up
          * with Pango markup.
          *
-         * Also see [method`Gtk`.Tooltip.set_markup].
+         * Also see {@link Gtk.Tooltip.set_markup}.
          *
          * This is a convenience property which will take care of getting the
          * tooltip shown if the given string is not `NULL`:
-         * [property`Gtk`.Widget:has-tooltip] will automatically be set to true
-         * and there will be taken care of [signal`Gtk`.Widget::query-tooltip] in
+         * {@link Gtk.Widget.has_tooltip} will automatically be set to true
+         * and there will be taken care of `Gtk.Widget::query-tooltip` in
          * the default signal handler.
          *
-         * Note that if both [property`Gtk`.Widget:tooltip-text] and
-         * [property`Gtk`.Widget:tooltip-markup] are set, the last one wins.
+         * Note that if both {@link Gtk.Widget.tooltip_text} and
+         * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @category Inherited from Gtk.Widget
          */
         get tooltip_markup(): string;
         set tooltip_markup(val: string);
@@ -5296,73 +5762,81 @@ export namespace AgsGui {
          * Sets the text of tooltip to be the given string, which is marked up
          * with Pango markup.
          *
-         * Also see [method`Gtk`.Tooltip.set_markup].
+         * Also see {@link Gtk.Tooltip.set_markup}.
          *
          * This is a convenience property which will take care of getting the
          * tooltip shown if the given string is not `NULL`:
-         * [property`Gtk`.Widget:has-tooltip] will automatically be set to true
-         * and there will be taken care of [signal`Gtk`.Widget::query-tooltip] in
+         * {@link Gtk.Widget.has_tooltip} will automatically be set to true
+         * and there will be taken care of `Gtk.Widget::query-tooltip` in
          * the default signal handler.
          *
-         * Note that if both [property`Gtk`.Widget:tooltip-text] and
-         * [property`Gtk`.Widget:tooltip-markup] are set, the last one wins.
+         * Note that if both {@link Gtk.Widget.tooltip_text} and
+         * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @category Inherited from Gtk.Widget
          */
         get tooltipMarkup(): string;
         set tooltipMarkup(val: string);
         /**
          * Sets the text of tooltip to be the given string.
          *
-         * Also see [method`Gtk`.Tooltip.set_text].
+         * Also see {@link Gtk.Tooltip.set_text}.
          *
          * This is a convenience property which will take care of getting the
          * tooltip shown if the given string is not `NULL`:
-         * [property`Gtk`.Widget:has-tooltip] will automatically be set to true
-         * and there will be taken care of [signal`Gtk`.Widget::query-tooltip] in
+         * {@link Gtk.Widget.has_tooltip} will automatically be set to true
+         * and there will be taken care of `Gtk.Widget::query-tooltip` in
          * the default signal handler.
          *
-         * Note that if both [property`Gtk`.Widget:tooltip-text] and
-         * [property`Gtk`.Widget:tooltip-markup] are set, the last one wins.
+         * Note that if both {@link Gtk.Widget.tooltip_text} and
+         * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @category Inherited from Gtk.Widget
          */
         get tooltip_text(): string;
         set tooltip_text(val: string);
         /**
          * Sets the text of tooltip to be the given string.
          *
-         * Also see [method`Gtk`.Tooltip.set_text].
+         * Also see {@link Gtk.Tooltip.set_text}.
          *
          * This is a convenience property which will take care of getting the
          * tooltip shown if the given string is not `NULL`:
-         * [property`Gtk`.Widget:has-tooltip] will automatically be set to true
-         * and there will be taken care of [signal`Gtk`.Widget::query-tooltip] in
+         * {@link Gtk.Widget.has_tooltip} will automatically be set to true
+         * and there will be taken care of `Gtk.Widget::query-tooltip` in
          * the default signal handler.
          *
-         * Note that if both [property`Gtk`.Widget:tooltip-text] and
-         * [property`Gtk`.Widget:tooltip-markup] are set, the last one wins.
+         * Note that if both {@link Gtk.Widget.tooltip_text} and
+         * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @category Inherited from Gtk.Widget
          */
         get tooltipText(): string;
         set tooltipText(val: string);
         /**
          * How to distribute vertical space if widget gets extra space.
+         * @category Inherited from Gtk.Widget
          */
         get valign(): Gtk.Align;
         set valign(val: Gtk.Align);
         /**
          * Whether to expand vertically.
+         * @category Inherited from Gtk.Widget
          */
         get vexpand(): boolean;
         set vexpand(val: boolean);
         /**
          * Whether to use the `vexpand` property.
+         * @category Inherited from Gtk.Widget
          */
         get vexpand_set(): boolean;
         set vexpand_set(val: boolean);
         /**
          * Whether to use the `vexpand` property.
+         * @category Inherited from Gtk.Widget
          */
         get vexpandSet(): boolean;
         set vexpandSet(val: boolean);
         /**
          * Whether the widget is visible.
+         * @category Inherited from Gtk.Widget
          */
         get visible(): boolean;
         set visible(val: boolean);
@@ -5370,6 +5844,7 @@ export namespace AgsGui {
          * Overrides for width request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @category Inherited from Gtk.Widget
          */
         get width_request(): number;
         set width_request(val: number);
@@ -5377,43 +5852,42 @@ export namespace AgsGui {
          * Overrides for width request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @category Inherited from Gtk.Widget
          */
         get widthRequest(): number;
         set widthRequest(val: number);
-
-        // Inherited methods
         /**
-         * Returns the renderer that is used for this `GtkNative`.
-         * @returns the renderer for @self
+         * Returns the renderer that is used for this {@link Gtk.Native}.
+         * @returns the renderer for `self`
          */
         get_renderer(): Gsk.Renderer | null;
         /**
-         * Returns the surface of this `GtkNative`.
-         * @returns the surface of @self
+         * Returns the surface of this {@link Gtk.Native}.
+         * @returns the surface of `self`
          */
         get_surface(): Gdk.Surface | null;
         /**
          * Retrieves the surface transform of `self`.
          *
-         * This is the translation from `self'`s surface coordinates into
-         * `self'`s widget coordinates.
+         * This is the translation from `self`'s surface coordinates into
+         * `self`'s widget coordinates.
          */
         get_surface_transform(): [number, number];
         /**
-         * Realizes a `GtkNative`.
+         * Realizes a {@link Gtk.Native}.
          *
          * This should only be used by subclasses.
          */
         realize(): void;
         /**
-         * Unrealizes a `GtkNative`.
+         * Unrealizes a {@link Gtk.Native}.
          *
          * This should only be used by subclasses.
          */
         unrealize(): void;
         /**
-         * Returns the display that this `GtkRoot` is on.
-         * @returns the display of @root
+         * Returns the display that this {@link Gtk.Root} is on.
+         * @returns the display of `root`
          */
         get_display(): Gdk.Display;
         /**
@@ -5421,7 +5895,7 @@ export namespace AgsGui {
          *
          * Note that this is the widget that would have the focus
          * if the root is active; if the root is not focused then
-         * `gtk_widget_has_focus (widget)` will be %FALSE for the
+         * `gtk_widget_has_focus (widget)` will be `false` for the
          * widget.
          * @returns the currently focused widget
          */
@@ -5430,23 +5904,25 @@ export namespace AgsGui {
          * If `focus` is not the current focus widget, and is focusable, sets
          * it as the focus widget for the root.
          *
-         * If `focus` is %NULL, unsets the focus widget for the root.
+         * If `focus` is `null`, unsets the focus widget for the root.
          *
          * To set the focus to a particular widget in the root, it is usually
-         * more convenient to use [method`Gtk`.Widget.grab_focus] instead of
+         * more convenient to use {@link Gtk.Widget.grab_focus} instead of
          * this function.
-         * @param focus widget to be the new focus widget, or %NULL    to unset the focus widget
+         * @param focus widget to be the new focus widget, or `null`    to unset the focus widget
          */
         set_focus(focus?: Gtk.Widget | null): void;
         /**
-         * Add a `GtkShortcutController` to be managed.
+         * Add a {@link Gtk.ShortcutController} to be managed.
          * @param controller
+         * @virtual
          */
         vfunc_add_controller(controller: Gtk.ShortcutController): void;
         /**
-         * Remove a `GtkShortcutController` that had previously
+         * Remove a {@link Gtk.ShortcutController} that had previously
          *   been added
          * @param controller
+         * @virtual
          */
         vfunc_remove_controller(controller: Gtk.ShortcutController): void;
         /**
@@ -5462,32 +5938,32 @@ export namespace AgsGui {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -5496,39 +5972,39 @@ export namespace AgsGui {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -5539,13 +6015,16 @@ export namespace AgsGui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -5553,7 +6032,7 @@ export namespace AgsGui {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -5561,9 +6040,9 @@ export namespace AgsGui {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -5583,9 +6062,9 @@ export namespace AgsGui {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -5598,34 +6077,34 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -5658,22 +6137,22 @@ export namespace AgsGui {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -5682,8 +6161,8 @@ export namespace AgsGui {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -5700,10 +6179,10 @@ export namespace AgsGui {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -5718,13 +6197,13 @@ export namespace AgsGui {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -5755,21 +6234,21 @@ export namespace AgsGui {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -5779,33 +6258,34 @@ export namespace AgsGui {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -5814,6 +6294,7 @@ export namespace AgsGui {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -5822,12 +6303,14 @@ export namespace AgsGui {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -5836,20 +6319,22 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -5861,6 +6346,7 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -5890,7 +6376,7 @@ export namespace AgsGui {
         stop_emission_by_name(detailedName: string): void;
         /**
          * Enables or disables an action installed with
-         * [method`Gtk`.WidgetClass.install_action].
+         * {@link Gtk.WidgetClass.install_action}.
          * @param action_name action name, such as "clipboard.paste"
          * @param enabled whether the action is now enabled
          */
@@ -5899,15 +6385,15 @@ export namespace AgsGui {
          * Activates the widget.
          *
          * The activation will emit the signal set using
-         * [method`Gtk`.WidgetClass.set_activate_signal]
+         * {@link Gtk.WidgetClass.set_activate_signal}
          * during class initialization.
          *
          * Activation is what happens when you press <kbd>Enter</kbd>
          * on a widget.
          *
          * If you wish to handle the activation keybinding yourself,
-         * it is recommended to use [method`Gtk`.WidgetClass.add_shortcut]
-         * with an action created with [ctor`Gtk`.SignalAction.new].
+         * it is recommended to use {@link Gtk.WidgetClass.add_shortcut}
+         * with an action created with {@link Gtk.SignalAction.new}.
          *
          * If `widget` is not activatable, the function returns false.
          * @returns true if the widget was activated
@@ -5920,12 +6406,12 @@ export namespace AgsGui {
          * `widget` and its ancestors.
          *
          * If the action is in an action group added with
-         * [method`Gtk`.Widget.insert_action_group], the `name` is expected
+         * {@link Gtk.Widget.insert_action_group}, the `name` is expected
          * to be prefixed with the prefix that was used when the group was
          * inserted.
          *
          * The arguments must match the actions expected parameter type,
-         * as returned by [method`Gio`.Action.get_parameter_type].
+         * as returned by {@link Gio.Action.get_parameter_type}.
          * @param name the name of the action to activate
          * @param args parameters to use
          * @returns true if the action was activated
@@ -5935,7 +6421,7 @@ export namespace AgsGui {
          * Activates the `default.activate` action for the widget.
          *
          * The action is looked up in the same was as for
-         * [method`Gtk`.Widget.activate_action].
+         * {@link Gtk.Widget.activate_action}.
          */
         activate_default(): void;
         /**
@@ -5945,7 +6431,7 @@ export namespace AgsGui {
          * propagated to the widget.
          *
          * You will usually want to call this function right after
-         * creating any kind of [class`Gtk`.EventController].
+         * creating any kind of {@link Gtk.EventController}.
          * @param controller an event controller that hasn't been   added to a widget yet
          */
         add_controller(controller: Gtk.EventController): void;
@@ -5953,22 +6439,22 @@ export namespace AgsGui {
          * Adds a style class to the widget.
          *
          * After calling this function, the widget’s style will match
-         * for `css_class,` according to CSS matching rules.
+         * for `css_class`, according to CSS matching rules.
          *
-         * Use [method`Gtk`.Widget.remove_css_class] to remove the
+         * Use {@link Gtk.Widget.remove_css_class} to remove the
          * style again.
-         * @param css_class style class to add to @widget, without the leading period
+         * @param css_class style class to add to `widget`, without the leading period
          */
         add_css_class(css_class: string): void;
         /**
          * Adds a widget to the list of mnemonic labels for this widget.
          *
-         * See [method`Gtk`.Widget.list_mnemonic_labels].
+         * See {@link Gtk.Widget.list_mnemonic_labels}.
          *
          * Note that the list of mnemonic labels for the widget is cleared
          * when the widget is destroyed, so the caller must make sure
          * to update its internal state at this point as well.
-         * @param label a widget that acts as a mnemonic label for @widget
+         * @param label a widget that acts as a mnemonic label for `widget`
          */
         add_mnemonic_label(label: Gtk.Widget): void;
         /**
@@ -5984,20 +6470,20 @@ export namespace AgsGui {
          * The tick callback does not automatically imply a relayout or repaint.
          * If you want a repaint or relayout, and aren’t changing widget properties
          * that would trigger that (for example, changing the text of a label),
-         * then you will have to call [method`Gtk`.Widget.queue_resize] or
-         * [method`Gtk`.Widget.queue_draw] yourself.
+         * then you will have to call {@link Gtk.Widget.queue_resize} or
+         * {@link Gtk.Widget.queue_draw} yourself.
          *
-         * [method`Gdk`.FrameClock.get_frame_time] should generally be used
+         * {@link Gdk.FrameClock.get_frame_time} should generally be used
          * for timing continuous animations and
-         * [method`Gdk`.FrameTimings.get_predicted_presentation_time] should be
+         * {@link Gdk.FrameTimings.get_predicted_presentation_time} should be
          * used if you are trying to display isolated frames at particular times.
          *
          * This is a more convenient alternative to connecting directly to the
-         * [signal`Gdk`.FrameClock::update] signal of the frame clock, since you
+         * `Gdk.FrameClock::update` signal of the frame clock, since you
          * don't have to worry about when a frame clock is assigned to a widget.
          *
          * To remove a tick callback, pass the ID that is returned by this function
-         * to [method`Gtk`.Widget.remove_tick_callback].
+         * to {@link Gtk.Widget.remove_tick_callback}.
          * @param callback function   to call for updating animations
          * @returns an ID for this callback
          */
@@ -6013,7 +6499,7 @@ export namespace AgsGui {
          * This function is only used by widget implementations.
          *
          * For a version that does not take a transform, see
-         * [method`Gtk`.Widget.size_allocate].
+         * {@link Gtk.Widget.size_allocate}.
          * @param width new width
          * @param height new height
          * @param baseline new baseline, or -1
@@ -6027,7 +6513,7 @@ export namespace AgsGui {
          * The `direction` argument indicates what kind of motion is taking
          * place (up, down, left, right, tab forward, tab backward).
          *
-         * This function calls the [vfunc`Gtk`.Widget.focus] virtual function;
+         * This function calls the {@link Gtk.Widget.focus} virtual function;
          * widgets can override the virtual function in order to implement
          * appropriate focus behavior.
          *
@@ -6035,14 +6521,14 @@ export namespace AgsGui {
          * true if moving in `direction` left the focus on a focusable location
          * inside that widget, and false if moving in `direction` moved the focus
          * outside the widget. When returning true, widgets normally call
-         * [method`Gtk`.Widget.grab_focus] to place the focus accordingly;
+         * {@link Gtk.Widget.grab_focus} to place the focus accordingly;
          * when returning false, they don’t modify the current focus location.
          *
          * This function is used by custom widget implementations; if you're
-         * writing an app, you’d use [method`Gtk`.Widget.grab_focus] to move
+         * writing an app, you’d use {@link Gtk.Widget.grab_focus} to move
          * the focus to a particular widget.
          * @param direction direction of focus movement
-         * @returns true if focus ended up inside @widget
+         * @returns true if focus ended up inside `widget`
          */
         child_focus(direction: Gtk.DirectionType | null): boolean;
         /**
@@ -6053,7 +6539,7 @@ export namespace AgsGui {
          * overview to learn more.
          *
          * If the operation is successful, true is returned. If `widget` has no
-         * bounds or the bounds cannot be expressed in `target'`s coordinate space
+         * bounds or the bounds cannot be expressed in `target`'s coordinate space
          * (for example if both widgets are in different windows), false is
          * returned and `bounds` is set to the zero rectangle.
          *
@@ -6067,7 +6553,7 @@ export namespace AgsGui {
          * extra space when possible.
          *
          * Widgets with children should check this, rather than looking at
-         * [method`Gtk`.Widget.get_hexpand] or [method`Gtk`.Widget.get_vexpand].
+         * {@link Gtk.Widget.get_hexpand} or {@link Gtk.Widget.get_vexpand}.
          *
          * This function already checks whether the widget is visible, so
          * visibility does not need to be checked separately. Non-visible
@@ -6081,20 +6567,20 @@ export namespace AgsGui {
          */
         compute_expand(orientation: Gtk.Orientation | null): boolean;
         /**
-         * Translates the given `point` in `widget'`s coordinates to coordinates
-         * in `target’`s coordinate system.
+         * Translates the given `point` in `widget`'s coordinates to coordinates
+         * in `target`’s coordinate system.
          *
          * In order to perform this operation, both widgets must share a
          * a common ancestor. If that is not the case, `out_point` is set
          * to (0, 0) and false is returned.
          * @param target the widget to transform into
-         * @param point a point in @widget's coordinate system
-         * @returns true if @src_widget and @dest_widget have a common   ancestor, false otherwise
+         * @param point a point in `widget`'s coordinate system
+         * @returns true if `src_widget` and `dest_widget` have a common   ancestor, false otherwise
          */
         compute_point(target: Gtk.Widget, point: Graphene.Point): [boolean, Graphene.Point];
         /**
          * Computes a matrix suitable to describe a transformation from
-         * `widget'`s coordinate system into `target'`s coordinate system.
+         * `widget`'s coordinate system into `target`'s coordinate system.
          *
          * The transform can not be computed in certain cases, for example
          * when `widget` and `target` do not share a common ancestor. In that
@@ -6110,47 +6596,47 @@ export namespace AgsGui {
          * Tests if a given point is contained in the widget.
          *
          * The coordinates for (x, y) must be in widget coordinates, so
-         * (0, 0) is assumed to be the top left of `widget'`s content area.
-         * @param x X coordinate to test, relative to @widget's origin
-         * @param y Y coordinate to test, relative to @widget's origin
-         * @returns true if @widget contains the point (x, y)
+         * (0, 0) is assumed to be the top left of `widget`'s content area.
+         * @param x X coordinate to test, relative to `widget`'s origin
+         * @param y Y coordinate to test, relative to `widget`'s origin
+         * @returns true if `widget` contains the point (x, y)
          */
         contains(x: number, y: number): boolean;
         /**
-         * Creates a new `PangoContext` that is configured for the widget.
+         * Creates a new {@link Pango.Context} that is configured for the widget.
          *
-         * The `PangoContext` will have the appropriate font map,
+         * The {@link Pango.Context} will have the appropriate font map,
          * font options, font description, and base direction set.
          *
-         * See also [method`Gtk`.Widget.get_pango_context].
-         * @returns the new `PangoContext`
+         * See also {@link Gtk.Widget.get_pango_context}.
+         * @returns the new {@link Pango.Context}
          */
         create_pango_context(): Pango.Context;
         /**
-         * Creates a new `PangoLayout` that is configured for the widget.
+         * Creates a new {@link Pango.Layout} that is configured for the widget.
          *
-         * The `PangoLayout` will have the appropriate font map,
+         * The {@link Pango.Layout} will have the appropriate font map,
          * font description, and base direction set.
          *
-         * If you keep a `PangoLayout` created in this way around,
-         * you need to re-create it when the widgets `PangoContext`
+         * If you keep a {@link Pango.Layout} created in this way around,
+         * you need to re-create it when the widgets {@link Pango.Context}
          * is replaced. This can be tracked by listening to changes
-         * of the [property`Gtk`.Widget:root] property on the widget.
+         * of the {@link Gtk.Widget.root} property on the widget.
          * @param text text to set on the layout
-         * @returns the new `PangoLayout`
+         * @returns the new {@link Pango.Layout}
          */
         create_pango_layout(text?: string | null): Pango.Layout;
         /**
          * Clears the template children for the widget.
          *
-         * This function is the opposite of [method`Gtk`.Widget.init_template],
+         * This function is the opposite of {@link Gtk.Widget.init_template},
          * and it is used to clear all the template children from a widget
          * instance. If you bound a template child to a field in the instance
          * structure, or in the instance private data structure, the field will
          * be set to `NULL` after this function returns.
          *
-         * You should call this function inside the `GObjectClass.dispose()`
-         * implementation of any widget that called [method`Gtk`.Widget.init_template].
+         * You should call this function inside the {@link GObject.Object.dispose}
+         * implementation of any widget that called {@link Gtk.Widget.init_template}.
          * Typically, you will want to call this function last, right before
          * chaining up to the parent type's dispose implementation, e.g.
          *
@@ -6181,10 +6667,10 @@ export namespace AgsGui {
         /**
          * Notifies the user about an input-related error on the widget.
          *
-         * If the [property`Gtk`.Settings:gtk-error-bell] setting is true,
-         * it calls [method`Gdk`.Surface.beep], otherwise it does nothing.
+         * If the {@link Gtk.Settings.gtk_error_bell} setting is true,
+         * it calls {@link Gdk.Surface.beep}, otherwise it does nothing.
          *
-         * Note that the effect of [method`Gdk`.Surface.beep] can be configured
+         * Note that the effect of {@link Gdk.Surface.beep} can be configured
          * in many ways, depending on the windowing backend and the desktop
          * environment or window manager that is used.
          */
@@ -6193,9 +6679,9 @@ export namespace AgsGui {
          * Returns the baseline that has currently been allocated to the widget.
          *
          * This function is intended to be used when implementing handlers
-         * for the `GtkWidget`Class.snapshot() function, and when allocating
-         * child widgets in `GtkWidget`Class.size_allocate().
-         * @returns the baseline of the @widget, or -1 if none
+         * for the {@link Gtk.Widget.snapshot} function, and when allocating
+         * child widgets in {@link Gtk.Widget.size_allocate}.
+         * @returns the baseline of the `widget`, or -1 if none
          */
         get_allocated_baseline(): number;
         /**
@@ -6203,7 +6689,7 @@ export namespace AgsGui {
          *
          * To learn more about widget sizes, see the coordinate
          * system [overview](coordinates.html).
-         * @returns the height of the @widget
+         * @returns the height of the `widget`
          */
         get_allocated_height(): number;
         /**
@@ -6211,7 +6697,7 @@ export namespace AgsGui {
          *
          * To learn more about widget sizes, see the coordinate
          * system [overview](coordinates.html).
-         * @returns the width of the @widget
+         * @returns the width of the `widget`
          */
         get_allocated_width(): number;
         /**
@@ -6219,13 +6705,13 @@ export namespace AgsGui {
          *
          * Note, when implementing a layout widget: a widget’s allocation
          * will be its “adjusted” allocation, that is, the widget’s parent
-         * typically calls [method`Gtk`.Widget.size_allocate] with an allocation,
+         * typically calls {@link Gtk.Widget.size_allocate} with an allocation,
          * and that allocation is then adjusted (to handle margin
          * and alignment for example) before assignment to the widget.
-         * [method`Gtk`.Widget.get_allocation] returns the adjusted allocation that
+         * {@link Gtk.Widget.get_allocation} returns the adjusted allocation that
          * was actually assigned to the widget. The adjusted allocation is
          * guaranteed to be completely contained within the
-         * [method`Gtk`.Widget.size_allocate] allocation, however.
+         * {@link Gtk.Widget.size_allocate} allocation, however.
          *
          * So a layout widget is guaranteed that its children stay inside
          * the assigned bounds, but not that they have exactly the bounds the
@@ -6236,11 +6722,11 @@ export namespace AgsGui {
          * Gets the first ancestor of the widget with type `widget_type`.
          *
          * For example, `gtk_widget_get_ancestor (widget, GTK_TYPE_BOX)`
-         * gets the first `GtkBox` that’s an ancestor of `widget`. No
+         * gets the first {@link Gtk.Box} that’s an ancestor of `widget`. No
          * reference will be added to the returned widget; it should
          * not be unreferenced.
          *
-         * Note that unlike [method`Gtk`.Widget.is_ancestor], this function
+         * Note that unlike {@link Gtk.Widget.is_ancestor}, this function
          * considers `widget` to be an ancestor of itself.
          * @param widget_type ancestor type
          * @returns the ancestor widget
@@ -6250,26 +6736,26 @@ export namespace AgsGui {
          * Returns the baseline that has currently been allocated to the widget.
          *
          * This function is intended to be used when implementing handlers
-         * for the `GtkWidgetClass.snapshot()` function, and when allocating
-         * child widgets in `GtkWidgetClass.size_allocate()`.
-         * @returns the baseline of the @widget, or -1 if none
+         * for the {@link Gtk.Widget.snapshot} function, and when allocating
+         * child widgets in {@link Gtk.Widget.size_allocate}.
+         * @returns the baseline of the `widget`, or -1 if none
          */
         get_baseline(): number;
         /**
          * Determines whether the input focus can enter the widget or any
          * of its children.
          *
-         * See [method`Gtk`.Widget.set_can_focus].
-         * @returns true if the input focus can enter @widget
+         * See {@link Gtk.Widget.set_can_focus}.
+         * @returns true if the input focus can enter `widget`
          */
         get_can_focus(): boolean;
         /**
          * Queries whether the widget can be the target of pointer events.
-         * @returns true if @widget can receive pointer events
+         * @returns true if `widget` can receive pointer events
          */
         get_can_target(): boolean;
         /**
-         * Gets the value set with [method`Gtk`.Widget.set_child_visible].
+         * Gets the value set with {@link Gtk.Widget.set_child_visible}.
          *
          * If you feel a need to use this function, your code probably
          * needs reorganization.
@@ -6300,7 +6786,7 @@ export namespace AgsGui {
         get_color(): Gdk.RGBA;
         /**
          * Returns the list of style classes applied to the widget.
-         * @returns a `NULL`-terminated list of   css classes currently applied to @widget
+         * @returns a `NULL`-terminated list of   css classes currently applied to `widget`
          */
         get_css_classes(): string[];
         /**
@@ -6311,14 +6797,14 @@ export namespace AgsGui {
         /**
          * Gets the cursor set on the widget.
          *
-         * See [method`Gtk`.Widget.set_cursor] for details.
-         * @returns the cursor   that is set on @widget
+         * See {@link Gtk.Widget.set_cursor} for details.
+         * @returns the cursor   that is set on `widget`
          */
         get_cursor(): Gdk.Cursor | null;
         /**
          * Gets the reading direction for the widget.
          *
-         * See [method`Gtk`.Widget.set_direction].
+         * See {@link Gtk.Widget.set_direction}.
          * @returns the reading direction for the widget
          */
         get_direction(): Gtk.TextDirection;
@@ -6331,35 +6817,35 @@ export namespace AgsGui {
         get_first_child(): Gtk.Widget | null;
         /**
          * Returns the focus child of the widget.
-         * @returns the current focus   child of @widget
+         * @returns the current focus   child of `widget`
          */
         get_focus_child(): Gtk.Widget | null;
         /**
          * Returns whether the widget should grab focus when it is clicked
          * with the mouse.
          *
-         * See [method`Gtk`.Widget.set_focus_on_click].
+         * See {@link Gtk.Widget.set_focus_on_click}.
          * @returns true if the widget should grab focus when it is   clicked with the mouse
          */
         get_focus_on_click(): boolean;
         /**
          * Determines whether the widget can own the input focus.
          *
-         * See [method`Gtk`.Widget.set_focusable].
-         * @returns true if @widget can own the input focus
+         * See {@link Gtk.Widget.set_focusable}.
+         * @returns true if `widget` can own the input focus
          */
         get_focusable(): boolean;
         /**
          * Gets the font map of the widget.
          *
-         * See [method`Gtk`.Widget.set_font_map].
-         * @returns the font map of @widget
+         * See {@link Gtk.Widget.set_font_map}.
+         * @returns the font map of `widget`
          */
         get_font_map(): Pango.FontMap | null;
         /**
          * Returns the `cairo_font_options_t` of the widget.
          *
-         * Seee [method`Gtk`.Widget.set_font_options].
+         * Seee {@link Gtk.Widget.set_font_options}.
          * @returns the `cairo_font_options_t` of widget
          */
         get_font_options(): cairo.FontOptions | null;
@@ -6368,17 +6854,17 @@ export namespace AgsGui {
          *
          * The frame clock is a global “ticker” that can be used to drive
          * animations and repaints. The most common reason to get the frame
-         * clock is to call [method`Gdk`.FrameClock.get_frame_time], in order
+         * clock is to call {@link Gdk.FrameClock.get_frame_time}, in order
          * to get a time to use for animating. For example you might record
          * the start of the animation with an initial value from
-         * [method`Gdk`.FrameClock.get_frame_time], and then update the animation
-         * by calling [method`Gdk`.FrameClock.get_frame_time] again during each repaint.
+         * {@link Gdk.FrameClock.get_frame_time}, and then update the animation
+         * by calling {@link Gdk.FrameClock.get_frame_time} again during each repaint.
          *
-         * [method`Gdk`.FrameClock.request_phase] will result in a new frame on the
+         * {@link Gdk.FrameClock.request_phase} will result in a new frame on the
          * clock, but won’t necessarily repaint any widgets. To repaint a widget,
-         * you have to use [method`Gtk`.Widget.queue_draw] which invalidates the
+         * you have to use {@link Gtk.Widget.queue_draw} which invalidates the
          * widget (thus scheduling it to receive a draw on the next frame).
-         * [method`Gtk`.Widget.queue_draw] will also end up requesting a frame
+         * {@link Gtk.Widget.queue_draw} will also end up requesting a frame
          * on the appropriate frame clock.
          *
          * A widget’s frame clock will not change while the widget is mapped.
@@ -6394,15 +6880,15 @@ export namespace AgsGui {
          *
          * For backwards compatibility reasons this method will never return
          * one of the baseline alignments, but instead it will convert it to
-         * [enum`Gtk`.Align.fill] or [enum`Gtk`.Align.center].
+         * {@link Gtk.Align.FILL} or {@link Gtk.Align.CENTER}.
          *
          * Baselines are not supported for horizontal alignment.
-         * @returns the horizontal alignment of @widget
+         * @returns the horizontal alignment of `widget`
          */
         get_halign(): Gtk.Align;
         /**
          * Returns the current value of the `has-tooltip` property.
-         * @returns current value of `has-tooltip` on @widget
+         * @returns current value of `has-tooltip` on `widget`
          */
         get_has_tooltip(): boolean;
         /**
@@ -6410,13 +6896,13 @@ export namespace AgsGui {
          *
          * This function returns the height passed to its
          * size-allocate implementation, which is the height you
-         * should be using in [vfunc`Gtk`.Widget.snapshot].
+         * should be using in {@link Gtk.Widget.snapshot}.
          *
-         * For pointer events, see [method`Gtk`.Widget.contains].
+         * For pointer events, see {@link Gtk.Widget.contains}.
          *
          * To learn more about widget sizes, see the coordinate
          * system [overview](coordinates.html).
-         * @returns The height of @widget
+         * @returns The height of `widget`
          */
         get_height(): number;
         /**
@@ -6427,7 +6913,7 @@ export namespace AgsGui {
          * receive the extra space. For example, a list or scrollable area
          * or document in your window would often be set to expand.
          *
-         * Widgets with children should use [method`Gtk`.Widget.compute_expand]
+         * Widgets with children should use {@link Gtk.Widget.compute_expand}
          * rather than this function, to see whether any of its children,
          * has the expand flag set. If any child of a widget wants to
          * expand, the parent may ask to expand also.
@@ -6441,7 +6927,7 @@ export namespace AgsGui {
         /**
          * Gets whether the `hexpand` flag has been explicitly set.
          *
-         * If [property`Gtk`.Widget:hexpand] property is set, then it
+         * If {@link Gtk.Widget.hexpand} property is set, then it
          * overrides any computed expand value based on child widgets.
          * If `hexpand` is not set, then the expand value depends on
          * whether any children of the widget would like to expand.
@@ -6461,12 +6947,12 @@ export namespace AgsGui {
         /**
          * Retrieves the layout manager of the widget.
          *
-         * See [method`Gtk`.Widget.set_layout_manager].
-         * @returns the layout manager of @widget
+         * See {@link Gtk.Widget.set_layout_manager}.
+         * @returns the layout manager of `widget`
          */
         get_layout_manager(): Gtk.LayoutManager | null;
         /**
-         * Gets the value of the [property`Gtk`.Widget:limit-events] property.
+         * Gets the value of the {@link Gtk.Widget.limit_events} property.
          */
         get_limit_events(): boolean;
         /**
@@ -6476,39 +6962,39 @@ export namespace AgsGui {
         get_mapped(): boolean;
         /**
          * Gets the bottom margin of the widget.
-         * @returns The bottom margin of @widget
+         * @returns The bottom margin of `widget`
          */
         get_margin_bottom(): number;
         /**
          * Gets the end margin of the widget.
-         * @returns The end margin of @widget
+         * @returns The end margin of `widget`
          */
         get_margin_end(): number;
         /**
          * Gets the start margin of the widget.
-         * @returns The start margin of @widget
+         * @returns The start margin of `widget`
          */
         get_margin_start(): number;
         /**
          * Gets the top margin of the widget.
-         * @returns The top margin of @widget
+         * @returns The top margin of `widget`
          */
         get_margin_top(): number;
         /**
          * Retrieves the name of a widget.
          *
-         * See [method`Gtk`.Widget.set_name] for the significance of widget names.
+         * See {@link Gtk.Widget.set_name} for the significance of widget names.
          * @returns name of the widget
          */
         get_name(): string;
         /**
-         * Returns the nearest `GtkNative` ancestor of the widget.
+         * Returns the nearest {@link Gtk.Native} ancestor of the widget.
          *
          * This function will return `NULL` if the widget is not
          * contained inside a widget tree with a native ancestor.
          *
-         * `GtkNative` widgets will return themselves here.
-         * @returns the `GtkNative` ancestor of @widget
+         * {@link Gtk.Native} widgets will return themselves here.
+         * @returns the {@link Gtk.Native} ancestor of `widget`
          */
         get_native(): Gtk.Native | null;
         /**
@@ -6521,7 +7007,7 @@ export namespace AgsGui {
         /**
          * Fetches the requested opacity for the widget.
          *
-         * See [method`Gtk`.Widget.set_opacity].
+         * See {@link Gtk.Widget.set_opacity}.
          * @returns the requested opacity for this widget
          */
         get_opacity(): number;
@@ -6531,23 +7017,23 @@ export namespace AgsGui {
          */
         get_overflow(): Gtk.Overflow;
         /**
-         * Gets a `PangoContext` that is configured for the widget.
+         * Gets a {@link Pango.Context} that is configured for the widget.
          *
-         * The `PangoContext` will have the appropriate font map, font description,
+         * The {@link Pango.Context} will have the appropriate font map, font description,
          * and base direction set.
          *
-         * Unlike the context returned by [method`Gtk`.Widget.create_pango_context],
+         * Unlike the context returned by {@link Gtk.Widget.create_pango_context},
          * this context is owned by the widget (it can be used until the screen
          * for the widget changes or the widget is removed from its toplevel),
          * and will be updated to match any changes to the widget’s attributes.
          * This can be tracked by listening to changes of the
-         * [property`Gtk`.Widget:root] property on the widget.
-         * @returns the `PangoContext` for the widget
+         * {@link Gtk.Widget.root} property on the widget.
+         * @returns the {@link Pango.Context} for the widget
          */
         get_pango_context(): Pango.Context;
         /**
          * Returns the parent widget of the widget.
-         * @returns the parent widget of @widget
+         * @returns the parent widget of `widget`
          */
         get_parent(): Gtk.Widget | null;
         /**
@@ -6557,14 +7043,14 @@ export namespace AgsGui {
          * This is used to retrieve a suitable size by container widgets which do
          * not impose any restrictions on the child placement. It can be used
          * to deduce toplevel window and menu sizes as well as child widgets in
-         * free-form containers such as `GtkFixed`.
+         * free-form containers such as {@link Gtk.Fixed}.
          *
          * Handle with care. Note that the natural height of a height-for-width
          * widget will generally be a smaller size than the minimum height, since
          * the required height for the natural width is generally smaller than the
          * required height for the minimum width.
          *
-         * Use [method`Gtk`.Widget.measure] if you want to support baseline alignment.
+         * Use {@link Gtk.Widget.measure} if you want to support baseline alignment.
          */
         get_preferred_size(): [Gtk.Requisition | null, Gtk.Requisition | null];
         /**
@@ -6587,7 +7073,7 @@ export namespace AgsGui {
         get_primary_clipboard(): Gdk.Clipboard;
         /**
          * Determines whether the widget is realized.
-         * @returns true if @widget is realized
+         * @returns true if `widget` is realized
          */
         get_realized(): boolean;
         /**
@@ -6595,8 +7081,8 @@ export namespace AgsGui {
          * within its toplevel when it has the focus, even if another widget
          * is the default.
          *
-         * See [method`Gtk`.Widget.set_receives_default].
-         * @returns true if @widget acts as the default widget when focused
+         * See {@link Gtk.Widget.set_receives_default}.
+         * @returns true if `widget` acts as the default widget when focused
          */
         get_receives_default(): boolean;
         /**
@@ -6607,17 +7093,17 @@ export namespace AgsGui {
          * their child, more complex widgets need to request something
          * either in context of their children or in context of their
          * allocation capabilities.
-         * @returns The `GtkSizeRequestMode` preferred by @widget.
+         * @returns The {@link Gtk.SizeRequestMode} preferred by `widget`.
          */
         get_request_mode(): Gtk.SizeRequestMode;
         /**
-         * Returns the `GtkRoot` widget of the widget.
+         * Returns the {@link Gtk.Root} widget of the widget.
          *
          * This function will return `NULL` if the widget is not contained
          * inside a widget tree with a root widget.
          *
-         * `GtkRoot` widgets will return themselves here.
-         * @returns the root widget of @widget
+         * {@link Gtk.Root} widgets will return themselves here.
+         * @returns the root widget of `widget`
          */
         get_root(): Gtk.Root | null;
         /**
@@ -6627,32 +7113,32 @@ export namespace AgsGui {
          * On traditional systems this is 1, on high density outputs,
          * it can be a higher value (typically 2).
          *
-         * See [method`Gdk`.Surface.get_scale_factor].
+         * See {@link Gdk.Surface.get_scale_factor}.
          *
          * Note that modern systems may support *fractional* scaling,
          * where the scale factor is not an integer. On such systems,
          * this function will return the next higher integer value,
-         * but you probably want to use [method`Gdk`.Surface.get_scale]
+         * but you probably want to use {@link Gdk.Surface.get_scale}
          * to get the fractional scale value.
-         * @returns the scale factor for @widget
+         * @returns the scale factor for `widget`
          */
         get_scale_factor(): number;
         /**
          * Returns the widget’s sensitivity.
          *
          * This function returns the value that has been set using
-         * [method`Gtk`.Widget.set_sensitive]).
+         * {@link Gtk.Widget.set_sensitive}).
          *
          * The effective sensitivity of a widget is however determined
          * by both its own and its parent widget’s sensitivity.
-         * See [method`Gtk`.Widget.is_sensitive].
+         * See {@link Gtk.Widget.is_sensitive}.
          * @returns true if the widget is sensitive
          */
         get_sensitive(): boolean;
         /**
          * Gets the settings object holding the settings used for the widget.
          *
-         * Note that this function can only be called when the `GtkWidget`
+         * Note that this function can only be called when the {@link Gtk.Widget}
          * is attached to a toplevel, since the settings object is specific
          * to a particular display. If you want to monitor the widget for
          * changes in its settings, connect to the `notify::display` signal.
@@ -6664,16 +7150,16 @@ export namespace AgsGui {
          *
          * Which dimension is returned depends on `orientation`.
          *
-         * This is equivalent to calling [method`Gtk`.Widget.get_width]
-         * for [enum`Gtk`.Orientation.horizontal] or [method`Gtk`.Widget.get_height]
-         * for [enum`Gtk`.Orientation.vertical], but can be used when
+         * This is equivalent to calling {@link Gtk.Widget.get_width}
+         * for {@link Gtk.Orientation.HORIZONTAL} or {@link Gtk.Widget.get_height}
+         * for {@link Gtk.Orientation.VERTICAL}, but can be used when
          * writing orientation-independent code, such as when
-         * implementing [iface`Gtk`.Orientable] widgets.
+         * implementing {@link Gtk.Orientable} widgets.
          *
          * To learn more about widget sizes, see the coordinate
          * system [overview](coordinates.html).
          * @param orientation the orientation to query
-         * @returns the size of @widget in @orientation
+         * @returns the size of `widget` in `orientation`
          */
         get_size(orientation: Gtk.Orientation | null): number;
         /**
@@ -6683,22 +7169,22 @@ export namespace AgsGui {
          * dimension has not been set explicitly and the natural requisition
          * of the widget will be used instead.
          *
-         * See [method`Gtk`.Widget.set_size_request].
+         * See {@link Gtk.Widget.set_size_request}.
          *
          * To get the size a widget will actually request, call
-         * [method`Gtk`.Widget.measure] instead of this function.
+         * {@link Gtk.Widget.measure} instead of this function.
          */
         get_size_request(): [number, number];
         /**
          * Returns the widget state as a flag set.
          *
-         * It is worth mentioning that the effective [flags`Gtk`.StateFlags.insensitive]
+         * It is worth mentioning that the effective {@link Gtk.StateFlags.INSENSITIVE}
          * state will be returned, that is, also based on parent insensitivity,
          * even if `widget` itself is sensitive.
          *
          * Also note that if you are looking for a way to obtain the
-         * [flags`Gtk`.StateFlags] to pass to a [class`Gtk`.StyleContext]
-         * method, you should look at [method`Gtk`.StyleContext.get_state].
+         * {@link Gtk.StateFlags} to pass to a {@link Gtk.StyleContext}
+         * method, you should look at {@link Gtk.StyleContext.get_state}.
          * @returns the state flags of widget
          */
         get_state_flags(): Gtk.StateFlags;
@@ -6715,22 +7201,22 @@ export namespace AgsGui {
          * the widget.
          *
          * This will only report children which were previously declared
-         * with [method`Gtk`.WidgetClass.bind_template_child_full] or one of its
+         * with {@link Gtk.WidgetClass.bind_template_child_full} or one of its
          * variants.
          *
          * This function is only meant to be called for code which is private
          * to the `widget_type` which declared the child and is meant for language
          * bindings which cannot easily make use of the GObject structure offsets.
-         * @param widget_type The `GType` to get a template child for
+         * @param widget_type The type of the widget class that defines the child in the template
          * @param name ID of the child defined in the template XML
-         * @returns the object built in the template XML with   the id @name
+         * @returns the object built in the template XML with   the id `name`
          */
         get_template_child<T = GObject.Object>(widget_type: GObject.GType, name: string): T;
         /**
          * Gets the contents of the tooltip for the widget.
          *
          * If the tooltip has not been set using
-         * [method`Gtk`.Widget.set_tooltip_markup], this
+         * {@link Gtk.Widget.set_tooltip_markup}, this
          * function returns `NULL`.
          * @returns the tooltip text
          */
@@ -6738,29 +7224,29 @@ export namespace AgsGui {
         /**
          * Gets the contents of the tooltip for the widget.
          *
-         * If the `widget'`s tooltip was set using
-         * [method`Gtk`.Widget.set_tooltip_markup],
+         * If the `widget`'s tooltip was set using
+         * {@link Gtk.Widget.set_tooltip_markup},
          * this function will return the escaped text.
          * @returns the tooltip text
          */
         get_tooltip_text(): string | null;
         /**
          * Gets the vertical alignment of the widget.
-         * @returns the vertical alignment of @widget
+         * @returns the vertical alignment of `widget`
          */
         get_valign(): Gtk.Align;
         /**
          * Gets whether the widget would like any available extra vertical
          * space.
          *
-         * See [method`Gtk`.Widget.get_hexpand] for more detail.
+         * See {@link Gtk.Widget.get_hexpand} for more detail.
          * @returns whether vexpand flag is set
          */
         get_vexpand(): boolean;
         /**
          * Gets whether the `vexpand` flag has been explicitly set.
          *
-         * See [method`Gtk`.Widget.get_hexpand_set] for more detail.
+         * See {@link Gtk.Widget.get_hexpand_set} for more detail.
          * @returns whether vexpand has been explicitly set
          */
         get_vexpand_set(): boolean;
@@ -6769,12 +7255,12 @@ export namespace AgsGui {
          *
          * If you want to take into account whether the widget’s
          * parent is also marked as visible, use
-         * [method`Gtk`.Widget.is_visible] instead.
+         * {@link Gtk.Widget.is_visible} instead.
          *
          * This function does not check if the widget is
          * obscured in any way.
          *
-         * See [method`Gtk`.Widget.set_visible].
+         * See {@link Gtk.Widget.set_visible}.
          * @returns true if the widget is visible
          */
         get_visible(): boolean;
@@ -6783,32 +7269,32 @@ export namespace AgsGui {
          *
          * This function returns the width passed to its
          * size-allocate implementation, which is the width you
-         * should be using in [vfunc`Gtk`.Widget.snapshot].
+         * should be using in {@link Gtk.Widget.snapshot}.
          *
-         * For pointer events, see [method`Gtk`.Widget.contains].
+         * For pointer events, see {@link Gtk.Widget.contains}.
          *
          * To learn more about widget sizes, see the coordinate
          * system [overview](coordinates.html).
-         * @returns The width of @widget
+         * @returns The width of `widget`
          */
         get_width(): number;
         /**
          * Causes `widget` to have the keyboard focus for the window
          * that it belongs to.
          *
-         * If `widget` is not focusable, or its [vfunc`Gtk`.Widget.grab_focus]
+         * If `widget` is not focusable, or its {@link Gtk.Widget.grab_focus}
          * implementation cannot transfer the focus to a descendant of `widget`
          * that is focusable, it will not take focus and false will be returned.
          *
-         * Calling [method`Gtk`.Widget.grab_focus] on an already focused widget
+         * Calling {@link Gtk.Widget.grab_focus} on an already focused widget
          * is allowed, should not have an effect, and return true.
-         * @returns true if focus is now inside @widget
+         * @returns true if focus is now inside `widget`
          */
         grab_focus(): boolean;
         /**
          * Returns whether a style class is currently applied to the widget.
          * @param css_class style class, without the leading period
-         * @returns true if @css_class is currently applied to @widget
+         * @returns true if `css_class` is currently applied to `widget`
          */
         has_css_class(css_class: string): boolean;
         /**
@@ -6817,11 +7303,11 @@ export namespace AgsGui {
          *
          * This is a convenience function that takes into account whether
          * focus indication should currently be shown in the toplevel window
-         * of `widget`. See [method`Gtk`.Window.get_focus_visible] for more
+         * of `widget`. See {@link Gtk.Window.get_focus_visible} for more
          * information about focus indication.
          *
          * To find out if the widget has the global input focus, use
-         * [method`Gtk`.Widget.has_focus].
+         * {@link Gtk.Widget.has_focus}.
          * @returns true if the widget should display a “focus rectangle”
          */
         has_visible_focus(): boolean;
@@ -6836,7 +7322,7 @@ export namespace AgsGui {
          *
          * This information can sometimes be used to avoid doing
          * unnecessary work.
-         * @returns true if @widget is being destroyed
+         * @returns true if `widget` is being destroyed
          */
         in_destruction(): boolean;
         /**
@@ -6844,7 +7330,7 @@ export namespace AgsGui {
          *
          * This function must be called in the instance initializer
          * for any class which assigned itself a template using
-         * [method`Gtk`.WidgetClass.set_template].
+         * {@link Gtk.WidgetClass.set_template}.
          *
          * It is important to call this function in the instance initializer
          * of a widget subclass and not in `GObject.constructed()` or
@@ -6865,85 +7351,85 @@ export namespace AgsGui {
         /**
          * Inserts an action group into the widget's actions.
          *
-         * Children of `widget` that implement [iface`Gtk`.Actionable] can
+         * Children of `widget` that implement {@link Gtk.Actionable} can
          * then be associated with actions in `group` by setting their
          * “action-name” to `prefix`.`action-name`.
          *
          * Note that inheritance is defined for individual actions. I.e.
-         * even if you insert a group with prefix `prefix,` actions with
+         * even if you insert a group with prefix `prefix`, actions with
          * the same prefix will still be inherited from the parent, unless
          * the group contains an action with the same name.
          *
          * If `group` is `NULL`, a previously inserted group for `name` is
          * removed from `widget`.
-         * @param name the prefix for actions in @group
+         * @param name the prefix for actions in `group`
          * @param group an action group
          */
         insert_action_group(name: string, group?: Gio.ActionGroup | null): void;
         /**
          * Sets the parent widget of the widget.
          *
-         * In contrast to [method`Gtk`.Widget.set_parent], this function
+         * In contrast to {@link Gtk.Widget.set_parent}, this function
          * inserts `widget` at a specific position into the list of children
          * of the `parent` widget.
          *
-         * It will be placed after `previous_sibling,` or at the beginning if
+         * It will be placed after `previous_sibling`, or at the beginning if
          * `previous_sibling` is `NULL`.
          *
          * After calling this function, `gtk_widget_get_prev_sibling (widget)`
          * will return `previous_sibling`.
          *
-         * If `parent` is already set as the parent widget of `widget,` this
+         * If `parent` is already set as the parent widget of `widget`, this
          * function can also be used to reorder `widget` in the child widget
          * list of `parent`.
          *
          * This function is primarily meant for widget implementations; if you are
          * just using a widget, you *must* use its own API for adding children.
-         * @param parent the parent widget to insert @widget into
-         * @param previous_sibling the new previous sibling of @widget
+         * @param parent the parent widget to insert `widget` into
+         * @param previous_sibling the new previous sibling of `widget`
          */
         insert_after(parent: Gtk.Widget, previous_sibling?: Gtk.Widget | null): void;
         /**
          * Sets the parent widget of the widget.
          *
-         * In contrast to [method`Gtk`.Widget.set_parent], this function
+         * In contrast to {@link Gtk.Widget.set_parent}, this function
          * inserts `widget` at a specific position into the list of children
          * of the `parent` widget.
          *
-         * It will be placed before `next_sibling,` or at the end if
+         * It will be placed before `next_sibling`, or at the end if
          * `next_sibling` is `NULL`.
          *
          * After calling this function, `gtk_widget_get_next_sibling (widget)`
          * will return `next_sibling`.
          *
-         * If `parent` is already set as the parent widget of `widget,` this function
+         * If `parent` is already set as the parent widget of `widget`, this function
          * can also be used to reorder `widget` in the child widget list of `parent`.
          *
          * This function is primarily meant for widget implementations; if you are
          * just using a widget, you *must* use its own API for adding children.
-         * @param parent the parent widget to insert @widget into
-         * @param next_sibling the new next sibling of @widget
+         * @param parent the parent widget to insert `widget` into
+         * @param next_sibling the new next sibling of `widget`
          */
         insert_before(parent: Gtk.Widget, next_sibling?: Gtk.Widget | null): void;
         /**
          * Determines whether the widget is a descendent of `ancestor`.
-         * @param ancestor another `GtkWidget`
-         * @returns true if @ancestor contains @widget as a child,   grandchild, great grandchild, etc
+         * @param ancestor another {@link Gtk.Widget}
+         * @returns true if `ancestor` contains `widget` as a child,   grandchild, great grandchild, etc
          */
         is_ancestor(ancestor: Gtk.Widget): boolean;
         /**
          * Determines whether the widget can be drawn to.
          *
          * A widget can be drawn if it is mapped and visible.
-         * @returns true if @widget is drawable
+         * @returns true if `widget` is drawable
          */
         is_drawable(): boolean;
         /**
          * Determines if the widget is the focus widget within its
          * toplevel.
          *
-         * This does not mean that the [property`Gtk`.Widget:has-focus]
-         * property is necessarily set; [property`Gtk`.Widget:has-focus]
+         * This does not mean that the {@link Gtk.Widget.has_focus}
+         * property is necessarily set; {@link Gtk.Widget.has_focus}
          * will only be set if the toplevel widget additionally has the
          * global input focus.
          * @returns true if the widget is the focus widget
@@ -6963,38 +7449,38 @@ export namespace AgsGui {
          *
          * This function does not check if the widget is obscured in any way.
          *
-         * See also [method`Gtk`.Widget.get_visible] and
-         * [method`Gtk`.Widget.set_visible].
+         * See also {@link Gtk.Widget.get_visible} and
+         * {@link Gtk.Widget.set_visible}.
          * @returns true if the widget and all its parents are visible
          */
         is_visible(): boolean;
         /**
-         * Emits the [signal`Gtk`.Widget::keynav-failed] signal on the widget.
+         * Emits the `Gtk.Widget::keynav-failed` signal on the widget.
          *
          * This function should be called whenever keyboard navigation
          * within a single widget hits a boundary.
          *
          * The return value of this function should be interpreted
          * in a way similar to the return value of
-         * [method`Gtk`.Widget.child_focus]. When true is returned,
+         * {@link Gtk.Widget.child_focus}. When true is returned,
          * stay in the widget, the failed keyboard navigation is ok
          * and/or there is nowhere we can/should move the focus to.
          * When false is returned, the caller should continue with
          * keyboard navigation outside the widget, e.g. by calling
-         * [method`Gtk`.Widget.child_focus] on the widget’s toplevel.
+         * {@link Gtk.Widget.child_focus} on the widget’s toplevel.
          *
-         * The default [signal`Gtk`.Widget::keynav-failed] handler returns
-         * false for [enum`Gtk`.DirectionType.tab-forward] and
-         * [enum`Gtk`.DirectionType.tab-backward]. For the other values
-         * of [enum`Gtk`.DirectionType] it returns true.
+         * The default `Gtk.Widget::keynav-failed` handler returns
+         * false for {@link Gtk.DirectionType.TAB-FORWARD} and
+         * {@link Gtk.DirectionType.TAB-BACKWARD}. For the other values
+         * of {@link Gtk.DirectionType} it returns true.
          *
          * Whenever the default handler returns true, it also calls
-         * [method`Gtk`.Widget.error_bell] to notify the user of the
+         * {@link Gtk.Widget.error_bell} to notify the user of the
          * failed keyboard navigation.
          *
          * A use case for providing an own implementation of `::keynav-failed`
          * (either by connecting to it or by overriding it) would be a row of
-         * [class`Gtk`.Entry] widgets where the user should be able to navigate
+         * {@link Gtk.Entry} widgets where the user should be able to navigate
          * the entire row with the cursor keys, as e.g. known from user
          * interfaces that require entering license keys.
          * @param direction direction of focus movement
@@ -7006,7 +7492,7 @@ export namespace AgsGui {
          * mnemonic.
          *
          * Typically, these widgets will be labels. See, for example,
-         * [method`Gtk`.Label.set_mnemonic_widget].
+         * {@link Gtk.Label.set_mnemonic_widget}.
          *
          * The widgets in the list are not individually referenced.
          * If you want to iterate through the list and perform actions
@@ -7025,18 +7511,18 @@ export namespace AgsGui {
         /**
          * Measures `widget` in the orientation `orientation` and for the given `for_size`.
          *
-         * As an example, if `orientation` is %GTK_ORIENTATION_HORIZONTAL and `for_size`
+         * As an example, if `orientation` is {@link Gtk.Orientation.HORIZONTAL} and `for_size`
          * is 300, this functions will compute the minimum and natural width of `widget`
          * if it is allocated at a height of 300 pixels.
          *
          * See [GtkWidget’s geometry management section](class.Widget.html#height-for-width-geometry-management) for
-         * a more details on implementing `GtkWidgetClass.measure()`.
+         * a more details on implementing {@link Gtk.Widget.measure}.
          * @param orientation the orientation to measure
-         * @param for_size Size for the opposite of @orientation, i.e.   if @orientation is %GTK_ORIENTATION_HORIZONTAL, this is   the height the widget should be measured with. The %GTK_ORIENTATION_VERTICAL   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
+         * @param for_size Size for the opposite of `orientation`, i.e.   if `orientation` is {@link Gtk.Orientation.HORIZONTAL}, this is   the height the widget should be measured with. The {@link Gtk.Orientation.VERTICAL}   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
          */
         measure(orientation: Gtk.Orientation | null, for_size: number): [number, number, number, number];
         /**
-         * Emits the [signal`Gtk`.Widget::mnemonic-activate] signal.
+         * Emits the `Gtk.Widget::mnemonic-activate` signal.
          * @param group_cycling true if there are other widgets with the same mnemonic
          * @returns true if the signal has been handled
          */
@@ -7050,7 +7536,7 @@ export namespace AgsGui {
          *
          * Applications should try hard to avoid calling this function
          * because of the slowdowns.
-         * @returns a list model tracking @widget's children
+         * @returns a list model tracking `widget`'s children
          */
         observe_children(): Gio.ListModel;
         /**
@@ -7062,17 +7548,17 @@ export namespace AgsGui {
          *
          * Applications should try hard to avoid calling this function
          * because of the slowdowns.
-         * @returns a list model tracking @widget's controllers
+         * @returns a list model tracking `widget`'s controllers
          */
         observe_controllers(): Gio.ListModel;
         /**
          * Finds the descendant of the widget closest to a point.
          *
          * The point (x, y) must be given in widget coordinates, so (0, 0)
-         * is assumed to be the top left of `widget'`s content area.
+         * is assumed to be the top left of `widget`'s content area.
          *
          * Usually widgets will return `NULL` if the given coordinate is not
-         * contained in `widget` checked via [method`Gtk`.Widget.contains].
+         * contained in `widget` checked via {@link Gtk.Widget.contains}.
          * Otherwise they will recursively try to find a child that does
          * not return `NULL`. Widgets are however free to customize their
          * picking algorithm.
@@ -7080,21 +7566,21 @@ export namespace AgsGui {
          * This function is used on the toplevel to determine the widget
          * below the mouse cursor for purposes of hover highlighting and
          * delivering events.
-         * @param x x coordinate to test, relative to @widget's origin
-         * @param y y coordinate to test, relative to @widget's origin
+         * @param x x coordinate to test, relative to `widget`'s origin
+         * @param y y coordinate to test, relative to `widget`'s origin
          * @param flags flags to influence what is picked
          * @returns the widget's descendant at (x, y)
          */
         pick(x: number, y: number, flags: Gtk.PickFlags | null): Gtk.Widget | null;
         /**
-         * Flags the widget for a rerun of the [vfunc`Gtk`.Widget.size_allocate]
+         * Flags the widget for a rerun of the {@link Gtk.Widget.size_allocate}
          * function.
          *
-         * Use this function instead of [method`Gtk`.Widget.queue_resize]
-         * when the `widget'`s size request didn't change but it wants to
+         * Use this function instead of {@link Gtk.Widget.queue_resize}
+         * when the `widget`'s size request didn't change but it wants to
          * reposition its contents.
          *
-         * An example user of this function is [method`Gtk`.Widget.set_halign].
+         * An example user of this function is {@link Gtk.Widget.set_halign}.
          *
          * This function is only for use in widget implementations.
          */
@@ -7105,7 +7591,7 @@ export namespace AgsGui {
          * The redraw will happen in the paint phase
          * of the current or the next frame.
          *
-         * This means `widget'`s [vfunc`Gtk`.Widget.snapshot]
+         * This means `widget`'s {@link Gtk.Widget.snapshot}
          * implementation will be called.
          */
         queue_draw(): void;
@@ -7114,13 +7600,13 @@ export namespace AgsGui {
          *
          * This should be called when a widget for some reason has a new
          * size request. For example, when you change the text in a
-         * [class`Gtk`.Label], the label queues a resize to ensure there’s
+         * {@link Gtk.Label}, the label queues a resize to ensure there’s
          * enough space for the new text.
          *
-         * Note that you cannot call gtk_widget_queue_resize() on a widget
-         * from inside its implementation of the [vfunc`Gtk`.Widget.size_allocate]
-         * virtual method. Calls to gtk_widget_queue_resize() from inside
-         * [vfunc`Gtk`.Widget.size_allocate] will be silently ignored.
+         * Note that you cannot call `gtk_widget_queue_resize()` on a widget
+         * from inside its implementation of the {@link Gtk.Widget.size_allocate}
+         * virtual method. Calls to `gtk_widget_queue_resize()` from inside
+         * {@link Gtk.Widget.size_allocate} will be silently ignored.
          *
          * This function is only for use in widget implementations.
          */
@@ -7140,23 +7626,23 @@ export namespace AgsGui {
          * Removes a style from the widget.
          *
          * After this, the style of `widget` will stop matching for `css_class`.
-         * @param css_class style class to remove from @widget, without the leading period
+         * @param css_class style class to remove from `widget`, without the leading period
          */
         remove_css_class(css_class: string): void;
         /**
          * Removes a widget from the list of mnemonic labels for this widget.
          *
-         * See [method`Gtk`.Widget.list_mnemonic_labels].
+         * See {@link Gtk.Widget.list_mnemonic_labels}.
          *
          * The widget must have previously been added to the list with
-         * [method`Gtk`.Widget.add_mnemonic_label].
-         * @param label a widget that is a mnemonic label for @widget
+         * {@link Gtk.Widget.add_mnemonic_label}.
+         * @param label a widget that is a mnemonic label for `widget`
          */
         remove_mnemonic_label(label: Gtk.Widget): void;
         /**
          * Removes a tick callback previously registered with
-         * [method`Gtk`.Widget.add_tick_callback].
-         * @param id an ID returned by [method@Gtk.Widget.add_tick_callback]
+         * {@link Gtk.Widget.add_tick_callback}.
+         * @param id an ID returned by {@link Gtk.Widget.add_tick_callback}
          */
         remove_tick_callback(id: number): void;
         /**
@@ -7172,7 +7658,7 @@ export namespace AgsGui {
          * that is marked as not can-focus in order to receive input
          * focus.
          *
-         * See [method`Gtk`.Widget.grab_focus] for actually setting
+         * See {@link Gtk.Widget.grab_focus} for actually setting
          * the input focus on a widget.
          * @param can_focus whether the input focus can enter   the widget or any of its children
          */
@@ -7186,7 +7672,7 @@ export namespace AgsGui {
          * Sets whether the widget should be mapped along with its parent.
          *
          * The child visibility can be set for widget before it is added
-         * to a container with [method`Gtk`.Widget.set_parent], to avoid
+         * to a container with {@link Gtk.Widget.set_parent}, to avoid
          * mapping children unnecessary before immediately unmapping them.
          * However it will be reset to its default state of true when the
          * widget is removed from a container.
@@ -7199,7 +7685,7 @@ export namespace AgsGui {
          *
          * This function is only useful for widget implementations
          * and should never be called by an application.
-         * @param child_visible whether @widget should be mapped along   with its parent
+         * @param child_visible whether `widget` should be mapped along   with its parent
          */
         set_child_visible(child_visible: boolean): void;
         /**
@@ -7221,12 +7707,12 @@ export namespace AgsGui {
          * the widget.
          *
          * This is a utility function that creates a cursor via
-         * [ctor`Gdk`.Cursor.new_from_name] and then sets it on `widget`
-         * with [method`Gtk`.Widget.set_cursor]. See those functions for
+         * {@link Gdk.Cursor.new_from_name} and then sets it on `widget`
+         * with {@link Gtk.Widget.set_cursor}. See those functions for
          * details.
          *
          * On top of that, this function allows `name` to be `NULL`, which
-         * will do the same as calling [method`Gtk`.Widget.set_cursor]
+         * will do the same as calling {@link Gtk.Widget.set_cursor}
          * with a `NULL` cursor.
          * @param name the name of the cursor
          */
@@ -7245,8 +7731,8 @@ export namespace AgsGui {
          * an order that is explicitly visual rather than logical (such as
          * buttons for text justification).
          *
-         * If the direction is set to [enum`Gtk`.TextDirection.none], then
-         * the value set by [func`Gtk`.Widget.set_default_direction] will be used.
+         * If the direction is set to {@link Gtk.TextDirection.NONE}, then
+         * the value set by {@link Gtk.Widget.set_default_direction} will be used.
          * @param dir the new direction
          */
         set_direction(dir: Gtk.TextDirection | null): void;
@@ -7255,8 +7741,8 @@ export namespace AgsGui {
          *
          * This function is only suitable for widget implementations.
          * If you want a certain widget to get the input focus, call
-         * [method`Gtk`.Widget.grab_focus] on it.
-         * @param child a direct child widget of @widget   or `NULL` to unset the focus child
+         * {@link Gtk.Widget.grab_focus} on it.
+         * @param child a direct child widget of `widget`   or `NULL` to unset the focus child
          */
         set_focus_child(child?: Gtk.Widget | null): void;
         /**
@@ -7273,7 +7759,7 @@ export namespace AgsGui {
          * Sets whether the widget can own the input focus.
          *
          * Widget implementations should set `focusable` to true in
-         * their init() function if they want to receive keyboard input.
+         * their `init()` function if they want to receive keyboard input.
          *
          * Note that having `focusable` be true is only one of the
          * necessary conditions for being focusable. A widget must
@@ -7281,9 +7767,9 @@ export namespace AgsGui {
          * that is marked as not can-focus in order to receive input
          * focus.
          *
-         * See [method`Gtk`.Widget.grab_focus] for actually setting
+         * See {@link Gtk.Widget.grab_focus} for actually setting
          * the input focus on a widget.
-         * @param focusable whether or not @widget can own the input focus
+         * @param focusable whether or not `widget` can own the input focus
          */
         set_focusable(focusable: boolean): void;
         /**
@@ -7295,14 +7781,14 @@ export namespace AgsGui {
          * of available fonts.
          *
          * When not set, the widget will inherit the font map from its parent.
-         * @param font_map a `PangoFontMap`
+         * @param font_map a {@link Pango.FontMap}
          */
         set_font_map(font_map?: Pango.FontMap | null): void;
         /**
          * Sets the `cairo_font_options_t` used for text rendering
          * in the widget.
          *
-         * When not set, the default font options for the `GdkDisplay`
+         * When not set, the default font options for the {@link Gdk.Display}
          * will be used.
          * @param options a `cairo_font_options_t` struct   to unset any previously set default font options
          */
@@ -7314,7 +7800,7 @@ export namespace AgsGui {
         set_halign(align: Gtk.Align | null): void;
         /**
          * Sets the `has-tooltip` property on the widget.
-         * @param has_tooltip whether or not @widget has a tooltip
+         * @param has_tooltip whether or not `widget` has a tooltip
          */
         set_has_tooltip(has_tooltip: boolean): void;
         /**
@@ -7331,18 +7817,18 @@ export namespace AgsGui {
          *
          * By default, widgets automatically expand if any of their children
          * want to expand. (To see if a widget will automatically expand given
-         * its current children and state, call [method`Gtk`.Widget.compute_expand].
+         * its current children and state, call {@link Gtk.Widget.compute_expand}.
          * A widget can decide how the expandability of children affects its
          * own expansion by overriding the `compute_expand` virtual method on
-         * `GtkWidget`.).
+         * {@link Gtk.Widget}.).
          *
          * Setting hexpand explicitly with this function will override the
          * automatic expand behavior.
          *
          * This function forces the widget to expand or not to expand,
          * regardless of children. The override occurs because
-         * [method`Gtk`.Widget.set_hexpand] sets the hexpand-set property (see
-         * [method`Gtk`.Widget.set_hexpand_set]) which causes the widget’s hexpand
+         * {@link Gtk.Widget.set_hexpand} sets the hexpand-set property (see
+         * {@link Gtk.Widget.set_hexpand_set}) which causes the widget’s hexpand
          * value to be used, rather than looking at children and widget state.
          * @param expand whether to expand
          */
@@ -7350,8 +7836,8 @@ export namespace AgsGui {
         /**
          * Sets whether the hexpand flag will be used.
          *
-         * The [property`Gtk`.Widget:hexpand-set] property will be set
-         * automatically when you call [method`Gtk`.Widget.set_hexpand]
+         * The {@link Gtk.Widget.hexpand_set} property will be set
+         * automatically when you call {@link Gtk.Widget.set_hexpand}
          * to set hexpand, so the most likely reason to use this function
          * would be to unset an explicit expand flag.
          *
@@ -7403,7 +7889,7 @@ export namespace AgsGui {
          * Setting a name allows you to refer to the widget from a
          * CSS file. You can apply a style to widgets with a particular name
          * in the CSS file. See the documentation for the CSS syntax (on the
-         * same page as the docs for [class`Gtk`.StyleContext].
+         * same page as the docs for {@link Gtk.StyleContext}.
          *
          * Note that the CSS syntax has certain special characters to delimit
          * and represent elements in a selector (period, #, >, *...), so using
@@ -7422,7 +7908,7 @@ export namespace AgsGui {
          * there are some limitations: For toplevel widgets, applying opacity
          * depends on the capabilities of the windowing system. On X11, this
          * has any effect only on X displays with a compositing manager, see
-         * [method`Gdk`.Display.is_composited]. On Windows and Wayland it will
+         * {@link Gdk.Display.is_composited}. On Windows and Wayland it will
          * always work, although setting a window’s opacity after the window
          * has been shown may cause some flicker.
          *
@@ -7431,8 +7917,8 @@ export namespace AgsGui {
          * appear translucent, since it is ultimatively rendered on that
          * toplevel. The opacity value itself is not inherited by child
          * widgets (since that would make widgets deeper in the hierarchy
-         * progressively more translucent). As a consequence, [class`Gtk`.Popover]
-         * instances and other [iface`Gtk`.Native] widgets with their own surface
+         * progressively more translucent). As a consequence, {@link Gtk.Popover}
+         * instances and other {@link Gtk.Native} widgets with their own surface
          * will use their own opacity value, and thus by default appear
          * non-translucent, even if they are attached to a toplevel that
          * is translucent.
@@ -7443,12 +7929,12 @@ export namespace AgsGui {
          * Sets how the widget treats content that is drawn outside the
          * it's content area.
          *
-         * See the definition of [enum`Gtk`.Overflow] for details.
+         * See the definition of {@link Gtk.Overflow} for details.
          *
          * This setting is provided for widget implementations and
          * should not be used by application code.
          *
-         * The default value is [enum`Gtk`.Overflow.visible].
+         * The default value is {@link Gtk.Overflow.VISIBLE}.
          * @param overflow desired overflow value
          */
         set_overflow(overflow: Gtk.Overflow | null): void;
@@ -7457,10 +7943,10 @@ export namespace AgsGui {
          *
          * This takes care of details such as updating the state and style
          * of the child to reflect its new location and resizing the parent.
-         * The opposite function is [method`Gtk`.Widget.unparent].
+         * The opposite function is {@link Gtk.Widget.unparent}.
          *
          * This function is useful only when implementing subclasses of
-         * `GtkWidget`.
+         * {@link Gtk.Widget}.
          * @param parent parent widget
          */
         set_parent(parent: Gtk.Widget): void;
@@ -7468,7 +7954,7 @@ export namespace AgsGui {
          * Sets whether the widget will be treated as the default
          * widget within its toplevel when it has the focus, even if
          * another widget is the default.
-         * @param receives_default whether or not @widget can be a default widget
+         * @param receives_default whether or not `widget` can be a default widget
          */
         set_receives_default(receives_default: boolean): void;
         /**
@@ -7488,7 +7974,7 @@ export namespace AgsGui {
          * by `height`. You can use this function to force a widget to
          * be larger than it normally would be.
          *
-         * In most cases, [method`Gtk`.Window.set_default_size] is a better
+         * In most cases, {@link Gtk.Window.set_default_size} is a better
          * choice for toplevel windows than this function; setting the default
          * size will still allow users to shrink the window. Setting the size
          * request will force them to leave the window at least as large as
@@ -7510,14 +7996,14 @@ export namespace AgsGui {
          *
          * The size request set here does not include any margin from the
          * properties
-         * [property`Gtk`.Widget:margin-start],
-         * [property`Gtk`.Widget:margin-end],
-         * [property`Gtk`.Widget:margin-top], and
-         * [property`Gtk`.Widget:margin-bottom], but it does include pretty
+         * {@link Gtk.Widget.margin_start},
+         * {@link Gtk.Widget.margin_end},
+         * {@link Gtk.Widget.margin_top}, and
+         * {@link Gtk.Widget.margin_bottom}, but it does include pretty
          * much all other padding or border properties set by any subclass
-         * of `GtkWidget`.
-         * @param width width @widget should request, or -1 to unset
-         * @param height height @widget should request, or -1 to unset
+         * of {@link Gtk.Widget}.
+         * @param width width `widget` should request, or -1 to unset
+         * @param height height `widget` should request, or -1 to unset
          */
         set_size_request(width: number, height: number): void;
         /**
@@ -7525,13 +8011,13 @@ export namespace AgsGui {
          *
          * Typical widget states are insensitive, prelighted, etc.
          *
-         * This function accepts the values [flags`Gtk`.StateFlags.dir-ltr] and
-         * [flags`Gtk`.StateFlags.dir-rtl] but ignores them. If you want to set
-         * the widget's direction, use [method`Gtk`.Widget.set_direction].
+         * This function accepts the values {@link Gtk.StateFlags.DIR-LTR} and
+         * {@link Gtk.StateFlags.DIR-RTL} but ignores them. If you want to set
+         * the widget's direction, use {@link Gtk.Widget.set_direction}.
          *
          * This function is for use in widget implementations.
          * @param flags state flags to turn on
-         * @param clear whether to clear state before turning on @flags
+         * @param clear whether to clear state before turning on `flags`
          */
         set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
         /**
@@ -7540,11 +8026,11 @@ export namespace AgsGui {
          * `markup` must contain Pango markup.
          *
          * This function will take care of setting the
-         * [property`Gtk`.Widget:has-tooltip] as a side effect, and of the
-         * default handler for the [signal`Gtk`.Widget::query-tooltip] signal.
+         * {@link Gtk.Widget.has_tooltip} as a side effect, and of the
+         * default handler for the `Gtk.Widget::query-tooltip` signal.
          *
-         * See also [method`Gtk`.Tooltip.set_markup].
-         * @param markup the contents of the tooltip for @widget
+         * See also {@link Gtk.Tooltip.set_markup}.
+         * @param markup the contents of the tooltip for `widget`
          */
         set_tooltip_markup(markup?: string | null): void;
         /**
@@ -7553,12 +8039,12 @@ export namespace AgsGui {
          * If `text` contains any markup, it will be escaped.
          *
          * This function will take care of setting
-         * [property`Gtk`.Widget:has-tooltip] as a side effect,
+         * {@link Gtk.Widget.has_tooltip} as a side effect,
          * and of the default handler for the
-         * [signal`Gtk`.Widget::query-tooltip] signal.
+         * `Gtk.Widget::query-tooltip` signal.
          *
-         * See also [method`Gtk`.Tooltip.set_text].
-         * @param text the contents of the tooltip for @widget
+         * See also {@link Gtk.Tooltip.set_text}.
+         * @param text the contents of the tooltip for `widget`
          */
         set_tooltip_text(text?: string | null): void;
         /**
@@ -7570,14 +8056,14 @@ export namespace AgsGui {
          * Sets whether the widget would like any available extra vertical
          * space.
          *
-         * See [method`Gtk`.Widget.set_hexpand] for more detail.
+         * See {@link Gtk.Widget.set_hexpand} for more detail.
          * @param expand whether to expand
          */
         set_vexpand(expand: boolean): void;
         /**
          * Sets whether the vexpand flag will be used.
          *
-         * See [method`Gtk`.Widget.set_hexpand_set] for more detail.
+         * See {@link Gtk.Widget.set_hexpand_set} for more detail.
          * @param set value for vexpand-set property
          */
         set_vexpand_set(set: boolean): void;
@@ -7585,7 +8071,7 @@ export namespace AgsGui {
          * Sets the visibility state of `widget`.
          *
          * Note that setting this to true doesn’t mean the widget is
-         * actually viewable, see [method`Gtk`.Widget.get_visible].
+         * actually viewable, see {@link Gtk.Widget.get_visible}.
          * @param visible whether the widget should be shown or not
          */
         set_visible(visible: boolean): void;
@@ -7595,7 +8081,7 @@ export namespace AgsGui {
          *
          * This is false for invisible children, but also
          * for children that have their own surface, such
-         * as [class`Gtk`.Popover] instances.
+         * as {@link Gtk.Popover} instances.
          * @returns true if child should be included in   measuring and allocating
          */
         should_layout(): boolean;
@@ -7616,8 +8102,8 @@ export namespace AgsGui {
          * Allocates widget with a transformation that translates
          * the origin to the position in `allocation`.
          *
-         * This is a simple form of [method`Gtk`.Widget.allocate].
-         * @param allocation position and size to be allocated to @widget
+         * This is a simple form of {@link Gtk.Widget.allocate}.
+         * @param allocation position and size to be allocated to `widget`
          * @param baseline the baseline of the child, or -1
          */
         size_allocate(allocation: Gtk.Allocation, baseline: number): void;
@@ -7625,32 +8111,32 @@ export namespace AgsGui {
          * Snapshots a child of the widget.
          *
          * When a widget receives a call to the snapshot function,
-         * it must send synthetic [vfunc`Gtk`.Widget.snapshot] calls
+         * it must send synthetic {@link Gtk.Widget.snapshot} calls
          * to all children. This function provides a convenient way
          * of doing this. A widget, when it receives a call to its
-         * [vfunc`Gtk`.Widget.snapshot] function, calls
-         * gtk_widget_snapshot_child() once for each child, passing in
+         * {@link Gtk.Widget.snapshot} function, calls
+         * `gtk_widget_snapshot_child()` once for each child, passing in
          * the `snapshot` the widget received.
          *
-         * This function takes care of translating the origin of `snapshot,`
+         * This function takes care of translating the origin of `snapshot`,
          * and deciding whether the child needs to be snapshot.
          *
-         * It does nothing for children that implement `GtkNative`.
-         * @param child a child of @widget
-         * @param snapshot snapshot as passed to the widget. In particular, no   calls to [method@Gtk.Snapshot.translate] or other transform calls   should have been made
+         * It does nothing for children that implement {@link Gtk.Native}.
+         * @param child a child of `widget`
+         * @param snapshot snapshot as passed to the widget. In particular, no   calls to {@link Gtk.Snapshot.translate} or other transform calls   should have been made
          */
         snapshot_child(child: Gtk.Widget, snapshot: Gtk.Snapshot): void;
         /**
-         * Translates coordinates relative to `src_widget’`s allocation
-         * to coordinates relative to `dest_widget’`s allocations.
+         * Translates coordinates relative to `src_widget`’s allocation
+         * to coordinates relative to `dest_widget`’s allocations.
          *
          * In order to perform this operation, both widget must share
          * a common ancestor. If that is not the case, `dest_x` and `dest_y`
          * are set to 0 and false is returned.
          * @param dest_widget another widget
-         * @param src_x X position in widget coordinates of @src_widget
-         * @param src_y Y position in widget coordinates of @src_widget
-         * @returns true if @src_widget and @dest_widget have a common   ancestor, false otherwise
+         * @param src_x X position in widget coordinates of `src_widget`
+         * @param src_y Y position in widget coordinates of `src_widget`
+         * @returns true if `src_widget` and `dest_widget` have a common   ancestor, false otherwise
          */
         translate_coordinates(dest_widget: Gtk.Widget, src_x: number, src_y: number): [boolean, number, number];
         /**
@@ -7673,7 +8159,7 @@ export namespace AgsGui {
         /**
          * Turns off flag values for the current widget state.
          *
-         * See [method`Gtk`.Widget.set_state_flags].
+         * See {@link Gtk.Widget.set_state_flags}.
          *
          * This function is for use in widget implementations.
          * @param flags state flags to turn off
@@ -7684,15 +8170,17 @@ export namespace AgsGui {
          *   widget extra space when possible.
          * @param hexpand_p
          * @param vexpand_p
+         * @virtual
          */
         vfunc_compute_expand(hexpand_p: boolean, vexpand_p: boolean): void;
         /**
          * Tests if a given point is contained in the widget.
          *
          * The coordinates for (x, y) must be in widget coordinates, so
-         * (0, 0) is assumed to be the top left of `widget'`s content area.
-         * @param x X coordinate to test, relative to @widget's origin
-         * @param y Y coordinate to test, relative to @widget's origin
+         * (0, 0) is assumed to be the top left of `widget`'s content area.
+         * @param x X coordinate to test, relative to `widget`'s origin
+         * @param y Y coordinate to test, relative to `widget`'s origin
+         * @virtual
          */
         vfunc_contains(x: number, y: number): boolean;
         /**
@@ -7701,17 +8189,20 @@ export namespace AgsGui {
          *   redraws accordingly. The default implementation will take care of this for
          *   all the default CSS properties, so implementations must chain up.
          * @param change
+         * @virtual
          */
         vfunc_css_changed(change: Gtk.CssStyleChange): void;
         /**
          * Signal emitted when the text direction of a
          *   widget changes.
          * @param previous_direction
+         * @virtual
          */
         vfunc_direction_changed(previous_direction: Gtk.TextDirection): void;
         /**
-         * Vfunc for gtk_widget_child_focus()
+         * Vfunc for `gtk_widget_child_focus()`
          * @param direction
+         * @virtual
          */
         vfunc_focus(direction: Gtk.DirectionType): boolean;
         /**
@@ -7722,95 +8213,104 @@ export namespace AgsGui {
          * their child, more complex widgets need to request something
          * either in context of their children or in context of their
          * allocation capabilities.
+         * @virtual
          */
         vfunc_get_request_mode(): Gtk.SizeRequestMode;
         /**
          * Causes `widget` to have the keyboard focus for the window
          * that it belongs to.
          *
-         * If `widget` is not focusable, or its [vfunc`Gtk`.Widget.grab_focus]
+         * If `widget` is not focusable, or its {@link Gtk.Widget.grab_focus}
          * implementation cannot transfer the focus to a descendant of `widget`
          * that is focusable, it will not take focus and false will be returned.
          *
-         * Calling [method`Gtk`.Widget.grab_focus] on an already focused widget
+         * Calling {@link Gtk.Widget.grab_focus} on an already focused widget
          * is allowed, should not have an effect, and return true.
+         * @virtual
          */
         vfunc_grab_focus(): boolean;
         /**
          * Reverses the effects of [method.Gtk.Widget.show].
          *
          * This is causing the widget to be hidden (invisible to the user).
+         * @virtual
          */
         vfunc_hide(): void;
         /**
-         * Emits the [signal`Gtk`.Widget::keynav-failed] signal on the widget.
+         * Emits the `Gtk.Widget::keynav-failed` signal on the widget.
          *
          * This function should be called whenever keyboard navigation
          * within a single widget hits a boundary.
          *
          * The return value of this function should be interpreted
          * in a way similar to the return value of
-         * [method`Gtk`.Widget.child_focus]. When true is returned,
+         * {@link Gtk.Widget.child_focus}. When true is returned,
          * stay in the widget, the failed keyboard navigation is ok
          * and/or there is nowhere we can/should move the focus to.
          * When false is returned, the caller should continue with
          * keyboard navigation outside the widget, e.g. by calling
-         * [method`Gtk`.Widget.child_focus] on the widget’s toplevel.
+         * {@link Gtk.Widget.child_focus} on the widget’s toplevel.
          *
-         * The default [signal`Gtk`.Widget::keynav-failed] handler returns
-         * false for [enum`Gtk`.DirectionType.tab-forward] and
-         * [enum`Gtk`.DirectionType.tab-backward]. For the other values
-         * of [enum`Gtk`.DirectionType] it returns true.
+         * The default `Gtk.Widget::keynav-failed` handler returns
+         * false for {@link Gtk.DirectionType.TAB-FORWARD} and
+         * {@link Gtk.DirectionType.TAB-BACKWARD}. For the other values
+         * of {@link Gtk.DirectionType} it returns true.
          *
          * Whenever the default handler returns true, it also calls
-         * [method`Gtk`.Widget.error_bell] to notify the user of the
+         * {@link Gtk.Widget.error_bell} to notify the user of the
          * failed keyboard navigation.
          *
          * A use case for providing an own implementation of `::keynav-failed`
          * (either by connecting to it or by overriding it) would be a row of
-         * [class`Gtk`.Entry] widgets where the user should be able to navigate
+         * {@link Gtk.Entry} widgets where the user should be able to navigate
          * the entire row with the cursor keys, as e.g. known from user
          * interfaces that require entering license keys.
          * @param direction direction of focus movement
+         * @virtual
          */
         vfunc_keynav_failed(direction: Gtk.DirectionType): boolean;
         /**
          * Causes a widget to be mapped if it isn’t already.
          *
          * This function is only for use in widget implementations.
+         * @virtual
          */
         vfunc_map(): void;
         /**
          * Measures `widget` in the orientation `orientation` and for the given `for_size`.
          *
-         * As an example, if `orientation` is %GTK_ORIENTATION_HORIZONTAL and `for_size`
+         * As an example, if `orientation` is {@link Gtk.Orientation.HORIZONTAL} and `for_size`
          * is 300, this functions will compute the minimum and natural width of `widget`
          * if it is allocated at a height of 300 pixels.
          *
          * See [GtkWidget’s geometry management section](class.Widget.html#height-for-width-geometry-management) for
-         * a more details on implementing `GtkWidgetClass.measure()`.
+         * a more details on implementing {@link Gtk.Widget.measure}.
          * @param orientation the orientation to measure
-         * @param for_size Size for the opposite of @orientation, i.e.   if @orientation is %GTK_ORIENTATION_HORIZONTAL, this is   the height the widget should be measured with. The %GTK_ORIENTATION_VERTICAL   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
+         * @param for_size Size for the opposite of `orientation`, i.e.   if `orientation` is {@link Gtk.Orientation.HORIZONTAL}, this is   the height the widget should be measured with. The {@link Gtk.Orientation.VERTICAL}   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
+         * @virtual
          */
         vfunc_measure(orientation: Gtk.Orientation, for_size: number): [number, number, number, number];
         /**
-         * Emits the [signal`Gtk`.Widget::mnemonic-activate] signal.
+         * Emits the `Gtk.Widget::mnemonic-activate` signal.
          * @param group_cycling true if there are other widgets with the same mnemonic
+         * @virtual
          */
         vfunc_mnemonic_activate(group_cycling: boolean): boolean;
         /**
          * Signal emitted when a change of focus is requested
          * @param direction
+         * @virtual
          */
         vfunc_move_focus(direction: Gtk.DirectionType): void;
         /**
-         * Signal emitted when “has-tooltip” is %TRUE and the
+         * Signal emitted when “has-tooltip” is `true` and the
          *   hover timeout has expired with the cursor hovering “above”
          *   widget; or emitted when widget got focus in keyboard mode.
          * @param x
          * @param y
          * @param keyboard_tooltip
          * @param tooltip
+         * @virtual
          */
         vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean;
         /**
@@ -7829,12 +8329,14 @@ export namespace AgsGui {
          * isn’t very useful otherwise. Many times when you think you might
          * need it, a better approach is to connect to a signal that will be
          * called after the widget is realized automatically, such as
-         * [signal`Gtk`.Widget::realize].
+         * `Gtk.Widget::realize`.
+         * @virtual
          */
         vfunc_realize(): void;
         /**
-         * Called when the widget gets added to a `GtkRoot` widget. Must
+         * Called when the widget gets added to a {@link Gtk.Root} widget. Must
          *   chain up
+         * @virtual
          */
         vfunc_root(): void;
         /**
@@ -7842,8 +8344,9 @@ export namespace AgsGui {
          *
          * This function is only suitable for widget implementations.
          * If you want a certain widget to get the input focus, call
-         * [method`Gtk`.Widget.grab_focus] on it.
-         * @param child a direct child widget of @widget   or `NULL` to unset the focus child
+         * {@link Gtk.Widget.grab_focus} on it.
+         * @param child a direct child widget of `widget`   or `NULL` to unset the focus child
+         * @virtual
          */
         vfunc_set_focus_child(child?: Gtk.Widget | null): void;
         /**
@@ -7857,6 +8360,7 @@ export namespace AgsGui {
          * When a toplevel widget is shown, it is immediately realized and
          * mapped; other shown widgets are realized and mapped when their
          * toplevel widget is realized and mapped.
+         * @virtual
          */
         vfunc_show(): void;
         /**
@@ -7865,28 +8369,33 @@ export namespace AgsGui {
          * @param width
          * @param height
          * @param baseline
+         * @virtual
          */
         vfunc_size_allocate(width: number, height: number, baseline: number): void;
         /**
          * Vfunc called when a new snapshot of the widget has to be taken.
          * @param snapshot
+         * @virtual
          */
         vfunc_snapshot(snapshot: Gtk.Snapshot): void;
         /**
          * Signal emitted when the widget state changes,
-         *   see gtk_widget_get_state_flags().
+         *   see `gtk_widget_get_state_flags()`.
          * @param previous_state_flags
+         * @virtual
          */
         vfunc_state_flags_changed(previous_state_flags: Gtk.StateFlags): void;
         /**
          * Emitted when a system setting was changed. Must chain up.
          * @param settings
+         * @virtual
          */
         vfunc_system_setting_changed(settings: Gtk.SystemSetting): void;
         /**
          * Causes a widget to be unmapped if it’s currently mapped.
          *
          * This function is only for use in widget implementations.
+         * @virtual
          */
         vfunc_unmap(): void;
         /**
@@ -7895,11 +8404,13 @@ export namespace AgsGui {
          * This frees all GDK resources associated with the widget.
          *
          * This function is only useful in widget implementations.
+         * @virtual
          */
         vfunc_unrealize(): void;
         /**
          * Called when the widget is about to be removed from its
-         *   `GtkRoot` widget. Must chain up
+         *   {@link Gtk.Root} widget. Must chain up
+         * @virtual
          */
         vfunc_unroot(): void;
     }
@@ -7907,7 +8418,19 @@ export namespace AgsGui {
     namespace FileWidget {
         // Signal signatures
         interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            /**
+             * The ::create-dir signal notifies about creating directory.
+             * @signal
+             * @since 6.6.0
+             * @run-last
+             */
             'create-dir': (arg0: string) => void;
+            /**
+             * The ::refresh signal notifies about filesystem change.
+             * @signal
+             * @since 6.6.0
+             * @run-last
+             */
             refresh: () => void;
             'notify::app-generic-path': (pspec: GObject.ParamSpec) => void;
             'notify::app-home-path': (pspec: GObject.ParamSpec) => void;
@@ -7990,6 +8513,9 @@ export namespace AgsGui {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class FileWidget extends Gtk.Box implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<FileWidget>;
 
@@ -7997,91 +8523,109 @@ export namespace AgsGui {
 
         /**
          * The app generic path.
+         * @since 6.6.0
          */
         get app_generic_path(): string;
         set app_generic_path(val: string);
         /**
          * The app generic path.
+         * @since 6.6.0
          */
         get appGenericPath(): string;
         set appGenericPath(val: string);
         /**
          * The app home path.
+         * @since 6.6.0
          */
         get app_home_path(): string;
         set app_home_path(val: string);
         /**
          * The app home path.
+         * @since 6.6.0
          */
         get appHomePath(): string;
         set appHomePath(val: string);
         /**
          * The recently used filename.
+         * @since 6.6.0
          */
         get bookmark_filename(): string;
         set bookmark_filename(val: string);
         /**
          * The recently used filename.
+         * @since 6.6.0
          */
         get bookmarkFilename(): string;
         set bookmarkFilename(val: string);
         /**
          * The current path.
+         * @since 6.6.0
          */
         get current_path(): string;
         set current_path(val: string);
         /**
          * The current path.
+         * @since 6.6.0
          */
         get currentPath(): string;
         set currentPath(val: string);
         /**
          * The default bundle.
+         * @since 6.6.0
          */
         get default_bundle(): string;
         set default_bundle(val: string);
         /**
          * The default bundle.
+         * @since 6.6.0
          */
         get defaultBundle(): string;
         set defaultBundle(val: string);
         /**
          * The default path.
+         * @since 6.6.0
          */
         get default_path(): string;
         set default_path(val: string);
         /**
          * The default path.
+         * @since 6.6.0
          */
         get defaultPath(): string;
         set defaultPath(val: string);
         /**
          * The file magic executable.
+         * @since 6.6.0
          */
         get file_magic_executable(): string;
         set file_magic_executable(val: string);
         /**
          * The file magic executable.
+         * @since 6.6.0
          */
         get fileMagicExecutable(): string;
         set fileMagicExecutable(val: string);
         /**
          * The home path.
+         * @since 6.6.0
          */
         get home_path(): string;
         set home_path(val: string);
         /**
          * The home path.
+         * @since 6.6.0
          */
         get homePath(): string;
         set homePath(val: string);
         /**
          * The recently used filename.
+         * @since 6.6.0
          */
         get recently_used_filename(): string;
         set recently_used_filename(val: string);
         /**
          * The recently used filename.
+         * @since 6.6.0
          */
         get recentlyUsedFilename(): string;
         set recentlyUsedFilename(val: string);
@@ -8138,16 +8682,19 @@ export namespace AgsGui {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FileWidget.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileWidget.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FileWidget.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileWidget.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FileWidget.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FileWidget.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -8159,10 +8706,12 @@ export namespace AgsGui {
         /**
          * Create directory `dir_path`.
          * @param dir_path the directory path
+         * @virtual
          */
         vfunc_create_dir(dir_path: string): void;
         /**
          * Refresh `file_widget` due to current path change.
+         * @virtual
          */
         vfunc_refresh(): void;
 
@@ -8196,7 +8745,7 @@ export namespace AgsGui {
         get_app_home_path(): string;
         /**
          * Get bookmark from `file_widget`.
-         * @returns the bookmark #GHashTable
+         * @returns the bookmark {@link GLib.HashTable}
          */
         get_bookmark(): GLib.HashTable<any, any>;
         /**
@@ -8241,7 +8790,7 @@ export namespace AgsGui {
         get_home_path(): string;
         /**
          * Get location from `file_widget`.
-         * @returns the location #GHashTable
+         * @returns the location {@link GLib.HashTable}
          */
         get_location(): GLib.HashTable<any, any>;
         /**
@@ -8339,19 +8888,19 @@ export namespace AgsGui {
         /**
          * Test `file_action` of `file_widget`.
          * @param file_action the file action
-         * @returns %TRUE if file action matches, otherwise %FALSE
+         * @returns `true` if file action matches, otherwise `false`
          */
         test_file_action(file_action: number): boolean;
         /**
          * Test `file_filter` of `file_widget`.
          * @param file_filter the file filter
-         * @returns %TRUE if file filter matches, otherwise %FALSE
+         * @returns `true` if file filter matches, otherwise `false`
          */
         test_file_filter(file_filter: number): boolean;
         /**
          * Test `flags` of `file_widget`.
          * @param flags the flags
-         * @returns %TRUE if flags set, otherwise %FALSE
+         * @returns `true` if flags set, otherwise `false`
          */
         test_flags(flags: number): boolean;
         /**
@@ -8367,18 +8916,15 @@ export namespace AgsGui {
          * Write recently_useds from recently_used-filename.
          */
         write_recently_used(): void;
-
-        // Inherited properties
         /**
          * The orientation of the orientable.
+         * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
-
-        // Inherited methods
         /**
          * Retrieves the orientation of the `orientable`.
-         * @returns the orientation of the @orientable
+         * @returns the orientation of the `orientable`
          */
         get_orientation(): Gtk.Orientation;
         /**
@@ -8399,32 +8945,32 @@ export namespace AgsGui {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -8433,39 +8979,39 @@ export namespace AgsGui {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -8476,13 +9022,16 @@ export namespace AgsGui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -8490,7 +9039,7 @@ export namespace AgsGui {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -8498,9 +9047,9 @@ export namespace AgsGui {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -8520,9 +9069,9 @@ export namespace AgsGui {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -8535,34 +9084,34 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -8595,22 +9144,22 @@ export namespace AgsGui {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -8619,8 +9168,8 @@ export namespace AgsGui {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -8637,10 +9186,10 @@ export namespace AgsGui {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -8655,13 +9204,13 @@ export namespace AgsGui {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -8692,21 +9241,21 @@ export namespace AgsGui {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -8716,33 +9265,34 @@ export namespace AgsGui {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -8751,6 +9301,7 @@ export namespace AgsGui {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -8759,12 +9310,14 @@ export namespace AgsGui {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -8773,20 +9326,22 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -8798,6 +9353,7 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -8830,8 +9386,26 @@ export namespace AgsGui {
     namespace IconLink {
         // Signal signatures
         interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            /**
+             * The ::clicked signal notifies about widget clicked.
+             * @signal
+             * @since 6.6.0
+             * @run-last
+             */
             clicked: () => void;
+            /**
+             * The ::copy-event signal notifies about widget copy_event.
+             * @signal
+             * @since 6.6.0
+             * @run-last
+             */
             'copy-event': () => IconLink;
+            /**
+             * The ::delete-event signal notifies about widget delete_event.
+             * @signal
+             * @since 6.6.0
+             * @run-last
+             */
             'delete-event': () => void;
             'notify::action': (pspec: GObject.ParamSpec) => void;
             'notify::baseline-child': (pspec: GObject.ParamSpec) => void;
@@ -8889,6 +9463,9 @@ export namespace AgsGui {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class IconLink extends Gtk.Box implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<IconLink>;
 
@@ -8896,6 +9473,7 @@ export namespace AgsGui {
 
         /**
          * The assigned action.
+         * @since 6.6.0
          */
         get action(): string;
         set action(val: string);
@@ -8932,16 +9510,19 @@ export namespace AgsGui {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof IconLink.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, IconLink.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof IconLink.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, IconLink.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof IconLink.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<IconLink.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -8952,10 +9533,12 @@ export namespace AgsGui {
 
         /**
          * Emits ::clicked event.
+         * @virtual
          */
         vfunc_clicked(): void;
         /**
          * Emits ::delete-event event.
+         * @virtual
          */
         vfunc_delete_event(): void;
 
@@ -9007,7 +9590,7 @@ export namespace AgsGui {
         /**
          * Test `flags` of `icon_link`.
          * @param flags the flags
-         * @returns %TRUE if flags set, otherwise %FALSE
+         * @returns `true` if flags set, otherwise `false`
          */
         test_flags(flags: number): boolean;
         /**
@@ -9015,18 +9598,15 @@ export namespace AgsGui {
          * @param flags the flags
          */
         unset_flags(flags: number): void;
-
-        // Inherited properties
         /**
          * The orientation of the orientable.
+         * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
-
-        // Inherited methods
         /**
          * Retrieves the orientation of the `orientable`.
-         * @returns the orientation of the @orientable
+         * @returns the orientation of the `orientable`
          */
         get_orientation(): Gtk.Orientation;
         /**
@@ -9047,32 +9627,32 @@ export namespace AgsGui {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -9081,39 +9661,39 @@ export namespace AgsGui {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -9124,13 +9704,16 @@ export namespace AgsGui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -9138,7 +9721,7 @@ export namespace AgsGui {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -9146,9 +9729,9 @@ export namespace AgsGui {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -9168,9 +9751,9 @@ export namespace AgsGui {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -9183,34 +9766,34 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -9243,22 +9826,22 @@ export namespace AgsGui {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -9267,8 +9850,8 @@ export namespace AgsGui {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -9285,10 +9868,10 @@ export namespace AgsGui {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -9303,13 +9886,13 @@ export namespace AgsGui {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -9340,21 +9923,21 @@ export namespace AgsGui {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -9364,33 +9947,34 @@ export namespace AgsGui {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -9399,6 +9983,7 @@ export namespace AgsGui {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -9407,12 +9992,14 @@ export namespace AgsGui {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -9421,20 +10008,22 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -9446,6 +10035,7 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -9542,6 +10132,9 @@ export namespace AgsGui {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Indicator extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<Indicator>;
 
@@ -9549,46 +10142,55 @@ export namespace AgsGui {
 
         /**
          * The adjustment giving indicator value.
+         * @since 3.0.0
          */
         get adjustment(): GObject.Object;
         set adjustment(val: GObject.Object);
         /**
          * The indicator's segment count.
+         * @since 3.0.0
          */
         get segment_count(): number;
         set segment_count(val: number);
         /**
          * The indicator's segment count.
+         * @since 3.0.0
          */
         get segmentCount(): number;
         set segmentCount(val: number);
         /**
          * The indicator's segment height.
+         * @since 3.0.0
          */
         get segment_height(): number;
         set segment_height(val: number);
         /**
          * The indicator's segment height.
+         * @since 3.0.0
          */
         get segmentHeight(): number;
         set segmentHeight(val: number);
         /**
          * The indicator's segment padding.
+         * @since 3.0.0
          */
         get segment_padding(): number;
         set segment_padding(val: number);
         /**
          * The indicator's segment padding.
+         * @since 3.0.0
          */
         get segmentPadding(): number;
         set segmentPadding(val: number);
         /**
          * The indicator's segment width.
+         * @since 3.0.0
          */
         get segment_width(): number;
         set segment_width(val: number);
         /**
          * The indicator's segment width.
+         * @since 3.0.0
          */
         get segmentWidth(): number;
         set segmentWidth(val: number);
@@ -9617,16 +10219,19 @@ export namespace AgsGui {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Indicator.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Indicator.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Indicator.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Indicator.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Indicator.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Indicator.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -9637,7 +10242,7 @@ export namespace AgsGui {
 
         /**
          * Get adjustment.
-         * @returns the #GtkAdjustment
+         * @returns the {@link Gtk.Adjustment}
          */
         get_adjustment(): Gtk.Adjustment;
         /**
@@ -9662,7 +10267,7 @@ export namespace AgsGui {
         get_segment_width(): number;
         /**
          * Set adjustment.
-         * @param adjustment the #GtkAdjustment
+         * @param adjustment the {@link Gtk.Adjustment}
          */
         set_adjustment(adjustment: Gtk.Adjustment): void;
         /**
@@ -9685,24 +10290,22 @@ export namespace AgsGui {
          * @param segment_width the segment width
          */
         set_segment_width(segment_width: number): void;
-
-        // Inherited properties
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
         set accessible_role(val: Gtk.AccessibleRole);
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
         set accessibleRole(val: Gtk.AccessibleRole);
-
-        // Inherited methods
         /**
          * Requests the user's screen reader to announce the given message.
          *
@@ -9717,6 +10320,17 @@ export namespace AgsGui {
          * @param priority the priority of the announcement
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
+        /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @returns the accessible identifier
+         */
+        get_accessible_id(): string | null;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -9737,7 +10351,7 @@ export namespace AgsGui {
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
@@ -9756,9 +10370,9 @@ export namespace AgsGui {
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
          */
@@ -9784,7 +10398,7 @@ export namespace AgsGui {
          * This function is meant to be used by accessible implementations that are
          * not part of the widget hierarchy, and but act as a logical bridge between
          * widgets. For instance, if a widget creates an object that holds metadata
-         * for each child, and you want that object to implement the `GtkAccessible`
+         * for each child, and you want that object to implement the {@link Gtk.Accessible}
          * interface, you will use this function to ensure that the parent of each
          * child widget is the metadata object, and the parent of each metadata
          * object is the container widget.
@@ -9803,7 +10417,7 @@ export namespace AgsGui {
         /**
          * Informs ATs that the platform state has changed.
          *
-         * This function should be used by `GtkAccessible` implementations that
+         * This function should be used by {@link Gtk.Accessible} implementations that
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
@@ -9812,7 +10426,7 @@ export namespace AgsGui {
         /**
          * Updates an array of accessible properties.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * property change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -9823,7 +10437,7 @@ export namespace AgsGui {
         /**
          * Updates an array of accessible relations.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * relation change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -9834,7 +10448,7 @@ export namespace AgsGui {
         /**
          * Updates an array of accessible states.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * state change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -9843,44 +10457,61 @@ export namespace AgsGui {
          */
         update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
         /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @virtual
+         */
+        vfunc_get_accessible_id(): string | null;
+        /**
          * Retrieves the accessible parent for an accessible object.
          *
          * This function returns `NULL` for top level widgets.
+         * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
         /**
          * Retrieves the implementation for the given accessible object.
+         * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
         /**
          * Gets the ID of the `buildable` object.
          *
-         * `GtkBuilder` sets the name based on the ID attribute
+         * {@link Gtk.Builder} sets the name based on the ID attribute
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
@@ -9888,18 +10519,20 @@ export namespace AgsGui {
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param child child to add
-         * @param type kind of child or %NULL
+         * @param type kind of child or `null`
+         * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
         /**
-         * Similar to gtk_buildable_parser_finished() but is
+         * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
-         * @param builder a `GtkBuilder`
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder}
+         * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @virtual
          */
         vfunc_custom_finished(
             builder: Gtk.Builder,
@@ -9910,10 +10543,11 @@ export namespace AgsGui {
         /**
          * Called at the end of each custom element handled by
          * the buildable.
-         * @param builder `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @virtual
          */
         vfunc_custom_tag_end(
             builder: Gtk.Builder,
@@ -9923,9 +10557,10 @@ export namespace AgsGui {
         ): void;
         /**
          * Called for each unknown element under `<child>`.
-         * @param builder a `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @virtual
          */
         vfunc_custom_tag_start(
             builder: Gtk.Builder,
@@ -9935,44 +10570,49 @@ export namespace AgsGui {
         /**
          * The getter corresponding to `set_id`. Implement this
          *   if you implement `set_id`.
+         * @virtual
          */
         vfunc_get_id(): string;
         /**
          * Retrieves the internal child called `childname` of the `buildable` object.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
         /**
          * Called when a builder finishes the parsing
          *  of a UI definition. It is normally not necessary to implement this,
-         *  unless you need to perform special cleanup actions. `GtkWindow` sets
-         *  the `GtkWidget:visible` property here.
+         *  unless you need to perform special cleanup actions. {@link Gtk.Window} sets
+         *  the {@link Gtk.Widget.visible} property here.
          * @param builder
+         * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
         /**
          * Sets a property of a buildable object.
-         *  It is normally not necessary to implement this, g_object_set_property()
-         *  is used by default. `GtkWindow` implements this to delay showing itself
-         *  (i.e. setting the [property`Gtk`.Widget:visible] property) until the whole
+         *  It is normally not necessary to implement this, `g_object_set_property()`
+         *  is used by default. {@link Gtk.Window} implements this to delay showing itself
+         *  (i.e. setting the {@link Gtk.Widget.visible} property) until the whole
          *  interface is created.
          * @param builder
          * @param name
          * @param value
+         * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
         /**
-         * Stores the id attribute given in the `GtkBuilder` UI definition.
-         *   `GtkWidget` stores the name as object data. Implement this method if your
+         * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
+         *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
          *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id
+         * @virtual
          */
         vfunc_set_id(id: string): void;
         /**
          * Retrieves the orientation of the `orientable`.
-         * @returns the orientation of the @orientable
+         * @returns the orientation of the `orientable`
          */
         get_orientation(): Gtk.Orientation;
         /**
@@ -9993,32 +10633,32 @@ export namespace AgsGui {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -10027,39 +10667,39 @@ export namespace AgsGui {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -10070,13 +10710,16 @@ export namespace AgsGui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -10084,7 +10727,7 @@ export namespace AgsGui {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -10092,9 +10735,9 @@ export namespace AgsGui {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -10114,9 +10757,9 @@ export namespace AgsGui {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -10129,34 +10772,34 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -10189,22 +10832,22 @@ export namespace AgsGui {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -10213,8 +10856,8 @@ export namespace AgsGui {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -10231,10 +10874,10 @@ export namespace AgsGui {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -10249,13 +10892,13 @@ export namespace AgsGui {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -10286,21 +10929,21 @@ export namespace AgsGui {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -10310,33 +10953,34 @@ export namespace AgsGui {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -10345,6 +10989,7 @@ export namespace AgsGui {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -10353,12 +10998,14 @@ export namespace AgsGui {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -10367,20 +11014,22 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -10392,6 +11041,7 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -10424,6 +11074,12 @@ export namespace AgsGui {
     namespace InputDialog {
         // Signal signatures
         interface SignalSignatures extends Gtk.Window.SignalSignatures {
+            /**
+             * The ::response signal notifies adjustment value changed.
+             * @signal
+             * @since 6.6.0
+             * @run-last
+             */
             response: (arg0: number) => void;
             'notify::application': (pspec: GObject.ParamSpec) => void;
             'notify::child': (pspec: GObject.ParamSpec) => void;
@@ -10501,6 +11157,9 @@ export namespace AgsGui {
                 Gtk.ShortcutManager.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class InputDialog
         extends Gtk.Window
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Native, Gtk.Root, Gtk.ShortcutManager
@@ -10543,16 +11202,19 @@ export namespace AgsGui {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof InputDialog.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InputDialog.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof InputDialog.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InputDialog.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof InputDialog.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<InputDialog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -10564,18 +11226,19 @@ export namespace AgsGui {
         /**
          * Emit signal  AgsInputDialog::response().
          * @param response the response
+         * @virtual
          */
         vfunc_response(response: number): void;
 
         // Methods
 
         /**
-         * The #GtkEntry to get input from.
+         * The {@link Gtk.Entry} to get input from.
          * @returns the entry widget
          */
         get_entry(): Gtk.Entry;
         /**
-         * The #GtkSpinButton to get input from.
+         * The {@link Gtk.SpinButton} to get input from.
          * @returns the spin button widget
          */
         get_spin_button(): Gtk.SpinButton;
@@ -10607,7 +11270,7 @@ export namespace AgsGui {
         /**
          * Test flags to be set.
          * @param flags the flags
-         * @returns %TRUE if flags is set, otherwise %FALSE
+         * @returns `true` if flags is set, otherwise `false`
          */
         test_flags(flags: number): boolean;
         /**
@@ -10615,14 +11278,13 @@ export namespace AgsGui {
          * @param flags the flags
          */
         unset_flags(flags: number): void;
-
-        // Inherited properties
         /**
          * Whether the widget or any of its descendents can accept
          * the input focus.
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @category Inherited from Gtk.Widget
          */
         get can_focus(): boolean;
         set can_focus(val: boolean);
@@ -10632,26 +11294,31 @@ export namespace AgsGui {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @category Inherited from Gtk.Widget
          */
         get canFocus(): boolean;
         set canFocus(val: boolean);
         /**
          * Whether the widget can receive pointer events.
+         * @category Inherited from Gtk.Widget
          */
         get can_target(): boolean;
         set can_target(val: boolean);
         /**
          * Whether the widget can receive pointer events.
+         * @category Inherited from Gtk.Widget
          */
         get canTarget(): boolean;
         set canTarget(val: boolean);
         /**
          * A list of css classes applied to this widget.
+         * @category Inherited from Gtk.Widget
          */
         get css_classes(): string[];
         set css_classes(val: string[]);
         /**
          * A list of css classes applied to this widget.
+         * @category Inherited from Gtk.Widget
          */
         get cssClasses(): string[];
         set cssClasses(val: string[]);
@@ -10660,6 +11327,8 @@ export namespace AgsGui {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
+         * @category Inherited from Gtk.Widget
          */
         get css_name(): string;
         /**
@@ -10667,10 +11336,13 @@ export namespace AgsGui {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @construct-only
+         * @category Inherited from Gtk.Widget
          */
         get cssName(): string;
         /**
          * The cursor used by `widget`.
+         * @category Inherited from Gtk.Widget
          */
         get cursor(): Gdk.Cursor;
         set cursor(val: Gdk.Cursor);
@@ -10678,6 +11350,7 @@ export namespace AgsGui {
          * Whether the widget should grab focus when it is clicked with the mouse.
          *
          * This property is only relevant for widgets that can take focus.
+         * @category Inherited from Gtk.Widget
          */
         get focus_on_click(): boolean;
         set focus_on_click(val: boolean);
@@ -10685,52 +11358,65 @@ export namespace AgsGui {
          * Whether the widget should grab focus when it is clicked with the mouse.
          *
          * This property is only relevant for widgets that can take focus.
+         * @category Inherited from Gtk.Widget
          */
         get focusOnClick(): boolean;
         set focusOnClick(val: boolean);
         /**
          * Whether this widget itself will accept the input focus.
+         * @category Inherited from Gtk.Widget
          */
         get focusable(): boolean;
         set focusable(val: boolean);
         /**
          * How to distribute horizontal space if widget gets extra space.
+         * @category Inherited from Gtk.Widget
          */
         get halign(): Gtk.Align;
         set halign(val: Gtk.Align);
         /**
          * Whether the widget is the default widget.
+         * @read-only
+         * @category Inherited from Gtk.Widget
          */
         get has_default(): boolean;
         /**
          * Whether the widget is the default widget.
+         * @read-only
+         * @category Inherited from Gtk.Widget
          */
         get hasDefault(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
+         * @category Inherited from Gtk.Widget
          */
         get has_focus(): boolean;
         /**
          * Whether the widget has the input focus.
+         * @read-only
+         * @category Inherited from Gtk.Widget
          */
         get hasFocus(): boolean;
         /**
-         * Enables or disables the emission of the [signal`Gtk`.Widget::query-tooltip]
+         * Enables or disables the emission of the `Gtk.Widget::query-tooltip`
          * signal on `widget`.
          *
          * A true value indicates that `widget` can have a tooltip, in this case
-         * the widget will be queried using [signal`Gtk`.Widget::query-tooltip] to
+         * the widget will be queried using `Gtk.Widget::query-tooltip` to
          * determine whether it will provide a tooltip or not.
+         * @category Inherited from Gtk.Widget
          */
         get has_tooltip(): boolean;
         set has_tooltip(val: boolean);
         /**
-         * Enables or disables the emission of the [signal`Gtk`.Widget::query-tooltip]
+         * Enables or disables the emission of the `Gtk.Widget::query-tooltip`
          * signal on `widget`.
          *
          * A true value indicates that `widget` can have a tooltip, in this case
-         * the widget will be queried using [signal`Gtk`.Widget::query-tooltip] to
+         * the widget will be queried using `Gtk.Widget::query-tooltip` to
          * determine whether it will provide a tooltip or not.
+         * @category Inherited from Gtk.Widget
          */
         get hasTooltip(): boolean;
         set hasTooltip(val: boolean);
@@ -10738,6 +11424,7 @@ export namespace AgsGui {
          * Overrides for height request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @category Inherited from Gtk.Widget
          */
         get height_request(): number;
         set height_request(val: number);
@@ -10745,39 +11432,45 @@ export namespace AgsGui {
          * Overrides for height request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @category Inherited from Gtk.Widget
          */
         get heightRequest(): number;
         set heightRequest(val: number);
         /**
          * Whether to expand horizontally.
+         * @category Inherited from Gtk.Widget
          */
         get hexpand(): boolean;
         set hexpand(val: boolean);
         /**
          * Whether to use the `hexpand` property.
+         * @category Inherited from Gtk.Widget
          */
         get hexpand_set(): boolean;
         set hexpand_set(val: boolean);
         /**
          * Whether to use the `hexpand` property.
+         * @category Inherited from Gtk.Widget
          */
         get hexpandSet(): boolean;
         set hexpandSet(val: boolean);
         /**
-         * The [class`Gtk`.LayoutManager] instance to use to compute
+         * The {@link Gtk.LayoutManager} instance to use to compute
          * the preferred size of the widget, and allocate its children.
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @category Inherited from Gtk.Widget
          */
         get layout_manager(): Gtk.LayoutManager;
         set layout_manager(val: Gtk.LayoutManager);
         /**
-         * The [class`Gtk`.LayoutManager] instance to use to compute
+         * The {@link Gtk.LayoutManager} instance to use to compute
          * the preferred size of the widget, and allocate its children.
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @category Inherited from Gtk.Widget
          */
         get layoutManager(): Gtk.LayoutManager;
         set layoutManager(val: Gtk.LayoutManager);
@@ -10787,7 +11480,9 @@ export namespace AgsGui {
          *
          * Global event controllers will not handle events with targets
          * inside the widget, unless they are set up to ignore propagation
-         * limits. See [method`Gtk`.EventController.set_propagation_limit].
+         * limits. See {@link Gtk.EventController.set_propagation_limit}.
+         * @since 4.18
+         * @category Inherited from Gtk.Widget
          */
         get limit_events(): boolean;
         set limit_events(val: boolean);
@@ -10797,7 +11492,9 @@ export namespace AgsGui {
          *
          * Global event controllers will not handle events with targets
          * inside the widget, unless they are set up to ignore propagation
-         * limits. See [method`Gtk`.EventController.set_propagation_limit].
+         * limits. See {@link Gtk.EventController.set_propagation_limit}.
+         * @since 4.18
+         * @category Inherited from Gtk.Widget
          */
         get limitEvents(): boolean;
         set limitEvents(val: boolean);
@@ -10806,7 +11503,8 @@ export namespace AgsGui {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get margin_bottom(): number;
         set margin_bottom(val: number);
@@ -10815,7 +11513,8 @@ export namespace AgsGui {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get marginBottom(): number;
         set marginBottom(val: number);
@@ -10827,7 +11526,8 @@ export namespace AgsGui {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get margin_end(): number;
         set margin_end(val: number);
@@ -10839,7 +11539,8 @@ export namespace AgsGui {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get marginEnd(): number;
         set marginEnd(val: number);
@@ -10851,7 +11552,8 @@ export namespace AgsGui {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get margin_start(): number;
         set margin_start(val: number);
@@ -10863,7 +11565,8 @@ export namespace AgsGui {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get marginStart(): number;
         set marginStart(val: number);
@@ -10872,7 +11575,8 @@ export namespace AgsGui {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get margin_top(): number;
         set margin_top(val: number);
@@ -10881,17 +11585,20 @@ export namespace AgsGui {
          *
          * This property adds margin outside of the widget's normal size
          * request, the margin will be added in addition to the size from
-         * [method`Gtk`.Widget.set_size_request] for example.
+         * {@link Gtk.Widget.set_size_request} for example.
+         * @category Inherited from Gtk.Widget
          */
         get marginTop(): number;
         set marginTop(val: number);
         /**
          * The name of the widget.
+         * @category Inherited from Gtk.Widget
          */
         get name(): string;
         set name(val: string);
         /**
          * The requested opacity of the widget.
+         * @category Inherited from Gtk.Widget
          */
         get opacity(): number;
         set opacity(val: number);
@@ -10900,39 +11607,51 @@ export namespace AgsGui {
          *
          * This property is meant to be set by widget implementations,
          * typically in their instance init function.
+         * @category Inherited from Gtk.Widget
          */
         get overflow(): Gtk.Overflow;
         set overflow(val: Gtk.Overflow);
         /**
          * The parent widget of this widget.
+         * @read-only
+         * @category Inherited from Gtk.Widget
          */
         get parent(): Gtk.Widget;
         /**
          * Whether the widget will receive the default action when it is focused.
+         * @category Inherited from Gtk.Widget
          */
         get receives_default(): boolean;
         set receives_default(val: boolean);
         /**
          * Whether the widget will receive the default action when it is focused.
+         * @category Inherited from Gtk.Widget
          */
         get receivesDefault(): boolean;
         set receivesDefault(val: boolean);
         /**
-         * The `GtkRoot` widget of the widget tree containing this widget.
+         * The {@link Gtk.Root} widget of the widget tree containing this widget.
          *
          * This will be `NULL` if the widget is not contained in a root widget.
+         * @read-only
+         * @category Inherited from Gtk.Widget
          */
         get root(): Gtk.Root;
         /**
          * The scale factor of the widget.
+         * @read-only
+         * @category Inherited from Gtk.Widget
          */
         get scale_factor(): number;
         /**
          * The scale factor of the widget.
+         * @read-only
+         * @category Inherited from Gtk.Widget
          */
         get scaleFactor(): number;
         /**
          * Whether the widget responds to input.
+         * @category Inherited from Gtk.Widget
          */
         get sensitive(): boolean;
         set sensitive(val: boolean);
@@ -10940,16 +11659,17 @@ export namespace AgsGui {
          * Sets the text of tooltip to be the given string, which is marked up
          * with Pango markup.
          *
-         * Also see [method`Gtk`.Tooltip.set_markup].
+         * Also see {@link Gtk.Tooltip.set_markup}.
          *
          * This is a convenience property which will take care of getting the
          * tooltip shown if the given string is not `NULL`:
-         * [property`Gtk`.Widget:has-tooltip] will automatically be set to true
-         * and there will be taken care of [signal`Gtk`.Widget::query-tooltip] in
+         * {@link Gtk.Widget.has_tooltip} will automatically be set to true
+         * and there will be taken care of `Gtk.Widget::query-tooltip` in
          * the default signal handler.
          *
-         * Note that if both [property`Gtk`.Widget:tooltip-text] and
-         * [property`Gtk`.Widget:tooltip-markup] are set, the last one wins.
+         * Note that if both {@link Gtk.Widget.tooltip_text} and
+         * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @category Inherited from Gtk.Widget
          */
         get tooltip_markup(): string;
         set tooltip_markup(val: string);
@@ -10957,73 +11677,81 @@ export namespace AgsGui {
          * Sets the text of tooltip to be the given string, which is marked up
          * with Pango markup.
          *
-         * Also see [method`Gtk`.Tooltip.set_markup].
+         * Also see {@link Gtk.Tooltip.set_markup}.
          *
          * This is a convenience property which will take care of getting the
          * tooltip shown if the given string is not `NULL`:
-         * [property`Gtk`.Widget:has-tooltip] will automatically be set to true
-         * and there will be taken care of [signal`Gtk`.Widget::query-tooltip] in
+         * {@link Gtk.Widget.has_tooltip} will automatically be set to true
+         * and there will be taken care of `Gtk.Widget::query-tooltip` in
          * the default signal handler.
          *
-         * Note that if both [property`Gtk`.Widget:tooltip-text] and
-         * [property`Gtk`.Widget:tooltip-markup] are set, the last one wins.
+         * Note that if both {@link Gtk.Widget.tooltip_text} and
+         * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @category Inherited from Gtk.Widget
          */
         get tooltipMarkup(): string;
         set tooltipMarkup(val: string);
         /**
          * Sets the text of tooltip to be the given string.
          *
-         * Also see [method`Gtk`.Tooltip.set_text].
+         * Also see {@link Gtk.Tooltip.set_text}.
          *
          * This is a convenience property which will take care of getting the
          * tooltip shown if the given string is not `NULL`:
-         * [property`Gtk`.Widget:has-tooltip] will automatically be set to true
-         * and there will be taken care of [signal`Gtk`.Widget::query-tooltip] in
+         * {@link Gtk.Widget.has_tooltip} will automatically be set to true
+         * and there will be taken care of `Gtk.Widget::query-tooltip` in
          * the default signal handler.
          *
-         * Note that if both [property`Gtk`.Widget:tooltip-text] and
-         * [property`Gtk`.Widget:tooltip-markup] are set, the last one wins.
+         * Note that if both {@link Gtk.Widget.tooltip_text} and
+         * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @category Inherited from Gtk.Widget
          */
         get tooltip_text(): string;
         set tooltip_text(val: string);
         /**
          * Sets the text of tooltip to be the given string.
          *
-         * Also see [method`Gtk`.Tooltip.set_text].
+         * Also see {@link Gtk.Tooltip.set_text}.
          *
          * This is a convenience property which will take care of getting the
          * tooltip shown if the given string is not `NULL`:
-         * [property`Gtk`.Widget:has-tooltip] will automatically be set to true
-         * and there will be taken care of [signal`Gtk`.Widget::query-tooltip] in
+         * {@link Gtk.Widget.has_tooltip} will automatically be set to true
+         * and there will be taken care of `Gtk.Widget::query-tooltip` in
          * the default signal handler.
          *
-         * Note that if both [property`Gtk`.Widget:tooltip-text] and
-         * [property`Gtk`.Widget:tooltip-markup] are set, the last one wins.
+         * Note that if both {@link Gtk.Widget.tooltip_text} and
+         * {@link Gtk.Widget.tooltip_markup} are set, the last one wins.
+         * @category Inherited from Gtk.Widget
          */
         get tooltipText(): string;
         set tooltipText(val: string);
         /**
          * How to distribute vertical space if widget gets extra space.
+         * @category Inherited from Gtk.Widget
          */
         get valign(): Gtk.Align;
         set valign(val: Gtk.Align);
         /**
          * Whether to expand vertically.
+         * @category Inherited from Gtk.Widget
          */
         get vexpand(): boolean;
         set vexpand(val: boolean);
         /**
          * Whether to use the `vexpand` property.
+         * @category Inherited from Gtk.Widget
          */
         get vexpand_set(): boolean;
         set vexpand_set(val: boolean);
         /**
          * Whether to use the `vexpand` property.
+         * @category Inherited from Gtk.Widget
          */
         get vexpandSet(): boolean;
         set vexpandSet(val: boolean);
         /**
          * Whether the widget is visible.
+         * @category Inherited from Gtk.Widget
          */
         get visible(): boolean;
         set visible(val: boolean);
@@ -11031,6 +11759,7 @@ export namespace AgsGui {
          * Overrides for width request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @category Inherited from Gtk.Widget
          */
         get width_request(): number;
         set width_request(val: number);
@@ -11038,43 +11767,42 @@ export namespace AgsGui {
          * Overrides for width request of the widget.
          *
          * If this is -1, the natural request will be used.
+         * @category Inherited from Gtk.Widget
          */
         get widthRequest(): number;
         set widthRequest(val: number);
-
-        // Inherited methods
         /**
-         * Returns the renderer that is used for this `GtkNative`.
-         * @returns the renderer for @self
+         * Returns the renderer that is used for this {@link Gtk.Native}.
+         * @returns the renderer for `self`
          */
         get_renderer(): Gsk.Renderer | null;
         /**
-         * Returns the surface of this `GtkNative`.
-         * @returns the surface of @self
+         * Returns the surface of this {@link Gtk.Native}.
+         * @returns the surface of `self`
          */
         get_surface(): Gdk.Surface | null;
         /**
          * Retrieves the surface transform of `self`.
          *
-         * This is the translation from `self'`s surface coordinates into
-         * `self'`s widget coordinates.
+         * This is the translation from `self`'s surface coordinates into
+         * `self`'s widget coordinates.
          */
         get_surface_transform(): [number, number];
         /**
-         * Realizes a `GtkNative`.
+         * Realizes a {@link Gtk.Native}.
          *
          * This should only be used by subclasses.
          */
         realize(): void;
         /**
-         * Unrealizes a `GtkNative`.
+         * Unrealizes a {@link Gtk.Native}.
          *
          * This should only be used by subclasses.
          */
         unrealize(): void;
         /**
-         * Returns the display that this `GtkRoot` is on.
-         * @returns the display of @root
+         * Returns the display that this {@link Gtk.Root} is on.
+         * @returns the display of `root`
          */
         get_display(): Gdk.Display;
         /**
@@ -11082,7 +11810,7 @@ export namespace AgsGui {
          *
          * Note that this is the widget that would have the focus
          * if the root is active; if the root is not focused then
-         * `gtk_widget_has_focus (widget)` will be %FALSE for the
+         * `gtk_widget_has_focus (widget)` will be `false` for the
          * widget.
          * @returns the currently focused widget
          */
@@ -11091,23 +11819,25 @@ export namespace AgsGui {
          * If `focus` is not the current focus widget, and is focusable, sets
          * it as the focus widget for the root.
          *
-         * If `focus` is %NULL, unsets the focus widget for the root.
+         * If `focus` is `null`, unsets the focus widget for the root.
          *
          * To set the focus to a particular widget in the root, it is usually
-         * more convenient to use [method`Gtk`.Widget.grab_focus] instead of
+         * more convenient to use {@link Gtk.Widget.grab_focus} instead of
          * this function.
-         * @param focus widget to be the new focus widget, or %NULL    to unset the focus widget
+         * @param focus widget to be the new focus widget, or `null`    to unset the focus widget
          */
         set_focus(focus?: Gtk.Widget | null): void;
         /**
-         * Add a `GtkShortcutController` to be managed.
+         * Add a {@link Gtk.ShortcutController} to be managed.
          * @param controller
+         * @virtual
          */
         vfunc_add_controller(controller: Gtk.ShortcutController): void;
         /**
-         * Remove a `GtkShortcutController` that had previously
+         * Remove a {@link Gtk.ShortcutController} that had previously
          *   been added
          * @param controller
+         * @virtual
          */
         vfunc_remove_controller(controller: Gtk.ShortcutController): void;
         /**
@@ -11123,32 +11853,32 @@ export namespace AgsGui {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -11157,39 +11887,39 @@ export namespace AgsGui {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -11200,13 +11930,16 @@ export namespace AgsGui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -11214,7 +11947,7 @@ export namespace AgsGui {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -11222,9 +11955,9 @@ export namespace AgsGui {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -11244,9 +11977,9 @@ export namespace AgsGui {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -11259,34 +11992,34 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -11319,22 +12052,22 @@ export namespace AgsGui {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -11343,8 +12076,8 @@ export namespace AgsGui {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -11361,10 +12094,10 @@ export namespace AgsGui {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -11379,13 +12112,13 @@ export namespace AgsGui {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -11416,21 +12149,21 @@ export namespace AgsGui {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -11440,33 +12173,34 @@ export namespace AgsGui {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -11475,6 +12209,7 @@ export namespace AgsGui {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -11483,12 +12218,14 @@ export namespace AgsGui {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -11497,20 +12234,22 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -11522,6 +12261,7 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -11551,7 +12291,7 @@ export namespace AgsGui {
         stop_emission_by_name(detailedName: string): void;
         /**
          * Enables or disables an action installed with
-         * [method`Gtk`.WidgetClass.install_action].
+         * {@link Gtk.WidgetClass.install_action}.
          * @param action_name action name, such as "clipboard.paste"
          * @param enabled whether the action is now enabled
          */
@@ -11560,15 +12300,15 @@ export namespace AgsGui {
          * Activates the widget.
          *
          * The activation will emit the signal set using
-         * [method`Gtk`.WidgetClass.set_activate_signal]
+         * {@link Gtk.WidgetClass.set_activate_signal}
          * during class initialization.
          *
          * Activation is what happens when you press <kbd>Enter</kbd>
          * on a widget.
          *
          * If you wish to handle the activation keybinding yourself,
-         * it is recommended to use [method`Gtk`.WidgetClass.add_shortcut]
-         * with an action created with [ctor`Gtk`.SignalAction.new].
+         * it is recommended to use {@link Gtk.WidgetClass.add_shortcut}
+         * with an action created with {@link Gtk.SignalAction.new}.
          *
          * If `widget` is not activatable, the function returns false.
          * @returns true if the widget was activated
@@ -11581,12 +12321,12 @@ export namespace AgsGui {
          * `widget` and its ancestors.
          *
          * If the action is in an action group added with
-         * [method`Gtk`.Widget.insert_action_group], the `name` is expected
+         * {@link Gtk.Widget.insert_action_group}, the `name` is expected
          * to be prefixed with the prefix that was used when the group was
          * inserted.
          *
          * The arguments must match the actions expected parameter type,
-         * as returned by [method`Gio`.Action.get_parameter_type].
+         * as returned by {@link Gio.Action.get_parameter_type}.
          * @param name the name of the action to activate
          * @param args parameters to use
          * @returns true if the action was activated
@@ -11596,7 +12336,7 @@ export namespace AgsGui {
          * Activates the `default.activate` action for the widget.
          *
          * The action is looked up in the same was as for
-         * [method`Gtk`.Widget.activate_action].
+         * {@link Gtk.Widget.activate_action}.
          */
         activate_default(): void;
         /**
@@ -11606,7 +12346,7 @@ export namespace AgsGui {
          * propagated to the widget.
          *
          * You will usually want to call this function right after
-         * creating any kind of [class`Gtk`.EventController].
+         * creating any kind of {@link Gtk.EventController}.
          * @param controller an event controller that hasn't been   added to a widget yet
          */
         add_controller(controller: Gtk.EventController): void;
@@ -11614,22 +12354,22 @@ export namespace AgsGui {
          * Adds a style class to the widget.
          *
          * After calling this function, the widget’s style will match
-         * for `css_class,` according to CSS matching rules.
+         * for `css_class`, according to CSS matching rules.
          *
-         * Use [method`Gtk`.Widget.remove_css_class] to remove the
+         * Use {@link Gtk.Widget.remove_css_class} to remove the
          * style again.
-         * @param css_class style class to add to @widget, without the leading period
+         * @param css_class style class to add to `widget`, without the leading period
          */
         add_css_class(css_class: string): void;
         /**
          * Adds a widget to the list of mnemonic labels for this widget.
          *
-         * See [method`Gtk`.Widget.list_mnemonic_labels].
+         * See {@link Gtk.Widget.list_mnemonic_labels}.
          *
          * Note that the list of mnemonic labels for the widget is cleared
          * when the widget is destroyed, so the caller must make sure
          * to update its internal state at this point as well.
-         * @param label a widget that acts as a mnemonic label for @widget
+         * @param label a widget that acts as a mnemonic label for `widget`
          */
         add_mnemonic_label(label: Gtk.Widget): void;
         /**
@@ -11645,20 +12385,20 @@ export namespace AgsGui {
          * The tick callback does not automatically imply a relayout or repaint.
          * If you want a repaint or relayout, and aren’t changing widget properties
          * that would trigger that (for example, changing the text of a label),
-         * then you will have to call [method`Gtk`.Widget.queue_resize] or
-         * [method`Gtk`.Widget.queue_draw] yourself.
+         * then you will have to call {@link Gtk.Widget.queue_resize} or
+         * {@link Gtk.Widget.queue_draw} yourself.
          *
-         * [method`Gdk`.FrameClock.get_frame_time] should generally be used
+         * {@link Gdk.FrameClock.get_frame_time} should generally be used
          * for timing continuous animations and
-         * [method`Gdk`.FrameTimings.get_predicted_presentation_time] should be
+         * {@link Gdk.FrameTimings.get_predicted_presentation_time} should be
          * used if you are trying to display isolated frames at particular times.
          *
          * This is a more convenient alternative to connecting directly to the
-         * [signal`Gdk`.FrameClock::update] signal of the frame clock, since you
+         * `Gdk.FrameClock::update` signal of the frame clock, since you
          * don't have to worry about when a frame clock is assigned to a widget.
          *
          * To remove a tick callback, pass the ID that is returned by this function
-         * to [method`Gtk`.Widget.remove_tick_callback].
+         * to {@link Gtk.Widget.remove_tick_callback}.
          * @param callback function   to call for updating animations
          * @returns an ID for this callback
          */
@@ -11674,7 +12414,7 @@ export namespace AgsGui {
          * This function is only used by widget implementations.
          *
          * For a version that does not take a transform, see
-         * [method`Gtk`.Widget.size_allocate].
+         * {@link Gtk.Widget.size_allocate}.
          * @param width new width
          * @param height new height
          * @param baseline new baseline, or -1
@@ -11688,7 +12428,7 @@ export namespace AgsGui {
          * The `direction` argument indicates what kind of motion is taking
          * place (up, down, left, right, tab forward, tab backward).
          *
-         * This function calls the [vfunc`Gtk`.Widget.focus] virtual function;
+         * This function calls the {@link Gtk.Widget.focus} virtual function;
          * widgets can override the virtual function in order to implement
          * appropriate focus behavior.
          *
@@ -11696,14 +12436,14 @@ export namespace AgsGui {
          * true if moving in `direction` left the focus on a focusable location
          * inside that widget, and false if moving in `direction` moved the focus
          * outside the widget. When returning true, widgets normally call
-         * [method`Gtk`.Widget.grab_focus] to place the focus accordingly;
+         * {@link Gtk.Widget.grab_focus} to place the focus accordingly;
          * when returning false, they don’t modify the current focus location.
          *
          * This function is used by custom widget implementations; if you're
-         * writing an app, you’d use [method`Gtk`.Widget.grab_focus] to move
+         * writing an app, you’d use {@link Gtk.Widget.grab_focus} to move
          * the focus to a particular widget.
          * @param direction direction of focus movement
-         * @returns true if focus ended up inside @widget
+         * @returns true if focus ended up inside `widget`
          */
         child_focus(direction: Gtk.DirectionType | null): boolean;
         /**
@@ -11714,7 +12454,7 @@ export namespace AgsGui {
          * overview to learn more.
          *
          * If the operation is successful, true is returned. If `widget` has no
-         * bounds or the bounds cannot be expressed in `target'`s coordinate space
+         * bounds or the bounds cannot be expressed in `target`'s coordinate space
          * (for example if both widgets are in different windows), false is
          * returned and `bounds` is set to the zero rectangle.
          *
@@ -11728,7 +12468,7 @@ export namespace AgsGui {
          * extra space when possible.
          *
          * Widgets with children should check this, rather than looking at
-         * [method`Gtk`.Widget.get_hexpand] or [method`Gtk`.Widget.get_vexpand].
+         * {@link Gtk.Widget.get_hexpand} or {@link Gtk.Widget.get_vexpand}.
          *
          * This function already checks whether the widget is visible, so
          * visibility does not need to be checked separately. Non-visible
@@ -11742,20 +12482,20 @@ export namespace AgsGui {
          */
         compute_expand(orientation: Gtk.Orientation | null): boolean;
         /**
-         * Translates the given `point` in `widget'`s coordinates to coordinates
-         * in `target’`s coordinate system.
+         * Translates the given `point` in `widget`'s coordinates to coordinates
+         * in `target`’s coordinate system.
          *
          * In order to perform this operation, both widgets must share a
          * a common ancestor. If that is not the case, `out_point` is set
          * to (0, 0) and false is returned.
          * @param target the widget to transform into
-         * @param point a point in @widget's coordinate system
-         * @returns true if @src_widget and @dest_widget have a common   ancestor, false otherwise
+         * @param point a point in `widget`'s coordinate system
+         * @returns true if `src_widget` and `dest_widget` have a common   ancestor, false otherwise
          */
         compute_point(target: Gtk.Widget, point: Graphene.Point): [boolean, Graphene.Point];
         /**
          * Computes a matrix suitable to describe a transformation from
-         * `widget'`s coordinate system into `target'`s coordinate system.
+         * `widget`'s coordinate system into `target`'s coordinate system.
          *
          * The transform can not be computed in certain cases, for example
          * when `widget` and `target` do not share a common ancestor. In that
@@ -11771,47 +12511,47 @@ export namespace AgsGui {
          * Tests if a given point is contained in the widget.
          *
          * The coordinates for (x, y) must be in widget coordinates, so
-         * (0, 0) is assumed to be the top left of `widget'`s content area.
-         * @param x X coordinate to test, relative to @widget's origin
-         * @param y Y coordinate to test, relative to @widget's origin
-         * @returns true if @widget contains the point (x, y)
+         * (0, 0) is assumed to be the top left of `widget`'s content area.
+         * @param x X coordinate to test, relative to `widget`'s origin
+         * @param y Y coordinate to test, relative to `widget`'s origin
+         * @returns true if `widget` contains the point (x, y)
          */
         contains(x: number, y: number): boolean;
         /**
-         * Creates a new `PangoContext` that is configured for the widget.
+         * Creates a new {@link Pango.Context} that is configured for the widget.
          *
-         * The `PangoContext` will have the appropriate font map,
+         * The {@link Pango.Context} will have the appropriate font map,
          * font options, font description, and base direction set.
          *
-         * See also [method`Gtk`.Widget.get_pango_context].
-         * @returns the new `PangoContext`
+         * See also {@link Gtk.Widget.get_pango_context}.
+         * @returns the new {@link Pango.Context}
          */
         create_pango_context(): Pango.Context;
         /**
-         * Creates a new `PangoLayout` that is configured for the widget.
+         * Creates a new {@link Pango.Layout} that is configured for the widget.
          *
-         * The `PangoLayout` will have the appropriate font map,
+         * The {@link Pango.Layout} will have the appropriate font map,
          * font description, and base direction set.
          *
-         * If you keep a `PangoLayout` created in this way around,
-         * you need to re-create it when the widgets `PangoContext`
+         * If you keep a {@link Pango.Layout} created in this way around,
+         * you need to re-create it when the widgets {@link Pango.Context}
          * is replaced. This can be tracked by listening to changes
-         * of the [property`Gtk`.Widget:root] property on the widget.
+         * of the {@link Gtk.Widget.root} property on the widget.
          * @param text text to set on the layout
-         * @returns the new `PangoLayout`
+         * @returns the new {@link Pango.Layout}
          */
         create_pango_layout(text?: string | null): Pango.Layout;
         /**
          * Clears the template children for the widget.
          *
-         * This function is the opposite of [method`Gtk`.Widget.init_template],
+         * This function is the opposite of {@link Gtk.Widget.init_template},
          * and it is used to clear all the template children from a widget
          * instance. If you bound a template child to a field in the instance
          * structure, or in the instance private data structure, the field will
          * be set to `NULL` after this function returns.
          *
-         * You should call this function inside the `GObjectClass.dispose()`
-         * implementation of any widget that called [method`Gtk`.Widget.init_template].
+         * You should call this function inside the {@link GObject.Object.dispose}
+         * implementation of any widget that called {@link Gtk.Widget.init_template}.
          * Typically, you will want to call this function last, right before
          * chaining up to the parent type's dispose implementation, e.g.
          *
@@ -11842,10 +12582,10 @@ export namespace AgsGui {
         /**
          * Notifies the user about an input-related error on the widget.
          *
-         * If the [property`Gtk`.Settings:gtk-error-bell] setting is true,
-         * it calls [method`Gdk`.Surface.beep], otherwise it does nothing.
+         * If the {@link Gtk.Settings.gtk_error_bell} setting is true,
+         * it calls {@link Gdk.Surface.beep}, otherwise it does nothing.
          *
-         * Note that the effect of [method`Gdk`.Surface.beep] can be configured
+         * Note that the effect of {@link Gdk.Surface.beep} can be configured
          * in many ways, depending on the windowing backend and the desktop
          * environment or window manager that is used.
          */
@@ -11854,9 +12594,9 @@ export namespace AgsGui {
          * Returns the baseline that has currently been allocated to the widget.
          *
          * This function is intended to be used when implementing handlers
-         * for the `GtkWidget`Class.snapshot() function, and when allocating
-         * child widgets in `GtkWidget`Class.size_allocate().
-         * @returns the baseline of the @widget, or -1 if none
+         * for the {@link Gtk.Widget.snapshot} function, and when allocating
+         * child widgets in {@link Gtk.Widget.size_allocate}.
+         * @returns the baseline of the `widget`, or -1 if none
          */
         get_allocated_baseline(): number;
         /**
@@ -11864,7 +12604,7 @@ export namespace AgsGui {
          *
          * To learn more about widget sizes, see the coordinate
          * system [overview](coordinates.html).
-         * @returns the height of the @widget
+         * @returns the height of the `widget`
          */
         get_allocated_height(): number;
         /**
@@ -11872,7 +12612,7 @@ export namespace AgsGui {
          *
          * To learn more about widget sizes, see the coordinate
          * system [overview](coordinates.html).
-         * @returns the width of the @widget
+         * @returns the width of the `widget`
          */
         get_allocated_width(): number;
         /**
@@ -11880,13 +12620,13 @@ export namespace AgsGui {
          *
          * Note, when implementing a layout widget: a widget’s allocation
          * will be its “adjusted” allocation, that is, the widget’s parent
-         * typically calls [method`Gtk`.Widget.size_allocate] with an allocation,
+         * typically calls {@link Gtk.Widget.size_allocate} with an allocation,
          * and that allocation is then adjusted (to handle margin
          * and alignment for example) before assignment to the widget.
-         * [method`Gtk`.Widget.get_allocation] returns the adjusted allocation that
+         * {@link Gtk.Widget.get_allocation} returns the adjusted allocation that
          * was actually assigned to the widget. The adjusted allocation is
          * guaranteed to be completely contained within the
-         * [method`Gtk`.Widget.size_allocate] allocation, however.
+         * {@link Gtk.Widget.size_allocate} allocation, however.
          *
          * So a layout widget is guaranteed that its children stay inside
          * the assigned bounds, but not that they have exactly the bounds the
@@ -11897,11 +12637,11 @@ export namespace AgsGui {
          * Gets the first ancestor of the widget with type `widget_type`.
          *
          * For example, `gtk_widget_get_ancestor (widget, GTK_TYPE_BOX)`
-         * gets the first `GtkBox` that’s an ancestor of `widget`. No
+         * gets the first {@link Gtk.Box} that’s an ancestor of `widget`. No
          * reference will be added to the returned widget; it should
          * not be unreferenced.
          *
-         * Note that unlike [method`Gtk`.Widget.is_ancestor], this function
+         * Note that unlike {@link Gtk.Widget.is_ancestor}, this function
          * considers `widget` to be an ancestor of itself.
          * @param widget_type ancestor type
          * @returns the ancestor widget
@@ -11911,26 +12651,26 @@ export namespace AgsGui {
          * Returns the baseline that has currently been allocated to the widget.
          *
          * This function is intended to be used when implementing handlers
-         * for the `GtkWidgetClass.snapshot()` function, and when allocating
-         * child widgets in `GtkWidgetClass.size_allocate()`.
-         * @returns the baseline of the @widget, or -1 if none
+         * for the {@link Gtk.Widget.snapshot} function, and when allocating
+         * child widgets in {@link Gtk.Widget.size_allocate}.
+         * @returns the baseline of the `widget`, or -1 if none
          */
         get_baseline(): number;
         /**
          * Determines whether the input focus can enter the widget or any
          * of its children.
          *
-         * See [method`Gtk`.Widget.set_can_focus].
-         * @returns true if the input focus can enter @widget
+         * See {@link Gtk.Widget.set_can_focus}.
+         * @returns true if the input focus can enter `widget`
          */
         get_can_focus(): boolean;
         /**
          * Queries whether the widget can be the target of pointer events.
-         * @returns true if @widget can receive pointer events
+         * @returns true if `widget` can receive pointer events
          */
         get_can_target(): boolean;
         /**
-         * Gets the value set with [method`Gtk`.Widget.set_child_visible].
+         * Gets the value set with {@link Gtk.Widget.set_child_visible}.
          *
          * If you feel a need to use this function, your code probably
          * needs reorganization.
@@ -11961,7 +12701,7 @@ export namespace AgsGui {
         get_color(): Gdk.RGBA;
         /**
          * Returns the list of style classes applied to the widget.
-         * @returns a `NULL`-terminated list of   css classes currently applied to @widget
+         * @returns a `NULL`-terminated list of   css classes currently applied to `widget`
          */
         get_css_classes(): string[];
         /**
@@ -11972,14 +12712,14 @@ export namespace AgsGui {
         /**
          * Gets the cursor set on the widget.
          *
-         * See [method`Gtk`.Widget.set_cursor] for details.
-         * @returns the cursor   that is set on @widget
+         * See {@link Gtk.Widget.set_cursor} for details.
+         * @returns the cursor   that is set on `widget`
          */
         get_cursor(): Gdk.Cursor | null;
         /**
          * Gets the reading direction for the widget.
          *
-         * See [method`Gtk`.Widget.set_direction].
+         * See {@link Gtk.Widget.set_direction}.
          * @returns the reading direction for the widget
          */
         get_direction(): Gtk.TextDirection;
@@ -11992,35 +12732,35 @@ export namespace AgsGui {
         get_first_child(): Gtk.Widget | null;
         /**
          * Returns the focus child of the widget.
-         * @returns the current focus   child of @widget
+         * @returns the current focus   child of `widget`
          */
         get_focus_child(): Gtk.Widget | null;
         /**
          * Returns whether the widget should grab focus when it is clicked
          * with the mouse.
          *
-         * See [method`Gtk`.Widget.set_focus_on_click].
+         * See {@link Gtk.Widget.set_focus_on_click}.
          * @returns true if the widget should grab focus when it is   clicked with the mouse
          */
         get_focus_on_click(): boolean;
         /**
          * Determines whether the widget can own the input focus.
          *
-         * See [method`Gtk`.Widget.set_focusable].
-         * @returns true if @widget can own the input focus
+         * See {@link Gtk.Widget.set_focusable}.
+         * @returns true if `widget` can own the input focus
          */
         get_focusable(): boolean;
         /**
          * Gets the font map of the widget.
          *
-         * See [method`Gtk`.Widget.set_font_map].
-         * @returns the font map of @widget
+         * See {@link Gtk.Widget.set_font_map}.
+         * @returns the font map of `widget`
          */
         get_font_map(): Pango.FontMap | null;
         /**
          * Returns the `cairo_font_options_t` of the widget.
          *
-         * Seee [method`Gtk`.Widget.set_font_options].
+         * Seee {@link Gtk.Widget.set_font_options}.
          * @returns the `cairo_font_options_t` of widget
          */
         get_font_options(): cairo.FontOptions | null;
@@ -12029,17 +12769,17 @@ export namespace AgsGui {
          *
          * The frame clock is a global “ticker” that can be used to drive
          * animations and repaints. The most common reason to get the frame
-         * clock is to call [method`Gdk`.FrameClock.get_frame_time], in order
+         * clock is to call {@link Gdk.FrameClock.get_frame_time}, in order
          * to get a time to use for animating. For example you might record
          * the start of the animation with an initial value from
-         * [method`Gdk`.FrameClock.get_frame_time], and then update the animation
-         * by calling [method`Gdk`.FrameClock.get_frame_time] again during each repaint.
+         * {@link Gdk.FrameClock.get_frame_time}, and then update the animation
+         * by calling {@link Gdk.FrameClock.get_frame_time} again during each repaint.
          *
-         * [method`Gdk`.FrameClock.request_phase] will result in a new frame on the
+         * {@link Gdk.FrameClock.request_phase} will result in a new frame on the
          * clock, but won’t necessarily repaint any widgets. To repaint a widget,
-         * you have to use [method`Gtk`.Widget.queue_draw] which invalidates the
+         * you have to use {@link Gtk.Widget.queue_draw} which invalidates the
          * widget (thus scheduling it to receive a draw on the next frame).
-         * [method`Gtk`.Widget.queue_draw] will also end up requesting a frame
+         * {@link Gtk.Widget.queue_draw} will also end up requesting a frame
          * on the appropriate frame clock.
          *
          * A widget’s frame clock will not change while the widget is mapped.
@@ -12055,15 +12795,15 @@ export namespace AgsGui {
          *
          * For backwards compatibility reasons this method will never return
          * one of the baseline alignments, but instead it will convert it to
-         * [enum`Gtk`.Align.fill] or [enum`Gtk`.Align.center].
+         * {@link Gtk.Align.FILL} or {@link Gtk.Align.CENTER}.
          *
          * Baselines are not supported for horizontal alignment.
-         * @returns the horizontal alignment of @widget
+         * @returns the horizontal alignment of `widget`
          */
         get_halign(): Gtk.Align;
         /**
          * Returns the current value of the `has-tooltip` property.
-         * @returns current value of `has-tooltip` on @widget
+         * @returns current value of `has-tooltip` on `widget`
          */
         get_has_tooltip(): boolean;
         /**
@@ -12071,13 +12811,13 @@ export namespace AgsGui {
          *
          * This function returns the height passed to its
          * size-allocate implementation, which is the height you
-         * should be using in [vfunc`Gtk`.Widget.snapshot].
+         * should be using in {@link Gtk.Widget.snapshot}.
          *
-         * For pointer events, see [method`Gtk`.Widget.contains].
+         * For pointer events, see {@link Gtk.Widget.contains}.
          *
          * To learn more about widget sizes, see the coordinate
          * system [overview](coordinates.html).
-         * @returns The height of @widget
+         * @returns The height of `widget`
          */
         get_height(): number;
         /**
@@ -12088,7 +12828,7 @@ export namespace AgsGui {
          * receive the extra space. For example, a list or scrollable area
          * or document in your window would often be set to expand.
          *
-         * Widgets with children should use [method`Gtk`.Widget.compute_expand]
+         * Widgets with children should use {@link Gtk.Widget.compute_expand}
          * rather than this function, to see whether any of its children,
          * has the expand flag set. If any child of a widget wants to
          * expand, the parent may ask to expand also.
@@ -12102,7 +12842,7 @@ export namespace AgsGui {
         /**
          * Gets whether the `hexpand` flag has been explicitly set.
          *
-         * If [property`Gtk`.Widget:hexpand] property is set, then it
+         * If {@link Gtk.Widget.hexpand} property is set, then it
          * overrides any computed expand value based on child widgets.
          * If `hexpand` is not set, then the expand value depends on
          * whether any children of the widget would like to expand.
@@ -12122,12 +12862,12 @@ export namespace AgsGui {
         /**
          * Retrieves the layout manager of the widget.
          *
-         * See [method`Gtk`.Widget.set_layout_manager].
-         * @returns the layout manager of @widget
+         * See {@link Gtk.Widget.set_layout_manager}.
+         * @returns the layout manager of `widget`
          */
         get_layout_manager(): Gtk.LayoutManager | null;
         /**
-         * Gets the value of the [property`Gtk`.Widget:limit-events] property.
+         * Gets the value of the {@link Gtk.Widget.limit_events} property.
          */
         get_limit_events(): boolean;
         /**
@@ -12137,39 +12877,39 @@ export namespace AgsGui {
         get_mapped(): boolean;
         /**
          * Gets the bottom margin of the widget.
-         * @returns The bottom margin of @widget
+         * @returns The bottom margin of `widget`
          */
         get_margin_bottom(): number;
         /**
          * Gets the end margin of the widget.
-         * @returns The end margin of @widget
+         * @returns The end margin of `widget`
          */
         get_margin_end(): number;
         /**
          * Gets the start margin of the widget.
-         * @returns The start margin of @widget
+         * @returns The start margin of `widget`
          */
         get_margin_start(): number;
         /**
          * Gets the top margin of the widget.
-         * @returns The top margin of @widget
+         * @returns The top margin of `widget`
          */
         get_margin_top(): number;
         /**
          * Retrieves the name of a widget.
          *
-         * See [method`Gtk`.Widget.set_name] for the significance of widget names.
+         * See {@link Gtk.Widget.set_name} for the significance of widget names.
          * @returns name of the widget
          */
         get_name(): string;
         /**
-         * Returns the nearest `GtkNative` ancestor of the widget.
+         * Returns the nearest {@link Gtk.Native} ancestor of the widget.
          *
          * This function will return `NULL` if the widget is not
          * contained inside a widget tree with a native ancestor.
          *
-         * `GtkNative` widgets will return themselves here.
-         * @returns the `GtkNative` ancestor of @widget
+         * {@link Gtk.Native} widgets will return themselves here.
+         * @returns the {@link Gtk.Native} ancestor of `widget`
          */
         get_native(): Gtk.Native | null;
         /**
@@ -12182,7 +12922,7 @@ export namespace AgsGui {
         /**
          * Fetches the requested opacity for the widget.
          *
-         * See [method`Gtk`.Widget.set_opacity].
+         * See {@link Gtk.Widget.set_opacity}.
          * @returns the requested opacity for this widget
          */
         get_opacity(): number;
@@ -12192,23 +12932,23 @@ export namespace AgsGui {
          */
         get_overflow(): Gtk.Overflow;
         /**
-         * Gets a `PangoContext` that is configured for the widget.
+         * Gets a {@link Pango.Context} that is configured for the widget.
          *
-         * The `PangoContext` will have the appropriate font map, font description,
+         * The {@link Pango.Context} will have the appropriate font map, font description,
          * and base direction set.
          *
-         * Unlike the context returned by [method`Gtk`.Widget.create_pango_context],
+         * Unlike the context returned by {@link Gtk.Widget.create_pango_context},
          * this context is owned by the widget (it can be used until the screen
          * for the widget changes or the widget is removed from its toplevel),
          * and will be updated to match any changes to the widget’s attributes.
          * This can be tracked by listening to changes of the
-         * [property`Gtk`.Widget:root] property on the widget.
-         * @returns the `PangoContext` for the widget
+         * {@link Gtk.Widget.root} property on the widget.
+         * @returns the {@link Pango.Context} for the widget
          */
         get_pango_context(): Pango.Context;
         /**
          * Returns the parent widget of the widget.
-         * @returns the parent widget of @widget
+         * @returns the parent widget of `widget`
          */
         get_parent(): Gtk.Widget | null;
         /**
@@ -12218,14 +12958,14 @@ export namespace AgsGui {
          * This is used to retrieve a suitable size by container widgets which do
          * not impose any restrictions on the child placement. It can be used
          * to deduce toplevel window and menu sizes as well as child widgets in
-         * free-form containers such as `GtkFixed`.
+         * free-form containers such as {@link Gtk.Fixed}.
          *
          * Handle with care. Note that the natural height of a height-for-width
          * widget will generally be a smaller size than the minimum height, since
          * the required height for the natural width is generally smaller than the
          * required height for the minimum width.
          *
-         * Use [method`Gtk`.Widget.measure] if you want to support baseline alignment.
+         * Use {@link Gtk.Widget.measure} if you want to support baseline alignment.
          */
         get_preferred_size(): [Gtk.Requisition | null, Gtk.Requisition | null];
         /**
@@ -12248,7 +12988,7 @@ export namespace AgsGui {
         get_primary_clipboard(): Gdk.Clipboard;
         /**
          * Determines whether the widget is realized.
-         * @returns true if @widget is realized
+         * @returns true if `widget` is realized
          */
         get_realized(): boolean;
         /**
@@ -12256,8 +12996,8 @@ export namespace AgsGui {
          * within its toplevel when it has the focus, even if another widget
          * is the default.
          *
-         * See [method`Gtk`.Widget.set_receives_default].
-         * @returns true if @widget acts as the default widget when focused
+         * See {@link Gtk.Widget.set_receives_default}.
+         * @returns true if `widget` acts as the default widget when focused
          */
         get_receives_default(): boolean;
         /**
@@ -12268,17 +13008,17 @@ export namespace AgsGui {
          * their child, more complex widgets need to request something
          * either in context of their children or in context of their
          * allocation capabilities.
-         * @returns The `GtkSizeRequestMode` preferred by @widget.
+         * @returns The {@link Gtk.SizeRequestMode} preferred by `widget`.
          */
         get_request_mode(): Gtk.SizeRequestMode;
         /**
-         * Returns the `GtkRoot` widget of the widget.
+         * Returns the {@link Gtk.Root} widget of the widget.
          *
          * This function will return `NULL` if the widget is not contained
          * inside a widget tree with a root widget.
          *
-         * `GtkRoot` widgets will return themselves here.
-         * @returns the root widget of @widget
+         * {@link Gtk.Root} widgets will return themselves here.
+         * @returns the root widget of `widget`
          */
         get_root(): Gtk.Root | null;
         /**
@@ -12288,32 +13028,32 @@ export namespace AgsGui {
          * On traditional systems this is 1, on high density outputs,
          * it can be a higher value (typically 2).
          *
-         * See [method`Gdk`.Surface.get_scale_factor].
+         * See {@link Gdk.Surface.get_scale_factor}.
          *
          * Note that modern systems may support *fractional* scaling,
          * where the scale factor is not an integer. On such systems,
          * this function will return the next higher integer value,
-         * but you probably want to use [method`Gdk`.Surface.get_scale]
+         * but you probably want to use {@link Gdk.Surface.get_scale}
          * to get the fractional scale value.
-         * @returns the scale factor for @widget
+         * @returns the scale factor for `widget`
          */
         get_scale_factor(): number;
         /**
          * Returns the widget’s sensitivity.
          *
          * This function returns the value that has been set using
-         * [method`Gtk`.Widget.set_sensitive]).
+         * {@link Gtk.Widget.set_sensitive}).
          *
          * The effective sensitivity of a widget is however determined
          * by both its own and its parent widget’s sensitivity.
-         * See [method`Gtk`.Widget.is_sensitive].
+         * See {@link Gtk.Widget.is_sensitive}.
          * @returns true if the widget is sensitive
          */
         get_sensitive(): boolean;
         /**
          * Gets the settings object holding the settings used for the widget.
          *
-         * Note that this function can only be called when the `GtkWidget`
+         * Note that this function can only be called when the {@link Gtk.Widget}
          * is attached to a toplevel, since the settings object is specific
          * to a particular display. If you want to monitor the widget for
          * changes in its settings, connect to the `notify::display` signal.
@@ -12325,16 +13065,16 @@ export namespace AgsGui {
          *
          * Which dimension is returned depends on `orientation`.
          *
-         * This is equivalent to calling [method`Gtk`.Widget.get_width]
-         * for [enum`Gtk`.Orientation.horizontal] or [method`Gtk`.Widget.get_height]
-         * for [enum`Gtk`.Orientation.vertical], but can be used when
+         * This is equivalent to calling {@link Gtk.Widget.get_width}
+         * for {@link Gtk.Orientation.HORIZONTAL} or {@link Gtk.Widget.get_height}
+         * for {@link Gtk.Orientation.VERTICAL}, but can be used when
          * writing orientation-independent code, such as when
-         * implementing [iface`Gtk`.Orientable] widgets.
+         * implementing {@link Gtk.Orientable} widgets.
          *
          * To learn more about widget sizes, see the coordinate
          * system [overview](coordinates.html).
          * @param orientation the orientation to query
-         * @returns the size of @widget in @orientation
+         * @returns the size of `widget` in `orientation`
          */
         get_size(orientation: Gtk.Orientation | null): number;
         /**
@@ -12344,22 +13084,22 @@ export namespace AgsGui {
          * dimension has not been set explicitly and the natural requisition
          * of the widget will be used instead.
          *
-         * See [method`Gtk`.Widget.set_size_request].
+         * See {@link Gtk.Widget.set_size_request}.
          *
          * To get the size a widget will actually request, call
-         * [method`Gtk`.Widget.measure] instead of this function.
+         * {@link Gtk.Widget.measure} instead of this function.
          */
         get_size_request(): [number, number];
         /**
          * Returns the widget state as a flag set.
          *
-         * It is worth mentioning that the effective [flags`Gtk`.StateFlags.insensitive]
+         * It is worth mentioning that the effective {@link Gtk.StateFlags.INSENSITIVE}
          * state will be returned, that is, also based on parent insensitivity,
          * even if `widget` itself is sensitive.
          *
          * Also note that if you are looking for a way to obtain the
-         * [flags`Gtk`.StateFlags] to pass to a [class`Gtk`.StyleContext]
-         * method, you should look at [method`Gtk`.StyleContext.get_state].
+         * {@link Gtk.StateFlags} to pass to a {@link Gtk.StyleContext}
+         * method, you should look at {@link Gtk.StyleContext.get_state}.
          * @returns the state flags of widget
          */
         get_state_flags(): Gtk.StateFlags;
@@ -12376,22 +13116,22 @@ export namespace AgsGui {
          * the widget.
          *
          * This will only report children which were previously declared
-         * with [method`Gtk`.WidgetClass.bind_template_child_full] or one of its
+         * with {@link Gtk.WidgetClass.bind_template_child_full} or one of its
          * variants.
          *
          * This function is only meant to be called for code which is private
          * to the `widget_type` which declared the child and is meant for language
          * bindings which cannot easily make use of the GObject structure offsets.
-         * @param widget_type The `GType` to get a template child for
+         * @param widget_type The type of the widget class that defines the child in the template
          * @param name ID of the child defined in the template XML
-         * @returns the object built in the template XML with   the id @name
+         * @returns the object built in the template XML with   the id `name`
          */
         get_template_child<T = GObject.Object>(widget_type: GObject.GType, name: string): T;
         /**
          * Gets the contents of the tooltip for the widget.
          *
          * If the tooltip has not been set using
-         * [method`Gtk`.Widget.set_tooltip_markup], this
+         * {@link Gtk.Widget.set_tooltip_markup}, this
          * function returns `NULL`.
          * @returns the tooltip text
          */
@@ -12399,29 +13139,29 @@ export namespace AgsGui {
         /**
          * Gets the contents of the tooltip for the widget.
          *
-         * If the `widget'`s tooltip was set using
-         * [method`Gtk`.Widget.set_tooltip_markup],
+         * If the `widget`'s tooltip was set using
+         * {@link Gtk.Widget.set_tooltip_markup},
          * this function will return the escaped text.
          * @returns the tooltip text
          */
         get_tooltip_text(): string | null;
         /**
          * Gets the vertical alignment of the widget.
-         * @returns the vertical alignment of @widget
+         * @returns the vertical alignment of `widget`
          */
         get_valign(): Gtk.Align;
         /**
          * Gets whether the widget would like any available extra vertical
          * space.
          *
-         * See [method`Gtk`.Widget.get_hexpand] for more detail.
+         * See {@link Gtk.Widget.get_hexpand} for more detail.
          * @returns whether vexpand flag is set
          */
         get_vexpand(): boolean;
         /**
          * Gets whether the `vexpand` flag has been explicitly set.
          *
-         * See [method`Gtk`.Widget.get_hexpand_set] for more detail.
+         * See {@link Gtk.Widget.get_hexpand_set} for more detail.
          * @returns whether vexpand has been explicitly set
          */
         get_vexpand_set(): boolean;
@@ -12430,12 +13170,12 @@ export namespace AgsGui {
          *
          * If you want to take into account whether the widget’s
          * parent is also marked as visible, use
-         * [method`Gtk`.Widget.is_visible] instead.
+         * {@link Gtk.Widget.is_visible} instead.
          *
          * This function does not check if the widget is
          * obscured in any way.
          *
-         * See [method`Gtk`.Widget.set_visible].
+         * See {@link Gtk.Widget.set_visible}.
          * @returns true if the widget is visible
          */
         get_visible(): boolean;
@@ -12444,32 +13184,32 @@ export namespace AgsGui {
          *
          * This function returns the width passed to its
          * size-allocate implementation, which is the width you
-         * should be using in [vfunc`Gtk`.Widget.snapshot].
+         * should be using in {@link Gtk.Widget.snapshot}.
          *
-         * For pointer events, see [method`Gtk`.Widget.contains].
+         * For pointer events, see {@link Gtk.Widget.contains}.
          *
          * To learn more about widget sizes, see the coordinate
          * system [overview](coordinates.html).
-         * @returns The width of @widget
+         * @returns The width of `widget`
          */
         get_width(): number;
         /**
          * Causes `widget` to have the keyboard focus for the window
          * that it belongs to.
          *
-         * If `widget` is not focusable, or its [vfunc`Gtk`.Widget.grab_focus]
+         * If `widget` is not focusable, or its {@link Gtk.Widget.grab_focus}
          * implementation cannot transfer the focus to a descendant of `widget`
          * that is focusable, it will not take focus and false will be returned.
          *
-         * Calling [method`Gtk`.Widget.grab_focus] on an already focused widget
+         * Calling {@link Gtk.Widget.grab_focus} on an already focused widget
          * is allowed, should not have an effect, and return true.
-         * @returns true if focus is now inside @widget
+         * @returns true if focus is now inside `widget`
          */
         grab_focus(): boolean;
         /**
          * Returns whether a style class is currently applied to the widget.
          * @param css_class style class, without the leading period
-         * @returns true if @css_class is currently applied to @widget
+         * @returns true if `css_class` is currently applied to `widget`
          */
         has_css_class(css_class: string): boolean;
         /**
@@ -12478,11 +13218,11 @@ export namespace AgsGui {
          *
          * This is a convenience function that takes into account whether
          * focus indication should currently be shown in the toplevel window
-         * of `widget`. See [method`Gtk`.Window.get_focus_visible] for more
+         * of `widget`. See {@link Gtk.Window.get_focus_visible} for more
          * information about focus indication.
          *
          * To find out if the widget has the global input focus, use
-         * [method`Gtk`.Widget.has_focus].
+         * {@link Gtk.Widget.has_focus}.
          * @returns true if the widget should display a “focus rectangle”
          */
         has_visible_focus(): boolean;
@@ -12497,7 +13237,7 @@ export namespace AgsGui {
          *
          * This information can sometimes be used to avoid doing
          * unnecessary work.
-         * @returns true if @widget is being destroyed
+         * @returns true if `widget` is being destroyed
          */
         in_destruction(): boolean;
         /**
@@ -12505,7 +13245,7 @@ export namespace AgsGui {
          *
          * This function must be called in the instance initializer
          * for any class which assigned itself a template using
-         * [method`Gtk`.WidgetClass.set_template].
+         * {@link Gtk.WidgetClass.set_template}.
          *
          * It is important to call this function in the instance initializer
          * of a widget subclass and not in `GObject.constructed()` or
@@ -12526,85 +13266,85 @@ export namespace AgsGui {
         /**
          * Inserts an action group into the widget's actions.
          *
-         * Children of `widget` that implement [iface`Gtk`.Actionable] can
+         * Children of `widget` that implement {@link Gtk.Actionable} can
          * then be associated with actions in `group` by setting their
          * “action-name” to `prefix`.`action-name`.
          *
          * Note that inheritance is defined for individual actions. I.e.
-         * even if you insert a group with prefix `prefix,` actions with
+         * even if you insert a group with prefix `prefix`, actions with
          * the same prefix will still be inherited from the parent, unless
          * the group contains an action with the same name.
          *
          * If `group` is `NULL`, a previously inserted group for `name` is
          * removed from `widget`.
-         * @param name the prefix for actions in @group
+         * @param name the prefix for actions in `group`
          * @param group an action group
          */
         insert_action_group(name: string, group?: Gio.ActionGroup | null): void;
         /**
          * Sets the parent widget of the widget.
          *
-         * In contrast to [method`Gtk`.Widget.set_parent], this function
+         * In contrast to {@link Gtk.Widget.set_parent}, this function
          * inserts `widget` at a specific position into the list of children
          * of the `parent` widget.
          *
-         * It will be placed after `previous_sibling,` or at the beginning if
+         * It will be placed after `previous_sibling`, or at the beginning if
          * `previous_sibling` is `NULL`.
          *
          * After calling this function, `gtk_widget_get_prev_sibling (widget)`
          * will return `previous_sibling`.
          *
-         * If `parent` is already set as the parent widget of `widget,` this
+         * If `parent` is already set as the parent widget of `widget`, this
          * function can also be used to reorder `widget` in the child widget
          * list of `parent`.
          *
          * This function is primarily meant for widget implementations; if you are
          * just using a widget, you *must* use its own API for adding children.
-         * @param parent the parent widget to insert @widget into
-         * @param previous_sibling the new previous sibling of @widget
+         * @param parent the parent widget to insert `widget` into
+         * @param previous_sibling the new previous sibling of `widget`
          */
         insert_after(parent: Gtk.Widget, previous_sibling?: Gtk.Widget | null): void;
         /**
          * Sets the parent widget of the widget.
          *
-         * In contrast to [method`Gtk`.Widget.set_parent], this function
+         * In contrast to {@link Gtk.Widget.set_parent}, this function
          * inserts `widget` at a specific position into the list of children
          * of the `parent` widget.
          *
-         * It will be placed before `next_sibling,` or at the end if
+         * It will be placed before `next_sibling`, or at the end if
          * `next_sibling` is `NULL`.
          *
          * After calling this function, `gtk_widget_get_next_sibling (widget)`
          * will return `next_sibling`.
          *
-         * If `parent` is already set as the parent widget of `widget,` this function
+         * If `parent` is already set as the parent widget of `widget`, this function
          * can also be used to reorder `widget` in the child widget list of `parent`.
          *
          * This function is primarily meant for widget implementations; if you are
          * just using a widget, you *must* use its own API for adding children.
-         * @param parent the parent widget to insert @widget into
-         * @param next_sibling the new next sibling of @widget
+         * @param parent the parent widget to insert `widget` into
+         * @param next_sibling the new next sibling of `widget`
          */
         insert_before(parent: Gtk.Widget, next_sibling?: Gtk.Widget | null): void;
         /**
          * Determines whether the widget is a descendent of `ancestor`.
-         * @param ancestor another `GtkWidget`
-         * @returns true if @ancestor contains @widget as a child,   grandchild, great grandchild, etc
+         * @param ancestor another {@link Gtk.Widget}
+         * @returns true if `ancestor` contains `widget` as a child,   grandchild, great grandchild, etc
          */
         is_ancestor(ancestor: Gtk.Widget): boolean;
         /**
          * Determines whether the widget can be drawn to.
          *
          * A widget can be drawn if it is mapped and visible.
-         * @returns true if @widget is drawable
+         * @returns true if `widget` is drawable
          */
         is_drawable(): boolean;
         /**
          * Determines if the widget is the focus widget within its
          * toplevel.
          *
-         * This does not mean that the [property`Gtk`.Widget:has-focus]
-         * property is necessarily set; [property`Gtk`.Widget:has-focus]
+         * This does not mean that the {@link Gtk.Widget.has_focus}
+         * property is necessarily set; {@link Gtk.Widget.has_focus}
          * will only be set if the toplevel widget additionally has the
          * global input focus.
          * @returns true if the widget is the focus widget
@@ -12624,38 +13364,38 @@ export namespace AgsGui {
          *
          * This function does not check if the widget is obscured in any way.
          *
-         * See also [method`Gtk`.Widget.get_visible] and
-         * [method`Gtk`.Widget.set_visible].
+         * See also {@link Gtk.Widget.get_visible} and
+         * {@link Gtk.Widget.set_visible}.
          * @returns true if the widget and all its parents are visible
          */
         is_visible(): boolean;
         /**
-         * Emits the [signal`Gtk`.Widget::keynav-failed] signal on the widget.
+         * Emits the `Gtk.Widget::keynav-failed` signal on the widget.
          *
          * This function should be called whenever keyboard navigation
          * within a single widget hits a boundary.
          *
          * The return value of this function should be interpreted
          * in a way similar to the return value of
-         * [method`Gtk`.Widget.child_focus]. When true is returned,
+         * {@link Gtk.Widget.child_focus}. When true is returned,
          * stay in the widget, the failed keyboard navigation is ok
          * and/or there is nowhere we can/should move the focus to.
          * When false is returned, the caller should continue with
          * keyboard navigation outside the widget, e.g. by calling
-         * [method`Gtk`.Widget.child_focus] on the widget’s toplevel.
+         * {@link Gtk.Widget.child_focus} on the widget’s toplevel.
          *
-         * The default [signal`Gtk`.Widget::keynav-failed] handler returns
-         * false for [enum`Gtk`.DirectionType.tab-forward] and
-         * [enum`Gtk`.DirectionType.tab-backward]. For the other values
-         * of [enum`Gtk`.DirectionType] it returns true.
+         * The default `Gtk.Widget::keynav-failed` handler returns
+         * false for {@link Gtk.DirectionType.TAB-FORWARD} and
+         * {@link Gtk.DirectionType.TAB-BACKWARD}. For the other values
+         * of {@link Gtk.DirectionType} it returns true.
          *
          * Whenever the default handler returns true, it also calls
-         * [method`Gtk`.Widget.error_bell] to notify the user of the
+         * {@link Gtk.Widget.error_bell} to notify the user of the
          * failed keyboard navigation.
          *
          * A use case for providing an own implementation of `::keynav-failed`
          * (either by connecting to it or by overriding it) would be a row of
-         * [class`Gtk`.Entry] widgets where the user should be able to navigate
+         * {@link Gtk.Entry} widgets where the user should be able to navigate
          * the entire row with the cursor keys, as e.g. known from user
          * interfaces that require entering license keys.
          * @param direction direction of focus movement
@@ -12667,7 +13407,7 @@ export namespace AgsGui {
          * mnemonic.
          *
          * Typically, these widgets will be labels. See, for example,
-         * [method`Gtk`.Label.set_mnemonic_widget].
+         * {@link Gtk.Label.set_mnemonic_widget}.
          *
          * The widgets in the list are not individually referenced.
          * If you want to iterate through the list and perform actions
@@ -12686,18 +13426,18 @@ export namespace AgsGui {
         /**
          * Measures `widget` in the orientation `orientation` and for the given `for_size`.
          *
-         * As an example, if `orientation` is %GTK_ORIENTATION_HORIZONTAL and `for_size`
+         * As an example, if `orientation` is {@link Gtk.Orientation.HORIZONTAL} and `for_size`
          * is 300, this functions will compute the minimum and natural width of `widget`
          * if it is allocated at a height of 300 pixels.
          *
          * See [GtkWidget’s geometry management section](class.Widget.html#height-for-width-geometry-management) for
-         * a more details on implementing `GtkWidgetClass.measure()`.
+         * a more details on implementing {@link Gtk.Widget.measure}.
          * @param orientation the orientation to measure
-         * @param for_size Size for the opposite of @orientation, i.e.   if @orientation is %GTK_ORIENTATION_HORIZONTAL, this is   the height the widget should be measured with. The %GTK_ORIENTATION_VERTICAL   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
+         * @param for_size Size for the opposite of `orientation`, i.e.   if `orientation` is {@link Gtk.Orientation.HORIZONTAL}, this is   the height the widget should be measured with. The {@link Gtk.Orientation.VERTICAL}   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
          */
         measure(orientation: Gtk.Orientation | null, for_size: number): [number, number, number, number];
         /**
-         * Emits the [signal`Gtk`.Widget::mnemonic-activate] signal.
+         * Emits the `Gtk.Widget::mnemonic-activate` signal.
          * @param group_cycling true if there are other widgets with the same mnemonic
          * @returns true if the signal has been handled
          */
@@ -12711,7 +13451,7 @@ export namespace AgsGui {
          *
          * Applications should try hard to avoid calling this function
          * because of the slowdowns.
-         * @returns a list model tracking @widget's children
+         * @returns a list model tracking `widget`'s children
          */
         observe_children(): Gio.ListModel;
         /**
@@ -12723,17 +13463,17 @@ export namespace AgsGui {
          *
          * Applications should try hard to avoid calling this function
          * because of the slowdowns.
-         * @returns a list model tracking @widget's controllers
+         * @returns a list model tracking `widget`'s controllers
          */
         observe_controllers(): Gio.ListModel;
         /**
          * Finds the descendant of the widget closest to a point.
          *
          * The point (x, y) must be given in widget coordinates, so (0, 0)
-         * is assumed to be the top left of `widget'`s content area.
+         * is assumed to be the top left of `widget`'s content area.
          *
          * Usually widgets will return `NULL` if the given coordinate is not
-         * contained in `widget` checked via [method`Gtk`.Widget.contains].
+         * contained in `widget` checked via {@link Gtk.Widget.contains}.
          * Otherwise they will recursively try to find a child that does
          * not return `NULL`. Widgets are however free to customize their
          * picking algorithm.
@@ -12741,21 +13481,21 @@ export namespace AgsGui {
          * This function is used on the toplevel to determine the widget
          * below the mouse cursor for purposes of hover highlighting and
          * delivering events.
-         * @param x x coordinate to test, relative to @widget's origin
-         * @param y y coordinate to test, relative to @widget's origin
+         * @param x x coordinate to test, relative to `widget`'s origin
+         * @param y y coordinate to test, relative to `widget`'s origin
          * @param flags flags to influence what is picked
          * @returns the widget's descendant at (x, y)
          */
         pick(x: number, y: number, flags: Gtk.PickFlags | null): Gtk.Widget | null;
         /**
-         * Flags the widget for a rerun of the [vfunc`Gtk`.Widget.size_allocate]
+         * Flags the widget for a rerun of the {@link Gtk.Widget.size_allocate}
          * function.
          *
-         * Use this function instead of [method`Gtk`.Widget.queue_resize]
-         * when the `widget'`s size request didn't change but it wants to
+         * Use this function instead of {@link Gtk.Widget.queue_resize}
+         * when the `widget`'s size request didn't change but it wants to
          * reposition its contents.
          *
-         * An example user of this function is [method`Gtk`.Widget.set_halign].
+         * An example user of this function is {@link Gtk.Widget.set_halign}.
          *
          * This function is only for use in widget implementations.
          */
@@ -12766,7 +13506,7 @@ export namespace AgsGui {
          * The redraw will happen in the paint phase
          * of the current or the next frame.
          *
-         * This means `widget'`s [vfunc`Gtk`.Widget.snapshot]
+         * This means `widget`'s {@link Gtk.Widget.snapshot}
          * implementation will be called.
          */
         queue_draw(): void;
@@ -12775,13 +13515,13 @@ export namespace AgsGui {
          *
          * This should be called when a widget for some reason has a new
          * size request. For example, when you change the text in a
-         * [class`Gtk`.Label], the label queues a resize to ensure there’s
+         * {@link Gtk.Label}, the label queues a resize to ensure there’s
          * enough space for the new text.
          *
-         * Note that you cannot call gtk_widget_queue_resize() on a widget
-         * from inside its implementation of the [vfunc`Gtk`.Widget.size_allocate]
-         * virtual method. Calls to gtk_widget_queue_resize() from inside
-         * [vfunc`Gtk`.Widget.size_allocate] will be silently ignored.
+         * Note that you cannot call `gtk_widget_queue_resize()` on a widget
+         * from inside its implementation of the {@link Gtk.Widget.size_allocate}
+         * virtual method. Calls to `gtk_widget_queue_resize()` from inside
+         * {@link Gtk.Widget.size_allocate} will be silently ignored.
          *
          * This function is only for use in widget implementations.
          */
@@ -12801,23 +13541,23 @@ export namespace AgsGui {
          * Removes a style from the widget.
          *
          * After this, the style of `widget` will stop matching for `css_class`.
-         * @param css_class style class to remove from @widget, without the leading period
+         * @param css_class style class to remove from `widget`, without the leading period
          */
         remove_css_class(css_class: string): void;
         /**
          * Removes a widget from the list of mnemonic labels for this widget.
          *
-         * See [method`Gtk`.Widget.list_mnemonic_labels].
+         * See {@link Gtk.Widget.list_mnemonic_labels}.
          *
          * The widget must have previously been added to the list with
-         * [method`Gtk`.Widget.add_mnemonic_label].
-         * @param label a widget that is a mnemonic label for @widget
+         * {@link Gtk.Widget.add_mnemonic_label}.
+         * @param label a widget that is a mnemonic label for `widget`
          */
         remove_mnemonic_label(label: Gtk.Widget): void;
         /**
          * Removes a tick callback previously registered with
-         * [method`Gtk`.Widget.add_tick_callback].
-         * @param id an ID returned by [method@Gtk.Widget.add_tick_callback]
+         * {@link Gtk.Widget.add_tick_callback}.
+         * @param id an ID returned by {@link Gtk.Widget.add_tick_callback}
          */
         remove_tick_callback(id: number): void;
         /**
@@ -12833,7 +13573,7 @@ export namespace AgsGui {
          * that is marked as not can-focus in order to receive input
          * focus.
          *
-         * See [method`Gtk`.Widget.grab_focus] for actually setting
+         * See {@link Gtk.Widget.grab_focus} for actually setting
          * the input focus on a widget.
          * @param can_focus whether the input focus can enter   the widget or any of its children
          */
@@ -12847,7 +13587,7 @@ export namespace AgsGui {
          * Sets whether the widget should be mapped along with its parent.
          *
          * The child visibility can be set for widget before it is added
-         * to a container with [method`Gtk`.Widget.set_parent], to avoid
+         * to a container with {@link Gtk.Widget.set_parent}, to avoid
          * mapping children unnecessary before immediately unmapping them.
          * However it will be reset to its default state of true when the
          * widget is removed from a container.
@@ -12860,7 +13600,7 @@ export namespace AgsGui {
          *
          * This function is only useful for widget implementations
          * and should never be called by an application.
-         * @param child_visible whether @widget should be mapped along   with its parent
+         * @param child_visible whether `widget` should be mapped along   with its parent
          */
         set_child_visible(child_visible: boolean): void;
         /**
@@ -12882,12 +13622,12 @@ export namespace AgsGui {
          * the widget.
          *
          * This is a utility function that creates a cursor via
-         * [ctor`Gdk`.Cursor.new_from_name] and then sets it on `widget`
-         * with [method`Gtk`.Widget.set_cursor]. See those functions for
+         * {@link Gdk.Cursor.new_from_name} and then sets it on `widget`
+         * with {@link Gtk.Widget.set_cursor}. See those functions for
          * details.
          *
          * On top of that, this function allows `name` to be `NULL`, which
-         * will do the same as calling [method`Gtk`.Widget.set_cursor]
+         * will do the same as calling {@link Gtk.Widget.set_cursor}
          * with a `NULL` cursor.
          * @param name the name of the cursor
          */
@@ -12906,8 +13646,8 @@ export namespace AgsGui {
          * an order that is explicitly visual rather than logical (such as
          * buttons for text justification).
          *
-         * If the direction is set to [enum`Gtk`.TextDirection.none], then
-         * the value set by [func`Gtk`.Widget.set_default_direction] will be used.
+         * If the direction is set to {@link Gtk.TextDirection.NONE}, then
+         * the value set by {@link Gtk.Widget.set_default_direction} will be used.
          * @param dir the new direction
          */
         set_direction(dir: Gtk.TextDirection | null): void;
@@ -12916,8 +13656,8 @@ export namespace AgsGui {
          *
          * This function is only suitable for widget implementations.
          * If you want a certain widget to get the input focus, call
-         * [method`Gtk`.Widget.grab_focus] on it.
-         * @param child a direct child widget of @widget   or `NULL` to unset the focus child
+         * {@link Gtk.Widget.grab_focus} on it.
+         * @param child a direct child widget of `widget`   or `NULL` to unset the focus child
          */
         set_focus_child(child?: Gtk.Widget | null): void;
         /**
@@ -12934,7 +13674,7 @@ export namespace AgsGui {
          * Sets whether the widget can own the input focus.
          *
          * Widget implementations should set `focusable` to true in
-         * their init() function if they want to receive keyboard input.
+         * their `init()` function if they want to receive keyboard input.
          *
          * Note that having `focusable` be true is only one of the
          * necessary conditions for being focusable. A widget must
@@ -12942,9 +13682,9 @@ export namespace AgsGui {
          * that is marked as not can-focus in order to receive input
          * focus.
          *
-         * See [method`Gtk`.Widget.grab_focus] for actually setting
+         * See {@link Gtk.Widget.grab_focus} for actually setting
          * the input focus on a widget.
-         * @param focusable whether or not @widget can own the input focus
+         * @param focusable whether or not `widget` can own the input focus
          */
         set_focusable(focusable: boolean): void;
         /**
@@ -12956,14 +13696,14 @@ export namespace AgsGui {
          * of available fonts.
          *
          * When not set, the widget will inherit the font map from its parent.
-         * @param font_map a `PangoFontMap`
+         * @param font_map a {@link Pango.FontMap}
          */
         set_font_map(font_map?: Pango.FontMap | null): void;
         /**
          * Sets the `cairo_font_options_t` used for text rendering
          * in the widget.
          *
-         * When not set, the default font options for the `GdkDisplay`
+         * When not set, the default font options for the {@link Gdk.Display}
          * will be used.
          * @param options a `cairo_font_options_t` struct   to unset any previously set default font options
          */
@@ -12975,7 +13715,7 @@ export namespace AgsGui {
         set_halign(align: Gtk.Align | null): void;
         /**
          * Sets the `has-tooltip` property on the widget.
-         * @param has_tooltip whether or not @widget has a tooltip
+         * @param has_tooltip whether or not `widget` has a tooltip
          */
         set_has_tooltip(has_tooltip: boolean): void;
         /**
@@ -12992,18 +13732,18 @@ export namespace AgsGui {
          *
          * By default, widgets automatically expand if any of their children
          * want to expand. (To see if a widget will automatically expand given
-         * its current children and state, call [method`Gtk`.Widget.compute_expand].
+         * its current children and state, call {@link Gtk.Widget.compute_expand}.
          * A widget can decide how the expandability of children affects its
          * own expansion by overriding the `compute_expand` virtual method on
-         * `GtkWidget`.).
+         * {@link Gtk.Widget}.).
          *
          * Setting hexpand explicitly with this function will override the
          * automatic expand behavior.
          *
          * This function forces the widget to expand or not to expand,
          * regardless of children. The override occurs because
-         * [method`Gtk`.Widget.set_hexpand] sets the hexpand-set property (see
-         * [method`Gtk`.Widget.set_hexpand_set]) which causes the widget’s hexpand
+         * {@link Gtk.Widget.set_hexpand} sets the hexpand-set property (see
+         * {@link Gtk.Widget.set_hexpand_set}) which causes the widget’s hexpand
          * value to be used, rather than looking at children and widget state.
          * @param expand whether to expand
          */
@@ -13011,8 +13751,8 @@ export namespace AgsGui {
         /**
          * Sets whether the hexpand flag will be used.
          *
-         * The [property`Gtk`.Widget:hexpand-set] property will be set
-         * automatically when you call [method`Gtk`.Widget.set_hexpand]
+         * The {@link Gtk.Widget.hexpand_set} property will be set
+         * automatically when you call {@link Gtk.Widget.set_hexpand}
          * to set hexpand, so the most likely reason to use this function
          * would be to unset an explicit expand flag.
          *
@@ -13064,7 +13804,7 @@ export namespace AgsGui {
          * Setting a name allows you to refer to the widget from a
          * CSS file. You can apply a style to widgets with a particular name
          * in the CSS file. See the documentation for the CSS syntax (on the
-         * same page as the docs for [class`Gtk`.StyleContext].
+         * same page as the docs for {@link Gtk.StyleContext}.
          *
          * Note that the CSS syntax has certain special characters to delimit
          * and represent elements in a selector (period, #, >, *...), so using
@@ -13083,7 +13823,7 @@ export namespace AgsGui {
          * there are some limitations: For toplevel widgets, applying opacity
          * depends on the capabilities of the windowing system. On X11, this
          * has any effect only on X displays with a compositing manager, see
-         * [method`Gdk`.Display.is_composited]. On Windows and Wayland it will
+         * {@link Gdk.Display.is_composited}. On Windows and Wayland it will
          * always work, although setting a window’s opacity after the window
          * has been shown may cause some flicker.
          *
@@ -13092,8 +13832,8 @@ export namespace AgsGui {
          * appear translucent, since it is ultimatively rendered on that
          * toplevel. The opacity value itself is not inherited by child
          * widgets (since that would make widgets deeper in the hierarchy
-         * progressively more translucent). As a consequence, [class`Gtk`.Popover]
-         * instances and other [iface`Gtk`.Native] widgets with their own surface
+         * progressively more translucent). As a consequence, {@link Gtk.Popover}
+         * instances and other {@link Gtk.Native} widgets with their own surface
          * will use their own opacity value, and thus by default appear
          * non-translucent, even if they are attached to a toplevel that
          * is translucent.
@@ -13104,12 +13844,12 @@ export namespace AgsGui {
          * Sets how the widget treats content that is drawn outside the
          * it's content area.
          *
-         * See the definition of [enum`Gtk`.Overflow] for details.
+         * See the definition of {@link Gtk.Overflow} for details.
          *
          * This setting is provided for widget implementations and
          * should not be used by application code.
          *
-         * The default value is [enum`Gtk`.Overflow.visible].
+         * The default value is {@link Gtk.Overflow.VISIBLE}.
          * @param overflow desired overflow value
          */
         set_overflow(overflow: Gtk.Overflow | null): void;
@@ -13118,10 +13858,10 @@ export namespace AgsGui {
          *
          * This takes care of details such as updating the state and style
          * of the child to reflect its new location and resizing the parent.
-         * The opposite function is [method`Gtk`.Widget.unparent].
+         * The opposite function is {@link Gtk.Widget.unparent}.
          *
          * This function is useful only when implementing subclasses of
-         * `GtkWidget`.
+         * {@link Gtk.Widget}.
          * @param parent parent widget
          */
         set_parent(parent: Gtk.Widget): void;
@@ -13129,7 +13869,7 @@ export namespace AgsGui {
          * Sets whether the widget will be treated as the default
          * widget within its toplevel when it has the focus, even if
          * another widget is the default.
-         * @param receives_default whether or not @widget can be a default widget
+         * @param receives_default whether or not `widget` can be a default widget
          */
         set_receives_default(receives_default: boolean): void;
         /**
@@ -13149,7 +13889,7 @@ export namespace AgsGui {
          * by `height`. You can use this function to force a widget to
          * be larger than it normally would be.
          *
-         * In most cases, [method`Gtk`.Window.set_default_size] is a better
+         * In most cases, {@link Gtk.Window.set_default_size} is a better
          * choice for toplevel windows than this function; setting the default
          * size will still allow users to shrink the window. Setting the size
          * request will force them to leave the window at least as large as
@@ -13171,14 +13911,14 @@ export namespace AgsGui {
          *
          * The size request set here does not include any margin from the
          * properties
-         * [property`Gtk`.Widget:margin-start],
-         * [property`Gtk`.Widget:margin-end],
-         * [property`Gtk`.Widget:margin-top], and
-         * [property`Gtk`.Widget:margin-bottom], but it does include pretty
+         * {@link Gtk.Widget.margin_start},
+         * {@link Gtk.Widget.margin_end},
+         * {@link Gtk.Widget.margin_top}, and
+         * {@link Gtk.Widget.margin_bottom}, but it does include pretty
          * much all other padding or border properties set by any subclass
-         * of `GtkWidget`.
-         * @param width width @widget should request, or -1 to unset
-         * @param height height @widget should request, or -1 to unset
+         * of {@link Gtk.Widget}.
+         * @param width width `widget` should request, or -1 to unset
+         * @param height height `widget` should request, or -1 to unset
          */
         set_size_request(width: number, height: number): void;
         /**
@@ -13186,13 +13926,13 @@ export namespace AgsGui {
          *
          * Typical widget states are insensitive, prelighted, etc.
          *
-         * This function accepts the values [flags`Gtk`.StateFlags.dir-ltr] and
-         * [flags`Gtk`.StateFlags.dir-rtl] but ignores them. If you want to set
-         * the widget's direction, use [method`Gtk`.Widget.set_direction].
+         * This function accepts the values {@link Gtk.StateFlags.DIR-LTR} and
+         * {@link Gtk.StateFlags.DIR-RTL} but ignores them. If you want to set
+         * the widget's direction, use {@link Gtk.Widget.set_direction}.
          *
          * This function is for use in widget implementations.
          * @param flags state flags to turn on
-         * @param clear whether to clear state before turning on @flags
+         * @param clear whether to clear state before turning on `flags`
          */
         set_state_flags(flags: Gtk.StateFlags | null, clear: boolean): void;
         /**
@@ -13201,11 +13941,11 @@ export namespace AgsGui {
          * `markup` must contain Pango markup.
          *
          * This function will take care of setting the
-         * [property`Gtk`.Widget:has-tooltip] as a side effect, and of the
-         * default handler for the [signal`Gtk`.Widget::query-tooltip] signal.
+         * {@link Gtk.Widget.has_tooltip} as a side effect, and of the
+         * default handler for the `Gtk.Widget::query-tooltip` signal.
          *
-         * See also [method`Gtk`.Tooltip.set_markup].
-         * @param markup the contents of the tooltip for @widget
+         * See also {@link Gtk.Tooltip.set_markup}.
+         * @param markup the contents of the tooltip for `widget`
          */
         set_tooltip_markup(markup?: string | null): void;
         /**
@@ -13214,12 +13954,12 @@ export namespace AgsGui {
          * If `text` contains any markup, it will be escaped.
          *
          * This function will take care of setting
-         * [property`Gtk`.Widget:has-tooltip] as a side effect,
+         * {@link Gtk.Widget.has_tooltip} as a side effect,
          * and of the default handler for the
-         * [signal`Gtk`.Widget::query-tooltip] signal.
+         * `Gtk.Widget::query-tooltip` signal.
          *
-         * See also [method`Gtk`.Tooltip.set_text].
-         * @param text the contents of the tooltip for @widget
+         * See also {@link Gtk.Tooltip.set_text}.
+         * @param text the contents of the tooltip for `widget`
          */
         set_tooltip_text(text?: string | null): void;
         /**
@@ -13231,14 +13971,14 @@ export namespace AgsGui {
          * Sets whether the widget would like any available extra vertical
          * space.
          *
-         * See [method`Gtk`.Widget.set_hexpand] for more detail.
+         * See {@link Gtk.Widget.set_hexpand} for more detail.
          * @param expand whether to expand
          */
         set_vexpand(expand: boolean): void;
         /**
          * Sets whether the vexpand flag will be used.
          *
-         * See [method`Gtk`.Widget.set_hexpand_set] for more detail.
+         * See {@link Gtk.Widget.set_hexpand_set} for more detail.
          * @param set value for vexpand-set property
          */
         set_vexpand_set(set: boolean): void;
@@ -13246,7 +13986,7 @@ export namespace AgsGui {
          * Sets the visibility state of `widget`.
          *
          * Note that setting this to true doesn’t mean the widget is
-         * actually viewable, see [method`Gtk`.Widget.get_visible].
+         * actually viewable, see {@link Gtk.Widget.get_visible}.
          * @param visible whether the widget should be shown or not
          */
         set_visible(visible: boolean): void;
@@ -13256,7 +13996,7 @@ export namespace AgsGui {
          *
          * This is false for invisible children, but also
          * for children that have their own surface, such
-         * as [class`Gtk`.Popover] instances.
+         * as {@link Gtk.Popover} instances.
          * @returns true if child should be included in   measuring and allocating
          */
         should_layout(): boolean;
@@ -13277,8 +14017,8 @@ export namespace AgsGui {
          * Allocates widget with a transformation that translates
          * the origin to the position in `allocation`.
          *
-         * This is a simple form of [method`Gtk`.Widget.allocate].
-         * @param allocation position and size to be allocated to @widget
+         * This is a simple form of {@link Gtk.Widget.allocate}.
+         * @param allocation position and size to be allocated to `widget`
          * @param baseline the baseline of the child, or -1
          */
         size_allocate(allocation: Gtk.Allocation, baseline: number): void;
@@ -13286,32 +14026,32 @@ export namespace AgsGui {
          * Snapshots a child of the widget.
          *
          * When a widget receives a call to the snapshot function,
-         * it must send synthetic [vfunc`Gtk`.Widget.snapshot] calls
+         * it must send synthetic {@link Gtk.Widget.snapshot} calls
          * to all children. This function provides a convenient way
          * of doing this. A widget, when it receives a call to its
-         * [vfunc`Gtk`.Widget.snapshot] function, calls
-         * gtk_widget_snapshot_child() once for each child, passing in
+         * {@link Gtk.Widget.snapshot} function, calls
+         * `gtk_widget_snapshot_child()` once for each child, passing in
          * the `snapshot` the widget received.
          *
-         * This function takes care of translating the origin of `snapshot,`
+         * This function takes care of translating the origin of `snapshot`,
          * and deciding whether the child needs to be snapshot.
          *
-         * It does nothing for children that implement `GtkNative`.
-         * @param child a child of @widget
-         * @param snapshot snapshot as passed to the widget. In particular, no   calls to [method@Gtk.Snapshot.translate] or other transform calls   should have been made
+         * It does nothing for children that implement {@link Gtk.Native}.
+         * @param child a child of `widget`
+         * @param snapshot snapshot as passed to the widget. In particular, no   calls to {@link Gtk.Snapshot.translate} or other transform calls   should have been made
          */
         snapshot_child(child: Gtk.Widget, snapshot: Gtk.Snapshot): void;
         /**
-         * Translates coordinates relative to `src_widget’`s allocation
-         * to coordinates relative to `dest_widget’`s allocations.
+         * Translates coordinates relative to `src_widget`’s allocation
+         * to coordinates relative to `dest_widget`’s allocations.
          *
          * In order to perform this operation, both widget must share
          * a common ancestor. If that is not the case, `dest_x` and `dest_y`
          * are set to 0 and false is returned.
          * @param dest_widget another widget
-         * @param src_x X position in widget coordinates of @src_widget
-         * @param src_y Y position in widget coordinates of @src_widget
-         * @returns true if @src_widget and @dest_widget have a common   ancestor, false otherwise
+         * @param src_x X position in widget coordinates of `src_widget`
+         * @param src_y Y position in widget coordinates of `src_widget`
+         * @returns true if `src_widget` and `dest_widget` have a common   ancestor, false otherwise
          */
         translate_coordinates(dest_widget: Gtk.Widget, src_x: number, src_y: number): [boolean, number, number];
         /**
@@ -13334,7 +14074,7 @@ export namespace AgsGui {
         /**
          * Turns off flag values for the current widget state.
          *
-         * See [method`Gtk`.Widget.set_state_flags].
+         * See {@link Gtk.Widget.set_state_flags}.
          *
          * This function is for use in widget implementations.
          * @param flags state flags to turn off
@@ -13345,15 +14085,17 @@ export namespace AgsGui {
          *   widget extra space when possible.
          * @param hexpand_p
          * @param vexpand_p
+         * @virtual
          */
         vfunc_compute_expand(hexpand_p: boolean, vexpand_p: boolean): void;
         /**
          * Tests if a given point is contained in the widget.
          *
          * The coordinates for (x, y) must be in widget coordinates, so
-         * (0, 0) is assumed to be the top left of `widget'`s content area.
-         * @param x X coordinate to test, relative to @widget's origin
-         * @param y Y coordinate to test, relative to @widget's origin
+         * (0, 0) is assumed to be the top left of `widget`'s content area.
+         * @param x X coordinate to test, relative to `widget`'s origin
+         * @param y Y coordinate to test, relative to `widget`'s origin
+         * @virtual
          */
         vfunc_contains(x: number, y: number): boolean;
         /**
@@ -13362,17 +14104,20 @@ export namespace AgsGui {
          *   redraws accordingly. The default implementation will take care of this for
          *   all the default CSS properties, so implementations must chain up.
          * @param change
+         * @virtual
          */
         vfunc_css_changed(change: Gtk.CssStyleChange): void;
         /**
          * Signal emitted when the text direction of a
          *   widget changes.
          * @param previous_direction
+         * @virtual
          */
         vfunc_direction_changed(previous_direction: Gtk.TextDirection): void;
         /**
-         * Vfunc for gtk_widget_child_focus()
+         * Vfunc for `gtk_widget_child_focus()`
          * @param direction
+         * @virtual
          */
         vfunc_focus(direction: Gtk.DirectionType): boolean;
         /**
@@ -13383,95 +14128,104 @@ export namespace AgsGui {
          * their child, more complex widgets need to request something
          * either in context of their children or in context of their
          * allocation capabilities.
+         * @virtual
          */
         vfunc_get_request_mode(): Gtk.SizeRequestMode;
         /**
          * Causes `widget` to have the keyboard focus for the window
          * that it belongs to.
          *
-         * If `widget` is not focusable, or its [vfunc`Gtk`.Widget.grab_focus]
+         * If `widget` is not focusable, or its {@link Gtk.Widget.grab_focus}
          * implementation cannot transfer the focus to a descendant of `widget`
          * that is focusable, it will not take focus and false will be returned.
          *
-         * Calling [method`Gtk`.Widget.grab_focus] on an already focused widget
+         * Calling {@link Gtk.Widget.grab_focus} on an already focused widget
          * is allowed, should not have an effect, and return true.
+         * @virtual
          */
         vfunc_grab_focus(): boolean;
         /**
          * Reverses the effects of [method.Gtk.Widget.show].
          *
          * This is causing the widget to be hidden (invisible to the user).
+         * @virtual
          */
         vfunc_hide(): void;
         /**
-         * Emits the [signal`Gtk`.Widget::keynav-failed] signal on the widget.
+         * Emits the `Gtk.Widget::keynav-failed` signal on the widget.
          *
          * This function should be called whenever keyboard navigation
          * within a single widget hits a boundary.
          *
          * The return value of this function should be interpreted
          * in a way similar to the return value of
-         * [method`Gtk`.Widget.child_focus]. When true is returned,
+         * {@link Gtk.Widget.child_focus}. When true is returned,
          * stay in the widget, the failed keyboard navigation is ok
          * and/or there is nowhere we can/should move the focus to.
          * When false is returned, the caller should continue with
          * keyboard navigation outside the widget, e.g. by calling
-         * [method`Gtk`.Widget.child_focus] on the widget’s toplevel.
+         * {@link Gtk.Widget.child_focus} on the widget’s toplevel.
          *
-         * The default [signal`Gtk`.Widget::keynav-failed] handler returns
-         * false for [enum`Gtk`.DirectionType.tab-forward] and
-         * [enum`Gtk`.DirectionType.tab-backward]. For the other values
-         * of [enum`Gtk`.DirectionType] it returns true.
+         * The default `Gtk.Widget::keynav-failed` handler returns
+         * false for {@link Gtk.DirectionType.TAB-FORWARD} and
+         * {@link Gtk.DirectionType.TAB-BACKWARD}. For the other values
+         * of {@link Gtk.DirectionType} it returns true.
          *
          * Whenever the default handler returns true, it also calls
-         * [method`Gtk`.Widget.error_bell] to notify the user of the
+         * {@link Gtk.Widget.error_bell} to notify the user of the
          * failed keyboard navigation.
          *
          * A use case for providing an own implementation of `::keynav-failed`
          * (either by connecting to it or by overriding it) would be a row of
-         * [class`Gtk`.Entry] widgets where the user should be able to navigate
+         * {@link Gtk.Entry} widgets where the user should be able to navigate
          * the entire row with the cursor keys, as e.g. known from user
          * interfaces that require entering license keys.
          * @param direction direction of focus movement
+         * @virtual
          */
         vfunc_keynav_failed(direction: Gtk.DirectionType): boolean;
         /**
          * Causes a widget to be mapped if it isn’t already.
          *
          * This function is only for use in widget implementations.
+         * @virtual
          */
         vfunc_map(): void;
         /**
          * Measures `widget` in the orientation `orientation` and for the given `for_size`.
          *
-         * As an example, if `orientation` is %GTK_ORIENTATION_HORIZONTAL and `for_size`
+         * As an example, if `orientation` is {@link Gtk.Orientation.HORIZONTAL} and `for_size`
          * is 300, this functions will compute the minimum and natural width of `widget`
          * if it is allocated at a height of 300 pixels.
          *
          * See [GtkWidget’s geometry management section](class.Widget.html#height-for-width-geometry-management) for
-         * a more details on implementing `GtkWidgetClass.measure()`.
+         * a more details on implementing {@link Gtk.Widget.measure}.
          * @param orientation the orientation to measure
-         * @param for_size Size for the opposite of @orientation, i.e.   if @orientation is %GTK_ORIENTATION_HORIZONTAL, this is   the height the widget should be measured with. The %GTK_ORIENTATION_VERTICAL   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
+         * @param for_size Size for the opposite of `orientation`, i.e.   if `orientation` is {@link Gtk.Orientation.HORIZONTAL}, this is   the height the widget should be measured with. The {@link Gtk.Orientation.VERTICAL}   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
+         * @virtual
          */
         vfunc_measure(orientation: Gtk.Orientation, for_size: number): [number, number, number, number];
         /**
-         * Emits the [signal`Gtk`.Widget::mnemonic-activate] signal.
+         * Emits the `Gtk.Widget::mnemonic-activate` signal.
          * @param group_cycling true if there are other widgets with the same mnemonic
+         * @virtual
          */
         vfunc_mnemonic_activate(group_cycling: boolean): boolean;
         /**
          * Signal emitted when a change of focus is requested
          * @param direction
+         * @virtual
          */
         vfunc_move_focus(direction: Gtk.DirectionType): void;
         /**
-         * Signal emitted when “has-tooltip” is %TRUE and the
+         * Signal emitted when “has-tooltip” is `true` and the
          *   hover timeout has expired with the cursor hovering “above”
          *   widget; or emitted when widget got focus in keyboard mode.
          * @param x
          * @param y
          * @param keyboard_tooltip
          * @param tooltip
+         * @virtual
          */
         vfunc_query_tooltip(x: number, y: number, keyboard_tooltip: boolean, tooltip: Gtk.Tooltip): boolean;
         /**
@@ -13490,12 +14244,14 @@ export namespace AgsGui {
          * isn’t very useful otherwise. Many times when you think you might
          * need it, a better approach is to connect to a signal that will be
          * called after the widget is realized automatically, such as
-         * [signal`Gtk`.Widget::realize].
+         * `Gtk.Widget::realize`.
+         * @virtual
          */
         vfunc_realize(): void;
         /**
-         * Called when the widget gets added to a `GtkRoot` widget. Must
+         * Called when the widget gets added to a {@link Gtk.Root} widget. Must
          *   chain up
+         * @virtual
          */
         vfunc_root(): void;
         /**
@@ -13503,8 +14259,9 @@ export namespace AgsGui {
          *
          * This function is only suitable for widget implementations.
          * If you want a certain widget to get the input focus, call
-         * [method`Gtk`.Widget.grab_focus] on it.
-         * @param child a direct child widget of @widget   or `NULL` to unset the focus child
+         * {@link Gtk.Widget.grab_focus} on it.
+         * @param child a direct child widget of `widget`   or `NULL` to unset the focus child
+         * @virtual
          */
         vfunc_set_focus_child(child?: Gtk.Widget | null): void;
         /**
@@ -13518,6 +14275,7 @@ export namespace AgsGui {
          * When a toplevel widget is shown, it is immediately realized and
          * mapped; other shown widgets are realized and mapped when their
          * toplevel widget is realized and mapped.
+         * @virtual
          */
         vfunc_show(): void;
         /**
@@ -13526,28 +14284,33 @@ export namespace AgsGui {
          * @param width
          * @param height
          * @param baseline
+         * @virtual
          */
         vfunc_size_allocate(width: number, height: number, baseline: number): void;
         /**
          * Vfunc called when a new snapshot of the widget has to be taken.
          * @param snapshot
+         * @virtual
          */
         vfunc_snapshot(snapshot: Gtk.Snapshot): void;
         /**
          * Signal emitted when the widget state changes,
-         *   see gtk_widget_get_state_flags().
+         *   see `gtk_widget_get_state_flags()`.
          * @param previous_state_flags
+         * @virtual
          */
         vfunc_state_flags_changed(previous_state_flags: Gtk.StateFlags): void;
         /**
          * Emitted when a system setting was changed. Must chain up.
          * @param settings
+         * @virtual
          */
         vfunc_system_setting_changed(settings: Gtk.SystemSetting): void;
         /**
          * Causes a widget to be unmapped if it’s currently mapped.
          *
          * This function is only for use in widget implementations.
+         * @virtual
          */
         vfunc_unmap(): void;
         /**
@@ -13556,11 +14319,13 @@ export namespace AgsGui {
          * This frees all GDK resources associated with the widget.
          *
          * This function is only useful in widget implementations.
+         * @virtual
          */
         vfunc_unrealize(): void;
         /**
          * Called when the widget is about to be removed from its
-         *   `GtkRoot` widget. Must chain up
+         *   {@link Gtk.Root} widget. Must chain up
+         * @virtual
          */
         vfunc_unroot(): void;
     }
@@ -13623,6 +14388,9 @@ export namespace AgsGui {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Led extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
         static $gtype: GObject.GType<Led>;
 
@@ -13630,21 +14398,25 @@ export namespace AgsGui {
 
         /**
          * The led's segment height.
+         * @since 4.0.0
          */
         get segment_height(): number;
         set segment_height(val: number);
         /**
          * The led's segment height.
+         * @since 4.0.0
          */
         get segmentHeight(): number;
         set segmentHeight(val: number);
         /**
          * The led's segment width.
+         * @since 4.0.0
          */
         get segment_width(): number;
         set segment_width(val: number);
         /**
          * The led's segment width.
+         * @since 4.0.0
          */
         get segmentWidth(): number;
         set segmentWidth(val: number);
@@ -13673,16 +14445,19 @@ export namespace AgsGui {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Led.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Led.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Led.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Led.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Led.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Led.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -13703,12 +14478,12 @@ export namespace AgsGui {
         get_segment_width(): number;
         /**
          * Set `led` to active state.
-         * @returns %TRUE if led active, otherwise %FALSE
+         * @returns `true` if led active, otherwise `false`
          */
         is_active(): boolean;
         /**
          * Set `led` active by `active`.
-         * @param active %TRUE if active, otherwise %FALSE
+         * @param active `true` if active, otherwise `false`
          */
         set_active(active: boolean): void;
         /**
@@ -13721,24 +14496,22 @@ export namespace AgsGui {
          * @param segment_width the segment width
          */
         set_segment_width(segment_width: number): void;
-
-        // Inherited properties
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
         set accessible_role(val: Gtk.AccessibleRole);
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
         set accessibleRole(val: Gtk.AccessibleRole);
-
-        // Inherited methods
         /**
          * Requests the user's screen reader to announce the given message.
          *
@@ -13753,6 +14526,17 @@ export namespace AgsGui {
          * @param priority the priority of the announcement
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
+        /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @returns the accessible identifier
+         */
+        get_accessible_id(): string | null;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -13773,7 +14557,7 @@ export namespace AgsGui {
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
@@ -13792,9 +14576,9 @@ export namespace AgsGui {
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
          */
@@ -13820,7 +14604,7 @@ export namespace AgsGui {
          * This function is meant to be used by accessible implementations that are
          * not part of the widget hierarchy, and but act as a logical bridge between
          * widgets. For instance, if a widget creates an object that holds metadata
-         * for each child, and you want that object to implement the `GtkAccessible`
+         * for each child, and you want that object to implement the {@link Gtk.Accessible}
          * interface, you will use this function to ensure that the parent of each
          * child widget is the metadata object, and the parent of each metadata
          * object is the container widget.
@@ -13839,7 +14623,7 @@ export namespace AgsGui {
         /**
          * Informs ATs that the platform state has changed.
          *
-         * This function should be used by `GtkAccessible` implementations that
+         * This function should be used by {@link Gtk.Accessible} implementations that
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
@@ -13848,7 +14632,7 @@ export namespace AgsGui {
         /**
          * Updates an array of accessible properties.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * property change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -13859,7 +14643,7 @@ export namespace AgsGui {
         /**
          * Updates an array of accessible relations.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * relation change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -13870,7 +14654,7 @@ export namespace AgsGui {
         /**
          * Updates an array of accessible states.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * state change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -13879,44 +14663,61 @@ export namespace AgsGui {
          */
         update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
         /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @virtual
+         */
+        vfunc_get_accessible_id(): string | null;
+        /**
          * Retrieves the accessible parent for an accessible object.
          *
          * This function returns `NULL` for top level widgets.
+         * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
         /**
          * Retrieves the implementation for the given accessible object.
+         * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
         /**
          * Gets the ID of the `buildable` object.
          *
-         * `GtkBuilder` sets the name based on the ID attribute
+         * {@link Gtk.Builder} sets the name based on the ID attribute
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
@@ -13924,18 +14725,20 @@ export namespace AgsGui {
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param child child to add
-         * @param type kind of child or %NULL
+         * @param type kind of child or `null`
+         * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
         /**
-         * Similar to gtk_buildable_parser_finished() but is
+         * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
-         * @param builder a `GtkBuilder`
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder}
+         * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @virtual
          */
         vfunc_custom_finished(
             builder: Gtk.Builder,
@@ -13946,10 +14749,11 @@ export namespace AgsGui {
         /**
          * Called at the end of each custom element handled by
          * the buildable.
-         * @param builder `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @virtual
          */
         vfunc_custom_tag_end(
             builder: Gtk.Builder,
@@ -13959,9 +14763,10 @@ export namespace AgsGui {
         ): void;
         /**
          * Called for each unknown element under `<child>`.
-         * @param builder a `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @virtual
          */
         vfunc_custom_tag_start(
             builder: Gtk.Builder,
@@ -13971,39 +14776,44 @@ export namespace AgsGui {
         /**
          * The getter corresponding to `set_id`. Implement this
          *   if you implement `set_id`.
+         * @virtual
          */
         vfunc_get_id(): string;
         /**
          * Retrieves the internal child called `childname` of the `buildable` object.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
         /**
          * Called when a builder finishes the parsing
          *  of a UI definition. It is normally not necessary to implement this,
-         *  unless you need to perform special cleanup actions. `GtkWindow` sets
-         *  the `GtkWidget:visible` property here.
+         *  unless you need to perform special cleanup actions. {@link Gtk.Window} sets
+         *  the {@link Gtk.Widget.visible} property here.
          * @param builder
+         * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
         /**
          * Sets a property of a buildable object.
-         *  It is normally not necessary to implement this, g_object_set_property()
-         *  is used by default. `GtkWindow` implements this to delay showing itself
-         *  (i.e. setting the [property`Gtk`.Widget:visible] property) until the whole
+         *  It is normally not necessary to implement this, `g_object_set_property()`
+         *  is used by default. {@link Gtk.Window} implements this to delay showing itself
+         *  (i.e. setting the {@link Gtk.Widget.visible} property) until the whole
          *  interface is created.
          * @param builder
          * @param name
          * @param value
+         * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
         /**
-         * Stores the id attribute given in the `GtkBuilder` UI definition.
-         *   `GtkWidget` stores the name as object data. Implement this method if your
+         * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
+         *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
          *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id
+         * @virtual
          */
         vfunc_set_id(id: string): void;
         /**
@@ -14019,32 +14829,32 @@ export namespace AgsGui {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -14053,39 +14863,39 @@ export namespace AgsGui {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -14096,13 +14906,16 @@ export namespace AgsGui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -14110,7 +14923,7 @@ export namespace AgsGui {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -14118,9 +14931,9 @@ export namespace AgsGui {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -14140,9 +14953,9 @@ export namespace AgsGui {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -14155,34 +14968,34 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -14215,22 +15028,22 @@ export namespace AgsGui {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -14239,8 +15052,8 @@ export namespace AgsGui {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -14257,10 +15070,10 @@ export namespace AgsGui {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -14275,13 +15088,13 @@ export namespace AgsGui {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -14312,21 +15125,21 @@ export namespace AgsGui {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -14336,33 +15149,34 @@ export namespace AgsGui {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -14371,6 +15185,7 @@ export namespace AgsGui {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -14379,12 +15194,14 @@ export namespace AgsGui {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -14393,20 +15210,22 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -14418,6 +15237,7 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -14513,6 +15333,9 @@ export namespace AgsGui {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class LedArray extends Gtk.Box implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<LedArray>;
 
@@ -14520,31 +15343,37 @@ export namespace AgsGui {
 
         /**
          * The count of leds available.
+         * @since 3.0.0
          */
         get led_count(): number;
         set led_count(val: number);
         /**
          * The count of leds available.
+         * @since 3.0.0
          */
         get ledCount(): number;
         set ledCount(val: number);
         /**
          * The segment height of one led.
+         * @since 4.0.0
          */
         get segment_height(): number;
         set segment_height(val: number);
         /**
          * The segment height of one led.
+         * @since 4.0.0
          */
         get segmentHeight(): number;
         set segmentHeight(val: number);
         /**
          * The segment width of one led.
+         * @since 4.0.0
          */
         get segment_width(): number;
         set segment_width(val: number);
         /**
          * The segment width of one led.
+         * @since 4.0.0
          */
         get segmentWidth(): number;
         set segmentWidth(val: number);
@@ -14581,16 +15410,19 @@ export namespace AgsGui {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LedArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LedArray.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LedArray.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LedArray.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LedArray.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LedArray.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -14638,18 +15470,15 @@ export namespace AgsGui {
          * Unset all led active.
          */
         unset_all(): void;
-
-        // Inherited properties
         /**
          * The orientation of the orientable.
+         * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
-
-        // Inherited methods
         /**
          * Retrieves the orientation of the `orientable`.
-         * @returns the orientation of the @orientable
+         * @returns the orientation of the `orientable`
          */
         get_orientation(): Gtk.Orientation;
         /**
@@ -14670,32 +15499,32 @@ export namespace AgsGui {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -14704,39 +15533,39 @@ export namespace AgsGui {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -14747,13 +15576,16 @@ export namespace AgsGui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -14761,7 +15593,7 @@ export namespace AgsGui {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -14769,9 +15601,9 @@ export namespace AgsGui {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -14791,9 +15623,9 @@ export namespace AgsGui {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -14806,34 +15638,34 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -14866,22 +15698,22 @@ export namespace AgsGui {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -14890,8 +15722,8 @@ export namespace AgsGui {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -14908,10 +15740,10 @@ export namespace AgsGui {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -14926,13 +15758,13 @@ export namespace AgsGui {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -14963,21 +15795,21 @@ export namespace AgsGui {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -14987,33 +15819,34 @@ export namespace AgsGui {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -15022,6 +15855,7 @@ export namespace AgsGui {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -15030,12 +15864,14 @@ export namespace AgsGui {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -15044,20 +15880,22 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -15069,6 +15907,7 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -15101,6 +15940,12 @@ export namespace AgsGui {
     namespace Level {
         // Signal signatures
         interface SignalSignatures extends Gtk.Widget.SignalSignatures {
+            /**
+             * The ::value-changed signal notifies about modified default value.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             'value-changed': (arg0: number) => void;
             'notify::data-format': (pspec: GObject.ParamSpec) => void;
             'notify::lower': (pspec: GObject.ParamSpec) => void;
@@ -15164,6 +16009,9 @@ export namespace AgsGui {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Level extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<Level>;
 
@@ -15171,36 +16019,43 @@ export namespace AgsGui {
 
         /**
          * The data format.
+         * @since 4.0.0
          */
         get data_format(): number;
         set data_format(val: number);
         /**
          * The data format.
+         * @since 4.0.0
          */
         get dataFormat(): number;
         set dataFormat(val: number);
         /**
          * The level's lower range.
+         * @since 3.0.0
          */
         get lower(): number;
         set lower(val: number);
         /**
          * The level's default value.
+         * @since 3.0.0
          */
         get normalized_volume(): number;
         set normalized_volume(val: number);
         /**
          * The level's default value.
+         * @since 3.0.0
          */
         get normalizedVolume(): number;
         set normalizedVolume(val: number);
         /**
          * The level's samplerate.
+         * @since 5.1.0
          */
         get samplerate(): number;
         set samplerate(val: number);
         /**
          * The level's upper range.
+         * @since 3.0.0
          */
         get upper(): number;
         set upper(val: number);
@@ -15237,16 +16092,19 @@ export namespace AgsGui {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Level.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Level.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Level.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Level.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Level.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Level.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -15258,6 +16116,7 @@ export namespace AgsGui {
         /**
          * Emits ::value-changed event.
          * @param normalized_volume the normalized volume
+         * @virtual
          */
         vfunc_value_changed(normalized_volume: number): void;
 
@@ -15308,24 +16167,22 @@ export namespace AgsGui {
          * @param normalized_volume the normalized volume
          */
         value_changed(normalized_volume: number): void;
-
-        // Inherited properties
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
         set accessible_role(val: Gtk.AccessibleRole);
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
         set accessibleRole(val: Gtk.AccessibleRole);
-
-        // Inherited methods
         /**
          * Requests the user's screen reader to announce the given message.
          *
@@ -15340,6 +16197,17 @@ export namespace AgsGui {
          * @param priority the priority of the announcement
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
+        /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @returns the accessible identifier
+         */
+        get_accessible_id(): string | null;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -15360,7 +16228,7 @@ export namespace AgsGui {
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
@@ -15379,9 +16247,9 @@ export namespace AgsGui {
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
          */
@@ -15407,7 +16275,7 @@ export namespace AgsGui {
          * This function is meant to be used by accessible implementations that are
          * not part of the widget hierarchy, and but act as a logical bridge between
          * widgets. For instance, if a widget creates an object that holds metadata
-         * for each child, and you want that object to implement the `GtkAccessible`
+         * for each child, and you want that object to implement the {@link Gtk.Accessible}
          * interface, you will use this function to ensure that the parent of each
          * child widget is the metadata object, and the parent of each metadata
          * object is the container widget.
@@ -15426,7 +16294,7 @@ export namespace AgsGui {
         /**
          * Informs ATs that the platform state has changed.
          *
-         * This function should be used by `GtkAccessible` implementations that
+         * This function should be used by {@link Gtk.Accessible} implementations that
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
@@ -15435,7 +16303,7 @@ export namespace AgsGui {
         /**
          * Updates an array of accessible properties.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * property change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -15446,7 +16314,7 @@ export namespace AgsGui {
         /**
          * Updates an array of accessible relations.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * relation change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -15457,7 +16325,7 @@ export namespace AgsGui {
         /**
          * Updates an array of accessible states.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * state change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -15466,44 +16334,61 @@ export namespace AgsGui {
          */
         update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
         /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @virtual
+         */
+        vfunc_get_accessible_id(): string | null;
+        /**
          * Retrieves the accessible parent for an accessible object.
          *
          * This function returns `NULL` for top level widgets.
+         * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
         /**
          * Retrieves the implementation for the given accessible object.
+         * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
         /**
          * Gets the ID of the `buildable` object.
          *
-         * `GtkBuilder` sets the name based on the ID attribute
+         * {@link Gtk.Builder} sets the name based on the ID attribute
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
@@ -15511,18 +16396,20 @@ export namespace AgsGui {
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param child child to add
-         * @param type kind of child or %NULL
+         * @param type kind of child or `null`
+         * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
         /**
-         * Similar to gtk_buildable_parser_finished() but is
+         * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
-         * @param builder a `GtkBuilder`
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder}
+         * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @virtual
          */
         vfunc_custom_finished(
             builder: Gtk.Builder,
@@ -15533,10 +16420,11 @@ export namespace AgsGui {
         /**
          * Called at the end of each custom element handled by
          * the buildable.
-         * @param builder `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @virtual
          */
         vfunc_custom_tag_end(
             builder: Gtk.Builder,
@@ -15546,9 +16434,10 @@ export namespace AgsGui {
         ): void;
         /**
          * Called for each unknown element under `<child>`.
-         * @param builder a `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @virtual
          */
         vfunc_custom_tag_start(
             builder: Gtk.Builder,
@@ -15558,44 +16447,49 @@ export namespace AgsGui {
         /**
          * The getter corresponding to `set_id`. Implement this
          *   if you implement `set_id`.
+         * @virtual
          */
         vfunc_get_id(): string;
         /**
          * Retrieves the internal child called `childname` of the `buildable` object.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
         /**
          * Called when a builder finishes the parsing
          *  of a UI definition. It is normally not necessary to implement this,
-         *  unless you need to perform special cleanup actions. `GtkWindow` sets
-         *  the `GtkWidget:visible` property here.
+         *  unless you need to perform special cleanup actions. {@link Gtk.Window} sets
+         *  the {@link Gtk.Widget.visible} property here.
          * @param builder
+         * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
         /**
          * Sets a property of a buildable object.
-         *  It is normally not necessary to implement this, g_object_set_property()
-         *  is used by default. `GtkWindow` implements this to delay showing itself
-         *  (i.e. setting the [property`Gtk`.Widget:visible] property) until the whole
+         *  It is normally not necessary to implement this, `g_object_set_property()`
+         *  is used by default. {@link Gtk.Window} implements this to delay showing itself
+         *  (i.e. setting the {@link Gtk.Widget.visible} property) until the whole
          *  interface is created.
          * @param builder
          * @param name
          * @param value
+         * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
         /**
-         * Stores the id attribute given in the `GtkBuilder` UI definition.
-         *   `GtkWidget` stores the name as object data. Implement this method if your
+         * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
+         *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
          *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id
+         * @virtual
          */
         vfunc_set_id(id: string): void;
         /**
          * Retrieves the orientation of the `orientable`.
-         * @returns the orientation of the @orientable
+         * @returns the orientation of the `orientable`
          */
         get_orientation(): Gtk.Orientation;
         /**
@@ -15616,32 +16510,32 @@ export namespace AgsGui {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -15650,39 +16544,39 @@ export namespace AgsGui {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -15693,13 +16587,16 @@ export namespace AgsGui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -15707,7 +16604,7 @@ export namespace AgsGui {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -15715,9 +16612,9 @@ export namespace AgsGui {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -15737,9 +16634,9 @@ export namespace AgsGui {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -15752,34 +16649,34 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -15812,22 +16709,22 @@ export namespace AgsGui {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -15836,8 +16733,8 @@ export namespace AgsGui {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -15854,10 +16751,10 @@ export namespace AgsGui {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -15872,13 +16769,13 @@ export namespace AgsGui {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -15909,21 +16806,21 @@ export namespace AgsGui {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -15933,33 +16830,34 @@ export namespace AgsGui {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -15968,6 +16866,7 @@ export namespace AgsGui {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -15976,12 +16875,14 @@ export namespace AgsGui {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -15990,20 +16891,22 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -16015,6 +16918,7 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -16047,7 +16951,19 @@ export namespace AgsGui {
     namespace LevelBox {
         // Signal signatures
         interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            /**
+             * The ::child-height-request
+             * @signal
+             * @since 4.0.0
+             * @run-last
+             */
             'child-height-request': (arg0: GObject.Object, arg1: number) => void;
+            /**
+             * The ::child-width-request
+             * @signal
+             * @since 4.0.0
+             * @run-last
+             */
             'child-width-request': (arg0: GObject.Object, arg1: number) => void;
             'notify::baseline-child': (pspec: GObject.ParamSpec) => void;
             'notify::baseline-position': (pspec: GObject.ParamSpec) => void;
@@ -16102,6 +17018,9 @@ export namespace AgsGui {
                 Gtk.Orientable.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class LevelBox extends Gtk.Box implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<LevelBox>;
 
@@ -16129,16 +17048,19 @@ export namespace AgsGui {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LevelBox.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LevelBox.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LevelBox.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LevelBox.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LevelBox.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LevelBox.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -16149,14 +17071,16 @@ export namespace AgsGui {
 
         /**
          * Notify about child level height request.
-         * @param level the #AgsLevel
+         * @param level the {@link AgsGui.Level}
          * @param height_request the level's height-request
+         * @virtual
          */
         vfunc_child_height_request(level: Gtk.Widget, height_request: number): void;
         /**
          * Notify about child level width request.
-         * @param level the #AgsLevel
+         * @param level the {@link AgsGui.Level}
          * @param width_request the level's width-request
+         * @virtual
          */
         vfunc_child_width_request(level: Gtk.Widget, width_request: number): void;
 
@@ -16164,43 +17088,40 @@ export namespace AgsGui {
 
         /**
          * Add `level` to `level_box`.
-         * @param level the #AgsLevel
+         * @param level the {@link AgsGui.Level}
          */
         add_level(level: Level): void;
         /**
          * Notify about child level height request.
-         * @param level the #AgsLevel
+         * @param level the {@link AgsGui.Level}
          * @param height_request the level's height-request
          */
         child_height_request(level: Gtk.Widget, height_request: number): void;
         /**
          * Notify about child level width request.
-         * @param level the #AgsLevel
+         * @param level the {@link AgsGui.Level}
          * @param width_request the level's width-request
          */
         child_width_request(level: Gtk.Widget, width_request: number): void;
         /**
          * Get level.
-         * @returns the #GList-struct containing #AgsLevel
+         * @returns the {@link GLib.List}-struct containing {@link AgsGui.Level}
          */
         get_level(): Level[];
         /**
          * Remove level at `position` of `level_box`.
-         * @param level the #AgsLevel
+         * @param level the {@link AgsGui.Level}
          */
         remove_level(level: Level): void;
-
-        // Inherited properties
         /**
          * The orientation of the orientable.
+         * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
-
-        // Inherited methods
         /**
          * Retrieves the orientation of the `orientable`.
-         * @returns the orientation of the @orientable
+         * @returns the orientation of the `orientable`
          */
         get_orientation(): Gtk.Orientation;
         /**
@@ -16221,32 +17142,32 @@ export namespace AgsGui {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -16255,39 +17176,39 @@ export namespace AgsGui {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -16298,13 +17219,16 @@ export namespace AgsGui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -16312,7 +17236,7 @@ export namespace AgsGui {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -16320,9 +17244,9 @@ export namespace AgsGui {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -16342,9 +17266,9 @@ export namespace AgsGui {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -16357,34 +17281,34 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -16417,22 +17341,22 @@ export namespace AgsGui {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -16441,8 +17365,8 @@ export namespace AgsGui {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -16459,10 +17383,10 @@ export namespace AgsGui {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -16477,13 +17401,13 @@ export namespace AgsGui {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -16514,21 +17438,21 @@ export namespace AgsGui {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -16538,33 +17462,34 @@ export namespace AgsGui {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -16573,6 +17498,7 @@ export namespace AgsGui {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -16581,12 +17507,14 @@ export namespace AgsGui {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -16595,20 +17523,22 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -16620,6 +17550,7 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -16712,6 +17643,9 @@ export namespace AgsGui {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Notebook extends Gtk.Box implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<Notebook>;
 
@@ -16719,21 +17653,25 @@ export namespace AgsGui {
 
         /**
          * The tab's height.
+         * @since 4.0.0
          */
         get tab_height(): number;
         set tab_height(val: number);
         /**
          * The tab's height.
+         * @since 4.0.0
          */
         get tabHeight(): number;
         set tabHeight(val: number);
         /**
          * The tab's width.
+         * @since 4.0.0
          */
         get tab_width(): number;
         set tab_width(val: number);
         /**
          * The tab's width.
+         * @since 4.0.0
          */
         get tabWidth(): number;
         set tabWidth(val: number);
@@ -16767,16 +17705,19 @@ export namespace AgsGui {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Notebook.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Notebook.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Notebook.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Notebook.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Notebook.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Notebook.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -16787,17 +17728,17 @@ export namespace AgsGui {
 
         /**
          * Add `tab` to `notebook`.
-         * @param tab the #GtkToggleButton
+         * @param tab the {@link Gtk.ToggleButton}
          */
         add_tab(tab: Gtk.ToggleButton): void;
         /**
          * Get tab.
-         * @returns the #GList-struct containing #GtkToggleButton
+         * @returns the {@link GLib.List}-struct containing {@link Gtk.ToggleButton}
          */
         get_tab(): Gtk.ToggleButton[];
         /**
-         * Insert a new #AgsNotebookTab-struct to `notebook`.
-         * @param tab the #GtkToggleButton
+         * Insert a new `AgsNotebookTab`-struct to `notebook`.
+         * @param tab the {@link Gtk.ToggleButton}
          * @param position the position as integer
          */
         insert_tab(tab: Gtk.ToggleButton, position: number): void;
@@ -16809,21 +17750,18 @@ export namespace AgsGui {
         next_active_tab(position: number): number;
         /**
          * Remove `tab` from `notebook`.
-         * @param tab the #GtkToggleButton
+         * @param tab the {@link Gtk.ToggleButton}
          */
         remove_tab(tab: Gtk.ToggleButton): void;
-
-        // Inherited properties
         /**
          * The orientation of the orientable.
+         * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
-
-        // Inherited methods
         /**
          * Retrieves the orientation of the `orientable`.
-         * @returns the orientation of the @orientable
+         * @returns the orientation of the `orientable`
          */
         get_orientation(): Gtk.Orientation;
         /**
@@ -16844,32 +17782,32 @@ export namespace AgsGui {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -16878,39 +17816,39 @@ export namespace AgsGui {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -16921,13 +17859,16 @@ export namespace AgsGui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -16935,7 +17876,7 @@ export namespace AgsGui {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -16943,9 +17884,9 @@ export namespace AgsGui {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -16965,9 +17906,9 @@ export namespace AgsGui {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -16980,34 +17921,34 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -17040,22 +17981,22 @@ export namespace AgsGui {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -17064,8 +18005,8 @@ export namespace AgsGui {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -17082,10 +18023,10 @@ export namespace AgsGui {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -17100,13 +18041,13 @@ export namespace AgsGui {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -17137,21 +18078,21 @@ export namespace AgsGui {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -17161,33 +18102,34 @@ export namespace AgsGui {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -17196,6 +18138,7 @@ export namespace AgsGui {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -17204,12 +18147,14 @@ export namespace AgsGui {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -17218,20 +18163,22 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -17243,6 +18190,7 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -17275,8 +18223,26 @@ export namespace AgsGui {
     namespace Piano {
         // Signal signatures
         interface SignalSignatures extends Gtk.Widget.SignalSignatures {
+            /**
+             * The ::key-clicked signal notifies about key clicked.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             'key-clicked': (arg0: string, arg1: number) => void;
+            /**
+             * The ::key-pressed signal notifies about key pressed.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             'key-pressed': (arg0: string, arg1: number) => void;
+            /**
+             * The ::key-released signal notifies about key released.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             'key-released': (arg0: string, arg1: number) => void;
             'notify::base-key-code': (pspec: GObject.ParamSpec) => void;
             'notify::base-note': (pspec: GObject.ParamSpec) => void;
@@ -17343,6 +18309,9 @@ export namespace AgsGui {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Piano extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<Piano>;
 
@@ -17350,51 +18319,61 @@ export namespace AgsGui {
 
         /**
          * The base key code.
+         * @since 3.0.0
          */
         get base_key_code(): number;
         set base_key_code(val: number);
         /**
          * The base key code.
+         * @since 3.0.0
          */
         get baseKeyCode(): number;
         set baseKeyCode(val: number);
         /**
          * The base note to use as lower.
+         * @since 3.0.0
          */
         get base_note(): string;
         set base_note(val: string);
         /**
          * The base note to use as lower.
+         * @since 3.0.0
          */
         get baseNote(): string;
         set baseNote(val: string);
         /**
          * The count of keys to be drawn.
+         * @since 3.0.0
          */
         get key_count(): number;
         set key_count(val: number);
         /**
          * The count of keys to be drawn.
+         * @since 3.0.0
          */
         get keyCount(): number;
         set keyCount(val: number);
         /**
          * The key height to use for drawing a key.
+         * @since 3.0.0
          */
         get key_height(): number;
         set key_height(val: number);
         /**
          * The key height to use for drawing a key.
+         * @since 3.0.0
          */
         get keyHeight(): number;
         set keyHeight(val: number);
         /**
          * The key width to use for drawing a key.
+         * @since 3.0.0
          */
         get key_width(): number;
         set key_width(val: number);
         /**
          * The key width to use for drawing a key.
+         * @since 3.0.0
          */
         get keyWidth(): number;
         set keyWidth(val: number);
@@ -17430,16 +18409,19 @@ export namespace AgsGui {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Piano.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Piano.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Piano.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Piano.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Piano.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Piano.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -17460,18 +18442,21 @@ export namespace AgsGui {
          * Emits ::key-clicked event.
          * @param note the string representation of key
          * @param key_code the key code
+         * @virtual
          */
         vfunc_key_clicked(note: string, key_code: number): void;
         /**
          * Emits ::key-pressed event.
          * @param note the string representation of key
          * @param key_code the key code
+         * @virtual
          */
         vfunc_key_pressed(note: string, key_code: number): void;
         /**
          * Emits ::key-released event.
          * @param note the string representation of key
          * @param key_code the key code
+         * @virtual
          */
         vfunc_key_released(note: string, key_code: number): void;
 
@@ -17543,7 +18528,7 @@ export namespace AgsGui {
         set_base_note(base_note: string): void;
         /**
          * Set `button_state` of `piano`.
-         * @param button_state the #AgsPianoButtonState-enum
+         * @param button_state the {@link AgsGui.PianoButtonState}-enum
          */
         set_button_state(button_state: number): void;
         /**
@@ -17561,24 +18546,22 @@ export namespace AgsGui {
          * @param key_width the base note
          */
         set_key_width(key_width: number): void;
-
-        // Inherited properties
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
         set accessible_role(val: Gtk.AccessibleRole);
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
         set accessibleRole(val: Gtk.AccessibleRole);
-
-        // Inherited methods
         /**
          * Requests the user's screen reader to announce the given message.
          *
@@ -17593,6 +18576,17 @@ export namespace AgsGui {
          * @param priority the priority of the announcement
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
+        /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @returns the accessible identifier
+         */
+        get_accessible_id(): string | null;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -17613,7 +18607,7 @@ export namespace AgsGui {
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
@@ -17632,9 +18626,9 @@ export namespace AgsGui {
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
          */
@@ -17660,7 +18654,7 @@ export namespace AgsGui {
          * This function is meant to be used by accessible implementations that are
          * not part of the widget hierarchy, and but act as a logical bridge between
          * widgets. For instance, if a widget creates an object that holds metadata
-         * for each child, and you want that object to implement the `GtkAccessible`
+         * for each child, and you want that object to implement the {@link Gtk.Accessible}
          * interface, you will use this function to ensure that the parent of each
          * child widget is the metadata object, and the parent of each metadata
          * object is the container widget.
@@ -17679,7 +18673,7 @@ export namespace AgsGui {
         /**
          * Informs ATs that the platform state has changed.
          *
-         * This function should be used by `GtkAccessible` implementations that
+         * This function should be used by {@link Gtk.Accessible} implementations that
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
@@ -17688,7 +18682,7 @@ export namespace AgsGui {
         /**
          * Updates an array of accessible properties.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * property change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -17699,7 +18693,7 @@ export namespace AgsGui {
         /**
          * Updates an array of accessible relations.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * relation change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -17710,7 +18704,7 @@ export namespace AgsGui {
         /**
          * Updates an array of accessible states.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * state change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -17719,44 +18713,61 @@ export namespace AgsGui {
          */
         update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
         /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @virtual
+         */
+        vfunc_get_accessible_id(): string | null;
+        /**
          * Retrieves the accessible parent for an accessible object.
          *
          * This function returns `NULL` for top level widgets.
+         * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
         /**
          * Retrieves the implementation for the given accessible object.
+         * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
         /**
          * Gets the ID of the `buildable` object.
          *
-         * `GtkBuilder` sets the name based on the ID attribute
+         * {@link Gtk.Builder} sets the name based on the ID attribute
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
@@ -17764,18 +18775,20 @@ export namespace AgsGui {
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param child child to add
-         * @param type kind of child or %NULL
+         * @param type kind of child or `null`
+         * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
         /**
-         * Similar to gtk_buildable_parser_finished() but is
+         * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
-         * @param builder a `GtkBuilder`
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder}
+         * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @virtual
          */
         vfunc_custom_finished(
             builder: Gtk.Builder,
@@ -17786,10 +18799,11 @@ export namespace AgsGui {
         /**
          * Called at the end of each custom element handled by
          * the buildable.
-         * @param builder `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @virtual
          */
         vfunc_custom_tag_end(
             builder: Gtk.Builder,
@@ -17799,9 +18813,10 @@ export namespace AgsGui {
         ): void;
         /**
          * Called for each unknown element under `<child>`.
-         * @param builder a `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @virtual
          */
         vfunc_custom_tag_start(
             builder: Gtk.Builder,
@@ -17811,44 +18826,49 @@ export namespace AgsGui {
         /**
          * The getter corresponding to `set_id`. Implement this
          *   if you implement `set_id`.
+         * @virtual
          */
         vfunc_get_id(): string;
         /**
          * Retrieves the internal child called `childname` of the `buildable` object.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
         /**
          * Called when a builder finishes the parsing
          *  of a UI definition. It is normally not necessary to implement this,
-         *  unless you need to perform special cleanup actions. `GtkWindow` sets
-         *  the `GtkWidget:visible` property here.
+         *  unless you need to perform special cleanup actions. {@link Gtk.Window} sets
+         *  the {@link Gtk.Widget.visible} property here.
          * @param builder
+         * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
         /**
          * Sets a property of a buildable object.
-         *  It is normally not necessary to implement this, g_object_set_property()
-         *  is used by default. `GtkWindow` implements this to delay showing itself
-         *  (i.e. setting the [property`Gtk`.Widget:visible] property) until the whole
+         *  It is normally not necessary to implement this, `g_object_set_property()`
+         *  is used by default. {@link Gtk.Window} implements this to delay showing itself
+         *  (i.e. setting the {@link Gtk.Widget.visible} property) until the whole
          *  interface is created.
          * @param builder
          * @param name
          * @param value
+         * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
         /**
-         * Stores the id attribute given in the `GtkBuilder` UI definition.
-         *   `GtkWidget` stores the name as object data. Implement this method if your
+         * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
+         *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
          *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id
+         * @virtual
          */
         vfunc_set_id(id: string): void;
         /**
          * Retrieves the orientation of the `orientable`.
-         * @returns the orientation of the @orientable
+         * @returns the orientation of the `orientable`
          */
         get_orientation(): Gtk.Orientation;
         /**
@@ -17869,32 +18889,32 @@ export namespace AgsGui {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -17903,39 +18923,39 @@ export namespace AgsGui {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -17946,13 +18966,16 @@ export namespace AgsGui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -17960,7 +18983,7 @@ export namespace AgsGui {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -17968,9 +18991,9 @@ export namespace AgsGui {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -17990,9 +19013,9 @@ export namespace AgsGui {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -18005,34 +19028,34 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -18065,22 +19088,22 @@ export namespace AgsGui {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -18089,8 +19112,8 @@ export namespace AgsGui {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -18107,10 +19130,10 @@ export namespace AgsGui {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -18125,13 +19148,13 @@ export namespace AgsGui {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -18162,21 +19185,21 @@ export namespace AgsGui {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -18186,33 +19209,34 @@ export namespace AgsGui {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -18221,6 +19245,7 @@ export namespace AgsGui {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -18229,12 +19254,14 @@ export namespace AgsGui {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -18243,20 +19270,22 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -18268,6 +19297,7 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -18370,6 +19400,9 @@ export namespace AgsGui {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Ruler extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<Ruler>;
 
@@ -18377,61 +19410,73 @@ export namespace AgsGui {
 
         /**
          * The adjustment.
+         * @since 3.0.0
          */
         get adjustment(): GObject.Object;
         set adjustment(val: GObject.Object);
         /**
          * The factor.
+         * @since 4.0.0
          */
         get factor(): number;
         set factor(val: number);
         /**
          * The font size.
+         * @since 3.6.15
          */
         get font_size(): number;
         set font_size(val: number);
         /**
          * The font size.
+         * @since 3.6.15
          */
         get fontSize(): number;
         set fontSize(val: number);
         /**
          * The large step's width.
+         * @since 3.0.0
          */
         get large_step(): number;
         set large_step(val: number);
         /**
          * The large step's width.
+         * @since 3.0.0
          */
         get largeStep(): number;
         set largeStep(val: number);
         /**
          * The precision.
+         * @since 4.0.0
          */
         get precision(): number;
         set precision(val: number);
         /**
          * The scale precision.
+         * @since 4.0.0
          */
         get scale_precision(): number;
         set scale_precision(val: number);
         /**
          * The scale precision.
+         * @since 4.0.0
          */
         get scalePrecision(): number;
         set scalePrecision(val: number);
         /**
          * The small step's width.
+         * @since 3.0.0
          */
         get small_step(): number;
         set small_step(val: number);
         /**
          * The small step's width.
+         * @since 3.0.0
          */
         get smallStep(): number;
         set smallStep(val: number);
         /**
          * The step's width.
+         * @since 3.0.0
          */
         get step(): number;
         set step(val: number);
@@ -18466,16 +19511,19 @@ export namespace AgsGui {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Ruler.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Ruler.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Ruler.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Ruler.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Ruler.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Ruler.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -18486,7 +19534,7 @@ export namespace AgsGui {
 
         /**
          * Get adjustment of `ruler`.
-         * @returns the #GtkAdjustment
+         * @returns the {@link Gtk.Adjustment}
          */
         get_adjustment(): Gtk.Adjustment;
         /**
@@ -18526,7 +19574,7 @@ export namespace AgsGui {
         get_step(): number;
         /**
          * Set adjustment of `ruler`.
-         * @param adjustment the #GtkAdjustment
+         * @param adjustment the {@link Gtk.Adjustment}
          */
         set_adjustment(adjustment: Gtk.Adjustment): void;
         /**
@@ -18564,24 +19612,22 @@ export namespace AgsGui {
          * @param step the step
          */
         set_step(step: number): void;
-
-        // Inherited properties
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
         set accessible_role(val: Gtk.AccessibleRole);
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
         set accessibleRole(val: Gtk.AccessibleRole);
-
-        // Inherited methods
         /**
          * Requests the user's screen reader to announce the given message.
          *
@@ -18596,6 +19642,17 @@ export namespace AgsGui {
          * @param priority the priority of the announcement
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
+        /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @returns the accessible identifier
+         */
+        get_accessible_id(): string | null;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -18616,7 +19673,7 @@ export namespace AgsGui {
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
@@ -18635,9 +19692,9 @@ export namespace AgsGui {
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
          */
@@ -18663,7 +19720,7 @@ export namespace AgsGui {
          * This function is meant to be used by accessible implementations that are
          * not part of the widget hierarchy, and but act as a logical bridge between
          * widgets. For instance, if a widget creates an object that holds metadata
-         * for each child, and you want that object to implement the `GtkAccessible`
+         * for each child, and you want that object to implement the {@link Gtk.Accessible}
          * interface, you will use this function to ensure that the parent of each
          * child widget is the metadata object, and the parent of each metadata
          * object is the container widget.
@@ -18682,7 +19739,7 @@ export namespace AgsGui {
         /**
          * Informs ATs that the platform state has changed.
          *
-         * This function should be used by `GtkAccessible` implementations that
+         * This function should be used by {@link Gtk.Accessible} implementations that
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
@@ -18691,7 +19748,7 @@ export namespace AgsGui {
         /**
          * Updates an array of accessible properties.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * property change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -18702,7 +19759,7 @@ export namespace AgsGui {
         /**
          * Updates an array of accessible relations.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * relation change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -18713,7 +19770,7 @@ export namespace AgsGui {
         /**
          * Updates an array of accessible states.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * state change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -18722,44 +19779,61 @@ export namespace AgsGui {
          */
         update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
         /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @virtual
+         */
+        vfunc_get_accessible_id(): string | null;
+        /**
          * Retrieves the accessible parent for an accessible object.
          *
          * This function returns `NULL` for top level widgets.
+         * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
         /**
          * Retrieves the implementation for the given accessible object.
+         * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
         /**
          * Gets the ID of the `buildable` object.
          *
-         * `GtkBuilder` sets the name based on the ID attribute
+         * {@link Gtk.Builder} sets the name based on the ID attribute
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
@@ -18767,18 +19841,20 @@ export namespace AgsGui {
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param child child to add
-         * @param type kind of child or %NULL
+         * @param type kind of child or `null`
+         * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
         /**
-         * Similar to gtk_buildable_parser_finished() but is
+         * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
-         * @param builder a `GtkBuilder`
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder}
+         * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @virtual
          */
         vfunc_custom_finished(
             builder: Gtk.Builder,
@@ -18789,10 +19865,11 @@ export namespace AgsGui {
         /**
          * Called at the end of each custom element handled by
          * the buildable.
-         * @param builder `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @virtual
          */
         vfunc_custom_tag_end(
             builder: Gtk.Builder,
@@ -18802,9 +19879,10 @@ export namespace AgsGui {
         ): void;
         /**
          * Called for each unknown element under `<child>`.
-         * @param builder a `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @virtual
          */
         vfunc_custom_tag_start(
             builder: Gtk.Builder,
@@ -18814,44 +19892,49 @@ export namespace AgsGui {
         /**
          * The getter corresponding to `set_id`. Implement this
          *   if you implement `set_id`.
+         * @virtual
          */
         vfunc_get_id(): string;
         /**
          * Retrieves the internal child called `childname` of the `buildable` object.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
         /**
          * Called when a builder finishes the parsing
          *  of a UI definition. It is normally not necessary to implement this,
-         *  unless you need to perform special cleanup actions. `GtkWindow` sets
-         *  the `GtkWidget:visible` property here.
+         *  unless you need to perform special cleanup actions. {@link Gtk.Window} sets
+         *  the {@link Gtk.Widget.visible} property here.
          * @param builder
+         * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
         /**
          * Sets a property of a buildable object.
-         *  It is normally not necessary to implement this, g_object_set_property()
-         *  is used by default. `GtkWindow` implements this to delay showing itself
-         *  (i.e. setting the [property`Gtk`.Widget:visible] property) until the whole
+         *  It is normally not necessary to implement this, `g_object_set_property()`
+         *  is used by default. {@link Gtk.Window} implements this to delay showing itself
+         *  (i.e. setting the {@link Gtk.Widget.visible} property) until the whole
          *  interface is created.
          * @param builder
          * @param name
          * @param value
+         * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
         /**
-         * Stores the id attribute given in the `GtkBuilder` UI definition.
-         *   `GtkWidget` stores the name as object data. Implement this method if your
+         * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
+         *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
          *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id
+         * @virtual
          */
         vfunc_set_id(id: string): void;
         /**
          * Retrieves the orientation of the `orientable`.
-         * @returns the orientation of the @orientable
+         * @returns the orientation of the `orientable`
          */
         get_orientation(): Gtk.Orientation;
         /**
@@ -18872,32 +19955,32 @@ export namespace AgsGui {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -18906,39 +19989,39 @@ export namespace AgsGui {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -18949,13 +20032,16 @@ export namespace AgsGui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -18963,7 +20049,7 @@ export namespace AgsGui {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -18971,9 +20057,9 @@ export namespace AgsGui {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -18993,9 +20079,9 @@ export namespace AgsGui {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -19008,34 +20094,34 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -19068,22 +20154,22 @@ export namespace AgsGui {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -19092,8 +20178,8 @@ export namespace AgsGui {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -19110,10 +20196,10 @@ export namespace AgsGui {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -19128,13 +20214,13 @@ export namespace AgsGui {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -19165,21 +20251,21 @@ export namespace AgsGui {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -19189,33 +20275,34 @@ export namespace AgsGui {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -19224,6 +20311,7 @@ export namespace AgsGui {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -19232,12 +20320,14 @@ export namespace AgsGui {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -19246,20 +20336,22 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -19271,6 +20363,7 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -19303,6 +20396,12 @@ export namespace AgsGui {
     namespace Scale {
         // Signal signatures
         interface SignalSignatures extends Gtk.Widget.SignalSignatures {
+            /**
+             * The ::value-changed signal notifies about modified default value.
+             * @signal
+             * @since 3.0.0
+             * @run-last
+             */
             'value-changed': (arg0: number) => void;
             'notify::control-name': (pspec: GObject.ParamSpec) => void;
             'notify::default-value': (pspec: GObject.ParamSpec) => void;
@@ -19364,6 +20463,9 @@ export namespace AgsGui {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Scale extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<Scale>;
 
@@ -19371,31 +20473,37 @@ export namespace AgsGui {
 
         /**
          * The scale's control name.
+         * @since 3.0.0
          */
         get control_name(): string;
         set control_name(val: string);
         /**
          * The scale's control name.
+         * @since 3.0.0
          */
         get controlName(): string;
         set controlName(val: string);
         /**
          * The scale's default value.
+         * @since 3.0.0
          */
         get default_value(): number;
         set default_value(val: number);
         /**
          * The scale's default value.
+         * @since 3.0.0
          */
         get defaultValue(): number;
         set defaultValue(val: number);
         /**
          * The scale's lower range.
+         * @since 3.0.0
          */
         get lower(): number;
         set lower(val: number);
         /**
          * The scale's upper range.
+         * @since 3.0.0
          */
         get upper(): number;
         set upper(val: number);
@@ -19433,16 +20541,19 @@ export namespace AgsGui {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Scale.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Scale.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Scale.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Scale.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Scale.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Scale.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -19454,6 +20565,7 @@ export namespace AgsGui {
         /**
          * Emits ::value-changed event.
          * @param default_value the default value
+         * @virtual
          */
         vfunc_value_changed(default_value: number): void;
 
@@ -19504,24 +20616,22 @@ export namespace AgsGui {
          * @param default_value the default value
          */
         value_changed(default_value: number): void;
-
-        // Inherited properties
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
         set accessible_role(val: Gtk.AccessibleRole);
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
         set accessibleRole(val: Gtk.AccessibleRole);
-
-        // Inherited methods
         /**
          * Requests the user's screen reader to announce the given message.
          *
@@ -19536,6 +20646,17 @@ export namespace AgsGui {
          * @param priority the priority of the announcement
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
+        /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @returns the accessible identifier
+         */
+        get_accessible_id(): string | null;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -19556,7 +20677,7 @@ export namespace AgsGui {
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
@@ -19575,9 +20696,9 @@ export namespace AgsGui {
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
          */
@@ -19603,7 +20724,7 @@ export namespace AgsGui {
          * This function is meant to be used by accessible implementations that are
          * not part of the widget hierarchy, and but act as a logical bridge between
          * widgets. For instance, if a widget creates an object that holds metadata
-         * for each child, and you want that object to implement the `GtkAccessible`
+         * for each child, and you want that object to implement the {@link Gtk.Accessible}
          * interface, you will use this function to ensure that the parent of each
          * child widget is the metadata object, and the parent of each metadata
          * object is the container widget.
@@ -19622,7 +20743,7 @@ export namespace AgsGui {
         /**
          * Informs ATs that the platform state has changed.
          *
-         * This function should be used by `GtkAccessible` implementations that
+         * This function should be used by {@link Gtk.Accessible} implementations that
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
@@ -19631,7 +20752,7 @@ export namespace AgsGui {
         /**
          * Updates an array of accessible properties.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * property change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -19642,7 +20763,7 @@ export namespace AgsGui {
         /**
          * Updates an array of accessible relations.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * relation change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -19653,7 +20774,7 @@ export namespace AgsGui {
         /**
          * Updates an array of accessible states.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * state change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -19662,44 +20783,61 @@ export namespace AgsGui {
          */
         update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
         /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @virtual
+         */
+        vfunc_get_accessible_id(): string | null;
+        /**
          * Retrieves the accessible parent for an accessible object.
          *
          * This function returns `NULL` for top level widgets.
+         * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
         /**
          * Retrieves the implementation for the given accessible object.
+         * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
         /**
          * Gets the ID of the `buildable` object.
          *
-         * `GtkBuilder` sets the name based on the ID attribute
+         * {@link Gtk.Builder} sets the name based on the ID attribute
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
@@ -19707,18 +20845,20 @@ export namespace AgsGui {
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param child child to add
-         * @param type kind of child or %NULL
+         * @param type kind of child or `null`
+         * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
         /**
-         * Similar to gtk_buildable_parser_finished() but is
+         * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
-         * @param builder a `GtkBuilder`
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder}
+         * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @virtual
          */
         vfunc_custom_finished(
             builder: Gtk.Builder,
@@ -19729,10 +20869,11 @@ export namespace AgsGui {
         /**
          * Called at the end of each custom element handled by
          * the buildable.
-         * @param builder `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @virtual
          */
         vfunc_custom_tag_end(
             builder: Gtk.Builder,
@@ -19742,9 +20883,10 @@ export namespace AgsGui {
         ): void;
         /**
          * Called for each unknown element under `<child>`.
-         * @param builder a `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @virtual
          */
         vfunc_custom_tag_start(
             builder: Gtk.Builder,
@@ -19754,44 +20896,49 @@ export namespace AgsGui {
         /**
          * The getter corresponding to `set_id`. Implement this
          *   if you implement `set_id`.
+         * @virtual
          */
         vfunc_get_id(): string;
         /**
          * Retrieves the internal child called `childname` of the `buildable` object.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
         /**
          * Called when a builder finishes the parsing
          *  of a UI definition. It is normally not necessary to implement this,
-         *  unless you need to perform special cleanup actions. `GtkWindow` sets
-         *  the `GtkWidget:visible` property here.
+         *  unless you need to perform special cleanup actions. {@link Gtk.Window} sets
+         *  the {@link Gtk.Widget.visible} property here.
          * @param builder
+         * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
         /**
          * Sets a property of a buildable object.
-         *  It is normally not necessary to implement this, g_object_set_property()
-         *  is used by default. `GtkWindow` implements this to delay showing itself
-         *  (i.e. setting the [property`Gtk`.Widget:visible] property) until the whole
+         *  It is normally not necessary to implement this, `g_object_set_property()`
+         *  is used by default. {@link Gtk.Window} implements this to delay showing itself
+         *  (i.e. setting the {@link Gtk.Widget.visible} property) until the whole
          *  interface is created.
          * @param builder
          * @param name
          * @param value
+         * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
         /**
-         * Stores the id attribute given in the `GtkBuilder` UI definition.
-         *   `GtkWidget` stores the name as object data. Implement this method if your
+         * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
+         *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
          *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id
+         * @virtual
          */
         vfunc_set_id(id: string): void;
         /**
          * Retrieves the orientation of the `orientable`.
-         * @returns the orientation of the @orientable
+         * @returns the orientation of the `orientable`
          */
         get_orientation(): Gtk.Orientation;
         /**
@@ -19812,32 +20959,32 @@ export namespace AgsGui {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -19846,39 +20993,39 @@ export namespace AgsGui {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -19889,13 +21036,16 @@ export namespace AgsGui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -19903,7 +21053,7 @@ export namespace AgsGui {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -19911,9 +21061,9 @@ export namespace AgsGui {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -19933,9 +21083,9 @@ export namespace AgsGui {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -19948,34 +21098,34 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -20008,22 +21158,22 @@ export namespace AgsGui {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -20032,8 +21182,8 @@ export namespace AgsGui {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -20050,10 +21200,10 @@ export namespace AgsGui {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -20068,13 +21218,13 @@ export namespace AgsGui {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -20105,21 +21255,21 @@ export namespace AgsGui {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -20129,33 +21279,34 @@ export namespace AgsGui {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -20164,6 +21315,7 @@ export namespace AgsGui {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -20172,12 +21324,14 @@ export namespace AgsGui {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -20186,20 +21340,22 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -20211,6 +21367,7 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -20243,7 +21400,19 @@ export namespace AgsGui {
     namespace ScaleBox {
         // Signal signatures
         interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            /**
+             * The ::child-height-request
+             * @signal
+             * @since 4.0.0
+             * @run-last
+             */
             'child-height-request': (arg0: GObject.Object, arg1: number) => void;
+            /**
+             * The ::child-width-request
+             * @signal
+             * @since 4.0.0
+             * @run-last
+             */
             'child-width-request': (arg0: GObject.Object, arg1: number) => void;
             'notify::baseline-child': (pspec: GObject.ParamSpec) => void;
             'notify::baseline-position': (pspec: GObject.ParamSpec) => void;
@@ -20298,6 +21467,9 @@ export namespace AgsGui {
                 Gtk.Orientable.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ScaleBox extends Gtk.Box implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<ScaleBox>;
 
@@ -20325,16 +21497,19 @@ export namespace AgsGui {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ScaleBox.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ScaleBox.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ScaleBox.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ScaleBox.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ScaleBox.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ScaleBox.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -20345,14 +21520,16 @@ export namespace AgsGui {
 
         /**
          * Notify about child scale height request.
-         * @param scale the #AgsScale
+         * @param scale the {@link AgsGui.Scale}
          * @param height_request the scale's height-request
+         * @virtual
          */
         vfunc_child_height_request(scale: Gtk.Widget, height_request: number): void;
         /**
          * Notify about child scale width request.
-         * @param scale the #AgsScale
+         * @param scale the {@link AgsGui.Scale}
          * @param width_request the scale's width-request
+         * @virtual
          */
         vfunc_child_width_request(scale: Gtk.Widget, width_request: number): void;
 
@@ -20360,43 +21537,40 @@ export namespace AgsGui {
 
         /**
          * Add `scale` to `scale_box`.
-         * @param scale the #AgsScale
+         * @param scale the {@link AgsGui.Scale}
          */
         add_scale(scale: Scale): void;
         /**
          * Notify about child scale height request.
-         * @param scale the #AgsScale
+         * @param scale the {@link AgsGui.Scale}
          * @param height_request the scale's height-request
          */
         child_height_request(scale: Gtk.Widget, height_request: number): void;
         /**
          * Notify about child scale width request.
-         * @param scale the #AgsScale
+         * @param scale the {@link AgsGui.Scale}
          * @param width_request the scale's width-request
          */
         child_width_request(scale: Gtk.Widget, width_request: number): void;
         /**
          * Get scale.
-         * @returns the #GList-struct containing #AgsScale
+         * @returns the {@link GLib.List}-struct containing {@link AgsGui.Scale}
          */
         get_scale(): Scale[];
         /**
          * Remove `scale` from `scale_box`.
-         * @param scale the #AgsScale
+         * @param scale the {@link AgsGui.Scale}
          */
         remove_scale(scale: Scale): void;
-
-        // Inherited properties
         /**
          * The orientation of the orientable.
+         * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
-
-        // Inherited methods
         /**
          * Retrieves the orientation of the `orientable`.
-         * @returns the orientation of the @orientable
+         * @returns the orientation of the `orientable`
          */
         get_orientation(): Gtk.Orientation;
         /**
@@ -20417,32 +21591,32 @@ export namespace AgsGui {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -20451,39 +21625,39 @@ export namespace AgsGui {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -20494,13 +21668,16 @@ export namespace AgsGui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -20508,7 +21685,7 @@ export namespace AgsGui {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -20516,9 +21693,9 @@ export namespace AgsGui {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -20538,9 +21715,9 @@ export namespace AgsGui {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -20553,34 +21730,34 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -20613,22 +21790,22 @@ export namespace AgsGui {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -20637,8 +21814,8 @@ export namespace AgsGui {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -20655,10 +21832,10 @@ export namespace AgsGui {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -20673,13 +21850,13 @@ export namespace AgsGui {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -20710,21 +21887,21 @@ export namespace AgsGui {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -20734,33 +21911,34 @@ export namespace AgsGui {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -20769,6 +21947,7 @@ export namespace AgsGui {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -20777,12 +21956,14 @@ export namespace AgsGui {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -20791,20 +21972,22 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -20816,6 +21999,7 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -20902,6 +22086,9 @@ export namespace AgsGui {
                 Gtk.Orientable.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ScrolledLevelBox
         extends Gtk.Grid
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable
@@ -20933,16 +22120,19 @@ export namespace AgsGui {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ScrolledLevelBox.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ScrolledLevelBox.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ScrolledLevelBox.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ScrolledLevelBox.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ScrolledLevelBox.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ScrolledLevelBox.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -20953,26 +22143,23 @@ export namespace AgsGui {
 
         /**
          * Get level box of `scrolled_level_box`.
-         * @returns the #AgsLevelBox
+         * @returns the {@link AgsGui.LevelBox}
          */
         get_level_box(): LevelBox;
         /**
          * Get scrolled window of `scrolled_level_box`.
-         * @returns the #GtkScrolledWindow
+         * @returns the {@link Gtk.ScrolledWindow}
          */
         get_scrolled_window(): Gtk.ScrolledWindow;
-
-        // Inherited properties
         /**
          * The orientation of the orientable.
+         * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
-
-        // Inherited methods
         /**
          * Retrieves the orientation of the `orientable`.
-         * @returns the orientation of the @orientable
+         * @returns the orientation of the `orientable`
          */
         get_orientation(): Gtk.Orientation;
         /**
@@ -20993,32 +22180,32 @@ export namespace AgsGui {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -21027,39 +22214,39 @@ export namespace AgsGui {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -21070,13 +22257,16 @@ export namespace AgsGui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -21084,7 +22274,7 @@ export namespace AgsGui {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -21092,9 +22282,9 @@ export namespace AgsGui {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -21114,9 +22304,9 @@ export namespace AgsGui {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -21129,34 +22319,34 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -21189,22 +22379,22 @@ export namespace AgsGui {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -21213,8 +22403,8 @@ export namespace AgsGui {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -21231,10 +22421,10 @@ export namespace AgsGui {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -21249,13 +22439,13 @@ export namespace AgsGui {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -21286,21 +22476,21 @@ export namespace AgsGui {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -21310,33 +22500,34 @@ export namespace AgsGui {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -21345,6 +22536,7 @@ export namespace AgsGui {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -21353,12 +22545,14 @@ export namespace AgsGui {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -21367,20 +22561,22 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -21392,6 +22588,7 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -21478,6 +22675,9 @@ export namespace AgsGui {
                 Gtk.Orientable.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ScrolledPiano
         extends Gtk.Grid
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable
@@ -21509,16 +22709,19 @@ export namespace AgsGui {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ScrolledPiano.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ScrolledPiano.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ScrolledPiano.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ScrolledPiano.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ScrolledPiano.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ScrolledPiano.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -21529,7 +22732,7 @@ export namespace AgsGui {
 
         /**
          * Get piano of `scrolled_piano`.
-         * @returns the #AgsPiano
+         * @returns the {@link AgsGui.Piano}
          */
         get_piano(): Piano;
         /**
@@ -21537,18 +22740,15 @@ export namespace AgsGui {
          * @returns the #GtkScrolled_Window
          */
         get_scrolled_window(): Gtk.ScrolledWindow;
-
-        // Inherited properties
         /**
          * The orientation of the orientable.
+         * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
-
-        // Inherited methods
         /**
          * Retrieves the orientation of the `orientable`.
-         * @returns the orientation of the @orientable
+         * @returns the orientation of the `orientable`
          */
         get_orientation(): Gtk.Orientation;
         /**
@@ -21569,32 +22769,32 @@ export namespace AgsGui {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -21603,39 +22803,39 @@ export namespace AgsGui {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -21646,13 +22846,16 @@ export namespace AgsGui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -21660,7 +22863,7 @@ export namespace AgsGui {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -21668,9 +22871,9 @@ export namespace AgsGui {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -21690,9 +22893,9 @@ export namespace AgsGui {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -21705,34 +22908,34 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -21765,22 +22968,22 @@ export namespace AgsGui {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -21789,8 +22992,8 @@ export namespace AgsGui {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -21807,10 +23010,10 @@ export namespace AgsGui {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -21825,13 +23028,13 @@ export namespace AgsGui {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -21862,21 +23065,21 @@ export namespace AgsGui {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -21886,33 +23089,34 @@ export namespace AgsGui {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -21921,6 +23125,7 @@ export namespace AgsGui {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -21929,12 +23134,14 @@ export namespace AgsGui {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -21943,20 +23150,22 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -21968,6 +23177,7 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -22054,6 +23264,9 @@ export namespace AgsGui {
                 Gtk.Orientable.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ScrolledScaleBox
         extends Gtk.Grid
         implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable
@@ -22085,16 +23298,19 @@ export namespace AgsGui {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ScrolledScaleBox.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ScrolledScaleBox.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ScrolledScaleBox.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ScrolledScaleBox.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ScrolledScaleBox.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ScrolledScaleBox.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -22108,18 +23324,15 @@ export namespace AgsGui {
          * @returns the #GtkScrolled_Window
          */
         get_scrolled_window(): Gtk.ScrolledWindow;
-
-        // Inherited properties
         /**
          * The orientation of the orientable.
+         * @category Inherited from Gtk.Orientable
          */
         get orientation(): Gtk.Orientation;
         set orientation(val: Gtk.Orientation);
-
-        // Inherited methods
         /**
          * Retrieves the orientation of the `orientable`.
-         * @returns the orientation of the @orientable
+         * @returns the orientation of the `orientable`
          */
         get_orientation(): Gtk.Orientation;
         /**
@@ -22140,32 +23353,32 @@ export namespace AgsGui {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -22174,39 +23387,39 @@ export namespace AgsGui {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -22217,13 +23430,16 @@ export namespace AgsGui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -22231,7 +23447,7 @@ export namespace AgsGui {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -22239,9 +23455,9 @@ export namespace AgsGui {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -22261,9 +23477,9 @@ export namespace AgsGui {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -22276,34 +23492,34 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -22336,22 +23552,22 @@ export namespace AgsGui {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -22360,8 +23576,8 @@ export namespace AgsGui {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -22378,10 +23594,10 @@ export namespace AgsGui {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -22396,13 +23612,13 @@ export namespace AgsGui {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -22433,21 +23649,21 @@ export namespace AgsGui {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -22457,33 +23673,34 @@ export namespace AgsGui {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -22492,6 +23709,7 @@ export namespace AgsGui {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -22500,12 +23718,14 @@ export namespace AgsGui {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -22514,20 +23734,22 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -22539,6 +23761,7 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -22571,6 +23794,12 @@ export namespace AgsGui {
     namespace Tempo {
         // Signal signatures
         interface SignalSignatures extends Gtk.Widget.SignalSignatures {
+            /**
+             * The ::value-changed signal notifies about modified default value.
+             * @signal
+             * @since 5.1.0
+             * @run-last
+             */
             'value-changed': (arg0: number) => void;
             'notify::control-name': (pspec: GObject.ParamSpec) => void;
             'notify::default-value': (pspec: GObject.ParamSpec) => void;
@@ -22632,6 +23861,9 @@ export namespace AgsGui {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Tempo extends Gtk.Widget implements Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.Orientable {
         static $gtype: GObject.GType<Tempo>;
 
@@ -22639,31 +23871,37 @@ export namespace AgsGui {
 
         /**
          * The tempo's control name.
+         * @since 5.1.0
          */
         get control_name(): string;
         set control_name(val: string);
         /**
          * The tempo's control name.
+         * @since 5.1.0
          */
         get controlName(): string;
         set controlName(val: string);
         /**
          * The tempo's default value.
+         * @since 5.1.0
          */
         get default_value(): number;
         set default_value(val: number);
         /**
          * The tempo's default value.
+         * @since 5.1.0
          */
         get defaultValue(): number;
         set defaultValue(val: number);
         /**
          * The tempo's lower range.
+         * @since 5.1.0
          */
         get lower(): number;
         set lower(val: number);
         /**
          * The tempo's upper range.
+         * @since 5.1.0
          */
         get upper(): number;
         set upper(val: number);
@@ -22700,16 +23938,19 @@ export namespace AgsGui {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Tempo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Tempo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Tempo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Tempo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Tempo.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Tempo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -22721,6 +23962,7 @@ export namespace AgsGui {
         /**
          * Emits ::value-changed event.
          * @param default_value the default value
+         * @virtual
          */
         vfunc_value_changed(default_value: number): void;
 
@@ -22771,24 +24013,22 @@ export namespace AgsGui {
          * @param default_value the default value
          */
         value_changed(default_value: number): void;
-
-        // Inherited properties
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessible_role(): Gtk.AccessibleRole;
         set accessible_role(val: Gtk.AccessibleRole);
         /**
-         * The accessible role of the given `GtkAccessible` implementation.
+         * The accessible role of the given {@link Gtk.Accessible} implementation.
          *
          * The accessible role cannot be changed once set.
+         * @category Inherited from Gtk.Accessible
          */
         get accessibleRole(): Gtk.AccessibleRole;
         set accessibleRole(val: Gtk.AccessibleRole);
-
-        // Inherited methods
         /**
          * Requests the user's screen reader to announce the given message.
          *
@@ -22803,6 +24043,17 @@ export namespace AgsGui {
          * @param priority the priority of the announcement
          */
         announce(message: string, priority: Gtk.AccessibleAnnouncementPriority | null): void;
+        /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @returns the accessible identifier
+         */
+        get_accessible_id(): string | null;
         /**
          * Retrieves the accessible parent for an accessible object.
          *
@@ -22823,7 +24074,7 @@ export namespace AgsGui {
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
          * @returns true if the bounds are valid, and false otherwise
@@ -22842,9 +24093,9 @@ export namespace AgsGui {
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
          * @returns the value of state for the accessible
          */
@@ -22870,7 +24121,7 @@ export namespace AgsGui {
          * This function is meant to be used by accessible implementations that are
          * not part of the widget hierarchy, and but act as a logical bridge between
          * widgets. For instance, if a widget creates an object that holds metadata
-         * for each child, and you want that object to implement the `GtkAccessible`
+         * for each child, and you want that object to implement the {@link Gtk.Accessible}
          * interface, you will use this function to ensure that the parent of each
          * child widget is the metadata object, and the parent of each metadata
          * object is the container widget.
@@ -22889,7 +24140,7 @@ export namespace AgsGui {
         /**
          * Informs ATs that the platform state has changed.
          *
-         * This function should be used by `GtkAccessible` implementations that
+         * This function should be used by {@link Gtk.Accessible} implementations that
          * have a platform state but are not widgets. Widgets handle platform
          * states automatically.
          * @param state the platform state to update
@@ -22898,7 +24149,7 @@ export namespace AgsGui {
         /**
          * Updates an array of accessible properties.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * property change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -22909,7 +24160,7 @@ export namespace AgsGui {
         /**
          * Updates an array of accessible relations.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * relation change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -22920,7 +24171,7 @@ export namespace AgsGui {
         /**
          * Updates an array of accessible states.
          *
-         * This function should be called by `GtkWidget` types whenever an accessible
+         * This function should be called by {@link Gtk.Widget} types whenever an accessible
          * state change must be communicated to assistive technologies.
          *
          * This function is meant to be used by language bindings.
@@ -22929,44 +24180,61 @@ export namespace AgsGui {
          */
         update_state(states: Gtk.AccessibleState[] | null, values: (GObject.Value | any)[]): void;
         /**
+         * Retrieves the accessible identifier for the accessible object.
+         *
+         * This functionality can be overridden by {@link Gtk.Accessible}
+         * implementations.
+         *
+         * It is left to the accessible implementation to define the scope
+         * and uniqueness of the identifier.
+         * @virtual
+         */
+        vfunc_get_accessible_id(): string | null;
+        /**
          * Retrieves the accessible parent for an accessible object.
          *
          * This function returns `NULL` for top level widgets.
+         * @virtual
          */
         vfunc_get_accessible_parent(): Gtk.Accessible | null;
         /**
          * Retrieves the implementation for the given accessible object.
+         * @virtual
          */
         vfunc_get_at_context(): Gtk.ATContext | null;
         /**
          * Queries the coordinates and dimensions of this accessible
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get the bounds from an ignored
          * child widget.
+         * @virtual
          */
         vfunc_get_bounds(): [boolean, number, number, number, number];
         /**
          * Retrieves the first accessible child of an accessible object.
+         * @virtual
          */
         vfunc_get_first_accessible_child(): Gtk.Accessible | null;
         /**
          * Retrieves the next accessible sibling of an accessible object
+         * @virtual
          */
         vfunc_get_next_accessible_sibling(): Gtk.Accessible | null;
         /**
          * Queries a platform state, such as focus.
          *
-         * This functionality can be overridden by `GtkAccessible`
+         * This functionality can be overridden by {@link Gtk.Accessible}
          * implementations, e.g. to get platform state from an ignored
-         * child widget, as is the case for `GtkText` wrappers.
+         * child widget, as is the case for {@link Gtk.Text} wrappers.
          * @param state platform state to query
+         * @virtual
          */
         vfunc_get_platform_state(state: Gtk.AccessiblePlatformState): boolean;
         /**
          * Gets the ID of the `buildable` object.
          *
-         * `GtkBuilder` sets the name based on the ID attribute
+         * {@link Gtk.Builder} sets the name based on the ID attribute
          * of the `<object>` tag used to construct the `buildable`.
          * @returns the ID of the buildable object
          */
@@ -22974,18 +24242,20 @@ export namespace AgsGui {
         /**
          * Adds a child to `buildable`. `type` is an optional string
          * describing how the child should be added.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param child child to add
-         * @param type kind of child or %NULL
+         * @param type kind of child or `null`
+         * @virtual
          */
         vfunc_add_child(builder: Gtk.Builder, child: GObject.Object, type?: string | null): void;
         /**
-         * Similar to gtk_buildable_parser_finished() but is
+         * Similar to `gtk_buildable_parser_finished()` but is
          * called once for each custom tag handled by the `buildable`.
-         * @param builder a `GtkBuilder`
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder}
+         * @param child child object or `null` for non-child tags
          * @param tagname the name of the tag
          * @param data user data created in custom_tag_start
+         * @virtual
          */
         vfunc_custom_finished(
             builder: Gtk.Builder,
@@ -22996,10 +24266,11 @@ export namespace AgsGui {
         /**
          * Called at the end of each custom element handled by
          * the buildable.
-         * @param builder `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
          * @param data user data that will be passed in to parser functions
+         * @virtual
          */
         vfunc_custom_tag_end(
             builder: Gtk.Builder,
@@ -23009,9 +24280,10 @@ export namespace AgsGui {
         ): void;
         /**
          * Called for each unknown element under `<child>`.
-         * @param builder a `GtkBuilder` used to construct this object
-         * @param child child object or %NULL for non-child tags
+         * @param builder a {@link Gtk.Builder} used to construct this object
+         * @param child child object or `null` for non-child tags
          * @param tagname name of tag
+         * @virtual
          */
         vfunc_custom_tag_start(
             builder: Gtk.Builder,
@@ -23021,44 +24293,49 @@ export namespace AgsGui {
         /**
          * The getter corresponding to `set_id`. Implement this
          *   if you implement `set_id`.
+         * @virtual
          */
         vfunc_get_id(): string;
         /**
          * Retrieves the internal child called `childname` of the `buildable` object.
-         * @param builder a `GtkBuilder`
+         * @param builder a {@link Gtk.Builder}
          * @param childname name of child
+         * @virtual
          */
         vfunc_get_internal_child<T = GObject.Object>(builder: Gtk.Builder, childname: string): T;
         /**
          * Called when a builder finishes the parsing
          *  of a UI definition. It is normally not necessary to implement this,
-         *  unless you need to perform special cleanup actions. `GtkWindow` sets
-         *  the `GtkWidget:visible` property here.
+         *  unless you need to perform special cleanup actions. {@link Gtk.Window} sets
+         *  the {@link Gtk.Widget.visible} property here.
          * @param builder
+         * @virtual
          */
         vfunc_parser_finished(builder: Gtk.Builder): void;
         /**
          * Sets a property of a buildable object.
-         *  It is normally not necessary to implement this, g_object_set_property()
-         *  is used by default. `GtkWindow` implements this to delay showing itself
-         *  (i.e. setting the [property`Gtk`.Widget:visible] property) until the whole
+         *  It is normally not necessary to implement this, `g_object_set_property()`
+         *  is used by default. {@link Gtk.Window} implements this to delay showing itself
+         *  (i.e. setting the {@link Gtk.Widget.visible} property) until the whole
          *  interface is created.
          * @param builder
          * @param name
          * @param value
+         * @virtual
          */
         vfunc_set_buildable_property(builder: Gtk.Builder, name: string, value: GObject.Value | any): void;
         /**
-         * Stores the id attribute given in the `GtkBuilder` UI definition.
-         *   `GtkWidget` stores the name as object data. Implement this method if your
+         * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
+         *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
          *   object has some notion of “ID” and it makes sense to map the XML id
          *   attribute to it.
          * @param id
+         * @virtual
          */
         vfunc_set_id(id: string): void;
         /**
          * Retrieves the orientation of the `orientable`.
-         * @returns the orientation of the @orientable
+         * @returns the orientation of the `orientable`
          */
         get_orientation(): Gtk.Orientation;
         /**
@@ -23079,32 +24356,32 @@ export namespace AgsGui {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -23113,39 +24390,39 @@ export namespace AgsGui {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -23156,13 +24433,16 @@ export namespace AgsGui {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -23170,7 +24450,7 @@ export namespace AgsGui {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -23178,9 +24458,9 @@ export namespace AgsGui {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -23200,9 +24480,9 @@ export namespace AgsGui {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -23215,34 +24495,34 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -23275,22 +24555,22 @@ export namespace AgsGui {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -23299,8 +24579,8 @@ export namespace AgsGui {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -23317,10 +24597,10 @@ export namespace AgsGui {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -23335,13 +24615,13 @@ export namespace AgsGui {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -23372,21 +24652,21 @@ export namespace AgsGui {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -23396,33 +24676,34 @@ export namespace AgsGui {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -23431,6 +24712,7 @@ export namespace AgsGui {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -23439,12 +24721,14 @@ export namespace AgsGui {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -23453,20 +24737,22 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -23478,6 +24764,7 @@ export namespace AgsGui {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -23507,8 +24794,17 @@ export namespace AgsGui {
         stop_emission_by_name(detailedName: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CartesianClass = typeof Cartesian;
+    /**
+     * @gir-type Alias
+     */
     type DialClass = typeof Dial;
+    /**
+     * @gir-type Struct
+     */
     class ExpanderChild {
         static $gtype: GObject.GType<ExpanderChild>;
 
@@ -23523,7 +24819,7 @@ export namespace AgsGui {
         // Static methods
 
         /**
-         * Allocate #AgsExpanderChild-struct.
+         * Allocate {@link AgsGui.ExpanderChild}-struct.
          * @param x the x position
          * @param y the y position
          * @param width the width
@@ -23532,12 +24828,18 @@ export namespace AgsGui {
         static alloc(x: number, y: number, width: number, height: number): any | null;
         /**
          * Free `expander_child`.
-         * @param expander_child the #AgsExpanderChild-struct
+         * @param expander_child the {@link AgsGui.ExpanderChild}-struct
          */
         static free(expander_child?: any | null): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ExpanderClass = typeof Expander;
+    /**
+     * @gir-type Struct
+     */
     class ExpanderSetChild {
         static $gtype: GObject.GType<ExpanderSetChild>;
 
@@ -23552,7 +24854,7 @@ export namespace AgsGui {
         // Static methods
 
         /**
-         * Allocate #AgsExpanderSetChild-struct.
+         * Allocate {@link AgsGui.ExpanderSetChild}-struct.
          * @param x the x position
          * @param y the y position
          * @param width the width
@@ -23561,23 +24863,62 @@ export namespace AgsGui {
         static alloc(x: number, y: number, width: number, height: number): any | null;
         /**
          * Free `expander_set_child`.
-         * @param expander_set_child the #AgsExpanderSetChild-struct
+         * @param expander_set_child the {@link AgsGui.ExpanderSetChild}-struct
          */
         static free(expander_set_child?: any | null): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ExpanderSetClass = typeof ExpanderSet;
+    /**
+     * @gir-type Alias
+     */
     type FileDialogClass = typeof FileDialog;
+    /**
+     * @gir-type Alias
+     */
     type FileWidgetClass = typeof FileWidget;
+    /**
+     * @gir-type Alias
+     */
     type IconLinkClass = typeof IconLink;
+    /**
+     * @gir-type Alias
+     */
     type IndicatorClass = typeof Indicator;
+    /**
+     * @gir-type Alias
+     */
     type InputDialogClass = typeof InputDialog;
+    /**
+     * @gir-type Alias
+     */
     type LedArrayClass = typeof LedArray;
+    /**
+     * @gir-type Alias
+     */
     type LedClass = typeof Led;
+    /**
+     * @gir-type Alias
+     */
     type LevelBoxClass = typeof LevelBox;
+    /**
+     * @gir-type Alias
+     */
     type LevelClass = typeof Level;
+    /**
+     * @gir-type Alias
+     */
     type NotebookClass = typeof Notebook;
+    /**
+     * @gir-type Alias
+     */
     type PianoClass = typeof Piano;
+    /**
+     * @gir-type Struct
+     */
     class Plot {
         static $gtype: GObject.GType<Plot>;
 
@@ -23598,7 +24939,7 @@ export namespace AgsGui {
         // Static methods
 
         /**
-         * Allocate #AgsPlot-struct.
+         * Allocate {@link AgsGui.Plot}-struct.
          * @param n_points number of points
          * @param n_bitmaps number of bitmaps
          * @param n_pixmaps number of pixmaps
@@ -23606,127 +24947,148 @@ export namespace AgsGui {
         static alloc(n_points: number, n_bitmaps: number, n_pixmaps: number): any | null;
         /**
          * Free `plot`.
-         * @param plot the #AgsPlot-struct
+         * @param plot the {@link AgsGui.Plot}-struct
          */
         static free(plot?: any | null): void;
         /**
          * Get bitmaps.
-         * @param plot the #AgsPlot-struct
+         * @param plot the {@link AgsGui.Plot}-struct
          */
         static get_bitmap(plot?: any | null): number;
         /**
          * Get bitmap colors.
-         * @param plot the #AgsPlot-struct
+         * @param plot the {@link AgsGui.Plot}-struct
          */
         static get_bitmap_color(plot?: any | null): number;
         /**
          * Get join points.
-         * @param plot the #AgsPlot-struct
+         * @param plot the {@link AgsGui.Plot}-struct
          */
         static get_join_points(plot?: any | null): boolean;
         /**
          * Get number of bitmaps.
-         * @param plot the #AgsPlot-struct
+         * @param plot the {@link AgsGui.Plot}-struct
          */
         static get_n_bitmaps(plot?: any | null): number;
         /**
          * Get number of pixmaps.
-         * @param plot the #AgsPlot-struct
+         * @param plot the {@link AgsGui.Plot}-struct
          */
         static get_n_pixmaps(plot?: any | null): number;
         /**
          * Get number of points.
-         * @param plot the #AgsPlot-struct
+         * @param plot the {@link AgsGui.Plot}-struct
          */
         static get_n_points(plot?: any | null): number;
         /**
          * Get pixmaps.
-         * @param plot the #AgsPlot-struct
+         * @param plot the {@link AgsGui.Plot}-struct
          */
         static get_pixmap(plot?: any | null): number;
         /**
          * Get points.
-         * @param plot the #AgsPlot-struct
+         * @param plot the {@link AgsGui.Plot}-struct
          */
         static get_point(plot?: any | null): number;
         /**
          * Get point colors.
-         * @param plot the #AgsPlot-struct
+         * @param plot the {@link AgsGui.Plot}-struct
          */
         static get_point_color(plot?: any | null): number;
         /**
          * Get point labels.
-         * @param plot the #AgsPlot-struct
+         * @param plot the {@link AgsGui.Plot}-struct
          */
         static get_point_label(plot?: any | null): string[];
         /**
          * Set bitmap field of `plot`.
-         * @param plot the #AgsPlot-struct
+         * @param plot the {@link AgsGui.Plot}-struct
          * @param bitmap the bitmaps
          */
         static set_bitmap(plot: any | null, bitmap: number): void;
         /**
          * Set bitmap color field of `plot`.
-         * @param plot the #AgsPlot-struct
+         * @param plot the {@link AgsGui.Plot}-struct
          * @param bitmap_color the bitmaps colors as array of RGB value
          */
         static set_bitmap_color(plot: any | null, bitmap_color: number): void;
         /**
          * Set join_points field of `plot`.
-         * @param plot the #AgsPlot-struct
-         * @param join_points if %TRUE join points, otherwise not
+         * @param plot the {@link AgsGui.Plot}-struct
+         * @param join_points if `true` join points, otherwise not
          */
         static set_join_points(plot: any | null, join_points: boolean): void;
         /**
          * Set n_bitmaps field of `plot`.
-         * @param plot the #AgsPlot-struct
+         * @param plot the {@link AgsGui.Plot}-struct
          * @param n_bitmaps the number of bitmaps
          */
         static set_n_bitmaps(plot: any | null, n_bitmaps: number): void;
         /**
          * Set n_pixmaps field of `plot`.
-         * @param plot the #AgsPlot-struct
+         * @param plot the {@link AgsGui.Plot}-struct
          * @param n_pixmaps the number of pixmaps
          */
         static set_n_pixmaps(plot: any | null, n_pixmaps: number): void;
         /**
          * Set n_points field of `plot`.
-         * @param plot the #AgsPlot-struct
+         * @param plot the {@link AgsGui.Plot}-struct
          * @param n_points the number of points
          */
         static set_n_points(plot: any | null, n_points: number): void;
         /**
          * Set pixmap field of `plot`.
-         * @param plot the #AgsPlot-struct
+         * @param plot the {@link AgsGui.Plot}-struct
          * @param pixmap the pixmaps
          */
         static set_pixmap(plot: any | null, pixmap: number): void;
         /**
          * Set point field of `plot`.
-         * @param plot the #AgsPlot-struct
+         * @param plot the {@link AgsGui.Plot}-struct
          * @param point the points as array of coordinates
          */
         static set_point(plot: any | null, point: number): void;
         /**
          * Set point color field of `plot`.
-         * @param plot the #AgsPlot-struct
+         * @param plot the {@link AgsGui.Plot}-struct
          * @param point_color the points colors as array of RGB value
          */
         static set_point_color(plot: any | null, point_color: number): void;
         /**
          * Set point label field of `plot`.
-         * @param plot the #AgsPlot-struct
+         * @param plot the {@link AgsGui.Plot}-struct
          * @param point_label the points labels as string vector
          */
         static set_point_label(plot: any | null, point_label: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RulerClass = typeof Ruler;
+    /**
+     * @gir-type Alias
+     */
     type ScaleBoxClass = typeof ScaleBox;
+    /**
+     * @gir-type Alias
+     */
     type ScaleClass = typeof Scale;
+    /**
+     * @gir-type Alias
+     */
     type ScrolledLevelBoxClass = typeof ScrolledLevelBox;
+    /**
+     * @gir-type Alias
+     */
     type ScrolledPianoClass = typeof ScrolledPiano;
+    /**
+     * @gir-type Alias
+     */
     type ScrolledScaleBoxClass = typeof ScrolledScaleBox;
+    /**
+     * @gir-type Alias
+     */
     type TempoClass = typeof Tempo;
     /**
      * Name of the imported GIR library

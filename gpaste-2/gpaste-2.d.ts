@@ -20,10 +20,16 @@ export namespace GPaste {
      * GPaste-2
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ItemKind {
         export const $gtype: GObject.GType<ItemKind>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum ItemKind {
         TEXT,
         URIS,
@@ -31,19 +37,31 @@ export namespace GPaste {
         PASSWORD,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UpdateAction {
         export const $gtype: GObject.GType<UpdateAction>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum UpdateAction {
         REPLACE,
         REMOVE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace UpdateTarget {
         export const $gtype: GObject.GType<UpdateTarget>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum UpdateTarget {
         ALL,
         POSITION,
@@ -148,36 +166,40 @@ export namespace GPaste {
     /**
      * Empty a history after confirmation.
      * Confirmation is skipped if GPaste is configured to do so.
-     * @param client a #GPasteClient instance
-     * @param settings a #GPasteSettings instance
+     * @param client a {@link GPaste.Client} instance
+     * @param settings a {@link GPaste.Settings} instance
      * @param history the name of the history to empty
      */
     function util_empty_with_confirmation(client: Client, settings: Settings, history: string): void;
     /**
      * Empty a history after confirmation.
      * Confirmation is skipped if GPaste is configured to do so.
-     * @param client a #GPasteClient instance
-     * @param settings a #GPasteSettings instance
+     * @param client a {@link GPaste.Client} instance
+     * @param settings a {@link GPaste.Settings} instance
      * @param history the name of the history to empty
      * @returns whether the action was successful
      */
     function util_empty_with_confirmation_sync(client: Client, settings: Settings, history: string): boolean;
     /**
      * Ensure the history dir exists
-     * @param settings a #GPasteSettings instance
+     * @param settings a {@link GPaste.Settings} instance
      * @returns where it exists or if there was an error creating it
      */
     function util_ensure_history_dir_exists(settings: Settings): boolean;
+    /**
+     * @param variant
+     * @param len
+     */
     function util_get_dbus_au_result(variant: GLib.Variant, len: number): number;
     /**
      * Get the "(ss)" GVariant as an item
-     * @param variant a #GVariant
+     * @param variant a {@link GLib.Variant}
      * @returns The item
      */
     function util_get_dbus_item_result(variant: GLib.Variant): ClientItem;
     /**
      * Get the "a(ss)" GVariant as a list of items
-     * @param variant a #GVariant
+     * @param variant a {@link GLib.Variant}
      * @returns The items
      */
     function util_get_dbus_items_result(variant: GLib.Variant): ClientItem[];
@@ -207,7 +229,7 @@ export namespace GPaste {
     function util_get_history_file_path(name: string, extension: string): string;
     /**
      * Check whether gnome-shell is installed or not
-     * @returns %TRUE if gnome-shell is installed
+     * @returns `true` if gnome-shell is installed
      */
     function util_has_gnome_shell(): boolean;
     /**
@@ -216,6 +238,11 @@ export namespace GPaste {
      * @returns the pid
      */
     function util_read_pid_file(component: string): GLib.Pid;
+    /**
+     * @param text
+     * @param pattern
+     * @param substitution
+     */
     function util_replace(text: string, pattern: string, substitution: string): string;
     /**
      * spawn a GPaste app
@@ -248,6 +275,7 @@ export namespace GPaste {
     /**
      * Controls in which GNOME Shell states an action (like keybindings and gestures)
      * should be handled.
+     * @gir-type Flags
      */
     enum GnomeShellActionMode {
         /**
@@ -297,6 +325,9 @@ export namespace GPaste {
         ALL,
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum MetaKeyBindingFlags {
         /**
          * none
@@ -324,11 +355,45 @@ export namespace GPaste {
     namespace Client {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            /**
+             * The "delete-history" signal is emitted when we delete
+             * a history.
+             * @signal
+             * @run-last
+             */
             'delete-history': (arg0: string) => void;
+            /**
+             * The "empty-history" signal is emitted when we empty
+             * a history.
+             * @signal
+             * @run-last
+             */
             'empty-history': (arg0: string) => void;
+            /**
+             * The "show-history" signal is emitted when we switch
+             * from a history to another.
+             * @signal
+             * @run-last
+             */
             'show-history': () => void;
+            /**
+             * The "switch-history" signal is emitted when we switch
+             * from a history to another.
+             * @signal
+             * @run-last
+             */
             'switch-history': (arg0: string) => void;
+            /**
+             * @signal
+             * @run-last
+             */
             tracking: (arg0: boolean) => void;
+            /**
+             * The "update" signal is emitted whenever anything changed
+             * in the history (something was added, removed, selected, replaced...).
+             * @signal
+             * @run-last
+             */
             update: (arg0: UpdateAction, arg1: UpdateTarget, arg2: number) => void;
             'notify::g-bus-type': (pspec: GObject.ParamSpec) => void;
             'notify::g-connection': (pspec: GObject.ParamSpec) => void;
@@ -351,6 +416,9 @@ export namespace GPaste {
                 Gio.Initable.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Client extends Gio.DBusProxy implements Gio.AsyncInitable<Client>, Gio.DBusInterface, Gio.Initable {
         static $gtype: GObject.GType<Client>;
 
@@ -378,16 +446,19 @@ export namespace GPaste {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Client.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Client.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Client.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Client.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Client.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -397,10 +468,13 @@ export namespace GPaste {
         // Static methods
 
         /**
-         * Create a new instance of #GPasteClient
+         * Create a new instance of {@link GPaste.Client}
          * @param callback Callback function to invoke when the proxy is ready.
          */
         static ['new'](callback?: Gio.AsyncReadyCallback<Client> | null): void;
+        /**
+         * @param args
+         */
         // Conflicted with Gio.DBusProxy.new
         static ['new'](...args: never[]): any;
 
@@ -412,17 +486,17 @@ export namespace GPaste {
         about(): globalThis.Promise<void>;
         /**
          * Display the about dialog
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         about(callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Display the about dialog
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         about(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
         /**
          * Display the about dialog
-         * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
+         * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to the async call.
          */
         about_finish(result: Gio.AsyncResult): void;
         /**
@@ -430,72 +504,72 @@ export namespace GPaste {
          */
         about_sync(): void;
         /**
-         * Add an item to the #GPasteDaemon
+         * Add an item to the `GPasteDaemon`
          * @param text the text to add
          */
         add(text: string): globalThis.Promise<void>;
         /**
-         * Add an item to the #GPasteDaemon
+         * Add an item to the `GPasteDaemon`
          * @param text the text to add
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         add(text: string, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
-         * Add an item to the #GPasteDaemon
+         * Add an item to the `GPasteDaemon`
          * @param text the text to add
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         add(text: string, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
         /**
-         * Add the file contents to the #GPasteDaemon
+         * Add the file contents to the `GPasteDaemon`
          * @param file the file to add
          */
         add_file(file: string): globalThis.Promise<void>;
         /**
-         * Add the file contents to the #GPasteDaemon
+         * Add the file contents to the `GPasteDaemon`
          * @param file the file to add
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         add_file(file: string, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
-         * Add the file contents to the #GPasteDaemon
+         * Add the file contents to the `GPasteDaemon`
          * @param file the file to add
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         add_file(file: string, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
         /**
-         * Add the file contents to the #GPasteDaemon
-         * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
+         * Add the file contents to the `GPasteDaemon`
+         * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to the async call.
          */
         add_file_finish(result: Gio.AsyncResult): void;
         /**
-         * Add the file contents to the #GPasteDaemon
+         * Add the file contents to the `GPasteDaemon`
          * @param file the file to add
          */
         add_file_sync(file: string): void;
         /**
-         * Add an item to the #GPasteDaemon
-         * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
+         * Add an item to the `GPasteDaemon`
+         * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to the async call.
          */
         add_finish(result: Gio.AsyncResult): void;
         /**
-         * Add the password to the #GPasteDaemon
+         * Add the password to the `GPasteDaemon`
          * @param name the name to identify the password to add
          * @param password the password to add
          */
         add_password(name: string, password: string): globalThis.Promise<void>;
         /**
-         * Add the password to the #GPasteDaemon
+         * Add the password to the `GPasteDaemon`
          * @param name the name to identify the password to add
          * @param password the password to add
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         add_password(name: string, password: string, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
-         * Add the password to the #GPasteDaemon
+         * Add the password to the `GPasteDaemon`
          * @param name the name to identify the password to add
          * @param password the password to add
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         add_password(
             name: string,
@@ -503,18 +577,18 @@ export namespace GPaste {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
-         * Add the password to the #GPasteDaemon
-         * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
+         * Add the password to the `GPasteDaemon`
+         * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to the async call.
          */
         add_password_finish(result: Gio.AsyncResult): void;
         /**
-         * Add the password to the #GPasteDaemon
+         * Add the password to the `GPasteDaemon`
          * @param name the name to identify the password to add
          * @param password the password to add
          */
         add_password_sync(name: string, password: string): void;
         /**
-         * Add an item to the #GPasteDaemon
+         * Add an item to the `GPasteDaemon`
          * @param text the text to add
          */
         add_sync(text: string): void;
@@ -528,14 +602,14 @@ export namespace GPaste {
          * Backup the current history
          * @param history the name of the history
          * @param backup the name of the backup
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         backup_history(history: string, backup: string, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Backup the current history
          * @param history the name of the history
          * @param backup the name of the backup
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         backup_history(
             history: string,
@@ -544,7 +618,7 @@ export namespace GPaste {
         ): globalThis.Promise<void> | void;
         /**
          * Backup the current history
-         * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
+         * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to the async call.
          */
         backup_history_finish(result: Gio.AsyncResult): void;
         /**
@@ -554,25 +628,25 @@ export namespace GPaste {
          */
         backup_history_sync(history: string, backup: string): void;
         /**
-         * Delete an item from the #GPasteDaemon
+         * Delete an item from the `GPasteDaemon`
          * @param uuid the uuid of the element we want to delete
          */
         ['delete'](uuid: string): globalThis.Promise<void>;
         /**
-         * Delete an item from the #GPasteDaemon
+         * Delete an item from the `GPasteDaemon`
          * @param uuid the uuid of the element we want to delete
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         ['delete'](uuid: string, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
-         * Delete an item from the #GPasteDaemon
+         * Delete an item from the `GPasteDaemon`
          * @param uuid the uuid of the element we want to delete
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         ['delete'](uuid: string, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
         /**
-         * Delete an item from the #GPasteDaemon
-         * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
+         * Delete an item from the `GPasteDaemon`
+         * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to the async call.
          */
         delete_finish(result: Gio.AsyncResult): void;
         /**
@@ -583,18 +657,18 @@ export namespace GPaste {
         /**
          * Delete a history
          * @param name the name of the history to delete
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         delete_history(name: string, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Delete a history
          * @param name the name of the history to delete
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         delete_history(name: string, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
         /**
          * Delete a history
-         * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
+         * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to the async call.
          */
         delete_history_finish(result: Gio.AsyncResult): void;
         /**
@@ -603,325 +677,325 @@ export namespace GPaste {
          */
         delete_history_sync(name: string): void;
         /**
-         * Delete the password from the #GPasteDaemon
+         * Delete the password from the `GPasteDaemon`
          * @param name the name of the password to delete
          */
         delete_password(name: string): globalThis.Promise<void>;
         /**
-         * Delete the password from the #GPasteDaemon
+         * Delete the password from the `GPasteDaemon`
          * @param name the name of the password to delete
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         delete_password(name: string, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
-         * Delete the password from the #GPasteDaemon
+         * Delete the password from the `GPasteDaemon`
          * @param name the name of the password to delete
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         delete_password(name: string, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
         /**
-         * Delete the password from the #GPasteDaemon
-         * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
+         * Delete the password from the `GPasteDaemon`
+         * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to the async call.
          */
         delete_password_finish(result: Gio.AsyncResult): void;
         /**
-         * Delete the password from the #GPasteDaemon
+         * Delete the password from the `GPasteDaemon`
          * @param name the name of the password to delete
          */
         delete_password_sync(name: string): void;
         /**
-         * Delete an item from the #GPasteDaemon
+         * Delete an item from the `GPasteDaemon`
          * @param uuid the uuid of the element we want to delete
          */
         delete_sync(uuid: string): void;
         /**
-         * Empty the history from the #GPasteDaemon
+         * Empty the history from the `GPasteDaemon`
          * @param name the name of the history to empty
          */
         empty_history(name: string): globalThis.Promise<void>;
         /**
-         * Empty the history from the #GPasteDaemon
+         * Empty the history from the `GPasteDaemon`
          * @param name the name of the history to empty
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         empty_history(name: string, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
-         * Empty the history from the #GPasteDaemon
+         * Empty the history from the `GPasteDaemon`
          * @param name the name of the history to empty
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         empty_history(name: string, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
         /**
-         * Empty the history from the #GPasteDaemon
-         * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
+         * Empty the history from the `GPasteDaemon`
+         * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to the async call.
          */
         empty_history_finish(result: Gio.AsyncResult): void;
         /**
-         * Empty the history from the #GPasteDaemon
+         * Empty the history from the `GPasteDaemon`
          * @param name the name of the history to empty
          */
         empty_history_sync(name: string): void;
         /**
-         * Get an item from the #GPasteDaemon
+         * Get an item from the `GPasteDaemon`
          * @param uuid the uuid of the element we want to get
          */
         get_element(uuid: string): globalThis.Promise<string>;
         /**
-         * Get an item from the #GPasteDaemon
+         * Get an item from the `GPasteDaemon`
          * @param uuid the uuid of the element we want to get
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         get_element(uuid: string, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
-         * Get an item from the #GPasteDaemon
+         * Get an item from the `GPasteDaemon`
          * @param uuid the uuid of the element we want to get
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         get_element(uuid: string, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
         /**
-         * Get an item from the #GPasteDaemon
+         * Get an item from the `GPasteDaemon`
          * @param index the index of the element we want to get
          */
         get_element_at_index(index: number): globalThis.Promise<ClientItem>;
         /**
-         * Get an item from the #GPasteDaemon
+         * Get an item from the `GPasteDaemon`
          * @param index the index of the element we want to get
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         get_element_at_index(index: number, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
-         * Get an item from the #GPasteDaemon
+         * Get an item from the `GPasteDaemon`
          * @param index the index of the element we want to get
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         get_element_at_index(
             index: number,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<ClientItem> | void;
         /**
-         * Get an item from the #GPasteDaemon
-         * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
-         * @returns a new #GPasteClientItem
+         * Get an item from the `GPasteDaemon`
+         * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to the async call.
+         * @returns a new {@link GPaste.ClientItem}
          */
         get_element_at_index_finish(result: Gio.AsyncResult): ClientItem;
         /**
-         * Get an item from the #GPasteDaemon
+         * Get an item from the `GPasteDaemon`
          * @param index the index of the element we want to get
-         * @returns a new #GPasteClientItem
+         * @returns a new {@link GPaste.ClientItem}
          */
         get_element_at_index_sync(index: number): ClientItem;
         /**
-         * Get an item from the #GPasteDaemon
-         * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
+         * Get an item from the `GPasteDaemon`
+         * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to the async call.
          * @returns a newly allocated string
          */
         get_element_finish(result: Gio.AsyncResult): string;
         /**
-         * Get the kind of an item from the #GPasteDaemon
+         * Get the kind of an item from the `GPasteDaemon`
          * @param uuid the uuid of the element we want to get
          */
         get_element_kind(uuid: string): globalThis.Promise<ItemKind>;
         /**
-         * Get the kind of an item from the #GPasteDaemon
+         * Get the kind of an item from the `GPasteDaemon`
          * @param uuid the uuid of the element we want to get
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         get_element_kind(uuid: string, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
-         * Get the kind of an item from the #GPasteDaemon
+         * Get the kind of an item from the `GPasteDaemon`
          * @param uuid the uuid of the element we want to get
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         get_element_kind(
             uuid: string,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<ItemKind> | void;
         /**
-         * Get this kind of an item from the #GPasteDaemon
-         * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
-         * @returns The #GPasteItemKind
+         * Get this kind of an item from the `GPasteDaemon`
+         * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to the async call.
+         * @returns The {@link GPaste.ItemKind}
          */
         get_element_kind_finish(result: Gio.AsyncResult): ItemKind;
         /**
-         * Get the kind of an item from the #GPasteDaemon
+         * Get the kind of an item from the `GPasteDaemon`
          * @param uuid the uuid of the element we want to get
-         * @returns The #GPasteItemKind
+         * @returns The {@link GPaste.ItemKind}
          */
         get_element_kind_sync(uuid: string): ItemKind;
         /**
-         * Get an item from the #GPasteDaemon
+         * Get an item from the `GPasteDaemon`
          * @param uuid the uuid of the element we want to get
          * @returns a newly allocated string
          */
         get_element_sync(uuid: string): string;
         /**
-         * Get some items from the #GPasteDaemon
+         * Get some items from the `GPasteDaemon`
          * @param uuids the uuids of the elements we want to get
          */
         get_elements(uuids: string[]): globalThis.Promise<ClientItem[]>;
         /**
-         * Get some items from the #GPasteDaemon
+         * Get some items from the `GPasteDaemon`
          * @param uuids the uuids of the elements we want to get
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         get_elements(uuids: string[], callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
-         * Get some items from the #GPasteDaemon
+         * Get some items from the `GPasteDaemon`
          * @param uuids the uuids of the elements we want to get
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         get_elements(
             uuids: string[],
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<ClientItem[]> | void;
         /**
-         * Get some items from the #GPasteDaemon
-         * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
+         * Get some items from the `GPasteDaemon`
+         * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to the async call.
          * @returns a newly allocated array of string
          */
         get_elements_finish(result: Gio.AsyncResult): ClientItem[];
         /**
-         * Get some items from the #GPasteDaemon
+         * Get some items from the `GPasteDaemon`
          * @param uuids the uuids of the elements we want to get
          * @returns a newly allocated array of string
          */
         get_elements_sync(uuids: string[]): ClientItem[];
         /**
-         * Get the history from the #GPasteDaemon
+         * Get the history from the `GPasteDaemon`
          */
         get_history(): globalThis.Promise<ClientItem[]>;
         /**
-         * Get the history from the #GPasteDaemon
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * Get the history from the `GPasteDaemon`
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         get_history(callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
-         * Get the history from the #GPasteDaemon
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * Get the history from the `GPasteDaemon`
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         get_history(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<ClientItem[]> | void;
         /**
-         * Get the history from the #GPasteDaemon
-         * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
+         * Get the history from the `GPasteDaemon`
+         * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to the async call.
          * @returns a newly allocated array of string
          */
         get_history_finish(result: Gio.AsyncResult): ClientItem[];
         /**
-         * Get the name of the history from the #GPasteDaemon
+         * Get the name of the history from the `GPasteDaemon`
          */
         get_history_name(): globalThis.Promise<string>;
         /**
-         * Get the name of the history from the #GPasteDaemon
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * Get the name of the history from the `GPasteDaemon`
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         get_history_name(callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
-         * Get the name of the history from the #GPasteDaemon
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * Get the name of the history from the `GPasteDaemon`
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         get_history_name(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string> | void;
         /**
-         * Get the name of the history from the #GPasteDaemon
-         * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
+         * Get the name of the history from the `GPasteDaemon`
+         * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to the async call.
          * @returns a newly allocated string
          */
         get_history_name_finish(result: Gio.AsyncResult): string;
         /**
-         * Get the name of the history from the #GPasteDaemon
+         * Get the name of the history from the `GPasteDaemon`
          * @returns a newly allocated string
          */
         get_history_name_sync(): string;
         /**
-         * Get the history isize from the #GPasteDaemon
+         * Get the history isize from the `GPasteDaemon`
          * @param name the name of the history
          */
         get_history_size(name: string): globalThis.Promise<number>;
         /**
-         * Get the history isize from the #GPasteDaemon
+         * Get the history isize from the `GPasteDaemon`
          * @param name the name of the history
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         get_history_size(name: string, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
-         * Get the history isize from the #GPasteDaemon
+         * Get the history isize from the `GPasteDaemon`
          * @param name the name of the history
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         get_history_size(
             name: string,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<number> | void;
         /**
-         * Get the history size from the #GPasteDaemon
-         * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
+         * Get the history size from the `GPasteDaemon`
+         * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to the async call.
          * @returns the size of the history
          */
         get_history_size_finish(result: Gio.AsyncResult): number;
         /**
-         * Get the history size from the #GPasteDaemon
+         * Get the history size from the `GPasteDaemon`
          * @param name the name of the history
          * @returns the size of the history
          */
         get_history_size_sync(name: string): number;
         /**
-         * Get the history from the #GPasteDaemon
+         * Get the history from the `GPasteDaemon`
          * @returns a newly allocated array of string
          */
         get_history_sync(): ClientItem[];
         /**
-         * Get an item from the #GPasteDaemon
+         * Get an item from the `GPasteDaemon`
          * @param uuid the uuid of the element we want to get
          */
         get_raw_element(uuid: string): globalThis.Promise<string>;
         /**
-         * Get an item from the #GPasteDaemon
+         * Get an item from the `GPasteDaemon`
          * @param uuid the uuid of the element we want to get
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         get_raw_element(uuid: string, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
-         * Get an item from the #GPasteDaemon
+         * Get an item from the `GPasteDaemon`
          * @param uuid the uuid of the element we want to get
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         get_raw_element(
             uuid: string,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<string> | void;
         /**
-         * Get an item from the #GPasteDaemon
-         * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
+         * Get an item from the `GPasteDaemon`
+         * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to the async call.
          * @returns a newly allocated string
          */
         get_raw_element_finish(result: Gio.AsyncResult): string;
         /**
-         * Get an item from the #GPasteDaemon
+         * Get an item from the `GPasteDaemon`
          * @param uuid the uuid of the element we want to get
          * @returns a newly allocated string
          */
         get_raw_element_sync(uuid: string): string;
         /**
-         * Get the history from the #GPasteDaemon
+         * Get the history from the `GPasteDaemon`
          */
         get_raw_history(): globalThis.Promise<ClientItem[]>;
         /**
-         * Get the history from the #GPasteDaemon
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * Get the history from the `GPasteDaemon`
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         get_raw_history(callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
-         * Get the history from the #GPasteDaemon
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * Get the history from the `GPasteDaemon`
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         get_raw_history(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<ClientItem[]> | void;
         /**
-         * Get the history from the #GPasteDaemon
-         * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
+         * Get the history from the `GPasteDaemon`
+         * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to the async call.
          * @returns a newly allocated array of string
          */
         get_raw_history_finish(result: Gio.AsyncResult): ClientItem[];
         /**
-         * Get the history from the #GPasteDaemon
+         * Get the history from the `GPasteDaemon`
          * @returns a newly allocated array of string
          */
         get_raw_history_sync(): ClientItem[];
@@ -941,17 +1015,17 @@ export namespace GPaste {
         list_histories(): globalThis.Promise<string[]>;
         /**
          * List all available hisotries
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         list_histories(callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * List all available hisotries
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         list_histories(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string[]> | void;
         /**
          * List all available hisotries
-         * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
+         * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to the async call.
          * @returns a newly allocated array of string
          */
         list_histories_finish(result: Gio.AsyncResult): string[];
@@ -978,7 +1052,7 @@ export namespace GPaste {
          * @param decoration the decoration to apply to each entry
          * @param separator the separator to add between each entry
          * @param uuids the uuids of the elements we want to get
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         merge(
             decoration: string | null,
@@ -994,7 +1068,7 @@ export namespace GPaste {
          * @param decoration the decoration to apply to each entry
          * @param separator the separator to add between each entry
          * @param uuids the uuids of the elements we want to get
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         merge(
             decoration: string | null,
@@ -1004,7 +1078,7 @@ export namespace GPaste {
         ): globalThis.Promise<void> | void;
         /**
          * Merge some history entries
-         * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
+         * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to the async call.
          */
         merge_finish(result: Gio.AsyncResult): void;
         /**
@@ -1025,13 +1099,13 @@ export namespace GPaste {
         /**
          * Call this when the extension changes its state
          * @param state the new state of the extension
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         on_extension_state_changed(state: boolean, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Call this when the extension changes its state
          * @param state the new state of the extension
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         on_extension_state_changed(
             state: boolean,
@@ -1039,7 +1113,7 @@ export namespace GPaste {
         ): globalThis.Promise<void> | void;
         /**
          * Call this when the extension changes its state
-         * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
+         * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to the async call.
          */
         on_extension_state_changed_finish(result: Gio.AsyncResult): void;
         /**
@@ -1048,46 +1122,46 @@ export namespace GPaste {
          */
         on_extension_state_changed_sync(state: boolean): void;
         /**
-         * Reexecute the #GPasteDaemon
+         * Reexecute the `GPasteDaemon`
          */
         reexecute(): globalThis.Promise<void>;
         /**
-         * Reexecute the #GPasteDaemon
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * Reexecute the `GPasteDaemon`
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         reexecute(callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
-         * Reexecute the #GPasteDaemon
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * Reexecute the `GPasteDaemon`
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         reexecute(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
         /**
-         * Reexecute the #GPasteDaemon
-         * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
+         * Reexecute the `GPasteDaemon`
+         * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to the async call.
          */
         reexecute_finish(result: Gio.AsyncResult): void;
         /**
-         * Reexecute the #GPasteDaemon
+         * Reexecute the `GPasteDaemon`
          */
         reexecute_sync(): void;
         /**
-         * Rename the password in the #GPasteDaemon
+         * Rename the password in the `GPasteDaemon`
          * @param old_name the old name of the password to rename
          * @param new_name the new name to give it
          */
         rename_password(old_name: string, new_name: string): globalThis.Promise<void>;
         /**
-         * Rename the password in the #GPasteDaemon
+         * Rename the password in the `GPasteDaemon`
          * @param old_name the old name of the password to rename
          * @param new_name the new name to give it
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         rename_password(old_name: string, new_name: string, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
-         * Rename the password in the #GPasteDaemon
+         * Rename the password in the `GPasteDaemon`
          * @param old_name the old name of the password to rename
          * @param new_name the new name to give it
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         rename_password(
             old_name: string,
@@ -1095,12 +1169,12 @@ export namespace GPaste {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<void> | void;
         /**
-         * Rename the password in the #GPasteDaemon
-         * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
+         * Rename the password in the `GPasteDaemon`
+         * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to the async call.
          */
         rename_password_finish(result: Gio.AsyncResult): void;
         /**
-         * Rename the password in the #GPasteDaemon
+         * Rename the password in the `GPasteDaemon`
          * @param old_name the name of the password to rename
          * @param new_name the new name to give it
          */
@@ -1115,14 +1189,14 @@ export namespace GPaste {
          * Replace the contents of an item
          * @param uuid the uuid of the element we want to replace
          * @param contents the replacement contents
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         replace(uuid: string, contents: string, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Replace the contents of an item
          * @param uuid the uuid of the element we want to replace
          * @param contents the replacement contents
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         replace(
             uuid: string,
@@ -1131,7 +1205,7 @@ export namespace GPaste {
         ): globalThis.Promise<void> | void;
         /**
          * Replace the contents of an item
-         * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
+         * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to the async call.
          */
         replace_finish(result: Gio.AsyncResult): void;
         /**
@@ -1148,18 +1222,18 @@ export namespace GPaste {
         /**
          * Search for items matching `pattern` in history
          * @param pattern the pattern to look for in history
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         search(pattern: string, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Search for items matching `pattern` in history
          * @param pattern the pattern to look for in history
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         search(pattern: string, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<string[]> | void;
         /**
          * Search for items matching `pattern` in history
-         * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
+         * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to the async call.
          * @returns The indexes of the matching items
          */
         search_finish(result: Gio.AsyncResult): string[];
@@ -1170,29 +1244,29 @@ export namespace GPaste {
          */
         search_sync(pattern: string): string[];
         /**
-         * Select an item from the #GPasteDaemon
+         * Select an item from the `GPasteDaemon`
          * @param uuid the uuid of the element we want to select
          */
         select(uuid: string): globalThis.Promise<void>;
         /**
-         * Select an item from the #GPasteDaemon
+         * Select an item from the `GPasteDaemon`
          * @param uuid the uuid of the element we want to select
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         select(uuid: string, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
-         * Select an item from the #GPasteDaemon
+         * Select an item from the `GPasteDaemon`
          * @param uuid the uuid of the element we want to select
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         select(uuid: string, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
         /**
-         * Select an item from the #GPasteDaemon
-         * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
+         * Select an item from the `GPasteDaemon`
+         * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to the async call.
          */
         select_finish(result: Gio.AsyncResult): void;
         /**
-         * Select an item from the #GPasteDaemon
+         * Select an item from the `GPasteDaemon`
          * @param uuid the uuid of the element we want to select
          */
         select_sync(uuid: string): void;
@@ -1206,14 +1280,14 @@ export namespace GPaste {
          * Set the item as password
          * @param uuid the uuid of the element we want to set as password
          * @param name the name to identify the password
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         set_password(uuid: string, name: string, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Set the item as password
          * @param uuid the uuid of the element we want to set as password
          * @param name the name to identify the password
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         set_password(
             uuid: string,
@@ -1222,7 +1296,7 @@ export namespace GPaste {
         ): globalThis.Promise<void> | void;
         /**
          * Set the item as password
-         * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
+         * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to the async call.
          */
         set_password_finish(result: Gio.AsyncResult): void;
         /**
@@ -1237,17 +1311,17 @@ export namespace GPaste {
         show_history(): globalThis.Promise<void>;
         /**
          * Emit the ShowHistory signal
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         show_history(callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Emit the ShowHistory signal
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         show_history(callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
         /**
          * Emit the ShowHistory signal
-         * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
+         * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to the async call.
          */
         show_history_finish(result: Gio.AsyncResult): void;
         /**
@@ -1262,18 +1336,18 @@ export namespace GPaste {
         /**
          * Switch to another history
          * @param name the name of the history to switch to
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         switch_history(name: string, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Switch to another history
          * @param name the name of the history to switch to
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         switch_history(name: string, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
         /**
          * Switch to another history
-         * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
+         * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to the async call.
          */
         switch_history_finish(result: Gio.AsyncResult): void;
         /**
@@ -1282,30 +1356,30 @@ export namespace GPaste {
          */
         switch_history_sync(name: string): void;
         /**
-         * Change the tracking state of the #GPasteDaemon
-         * @param state the new tracking state of the #GPasteDaemon
+         * Change the tracking state of the `GPasteDaemon`
+         * @param state the new tracking state of the `GPasteDaemon`
          */
         track(state: boolean): globalThis.Promise<void>;
         /**
-         * Change the tracking state of the #GPasteDaemon
-         * @param state the new tracking state of the #GPasteDaemon
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * Change the tracking state of the `GPasteDaemon`
+         * @param state the new tracking state of the `GPasteDaemon`
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         track(state: boolean, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
-         * Change the tracking state of the #GPasteDaemon
-         * @param state the new tracking state of the #GPasteDaemon
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * Change the tracking state of the `GPasteDaemon`
+         * @param state the new tracking state of the `GPasteDaemon`
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         track(state: boolean, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
         /**
-         * Change the tracking state of the #GPasteDaemon
-         * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
+         * Change the tracking state of the `GPasteDaemon`
+         * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to the async call.
          */
         track_finish(result: Gio.AsyncResult): void;
         /**
-         * Change the tracking state of the #GPasteDaemon
-         * @param state the new tracking state of the #GPasteDaemon
+         * Change the tracking state of the `GPasteDaemon`
+         * @param state the new tracking state of the `GPasteDaemon`
          */
         track_sync(state: boolean): void;
         /**
@@ -1316,18 +1390,18 @@ export namespace GPaste {
         /**
          * Upload an item to a pastebin service
          * @param uuid the uuid of the element we want to upload
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         upload(uuid: string, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Upload an item to a pastebin service
          * @param uuid the uuid of the element we want to upload
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         upload(uuid: string, callback?: Gio.AsyncReadyCallback<this> | null): globalThis.Promise<void> | void;
         /**
          * Upload an item to a pastebin service
-         * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
+         * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to the async call.
          */
         upload_finish(result: Gio.AsyncResult): void;
         /**
@@ -1335,89 +1409,87 @@ export namespace GPaste {
          * @param uuid the uuid of the element we want to upload
          */
         upload_sync(uuid: string): void;
-
-        // Inherited methods
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
         init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         init_async(
             io_priority: number,
@@ -1427,43 +1499,43 @@ export namespace GPaste {
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         init_async(
             io_priority: number,
@@ -1472,60 +1544,64 @@ export namespace GPaste {
         ): globalThis.Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
-         * See g_async_initable_init_async().
-         * @param res a #GAsyncResult.
-         * @returns %TRUE if successful. If an error has occurred, this function will return %FALSE and set @error appropriately if present.
+         * See `g_async_initable_init_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          */
         init_finish(res: Gio.AsyncResult): boolean;
         /**
          * Finishes the async construction for the various g_async_initable_new
-         * calls, returning the created object or %NULL on error.
-         * @param res the #GAsyncResult from the callback
-         * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
+         * calls, returning the created object or `null` on error.
+         * @param res the {@link Gio.AsyncResult} from the callback
+         * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          */
         new_finish(res: Gio.AsyncResult): Client;
+        /**
+         * @param args
+         */
         // Conflicted with Gio.DBusProxy.new_finish
         new_finish(...args: never[]): any;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @virtual
          */
         vfunc_init_async(
             io_priority: number,
@@ -1534,70 +1610,84 @@ export namespace GPaste {
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
-         * See g_async_initable_init_async().
-         * @param res a #GAsyncResult.
+         * See `g_async_initable_init_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
         /**
-         * Gets the #GDBusObject that `interface_` belongs to, if any.
-         * @returns A #GDBusObject or %NULL. The returned reference should be freed with g_object_unref().
+         * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
         get_object(): Gio.DBusObject | null;
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
-         * @returns A #GDBusInterfaceInfo. Do not free.
+         *
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
+         * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
-        get_info(): Gio.DBusInterfaceInfo;
+        get_info(): Gio.DBusInterfaceInfo | null;
         /**
-         * Sets the #GDBusObject for `interface_` to `object`.
+         * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
          * Note that `interface_` will hold a weak reference to `object`.
-         * @param object A #GDBusObject or %NULL.
+         * @param object A {@link Gio.DBusObject} or `null`.
          */
         set_object(object?: Gio.DBusObject | null): void;
         /**
-         * Gets the #GDBusObject that `interface_` belongs to, if any.
+         * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         *
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
+         * @virtual
          */
-        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        vfunc_get_info(): Gio.DBusInterfaceInfo | null;
         /**
-         * Sets the #GDBusObject for `interface_` to `object`.
+         * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
          * Note that `interface_` will hold a weak reference to `object`.
-         * @param object A #GDBusObject or %NULL.
+         * @param object A {@link Gio.DBusObject} or `null`.
+         * @virtual
          */
         vfunc_set_object(object?: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -1607,40 +1697,40 @@ export namespace GPaste {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
         init(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -1650,11 +1740,12 @@ export namespace GPaste {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -1670,32 +1761,32 @@ export namespace GPaste {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -1704,39 +1795,39 @@ export namespace GPaste {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -1747,13 +1838,16 @@ export namespace GPaste {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -1761,7 +1855,7 @@ export namespace GPaste {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -1769,9 +1863,9 @@ export namespace GPaste {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -1791,9 +1885,9 @@ export namespace GPaste {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -1806,34 +1900,34 @@ export namespace GPaste {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1866,22 +1960,22 @@ export namespace GPaste {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -1890,8 +1984,8 @@ export namespace GPaste {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -1908,10 +2002,10 @@ export namespace GPaste {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -1926,13 +2020,13 @@ export namespace GPaste {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1963,21 +2057,21 @@ export namespace GPaste {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1987,33 +2081,34 @@ export namespace GPaste {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -2022,6 +2117,7 @@ export namespace GPaste {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -2030,12 +2126,14 @@ export namespace GPaste {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -2044,20 +2142,22 @@ export namespace GPaste {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -2069,6 +2169,7 @@ export namespace GPaste {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -2107,6 +2208,9 @@ export namespace GPaste {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ClientItem extends GObject.Object {
         static $gtype: GObject.GType<ClientItem>;
 
@@ -2129,16 +2233,19 @@ export namespace GPaste {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ClientItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClientItem.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ClientItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ClientItem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ClientItem.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ClientItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2160,6 +2267,12 @@ export namespace GPaste {
     namespace GnomeShellClient {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            /**
+             * The "accelerator-activated" signal is emitted when gnome-shell notifies us
+             * that an accelerator has been pressed.
+             * @signal
+             * @run-last
+             */
             'accelerator-activated': (arg0: number) => void;
             'notify::g-bus-type': (pspec: GObject.ParamSpec) => void;
             'notify::g-connection': (pspec: GObject.ParamSpec) => void;
@@ -2182,6 +2295,9 @@ export namespace GPaste {
                 Gio.Initable.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class GnomeShellClient
         extends Gio.DBusProxy
         implements Gio.AsyncInitable<GnomeShellClient>, Gio.DBusInterface, Gio.Initable
@@ -2212,16 +2328,19 @@ export namespace GPaste {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof GnomeShellClient.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GnomeShellClient.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof GnomeShellClient.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GnomeShellClient.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof GnomeShellClient.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<GnomeShellClient.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2231,10 +2350,13 @@ export namespace GPaste {
         // Static methods
 
         /**
-         * Create a new instance of #GPasteGnomeShellClient
+         * Create a new instance of {@link GPaste.GnomeShellClient}
          * @param callback Callback function to invoke when the proxy is ready.
          */
         static ['new'](callback?: Gio.AsyncReadyCallback<GnomeShellClient> | null): void;
+        /**
+         * @param args
+         */
         // Conflicted with Gio.DBusProxy.new
         static ['new'](...args: never[]): any;
 
@@ -2242,19 +2364,19 @@ export namespace GPaste {
 
         /**
          * Grab a keybinding
-         * @param accelerator a #GPasteGnomeShellAccelerator instance
+         * @param accelerator a {@link GPaste.GnomeShellAccelerator} instance
          */
         grab_accelerator(accelerator: GnomeShellAccelerator): globalThis.Promise<number>;
         /**
          * Grab a keybinding
-         * @param accelerator a #GPasteGnomeShellAccelerator instance
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param accelerator a {@link GPaste.GnomeShellAccelerator} instance
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         grab_accelerator(accelerator: GnomeShellAccelerator, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Grab a keybinding
-         * @param accelerator a #GPasteGnomeShellAccelerator instance
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param accelerator a {@link GPaste.GnomeShellAccelerator} instance
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         grab_accelerator(
             accelerator: GnomeShellAccelerator,
@@ -2262,31 +2384,31 @@ export namespace GPaste {
         ): globalThis.Promise<number> | void;
         /**
          * Grab a keybinding
-         * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
+         * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to the async call.
          * @returns the action id corresultponding
          */
         grab_accelerator_finish(result: Gio.AsyncResult): number;
         /**
          * Grab a keybinding
-         * @param accelerator a #GPasteGnomeShellAccelerator instance
+         * @param accelerator a {@link GPaste.GnomeShellAccelerator} instance
          * @returns the action id corresponding
          */
         grab_accelerator_sync(accelerator: GnomeShellAccelerator): number;
         /**
          * Grab some keybindings
-         * @param accelerators an array of #GPasteGnomeShellAccelerator instances
+         * @param accelerators an array of {@link GPaste.GnomeShellAccelerator} instances
          */
         grab_accelerators(accelerators: GnomeShellAccelerator[]): globalThis.Promise<number>;
         /**
          * Grab some keybindings
-         * @param accelerators an array of #GPasteGnomeShellAccelerator instances
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param accelerators an array of {@link GPaste.GnomeShellAccelerator} instances
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         grab_accelerators(accelerators: GnomeShellAccelerator[], callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Grab some keybindings
-         * @param accelerators an array of #GPasteGnomeShellAccelerator instances
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param accelerators an array of {@link GPaste.GnomeShellAccelerator} instances
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         grab_accelerators(
             accelerators: GnomeShellAccelerator[],
@@ -2294,13 +2416,13 @@ export namespace GPaste {
         ): globalThis.Promise<number> | void;
         /**
          * Grab some keybindings
-         * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
+         * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to the async call.
          * @returns the action ids corresultponding
          */
         grab_accelerators_finish(result: Gio.AsyncResult): number;
         /**
          * Grab some keybindings
-         * @param accelerators an array of #GPasteGnomeShellAccelerator instances
+         * @param accelerators an array of {@link GPaste.GnomeShellAccelerator} instances
          * @returns the action ids corresponding
          */
         grab_accelerators_sync(accelerators: GnomeShellAccelerator[]): number;
@@ -2312,13 +2434,13 @@ export namespace GPaste {
         /**
          * Ungrab a keybinding
          * @param action the action id corresponding to the keybinding
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         ungrab_accelerator(action: number, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Ungrab a keybinding
          * @param action the action id corresponding to the keybinding
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null` if you don't care about the result of the method invocation.
          */
         ungrab_accelerator(
             action: number,
@@ -2326,7 +2448,7 @@ export namespace GPaste {
         ): globalThis.Promise<boolean> | void;
         /**
          * Ungrab a keybinding
-         * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to the async call.
+         * @param result A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to the async call.
          * @returns whether the ungrab was succesful or not
          */
         ungrab_accelerator_finish(result: Gio.AsyncResult): boolean;
@@ -2336,89 +2458,87 @@ export namespace GPaste {
          * @returns whether the ungrab was succesful or not
          */
         ungrab_accelerator_sync(action: number): boolean;
-
-        // Inherited methods
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
         init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         init_async(
             io_priority: number,
@@ -2428,43 +2548,43 @@ export namespace GPaste {
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         init_async(
             io_priority: number,
@@ -2473,60 +2593,64 @@ export namespace GPaste {
         ): globalThis.Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
-         * See g_async_initable_init_async().
-         * @param res a #GAsyncResult.
-         * @returns %TRUE if successful. If an error has occurred, this function will return %FALSE and set @error appropriately if present.
+         * See `g_async_initable_init_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          */
         init_finish(res: Gio.AsyncResult): boolean;
         /**
          * Finishes the async construction for the various g_async_initable_new
-         * calls, returning the created object or %NULL on error.
-         * @param res the #GAsyncResult from the callback
-         * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
+         * calls, returning the created object or `null` on error.
+         * @param res the {@link Gio.AsyncResult} from the callback
+         * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          */
         new_finish(res: Gio.AsyncResult): GnomeShellClient;
+        /**
+         * @param args
+         */
         // Conflicted with Gio.DBusProxy.new_finish
         new_finish(...args: never[]): any;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @virtual
          */
         vfunc_init_async(
             io_priority: number,
@@ -2535,70 +2659,84 @@ export namespace GPaste {
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
-         * See g_async_initable_init_async().
-         * @param res a #GAsyncResult.
+         * See `g_async_initable_init_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
         /**
-         * Gets the #GDBusObject that `interface_` belongs to, if any.
-         * @returns A #GDBusObject or %NULL. The returned reference should be freed with g_object_unref().
+         * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
         get_object(): Gio.DBusObject | null;
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
-         * @returns A #GDBusInterfaceInfo. Do not free.
+         *
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
+         * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
-        get_info(): Gio.DBusInterfaceInfo;
+        get_info(): Gio.DBusInterfaceInfo | null;
         /**
-         * Sets the #GDBusObject for `interface_` to `object`.
+         * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
          * Note that `interface_` will hold a weak reference to `object`.
-         * @param object A #GDBusObject or %NULL.
+         * @param object A {@link Gio.DBusObject} or `null`.
          */
         set_object(object?: Gio.DBusObject | null): void;
         /**
-         * Gets the #GDBusObject that `interface_` belongs to, if any.
+         * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         *
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
+         * @virtual
          */
-        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        vfunc_get_info(): Gio.DBusInterfaceInfo | null;
         /**
-         * Sets the #GDBusObject for `interface_` to `object`.
+         * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
          * Note that `interface_` will hold a weak reference to `object`.
-         * @param object A #GDBusObject or %NULL.
+         * @param object A {@link Gio.DBusObject} or `null`.
+         * @virtual
          */
         vfunc_set_object(object?: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -2608,40 +2746,40 @@ export namespace GPaste {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
         init(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -2651,11 +2789,12 @@ export namespace GPaste {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -2671,32 +2810,32 @@ export namespace GPaste {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -2705,39 +2844,39 @@ export namespace GPaste {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -2748,13 +2887,16 @@ export namespace GPaste {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -2762,7 +2904,7 @@ export namespace GPaste {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -2770,9 +2912,9 @@ export namespace GPaste {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -2792,9 +2934,9 @@ export namespace GPaste {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -2807,34 +2949,34 @@ export namespace GPaste {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -2867,22 +3009,22 @@ export namespace GPaste {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -2891,8 +3033,8 @@ export namespace GPaste {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -2909,10 +3051,10 @@ export namespace GPaste {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -2927,13 +3069,13 @@ export namespace GPaste {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -2964,21 +3106,21 @@ export namespace GPaste {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -2988,33 +3130,34 @@ export namespace GPaste {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -3023,6 +3166,7 @@ export namespace GPaste {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -3031,12 +3175,14 @@ export namespace GPaste {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -3045,20 +3191,22 @@ export namespace GPaste {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -3070,6 +3218,7 @@ export namespace GPaste {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -3102,6 +3251,11 @@ export namespace GPaste {
     namespace ScreensaverClient {
         // Signal signatures
         interface SignalSignatures extends Gio.DBusProxy.SignalSignatures {
+            /**
+             * The "active-changed" signal is emitted when the screensaver appears or vanishes
+             * @signal
+             * @run-last
+             */
             'active-changed': (arg0: boolean) => void;
             'notify::g-bus-type': (pspec: GObject.ParamSpec) => void;
             'notify::g-connection': (pspec: GObject.ParamSpec) => void;
@@ -3124,6 +3278,9 @@ export namespace GPaste {
                 Gio.Initable.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ScreensaverClient
         extends Gio.DBusProxy
         implements Gio.AsyncInitable<ScreensaverClient>, Gio.DBusInterface, Gio.Initable
@@ -3154,16 +3311,19 @@ export namespace GPaste {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ScreensaverClient.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ScreensaverClient.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ScreensaverClient.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ScreensaverClient.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ScreensaverClient.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ScreensaverClient.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3173,95 +3333,96 @@ export namespace GPaste {
         // Static methods
 
         /**
-         * Create a new instance of #GPasteScreensaverClient
+         * Create a new instance of {@link GPaste.ScreensaverClient}
          * @param callback Callback function to invoke when the proxy is ready.
          */
         static ['new'](callback?: Gio.AsyncReadyCallback<ScreensaverClient> | null): void;
+        /**
+         * @param args
+         */
         // Conflicted with Gio.DBusProxy.new
         static ['new'](...args: never[]): any;
-
-        // Inherited methods
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
         init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         init_async(
             io_priority: number,
@@ -3271,43 +3432,43 @@ export namespace GPaste {
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         init_async(
             io_priority: number,
@@ -3316,60 +3477,64 @@ export namespace GPaste {
         ): globalThis.Promise<boolean> | void;
         /**
          * Finishes asynchronous initialization and returns the result.
-         * See g_async_initable_init_async().
-         * @param res a #GAsyncResult.
-         * @returns %TRUE if successful. If an error has occurred, this function will return %FALSE and set @error appropriately if present.
+         * See `g_async_initable_init_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
          */
         init_finish(res: Gio.AsyncResult): boolean;
         /**
          * Finishes the async construction for the various g_async_initable_new
-         * calls, returning the created object or %NULL on error.
-         * @param res the #GAsyncResult from the callback
-         * @returns a newly created #GObject,      or %NULL on error. Free with g_object_unref().
+         * calls, returning the created object or `null` on error.
+         * @param res the {@link Gio.AsyncResult} from the callback
+         * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
          */
         new_finish(res: Gio.AsyncResult): ScreensaverClient;
+        /**
+         * @param args
+         */
         // Conflicted with Gio.DBusProxy.new_finish
         new_finish(...args: never[]): any;
         /**
          * Starts asynchronous initialization of the object implementing the
          * interface. This must be done before any real use of the object after
-         * initial construction. If the object also implements #GInitable you can
-         * optionally call g_initable_init() instead.
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_async_initable_new_async() should typically be used instead.
+         * `g_async_initable_new_async()` should typically be used instead.
          *
          * When the initialization is finished, `callback` will be called. You can
-         * then call g_async_initable_init_finish() to get the result of the
+         * then call `g_async_initable_init_finish()` to get the result of the
          * initialization.
          *
          * Implementations may also support cancellation. If `cancellable` is not
-         * %NULL, then initialization can be cancelled by triggering the cancellable
+         * `null`, then initialization can be cancelled by triggering the cancellable
          * object from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL, and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
          * the object doesn't support cancellable initialization, the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
-         * As with #GInitable, if the object is not initialized, or initialization
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
          * returns with an error, then all operations on the object except
-         * g_object_ref() and g_object_unref() are considered to be invalid, and
-         * have undefined behaviour. They will often fail with g_critical() or
-         * g_warning(), but this must not be relied on.
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
          *
-         * Callers should not assume that a class which implements #GAsyncInitable can
-         * be initialized multiple times; for more information, see g_initable_init().
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
          * If a class explicitly supports being initialized multiple times,
-         * implementation requires yielding all subsequent calls to init_async() on the
+         * implementation requires yielding all subsequent calls to `init_async()` on the
          * results of the first call.
          *
-         * For classes that also support the #GInitable interface, the default
-         * implementation of this method will run the g_initable_init() function
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
          * in a thread, so if you want to support asynchronous initialization via
-         * threads, just implement the #GAsyncInitable interface without overriding
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
          * any interface methods.
          * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @virtual
          */
         vfunc_init_async(
             io_priority: number,
@@ -3378,70 +3543,84 @@ export namespace GPaste {
         ): void;
         /**
          * Finishes asynchronous initialization and returns the result.
-         * See g_async_initable_init_async().
-         * @param res a #GAsyncResult.
+         * See `g_async_initable_init_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @virtual
          */
         vfunc_init_finish(res: Gio.AsyncResult): boolean;
         /**
-         * Gets the #GDBusObject that `interface_` belongs to, if any.
-         * @returns A #GDBusObject or %NULL. The returned reference should be freed with g_object_unref().
+         * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @returns A {@link Gio.DBusObject} or `null`. The returned reference should be freed with `g_object_unref()`.
          */
         get_object(): Gio.DBusObject | null;
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
-         * @returns A #GDBusInterfaceInfo. Do not free.
+         *
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
+         * @returns A {@link Gio.DBusInterfaceInfo}. Do not free.
          */
-        get_info(): Gio.DBusInterfaceInfo;
+        get_info(): Gio.DBusInterfaceInfo | null;
         /**
-         * Sets the #GDBusObject for `interface_` to `object`.
+         * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
          * Note that `interface_` will hold a weak reference to `object`.
-         * @param object A #GDBusObject or %NULL.
+         * @param object A {@link Gio.DBusObject} or `null`.
          */
         set_object(object?: Gio.DBusObject | null): void;
         /**
-         * Gets the #GDBusObject that `interface_` belongs to, if any.
+         * Gets the {@link Gio.DBusObject} that `interface_` belongs to, if any.
+         * @virtual
          */
         vfunc_dup_object(): Gio.DBusObject | null;
         /**
          * Gets D-Bus introspection information for the D-Bus interface
          * implemented by `interface_`.
+         *
+         * This can return `null` if no {@link Gio.DBusInterfaceInfo} was provided during
+         * construction of `interface_` and is also not made available otherwise.
+         * For example, {@link Gio.DBusProxy} implements {@link Gio.DBusInterface} but allows for a `null`
+         * {@link Gio.DBusInterfaceInfo}.
+         * @virtual
          */
-        vfunc_get_info(): Gio.DBusInterfaceInfo;
+        vfunc_get_info(): Gio.DBusInterfaceInfo | null;
         /**
-         * Sets the #GDBusObject for `interface_` to `object`.
+         * Sets the {@link Gio.DBusObject} for `interface_` to `object`.
          *
          * Note that `interface_` will hold a weak reference to `object`.
-         * @param object A #GDBusObject or %NULL.
+         * @param object A {@link Gio.DBusObject} or `null`.
+         * @virtual
          */
         vfunc_set_object(object?: Gio.DBusObject | null): void;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -3451,40 +3630,40 @@ export namespace GPaste {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
         init(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -3494,11 +3673,12 @@ export namespace GPaste {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -3514,32 +3694,32 @@ export namespace GPaste {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -3548,39 +3728,39 @@ export namespace GPaste {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -3591,13 +3771,16 @@ export namespace GPaste {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -3605,7 +3788,7 @@ export namespace GPaste {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -3613,9 +3796,9 @@ export namespace GPaste {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -3635,9 +3818,9 @@ export namespace GPaste {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -3650,34 +3833,34 @@ export namespace GPaste {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -3710,22 +3893,22 @@ export namespace GPaste {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -3734,8 +3917,8 @@ export namespace GPaste {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -3752,10 +3935,10 @@ export namespace GPaste {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -3770,13 +3953,13 @@ export namespace GPaste {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -3807,21 +3990,21 @@ export namespace GPaste {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -3831,33 +4014,34 @@ export namespace GPaste {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -3866,6 +4050,7 @@ export namespace GPaste {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -3874,12 +4059,14 @@ export namespace GPaste {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -3888,20 +4075,22 @@ export namespace GPaste {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -3913,6 +4102,7 @@ export namespace GPaste {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -3945,8 +4135,38 @@ export namespace GPaste {
     namespace Settings {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * The "changed" signal is emitted when a key has potentially changed.
+             * You should call one of the `g_paste_settings_get()` calls to check the new
+             * value.
+             *
+             * This signal supports detailed connections.  You can connect to the
+             * detailed signal "changed::x" in order to only receive callbacks
+             * when key "x" changes.
+             * @signal
+             * @detailed
+             * @run-last
+             */
             changed: (arg0: string) => void;
+            /**
+             * The "rebind" signal is emitted when a key has potentially changed.
+             * You should call one of the `g_paste_settings_get()` calls to check the new
+             * value.
+             *
+             * This signal supports detailed connections.  You can connect to the
+             * detailed signal "rebind::x" in order to only receive callbacks
+             * when key "x" changes.
+             * @signal
+             * @detailed
+             * @run-last
+             */
             rebind: (arg0: string) => void;
+            /**
+             * The "track" signal is emitted when the daemon starts or stops tracking
+             * clipboard changes
+             * @signal
+             * @run-last
+             */
             track: (arg0: boolean) => void;
         }
 
@@ -3955,6 +4175,9 @@ export namespace GPaste {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Settings extends GObject.Object {
         static $gtype: GObject.GType<Settings>;
 
@@ -3977,16 +4200,19 @@ export namespace GPaste {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Settings.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Settings.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Settings.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Settings.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4371,8 +4597,17 @@ export namespace GPaste {
         set_upload(value: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ClientClass = typeof Client;
+    /**
+     * @gir-type Alias
+     */
     type ClientItemClass = typeof ClientItem;
+    /**
+     * @gir-type Struct
+     */
     class GnomeShellAccelerator {
         static $gtype: GObject.GType<GnomeShellAccelerator>;
 
@@ -4383,8 +4618,17 @@ export namespace GPaste {
         grab_flags: GnomeShellActionMode;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type GnomeShellClientClass = typeof GnomeShellClient;
+    /**
+     * @gir-type Alias
+     */
     type ScreensaverClientClass = typeof ScreensaverClient;
+    /**
+     * @gir-type Alias
+     */
     type SettingsClass = typeof Settings;
     /**
      * Name of the imported GIR library

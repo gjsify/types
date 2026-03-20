@@ -18,10 +18,16 @@ export namespace Gegl {
      * Gegl-0.3
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace AbyssPolicy {
         export const $gtype: GObject.GType<AbyssPolicy>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum AbyssPolicy {
         NONE,
         CLAMP,
@@ -30,20 +36,32 @@ export namespace Gegl {
         WHITE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DistanceMetric {
         export const $gtype: GObject.GType<DistanceMetric>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum DistanceMetric {
         EUCLIDEAN,
         MANHATTAN,
         CHEBYSHEV,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace DitherMethod {
         export const $gtype: GObject.GType<DitherMethod>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum DitherMethod {
         NONE,
         FLOYD_STEINBERG,
@@ -56,19 +74,31 @@ export namespace Gegl {
         XOR_COVARIANT,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Orientation {
         export const $gtype: GObject.GType<Orientation>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum Orientation {
         HORIZONTAL,
         VERTICAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SamplerType {
         export const $gtype: GObject.GType<SamplerType>;
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum SamplerType {
         NEAREST,
         LINEAR,
@@ -77,12 +107,18 @@ export namespace Gegl {
         LOHALO,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum SplitStrategy {
         AUTO,
         HORIZONTAL,
         VERTICAL,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum TileCommand {
         IDLE,
         SET,
@@ -176,7 +212,7 @@ export namespace Gegl {
     /**
      * Returns a GeglConfig object with properties that can be manipulated to control
      * GEGLs behavior.
-     * @returns a #GeglConfig
+     * @returns a {@link Gegl.Config}
      */
     function config(): Config;
     /**
@@ -226,6 +262,10 @@ export namespace Gegl {
      * @returns the format pointer
      */
     function format(format_name: string): GObject.Value | null;
+    /**
+     * @param format A Babl pointer
+     * @returns the format name
+     */
     function format_get_name(format: GObject.Value | any): string | null;
     /**
      * This function fetches the version of the GEGL library being used by
@@ -244,6 +284,10 @@ export namespace Gegl {
      * @param roi The request rectangle
      */
     function graph_dump_request(node: Node, roi: Rectangle): void;
+    /**
+     * @param operation_type the name of the operation
+     * @returns A boolean telling whether the operation is present or not. This also returns true for any compat-name registered by operations.
+     */
     function has_operation(operation_type: string): boolean;
     /**
      * Call this function before using any other GEGL functions. It will
@@ -253,12 +297,15 @@ export namespace Gegl {
      * arguments.
      *
      * Note that there is an alternative way to initialize GEGL: if you
-     * are calling g_option_context_parse() with the option group returned
-     * by #gegl_get_option_group(), you don't have to call #gegl_init().
+     * are calling `g_option_context_parse()` with the option group returned
+     * by `gegl_get_option_group`(), you don't have to call `gegl_init`().
      * @param argv a pointer to the array of command line arguments.
      */
     function init(argv?: string[] | null): string[] | null;
     function is_main_thread(): boolean;
+    /**
+     * @returns An alphabetically sorted array of available operation names. This excludes any compat-name registered by operations. The list should be freed with g_free after use. --- gchar **operations; guint   n_operations; gint i; operations = gegl_list_operations (&n_operations); g_print ("Available operations:\n"); for (i=0; i < n_operations; i++)   {     g_print ("\t%s\n", operations[i]);   } g_free (operations);
+     */
     function list_operations(): string[];
     /**
      * Load all gegl modules found in the given directory.
@@ -266,7 +313,7 @@ export namespace Gegl {
      */
     function load_module_directory(path: string): void;
     /**
-     * Creates a new #GParamSpec instance specifying a #GeglAudioFragment property.
+     * Creates a new {@link GObject.ParamSpec} instance specifying a {@link Gegl.AudioFragment} property.
      * @param name canonical name of the property specified
      * @param nick nick name for the property specified
      * @param blurb description of the property specified
@@ -280,7 +327,7 @@ export namespace Gegl {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GParamSpec instance specifying a #GeglColor property.
+     * Creates a new {@link GObject.ParamSpec} instance specifying a {@link Gegl.Color} property.
      * @param name canonical name of the property specified
      * @param nick nick name for the property specified
      * @param blurb description of the property specified
@@ -296,7 +343,7 @@ export namespace Gegl {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GParamSpec instance specifying a #GeglColor property.
+     * Creates a new {@link GObject.ParamSpec} instance specifying a {@link Gegl.Color} property.
      * @param name canonical name of the property specified
      * @param nick nick name for the property specified
      * @param blurb description of the property specified
@@ -313,12 +360,12 @@ export namespace Gegl {
     ): GObject.ParamSpec;
     /**
      * Get the default color value of the param spec
-     * @param self a #GeglColor #GParamSpec
-     * @returns the default #GeglColor
+     * @param self a {@link Gegl.Color} {@link GObject.ParamSpec}
+     * @returns the default {@link Gegl.Color}
      */
     function param_spec_color_get_default(self: GObject.ParamSpec): Color;
     /**
-     * Creates a new #GParamSpec instance specifying a #GeglCurve property.
+     * Creates a new {@link GObject.ParamSpec} instance specifying a {@link Gegl.Curve} property.
      * @param name canonical name of the property specified
      * @param nick nick name for the property specified
      * @param blurb description of the property specified
@@ -334,7 +381,7 @@ export namespace Gegl {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GeglParamSpecDouble instance.
+     * Creates a new {@link Gegl.ParamSpecDouble} instance.
      * @param name canonical name of the property specified
      * @param nick nick name for the property specified
      * @param blurb description of the property specified
@@ -360,7 +407,7 @@ export namespace Gegl {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GeglParamSpecEnum instance.
+     * Creates a new {@link Gegl.ParamSpecEnum} instance.
      * @param name canonical name of the property specified
      * @param nick nick name for the property specified
      * @param blurb description of the property specified
@@ -378,7 +425,7 @@ export namespace Gegl {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GeglParamSpecFilePath instance.
+     * Creates a new {@link Gegl.ParamSpecFilePath} instance.
      * @param name canonical name of the property specified
      * @param nick nick name for the property specified
      * @param blurb description of the property specified
@@ -398,7 +445,7 @@ export namespace Gegl {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GeglParamSpecFormat instance specifying a Babl format.
+     * Creates a new {@link Gegl.ParamSpecFormat} instance specifying a Babl format.
      * @param name canonical name of the property specified
      * @param nick nick name for the property specified
      * @param blurb description of the property specified
@@ -411,9 +458,13 @@ export namespace Gegl {
         blurb: string,
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
+    /**
+     * @param pspec
+     * @param key_name
+     */
     function param_spec_get_property_key(pspec: GObject.ParamSpec, key_name: string): string;
     /**
-     * Creates a new #GeglParamSpecInt instance.
+     * Creates a new {@link Gegl.ParamSpecInt} instance.
      * @param name canonical name of the property specified
      * @param nick nick name for the property specified
      * @param blurb description of the property specified
@@ -439,7 +490,7 @@ export namespace Gegl {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GParamSpec instance specifying a #GeglPath property.
+     * Creates a new {@link GObject.ParamSpec} instance specifying a {@link Gegl.Path} property.
      * @param name canonical name of the property specified
      * @param nick nick name for the property specified
      * @param blurb description of the property specified
@@ -455,7 +506,7 @@ export namespace Gegl {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GeglParamSpecSeed instance specifying an integer random seed.
+     * Creates a new {@link Gegl.ParamSpecSeed} instance specifying an integer random seed.
      * @param name canonical name of the property specified
      * @param nick nick name for the property specified
      * @param blurb description of the property specified
@@ -468,9 +519,14 @@ export namespace Gegl {
         blurb: string,
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
+    /**
+     * @param pspec
+     * @param key_name
+     * @param value
+     */
     function param_spec_set_property_key(pspec: GObject.ParamSpec, key_name: string, value: string): void;
     /**
-     * Creates a new #GeglParamSpecString instance.
+     * Creates a new {@link Gegl.ParamSpecString} instance.
      * @param name canonical name of the property specified
      * @param nick nick name for the property specified
      * @param blurb description of the property specified
@@ -490,7 +546,7 @@ export namespace Gegl {
         flags: GObject.ParamFlags | null,
     ): GObject.ParamSpec;
     /**
-     * Creates a new #GeglParamSpecUri instance.
+     * Creates a new {@link Gegl.ParamSpecUri} instance.
      * @param name canonical name of the property specified
      * @param nick nick name for the property specified
      * @param blurb description of the property specified
@@ -514,29 +570,50 @@ export namespace Gegl {
      */
     function rectangle_infinite_plane(): Rectangle;
     /**
-     * Resets the cumulative data gathered by the #GeglStats object returned
-     * by #gegl_stats().
+     * Resets the cumulative data gathered by the {@link Gegl.Stats} object returned
+     * by `gegl_stats`().
      */
     function reset_stats(): void;
+    /**
+     * @param start first node in chain to serialize
+     * @param end last node in chain to serialize
+     * @param basepath top-level absolute path to turn into relative root
+     * @param serialize_flags anded together combination of: GEGL_SERIALIZE_TRIM_DEFAULTS, GEGL_SERIALIZE_VERSION, GEGL_SERIALIZE_INDENT.
+     */
     function serialize(start: Node, end: Node, basepath: string, serialize_flags: SerializeFlag | null): string;
     /**
      * Returns a GeglStats object with properties that can be read to monitor
      * GEGL statistics.
-     * @returns a #GeglStats
+     * @returns a {@link Gegl.Stats}
      */
     function stats(): Stats;
+    /**
+     * @gir-type Callback
+     */
     interface LookupFunction {
         (value: number, data?: any | null): number;
     }
+    /**
+     * @gir-type Callback
+     */
     interface NodeFunction {
         (node: PathItem): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface SamplerGetFun {
         (self: Sampler, x: number, y: number, scale: Matrix2, output: any | null, repeat_mode: AbyssPolicy): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface TileCallback {
         (tile: Tile): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface TileSourceCommand {
         (
             gegl_tile_source: TileSource,
@@ -547,27 +624,42 @@ export namespace Gegl {
             data?: any | null,
         ): any | null;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace AccessMode {
         export const $gtype: GObject.GType<AccessMode>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum AccessMode {
         READ,
         WRITE,
         READWRITE,
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum BlitFlags {
         DEFAULT,
         CACHE,
         DIRTY,
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum PadType {
         OUTPUT,
         INPUT,
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum SerializeFlag {
         TRIM_DEFAULTS,
         VERSION,
@@ -587,6 +679,9 @@ export namespace Gegl {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class AudioFragment extends GObject.Object {
         static $gtype: GObject.GType<AudioFragment>;
 
@@ -623,16 +718,19 @@ export namespace Gegl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AudioFragment.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AudioFragment.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AudioFragment.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AudioFragment.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AudioFragment.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AudioFragment.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -647,17 +745,39 @@ export namespace Gegl {
         get_pos(): number;
         get_sample_count(): number;
         get_sample_rate(): number;
+        /**
+         * @param channel_layout
+         */
         set_channel_layout(channel_layout: number): void;
+        /**
+         * @param channels
+         */
         set_channels(channels: number): void;
+        /**
+         * @param max_samples
+         */
         set_max_samples(max_samples: number): void;
+        /**
+         * @param pos
+         */
         set_pos(pos: number): void;
+        /**
+         * @param sample_count
+         */
         set_sample_count(sample_count: number): void;
+        /**
+         * @param sample_rate
+         */
         set_sample_rate(sample_rate: number): void;
     }
 
     namespace Buffer {
         // Signal signatures
         interface SignalSignatures extends TileHandler.SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
             changed: (arg0: Rectangle) => void;
             'notify::abyss-height': (pspec: GObject.ParamSpec) => void;
             'notify::abyss-width': (pspec: GObject.ParamSpec) => void;
@@ -711,35 +831,101 @@ export namespace Gegl {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Buffer extends TileHandler {
         static $gtype: GObject.GType<Buffer>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get abyss_height(): number;
+        /**
+         * @construct-only
+         */
         get abyssHeight(): number;
+        /**
+         * @construct-only
+         */
         get abyss_width(): number;
+        /**
+         * @construct-only
+         */
         get abyssWidth(): number;
+        /**
+         * @construct-only
+         */
         get abyss_x(): number;
+        /**
+         * @construct-only
+         */
         get abyssX(): number;
+        /**
+         * @construct-only
+         */
         get abyss_y(): number;
+        /**
+         * @construct-only
+         */
         get abyssY(): number;
+        /**
+         * @construct-only
+         */
         get backend(): TileBackend;
         get format(): any;
         set format(val: any);
         get height(): number;
         set height(val: number);
+        /**
+         * @construct-only
+         */
         get path(): string;
+        /**
+         * @read-only
+         */
         get pixels(): number;
+        /**
+         * @read-only
+         */
         get px_size(): number;
+        /**
+         * @read-only
+         */
         get pxSize(): number;
+        /**
+         * @construct-only
+         */
         get shift_x(): number;
+        /**
+         * @construct-only
+         */
         get shiftX(): number;
+        /**
+         * @construct-only
+         */
         get shift_y(): number;
+        /**
+         * @construct-only
+         */
         get shiftY(): number;
+        /**
+         * @construct-only
+         */
         get tile_height(): number;
+        /**
+         * @construct-only
+         */
         get tileHeight(): number;
+        /**
+         * @construct-only
+         */
         get tile_width(): number;
+        /**
+         * @construct-only
+         */
         get tileWidth(): number;
         get width(): number;
         set width(val: number);
@@ -769,16 +955,19 @@ export namespace Gegl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Buffer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Buffer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Buffer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Buffer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Buffer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Buffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -806,7 +995,7 @@ export namespace Gegl {
 
         /**
          * Add a new tile handler in the existing chain of tile handler of a GeglBuffer.
-         * @param handler a #GeglTileHandler
+         * @param handler a {@link Gegl.TileHandler}
          */
         add_handler(handler?: any | null): void;
         /**
@@ -870,9 +1059,12 @@ export namespace Gegl {
          * Store a linear raster buffer into the GeglBuffer.
          * @param rect the rectangle to write.
          * @param format_name the format of the input data.
-         * @param src pixel data to write to @buffer.
+         * @param src pixel data to write to `buffer`.
          */
         set(rect: Rectangle, format_name: string, src: Uint8Array | string): void;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.set
         set(...args: never[]): any;
         /**
@@ -885,7 +1077,7 @@ export namespace Gegl {
         linear_close(linear?: any | null): void;
         /**
          * Remove the provided tile handler in the existing chain of tile handler of a GeglBuffer.
-         * @param handler a #GeglTileHandler
+         * @param handler a {@link Gegl.TileHandler}
          */
         remove_handler(handler?: any | null): void;
         /**
@@ -927,8 +1119,8 @@ export namespace Gegl {
          * Fill a region with a repeating pattern. Offsets parameters are
          * relative to the origin (0, 0) and not to the rectangle. So be carefull
          * about the origin of `pattern` and `buffer` extents.
-         * @param rect the region of @buffer to fill
-         * @param pattern a #GeglBuffer to be repeated as a pattern
+         * @param rect the region of `buffer` to fill
+         * @param pattern a {@link Gegl.Buffer} to be repeated as a pattern
          * @param x_offset where the pattern starts horizontally
          * @param y_offset where the pattern starts vertical
          */
@@ -959,6 +1151,9 @@ export namespace Gegl {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Color extends GObject.Object {
         static $gtype: GObject.GType<Color>;
 
@@ -986,16 +1181,19 @@ export namespace Gegl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Color.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Color.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Color.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Color.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Color.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Color.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1006,7 +1204,7 @@ export namespace Gegl {
 
         /**
          * Creates a copy of `color`.
-         * @returns A new copy of @color.
+         * @returns A new copy of `color`.
          */
         duplicate(): Color;
         /**
@@ -1074,6 +1272,9 @@ export namespace Gegl {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Config extends GObject.Object {
         static $gtype: GObject.GType<Config>;
 
@@ -1131,16 +1332,19 @@ export namespace Gegl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Config.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Config.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Config.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Config.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Config.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Config.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1157,6 +1361,9 @@ export namespace Gegl {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Curve extends GObject.Object {
         static $gtype: GObject.GType<Curve>;
 
@@ -1181,16 +1388,19 @@ export namespace Gegl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Curve.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Curve.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Curve.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Curve.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Curve.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Curve.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1215,7 +1425,7 @@ export namespace Gegl {
         calc_value(x: number): number;
         /**
          * Create a copy of `curve`.
-         * @returns A new copy of @curve.
+         * @returns A new copy of `curve`.
          */
         duplicate(): Curve;
         /**
@@ -1246,8 +1456,20 @@ export namespace Gegl {
     namespace Node {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
             computed: (arg0: Rectangle) => void;
+            /**
+             * @signal
+             * @run-last
+             */
             invalidated: (arg0: Rectangle) => void;
+            /**
+             * @signal
+             * @run-last
+             */
             progress: (arg0: number) => void;
             'notify::dont-cache': (pspec: GObject.ParamSpec) => void;
             'notify::gegl-operation': (pspec: GObject.ParamSpec) => void;
@@ -1272,6 +1494,9 @@ export namespace Gegl {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Node extends GObject.Object {
         static $gtype: GObject.GType<Node>;
 
@@ -1321,16 +1546,19 @@ export namespace Gegl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Node.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Node.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Node.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Node.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Node.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Node.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1340,7 +1568,7 @@ export namespace Gegl {
         // Methods
 
         /**
-         * Make the GeglNode `graph,` take a reference on child. This reference
+         * Make the GeglNode `graph`, take a reference on child. This reference
          * will be dropped when the reference count on the graph reaches zero.
          * @param child a GeglNode.
          * @returns the child.
@@ -1348,7 +1576,7 @@ export namespace Gegl {
         add_child(child: Node): Node;
         /**
          * Render a rectangular region from a node to the given buffer.
-         * @param buffer the #GeglBuffer to render to.
+         * @param buffer the {@link Gegl.Buffer} to render to.
          * @param roi the rectangle to render.
          * @param level mipmap level to render (0 for all)
          * @param abyss_policy
@@ -1380,7 +1608,7 @@ export namespace Gegl {
         /**
          * Creates a new processing node that performs the specified operation.
          * All properties of the operation will have their default values. This
-         * is included as an addition to #gegl_node_new_child in the public API to have
+         * is included as an addition to `gegl_node_new_child` in the public API to have
          * a non varargs entry point for bindings as well as sometimes simpler more
          * readable code.
          * @param operation the type of node to create.
@@ -1393,7 +1621,7 @@ export namespace Gegl {
          * pixel data.
          * @param x x coordinate
          * @param y y coordinate
-         * @returns the GeglNode providing the data ending up at @x,@y in the output of @node.
+         * @returns the GeglNode providing the data ending up at `x`,`y` in the output of `node`.
          */
         detect(x: number, y: number): Node;
         /**
@@ -1403,9 +1631,19 @@ export namespace Gegl {
          * @param input_pad the input pad to disconnect.
          */
         disconnect(input_pad: string): boolean;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.disconnect
         disconnect(...args: never[]): any;
+        /**
+         * @param property_name the name of the property to get a paramspec for.
+         * @returns the GParamSpec of property or NULL if no such property exists.
+         */
         find_property(property_name: string): GObject.ParamSpec;
+        /**
+         * @returns a list of the nodes contained within a GeglNode that is a subgraph. Use g_list_free () on the list when done.
+         */
         get_children(): Node[];
         /**
          * Retrieve which pads on which nodes are connected to a named output_pad,
@@ -1417,6 +1655,9 @@ export namespace Gegl {
          * @param output_pad the output pad we want to know who uses.
          */
         get_consumers(output_pad: string): [number, Node[] | null, string[] | null];
+        /**
+         * @returns The operation object associated with this node or NULL if there is no op associated.
+         */
         get_gegl_operation(): Operation | null;
         /**
          * Proxies are used to route between nodes of a subgraph contained within
@@ -1425,6 +1666,9 @@ export namespace Gegl {
          * @returns Returns an input proxy for the named pad. If no input proxy exists with this name a new one will be created.
          */
         get_input_proxy(pad_name: string): Node;
+        /**
+         * @returns The type of processing operation associated with this node, or NULL if there is no op associated. The special name "GraphNode" is returned if the node is the container of a subgraph.
+         */
         get_operation(): string;
         /**
          * Proxies are used to route between nodes of a subgraph contained within
@@ -1439,6 +1683,11 @@ export namespace Gegl {
          */
         get_parent(): Node;
         get_passthrough(): boolean;
+        /**
+         * @param input_pad_name the input pad we want to get the producer for
+         * @param output_pad_name optional pointer to a location where we can store a                   freshly allocated string with the name of the output pad.
+         * @returns the node providing data or NULL if no node is connected to the input_pad.
+         */
         get_producer(input_pad_name: string, output_pad_name?: string | null): Node;
         /**
          * Returns TRUE if the node has a pad with the specified name
@@ -1448,10 +1697,17 @@ export namespace Gegl {
         /**
          * Returns the position and dimensions of a rectangle spanning the area
          * defined by a node.
-         * @returns pointer a #GeglRectangle
+         * @returns pointer a {@link Gegl.Rectangle}
          */
         get_bounding_box(): Rectangle;
+        /**
+         * @param property_name the name of the property to get
+         * @returns pointer to a GValue containing the value of the property
+         */
         get_property(property_name: string): unknown;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.get_property
         get_property(...args: never[]): any;
         /**
@@ -1463,22 +1719,26 @@ export namespace Gegl {
         /**
          * If the node has any input pads this function returns a null terminated
          * array of pad names, otherwise it returns NULL. The return value can be
-         * freed with g_strfreev().
+         * freed with `g_strfreev()`.
          */
         list_input_pads(): string[];
         /**
          * If the node has any output pads this function returns a null terminated
          * array of pad names, otherwise it returns NULL. The return value can be
-         * freed with g_strfreev().
+         * freed with `g_strfreev()`.
          */
         list_output_pads(): string[];
+        /**
+         * @param rectangle the {@link Gegl.Rectangle} to work on or NULL to work on all available data.
+         * @returns a new {@link Gegl.Processor}.
+         */
         new_processor(rectangle: Rectangle): Processor;
         /**
          * Render a composition. This can be used for instance on a node with a "png-save"
          * operation to render all necessary data, and make it be written to file. This
          * function wraps the usage of a GeglProcessor in a single blocking function
          * call. If you need a non-blocking operation, then make a direct use of
-         * #gegl_processor_work. See #GeglProcessor.
+         * `gegl_processor_work`. See {@link Gegl.Processor}.
          *
          * ---
          * GeglNode      *gegl;
@@ -1508,6 +1768,10 @@ export namespace Gegl {
          *                 GEGL_BLIT_DEFAULT);
          */
         process(): void;
+        /**
+         * @param progress
+         * @param message
+         */
         progress(progress: number, message: string): void;
         /**
          * Removes a child from a GeglNode. The reference previously held will be
@@ -1517,9 +1781,12 @@ export namespace Gegl {
          * @returns the child.
          */
         remove_child(child: Node): Node;
+        /**
+         * @param passthrough
+         */
         set_passthrough(passthrough: boolean): void;
         /**
-         * This is mainly included for language bindings. Using #gegl_node_set is
+         * This is mainly included for language bindings. Using `gegl_node_set` is
          * more convenient when programming in C.
          * @param property_name the name of the property to set
          * @param value a GValue containing the value to be set in the property.
@@ -1530,7 +1797,7 @@ export namespace Gegl {
          * serialization of the composition produced by a node (and thus also
          * the nodes contributing data to the specified node). To export a
          * gegl graph, connect the internal output node to an output proxy (see
-         * #gegl_node_get_output_proxy.) and use the proxy node as the basis
+         * `gegl_node_get_output_proxy`.) and use the proxy node as the basis
          * for the serialization.
          * @param path_root filesystem path to construct relative paths from.
          */
@@ -1538,8 +1805,8 @@ export namespace Gegl {
         /**
          * Returns a freshly allocated \0 terminated string containing a XML
          * serialization of a segment of a graph from `head` to `tail` nodes.
-         * If `tail` is %NULL then this behaves just like #gegl_node_to_xml.
-         * @param tail a #GeglNode
+         * If `tail` is `null` then this behaves just like `gegl_node_to_xml`.
+         * @param tail a {@link Gegl.Node}
          * @param path_root filesystem path to construct relative paths from.
          * @returns XML serialization of a graph segment.
          */
@@ -1555,6 +1822,9 @@ export namespace Gegl {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Operation extends GObject.Object {
         static $gtype: GObject.GType<Operation>;
 
@@ -1575,16 +1845,19 @@ export namespace Gegl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Operation.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Operation.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Operation.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Operation.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Operation.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Operation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1593,22 +1866,58 @@ export namespace Gegl {
 
         // Static methods
 
+        /**
+         * @param operation_type the name of the operation type we want to locate a property on.
+         * @param property_name the name of the property we seek.
+         */
         static find_property(operation_type: string, property_name: string): GObject.ParamSpec;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.find_property
         static find_property(...args: never[]): any;
+        /**
+         * @param operation_type
+         * @param key_name
+         */
         static get_key(operation_type: string, key_name: string): string;
+        /**
+         * @param op_name
+         */
         static get_op_version(op_name: string): string;
+        /**
+         * @param operation_type the name of the operation type we want to query to property keys for.
+         * @param property_name the property to query a key for.
+         * @param property_key_name the property mata data key to query
+         */
         static get_property_key(operation_type: string, property_name: string, property_key_name: string): string;
+        /**
+         * @param operation_type the name of the operation type we want to query to property keys for.
+         */
         static list_keys(operation_type: string): string[];
+        /**
+         * @param operation_type the name of the operation type we want to query to properties of.
+         */
         static list_properties(operation_type: string): GObject.ParamSpec[];
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.list_properties
         static list_properties(...args: never[]): any;
+        /**
+         * @param operation_type the name of the operation type we want to query to property keys for.
+         * @param property_name the property to query a key for.
+         */
         static list_property_keys(operation_type: string, property_name: string): string[];
     }
 
     namespace Path {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
             changed: (arg0: any | null) => void;
         }
 
@@ -1617,6 +1926,9 @@ export namespace Gegl {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Path extends GObject.Object {
         static $gtype: GObject.GType<Path>;
 
@@ -1641,16 +1953,19 @@ export namespace Gegl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Path.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Path.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Path.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Path.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Path.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Path.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1710,7 +2025,7 @@ export namespace Gegl {
         foreach_flat(each_item: NodeFunction): void;
         /**
          * Make the `GeglPath` stop firing signals as it changes must be paired with a
-         * gegl_path_thaw() for the signals to start again.
+         * `gegl_path_thaw()` for the signals to start again.
          */
         freeze(): void;
         /**
@@ -1753,7 +2068,7 @@ export namespace Gegl {
         is_empty(): boolean;
         /**
          * Parses `instructions` and appends corresponding nodes to path (call
-         * gegl_path_clean() first if you want to replace the existing path.
+         * `gegl_path_clean()` first if you want to replace the existing path.
          * @param instructions a string describing a path.
          */
         parse_string(instructions: string): void;
@@ -1773,7 +2088,7 @@ export namespace Gegl {
          *
          * The path is transformed through this matrix when being evaluated,
          * causing the calculated positions and length to be changed by the transform.
-         * @param matrix a #GeglMatrix3 to copy the matrix from
+         * @param matrix a {@link Gegl.Matrix3} to copy the matrix from
          */
         set_matrix(matrix: Matrix3): void;
         /**
@@ -1782,7 +2097,7 @@ export namespace Gegl {
         thaw(): void;
         /**
          * Serialize the paths nodes to a string.
-         * @returns return a string with instructions describing the string you need to free this with g_free().
+         * @returns return a string with instructions describing the string you need to free this with `g_free()`.
          */
         to_string(): string;
     }
@@ -1806,12 +2121,21 @@ export namespace Gegl {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Processor extends GObject.Object {
         static $gtype: GObject.GType<Processor>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get chunksize(): number;
+        /**
+         * @write-only
+         */
         set node(val: Node);
         get progress(): number;
         set progress(val: number);
@@ -1835,16 +2159,19 @@ export namespace Gegl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Processor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Processor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Processor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Processor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Processor.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Processor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1853,12 +2180,18 @@ export namespace Gegl {
 
         // Methods
 
+        /**
+         * @param level
+         */
         set_level(level: number): void;
         /**
-         * Change the rectangle a #GeglProcessor is working on.
-         * @param rectangle the new #GeglRectangle the processor shold work on or NULL to make it work on all data in the buffer.
+         * Change the rectangle a {@link Gegl.Processor} is working on.
+         * @param rectangle the new {@link Gegl.Rectangle} the processor shold work on or NULL to make it work on all data in the buffer.
          */
         set_rectangle(rectangle: Rectangle): void;
+        /**
+         * @param scale
+         */
         set_scale(scale: number): void;
         /**
          * Do an iteration of work for the processor.
@@ -1914,28 +2247,85 @@ export namespace Gegl {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Stats extends GObject.Object {
         static $gtype: GObject.GType<Stats>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get swap_busy(): boolean;
+        /**
+         * @read-only
+         */
         get swapBusy(): boolean;
+        /**
+         * @read-only
+         */
         get swap_file_size(): number;
+        /**
+         * @read-only
+         */
         get swapFileSize(): number;
+        /**
+         * @read-only
+         */
         get swap_total(): number;
+        /**
+         * @read-only
+         */
         get swapTotal(): number;
+        /**
+         * @read-only
+         */
         get tile_cache_hits(): number;
+        /**
+         * @read-only
+         */
         get tileCacheHits(): number;
+        /**
+         * @read-only
+         */
         get tile_cache_misses(): number;
+        /**
+         * @read-only
+         */
         get tileCacheMisses(): number;
+        /**
+         * @read-only
+         */
         get tile_cache_total(): number;
+        /**
+         * @read-only
+         */
         get tileCacheTotal(): number;
+        /**
+         * @read-only
+         */
         get tile_cache_total_max(): number;
+        /**
+         * @read-only
+         */
         get tileCacheTotalMax(): number;
+        /**
+         * @read-only
+         */
         get tile_cache_total_uncloned(): number;
+        /**
+         * @read-only
+         */
         get tileCacheTotalUncloned(): number;
+        /**
+         * @read-only
+         */
         get zoom_total(): number;
+        /**
+         * @read-only
+         */
         get zoomTotal(): number;
 
         /**
@@ -1955,16 +2345,19 @@ export namespace Gegl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Stats.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Stats.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Stats.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Stats.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Stats.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Stats.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2000,6 +2393,9 @@ export namespace Gegl {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class TileBackend extends TileSource {
         static $gtype: GObject.GType<TileBackend>;
 
@@ -2009,14 +2405,41 @@ export namespace Gegl {
         set flush_on_destroy(val: boolean);
         get flushOnDestroy(): boolean;
         set flushOnDestroy(val: boolean);
+        /**
+         * @construct-only
+         */
         get format(): any;
+        /**
+         * @read-only
+         */
         get px_size(): number;
+        /**
+         * @read-only
+         */
         get pxSize(): number;
+        /**
+         * @construct-only
+         */
         get tile_height(): number;
+        /**
+         * @construct-only
+         */
         get tileHeight(): number;
+        /**
+         * @read-only
+         */
         get tile_size(): number;
+        /**
+         * @read-only
+         */
         get tileSize(): number;
+        /**
+         * @construct-only
+         */
         get tile_width(): number;
+        /**
+         * @construct-only
+         */
         get tileWidth(): number;
 
         /**
@@ -2036,16 +2459,19 @@ export namespace Gegl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TileBackend.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TileBackend.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TileBackend.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TileBackend.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TileBackend.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TileBackend.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2068,12 +2494,21 @@ export namespace Gegl {
 
         get_extent(): Rectangle;
         get_flush_on_destroy(): boolean;
+        /**
+         * @returns the height of tile from this backend
+         */
         get_tile_height(): number;
+        /**
+         * @returns the size in bytes for a tile from this backend
+         */
         get_tile_size(): number;
+        /**
+         * @returns the width of tile from this backend
+         */
         get_tile_width(): number;
         /**
          * Gets a pointer to the GeglTileStorage that uses the backend
-         * @returns the #GeglTileStorage
+         * @returns the `GeglTileStorage`
          */
         peek_storage(): TileSource;
         /**
@@ -2104,6 +2539,9 @@ export namespace Gegl {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class TileHandler extends TileSource {
         static $gtype: GObject.GType<TileHandler>;
 
@@ -2129,16 +2567,19 @@ export namespace Gegl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TileHandler.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TileHandler.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TileHandler.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TileHandler.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TileHandler.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TileHandler.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2147,7 +2588,13 @@ export namespace Gegl {
 
         // Methods
 
+        /**
+         * @param rect
+         */
         damage_rect(rect: Rectangle): void;
+        /**
+         * @param source
+         */
         set_source(source: TileSource): void;
     }
 
@@ -2160,6 +2607,9 @@ export namespace Gegl {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class TileSource extends GObject.Object {
         static $gtype: GObject.GType<TileSource>;
 
@@ -2185,16 +2635,19 @@ export namespace Gegl {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TileSource.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TileSource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TileSource.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TileSource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TileSource.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TileSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2202,11 +2655,20 @@ export namespace Gegl {
         emit(signal: string, ...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AudioFragmentClass = typeof AudioFragment;
+    /**
+     * @gir-type Struct
+     */
     abstract class AudioFragmentPrivate {
         static $gtype: GObject.GType<AudioFragmentPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class BufferIterator {
         static $gtype: GObject.GType<BufferIterator>;
 
@@ -2217,16 +2679,31 @@ export namespace Gegl {
         roi: Rectangle[];
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class BufferIteratorPriv {
         static $gtype: GObject.GType<BufferIteratorPriv>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ColorClass = typeof Color;
+    /**
+     * @gir-type Struct
+     */
     abstract class ColorPrivate {
         static $gtype: GObject.GType<ColorPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CurveClass = typeof Curve;
+    /**
+     * @gir-type Struct
+     */
     class Lookup {
         static $gtype: GObject.GType<Lookup>;
 
@@ -2243,6 +2720,9 @@ export namespace Gegl {
         table: number[];
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Matrix2 {
         static $gtype: GObject.GType<Matrix2>;
 
@@ -2264,6 +2744,9 @@ export namespace Gegl {
         is_scale(): boolean;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Matrix3 {
         static $gtype: GObject.GType<Matrix3>;
 
@@ -2289,7 +2772,7 @@ export namespace Gegl {
         copy(): Matrix3;
         /**
          * Copies the matrix in `src` into `dst`.
-         * @param src a #GeglMatrix3
+         * @param src a {@link Gegl.Matrix3}
          */
         copy_into(src: Matrix3): void;
         /**
@@ -2300,7 +2783,7 @@ export namespace Gegl {
          * Check if two matrices are equal.
          *
          * Returns TRUE if the matrices are equal.
-         * @param matrix2 a #GeglMatrix3
+         * @param matrix2 a {@link Gegl.Matrix3}
          */
         equal(matrix2: Matrix3): boolean;
         /**
@@ -2331,19 +2814,19 @@ export namespace Gegl {
         is_translate(): boolean;
         /**
          * Multiples `product` = `left` · `right`
-         * @param right a #GeglMatrix3
-         * @param product a #GeglMatrix3 to store the result in.
+         * @param right a {@link Gegl.Matrix3}
+         * @param product a {@link Gegl.Matrix3} to store the result in.
          */
         multiply(right: Matrix3, product: Matrix3): void;
         /**
          * Shift the origin of the transformation specified by `matrix`
-         * to (`x,` `y)`. In other words, calculate the matrix that:
+         * to (`x`, `y`). In other words, calculate the matrix that:
          *
-         * 1. Translates the input by (-`x,` -`y)`.
+         * 1. Translates the input by (-`x`, -`y`).
          *
          * 2. Transforms the result using the original `matrix`.
          *
-         * 3. Translates the result by (`x,` `y)`.
+         * 3. Translates the result by (`x`, `y`).
          * @param x x coordinate of new origin
          * @param y y coordinate of new origin.
          */
@@ -2354,10 +2837,10 @@ export namespace Gegl {
          */
         parse_string(string: string): void;
         /**
-         * Serialize a #GeglMatrix3 to a string.
+         * Serialize a {@link Gegl.Matrix3} to a string.
          *
-         * Returns a freshly allocated string representing that #GeglMatrix3, the
-         * returned string should be g_free()'d.
+         * Returns a freshly allocated string representing that {@link Gegl.Matrix3}, the
+         * returned string should be `g_free()`'d.
          */
         to_string(): string;
         /**
@@ -2369,10 +2852,16 @@ export namespace Gegl {
         transform_point(x: number, y: number): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class OperationContext {
         static $gtype: GObject.GType<OperationContext>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecDouble {
         static $gtype: GObject.GType<ParamSpecDouble>;
 
@@ -2387,10 +2876,20 @@ export namespace Gegl {
 
         // Methods
 
+        /**
+         * @param digits
+         */
         set_digits(digits: number): void;
+        /**
+         * @param small_step
+         * @param big_step
+         */
         set_steps(small_step: number, big_step: number): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecEnum {
         static $gtype: GObject.GType<ParamSpecEnum>;
 
@@ -2400,9 +2899,15 @@ export namespace Gegl {
 
         // Methods
 
+        /**
+         * @param value
+         */
         exclude_value(value: number): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecFilePath {
         static $gtype: GObject.GType<ParamSpecFilePath>;
 
@@ -2412,10 +2917,16 @@ export namespace Gegl {
         null_ok: number;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecFormat {
         static $gtype: GObject.GType<ParamSpecFormat>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecInt {
         static $gtype: GObject.GType<ParamSpecInt>;
 
@@ -2429,9 +2940,16 @@ export namespace Gegl {
 
         // Methods
 
+        /**
+         * @param small_step
+         * @param big_step
+         */
         set_steps(small_step: number, big_step: number): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecSeed {
         static $gtype: GObject.GType<ParamSpecSeed>;
 
@@ -2441,6 +2959,9 @@ export namespace Gegl {
         ui_maximum: number;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecString {
         static $gtype: GObject.GType<ParamSpecString>;
 
@@ -2450,6 +2971,9 @@ export namespace Gegl {
         null_ok: number;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ParamSpecUri {
         static $gtype: GObject.GType<ParamSpecUri>;
 
@@ -2459,7 +2983,13 @@ export namespace Gegl {
         null_ok: number;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PathClass = typeof Path;
+    /**
+     * @gir-type Struct
+     */
     class PathItem {
         static $gtype: GObject.GType<PathItem>;
 
@@ -2478,6 +3008,9 @@ export namespace Gegl {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class PathList {
         static $gtype: GObject.GType<PathList>;
 
@@ -2496,6 +3029,9 @@ export namespace Gegl {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class PathPoint {
         static $gtype: GObject.GType<PathPoint>;
 
@@ -2514,6 +3050,9 @@ export namespace Gegl {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Random {
         static $gtype: GObject.GType<Random>;
 
@@ -2552,8 +3091,8 @@ export namespace Gegl {
          */
         float_range(x: number, y: number, z: number, n: number, min: number, max: number): number;
         /**
-         * Free a GeglRandom structure created with gegl_random_new() or
-         * gegl_random_new_with_seed()
+         * Free a GeglRandom structure created with `gegl_random_new()` or
+         * `gegl_random_new_with_seed()`
          */
         free(): void;
         /**
@@ -2583,6 +3122,9 @@ export namespace Gegl {
         set_seed(seed: number): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Rectangle {
         static $gtype: GObject.GType<Rectangle>;
 
@@ -2620,15 +3162,15 @@ export namespace Gegl {
          * resulting bounding box in `destination`.
          *
          * `destination` may point to the same object as `source1` or `source2`.
-         * @param source1 a #GeglRectangle
-         * @param source2 a #GeglRectangle
+         * @param source1 a {@link Gegl.Rectangle}
+         * @param source2 a {@link Gegl.Rectangle}
          */
         bounding_box(source1: Rectangle, source2: Rectangle): void;
         /**
-         * Checks if the #GeglRectangle `child` is fully contained within `parent`.
+         * Checks if the {@link Gegl.Rectangle} `child` is fully contained within `parent`.
          *
          * Returns TRUE if the `child` is fully contained in `parent`.
-         * @param child a #GeglRectangle
+         * @param child a {@link Gegl.Rectangle}
          */
         contains(child: Rectangle): boolean;
         /**
@@ -2636,7 +3178,7 @@ export namespace Gegl {
          * `destination`.
          *
          * `destination` may point to the same object as `source`.
-         * @param source a #GeglRectangle
+         * @param source a {@link Gegl.Rectangle}
          */
         copy(source: Rectangle): void;
         /**
@@ -2645,20 +3187,20 @@ export namespace Gegl {
         dump(): void;
         /**
          * Create a new copy of `rectangle`.
-         * @returns a #GeglRectangle
+         * @returns a {@link Gegl.Rectangle}
          */
         dup(): Rectangle;
         /**
-         * Check if two #GeglRectangles are equal.
+         * Check if two `GeglRectangles` are equal.
          *
          * Returns TRUE if `rectangle` and `rectangle2` are equal.
-         * @param rectangle2 a #GeglRectangle
+         * @param rectangle2 a {@link Gegl.Rectangle}
          */
         equal(rectangle2: Rectangle): boolean;
         /**
          * Check if a rectangle is equal to a set of parameters.
          *
-         * Returns TRUE if `rectangle` and `x,``y` `width` x `height` are equal.
+         * Returns TRUE if `rectangle` and `x`,`y` `width` x `height` are equal.
          * @param x X coordinate
          * @param y Y coordinate
          * @param width width of rectangle
@@ -2673,8 +3215,8 @@ export namespace Gegl {
          * `dest` may point to the same object as `src1` or `src2`.
          *
          * Returns TRUE if the rectangles intersect.
-         * @param src1 a #GeglRectangle
-         * @param src2 a #GeglRectangle
+         * @param src1 a {@link Gegl.Rectangle}
+         * @param src2 a {@link Gegl.Rectangle}
          */
         intersect(src1: Rectangle, src2: Rectangle): boolean;
         /**
@@ -2689,7 +3231,7 @@ export namespace Gegl {
          */
         is_infinite_plane(): boolean;
         /**
-         * Sets the `x,` `y,` `width` and `height` on `rectangle`.
+         * Sets the `x`, `y`, `width` and `height` on `rectangle`.
          * @param x upper left x coordinate
          * @param y upper left y coordinate
          * @param width width in pixels.
@@ -2698,17 +3240,20 @@ export namespace Gegl {
         set(x: number, y: number, width: number, height: number): void;
         /**
          * Computes the bounding box of the area formed by subtracting `subtrahend`
-         * from `minuend,` and stores the result in `destination`.
+         * from `minuend`, and stores the result in `destination`.
          *
          * `destination` may point to the same object as `minuend` or `subtrahend`.
          *
          * Returns TRUE if the result is not empty.
-         * @param minuend a #GeglRectangle
-         * @param subtrahend a #GeglRectangle
+         * @param minuend a {@link Gegl.Rectangle}
+         * @param subtrahend a {@link Gegl.Rectangle}
          */
         subtract_bounding_box(minuend: Rectangle, subtrahend: Rectangle): boolean;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class Sampler {
         static $gtype: GObject.GType<Sampler>;
 
@@ -2723,23 +3268,44 @@ export namespace Gegl {
          * @param repeat_mode how requests outside the buffer extent are handled. Valid values: GEGL_ABYSS_NONE (abyss pixels are zeroed), GEGL_ABYSS_WHITE (abyss pixels are white), GEGL_ABYSS_BLACK (abyss pixels are black), GEGL_ABYSS_CLAMP (coordinates are clamped to the abyss rectangle), GEGL_ABYSS_LOOP (buffer contents are tiled if outside of the abyss rectangle).
          */
         get(x: number, y: number, scale: Matrix2, output: any | null, repeat_mode: AbyssPolicy | null): void;
+        /**
+         * @returns The context rectangle of the given `sampler`.
+         */
         get_context_rect(): Rectangle;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class Tile {
         static $gtype: GObject.GType<Tile>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TileBackendClass = typeof TileBackend;
+    /**
+     * @gir-type Struct
+     */
     abstract class TileBackendPrivate {
         static $gtype: GObject.GType<TileBackendPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TileHandlerClass = typeof TileHandler;
+    /**
+     * @gir-type Struct
+     */
     abstract class TileHandlerPrivate {
         static $gtype: GObject.GType<TileHandlerPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TileSourceClass = typeof TileSource;
     /**
      * Name of the imported GIR library

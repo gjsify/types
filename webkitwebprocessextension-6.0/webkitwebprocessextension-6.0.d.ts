@@ -33,8 +33,79 @@ export namespace WebKitWebProcessExtension {
      */
 
     /**
+     * @gir-type Enum
+     */
+    export namespace ConsoleMessageLevel {
+        export const $gtype: GObject.GType<ConsoleMessageLevel>;
+    }
+
+    /**
+     * Enum values used to denote the various levels of console messages.
+     * @gir-type Enum
+     * @since 2.12
+     */
+    enum ConsoleMessageLevel {
+        /**
+         * Information message.
+         */
+        INFO,
+        /**
+         * Log message.
+         */
+        LOG,
+        /**
+         * Warning message.
+         */
+        WARNING,
+        /**
+         * Error message.
+         */
+        ERROR,
+        /**
+         * Debug message.
+         */
+        DEBUG,
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace ConsoleMessageSource {
+        export const $gtype: GObject.GType<ConsoleMessageSource>;
+    }
+
+    /**
+     * Enum values used to denote the various sources of console messages.
+     * @gir-type Enum
+     * @since 2.12
+     */
+    enum ConsoleMessageSource {
+        /**
+         * Message produced by JavaScript.
+         */
+        JAVASCRIPT,
+        /**
+         * Network messages.
+         */
+        NETWORK,
+        /**
+         * Messages produced by console API.
+         */
+        CONSOLE_API,
+        /**
+         * Security messages.
+         */
+        SECURITY,
+        /**
+         * Other messages.
+         */
+        OTHER,
+    }
+
+    /**
      * Enum values used to denote the stock actions for
-     * #WebKitContextMenuItem<!-- -->s
+     * {@link WebKitWebProcessExtension.ContextMenuItem}<!-- -->s
+     * @gir-type Enum
      */
     enum ContextMenuAction {
         /**
@@ -229,6 +300,8 @@ export namespace WebKitWebProcessExtension {
 
     /**
      * Enum values used to denote errors happening when sending user messages.
+     * @gir-type Enum
+     * @since 2.28
      */
     enum UserMessageError {
         /**
@@ -237,14 +310,21 @@ export namespace WebKitWebProcessExtension {
         USER_MESSAGE_UNHANDLED_MESSAGE,
     }
 
+    /**
+     * @gir-type Callback
+     */
     interface WebProcessExtensionInitializeFunction {
         (extension: WebProcessExtension): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface WebProcessExtensionInitializeWithUserDataFunction {
         (extension: WebProcessExtension, user_data: GLib.Variant): void;
     }
     /**
-     * Enum values with flags representing the context of a #WebKitHitTestResult.
+     * Enum values with flags representing the context of a {@link WebKitWebProcessExtension.HitTestResult}.
+     * @gir-type Flags
      */
     enum HitTestResultContext {
         /**
@@ -287,19 +367,20 @@ export namespace WebKitWebProcessExtension {
     }
 
     /**
-     * Represents the context menu in a #WebKitWebView.
+     * Represents the context menu in a `WebKitWebView`.
      *
-     * #WebKitContextMenu represents a context menu containing
-     * #WebKitContextMenuItem<!-- -->s in a #WebKitWebView.
+     * {@link WebKitWebProcessExtension.ContextMenu} represents a context menu containing
+     * {@link WebKitWebProcessExtension.ContextMenuItem}<!-- -->s in a `WebKitWebView`.
      *
-     * When a #WebKitWebView is about to display the context menu, it
-     * emits the #WebKitWebView::context-menu signal, which has the
-     * #WebKitContextMenu as an argument. You can modify it, adding new
-     * submenus that you can create with webkit_context_menu_new(), adding
-     * new #WebKitContextMenuItem<!-- -->s with
-     * webkit_context_menu_prepend(), webkit_context_menu_append() or
-     * webkit_context_menu_insert(), maybe after having removed the
-     * existing ones with webkit_context_menu_remove_all().
+     * When a `WebKitWebView` is about to display the context menu, it
+     * emits the `WebKitWebView::context-menu` signal, which has the
+     * {@link WebKitWebProcessExtension.ContextMenu} as an argument. You can modify it, adding new
+     * submenus that you can create with `webkit_context_menu_new()`, adding
+     * new {@link WebKitWebProcessExtension.ContextMenuItem}<!-- -->s with
+     * `webkit_context_menu_prepend()`, `webkit_context_menu_append()` or
+     * `webkit_context_menu_insert()`, maybe after having removed the
+     * existing ones with `webkit_context_menu_remove_all()`.
+     * @gir-type Class
      */
     class ContextMenu extends GObject.Object {
         static $gtype: GObject.GType<ContextMenu>;
@@ -325,16 +406,19 @@ export namespace WebKitWebProcessExtension {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ContextMenu.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ContextMenu.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ContextMenu.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ContextMenu.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ContextMenu.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ContextMenu.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -345,94 +429,102 @@ export namespace WebKitWebProcessExtension {
 
         /**
          * Adds `item` at the end of the `menu`.
-         * @param item the #WebKitContextMenuItem to add
+         * @param item the {@link WebKitWebProcessExtension.ContextMenuItem} to add
          */
         append(item: ContextMenuItem): void;
         /**
          * Gets the first item in the `menu`.
-         * @returns the first #WebKitContextMenuItem of @menu,    or %NULL if the #WebKitContextMenu is empty.
+         * @returns the first {@link WebKitWebProcessExtension.ContextMenuItem} of `menu`,    or `null` if the {@link WebKitWebProcessExtension.ContextMenu} is empty.
          */
         first(): ContextMenuItem;
         /**
-         * Gets the #GdkEvent that triggered the context menu. This function only returns a valid
-         * #GdkEvent when called for a #WebKitContextMenu passed to #WebKitWebView::context-menu
-         * signal; in all other cases, %NULL is returned.
+         * Gets the {@link Gdk.Event} that triggered the context menu. This function only returns a valid
+         * {@link Gdk.Event} when called for a {@link WebKitWebProcessExtension.ContextMenu} passed to `WebKitWebView::context-menu`
+         * signal; in all other cases, `null` is returned.
          *
-         * The returned #GdkEvent is expected to be one of the following types:
+         * The returned {@link Gdk.Event} is expected to be one of the following types:
          * <itemizedlist>
          * <listitem><para>
-         * a #GdkEventButton of type %GDK_BUTTON_PRESS when the context menu was triggered with mouse.
+         * a `GdkEventButton` of type {@link Gdk.EventType.BUTTON_PRESS} when the context menu was triggered with mouse.
          * </para></listitem>
          * <listitem><para>
-         * a #GdkEventKey of type %GDK_KEY_PRESS if the keyboard was used to show the menu.
+         * a `GdkEventKey` of type {@link Gdk.EventType.KEY_PRESS} if the keyboard was used to show the menu.
          * </para></listitem>
          * <listitem><para>
-         * a generic #GdkEvent of type %GDK_NOTHING when the #GtkWidget::popup-menu signal was used to show the context menu.
+         * a generic {@link Gdk.Event} of type `GDK_NOTHING` when the {@link Gtk.Widget.SignalSignatures.popup_menu | Gtk.Widget::popup-menu} signal was used to show the context menu.
          * </para></listitem>
          * </itemizedlist>
-         * @returns the menu event or %NULL.
+         * @returns the menu event or `null`.
          */
         get_event(): Gdk.Event;
         /**
          * Gets the item at the given position in the `menu`.
          * @param position the position of the item, counting from 0
-         * @returns the #WebKitContextMenuItem at position @position in @menu,    or %NULL if the position is off the end of the @menu.
+         * @returns the {@link WebKitWebProcessExtension.ContextMenuItem} at position `position` in `menu`,    or `null` if the position is off the end of the `menu`.
          */
         get_item_at_position(position: number): ContextMenuItem;
         /**
          * Returns the item list of `menu`.
-         * @returns a #GList of    #WebKitContextMenuItem<!-- -->s
+         * @returns a {@link GLib.List} of    {@link WebKitWebProcessExtension.ContextMenuItem}<!-- -->s
          */
         get_items(): ContextMenuItem[];
         /**
          * Gets the length of the `menu`.
-         * @returns the number of #WebKitContextMenuItem<!-- -->s in @menu
+         * @returns the number of {@link WebKitWebProcessExtension.ContextMenuItem}<!-- -->s in `menu`
          */
         get_n_items(): number;
+        /**
+         * Gets the position in view coordinates where the context menu was triggered.
+         *
+         * This function only returns valid coordinates when called for a {@link WebKitWebProcessExtension.ContextMenu}
+         * passed to `WebKitWebView::context-menu` signal.
+         * @returns `true` if valid position coordinates are available, `false` otherwise
+         */
+        get_position(): [boolean, number, number];
         /**
          * Gets the user data of `menu`.
          *
          * This function can be used from the UI Process to get user data previously set
-         * from the Web Process with webkit_context_menu_set_user_data().
-         * @returns the user data of @menu, or %NULL if @menu doesn't have user data
+         * from the Web Process with `webkit_context_menu_set_user_data()`.
+         * @returns the user data of `menu`, or `null` if `menu` doesn't have user data
          */
         get_user_data(): GLib.Variant;
         /**
          * Inserts `item` into the `menu` at the given position.
          *
          * If `position` is negative, or is larger than the number of items
-         * in the #WebKitContextMenu, the item is added on to the end of
+         * in the {@link WebKitWebProcessExtension.ContextMenu}, the item is added on to the end of
          * the `menu`. The first position is 0.
-         * @param item the #WebKitContextMenuItem to add
+         * @param item the {@link WebKitWebProcessExtension.ContextMenuItem} to add
          * @param position the position to insert the item
          */
         insert(item: ContextMenuItem, position: number): void;
         /**
          * Gets the last item in the `menu`.
-         * @returns the last #WebKitContextMenuItem of @menu,    or %NULL if the #WebKitContextMenu is empty.
+         * @returns the last {@link WebKitWebProcessExtension.ContextMenuItem} of `menu`,    or `null` if the {@link WebKitWebProcessExtension.ContextMenu} is empty.
          */
         last(): ContextMenuItem;
         /**
          * Moves `item` to the given position in the `menu`.
          *
          * If `position` is negative, or is larger than the number of items
-         * in the #WebKitContextMenu, the item is added on to the end of
+         * in the {@link WebKitWebProcessExtension.ContextMenu}, the item is added on to the end of
          * the `menu`.
          * The first position is 0.
-         * @param item the #WebKitContextMenuItem to add
+         * @param item the {@link WebKitWebProcessExtension.ContextMenuItem} to add
          * @param position the new position to move the item
          */
         move_item(item: ContextMenuItem, position: number): void;
         /**
          * Adds `item` at the beginning of the `menu`.
-         * @param item the #WebKitContextMenuItem to add
+         * @param item the {@link WebKitWebProcessExtension.ContextMenuItem} to add
          */
         prepend(item: ContextMenuItem): void;
         /**
          * Removes `item` from the `menu`.
          *
-         * See also webkit_context_menu_remove_all() to remove all items.
-         * @param item the #WebKitContextMenuItem to remove
+         * See also `webkit_context_menu_remove_all()` to remove all items.
+         * @param item the {@link WebKitWebProcessExtension.ContextMenuItem} to remove
          */
         remove(item: ContextMenuItem): void;
         /**
@@ -443,9 +535,9 @@ export namespace WebKitWebProcessExtension {
          * Sets user data to `menu`.
          *
          * This function can be used from a Web Process extension to set user data
-         * that can be retrieved from the UI Process using webkit_context_menu_get_user_data().
-         * If the `user_data` #GVariant is floating, it is consumed.
-         * @param user_data a #GVariant
+         * that can be retrieved from the UI Process using `webkit_context_menu_get_user_data()`.
+         * If the `user_data` {@link GLib.Variant} is floating, it is consumed.
+         * @param user_data a {@link GLib.Variant}
          */
         set_user_data(user_data: GLib.Variant): void;
     }
@@ -460,13 +552,14 @@ export namespace WebKitWebProcessExtension {
     }
 
     /**
-     * One item of a #WebKitContextMenu.
+     * One item of a {@link WebKitWebProcessExtension.ContextMenu}.
      *
-     * The #WebKitContextMenu is composed of #WebKitContextMenuItem<!--
-     * -->s. These items can be created from a #GtkAction, from a
-     * #WebKitContextMenuAction or from a #WebKitContextMenuAction and a
-     * label. These #WebKitContextMenuAction<!-- -->s denote stock actions
+     * The {@link WebKitWebProcessExtension.ContextMenu} is composed of {@link WebKitWebProcessExtension.ContextMenuItem}<!--
+     * -->s. These items can be created from a `GtkAction`, from a
+     * {@link WebKitWebProcessExtension.ContextMenuAction} or from a {@link WebKitWebProcessExtension.ContextMenuAction} and a
+     * label. These {@link WebKitWebProcessExtension.ContextMenuAction}<!-- -->s denote stock actions
      * for the items. You can also create separators and submenus.
+     * @gir-type Class
      */
     class ContextMenuItem extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<ContextMenuItem>;
@@ -498,16 +591,19 @@ export namespace WebKitWebProcessExtension {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ContextMenuItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ContextMenuItem.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ContextMenuItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ContextMenuItem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ContextMenuItem.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ContextMenuItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -517,36 +613,46 @@ export namespace WebKitWebProcessExtension {
         // Methods
 
         /**
-         * Gets the action associated to `item` as a #GAction.
-         * @returns the #GAction associated to the #WebKitContextMenuItem,    or %NULL if @item is a separator.
+         * Gets the action associated to `item` as a {@link Gio.Action}.
+         * @returns the {@link Gio.Action} associated to the {@link WebKitWebProcessExtension.ContextMenuItem},    or `null` if `item` is a separator.
          */
         get_gaction(): Gio.Action;
         /**
-         * Gets the #WebKitContextMenuAction of `item`.
+         * Gets the target {@link GLib.Variant} associated with `item`.
+         * @returns the target {@link GLib.Variant} of the {@link WebKitWebProcessExtension.ContextMenuItem},    or `null` if `item` was not created with `webkit_context_menu_item_new_from_gaction()`    or if no target was specified.
+         */
+        get_gaction_target(): GLib.Variant | null;
+        /**
+         * Gets the {@link WebKitWebProcessExtension.ContextMenuAction} of `item`.
          *
-         * If the #WebKitContextMenuItem was not
-         * created for a stock action %WEBKIT_CONTEXT_MENU_ACTION_CUSTOM will be
-         * returned. If the #WebKitContextMenuItem is a separator %WEBKIT_CONTEXT_MENU_ACTION_NO_ACTION
+         * If the {@link WebKitWebProcessExtension.ContextMenuItem} was not
+         * created for a stock action {@link WebKitWebProcessExtension.ContextMenuAction.CUSTOM} will be
+         * returned. If the {@link WebKitWebProcessExtension.ContextMenuItem} is a separator {@link WebKitWebProcessExtension.ContextMenuAction.NO_ACTION}
          * will be returned.
-         * @returns the #WebKitContextMenuAction of @item
+         * @returns the {@link WebKitWebProcessExtension.ContextMenuAction} of `item`
          */
         get_stock_action(): ContextMenuAction;
         /**
          * Gets the submenu of `item`.
-         * @returns the #WebKitContextMenu representing the submenu of    @item or %NULL if @item doesn't have a submenu.
+         * @returns the {@link WebKitWebProcessExtension.ContextMenu} representing the submenu of    `item` or `null` if `item` doesn't have a submenu.
          */
         get_submenu(): ContextMenu;
         /**
+         * Gets the title of `item`.
+         * @returns the title of `item`, or `null` if `item` is a separator.
+         */
+        get_title(): string;
+        /**
          * Checks whether `item` is a separator.
-         * @returns %TRUE is @item is a separator or %FALSE otherwise
+         * @returns `true` is `item` is a separator or `false` otherwise
          */
         is_separator(): boolean;
         /**
          * Sets or replaces the `item` submenu.
          *
-         * If `submenu` is %NULL the current
+         * If `submenu` is `null` the current
          * submenu of `item` is removed.
-         * @param submenu a #WebKitContextMenu
+         * @param submenu a {@link WebKitWebProcessExtension.ContextMenu}
          */
         set_submenu(submenu?: ContextMenu | null): void;
     }
@@ -563,8 +669,10 @@ export namespace WebKitWebProcessExtension {
     /**
      * A web page frame.
      *
-     * Each `WebKitWebPage` has at least one main frame, and can have any number
+     * Each {@link WebKitWebProcessExtension.WebPage} has at least one main frame, and can have any number
      * of subframes.
+     * @gir-type Class
+     * @since 2.26
      */
     class Frame extends GObject.Object {
         static $gtype: GObject.GType<Frame>;
@@ -586,16 +694,19 @@ export namespace WebKitWebProcessExtension {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Frame.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Frame.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Frame.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Frame.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Frame.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Frame.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -605,32 +716,32 @@ export namespace WebKitWebProcessExtension {
         // Methods
 
         /**
-         * Gets the process-unique identifier of this #WebKitFrame. No other
+         * Gets the process-unique identifier of this {@link WebKitWebProcessExtension.Frame}. No other
          * frame in the same web process will have the same ID; however, frames
          * in other web processes may.
-         * @returns the identifier of @frame
+         * @returns the identifier of `frame`
          */
         get_id(): number;
         /**
          * Get the JavaScript execution context of `frame`. Use this function to bridge
          * between the WebKit and JavaScriptCore APIs.
-         * @returns the #JSCContext for the JavaScript execution context of @frame.
+         * @returns the {@link JavaScriptCore.Context} for the JavaScript execution context of `frame`.
          */
         get_js_context(): JavaScriptCore.Context;
         /**
-         * Get the JavaScript execution context of `frame` for the given #WebKitScriptWorld.
-         * @param world a #WebKitScriptWorld
-         * @returns the #JSCContext for the JavaScript execution context of @frame for @world.
+         * Get the JavaScript execution context of `frame` for the given {@link WebKitWebProcessExtension.ScriptWorld}.
+         * @param world a {@link WebKitWebProcessExtension.ScriptWorld}
+         * @returns the {@link JavaScriptCore.Context} for the JavaScript execution context of `frame` for `world`.
          */
         get_js_context_for_script_world(world: ScriptWorld): JavaScriptCore.Context;
         /**
          * Gets the current active URI of `frame`.
-         * @returns the current active URI of @frame or %NULL if nothing has been    loaded yet.
+         * @returns the current active URI of `frame` or `null` if nothing has been    loaded yet.
          */
         get_uri(): string;
         /**
-         * Gets whether `frame` is the main frame of a #WebKitWebPage
-         * @returns %TRUE if @frame is a main frame or %FALSE otherwise
+         * Gets whether `frame` is the main frame of a {@link WebKitWebProcessExtension.WebPage}
+         * @returns `true` if `frame` is a main frame or `false` otherwise
          */
         is_main_frame(): boolean;
     }
@@ -667,23 +778,24 @@ export namespace WebKitWebProcessExtension {
      * Result of a Hit Test.
      *
      * A Hit Test is an operation to get context information about a given
-     * point in a #WebKitWebView. #WebKitHitTestResult represents the
+     * point in a `WebKitWebView`. {@link WebKitWebProcessExtension.HitTestResult} represents the
      * result of a Hit Test. It provides context information about what is
      * at the coordinates of the Hit Test, such as if there's a link,
      * an image or a media.
      *
      * You can get the context of the HitTestResult with
-     * webkit_hit_test_result_get_context() that returns a bitmask of
-     * #WebKitHitTestResultContext flags. You can also use
-     * webkit_hit_test_result_context_is_link(), webkit_hit_test_result_context_is_image() and
-     * webkit_hit_test_result_context_is_media() to determine whether there's
+     * `webkit_hit_test_result_get_context()` that returns a bitmask of
+     * {@link WebKitWebProcessExtension.HitTestResultContext} flags. You can also use
+     * `webkit_hit_test_result_context_is_link()`, `webkit_hit_test_result_context_is_image()` and
+     * `webkit_hit_test_result_context_is_media()` to determine whether there's
      * a link, image or a media element at the coordinates of the Hit Test.
-     * Note that it's possible that several #WebKitHitTestResultContext flags
+     * Note that it's possible that several {@link WebKitWebProcessExtension.HitTestResultContext} flags
      * are active at the same time, for example if there's a link containing an image.
      *
-     * When the mouse is moved over a #WebKitWebView a Hit Test is performed
-     * for the mouse coordinates and #WebKitWebView::mouse-target-changed
-     * signal is emitted with a #WebKitHitTestResult.
+     * When the mouse is moved over a `WebKitWebView` a Hit Test is performed
+     * for the mouse coordinates and `WebKitWebView::mouse-target-changed`
+     * signal is emitted with a {@link WebKitWebProcessExtension.HitTestResult}.
+     * @gir-type Class
      */
     class HitTestResult extends GObject.Object {
         static $gtype: GObject.GType<HitTestResult>;
@@ -691,58 +803,69 @@ export namespace WebKitWebProcessExtension {
         // Properties
 
         /**
-         * Bitmask of #WebKitHitTestResultContext flags representing
-         * the context of the #WebKitHitTestResult.
+         * Bitmask of {@link WebKitWebProcessExtension.HitTestResultContext} flags representing
+         * the context of the {@link WebKitWebProcessExtension.HitTestResult}.
+         * @construct-only
          */
         get context(): number;
         /**
-         * The URI of the image if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_IMAGE
-         * is present in #WebKitHitTestResult:context
+         * The URI of the image if flag {@link WebKitWebProcessExtension.HitTestResultContext.IMAGE}
+         * is present in {@link WebKitWebProcessExtension.HitTestResult.context}
+         * @construct-only
          */
         get image_uri(): string;
         /**
-         * The URI of the image if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_IMAGE
-         * is present in #WebKitHitTestResult:context
+         * The URI of the image if flag {@link WebKitWebProcessExtension.HitTestResultContext.IMAGE}
+         * is present in {@link WebKitWebProcessExtension.HitTestResult.context}
+         * @construct-only
          */
         get imageUri(): string;
         /**
-         * The label of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
-         * is present in #WebKitHitTestResult:context
+         * The label of the link if flag {@link WebKitWebProcessExtension.HitTestResultContext.LINK}
+         * is present in {@link WebKitWebProcessExtension.HitTestResult.context}
+         * @construct-only
          */
         get link_label(): string;
         /**
-         * The label of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
-         * is present in #WebKitHitTestResult:context
+         * The label of the link if flag {@link WebKitWebProcessExtension.HitTestResultContext.LINK}
+         * is present in {@link WebKitWebProcessExtension.HitTestResult.context}
+         * @construct-only
          */
         get linkLabel(): string;
         /**
-         * The title of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
-         * is present in #WebKitHitTestResult:context
+         * The title of the link if flag {@link WebKitWebProcessExtension.HitTestResultContext.LINK}
+         * is present in {@link WebKitWebProcessExtension.HitTestResult.context}
+         * @construct-only
          */
         get link_title(): string;
         /**
-         * The title of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
-         * is present in #WebKitHitTestResult:context
+         * The title of the link if flag {@link WebKitWebProcessExtension.HitTestResultContext.LINK}
+         * is present in {@link WebKitWebProcessExtension.HitTestResult.context}
+         * @construct-only
          */
         get linkTitle(): string;
         /**
-         * The URI of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
-         * is present in #WebKitHitTestResult:context
+         * The URI of the link if flag {@link WebKitWebProcessExtension.HitTestResultContext.LINK}
+         * is present in {@link WebKitWebProcessExtension.HitTestResult.context}
+         * @construct-only
          */
         get link_uri(): string;
         /**
-         * The URI of the link if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK
-         * is present in #WebKitHitTestResult:context
+         * The URI of the link if flag {@link WebKitWebProcessExtension.HitTestResultContext.LINK}
+         * is present in {@link WebKitWebProcessExtension.HitTestResult.context}
+         * @construct-only
          */
         get linkUri(): string;
         /**
-         * The URI of the media if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_MEDIA
-         * is present in #WebKitHitTestResult:context
+         * The URI of the media if flag {@link WebKitWebProcessExtension.HitTestResultContext.MEDIA}
+         * is present in {@link WebKitWebProcessExtension.HitTestResult.context}
+         * @construct-only
          */
         get media_uri(): string;
         /**
-         * The URI of the media if flag %WEBKIT_HIT_TEST_RESULT_CONTEXT_MEDIA
-         * is present in #WebKitHitTestResult:context
+         * The URI of the media if flag {@link WebKitWebProcessExtension.HitTestResultContext.MEDIA}
+         * is present in {@link WebKitWebProcessExtension.HitTestResult.context}
+         * @construct-only
          */
         get mediaUri(): string;
 
@@ -763,16 +886,19 @@ export namespace WebKitWebProcessExtension {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof HitTestResult.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HitTestResult.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof HitTestResult.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HitTestResult.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof HitTestResult.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<HitTestResult.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -782,69 +908,69 @@ export namespace WebKitWebProcessExtension {
         // Methods
 
         /**
-         * Gets whether %WEBKIT_HIT_TEST_RESULT_CONTEXT_EDITABLE flag is present in
-         * #WebKitHitTestResult:context.
-         * @returns %TRUE if there's an editable element at the coordinates of the @hit_test_result,    or %FALSE otherwise
+         * Gets whether {@link WebKitWebProcessExtension.HitTestResultContext.EDITABLE} flag is present in
+         * {@link WebKitWebProcessExtension.HitTestResult.context}.
+         * @returns `true` if there's an editable element at the coordinates of the `hit_test_result`,    or `false` otherwise
          */
         context_is_editable(): boolean;
         /**
-         * Gets whether %WEBKIT_HIT_TEST_RESULT_CONTEXT_IMAGE flag is present in
-         * #WebKitHitTestResult:context.
-         * @returns %TRUE if there's an image element in the coordinates of the Hit Test,    or %FALSE otherwise
+         * Gets whether {@link WebKitWebProcessExtension.HitTestResultContext.IMAGE} flag is present in
+         * {@link WebKitWebProcessExtension.HitTestResult.context}.
+         * @returns `true` if there's an image element in the coordinates of the Hit Test,    or `false` otherwise
          */
         context_is_image(): boolean;
         /**
-         * Gets whether %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK flag is present in
-         * #WebKitHitTestResult:context.
-         * @returns %TRUE if there's a link element in the coordinates of the Hit Test,    or %FALSE otherwise
+         * Gets whether {@link WebKitWebProcessExtension.HitTestResultContext.LINK} flag is present in
+         * {@link WebKitWebProcessExtension.HitTestResult.context}.
+         * @returns `true` if there's a link element in the coordinates of the Hit Test,    or `false` otherwise
          */
         context_is_link(): boolean;
         /**
-         * Gets whether %WEBKIT_HIT_TEST_RESULT_CONTEXT_MEDIA flag is present in
-         * #WebKitHitTestResult:context.
-         * @returns %TRUE if there's a media element in the coordinates of the Hit Test,    or %FALSE otherwise
+         * Gets whether {@link WebKitWebProcessExtension.HitTestResultContext.MEDIA} flag is present in
+         * {@link WebKitWebProcessExtension.HitTestResult.context}.
+         * @returns `true` if there's a media element in the coordinates of the Hit Test,    or `false` otherwise
          */
         context_is_media(): boolean;
         /**
-         * Gets whether %WEBKIT_HIT_TEST_RESULT_CONTEXT_SCROLLBAR flag is present in
-         * #WebKitHitTestResult:context.
-         * @returns %TRUE if there's a scrollbar element at the coordinates of the @hit_test_result,    or %FALSE otherwise
+         * Gets whether {@link WebKitWebProcessExtension.HitTestResultContext.SCROLLBAR} flag is present in
+         * {@link WebKitWebProcessExtension.HitTestResult.context}.
+         * @returns `true` if there's a scrollbar element at the coordinates of the `hit_test_result`,    or `false` otherwise
          */
         context_is_scrollbar(): boolean;
         /**
-         * Gets whether %WEBKIT_HIT_TEST_RESULT_CONTEXT_SELECTION flag is present in
-         * #WebKitHitTestResult:context.
-         * @returns %TRUE if there's a selected element at the coordinates of the @hit_test_result,    or %FALSE otherwise
+         * Gets whether {@link WebKitWebProcessExtension.HitTestResultContext.SELECTION} flag is present in
+         * {@link WebKitWebProcessExtension.HitTestResult.context}.
+         * @returns `true` if there's a selected element at the coordinates of the `hit_test_result`,    or `false` otherwise
          */
         context_is_selection(): boolean;
         /**
-         * Gets the value of the #WebKitHitTestResult:context property.
-         * @returns a bitmask of #WebKitHitTestResultContext flags
+         * Gets the value of the {@link WebKitWebProcessExtension.HitTestResult.context} property.
+         * @returns a bitmask of {@link WebKitWebProcessExtension.HitTestResultContext} flags
          */
         get_context(): number;
         /**
-         * Gets the value of the #WebKitHitTestResult:image-uri property.
-         * @returns the URI of the image element in the coordinates of the Hit Test,    or %NULL if there isn't an image element in @hit_test_result context
+         * Gets the value of the {@link WebKitWebProcessExtension.HitTestResult.image_uri} property.
+         * @returns the URI of the image element in the coordinates of the Hit Test,    or `null` if there isn't an image element in `hit_test_result` context
          */
         get_image_uri(): string;
         /**
-         * Gets the value of the #WebKitHitTestResult:link-label property.
-         * @returns the label of the link element in the coordinates of the Hit Test,    or %NULL if there isn't a link element in @hit_test_result context or the    link element doesn't have a label
+         * Gets the value of the {@link WebKitWebProcessExtension.HitTestResult.link_label} property.
+         * @returns the label of the link element in the coordinates of the Hit Test,    or `null` if there isn't a link element in `hit_test_result` context or the    link element doesn't have a label
          */
         get_link_label(): string;
         /**
-         * Gets the value of the #WebKitHitTestResult:link-title property.
-         * @returns the title of the link element in the coordinates of the Hit Test,    or %NULL if there isn't a link element in @hit_test_result context or the    link element doesn't have a title
+         * Gets the value of the {@link WebKitWebProcessExtension.HitTestResult.link_title} property.
+         * @returns the title of the link element in the coordinates of the Hit Test,    or `null` if there isn't a link element in `hit_test_result` context or the    link element doesn't have a title
          */
         get_link_title(): string;
         /**
-         * Gets the value of the #WebKitHitTestResult:link-uri property.
-         * @returns the URI of the link element in the coordinates of the Hit Test,    or %NULL if there isn't a link element in @hit_test_result context
+         * Gets the value of the {@link WebKitWebProcessExtension.HitTestResult.link_uri} property.
+         * @returns the URI of the link element in the coordinates of the Hit Test,    or `null` if there isn't a link element in `hit_test_result` context
          */
         get_link_uri(): string;
         /**
-         * Gets the value of the #WebKitHitTestResult:media-uri property.
-         * @returns the URI of the media element in the coordinates of the Hit Test,    or %NULL if there isn't a media element in @hit_test_result context
+         * Gets the value of the {@link WebKitWebProcessExtension.HitTestResult.media_uri} property.
+         * @returns the URI of the media element in the coordinates of the Hit Test,    or `null` if there isn't a media element in `hit_test_result` context
          */
         get_media_uri(): string;
     }
@@ -852,6 +978,16 @@ export namespace WebKitWebProcessExtension {
     namespace ScriptWorld {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted when the JavaScript window object in a {@link WebKitWebProcessExtension.ScriptWorld} has been
+             * cleared. This is the preferred place to set custom properties on the window
+             * object using the JavaScriptCore API. You can get the window object of `frame`
+             * from the JavaScript execution context of `world` that is returned by
+             * `webkit_frame_get_js_context_for_script_world()`.
+             * @signal
+             * @since 2.2
+             * @run-last
+             */
             'window-object-cleared': (arg0: WebPage, arg1: Frame) => void;
         }
 
@@ -860,6 +996,9 @@ export namespace WebKitWebProcessExtension {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class ScriptWorld extends GObject.Object {
         static $gtype: GObject.GType<ScriptWorld>;
 
@@ -884,16 +1023,19 @@ export namespace WebKitWebProcessExtension {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ScriptWorld.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ScriptWorld.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ScriptWorld.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ScriptWorld.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ScriptWorld.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ScriptWorld.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -903,18 +1045,18 @@ export namespace WebKitWebProcessExtension {
         // Static methods
 
         /**
-         * Get the default #WebKitScriptWorld. This is the normal script world
+         * Get the default {@link WebKitWebProcessExtension.ScriptWorld}. This is the normal script world
          * where all scripts are executed by default.
-         * You can get the JavaScript execution context of a #WebKitScriptWorld
-         * for a given #WebKitFrame with webkit_frame_get_javascript_context_for_script_world().
+         * You can get the JavaScript execution context of a {@link WebKitWebProcessExtension.ScriptWorld}
+         * for a given {@link WebKitWebProcessExtension.Frame} with `webkit_frame_get_javascript_context_for_script_world()`.
          */
         static get_default(): ScriptWorld;
 
         // Methods
 
         /**
-         * Get the name of a #WebKitScriptWorld.
-         * @returns the name of @world
+         * Get the name of a {@link WebKitWebProcessExtension.ScriptWorld}.
+         * @returns the name of `world`
          */
         get_name(): string;
     }
@@ -935,9 +1077,10 @@ export namespace WebKitWebProcessExtension {
     /**
      * Represents a URI request.
      *
-     * A #WebKitURIRequest can be created with a URI using the
-     * webkit_uri_request_new() method, and you can get the URI of an
-     * existing request with the webkit_uri_request_get_uri() one.
+     * A {@link WebKitWebProcessExtension.URIRequest} can be created with a URI using the
+     * `webkit_uri_request_new()` method, and you can get the URI of an
+     * existing request with the `webkit_uri_request_get_uri()` one.
+     * @gir-type Class
      */
     class URIRequest extends GObject.Object {
         static $gtype: GObject.GType<URIRequest>;
@@ -969,16 +1112,19 @@ export namespace WebKitWebProcessExtension {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof URIRequest.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, URIRequest.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof URIRequest.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, URIRequest.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof URIRequest.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<URIRequest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -988,13 +1134,13 @@ export namespace WebKitWebProcessExtension {
         // Methods
 
         /**
-         * Get the HTTP headers of a #WebKitURIRequest as a #SoupMessageHeaders.
-         * @returns a #SoupMessageHeaders with the HTTP headers of @request    or %NULL if @request is not an HTTP request.
+         * Get the HTTP headers of a {@link WebKitWebProcessExtension.URIRequest} as a {@link Soup.MessageHeaders}.
+         * @returns a {@link Soup.MessageHeaders} with the HTTP headers of `request`    or `null` if `request` is not an HTTP request.
          */
         get_http_headers(): Soup.MessageHeaders;
         /**
-         * Get the HTTP method of the #WebKitURIRequest.
-         * @returns the HTTP method of the #WebKitURIRequest or %NULL if @request is not    an HTTP request.
+         * Get the HTTP method of the {@link WebKitWebProcessExtension.URIRequest}.
+         * @returns the HTTP method of the {@link WebKitWebProcessExtension.URIRequest} or `null` if `request` is not    an HTTP request.
          */
         get_http_method(): string;
         /**
@@ -1040,9 +1186,10 @@ export namespace WebKitWebProcessExtension {
     /**
      * Represents an URI response.
      *
-     * A #WebKitURIResponse contains information such as the URI, the
+     * A {@link WebKitWebProcessExtension.URIResponse} contains information such as the URI, the
      * status code, the content length, the mime type, the HTTP status or
      * the suggested filename.
+     * @gir-type Class
      */
     class URIResponse extends GObject.Object {
         static $gtype: GObject.GType<URIResponse>;
@@ -1051,46 +1198,59 @@ export namespace WebKitWebProcessExtension {
 
         /**
          * The expected content length of the response.
+         * @read-only
          */
         get content_length(): number;
         /**
          * The expected content length of the response.
+         * @read-only
          */
         get contentLength(): number;
         /**
-         * The HTTP headers of the response, or %NULL if the response is not an HTTP response.
+         * The HTTP headers of the response, or `null` if the response is not an HTTP response.
+         * @since 2.6
+         * @read-only
          */
         get http_headers(): Soup.MessageHeaders;
         /**
-         * The HTTP headers of the response, or %NULL if the response is not an HTTP response.
+         * The HTTP headers of the response, or `null` if the response is not an HTTP response.
+         * @since 2.6
+         * @read-only
          */
         get httpHeaders(): Soup.MessageHeaders;
         /**
          * The MIME type of the response.
+         * @read-only
          */
         get mime_type(): string;
         /**
          * The MIME type of the response.
+         * @read-only
          */
         get mimeType(): string;
         /**
          * The status code of the response as returned by the server.
+         * @read-only
          */
         get status_code(): number;
         /**
          * The status code of the response as returned by the server.
+         * @read-only
          */
         get statusCode(): number;
         /**
          * The suggested filename for the URI response.
+         * @read-only
          */
         get suggested_filename(): string;
         /**
          * The suggested filename for the URI response.
+         * @read-only
          */
         get suggestedFilename(): string;
         /**
          * The URI for which the response was made.
+         * @read-only
          */
         get uri(): string;
 
@@ -1111,16 +1271,19 @@ export namespace WebKitWebProcessExtension {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof URIResponse.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, URIResponse.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof URIResponse.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, URIResponse.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof URIResponse.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<URIResponse.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1130,15 +1293,15 @@ export namespace WebKitWebProcessExtension {
         // Methods
 
         /**
-         * Get the expected content length of the #WebKitURIResponse.
+         * Get the expected content length of the {@link WebKitWebProcessExtension.URIResponse}.
          *
          * It can be 0 if the server provided an incorrect or missing Content-Length.
-         * @returns the expected content length of @response.
+         * @returns the expected content length of `response`.
          */
         get_content_length(): number;
         /**
-         * Get the HTTP headers of a #WebKitURIResponse as a #SoupMessageHeaders.
-         * @returns a #SoupMessageHeaders with the HTTP headers of @response    or %NULL if @response is not an HTTP response.
+         * Get the HTTP headers of a {@link WebKitWebProcessExtension.URIResponse} as a {@link Soup.MessageHeaders}.
+         * @returns a {@link Soup.MessageHeaders} with the HTTP headers of `response`    or `null` if `response` is not an HTTP response.
          */
         get_http_headers(): Soup.MessageHeaders;
         /**
@@ -1147,22 +1310,22 @@ export namespace WebKitWebProcessExtension {
          */
         get_mime_type(): string;
         /**
-         * Get the status code of the #WebKitURIResponse.
+         * Get the status code of the {@link WebKitWebProcessExtension.URIResponse}.
          *
-         * Get the status code of the #WebKitURIResponse as returned by
-         * the server. It will normally be a #SoupKnownStatusCode, for
-         * example %SOUP_STATUS_OK, though the server can respond with any
+         * Get the status code of the {@link WebKitWebProcessExtension.URIResponse} as returned by
+         * the server. It will normally be a `SoupKnownStatusCode`, for
+         * example {@link Soup.Status.OK}, though the server can respond with any
          * unsigned integer.
-         * @returns the status code of @response
+         * @returns the status code of `response`
          */
         get_status_code(): number;
         /**
          * Get the suggested filename for `response`.
          *
-         * Get the suggested filename for `response,` as specified by
-         * the 'Content-Disposition' HTTP header, or %NULL if it's not
+         * Get the suggested filename for `response`, as specified by
+         * the 'Content-Disposition' HTTP header, or `null` if it's not
          * present.
-         * @returns the suggested filename or %NULL if    the 'Content-Disposition' HTTP header is not present.
+         * @returns the suggested filename or `null` if    the 'Content-Disposition' HTTP header is not present.
          */
         get_suggested_filename(): string;
         /**
@@ -1195,10 +1358,12 @@ export namespace WebKitWebProcessExtension {
      *
      * A WebKitUserMessage is a message that can be used for the communication between the UI process
      * and web process extensions. A WebKitUserMessage always has a name, and it can also include parameters and
-     * UNIX file descriptors. Messages can be sent from a #WebKitWebContext to all web process extensions,
-     * from a web process extension to its corresponding #WebKitWebContext, and from a #WebKitWebView to its
-     * corresponding #WebKitWebPage (and vice versa). One to one messages can be replied to directly with
-     * webkit_user_message_send_reply().
+     * UNIX file descriptors. Messages can be sent from a `WebKitWebContext` to all web process extensions,
+     * from a web process extension to its corresponding `WebKitWebContext`, and from a `WebKitWebView` to its
+     * corresponding {@link WebKitWebProcessExtension.WebPage} (and vice versa). One to one messages can be replied to directly with
+     * `webkit_user_message_send_reply()`.
+     * @gir-type Class
+     * @since 2.28
      */
     class UserMessage extends GObject.InitiallyUnowned {
         static $gtype: GObject.GType<UserMessage>;
@@ -1207,20 +1372,28 @@ export namespace WebKitWebProcessExtension {
 
         /**
          * The UNIX file descriptors of the user message.
+         * @since 2.28
+         * @construct-only
          */
         get fd_list(): Gio.UnixFDList;
         /**
          * The UNIX file descriptors of the user message.
+         * @since 2.28
+         * @construct-only
          */
         get fdList(): Gio.UnixFDList;
         /**
          * The name of the user message.
+         * @since 2.28
+         * @construct-only
          */
         get name(): string;
         /**
-         * The parameters of the user message as a #GVariant, or %NULL
+         * The parameters of the user message as a {@link GLib.Variant}, or `null`
          * if the message doesn't include parameters. Note that only complete types are
          * allowed.
+         * @since 2.28
+         * @construct-only
          */
         get parameters(): GLib.Variant;
 
@@ -1249,16 +1422,19 @@ export namespace WebKitWebProcessExtension {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof UserMessage.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UserMessage.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof UserMessage.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UserMessage.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UserMessage.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UserMessage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1293,9 +1469,9 @@ export namespace WebKitWebProcessExtension {
          * Send a reply to an user message.
          *
          * If `reply` is floating, it's consumed.
-         * You can only send a reply to a #WebKitUserMessage that has been
+         * You can only send a reply to a {@link WebKitWebProcessExtension.UserMessage} that has been
          * received.
-         * @param reply a #WebKitUserMessage to send as reply
+         * @param reply a {@link WebKitWebProcessExtension.UserMessage} to send as reply
          */
         send_reply(reply: UserMessage): void;
     }
@@ -1303,6 +1479,14 @@ export namespace WebKitWebProcessExtension {
     namespace WebEditor {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * This signal is emitted for every selection change inside a {@link WebKitWebProcessExtension.WebPage}
+             * as well as for every caret position change as the caret is a collapsed
+             * selection.
+             * @signal
+             * @since 2.10
+             * @run-last
+             */
             'selection-changed': () => void;
         }
 
@@ -1312,11 +1496,13 @@ export namespace WebKitWebProcessExtension {
     }
 
     /**
-     * Access to editing capabilities of a #WebKitWebPage.
+     * Access to editing capabilities of a {@link WebKitWebProcessExtension.WebPage}.
      *
      * The WebKitWebEditor provides access to various editing capabilities of
-     * a #WebKitWebPage such as a possibility to react to the current selection in
-     * #WebKitWebPage.
+     * a {@link WebKitWebProcessExtension.WebPage} such as a possibility to react to the current selection in
+     * {@link WebKitWebProcessExtension.WebPage}.
+     * @gir-type Class
+     * @since 2.10
      */
     class WebEditor extends GObject.Object {
         static $gtype: GObject.GType<WebEditor>;
@@ -1338,16 +1524,19 @@ export namespace WebKitWebProcessExtension {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof WebEditor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WebEditor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof WebEditor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WebEditor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WebEditor.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WebEditor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1357,8 +1546,8 @@ export namespace WebKitWebProcessExtension {
         // Methods
 
         /**
-         * Gets the #WebKitWebPage that is associated with the #WebKitWebEditor.
-         * @returns the associated #WebKitWebPage
+         * Gets the {@link WebKitWebProcessExtension.WebPage} that is associated with the {@link WebKitWebProcessExtension.WebEditor}.
+         * @returns the associated {@link WebKitWebProcessExtension.WebPage}
          */
         get_page(): WebPage;
     }
@@ -1366,8 +1555,49 @@ export namespace WebKitWebProcessExtension {
     namespace WebFormManager {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted after form elements (or form associated elements) are associated to `frame`.
+             * This is useful to implement form auto filling for web pages where form fields are added
+             * dynamically. This signal might be emitted multiple times for the same frame.
+             *
+             * Note that this signal could be also emitted when form controls are moved between forms. In
+             * that case, the `elements` array carries the list of those elements which have moved.
+             *
+             * Clients should take a reference to the members of the `elements` array if it is desired to
+             * keep them alive after the signal handler returns.
+             * @signal
+             * @since 2.40
+             * @run-last
+             */
             'form-controls-associated': (arg0: Frame, arg1: JavaScriptCore.Value[]) => void;
+            /**
+             * This signal is emitted when the DOM submit event is about to be fired for `form`.
+             * JavaScript code may rely on the submit event to detect that the user has clicked
+             * on a submit button, and to possibly cancel the form submission before
+             * {@link WebKitWebProcessExtension.WebFormManager.SignalSignatures.will_submit_form | WebKitWebProcessExtension.WebFormManager::will-submit-form} signal is emitted.
+             * However, beware that, for historical reasons, the submit event is not emitted at
+             * all if the form submission is triggered by JavaScript. For these reasons,
+             * this signal may not be used to reliably detect whether a form will be submitted.
+             * Instead, use it to detect if a user has clicked on a form's submit button even if
+             * JavaScript later cancels the form submission, or to read the values of the form's
+             * fields even if JavaScript later clears certain fields before submitting. This may
+             * be needed, for example, to implement a robust browser password manager, as some
+             * misguided websites may use such techniques to attempt to thwart password managers.
+             * @signal
+             * @since 2.40
+             * @run-last
+             */
             'will-send-submit-event': (arg0: JavaScriptCore.Value, arg1: Frame, arg2: Frame) => void;
+            /**
+             * This signal is emitted when `form` will imminently be submitted. It can no longer
+             * be cancelled. This event always occurs immediately before a form is submitted to
+             * its target, so use this event to reliably detect when a form is submitted. This
+             * signal is emitted after {@link WebKitWebProcessExtension.WebFormManager.SignalSignatures.will_send_submit_event | WebKitWebProcessExtension.WebFormManager::will-send-submit-event} if that
+             * signal is emitted.
+             * @signal
+             * @since 2.40
+             * @run-last
+             */
             'will-submit-form': (arg0: JavaScriptCore.Value, arg1: Frame, arg2: Frame) => void;
         }
 
@@ -1377,7 +1607,9 @@ export namespace WebKitWebProcessExtension {
     }
 
     /**
-     * Form manager of a #WebKitWebPage in a #WebKitScriptWorld
+     * Form manager of a {@link WebKitWebProcessExtension.WebPage} in a {@link WebKitWebProcessExtension.ScriptWorld}
+     * @gir-type Class
+     * @since 2.40
      */
     class WebFormManager extends GObject.Object {
         static $gtype: GObject.GType<WebFormManager>;
@@ -1399,16 +1631,19 @@ export namespace WebKitWebProcessExtension {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof WebFormManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WebFormManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof WebFormManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WebFormManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WebFormManager.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WebFormManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1421,18 +1656,18 @@ export namespace WebKitWebProcessExtension {
          * Set the value of an HTML input element as if it had been edited by
          * the user, triggering a change event, and set it as filled automatically.
          * If `element` is not an HTML input element this function does nothing.
-         * @param element a #JSCValue
+         * @param element a {@link JavaScriptCore.Value}
          * @param value the text to set
          */
         static input_element_auto_fill(element: JavaScriptCore.Value, value: string): void;
         /**
          * Get whether `element` is an HTML input element that has been filled automatically.
-         * @param element a #JSCValue
+         * @param element a {@link JavaScriptCore.Value}
          */
         static input_element_is_auto_filled(element: JavaScriptCore.Value): boolean;
         /**
          * Get whether `element` is an HTML text input element that has been edited by a user action.
-         * @param element a #JSCValue
+         * @param element a {@link JavaScriptCore.Value}
          */
         static input_element_is_user_edited(element: JavaScriptCore.Value): boolean;
     }
@@ -1449,8 +1684,10 @@ export namespace WebKitWebProcessExtension {
     /**
      * Result of a Hit Test (Web Process Extensions).
      *
-     * WebKitWebHitTestResult extends #WebKitHitTestResult to provide information
-     * about the #WebKitDOMNode in the coordinates of the Hit Test.
+     * WebKitWebHitTestResult extends {@link WebKitWebProcessExtension.HitTestResult} to provide information
+     * about the `WebKitDOMNode` in the coordinates of the Hit Test.
+     * @gir-type Class
+     * @since 2.8
      */
     class WebHitTestResult extends GObject.Object {
         static $gtype: GObject.GType<WebHitTestResult>;
@@ -1472,16 +1709,19 @@ export namespace WebKitWebProcessExtension {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof WebHitTestResult.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WebHitTestResult.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof WebHitTestResult.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WebHitTestResult.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WebHitTestResult.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WebHitTestResult.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1493,85 +1733,85 @@ export namespace WebKitWebProcessExtension {
         /**
          * Check whether there is an editable element at the hit test position.
          *
-         * Checks whether %WEBKIT_HIT_TEST_RESULT_CONTEXT_EDITABLE flag is present in
+         * Checks whether {@link WebKitWebProcessExtension.HitTestResultContext.EDITABLE} flag is present in
          * the context flags.
-         * @returns %TRUE if the hit test covers an editable element or %FALSE otherwise.
+         * @returns `true` if the hit test covers an editable element or `false` otherwise.
          */
         context_is_editable(): boolean;
         /**
          * Check whether there is an image element at the hit test position.
          *
-         * Checks whether %WEBKIT_HIT_TEST_RESULT_CONTEXT_IMAGE flag is present in
+         * Checks whether {@link WebKitWebProcessExtension.HitTestResultContext.IMAGE} flag is present in
          * the context flags.
-         * @returns %TRUE if the hit test covers an image element or %FALSE otherwise.
+         * @returns `true` if the hit test covers an image element or `false` otherwise.
          */
         context_is_image(): boolean;
         /**
          * Check whether there is a link element at the hit test position.
          *
-         * Checks whether %WEBKIT_HIT_TEST_RESULT_CONTEXT_LINK flag is present in
+         * Checks whether {@link WebKitWebProcessExtension.HitTestResultContext.LINK} flag is present in
          * the context flags.
-         * @returns %TRUE if the hit test covers a link element or %FALSE otherwise.
+         * @returns `true` if the hit test covers a link element or `false` otherwise.
          */
         context_is_link(): boolean;
         /**
          * Check whether there is a media element at the hit test position.
          *
-         * Checks whether %WEBKIT_HIT_TEST_RESULT_CONTEXT_MEDIA flag is present in
+         * Checks whether {@link WebKitWebProcessExtension.HitTestResultContext.MEDIA} flag is present in
          * the context flags.
-         * @returns %TRUE if the hit test covers a media element or %FALSE otherwise.
+         * @returns `true` if the hit test covers a media element or `false` otherwise.
          */
         context_is_media(): boolean;
         /**
          * Check whether there is a scrollbar at the hit test position.
          *
-         * Checks whether %WEBKIT_HIT_TEST_RESULT_CONTEXT_SCROLLBAR flag is present in
+         * Checks whether {@link WebKitWebProcessExtension.HitTestResultContext.SCROLLBAR} flag is present in
          * the context flags.
-         * @returns %TRUE if the hit test covers a scrollbar or %FALSE otherwise.
+         * @returns `true` if the hit test covers a scrollbar or `false` otherwise.
          */
         context_is_scrollbar(): boolean;
         /**
          * Check whether there is a selected element at the hit test position.
          *
-         * Checks whether %WEBKIT_HIT_TEST_RESULT_CONTEXT_SELECTION flag is present in
+         * Checks whether {@link WebKitWebProcessExtension.HitTestResultContext.SELECTION} flag is present in
          * the context flags.
-         * @returns %TRUE if the hit test covers a selected element or %FALSE otherwise.
+         * @returns `true` if the hit test covers a selected element or `false` otherwise.
          */
         context_is_selection(): boolean;
         /**
          * Gets the the context flags for the hit test result.
-         * @returns a bitmask of #WebKitHitTestResultContext flags
+         * @returns a bitmask of {@link WebKitWebProcessExtension.HitTestResultContext} flags
          */
         get_context(): number;
         /**
          * Obtains the URI associated with the image element at the hit test position.
-         * @returns the URI of the image element, or %NULL if the hit test does not cover an image element.
+         * @returns the URI of the image element, or `null` if the hit test does not cover an image element.
          */
         get_image_uri(): string;
         /**
-         * Get the #JSCValue for the DOM node in `world` at the coordinates of the Hit Test.
-         * @param world a #WebKitScriptWorld, or %NULL to use the default
-         * @returns a #JSCValue for the DOM node, or %NULL
+         * Get the {@link JavaScriptCore.Value} for the DOM node in `world` at the coordinates of the Hit Test.
+         * @param world a {@link WebKitWebProcessExtension.ScriptWorld}, or `null` to use the default
+         * @returns a {@link JavaScriptCore.Value} for the DOM node, or `null`
          */
         get_js_node(world?: ScriptWorld | null): JavaScriptCore.Value | null;
         /**
          * Obtains the label associated with the link element at the hit test position.
-         * @returns the label of the link element, or %NULL if the hit test does not cover a link element    or the link element does not have a label.
+         * @returns the label of the link element, or `null` if the hit test does not cover a link element    or the link element does not have a label.
          */
         get_link_label(): string;
         /**
          * Obtains the title associated with the link element at the hit test position.
-         * @returns the title of the link element, or %NULL if the hit test does not cover a link element    or the link element does not have a title.
+         * @returns the title of the link element, or `null` if the hit test does not cover a link element    or the link element does not have a title.
          */
         get_link_title(): string;
         /**
          * Obtains the URI associated with the link element at the hit test position.
-         * @returns the URI of the link element, or %NULL if the hit test does not cover a link element.
+         * @returns the URI of the link element, or `null` if the hit test does not cover a link element.
          */
         get_link_uri(): string;
         /**
          * Obtains the URI associated with the media element at the hit test position.
-         * @returns the URI of the media element, or %NULL if the hit test does not cover a media element.
+         * @returns the URI of the media element, or `null` if the hit test does not cover a media element.
          */
         get_media_uri(): string;
     }
@@ -1579,9 +1819,71 @@ export namespace WebKitWebProcessExtension {
     namespace WebPage {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted when a message is sent to the console. This can be a message
+             * produced by the use of JavaScript console API, a JavaScript exception,
+             * a security error or other errors, warnings, debug or log messages.
+             * The `console_message` contains information of the message.
+             * @signal
+             * @since 2.12
+             * @run-last
+             */
+            'console-message-sent': (arg0: ConsoleMessage) => void;
+            /**
+             * Emitted before a context menu is displayed in the UI Process to
+             * give the application a chance to customize the proposed menu,
+             * build its own context menu or pass user data to the UI Process.
+             * This signal is useful when the information available in the UI Process
+             * is not enough to build or customize the context menu, for example, to
+             * add menu entries depending on the node at the coordinates of the
+             * `hit_test_result`. Otherwise, it's recommended to use `WebKitWebView::context-menu`
+             * signal instead.
+             * @signal
+             * @since 2.8
+             * @run-last
+             */
             'context-menu': (arg0: ContextMenu, arg1: WebHitTestResult) => boolean | void;
+            /**
+             * This signal is emitted when the DOM document of a {@link WebKitWebProcessExtension.WebPage} has been
+             * loaded.
+             *
+             * You can wait for this signal to get the DOM document
+             * @signal
+             * @run-last
+             */
             'document-loaded': () => void;
+            /**
+             * This signal is emitted when `request` is about to be sent to
+             * the server. This signal can be used to modify the {@link WebKitWebProcessExtension.URIRequest}
+             * that will be sent to the server. You can also cancel the resource load
+             * operation by connecting to this signal and returning `true`.
+             *
+             * In case of a server redirection this signal is
+             * emitted again with the `request` argument containing the new
+             * request to be sent to the server due to the redirection and the
+             * `redirected_response` parameter containing the response
+             * received by the server for the initial request.
+             *
+             * Modifications to the {@link WebKitWebProcessExtension.URIRequest} and its associated
+             * {@link Soup.MessageHeaders} will be taken into account when the request
+             * is sent over the network.
+             * @signal
+             * @run-last
+             */
             'send-request': (arg0: URIRequest, arg1: URIResponse) => boolean | void;
+            /**
+             * This signal is emitted when a {@link WebKitWebProcessExtension.UserMessage} is received from the
+             * `WebKitWebView` corresponding to `web_page`. You can reply to the message
+             * using `webkit_user_message_send_reply()`.
+             *
+             * You can handle the user message asynchronously by calling `g_object_ref()` on
+             * `message` and returning `true`. If the last reference of `message` is removed
+             * and the message has been replied, the operation in the `WebKitWebView` will
+             * finish with error {@link WebKitWebProcessExtension.UserMessageError.USER_MESSAGE_UNHANDLED_MESSAGE}.
+             * @signal
+             * @since 2.28
+             * @run-last
+             */
             'user-message-received': (arg0: UserMessage) => boolean | void;
             'notify::uri': (pspec: GObject.ParamSpec) => void;
         }
@@ -1595,6 +1897,7 @@ export namespace WebKitWebProcessExtension {
 
     /**
      * A loaded web page.
+     * @gir-type Class
      */
     class WebPage extends GObject.Object {
         static $gtype: GObject.GType<WebPage>;
@@ -1602,7 +1905,8 @@ export namespace WebKitWebProcessExtension {
         // Properties
 
         /**
-         * The current active URI of the #WebKitWebPage.
+         * The current active URI of the {@link WebKitWebProcessExtension.WebPage}.
+         * @read-only
          */
         get uri(): string;
 
@@ -1623,16 +1927,19 @@ export namespace WebKitWebProcessExtension {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof WebPage.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WebPage.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof WebPage.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WebPage.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WebPage.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WebPage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1642,24 +1949,24 @@ export namespace WebKitWebProcessExtension {
         // Methods
 
         /**
-         * Gets the #WebKitWebEditor of a #WebKitWebPage.
-         * @returns the #WebKitWebEditor
+         * Gets the {@link WebKitWebProcessExtension.WebEditor} of a {@link WebKitWebProcessExtension.WebPage}.
+         * @returns the {@link WebKitWebProcessExtension.WebEditor}
          */
         get_editor(): WebEditor;
         /**
-         * Get the #WebKitWebFormManager of `web_page` in `world`.
-         * @param world a #WebKitScriptWorld
-         * @returns a #WebKitWebFormManager
+         * Get the {@link WebKitWebProcessExtension.WebFormManager} of `web_page` in `world`.
+         * @param world a {@link WebKitWebProcessExtension.ScriptWorld}
+         * @returns a {@link WebKitWebProcessExtension.WebFormManager}
          */
         get_form_manager(world?: ScriptWorld | null): WebFormManager;
         /**
-         * Get the identifier of the #WebKitWebPage
-         * @returns the identifier of @web_page
+         * Get the identifier of the {@link WebKitWebProcessExtension.WebPage}
+         * @returns the identifier of `web_page`
          */
         get_id(): number;
         /**
-         * Returns the main frame of a #WebKitWebPage.
-         * @returns the #WebKitFrame that is the main frame of @web_page
+         * Returns the main frame of a {@link WebKitWebProcessExtension.WebPage}.
+         * @returns the {@link WebKitWebProcessExtension.Frame} that is the main frame of `web_page`
          */
         get_main_frame(): Frame;
         /**
@@ -1667,31 +1974,31 @@ export namespace WebKitWebProcessExtension {
          *
          * You can monitor the active URI by connecting to the notify::uri
          * signal of `web_page`.
-         * @returns the current active URI of @web_view or %NULL if nothing has been    loaded yet.
+         * @returns the current active URI of `web_view` or `null` if nothing has been    loaded yet.
          */
         get_uri(): string;
         /**
-         * Send `message` to the #WebKitWebView corresponding to `web_page`. If `message` is floating, it's consumed.
+         * Send `message` to the `WebKitWebView` corresponding to `web_page`. If `message` is floating, it's consumed.
          *
-         * If you don't expect any reply, or you simply want to ignore it, you can pass %NULL as `callback`.
+         * If you don't expect any reply, or you simply want to ignore it, you can pass `null` as `callback`.
          * When the operation is finished, `callback` will be called. You can then call
-         * webkit_web_page_send_message_to_view_finish() to get the message reply.
-         * @param message a #WebKitUserMessage
-         * @param cancellable a #GCancellable or %NULL to ignore
+         * `webkit_web_page_send_message_to_view_finish()` to get the message reply.
+         * @param message a {@link WebKitWebProcessExtension.UserMessage}
+         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          */
         send_message_to_view(
             message: UserMessage,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<UserMessage>;
         /**
-         * Send `message` to the #WebKitWebView corresponding to `web_page`. If `message` is floating, it's consumed.
+         * Send `message` to the `WebKitWebView` corresponding to `web_page`. If `message` is floating, it's consumed.
          *
-         * If you don't expect any reply, or you simply want to ignore it, you can pass %NULL as `callback`.
+         * If you don't expect any reply, or you simply want to ignore it, you can pass `null` as `callback`.
          * When the operation is finished, `callback` will be called. You can then call
-         * webkit_web_page_send_message_to_view_finish() to get the message reply.
-         * @param message a #WebKitUserMessage
-         * @param cancellable a #GCancellable or %NULL to ignore
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL
+         * `webkit_web_page_send_message_to_view_finish()` to get the message reply.
+         * @param message a {@link WebKitWebProcessExtension.UserMessage}
+         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`
          */
         send_message_to_view(
             message: UserMessage,
@@ -1699,14 +2006,14 @@ export namespace WebKitWebProcessExtension {
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Send `message` to the #WebKitWebView corresponding to `web_page`. If `message` is floating, it's consumed.
+         * Send `message` to the `WebKitWebView` corresponding to `web_page`. If `message` is floating, it's consumed.
          *
-         * If you don't expect any reply, or you simply want to ignore it, you can pass %NULL as `callback`.
+         * If you don't expect any reply, or you simply want to ignore it, you can pass `null` as `callback`.
          * When the operation is finished, `callback` will be called. You can then call
-         * webkit_web_page_send_message_to_view_finish() to get the message reply.
-         * @param message a #WebKitUserMessage
-         * @param cancellable a #GCancellable or %NULL to ignore
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL
+         * `webkit_web_page_send_message_to_view_finish()` to get the message reply.
+         * @param message a {@link WebKitWebProcessExtension.UserMessage}
+         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`
          */
         send_message_to_view(
             message: UserMessage,
@@ -1714,9 +2021,9 @@ export namespace WebKitWebProcessExtension {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<UserMessage> | void;
         /**
-         * Finish an asynchronous operation started with webkit_web_page_send_message_to_view().
-         * @param result a #GAsyncResult
-         * @returns a #WebKitUserMessage with the reply or %NULL in case of error.
+         * Finish an asynchronous operation started with `webkit_web_page_send_message_to_view()`.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns a {@link WebKitWebProcessExtension.UserMessage} with the reply or `null` in case of error.
          */
         send_message_to_view_finish(result: Gio.AsyncResult): UserMessage;
     }
@@ -1724,7 +2031,23 @@ export namespace WebKitWebProcessExtension {
     namespace WebProcessExtension {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * This signal is emitted when a new {@link WebKitWebProcessExtension.WebPage} is created in
+             * the Web Process.
+             * @signal
+             * @since 2.40
+             * @run-last
+             */
             'page-created': (arg0: WebPage) => void;
+            /**
+             * This signal is emitted when a {@link WebKitWebProcessExtension.UserMessage} is received from the
+             * `WebKitWebContext` corresponding to `extension`. Messages sent by `WebKitWebContext`
+             * are always broadcasted to all web extensions and they can't be
+             * replied to. Calling `webkit_user_message_send_reply()` will do nothing.
+             * @signal
+             * @since 2.40
+             * @run-last
+             */
             'user-message-received': (arg0: UserMessage) => void;
         }
 
@@ -1741,8 +2064,8 @@ export namespace WebKitWebProcessExtension {
      * JavaScript code, for example.
      *
      * To create a WebKitWebProcessExtension you should write a module with an initialization function that could
-     * be either webkit_web_process_extension_initialize() with prototype #WebKitWebProcessExtensionInitializeFunction or
-     * webkit_web_process_extension_initialize_with_user_data() with prototype #WebKitWebProcessExtensionInitializeWithUserDataFunction.
+     * be either `webkit_web_process_extension_initialize()` with prototype {@link WebKitWebProcessExtension.WebProcessExtensionInitializeFunction} or
+     * `webkit_web_process_extension_initialize_with_user_data()` with prototype {@link WebKitWebProcessExtension.WebProcessExtensionInitializeWithUserDataFunction}.
      * This function has to be public and it has to use the #G_MODULE_EXPORT macro. It is called when the
      * web process is initialized.
      *
@@ -1767,14 +2090,14 @@ export namespace WebKitWebProcessExtension {
      * ```
      *
      * The previous piece of code shows a trivial example of an extension that notifies when
-     * a #WebKitWebPage is created.
+     * a {@link WebKitWebProcessExtension.WebPage} is created.
      *
      * WebKit has to know where it can find the created WebKitWebProcessExtension. To do so you
-     * should use the webkit_web_context_set_web_extensions_directory() function. The signal
-     * #WebKitWebContext::initialize-web-extensions is the recommended place to call it.
+     * should use the `webkit_web_context_set_web_extensions_directory()` function. The signal
+     * `WebKitWebContext::initialize-web-extensions` is the recommended place to call it.
      *
-     * To provide the initialization data used by the webkit_web_process_extension_initialize_with_user_data()
-     * function, you have to call webkit_web_context_set_web_extensions_initialization_user_data() with
+     * To provide the initialization data used by the `webkit_web_process_extension_initialize_with_user_data()`
+     * function, you have to call `webkit_web_context_set_web_extensions_initialization_user_data()` with
      * the desired data as parameter. You can see an example of this in the following piece of code:
      *
      * ```c
@@ -1805,6 +2128,8 @@ export namespace WebKitWebProcessExtension {
      *   // ...
      * }
      * ```
+     * @gir-type Class
+     * @since 2.40
      */
     class WebProcessExtension extends GObject.Object {
         static $gtype: GObject.GType<WebProcessExtension>;
@@ -1826,16 +2151,19 @@ export namespace WebKitWebProcessExtension {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof WebProcessExtension.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WebProcessExtension.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof WebProcessExtension.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WebProcessExtension.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WebProcessExtension.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WebProcessExtension.SignalSignatures[K]> extends [any, ...infer Q]
@@ -1848,32 +2176,32 @@ export namespace WebKitWebProcessExtension {
 
         /**
          * Get the web page of the given `page_id`.
-         * @param page_id the identifier of the #WebKitWebPage to get
-         * @returns the #WebKitWebPage for the given @page_id, or %NULL if the    identifier doesn't correspond to an existing web page.
+         * @param page_id the identifier of the {@link WebKitWebProcessExtension.WebPage} to get
+         * @returns the {@link WebKitWebProcessExtension.WebPage} for the given `page_id`, or `null` if the    identifier doesn't correspond to an existing web page.
          */
         get_page(page_id: number): WebPage;
         /**
-         * Send `message` to the #WebKitWebContext corresponding to `extension`. If `message` is floating, it's consumed.
+         * Send `message` to the `WebKitWebContext` corresponding to `extension`. If `message` is floating, it's consumed.
          *
-         * If you don't expect any reply, or you simply want to ignore it, you can pass %NULL as `calback`.
+         * If you don't expect any reply, or you simply want to ignore it, you can pass `null` as `calback`.
          * When the operation is finished, `callback` will be called. You can then call
-         * webkit_web_process_extension_send_message_to_context_finish() to get the message reply.
-         * @param message a #WebKitUserMessage
-         * @param cancellable a #GCancellable or %NULL to ignore
+         * `webkit_web_process_extension_send_message_to_context_finish()` to get the message reply.
+         * @param message a {@link WebKitWebProcessExtension.UserMessage}
+         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
          */
         send_message_to_context(
             message: UserMessage,
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<UserMessage>;
         /**
-         * Send `message` to the #WebKitWebContext corresponding to `extension`. If `message` is floating, it's consumed.
+         * Send `message` to the `WebKitWebContext` corresponding to `extension`. If `message` is floating, it's consumed.
          *
-         * If you don't expect any reply, or you simply want to ignore it, you can pass %NULL as `calback`.
+         * If you don't expect any reply, or you simply want to ignore it, you can pass `null` as `calback`.
          * When the operation is finished, `callback` will be called. You can then call
-         * webkit_web_process_extension_send_message_to_context_finish() to get the message reply.
-         * @param message a #WebKitUserMessage
-         * @param cancellable a #GCancellable or %NULL to ignore
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL
+         * `webkit_web_process_extension_send_message_to_context_finish()` to get the message reply.
+         * @param message a {@link WebKitWebProcessExtension.UserMessage}
+         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`
          */
         send_message_to_context(
             message: UserMessage,
@@ -1881,14 +2209,14 @@ export namespace WebKitWebProcessExtension {
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Send `message` to the #WebKitWebContext corresponding to `extension`. If `message` is floating, it's consumed.
+         * Send `message` to the `WebKitWebContext` corresponding to `extension`. If `message` is floating, it's consumed.
          *
-         * If you don't expect any reply, or you simply want to ignore it, you can pass %NULL as `calback`.
+         * If you don't expect any reply, or you simply want to ignore it, you can pass `null` as `calback`.
          * When the operation is finished, `callback` will be called. You can then call
-         * webkit_web_process_extension_send_message_to_context_finish() to get the message reply.
-         * @param message a #WebKitUserMessage
-         * @param cancellable a #GCancellable or %NULL to ignore
-         * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL
+         * `webkit_web_process_extension_send_message_to_context_finish()` to get the message reply.
+         * @param message a {@link WebKitWebProcessExtension.UserMessage}
+         * @param cancellable a {@link Gio.Cancellable} or `null` to ignore
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied or `null`
          */
         send_message_to_context(
             message: UserMessage,
@@ -1896,25 +2224,108 @@ export namespace WebKitWebProcessExtension {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<UserMessage> | void;
         /**
-         * Finish an asynchronous operation started with webkit_web_process_extension_send_message_to_context().
-         * @param result a #GAsyncResult
-         * @returns a #WebKitUserMessage with the reply or %NULL in case of error.
+         * Finish an asynchronous operation started with `webkit_web_process_extension_send_message_to_context()`.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns a {@link WebKitWebProcessExtension.UserMessage} with the reply or `null` in case of error.
          */
         send_message_to_context_finish(result: Gio.AsyncResult): UserMessage;
     }
 
+    /**
+     * @gir-type Struct
+     */
+    abstract class ConsoleMessage {
+        static $gtype: GObject.GType<ConsoleMessage>;
+
+        // Methods
+
+        /**
+         * Make a copy of `console_message`.
+         * @returns A copy of passed in {@link WebKitWebProcessExtension.ConsoleMessage}
+         */
+        copy(): ConsoleMessage;
+        /**
+         * Free the {@link WebKitWebProcessExtension.ConsoleMessage}
+         */
+        free(): void;
+        /**
+         * Gets the log level of a {@link WebKitWebProcessExtension.ConsoleMessage}
+         * @returns a {@link WebKitWebProcessExtension.ConsoleMessageLevel} indicating the log level of `console_message`
+         */
+        get_level(): ConsoleMessageLevel;
+        /**
+         * Gets the line number of a {@link WebKitWebProcessExtension.ConsoleMessage}
+         * @returns the line number of `console_message`
+         */
+        get_line(): number;
+        /**
+         * Gets the source of a {@link WebKitWebProcessExtension.ConsoleMessage}
+         * @returns a {@link WebKitWebProcessExtension.ConsoleMessageSource} indicating the source of `console_message`
+         */
+        get_source(): ConsoleMessageSource;
+        /**
+         * Gets the source identifier of a {@link WebKitWebProcessExtension.ConsoleMessage}
+         * @returns the source identifier of `console_message`
+         */
+        get_source_id(): string;
+        /**
+         * Gets the text message of a {@link WebKitWebProcessExtension.ConsoleMessage}
+         * @returns the text message of `console_message`
+         */
+        get_text(): string;
+    }
+
+    /**
+     * @gir-type Alias
+     */
     type ContextMenuClass = typeof ContextMenu;
+    /**
+     * @gir-type Alias
+     */
     type ContextMenuItemClass = typeof ContextMenuItem;
+    /**
+     * @gir-type Alias
+     */
     type FrameClass = typeof Frame;
+    /**
+     * @gir-type Alias
+     */
     type HitTestResultClass = typeof HitTestResult;
+    /**
+     * @gir-type Alias
+     */
     type ScriptWorldClass = typeof ScriptWorld;
+    /**
+     * @gir-type Alias
+     */
     type URIRequestClass = typeof URIRequest;
+    /**
+     * @gir-type Alias
+     */
     type URIResponseClass = typeof URIResponse;
+    /**
+     * @gir-type Alias
+     */
     type UserMessageClass = typeof UserMessage;
+    /**
+     * @gir-type Alias
+     */
     type WebEditorClass = typeof WebEditor;
+    /**
+     * @gir-type Alias
+     */
     type WebFormManagerClass = typeof WebFormManager;
+    /**
+     * @gir-type Alias
+     */
     type WebHitTestResultClass = typeof WebHitTestResult;
+    /**
+     * @gir-type Alias
+     */
     type WebPageClass = typeof WebPage;
+    /**
+     * @gir-type Alias
+     */
     type WebProcessExtensionClass = typeof WebProcessExtension;
     /**
      * Name of the imported GIR library

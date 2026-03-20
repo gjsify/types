@@ -22,16 +22,22 @@ export namespace RpmOstree {
      */
 
     /**
-     * Release version component (e.g. 9 if %RPM_OSTREE_VERSION is 2017.9)
+     * Release version component (e.g. 9 if `RPM_OSTREE_VERSION` is 2017.9)
+     * @since 2017.8
      */
     const RELEASE_VERSION: number;
+    /**
+     * @since 2017.8
+     */
     const VERSION: number;
     /**
      * Version encoded as a string, useful for printing and concatenation.
+     * @since 2017.8
      */
     const VERSION_S: string;
     /**
-     * Year version component (e.g. 2017 if %RPM_OSTREE_VERSION is 2017.9)
+     * Year version component (e.g. 2017 if `RPM_OSTREE_VERSION` is 2017.9)
+     * @since 2017.8
      */
     const YEAR_VERSION: number;
     /**
@@ -40,7 +46,7 @@ export namespace RpmOstree {
      * things that are dynamic, such as scripting language callers.
      * @param required_year Major/year required
      * @param required_release Release version required
-     * @returns %TRUE if current library has at least the requested version, %FALSE otherwise
+     * @returns `true` if current library has at least the requested version, `false` otherwise
      */
     function check_version(required_year: number, required_release: number): boolean;
     /**
@@ -48,11 +54,11 @@ export namespace RpmOstree {
      *
      * If there are multiple packages with the same name, they are dealt
      * with as follow:
-     *   - if there are N pkgs of the same name in `orig_ref,` and 0 pkgs of the same name in
-     *     `new_ref,` then there will be N entries in `out_removed` (and vice-versa for
-     *     `new_ref/``out_added)`
-     *   - if there are N pkgs of the same name in `orig_ref,` and M pkgs of the same name in
-     *     `new_ref,` then there will be M entries in `out_modified_new,` where all M entries will
+     *   - if there are N pkgs of the same name in `orig_ref`, and 0 pkgs of the same name in
+     *     `new_ref`, then there will be N entries in `out_removed` (and vice-versa for
+     *     `new_ref`/`out_added`)
+     *   - if there are N pkgs of the same name in `orig_ref`, and M pkgs of the same name in
+     *     `new_ref`, then there will be M entries in `out_modified_new`, where all M entries will
      *     be paired with the same arbitrary pkg coming from one of the N entries.
      * @param repo An OSTree repository
      * @param orig_ref Original ref (branch or commit)
@@ -66,13 +72,14 @@ export namespace RpmOstree {
         cancellable?: Gio.Cancellable | null,
     ): [boolean, Package[] | null, Package[] | null, Package[] | null, Package[] | null];
     /**
-     * This function is identical to rpm_ostree_db_diff_ext(), but supports a `flags` argument to
+     * This function is identical to `rpm_ostree_db_diff_ext()`, but supports a `flags` argument to
      * further control behaviour. At least one of the `out` parameters must not be NULL.
      * @param repo An OSTree repository
      * @param orig_ref Original ref (branch or commit)
      * @param new_ref New ref (branch or commit)
      * @param flags Flags controlling diff behaviour
      * @param cancellable
+     * @since 2017.12
      */
     function db_diff_ext(
         repo: OSTree.Repo,
@@ -87,11 +94,22 @@ export namespace RpmOstree {
      * @param repo An OSTree repository
      * @param ref A branch name or commit
      * @param cancellable Cancellable
-     * @returns A query result, or %NULL on error
+     * @returns A query result, or `null` on error
      */
     function db_query_all(repo: OSTree.Repo, ref: string, cancellable?: Gio.Cancellable | null): Package[];
+    /**
+     * @returns A string for RPM's architecture, commonly used for e.g. $basearch in URLs
+     * @since 2017.8
+     */
     function get_basearch(): string;
+    /**
+     * @param src String (commonly a URL)
+     * @returns A copy of `src` with all references for `${basearch}` replaced with `rpmostree_get_basearch()`, or `null` on error Since: 2017.8
+     */
     function varsubst_basearch(src: string): string;
+    /**
+     * @gir-type Flags
+     */
     enum DbDiffExtFlags {
         NONE,
         ALLOW_NOENT,
@@ -106,6 +124,9 @@ export namespace RpmOstree {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class Package extends GObject.Object {
         static $gtype: GObject.GType<Package>;
 
@@ -126,16 +147,19 @@ export namespace RpmOstree {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Package.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Package.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Package.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Package.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Package.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Package.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -147,12 +171,24 @@ export namespace RpmOstree {
         /**
          * Compares two packages by name, epoch:version-release and architecture.
          * @param p2 Package
-         * @returns an integer suitable for sorting functions; negative if @p1 should          sort before @p2 in name or version, 0 if equal, positive if @p1          should sort after @p2
+         * @returns an integer suitable for sorting functions; negative if `p1` should          sort before `p2` in name or version, 0 if equal, positive if `p1`          should sort after `p2`
          */
         cmp(p2: Package): number;
+        /**
+         * @returns The package architecture
+         */
         get_arch(): string;
+        /**
+         * @returns The package epoch:version-release
+         */
         get_evr(): string;
+        /**
+         * @returns The package name
+         */
         get_name(): string;
+        /**
+         * @returns A formatted UTF-8 string containing the name, epoch, version, release, and architecture.  Avoid parsing this; instead use individual getters for more precise control.
+         */
         get_nevra(): string;
     }
 

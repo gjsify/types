@@ -17,7 +17,24 @@
     "inlineSources": false,
     "newLine": "LF",
     // Show diagnostics
-    "diagnostics": true
+    "diagnostics": true,
+    "paths": {
+      "@girs/gst-1.0": [
+            "../gst-1.0/index.d.ts"
+      ],
+      "@girs/gobject-2.0": [
+            "../gobject-2.0/index.d.ts"
+      ],
+      "@girs/glib-2.0": [
+            "../glib-2.0/index.d.ts"
+      ],
+      "@girs/gmodule-2.0": [
+            "../gmodule-2.0/index.d.ts"
+      ],
+      "@girs/gjs": [
+            "../gjs/index.d.ts"
+      ]
+}
   },
   "include": ["./gstriff-1.0.d.ts"]
 }

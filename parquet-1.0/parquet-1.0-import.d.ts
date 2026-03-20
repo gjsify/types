@@ -1,9 +1,1 @@
-import type Parquet10 from '@girs/parquet-1.0';
-
-declare global {
-    export interface GjsGiImports {
-        Parquet: typeof Parquet10;
-    }
-}
-
-export default GjsGiImports;
+// Module import type definition not generated, otherwise this would cause a type conflict, this is because several GIR modules were generated with the same namespace: "Parquet"

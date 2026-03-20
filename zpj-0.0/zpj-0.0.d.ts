@@ -25,6 +25,7 @@ export namespace Zpj {
 
     /**
      * This enumeration can be expanded at a later date.
+     * @gir-type Struct
      */
     class Error extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -46,6 +47,9 @@ export namespace Zpj {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SkydriveEntryType {
         export const $gtype: GObject.GType<SkydriveEntryType>;
     }
@@ -56,6 +60,7 @@ export namespace Zpj {
      * objects</ulink>.
      *
      * This enumeration can be expanded at a later date.
+     * @gir-type Enum
      */
     enum SkydriveEntryType {
         /**
@@ -86,6 +91,7 @@ export namespace Zpj {
      * thumbnail sizes</ulink> offered by SkyDrive.
      *
      * This enumeration can be expanded at a later date.
+     * @gir-type Enum
      */
     enum ThumbnailSize {
         /**
@@ -102,28 +108,28 @@ export namespace Zpj {
      * <ulink
      * url="http://msdn.microsoft.com/en-us/library/live/hh826545#friendly">
      * Friendly name</ulink> for the Documents folder. It can be used as
-     * the #ZpjSkydriveEntry:id and #ZpjSkydriveEntry:parent_id.
+     * the {@link Zpj.SkydriveEntry.id} and {@link Zpj.SkydriveEntry.parent_id}.
      */
     const SKYDRIVE_FOLDER_MY_DOCUMENTS: string;
     /**
      * <ulink
      * url="http://msdn.microsoft.com/en-us/library/live/hh826545#friendly">
      * Friendly name</ulink> for the Pictures folder. It can be used as the
-     * #ZpjSkydriveEntry:id and #ZpjSkydriveEntry:parent_id.
+     * {@link Zpj.SkydriveEntry.id} and {@link Zpj.SkydriveEntry.parent_id}.
      */
     const SKYDRIVE_FOLDER_MY_PHOTOS: string;
     /**
      * <ulink
      * url="http://msdn.microsoft.com/en-us/library/live/hh826545#friendly">
      * Friendly name</ulink> for the Public folder. It can be used as the
-     * #ZpjSkydriveEntry:id and #ZpjSkydriveEntry:parent_id.
+     * {@link Zpj.SkydriveEntry.id} and {@link Zpj.SkydriveEntry.parent_id}.
      */
     const SKYDRIVE_FOLDER_PUBLIC_DOCUMENTS: string;
     /**
      * <ulink
      * url="http://msdn.microsoft.com/en-us/library/live/hh826545#friendly">
      * Friendly name</ulink> for the Skydrive top-level folder. It can be
-     * used as the #ZpjSkydriveEntry:id and #ZpjSkydriveEntry:parent_id.
+     * used as the {@link Zpj.SkydriveEntry.id} and {@link Zpj.SkydriveEntry.parent_id}.
      */
     const SKYDRIVE_FOLDER_SKYDRIVE: string;
     function error_quark(): GLib.Quark;
@@ -143,13 +149,25 @@ export namespace Zpj {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class AuthorizationDomain extends GObject.Object {
         static $gtype: GObject.GType<AuthorizationDomain>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get scope(): string;
+        /**
+         * @construct-only
+         */
         get service_name(): string;
+        /**
+         * @construct-only
+         */
         get serviceName(): string;
 
         /**
@@ -169,16 +187,19 @@ export namespace Zpj {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AuthorizationDomain.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AuthorizationDomain.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AuthorizationDomain.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AuthorizationDomain.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AuthorizationDomain.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AuthorizationDomain.SignalSignatures[K]> extends [any, ...infer Q]
@@ -203,8 +224,9 @@ export namespace Zpj {
     }
 
     /**
-     * The #ZpjGoaAuthorizer structure contains only private data and
+     * The {@link Zpj.GoaAuthorizer} structure contains only private data and
      * should only be accessed using the provided API.
+     * @gir-type Class
      */
     class GoaAuthorizer extends GObject.Object implements Authorizer {
         static $gtype: GObject.GType<GoaAuthorizer>;
@@ -226,38 +248,39 @@ export namespace Zpj {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof GoaAuthorizer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GoaAuthorizer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof GoaAuthorizer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GoaAuthorizer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof GoaAuthorizer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<GoaAuthorizer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited methods
         /**
          * Whether the authorization tokens held by `iface` are valid for
          * `domain`.
          *
          * This method is thread safe.
-         * @param domain A #ZpjAuthorizationDomain.
-         * @returns %TRUE if the tokens are valid.
+         * @param domain A {@link Zpj.AuthorizationDomain}.
+         * @returns `true` if the tokens are valid.
          */
         is_authorized_for_domain(domain: AuthorizationDomain): boolean;
         /**
          * Adds the necessary authorization to `call`.
          *
          * This method modifies `call` in place and is thread safe.
-         * @param domain An optional #ZpjAuthorizationDomain object,   or %NULL.
-         * @param call A #RestProxyCall.
+         * @param domain An optional {@link Zpj.AuthorizationDomain} object,   or `null`.
+         * @param call A {@link Rest.ProxyCall}.
          */
         process_call(domain: AuthorizationDomain | null, call: Rest.ProxyCall): void;
         /**
@@ -265,45 +288,45 @@ export namespace Zpj {
          * can be DELETE, GET and POST.
          *
          * This method modifies `message` in place and is thread safe.
-         * @param domain An optional #ZpjAuthorizationDomain object,   or %NULL.
-         * @param message A #SoupMessage.
+         * @param domain An optional {@link Zpj.AuthorizationDomain} object,   or `null`.
+         * @param message A {@link Soup.Message}.
          */
         process_message(domain: AuthorizationDomain | null, message: Soup.Message): void;
         /**
          * Synchronously forces `iface` to refresh any authorization tokens
-         * held by it. See zpj_authorizer_refresh_authorization_async() for the
+         * held by it. See `zpj_authorizer_refresh_authorization_async()` for the
          * asynchronous version of this call.
          *
          * This method is thread safe.
-         * @param cancellable An optional #GCancellable object, or   %NULL.
-         * @returns %TRUE if the authorizer now has a valid token.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+         * @returns `true` if the authorizer now has a valid token.
          */
         refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously forces `iface` to refresh any authorization tokens
-         * held by it. See zpj_authorizer_refresh_authorization() for the
+         * held by it. See `zpj_authorizer_refresh_authorization()` for the
          * synchronous version of this call.
          *
          * When the operation is finished, `callback` will be called. You can
-         * then call zpj_authorizer_refresh_authorization_finish() to get the
+         * then call `zpj_authorizer_refresh_authorization_finish()` to get the
          * result of the operation.
          *
          * This method is thread safe.
-         * @param cancellable An optional #GCancellable object, or   %NULL.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          */
         refresh_authorization_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously forces `iface` to refresh any authorization tokens
-         * held by it. See zpj_authorizer_refresh_authorization() for the
+         * held by it. See `zpj_authorizer_refresh_authorization()` for the
          * synchronous version of this call.
          *
          * When the operation is finished, `callback` will be called. You can
-         * then call zpj_authorizer_refresh_authorization_finish() to get the
+         * then call `zpj_authorizer_refresh_authorization_finish()` to get the
          * result of the operation.
          *
          * This method is thread safe.
-         * @param cancellable An optional #GCancellable object, or   %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the   request is satisfied.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the   request is satisfied.
          */
         refresh_authorization_async(
             cancellable: Gio.Cancellable | null,
@@ -311,16 +334,16 @@ export namespace Zpj {
         ): void;
         /**
          * Asynchronously forces `iface` to refresh any authorization tokens
-         * held by it. See zpj_authorizer_refresh_authorization() for the
+         * held by it. See `zpj_authorizer_refresh_authorization()` for the
          * synchronous version of this call.
          *
          * When the operation is finished, `callback` will be called. You can
-         * then call zpj_authorizer_refresh_authorization_finish() to get the
+         * then call `zpj_authorizer_refresh_authorization_finish()` to get the
          * result of the operation.
          *
          * This method is thread safe.
-         * @param cancellable An optional #GCancellable object, or   %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the   request is satisfied.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the   request is satisfied.
          */
         refresh_authorization_async(
             cancellable?: Gio.Cancellable | null,
@@ -328,9 +351,9 @@ export namespace Zpj {
         ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an asynchronous operation started with
-         * zpj_authorizer_refresh_authorization_async().
-         * @param res A #GAsyncResult.
-         * @returns %TRUE if the authorizer now has a valid token.
+         * `zpj_authorizer_refresh_authorization_async()`.
+         * @param res A {@link Gio.AsyncResult}.
+         * @returns `true` if the authorizer now has a valid token.
          */
         refresh_authorization_finish(res: Gio.AsyncResult): boolean;
         /**
@@ -338,15 +361,17 @@ export namespace Zpj {
          * `domain`.
          *
          * This method is thread safe.
-         * @param domain A #ZpjAuthorizationDomain.
+         * @param domain A {@link Zpj.AuthorizationDomain}.
+         * @virtual
          */
         vfunc_is_authorized_for_domain(domain: AuthorizationDomain): boolean;
         /**
          * Adds the necessary authorization to `call`.
          *
          * This method modifies `call` in place and is thread safe.
-         * @param domain An optional #ZpjAuthorizationDomain object,   or %NULL.
-         * @param call A #RestProxyCall.
+         * @param domain An optional {@link Zpj.AuthorizationDomain} object,   or `null`.
+         * @param call A {@link Rest.ProxyCall}.
+         * @virtual
          */
         vfunc_process_call(domain: AuthorizationDomain | null, call: Rest.ProxyCall): void;
         /**
@@ -354,17 +379,19 @@ export namespace Zpj {
          * can be DELETE, GET and POST.
          *
          * This method modifies `message` in place and is thread safe.
-         * @param domain An optional #ZpjAuthorizationDomain object,   or %NULL.
-         * @param message A #SoupMessage.
+         * @param domain An optional {@link Zpj.AuthorizationDomain} object,   or `null`.
+         * @param message A {@link Soup.Message}.
+         * @virtual
          */
         vfunc_process_message(domain: AuthorizationDomain | null, message: Soup.Message): void;
         /**
          * Synchronously forces `iface` to refresh any authorization tokens
-         * held by it. See zpj_authorizer_refresh_authorization_async() for the
+         * held by it. See `zpj_authorizer_refresh_authorization_async()` for the
          * asynchronous version of this call.
          *
          * This method is thread safe.
-         * @param cancellable An optional #GCancellable object, or   %NULL.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+         * @virtual
          */
         vfunc_refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -380,32 +407,32 @@ export namespace Zpj {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -414,39 +441,39 @@ export namespace Zpj {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -457,13 +484,16 @@ export namespace Zpj {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -471,7 +501,7 @@ export namespace Zpj {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -479,9 +509,9 @@ export namespace Zpj {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -501,9 +531,9 @@ export namespace Zpj {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -516,34 +546,34 @@ export namespace Zpj {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -576,22 +606,22 @@ export namespace Zpj {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -600,8 +630,8 @@ export namespace Zpj {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -618,10 +648,10 @@ export namespace Zpj {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -636,13 +666,13 @@ export namespace Zpj {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -673,21 +703,21 @@ export namespace Zpj {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -697,33 +727,34 @@ export namespace Zpj {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -732,6 +763,7 @@ export namespace Zpj {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -740,12 +772,14 @@ export namespace Zpj {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -754,20 +788,22 @@ export namespace Zpj {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -779,6 +815,7 @@ export namespace Zpj {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -822,8 +859,9 @@ export namespace Zpj {
     }
 
     /**
-     * The #ZpjSkydrive structure contains only private data and should
+     * The {@link Zpj.Skydrive} structure contains only private data and should
      * only be accessed using the provided API.
+     * @gir-type Class
      */
     class Skydrive extends GObject.Object {
         static $gtype: GObject.GType<Skydrive>;
@@ -852,16 +890,19 @@ export namespace Zpj {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Skydrive.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Skydrive.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Skydrive.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Skydrive.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Skydrive.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Skydrive.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -870,15 +911,24 @@ export namespace Zpj {
 
         // Methods
 
+        /**
+         * @param folder
+         * @param cancellable
+         */
         create_folder(folder: SkydriveFolder, cancellable?: Gio.Cancellable | null): boolean;
+        /**
+         * @param name
+         * @param parent_id
+         * @param cancellable
+         */
         create_folder_from_name(name: string, parent_id: string, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Synchronously deletes the entry corresponding to `entry_id` from
          * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
          * Skydrive</ulink>.
-         * @param entry_id The ID of the #ZpjSkydriveEntry to be deleted.
-         * @param cancellable An optional #GCancellable object, or   %NULL.
-         * @returns %TRUE if the #ZpjSkydriveEntry was deleted successfully.
+         * @param entry_id The ID of the {@link Zpj.SkydriveEntry} to be deleted.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+         * @returns `true` if the {@link Zpj.SkydriveEntry} was deleted successfully.
          */
         delete_entry_id(entry_id: string, cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -886,12 +936,12 @@ export namespace Zpj {
          * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
          * Skydrive</ulink> and saves it in `path`. The file is temporarily
          * saved in the preferred directory for temporary files (as returned
-         * by g_get_tmp_dir()) while the download is going on, and then moved
+         * by `g_get_tmp_dir()`) while the download is going on, and then moved
          * to `path`.
-         * @param file_id The ID of the #ZpjSkydriveFile to be downloaded.
+         * @param file_id The ID of the {@link Zpj.SkydriveFile} to be downloaded.
          * @param path The destination.
-         * @param cancellable An optional #GCancellable object, or   %NULL.
-         * @returns %TRUE if the #ZpjSkydriveFile was downloaded successfully.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+         * @returns `true` if the {@link Zpj.SkydriveFile} was downloaded successfully.
          */
         download_file_id_to_path(file_id: string, path: string, cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -899,25 +949,25 @@ export namespace Zpj {
          * corresponding to `file_id` from
          * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
          * Skydrive</ulink>. See
-         * zpj_skydrive_download_file_id_to_stream_async() for the asynchronous
+         * `zpj_skydrive_download_file_id_to_stream_async()` for the asynchronous
          * version of this call.
-         * @param file_id The ID of the #ZpjSkydriveFile to be downloaded.
-         * @param cancellable An optional #GCancellable object, or   %NULL.
-         * @returns A #GInputStream to read the file data from. Free the returned object with g_object_unref().
+         * @param file_id The ID of the {@link Zpj.SkydriveFile} to be downloaded.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+         * @returns A {@link Gio.InputStream} to read the file data from. Free the returned object with `g_object_unref()`.
          */
         download_file_id_to_stream(file_id: string, cancellable?: Gio.Cancellable | null): Gio.InputStream;
         /**
          * Asynchronously returns a stream for downloading the file
          * corresponding to `file_id` from
          * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
-         * Skydrive</ulink>. See zpj_skydrive_download_file_id_to_stream() for
+         * Skydrive</ulink>. See `zpj_skydrive_download_file_id_to_stream()` for
          * the synchronous version of this call.
          *
          * When the operation is finished, `callback` will be called. You can
-         * then call zpj_skydrive_download_file_id_to_stream_finish() to get
+         * then call `zpj_skydrive_download_file_id_to_stream_finish()` to get
          * the result of the operation.
-         * @param file_id The ID of the #ZpjSkydriveFile to be downloaded.
-         * @param cancellable An optional #GCancellable object, or   %NULL.
+         * @param file_id The ID of the {@link Zpj.SkydriveFile} to be downloaded.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          */
         download_file_id_to_stream_async(
             file_id: string,
@@ -927,15 +977,15 @@ export namespace Zpj {
          * Asynchronously returns a stream for downloading the file
          * corresponding to `file_id` from
          * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
-         * Skydrive</ulink>. See zpj_skydrive_download_file_id_to_stream() for
+         * Skydrive</ulink>. See `zpj_skydrive_download_file_id_to_stream()` for
          * the synchronous version of this call.
          *
          * When the operation is finished, `callback` will be called. You can
-         * then call zpj_skydrive_download_file_id_to_stream_finish() to get
+         * then call `zpj_skydrive_download_file_id_to_stream_finish()` to get
          * the result of the operation.
-         * @param file_id The ID of the #ZpjSkydriveFile to be downloaded.
-         * @param cancellable An optional #GCancellable object, or   %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the   request is satisfied.
+         * @param file_id The ID of the {@link Zpj.SkydriveFile} to be downloaded.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the   request is satisfied.
          */
         download_file_id_to_stream_async(
             file_id: string,
@@ -946,15 +996,15 @@ export namespace Zpj {
          * Asynchronously returns a stream for downloading the file
          * corresponding to `file_id` from
          * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
-         * Skydrive</ulink>. See zpj_skydrive_download_file_id_to_stream() for
+         * Skydrive</ulink>. See `zpj_skydrive_download_file_id_to_stream()` for
          * the synchronous version of this call.
          *
          * When the operation is finished, `callback` will be called. You can
-         * then call zpj_skydrive_download_file_id_to_stream_finish() to get
+         * then call `zpj_skydrive_download_file_id_to_stream_finish()` to get
          * the result of the operation.
-         * @param file_id The ID of the #ZpjSkydriveFile to be downloaded.
-         * @param cancellable An optional #GCancellable object, or   %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the   request is satisfied.
+         * @param file_id The ID of the {@link Zpj.SkydriveFile} to be downloaded.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the   request is satisfied.
          */
         download_file_id_to_stream_async(
             file_id: string,
@@ -963,9 +1013,9 @@ export namespace Zpj {
         ): globalThis.Promise<Gio.InputStream> | void;
         /**
          * Finishes an asynchronous operation started with
-         * zpj_skydrive_download_file_id_to_stream_async().
-         * @param res A #GAsyncResult.
-         * @returns A #GInputStream to read the file data from. Free the returned object with g_object_unref().
+         * `zpj_skydrive_download_file_id_to_stream_async()`.
+         * @param res A {@link Gio.AsyncResult}.
+         * @returns A {@link Gio.InputStream} to read the file data from. Free the returned object with `g_object_unref()`.
          */
         download_file_id_to_stream_finish(res: Gio.AsyncResult): Gio.InputStream;
         /**
@@ -973,35 +1023,35 @@ export namespace Zpj {
          * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
          * Skydrive</ulink> and saves it in `path`. The file is temporarily
          * saved in the preferred directory for temporary files (as returned
-         * by g_get_tmp_dir()) while the download is going on, and then moved
+         * by `g_get_tmp_dir()`) while the download is going on, and then moved
          * to `path`.
-         * @param file The #ZpjSkydriveFile to be downloaded.
+         * @param file The {@link Zpj.SkydriveFile} to be downloaded.
          * @param path The destination.
-         * @param cancellable An optional #GCancellable object, or   %NULL.
-         * @returns %TRUE if the #ZpjSkydriveFile was downloaded successfully.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+         * @returns `true` if the {@link Zpj.SkydriveFile} was downloaded successfully.
          */
         download_file_to_path(file: SkydriveFile, path: string, cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Synchronously returns a stream for downloading `file` from
          * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
-         * Skydrive</ulink>. See zpj_skydrive_download_file_to_stream_async()
+         * Skydrive</ulink>. See `zpj_skydrive_download_file_to_stream_async()`
          * for the asynchronous version of this call.
-         * @param file The #ZpjSkydriveFile to be downloaded.
-         * @param cancellable An optional #GCancellable object, or   %NULL.
-         * @returns A #GInputStream to read the file data from. Free the returned object with g_object_unref().
+         * @param file The {@link Zpj.SkydriveFile} to be downloaded.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+         * @returns A {@link Gio.InputStream} to read the file data from. Free the returned object with `g_object_unref()`.
          */
         download_file_to_stream(file: SkydriveFile, cancellable?: Gio.Cancellable | null): Gio.InputStream;
         /**
          * Asynchronously returns a stream for downloading `file` from
          * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
-         * Skydrive</ulink>. See zpj_skydrive_download_file_to_stream() for the
+         * Skydrive</ulink>. See `zpj_skydrive_download_file_to_stream()` for the
          * synchronous version of this call.
          *
          * When the operation is finished, `callback` will be called. You can
-         * then call zpj_skydrive_download_file_to_stream_finish() to get the
+         * then call `zpj_skydrive_download_file_to_stream_finish()` to get the
          * result of the operation.
-         * @param file The #ZpjSkydriveFile to be downloaded.
-         * @param cancellable An optional #GCancellable object, or   %NULL.
+         * @param file The {@link Zpj.SkydriveFile} to be downloaded.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          */
         download_file_to_stream_async(
             file: SkydriveFile,
@@ -1010,15 +1060,15 @@ export namespace Zpj {
         /**
          * Asynchronously returns a stream for downloading `file` from
          * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
-         * Skydrive</ulink>. See zpj_skydrive_download_file_to_stream() for the
+         * Skydrive</ulink>. See `zpj_skydrive_download_file_to_stream()` for the
          * synchronous version of this call.
          *
          * When the operation is finished, `callback` will be called. You can
-         * then call zpj_skydrive_download_file_to_stream_finish() to get the
+         * then call `zpj_skydrive_download_file_to_stream_finish()` to get the
          * result of the operation.
-         * @param file The #ZpjSkydriveFile to be downloaded.
-         * @param cancellable An optional #GCancellable object, or   %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the   request is satisfied.
+         * @param file The {@link Zpj.SkydriveFile} to be downloaded.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the   request is satisfied.
          */
         download_file_to_stream_async(
             file: SkydriveFile,
@@ -1028,15 +1078,15 @@ export namespace Zpj {
         /**
          * Asynchronously returns a stream for downloading `file` from
          * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
-         * Skydrive</ulink>. See zpj_skydrive_download_file_to_stream() for the
+         * Skydrive</ulink>. See `zpj_skydrive_download_file_to_stream()` for the
          * synchronous version of this call.
          *
          * When the operation is finished, `callback` will be called. You can
-         * then call zpj_skydrive_download_file_to_stream_finish() to get the
+         * then call `zpj_skydrive_download_file_to_stream_finish()` to get the
          * result of the operation.
-         * @param file The #ZpjSkydriveFile to be downloaded.
-         * @param cancellable An optional #GCancellable object, or   %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the   request is satisfied.
+         * @param file The {@link Zpj.SkydriveFile} to be downloaded.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the   request is satisfied.
          */
         download_file_to_stream_async(
             file: SkydriveFile,
@@ -1045,23 +1095,23 @@ export namespace Zpj {
         ): globalThis.Promise<Gio.InputStream> | void;
         /**
          * Finishes an asynchronous operation started with
-         * zpj_skydrive_download_file_to_stream_async().
-         * @param res A #GAsyncResult.
-         * @returns A #GInputStream to read the file data from. Free the returned object with g_object_unref().
+         * `zpj_skydrive_download_file_to_stream_async()`.
+         * @param res A {@link Gio.AsyncResult}.
+         * @returns A {@link Gio.InputStream} to read the file data from. Free the returned object with `g_object_unref()`.
          */
         download_file_to_stream_finish(res: Gio.AsyncResult): Gio.InputStream;
         /**
          * Gets the authorizer used to authorize requests to `self`.
-         * @returns A #ZpjAuthorizer. The returned object is owned by #ZpjSkydrive and should not be modified or freed.
+         * @returns A {@link Zpj.Authorizer}. The returned object is owned by {@link Zpj.Skydrive} and should not be modified or freed.
          */
         get_authorizer(): Authorizer;
         /**
          * Synchronously lists the contents of `folder_id` from
          * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
          * Skydrive</ulink>.
-         * @param folder The #ZpjSkydriveFolder to be listed.
-         * @param cancellable An optional #GCancellable object, or   %NULL.
-         * @returns A list of the #ZpjSkydrive entries within the #ZpjSkydriveFolder. Free the returned list with g_list_free() after each element has been freed with g_object_unref().
+         * @param folder The {@link Zpj.SkydriveFolder} to be listed.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+         * @returns A list of the {@link Zpj.Skydrive} entries within the {@link Zpj.SkydriveFolder}. Free the returned list with `g_list_free()` after each element has been freed with `g_object_unref()`.
          */
         list_folder(folder: SkydriveFolder, cancellable?: Gio.Cancellable | null): SkydriveEntry[];
         /**
@@ -1069,23 +1119,23 @@ export namespace Zpj {
          * `folder_id` from
          * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
          * Skydrive</ulink>.
-         * @param folder_id The ID of the #ZpjSkydriveFolder to be listed.
-         * @param cancellable An optional #GCancellable object, or   %NULL.
-         * @returns A list of the #ZpjSkydrive entries within the #ZpjSkydriveFolder, or %NULL on error. Free the returned list with g_list_free() after each element has been freed with g_object_unref().
+         * @param folder_id The ID of the {@link Zpj.SkydriveFolder} to be listed.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+         * @returns A list of the {@link Zpj.Skydrive} entries within the {@link Zpj.SkydriveFolder}, or `null` on error. Free the returned list with `g_list_free()` after each element has been freed with `g_object_unref()`.
          */
         list_folder_id(folder_id: string, cancellable?: Gio.Cancellable | null): SkydriveEntry[];
         /**
          * Asynchronously lists the contents of the folder corresponding to
          * `folder_id` from
          * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
-         * Skydrive</ulink>. See zpj_skydrive_list_folder_id() for the
+         * Skydrive</ulink>. See `zpj_skydrive_list_folder_id()` for the
          * synchronous version of this call.
          *
          * When the operation is finished, `callback` will be called. You can
-         * then call zpj_skydrive_list_folder_id_finish() to get the result
+         * then call `zpj_skydrive_list_folder_id_finish()` to get the result
          * of the operation.
-         * @param folder_id The ID of the #ZpjSkydriveFolder to be listed.
-         * @param cancellable An optional #GCancellable object, or   %NULL.
+         * @param folder_id The ID of the {@link Zpj.SkydriveFolder} to be listed.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          */
         list_folder_id_async(
             folder_id: string,
@@ -1095,15 +1145,15 @@ export namespace Zpj {
          * Asynchronously lists the contents of the folder corresponding to
          * `folder_id` from
          * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
-         * Skydrive</ulink>. See zpj_skydrive_list_folder_id() for the
+         * Skydrive</ulink>. See `zpj_skydrive_list_folder_id()` for the
          * synchronous version of this call.
          *
          * When the operation is finished, `callback` will be called. You can
-         * then call zpj_skydrive_list_folder_id_finish() to get the result
+         * then call `zpj_skydrive_list_folder_id_finish()` to get the result
          * of the operation.
-         * @param folder_id The ID of the #ZpjSkydriveFolder to be listed.
-         * @param cancellable An optional #GCancellable object, or   %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the   request is satisfied.
+         * @param folder_id The ID of the {@link Zpj.SkydriveFolder} to be listed.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the   request is satisfied.
          */
         list_folder_id_async(
             folder_id: string,
@@ -1114,15 +1164,15 @@ export namespace Zpj {
          * Asynchronously lists the contents of the folder corresponding to
          * `folder_id` from
          * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
-         * Skydrive</ulink>. See zpj_skydrive_list_folder_id() for the
+         * Skydrive</ulink>. See `zpj_skydrive_list_folder_id()` for the
          * synchronous version of this call.
          *
          * When the operation is finished, `callback` will be called. You can
-         * then call zpj_skydrive_list_folder_id_finish() to get the result
+         * then call `zpj_skydrive_list_folder_id_finish()` to get the result
          * of the operation.
-         * @param folder_id The ID of the #ZpjSkydriveFolder to be listed.
-         * @param cancellable An optional #GCancellable object, or   %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the   request is satisfied.
+         * @param folder_id The ID of the {@link Zpj.SkydriveFolder} to be listed.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the   request is satisfied.
          */
         list_folder_id_async(
             folder_id: string,
@@ -1131,49 +1181,49 @@ export namespace Zpj {
         ): globalThis.Promise<SkydriveEntry[]> | void;
         /**
          * Finishes an asynchronous operation started with
-         * zpj_skydrive_list_folder_id_async().
-         * @param res A #GAsyncResult.
-         * @returns A list of the #ZpjSkydrive entries within the #ZpjSkydriveFolder, or %NULL on error. Free the returned list with g_list_free() after each element has been freed with g_object_unref().
+         * `zpj_skydrive_list_folder_id_async()`.
+         * @param res A {@link Gio.AsyncResult}.
+         * @returns A list of the {@link Zpj.Skydrive} entries within the {@link Zpj.SkydriveFolder}, or `null` on error. Free the returned list with `g_list_free()` after each element has been freed with `g_object_unref()`.
          */
         list_folder_id_finish(res: Gio.AsyncResult): SkydriveEntry[];
         /**
          * Synchronously reads the properties of the entry corresponding to
          * `id` from
          * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
-         * Skydrive</ulink>. See zpj_skydrive_query_info_from_id_async() for
+         * Skydrive</ulink>. See `zpj_skydrive_query_info_from_id_async()` for
          * the asynchronous version of this call.
          * @param id An ID to be queried.
-         * @param cancellable An optional #GCancellable object, or   %NULL.
-         * @returns A new #ZpjSkydriveEntry. Free the returned object with g_object_unref().
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+         * @returns A new {@link Zpj.SkydriveEntry}. Free the returned object with `g_object_unref()`.
          */
         query_info_from_id(id: string, cancellable?: Gio.Cancellable | null): SkydriveEntry;
         /**
          * Asynchronously reads the properties of the entry corresponding to
          * `id` from
          * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
-         * Skydrive</ulink>. See zpj_skydrive_query_info_from_id() for the
+         * Skydrive</ulink>. See `zpj_skydrive_query_info_from_id()` for the
          * synchronous version of this call.
          *
          * When the operation is finished, `callback` will be called. You can
-         * then call zpj_skydrive_query_info_from_id_finish() to get the result
+         * then call `zpj_skydrive_query_info_from_id_finish()` to get the result
          * of the operation.
          * @param id The ID to be queried.
-         * @param cancellable An optional #GCancellable object, or   %NULL.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          */
         query_info_from_id_async(id: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<SkydriveEntry>;
         /**
          * Asynchronously reads the properties of the entry corresponding to
          * `id` from
          * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
-         * Skydrive</ulink>. See zpj_skydrive_query_info_from_id() for the
+         * Skydrive</ulink>. See `zpj_skydrive_query_info_from_id()` for the
          * synchronous version of this call.
          *
          * When the operation is finished, `callback` will be called. You can
-         * then call zpj_skydrive_query_info_from_id_finish() to get the result
+         * then call `zpj_skydrive_query_info_from_id_finish()` to get the result
          * of the operation.
          * @param id The ID to be queried.
-         * @param cancellable An optional #GCancellable object, or   %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the   request is satisfied.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the   request is satisfied.
          */
         query_info_from_id_async(
             id: string,
@@ -1184,15 +1234,15 @@ export namespace Zpj {
          * Asynchronously reads the properties of the entry corresponding to
          * `id` from
          * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
-         * Skydrive</ulink>. See zpj_skydrive_query_info_from_id() for the
+         * Skydrive</ulink>. See `zpj_skydrive_query_info_from_id()` for the
          * synchronous version of this call.
          *
          * When the operation is finished, `callback` will be called. You can
-         * then call zpj_skydrive_query_info_from_id_finish() to get the result
+         * then call `zpj_skydrive_query_info_from_id_finish()` to get the result
          * of the operation.
          * @param id The ID to be queried.
-         * @param cancellable An optional #GCancellable object, or   %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the   request is satisfied.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the   request is satisfied.
          */
         query_info_from_id_async(
             id: string,
@@ -1201,15 +1251,15 @@ export namespace Zpj {
         ): globalThis.Promise<SkydriveEntry> | void;
         /**
          * Finishes an asynchronous operation started with
-         * zpj_skydrive_query_info_from_id_async().
-         * @param res A #GAsyncResult.
-         * @returns A new #ZpjSkydriveEntry. Free the returned object with g_object_unref().
+         * `zpj_skydrive_query_info_from_id_async()`.
+         * @param res A {@link Gio.AsyncResult}.
+         * @returns A new {@link Zpj.SkydriveEntry}. Free the returned object with `g_object_unref()`.
          */
         query_info_from_id_finish(res: Gio.AsyncResult): SkydriveEntry;
         /**
          * Uses the new `authorizer` to replace the old one that was used to
          * authorize requests to `self`.
-         * @param authorizer A new #ZpjAuthorizer.
+         * @param authorizer A new {@link Zpj.Authorizer}.
          */
         set_authorizer(authorizer: Authorizer): void;
         /**
@@ -1217,17 +1267,17 @@ export namespace Zpj {
          * file corresponding to `file_id` from
          * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
          * Skydrive</ulink>. See
-         * zpj_skydrive_thumbnail_file_id_to_stream_async() for the
+         * `zpj_skydrive_thumbnail_file_id_to_stream_async()` for the
          * asynchronous version of this call.
          *
-         * Thumbnails are only available for #ZpjSkydrivePhoto and
-         * #ZpjSkydriveVideo objects. If `file_id` refers to some other kind of
-         * #ZpjSkydriveFile, the error %ZPJ_ERROR_REQUEST_URL_INVALID will be
+         * Thumbnails are only available for {@link Zpj.SkydrivePhoto} and
+         * {@link Zpj.SkydriveVideo} objects. If `file_id` refers to some other kind of
+         * {@link Zpj.SkydriveFile}, the error {@link Zpj.Error.REQUEST_URL_INVALID} will be
          * returned.
-         * @param file_id The ID of the #ZpjSkydriveFile to be thumbnailed.
+         * @param file_id The ID of the {@link Zpj.SkydriveFile} to be thumbnailed.
          * @param size The thumbnail size.
-         * @param cancellable An optional #GCancellable object, or   %NULL.
-         * @returns A #GInputStream to read the thumbnail data from. Free the returned object with g_object_unref().
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+         * @returns A {@link Gio.InputStream} to read the thumbnail data from. Free the returned object with `g_object_unref()`.
          */
         thumbnail_file_id_to_stream(
             file_id: string,
@@ -1239,9 +1289,9 @@ export namespace Zpj {
          * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
          * Skydrive</ulink> and places it under `folder`.
          * @param path The source.
-         * @param folder The destination #ZpjSkydriveFolder.
-         * @param cancellable An optional #GCancellable object, or   %NULL.
-         * @returns %TRUE if the file was uploaded successfully.
+         * @param folder The destination {@link Zpj.SkydriveFolder}.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+         * @returns `true` if the file was uploaded successfully.
          */
         upload_path_to_folder(path: string, folder: SkydriveFolder, cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -1250,9 +1300,9 @@ export namespace Zpj {
          * Skydrive</ulink> and places it under the folder corresponding to
          * `folder_id`.
          * @param path The source.
-         * @param folder_id The ID of the destination #ZpjSkydriveFolder.
-         * @param cancellable An optional #GCancellable object, or   %NULL.
-         * @returns %TRUE if the file was uploaded successfully.
+         * @param folder_id The ID of the destination {@link Zpj.SkydriveFolder}.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+         * @returns `true` if the file was uploaded successfully.
          */
         upload_path_to_folder_id(path: string, folder_id: string, cancellable?: Gio.Cancellable | null): boolean;
     }
@@ -1294,28 +1344,74 @@ export namespace Zpj {
     }
 
     /**
-     * The #ZpjSkydriveEntry structure contains only private data and
+     * The {@link Zpj.SkydriveEntry} structure contains only private data and
      * should only be accessed using the provided API.
+     * @gir-type Class
      */
     abstract class SkydriveEntry extends GObject.Object {
         static $gtype: GObject.GType<SkydriveEntry>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get created_time(): GLib.DateTime;
+        /**
+         * @read-only
+         */
         get createdTime(): GLib.DateTime;
+        /**
+         * @read-only
+         */
         get description(): string;
+        /**
+         * @read-only
+         */
         get from_id(): string;
+        /**
+         * @read-only
+         */
         get fromId(): string;
+        /**
+         * @read-only
+         */
         get from_name(): string;
+        /**
+         * @read-only
+         */
         get fromName(): string;
+        /**
+         * @read-only
+         */
         get id(): string;
+        /**
+         * @construct-only
+         */
         set json(val: Json.Node);
+        /**
+         * @read-only
+         */
         get name(): string;
+        /**
+         * @read-only
+         */
         get parent_id(): string;
+        /**
+         * @read-only
+         */
         get parentId(): string;
+        /**
+         * @read-only
+         */
         get type(): SkydriveEntryType;
+        /**
+         * @read-only
+         */
         get updated_time(): GLib.DateTime;
+        /**
+         * @read-only
+         */
         get updatedTime(): GLib.DateTime;
 
         /**
@@ -1335,16 +1431,19 @@ export namespace Zpj {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SkydriveEntry.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SkydriveEntry.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SkydriveEntry.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SkydriveEntry.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SkydriveEntry.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SkydriveEntry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1353,6 +1452,10 @@ export namespace Zpj {
 
         // Virtual methods
 
+        /**
+         * @param node
+         * @virtual
+         */
         vfunc_parse_json_node(node: Json.Node): void;
 
         // Methods
@@ -1361,14 +1464,14 @@ export namespace Zpj {
          * Gets the time at which `self` was created. This is the value of the
          * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh243648">
          * updated_time</ulink> member in the JSON returned by the server.
-         * @returns a #GDateTime representing the time at which the entry was created. The returned time is owned by the #ZpjSkydriveEntry and should not be unreferenced.
+         * @returns a {@link GLib.DateTime} representing the time at which the entry was created. The returned time is owned by the {@link Zpj.SkydriveEntry} and should not be unreferenced.
          */
         get_created_time(): GLib.DateTime;
         /**
          * Gets the description of `self`. This is the value of the <ulink
          * url="http://msdn.microsoft.com/en-us/library/live/hh243648">
          * description</ulink> member in the JSON returned by the server.
-         * @returns description of the entry. This string is owned by the #ZpjSkydriveEntry and should not be modified or freed.
+         * @returns description of the entry. This string is owned by the {@link Zpj.SkydriveEntry} and should not be modified or freed.
          */
         get_description(): string;
         /**
@@ -1376,7 +1479,7 @@ export namespace Zpj {
          * of the <ulink
          * url="http://msdn.microsoft.com/en-us/library/live/hh243648">
          * from</ulink> object in the JSON returned by the server.
-         * @returns ID of the user who created the entry. This string is by the #ZpjSkydriveEntry and should not be modified or freed.
+         * @returns ID of the user who created the entry. This string is by the {@link Zpj.SkydriveEntry} and should not be modified or freed.
          */
         get_from_id(): string;
         /**
@@ -1384,21 +1487,21 @@ export namespace Zpj {
          * part of the <ulink
          * url="http://msdn.microsoft.com/en-us/library/live/hh243648">
          * from</ulink> object in the JSON returned by the server.
-         * @returns name of the user who created the entry. This string is by the #ZpjSkydriveEntry and should not be modified or freed.
+         * @returns name of the user who created the entry. This string is by the {@link Zpj.SkydriveEntry} and should not be modified or freed.
          */
         get_from_name(): string;
         /**
          * Gets the ID of `self`. This is the value of the <ulink
          * url="http://msdn.microsoft.com/en-us/library/live/hh243648">
          * id</ulink> member in the JSON returned by the server.
-         * @returns the entry's ID. This string is owned by the #ZpjSkydriveEntry and should not be modified or freed.
+         * @returns the entry's ID. This string is owned by the {@link Zpj.SkydriveEntry} and should not be modified or freed.
          */
         get_id(): string;
         /**
          * Gets the name of `self`. This is the value of the <ulink
          * url="http://msdn.microsoft.com/en-us/library/live/hh243648">
          * name</ulink> member in the JSON returned by the server.
-         * @returns name of the entry. This string is owned by the #ZpjSkydriveEntry and should not be modified or freed.
+         * @returns name of the entry. This string is owned by the {@link Zpj.SkydriveEntry} and should not be modified or freed.
          */
         get_name(): string;
         /**
@@ -1406,7 +1509,7 @@ export namespace Zpj {
          * the <ulink
          * url="http://msdn.microsoft.com/en-us/library/live/hh243648">
          * parent_id</ulink> member in the JSON returned by the server.
-         * @returns ID of the parent folder. This string is owned by the #ZpjSkydriveEntry and should not be modified or freed.
+         * @returns ID of the parent folder. This string is owned by the {@link Zpj.SkydriveEntry} and should not be modified or freed.
          */
         get_parent_id(): string;
         /**
@@ -1414,12 +1517,12 @@ export namespace Zpj {
          * the <ulink
          * url="http://msdn.microsoft.com/en-us/library/live/hh243648">
          * updated_time</ulink> member in the JSON returned by the server.
-         * @returns a #GDateTime representing the time at which the entry was last updated. The returned time is owned by the #ZpjSkydriveEntry and should not be unreferenced.
+         * @returns a {@link GLib.DateTime} representing the time at which the entry was last updated. The returned time is owned by the {@link Zpj.SkydriveEntry} and should not be unreferenced.
          */
         get_updated_time(): GLib.DateTime;
         /**
          * Whether `self` is a folder.
-         * @returns %TRUE if the entry is a folder.
+         * @returns `true` if the entry is a folder.
          */
         is_folder(): boolean;
     }
@@ -1448,14 +1551,18 @@ export namespace Zpj {
     }
 
     /**
-     * The #ZpjSkydriveFile structure contains only private data and should
+     * The {@link Zpj.SkydriveFile} structure contains only private data and should
      * only be accessed using the provided API.
+     * @gir-type Class
      */
     class SkydriveFile extends SkydriveEntry {
         static $gtype: GObject.GType<SkydriveFile>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get size(): number;
 
         /**
@@ -1477,16 +1584,19 @@ export namespace Zpj {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SkydriveFile.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SkydriveFile.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SkydriveFile.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SkydriveFile.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SkydriveFile.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SkydriveFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1525,8 +1635,9 @@ export namespace Zpj {
     }
 
     /**
-     * The #ZpjSkydriveFolder structure contains only private data and
+     * The {@link Zpj.SkydriveFolder} structure contains only private data and
      * should only be accessed using the provided API.
+     * @gir-type Class
      */
     class SkydriveFolder extends SkydriveEntry {
         static $gtype: GObject.GType<SkydriveFolder>;
@@ -1550,16 +1661,19 @@ export namespace Zpj {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SkydriveFolder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SkydriveFolder.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SkydriveFolder.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SkydriveFolder.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SkydriveFolder.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SkydriveFolder.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1589,8 +1703,9 @@ export namespace Zpj {
     }
 
     /**
-     * The #ZpjSkydrivePhoto structure contains only private data and
+     * The {@link Zpj.SkydrivePhoto} structure contains only private data and
      * should only be accessed using the provided API.
+     * @gir-type Class
      */
     class SkydrivePhoto extends SkydriveFile {
         static $gtype: GObject.GType<SkydrivePhoto>;
@@ -1614,16 +1729,19 @@ export namespace Zpj {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SkydrivePhoto.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SkydrivePhoto.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SkydrivePhoto.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SkydrivePhoto.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SkydrivePhoto.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SkydrivePhoto.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1662,17 +1780,30 @@ export namespace Zpj {
     }
 
     /**
-     * The #ZpjSkydriveVideo structure contains only private data and
+     * The {@link Zpj.SkydriveVideo} structure contains only private data and
      * should only be accessed using the provided API.
+     * @gir-type Class
      */
     class SkydriveVideo extends SkydriveFile {
         static $gtype: GObject.GType<SkydriveVideo>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get bitrate(): number;
+        /**
+         * @read-only
+         */
         get duration(): number;
+        /**
+         * @read-only
+         */
         get height(): number;
+        /**
+         * @read-only
+         */
         get width(): number;
 
         /**
@@ -1694,16 +1825,19 @@ export namespace Zpj {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SkydriveVideo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SkydriveVideo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SkydriveVideo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SkydriveVideo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SkydriveVideo.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SkydriveVideo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1744,35 +1878,80 @@ export namespace Zpj {
         get_width(): number;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AuthorizationDomainClass = typeof AuthorizationDomain;
+    /**
+     * @gir-type Struct
+     */
     abstract class AuthorizationDomainPrivate {
         static $gtype: GObject.GType<AuthorizationDomainPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AuthorizerInterface = typeof Authorizer;
+    /**
+     * @gir-type Alias
+     */
     type GoaAuthorizerClass = typeof GoaAuthorizer;
+    /**
+     * @gir-type Struct
+     */
     abstract class GoaAuthorizerPrivate {
         static $gtype: GObject.GType<GoaAuthorizerPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SkydriveClass = typeof Skydrive;
+    /**
+     * @gir-type Alias
+     */
     type SkydriveEntryClass = typeof SkydriveEntry;
+    /**
+     * @gir-type Struct
+     */
     abstract class SkydriveEntryPrivate {
         static $gtype: GObject.GType<SkydriveEntryPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SkydriveFileClass = typeof SkydriveFile;
+    /**
+     * @gir-type Struct
+     */
     abstract class SkydriveFilePrivate {
         static $gtype: GObject.GType<SkydriveFilePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SkydriveFolderClass = typeof SkydriveFolder;
+    /**
+     * @gir-type Alias
+     */
     type SkydrivePhotoClass = typeof SkydrivePhoto;
+    /**
+     * @gir-type Struct
+     */
     abstract class SkydrivePrivate {
         static $gtype: GObject.GType<SkydrivePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SkydriveVideoClass = typeof SkydriveVideo;
+    /**
+     * @gir-type Struct
+     */
     abstract class SkydriveVideoPrivate {
         static $gtype: GObject.GType<SkydriveVideoPrivate>;
     }
@@ -1790,15 +1969,17 @@ export namespace Zpj {
              * `domain`.
              *
              * This method is thread safe.
-             * @param domain A #ZpjAuthorizationDomain.
+             * @param domain A {@link Zpj.AuthorizationDomain}.
+             * @virtual
              */
             vfunc_is_authorized_for_domain(domain: AuthorizationDomain): boolean;
             /**
              * Adds the necessary authorization to `call`.
              *
              * This method modifies `call` in place and is thread safe.
-             * @param domain An optional #ZpjAuthorizationDomain object,   or %NULL.
-             * @param call A #RestProxyCall.
+             * @param domain An optional {@link Zpj.AuthorizationDomain} object,   or `null`.
+             * @param call A {@link Rest.ProxyCall}.
+             * @virtual
              */
             vfunc_process_call(domain: AuthorizationDomain | null, call: Rest.ProxyCall): void;
             /**
@@ -1806,17 +1987,19 @@ export namespace Zpj {
              * can be DELETE, GET and POST.
              *
              * This method modifies `message` in place and is thread safe.
-             * @param domain An optional #ZpjAuthorizationDomain object,   or %NULL.
-             * @param message A #SoupMessage.
+             * @param domain An optional {@link Zpj.AuthorizationDomain} object,   or `null`.
+             * @param message A {@link Soup.Message}.
+             * @virtual
              */
             vfunc_process_message(domain: AuthorizationDomain | null, message: Soup.Message): void;
             /**
              * Synchronously forces `iface` to refresh any authorization tokens
-             * held by it. See zpj_authorizer_refresh_authorization_async() for the
+             * held by it. See `zpj_authorizer_refresh_authorization_async()` for the
              * asynchronous version of this call.
              *
              * This method is thread safe.
-             * @param cancellable An optional #GCancellable object, or   %NULL.
+             * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+             * @virtual
              */
             vfunc_refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
         }
@@ -1830,6 +2013,9 @@ export namespace Zpj {
         $gtype: GObject.GType<Authorizer>;
         prototype: Authorizer;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Authorizer extends GObject.Object, Authorizer.Interface {
         // Methods
 
@@ -1838,16 +2024,16 @@ export namespace Zpj {
          * `domain`.
          *
          * This method is thread safe.
-         * @param domain A #ZpjAuthorizationDomain.
-         * @returns %TRUE if the tokens are valid.
+         * @param domain A {@link Zpj.AuthorizationDomain}.
+         * @returns `true` if the tokens are valid.
          */
         is_authorized_for_domain(domain: AuthorizationDomain): boolean;
         /**
          * Adds the necessary authorization to `call`.
          *
          * This method modifies `call` in place and is thread safe.
-         * @param domain An optional #ZpjAuthorizationDomain object,   or %NULL.
-         * @param call A #RestProxyCall.
+         * @param domain An optional {@link Zpj.AuthorizationDomain} object,   or `null`.
+         * @param call A {@link Rest.ProxyCall}.
          */
         process_call(domain: AuthorizationDomain | null, call: Rest.ProxyCall): void;
         /**
@@ -1855,45 +2041,45 @@ export namespace Zpj {
          * can be DELETE, GET and POST.
          *
          * This method modifies `message` in place and is thread safe.
-         * @param domain An optional #ZpjAuthorizationDomain object,   or %NULL.
-         * @param message A #SoupMessage.
+         * @param domain An optional {@link Zpj.AuthorizationDomain} object,   or `null`.
+         * @param message A {@link Soup.Message}.
          */
         process_message(domain: AuthorizationDomain | null, message: Soup.Message): void;
         /**
          * Synchronously forces `iface` to refresh any authorization tokens
-         * held by it. See zpj_authorizer_refresh_authorization_async() for the
+         * held by it. See `zpj_authorizer_refresh_authorization_async()` for the
          * asynchronous version of this call.
          *
          * This method is thread safe.
-         * @param cancellable An optional #GCancellable object, or   %NULL.
-         * @returns %TRUE if the authorizer now has a valid token.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+         * @returns `true` if the authorizer now has a valid token.
          */
         refresh_authorization(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Asynchronously forces `iface` to refresh any authorization tokens
-         * held by it. See zpj_authorizer_refresh_authorization() for the
+         * held by it. See `zpj_authorizer_refresh_authorization()` for the
          * synchronous version of this call.
          *
          * When the operation is finished, `callback` will be called. You can
-         * then call zpj_authorizer_refresh_authorization_finish() to get the
+         * then call `zpj_authorizer_refresh_authorization_finish()` to get the
          * result of the operation.
          *
          * This method is thread safe.
-         * @param cancellable An optional #GCancellable object, or   %NULL.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
          */
         refresh_authorization_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously forces `iface` to refresh any authorization tokens
-         * held by it. See zpj_authorizer_refresh_authorization() for the
+         * held by it. See `zpj_authorizer_refresh_authorization()` for the
          * synchronous version of this call.
          *
          * When the operation is finished, `callback` will be called. You can
-         * then call zpj_authorizer_refresh_authorization_finish() to get the
+         * then call `zpj_authorizer_refresh_authorization_finish()` to get the
          * result of the operation.
          *
          * This method is thread safe.
-         * @param cancellable An optional #GCancellable object, or   %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the   request is satisfied.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the   request is satisfied.
          */
         refresh_authorization_async(
             cancellable: Gio.Cancellable | null,
@@ -1901,16 +2087,16 @@ export namespace Zpj {
         ): void;
         /**
          * Asynchronously forces `iface` to refresh any authorization tokens
-         * held by it. See zpj_authorizer_refresh_authorization() for the
+         * held by it. See `zpj_authorizer_refresh_authorization()` for the
          * synchronous version of this call.
          *
          * When the operation is finished, `callback` will be called. You can
-         * then call zpj_authorizer_refresh_authorization_finish() to get the
+         * then call `zpj_authorizer_refresh_authorization_finish()` to get the
          * result of the operation.
          *
          * This method is thread safe.
-         * @param cancellable An optional #GCancellable object, or   %NULL.
-         * @param callback A #GAsyncReadyCallback to call when the   request is satisfied.
+         * @param cancellable An optional {@link Gio.Cancellable} object, or   `null`.
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the   request is satisfied.
          */
         refresh_authorization_async(
             cancellable?: Gio.Cancellable | null,
@@ -1918,9 +2104,9 @@ export namespace Zpj {
         ): globalThis.Promise<boolean> | void;
         /**
          * Finishes an asynchronous operation started with
-         * zpj_authorizer_refresh_authorization_async().
-         * @param res A #GAsyncResult.
-         * @returns %TRUE if the authorizer now has a valid token.
+         * `zpj_authorizer_refresh_authorization_async()`.
+         * @param res A {@link Gio.AsyncResult}.
+         * @returns `true` if the authorizer now has a valid token.
          */
         refresh_authorization_finish(res: Gio.AsyncResult): boolean;
     }

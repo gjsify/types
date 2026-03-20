@@ -1,6 +1,6 @@
 {
     "name": "@girs/cogl-7",
-    "version": "7.0.0-4.0.0-beta.40",
+    "version": "7.0.0-4.0.0-beta.41",
     "description": "GJS TypeScript type definitions for Cogl-7, generated from library version 7.0.0",
     "type": "module",
     "module": "cogl-7.js",
@@ -31,12 +31,12 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "4.0.0-beta.40",
-      "@girs/cairo-1.0": "1.0.0-4.0.0-beta.40",
-      "@girs/gobject-2.0": "2.86.4-4.0.0-beta.40",
-      "@girs/glib-2.0": "2.86.4-4.0.0-beta.40",
-      "@girs/graphene-1.0": "1.0.0-4.0.0-beta.40",
-      "@girs/gl-1.0": "1.0.0-4.0.0-beta.40"    },
+      "@girs/gjs": "4.0.0-beta.41",
+      "@girs/cairo-1.0": "1.0.0-4.0.0-beta.41",
+      "@girs/gobject-2.0": "2.88.0-4.0.0-beta.41",
+      "@girs/glib-2.0": "2.88.0-4.0.0-beta.41",
+      "@girs/graphene-1.0": "1.0.0-4.0.0-beta.41",
+      "@girs/gl-1.0": "1.0.0-4.0.0-beta.41"    },
     "devDependencies": {
       "typescript": "*"
     },

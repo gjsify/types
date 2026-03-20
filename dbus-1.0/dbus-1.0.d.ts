@@ -17,28 +17,46 @@ export namespace DBus {
      * DBus-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     enum BusType {
         SESSION,
         SYSTEM,
         STARTER,
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Connection {
         static $gtype: GObject.GType<Connection>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Error {
         static $gtype: GObject.GType<Error>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Message {
         static $gtype: GObject.GType<Message>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class MessageIter {
         static $gtype: GObject.GType<MessageIter>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class PendingCall {
         static $gtype: GObject.GType<PendingCall>;
     }

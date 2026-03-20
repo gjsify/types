@@ -30,8 +30,22 @@ export namespace PQMarble {
      * PQMarble-2
      */
 
+    /**
+     * @param data
+     */
     function get_css_provider_for_data(data: string): Gtk.CssProvider | null;
+    /**
+     * @param widget
+     * @param data
+     * @param class_name
+     * @param priority
+     */
     function set_theming_for_data(widget: Gtk.Widget, data: string, class_name: string | null, priority: number): void;
+    /**
+     * @param resource
+     * @param priority
+     * @param display
+     */
     function add_css_provider_from_resource(resource: string, priority: number, display: Gdk.Display): void;
     namespace Settings {
         // Signal signatures
@@ -46,6 +60,9 @@ export namespace PQMarble {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class Settings extends GObject.Object {
         static $gtype: GObject.GType<Settings>;
 
@@ -71,16 +88,19 @@ export namespace PQMarble {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Settings.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Settings.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Settings.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Settings.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Settings.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -90,10 +110,19 @@ export namespace PQMarble {
         // Methods
 
         get_schema(): Gio.Settings;
+        /**
+         * @param value
+         */
         set_schema(value: Gio.Settings): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SettingsClass = typeof Settings;
+    /**
+     * @gir-type Struct
+     */
     abstract class SettingsPrivate {
         static $gtype: GObject.GType<SettingsPrivate>;
     }

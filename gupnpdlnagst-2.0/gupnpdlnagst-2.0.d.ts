@@ -26,13 +26,13 @@ export namespace GUPnPDLNAGst {
      */
 
     /**
-     * This utility function creates a #GUPnPDLNAInformation from
-     * #GstDiscovererInfo. Its purpose is mainly to pass its result to
-     * gupnp_dlna_profile_guesser_guess_profile_from_info() to avoid
-     * rediscovering of a URI. Created #GUPnPDLNAInformation takes a
+     * This utility function creates a {@link GUPnPDLNA.Information} from
+     * {@link GstPbutils.DiscovererInfo}. Its purpose is mainly to pass its result to
+     * `gupnp_dlna_profile_guesser_guess_profile_from_info()` to avoid
+     * rediscovering of a URI. Created {@link GUPnPDLNA.Information} takes a
      * reference on `info`.
-     * @param info A #GstDiscovererInfo object.
-     * @returns A #GUPnPDLNAInformation. Unref it when done with it.
+     * @param info A {@link GstPbutils.DiscovererInfo} object.
+     * @returns A {@link GUPnPDLNA.Information}. Unref it when done with it.
      */
     function utils_information_from_discoverer_info(info: GstPbutils.DiscovererInfo): GUPnPDLNA.Information;
     /**

@@ -34,6 +34,7 @@ export namespace CryptUI {
      *
      * Never ever change a values already present. These values are used
      * across applications, DBus etc...
+     * @gir-type Enum
      */
     enum EncType {
         /**
@@ -58,6 +59,9 @@ export namespace CryptUI {
         MAXVALUE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum KeyChooserMode {
         RECIPIENTS,
         SIGNER,
@@ -71,6 +75,7 @@ export namespace CryptUI {
      *
      * Never ever change a values already present. These values are used
      * across applications, DBus etc...
+     * @gir-type Enum
      */
     enum KeyFlags {
         /**
@@ -107,6 +112,9 @@ export namespace CryptUI {
         EXPORTABLE,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum KeyStoreMode {
         ALL,
         SELECTED,
@@ -118,6 +126,7 @@ export namespace CryptUI {
      *
      * Never ever change a values already present. These values are used
      * across applications, DBus etc...
+     * @gir-type Enum
      */
     enum Location {
         /**
@@ -147,6 +156,7 @@ export namespace CryptUI {
      *
      * Never ever change a values already present. These values are used
      * across applications, DBus etc...
+     * @gir-type Enum
      */
     enum Validity {
         /**
@@ -179,41 +189,71 @@ export namespace CryptUI {
         ULTIMATE,
     }
 
+    /**
+     * @gir-type Callback
+     */
     interface KeyStoreFilterFunc {
         (ckset: Keyset, key: string): boolean;
     }
+    /**
+     * @gir-type Struct
+     */
     class KeyChooser {
         static $gtype: GObject.GType<KeyChooser>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class KeyChooserClass {
         static $gtype: GObject.GType<KeyChooserClass>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class KeyChooserPriv {
         static $gtype: GObject.GType<KeyChooserPriv>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class KeyStore {
         static $gtype: GObject.GType<KeyStore>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class KeyStoreClass {
         static $gtype: GObject.GType<KeyStoreClass>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class KeyStorePriv {
         static $gtype: GObject.GType<KeyStorePriv>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Keyset {
         static $gtype: GObject.GType<Keyset>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class KeysetClass {
         static $gtype: GObject.GType<KeysetClass>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class KeysetPrivate {
         static $gtype: GObject.GType<KeysetPrivate>;
     }

@@ -9,7 +9,5 @@
 
 import './parquet-1.0-ambient.d.ts';
 
-import './parquet-1.0-import.d.ts';
-
 import Parquet from './parquet-1.0.js';
 export default Parquet;

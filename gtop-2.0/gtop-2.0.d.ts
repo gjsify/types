@@ -418,41 +418,170 @@ export namespace GTop {
     const TABLE_SIZE: number;
     const TRUE: number;
     function glibtop_close(): void;
+    /**
+     * @param buf
+     */
     function glibtop_get_cpu(buf: glibtop_cpu): void;
+    /**
+     * @param buf
+     */
     function glibtop_get_disk(buf: glibtop_disk): void;
+    /**
+     * @param buf
+     * @param mount_dir
+     */
     function glibtop_get_fsusage(buf: glibtop_fsusage, mount_dir: string): void;
+    /**
+     * @param buf
+     */
     function glibtop_get_loadavg(buf: glibtop_loadavg): void;
+    /**
+     * @param buf
+     */
     function glibtop_get_mem(buf: glibtop_mem): void;
+    /**
+     * @param buf
+     * @param all_fs
+     */
     function glibtop_get_mountlist(buf: glibtop_mountlist, all_fs: number): glibtop_mountentry[];
+    /**
+     * @param buf
+     */
     function glibtop_get_msg_limits(buf: glibtop_msg_limits): void;
+    /**
+     * @param buf a {@link GTop.glibtop_netlist}
+     * @returns an array of network          interface names.
+     */
     function glibtop_get_netlist(buf: glibtop_netlist): string[];
+    /**
+     * @param buf
+     * @param _interface
+     */
     function glibtop_get_netload(buf: glibtop_netload, _interface: string): void;
+    /**
+     * @param buf
+     * @param device
+     */
     function glibtop_get_ppp(buf: glibtop_ppp, device: number): void;
-    function glibtop_get_proc_affinity(buf: glibtop_proc_affinity, pid: number): number;
-    function glibtop_get_proc_args(buf: glibtop_proc_args, pid: number, max_len: number): string;
-    function glibtop_get_proc_argv(buf: glibtop_proc_args, pid: number, max_len: number): string[];
-    function glibtop_get_proc_io(buf: glibtop_proc_io, pid: number): void;
-    function glibtop_get_proc_kernel(buf: glibtop_proc_kernel, pid: number): void;
-    function glibtop_get_proc_map(buf: glibtop_proc_map, pid: number): glibtop_map_entry[];
-    function glibtop_get_proc_mem(buf: glibtop_proc_mem, pid: number): void;
-    function glibtop_get_proc_open_files(buf: glibtop_proc_open_files, pid: number): glibtop_open_files_entry[];
-    function glibtop_get_proc_segment(buf: glibtop_proc_segment, pid: number): void;
-    function glibtop_get_proc_signal(buf: glibtop_proc_signal, pid: number): void;
-    function glibtop_get_proc_state(buf: glibtop_proc_state, pid: number): void;
-    function glibtop_get_proc_time(buf: glibtop_proc_time, pid: number): void;
-    function glibtop_get_proc_uid(buf: glibtop_proc_uid, pid: number): void;
-    function glibtop_get_proc_wd(buf: glibtop_proc_wd, pid: number): string[];
-    function glibtop_get_proclist(buf: glibtop_proclist, which: number, arg: number): number[];
+    /**
+     * @param buf
+     * @param pid
+     */
+    function glibtop_get_proc_affinity(buf: glibtop_proc_affinity, pid: never): number;
+    /**
+     * @param buf
+     * @param pid
+     * @param max_len
+     */
+    function glibtop_get_proc_args(buf: glibtop_proc_args, pid: never, max_len: number): string;
+    /**
+     * @param buf
+     * @param pid
+     * @param max_len
+     */
+    function glibtop_get_proc_argv(buf: glibtop_proc_args, pid: never, max_len: number): string[];
+    /**
+     * @param buf
+     * @param pid
+     */
+    function glibtop_get_proc_io(buf: glibtop_proc_io, pid: never): void;
+    /**
+     * @param buf
+     * @param pid
+     */
+    function glibtop_get_proc_kernel(buf: glibtop_proc_kernel, pid: never): void;
+    /**
+     * @param buf
+     * @param pid
+     */
+    function glibtop_get_proc_map(buf: glibtop_proc_map, pid: never): glibtop_map_entry[];
+    /**
+     * @param buf
+     * @param pid
+     */
+    function glibtop_get_proc_mem(buf: glibtop_proc_mem, pid: never): void;
+    /**
+     * @param buf
+     * @param pid
+     */
+    function glibtop_get_proc_open_files(buf: glibtop_proc_open_files, pid: never): glibtop_open_files_entry[];
+    /**
+     * @param buf
+     * @param pid
+     */
+    function glibtop_get_proc_segment(buf: glibtop_proc_segment, pid: never): void;
+    /**
+     * @param buf
+     * @param pid
+     */
+    function glibtop_get_proc_signal(buf: glibtop_proc_signal, pid: never): void;
+    /**
+     * @param buf
+     * @param pid
+     */
+    function glibtop_get_proc_state(buf: glibtop_proc_state, pid: never): void;
+    /**
+     * @param buf
+     * @param pid
+     */
+    function glibtop_get_proc_time(buf: glibtop_proc_time, pid: never): void;
+    /**
+     * @param buf
+     * @param pid
+     */
+    function glibtop_get_proc_uid(buf: glibtop_proc_uid, pid: never): void;
+    /**
+     * @param buf
+     * @param pid
+     */
+    function glibtop_get_proc_wd(buf: glibtop_proc_wd, pid: never): string[];
+    /**
+     * @param buf a {@link GTop.glibtop_proclist}
+     * @param which a #GLIBTOP_* constant specifying process type
+     * @param arg an argument specific for the process type
+     * @returns an array of process     ids
+     */
+    function glibtop_get_proclist(buf: glibtop_proclist, which: number, arg: number): never[];
+    /**
+     * @param buf
+     */
     function glibtop_get_sem_limits(buf: glibtop_sem_limits): void;
+    /**
+     * @param buf a {@link GTop.glibtop_shm_limits}
+     */
     function glibtop_get_shm_limits(buf: glibtop_shm_limits): void;
+    /**
+     * @param buf
+     */
     function glibtop_get_swap(buf: glibtop_swap): void;
+    /**
+     * @param buf
+     */
     function glibtop_get_sysdeps(buf: glibtop_sysdeps): void;
     function glibtop_get_sysinfo(): glibtop_sysinfo;
+    /**
+     * @param buf
+     */
     function glibtop_get_uptime(buf: glibtop_uptime): void;
     function glibtop_init(): glibtop;
+    /**
+     * @param features
+     * @param flags
+     */
     function glibtop_init_r(features: number, flags: number): [glibtop, glibtop];
+    /**
+     * @param host
+     */
     function glibtop_internet_addr(host: string): number;
+    /**
+     * @param hostarg
+     * @param portarg
+     * @param s
+     */
     function glibtop_make_connection(hostarg: string, portarg: number, s: number): number;
+    /**
+     * @gir-type Struct
+     */
     class glibtop {
         static $gtype: GObject.GType<glibtop>;
 
@@ -476,55 +605,186 @@ export namespace GTop {
         server_port: number;
         sysdeps: glibtop_sysdeps;
         required: glibtop_sysdeps;
-        pid: number;
-        uid: number;
-        euid: number;
-        gid: number;
-        egid: number;
+        pid: never;
+        uid: never;
+        euid: never;
+        gid: never;
+        egid: never;
         ndisk: number;
         real_ndisk: number;
 
         // Static methods
 
         static close(): void;
+        /**
+         * @param buf
+         */
         static get_cpu(buf: glibtop_cpu): void;
+        /**
+         * @param buf
+         */
         static get_disk(buf: glibtop_disk): void;
+        /**
+         * @param buf
+         * @param mount_dir
+         */
         static get_fsusage(buf: glibtop_fsusage, mount_dir: string): void;
+        /**
+         * @param buf
+         */
         static get_loadavg(buf: glibtop_loadavg): void;
+        /**
+         * @param buf
+         */
         static get_mem(buf: glibtop_mem): void;
+        /**
+         * @param buf
+         * @param all_fs
+         */
         static get_mountlist(buf: glibtop_mountlist, all_fs: number): glibtop_mountentry[];
+        /**
+         * @param buf
+         */
         static get_msg_limits(buf: glibtop_msg_limits): void;
+        /**
+         * @param buf a {@link GTop.glibtop_netlist}
+         */
         static get_netlist(buf: glibtop_netlist): string[];
+        /**
+         * @param buf
+         * @param _interface
+         */
         static get_netload(buf: glibtop_netload, _interface: string): void;
+        /**
+         * @param buf
+         * @param device
+         */
         static get_ppp(buf: glibtop_ppp, device: number): void;
-        static get_proc_affinity(buf: glibtop_proc_affinity, pid: number): number;
-        static get_proc_args(buf: glibtop_proc_args, pid: number, max_len: number): string;
-        static get_proc_argv(buf: glibtop_proc_args, pid: number, max_len: number): string[];
-        static get_proc_io(buf: glibtop_proc_io, pid: number): void;
-        static get_proc_kernel(buf: glibtop_proc_kernel, pid: number): void;
-        static get_proc_map(buf: glibtop_proc_map, pid: number): glibtop_map_entry[];
-        static get_proc_mem(buf: glibtop_proc_mem, pid: number): void;
-        static get_proc_open_files(buf: glibtop_proc_open_files, pid: number): glibtop_open_files_entry[];
-        static get_proc_segment(buf: glibtop_proc_segment, pid: number): void;
-        static get_proc_signal(buf: glibtop_proc_signal, pid: number): void;
-        static get_proc_state(buf: glibtop_proc_state, pid: number): void;
-        static get_proc_time(buf: glibtop_proc_time, pid: number): void;
-        static get_proc_uid(buf: glibtop_proc_uid, pid: number): void;
-        static get_proc_wd(buf: glibtop_proc_wd, pid: number): string[];
-        static get_proclist(buf: glibtop_proclist, which: number, arg: number): number[];
+        /**
+         * @param buf
+         * @param pid
+         */
+        static get_proc_affinity(buf: glibtop_proc_affinity, pid: never): number;
+        /**
+         * @param buf
+         * @param pid
+         * @param max_len
+         */
+        static get_proc_args(buf: glibtop_proc_args, pid: never, max_len: number): string;
+        /**
+         * @param buf
+         * @param pid
+         * @param max_len
+         */
+        static get_proc_argv(buf: glibtop_proc_args, pid: never, max_len: number): string[];
+        /**
+         * @param buf
+         * @param pid
+         */
+        static get_proc_io(buf: glibtop_proc_io, pid: never): void;
+        /**
+         * @param buf
+         * @param pid
+         */
+        static get_proc_kernel(buf: glibtop_proc_kernel, pid: never): void;
+        /**
+         * @param buf
+         * @param pid
+         */
+        static get_proc_map(buf: glibtop_proc_map, pid: never): glibtop_map_entry[];
+        /**
+         * @param buf
+         * @param pid
+         */
+        static get_proc_mem(buf: glibtop_proc_mem, pid: never): void;
+        /**
+         * @param buf
+         * @param pid
+         */
+        static get_proc_open_files(buf: glibtop_proc_open_files, pid: never): glibtop_open_files_entry[];
+        /**
+         * @param buf
+         * @param pid
+         */
+        static get_proc_segment(buf: glibtop_proc_segment, pid: never): void;
+        /**
+         * @param buf
+         * @param pid
+         */
+        static get_proc_signal(buf: glibtop_proc_signal, pid: never): void;
+        /**
+         * @param buf
+         * @param pid
+         */
+        static get_proc_state(buf: glibtop_proc_state, pid: never): void;
+        /**
+         * @param buf
+         * @param pid
+         */
+        static get_proc_time(buf: glibtop_proc_time, pid: never): void;
+        /**
+         * @param buf
+         * @param pid
+         */
+        static get_proc_uid(buf: glibtop_proc_uid, pid: never): void;
+        /**
+         * @param buf
+         * @param pid
+         */
+        static get_proc_wd(buf: glibtop_proc_wd, pid: never): string[];
+        /**
+         * @param buf a {@link GTop.glibtop_proclist}
+         * @param which a #GLIBTOP_* constant specifying process type
+         * @param arg an argument specific for the process type
+         */
+        static get_proclist(buf: glibtop_proclist, which: number, arg: number): never[];
+        /**
+         * @param buf
+         */
         static get_sem_limits(buf: glibtop_sem_limits): void;
+        /**
+         * @param buf a {@link GTop.glibtop_shm_limits}
+         */
         static get_shm_limits(buf: glibtop_shm_limits): void;
+        /**
+         * @param buf
+         */
         static get_swap(buf: glibtop_swap): void;
+        /**
+         * @param buf
+         */
         static get_sysdeps(buf: glibtop_sysdeps): void;
         static get_sysinfo(): glibtop_sysinfo;
+        /**
+         * @param buf
+         */
         static get_uptime(buf: glibtop_uptime): void;
         static init(): glibtop;
+        /**
+         * @param features
+         * @param flags
+         */
         static init_r(features: number, flags: number): [glibtop, glibtop];
+        /**
+         * @param host
+         */
         static internet_addr(host: string): number;
+        /**
+         * @param hostarg
+         * @param portarg
+         * @param s
+         */
         static make_connection(hostarg: string, portarg: number, s: number): number;
 
         // Methods
 
+        /**
+         * @param command
+         * @param send_size
+         * @param send_buf
+         * @param recv_size
+         * @param recv_buf
+         */
         call_l(
             command: number,
             send_size: number,
@@ -532,6 +792,13 @@ export namespace GTop {
             recv_size: number,
             recv_buf?: any | null,
         ): any | null;
+        /**
+         * @param command
+         * @param send_size
+         * @param send_buf
+         * @param recv_size
+         * @param recv_buf
+         */
         call_s(
             command: number,
             send_size: number,
@@ -542,70 +809,304 @@ export namespace GTop {
         close_p(): void;
         close_r(): void;
         close_s(): void;
+        /**
+         * @param buf
+         */
         get_cpu_l(buf: glibtop_cpu): void;
+        /**
+         * @param buf
+         */
         get_cpu_s(buf: glibtop_cpu): void;
+        /**
+         * @param buf
+         */
         get_disk_l(buf: glibtop_disk): void;
+        /**
+         * @param buf
+         */
         get_disk_s(buf: glibtop_disk): void;
+        /**
+         * @param buf
+         * @param mount_dir
+         */
         get_fsusage_l(buf: glibtop_fsusage, mount_dir: string): void;
+        /**
+         * @param buf
+         * @param mount_dir
+         */
         get_fsusage_s(buf: glibtop_fsusage, mount_dir: string): void;
+        /**
+         * @param buf
+         */
         get_loadavg_l(buf: glibtop_loadavg): void;
+        /**
+         * @param buf
+         */
         get_loadavg_s(buf: glibtop_loadavg): void;
+        /**
+         * @param buf
+         */
         get_mem_l(buf: glibtop_mem): void;
+        /**
+         * @param buf
+         */
         get_mem_s(buf: glibtop_mem): void;
+        /**
+         * @param all_fs
+         */
         get_mountlist_l(all_fs: number): [glibtop_mountentry[], glibtop_mountlist];
+        /**
+         * @param all_fs
+         */
         get_mountlist_s(all_fs: number): [glibtop_mountentry[], glibtop_mountlist];
+        /**
+         * @param buf
+         */
         get_msg_limits_l(buf: glibtop_msg_limits): void;
+        /**
+         * @param buf
+         */
         get_msg_limits_s(buf: glibtop_msg_limits): void;
+        /**
+         * @param buf a {@link GTop.glibtop_netlist}
+         * @returns an array of network          interface names.
+         */
         get_netlist_l(buf: glibtop_netlist): string[];
+        /**
+         * @param buf a {@link GTop.glibtop_netlist}
+         * @returns an array of network          interface names.
+         */
         get_netlist_s(buf: glibtop_netlist): string[];
+        /**
+         * @param buf
+         * @param _interface
+         */
         get_netload_l(buf: glibtop_netload, _interface: string): void;
+        /**
+         * @param buf
+         * @param _interface
+         */
         get_netload_s(buf: glibtop_netload, _interface: string): void;
+        /**
+         * @param parameter
+         * @param data_ptr
+         * @param data_size
+         */
         get_parameter_l(parameter: number, data_ptr: any | null, data_size: number): number;
+        /**
+         * @param buf
+         * @param device
+         */
         get_ppp_l(buf: glibtop_ppp, device: number): void;
+        /**
+         * @param buf
+         * @param device
+         */
         get_ppp_s(buf: glibtop_ppp, device: number): void;
-        get_proc_affinity_l(buf: glibtop_proc_affinity, pid: number): number;
-        get_proc_affinity_s(buf: glibtop_proc_affinity, pid: number): number;
-        get_proc_args_l(buf: glibtop_proc_args, pid: number, max_len: number): string;
-        get_proc_args_s(buf: glibtop_proc_args, pid: number, max_len: number): string;
-        get_proc_io_l(buf: glibtop_proc_io, pid: number): void;
-        get_proc_io_s(buf: glibtop_proc_io, pid: number): void;
-        get_proc_kernel_l(buf: glibtop_proc_kernel, pid: number): void;
-        get_proc_kernel_s(buf: glibtop_proc_kernel, pid: number): void;
-        get_proc_map_l(pid: number): [glibtop_map_entry[], glibtop_proc_map];
-        get_proc_map_s(pid: number): [glibtop_map_entry[], glibtop_proc_map];
-        get_proc_mem_l(buf: glibtop_proc_mem, pid: number): void;
-        get_proc_mem_s(buf: glibtop_proc_mem, pid: number): void;
-        get_proc_open_files_l(pid: number): [glibtop_open_files_entry[], glibtop_proc_open_files];
-        get_proc_open_files_s(buf: glibtop_proc_open_files, pid: number): glibtop_open_files_entry;
-        get_proc_segment_l(buf: glibtop_proc_segment, pid: number): void;
-        get_proc_segment_s(buf: glibtop_proc_segment, pid: number): void;
-        get_proc_signal_l(buf: glibtop_proc_signal, pid: number): void;
-        get_proc_signal_s(buf: glibtop_proc_signal, pid: number): void;
-        get_proc_state_l(buf: glibtop_proc_state, pid: number): void;
-        get_proc_state_s(buf: glibtop_proc_state, pid: number): void;
-        get_proc_time_l(buf: glibtop_proc_time, pid: number): void;
-        get_proc_time_s(buf: glibtop_proc_time, pid: number): void;
-        get_proc_uid_l(buf: glibtop_proc_uid, pid: number): void;
-        get_proc_uid_s(buf: glibtop_proc_uid, pid: number): void;
-        get_proclist_l(buf: glibtop_proclist, which: number, arg: number): number[];
-        get_proclist_s(buf: glibtop_proclist, which: number, arg: number): number[];
+        /**
+         * @param buf
+         * @param pid
+         */
+        get_proc_affinity_l(buf: glibtop_proc_affinity, pid: never): number;
+        /**
+         * @param buf
+         * @param pid
+         */
+        get_proc_affinity_s(buf: glibtop_proc_affinity, pid: never): number;
+        /**
+         * @param buf
+         * @param pid
+         * @param max_len
+         */
+        get_proc_args_l(buf: glibtop_proc_args, pid: never, max_len: number): string;
+        /**
+         * @param buf
+         * @param pid
+         * @param max_len
+         */
+        get_proc_args_s(buf: glibtop_proc_args, pid: never, max_len: number): string;
+        /**
+         * @param buf
+         * @param pid
+         */
+        get_proc_io_l(buf: glibtop_proc_io, pid: never): void;
+        /**
+         * @param buf
+         * @param pid
+         */
+        get_proc_io_s(buf: glibtop_proc_io, pid: never): void;
+        /**
+         * @param buf
+         * @param pid
+         */
+        get_proc_kernel_l(buf: glibtop_proc_kernel, pid: never): void;
+        /**
+         * @param buf
+         * @param pid
+         */
+        get_proc_kernel_s(buf: glibtop_proc_kernel, pid: never): void;
+        /**
+         * @param pid
+         */
+        get_proc_map_l(pid: never): [glibtop_map_entry[], glibtop_proc_map];
+        /**
+         * @param pid
+         */
+        get_proc_map_s(pid: never): [glibtop_map_entry[], glibtop_proc_map];
+        /**
+         * @param buf
+         * @param pid
+         */
+        get_proc_mem_l(buf: glibtop_proc_mem, pid: never): void;
+        /**
+         * @param buf
+         * @param pid
+         */
+        get_proc_mem_s(buf: glibtop_proc_mem, pid: never): void;
+        /**
+         * @param pid
+         */
+        get_proc_open_files_l(pid: never): [glibtop_open_files_entry[], glibtop_proc_open_files];
+        /**
+         * @param buf
+         * @param pid
+         */
+        get_proc_open_files_s(buf: glibtop_proc_open_files, pid: never): glibtop_open_files_entry;
+        /**
+         * @param buf
+         * @param pid
+         */
+        get_proc_segment_l(buf: glibtop_proc_segment, pid: never): void;
+        /**
+         * @param buf
+         * @param pid
+         */
+        get_proc_segment_s(buf: glibtop_proc_segment, pid: never): void;
+        /**
+         * @param buf
+         * @param pid
+         */
+        get_proc_signal_l(buf: glibtop_proc_signal, pid: never): void;
+        /**
+         * @param buf
+         * @param pid
+         */
+        get_proc_signal_s(buf: glibtop_proc_signal, pid: never): void;
+        /**
+         * @param buf
+         * @param pid
+         */
+        get_proc_state_l(buf: glibtop_proc_state, pid: never): void;
+        /**
+         * @param buf
+         * @param pid
+         */
+        get_proc_state_s(buf: glibtop_proc_state, pid: never): void;
+        /**
+         * @param buf
+         * @param pid
+         */
+        get_proc_time_l(buf: glibtop_proc_time, pid: never): void;
+        /**
+         * @param buf
+         * @param pid
+         */
+        get_proc_time_s(buf: glibtop_proc_time, pid: never): void;
+        /**
+         * @param buf
+         * @param pid
+         */
+        get_proc_uid_l(buf: glibtop_proc_uid, pid: never): void;
+        /**
+         * @param buf
+         * @param pid
+         */
+        get_proc_uid_s(buf: glibtop_proc_uid, pid: never): void;
+        /**
+         * @param buf a {@link GTop.glibtop_proclist}
+         * @param which a #GLIBTOP_* constant specifying process type
+         * @param arg an argument specific for the process type
+         * @returns an array of process     ids
+         */
+        get_proclist_l(buf: glibtop_proclist, which: number, arg: number): never[];
+        /**
+         * @param buf a {@link GTop.glibtop_proclist}
+         * @param which a #GLIBTOP_* constant specifying process type
+         * @param arg an argument specific for the process type
+         * @returns an array of process     ids
+         */
+        get_proclist_s(buf: glibtop_proclist, which: number, arg: number): never[];
+        /**
+         * @param buf
+         */
         get_sem_limits_l(buf: glibtop_sem_limits): void;
+        /**
+         * @param buf
+         */
         get_sem_limits_s(buf: glibtop_sem_limits): void;
+        /**
+         * @param buf a {@link GTop.glibtop_shm_limits}
+         */
         get_shm_limits_l(buf: glibtop_shm_limits): void;
+        /**
+         * @param buf a {@link GTop.glibtop_shm_limits}
+         */
         get_shm_limits_s(buf: glibtop_shm_limits): void;
+        /**
+         * @param buf
+         */
         get_swap_l(buf: glibtop_swap): void;
+        /**
+         * @param buf
+         */
         get_swap_s(buf: glibtop_swap): void;
+        /**
+         * @param buf
+         */
         get_sysdeps_r(buf: glibtop_sysdeps): void;
         get_sysinfo_s(): glibtop_sysinfo;
+        /**
+         * @param buf
+         */
         get_uptime_l(buf: glibtop_uptime): void;
+        /**
+         * @param buf
+         */
         get_uptime_s(buf: glibtop_uptime): void;
+        /**
+         * @param features
+         * @param flags
+         */
         init_p(features: number, flags: number): void;
+        /**
+         * @param program_name
+         * @param features
+         * @param flags
+         */
         open_l(program_name: string, features: number, flags: number): void;
+        /**
+         * @param program_name
+         * @param features
+         * @param flags
+         */
         open_p(program_name: string, features: number, flags: number): void;
+        /**
+         * @param program_name
+         * @param features
+         * @param flags
+         */
         open_s(program_name: string, features: number, flags: number): void;
+        /**
+         * @param parameter
+         * @param data_ptr
+         * @param data_size
+         */
         set_parameter_l(parameter: number, data_ptr: any | null, data_size: number): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class glibtop_command {
         static $gtype: GObject.GType<glibtop_command>;
 
@@ -628,6 +1129,9 @@ export namespace GTop {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class glibtop_cpu {
         static $gtype: GObject.GType<glibtop_cpu>;
 
@@ -680,6 +1184,9 @@ export namespace GTop {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class glibtop_disk {
         static $gtype: GObject.GType<glibtop_disk>;
 
@@ -706,6 +1213,9 @@ export namespace GTop {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class glibtop_entry {
         static $gtype: GObject.GType<glibtop_entry>;
 
@@ -714,6 +1224,9 @@ export namespace GTop {
         labels: any[];
     }
 
+    /**
+     * @gir-type Struct
+     */
     class glibtop_fsusage {
         static $gtype: GObject.GType<glibtop_fsusage>;
 
@@ -746,6 +1259,9 @@ export namespace GTop {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class glibtop_loadavg {
         static $gtype: GObject.GType<glibtop_loadavg>;
 
@@ -770,10 +1286,16 @@ export namespace GTop {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class glibtop_machine {
         static $gtype: GObject.GType<glibtop_machine>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class glibtop_map_entry {
         static $gtype: GObject.GType<glibtop_map_entry>;
 
@@ -820,6 +1342,9 @@ export namespace GTop {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class glibtop_mem {
         static $gtype: GObject.GType<glibtop_mem>;
 
@@ -852,6 +1377,9 @@ export namespace GTop {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class glibtop_mountentry {
         static $gtype: GObject.GType<glibtop_mountentry>;
 
@@ -874,6 +1402,9 @@ export namespace GTop {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class glibtop_mountlist {
         static $gtype: GObject.GType<glibtop_mountlist>;
 
@@ -896,6 +1427,9 @@ export namespace GTop {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class glibtop_msg_limits {
         static $gtype: GObject.GType<glibtop_msg_limits>;
 
@@ -926,6 +1460,9 @@ export namespace GTop {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class glibtop_netlist {
         static $gtype: GObject.GType<glibtop_netlist>;
 
@@ -944,6 +1481,9 @@ export namespace GTop {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class glibtop_netload {
         static $gtype: GObject.GType<glibtop_netload>;
 
@@ -996,6 +1536,9 @@ export namespace GTop {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class glibtop_open_files_entry {
         static $gtype: GObject.GType<glibtop_open_files_entry>;
 
@@ -1014,6 +1557,9 @@ export namespace GTop {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class glibtop_ppp {
         static $gtype: GObject.GType<glibtop_ppp>;
 
@@ -1036,6 +1582,9 @@ export namespace GTop {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class glibtop_proc_affinity {
         static $gtype: GObject.GType<glibtop_proc_affinity>;
 
@@ -1056,6 +1605,9 @@ export namespace GTop {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class glibtop_proc_args {
         static $gtype: GObject.GType<glibtop_proc_args>;
 
@@ -1075,7 +1627,8 @@ export namespace GTop {
     }
 
     /**
-     * Process disk io data filled by glibtop_get_proc_io().
+     * Process disk io data filled by `glibtop_get_proc_io()`.
+     * @gir-type Struct
      */
     class glibtop_proc_io {
         static $gtype: GObject.GType<glibtop_proc_io>;
@@ -1103,6 +1656,9 @@ export namespace GTop {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class glibtop_proc_kernel {
         static $gtype: GObject.GType<glibtop_proc_kernel>;
 
@@ -1137,6 +1693,9 @@ export namespace GTop {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class glibtop_proc_map {
         static $gtype: GObject.GType<glibtop_proc_map>;
 
@@ -1159,6 +1718,9 @@ export namespace GTop {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class glibtop_proc_mem {
         static $gtype: GObject.GType<glibtop_proc_mem>;
 
@@ -1187,6 +1749,9 @@ export namespace GTop {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class glibtop_proc_open_files {
         static $gtype: GObject.GType<glibtop_proc_open_files>;
 
@@ -1209,6 +1774,9 @@ export namespace GTop {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class glibtop_proc_segment {
         static $gtype: GObject.GType<glibtop_proc_segment>;
 
@@ -1241,6 +1809,9 @@ export namespace GTop {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class glibtop_proc_signal {
         static $gtype: GObject.GType<glibtop_proc_signal>;
 
@@ -1265,6 +1836,9 @@ export namespace GTop {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class glibtop_proc_state {
         static $gtype: GObject.GType<glibtop_proc_state>;
 
@@ -1300,7 +1874,7 @@ export namespace GTop {
     }
 
     /**
-     * Process time data filled by glibtop_get_proc_time().
+     * Process time data filled by `glibtop_get_proc_time()`.
      *
      * Under Linux the `start_time` value may be wrong due to the information
      * available from the kernel.
@@ -1312,6 +1886,7 @@ export namespace GTop {
      * always 3s different from the real start time of the given process. You
      * may also get shift results if your system clock is not synchronised
      * with your hardware clock. See <command>man hwclock</command>.
+     * @gir-type Struct
      */
     class glibtop_proc_time {
         static $gtype: GObject.GType<glibtop_proc_time>;
@@ -1349,6 +1924,9 @@ export namespace GTop {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class glibtop_proc_uid {
         static $gtype: GObject.GType<glibtop_proc_uid>;
 
@@ -1401,6 +1979,9 @@ export namespace GTop {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class glibtop_proc_wd {
         static $gtype: GObject.GType<glibtop_proc_wd>;
 
@@ -1423,6 +2004,9 @@ export namespace GTop {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class glibtop_proclist {
         static $gtype: GObject.GType<glibtop_proclist>;
 
@@ -1445,6 +2029,9 @@ export namespace GTop {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class glibtop_response {
         static $gtype: GObject.GType<glibtop_response>;
 
@@ -1467,6 +2054,9 @@ export namespace GTop {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class glibtop_sem_limits {
         static $gtype: GObject.GType<glibtop_sem_limits>;
 
@@ -1503,6 +2093,9 @@ export namespace GTop {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class glibtop_shm_limits {
         static $gtype: GObject.GType<glibtop_shm_limits>;
 
@@ -1529,6 +2122,9 @@ export namespace GTop {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class glibtop_signame {
         static $gtype: GObject.GType<glibtop_signame>;
 
@@ -1549,6 +2145,9 @@ export namespace GTop {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class glibtop_swap {
         static $gtype: GObject.GType<glibtop_swap>;
 
@@ -1575,6 +2174,9 @@ export namespace GTop {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class glibtop_sysdeps {
         static $gtype: GObject.GType<glibtop_sysdeps>;
 
@@ -1663,6 +2265,9 @@ export namespace GTop {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class glibtop_sysinfo {
         static $gtype: GObject.GType<glibtop_sysinfo>;
 
@@ -1672,6 +2277,9 @@ export namespace GTop {
         ncpu: number;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class glibtop_uptime {
         static $gtype: GObject.GType<glibtop_uptime>;
 
@@ -1694,6 +2302,9 @@ export namespace GTop {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class partition_info {
         static $gtype: GObject.GType<partition_info>;
 
@@ -1716,6 +2327,9 @@ export namespace GTop {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class glibtop_response_union {
         static $gtype: GObject.GType<glibtop_response_union>;
 
@@ -1734,6 +2348,9 @@ export namespace GTop {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class glibtop_union {
         static $gtype: GObject.GType<glibtop_union>;
 

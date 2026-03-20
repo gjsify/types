@@ -21,7 +21,18 @@ export namespace Gm {
      */
 
     /**
+     * @gir-type Enum
+     */
+    enum CornerPosition {
+        TOP_LEFT,
+        TOP_RIGHT,
+        BOTTOM_RIGHT,
+        BOTTOM_LEFT,
+    }
+
+    /**
      * Error codes returned by gmobile functions.
+     * @gir-type Struct
      */
     class Error extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -41,24 +52,44 @@ export namespace Gm {
     /**
      * Read compatible machine types from
      * `sysfs_root/firmware/devicetree/base/compatible` on Linux.
-     * If the path doesn't exist or host is not Linux return %NULL.
+     * If the path doesn't exist or host is not Linux return `null`.
      *
      * For debugging purposes `GMOBILE_DT_COMPATIBLES` can be set to a `:`
      * separated list of compatibles which will be returned instead.
-     * @param sysfs_root Path where /sys is mounted. Defaults to `/sys` if %NULL is passed.
-     * @returns compatible machine types or %NULL
+     * @param sysfs_root Path where /sys is mounted. Defaults to `/sys` if `null` is passed.
+     * @returns compatible machine types or `null`
+     * @since 0.0.1
      */
     function device_tree_get_compatibles(sysfs_root: string): string[];
     /**
      * Gets the GM Error Quark.
-     * @returns a #GQuark.
+     * @returns a {@link GLib.Quark}.
+     * @since 0.0.1
      */
     function error_quark(): GLib.Quark;
     /**
      * Call this function to initialize the library explicitly. This makes
      * the embedded device information available.
+     * @since 0.0.1
      */
     function init(): void;
+    /**
+     * List device tree names of known devices.
+     * @returns The devices
+     * @since 0.2.2
+     */
+    function list_devices(): string[] | null;
+    /**
+     * Get the ISO 3316-1 country code based on a given mobile country
+     * code (MCC). It's sufficient for the given string to have the
+     * MCC as prefix. In other words it is o.k. to pass an IMSI.
+     *
+     * On error `NULL` is returned and `error` is set.
+     * @param mcc The mcc
+     * @returns The country code or NULL.
+     * @since 0.4.0
+     */
+    function mcc_to_iso(mcc: string): string;
     /**
      * Returns the bounding box of an SVG path. As this is meant for
      * display cutouts we operate on integer (whole pixel) values.  When
@@ -68,17 +99,14 @@ export namespace Gm {
      * @param x1 The lower x coordinate
      * @param x2 The upper x coordinate
      * @param y1 The lower y coordinate
-     * @param y2 The upper x coordinate
+     * @param y2 The upper y coordinate
      * @returns `TRUE` when parsing was successful, `FALSE` otherwise. See https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths for path syntax introduction.
+     * @since 0.0.1
      */
     function svg_path_get_bounding_box(path: string, x1: number, x2: number, y1: number, y2: number): boolean;
     /**
      * Sets a function to be called after a timeout with priority `priority`.
      * Correctly calculates the timeout even when the system is suspended in between.
-     *
-     * This internally creates a main loop source using
-     * g_timeout_source_new_seconds() and attaches it to the main loop context
-     * using g_source_attach().
      *
      * The timeout given is in terms of `CLOCK_BOOTTIME` time, it hence is also
      * correct across suspend and resume. If that doesn't matter use
@@ -86,13 +114,45 @@ export namespace Gm {
      *
      * Note that glib's `g_timeout_add_seconds()` doesn't take system
      * suspend/resume into account: https://gitlab.gnome.org/GNOME/glib/-/issues/2739
-     * @param priority the priority of the timeout source. Typically this will be in   the range between %G_PRIORITY_DEFAULT and %G_PRIORITY_HIGH.
+     *
+     * Changed in 0.3.0: Returns 0 when timer setup failed
+     * @param priority the priority of the timeout source. Typically this will be in   the range between `G_PRIORITY_DEFAULT` and `G_PRIORITY_HIGH`.
      * @param seconds the timeout in seconds
      * @param _function function to call
-     * @param notify function to call when the timeout is removed, or %NULL
-     * @returns the ID (greater than 0) of the event source.
+     * @param notify function to call when the timeout is removed, or `null`
+     * @returns the ID (greater than 0) of the event source or 0 in case of error.
+     * @since 0.0.1
      */
     function timeout_add_seconds_once(
+        priority: number,
+        seconds: number,
+        _function: GLib.SourceOnceFunc,
+        notify?: GLib.DestroyNotify | null,
+    ): number;
+    /**
+     * Sets a function to be called after a timeout with the default
+     * priority, `G_PRIORITY_DEFAULT`. Correctly calculates the timeout
+     * even when the system is suspended in between. It will wake up the
+     * system when needed.
+     *
+     * If the process doesn't have enough permissions to wake the system
+     * creating the timer will fail. On Linux at least `CAP_WAKE_ALARM` capabilities
+     * are needed.
+     *
+     * The timeout given is in terms of `CLOCK_BOOTTIME_ALARM` time, it hence is also
+     * correct across suspend and resume. If that doesn't matter use
+     * `g_timeout_add_seconds` instead.
+     *
+     * Note that glib's `g_timeout_add_seconds()` doesn't take system
+     * suspend/resume into account: https://gitlab.gnome.org/GNOME/glib/-/issues/2739
+     * @param priority the priority of the timeout source. Typically this will be in   the range between `G_PRIORITY_DEFAULT` and `G_PRIORITY_HIGH`.
+     * @param seconds the timeout in seconds
+     * @param _function function to call
+     * @param notify function to call when the timeout is removed, or `null`
+     * @returns the ID (greater than 0) of the event source or 0 in case of error.
+     * @since 0.3.0
+     */
+    function wakeup_timeout_add_seconds_once(
         priority: number,
         seconds: number,
         _function: GLib.SourceOnceFunc,
@@ -126,6 +186,8 @@ export namespace Gm {
      * natural orientation. Applications can query the area to avoid
      * for rendering via the `bounds` property so they don't need to
      * deal with the SVG path themselves.
+     * @gir-type Class
+     * @since 0.0.2
      */
     class Cutout extends GObject.Object {
         static $gtype: GObject.GType<Cutout>;
@@ -134,14 +196,20 @@ export namespace Gm {
 
         /**
          * Rectangular bounds of the cutout
+         * @since 0.0.2
+         * @read-only
          */
         get bounds(): Rect;
         /**
          * A name identifying the cutout.
+         * @since 0.0.2
+         * @construct-only
          */
         get name(): string;
         /**
          * The SVG path that describes the display cutout or notch.
+         * @since 0.0.2
+         * @construct-only
          */
         get path(): string;
 
@@ -164,16 +232,19 @@ export namespace Gm {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Cutout.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Cutout.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Cutout.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Cutout.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Cutout.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Cutout.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -219,7 +290,9 @@ export namespace Gm {
      * sources (currently we only look a the built-in gresources).
      *
      * The lookups are currently based on device tree compatibles.
-     * See [func`device_tree_get_compatibles]`.
+     * See {@link device_tree_get_compatibles}.
+     * @gir-type Class
+     * @since 0.0.1
      */
     class DeviceInfo extends GObject.Object {
         static $gtype: GObject.GType<DeviceInfo>;
@@ -228,6 +301,8 @@ export namespace Gm {
 
         /**
          * The compatibles to look up device information for.
+         * @since 0.0.1
+         * @construct-only
          */
         get compatibles(): string[];
 
@@ -250,16 +325,19 @@ export namespace Gm {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DeviceInfo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DeviceInfo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DeviceInfo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DeviceInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DeviceInfo.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DeviceInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -280,6 +358,7 @@ export namespace Gm {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             'notify::border-radius': (pspec: GObject.ParamSpec) => void;
+            'notify::corner-radii': (pspec: GObject.ParamSpec) => void;
             'notify::cutouts': (pspec: GObject.ParamSpec) => void;
             'notify::height': (pspec: GObject.ParamSpec) => void;
             'notify::name': (pspec: GObject.ParamSpec) => void;
@@ -293,6 +372,8 @@ export namespace Gm {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             border_radius: number;
             borderRadius: number;
+            corner_radii: any[];
+            cornerRadii: any[];
             cutouts: Gio.ListStore;
             height: number;
             name: string;
@@ -307,6 +388,8 @@ export namespace Gm {
     /**
      * Physical properties of a display panel like size, cutouts and
      * rounded corners.
+     * @gir-type Class
+     * @since 0.0.1
      */
     class DisplayPanel extends GObject.Object {
         static $gtype: GObject.GType<DisplayPanel>;
@@ -314,54 +397,78 @@ export namespace Gm {
         // Properties
 
         /**
-         * The border radius of the panel edges in device pixels
-         * If a single border radius isn't enough use multiple [type`Cutout]`.
+         * The corner radius of the panel edges in device pixels.
+         * @since 0.0.1
+         * @deprecated since 0.6.0: Use {@link DisplayPanel.corner_radii} instead
          */
         get border_radius(): number;
         set border_radius(val: number);
         /**
-         * The border radius of the panel edges in device pixels
-         * If a single border radius isn't enough use multiple [type`Cutout]`.
+         * The corner radius of the panel edges in device pixels.
+         * @since 0.0.1
+         * @deprecated since 0.6.0: Use {@link DisplayPanel.corner_radii} instead
          */
         get borderRadius(): number;
         set borderRadius(val: number);
         /**
-         * The display cutouts as `GListModel` of [class`Cutout]`.
+         * The radii of the panels corner starting top-left and going
+         * clockwise.
+         * @since 0.6.0
+         */
+        get corner_radii(): any[];
+        set corner_radii(val: any[]);
+        /**
+         * The radii of the panels corner starting top-left and going
+         * clockwise.
+         * @since 0.6.0
+         */
+        get cornerRadii(): any[];
+        set cornerRadii(val: any[]);
+        /**
+         * The display cutouts as {@link Gio.ListModel} of {@link Cutout}.
+         * @since 0.0.1
          */
         get cutouts(): Gio.ListStore;
         set cutouts(val: Gio.ListStore);
         /**
          * The display height in millimeters
+         * @since 0.0.1
          */
         get height(): number;
         set height(val: number);
         /**
          * The name of the display
+         * @since 0.0.1
          */
         get name(): string;
         set name(val: string);
         /**
          * The display width in millimeters
+         * @since 0.0.1
          */
         get width(): number;
         set width(val: number);
         /**
          * The panel resolution in pixels in the x direction
+         * @since 0.0.1
          */
         get x_res(): number;
         set x_res(val: number);
         /**
          * The panel resolution in pixels in the x direction
+         * @since 0.0.1
          */
         get xRes(): number;
         set xRes(val: number);
         /**
          * The panel resolution in pixels in the y direction
+         * @since 0.0.1
          */
         get y_res(): number;
         set y_res(val: number);
         /**
          * The panel resolution in pixels in the y direction
+         * @since 0.0.1
          */
         get yRes(): number;
         set yRes(val: number);
@@ -389,16 +496,19 @@ export namespace Gm {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DisplayPanel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DisplayPanel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DisplayPanel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DisplayPanel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DisplayPanel.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DisplayPanel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -408,11 +518,18 @@ export namespace Gm {
         // Methods
 
         /**
-         * Gets the panels border radius. 0 indicates rectangular corners.  If
-         * given applies to all corners of the panel.
+         * Gets the panels border radius. 0 indicates rectangular corners. If
+         * top and bottom border radius are different then this matches the
+         * top border radius.  given applies to all corners of the panel.
          * @returns The panel's border radius.
          */
         get_border_radius(): number;
+        /**
+         * Gets the panels border radii starting with the top-left corner
+         * clockwise.
+         * @returns The panel's border radii.
+         */
+        get_corner_radii(): number[];
         /**
          * Get the display cutouts.
          * @returns The display cutouts
@@ -445,13 +562,24 @@ export namespace Gm {
         get_y_res(): number;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CutoutClass = typeof Cutout;
+    /**
+     * @gir-type Alias
+     */
     type DeviceInfoClass = typeof DeviceInfo;
+    /**
+     * @gir-type Alias
+     */
     type DisplayPanelClass = typeof DisplayPanel;
     /**
      * A rectangle.
      *
      * Similar to GdkRectangle but we don't want to pull in gtk/gdk.
+     * @gir-type Struct
+     * @since 0.0.1
      */
     class Rect {
         static $gtype: GObject.GType<Rect>;

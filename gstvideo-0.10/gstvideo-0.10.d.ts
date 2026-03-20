@@ -22,12 +22,16 @@ export namespace GstVideo {
      * GstVideo-0.10
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Format {
         export const $gtype: GObject.GType<Format>;
     }
 
     /**
      * Enum value describing the most common video formats.
+     * @gir-type Enum
      */
     enum Format {
         UNKNOWN,
@@ -86,6 +90,14 @@ export namespace GstVideo {
     const RED_MASK_16: string;
     const RED_MASK_16_INT: number;
     const SIZE_RANGE: string;
+    /**
+     * @param video_width
+     * @param video_height
+     * @param video_par_n
+     * @param video_par_d
+     * @param display_par_n
+     * @param display_par_d
+     */
     function calculate_display_ratio(
         video_width: number,
         video_height: number,
@@ -94,8 +106,24 @@ export namespace GstVideo {
         display_par_n: number,
         display_par_d: number,
     ): [boolean, number, number];
+    /**
+     * @param in_still
+     */
     function event_new_still_frame(in_still: boolean): Gst.Event;
+    /**
+     * @param event
+     */
     function event_parse_still_frame(event: Gst.Event): [boolean, boolean];
+    /**
+     * @param format
+     * @param width
+     * @param height
+     * @param fps_n
+     * @param fps_d
+     * @param src_format
+     * @param src_value
+     * @param dest_format
+     */
     function format_convert(
         format: Format | null,
         width: number,
@@ -106,21 +134,72 @@ export namespace GstVideo {
         src_value: number,
         dest_format: Gst.Format | null,
     ): [boolean, number];
+    /**
+     * @param fourcc
+     */
     function format_from_fourcc(fourcc: number): Format;
+    /**
+     * @param format
+     * @param component
+     * @param height
+     */
     function format_get_component_height(format: Format | null, component: number, height: number): number;
+    /**
+     * @param format
+     * @param component
+     * @param width
+     * @param height
+     */
     function format_get_component_offset(
         format: Format | null,
         component: number,
         width: number,
         height: number,
     ): number;
+    /**
+     * @param format
+     * @param component
+     * @param width
+     */
     function format_get_component_width(format: Format | null, component: number, width: number): number;
+    /**
+     * @param format
+     * @param component
+     */
     function format_get_pixel_stride(format: Format | null, component: number): number;
+    /**
+     * @param format
+     * @param component
+     * @param width
+     */
     function format_get_row_stride(format: Format | null, component: number, width: number): number;
+    /**
+     * @param format
+     * @param width
+     * @param height
+     */
     function format_get_size(format: Format | null, width: number, height: number): number;
+    /**
+     * @param format
+     */
     function format_has_alpha(format: Format | null): boolean;
+    /**
+     * @param format
+     */
     function format_is_rgb(format: Format | null): boolean;
+    /**
+     * @param format
+     */
     function format_is_yuv(format: Format | null): boolean;
+    /**
+     * @param format
+     * @param width
+     * @param height
+     * @param framerate_n
+     * @param framerate_d
+     * @param par_n
+     * @param par_d
+     */
     function format_new_caps(
         format: Format | null,
         width: number,
@@ -130,6 +209,16 @@ export namespace GstVideo {
         par_n: number,
         par_d: number,
     ): Gst.Caps;
+    /**
+     * @param format
+     * @param width
+     * @param height
+     * @param framerate_n
+     * @param framerate_d
+     * @param par_n
+     * @param par_d
+     * @param interlaced
+     */
     function format_new_caps_interlaced(
         format: Format | null,
         width: number,
@@ -140,14 +229,42 @@ export namespace GstVideo {
         par_d: number,
         interlaced: boolean,
     ): Gst.Caps;
+    /**
+     * @param caps
+     * @param format
+     */
     function format_parse_caps(caps: Gst.Caps, format: Format | null): [boolean, number, number];
+    /**
+     * @param caps
+     */
     function format_parse_caps_interlaced(caps: Gst.Caps): [boolean, boolean];
+    /**
+     * @param format
+     */
     function format_to_fourcc(format: Format | null): number;
+    /**
+     * @param pad
+     */
     function frame_rate(pad: Gst.Pad): unknown;
+    /**
+     * @param pad
+     */
     function get_size(pad: Gst.Pad): [boolean, number, number];
+    /**
+     * @param caps
+     */
     function parse_caps_chroma_site(caps: Gst.Caps): string;
+    /**
+     * @param caps
+     */
     function parse_caps_color_matrix(caps: Gst.Caps): string;
+    /**
+     * @param caps
+     */
     function parse_caps_framerate(caps: Gst.Caps): [boolean, number, number];
+    /**
+     * @param caps
+     */
     function parse_caps_pixel_aspect_ratio(caps: Gst.Caps): [boolean, number, number];
     namespace Filter {
         // Signal signatures
@@ -161,6 +278,9 @@ export namespace GstVideo {
         interface ConstructorProps extends GstBase.Transform.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class Filter extends GstBase.Transform {
         static $gtype: GObject.GType<Filter>;
 
@@ -186,16 +306,19 @@ export namespace GstVideo {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Filter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Filter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Filter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Filter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Filter.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Filter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -230,6 +353,7 @@ export namespace GstVideo {
 
     /**
      * The video sink instance structure. Derived video sinks should set the
+     * @gir-type Class
      */
     class Sink extends GstBase.Sink {
         static $gtype: GObject.GType<Sink>;
@@ -264,16 +388,19 @@ export namespace GstVideo {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Sink.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Sink.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Sink.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Sink.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Sink.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Sink.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -282,16 +409,30 @@ export namespace GstVideo {
 
         // Static methods
 
+        /**
+         * @param src
+         * @param dst
+         * @param result
+         * @param scaling
+         */
         static center_rect(src: Rectangle, dst: Rectangle, result: Rectangle, scaling: boolean): void;
 
         // Virtual methods
 
+        /**
+         * @param buf
+         * @virtual
+         */
         vfunc_show_frame(buf: Gst.Buffer): Gst.FlowReturn;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type FilterClass = typeof Filter;
     /**
      * Helper structure representing a rectangular area.
+     * @gir-type Struct
      */
     class Rectangle {
         static $gtype: GObject.GType<Rectangle>;
@@ -315,7 +456,13 @@ export namespace GstVideo {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SinkClass = typeof Sink;
+    /**
+     * @gir-type Struct
+     */
     class SinkPrivate {
         static $gtype: GObject.GType<SinkPrivate>;
     }

@@ -22,6 +22,7 @@ export namespace gSignon {
 
     /**
      * Possible Signon errors.
+     * @gir-type Struct
      */
     class Error extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -62,7 +63,7 @@ export namespace gSignon {
          */
         static METHOD_NOT_AVAILABLE: number;
         /**
-         * The identity mathching the #SignonIdentity
+         * The identity mathching the {@link gSignon.Identity}
          * was not found on the service.
          */
         static IDENTITY_NOT_FOUND: number;
@@ -153,7 +154,7 @@ export namespace gSignon {
          */
         static OPERATION_FAILED: number;
         /**
-         * `deprecated:` Failure during data
+         * `deprecated`: Failure during data
          * encryption/decryption.
          */
         static ENCRYPTION_FAILED: number;
@@ -192,12 +193,16 @@ export namespace gSignon {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SessionDataUiPolicy {
         export const $gtype: GObject.GType<SessionDataUiPolicy>;
     }
 
     /**
      * UI policy for the signon process, passed to the UI plugin.
+     * @gir-type Enum
      */
     enum SessionDataUiPolicy {
         /**
@@ -260,25 +265,28 @@ export namespace gSignon {
      */
     function error_quark(): GLib.Quark;
     /**
-     * Builds a #SignonSecurityContext item from a GVariant of type "(ss)".
-     * @param variant GVariant item with a #SignonSecurityContext construct.
-     * @returns #SignonSecurityContext item.
+     * Builds a {@link gSignon.SecurityContext} item from a GVariant of type "(ss)".
+     * @param variant GVariant item with a {@link gSignon.SecurityContext} construct.
+     * @returns {@link gSignon.SecurityContext} item.
      */
     function security_context_deconstruct_variant(variant: GLib.Variant): SecurityContext;
     /**
-     * Builds a GVariant of type "a(ss)" from a GList of #SignonSecurityContext
+     * Builds a GVariant of type "a(ss)" from a GList of {@link gSignon.SecurityContext}
      * items.
-     * @param list #GList item of #SignonSecurityContext.
-     * @returns GVariant construct of a #GList.
+     * @param list {@link GLib.List} item of {@link gSignon.SecurityContext}.
+     * @returns GVariant construct of a {@link GLib.List}.
      */
     function security_context_list_build_variant(list: SecurityContext[]): GLib.Variant;
     /**
-     * Builds a GList of #SignonSecurityContext items from a GVariant of type
+     * Builds a GList of {@link gSignon.SecurityContext} items from a GVariant of type
      * "a(ss)".
      * @param variant GVariant item with a list of security context tuples.
-     * @returns #GList item.
+     * @returns {@link GLib.List} item.
      */
     function security_context_list_deconstruct_variant(variant: GLib.Variant): SecurityContext[];
+    /**
+     * @gir-type Callback
+     */
     interface AuthSessionProcessCb {
         (
             self: AuthSession,
@@ -286,15 +294,27 @@ export namespace gSignon {
             error: GLib.Error,
         ): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface AuthSessionQueryAvailableMechanismsCb {
         (self: AuthSession, mechanisms: string[], error: GLib.Error): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ClearCb {
         (auth_service: AuthService, success: boolean, error: GLib.Error): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface IdentityInfoCb {
         (self: Identity, info: IdentityInfo, error: GLib.Error): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface IdentitySessionReadyCb {
         (
             self: AuthSession,
@@ -304,30 +324,52 @@ export namespace gSignon {
             object_path: string,
         ): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface IdentityStoreCredentialsCb {
         (self: Identity, id: number, error: GLib.Error): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface IdentityVerifyCb {
         (self: Identity, valid: boolean, error: GLib.Error): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface IdentityVoidCb {
         (self: Identity, error: GLib.Error): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface QueryIdentitiesCb {
         (auth_service: AuthService, identities: Identity[], error: GLib.Error): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface QueryMechanismCb {
         (auth_service: AuthService, method: string, mechanisms: string[], error: GLib.Error): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface QueryMethodsCb {
         (auth_service: AuthService, methods: string[], error: GLib.Error): void;
     }
+    /**
+     * @gir-type Flags
+     */
     export namespace IdentityType {
         export const $gtype: GObject.GType<IdentityType>;
     }
 
     /**
-     * Identity types used in #SignonIdentityInfo.
+     * Identity types used in {@link gSignon.IdentityInfo}.
+     * @gir-type Flags
      */
     enum IdentityType {
         /**
@@ -359,6 +401,7 @@ export namespace gSignon {
 
     /**
      * Opaque struct. Use the accessor functions below.
+     * @gir-type Class
      */
     class AuthService extends GObject.Object {
         static $gtype: GObject.GType<AuthService>;
@@ -382,16 +425,19 @@ export namespace gSignon {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AuthService.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AuthService.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AuthService.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AuthService.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AuthService.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AuthService.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -408,26 +454,26 @@ export namespace gSignon {
         /**
          * Query available identities, possibly applying a filter.
          *
-         * `filter` is a #GHashTable that contains filter conditions in the form of
-         * string keys and #GVariant values. Currently the following keys are supported:
+         * `filter` is a {@link GLib.HashTable} that contains filter conditions in the form of
+         * string keys and {@link GLib.Variant} values. Currently the following keys are supported:
          *
-         * - "Owner". The value should be a #SignonSecurityContext (use
-         * signon_security_context_build_variant() to create a #GVariant).
+         * - "Owner". The value should be a {@link gSignon.SecurityContext} (use
+         * `signon_security_context_build_variant()` to create a {@link GLib.Variant}).
          * Identites whose owner doesn't match will be filtered out. This key has
          * effect only if the requesting application is a keychain application as determined
-         * by #GSignondAccessControlManager.
-         * - "Type". The value should be a #SignonIdentityType.
+         * by `GSignondAccessControlManager`.
+         * - "Type". The value should be a {@link gSignon.IdentityType}.
          * - "Caption". The value is a string, and only those identites whose caption
          * begins with the supplied value will be returned.
          *
-         * The meaning of `application_context` is explained in #SignonSecurityContext.
-         * It is used by #GSignondAccessControlManager to determine if the requesting
+         * The meaning of `application_context` is explained in {@link gSignon.SecurityContext}.
+         * It is used by `GSignondAccessControlManager` to determine if the requesting
          * application is a keychain application. If it is, then all identites will be
-         * returned (subject to "Owner" key in `filter)`. If it's not, then only the
+         * returned (subject to "Owner" key in `filter`). If it's not, then only the
          * identites which the application owns will be returned (but "Type" and "Caption"
-         * can still be set in the `filter)`.
-         * @param filter filter variant dictionary based on #GHashTable.
-         * @param application_context application security context, can be %NULL.
+         * can still be set in the `filter`).
+         * @param filter filter variant dictionary based on {@link GLib.HashTable}.
+         * @param application_context application security context, can be `null`.
          * @param cb callback to be invoked.
          */
         query_identities(
@@ -451,6 +497,13 @@ export namespace gSignon {
     namespace AuthSession {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted when the state of the {@link gSignon.AuthSession} changes. The state change
+             * is initiated by `GSignondPlugin` via `GSignondPlugin::status-changed` signal.
+             * @signal
+             * @action
+             * @run-last
+             */
             'state-changed': (arg0: number, arg1: string) => void;
             'notify::identity': (pspec: GObject.ParamSpec) => void;
         }
@@ -464,12 +517,16 @@ export namespace gSignon {
 
     /**
      * Opaque struct. Use the accessor functions below.
+     * @gir-type Class
      */
     class AuthSession extends GObject.Object {
         static $gtype: GObject.GType<AuthSession>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get identity(): Identity;
 
         /**
@@ -493,16 +550,19 @@ export namespace gSignon {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AuthSession.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AuthSession.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AuthSession.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AuthSession.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AuthSession.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AuthSession.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -517,11 +577,11 @@ export namespace gSignon {
         cancel(): void;
         /**
          * Get the current authentication method.
-         * @returns the authentication method being used, or %NULL on failure.
+         * @returns the authentication method being used, or `null` on failure.
          */
         get_method(): string;
         /**
-         * Performs one step of the authentication process. If the #SignonIdentity that
+         * Performs one step of the authentication process. If the {@link gSignon.Identity} that
          * this session belongs to contains a username and a password, they will be also
          * passed to the authentication plugin, otherwise they should be set directly in
          * `session_data`.
@@ -542,17 +602,17 @@ export namespace gSignon {
          * session.
          *
          * What specific parameters should be used can be found from authentication plugins'
-         * documentation (look for parameters that are expected in gsignond_plugin_request_initial()
-         * for the first step, and parameters that are expected in gsignond_plugin_request() for
-         * the subsequent steps). See, for example, #GSignondPasswordPlugin and #GSignondDigestPlugin.
+         * documentation (look for parameters that are expected in `gsignond_plugin_request_initial()`
+         * for the first step, and parameters that are expected in `gsignond_plugin_request()` for
+         * the subsequent steps). See, for example, `GSignondPasswordPlugin` and `GSignondDigestPlugin`.
          *
-         * If the #SignonIdentity that this session belongs to contains a username and a password,
+         * If the {@link gSignon.Identity} that this session belongs to contains a username and a password,
          * the daemon will pass them to the authentication plugin, otherwise they should be set directly in
          * `session_data`. The daemon also passes a list of identity's allowed realms to the plugin,
          * and they cannot be overriden.
          * @param session_data a dictionary of parameters.
          * @param mechanism the authentication mechanism to be used.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
         process_async(
             session_data: GLib.Variant,
@@ -565,17 +625,17 @@ export namespace gSignon {
          * session.
          *
          * What specific parameters should be used can be found from authentication plugins'
-         * documentation (look for parameters that are expected in gsignond_plugin_request_initial()
-         * for the first step, and parameters that are expected in gsignond_plugin_request() for
-         * the subsequent steps). See, for example, #GSignondPasswordPlugin and #GSignondDigestPlugin.
+         * documentation (look for parameters that are expected in `gsignond_plugin_request_initial()`
+         * for the first step, and parameters that are expected in `gsignond_plugin_request()` for
+         * the subsequent steps). See, for example, `GSignondPasswordPlugin` and `GSignondDigestPlugin`.
          *
-         * If the #SignonIdentity that this session belongs to contains a username and a password,
+         * If the {@link gSignon.Identity} that this session belongs to contains a username and a password,
          * the daemon will pass them to the authentication plugin, otherwise they should be set directly in
          * `session_data`. The daemon also passes a list of identity's allowed realms to the plugin,
          * and they cannot be overriden.
          * @param session_data a dictionary of parameters.
          * @param mechanism the authentication mechanism to be used.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a callback which will be called when the authentication reply is available.
          */
         process_async(
@@ -590,17 +650,17 @@ export namespace gSignon {
          * session.
          *
          * What specific parameters should be used can be found from authentication plugins'
-         * documentation (look for parameters that are expected in gsignond_plugin_request_initial()
-         * for the first step, and parameters that are expected in gsignond_plugin_request() for
-         * the subsequent steps). See, for example, #GSignondPasswordPlugin and #GSignondDigestPlugin.
+         * documentation (look for parameters that are expected in `gsignond_plugin_request_initial()`
+         * for the first step, and parameters that are expected in `gsignond_plugin_request()` for
+         * the subsequent steps). See, for example, `GSignondPasswordPlugin` and `GSignondDigestPlugin`.
          *
-         * If the #SignonIdentity that this session belongs to contains a username and a password,
+         * If the {@link gSignon.Identity} that this session belongs to contains a username and a password,
          * the daemon will pass them to the authentication plugin, otherwise they should be set directly in
          * `session_data`. The daemon also passes a list of identity's allowed realms to the plugin,
          * and they cannot be overriden.
          * @param session_data a dictionary of parameters.
          * @param mechanism the authentication mechanism to be used.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          * @param callback a callback which will be called when the authentication reply is available.
          */
         process_async(
@@ -610,17 +670,17 @@ export namespace gSignon {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<GLib.Variant> | void;
         /**
-         * Collect the result of the signon_auth_session_process_async() operation.
-         * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to signon_auth_session_process_async().
-         * @returns a #GVariant of type %G_VARIANT_TYPE_VARDICT containing the authentication reply. As with signon_auth_session_process_async(), specific parameters contained in the #GVariant can be found from plugins' documentation: #GSignondPlugin::response-final for the final response, and #GSignondPlugin::response for the intermediate responses. See, for example, #GSignondPasswordPlugin and #GSignondDigestPlugin.
+         * Collect the result of the `signon_auth_session_process_async()` operation.
+         * @param res A {@link Gio.AsyncResult} obtained from the {@link Gio.AsyncReadyCallback} passed to `signon_auth_session_process_async()`.
+         * @returns a {@link GLib.Variant} of type `G_VARIANT_TYPE_VARDICT` containing the authentication reply. As with `signon_auth_session_process_async()`, specific parameters contained in the {@link GLib.Variant} can be found from plugins' documentation: `GSignondPlugin::response-final` for the final response, and `GSignondPlugin::response` for the intermediate responses. See, for example, `GSignondPasswordPlugin` and `GSignondDigestPlugin`.
          */
         process_finish(res: Gio.AsyncResult): GLib.Variant;
         /**
          * Queries the mechanisms available for this authentication session. The result
          * will be the intersection between `wanted_mechanisms` and the mechanisms
-         * supported by the authentication plugin (and allowed by the #SignonIdentity that this
+         * supported by the authentication plugin (and allowed by the {@link gSignon.Identity} that this
          * session belongs to).
-         * @param wanted_mechanisms a %NULL-terminated list of mechanisms supported by the client.
+         * @param wanted_mechanisms a `null`-terminated list of mechanisms supported by the client.
          * @param cb a callback which will be called with the result.
          */
         query_available_mechanisms(wanted_mechanisms: string, cb: AuthSessionQueryAvailableMechanismsCb): void;
@@ -629,7 +689,17 @@ export namespace gSignon {
     namespace Identity {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted when the identity was removed (deleted).
+             * @signal
+             * @run-last
+             */
             removed: () => void;
+            /**
+             * Emitted when the identity was signed out.
+             * @signal
+             * @run-last
+             */
             signout: () => void;
             'notify::app-ctx': (pspec: GObject.ParamSpec) => void;
             'notify::id': (pspec: GObject.ParamSpec) => void;
@@ -644,6 +714,9 @@ export namespace gSignon {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Identity extends GObject.Object {
         static $gtype: GObject.GType<Identity>;
 
@@ -681,16 +754,19 @@ export namespace gSignon {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Identity.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Identity.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Identity.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Identity.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Identity.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Identity.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -708,27 +784,27 @@ export namespace gSignon {
         /**
          * Creates an authentication session for this identity. If the identity has been
          * retrieved from the database, the authentication method must be one of those
-         * listed in signon_identity_info_get_methods(), otherwise it can be any method
+         * listed in `signon_identity_info_get_methods()`, otherwise it can be any method
          * supported by gSSO.
          * @param method authentication method.
-         * @returns a new #SignonAuthSession.
+         * @returns a new {@link gSignon.AuthSession}.
          */
         create_session(method: string): AuthSession;
         /**
          * Obtain a remote object for a local session object. Should not be used by
          * applications.
-         * @param session the #SignonAuthSession object to get the remote object for.
+         * @param session the {@link gSignon.AuthSession} object to get the remote object for.
          * @param method method name for the session.
          * @param cb completion callback.
          */
         get_auth_session(session: AuthSession, method: string, cb: IdentitySessionReadyCb): void;
         /**
          * Get the most recent error that occurred on `identity`.
-         * @returns a #GError containing the most recent error, or %NULL on failure.
+         * @returns a {@link GLib.Error} containing the most recent error, or `null` on failure.
          */
         get_last_error(): GLib.Error;
         /**
-         * Fetches the #SignonIdentityInfo data associated with this
+         * Fetches the {@link gSignon.IdentityInfo} data associated with this
          * identity.
          * @param cb callback.
          */
@@ -787,7 +863,7 @@ export namespace gSignon {
          * Stores the data contained in `info` into the identity record in the database.
          * See above for the detailed discussion of the meaning of various fields and
          * their defaults.
-         * @param info the #SignonIdentityInfo data to store.
+         * @param info the {@link gSignon.IdentityInfo} data to store.
          * @param cb callback.
          */
         store_credentials_with_info(info: IdentityInfo, cb: IdentityStoreCredentialsCb): void;
@@ -799,19 +875,35 @@ export namespace gSignon {
         verify_user(args: GLib.Variant, cb: IdentityVerifyCb): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AuthServiceClass = typeof AuthService;
+    /**
+     * @gir-type Struct
+     */
     abstract class AuthServicePrivate {
         static $gtype: GObject.GType<AuthServicePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AuthSessionClass = typeof AuthSession;
+    /**
+     * @gir-type Struct
+     */
     abstract class AuthSessionPrivate {
         static $gtype: GObject.GType<AuthSessionPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type IdentityClass = typeof Identity;
     /**
      * Opaque struct. Use the accessor functions below.
+     * @gir-type Struct
      */
     class IdentityInfo {
         static $gtype: GObject.GType<IdentityInfo>;
@@ -825,17 +917,17 @@ export namespace gSignon {
         // Methods
 
         /**
-         * Appends a new #SignonSecurityContext item to the access control list.
+         * Appends a new {@link gSignon.SecurityContext} item to the access control list.
          * @param security_context a security context to be appended.
          */
         access_control_list_append(security_context: SecurityContext): void;
         /**
          * Get a newly-allocated copy of `info`.
-         * @returns a copy of the given #SignonIdentityInfo, or %NULL on failure.
+         * @returns a copy of the given {@link gSignon.IdentityInfo}, or `null` on failure.
          */
         copy(): IdentityInfo;
         /**
-         * Destroys the given #SignonIdentityInfo item.
+         * Destroys the given {@link gSignon.IdentityInfo} item.
          */
         free(): void;
         /**
@@ -860,7 +952,7 @@ export namespace gSignon {
         get_identity_type(): IdentityType;
         /**
          * Get a hash table of the methods and mechanisms of `info`. See
-         * signon_identity_info_set_methods().
+         * `signon_identity_info_set_methods()`.
          * @returns the table of allowed methods and mechanisms.
          */
         get_methods(): GLib.HashTable;
@@ -871,24 +963,24 @@ export namespace gSignon {
         get_owner(): SecurityContext;
         /**
          * Get an array of the allowed realms of `info`.
-         * @returns a %NULL terminated array of realms.
+         * @returns a `null` terminated array of realms.
          */
         get_realms(): string[];
         /**
          * Get whether the secret of `info` should be stored by gSSO in the secret database.
-         * @returns %TRUE if gSSO must store the secret, %FALSE otherwise.
+         * @returns `true` if gSSO must store the secret, `false` otherwise.
          */
         get_storing_secret(): boolean;
         /**
          * Get the username associated with an identity.
-         * @returns the username, or %NULL.
+         * @returns the username, or `null`.
          */
         get_username(): string;
         /**
          * Set authentication methods that are allowed to be used with this identity.
          *
          * This function will just increment reference count of hash table, so
-         * it should be constructed with #g_hash_table_new_full.
+         * it should be constructed with `g_hash_table_new_full`.
          * @param methods methods.
          */
         own_methods(methods: { [key: string]: any } | GLib.HashTable): void;
@@ -915,7 +1007,7 @@ export namespace gSignon {
         /**
          * Adds a method to the list of allowed authentication methods.
          * @param method an authentication method.
-         * @param mechanisms a %NULL-terminated list of mechanisms.
+         * @param mechanisms a `null`-terminated list of mechanisms.
          */
         set_method(method: string, mechanisms: string[]): void;
         /**
@@ -936,7 +1028,7 @@ export namespace gSignon {
         set_owner_from_values(system_context: string, application_context: string): void;
         /**
          * Specify what realms this identity can be used in.
-         * @param realms a %NULL-terminated list of realms.
+         * @param realms a `null`-terminated list of realms.
          */
         set_realms(realms: string[]): void;
         /**
@@ -953,12 +1045,16 @@ export namespace gSignon {
         set_username(username: string): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class IdentityPrivate {
         static $gtype: GObject.GType<IdentityPrivate>;
     }
 
     /**
      * Security context descriptor used for access control checks.
+     * @gir-type Struct
      */
     class SecurityContext {
         static $gtype: GObject.GType<SecurityContext>;
@@ -984,18 +1080,18 @@ export namespace gSignon {
         // Static methods
 
         /**
-         * Builds a #SignonSecurityContext item from a GVariant of type "(ss)".
-         * @param variant GVariant item with a #SignonSecurityContext construct.
+         * Builds a {@link gSignon.SecurityContext} item from a GVariant of type "(ss)".
+         * @param variant GVariant item with a {@link gSignon.SecurityContext} construct.
          */
         static deconstruct_variant(variant: GLib.Variant): SecurityContext;
         /**
-         * Builds a GVariant of type "a(ss)" from a GList of #SignonSecurityContext
+         * Builds a GVariant of type "a(ss)" from a GList of {@link gSignon.SecurityContext}
          * items.
-         * @param list #GList item of #SignonSecurityContext.
+         * @param list {@link GLib.List} item of {@link gSignon.SecurityContext}.
          */
         static list_build_variant(list: SecurityContext[]): GLib.Variant;
         /**
-         * Builds a GList of #SignonSecurityContext items from a GVariant of type
+         * Builds a GList of {@link gSignon.SecurityContext} items from a GVariant of type
          * "a(ss)".
          * @param variant GVariant item with a list of security context tuples.
          */
@@ -1004,13 +1100,13 @@ export namespace gSignon {
         // Methods
 
         /**
-         * Build a GVariant of type "(ss)" from a #SignonSecurityContext item.
-         * @returns GVariant construct of a #SignonSecurityContext.
+         * Build a GVariant of type "(ss)" from a {@link gSignon.SecurityContext} item.
+         * @returns GVariant construct of a {@link gSignon.SecurityContext}.
          */
         build_variant(): GLib.Variant;
         /**
          * Copy a security context item.
-         * @returns a copy of the #SignonSecurityContext item.
+         * @returns a copy of the {@link gSignon.SecurityContext} item.
          */
         copy(): SecurityContext;
         /**
@@ -1019,39 +1115,65 @@ export namespace gSignon {
         free(): void;
         /**
          * Get the application context part (such as script name or a web page) of
-         * the #SignonSecurityContext.
+         * the {@link gSignon.SecurityContext}.
          * @returns application context.
          */
         get_application_context(): string;
         /**
          * Get the system context part (such as SMACK label or MSSF token) of the
-         * #SignonSecurityContext.
+         * {@link gSignon.SecurityContext}.
          * @returns system context.
          */
         get_system_context(): string;
         /**
          * Sets the application context part (such as a script name or a web page) of
-         * the #SignonSecurityContext.
+         * the {@link gSignon.SecurityContext}.
          * @param application_context application security context.
          */
         set_application_context(application_context: string): void;
         /**
          * Sets the system context part (such as SMACK label or MSSF token) of the
-         * #SignonSecurityContext.
+         * {@link gSignon.SecurityContext}.
          * @param system_context system security context.
          */
         set_system_context(system_context: string): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class _AuthSession {
         static $gtype: GObject.GType<_AuthSession>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AuthSessionQueryAvailableMethodsCb = AuthSessionQueryAvailableMechanismsCb;
+    /**
+     * Callback to be passed to `signon_identity_request_credentials_update()`.
+     * @gir-type Alias
+     */
     type IdentityCredentialsUpdatedCb = IdentityVoidCb;
+    /**
+     * Callback to be passed to `signon_identity_add_reference()`.
+     * @gir-type Alias
+     */
     type IdentityReferenceAddedCb = IdentityVoidCb;
+    /**
+     * Callback to be passed to `signon_identity_remove_reference()`.
+     * @gir-type Alias
+     */
     type IdentityReferenceRemovedCb = IdentityVoidCb;
+    /**
+     * Callback to be passed to `signon_identity_remove()`.
+     * @gir-type Alias
+     */
     type IdentityRemovedCb = IdentityVoidCb;
+    /**
+     * Callback to be passed to `signon_identity_signout()`.
+     * @gir-type Alias
+     */
     type IdentitySignedOutCb = IdentityVoidCb;
     /**
      * Name of the imported GIR library

@@ -19,35 +19,40 @@ export namespace GUPnPAV {
      * GUPnPAV-1.0
      */
 
+    /**
+     * The type of event a {@link GUPnPAV.CDSLastChangeEntry} is representing
+     * @gir-type Enum
+     */
     enum CDSLastChangeEvent {
         /**
-         * Invalid #GUPnPCDSLastChangeEntry.
+         * Invalid {@link GUPnPAV.CDSLastChangeEntry}
          */
         INVALID,
         /**
-         * The #GUPnPCDSLastChangeEntry is
+         * The {@link GUPnPAV.CDSLastChangeEntry} is
          * an object added event.
          */
         OBJECT_ADDED,
         /**
-         * The #GUPnPCDSLastChangeEntry
+         * The {@link GUPnPAV.CDSLastChangeEntry}
          * is an object removal event.
          */
         OBJECT_REMOVED,
         /**
-         * The #GUPnPCDSLastChangeEntry
+         * The {@link GUPnPAV.CDSLastChangeEntry}
          * is an object modification event.
          */
         OBJECT_MODIFIED,
         /**
-         * The #GUPnPCDSLastChangeEntry is a
+         * The {@link GUPnPAV.CDSLastChangeEntry} is a
          * subtree update done event.
          */
         ST_DONE,
     }
 
     /**
-     * Possible return values of the gupnp_didl_lite_object_apply_fragments() call.
+     * Possible return values of the `gupnp_didl_lite_object_apply_fragments()` call.
+     * @gir-type Enum
      */
     enum DIDLLiteFragmentResult {
         /**
@@ -97,8 +102,9 @@ export namespace GUPnPAV {
     }
 
     /**
-     * #GError codes used for errors in the #GUPNP_PROTOCOL_ERROR domain, upon any
+     * {@link GLib.Error} codes used for errors in the #GUPNP_PROTOCOL_ERROR domain, upon any
      * protocol related errors.
+     * @gir-type Struct
      */
     class ProtocolError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -119,12 +125,16 @@ export namespace GUPnPAV {
         constructor(options: { message: string; code: number });
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SearchCriteriaOp {
         export const $gtype: GObject.GType<SearchCriteriaOp>;
     }
 
     /**
      * The possible operators in SearchCriteria strings.
+     * @gir-type Enum
      */
     enum SearchCriteriaOp {
         /**
@@ -169,6 +179,9 @@ export namespace GUPnPAV {
         EXISTS,
     }
 
+    /**
+     * @gir-type Enum
+     */
     enum SearchCriteriaParserError {
         /**
          * Parsing the search criteria
@@ -187,16 +200,21 @@ export namespace GUPnPAV {
      * DLNA requires a specific subset of ISO8601
      * @param date_time DateTime to format
      * @param date_only
-     * @returns @date_time formatted as an ISO8601 string
+     * @returns `date_time` formatted as an ISO8601 string
+     * @since 0.14.1
      */
     function format_date_time_for_didl_lite(date_time: GLib.DateTime, date_only: boolean): string;
     function protocol_error_quark(): GLib.Quark;
+    /**
+     * @gir-type Flags
+     */
     export namespace DLNAConversion {
         export const $gtype: GObject.GType<DLNAConversion>;
     }
 
     /**
      * The DLNA conversion flags for a resource.
+     * @gir-type Flags
      */
     enum DLNAConversion {
         /**
@@ -209,6 +227,9 @@ export namespace GUPnPAV {
         TRANSCODED,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DLNAFlags {
         export const $gtype: GObject.GType<DLNAFlags>;
     }
@@ -219,6 +240,7 @@ export namespace GUPnPAV {
      * Interoperability Guidelines Volume 1, October 2006.
      *
      * Updated DTCP Flags based on 2011 Guidelines, section 7.4.1.3.23.2
+     * @gir-type Flags
      */
     enum DLNAFlags {
         /**
@@ -293,12 +315,16 @@ export namespace GUPnPAV {
         LOP_CLEARTEXT_BYTESEEK,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace DLNAOperation {
         export const $gtype: GObject.GType<DLNAOperation>;
     }
 
     /**
      * The seek operations supported by a resource.
+     * @gir-type Flags
      */
     enum DLNAOperation {
         /**
@@ -315,6 +341,9 @@ export namespace GUPnPAV {
         TIMESEEK,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace OCMFlags {
         export const $gtype: GObject.GType<OCMFlags>;
     }
@@ -323,6 +352,7 @@ export namespace GUPnPAV {
      * The DLNA OCM flags supported by a DIDL-Lite Object. For details on these
      * flags please refer to section 7.3.118.4 of DLNA Networked Device
      * Interoperability Guidelines Volume 1, October 2006.
+     * @gir-type Flags
      */
     enum OCMFlags {
         /**
@@ -362,6 +392,16 @@ export namespace GUPnPAV {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * LastChange parser for the format used in ContentDirectory:3
+     *
+     * {@link GUPnPAV.CDSLastChangeParser} parses XML strings from
+     * ContentDirectory's LastChange state variable.
+     *
+     * Unfortunately this is different enough from the renderer's
+     * LastChange syntax that it warrants a different parser.
+     * @gir-type Class
+     */
     class CDSLastChangeParser extends GObject.Object {
         static $gtype: GObject.GType<CDSLastChangeParser>;
 
@@ -384,16 +424,19 @@ export namespace GUPnPAV {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CDSLastChangeParser.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CDSLastChangeParser.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CDSLastChangeParser.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CDSLastChangeParser.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CDSLastChangeParser.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CDSLastChangeParser.SignalSignatures[K]> extends [any, ...infer Q]
@@ -408,7 +451,7 @@ export namespace GUPnPAV {
          * Parse a LastChange XML document in the flavor defined by the
          * ContentDirectory:3 specification.
          * @param last_change XML string to parse
-         * @returns List of #GUPnPCDSLastChangeEntry<!-- -->s
+         * @returns List of {@link GUPnPAV.CDSLastChangeEntry}
          */
         parse(last_change: string): CDSLastChangeEntry[];
     }
@@ -460,6 +503,10 @@ export namespace GUPnPAV {
         }
     }
 
+    /**
+     * Representation of a DIDL-Lite container element.
+     * @gir-type Class
+     */
     class DIDLLiteContainer extends DIDLLiteObject {
         static $gtype: GObject.GType<DIDLLiteContainer>;
 
@@ -528,16 +575,19 @@ export namespace GUPnPAV {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DIDLLiteContainer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DIDLLiteContainer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DIDLLiteContainer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DIDLLiteContainer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DIDLLiteContainer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DIDLLiteContainer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -548,17 +598,23 @@ export namespace GUPnPAV {
 
         /**
          * Add a new create class to the `container`. includeDerived defaults to "0".
+         * If setting the includeDerived is required, see
+         * {@link GUPnPAV.DIDLLiteContainer.add_create_class_full}
          * @param create_class The createClass to add.
          */
         add_create_class(create_class: string): void;
         /**
          * Add a new create class to the `container`.
          * @param create_class The createClass to add.
-         * @param include_derived Whether object with dervied classes may be created in this container or not.
+         * @param include_derived Whether object with derived classes, such as object.item.imageItem.Photo for a create class of object.item.imageItem are allowed.
          */
         add_create_class_full(create_class: string, include_derived: boolean): void;
         /**
          * Add a new search class to the `container`.
+         *
+         * `includDerived` will default to "1". See
+         * {@link GUPnPAV.DIDLLiteContainer.add_search_class_full} if
+         * you need to set the property to "0".
          * @param search_class The searchClass to add.
          */
         add_search_class(search_class: string): void;
@@ -570,49 +626,51 @@ export namespace GUPnPAV {
         add_search_class_full(search_class: string, include_derived: boolean): void;
         /**
          * Get whether the container update ID of the `container` is set.
-         * @returns %TRUE if update ID is set, otherwise %FALSE
+         * @returns `true` if update ID is set, otherwise `false`
          */
         container_update_id_is_set(): boolean;
         /**
-         * Get the child count of the `container`.  If the child count is unknown, -1 is
-         * returned.
-         * @returns The child count of the @container, or -1 if it is unknown.
+         * Get the child count of the `container`.
+         *
+         * If the child count is unknown, -1 is returned.
+         * @returns The child count of the `container`, or -1 if it is unknown.
          */
         get_child_count(): number;
         /**
          * Get the container update ID of the `container`.
-         * @returns The container update ID of the @container.
+         * @returns The container update ID of the `container`.
          */
         get_container_update_id(): number;
         /**
          * Gets the list of create classes of the `container`.
-         * @returns The list of create classes belonging to @container, or %NULL. #g_list_free the returned list after usage and #g_free each string in it.
+         * @returns The list of create classes belonging to `container`, or `null`.
          */
         get_create_classes(): string[];
         /**
          * Gets the list of create classes of the `container`.
-         * @returns The list of create classes belonging to @container, or %NULL. #g_list_free the returned list after usage and unref each object in it.
+         * @returns The list of create classes belonging to `container`, or `null`.
          */
         get_create_classes_full(): DIDLLiteCreateClass[];
         /**
          * Gets the list of search classes of the `container`.
-         * @returns The list of search classes belonging to @container, or %NULL. #g_list_free the returned list after usage and #g_free each string in it.
+         * @returns The list of search classes belonging to `container`, or `null`. `g_list_free` the returned list after usage and `g_free` each string in it.
          */
         get_search_classes(): string[];
         /**
          * Checks whether `container` is searchable.
-         * @returns #TRUE if @container is searchable.
+         * @returns `TRUE` if `container` is searchable.
          */
         get_searchable(): boolean;
         /**
          * Get the number of bytes used by all child items of the `container`.
+         *
          * If storage used is unknown, -1 is returned.
-         * @returns The number of bytes used by all children of the @container, or -1 if it is unknown.
+         * @returns The number of bytes used by all children of the `container`, or -1 if it is unknown.
          */
         get_storage_used(): number;
         /**
          * Get the total deleted child count of the `container`.
-         * @returns The total deleted child count of the @container.
+         * @returns The total deleted child count of the `container`.
          */
         get_total_deleted_child_count(): number;
         /**
@@ -626,13 +684,13 @@ export namespace GUPnPAV {
          */
         set_container_update_id(update_id: number): void;
         /**
-         * (Un)set the searchibility of `container`.
-         * @param searchable The searchibility
+         * (Un)set the search-ability of `container`.
+         * @param searchable The search-ability
          */
         set_searchable(searchable: boolean): void;
         /**
          * Set the number of bytes used by all child items of the `container`.
-         * @param storage_used The number of bytes used by all child items of the                @container or -1 if unknown.
+         * @param storage_used The number of bytes used by all child items of the                `container` or -1 if unknown.
          */
         set_storage_used(storage_used: number): void;
         /**
@@ -641,8 +699,8 @@ export namespace GUPnPAV {
          */
         set_total_deleted_child_count(count: number): void;
         /**
-         * Get whether the total deleted child conut of the `container` is set.
-         * @returns %TRUE if property is set, otherwise %FALSE
+         * Get whether the total deleted child count of the `container` is set.
+         * @returns `true` if property is set, otherwise `false`
          */
         total_deleted_child_count_is_set(): boolean;
         /**
@@ -673,6 +731,13 @@ export namespace GUPnPAV {
         }
     }
 
+    /**
+     * Contributor attached to a DIDL-Lite object
+     *
+     * This represents a contributor (artist, author, actor,
+     * producer, director, producer and contributor) property in a DIDL-Lite object.
+     * @gir-type Class
+     */
     class DIDLLiteContributor extends GObject.Object {
         static $gtype: GObject.GType<DIDLLiteContributor>;
 
@@ -690,10 +755,12 @@ export namespace GUPnPAV {
         set role(val: string);
         /**
          * The pointer to object node in XML document.
+         * @construct-only
          */
         get xml_node(): any;
         /**
          * The pointer to object node in XML document.
+         * @construct-only
          */
         get xmlNode(): any;
 
@@ -714,16 +781,19 @@ export namespace GUPnPAV {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DIDLLiteContributor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DIDLLiteContributor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DIDLLiteContributor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DIDLLiteContributor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DIDLLiteContributor.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DIDLLiteContributor.SignalSignatures[K]> extends [any, ...infer Q]
@@ -736,12 +806,12 @@ export namespace GUPnPAV {
 
         /**
          * Get the name of the `contributor`.
-         * @returns The name of the @contributor or %NULL.
+         * @returns The name of the `contributor` or `null`.
          */
         get_name(): string;
         /**
          * Get the role of the `contributor`.
-         * @returns The role of the @contributor, or %NULL.
+         * @returns The role of the `contributor`, or `null`.
          */
         get_role(): string;
         /**
@@ -756,7 +826,7 @@ export namespace GUPnPAV {
         set_name(name: string): void;
         /**
          * Set the role of the `contributor` to `role`.
-         * @param role The role of the @contributor
+         * @param role The role of the `contributor`
          */
         set_role(role: string): void;
     }
@@ -783,6 +853,13 @@ export namespace GUPnPAV {
         }
     }
 
+    /**
+     * DIDL-Lite CreateClass
+     *
+     * {@link GUPnPAV.DIDLLiteCreateClass} respresents a DIDL-Lite create class
+     * element.
+     * @gir-type Class
+     */
     class DIDLLiteCreateClass extends GObject.Object {
         static $gtype: GObject.GType<DIDLLiteCreateClass>;
 
@@ -815,10 +892,12 @@ export namespace GUPnPAV {
         set includeDerived(val: boolean);
         /**
          * The pointer to desc node in XML document.
+         * @construct-only
          */
         get xml_node(): any;
         /**
          * The pointer to desc node in XML document.
+         * @construct-only
          */
         get xmlNode(): any;
 
@@ -839,16 +918,19 @@ export namespace GUPnPAV {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DIDLLiteCreateClass.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DIDLLiteCreateClass.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DIDLLiteCreateClass.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DIDLLiteCreateClass.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DIDLLiteCreateClass.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DIDLLiteCreateClass.SignalSignatures[K]> extends [any, ...infer Q]
@@ -861,17 +943,17 @@ export namespace GUPnPAV {
 
         /**
          * Get the content of the `create_class`.
-         * @returns The Content of the @create_class, or %NULL.
+         * @returns The Content of the `create_class`, or `null`.
          */
         get_content(): string;
         /**
          * Get the friendly name of the `create_class`.
-         * @returns The FriendlyName of the @create_class, or %NULL.
+         * @returns The FriendlyName of the `create_class`, or `null`.
          */
         get_friendly_name(): string;
         /**
          * Checks whether `create_class` can be derived.
-         * @returns #TRUE if @create_class can be derived.
+         * @returns `TRUE` if `create_class` can be derived.
          */
         get_include_derived(): boolean;
         /**
@@ -920,6 +1002,12 @@ export namespace GUPnPAV {
         }
     }
 
+    /**
+     * DIDL-Lite Descriptor
+     *
+     * {@link GUPnPAV.DIDLLiteDescriptor} respresents a DIDL-Lite descriptor (desc) element.
+     * @gir-type Class
+     */
     class DIDLLiteDescriptor extends GObject.Object {
         static $gtype: GObject.GType<DIDLLiteDescriptor>;
 
@@ -957,10 +1045,12 @@ export namespace GUPnPAV {
         set nameSpace(val: string);
         /**
          * The pointer to desc node in XML document.
+         * @construct-only
          */
         get xml_node(): any;
         /**
          * The pointer to desc node in XML document.
+         * @construct-only
          */
         get xmlNode(): any;
 
@@ -983,16 +1073,19 @@ export namespace GUPnPAV {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DIDLLiteDescriptor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DIDLLiteDescriptor.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DIDLLiteDescriptor.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DIDLLiteDescriptor.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DIDLLiteDescriptor.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DIDLLiteDescriptor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1003,22 +1096,22 @@ export namespace GUPnPAV {
 
         /**
          * Get the content of the `descriptor`.
-         * @returns The content of the @descriptor or %NULL.
+         * @returns The content of the `descriptor` or `null`.
          */
         get_content(): string;
         /**
          * Get the ID of the `descriptor`.
-         * @returns The ID string or %NULL.
+         * @returns The ID string or `null`.
          */
         get_id(): string;
         /**
          * Get the metadata type of the `descriptor`.
-         * @returns The type as string or %NULL.
+         * @returns The type as string or `null`.
          */
         get_metadata_type(): string;
         /**
          * Get the name space associated with the `descriptor`.
-         * @returns The name space or %NULL.
+         * @returns The name space or `null`.
          */
         get_name_space(): string;
         /**
@@ -1086,6 +1179,12 @@ export namespace GUPnPAV {
         }
     }
 
+    /**
+     * DIDL-Lite Item
+     *
+     * {@link GUPnPAV.DIDLLiteItem} respresents a DIDL-Lite item element.
+     * @gir-type Class
+     */
     class DIDLLiteItem extends DIDLLiteObject {
         static $gtype: GObject.GType<DIDLLiteItem>;
 
@@ -1124,16 +1223,19 @@ export namespace GUPnPAV {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DIDLLiteItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DIDLLiteItem.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DIDLLiteItem.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DIDLLiteItem.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DIDLLiteItem.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DIDLLiteItem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1142,12 +1244,19 @@ export namespace GUPnPAV {
 
         // Methods
 
+        /**
+         * @returns -1 if unset or the lifetime (in seconds) of the current item.
+         */
         get_lifetime(): number;
         /**
          * Get the ref ID of the `item`.
-         * @returns The ref ID of the @item, or %NULL.
+         * @returns The ref ID of the `item`, or `null`.
          */
         get_ref_id(): string;
+        /**
+         * Sets the lifetime in seconds of this item in a media collection.
+         * @param lifetime The lifetime (in seconds) of this item in a media collection.
+         */
         set_lifetime(lifetime: number): void;
         /**
          * Set the ref ID of the `item`.
@@ -1223,6 +1332,12 @@ export namespace GUPnPAV {
         }
     }
 
+    /**
+     * DIDL-Lite Object
+     *
+     * {@link GUPnPAV.DIDLLiteObject} respresent a DIDL-Lite object element.
+     * @gir-type Class
+     */
     abstract class DIDLLiteObject extends GObject.Object {
         static $gtype: GObject.GType<DIDLLiteObject>;
 
@@ -1245,11 +1360,13 @@ export namespace GUPnPAV {
         set albumArt(val: string);
         /**
          * The artist of this object.
+         * @deprecated since 0.5.3: Use `gupnp_didl_lite_object_get_artists` and `gupnp_didl_lite_object_add_artist` instead since unlike this property, they are capable of dealing with multiple artist nodes.
          */
         get artist(): string;
         set artist(val: string);
         /**
          * The author of this object.
+         * @deprecated since 0.5.3: Use `gupnp_didl_lite_object_get_authors` and `gupnp_didl_lite_object_add_author` instead since unlike this property, they are capable of dealing with multiple author nodes.
          */
         get author(): string;
         set author(val: string);
@@ -1266,11 +1383,13 @@ export namespace GUPnPAV {
         /**
          * Pointer to the DublinCore namespace registered with the XML document
          * containing this object.
+         * @construct-only
          */
         get dc_namespace(): any;
         /**
          * Pointer to the DublinCore namespace registered with the XML document
          * containing this object.
+         * @construct-only
          */
         get dcNamespace(): any;
         /**
@@ -1291,11 +1410,13 @@ export namespace GUPnPAV {
         /**
          * Pointer to the DLNA metadata namespace registered with the XML
          * document containing this object.
+         * @construct-only
          */
         get dlna_namespace(): any;
         /**
          * Pointer to the DLNA metadata namespace registered with the XML
          * document containing this object.
+         * @construct-only
          */
         get dlnaNamespace(): any;
         /**
@@ -1321,11 +1442,13 @@ export namespace GUPnPAV {
         /**
          * Pointer to the PV metadata namespace registered with the XML
          * document containing this object.
+         * @construct-only
          */
         get pv_namespace(): any;
         /**
          * Pointer to the PV metadata namespace registered with the XML
          * document containing this object.
+         * @construct-only
          */
         get pvNamespace(): any;
         /**
@@ -1371,11 +1494,13 @@ export namespace GUPnPAV {
         /**
          * Pointer to the UPnP namespace registered with the XML document
          * containing this object.
+         * @construct-only
          */
         get upnp_namespace(): any;
         /**
          * Pointer to the UPnP namespace registered with the XML document
          * containing this object.
+         * @construct-only
          */
         get upnpNamespace(): any;
         /**
@@ -1390,10 +1515,12 @@ export namespace GUPnPAV {
         set writeStatus(val: string);
         /**
          * The pointer to object node in XML document.
+         * @construct-only
          */
         get xml_node(): any;
         /**
          * The pointer to object node in XML document.
+         * @construct-only
          */
         get xmlNode(): any;
 
@@ -1414,16 +1541,19 @@ export namespace GUPnPAV {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DIDLLiteObject.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DIDLLiteObject.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DIDLLiteObject.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DIDLLiteObject.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DIDLLiteObject.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DIDLLiteObject.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1434,30 +1564,30 @@ export namespace GUPnPAV {
 
         /**
          * Add a new Artist node to the `object` and return the associated
-         * #GUPnPDIDLLiteContributor object.
-         * @returns A new #GUPnPDIDLLiteContributor object. Unref after usage.
+         * {@link GUPnPAV.DIDLLiteContributor} object.
+         * @returns A new {@link GUPnPAV.DIDLLiteContributor} object. Unref after usage.
          */
         add_artist(): DIDLLiteContributor;
         /**
          * Add a new author node to the `object` and return the associated
-         * #GUPnPDIDLLiteContributor object.
-         * @returns A new #GUPnPDIDLLiteContributor object. Unref after usage.
+         * {@link GUPnPAV.DIDLLiteContributor} object.
+         * @returns A new {@link GUPnPAV.DIDLLiteContributor} object. Unref after usage.
          */
         add_author(): DIDLLiteContributor;
         /**
          * Add a new creator node to the `object` and return the associated
-         * #GUPnPDIDLLiteContributor object.
-         * @returns A new #GUPnPDIDLLiteContributor object. Unref after usage.
+         * {@link GUPnPAV.DIDLLiteContributor} object.
+         * @returns A new {@link GUPnPAV.DIDLLiteContributor} object. Unref after usage.
          */
         add_creator(): DIDLLiteContributor;
         /**
          * Creates a new descriptor, attaches it to `object` and returns it.
-         * @returns A new #GUPnPDIDLLiteDescriptor object. Unref after usage.
+         * @returns A new {@link GUPnPAV.DIDLLiteDescriptor} object. Unref after usage.
          */
         add_descriptor(): DIDLLiteDescriptor;
         /**
          * Creates a new resource, attaches it to `object` and returns it.
-         * @returns A new #GUPnPDIDLLiteResource object. Unref after usage.
+         * @returns A new {@link GUPnPAV.DIDLLiteResource} object. Unref after usage.
          */
         add_resource(): DIDLLiteResource;
         /**
@@ -1465,52 +1595,52 @@ export namespace GUPnPAV {
          * `current_fragments`. For `current_size` and `new_size` -1 can be
          * passed when respectively `current_fragments` and `new_fragments` are
          * NULL terminated.
-         * @param current_fragments XML fragments of @object.
-         * @param new_fragments Substitutes for @current_fragments.
+         * @param current_fragments XML fragments of `object`.
+         * @param new_fragments Substitutes for `current_fragments`.
          * @returns Result of operation.
          */
         apply_fragments(current_fragments: string[], new_fragments: string[]): DIDLLiteFragmentResult;
         /**
          * Get the album of the `object`.
-         * @returns The album of the @object, or %NULL.
+         * @returns The album of the `object`, or `null`.
          */
         get_album(): string;
         /**
          * Get the URI to album art of the `object`.
-         * @returns The URI to album art of the @object, or %NULL.
+         * @returns The URI to album art of the `object`, or `null`.
          */
         get_album_art(): string;
         /**
          * Creates a string representation of the DIDL-Lite XML fragment related to the
          * object album.
-         * @returns A DIDL-Lite XML fragment string, or %NULL. #g_free after usage.
+         * @returns A DIDL-Lite XML fragment string, or `null`. `g_free` after usage.
          */
         get_album_xml_string(): string;
         /**
-         * Get the artist of the `object`. If role is not %NULL, it is set to the role
+         * Get the artist of the `object`. If role is not `null`, it is set to the role
          * of the artist if available.
-         * @returns The artist of the @object, or %NULL.
+         * @returns The artist of the `object`, or `null`.
          */
         get_artist(): string;
         /**
          * Get the artists of the `object`.
-         * @returns The list of artists belonging to @object, or %NULL. #g_list_free the returned list after usage and unref each object in it.
+         * @returns The list of artists belonging to `object`, or `null`. `g_list_free` the returned list after usage and unref each object in it.
          */
         get_artists(): DIDLLiteContributor[];
         /**
          * Creates a string representation of the DIDL-Lite XML fragments related to the
          * object artists.
-         * @returns A DIDL-Lite XML fragment string, or %NULL. #g_free after usage.
+         * @returns A DIDL-Lite XML fragment string, or `null`. `g_free` after usage.
          */
         get_artists_xml_string(): string;
         /**
          * Get the author of the `object`.
-         * @returns The author of the @object, or %NULL.
+         * @returns The author of the `object`, or `null`.
          */
         get_author(): string;
         /**
          * Get the authors of the `object`.
-         * @returns The list of authors belonging to @object, or %NULL. #g_list_free the returned list after usage and unref each object in it.
+         * @returns The list of authors belonging to `object`, or `null`. `g_list_free` the returned list after usage and unref each object in it.
          */
         get_authors(): DIDLLiteContributor[];
         /**
@@ -1520,32 +1650,32 @@ export namespace GUPnPAV {
          * 'GetProtocolInfo' action or 'SinkProtocolInfo' state-variable of a
          * ConnectionManager service.
          *
-         * If `lenient` is #TRUE, the first resource in the list is returned instead of
-         * %NULL if none of resources and protocols are found to be compatible.
+         * If `lenient` is `TRUE`, the first resource in the list is returned instead of
+         * `null` if none of resources and protocols are found to be compatible.
          * @param sink_protocol_info The SinkProtocolInfo string from MediaRenderer
          * @param lenient Enable lenient mode
-         * @returns The resource belonging to @object that is comaptible with any of the protocols specified in @sink_protocol_info, or %NULL. Unref after usage.
+         * @returns The resource belonging to `object` that is comaptible with any of the protocols specified in `sink_protocol_info`, or `null`. Unref after usage.
          */
         get_compat_resource(sink_protocol_info: string, lenient: boolean): DIDLLiteResource;
         /**
          * Get the creator of the `object`.
-         * @returns The creator of the @object, or %NULL.
+         * @returns The creator of the `object`, or `null`.
          */
         get_creator(): string;
         /**
          * Get the creators of the `object`.
-         * @returns The list of creators belonging to @object, or %NULL. #g_list_free the returned list after usage and unref each object in it.
+         * @returns The list of creators belonging to `object`, or `null`. `g_list_free` the returned list after usage and unref each object in it.
          */
         get_creators(): DIDLLiteContributor[];
         /**
          * Get the date of the `object`.
-         * @returns The date of the @object, or %NULL.
+         * @returns The date of the `object`, or `null`.
          */
         get_date(): string;
         /**
          * Creates a string representation of the DIDL-Lite XML fragment related to the
          * object date.
-         * @returns A DIDL-Lite XML fragment string, or %NULL. #g_free after usage.
+         * @returns A DIDL-Lite XML fragment string, or `null`. `g_free` after usage.
          */
         get_date_xml_string(): string;
         /**
@@ -1556,17 +1686,17 @@ export namespace GUPnPAV {
         get_dc_namespace(): libxml2.NsPtr;
         /**
          * Get the description of the `object`.
-         * @returns The description of the @object, or %NULL.
+         * @returns The description of the `object`, or `null`.
          */
         get_description(): string;
         /**
          * Get the descriptors of the `object`.
-         * @returns The list of descriptors belonging to @object, or %NULL. #g_list_free the returned list after usage and unref each object in it.
+         * @returns The list of descriptors belonging to `object`, or `null`. `g_list_free` the returned list after usage and unref each object in it.
          */
         get_descriptors(): DIDLLiteDescriptor[];
         /**
          * Get the 'dlna:dlnaManaged' attribute of the `object`.
-         * @returns The 'dlna:dlnaManaged' attribute of the @object.
+         * @returns The 'dlna:dlnaManaged' attribute of the `object`.
          */
         get_dlna_managed(): OCMFlags;
         /**
@@ -1577,23 +1707,23 @@ export namespace GUPnPAV {
         get_dlna_namespace(): libxml2.NsPtr;
         /**
          * Get the genre of the `object`.
-         * @returns The genre of the @object, or %NULL.
+         * @returns The genre of the `object`, or `null`.
          */
         get_genre(): string;
         /**
          * Get the ID of the `object`.
-         * @returns The ID of the @object, or %NULL.
+         * @returns The ID of the `object`, or `null`.
          */
         get_id(): string;
         /**
          * Get the ID of the parent of the `object`.
-         * @returns The ID of parent of the @object, or %NULL.
+         * @returns The ID of parent of the `object`, or `null`.
          */
         get_parent_id(): string;
         /**
          * Use this function to retreive property nodes by name.
          * @param name name of the properties
-         * @returns The list of property nodes by the name @property_name belonging to @object, or %NULL. #g_list_free the returned list after usage but do not modify the contents.
+         * @returns The list of property nodes by the name `property_name` belonging to `object`, or `null`. `g_list_free` the returned list after usage but do not modify the contents.
          */
         get_properties(name: string): libxml2.Node[];
         /**
@@ -1604,50 +1734,50 @@ export namespace GUPnPAV {
         get_pv_namespace(): libxml2.NsPtr;
         /**
          * Use this function to retreive resources from the `object`.
-         * @returns The list               of resources belonging to  @object, or %NULL. #g_list_free the               returned list after usage and unref each resource in it.
+         * @returns The list               of resources belonging to  `object`, or `null`. `g_list_free` the               returned list after usage and unref each resource in it.
          */
         get_resources(): DIDLLiteResource[];
         /**
          * Whether the `object` is restricted or not.
-         * @returns #TRUE if @object is restricted.
+         * @returns `TRUE` if `object` is restricted.
          */
         get_restricted(): boolean;
         /**
          * Get the title of the `object`.
-         * @returns The title of the @object, or %NULL.
+         * @returns The title of the `object`, or `null`.
          */
         get_title(): string;
         /**
          * Creates a string representation of the DIDL-Lite XML fragment related to the
          * object title.
-         * @returns A DIDL-Lite XML fragment string, or %NULL. #g_free after usage.
+         * @returns A DIDL-Lite XML fragment string, or `null`. `g_free` after usage.
          */
         get_title_xml_string(): string;
         /**
          * Get the original track number of the `object`.
-         * @returns The original track number of the @object, or -1.
+         * @returns The original track number of the `object`, or -1.
          */
         get_track_number(): number;
         /**
          * Creates a string representation of the DIDL-Lite XML fragment related to the
          * object track number.
-         * @returns A DIDL-Lite XML fragment string, or %NULL. #g_free after usage.
+         * @returns A DIDL-Lite XML fragment string, or `null`. `g_free` after usage.
          */
         get_track_number_xml_string(): string;
         /**
          * Get the update ID of the `object`.
-         * @returns The update ID of the @object.
+         * @returns The update ID of the `object`.
          */
         get_update_id(): number;
         /**
          * Get the UPnP class of the `object`.
-         * @returns The class of @object, or %NULL.
+         * @returns The class of `object`, or `null`.
          */
         get_upnp_class(): string;
         /**
          * Creates a string representation of the DIDL-Lite XML fragment related to the
          * object UPnP class.
-         * @returns A DIDL-Lite XML fragment string, or %NULL. #g_free after usage.
+         * @returns A DIDL-Lite XML fragment string, or `null`. `g_free` after usage.
          */
         get_upnp_class_xml_string(): string;
         /**
@@ -1657,7 +1787,7 @@ export namespace GUPnPAV {
         get_upnp_namespace(): libxml2.NsPtr;
         /**
          * Get the write status of the `object`.
-         * @returns The write status of the @object, or %NULL.
+         * @returns The write status of the `object`, or `null`.
          */
         get_write_status(): string;
         /**
@@ -1672,7 +1802,7 @@ export namespace GUPnPAV {
         get_xml_string(): string;
         /**
          * Whehter the restricted attribute exists on `object`
-         * @returns #TRUE if restricted exists, #FALSE otherwise.
+         * @returns `TRUE` if restricted exists, `FALSE` otherwise.
          */
         is_restricted_set(): boolean;
         /**
@@ -1712,7 +1842,7 @@ export namespace GUPnPAV {
         set_description(description: string): void;
         /**
          * Set the 'dlna:dlnaManaged' attribute of the `object` to `dlna_managed`.
-         * @param dlna_managed The #GUPnPOCMFlags.
+         * @param dlna_managed The {@link GUPnPAV.OCMFlags}.
          */
         set_dlna_managed(dlna_managed: OCMFlags | null): void;
         /**
@@ -1770,7 +1900,7 @@ export namespace GUPnPAV {
         unset_update_id(): void;
         /**
          * Get whether the update ID of the `object` is set.
-         * @returns %TRUE if update ID is set, otherwise %FALSE
+         * @returns `true` if update ID is set, otherwise `false`
          */
         update_id_is_set(): boolean;
     }
@@ -1778,8 +1908,26 @@ export namespace GUPnPAV {
     namespace DIDLLiteParser {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * The ::container-available signal is emitted each time a container is
+             * found in the DIDL-Lite XML being parsed.
+             * @signal
+             * @run-last
+             */
             'container-available': (arg0: DIDLLiteContainer) => void;
+            /**
+             * The ::item-available signal is emitted each time an item is found in
+             * the DIDL-Lite XML being parsed.
+             * @signal
+             * @run-last
+             */
             'item-available': (arg0: DIDLLiteItem) => void;
+            /**
+             * The ::object-available signal is emitted each time an object is
+             * found in the DIDL-Lite XML being parsed.
+             * @signal
+             * @run-last
+             */
             'object-available': (arg0: DIDLLiteObject) => void;
         }
 
@@ -1788,6 +1936,12 @@ export namespace GUPnPAV {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * A/V DIDL-Lite XML parser
+     *
+     * {@link GUPnPAV.DIDLLiteParser} parses DIDL-Lite XML strings.
+     * @gir-type Class
+     */
     class DIDLLiteParser extends GObject.Object {
         static $gtype: GObject.GType<DIDLLiteParser>;
 
@@ -1810,16 +1964,19 @@ export namespace GUPnPAV {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DIDLLiteParser.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DIDLLiteParser.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DIDLLiteParser.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DIDLLiteParser.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DIDLLiteParser.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DIDLLiteParser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1828,14 +1985,26 @@ export namespace GUPnPAV {
 
         // Virtual methods
 
+        /**
+         * @param container
+         * @virtual
+         */
         vfunc_container_available(container: DIDLLiteContainer): void;
+        /**
+         * @param item
+         * @virtual
+         */
         vfunc_item_available(item: DIDLLiteItem): void;
+        /**
+         * @param object
+         * @virtual
+         */
         vfunc_object_available(object: DIDLLiteObject): void;
 
         // Methods
 
         /**
-         * Parses DIDL-Lite XML string `didl,` emitting the ::object-available,
+         * Parses DIDL-Lite XML string `didl`, emitting the ::object-available,
          * ::item-available and ::container-available signals appropriately during the
          * process.
          * @param didl The DIDL-Lite XML string to be parsed
@@ -1913,6 +2082,12 @@ export namespace GUPnPAV {
         }
     }
 
+    /**
+     * DIDL-Lite Resource
+     *
+     * {@link GUPnPAV.DIDLLiteResource} respresent a DIDL-Lite resource (res) element.
+     * @gir-type Class
+     */
     class DIDLLiteResource extends GObject.Object {
         static $gtype: GObject.GType<DIDLLiteResource>;
 
@@ -1960,11 +2135,13 @@ export namespace GUPnPAV {
         /**
          * Pointer to the DLNA metadata namespace registered with the
          * resource object.
+         * @construct-only
          */
         get dlna_namespace(): any;
         /**
          * Pointer to the DLNA metadata namespace registered with the
          * resource object.
+         * @construct-only
          */
         get dlnaNamespace(): any;
         /**
@@ -2005,11 +2182,13 @@ export namespace GUPnPAV {
         /**
          * Pointer to the PV metadata namespace registered with the
          * resource object.
+         * @construct-only
          */
         get pv_namespace(): any;
         /**
          * Pointer to the PV metadata namespace registered with the
          * resource object.
+         * @construct-only
          */
         get pvNamespace(): any;
         /**
@@ -2078,10 +2257,12 @@ export namespace GUPnPAV {
         set width(val: number);
         /**
          * The pointer to res node in XML document.
+         * @construct-only
          */
         get xml_node(): any;
         /**
          * The pointer to res node in XML document.
+         * @construct-only
          */
         get xmlNode(): any;
 
@@ -2102,16 +2283,19 @@ export namespace GUPnPAV {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DIDLLiteResource.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DIDLLiteResource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DIDLLiteResource.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DIDLLiteResource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DIDLLiteResource.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DIDLLiteResource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2122,27 +2306,27 @@ export namespace GUPnPAV {
 
         /**
          * Get the number of audio channels in the `resource`.
-         * @returns The number of audio channels in the @resource or -1.
+         * @returns The number of audio channels in the `resource` or -1.
          */
         get_audio_channels(): number;
         /**
          * Get the bitrate (in bytes per second) of the `resource`.
-         * @returns The bitrate (in bytes per second) of the @resource or -1.
+         * @returns The bitrate (in bytes per second) of the `resource` or -1.
          */
         get_bitrate(): number;
         /**
          * Get the sample size of the `resource`.
-         * @returns The number of bits per sample of the @resource or -1.
+         * @returns The number of bits per sample of the `resource` or -1.
          */
         get_bits_per_sample(): number;
         /**
          * Get the size (in bytes) of the `resource`.
-         * @returns The size (in bytes) of the @resource or -1.
+         * @returns The size (in bytes) of the `resource` or -1.
          */
         get_cleartext_size(): number;
         /**
          * Get the color-depth of this image/video resource.
-         * @returns The color depth of the @resource or -1.
+         * @returns The color depth of the `resource` or -1.
          */
         get_color_depth(): number;
         /**
@@ -2153,27 +2337,27 @@ export namespace GUPnPAV {
         get_dlna_namespace(): libxml2.NsPtr;
         /**
          * Get the duration (in seconds) of the `resource`.
-         * @returns The duration (in seconds) of the @resource or -1.
+         * @returns The duration (in seconds) of the `resource` or -1.
          */
         get_duration(): number;
         /**
          * Get the height of this image/video resource.
-         * @returns The height of the @resource or -1.
+         * @returns The height of the `resource` or -1.
          */
         get_height(): number;
         /**
          * Get the import URI associated with the `resource`.
-         * @returns The import URI or %NULL.
+         * @returns The import URI or `null`.
          */
         get_import_uri(): string;
         /**
          * Get the protection system used by the `resource`.
-         * @returns The protection system in use by the @resource or %NULL.
+         * @returns The protection system in use by the `resource` or `null`.
          */
         get_protection(): string;
         /**
          * Get the protocol info associated with the `resource`.
-         * @returns The protocol info associated with the @resource or %NULL. The returned object must not be unrefed.
+         * @returns The protocol info associated with the `resource` or `null`. The returned object must not be unrefed.
          */
         get_protocol_info(): ProtocolInfo | null;
         /**
@@ -2184,34 +2368,40 @@ export namespace GUPnPAV {
         get_pv_namespace(): libxml2.NsPtr;
         /**
          * Get the sample frequency of the `resource`.
-         * @returns The sample frequency of the @resource or -1.
+         * @returns The sample frequency of the `resource` or -1.
          */
         get_sample_freq(): number;
         /**
          * Get the size (in bytes) of the `resource`.
-         * @returns The size (in bytes) of the @resource or -1.
+         * @returns The size (in bytes) of the `resource` or -1.
          */
         get_size(): number;
         /**
          * Get the size (in bytes) of the `resource`.
-         * @returns The size (in bytes) of the @resource or -1.
+         * @returns The size (in bytes) of the `resource` or -1.
          */
         get_size64(): number;
+        /**
+         * @returns The content of the subtitleFileType property or `null`
+         */
         get_subtitle_file_type(): string;
+        /**
+         * @returns The content of the subtitleFileUri property or `null` when not set.
+         */
         get_subtitle_file_uri(): string;
         /**
          * Get the total track count of this resource.
-         * @returns The total track count of the @resource.
+         * @returns The total track count of the `resource`.
          */
         get_track_total(): number;
         /**
          * Get the update count of this resource.
-         * @returns The update count of the @resource.
+         * @returns The update count of the `resource`.
          */
         get_update_count(): number;
         /**
          * Get the URI associated with the `resource`.
-         * @returns The of URI the @resource or %NULL.
+         * @returns The of URI the `resource` or `null`.
          */
         get_uri(): string | null;
         /**
@@ -2302,16 +2492,16 @@ export namespace GUPnPAV {
         set_size64(size: number): void;
         /**
          * Set the type of an external subtitle file, specified via
-         * pv:subtitleFileUri using gupnp_didl_lite_resource_set_subtitle_file_uri().
+         * pv:subtitleFileUri using `gupnp_didl_lite_resource_set_subtitle_file_uri()`.
          *
-         * When `type` is %NULL the value is removed.
+         * When `type` is `null` the value is removed.
          * @param type An URI to an external subtitle file
          */
         set_subtitle_file_type(type?: string | null): void;
         /**
          * Set the URI of an external subtitle file to be used with this resource.
-         * When `uri` is %NULL the value is removed.
-         * @param uri An URI to an external subtitle file or %NULL to remove.
+         * When `uri` is `null` the value is removed.
+         * @param uri An URI to an external subtitle file or `null` to remove.
          */
         set_subtitle_file_uri(uri?: string | null): void;
         /**
@@ -2337,7 +2527,7 @@ export namespace GUPnPAV {
         set_width(width: number): void;
         /**
          * Check whether the total track count property of this resource is set.
-         * @returns %TRUE if set, otherwise %FALSE.
+         * @returns `true` if set, otherwise `false`.
          */
         track_total_is_set(): boolean;
         /**
@@ -2350,7 +2540,7 @@ export namespace GUPnPAV {
         unset_update_count(): void;
         /**
          * Check whether the update count property of this resource is set.
-         * @returns %TRUE if set, otherwise %FALSE.
+         * @returns `true` if set, otherwise `false`.
          */
         update_count_is_set(): boolean;
     }
@@ -2371,6 +2561,12 @@ export namespace GUPnPAV {
         }
     }
 
+    /**
+     * DIDL-Lite fragment writer
+     *
+     * {@link GUPnPAV.DIDLLiteWriter} is a helper class for writing DIDL-Lite fragments.
+     * @gir-type Class
+     */
     class DIDLLiteWriter extends GObject.Object {
         static $gtype: GObject.GType<DIDLLiteWriter>;
 
@@ -2378,14 +2574,17 @@ export namespace GUPnPAV {
 
         /**
          * The language the DIDL-Lite fragment is in.
+         * @construct-only
          */
         get language(): string;
         /**
          * The pointer to root node in XML document.
+         * @read-only
          */
         get xml_node(): any;
         /**
          * The pointer to root node in XML document.
+         * @read-only
          */
         get xmlNode(): any;
 
@@ -2408,16 +2607,19 @@ export namespace GUPnPAV {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DIDLLiteWriter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DIDLLiteWriter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DIDLLiteWriter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DIDLLiteWriter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DIDLLiteWriter.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DIDLLiteWriter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2428,17 +2630,17 @@ export namespace GUPnPAV {
 
         /**
          * Creates a new container, attaches it to `writer` and returns it.
-         * @returns A new #GUPnPDIDLLiteContainer object. Unref after usage.
+         * @returns A new {@link GUPnPAV.DIDLLiteContainer} object. Unref after usage.
          */
         add_container(): DIDLLiteContainer;
         /**
          * Creates a new descriptor, attaches it to `object` and returns it.
-         * @returns A new #GUPnPDIDLLiteDescriptor object. Unref after usage.
+         * @returns A new {@link GUPnPAV.DIDLLiteDescriptor} object. Unref after usage.
          */
         add_descriptor(): DIDLLiteDescriptor;
         /**
          * Creates a new item, attaches it to `writer` and returns it.
-         * @returns A new #GUPnPDIDLLiteItem object. Unref after usage.
+         * @returns A new {@link GUPnPAV.DIDLLiteItem} object. Unref after usage.
          */
         add_item(): DIDLLiteItem;
         /**
@@ -2452,12 +2654,12 @@ export namespace GUPnPAV {
         filter(filter: string): void;
         /**
          * Get the language the DIDL-Lite fragment is in.
-         * @returns The language of the @writer, or %NULL.
+         * @returns The language of the `writer`, or `null`.
          */
         get_language(): string;
         /**
          * Creates a string representation of the DIDL-Lite XML document.
-         * @returns The DIDL-Lite XML string, or %NULL. #g_free after usage.
+         * @returns The DIDL-Lite XML string, or `null`. `g_free` after usage.
          */
         get_string(): string;
         /**
@@ -2485,6 +2687,12 @@ export namespace GUPnPAV {
         }
     }
 
+    /**
+     * ContentDirectory feature
+     *
+     * {@link GUPnPAV.Feature} respresent a Feature element.
+     * @gir-type Class
+     */
     class Feature extends GObject.Object {
         static $gtype: GObject.GType<Feature>;
 
@@ -2492,18 +2700,22 @@ export namespace GUPnPAV {
 
         /**
          * The name of this feature.
+         * @construct-only
          */
         get name(): string;
         /**
          * The object IDs related to this feature.
+         * @construct-only
          */
         get object_ids(): string;
         /**
          * The object IDs related to this feature.
+         * @construct-only
          */
         get objectIds(): string;
         /**
          * The version of this feature.
+         * @construct-only
          */
         get version(): string;
 
@@ -2524,16 +2736,19 @@ export namespace GUPnPAV {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Feature.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Feature.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Feature.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Feature.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Feature.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Feature.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2544,17 +2759,17 @@ export namespace GUPnPAV {
 
         /**
          * Get the name of the `feature`.
-         * @returns The name of the @feature.
+         * @returns The name of the `feature`.
          */
         get_name(): string;
         /**
          * Get the object IDs related to the `feature`.
-         * @returns The object IDs related to the @feature.
+         * @returns The object IDs related to the `feature`.
          */
         get_object_ids(): string;
         /**
          * Get the version of the `feature`.
-         * @returns The version of the @feature.
+         * @returns The version of the `feature`.
          */
         get_version(): string;
     }
@@ -2568,6 +2783,13 @@ export namespace GUPnPAV {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * FeatureList state variable XML parser
+     *
+     * {@link GUPnPAV.FeatureListParser} parses XML strings from ContentDirectory
+     * FeatureList state variable.
+     * @gir-type Class
+     */
     class FeatureListParser extends GObject.Object {
         static $gtype: GObject.GType<FeatureListParser>;
 
@@ -2590,16 +2812,19 @@ export namespace GUPnPAV {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FeatureListParser.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FeatureListParser.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FeatureListParser.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FeatureListParser.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FeatureListParser.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FeatureListParser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2610,9 +2835,9 @@ export namespace GUPnPAV {
 
         /**
          * Parses `text` and returns the list of available features.
-         * If an error occured `error` will be set.
+         * If an error occurred `error` will be set.
          * @param text The feature list string to be parsed
-         * @returns The list of features or %NULL if an error occured.
+         * @returns The list of features or `null` if an error occurred.
          */
         parse_text(text: string): Feature[] | null;
     }
@@ -2626,6 +2851,13 @@ export namespace GUPnPAV {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * A/V LastChange event XML parser
+     *
+     * {@link GUPnPAV.LastChangeParser} parses XML strings from LastChange events that are
+     * generated by AVTransport and RenderingControl services.
+     * @gir-type Class
+     */
     class LastChangeParser extends GObject.Object {
         static $gtype: GObject.GType<LastChangeParser>;
 
@@ -2648,16 +2880,19 @@ export namespace GUPnPAV {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LastChangeParser.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LastChangeParser.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LastChangeParser.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LastChangeParser.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LastChangeParser.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LastChangeParser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2684,6 +2919,12 @@ export namespace GUPnPAV {
         }
     }
 
+    /**
+     * Media collection writer
+     *
+     * {@link GUPnPAV.MediaCollection} is a helper class for writing media collection files.
+     * @gir-type Class
+     */
     class MediaCollection extends GObject.Object {
         static $gtype: GObject.GType<MediaCollection>;
 
@@ -2698,10 +2939,12 @@ export namespace GUPnPAV {
          * Block of data to parse a collection from. If data is set upon
          * construction it will override the other properties and create a
          * unmutable collection parsed from data.
+         * @construct-only
          */
         set data(val: string);
         /**
          * Whether this media collation is modifyable or not.
+         * @read-only
          */
         get mutable(): boolean;
         /**
@@ -2731,16 +2974,19 @@ export namespace GUPnPAV {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MediaCollection.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MediaCollection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MediaCollection.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MediaCollection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MediaCollection.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MediaCollection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2749,11 +2995,29 @@ export namespace GUPnPAV {
 
         // Methods
 
+        /**
+         * @returns A new {@link GUPnPAV.DIDLLiteItem} object. Unref after use.
+         */
         add_item(): DIDLLiteItem;
+        /**
+         * @returns The author of this media collection or `null` if not set.
+         */
         get_author(): string;
+        /**
+         * @returns A {@link GLib.List} containing the elemens of this collection, in proper order. Unref all items and free the list after use.
+         */
         get_items(): DIDLLiteItem[];
+        /**
+         * @returns `TRUE` if the collections is modifiable, `FALSE` otherwise.
+         */
         get_mutable(): boolean;
+        /**
+         * @returns XML string representing this media collection. `g_free()` after use. If the colleciton is not mutable, returns a copy of the original string.
+         */
         get_string(): string;
+        /**
+         * @returns The title of this media collection or `null` if not set.
+         */
         get_title(): string | null;
         /**
          * Set the author of the media collection
@@ -2761,7 +3025,7 @@ export namespace GUPnPAV {
          */
         set_author(author: string): void;
         /**
-         * Set the title of a #GUPnPMediaCollection.
+         * Set the title of a {@link GUPnPAV.MediaCollection}.
          * @param title New Title of this collection;
          */
         set_title(title: string): void;
@@ -2800,6 +3064,13 @@ export namespace GUPnPAV {
         }
     }
 
+    /**
+     * UPnP AV ProtocolInfo
+     *
+     * {@link GUPnPAV.ProtocolInfo} provides a convenient API to deal with ProtocolInfo
+     * strings used in UPnP AV specifications.
+     * @gir-type Class
+     */
     class ProtocolInfo extends GObject.Object {
         static $gtype: GObject.GType<ProtocolInfo>;
 
@@ -2899,16 +3170,19 @@ export namespace GUPnPAV {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ProtocolInfo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ProtocolInfo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ProtocolInfo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ProtocolInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ProtocolInfo.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ProtocolInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2934,33 +3208,33 @@ export namespace GUPnPAV {
         get_dlna_operation(): DLNAOperation;
         /**
          * Get the DLNA profile of this info.
-         * @returns The DLNA profile of this info or %NULL. This string should not be freed.
+         * @returns The DLNA profile of this info or `null`. This string should not be freed.
          */
         get_dlna_profile(): string | null;
         /**
          * Get the MIME-type of this info.
-         * @returns The MIME-type of this info or %NULL. This string should not be freed.
+         * @returns The MIME-type of this info or `null`. This string should not be freed.
          */
         get_mime_type(): string | null;
         /**
          * Get the network this info is associated with.
-         * @returns The network string or %NULL. This string should not be freed.
+         * @returns The network string or `null`. This string should not be freed.
          */
         get_network(): string | null;
         /**
          * Get the allowed play speeds on this info in the form of array of strings.
-         * @returns The allowed play speeds as array of strings or %NULL. This return array and it's content must not be modified or freed.
+         * @returns The allowed play speeds as array of strings or `null`. This return array and it's content must not be modified or freed.
          */
         get_play_speeds(): string[] | null;
         /**
          * Get the protocol of this info.
-         * @returns The protocol of this info or %NULL. This string should not be freed.
+         * @returns The protocol of this info or `null`. This string should not be freed.
          */
         get_protocol(): string | null;
         /**
          * Checks if the given protocolInfo string is compatible with `info`.
-         * @param info2 The second #GUPnPProtocolInfo
-         * @returns #TRUE if @protocol_info is compatible with @info, otherwise #FALSE.
+         * @param info2 The second {@link GUPnPAV.ProtocolInfo}
+         * @returns `TRUE` if `protocol_info` is compatible with `info`, otherwise `FALSE`.
          */
         is_compatible(info2: ProtocolInfo): boolean;
         /**
@@ -2995,9 +3269,10 @@ export namespace GUPnPAV {
         set_network(network: string): void;
         /**
          * Set the allowed play speeds on this info in the form of array of strings.
+         * The array must be `null`-terminated.
          * @param speeds The allowed play speeds
          */
-        set_play_speeds(speeds: string): void;
+        set_play_speeds(speeds: string[]): void;
         /**
          * Set the protocol of this info.
          * @param protocol The protocol string
@@ -3005,7 +3280,7 @@ export namespace GUPnPAV {
         set_protocol(protocol: string): void;
         /**
          * Provides the string representation of `info`.
-         * @returns String representation of @info. #g_free after usage.
+         * @returns String representation of `info`. `g_free` after usage.
          */
         to_string(): string | null;
     }
@@ -3013,10 +3288,40 @@ export namespace GUPnPAV {
     namespace SearchCriteriaParser {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * The ::begin_parens signal is emitted to mark the beginning of a
+             * parenthetical expression.
+             * @signal
+             * @run-last
+             */
             'begin-parens': () => void;
+            /**
+             * The ::conjuction signal is emitted whenever a conjuction marker
+             * &lpar;and&rpar; is parsed.
+             * @signal
+             * @run-last
+             */
             conjunction: () => void;
+            /**
+             * The ::disjuction signal is emitted whenever a disjuction marker
+             * &lpar;or&rpar is parsed.
+             * @signal
+             * @run-last
+             */
             disjunction: () => void;
+            /**
+             * The ::end_parens signal is emitted to mark the end of a parenthetical
+             * expression.
+             * @signal
+             * @run-last
+             */
             'end-parens': () => void;
+            /**
+             * The ::expression signal is emitted whenever an expression is parsed.
+             * Set `error` and return `false` if an error occurred.
+             * @signal
+             * @run-last
+             */
             expression: (arg0: string, arg1: SearchCriteriaOp, arg2: string, arg3: any | null) => boolean | void;
         }
 
@@ -3025,6 +3330,17 @@ export namespace GUPnPAV {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * A/V search criteria parser
+     *
+     * {@link GUPnPAV.SearchCriteriaParser} parses ContentDirectory search criteria
+     * strings.
+     *
+     * Note that no signals will be emitted if a wildcard is specified,
+     * and that the user is responsible for ensuring precedence of conjunction
+     * over disjunction.
+     * @gir-type Class
+     */
     class SearchCriteriaParser extends GObject.Object {
         static $gtype: GObject.GType<SearchCriteriaParser>;
 
@@ -3047,16 +3363,19 @@ export namespace GUPnPAV {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SearchCriteriaParser.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SearchCriteriaParser.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SearchCriteriaParser.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SearchCriteriaParser.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SearchCriteriaParser.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SearchCriteriaParser.SignalSignatures[K]> extends [any, ...infer Q]
@@ -3071,16 +3390,34 @@ export namespace GUPnPAV {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_begin_parens(): void;
+        /**
+         * @virtual
+         */
         vfunc_conjunction(): void;
+        /**
+         * @virtual
+         */
         vfunc_disjunction(): void;
+        /**
+         * @virtual
+         */
         vfunc_end_parens(): void;
+        /**
+         * @param property
+         * @param op
+         * @param value
+         * @virtual
+         */
         vfunc_expression(property: string, op: SearchCriteriaOp, value: string): boolean;
 
         // Methods
 
         /**
-         * Parses `text,` emitting the various defined signals on the way. If an
+         * Parses `text`, emitting the various defined signals on the way. If an
          * error occured `error` will be set.
          * @param text The search criteria string to be parsed
          * @returns TRUE on success.
@@ -3090,6 +3427,7 @@ export namespace GUPnPAV {
 
     /**
      * Opaque struct which contains information about the event.
+     * @gir-type Struct
      */
     abstract class CDSLastChangeEntry {
         static $gtype: GObject.GType<CDSLastChangeEntry>;
@@ -3097,16 +3435,16 @@ export namespace GUPnPAV {
         // Methods
 
         /**
-         * Get the class of the object in this change entry. This is only
-         * valid if gupnp_cds_last_change_entry_get_event() returns
-         * %GUPNP_CDS_LAST_CHANGE_EVENT_OBJECT_ADDED.
+         * Get the UPnP class of the object in this change entry. This is only
+         * valid if {@link GUPnPAV.CDSLastChangeEntry.get_event} returns
+         * {@link GUPnPAV.CDSLastChangeEvent.OBJECT_ADDED}.
          * @returns The upnp class of the object of this entry.
          */
         get_class(): string;
         /**
          * Get the type of the last change entry as defined in
-         * #GUPnPCDSLastChangeEvent.
-         * @returns An event from the #GUPnPCDSLastChangeEvent or %GUPNP_CDS_LAST_CHANGE_EVENT_INVALID if the entry is not valid.
+         * {@link GUPnPAV.CDSLastChangeEvent}.
+         * @returns An event from the {@link GUPnPAV.CDSLastChangeEvent} or {@link GUPnPAV.CDSLastChangeEvent.INVALID} if the entry is not valid.
          */
         get_event(): CDSLastChangeEvent;
         /**
@@ -3116,8 +3454,8 @@ export namespace GUPnPAV {
         get_object_id(): string;
         /**
          * Get the parent object id of the object in this change entry. This is only
-         * valid if gupnp_cds_last_change_entry_get_event() returns
-         * %GUPNP_CDS_LAST_CHANGE_EVENT_OBJECT_ADDED.
+         * valid if {@link GUPnPAV.CDSLastChangeEntry.get_event} returns
+         * {@link GUPnPAV.CDSLastChangeEvent.OBJECT_ADDED}.
          * @returns The id of the object's parent of this entry.
          */
         get_parent_id(): string;
@@ -3128,40 +3466,91 @@ export namespace GUPnPAV {
         get_update_id(): number;
         /**
          * Returns whether this entry is part of a subtree update.
-         * @returns %TRUE, if the entry is part of a subtree update, %FALSE otherwise.
+         * @returns `true`, if the entry is part of a subtree update, `false` otherwise.
          */
         is_subtree_update(): boolean;
         /**
-         * Increase reference count of a #GUPnPCDSLastChangeEntry.
-         * @returns The object passed in @entry.
+         * Increase reference count of a {@link GUPnPAV.CDSLastChangeEntry}.
+         * @returns The object passed in `entry`.
          */
         ref(): CDSLastChangeEntry;
         /**
-         * Decrease reference count of a #GUPnPCDSLastChangeEntry. If the reference
-         * count drops to 0, `entry` is freed.
+         * Decrease reference count of a {@link GUPnPAV.CDSLastChangeEntry}. If the
+         * reference count drops to 0, `entry` is freed.
          */
         unref(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CDSLastChangeParserClass = typeof CDSLastChangeParser;
+    /**
+     * @gir-type Alias
+     */
     type DIDLLiteContainerClass = typeof DIDLLiteContainer;
+    /**
+     * @gir-type Alias
+     */
     type DIDLLiteContributorClass = typeof DIDLLiteContributor;
+    /**
+     * @gir-type Alias
+     */
     type DIDLLiteCreateClassClass = typeof DIDLLiteCreateClass;
+    /**
+     * @gir-type Alias
+     */
     type DIDLLiteDescriptorClass = typeof DIDLLiteDescriptor;
+    /**
+     * @gir-type Alias
+     */
     type DIDLLiteItemClass = typeof DIDLLiteItem;
+    /**
+     * @gir-type Alias
+     */
     type DIDLLiteObjectClass = typeof DIDLLiteObject;
+    /**
+     * @gir-type Struct
+     */
     abstract class DIDLLiteObjectPrivate {
         static $gtype: GObject.GType<DIDLLiteObjectPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DIDLLiteParserClass = typeof DIDLLiteParser;
+    /**
+     * @gir-type Alias
+     */
     type DIDLLiteResourceClass = typeof DIDLLiteResource;
+    /**
+     * @gir-type Alias
+     */
     type DIDLLiteWriterClass = typeof DIDLLiteWriter;
+    /**
+     * @gir-type Alias
+     */
     type FeatureClass = typeof Feature;
+    /**
+     * @gir-type Alias
+     */
     type FeatureListParserClass = typeof FeatureListParser;
+    /**
+     * @gir-type Alias
+     */
     type LastChangeParserClass = typeof LastChangeParser;
+    /**
+     * @gir-type Alias
+     */
     type MediaCollectionClass = typeof MediaCollection;
+    /**
+     * @gir-type Alias
+     */
     type ProtocolInfoClass = typeof ProtocolInfo;
+    /**
+     * @gir-type Alias
+     */
     type SearchCriteriaParserClass = typeof SearchCriteriaParser;
     /**
      * Name of the imported GIR library

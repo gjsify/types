@@ -20,6 +20,9 @@ export namespace CMenu {
      * CMenu-3.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     enum TreeItemType {
         INVALID,
         DIRECTORY,
@@ -30,10 +33,16 @@ export namespace CMenu {
     }
 
     const DESKTOPAPPINFO_FLATPAK_SUFFIX: string;
+    /**
+     * @gir-type Flags
+     */
     export namespace TreeFlags {
         export const $gtype: GObject.GType<TreeFlags>;
     }
 
+    /**
+     * @gir-type Flags
+     */
     enum TreeFlags {
         NONE,
         INCLUDE_EXCLUDED,
@@ -53,6 +62,9 @@ export namespace CMenu {
         interface ConstructorProps extends GObject.Object.ConstructorProps, Gio.AppInfo.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class DesktopAppInfo extends GObject.Object implements Gio.AppInfo {
         static $gtype: GObject.GType<DesktopAppInfo>;
 
@@ -79,16 +91,19 @@ export namespace CMenu {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DesktopAppInfo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DesktopAppInfo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DesktopAppInfo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DesktopAppInfo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DesktopAppInfo.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DesktopAppInfo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -103,7 +118,7 @@ export namespace CMenu {
          *
          * This corresponds to the "Name" key within the keyfile group for the
          * action.
-         * @param action_name the name of the action as from   gmenu_desktopappinfo_list_actions()
+         * @param action_name the name of the action as from   `gmenu_desktopappinfo_list_actions()`
          * @returns the locale-specific action name
          */
         get_action_name(action_name: string): string;
@@ -112,7 +127,7 @@ export namespace CMenu {
          *
          * The `key` is looked up in the "Desktop Entry" group.
          * @param key the key to look up
-         * @returns the boolean value, or %FALSE if the key     is not found
+         * @returns the boolean value, or `false` if the key     is not found
          */
         get_boolean(key: string): boolean;
         /**
@@ -122,15 +137,15 @@ export namespace CMenu {
         get_categories(): string;
         /**
          * When `info` was created from a known filename, return it.  In some
-         * situations such as the #GMenuDesktopAppInfo returned from
-         * gmenu_desktopappinfo_new_from_keyfile(), this function will return %NULL.
-         * @returns The full path to the file for @info,     or %NULL if not known.
+         * situations such as the {@link CMenu.DesktopAppInfo} returned from
+         * `gmenu_desktopappinfo_new_from_keyfile()`, this function will return `null`.
+         * @returns The full path to the file for `info`,     or `null` if not known.
          */
         get_filename(): string;
         /**
          * This function looks up the "X-Flatpak" key of the [Desktop Entry] group,
          * which contains the Flatpak App ID
-         * @returns the flatpak app id or %NULL
+         * @returns the flatpak app id or `null`
          */
         get_flatpak_app_id(): string | null;
         /**
@@ -138,11 +153,14 @@ export namespace CMenu {
          * @returns The value of the GenericName key
          */
         get_generic_name(): string;
+        /**
+         * @returns `true` if `info` specifies a flatpak app, `false` otherwise
+         */
         get_is_flatpak(): boolean;
         /**
          * A desktop file is hidden if the Hidden key in it is
          * set to True.
-         * @returns %TRUE if hidden, %FALSE otherwise.
+         * @returns `true` if hidden, `false` otherwise.
          */
         get_is_hidden(): boolean;
         /**
@@ -156,13 +174,13 @@ export namespace CMenu {
          *
          * The `key` is looked up in the "Desktop Entry" group.
          * @param key the key to look up
-         * @returns a newly allocated string, or %NULL if the key     is not found
+         * @returns a newly allocated string, or `null` if the key     is not found
          */
         get_locale_string(key: string): string | null;
         /**
          * Gets the value of the NoDisplay key, which helps determine if the
          * application info should be shown in menus. See
-         * #G_KEY_FILE_DESKTOP_KEY_NO_DISPLAY and g_app_info_should_show().
+         * #G_KEY_FILE_DESKTOP_KEY_NO_DISPLAY and `g_app_info_should_show()`.
          * @returns The value of the NoDisplay key
          */
         get_nodisplay(): boolean;
@@ -171,15 +189,15 @@ export namespace CMenu {
          * applications for a specific name of the desktop, based on the
          * `OnlyShowIn` and `NotShowIn` keys.
          *
-         * `desktop_env` should typically be given as %NULL, in which case the
+         * `desktop_env` should typically be given as `null`, in which case the
          * `XDG_CURRENT_DESKTOP` environment variable is consulted.  If you want
-         * to override the default mechanism then you may specify `desktop_env,`
+         * to override the default mechanism then you may specify `desktop_env`,
          * but this is not recommended.
          *
-         * Note that g_app_info_should_show() for `info` will include this check (with
-         * %NULL for `desktop_env)` as well as additional checks.
+         * Note that `g_app_info_should_show()` for `info` will include this check (with
+         * `null` for `desktop_env`) as well as additional checks.
          * @param desktop_env a string specifying a desktop name
-         * @returns %TRUE if the @info should be shown in @desktop_env according to the `OnlyShowIn` and `NotShowIn` keys, %FALSE otherwise.
+         * @returns `true` if the `info` should be shown in `desktop_env` according to the `OnlyShowIn` and `NotShowIn` keys, `false` otherwise.
          */
         get_show_in(desktop_env?: string | null): boolean;
         /**
@@ -189,7 +207,7 @@ export namespace CMenu {
          *
          * Note: The returned value contain the suffix ":flatpak" if `info` specifies a flatpak app
          * and if the desktop file has a StartupWMClass
-         * @returns the startup WM class, or %NULL if none is set in the desktop file.
+         * @returns the startup WM class, or `null` if none is set in the desktop file.
          */
         get_startup_wm_class(): string;
         /**
@@ -197,73 +215,45 @@ export namespace CMenu {
          *
          * The `key` is looked up in the "Desktop Entry" group.
          * @param key the key to look up
-         * @returns a newly allocated string, or %NULL if the key     is not found
+         * @returns a newly allocated string, or `null` if the key     is not found
          */
         get_string(key: string): string;
         /**
          * Returns whether `key` exists in the "Desktop Entry" group
          * of the keyfile backing `info`.
          * @param key the key to look up
-         * @returns %TRUE if the @key exists
+         * @returns `true` if the `key` exists
          */
         has_key(key: string): boolean;
         /**
          * Activates the named application action.
          *
          * You may only call this function on action names that were
-         * returned from g_desktop_app_info_list_actions().
+         * returned from `g_desktop_app_info_list_actions()`.
          *
          * Note that if the main entry of the desktop file indicates that the
          * application supports startup notification, and `launch_context` is
-         * non-%NULL, then startup notification will be used when activating the
+         * non-`null`, then startup notification will be used when activating the
          * action (and as such, invocation of the action on the receiving side
          * must signal the end of startup notification when it is completed).
          * This is the expected behaviour of applications declaring additional
          * actions, as per the desktop file specification.
          *
-         * As with g_app_info_launch() there is no way to detect failures that
+         * As with `g_app_info_launch()` there is no way to detect failures that
          * occur while using this function.
-         * @param action_name the name of the action as from   g_desktop_app_info_list_actions()
-         * @param launch_context a #GAppLaunchContext
+         * @param action_name the name of the action as from   `g_desktop_app_info_list_actions()`
+         * @param launch_context a {@link Gio.AppLaunchContext}
          */
         launch_action(action_name: string, launch_context?: Gio.AppLaunchContext | null): void;
-        /**
-         * This function performs the equivalent of g_app_info_launch_uris(),
-         * but is intended primarily for operating system components that
-         * launch applications.  Ordinary applications should use
-         * g_app_info_launch_uris().
-         *
-         * If the application is launched via GSpawn, then `spawn_flags,` `user_setup`
-         * and `user_setup_data` are used for the call to g_spawn_async().
-         * Additionally, `pid_callback` (with `pid_callback_data)` will be called to
-         * inform about the PID of the created process. See g_spawn_async_with_pipes()
-         * for information on certain parameter conditions that can enable an
-         * optimized posix_spawn() codepath to be used.
-         *
-         * If application launching occurs via some other mechanism (eg: D-Bus
-         * activation) then `spawn_flags,` `user_setup,` `user_setup_data,`
-         * `pid_callback` and `pid_callback_data` are ignored.
-         * @param uris List of URIs
-         * @param launch_context a #GAppLaunchContext
-         * @param spawn_flags #GSpawnFlags, used for each process
-         * @returns %TRUE on successful launch, %FALSE otherwise.
-         */
-        launch_uris_as_manager(
-            uris: string[],
-            launch_context: Gio.AppLaunchContext | null,
-            spawn_flags: GLib.SpawnFlags | null,
-        ): boolean;
         /**
          * Returns the list of "additional application actions" supported on the
          * desktop file, as per the desktop file specification.
          *
          * As per the specification, this is the list of actions that are
          * explicitly listed in the "Actions" key of the [Desktop Entry] group.
-         * @returns a list of strings, always non-%NULL
+         * @returns a list of strings, always non-`null`
          */
         list_actions(): string[];
-
-        // Inherited methods
         /**
          * Adds a content type to the application information to indicate the
          * application is capable of opening files with the given content type.
@@ -272,69 +262,69 @@ export namespace CMenu {
          */
         add_supports_type(content_type: string): boolean;
         /**
-         * Obtains the information whether the [iface`Gio`.AppInfo] can be deleted.
-         * See [method`Gio`.AppInfo.delete].
-         * @returns `TRUE` if @appinfo can be deleted
+         * Obtains the information whether the {@link Gio.AppInfo} can be deleted.
+         * See {@link Gio.AppInfo.delete}.
+         * @returns `TRUE` if `appinfo` can be deleted
          */
         can_delete(): boolean;
         /**
          * Checks if a supported content type can be removed from an application.
-         * @returns `TRUE` if it is possible to remove supported content types from a   given @appinfo, `FALSE` if not.
+         * @returns `TRUE` if it is possible to remove supported content types from a   given `appinfo`, `FALSE` if not.
          */
         can_remove_supports_type(): boolean;
         /**
-         * Tries to delete a [iface`Gio`.AppInfo].
+         * Tries to delete a {@link Gio.AppInfo}.
          *
          * On some platforms, there may be a difference between user-defined
-         * [iface`Gio`.AppInfo]s which can be deleted, and system-wide ones which cannot.
-         * See [method`Gio`.AppInfo.can_delete].
-         * @returns `TRUE` if @appinfo has been deleted
+         * {@link Gio.AppInfo}s which can be deleted, and system-wide ones which cannot.
+         * See {@link Gio.AppInfo.can_delete}.
+         * @returns `TRUE` if `appinfo` has been deleted
          */
         ['delete'](): boolean;
         /**
-         * Creates a duplicate of a [iface`Gio`.AppInfo].
-         * @returns a duplicate of @appinfo.
+         * Creates a duplicate of a {@link Gio.AppInfo}.
+         * @returns a duplicate of `appinfo`.
          */
         dup(): Gio.AppInfo;
         /**
-         * Checks if two [iface`Gio`.AppInfo]s are equal.
+         * Checks if two {@link Gio.AppInfo}s are equal.
          *
          * Note that the check *may not* compare each individual field, and only does
          * an identity check. In case detecting changes in the contents is needed,
          * program code must additionally compare relevant fields.
-         * @param appinfo2 the second [iface@Gio.AppInfo].
-         * @returns `TRUE` if @appinfo1 is equal to @appinfo2. `FALSE` otherwise.
+         * @param appinfo2 the second {@link Gio.AppInfo}.
+         * @returns `TRUE` if `appinfo1` is equal to `appinfo2`. `FALSE` otherwise.
          */
         equal(appinfo2: Gio.AppInfo): boolean;
         /**
          * Gets the commandline with which the application will be
          * started.
-         * @returns a string containing the @appinfo’s   commandline, or `NULL` if this information is not available
+         * @returns a string containing the `appinfo`’s   commandline, or `NULL` if this information is not available
          */
         get_commandline(): string | null;
         /**
          * Gets a human-readable description of an installed application.
-         * @returns a string containing a description of the application @appinfo, or `NULL` if none.
+         * @returns a string containing a description of the application `appinfo`, or `NULL` if none.
          */
         get_description(): string | null;
         /**
          * Gets the display name of the application. The display name is often more
          * descriptive to the user than the name itself.
-         * @returns the display name of the application for @appinfo, or the name if no display name is available.
+         * @returns the display name of the application for `appinfo`, or the name if no display name is available.
          */
         get_display_name(): string;
         /**
          * Gets the executable’s name for the installed application.
          *
          * This is intended to be used for debugging or labelling what program is going
-         * to be run. To launch the executable, use [method`Gio`.AppInfo.launch] and related
+         * to be run. To launch the executable, use {@link Gio.AppInfo.launch} and related
          * functions, rather than spawning the return value from this function.
-         * @returns a string containing the @appinfo’s application binaries name
+         * @returns a string containing the `appinfo`’s application binaries name
          */
         get_executable(): string;
         /**
          * Gets the icon for the application.
-         * @returns the default [iface@Gio.Icon] for   @appinfo or `NULL` if there is no default icon.
+         * @returns the default {@link Gio.Icon} for   `appinfo` or `NULL` if there is no default icon.
          */
         get_icon(): Gio.Icon | null;
         /**
@@ -349,7 +339,7 @@ export namespace CMenu {
         get_id(): string | null;
         /**
          * Gets the installed name of the application.
-         * @returns the name of the application for @appinfo.
+         * @returns the name of the application for `appinfo`.
          */
         get_name(): string;
         /**
@@ -358,11 +348,11 @@ export namespace CMenu {
          * will return `NULL`.
          *
          * This function does not take in consideration associations added with
-         * [method`Gio`.AppInfo.add_supports_type], but only those exported directly by
+         * {@link Gio.AppInfo.add_supports_type}, but only those exported directly by
          * the application.
          * @returns a list of content types.
          */
-        get_supported_types(): string[];
+        get_supported_types(): string[] | null;
         /**
          * Launches the application. Passes `files` to the launched application
          * as arguments, using the optional `context` to get information
@@ -378,11 +368,11 @@ export namespace CMenu {
          * Some URIs can be changed when passed through a GFile (for instance
          * unsupported URIs with strange formats like mailto:), so if you have
          * a textual URI you want to pass in as argument, consider using
-         * [method`Gio`.AppInfo.launch_uris] instead.
+         * {@link Gio.AppInfo.launch_uris} instead.
          *
          * The launched application inherits the environment of the launching
-         * process, but it can be modified with [method`Gio`.AppLaunchContext.setenv]
-         * and [method`Gio`.AppLaunchContext.unsetenv].
+         * process, but it can be modified with {@link Gio.AppLaunchContext.setenv}
+         * and {@link Gio.AppLaunchContext.unsetenv}.
          *
          * On UNIX, this function sets the `GIO_LAUNCHED_DESKTOP_FILE`
          * environment variable with the path of the launched desktop file and
@@ -391,7 +381,7 @@ export namespace CMenu {
          * should it be inherited by further processes. The `DISPLAY`,
          * `XDG_ACTIVATION_TOKEN` and `DESKTOP_STARTUP_ID` environment
          * variables are also set, based on information provided in `context`.
-         * @param files a list of [iface@Gio.File] objects
+         * @param files a list of {@link Gio.File} objects
          * @param context the launch context
          * @returns `TRUE` on successful launch, `FALSE` otherwise.
          */
@@ -415,15 +405,15 @@ export namespace CMenu {
          */
         launch_uris(uris?: string[] | null, context?: Gio.AppLaunchContext | null): boolean;
         /**
-         * Async version of [method`Gio`.AppInfo.launch_uris].
+         * Async version of {@link Gio.AppInfo.launch_uris}.
          *
          * The `callback` is invoked immediately after the application launch, but it
          * waits for activation in case of D-Bus–activated applications and also provides
          * extended error information for sandboxed applications, see notes for
-         * [func`Gio`.AppInfo.launch_default_for_uri_async].
+         * {@link Gio.AppInfo.launch_default_for_uri_async}.
          * @param uris a list of URIs to launch.
          * @param context the launch context
-         * @param cancellable a [class@Gio.Cancellable]
+         * @param cancellable a {@link Gio.Cancellable}
          */
         launch_uris_async(
             uris?: string[] | null,
@@ -431,16 +421,16 @@ export namespace CMenu {
             cancellable?: Gio.Cancellable | null,
         ): globalThis.Promise<boolean>;
         /**
-         * Async version of [method`Gio`.AppInfo.launch_uris].
+         * Async version of {@link Gio.AppInfo.launch_uris}.
          *
          * The `callback` is invoked immediately after the application launch, but it
          * waits for activation in case of D-Bus–activated applications and also provides
          * extended error information for sandboxed applications, see notes for
-         * [func`Gio`.AppInfo.launch_default_for_uri_async].
+         * {@link Gio.AppInfo.launch_default_for_uri_async}.
          * @param uris a list of URIs to launch.
          * @param context the launch context
-         * @param cancellable a [class@Gio.Cancellable]
-         * @param callback a [type@Gio.AsyncReadyCallback] to call   when the request is done
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to call   when the request is done
          */
         launch_uris_async(
             uris: string[] | null,
@@ -449,16 +439,16 @@ export namespace CMenu {
             callback: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Async version of [method`Gio`.AppInfo.launch_uris].
+         * Async version of {@link Gio.AppInfo.launch_uris}.
          *
          * The `callback` is invoked immediately after the application launch, but it
          * waits for activation in case of D-Bus–activated applications and also provides
          * extended error information for sandboxed applications, see notes for
-         * [func`Gio`.AppInfo.launch_default_for_uri_async].
+         * {@link Gio.AppInfo.launch_default_for_uri_async}.
          * @param uris a list of URIs to launch.
          * @param context the launch context
-         * @param cancellable a [class@Gio.Cancellable]
-         * @param callback a [type@Gio.AsyncReadyCallback] to call   when the request is done
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to call   when the request is done
          */
         launch_uris_async(
             uris?: string[] | null,
@@ -467,7 +457,7 @@ export namespace CMenu {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Finishes a [method`Gio`.AppInfo.launch_uris_async] operation.
+         * Finishes a {@link Gio.AppInfo.launch_uris_async} operation.
          * @param result the async result
          * @returns `TRUE` on successful launch, `FALSE` otherwise.
          */
@@ -493,7 +483,7 @@ export namespace CMenu {
         /**
          * Sets the application as the last used application for a given type. This
          * will make the application appear as first in the list returned by
-         * [func`Gio`.AppInfo.get_recommended_for_type], regardless of the default
+         * {@link Gio.AppInfo.get_recommended_for_type}, regardless of the default
          * application for that content type.
          * @param content_type the content type.
          * @returns `TRUE` on success, `FALSE` on error.
@@ -502,79 +492,90 @@ export namespace CMenu {
         /**
          * Checks if the application info should be shown in menus that
          * list available applications.
-         * @returns `TRUE` if the @appinfo should be shown, `FALSE` otherwise.
+         * @returns `TRUE` if the `appinfo` should be shown, `FALSE` otherwise.
          */
         should_show(): boolean;
         /**
          * Checks if the application accepts files as arguments.
-         * @returns `TRUE` if the @appinfo supports files.
+         * @returns `TRUE` if the `appinfo` supports files.
          */
         supports_files(): boolean;
         /**
          * Checks if the application supports reading files and directories from URIs.
-         * @returns `TRUE` if the @appinfo supports URIs.
+         * @returns `TRUE` if the `appinfo` supports URIs.
          */
         supports_uris(): boolean;
         /**
          * Adds a content type to the application information to indicate the
          * application is capable of opening files with the given content type.
          * @param content_type a string.
+         * @virtual
          */
         vfunc_add_supports_type(content_type: string): boolean;
         /**
-         * Obtains the information whether the [iface`Gio`.AppInfo] can be deleted.
-         * See [method`Gio`.AppInfo.delete].
+         * Obtains the information whether the {@link Gio.AppInfo} can be deleted.
+         * See {@link Gio.AppInfo.delete}.
+         * @virtual
          */
         vfunc_can_delete(): boolean;
         /**
          * Checks if a supported content type can be removed from an application.
+         * @virtual
          */
         vfunc_can_remove_supports_type(): boolean;
         /**
-         * Tries to delete a [iface`Gio`.AppInfo].
+         * Tries to delete a {@link Gio.AppInfo}.
          *
          * On some platforms, there may be a difference between user-defined
-         * [iface`Gio`.AppInfo]s which can be deleted, and system-wide ones which cannot.
-         * See [method`Gio`.AppInfo.can_delete].
+         * {@link Gio.AppInfo}s which can be deleted, and system-wide ones which cannot.
+         * See {@link Gio.AppInfo.can_delete}.
+         * @virtual
          */
         vfunc_do_delete(): boolean;
         /**
-         * Creates a duplicate of a [iface`Gio`.AppInfo].
+         * Creates a duplicate of a {@link Gio.AppInfo}.
+         * @virtual
          */
         vfunc_dup(): Gio.AppInfo;
         /**
-         * Checks if two [iface`Gio`.AppInfo]s are equal.
+         * Checks if two {@link Gio.AppInfo}s are equal.
          *
          * Note that the check *may not* compare each individual field, and only does
          * an identity check. In case detecting changes in the contents is needed,
          * program code must additionally compare relevant fields.
-         * @param appinfo2 the second [iface@Gio.AppInfo].
+         * @param appinfo2 the second {@link Gio.AppInfo}.
+         * @virtual
          */
         vfunc_equal(appinfo2: Gio.AppInfo): boolean;
         /**
          * Gets the commandline with which the application will be
          * started.
+         * @virtual
          */
         vfunc_get_commandline(): string | null;
         /**
          * Gets a human-readable description of an installed application.
+         * @virtual
          */
         vfunc_get_description(): string | null;
         /**
          * Gets the display name of the application. The display name is often more
          * descriptive to the user than the name itself.
+         * @virtual
          */
         vfunc_get_display_name(): string;
         /**
          * Gets the executable’s name for the installed application.
          *
          * This is intended to be used for debugging or labelling what program is going
-         * to be run. To launch the executable, use [method`Gio`.AppInfo.launch] and related
+         * to be run. To launch the executable, use {@link Gio.AppInfo.launch} and related
          * functions, rather than spawning the return value from this function.
+         * @virtual
          */
         vfunc_get_executable(): string;
         /**
          * Gets the icon for the application.
+         * @virtual
          */
         vfunc_get_icon(): Gio.Icon | null;
         /**
@@ -584,10 +585,12 @@ export namespace CMenu {
          *
          * Note that the returned ID may be `NULL`, depending on how the `appinfo` has
          * been constructed.
+         * @virtual
          */
         vfunc_get_id(): string | null;
         /**
          * Gets the installed name of the application.
+         * @virtual
          */
         vfunc_get_name(): string;
         /**
@@ -596,10 +599,11 @@ export namespace CMenu {
          * will return `NULL`.
          *
          * This function does not take in consideration associations added with
-         * [method`Gio`.AppInfo.add_supports_type], but only those exported directly by
+         * {@link Gio.AppInfo.add_supports_type}, but only those exported directly by
          * the application.
+         * @virtual
          */
-        vfunc_get_supported_types(): string[];
+        vfunc_get_supported_types(): string[] | null;
         /**
          * Launches the application. Passes `files` to the launched application
          * as arguments, using the optional `context` to get information
@@ -615,11 +619,11 @@ export namespace CMenu {
          * Some URIs can be changed when passed through a GFile (for instance
          * unsupported URIs with strange formats like mailto:), so if you have
          * a textual URI you want to pass in as argument, consider using
-         * [method`Gio`.AppInfo.launch_uris] instead.
+         * {@link Gio.AppInfo.launch_uris} instead.
          *
          * The launched application inherits the environment of the launching
-         * process, but it can be modified with [method`Gio`.AppLaunchContext.setenv]
-         * and [method`Gio`.AppLaunchContext.unsetenv].
+         * process, but it can be modified with {@link Gio.AppLaunchContext.setenv}
+         * and {@link Gio.AppLaunchContext.unsetenv}.
          *
          * On UNIX, this function sets the `GIO_LAUNCHED_DESKTOP_FILE`
          * environment variable with the path of the launched desktop file and
@@ -628,8 +632,9 @@ export namespace CMenu {
          * should it be inherited by further processes. The `DISPLAY`,
          * `XDG_ACTIVATION_TOKEN` and `DESKTOP_STARTUP_ID` environment
          * variables are also set, based on information provided in `context`.
-         * @param files a list of [iface@Gio.File] objects
+         * @param files a list of {@link Gio.File} objects
          * @param context the launch context
+         * @virtual
          */
         vfunc_launch(files?: Gio.File[] | null, context?: Gio.AppLaunchContext | null): boolean;
         /**
@@ -647,19 +652,21 @@ export namespace CMenu {
          * no way to detect this.
          * @param uris a list of URIs to launch.
          * @param context the launch context
+         * @virtual
          */
         vfunc_launch_uris(uris?: string[] | null, context?: Gio.AppLaunchContext | null): boolean;
         /**
-         * Async version of [method`Gio`.AppInfo.launch_uris].
+         * Async version of {@link Gio.AppInfo.launch_uris}.
          *
          * The `callback` is invoked immediately after the application launch, but it
          * waits for activation in case of D-Bus–activated applications and also provides
          * extended error information for sandboxed applications, see notes for
-         * [func`Gio`.AppInfo.launch_default_for_uri_async].
+         * {@link Gio.AppInfo.launch_default_for_uri_async}.
          * @param uris a list of URIs to launch.
          * @param context the launch context
-         * @param cancellable a [class@Gio.Cancellable]
-         * @param callback a [type@Gio.AsyncReadyCallback] to call   when the request is done
+         * @param cancellable a {@link Gio.Cancellable}
+         * @param callback a {@link Gio.AsyncReadyCallback} to call   when the request is done
+         * @virtual
          */
         vfunc_launch_uris_async(
             uris?: string[] | null,
@@ -668,44 +675,52 @@ export namespace CMenu {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
         /**
-         * Finishes a [method`Gio`.AppInfo.launch_uris_async] operation.
+         * Finishes a {@link Gio.AppInfo.launch_uris_async} operation.
          * @param result the async result
+         * @virtual
          */
         vfunc_launch_uris_finish(result: Gio.AsyncResult): boolean;
         /**
          * Removes a supported type from an application, if possible.
          * @param content_type a string.
+         * @virtual
          */
         vfunc_remove_supports_type(content_type: string): boolean;
         /**
          * Sets the application as the default handler for the given file extension.
          * @param extension a string containing the file extension (without   the dot).
+         * @virtual
          */
         vfunc_set_as_default_for_extension(extension: string): boolean;
         /**
          * Sets the application as the default handler for a given type.
          * @param content_type the content type.
+         * @virtual
          */
         vfunc_set_as_default_for_type(content_type: string): boolean;
         /**
          * Sets the application as the last used application for a given type. This
          * will make the application appear as first in the list returned by
-         * [func`Gio`.AppInfo.get_recommended_for_type], regardless of the default
+         * {@link Gio.AppInfo.get_recommended_for_type}, regardless of the default
          * application for that content type.
          * @param content_type the content type.
+         * @virtual
          */
         vfunc_set_as_last_used_for_type(content_type: string): boolean;
         /**
          * Checks if the application info should be shown in menus that
          * list available applications.
+         * @virtual
          */
         vfunc_should_show(): boolean;
         /**
          * Checks if the application accepts files as arguments.
+         * @virtual
          */
         vfunc_supports_files(): boolean;
         /**
          * Checks if the application supports reading files and directories from URIs.
+         * @virtual
          */
         vfunc_supports_uris(): boolean;
         /**
@@ -721,32 +736,32 @@ export namespace CMenu {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -755,39 +770,39 @@ export namespace CMenu {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -798,13 +813,16 @@ export namespace CMenu {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -812,7 +830,7 @@ export namespace CMenu {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -820,9 +838,9 @@ export namespace CMenu {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -842,9 +860,9 @@ export namespace CMenu {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -857,34 +875,34 @@ export namespace CMenu {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -917,22 +935,22 @@ export namespace CMenu {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -941,8 +959,8 @@ export namespace CMenu {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -959,10 +977,10 @@ export namespace CMenu {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -977,13 +995,13 @@ export namespace CMenu {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1014,21 +1032,21 @@ export namespace CMenu {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1038,33 +1056,34 @@ export namespace CMenu {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1073,6 +1092,7 @@ export namespace CMenu {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1081,12 +1101,14 @@ export namespace CMenu {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1095,20 +1117,22 @@ export namespace CMenu {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1120,6 +1144,7 @@ export namespace CMenu {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -1152,6 +1177,10 @@ export namespace CMenu {
     namespace Tree {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
             changed: () => void;
             'notify::flags': (pspec: GObject.ParamSpec) => void;
             'notify::menu-basename': (pspec: GObject.ParamSpec) => void;
@@ -1169,6 +1198,9 @@ export namespace CMenu {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class Tree extends GObject.Object {
         static $gtype: GObject.GType<Tree>;
 
@@ -1176,28 +1208,33 @@ export namespace CMenu {
 
         /**
          * Flags controlling the content of the menu.
+         * @construct-only
          */
         get flags(): TreeFlags;
         /**
          * The name of the menu file; must be a basename or a relative path. The file
          * will be looked up in $XDG_CONFIG_DIRS/menus/. See the Desktop Menu
          * specification.
+         * @construct-only
          */
         get menu_basename(): string;
         /**
          * The name of the menu file; must be a basename or a relative path. The file
          * will be looked up in $XDG_CONFIG_DIRS/menus/. See the Desktop Menu
          * specification.
+         * @construct-only
          */
         get menuBasename(): string;
         /**
          * The full path of the menu file. If set, GMenuTree:menu-basename will get
          * ignored.
+         * @construct-only
          */
         get menu_path(): string;
         /**
          * The full path of the menu file. If set, GMenuTree:menu-basename will get
          * ignored.
+         * @construct-only
          */
         get menuPath(): string;
 
@@ -1222,16 +1259,19 @@ export namespace CMenu {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Tree.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Tree.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Tree.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Tree.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Tree.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Tree.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1240,27 +1280,36 @@ export namespace CMenu {
 
         // Static methods
 
+        /**
+         * @param item a `GMenuTreeItem`
+         */
         static item_ref(item?: any | null): any | null;
+        /**
+         * @param item
+         */
         static item_unref(item?: any | null): void;
 
         // Methods
 
         /**
          * This function is only available if the tree has been loaded via
-         * gmenu_tree_load_sync() or a variant thereof.
+         * `gmenu_tree_load_sync()` or a variant thereof.
          * @returns The absolute and canonicalized path to the loaded menu file
          */
         get_canonical_menu_path(): string;
+        /**
+         * @param path
+         */
         get_directory_from_path(path: string): TreeDirectory;
         /**
          * Look up the entry corresponding to the given "desktop file id".
          * @param id a desktop file ID
-         * @returns A newly referenced #GMenuTreeEntry, or %NULL if none
+         * @returns A newly referenced {@link CMenu.TreeEntry}, or `null` if none
          */
         get_entry_by_id(id: string): TreeEntry;
         /**
          * Get the root directory; you must have loaded the tree first (at
-         * least once) via gmenu_tree_load_sync() or a variant thereof.
+         * least once) via `gmenu_tree_load_sync()` or a variant thereof.
          * @returns Root of the tree
          */
         get_root_directory(): TreeDirectory;
@@ -1268,30 +1317,51 @@ export namespace CMenu {
          * Synchronously load the menu contents.  This function
          * performs a significant amount of blocking I/O if the
          * tree has not been loaded yet.
-         * @returns %TRUE on success, %FALSE on error
+         * @returns `true` on success, `false` on error
          */
         load_sync(): boolean;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DesktopAppInfoClass = typeof DesktopAppInfo;
+    /**
+     * @gir-type Struct
+     */
     abstract class TreeAlias {
         static $gtype: GObject.GType<TreeAlias>;
 
         // Methods
 
+        /**
+         * @returns The aliased directory entry
+         */
         get_aliased_directory(): TreeDirectory;
+        /**
+         * @returns The aliased entry
+         */
         get_aliased_entry(): TreeEntry;
         get_aliased_item_type(): TreeItemType;
         get_directory(): TreeDirectory;
+        /**
+         * @returns The parent directory, or `null` if none
+         */
         get_parent(): TreeDirectory;
         /**
-         * Grab the tree associated with a #GMenuTreeAlias.
-         * @returns The #GMenuTree
+         * Grab the tree associated with a {@link CMenu.TreeAlias}.
+         * @returns The {@link CMenu.Tree}
          */
         get_tree(): Tree;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TreeClass = typeof Tree;
+    /**
+     * @gir-type Struct
+     */
     abstract class TreeDirectory {
         static $gtype: GObject.GType<TreeDirectory>;
 
@@ -1302,27 +1372,42 @@ export namespace CMenu {
         get_generic_name(): string;
         /**
          * Gets the icon for the directory.
-         * @returns The #GIcon for this directory
+         * @returns The {@link Gio.Icon} for this directory
          */
         get_icon(): Gio.Icon;
         get_is_nodisplay(): boolean;
         get_menu_id(): string;
         get_name(): string;
+        /**
+         * @returns The parent directory, or `null` if none
+         */
         get_parent(): TreeDirectory;
         /**
-         * Grab the tree associated with a #GMenuTreeItem.
-         * @returns The #GMenuTree
+         * Grab the tree associated with a `GMenuTreeItem`.
+         * @returns The {@link CMenu.Tree}
          */
         get_tree(): Tree;
+        /**
+         * @returns A new iterator over the directory contents
+         */
         iter(): TreeIter;
+        /**
+         * @param entry
+         */
         make_path(entry: TreeEntry): string;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class TreeEntry {
         static $gtype: GObject.GType<TreeEntry>;
 
         // Methods
 
+        /**
+         * @returns The {@link CMenu.DesktopAppInfo} for this entry
+         */
         get_app_info(): DesktopAppInfo;
         get_desktop_file_id(): string;
         get_desktop_file_path(): string;
@@ -1330,80 +1415,98 @@ export namespace CMenu {
         get_is_flatpak(): boolean;
         get_is_nodisplay_recurse(): boolean;
         get_is_unallocated(): boolean;
+        /**
+         * @returns The parent directory, or `null` if none
+         */
         get_parent(): TreeDirectory;
         /**
-         * Grab the tree associated with a #GMenuTreeEntry.
-         * @returns The #GMenuTree
+         * Grab the tree associated with a {@link CMenu.TreeEntry}.
+         * @returns The {@link CMenu.Tree}
          */
         get_tree(): Tree;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class TreeHeader {
         static $gtype: GObject.GType<TreeHeader>;
 
         // Methods
 
         get_directory(): TreeDirectory;
+        /**
+         * @returns The parent directory, or `null` if none
+         */
         get_parent(): TreeDirectory;
         /**
-         * Grab the tree associated with a #GMenuTreeHeader.
-         * @returns The #GMenuTree
+         * Grab the tree associated with a {@link CMenu.TreeHeader}.
+         * @returns The {@link CMenu.Tree}
          */
         get_tree(): Tree;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class TreeIter {
         static $gtype: GObject.GType<TreeIter>;
 
         // Methods
 
         /**
-         * This method may only be called if gmenu_tree_iter_next()
+         * This method may only be called if `gmenu_tree_iter_next()`
          * returned GMENU_TREE_ITEM_ALIAS.
          * @returns An alias
          */
         get_alias(): TreeAlias;
         /**
-         * This method may only be called if gmenu_tree_iter_next()
+         * This method may only be called if `gmenu_tree_iter_next()`
          * returned GMENU_TREE_ITEM_DIRECTORY.
          * @returns A directory
          */
         get_directory(): TreeDirectory;
         /**
-         * This method may only be called if gmenu_tree_iter_next()
+         * This method may only be called if `gmenu_tree_iter_next()`
          * returned GMENU_TREE_ITEM_ENTRY.
          * @returns An entry
          */
         get_entry(): TreeEntry;
         /**
-         * This method may only be called if gmenu_tree_iter_next()
+         * This method may only be called if `gmenu_tree_iter_next()`
          * returned GMENU_TREE_ITEM_HEADER.
          * @returns A header
          */
         get_header(): TreeHeader;
         /**
-         * This method may only be called if gmenu_tree_iter_next()
+         * This method may only be called if `gmenu_tree_iter_next()`
          * returned #GMENU_TREE_ITEM_SEPARATOR.
          * @returns A separator
          */
         get_separator(): TreeSeparator;
         /**
          * Change the iterator to the next item, and return its type.  If
-         * there are no more items, %GMENU_TREE_ITEM_INVALID is returned.
+         * there are no more items, {@link CMenu.TreeItemType.INVALID} is returned.
          * @returns The type of the next item that can be retrived from the iterator
          */
         next(): TreeItemType;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class TreeSeparator {
         static $gtype: GObject.GType<TreeSeparator>;
 
         // Methods
 
+        /**
+         * @returns The parent directory, or `null` if none
+         */
         get_parent(): TreeDirectory;
         /**
-         * Grab the tree associated with a #GMenuTreeSeparator.
-         * @returns The #GMenuTree
+         * Grab the tree associated with a {@link CMenu.TreeSeparator}.
+         * @returns The {@link CMenu.Tree}
          */
         get_tree(): Tree;
     }

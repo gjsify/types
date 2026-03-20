@@ -1,0 +1,9 @@
+{
+    "entryPoints": ["./mtk-18.d.ts"],
+    "readme": "./README.md",
+    "name": "Mtk-18",
+    "tsconfig": "./tsconfig.json",
+    "skipErrorChecking": true,
+    "highlightLanguages": ["typescript", "javascript", "c", "cpp", "xml", "bash", "json", "css"]
+}
+

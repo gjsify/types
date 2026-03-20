@@ -21,23 +21,29 @@ export namespace Rest {
      * Rest-0.7
      */
 
+    /**
+     * @gir-type Enum
+     */
     enum MemoryUse {
         /**
          * the memory block can be assumed to always exist for the
-         * lifetime of the parameter, #RestParam will use it directly.
+         * lifetime of the parameter, {@link Rest.Param} will use it directly.
          */
         STATIC,
         /**
-         * #RestParam will take ownership of the memory block, and
-         * g_free() it when it isn't used.
+         * {@link Rest.Param} will take ownership of the memory block, and
+         * `g_free()` it when it isn't used.
          */
         TAKE,
         /**
-         * #RestParam will make a copy of the memory block.
+         * {@link Rest.Param} will make a copy of the memory block.
          */
         COPY,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace OAuthSignatureMethod {
         export const $gtype: GObject.GType<OAuthSignatureMethod>;
     }
@@ -46,6 +52,7 @@ export namespace Rest {
      * The signature method to use when signing method calls.  `PLAINTEXT` is only
      * recommended for testing, in general `HMAC_SHA1` is well supported and more
      * secure.
+     * @gir-type Enum
      */
     enum OAuthSignatureMethod {
         /**
@@ -59,7 +66,8 @@ export namespace Rest {
     }
 
     /**
-     * Error domain used when returning errors from #RestProxyCall.
+     * Error domain used when returning errors from {@link Rest.ProxyCall}.
+     * @gir-type Struct
      */
     class ProxyCallError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -81,7 +89,8 @@ export namespace Rest {
     }
 
     /**
-     * Error domain used when returning errors from a #RestProxy.
+     * Error domain used when returning errors from a {@link Rest.Proxy}.
+     * @gir-type Struct
      */
     class ProxyError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -250,18 +259,34 @@ export namespace Rest {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @param key
+     * @param message
+     */
     function hmac_sha1(key: string, message: string): string;
     function proxy_call_error_quark(): GLib.Quark;
     function proxy_error_quark(): GLib.Quark;
+    /**
+     * @gir-type Callback
+     */
     interface OAuthProxyAuthCallback<A = GObject.Object> {
         (proxy: OAuthProxy, error: GLib.Error, weak_object: A, userdata?: any | null): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ProxyCallAsyncCallback<A = GObject.Object> {
         (call: ProxyCall, error: GLib.Error, weak_object: A, userdata?: any | null): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ProxyCallContinuousCallback<A = GObject.Object> {
         (call: ProxyCall, buf: string, len: number, error: GLib.Error, weak_object: A, userdata?: any | null): void;
     }
+    /**
+     * @gir-type Callback
+     */
     interface ProxyCallUploadCallback<A = GObject.Object> {
         (
             call: ProxyCall,
@@ -301,7 +326,8 @@ export namespace Rest {
     }
 
     /**
-     * #OAuth2Proxy has no publicly available members.
+     * {@link Rest.OAuth2Proxy} has no publicly available members.
+     * @gir-type Class
      */
     class OAuth2Proxy extends Proxy {
         static $gtype: GObject.GType<OAuth2Proxy>;
@@ -312,9 +338,21 @@ export namespace Rest {
         set access_token(val: string);
         get accessToken(): string;
         set accessToken(val: string);
+        /**
+         * @construct-only
+         */
         get auth_endpoint(): string;
+        /**
+         * @construct-only
+         */
         get authEndpoint(): string;
+        /**
+         * @construct-only
+         */
         get client_id(): string;
+        /**
+         * @construct-only
+         */
         get clientId(): string;
 
         /**
@@ -352,16 +390,19 @@ export namespace Rest {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof OAuth2Proxy.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OAuth2Proxy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof OAuth2Proxy.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OAuth2Proxy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof OAuth2Proxy.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<OAuth2Proxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -381,7 +422,7 @@ export namespace Rest {
 
         /**
          * Builds a url at which the user can log in to the specified OAuth2-based web
-         * service.  See the documentation for oauth2_proxy_build_login_url_full() for
+         * service.  See the documentation for `oauth2_proxy_build_login_url_full()` for
          * detailed information.
          * @param redirect_uri the uri to redirect to after the user authenticates
          * @returns a newly allocated uri string
@@ -392,7 +433,7 @@ export namespace Rest {
          * service.  In general, this url should be displayed in an embedded browser
          * widget, and you should then intercept the browser's redirect to `redirect_uri`
          * and extract the access token from the url fragment. After the access token
-         * has been retrieved, call oauth2_proxy_set_access_token().  This must be done
+         * has been retrieved, call `oauth2_proxy_set_access_token()`.  This must be done
          * before making any API calls to the service.
          *
          * See the oauth2 spec for more details about the "user-agent" authentication
@@ -410,7 +451,7 @@ export namespace Rest {
         ): string;
         /**
          * Get the current request or access token.
-         * @returns the token, or %NULL if there is no token yet.  This string is owned by #OAuth2Proxy and should not be freed.
+         * @returns the token, or `null` if there is no token yet.  This string is owned by {@link Rest.OAuth2Proxy} and should not be freed.
          */
         get_access_token(): string;
         /**
@@ -432,7 +473,8 @@ export namespace Rest {
     }
 
     /**
-     * #OAuth2ProxyCall has no publicly available members.
+     * {@link Rest.OAuth2ProxyCall} has no publicly available members.
+     * @gir-type Class
      */
     class OAuth2ProxyCall extends ProxyCall {
         static $gtype: GObject.GType<OAuth2ProxyCall>;
@@ -454,16 +496,19 @@ export namespace Rest {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof OAuth2ProxyCall.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OAuth2ProxyCall.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof OAuth2ProxyCall.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OAuth2ProxyCall.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof OAuth2ProxyCall.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<OAuth2ProxyCall.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -508,16 +553,29 @@ export namespace Rest {
     }
 
     /**
-     * #OAuthProxy has no publicly available members.
+     * {@link Rest.OAuthProxy} has no publicly available members.
+     * @gir-type Class
      */
     class OAuthProxy extends Proxy {
         static $gtype: GObject.GType<OAuthProxy>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get consumer_key(): string;
+        /**
+         * @construct-only
+         */
         get consumerKey(): string;
+        /**
+         * @construct-only
+         */
         get consumer_secret(): string;
+        /**
+         * @construct-only
+         */
         get consumerSecret(): string;
         get signature_host(): string;
         set signature_host(val: string);
@@ -570,16 +628,19 @@ export namespace Rest {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof OAuthProxy.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OAuthProxy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof OAuthProxy.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OAuthProxy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof OAuthProxy.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<OAuthProxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -595,10 +656,10 @@ export namespace Rest {
          * `verifier` is only used if you are using OAuth 1.0a.  This is either the
          * "oauth_verifier" parameter that was passed to your callback URI, or a string
          * that the user enters in some other manner (for example in a popup dialog) if
-         * "oob" was passed to oauth_proxy_request_token().  For OAuth 1.0, pass %NULL.
+         * "oob" was passed to `oauth_proxy_request_token()`.  For OAuth 1.0, pass `null`.
          * @param _function the function name to invoke
          * @param verifier the verifier
-         * @returns %TRUE on success, or %FALSE on failure. On failure @error is set.
+         * @returns `true` on success, or `false` on failure. On failure `error` is set.
          */
         access_token(_function: string, verifier: string): boolean;
         /**
@@ -608,15 +669,15 @@ export namespace Rest {
          * `verifier` is only used if you are using OAuth 1.0a.  This is either the
          * "oauth_verifier" parameter that was passed to your callback URI, or a string
          * that the user enters in some other manner (for example in a popup dialog) if
-         * "oob" was passed to oauth_proxy_request_token().  For OAuth 1.0, pass %NULL.
+         * "oob" was passed to `oauth_proxy_request_token()`.  For OAuth 1.0, pass `null`.
          *
          * This method will return once the method has been queued, `callback` will be
          * invoked when it has completed.
          * @param _function the function name to invoke
          * @param verifier the verifier
-         * @param callback a #OAuthProxyAuthCallback to invoke on completion
-         * @param weak_object #GObject to weakly reference and tie the lifecycle of the method call too
-         * @returns %TRUE if the method was successfully queued, or %FALSE on failure. On failure @error is set.
+         * @param callback a {@link Rest.OAuthProxyAuthCallback} to invoke on completion
+         * @param weak_object {@link GObject.Object} to weakly reference and tie the lifecycle of the method call too
+         * @returns `true` if the method was successfully queued, or `false` on failure. On failure `error` is set.
          */
         access_token_async(
             _function: string,
@@ -629,7 +690,7 @@ export namespace Rest {
          * the token and token secret in the proxy.
          *
          * `proxy` must not require binding, the function will be invoked using
-         * rest_proxy_call_set_function().
+         * `rest_proxy_call_set_function()`.
          * @param _function the function to invoke on the proxy
          */
         auth_step(_function: string): boolean;
@@ -638,32 +699,32 @@ export namespace Rest {
          * the token and token secret in the proxy.
          *
          * `proxy` must not require binding, the function will be invoked using
-         * rest_proxy_call_set_function().
+         * `rest_proxy_call_set_function()`.
          * @param _function the function to invoke on the proxy
          * @param callback the callback to invoke when authorisation is complete
-         * @param weak_object the #GObject to weakly reference and tie the lifecycle too
+         * @param weak_object the {@link GObject.Object} to weakly reference and tie the lifecycle too
          */
         auth_step_async(_function: string, callback: OAuthProxyAuthCallback, weak_object: GObject.Object): boolean;
         /**
          * Get the signature hostname used when creating a signature base string.
-         * @returns the signature hostname, or %NULL if there is none set.  This string is owned by #OAuthProxy and should not be freed.
+         * @returns the signature hostname, or `null` if there is none set.  This string is owned by {@link Rest.OAuthProxy} and should not be freed.
          */
         get_signature_host(): string;
         /**
          * Get the current request or access token.
-         * @returns the token, or %NULL if there is no token yet.  This string is owned by #OAuthProxy and should not be freed.
+         * @returns the token, or `null` if there is no token yet.  This string is owned by {@link Rest.OAuthProxy} and should not be freed.
          */
         get_token(): string;
         /**
          * Get the current request or access token secret.
-         * @returns the token secret, or %NULL if there is no token secret yet.  This string is owned by #OAuthProxy and should not be freed.
+         * @returns the token secret, or `null` if there is no token secret yet.  This string is owned by {@link Rest.OAuthProxy} and should not be freed.
          */
         get_token_secret(): string;
         /**
          * Determines if the server supports OAuth 1.0a with this proxy. This is only
-         * valid after oauth_proxy_request_token() or oauth_proxy_request_token_async()
+         * valid after `oauth_proxy_request_token()` or `oauth_proxy_request_token_async()`
          * has been called.
-         * @returns %TRUE if the server supports OAuth 1.0a, %FALSE otherwise.
+         * @returns `true` if the server supports OAuth 1.0a, `false` otherwise.
          */
         is_oauth10a(): boolean;
         /**
@@ -685,7 +746,7 @@ export namespace Rest {
          * `callback` should either be your callback URI, or "oob" (out-of-band).
          * @param _function the function name to invoke
          * @param callback_uri the callback URI
-         * @returns %TRUE on success, or %FALSE on failure. On failure @error is set.
+         * @returns `true` on success, or `false` on failure. On failure `error` is set.
          */
         request_token(_function: string, callback_uri: string): boolean;
         /**
@@ -700,9 +761,9 @@ export namespace Rest {
          * invoked when it has completed.
          * @param _function the function name to invoke
          * @param callback_uri the callback URI
-         * @param callback a #OAuthProxyAuthCallback to invoke on completion
-         * @param weak_object #GObject to weakly reference and tie the lifecycle of the method call too
-         * @returns %TRUE if the method was successfully queued, or %FALSE on failure. On failure @error is set.
+         * @param callback a {@link Rest.OAuthProxyAuthCallback} to invoke on completion
+         * @param weak_object {@link GObject.Object} to weakly reference and tie the lifecycle of the method call too
+         * @returns `true` if the method was successfully queued, or `false` on failure. On failure `error` is set.
          */
         request_token_async(
             _function: string,
@@ -739,7 +800,8 @@ export namespace Rest {
     }
 
     /**
-     * #OAuthProxyCall has no publicly available members.
+     * {@link Rest.OAuthProxyCall} has no publicly available members.
+     * @gir-type Class
      */
     class OAuthProxyCall extends ProxyCall {
         static $gtype: GObject.GType<OAuthProxyCall>;
@@ -761,16 +823,19 @@ export namespace Rest {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof OAuthProxyCall.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OAuthProxyCall.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof OAuthProxyCall.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, OAuthProxyCall.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof OAuthProxyCall.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<OAuthProxyCall.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -786,6 +851,26 @@ export namespace Rest {
     namespace Proxy {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Emitted when the proxy requires authentication. If
+             * credentials are available, set the 'username' and 'password'
+             * properties on `proxy` and return `true` from the callback.
+             * This will cause the signal emission to stop, and librest will
+             * try to connect with these credentials
+             * If these credentials fail, the signal will be
+             * emitted again, with `retrying` set to `true`, which will
+             * continue until `false` is returned from the callback.
+             *
+             * If you call `rest_proxy_auth_pause()` on `auth` before
+             * returning, then you can the authentication credentials on
+             * the {@link Rest.Proxy} object asynchronously. You have to make sure
+             * that `auth` does not get destroyed with `g_object_ref()`.
+             * You can then unpause the authentication with
+             * `rest_proxy_auth_unpause()` when everything is ready for it
+             * to continue.
+             * @signal
+             * @run-last
+             */
             authenticate: (arg0: ProxyAuth, arg1: boolean) => boolean | void;
             'notify::binding-required': (pspec: GObject.ParamSpec) => void;
             'notify::disable-cookies': (pspec: GObject.ParamSpec) => void;
@@ -818,7 +903,8 @@ export namespace Rest {
     }
 
     /**
-     * #RestProxy has no publicly available members.
+     * {@link Rest.Proxy} has no publicly available members.
+     * @gir-type Class
      */
     class Proxy extends GObject.Object {
         static $gtype: GObject.GType<Proxy>;
@@ -829,7 +915,13 @@ export namespace Rest {
         set binding_required(val: boolean);
         get bindingRequired(): boolean;
         set bindingRequired(val: boolean);
+        /**
+         * @construct-only
+         */
         get disable_cookies(): boolean;
+        /**
+         * @construct-only
+         */
         get disableCookies(): boolean;
         get password(): string;
         set password(val: string);
@@ -878,16 +970,19 @@ export namespace Rest {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Proxy.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Proxy.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Proxy.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Proxy.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Proxy.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Proxy.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -896,17 +991,24 @@ export namespace Rest {
 
         // Virtual methods
 
+        /**
+         * class handler for the {@link Rest.Proxy.SignalSignatures.authenticate | Rest.Proxy::authenticate} signal
+         * @param auth
+         * @param retrying
+         * @virtual
+         */
         vfunc_authenticate(auth: ProxyAuth, retrying: boolean): boolean;
         /**
-         * Create a new #RestProxyCall for making a call to the web service.  This call
+         * Create a new {@link Rest.ProxyCall} for making a call to the web service.  This call
          * is one-shot and should not be re-used for making multiple calls.
+         * @virtual
          */
         vfunc_new_call(): ProxyCall;
 
         // Methods
 
         /**
-         * This method can be used to add specific features to the #SoupSession objects
+         * This method can be used to add specific features to the {@link Soup.Session} objects
          * that are used by librest for its HTTP connections. For example, if one needs
          * extensive control over the cookies which are used for the REST HTTP
          * communication, it's possible to get full access to libsoup cookie API by
@@ -920,16 +1022,19 @@ export namespace Rest {
          *   SoupSessionFeature *cookie_jar = SOUP_SESSION_FEATURE(soup_cookie_jar_new ());
          *   rest_proxy_add_soup_feature(proxy, cookie_jar);
          *   </programlisting>
-         * @param feature A #SoupSessionFeature
+         * @param feature A {@link Soup.SessionFeature}
          */
         add_soup_feature(feature: Soup.SessionFeature): void;
         get_user_agent(): string;
         /**
-         * Create a new #RestProxyCall for making a call to the web service.  This call
+         * Create a new {@link Rest.ProxyCall} for making a call to the web service.  This call
          * is one-shot and should not be re-used for making multiple calls.
-         * @returns a new #RestProxyCall.
+         * @returns a new {@link Rest.ProxyCall}.
          */
         new_call(): ProxyCall;
+        /**
+         * @param user_agent
+         */
         set_user_agent(user_agent: string): void;
     }
 
@@ -943,7 +1048,8 @@ export namespace Rest {
     }
 
     /**
-     * #RestProxyAuth has no publicly available members.
+     * {@link Rest.ProxyAuth} has no publicly available members.
+     * @gir-type Class
      */
     class ProxyAuth extends GObject.Object {
         static $gtype: GObject.GType<ProxyAuth>;
@@ -965,16 +1071,19 @@ export namespace Rest {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ProxyAuth.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ProxyAuth.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ProxyAuth.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ProxyAuth.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ProxyAuth.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ProxyAuth.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -985,8 +1094,8 @@ export namespace Rest {
 
         /**
          * Cancel the authentication process
-         * by cancelling the associated #SoupMessage.
-         * It results in returning #GError REST_PROXY_ERROR_CANCELLED
+         * by cancelling the associated {@link Soup.Message}.
+         * It results in returning {@link GLib.Error} REST_PROXY_ERROR_CANCELLED
          * to the function that requested the authentication.
          */
         cancel(): void;
@@ -998,7 +1107,7 @@ export namespace Rest {
          */
         pause(): void;
         /**
-         * Unpauses a paused #RestProxyAuth instance.
+         * Unpauses a paused {@link Rest.ProxyAuth} instance.
          */
         unpause(): void;
     }
@@ -1017,13 +1126,17 @@ export namespace Rest {
     }
 
     /**
-     * #RestProxyCall has no publicly available members.
+     * {@link Rest.ProxyCall} has no publicly available members.
+     * @gir-type Class
      */
     class ProxyCall extends GObject.Object {
         static $gtype: GObject.GType<ProxyCall>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get proxy(): Proxy;
 
         /**
@@ -1043,16 +1156,19 @@ export namespace Rest {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ProxyCall.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ProxyCall.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ProxyCall.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ProxyCall.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ProxyCall.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ProxyCall.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1061,10 +1177,16 @@ export namespace Rest {
 
         // Virtual methods
 
+        /**
+         * Virtual function called before making the request, This allows the
+         * call to be modified, for example to add a signature.
+         * @virtual
+         */
         vfunc_prepare(): boolean;
         /**
          * Invoker for a virtual method to serialize the parameters for this
-         * #RestProxyCall.
+         * {@link Rest.ProxyCall}.
+         * @virtual
          */
         vfunc_serialize_params(): [boolean, string, string, number];
 
@@ -1085,10 +1207,13 @@ export namespace Rest {
          * @param value The value of the parameter
          */
         add_param(name: string, value: string): void;
+        /**
+         * @param param
+         */
         add_param_full(param: Param): void;
         /**
          * Get the REST function that is going to be called on the proxy.
-         * @returns The REST "function" for the current call, see also rest_proxy_call_set_function(). This string is owned by the #RestProxyCall and should not be freed.
+         * @returns The REST "function" for the current call, see also `rest_proxy_call_set_function()`. This string is owned by the {@link Rest.ProxyCall} and should not be freed.
          */
         get_function(): string;
         /**
@@ -1096,15 +1221,15 @@ export namespace Rest {
          */
         get_method(): string;
         /**
-         * Get the parameters as a #RestParams of parameter names to values.  The
+         * Get the parameters as a {@link Rest.Params} of parameter names to values.  The
          * returned value is owned by the RestProxyCall instance and should not
          * be freed by the caller.
-         * @returns A #RestParams.
+         * @returns A {@link Rest.Params}.
          */
         get_params(): Params;
         /**
          * Get the return payload.
-         * @returns A pointer to the payload. This is owned by #RestProxyCall and should not be freed.
+         * @returns A pointer to the payload. This is owned by {@link Rest.ProxyCall} and should not be freed.
          */
         get_payload(): string;
         /**
@@ -1112,6 +1237,9 @@ export namespace Rest {
          * @returns the length of the payload in bytes.
          */
         get_payload_length(): number;
+        /**
+         * @returns pointer to a hash table of headers. This hash table must not be changed. You should call `g_hash_table_unref()` when you have finished with it.
+         */
         get_response_headers(): GLib.HashTable<any, any>;
         /**
          * Get the HTTP status code for the call.
@@ -1119,44 +1247,48 @@ export namespace Rest {
         get_status_code(): number;
         /**
          * Get the human-readable HTTP status message for the call.
-         * @returns The status message. This string is owned by #RestProxyCall and should not be freed.
+         * @returns The status message. This string is owned by {@link Rest.ProxyCall} and should not be freed.
          */
         get_status_message(): string;
         /**
-         * A GIO-style version of rest_proxy_call_async().
-         * @param cancellable an optional #GCancellable that can be used to   cancel the call, or %NULL
+         * A GIO-style version of `rest_proxy_call_async()`.
+         * @param cancellable an optional {@link Gio.Cancellable} that can be used to   cancel the call, or `null`
          */
         invoke_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
-         * A GIO-style version of rest_proxy_call_async().
-         * @param cancellable an optional #GCancellable that can be used to   cancel the call, or %NULL
+         * A GIO-style version of `rest_proxy_call_async()`.
+         * @param cancellable an optional {@link Gio.Cancellable} that can be used to   cancel the call, or `null`
          * @param callback callback to call when the async call is finished
          */
         invoke_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
-         * A GIO-style version of rest_proxy_call_async().
-         * @param cancellable an optional #GCancellable that can be used to   cancel the call, or %NULL
+         * A GIO-style version of `rest_proxy_call_async()`.
+         * @param cancellable an optional {@link Gio.Cancellable} that can be used to   cancel the call, or `null`
          * @param callback callback to call when the async call is finished
          */
         invoke_async(
             cancellable?: Gio.Cancellable | null,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
+        /**
+         * @param result the result from the {@link Gio.AsyncReadyCallback}
+         * @returns `true` on success
+         */
         invoke_finish(result: Gio.AsyncResult): boolean;
         /**
          * Get the value of the header called `header`.
          * @param header The header name
-         * @returns The header value, or %NULL if it does not exist. This string is owned by the #RestProxyCall and should not be freed.
+         * @returns The header value, or `null` if it does not exist. This string is owned by the {@link Rest.ProxyCall} and should not be freed.
          */
         lookup_header(header: string): string;
         /**
          * Get the value of the parameter called `name`.
          * @param name The paramter name
-         * @returns The parameter value, or %NULL if it does not exist. This string is owned by the #RestProxyCall and should not be freed.
+         * @returns The parameter value, or `null` if it does not exist. This string is owned by the {@link Rest.ProxyCall} and should not be freed.
          */
         lookup_param(name: string): Param;
         /**
-         * Get the string value of the header `header` or %NULL if that header is not
+         * Get the string value of the header `header` or `null` if that header is not
          * present or there are no headers.
          * @param header The name of the header to lookup.
          */
@@ -1171,10 +1303,13 @@ export namespace Rest {
          * @param name The paramter name
          */
         remove_param(name: string): void;
+        /**
+         * @param loop
+         */
         run(loop: GLib.MainLoop): boolean;
         /**
          * Invoker for a virtual method to serialize the parameters for this
-         * #RestProxyCall.
+         * {@link Rest.ProxyCall}.
          * @returns TRUE if the serialization was successful, FALSE otherwise.
          */
         serialize_params(): [boolean, string, string, number];
@@ -1206,8 +1341,8 @@ export namespace Rest {
          *
          * You may unref the call after calling this function since there is an
          * internal reference, or you may unref in the callback.
-         * @param callback a #RestProxyCallUploadCallback to invoke when a chunk   of data was uploaded
-         * @param weak_object The #GObject to weakly reference and tie the lifecycle to
+         * @param callback a {@link Rest.ProxyCallUploadCallback} to invoke when a chunk   of data was uploaded
+         * @param weak_object The {@link GObject.Object} to weakly reference and tie the lifecycle to
          */
         upload(callback: ProxyCallUploadCallback, weak_object: GObject.Object): boolean;
     }
@@ -1221,6 +1356,9 @@ export namespace Rest {
         interface ConstructorProps extends GObject.Object.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     class XmlParser extends GObject.Object {
         static $gtype: GObject.GType<XmlParser>;
 
@@ -1243,16 +1381,19 @@ export namespace Rest {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof XmlParser.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, XmlParser.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof XmlParser.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, XmlParser.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof XmlParser.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<XmlParser.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1262,23 +1403,41 @@ export namespace Rest {
         // Methods
 
         /**
-         * Parse the XML in `data,` and return a new #RestXmlNode.  If `data` is invalid
-         * XML, %NULL is returned.
+         * Parse the XML in `data`, and return a new {@link Rest.XmlNode}.  If `data` is invalid
+         * XML, `null` is returned.
          * @param data the XML content to parse
-         * @param len the length of @data, or -1 if @data is a nul-terminated string
-         * @returns a new #RestXmlNode, or %NULL if the XML was invalid.
+         * @param len the length of `data`, or -1 if `data` is a nul-terminated string
+         * @returns a new {@link Rest.XmlNode}, or `null` if the XML was invalid.
          */
         parse_from_data(data: string, len: number): XmlNode;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type OAuth2ProxyCallClass = typeof OAuth2ProxyCall;
+    /**
+     * @gir-type Alias
+     */
     type OAuth2ProxyClass = typeof OAuth2Proxy;
+    /**
+     * @gir-type Struct
+     */
     abstract class OAuth2ProxyPrivate {
         static $gtype: GObject.GType<OAuth2ProxyPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type OAuthProxyCallClass = typeof OAuthProxyCall;
+    /**
+     * @gir-type Alias
+     */
     type OAuthProxyClass = typeof OAuthProxy;
+    /**
+     * @gir-type Struct
+     */
     class Param {
         static $gtype: GObject.GType<Param>;
 
@@ -1326,7 +1485,7 @@ export namespace Rest {
         get_content_type(): string;
         /**
          * Get the original file name of the parameter, if one is available.
-         * @returns the filename if          set, or %NULL.
+         * @returns the filename if          set, or `null`.
          */
         get_file_name(): string;
         /**
@@ -1336,21 +1495,24 @@ export namespace Rest {
         get_name(): string;
         /**
          * Determine if the parameter is a string value, i.e. the content type is "text/plain".
-         * @returns %TRUE if the parameter is a string, %FALSE otherwise.
+         * @returns `true` if the parameter is a string, `false` otherwise.
          */
         is_string(): boolean;
         /**
          * Increase the reference count on `param`.
-         * @returns the #RestParam
+         * @returns the {@link Rest.Param}
          */
         ref(): Param;
         /**
-         * Decrease the reference count on `param,` destroying it if the reference count
+         * Decrease the reference count on `param`, destroying it if the reference count
          * reaches 0.
          */
         unref(): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class Params {
         static $gtype: GObject.GType<Params>;
 
@@ -1358,41 +1520,44 @@ export namespace Rest {
 
         /**
          * Add `param` to `params`.
-         * @param param a valid #RestParam
+         * @param param a valid {@link Rest.Param}
          */
         add(param: Param): void;
         /**
          * Checks if the parameters are all simple strings (have a content type of
          * "text/plain").
-         * @returns %TRUE if all of the parameters are simple strings, %FALSE otherwise.
+         * @returns `true` if all of the parameters are simple strings, `false` otherwise.
          */
         are_strings(): boolean;
         /**
-         * Create a new #GHashTable which contains the name and value of all string
+         * Create a new {@link GLib.HashTable} which contains the name and value of all string
          * (content type of text/plain) parameters.
          *
-         * The values are owned by the #RestParams, so don't destroy the #RestParams
+         * The values are owned by the {@link Rest.Params}, so don't destroy the {@link Rest.Params}
          * before the hash table.
-         * @returns a new #GHashTable.
+         * @returns a new {@link GLib.HashTable}.
          */
         as_string_hash_table(): GLib.HashTable<string, Param>;
         /**
-         * Destroy the #RestParams and the #RestParam objects that it contains.
+         * Destroy the {@link Rest.Params} and the {@link Rest.Param} objects that it contains.
          */
         free(): void;
         /**
-         * Return the #RestParam called `name,` or %NULL if it doesn't exist.
+         * Return the {@link Rest.Param} called `name`, or `null` if it doesn't exist.
          * @param name a parameter name
-         * @returns a #RestParam or %NULL if the name doesn't exist
+         * @returns a {@link Rest.Param} or `null` if the name doesn't exist
          */
         get(name: string): Param;
         /**
-         * Remove the #RestParam called `name`.
+         * Remove the {@link Rest.Param} called `name`.
          * @param name a parameter name
          */
         remove(name: string): void;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class ParamsIter {
         static $gtype: GObject.GType<ParamsIter>;
 
@@ -1413,31 +1578,49 @@ export namespace Rest {
          * }
          * ```
          *
-         * @param params a valid #RestParams
+         * @param params a valid {@link Rest.Params}
          */
         init(params: Params): void;
         /**
          * Advances `iter` and retrieves the name and/or parameter that are now pointed
          * at as a result of this advancement.  If FALSE is returned, `name` and `param`
          * are not set and the iterator becomes invalid.
-         * @param name a location to store the name, or %NULL
-         * @param param a location to store the #RestParam, or %NULL
-         * @returns %FALSE if the end of the #RestParams has been reached, %TRUE otherwise.
+         * @param name a location to store the name, or `null`
+         * @param param a location to store the {@link Rest.Param}, or `null`
+         * @returns `false` if the end of the {@link Rest.Params} has been reached, `true` otherwise.
          */
         next(name: string, param: Param): boolean;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ProxyAuthClass = typeof ProxyAuth;
+    /**
+     * @gir-type Struct
+     */
     abstract class ProxyAuthPrivate {
         static $gtype: GObject.GType<ProxyAuthPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ProxyCallClass = typeof ProxyCall;
+    /**
+     * @gir-type Struct
+     */
     abstract class ProxyCallPrivate {
         static $gtype: GObject.GType<ProxyCallPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ProxyClass = typeof Proxy;
+    /**
+     * @gir-type Struct
+     */
     class XmlNode {
         static $gtype: GObject.GType<XmlNode>;
 
@@ -1456,23 +1639,23 @@ export namespace Rest {
         add_attr(attribute: string, value: string): void;
         /**
          * Adds a new node to the given parent node; to create the top-level node,
-         * parent should be %NULL.
+         * parent should be `null`.
          * @param tag name of the child node
-         * @returns the newly added #RestXmlNode; the node object is owned by, and valid for the life time of, the #RestXmlCreator.
+         * @returns the newly added {@link Rest.XmlNode}; the node object is owned by, and valid for the life time of, the `RestXmlCreator`.
          */
         add_child(tag: string): XmlNode;
         /**
          * Searches for the first child node of `start` named `tag`.
          * @param tag the name of a node
-         * @returns the first child node, or %NULL if it doesn't exist.
+         * @returns the first child node, or `null` if it doesn't exist.
          */
         find(tag: string): XmlNode;
         free(): void;
         /**
-         * Get the value of the attribute named `attr_name,` or %NULL if it doesn't
+         * Get the value of the attribute named `attr_name`, or `null` if it doesn't
          * exist.
          * @param attr_name the name of an attribute
-         * @returns the attribute value. This string is owned by #RestXmlNode and should not be freed.
+         * @returns the attribute value. This string is owned by {@link Rest.XmlNode} and should not be freed.
          */
         get_attr(attr_name: string): string;
         /**
@@ -1487,6 +1670,9 @@ export namespace Rest {
         set_content(value: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type XmlParserClass = typeof XmlParser;
     /**
      * Name of the imported GIR library

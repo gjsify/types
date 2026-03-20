@@ -1,0 +1,56 @@
+{
+    "name": "@girs/cogl-18",
+    "version": "18.0.0-4.0.0-beta.41",
+    "description": "GJS TypeScript type definitions for Cogl-18, generated from library version 18.0.0",
+    "type": "module",
+    "module": "cogl-18.js",
+    "main": "cogl-18.js",
+    "exports": {
+      "./ambient": {
+        "types": "./cogl-18-ambient.d.ts",
+        "import": "./cogl-18-ambient.js",
+        "default": "./cogl-18-ambient.js"
+      },
+      "./import": {
+        "types": "./cogl-18-import.d.ts",
+        "import": "./cogl-18-import.js",
+        "default": "./cogl-18-import.js"
+      },
+      "./cogl-18": {
+        "types": "./cogl-18.d.ts",
+        "import": "./cogl-18.js",
+        "default": "./cogl-18.js"
+      },
+      ".": {
+        "types": "./index.d.ts",
+        "import": "./index.js",
+        "default": "./index.js"
+      }
+    },
+    "scripts": {
+      "test": "tsc --project tsconfig.json"
+    },
+    "dependencies": {
+      "@girs/gjs": "4.0.0-beta.41",
+      "@girs/mtk-18": "18.0.0-4.0.0-beta.41",
+      "@girs/graphene-1.0": "1.0.0-4.0.0-beta.41",
+      "@girs/gobject-2.0": "2.88.0-4.0.0-beta.41",
+      "@girs/glib-2.0": "2.88.0-4.0.0-beta.41",
+      "@girs/gl-1.0": "1.0.0-4.0.0-beta.41"    },
+    "devDependencies": {
+      "typescript": "*"
+    },
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "Cogl-18"],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/gjsify/types.git"
+    },
+    "bugs": {
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/cogl-18#readme"
+}
+
+

@@ -18,9 +18,22 @@ export namespace Gee {
      * Gee-1.0
      */
 
+    /**
+     * @param t
+     */
     function functions_get_equal_func_for(t: GObject.Type): GLib.EqualFunc;
+    /**
+     * @param t
+     */
     function functions_get_hash_func_for(t: GObject.Type): GLib.HashFunc;
+    /**
+     * @param t
+     */
     function functions_get_compare_func_for(t: GObject.Type): GLib.CompareFunc;
+    /**
+     * @param _val1
+     * @param _val2
+     */
     function direct_compare(_val1: any, _val2: any): number;
     namespace AbstractCollection {
         // Signal signatures
@@ -43,15 +56,33 @@ export namespace Gee {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class AbstractCollection extends GObject.Object implements Iterable, Collection {
         static $gtype: GObject.GType<AbstractCollection>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get size(): number;
+        /**
+         * @read-only
+         */
         get is_empty(): boolean;
+        /**
+         * @read-only
+         */
         get isEmpty(): boolean;
+        /**
+         * @read-only
+         */
         get read_only_view(): Collection;
+        /**
+         * @read-only
+         */
         get readOnlyView(): Collection;
 
         /**
@@ -71,16 +102,19 @@ export namespace Gee {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AbstractCollection.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AbstractCollection.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AbstractCollection.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AbstractCollection.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AbstractCollection.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AbstractCollection.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -89,35 +123,97 @@ export namespace Gee {
 
         // Virtual methods
 
+        /**
+         * @param item
+         * @virtual
+         */
         vfunc_contains(item: any): boolean;
+        /**
+         * @param item
+         * @virtual
+         */
         vfunc_add(item: any): boolean;
+        /**
+         * @param item
+         * @virtual
+         */
         vfunc_remove(item: any): boolean;
+        /**
+         * @virtual
+         */
         vfunc_clear(): void;
+        /**
+         * @virtual
+         */
         vfunc_to_array(): any[];
+        /**
+         * @param collection
+         * @virtual
+         */
         vfunc_add_all(collection: Collection): boolean;
+        /**
+         * @param collection
+         * @virtual
+         */
         vfunc_contains_all(collection: Collection): boolean;
+        /**
+         * @param collection
+         * @virtual
+         */
         vfunc_remove_all(collection: Collection): boolean;
+        /**
+         * @param collection
+         * @virtual
+         */
         vfunc_retain_all(collection: Collection): boolean;
+        /**
+         * @virtual
+         */
         vfunc_iterator(): Iterator;
 
         // Methods
 
+        /**
+         * @param item
+         */
         contains(item: any): boolean;
+        /**
+         * @param item
+         */
         add(item: any): boolean;
+        /**
+         * @param item
+         */
         remove(item: any): boolean;
         clear(): void;
         to_array(): any[];
+        /**
+         * @param collection
+         */
         add_all(collection: Collection): boolean;
+        /**
+         * @param collection
+         */
         contains_all(collection: Collection): boolean;
+        /**
+         * @param collection
+         */
         remove_all(collection: Collection): boolean;
+        /**
+         * @param collection
+         */
         retain_all(collection: Collection): boolean;
         iterator(): Iterator;
-
-        // Inherited properties
+        /**
+         * @read-only
+         * @category Inherited from Gee.Iterable
+         */
         get element_type(): GObject.Type;
+        /**
+         * @read-only
+         * @category Inherited from Gee.Iterable
+         */
         get elementType(): GObject.Type;
-
-        // Inherited methods
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -131,32 +227,32 @@ export namespace Gee {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -165,39 +261,39 @@ export namespace Gee {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -208,13 +304,16 @@ export namespace Gee {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -222,7 +321,7 @@ export namespace Gee {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -230,9 +329,9 @@ export namespace Gee {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -252,9 +351,9 @@ export namespace Gee {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -267,34 +366,34 @@ export namespace Gee {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -327,22 +426,22 @@ export namespace Gee {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -351,8 +450,8 @@ export namespace Gee {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -369,10 +468,10 @@ export namespace Gee {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -387,13 +486,13 @@ export namespace Gee {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -424,21 +523,21 @@ export namespace Gee {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -448,33 +547,34 @@ export namespace Gee {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -483,6 +583,7 @@ export namespace Gee {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -491,12 +592,14 @@ export namespace Gee {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -505,20 +608,22 @@ export namespace Gee {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -530,6 +635,7 @@ export namespace Gee {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -576,12 +682,21 @@ export namespace Gee {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class AbstractList extends AbstractCollection implements List {
         static $gtype: GObject.GType<AbstractList>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get read_only_view(): List;
+        /**
+         * @read-only
+         */
         get readOnlyView(): List;
 
         /**
@@ -601,16 +716,19 @@ export namespace Gee {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AbstractList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AbstractList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AbstractList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AbstractList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AbstractList.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AbstractList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -619,61 +737,211 @@ export namespace Gee {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_list_iterator(): ListIterator;
+        /**
+         * @param index
+         * @virtual
+         */
         vfunc_get(index: number): any;
+        /**
+         * @param index
+         * @param item
+         * @virtual
+         */
         vfunc_set(index: number, item: any): void;
+        /**
+         * @param item
+         * @virtual
+         */
         vfunc_index_of(item: any): number;
+        /**
+         * @param index
+         * @param item
+         * @virtual
+         */
         vfunc_insert(index: number, item: any): void;
+        /**
+         * @param index
+         * @virtual
+         */
         vfunc_remove_at(index: number): any;
+        /**
+         * @param start
+         * @param stop
+         * @virtual
+         */
         vfunc_slice(start: number, stop: number): List;
+        /**
+         * @virtual
+         */
         vfunc_first(): any;
+        /**
+         * @virtual
+         */
         vfunc_last(): any;
+        /**
+         * @param index
+         * @param collection
+         * @virtual
+         */
         vfunc_insert_all(index: number, collection: Collection): void;
 
         // Methods
 
         list_iterator(): ListIterator;
+        /**
+         * @param index
+         */
         get(index: number): any;
+        /**
+         * @param index
+         * @param item
+         */
         set(index: number, item: any): void;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.set
         set(...args: never[]): any;
+        /**
+         * @param item
+         */
         index_of(item: any): number;
+        /**
+         * @param index
+         * @param item
+         */
         insert(index: number, item: any): void;
+        /**
+         * @param index
+         */
         remove_at(index: number): any;
+        /**
+         * @param start
+         * @param stop
+         */
         slice(start: number, stop: number): List;
         first(): any;
         last(): any;
+        /**
+         * @param index
+         * @param collection
+         */
         insert_all(index: number, collection: Collection): void;
-
-        // Inherited properties
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get size(): number;
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get is_empty(): boolean;
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get isEmpty(): boolean;
+        /**
+         * @read-only
+         * @category Inherited from Gee.Iterable
+         */
         get element_type(): GObject.Type;
+        /**
+         * @read-only
+         * @category Inherited from Gee.Iterable
+         */
         get elementType(): GObject.Type;
-
-        // Inherited methods
+        /**
+         * @param compare_func
+         */
         sort(compare_func: GLib.CompareFunc): void;
+        /**
+         * @param compare_func
+         * @virtual
+         */
         vfunc_sort(compare_func: GLib.CompareFunc): void;
+        /**
+         * @param item
+         */
         contains(item: any): boolean;
+        /**
+         * @param item
+         */
         add(item: any): boolean;
+        /**
+         * @param item
+         */
         remove(item: any): boolean;
         clear(): void;
+        /**
+         * @param collection
+         */
         add_all(collection: Collection): boolean;
+        /**
+         * @param collection
+         */
         contains_all(collection: Collection): boolean;
+        /**
+         * @param collection
+         */
         remove_all(collection: Collection): boolean;
+        /**
+         * @param collection
+         */
         retain_all(collection: Collection): boolean;
         to_array(): any[];
+        /**
+         * @param item
+         * @virtual
+         */
         vfunc_contains(item: any): boolean;
+        /**
+         * @param item
+         * @virtual
+         */
         vfunc_add(item: any): boolean;
+        /**
+         * @param item
+         * @virtual
+         */
         vfunc_remove(item: any): boolean;
+        /**
+         * @virtual
+         */
         vfunc_clear(): void;
+        /**
+         * @param collection
+         * @virtual
+         */
         vfunc_add_all(collection: Collection): boolean;
+        /**
+         * @param collection
+         * @virtual
+         */
         vfunc_contains_all(collection: Collection): boolean;
+        /**
+         * @param collection
+         * @virtual
+         */
         vfunc_remove_all(collection: Collection): boolean;
+        /**
+         * @param collection
+         * @virtual
+         */
         vfunc_retain_all(collection: Collection): boolean;
+        /**
+         * @virtual
+         */
         vfunc_to_array(): any[];
         iterator(): Iterator;
+        /**
+         * @virtual
+         */
         vfunc_iterator(): Iterator;
     }
 
@@ -706,18 +974,45 @@ export namespace Gee {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class AbstractMap extends GObject.Object implements Iterable, Map {
         static $gtype: GObject.GType<AbstractMap>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get size(): number;
+        /**
+         * @read-only
+         */
         get is_empty(): boolean;
+        /**
+         * @read-only
+         */
         get isEmpty(): boolean;
+        /**
+         * @read-only
+         */
         get keys(): Set;
+        /**
+         * @read-only
+         */
         get values(): Collection;
+        /**
+         * @read-only
+         */
         get entries(): Set;
+        /**
+         * @read-only
+         */
         get read_only_view(): Map;
+        /**
+         * @read-only
+         */
         get readOnlyView(): Map;
 
         /**
@@ -737,16 +1032,19 @@ export namespace Gee {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AbstractMap.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AbstractMap.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AbstractMap.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AbstractMap.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AbstractMap.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AbstractMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -755,50 +1053,170 @@ export namespace Gee {
 
         // Virtual methods
 
+        /**
+         * @param key
+         * @virtual
+         */
         vfunc_has_key(key: any): boolean;
+        /**
+         * @param key
+         * @param value
+         * @virtual
+         */
         vfunc_has(key: any, value: any): boolean;
+        /**
+         * @param key
+         * @virtual
+         */
         vfunc_get(key: any): any;
+        /**
+         * @param key
+         * @param value
+         * @virtual
+         */
         vfunc_set(key: any, value: any): void;
+        /**
+         * @param key
+         * @virtual
+         */
         vfunc_unset(key: any): [boolean, any];
+        /**
+         * @virtual
+         */
         vfunc_map_iterator(): MapIterator;
+        /**
+         * @virtual
+         */
         vfunc_clear(): void;
+        /**
+         * @param map
+         * @virtual
+         */
         vfunc_set_all(map: Map): void;
+        /**
+         * @param map
+         * @virtual
+         */
         vfunc_unset_all(map: Map): boolean;
+        /**
+         * @param map
+         * @virtual
+         */
         vfunc_has_all(map: Map): boolean;
 
         // Methods
 
+        /**
+         * @param key
+         */
         has_key(key: any): boolean;
+        /**
+         * @param key
+         * @param value
+         */
         has(key: any, value: any): boolean;
+        /**
+         * @param key
+         */
         get(key: any): any;
+        /**
+         * @param key
+         * @param value
+         */
         set(key: any, value: any): void;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.set
         set(...args: never[]): any;
+        /**
+         * @param key
+         */
         unset(key: any): [boolean, any];
         map_iterator(): MapIterator;
         clear(): void;
+        /**
+         * @param map
+         */
         set_all(map: Map): void;
+        /**
+         * @param map
+         */
         unset_all(map: Map): boolean;
+        /**
+         * @param map
+         */
         has_all(map: Map): boolean;
-
-        // Inherited properties
+        /**
+         * @read-only
+         * @category Inherited from Gee.Iterable
+         */
         get element_type(): GObject.Type;
+        /**
+         * @read-only
+         * @category Inherited from Gee.Iterable
+         */
         get elementType(): GObject.Type;
+        /**
+         * @read-only
+         * @category Inherited from Gee.Map
+         */
         get key_type(): GObject.Type;
+        /**
+         * @read-only
+         * @category Inherited from Gee.Map
+         */
         get keyType(): GObject.Type;
+        /**
+         * @read-only
+         * @category Inherited from Gee.Map
+         */
         get value_type(): GObject.Type;
+        /**
+         * @read-only
+         * @category Inherited from Gee.Map
+         */
         get valueType(): GObject.Type;
-
-        // Inherited methods
         iterator(): Iterator;
+        /**
+         * @virtual
+         */
         vfunc_iterator(): Iterator;
+        /**
+         * @param key
+         */
         contains(key: any): boolean;
+        /**
+         * @param key
+         */
         remove(key: any): [boolean, any];
+        /**
+         * @param map
+         */
         remove_all(map: Map): boolean;
+        /**
+         * @param map
+         */
         contains_all(map: Map): boolean;
+        /**
+         * @param key
+         * @virtual
+         */
         vfunc_contains(key: any): boolean;
+        /**
+         * @param key
+         * @virtual
+         */
         vfunc_remove(key: any): [boolean, any];
+        /**
+         * @param map
+         * @virtual
+         */
         vfunc_remove_all(map: Map): boolean;
+        /**
+         * @param map
+         * @virtual
+         */
         vfunc_contains_all(map: Map): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -813,32 +1231,32 @@ export namespace Gee {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -847,39 +1265,39 @@ export namespace Gee {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -890,13 +1308,16 @@ export namespace Gee {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -904,7 +1325,7 @@ export namespace Gee {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -912,9 +1333,9 @@ export namespace Gee {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -934,9 +1355,9 @@ export namespace Gee {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -949,34 +1370,34 @@ export namespace Gee {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1009,22 +1430,22 @@ export namespace Gee {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -1033,8 +1454,8 @@ export namespace Gee {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -1051,10 +1472,10 @@ export namespace Gee {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -1069,13 +1490,13 @@ export namespace Gee {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1106,21 +1527,21 @@ export namespace Gee {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1130,33 +1551,34 @@ export namespace Gee {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1165,6 +1587,7 @@ export namespace Gee {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1173,12 +1596,14 @@ export namespace Gee {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1187,20 +1612,22 @@ export namespace Gee {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1212,6 +1639,7 @@ export namespace Gee {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -1247,6 +1675,9 @@ export namespace Gee {
         interface ConstructorProps extends GObject.Object.ConstructorProps, MultiMap.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class AbstractMultiMap extends GObject.Object implements MultiMap {
         static $gtype: GObject.GType<AbstractMultiMap>;
 
@@ -1267,16 +1698,19 @@ export namespace Gee {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AbstractMultiMap.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AbstractMultiMap.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AbstractMultiMap.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AbstractMultiMap.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AbstractMultiMap.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AbstractMultiMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1285,8 +1719,17 @@ export namespace Gee {
 
         // Virtual methods
 
+        /**
+         * @virtual
+         */
         vfunc_create_value_storage(): Collection;
+        /**
+         * @virtual
+         */
         vfunc_create_multi_key_set(): MultiSet;
+        /**
+         * @virtual
+         */
         vfunc_get_value_equal_func(): GLib.EqualFunc;
 
         // Methods
@@ -1294,30 +1737,84 @@ export namespace Gee {
         create_value_storage(): Collection;
         create_multi_key_set(): MultiSet;
         get_value_equal_func(): GLib.EqualFunc;
-
-        // Inherited properties
+        /**
+         * @read-only
+         * @category Inherited from Gee.MultiMap
+         */
         get size(): number;
-
-        // Inherited methods
         get_keys(): Set;
         get_all_keys(): MultiSet;
         get_values(): Collection;
+        /**
+         * @param key
+         */
         contains(key: any): boolean;
+        /**
+         * @param key
+         */
         get(key: any): Collection;
+        /**
+         * @param key
+         * @param value
+         */
         set(key: any, value: any): void;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.set
         set(...args: never[]): any;
+        /**
+         * @param key
+         * @param value
+         */
         remove(key: any, value: any): boolean;
+        /**
+         * @param key
+         */
         remove_all(key: any): boolean;
         clear(): void;
+        /**
+         * @virtual
+         */
         vfunc_get_keys(): Set;
+        /**
+         * @virtual
+         */
         vfunc_get_all_keys(): MultiSet;
+        /**
+         * @virtual
+         */
         vfunc_get_values(): Collection;
+        /**
+         * @param key
+         * @virtual
+         */
         vfunc_contains(key: any): boolean;
+        /**
+         * @param key
+         * @virtual
+         */
         vfunc_get(key: any): Collection;
+        /**
+         * @param key
+         * @param value
+         * @virtual
+         */
         vfunc_set(key: any, value: any): void;
+        /**
+         * @param key
+         * @param value
+         * @virtual
+         */
         vfunc_remove(key: any, value: any): boolean;
+        /**
+         * @param key
+         * @virtual
+         */
         vfunc_remove_all(key: any): boolean;
+        /**
+         * @virtual
+         */
         vfunc_clear(): void;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
@@ -1332,32 +1829,32 @@ export namespace Gee {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -1366,39 +1863,39 @@ export namespace Gee {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -1409,13 +1906,16 @@ export namespace Gee {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -1423,7 +1923,7 @@ export namespace Gee {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -1431,9 +1931,9 @@ export namespace Gee {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -1453,9 +1953,9 @@ export namespace Gee {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -1468,34 +1968,34 @@ export namespace Gee {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1528,22 +2028,22 @@ export namespace Gee {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -1552,8 +2052,8 @@ export namespace Gee {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -1570,10 +2070,10 @@ export namespace Gee {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -1588,13 +2088,13 @@ export namespace Gee {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1625,21 +2125,21 @@ export namespace Gee {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1649,33 +2149,34 @@ export namespace Gee {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1684,6 +2185,7 @@ export namespace Gee {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1692,12 +2194,14 @@ export namespace Gee {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1706,20 +2210,22 @@ export namespace Gee {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1731,6 +2237,7 @@ export namespace Gee {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -1769,6 +2276,9 @@ export namespace Gee {
         interface ConstructorProps extends AbstractCollection.ConstructorProps, MultiSet.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class AbstractMultiSet extends AbstractCollection implements MultiSet {
         static $gtype: GObject.GType<AbstractMultiSet>;
 
@@ -1789,53 +2299,145 @@ export namespace Gee {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AbstractMultiSet.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AbstractMultiSet.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AbstractMultiSet.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AbstractMultiSet.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AbstractMultiSet.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AbstractMultiSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited properties
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get size(): number;
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get is_empty(): boolean;
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get isEmpty(): boolean;
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get read_only_view(): Collection;
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get readOnlyView(): Collection;
+        /**
+         * @read-only
+         * @category Inherited from Gee.Iterable
+         */
         get element_type(): GObject.Type;
+        /**
+         * @read-only
+         * @category Inherited from Gee.Iterable
+         */
         get elementType(): GObject.Type;
-
-        // Inherited methods
+        /**
+         * @param item
+         */
         count(item: any): number;
+        /**
+         * @param item
+         * @virtual
+         */
         vfunc_count(item: any): number;
+        /**
+         * @param item
+         */
         contains(item: any): boolean;
+        /**
+         * @param item
+         */
         add(item: any): boolean;
+        /**
+         * @param item
+         */
         remove(item: any): boolean;
         clear(): void;
+        /**
+         * @param collection
+         */
         add_all(collection: Collection): boolean;
+        /**
+         * @param collection
+         */
         contains_all(collection: Collection): boolean;
+        /**
+         * @param collection
+         */
         remove_all(collection: Collection): boolean;
+        /**
+         * @param collection
+         */
         retain_all(collection: Collection): boolean;
         to_array(): any[];
+        /**
+         * @param item
+         * @virtual
+         */
         vfunc_contains(item: any): boolean;
+        /**
+         * @param item
+         * @virtual
+         */
         vfunc_add(item: any): boolean;
+        /**
+         * @param item
+         * @virtual
+         */
         vfunc_remove(item: any): boolean;
+        /**
+         * @virtual
+         */
         vfunc_clear(): void;
+        /**
+         * @param collection
+         * @virtual
+         */
         vfunc_add_all(collection: Collection): boolean;
+        /**
+         * @param collection
+         * @virtual
+         */
         vfunc_contains_all(collection: Collection): boolean;
+        /**
+         * @param collection
+         * @virtual
+         */
         vfunc_remove_all(collection: Collection): boolean;
+        /**
+         * @param collection
+         * @virtual
+         */
         vfunc_retain_all(collection: Collection): boolean;
+        /**
+         * @virtual
+         */
         vfunc_to_array(): any[];
         iterator(): Iterator;
+        /**
+         * @virtual
+         */
         vfunc_iterator(): Iterator;
     }
 
@@ -1862,15 +2464,33 @@ export namespace Gee {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class AbstractQueue extends AbstractCollection implements Queue {
         static $gtype: GObject.GType<AbstractQueue>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get capacity(): number;
+        /**
+         * @read-only
+         */
         get remaining_capacity(): number;
+        /**
+         * @read-only
+         */
         get remainingCapacity(): number;
+        /**
+         * @read-only
+         */
         get is_full(): boolean;
+        /**
+         * @read-only
+         */
         get isFull(): boolean;
 
         /**
@@ -1890,16 +2510,19 @@ export namespace Gee {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AbstractQueue.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AbstractQueue.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AbstractQueue.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AbstractQueue.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AbstractQueue.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AbstractQueue.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1908,47 +2531,151 @@ export namespace Gee {
 
         // Virtual methods
 
+        /**
+         * @param element
+         * @virtual
+         */
         vfunc_offer(element: any): boolean;
+        /**
+         * @virtual
+         */
         vfunc_peek(): any;
+        /**
+         * @virtual
+         */
         vfunc_poll(): any;
+        /**
+         * @param recipient
+         * @param amount
+         * @virtual
+         */
         vfunc_drain(recipient: Collection, amount: number): number;
 
         // Methods
 
+        /**
+         * @param element
+         */
         offer(element: any): boolean;
         peek(): any;
         poll(): any;
+        /**
+         * @param recipient
+         * @param amount
+         */
         drain(recipient: Collection, amount: number): number;
-
-        // Inherited properties
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get size(): number;
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get is_empty(): boolean;
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get isEmpty(): boolean;
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get read_only_view(): Collection;
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get readOnlyView(): Collection;
+        /**
+         * @read-only
+         * @category Inherited from Gee.Iterable
+         */
         get element_type(): GObject.Type;
+        /**
+         * @read-only
+         * @category Inherited from Gee.Iterable
+         */
         get elementType(): GObject.Type;
-
-        // Inherited methods
+        /**
+         * @param item
+         */
         contains(item: any): boolean;
+        /**
+         * @param item
+         */
         add(item: any): boolean;
+        /**
+         * @param item
+         */
         remove(item: any): boolean;
         clear(): void;
+        /**
+         * @param collection
+         */
         add_all(collection: Collection): boolean;
+        /**
+         * @param collection
+         */
         contains_all(collection: Collection): boolean;
+        /**
+         * @param collection
+         */
         remove_all(collection: Collection): boolean;
+        /**
+         * @param collection
+         */
         retain_all(collection: Collection): boolean;
         to_array(): any[];
+        /**
+         * @param item
+         * @virtual
+         */
         vfunc_contains(item: any): boolean;
+        /**
+         * @param item
+         * @virtual
+         */
         vfunc_add(item: any): boolean;
+        /**
+         * @param item
+         * @virtual
+         */
         vfunc_remove(item: any): boolean;
+        /**
+         * @virtual
+         */
         vfunc_clear(): void;
+        /**
+         * @param collection
+         * @virtual
+         */
         vfunc_add_all(collection: Collection): boolean;
+        /**
+         * @param collection
+         * @virtual
+         */
         vfunc_contains_all(collection: Collection): boolean;
+        /**
+         * @param collection
+         * @virtual
+         */
         vfunc_remove_all(collection: Collection): boolean;
+        /**
+         * @param collection
+         * @virtual
+         */
         vfunc_retain_all(collection: Collection): boolean;
+        /**
+         * @virtual
+         */
         vfunc_to_array(): any[];
         iterator(): Iterator;
+        /**
+         * @virtual
+         */
         vfunc_iterator(): Iterator;
     }
 
@@ -1969,12 +2696,21 @@ export namespace Gee {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class AbstractSet extends AbstractCollection implements Set {
         static $gtype: GObject.GType<AbstractSet>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get read_only_view(): Set;
+        /**
+         * @read-only
+         */
         get readOnlyView(): Set;
 
         /**
@@ -1994,49 +2730,126 @@ export namespace Gee {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AbstractSet.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AbstractSet.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AbstractSet.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AbstractSet.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AbstractSet.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AbstractSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited properties
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get size(): number;
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get is_empty(): boolean;
+        /**
+         * @read-only
+         * @category Inherited from Gee.Collection
+         */
         get isEmpty(): boolean;
+        /**
+         * @read-only
+         * @category Inherited from Gee.Iterable
+         */
         get element_type(): GObject.Type;
+        /**
+         * @read-only
+         * @category Inherited from Gee.Iterable
+         */
         get elementType(): GObject.Type;
-
-        // Inherited methods
+        /**
+         * @param item
+         */
         contains(item: any): boolean;
+        /**
+         * @param item
+         */
         add(item: any): boolean;
+        /**
+         * @param item
+         */
         remove(item: any): boolean;
         clear(): void;
+        /**
+         * @param collection
+         */
         add_all(collection: Collection): boolean;
+        /**
+         * @param collection
+         */
         contains_all(collection: Collection): boolean;
+        /**
+         * @param collection
+         */
         remove_all(collection: Collection): boolean;
+        /**
+         * @param collection
+         */
         retain_all(collection: Collection): boolean;
         to_array(): any[];
+        /**
+         * @param item
+         * @virtual
+         */
         vfunc_contains(item: any): boolean;
+        /**
+         * @param item
+         * @virtual
+         */
         vfunc_add(item: any): boolean;
+        /**
+         * @param item
+         * @virtual
+         */
         vfunc_remove(item: any): boolean;
+        /**
+         * @virtual
+         */
         vfunc_clear(): void;
+        /**
+         * @param collection
+         * @virtual
+         */
         vfunc_add_all(collection: Collection): boolean;
+        /**
+         * @param collection
+         * @virtual
+         */
         vfunc_contains_all(collection: Collection): boolean;
+        /**
+         * @param collection
+         * @virtual
+         */
         vfunc_remove_all(collection: Collection): boolean;
+        /**
+         * @param collection
+         * @virtual
+         */
         vfunc_retain_all(collection: Collection): boolean;
+        /**
+         * @virtual
+         */
         vfunc_to_array(): any[];
         iterator(): Iterator;
+        /**
+         * @virtual
+         */
         vfunc_iterator(): Iterator;
     }
 
@@ -2057,6 +2870,9 @@ export namespace Gee {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class ArrayList extends AbstractList {
         static $gtype: GObject.GType<ArrayList>;
 
@@ -2086,16 +2902,19 @@ export namespace Gee {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof ArrayList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ArrayList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof ArrayList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, ArrayList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof ArrayList.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<ArrayList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2104,6 +2923,9 @@ export namespace Gee {
 
         // Methods
 
+        /**
+         * @param compare
+         */
         sort_with_data(compare: GLib.CompareDataFunc): void;
     }
 
@@ -2133,6 +2955,9 @@ export namespace Gee {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class HashMap extends AbstractMap {
         static $gtype: GObject.GType<HashMap>;
 
@@ -2174,16 +2999,19 @@ export namespace Gee {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof HashMap.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HashMap.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof HashMap.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HashMap.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof HashMap.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<HashMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2214,14 +3042,29 @@ export namespace Gee {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class HashMultiMap extends AbstractMultiMap {
         static $gtype: GObject.GType<HashMultiMap>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get key_hash_func(): GLib.HashFunc;
+        /**
+         * @read-only
+         */
         get keyHashFunc(): GLib.HashFunc;
+        /**
+         * @read-only
+         */
         get key_equal_func(): GLib.EqualFunc;
+        /**
+         * @read-only
+         */
         get keyEqualFunc(): GLib.EqualFunc;
         get value_hash_func(): GLib.HashFunc;
         set value_hash_func(val: GLib.HashFunc);
@@ -2256,16 +3099,19 @@ export namespace Gee {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof HashMultiMap.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HashMultiMap.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof HashMultiMap.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HashMultiMap.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof HashMultiMap.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<HashMultiMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2293,14 +3139,29 @@ export namespace Gee {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class HashMultiSet extends AbstractMultiSet {
         static $gtype: GObject.GType<HashMultiSet>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get hash_func(): GLib.HashFunc;
+        /**
+         * @read-only
+         */
         get hashFunc(): GLib.HashFunc;
+        /**
+         * @read-only
+         */
         get equal_func(): GLib.EqualFunc;
+        /**
+         * @read-only
+         */
         get equalFunc(): GLib.EqualFunc;
 
         /**
@@ -2322,16 +3183,19 @@ export namespace Gee {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof HashMultiSet.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HashMultiSet.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof HashMultiSet.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HashMultiSet.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof HashMultiSet.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<HashMultiSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2359,6 +3223,9 @@ export namespace Gee {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class HashSet extends AbstractSet {
         static $gtype: GObject.GType<HashSet>;
 
@@ -2392,16 +3259,19 @@ export namespace Gee {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof HashSet.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HashSet.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof HashSet.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HashSet.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof HashSet.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<HashSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2432,6 +3302,9 @@ export namespace Gee {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class LinkedList extends AbstractList implements Queue, Deque {
         static $gtype: GObject.GType<LinkedList>;
 
@@ -2441,7 +3314,13 @@ export namespace Gee {
         set equal_func(val: GLib.EqualFunc);
         get equalFunc(): GLib.EqualFunc;
         set equalFunc(val: GLib.EqualFunc);
+        /**
+         * @read-only
+         */
         get readOnlyView(): LinkedList;
+        /**
+         * @read-only
+         */
         get read_only_view(): LinkedList;
 
         /**
@@ -2463,53 +3342,138 @@ export namespace Gee {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof LinkedList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LinkedList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof LinkedList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, LinkedList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof LinkedList.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<LinkedList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited properties
+        /**
+         * @read-only
+         * @category Inherited from Gee.Queue
+         */
         get capacity(): number;
+        /**
+         * @read-only
+         * @category Inherited from Gee.Queue
+         */
         get remaining_capacity(): number;
+        /**
+         * @read-only
+         * @category Inherited from Gee.Queue
+         */
         get remainingCapacity(): number;
+        /**
+         * @read-only
+         * @category Inherited from Gee.Queue
+         */
         get is_full(): boolean;
+        /**
+         * @read-only
+         * @category Inherited from Gee.Queue
+         */
         get isFull(): boolean;
-
-        // Inherited methods
+        /**
+         * @param element
+         */
         offer(element: any): boolean;
         peek(): any;
         poll(): any;
+        /**
+         * @param recipient
+         * @param amount
+         */
         drain(recipient: Collection, amount: number): number;
+        /**
+         * @param element
+         * @virtual
+         */
         vfunc_offer(element: any): boolean;
+        /**
+         * @virtual
+         */
         vfunc_peek(): any;
+        /**
+         * @virtual
+         */
         vfunc_poll(): any;
+        /**
+         * @param recipient
+         * @param amount
+         * @virtual
+         */
         vfunc_drain(recipient: Collection, amount: number): number;
+        /**
+         * @param element
+         */
         offer_head(element: any): boolean;
         peek_head(): any;
         poll_head(): any;
+        /**
+         * @param recipient
+         * @param amount
+         */
         drain_head(recipient: Collection, amount: number): number;
+        /**
+         * @param element
+         */
         offer_tail(element: any): boolean;
         peek_tail(): any;
         poll_tail(): any;
+        /**
+         * @param recipient
+         * @param amount
+         */
         drain_tail(recipient: Collection, amount: number): number;
+        /**
+         * @param element
+         * @virtual
+         */
         vfunc_offer_head(element: any): boolean;
+        /**
+         * @virtual
+         */
         vfunc_peek_head(): any;
+        /**
+         * @virtual
+         */
         vfunc_poll_head(): any;
+        /**
+         * @param recipient
+         * @param amount
+         * @virtual
+         */
         vfunc_drain_head(recipient: Collection, amount: number): number;
+        /**
+         * @param element
+         * @virtual
+         */
         vfunc_offer_tail(element: any): boolean;
+        /**
+         * @virtual
+         */
         vfunc_peek_tail(): any;
+        /**
+         * @virtual
+         */
         vfunc_poll_tail(): any;
+        /**
+         * @param recipient
+         * @param amount
+         * @virtual
+         */
         vfunc_drain_tail(recipient: Collection, amount: number): number;
     }
 
@@ -2533,6 +3497,9 @@ export namespace Gee {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class PriorityQueue extends AbstractQueue {
         static $gtype: GObject.GType<PriorityQueue>;
 
@@ -2562,16 +3529,19 @@ export namespace Gee {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof PriorityQueue.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PriorityQueue.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof PriorityQueue.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PriorityQueue.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PriorityQueue.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PriorityQueue.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2602,6 +3572,9 @@ export namespace Gee {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class TreeMap extends AbstractMap {
         static $gtype: GObject.GType<TreeMap>;
 
@@ -2635,16 +3608,19 @@ export namespace Gee {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TreeMap.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TreeMap.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TreeMap.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TreeMap.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TreeMap.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TreeMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2669,12 +3645,21 @@ export namespace Gee {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class TreeMultiMap extends AbstractMultiMap {
         static $gtype: GObject.GType<TreeMultiMap>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get key_compare_func(): GLib.CompareFunc;
+        /**
+         * @read-only
+         */
         get keyCompareFunc(): GLib.CompareFunc;
         get value_compare_func(): GLib.CompareFunc;
         set value_compare_func(val: GLib.CompareFunc);
@@ -2700,16 +3685,19 @@ export namespace Gee {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TreeMultiMap.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TreeMultiMap.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TreeMultiMap.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TreeMultiMap.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TreeMultiMap.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TreeMultiMap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2734,12 +3722,21 @@ export namespace Gee {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class TreeMultiSet extends AbstractMultiSet {
         static $gtype: GObject.GType<TreeMultiSet>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get compare_func(): GLib.CompareFunc;
+        /**
+         * @read-only
+         */
         get compareFunc(): GLib.CompareFunc;
 
         /**
@@ -2761,16 +3758,19 @@ export namespace Gee {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TreeMultiSet.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TreeMultiSet.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TreeMultiSet.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TreeMultiSet.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TreeMultiSet.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TreeMultiSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2795,6 +3795,9 @@ export namespace Gee {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class TreeSet extends AbstractSet implements SortedSet {
         static $gtype: GObject.GType<TreeSet>;
 
@@ -2824,48 +3827,122 @@ export namespace Gee {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TreeSet.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TreeSet.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TreeSet.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TreeSet.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TreeSet.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TreeSet.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
-
-        // Inherited properties
+        /**
+         * @read-only
+         * @category Inherited from Gee.Set
+         */
         get read_only_view(): Set;
+        /**
+         * @read-only
+         * @category Inherited from Gee.Set
+         */
         get readOnlyView(): Set;
-
-        // Inherited methods
         first(): any;
         last(): any;
         bidir_iterator(): BidirIterator;
+        /**
+         * @param element
+         */
         iterator_at(element: any): BidirIterator;
+        /**
+         * @param element
+         */
         lower(element: any): any;
+        /**
+         * @param element
+         */
         higher(element: any): any;
+        /**
+         * @param element
+         */
         floor(element: any): any;
+        /**
+         * @param element
+         */
         ceil(element: any): any;
+        /**
+         * @param before
+         */
         head_set(before: any): SortedSet;
+        /**
+         * @param after
+         */
         tail_set(after: any): SortedSet;
+        /**
+         * @param from
+         * @param to
+         */
         sub_set(from: any, to: any): SortedSet;
+        /**
+         * @virtual
+         */
         vfunc_first(): any;
+        /**
+         * @virtual
+         */
         vfunc_last(): any;
+        /**
+         * @virtual
+         */
         vfunc_bidir_iterator(): BidirIterator;
+        /**
+         * @param element
+         * @virtual
+         */
         vfunc_iterator_at(element: any): BidirIterator;
+        /**
+         * @param element
+         * @virtual
+         */
         vfunc_lower(element: any): any;
+        /**
+         * @param element
+         * @virtual
+         */
         vfunc_higher(element: any): any;
+        /**
+         * @param element
+         * @virtual
+         */
         vfunc_floor(element: any): any;
+        /**
+         * @param element
+         * @virtual
+         */
         vfunc_ceil(element: any): any;
+        /**
+         * @param before
+         * @virtual
+         */
         vfunc_head_set(before: any): SortedSet;
+        /**
+         * @param after
+         * @virtual
+         */
         vfunc_tail_set(after: any): SortedSet;
+        /**
+         * @param from
+         * @param to
+         * @virtual
+         */
         vfunc_sub_set(from: any, to: any): SortedSet;
     }
 
@@ -2884,11 +3961,17 @@ export namespace Gee {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     abstract class MapEntry extends GObject.Object {
         static $gtype: GObject.GType<MapEntry>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get key(): any;
         get value(): any;
         set value(val: any);
@@ -2910,16 +3993,19 @@ export namespace Gee {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MapEntry.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MapEntry.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MapEntry.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MapEntry.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MapEntry.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MapEntry.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2927,114 +4013,270 @@ export namespace Gee {
         emit(signal: string, ...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AbstractCollectionClass = typeof AbstractCollection;
+    /**
+     * @gir-type Struct
+     */
     abstract class AbstractCollectionPrivate {
         static $gtype: GObject.GType<AbstractCollectionPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AbstractListClass = typeof AbstractList;
+    /**
+     * @gir-type Struct
+     */
     abstract class AbstractListPrivate {
         static $gtype: GObject.GType<AbstractListPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AbstractMapClass = typeof AbstractMap;
+    /**
+     * @gir-type Struct
+     */
     abstract class AbstractMapPrivate {
         static $gtype: GObject.GType<AbstractMapPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AbstractMultiMapClass = typeof AbstractMultiMap;
+    /**
+     * @gir-type Struct
+     */
     abstract class AbstractMultiMapPrivate {
         static $gtype: GObject.GType<AbstractMultiMapPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AbstractMultiSetClass = typeof AbstractMultiSet;
+    /**
+     * @gir-type Struct
+     */
     abstract class AbstractMultiSetPrivate {
         static $gtype: GObject.GType<AbstractMultiSetPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AbstractQueueClass = typeof AbstractQueue;
+    /**
+     * @gir-type Struct
+     */
     abstract class AbstractQueuePrivate {
         static $gtype: GObject.GType<AbstractQueuePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AbstractSetClass = typeof AbstractSet;
+    /**
+     * @gir-type Struct
+     */
     abstract class AbstractSetPrivate {
         static $gtype: GObject.GType<AbstractSetPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ArrayListClass = typeof ArrayList;
+    /**
+     * @gir-type Struct
+     */
     abstract class ArrayListPrivate {
         static $gtype: GObject.GType<ArrayListPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type HashMapClass = typeof HashMap;
+    /**
+     * @gir-type Struct
+     */
     abstract class HashMapPrivate {
         static $gtype: GObject.GType<HashMapPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type HashMultiMapClass = typeof HashMultiMap;
+    /**
+     * @gir-type Struct
+     */
     abstract class HashMultiMapPrivate {
         static $gtype: GObject.GType<HashMultiMapPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type HashMultiSetClass = typeof HashMultiSet;
+    /**
+     * @gir-type Struct
+     */
     abstract class HashMultiSetPrivate {
         static $gtype: GObject.GType<HashMultiSetPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type HashSetClass = typeof HashSet;
+    /**
+     * @gir-type Struct
+     */
     abstract class HashSetPrivate {
         static $gtype: GObject.GType<HashSetPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type LinkedListClass = typeof LinkedList;
+    /**
+     * @gir-type Struct
+     */
     abstract class LinkedListPrivate {
         static $gtype: GObject.GType<LinkedListPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PriorityQueueClass = typeof PriorityQueue;
+    /**
+     * @gir-type Struct
+     */
     abstract class PriorityQueuePrivate {
         static $gtype: GObject.GType<PriorityQueuePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TreeMapClass = typeof TreeMap;
+    /**
+     * @gir-type Struct
+     */
     abstract class TreeMapPrivate {
         static $gtype: GObject.GType<TreeMapPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TreeMultiMapClass = typeof TreeMultiMap;
+    /**
+     * @gir-type Struct
+     */
     abstract class TreeMultiMapPrivate {
         static $gtype: GObject.GType<TreeMultiMapPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TreeMultiSetClass = typeof TreeMultiSet;
+    /**
+     * @gir-type Struct
+     */
     abstract class TreeMultiSetPrivate {
         static $gtype: GObject.GType<TreeMultiSetPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TreeSetClass = typeof TreeSet;
+    /**
+     * @gir-type Struct
+     */
     abstract class TreeSetPrivate {
         static $gtype: GObject.GType<TreeSetPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type BidirIteratorIface = typeof BidirIterator;
+    /**
+     * @gir-type Alias
+     */
     type CollectionIface = typeof Collection;
+    /**
+     * @gir-type Alias
+     */
     type ComparableIface = typeof Comparable;
+    /**
+     * @gir-type Alias
+     */
     type DequeIface = typeof Deque;
+    /**
+     * @gir-type Alias
+     */
     type IterableIface = typeof Iterable;
+    /**
+     * @gir-type Alias
+     */
     type IteratorIface = typeof Iterator;
+    /**
+     * @gir-type Alias
+     */
     type ListIface = typeof List;
+    /**
+     * @gir-type Alias
+     */
     type ListIteratorIface = typeof ListIterator;
+    /**
+     * @gir-type Alias
+     */
     type MapIface = typeof Map;
+    /**
+     * @gir-type Struct
+     */
     abstract class EntryPrivate {
         static $gtype: GObject.GType<EntryPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MapIteratorIface = typeof MapIterator;
+    /**
+     * @gir-type Alias
+     */
     type MultiMapIface = typeof MultiMap;
+    /**
+     * @gir-type Alias
+     */
     type MultiSetIface = typeof MultiSet;
+    /**
+     * @gir-type Alias
+     */
     type QueueIface = typeof Queue;
+    /**
+     * @gir-type Alias
+     */
     type SetIface = typeof Set;
+    /**
+     * @gir-type Alias
+     */
     type SortedSetIface = typeof SortedSet;
     namespace BidirIterator {
         /**
@@ -3044,8 +4286,17 @@ export namespace Gee {
         interface Interface extends Iterator.Interface {
             // Virtual methods
 
+            /**
+             * @virtual
+             */
             vfunc_previous(): boolean;
+            /**
+             * @virtual
+             */
             vfunc_has_previous(): boolean;
+            /**
+             * @virtual
+             */
             vfunc_last(): boolean;
         }
 
@@ -3058,6 +4309,9 @@ export namespace Gee {
         $gtype: GObject.GType<BidirIterator>;
         prototype: BidirIterator;
     }
+    /**
+     * @gir-type Interface
+     */
     interface BidirIterator extends Iterator, BidirIterator.Interface {
         // Methods
 
@@ -3078,14 +4332,48 @@ export namespace Gee {
         interface Interface extends Iterable.Interface {
             // Virtual methods
 
+            /**
+             * @param item
+             * @virtual
+             */
             vfunc_contains(item: any): boolean;
+            /**
+             * @param item
+             * @virtual
+             */
             vfunc_add(item: any): boolean;
+            /**
+             * @param item
+             * @virtual
+             */
             vfunc_remove(item: any): boolean;
+            /**
+             * @virtual
+             */
             vfunc_clear(): void;
+            /**
+             * @param collection
+             * @virtual
+             */
             vfunc_add_all(collection: Collection): boolean;
+            /**
+             * @param collection
+             * @virtual
+             */
             vfunc_contains_all(collection: Collection): boolean;
+            /**
+             * @param collection
+             * @virtual
+             */
             vfunc_remove_all(collection: Collection): boolean;
+            /**
+             * @param collection
+             * @virtual
+             */
             vfunc_retain_all(collection: Collection): boolean;
+            /**
+             * @virtual
+             */
             vfunc_to_array(): any[];
         }
 
@@ -3106,24 +4394,63 @@ export namespace Gee {
 
         empty(): Collection;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Collection extends Iterable, Collection.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get size(): number;
+        /**
+         * @read-only
+         */
         get is_empty(): boolean;
+        /**
+         * @read-only
+         */
         get isEmpty(): boolean;
+        /**
+         * @read-only
+         */
         get read_only_view(): Collection;
+        /**
+         * @read-only
+         */
         get readOnlyView(): Collection;
 
         // Methods
 
+        /**
+         * @param item
+         */
         contains(item: any): boolean;
+        /**
+         * @param item
+         */
         add(item: any): boolean;
+        /**
+         * @param item
+         */
         remove(item: any): boolean;
         clear(): void;
+        /**
+         * @param collection
+         */
         add_all(collection: Collection): boolean;
+        /**
+         * @param collection
+         */
         contains_all(collection: Collection): boolean;
+        /**
+         * @param collection
+         */
         remove_all(collection: Collection): boolean;
+        /**
+         * @param collection
+         */
         retain_all(collection: Collection): boolean;
         to_array(): any[];
     }
@@ -3140,6 +4467,10 @@ export namespace Gee {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param object
+             * @virtual
+             */
             vfunc_compare_to(object: any): number;
         }
 
@@ -3152,9 +4483,15 @@ export namespace Gee {
         $gtype: GObject.GType<Comparable>;
         prototype: Comparable;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Comparable extends GObject.Object, Comparable.Interface {
         // Methods
 
+        /**
+         * @param object
+         */
         compare_to(object: any): number;
     }
 
@@ -3170,13 +4507,43 @@ export namespace Gee {
         interface Interface extends Queue.Interface {
             // Virtual methods
 
+            /**
+             * @param element
+             * @virtual
+             */
             vfunc_offer_head(element: any): boolean;
+            /**
+             * @virtual
+             */
             vfunc_peek_head(): any;
+            /**
+             * @virtual
+             */
             vfunc_poll_head(): any;
+            /**
+             * @param recipient
+             * @param amount
+             * @virtual
+             */
             vfunc_drain_head(recipient: Collection, amount: number): number;
+            /**
+             * @param element
+             * @virtual
+             */
             vfunc_offer_tail(element: any): boolean;
+            /**
+             * @virtual
+             */
             vfunc_peek_tail(): any;
+            /**
+             * @virtual
+             */
             vfunc_poll_tail(): any;
+            /**
+             * @param recipient
+             * @param amount
+             * @virtual
+             */
             vfunc_drain_tail(recipient: Collection, amount: number): number;
         }
 
@@ -3189,16 +4556,33 @@ export namespace Gee {
         $gtype: GObject.GType<Deque>;
         prototype: Deque;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Deque extends Queue, Deque.Interface {
         // Methods
 
+        /**
+         * @param element
+         */
         offer_head(element: any): boolean;
         peek_head(): any;
         poll_head(): any;
+        /**
+         * @param recipient
+         * @param amount
+         */
         drain_head(recipient: Collection, amount: number): number;
+        /**
+         * @param element
+         */
         offer_tail(element: any): boolean;
         peek_tail(): any;
         poll_tail(): any;
+        /**
+         * @param recipient
+         * @param amount
+         */
         drain_tail(recipient: Collection, amount: number): number;
     }
 
@@ -3214,6 +4598,9 @@ export namespace Gee {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @virtual
+             */
             vfunc_iterator(): Iterator;
         }
 
@@ -3229,10 +4616,19 @@ export namespace Gee {
         $gtype: GObject.GType<Iterable>;
         prototype: Iterable;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Iterable extends GObject.Object, Iterable.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get element_type(): GObject.Type;
+        /**
+         * @read-only
+         */
         get elementType(): GObject.Type;
 
         // Methods
@@ -3252,10 +4648,25 @@ export namespace Gee {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @virtual
+             */
             vfunc_next(): boolean;
+            /**
+             * @virtual
+             */
             vfunc_has_next(): boolean;
+            /**
+             * @virtual
+             */
             vfunc_first(): boolean;
+            /**
+             * @virtual
+             */
             vfunc_get(): any;
+            /**
+             * @virtual
+             */
             vfunc_remove(): void;
         }
 
@@ -3268,6 +4679,9 @@ export namespace Gee {
         $gtype: GObject.GType<Iterator>;
         prototype: Iterator;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Iterator extends GObject.Object, Iterator.Interface {
         // Methods
 
@@ -3290,16 +4704,61 @@ export namespace Gee {
         interface Interface extends Collection.Interface {
             // Virtual methods
 
+            /**
+             * @virtual
+             */
             vfunc_list_iterator(): ListIterator;
+            /**
+             * @param index
+             * @virtual
+             */
             vfunc_get(index: number): any;
+            /**
+             * @param index
+             * @param item
+             * @virtual
+             */
             vfunc_set(index: number, item: any): void;
+            /**
+             * @param item
+             * @virtual
+             */
             vfunc_index_of(item: any): number;
+            /**
+             * @param index
+             * @param item
+             * @virtual
+             */
             vfunc_insert(index: number, item: any): void;
+            /**
+             * @param index
+             * @virtual
+             */
             vfunc_remove_at(index: number): any;
+            /**
+             * @param start
+             * @param stop
+             * @virtual
+             */
             vfunc_slice(start: number, stop: number): List;
+            /**
+             * @virtual
+             */
             vfunc_first(): any;
+            /**
+             * @virtual
+             */
             vfunc_last(): any;
+            /**
+             * @param index
+             * @param collection
+             * @virtual
+             */
             vfunc_insert_all(index: number, collection: Collection): void;
+            /**
+             * @param compare_func
+             * @virtual
+             */
             vfunc_sort(compare_func: GLib.CompareFunc): void;
         }
 
@@ -3317,26 +4776,66 @@ export namespace Gee {
 
         empty(): List;
     }
+    /**
+     * @gir-type Interface
+     */
     interface List extends Collection, List.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get read_only_view(): List;
+        /**
+         * @read-only
+         */
         get readOnlyView(): List;
 
         // Methods
 
         list_iterator(): ListIterator;
+        /**
+         * @param index
+         */
         get(index: number): any;
+        /**
+         * @param index
+         * @param item
+         */
         set(index: number, item: any): void;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.set
         set(...args: never[]): any;
+        /**
+         * @param item
+         */
         index_of(item: any): number;
+        /**
+         * @param index
+         * @param item
+         */
         insert(index: number, item: any): void;
+        /**
+         * @param index
+         */
         remove_at(index: number): any;
+        /**
+         * @param start
+         * @param stop
+         */
         slice(start: number, stop: number): List;
         first(): any;
         last(): any;
+        /**
+         * @param index
+         * @param collection
+         */
         insert_all(index: number, collection: Collection): void;
+        /**
+         * @param compare_func
+         */
         sort(compare_func: GLib.CompareFunc): void;
     }
 
@@ -3352,9 +4851,24 @@ export namespace Gee {
         interface Interface extends BidirIterator.Interface {
             // Virtual methods
 
+            /**
+             * @param item
+             * @virtual
+             */
             vfunc_set(item: any): void;
+            /**
+             * @param item
+             * @virtual
+             */
             vfunc_insert(item: any): void;
+            /**
+             * @param item
+             * @virtual
+             */
             vfunc_add(item: any): void;
+            /**
+             * @virtual
+             */
             vfunc_index(): number;
         }
 
@@ -3367,13 +4881,28 @@ export namespace Gee {
         $gtype: GObject.GType<ListIterator>;
         prototype: ListIterator;
     }
+    /**
+     * @gir-type Interface
+     */
     interface ListIterator extends BidirIterator, ListIterator.Interface {
         // Methods
 
+        /**
+         * @param item
+         */
         set(item: any): void;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.set
         set(...args: never[]): any;
+        /**
+         * @param item
+         */
         insert(item: any): void;
+        /**
+         * @param item
+         */
         add(item: any): void;
         index(): number;
     }
@@ -3390,19 +4919,75 @@ export namespace Gee {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @param key
+             * @virtual
+             */
             vfunc_has_key(key: any): boolean;
+            /**
+             * @param key
+             * @virtual
+             */
             vfunc_contains(key: any): boolean;
+            /**
+             * @param key
+             * @param value
+             * @virtual
+             */
             vfunc_has(key: any, value: any): boolean;
+            /**
+             * @param key
+             * @virtual
+             */
             vfunc_get(key: any): any;
+            /**
+             * @param key
+             * @param value
+             * @virtual
+             */
             vfunc_set(key: any, value: any): void;
+            /**
+             * @param key
+             * @virtual
+             */
             vfunc_unset(key: any): [boolean, any];
+            /**
+             * @param key
+             * @virtual
+             */
             vfunc_remove(key: any): [boolean, any];
+            /**
+             * @virtual
+             */
             vfunc_clear(): void;
+            /**
+             * @virtual
+             */
             vfunc_map_iterator(): MapIterator;
+            /**
+             * @param map
+             * @virtual
+             */
             vfunc_set_all(map: Map): void;
+            /**
+             * @param map
+             * @virtual
+             */
             vfunc_unset_all(map: Map): boolean;
+            /**
+             * @param map
+             * @virtual
+             */
             vfunc_remove_all(map: Map): boolean;
+            /**
+             * @param map
+             * @virtual
+             */
             vfunc_has_all(map: Map): boolean;
+            /**
+             * @param map
+             * @virtual
+             */
             vfunc_contains_all(map: Map): boolean;
         }
 
@@ -3430,39 +5015,119 @@ export namespace Gee {
 
         empty(): Map;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Map extends GObject.Object, Map.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get size(): number;
+        /**
+         * @read-only
+         */
         get is_empty(): boolean;
+        /**
+         * @read-only
+         */
         get isEmpty(): boolean;
+        /**
+         * @read-only
+         */
         get keys(): Set;
+        /**
+         * @read-only
+         */
         get values(): Collection;
+        /**
+         * @read-only
+         */
         get entries(): Set;
+        /**
+         * @read-only
+         */
         get read_only_view(): Map;
+        /**
+         * @read-only
+         */
         get readOnlyView(): Map;
+        /**
+         * @read-only
+         */
         get key_type(): GObject.Type;
+        /**
+         * @read-only
+         */
         get keyType(): GObject.Type;
+        /**
+         * @read-only
+         */
         get value_type(): GObject.Type;
+        /**
+         * @read-only
+         */
         get valueType(): GObject.Type;
 
         // Methods
 
+        /**
+         * @param key
+         */
         has_key(key: any): boolean;
+        /**
+         * @param key
+         */
         contains(key: any): boolean;
+        /**
+         * @param key
+         * @param value
+         */
         has(key: any, value: any): boolean;
+        /**
+         * @param key
+         */
         get(key: any): any;
+        /**
+         * @param key
+         * @param value
+         */
         set(key: any, value: any): void;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.set
         set(...args: never[]): any;
+        /**
+         * @param key
+         */
         unset(key: any): [boolean, any];
+        /**
+         * @param key
+         */
         remove(key: any): [boolean, any];
         clear(): void;
         map_iterator(): MapIterator;
+        /**
+         * @param map
+         */
         set_all(map: Map): void;
+        /**
+         * @param map
+         */
         unset_all(map: Map): boolean;
+        /**
+         * @param map
+         */
         remove_all(map: Map): boolean;
+        /**
+         * @param map
+         */
         has_all(map: Map): boolean;
+        /**
+         * @param map
+         */
         contains_all(map: Map): boolean;
     }
 
@@ -3478,12 +5143,34 @@ export namespace Gee {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @virtual
+             */
             vfunc_next(): boolean;
+            /**
+             * @virtual
+             */
             vfunc_has_next(): boolean;
+            /**
+             * @virtual
+             */
             vfunc_first(): boolean;
+            /**
+             * @virtual
+             */
             vfunc_get_key(): any;
+            /**
+             * @virtual
+             */
             vfunc_get_value(): any;
+            /**
+             * @param value
+             * @virtual
+             */
             vfunc_set_value(value: any): void;
+            /**
+             * @virtual
+             */
             vfunc_unset(): void;
         }
 
@@ -3496,6 +5183,9 @@ export namespace Gee {
         $gtype: GObject.GType<MapIterator>;
         prototype: MapIterator;
     }
+    /**
+     * @gir-type Interface
+     */
     interface MapIterator extends GObject.Object, MapIterator.Interface {
         // Methods
 
@@ -3504,6 +5194,9 @@ export namespace Gee {
         first(): boolean;
         get_key(): any;
         get_value(): any;
+        /**
+         * @param value
+         */
         set_value(value: any): void;
         unset(): void;
     }
@@ -3520,14 +5213,48 @@ export namespace Gee {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @virtual
+             */
             vfunc_get_keys(): Set;
+            /**
+             * @virtual
+             */
             vfunc_get_all_keys(): MultiSet;
+            /**
+             * @virtual
+             */
             vfunc_get_values(): Collection;
+            /**
+             * @param key
+             * @virtual
+             */
             vfunc_contains(key: any): boolean;
+            /**
+             * @param key
+             * @virtual
+             */
             vfunc_get(key: any): Collection;
+            /**
+             * @param key
+             * @param value
+             * @virtual
+             */
             vfunc_set(key: any, value: any): void;
+            /**
+             * @param key
+             * @param value
+             * @virtual
+             */
             vfunc_remove(key: any, value: any): boolean;
+            /**
+             * @param key
+             * @virtual
+             */
             vfunc_remove_all(key: any): boolean;
+            /**
+             * @virtual
+             */
             vfunc_clear(): void;
         }
 
@@ -3542,9 +5269,15 @@ export namespace Gee {
         $gtype: GObject.GType<MultiMap>;
         prototype: MultiMap;
     }
+    /**
+     * @gir-type Interface
+     */
     interface MultiMap extends GObject.Object, MultiMap.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get size(): number;
 
         // Methods
@@ -3552,12 +5285,32 @@ export namespace Gee {
         get_keys(): Set;
         get_all_keys(): MultiSet;
         get_values(): Collection;
+        /**
+         * @param key
+         */
         contains(key: any): boolean;
+        /**
+         * @param key
+         */
         get(key: any): Collection;
+        /**
+         * @param key
+         * @param value
+         */
         set(key: any, value: any): void;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.set
         set(...args: never[]): any;
+        /**
+         * @param key
+         * @param value
+         */
         remove(key: any, value: any): boolean;
+        /**
+         * @param key
+         */
         remove_all(key: any): boolean;
         clear(): void;
     }
@@ -3574,6 +5327,10 @@ export namespace Gee {
         interface Interface extends Collection.Interface {
             // Virtual methods
 
+            /**
+             * @param item
+             * @virtual
+             */
             vfunc_count(item: any): number;
         }
 
@@ -3586,9 +5343,15 @@ export namespace Gee {
         $gtype: GObject.GType<MultiSet>;
         prototype: MultiSet;
     }
+    /**
+     * @gir-type Interface
+     */
     interface MultiSet extends Collection, MultiSet.Interface {
         // Methods
 
+        /**
+         * @param item
+         */
         count(item: any): number;
     }
 
@@ -3604,9 +5367,24 @@ export namespace Gee {
         interface Interface extends Collection.Interface {
             // Virtual methods
 
+            /**
+             * @param element
+             * @virtual
+             */
             vfunc_offer(element: any): boolean;
+            /**
+             * @virtual
+             */
             vfunc_peek(): any;
+            /**
+             * @virtual
+             */
             vfunc_poll(): any;
+            /**
+             * @param recipient
+             * @param amount
+             * @virtual
+             */
             vfunc_drain(recipient: Collection, amount: number): number;
         }
 
@@ -3625,20 +5403,45 @@ export namespace Gee {
         $gtype: GObject.GType<Queue>;
         prototype: Queue;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Queue extends Collection, Queue.Interface {
         // Properties
 
+        /**
+         * @read-only
+         */
         get capacity(): number;
+        /**
+         * @read-only
+         */
         get remaining_capacity(): number;
+        /**
+         * @read-only
+         */
         get remainingCapacity(): number;
+        /**
+         * @read-only
+         */
         get is_full(): boolean;
+        /**
+         * @read-only
+         */
         get isFull(): boolean;
 
         // Methods
 
+        /**
+         * @param element
+         */
         offer(element: any): boolean;
         peek(): any;
         poll(): any;
+        /**
+         * @param recipient
+         * @param amount
+         */
         drain(recipient: Collection, amount: number): number;
     }
 
@@ -3661,10 +5464,19 @@ export namespace Gee {
 
         empty(): Set;
     }
+    /**
+     * @gir-type Interface
+     */
     interface Set extends Collection {
         // Properties
 
+        /**
+         * @read-only
+         */
         get read_only_view(): Set;
+        /**
+         * @read-only
+         */
         get readOnlyView(): Set;
     }
 
@@ -3680,16 +5492,58 @@ export namespace Gee {
         interface Interface {
             // Virtual methods
 
+            /**
+             * @virtual
+             */
             vfunc_first(): any;
+            /**
+             * @virtual
+             */
             vfunc_last(): any;
+            /**
+             * @virtual
+             */
             vfunc_bidir_iterator(): BidirIterator;
+            /**
+             * @param element
+             * @virtual
+             */
             vfunc_iterator_at(element: any): BidirIterator;
+            /**
+             * @param element
+             * @virtual
+             */
             vfunc_lower(element: any): any;
+            /**
+             * @param element
+             * @virtual
+             */
             vfunc_higher(element: any): any;
+            /**
+             * @param element
+             * @virtual
+             */
             vfunc_floor(element: any): any;
+            /**
+             * @param element
+             * @virtual
+             */
             vfunc_ceil(element: any): any;
+            /**
+             * @param before
+             * @virtual
+             */
             vfunc_head_set(before: any): SortedSet;
+            /**
+             * @param after
+             * @virtual
+             */
             vfunc_tail_set(after: any): SortedSet;
+            /**
+             * @param from
+             * @param to
+             * @virtual
+             */
             vfunc_sub_set(from: any, to: any): SortedSet;
         }
 
@@ -3702,19 +5556,47 @@ export namespace Gee {
         $gtype: GObject.GType<SortedSet>;
         prototype: SortedSet;
     }
+    /**
+     * @gir-type Interface
+     */
     interface SortedSet extends Set, SortedSet.Interface {
         // Methods
 
         first(): any;
         last(): any;
         bidir_iterator(): BidirIterator;
+        /**
+         * @param element
+         */
         iterator_at(element: any): BidirIterator;
+        /**
+         * @param element
+         */
         lower(element: any): any;
+        /**
+         * @param element
+         */
         higher(element: any): any;
+        /**
+         * @param element
+         */
         floor(element: any): any;
+        /**
+         * @param element
+         */
         ceil(element: any): any;
+        /**
+         * @param before
+         */
         head_set(before: any): SortedSet;
+        /**
+         * @param after
+         */
         tail_set(after: any): SortedSet;
+        /**
+         * @param from
+         * @param to
+         */
         sub_set(from: any, to: any): SortedSet;
     }
 

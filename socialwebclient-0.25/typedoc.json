@@ -2,6 +2,8 @@
     "entryPoints": ["./socialwebclient-0.25.d.ts"],
     "readme": "./README.md",
     "name": "SocialWebClient-0.25",
-    "tsconfig": "./tsconfig.json"
+    "tsconfig": "./tsconfig.json",
+    "skipErrorChecking": true,
+    "highlightLanguages": ["typescript", "javascript", "c", "cpp", "xml", "bash", "json", "css"]
 }
 

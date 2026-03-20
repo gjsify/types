@@ -20,14 +20,19 @@ export namespace GstMse {
      * GstMse-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MediaSourceEOSError {
         export const $gtype: GObject.GType<MediaSourceEOSError>;
     }
 
     /**
-     * Reasons for ending a #GstMediaSource using gst_media_source_end_of_stream().
+     * Reasons for ending a {@link GstMse.MediaSource} using `gst_media_source_end_of_stream()`.
      *
      * [Specification](https://www.w3.org/TR/media-source-2/#dom-endofstreamerror)
+     * @gir-type Enum
+     * @since 1.24
      */
     enum MediaSourceEOSError {
         /**
@@ -45,10 +50,11 @@ export namespace GstMse {
     }
 
     /**
-     * Any error that can occur within #GstMediaSource or #GstSourceBuffer APIs.
+     * Any error that can occur within {@link GstMse.MediaSource} or {@link GstMse.SourceBuffer} APIs.
      * These values correspond directly to those in the Web IDL specification.
      *
      * [Specification](https://webidl.spec.whatwg.org/#idl-DOMException-error-names)
+     * @gir-type Struct
      */
     class MediaSourceError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -73,6 +79,9 @@ export namespace GstMse {
         static quark(): GLib.Quark;
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MediaSourceReadyState {
         export const $gtype: GObject.GType<MediaSourceReadyState>;
     }
@@ -81,36 +90,43 @@ export namespace GstMse {
      * Describes the possible states of the Media Source.
      *
      * [Specification](https://www.w3.org/TR/media-source-2/#dom-readystate)
+     * @gir-type Enum
+     * @since 1.24
      */
     enum MediaSourceReadyState {
         /**
-         * The #GstMediaSource is not connected to
+         * The {@link GstMse.MediaSource} is not connected to
          * any playback element.
          */
         CLOSED,
         /**
-         * The #GstMediaSource is connected to a
-         * playback element and ready to append data to its #GstSourceBuffer (s).
+         * The {@link GstMse.MediaSource} is connected to a
+         * playback element and ready to append data to its {@link GstMse.SourceBuffer} (s).
          */
         OPEN,
         /**
-         * gst_media_source_end_of_stream() has
-         * been called on the current #GstMediaSource
+         * `gst_media_source_end_of_stream()` has
+         * been called on the current {@link GstMse.MediaSource}
          */
         ENDED,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace MseSrcReadyState {
         export const $gtype: GObject.GType<MseSrcReadyState>;
     }
 
     /**
-     * Describes how much information a #GstMseSrc has about the media it is playing
-     * back at the current playback #GstMseSrc:position. This type corresponds
+     * Describes how much information a {@link GstMse.MseSrc} has about the media it is playing
+     * back at the current playback {@link GstMse.MseSrc.position}. This type corresponds
      * directly to the ready state of a HTML Media Element and is a separate concept
-     * from #GstMediaSourceReadyState.
+     * from {@link GstMse.MediaSourceReadyState}.
      *
      * [Specification](https://html.spec.whatwg.org/multipage/media.html#ready-states)
+     * @gir-type Enum
+     * @since 1.24
      */
     enum MseSrcReadyState {
         /**
@@ -141,12 +157,17 @@ export namespace GstMse {
         ENOUGH_DATA,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SourceBufferAppendMode {
         export const $gtype: GObject.GType<SourceBufferAppendMode>;
     }
 
     /**
      * [Specification](https://www.w3.org/TR/media-source-2/#dom-appendmode)
+     * @gir-type Enum
+     * @since 1.24
      */
     enum SourceBufferAppendMode {
         SEGMENTS,
@@ -155,13 +176,35 @@ export namespace GstMse {
 
     /**
      * Any error type that can be reported by the Media Source API.
+     * @since 1.24
      */
     function media_source_error_quark(): GLib.Quark;
     namespace MediaSource {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
             'on-source-close': () => void;
+            /**
+             * Emitted when `self` has ended, normally through
+             * `gst_media_source_end_of_stream()`.
+             *
+             * [Specification](https://www.w3.org/TR/media-source-2/#dom-mediasource-onsourceended)
+             * @signal
+             * @since 1.24
+             * @run-last
+             */
             'on-source-ended': () => void;
+            /**
+             * Emitted when `self` has been opened.
+             *
+             * [Specification](https://www.w3.org/TR/media-source-2/#dom-mediasource-onsourceopen)
+             * @signal
+             * @since 1.24
+             * @run-last
+             */
             'on-source-open': () => void;
             'notify::active-source-buffers': (pspec: GObject.ParamSpec) => void;
             'notify::duration': (pspec: GObject.ParamSpec) => void;
@@ -187,15 +230,17 @@ export namespace GstMse {
     }
 
     /**
-     * #GstMediaSource is the entry point into the W3C Media Source API. It offers
-     * functionality similar to #GstAppSrc for client-side web or JavaScript
+     * {@link GstMse.MediaSource} is the entry point into the W3C Media Source API. It offers
+     * functionality similar to `GstAppSrc` for client-side web or JavaScript
      * applications decoupling the source of media from its processing and playback.
      *
-     * To interact with a Media Source, connect it to a #GstMseSrc that is in some
-     * #GstPipeline using gst_media_source_attach(). Then create at least one
-     * #GstSourceBuffer using gst_media_source_add_source_buffer(). Finally, feed
+     * To interact with a Media Source, connect it to a {@link GstMse.MseSrc} that is in some
+     * {@link Gst.Pipeline} using `gst_media_source_attach()`. Then create at least one
+     * {@link GstMse.SourceBuffer} using `gst_media_source_add_source_buffer()`. Finally, feed
      * some media data to the Source Buffer(s) using
-     * gst_source_buffer_append_buffer() and play the pipeline.
+     * `gst_source_buffer_append_buffer()` and play the pipeline.
+     * @gir-type Class
+     * @since 1.24
      */
     class MediaSource extends Gst.Object {
         static $gtype: GObject.GType<MediaSource>;
@@ -203,28 +248,34 @@ export namespace GstMse {
         // Properties
 
         /**
-         * A #GstSourceBufferList of every #GstSourceBuffer in this Media Source that
+         * A {@link GstMse.SourceBufferList} of every {@link GstMse.SourceBuffer} in this Media Source that
          * is considered active
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-mediasource-activesourcebuffers)
+         * @since 1.24
+         * @read-only
          */
         get active_source_buffers(): SourceBufferList;
         /**
-         * A #GstSourceBufferList of every #GstSourceBuffer in this Media Source that
+         * A {@link GstMse.SourceBufferList} of every {@link GstMse.SourceBuffer} in this Media Source that
          * is considered active
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-mediasource-activesourcebuffers)
+         * @since 1.24
+         * @read-only
          */
         get activeSourceBuffers(): SourceBufferList;
         /**
-         * The Duration of the Media Source as a #GstClockTime
+         * The Duration of the Media Source as a {@link Gst.ClockTime}
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-mediasource-duration)
+         * @since 1.24
          */
         get duration(): number;
         set duration(val: number);
         /**
          * The position of the player consuming from the Media Source
+         * @since 1.24
          */
         get position(): number;
         set position(val: number);
@@ -232,24 +283,32 @@ export namespace GstMse {
          * The Ready State of the Media Source
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-mediasource-readystate)
+         * @since 1.24
+         * @read-only
          */
         get ready_state(): MediaSourceReadyState;
         /**
          * The Ready State of the Media Source
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-mediasource-readystate)
+         * @since 1.24
+         * @read-only
          */
         get readyState(): MediaSourceReadyState;
         /**
-         * A #GstSourceBufferList of every #GstSourceBuffer in this Media Source
+         * A {@link GstMse.SourceBufferList} of every {@link GstMse.SourceBuffer} in this Media Source
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-mediasource-sourcebuffers)
+         * @since 1.24
+         * @read-only
          */
         get source_buffers(): SourceBufferList;
         /**
-         * A #GstSourceBufferList of every #GstSourceBuffer in this Media Source
+         * A {@link GstMse.SourceBufferList} of every {@link GstMse.SourceBuffer} in this Media Source
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-mediasource-sourcebuffers)
+         * @since 1.24
+         * @read-only
          */
         get sourceBuffers(): SourceBufferList;
 
@@ -272,16 +331,19 @@ export namespace GstMse {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MediaSource.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MediaSource.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MediaSource.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MediaSource.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MediaSource.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MediaSource.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -300,31 +362,31 @@ export namespace GstMse {
         // Methods
 
         /**
-         * Add a #GstSourceBuffer to this #GstMediaSource of the specified media type.
-         * The Media Source must be in the #GstMediaSourceReadyState %GST_MEDIA_SOURCE_READY_STATE_OPEN.
+         * Add a {@link GstMse.SourceBuffer} to this {@link GstMse.MediaSource} of the specified media type.
+         * The Media Source must be in the {@link GstMse.MediaSourceReadyState} {@link GstMse.MediaSourceReadyState.OPEN}.
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-mediasource-addsourcebuffer)
          * @param type A MIME type describing the format of the incoming media
-         * @returns a new #GstSourceBuffer instance on success, otherwise `NULL`
+         * @returns a new {@link GstMse.SourceBuffer} instance on success, otherwise `NULL`
          */
         add_source_buffer(type: string): SourceBuffer;
         /**
          * Associates `self` with `element`.
-         * Normally, the Element will be part of a #GstPipeline that plays back the data
+         * Normally, the Element will be part of a {@link Gst.Pipeline} that plays back the data
          * submitted to the Media Source's Source Buffers.
          *
-         * #GstMseSrc is a special source element that is designed to consume media from
-         * a #GstMediaSource.
+         * {@link GstMse.MseSrc} is a special source element that is designed to consume media from
+         * a {@link GstMse.MediaSource}.
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dfn-attaching-to-a-media-element)
-         * @param element #GstMseSrc source Element
+         * @param element {@link GstMse.MseSrc} source Element
          */
         attach(element: MseSrc): void;
         /**
          * Clear the live seekable range for `self`. This will inform the component
          * playing this Media Source that there is no seekable time range.
          *
-         * If the ready state is not %GST_MEDIA_SOURCE_READY_STATE_OPEN, it will fail
+         * If the ready state is not {@link GstMse.MediaSourceReadyState.OPEN}, it will fail
          * and set an error.
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-mediasource-clearliveseekablerange)
@@ -332,7 +394,7 @@ export namespace GstMse {
          */
         clear_live_seekable_range(): boolean;
         /**
-         * Detaches `self` from any #GstMseSrc element that it may be associated with.
+         * Detaches `self` from any {@link GstMse.MseSrc} element that it may be associated with.
          */
         detach(): void;
         /**
@@ -344,7 +406,7 @@ export namespace GstMse {
          */
         end_of_stream(eos_error: MediaSourceEOSError | null): boolean;
         /**
-         * Gets a #GstSourceBufferList containing all the Source Buffers currently
+         * Gets a {@link GstMse.SourceBufferList} containing all the Source Buffers currently
          * associated with this Media Source that are considered "active."
          * For a Source Buffer to be considered active, either its video track is
          * selected, its audio track is enabled, or its text track is visible or hidden.
@@ -352,14 +414,14 @@ export namespace GstMse {
          * well.
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-mediasource-activesourcebuffers)
-         * @returns a new #GstSourceBufferList instance
+         * @returns a new {@link GstMse.SourceBufferList} instance
          */
         get_active_source_buffers(): SourceBufferList;
         /**
          * Gets the current duration of `self`.
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-mediasource-duration)
-         * @returns the current duration as a #GstClockTime
+         * @returns the current duration as a {@link Gst.ClockTime}
          */
         get_duration(): Gst.ClockTime;
         /**
@@ -369,33 +431,33 @@ export namespace GstMse {
         get_live_seekable_range(): MediaSourceRange;
         /**
          * Gets the current playback position of the Media Source.
-         * @returns the current playback position as a #GstClockTime
+         * @returns the current playback position as a {@link Gst.ClockTime}
          */
         get_position(): Gst.ClockTime;
         /**
          * Gets the current Ready State of the Media Source.
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-mediasource-readystate)
-         * @returns the current #GstMediaSourceReadyState value
+         * @returns the current {@link GstMse.MediaSourceReadyState} value
          */
         get_ready_state(): MediaSourceReadyState;
         /**
-         * Gets a #GstSourceBufferList containing all the Source Buffers currently
+         * Gets a {@link GstMse.SourceBufferList} containing all the Source Buffers currently
          * associated with this Media Source. This object will reflect any future
          * changes to the parent Media Source as well.
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-mediasource-sourcebuffers)
-         * @returns a #GstSourceBufferList instance
+         * @returns a {@link GstMse.SourceBufferList} instance
          */
         get_source_buffers(): SourceBufferList;
         /**
          * Remove `buffer` from `self`.
          *
          * `buffer` must have been created as a child of `self` and `self` must be in the
-         * #GstMediaSourceReadyState %GST_MEDIA_SOURCE_READY_STATE_OPEN.
+         * {@link GstMse.MediaSourceReadyState} {@link GstMse.MediaSourceReadyState.OPEN}.
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-mediasource-removesourcebuffer)
-         * @param buffer #GstSourceBuffer instance
+         * @param buffer {@link GstMse.SourceBuffer} instance
          * @returns `TRUE` on success, `FALSE` otherwise
          */
         remove_source_buffer(buffer: SourceBuffer): boolean;
@@ -403,7 +465,7 @@ export namespace GstMse {
          * Sets the duration of `self`.
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-mediasource-duration)
-         * @param duration The new duration to apply to @self.
+         * @param duration The new duration to apply to `self`.
          * @returns `TRUE` on success, `FALSE` otherwise
          */
         set_duration(duration: Gst.ClockTime): boolean;
@@ -411,7 +473,7 @@ export namespace GstMse {
          * Set the live seekable range for `self`. This range informs the component
          * playing this Media Source what it can allow the user to seek through.
          *
-         * If the ready state is not %GST_MEDIA_SOURCE_READY_STATE_OPEN, or the supplied
+         * If the ready state is not {@link GstMse.MediaSourceReadyState.OPEN}, or the supplied
          * `start` time is later than `end` it will fail and set an error.
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-mediasource-setliveseekablerange)
@@ -452,16 +514,18 @@ export namespace GstMse {
     }
 
     /**
-     * #GstMseSrc is a source Element that interacts with a #GstMediaSource to
-     * consume #GstSample<!-- -->s processed by the Media Source and supplies them
-     * to the containing #GstPipeline. In the perspective of the Media Source API,
+     * {@link GstMse.MseSrc} is a source Element that interacts with a {@link GstMse.MediaSource} to
+     * consume {@link Gst.Sample}<!-- -->s processed by the Media Source and supplies them
+     * to the containing {@link Gst.Pipeline}. In the perspective of the Media Source API,
      * this element fulfills the basis of the Media Element's role relating to
      * working with a Media Source. The remaining responsibilities are meant to be
-     * fulfilled by the application and #GstPlay can be used to satisfy many of
+     * fulfilled by the application and `GstPlay` can be used to satisfy many of
      * them.
      *
      * Once added to a Pipeline, this element should be attached to a Media Source
-     * using gst_media_source_attach().
+     * using `gst_media_source_attach()`.
+     * @gir-type Class
+     * @since 1.24
      */
     class MseSrc extends Gst.Element implements Gst.URIHandler {
         static $gtype: GObject.GType<MseSrc>;
@@ -469,58 +533,77 @@ export namespace GstMse {
         // Properties
 
         /**
-         * The duration of the stream as a #GstClockTime
+         * The duration of the stream as a {@link Gst.ClockTime}
          *
          * [Specification](https://html.spec.whatwg.org/multipage/media.html#dom-media-duration)
+         * @since 1.24
          */
         get duration(): number;
         set duration(val: number);
         /**
          * The number of audio tracks in the Media Source
+         * @since 1.24
+         * @read-only
          */
         get n_audio(): number;
         /**
          * The number of audio tracks in the Media Source
+         * @since 1.24
+         * @read-only
          */
         get nAudio(): number;
         /**
          * The number of text tracks in the Media Source
+         * @since 1.24
+         * @read-only
          */
         get n_text(): number;
         /**
          * The number of text tracks in the Media Source
+         * @since 1.24
+         * @read-only
          */
         get nText(): number;
         /**
          * The number of video tracks in the Media Source
+         * @since 1.24
+         * @read-only
          */
         get n_video(): number;
         /**
          * The number of video tracks in the Media Source
+         * @since 1.24
+         * @read-only
          */
         get nVideo(): number;
         /**
-         * The playback position as a #GstClockTime
+         * The playback position as a {@link Gst.ClockTime}
          *
          * [Specification](https://html.spec.whatwg.org/multipage/media.html#current-playback-position)
+         * @since 1.24
+         * @read-only
          */
         get position(): number;
         /**
          * The Ready State of this element, describing to what level it can supply
-         * content for the current #GstMseSrc:position. This is a separate concept
-         * from #GstMediaSource:ready-state: and corresponds to the HTML Media
+         * content for the current {@link GstMse.MseSrc.position}. This is a separate concept
+         * from {@link GstMse.MediaSource.ready_state}: and corresponds to the HTML Media
          * Element's Ready State.
          *
          * [Specification](https://html.spec.whatwg.org/multipage/media.html#ready-states)
+         * @since 1.24
+         * @read-only
          */
         get ready_state(): MseSrcReadyState;
         /**
          * The Ready State of this element, describing to what level it can supply
-         * content for the current #GstMseSrc:position. This is a separate concept
-         * from #GstMediaSource:ready-state: and corresponds to the HTML Media
+         * content for the current {@link GstMse.MseSrc.position}. This is a separate concept
+         * from {@link GstMse.MediaSource.ready_state}: and corresponds to the HTML Media
          * Element's Ready State.
          *
          * [Specification](https://html.spec.whatwg.org/multipage/media.html#ready-states)
+         * @since 1.24
+         * @read-only
          */
         get readyState(): MseSrcReadyState;
 
@@ -541,16 +624,19 @@ export namespace GstMse {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MseSrc.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MseSrc.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MseSrc.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MseSrc.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MseSrc.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MseSrc.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -563,60 +649,69 @@ export namespace GstMse {
          * Gets the duration of `self`.
          *
          * [Specification](https://html.spec.whatwg.org/multipage/media.html#dom-media-duration)
-         * @returns The duration of this stream as a #GstClockTime
+         * @returns The duration of this stream as a {@link Gst.ClockTime}
          */
         get_duration(): Gst.ClockTime;
+        /**
+         * @returns the number of audio tracks available from this source
+         */
         get_n_audio(): number;
+        /**
+         * @returns the number of text tracks available from this source
+         */
         get_n_text(): number;
+        /**
+         * @returns the number of video tracks available from this source
+         */
         get_n_video(): number;
         /**
          * Gets the current playback position of `self`.
          *
          * [Specification](https://html.spec.whatwg.org/multipage/media.html#current-playback-position)
-         * @returns The playback position of this Element as a #GstClockTime
+         * @returns The playback position of this Element as a {@link Gst.ClockTime}
          */
         get_position(): Gst.ClockTime;
         /**
-         * The Ready State of `self,` describing to what level it can supply content for
-         * the current #GstMseSrc:position. This is a separate concept from
-         * #GstMediaSource:ready-state: and corresponds to the HTML Media Element's
+         * The Ready State of `self`, describing to what level it can supply content for
+         * the current {@link GstMse.MseSrc.position}. This is a separate concept from
+         * {@link GstMse.MediaSource.ready_state}: and corresponds to the HTML Media Element's
          * Ready State.
          *
          * [Specification](https://html.spec.whatwg.org/multipage/media.html#ready-states)
-         * @returns the current #GstMseSrcReadyState
+         * @returns the current {@link GstMse.MseSrcReadyState}
          */
         get_ready_state(): MseSrcReadyState;
-
-        // Inherited methods
         /**
          * Gets the list of protocols supported by `handler`. This list may not be
          * modified.
-         * @returns the     supported protocols.  Returns %NULL if the @handler isn't     implemented properly, or the @handler doesn't support any     protocols.
+         * @returns the     supported protocols.  Returns `null` if the `handler` isn't     implemented properly, or the `handler` doesn't support any     protocols.
          */
         get_protocols(): string[] | null;
         /**
          * Gets the currently handled URI.
-         * @returns the URI currently handled by   the @handler.  Returns %NULL if there are no URI currently   handled. The returned string must be freed with g_free() when no   longer needed.
+         * @returns the URI currently handled by   the `handler`.  Returns `null` if there are no URI currently   handled. The returned string must be freed with `g_free()` when no   longer needed.
          */
         get_uri(): string | null;
         /**
          * Gets the type of the given URI handler
-         * @returns the #GstURIType of the URI handler. Returns #GST_URI_UNKNOWN if the @handler isn't implemented correctly.
+         * @returns the {@link Gst.URIType} of the URI handler. Returns #GST_URI_UNKNOWN if the `handler` isn't implemented correctly.
          */
         get_uri_type(): Gst.URIType;
         /**
          * Tries to set the URI of the given handler.
          * @param uri URI to set
-         * @returns %TRUE if the URI was set successfully, else %FALSE.
+         * @returns `true` if the URI was set successfully, else `false`.
          */
         set_uri(uri: string): boolean;
         /**
          * Gets the currently handled URI.
+         * @virtual
          */
         vfunc_get_uri(): string | null;
         /**
          * Tries to set the URI of the given handler.
          * @param uri URI to set
+         * @virtual
          */
         vfunc_set_uri(uri: string): boolean;
         /**
@@ -632,32 +727,32 @@ export namespace GstMse {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -666,39 +761,39 @@ export namespace GstMse {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -709,13 +804,16 @@ export namespace GstMse {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -723,7 +821,7 @@ export namespace GstMse {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -731,9 +829,9 @@ export namespace GstMse {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -753,9 +851,9 @@ export namespace GstMse {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -768,34 +866,34 @@ export namespace GstMse {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -828,24 +926,27 @@ export namespace GstMse {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
+        /**
+         * @param args
+         */
         // Conflicted with Gst.Object.ref
         ref(...args: never[]): any;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -854,8 +955,8 @@ export namespace GstMse {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -872,10 +973,10 @@ export namespace GstMse {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -890,13 +991,13 @@ export namespace GstMse {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -927,21 +1028,21 @@ export namespace GstMse {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -951,33 +1052,34 @@ export namespace GstMse {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -986,6 +1088,7 @@ export namespace GstMse {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -994,12 +1097,14 @@ export namespace GstMse {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1008,20 +1113,22 @@ export namespace GstMse {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1033,6 +1140,7 @@ export namespace GstMse {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -1078,6 +1186,10 @@ export namespace GstMse {
         interface ConstructorProps extends Gst.Pad.ConstructorProps {}
     }
 
+    /**
+     * @gir-type Class
+     * @since 1.24
+     */
     class MseSrcPad extends Gst.Pad {
         static $gtype: GObject.GType<MseSrcPad>;
 
@@ -1098,16 +1210,19 @@ export namespace GstMse {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MseSrcPad.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MseSrcPad.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MseSrcPad.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MseSrcPad.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MseSrcPad.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MseSrcPad.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1118,10 +1233,55 @@ export namespace GstMse {
     namespace SourceBuffer {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
+            /**
+             * Emitted when `self` was aborted after a call to `gst_source_buffer_abort()`.
+             *
+             * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-onabort)
+             * @signal
+             * @since 1.24
+             * @run-last
+             */
             'on-abort': () => void;
+            /**
+             * Emitted when `self` has encountered an error after a call to
+             * `gst_source_buffer_append_buffer()`.
+             *
+             * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-onerror)
+             * @signal
+             * @since 1.24
+             * @run-last
+             */
             'on-error': () => void;
+            /**
+             * Emitted when `self` has successfully processed data after a call to
+             * `gst_source_buffer_append_buffer()`.
+             *
+             * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-onupdate)
+             * @signal
+             * @since 1.24
+             * @run-last
+             */
             'on-update': () => void;
+            /**
+             * Emitted when `self` is no longer in the updating state after a call to
+             * `gst_source_buffer_append_buffer()`. This can happen after a successful or
+             * unsuccessful append.
+             *
+             * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-onupdateend)
+             * @signal
+             * @since 1.24
+             * @run-last
+             */
             'on-update-end': () => void;
+            /**
+             * Emitted when `self` has begun to process data after a call to
+             * `gst_source_buffer_append_buffer()`.
+             *
+             * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-onupdatestart)
+             * @signal
+             * @since 1.24
+             * @run-last
+             */
             'on-update-start': () => void;
             'notify::append-mode': (pspec: GObject.ParamSpec) => void;
             'notify::append-window-end': (pspec: GObject.ParamSpec) => void;
@@ -1157,7 +1317,7 @@ export namespace GstMse {
      * and the Media Source API. It represents a single timeline of media,
      * containing some combination of audio, video, and text tracks.
      * An application is responsible for feeding raw data into the Source Buffer
-     * using gst_source_buffer_append_buffer() and the Source Buffer will
+     * using `gst_source_buffer_append_buffer()` and the Source Buffer will
      * asynchronously process the data into tracks of time-coded multimedia samples.
      *
      * The application as well as the associated playback component can then select
@@ -1166,17 +1326,19 @@ export namespace GstMse {
      *
      * A few control points are also provided to customize the behavior.
      *
-     *  - #GstSourceBuffer:append-mode controls how timestamps of processed samples are
+     *  - {@link GstMse.SourceBuffer.append_mode} controls how timestamps of processed samples are
      *  interpreted. They are either inserted in the timeline directly where the
      *  decoded media states they should, or inserted directly after the previously
      *  encountered sample.
      *
-     *  - #GstSourceBuffer:append-window-start / #GstSourceBuffer:append-window-end
+     *  - {@link GstMse.SourceBuffer.append_window_start} / {@link GstMse.SourceBuffer.append_window_end}
      *  control the planned time window where media from appended data can be added
      *  to the current timeline. Any samples outside that range may be ignored.
      *
-     *  - #GstSourceBuffer:timestamp-offset is added to the start time of any sample
+     *  - {@link GstMse.SourceBuffer.timestamp_offset} is added to the start time of any sample
      *  processed.
+     * @gir-type Class
+     * @since 1.24
      */
     class SourceBuffer extends Gst.Object {
         static $gtype: GObject.GType<SourceBuffer>;
@@ -1185,27 +1347,29 @@ export namespace GstMse {
 
         /**
          * Affects how timestamps of processed media segments are interpreted.
-         * In %GST_SOURCE_BUFFER_APPEND_MODE_SEGMENTS, the start timestamp of a
+         * In {@link GstMse.SourceBufferAppendMode.SEGMENTS}, the start timestamp of a
          * processed media segment is used directly along with
-         * #GstSourceBuffer:timestamp-offset .
-         * In %GST_SOURCE_BUFFER_APPEND_MODE_SEQUENCE, the timestamp of a
+         * {@link GstMse.SourceBuffer.timestamp_offset} .
+         * In {@link GstMse.SourceBufferAppendMode.SEQUENCE}, the timestamp of a
          * processed media segment is ignored and replaced with the end time of the
          * most recently appended segment.
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-mode)
+         * @since 1.24
          */
         get append_mode(): SourceBufferAppendMode;
         set append_mode(val: SourceBufferAppendMode);
         /**
          * Affects how timestamps of processed media segments are interpreted.
-         * In %GST_SOURCE_BUFFER_APPEND_MODE_SEGMENTS, the start timestamp of a
+         * In {@link GstMse.SourceBufferAppendMode.SEGMENTS}, the start timestamp of a
          * processed media segment is used directly along with
-         * #GstSourceBuffer:timestamp-offset .
-         * In %GST_SOURCE_BUFFER_APPEND_MODE_SEQUENCE, the timestamp of a
+         * {@link GstMse.SourceBuffer.timestamp_offset} .
+         * In {@link GstMse.SourceBufferAppendMode.SEQUENCE}, the timestamp of a
          * processed media segment is ignored and replaced with the end time of the
          * most recently appended segment.
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-mode)
+         * @since 1.24
          */
         get appendMode(): SourceBufferAppendMode;
         set appendMode(val: SourceBufferAppendMode);
@@ -1214,6 +1378,8 @@ export namespace GstMse {
          * be ignored by this Source Buffer.
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-appendwindowend)
+         * @since 1.24
+         * @read-only
          */
         get append_window_end(): number;
         /**
@@ -1221,6 +1387,8 @@ export namespace GstMse {
          * be ignored by this Source Buffer.
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-appendwindowend)
+         * @since 1.24
+         * @read-only
          */
         get appendWindowEnd(): number;
         /**
@@ -1228,6 +1396,8 @@ export namespace GstMse {
          * Source Buffer.
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-appendwindowstart)
+         * @since 1.24
+         * @read-only
          */
         get append_window_start(): number;
         /**
@@ -1235,6 +1405,8 @@ export namespace GstMse {
          * Source Buffer.
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-appendwindowstart)
+         * @since 1.24
+         * @read-only
          */
         get appendWindowStart(): number;
         /**
@@ -1242,15 +1414,19 @@ export namespace GstMse {
          * Buffer
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-buffered)
+         * @since 1.24
+         * @read-only
          */
         get buffered(): any[];
         /**
          * The MIME content-type of the data stream
+         * @since 1.24
          */
         get content_type(): string;
         set content_type(val: string);
         /**
          * The MIME content-type of the data stream
+         * @since 1.24
          */
         get contentType(): string;
         set contentType(val: string);
@@ -1259,6 +1435,7 @@ export namespace GstMse {
          * start timestamp increased by this amount.
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-timestampoffset)
+         * @since 1.24
          */
         get timestamp_offset(): number;
         set timestamp_offset(val: number);
@@ -1267,6 +1444,7 @@ export namespace GstMse {
          * start timestamp increased by this amount.
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-timestampoffset)
+         * @since 1.24
          */
         get timestampOffset(): number;
         set timestampOffset(val: number);
@@ -1275,6 +1453,8 @@ export namespace GstMse {
          * previously issued commands.
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-updating)
+         * @since 1.24
+         * @read-only
          */
         get updating(): boolean;
 
@@ -1295,16 +1475,19 @@ export namespace GstMse {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SourceBuffer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SourceBuffer.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SourceBuffer.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SourceBuffer.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SourceBuffer.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SourceBuffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1340,7 +1523,7 @@ export namespace GstMse {
         change_content_type(type: string): boolean;
         /**
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-mode)
-         * @returns The current #GstSourceBufferAppendMode
+         * @returns The current {@link GstMse.SourceBufferAppendMode}
          */
         get_append_mode(): SourceBufferAppendMode;
         /**
@@ -1348,7 +1531,7 @@ export namespace GstMse {
          * after this value will be ignored.
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-appendwindowend)
-         * @returns The current Append Window end time as a #GstClockTime
+         * @returns The current Append Window end time as a {@link Gst.ClockTime}
          */
         get_append_window_end(): Gst.ClockTime;
         /**
@@ -1356,15 +1539,15 @@ export namespace GstMse {
          * earlier than this value will be ignored.
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-appendwindowstart)
-         * @returns The current Append Window start time as a #GstClockTime
+         * @returns The current Append Window start time as a {@link Gst.ClockTime}
          */
         get_append_window_start(): Gst.ClockTime;
         /**
-         * Returns a sequence of #GstMediaSourceRange values representing which segments
+         * Returns a sequence of {@link GstMse.MediaSourceRange} values representing which segments
          * of `self` are buffered in memory.
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-buffered)
-         * @returns a #GArray of #GstMediaSourceRange values.
+         * @returns a {@link GLib.Array} of {@link GstMse.MediaSourceRange} values.
          */
         get_buffered(): MediaSourceRange[];
         /**
@@ -1374,12 +1557,12 @@ export namespace GstMse {
         get_content_type(): string;
         /**
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-timestampoffset)
-         * @returns The current timestamp offset as a #GstClockTime
+         * @returns The current timestamp offset as a {@link Gst.ClockTime}
          */
         get_timestamp_offset(): Gst.ClockTime;
         /**
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-updating)
-         * @returns Whether @self is currently adding or removing media content.
+         * @returns Whether `self` is currently adding or removing media content.
          */
         get_updating(): boolean;
         /**
@@ -1399,7 +1582,7 @@ export namespace GstMse {
          * generated based on the end of the most recently processed segment.
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebuffer-mode)
-         * @param mode #GstSourceBufferAppendMode the desired Append Mode
+         * @param mode {@link GstMse.SourceBufferAppendMode} the desired Append Mode
          * @returns `TRUE` on success, `FALSE` otherwise
          */
         set_append_mode(mode: SourceBufferAppendMode | null): boolean;
@@ -1437,7 +1620,23 @@ export namespace GstMse {
     namespace SourceBufferList {
         // Signal signatures
         interface SignalSignatures extends Gst.Object.SignalSignatures {
+            /**
+             * Emitted when a {@link GstMse.SourceBuffer} has been added to this list.
+             *
+             * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebufferlist-onaddsourcebuffer)
+             * @signal
+             * @since 1.24
+             * @run-last
+             */
             'on-sourcebuffer-added': () => void;
+            /**
+             * Emitted when a {@link GstMse.SourceBuffer} has been removed from this list.
+             *
+             * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebufferlist-onremovesourcebuffer)
+             * @signal
+             * @since 1.24
+             * @run-last
+             */
             'on-sourcebuffer-removed': () => void;
             'notify::length': (pspec: GObject.ParamSpec) => void;
             'notify::name': (pspec: GObject.ParamSpec) => void;
@@ -1452,15 +1651,17 @@ export namespace GstMse {
     }
 
     /**
-     * The Source Buffer List is a list of #GstSourceBuffer<!-- -->s that can be
+     * The Source Buffer List is a list of {@link GstMse.SourceBuffer}<!-- -->s that can be
      * indexed numerically and monitored for changes. The list itself cannot be
      * modified through this interface, though the Source Buffers it holds can be
      * modified after retrieval.
      *
-     * It is used by #GstMediaSource to provide direct access to its child
-     * #GstSourceBuffer<!-- -->s through #GstMediaSource:source-buffers as well as
+     * It is used by {@link GstMse.MediaSource} to provide direct access to its child
+     * {@link GstMse.SourceBuffer}<!-- -->s through {@link GstMse.MediaSource.source_buffers} as well as
      * informing clients which of the Source Buffers are active through
-     * #GstMediaSource:active-source-buffers.
+     * {@link GstMse.MediaSource.active_source_buffers}.
+     * @gir-type Class
+     * @since 1.24
      */
     class SourceBufferList extends Gst.Object {
         static $gtype: GObject.GType<SourceBufferList>;
@@ -1468,9 +1669,11 @@ export namespace GstMse {
         // Properties
 
         /**
-         * The number of #GstSourceBuffer<!-- -->s contained by this structure
+         * The number of {@link GstMse.SourceBuffer}<!-- -->s contained by this structure
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebufferlist-length)
+         * @since 1.24
+         * @read-only
          */
         get length(): number;
 
@@ -1491,16 +1694,19 @@ export namespace GstMse {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SourceBufferList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SourceBufferList.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SourceBufferList.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SourceBufferList.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SourceBufferList.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SourceBufferList.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1511,26 +1717,31 @@ export namespace GstMse {
 
         /**
          * [Specification](https://www.w3.org/TR/media-source-2/#dom-sourcebufferlist-length)
-         * @returns The number of #GstSourceBuffer objects in the list
+         * @returns The number of {@link GstMse.SourceBuffer} objects in the list
          */
         get_length(): number;
         /**
-         * Retrieves the #GstSourceBuffer at `index` from `self`. If `index` is greater than
+         * Retrieves the {@link GstMse.SourceBuffer} at `index` from `self`. If `index` is greater than
          * the highest index in the list, it will return `NULL`.
          *
          * [Specification](https://www.w3.org/TR/media-source-2/#dfn-sourcebufferlist-getter)
          * @param index index of requested Source Buffer
-         * @returns The requested #GstSourceBuffer or `NULL`
+         * @returns The requested {@link GstMse.SourceBuffer} or `NULL`
          */
         index(index: number): SourceBuffer | null;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MediaSourceClass = typeof MediaSource;
     /**
      * A structure describing a simplified version of the TimeRanges concept in the
      * HTML specification, only representing a single `start` and `end` time.
      *
      * [Specification](https://html.spec.whatwg.org/multipage/media.html#timeranges)
+     * @gir-type Struct
+     * @since 1.24
      */
     class MediaSourceRange {
         static $gtype: GObject.GType<MediaSourceRange>;
@@ -1550,9 +1761,22 @@ export namespace GstMse {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MseSrcClass = typeof MseSrc;
+    /**
+     * @gir-type Alias
+     */
     type MseSrcPadClass = typeof MseSrcPad;
+    /**
+     * @gir-type Alias
+     */
     type SourceBufferClass = typeof SourceBuffer;
+    /**
+     * @gir-type Struct
+     * @since 1.24
+     */
     class SourceBufferInterval {
         static $gtype: GObject.GType<SourceBufferInterval>;
 
@@ -1571,6 +1795,9 @@ export namespace GstMse {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SourceBufferListClass = typeof SourceBufferList;
     /**
      * Name of the imported GIR library

@@ -52,8 +52,9 @@ export namespace Spelling {
     }
 
     /**
-     * `SpellingChecker` is the core class of libspelling. It provides high-level
+     * {@link Spelling.Checker} is the core class of libspelling. It provides high-level
      * APIs for spellchecking.
+     * @gir-type Class
      */
     class Checker extends GObject.Object {
         static $gtype: GObject.GType<Checker>;
@@ -62,7 +63,7 @@ export namespace Spelling {
 
         /**
          * The "language" to use when checking words with the configured
-         * `SpellingProvider`. For example, `en_US`.
+         * {@link Spelling.Provider}. For example, `en_US`.
          */
         get language(): string;
         set language(val: string);
@@ -71,8 +72,9 @@ export namespace Spelling {
          * information to the spell checker.
          *
          * Currently, only Enchant is supported, and requires using the
-         * `SpellingEnchantProvider`. Setting this to %NULL will get
+         * `SpellingEnchantProvider`. Setting this to `null` will get
          * the default provider.
+         * @construct-only
          */
         get provider(): Provider;
 
@@ -95,16 +97,19 @@ export namespace Spelling {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Checker.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Checker.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Checker.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Checker.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Checker.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Checker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -114,7 +119,7 @@ export namespace Spelling {
         // Static methods
 
         /**
-         * Gets a default `SpellingChecker` using the default provider and language.
+         * Gets a default {@link Spelling.Checker} using the default provider and language.
          */
         static get_default(): Checker;
 
@@ -129,7 +134,7 @@ export namespace Spelling {
          * Checks if the active dictionary contains `word`.
          * @param word a word to be checked
          * @param word_len length of the word, in bytes
-         * @returns %TRUE if the dictionary contains the word
+         * @returns `true` if the dictionary contains the word
          */
         check_word(word: string, word_len: number): boolean;
         /**
@@ -146,7 +151,7 @@ export namespace Spelling {
          * Gets the spell provider used by the spell checker.
          *
          * Currently, only Enchant-2 is supported.
-         * @returns a `SpellingProvider`
+         * @returns a {@link Spelling.Provider}
          */
         get_provider(): Provider;
         /**
@@ -157,7 +162,7 @@ export namespace Spelling {
         /**
          * Retrieves a list of possible corrections for `word`.
          * @param word a word to be checked
-         * @returns A list of possible corrections, or %NULL.
+         * @returns A list of possible corrections, or `null`.
          */
         list_corrections(word: string): string[] | null;
         /**
@@ -183,6 +188,7 @@ export namespace Spelling {
 
     /**
      * Abstract base class for spellchecking dictionaries.
+     * @gir-type Class
      */
     abstract class Dictionary extends GObject.Object {
         static $gtype: GObject.GType<Dictionary>;
@@ -191,6 +197,7 @@ export namespace Spelling {
 
         /**
          * The language code, for example `en_US`.
+         * @construct-only
          */
         get code(): string;
 
@@ -211,16 +218,19 @@ export namespace Spelling {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Dictionary.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Dictionary.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Dictionary.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Dictionary.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Dictionary.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Dictionary.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -238,11 +248,11 @@ export namespace Spelling {
          * Checks if the dictionary contains `word`.
          * @param word a word to be checked
          * @param word_len length of the word, in bytes
-         * @returns %TRUE if the dictionary contains the word
+         * @returns `true` if the dictionary contains the word
          */
         contains_word(word: string, word_len: number): boolean;
         /**
-         * Gets the language code of the dictionary, or %NULL if undefined.
+         * Gets the language code of the dictionary, or `null` if undefined.
          * @returns the language code of the dictionary
          */
         get_code(): string | null;
@@ -259,8 +269,8 @@ export namespace Spelling {
         /**
          * Retrieves a list of possible corrections for `word`.
          * @param word a word to be checked
-         * @param word_len the length of @word, or -1 if @word is zero-terminated
-         * @returns A list of possible corrections, or %NULL.
+         * @param word_len the length of `word`, or -1 if `word` is zero-terminated
+         * @returns A list of possible corrections, or `null`.
          */
         list_corrections(word: string, word_len: number): string[] | null;
     }
@@ -284,6 +294,7 @@ export namespace Spelling {
 
     /**
      * Represents a spellchecking language.
+     * @gir-type Class
      */
     class Language extends GObject.Object {
         static $gtype: GObject.GType<Language>;
@@ -292,14 +303,17 @@ export namespace Spelling {
 
         /**
          * The language code.
+         * @construct-only
          */
         get code(): string;
         /**
          * A group for sorting, usually the country name.
+         * @construct-only
          */
         get group(): string;
         /**
          * The name of the language.
+         * @construct-only
          */
         get name(): string;
 
@@ -320,16 +334,19 @@ export namespace Spelling {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Language.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Language.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Language.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Language.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Language.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Language.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -339,17 +356,17 @@ export namespace Spelling {
         // Methods
 
         /**
-         * Gets the code of the language, or %NULL if undefined.
+         * Gets the code of the language, or `null` if undefined.
          * @returns the code of the language
          */
         get_code(): string | null;
         /**
-         * Gets the group of the language, or %NULL if undefined.
+         * Gets the group of the language, or `null` if undefined.
          * @returns the group of the language
          */
         get_group(): string | null;
         /**
-         * Gets the name of the language, or %NULL if undefined.
+         * Gets the name of the language, or `null` if undefined.
          * @returns the name of the language
          */
         get_name(): string | null;
@@ -371,6 +388,7 @@ export namespace Spelling {
 
     /**
      * Abstract base class for spellchecking providers.
+     * @gir-type Class
      */
     abstract class Provider extends GObject.Object {
         static $gtype: GObject.GType<Provider>;
@@ -379,10 +397,12 @@ export namespace Spelling {
 
         /**
          * The display name.
+         * @construct-only
          */
         get display_name(): string;
         /**
          * The display name.
+         * @construct-only
          */
         get displayName(): string;
 
@@ -403,16 +423,19 @@ export namespace Spelling {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Provider.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Provider.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Provider.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Provider.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Provider.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Provider.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -429,32 +452,32 @@ export namespace Spelling {
         // Methods
 
         /**
-         * Gets the default language code for the detected system locales, or %NULL
+         * Gets the default language code for the detected system locales, or `null`
          * if the provider doesn't support any of them.
          * @returns the default language code
          */
         get_default_code(): string | null;
         /**
-         * Gets the display name of the provider, or %NULL if undefined.
+         * Gets the display name of the provider, or `null` if undefined.
          * @returns the display name of the provider
          */
         get_display_name(): string | null;
         /**
-         * Gets a `GListModel` of languages supported by the provider.
-         * @returns a `GListModel` of `SpellingLanguage`
+         * Gets a {@link Gio.ListModel} of languages supported by the provider.
+         * @returns a {@link Gio.ListModel} of {@link Spelling.Language}
          */
         list_languages(): Gio.ListModel;
         /**
-         * Gets a `SpellingDictionary` for the requested language, or %NULL
+         * Gets a {@link Spelling.Dictionary} for the requested language, or `null`
          * if the language is not supported.
          * @param language the language to load such as `en_US`.
-         * @returns a `SpellingDictionary` or %NULL
+         * @returns a {@link Spelling.Dictionary} or `null`
          */
         load_dictionary(language: string): Dictionary | null;
         /**
          * Checks of `language` is supported by the provider.
          * @param language the language such as `en_US`.
-         * @returns %TRUE if @language is supported, otherwise %FALSE
+         * @returns `true` if `language` is supported, otherwise `false`
          */
         supports_language(language: string): boolean;
     }
@@ -479,8 +502,9 @@ export namespace Spelling {
     }
 
     /**
-     * `SpellingTextBufferAdapter` implements helpers to easily add spellchecking
-     * capabilities to a `GtkSourceBuffer`.
+     * {@link Spelling.TextBufferAdapter} implements helpers to easily add spellchecking
+     * capabilities to a {@link GtkSource.Buffer}.
+     * @gir-type Class
      */
     class TextBufferAdapter extends GObject.Object implements Gio.ActionGroup {
         static $gtype: GObject.GType<TextBufferAdapter>;
@@ -488,11 +512,12 @@ export namespace Spelling {
         // Properties
 
         /**
-         * The [class`GtkSource`.Buffer].
+         * The {@link GtkSource.Buffer}.
+         * @construct-only
          */
         get buffer(): GtkSource.Buffer;
         /**
-         * The [class`Spelling`.Checker].
+         * The {@link Spelling.Checker}.
          */
         get checker(): Checker;
         set checker(val: Checker);
@@ -526,16 +551,19 @@ export namespace Spelling {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TextBufferAdapter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TextBufferAdapter.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TextBufferAdapter.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TextBufferAdapter.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TextBufferAdapter.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TextBufferAdapter.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -546,17 +574,17 @@ export namespace Spelling {
 
         /**
          * Gets the underlying buffer for the adapter.
-         * @returns a `GtkSourceBuffer`
+         * @returns a {@link GtkSource.Buffer}
          */
         get_buffer(): GtkSource.Buffer | null;
         /**
          * Gets the checker used by the adapter.
-         * @returns a `SpellingChecker` or %NULL
+         * @returns a {@link Spelling.Checker} or `null`
          */
         get_checker(): Checker | null;
         /**
          * Gets if the spellcheck is enabled.
-         * @returns %TRUE if enabled
+         * @returns `true` if enabled
          */
         get_enabled(): boolean;
         /**
@@ -566,28 +594,28 @@ export namespace Spelling {
         get_language(): string | null;
         /**
          * Gets the menu model containing corrections
-         * @returns a `GMenuModel`
+         * @returns a {@link Gio.MenuModel}
          */
         get_menu_model(): Gio.MenuModel;
         /**
          * Gets the tag used for potentially misspelled words.
-         * @returns a `GtkTextTag` or %NULL
+         * @returns a {@link Gtk.TextTag} or `null`
          */
         get_tag(): Gtk.TextTag | null;
         /**
          * Invalidate the spelling engine, to force parsing again.
          *
-         * Invalidation is automatically done on [property`GtkSource`.Buffer:loading]
+         * Invalidation is automatically done on {@link GtkSource.Buffer.loading}
          * change.
          */
         invalidate_all(): void;
         /**
-         * Set the [class`Spelling`.Checker] used for spellchecking.
-         * @param checker a `SpellingChecker`
+         * Set the {@link Spelling.Checker} used for spellchecking.
+         * @param checker a {@link Spelling.Checker}
          */
         set_checker(checker: Checker): void;
         /**
-         * If %TRUE spellcheck is enabled.
+         * If `true` spellcheck is enabled.
          * @param enabled whether the spellcheck is enabled
          */
         set_enabled(enabled: boolean): void;
@@ -604,34 +632,32 @@ export namespace Spelling {
          * automatic timeout caused by cursor movements.
          */
         update_corrections(): void;
-
-        // Inherited methods
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-added] signal on `action_group`.
+         * Emits the `Gio.ActionGroup::action-added` signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          */
         action_added(action_name: string): void;
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-enabled-changed] signal on `action_group`.
+         * Emits the `Gio.ActionGroup::action-enabled-changed` signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
          */
         action_enabled_changed(action_name: string, enabled: boolean): void;
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-removed] signal on `action_group`.
+         * Emits the `Gio.ActionGroup::action-removed` signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          */
         action_removed(action_name: string): void;
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-state-changed] signal on `action_group`.
+         * Emits the `Gio.ActionGroup::action-state-changed` signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
          */
@@ -642,20 +668,20 @@ export namespace Spelling {
          * If the action is expecting a parameter, then the correct type of
          * parameter must be given as `parameter`.  If the action is expecting no
          * parameters then `parameter` must be `NULL`.  See
-         * [method`Gio`.ActionGroup.get_action_parameter_type].
+         * {@link Gio.ActionGroup.get_action_parameter_type}.
          *
-         * If the [type`Gio`.ActionGroup] implementation supports asynchronous remote
+         * If the {@link Gio.ActionGroup} implementation supports asynchronous remote
          * activation over D-Bus, this call may return before the relevant
          * D-Bus traffic has been sent, or any replies have been received. In
          * order to block on such asynchronous activation calls,
-         * [method`Gio`.DBusConnection.flush] should be called prior to the code, which
+         * {@link Gio.DBusConnection.flush} should be called prior to the code, which
          * depends on the result of the action activation. Without flushing
          * the D-Bus connection, there is no guarantee that the action would
          * have been activated.
          *
          * The following code which runs in a remote app instance, shows an
          * example of a ‘quit’ action being activated on the primary app
-         * instance over D-Bus. Here [method`Gio`.DBusConnection.flush] is called
+         * instance over D-Bus. Here {@link Gio.DBusConnection.flush} is called
          * before `exit()`. Without `g_dbus_connection_flush()`, the ‘quit’ action
          * may fail to be activated on the primary instance.
          *
@@ -679,11 +705,11 @@ export namespace Spelling {
          * changed to `value`.
          *
          * The action must be stateful and `value` must be of the correct type.
-         * See [method`Gio`.ActionGroup.get_action_state_type].
+         * See {@link Gio.ActionGroup.get_action_state_type}.
          *
          * This call merely requests a change.  The action may refuse to change
          * its state or may change its state to something other than `value`.
-         * See [method`Gio`.ActionGroup.get_action_state_hint].
+         * See {@link Gio.ActionGroup.get_action_state_hint}.
          *
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
@@ -703,12 +729,12 @@ export namespace Spelling {
          * Queries the type of the parameter that must be given when activating
          * the named action within `action_group`.
          *
-         * When activating the action using [method`Gio`.ActionGroup.activate_action],
-         * the [type`GLib`.Variant] given to that function must be of the type returned
+         * When activating the action using {@link Gio.ActionGroup.activate_action},
+         * the {@link GLib.Variant} given to that function must be of the type returned
          * by this function.
          *
          * In the case that this function returns `NULL`, you must not give any
-         * [type`GLib`.Variant], but `NULL` instead.
+         * {@link GLib.Variant}, but `NULL` instead.
          *
          * The parameter type of a particular action will never change but it is
          * possible for an action to be removed and for a new action to be added
@@ -722,10 +748,10 @@ export namespace Spelling {
          *
          * If the action is not stateful then `NULL` will be returned.  If the
          * action is stateful then the type of the return value is the type
-         * given by [method`Gio`.ActionGroup.get_action_state_type].
+         * given by {@link Gio.ActionGroup.get_action_state_type}.
          *
          * The return value (if non-`NULL`) should be freed with
-         * [method`GLib`.Variant.unref] when it is no longer required.
+         * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the current state of the action
          */
@@ -738,8 +764,8 @@ export namespace Spelling {
          * or that there is no hint about the valid range of values for the
          * state of the action.
          *
-         * If a [type`GLib`.Variant] array is returned then each item in the array is a
-         * possible value for the state.  If a [type`GLib`.Variant] pair (ie: two-tuple) is
+         * If a {@link GLib.Variant} array is returned then each item in the array is a
+         * possible value for the state.  If a {@link GLib.Variant} pair (ie: two-tuple) is
          * returned then the tuple specifies the inclusive lower and upper bound
          * of valid values for the state.
          *
@@ -748,7 +774,7 @@ export namespace Spelling {
          * within the range may fail.
          *
          * The return value (if non-`NULL`) should be freed with
-         * [method`GLib`.Variant.unref] when it is no longer required.
+         * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
          * @returns the state range hint
          */
@@ -758,14 +784,14 @@ export namespace Spelling {
          * `action_group`.
          *
          * If the action is stateful then this function returns the
-         * [type`GLib`.VariantType] of the state.  All calls to
-         * [method`Gio`.ActionGroup.change_action_state] must give a [type`GLib`.Variant] of this
-         * type and [method`Gio`.ActionGroup.get_action_state] will return a [type`GLib`.Variant]
+         * {@link GLib.VariantType} of the state.  All calls to
+         * {@link Gio.ActionGroup.change_action_state} must give a {@link GLib.Variant} of this
+         * type and {@link Gio.ActionGroup.get_action_state} will return a {@link GLib.Variant}
          * of the same type.
          *
          * If the action is not stateful then this function will return `NULL`.
-         * In that case, [method`Gio`.ActionGroup.get_action_state] will return `NULL`
-         * and you must not call [method`Gio`.ActionGroup.change_action_state].
+         * In that case, {@link Gio.ActionGroup.get_action_state} will return `NULL`
+         * and you must not call {@link Gio.ActionGroup.change_action_state}.
          *
          * The state type of a particular action will never change but it is
          * possible for an action to be removed and for a new action to be added
@@ -783,7 +809,7 @@ export namespace Spelling {
         /**
          * Lists the actions contained within `action_group`.
          *
-         * The caller is responsible for freeing the list with [func`GLib`.strfreev] when
+         * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
          * @returns a `NULL`-terminated array   of the names of the actions in the group
          */
@@ -792,18 +818,18 @@ export namespace Spelling {
          * Queries all aspects of the named action within an `action_group`.
          *
          * This function acquires the information available from
-         * [method`Gio`.ActionGroup.has_action], [method`Gio`.ActionGroup.get_action_enabled],
-         * [method`Gio`.ActionGroup.get_action_parameter_type],
-         * [method`Gio`.ActionGroup.get_action_state_type],
-         * [method`Gio`.ActionGroup.get_action_state_hint] and
-         * [method`Gio`.ActionGroup.get_action_state] with a single function call.
+         * {@link Gio.ActionGroup.has_action}, {@link Gio.ActionGroup.get_action_enabled},
+         * {@link Gio.ActionGroup.get_action_parameter_type},
+         * {@link Gio.ActionGroup.get_action_state_type},
+         * {@link Gio.ActionGroup.get_action_state_hint} and
+         * {@link Gio.ActionGroup.get_action_state} with a single function call.
          *
          * This provides two main benefits.
          *
          * The first is the improvement in efficiency that comes with not having
          * to perform repeated lookups of the action in order to discover
          * different things about it.  The second is that implementing
-         * [type`Gio`.ActionGroup] can now be done by only overriding this one virtual
+         * {@link Gio.ActionGroup} can now be done by only overriding this one virtual
          * function.
          *
          * The interface provides a default implementation of this function that
@@ -830,33 +856,37 @@ export namespace Spelling {
             GLib.Variant | null,
         ];
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-added] signal on `action_group`.
+         * Emits the `Gio.ActionGroup::action-added` signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @virtual
          */
         vfunc_action_added(action_name: string): void;
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-enabled-changed] signal on `action_group`.
+         * Emits the `Gio.ActionGroup::action-enabled-changed` signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param enabled whether the action is now enabled
+         * @virtual
          */
         vfunc_action_enabled_changed(action_name: string, enabled: boolean): void;
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-removed] signal on `action_group`.
+         * Emits the `Gio.ActionGroup::action-removed` signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
+         * @virtual
          */
         vfunc_action_removed(action_name: string): void;
         /**
-         * Emits the [signal`Gio`.ActionGroup::action-state-changed] signal on `action_group`.
+         * Emits the `Gio.ActionGroup::action-state-changed` signal on `action_group`.
          *
-         * This function should only be called by [type`Gio`.ActionGroup] implementations.
+         * This function should only be called by {@link Gio.ActionGroup} implementations.
          * @param action_name the name of an action in the group
          * @param state the new state of the named action
+         * @virtual
          */
         vfunc_action_state_changed(action_name: string, state: GLib.Variant): void;
         /**
@@ -865,20 +895,20 @@ export namespace Spelling {
          * If the action is expecting a parameter, then the correct type of
          * parameter must be given as `parameter`.  If the action is expecting no
          * parameters then `parameter` must be `NULL`.  See
-         * [method`Gio`.ActionGroup.get_action_parameter_type].
+         * {@link Gio.ActionGroup.get_action_parameter_type}.
          *
-         * If the [type`Gio`.ActionGroup] implementation supports asynchronous remote
+         * If the {@link Gio.ActionGroup} implementation supports asynchronous remote
          * activation over D-Bus, this call may return before the relevant
          * D-Bus traffic has been sent, or any replies have been received. In
          * order to block on such asynchronous activation calls,
-         * [method`Gio`.DBusConnection.flush] should be called prior to the code, which
+         * {@link Gio.DBusConnection.flush} should be called prior to the code, which
          * depends on the result of the action activation. Without flushing
          * the D-Bus connection, there is no guarantee that the action would
          * have been activated.
          *
          * The following code which runs in a remote app instance, shows an
          * example of a ‘quit’ action being activated on the primary app
-         * instance over D-Bus. Here [method`Gio`.DBusConnection.flush] is called
+         * instance over D-Bus. Here {@link Gio.DBusConnection.flush} is called
          * before `exit()`. Without `g_dbus_connection_flush()`, the ‘quit’ action
          * may fail to be activated on the primary instance.
          *
@@ -895,6 +925,7 @@ export namespace Spelling {
          * ```
          * @param action_name the name of the action to activate
          * @param parameter parameters to the activation
+         * @virtual
          */
         vfunc_activate_action(action_name: string, parameter?: GLib.Variant | null): void;
         /**
@@ -902,15 +933,16 @@ export namespace Spelling {
          * changed to `value`.
          *
          * The action must be stateful and `value` must be of the correct type.
-         * See [method`Gio`.ActionGroup.get_action_state_type].
+         * See {@link Gio.ActionGroup.get_action_state_type}.
          *
          * This call merely requests a change.  The action may refuse to change
          * its state or may change its state to something other than `value`.
-         * See [method`Gio`.ActionGroup.get_action_state_hint].
+         * See {@link Gio.ActionGroup.get_action_state_hint}.
          *
          * If the `value` GVariant is floating, it is consumed.
          * @param action_name the name of the action to request the change on
          * @param value the new state
+         * @virtual
          */
         vfunc_change_action_state(action_name: string, value: GLib.Variant): void;
         /**
@@ -919,23 +951,25 @@ export namespace Spelling {
          * An action must be enabled in order to be activated or in order to
          * have its state changed from outside callers.
          * @param action_name the name of the action to query
+         * @virtual
          */
         vfunc_get_action_enabled(action_name: string): boolean;
         /**
          * Queries the type of the parameter that must be given when activating
          * the named action within `action_group`.
          *
-         * When activating the action using [method`Gio`.ActionGroup.activate_action],
-         * the [type`GLib`.Variant] given to that function must be of the type returned
+         * When activating the action using {@link Gio.ActionGroup.activate_action},
+         * the {@link GLib.Variant} given to that function must be of the type returned
          * by this function.
          *
          * In the case that this function returns `NULL`, you must not give any
-         * [type`GLib`.Variant], but `NULL` instead.
+         * {@link GLib.Variant}, but `NULL` instead.
          *
          * The parameter type of a particular action will never change but it is
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different parameter type.
          * @param action_name the name of the action to query
+         * @virtual
          */
         vfunc_get_action_parameter_type(action_name: string): GLib.VariantType | null;
         /**
@@ -943,11 +977,12 @@ export namespace Spelling {
          *
          * If the action is not stateful then `NULL` will be returned.  If the
          * action is stateful then the type of the return value is the type
-         * given by [method`Gio`.ActionGroup.get_action_state_type].
+         * given by {@link Gio.ActionGroup.get_action_state_type}.
          *
          * The return value (if non-`NULL`) should be freed with
-         * [method`GLib`.Variant.unref] when it is no longer required.
+         * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
+         * @virtual
          */
         vfunc_get_action_state(action_name: string): GLib.Variant | null;
         /**
@@ -958,8 +993,8 @@ export namespace Spelling {
          * or that there is no hint about the valid range of values for the
          * state of the action.
          *
-         * If a [type`GLib`.Variant] array is returned then each item in the array is a
-         * possible value for the state.  If a [type`GLib`.Variant] pair (ie: two-tuple) is
+         * If a {@link GLib.Variant} array is returned then each item in the array is a
+         * possible value for the state.  If a {@link GLib.Variant} pair (ie: two-tuple) is
          * returned then the tuple specifies the inclusive lower and upper bound
          * of valid values for the state.
          *
@@ -968,8 +1003,9 @@ export namespace Spelling {
          * within the range may fail.
          *
          * The return value (if non-`NULL`) should be freed with
-         * [method`GLib`.Variant.unref] when it is no longer required.
+         * {@link GLib.Variant.unref} when it is no longer required.
          * @param action_name the name of the action to query
+         * @virtual
          */
         vfunc_get_action_state_hint(action_name: string): GLib.Variant | null;
         /**
@@ -977,49 +1013,52 @@ export namespace Spelling {
          * `action_group`.
          *
          * If the action is stateful then this function returns the
-         * [type`GLib`.VariantType] of the state.  All calls to
-         * [method`Gio`.ActionGroup.change_action_state] must give a [type`GLib`.Variant] of this
-         * type and [method`Gio`.ActionGroup.get_action_state] will return a [type`GLib`.Variant]
+         * {@link GLib.VariantType} of the state.  All calls to
+         * {@link Gio.ActionGroup.change_action_state} must give a {@link GLib.Variant} of this
+         * type and {@link Gio.ActionGroup.get_action_state} will return a {@link GLib.Variant}
          * of the same type.
          *
          * If the action is not stateful then this function will return `NULL`.
-         * In that case, [method`Gio`.ActionGroup.get_action_state] will return `NULL`
-         * and you must not call [method`Gio`.ActionGroup.change_action_state].
+         * In that case, {@link Gio.ActionGroup.get_action_state} will return `NULL`
+         * and you must not call {@link Gio.ActionGroup.change_action_state}.
          *
          * The state type of a particular action will never change but it is
          * possible for an action to be removed and for a new action to be added
          * with the same name but a different state type.
          * @param action_name the name of the action to query
+         * @virtual
          */
         vfunc_get_action_state_type(action_name: string): GLib.VariantType | null;
         /**
          * Checks if the named action exists within `action_group`.
          * @param action_name the name of the action to check for
+         * @virtual
          */
         vfunc_has_action(action_name: string): boolean;
         /**
          * Lists the actions contained within `action_group`.
          *
-         * The caller is responsible for freeing the list with [func`GLib`.strfreev] when
+         * The caller is responsible for freeing the list with {@link GLib.strfreev} when
          * it is no longer required.
+         * @virtual
          */
         vfunc_list_actions(): string[];
         /**
          * Queries all aspects of the named action within an `action_group`.
          *
          * This function acquires the information available from
-         * [method`Gio`.ActionGroup.has_action], [method`Gio`.ActionGroup.get_action_enabled],
-         * [method`Gio`.ActionGroup.get_action_parameter_type],
-         * [method`Gio`.ActionGroup.get_action_state_type],
-         * [method`Gio`.ActionGroup.get_action_state_hint] and
-         * [method`Gio`.ActionGroup.get_action_state] with a single function call.
+         * {@link Gio.ActionGroup.has_action}, {@link Gio.ActionGroup.get_action_enabled},
+         * {@link Gio.ActionGroup.get_action_parameter_type},
+         * {@link Gio.ActionGroup.get_action_state_type},
+         * {@link Gio.ActionGroup.get_action_state_hint} and
+         * {@link Gio.ActionGroup.get_action_state} with a single function call.
          *
          * This provides two main benefits.
          *
          * The first is the improvement in efficiency that comes with not having
          * to perform repeated lookups of the action in order to discover
          * different things about it.  The second is that implementing
-         * [type`Gio`.ActionGroup] can now be done by only overriding this one virtual
+         * {@link Gio.ActionGroup} can now be done by only overriding this one virtual
          * function.
          *
          * The interface provides a default implementation of this function that
@@ -1033,6 +1072,7 @@ export namespace Spelling {
          * filled.  If the action doesn’t exist, `FALSE` is returned and the
          * fields may or may not have been modified.
          * @param action_name the name of an action in the group
+         * @virtual
          */
         vfunc_query_action(
             action_name: string,
@@ -1057,32 +1097,32 @@ export namespace Spelling {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -1091,39 +1131,39 @@ export namespace Spelling {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -1134,13 +1174,16 @@ export namespace Spelling {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -1148,7 +1191,7 @@ export namespace Spelling {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -1156,9 +1199,9 @@ export namespace Spelling {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -1178,9 +1221,9 @@ export namespace Spelling {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -1193,34 +1236,34 @@ export namespace Spelling {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -1253,22 +1296,22 @@ export namespace Spelling {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -1277,8 +1320,8 @@ export namespace Spelling {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -1295,10 +1338,10 @@ export namespace Spelling {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -1313,13 +1356,13 @@ export namespace Spelling {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -1350,21 +1393,21 @@ export namespace Spelling {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -1374,33 +1417,34 @@ export namespace Spelling {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -1409,6 +1453,7 @@ export namespace Spelling {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -1417,12 +1462,14 @@ export namespace Spelling {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -1431,20 +1478,22 @@ export namespace Spelling {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -1456,6 +1505,7 @@ export namespace Spelling {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -1485,10 +1535,25 @@ export namespace Spelling {
         stop_emission_by_name(detailedName: string): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CheckerClass = typeof Checker;
+    /**
+     * @gir-type Alias
+     */
     type DictionaryClass = typeof Dictionary;
+    /**
+     * @gir-type Alias
+     */
     type LanguageClass = typeof Language;
+    /**
+     * @gir-type Alias
+     */
     type ProviderClass = typeof Provider;
+    /**
+     * @gir-type Alias
+     */
     type TextBufferAdapterClass = typeof TextBufferAdapter;
     /**
      * Name of the imported GIR library

@@ -20,6 +20,9 @@ export namespace Guestfs {
      * Guestfs-1.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SessionEvent {
         export const $gtype: GObject.GType<SessionEvent>;
     }
@@ -27,6 +30,7 @@ export namespace Guestfs {
     /**
      * For more detail on libguestfs events, see "SETTING CALLBACKS TO HANDLE
      * EVENTS" in guestfs(3).
+     * @gir-type Enum
      */
     enum SessionEvent {
         /**
@@ -71,6 +75,9 @@ export namespace Guestfs {
         WARNING,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace Tristate {
         export const $gtype: GObject.GType<Tristate>;
     }
@@ -80,6 +87,7 @@ export namespace Guestfs {
      * binding has a native concept of true and false which also correspond to the
      * integer values 1 and 0 respectively, these will also correspond to
      * GUESTFS_TRISTATE_TRUE and GUESTFS_TRISTATE_FALSE.
+     * @gir-type Enum
      */
     enum Tristate {
         /**
@@ -127,6 +135,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_add_domain.
+     * @gir-type Class
      */
     class AddDomain extends GObject.Object {
         static $gtype: GObject.GType<AddDomain>;
@@ -198,16 +207,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AddDomain.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AddDomain.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AddDomain.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AddDomain.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AddDomain.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AddDomain.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -250,6 +262,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_add_drive.
+     * @gir-type Class
      */
     class AddDrive extends GObject.Object {
         static $gtype: GObject.GType<AddDrive>;
@@ -331,16 +344,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AddDrive.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AddDrive.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AddDrive.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AddDrive.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AddDrive.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AddDrive.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -365,6 +381,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_add_drive_scratch.
+     * @gir-type Class
      */
     class AddDriveScratch extends GObject.Object {
         static $gtype: GObject.GType<AddDriveScratch>;
@@ -401,16 +418,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AddDriveScratch.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AddDriveScratch.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AddDriveScratch.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AddDriveScratch.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AddDriveScratch.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AddDriveScratch.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -445,6 +465,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_add_libvirt_dom.
+     * @gir-type Class
      */
     class AddLibvirtDom extends GObject.Object {
         static $gtype: GObject.GType<AddLibvirtDom>;
@@ -506,16 +527,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AddLibvirtDom.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AddLibvirtDom.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AddLibvirtDom.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AddLibvirtDom.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AddLibvirtDom.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AddLibvirtDom.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -538,6 +562,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_aug_transform.
+     * @gir-type Class
      */
     class AugTransform extends GObject.Object {
         static $gtype: GObject.GType<AugTransform>;
@@ -569,16 +594,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof AugTransform.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AugTransform.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof AugTransform.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, AugTransform.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof AugTransform.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<AugTransform.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -603,6 +631,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_btrfs_filesystem_defragment.
+     * @gir-type Class
      */
     class BTRFSFilesystemDefragment extends GObject.Object {
         static $gtype: GObject.GType<BTRFSFilesystemDefragment>;
@@ -639,16 +668,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BTRFSFilesystemDefragment.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BTRFSFilesystemDefragment.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BTRFSFilesystemDefragment.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BTRFSFilesystemDefragment.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BTRFSFilesystemDefragment.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BTRFSFilesystemDefragment.SignalSignatures[K]> extends [any, ...infer Q]
@@ -673,6 +705,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_btrfs_filesystem_resize.
+     * @gir-type Class
      */
     class BTRFSFilesystemResize extends GObject.Object {
         static $gtype: GObject.GType<BTRFSFilesystemResize>;
@@ -704,16 +737,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BTRFSFilesystemResize.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BTRFSFilesystemResize.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BTRFSFilesystemResize.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BTRFSFilesystemResize.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BTRFSFilesystemResize.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BTRFSFilesystemResize.SignalSignatures[K]> extends [any, ...infer Q]
@@ -738,6 +774,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_btrfs_image.
+     * @gir-type Class
      */
     class BTRFSImage extends GObject.Object {
         static $gtype: GObject.GType<BTRFSImage>;
@@ -769,16 +806,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BTRFSImage.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BTRFSImage.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BTRFSImage.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BTRFSImage.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BTRFSImage.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BTRFSImage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -801,6 +841,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_btrfs_subvolume_create.
+     * @gir-type Class
      */
     class BTRFSSubvolumeCreate extends GObject.Object {
         static $gtype: GObject.GType<BTRFSSubvolumeCreate>;
@@ -832,16 +873,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BTRFSSubvolumeCreate.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BTRFSSubvolumeCreate.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BTRFSSubvolumeCreate.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BTRFSSubvolumeCreate.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BTRFSSubvolumeCreate.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BTRFSSubvolumeCreate.SignalSignatures[K]> extends [any, ...infer Q]
@@ -868,6 +912,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_btrfs_subvolume_snapshot.
+     * @gir-type Class
      */
     class BTRFSSubvolumeSnapshot extends GObject.Object {
         static $gtype: GObject.GType<BTRFSSubvolumeSnapshot>;
@@ -904,16 +949,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BTRFSSubvolumeSnapshot.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BTRFSSubvolumeSnapshot.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BTRFSSubvolumeSnapshot.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BTRFSSubvolumeSnapshot.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BTRFSSubvolumeSnapshot.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BTRFSSubvolumeSnapshot.SignalSignatures[K]> extends [any, ...infer Q]
@@ -940,6 +988,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_btrfs_fsck.
+     * @gir-type Class
      */
     class BtrfsFsck extends GObject.Object {
         static $gtype: GObject.GType<BtrfsFsck>;
@@ -976,16 +1025,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof BtrfsFsck.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BtrfsFsck.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof BtrfsFsck.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, BtrfsFsck.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof BtrfsFsck.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<BtrfsFsck.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1008,6 +1060,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_compress_device_out.
+     * @gir-type Class
      */
     class CompressDeviceOut extends GObject.Object {
         static $gtype: GObject.GType<CompressDeviceOut>;
@@ -1039,16 +1092,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CompressDeviceOut.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CompressDeviceOut.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CompressDeviceOut.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CompressDeviceOut.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CompressDeviceOut.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CompressDeviceOut.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1071,6 +1127,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_compress_out.
+     * @gir-type Class
      */
     class CompressOut extends GObject.Object {
         static $gtype: GObject.GType<CompressOut>;
@@ -1102,16 +1159,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CompressOut.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CompressOut.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CompressOut.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CompressOut.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CompressOut.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CompressOut.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1140,6 +1200,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_copy_attributes.
+     * @gir-type Class
      */
     class CopyAttributes extends GObject.Object {
         static $gtype: GObject.GType<CopyAttributes>;
@@ -1186,16 +1247,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CopyAttributes.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CopyAttributes.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CopyAttributes.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CopyAttributes.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CopyAttributes.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CopyAttributes.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1226,6 +1290,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_copy_device_to_device.
+     * @gir-type Class
      */
     class CopyDeviceToDevice extends GObject.Object {
         static $gtype: GObject.GType<CopyDeviceToDevice>;
@@ -1277,16 +1342,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CopyDeviceToDevice.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CopyDeviceToDevice.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CopyDeviceToDevice.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CopyDeviceToDevice.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CopyDeviceToDevice.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CopyDeviceToDevice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1317,6 +1385,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_copy_device_to_file.
+     * @gir-type Class
      */
     class CopyDeviceToFile extends GObject.Object {
         static $gtype: GObject.GType<CopyDeviceToFile>;
@@ -1368,16 +1437,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CopyDeviceToFile.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CopyDeviceToFile.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CopyDeviceToFile.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CopyDeviceToFile.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CopyDeviceToFile.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CopyDeviceToFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1408,6 +1480,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_copy_file_to_device.
+     * @gir-type Class
      */
     class CopyFileToDevice extends GObject.Object {
         static $gtype: GObject.GType<CopyFileToDevice>;
@@ -1459,16 +1532,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CopyFileToDevice.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CopyFileToDevice.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CopyFileToDevice.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CopyFileToDevice.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CopyFileToDevice.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CopyFileToDevice.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1499,6 +1575,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_copy_file_to_file.
+     * @gir-type Class
      */
     class CopyFileToFile extends GObject.Object {
         static $gtype: GObject.GType<CopyFileToFile>;
@@ -1550,16 +1627,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CopyFileToFile.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CopyFileToFile.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CopyFileToFile.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CopyFileToFile.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CopyFileToFile.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CopyFileToFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1582,6 +1662,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_cpio_out.
+     * @gir-type Class
      */
     class CpioOut extends GObject.Object {
         static $gtype: GObject.GType<CpioOut>;
@@ -1613,16 +1694,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof CpioOut.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CpioOut.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof CpioOut.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CpioOut.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CpioOut.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CpioOut.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1653,6 +1737,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_disk_create.
+     * @gir-type Class
      */
     class DiskCreate extends GObject.Object {
         static $gtype: GObject.GType<DiskCreate>;
@@ -1704,16 +1789,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DiskCreate.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DiskCreate.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DiskCreate.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DiskCreate.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DiskCreate.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DiskCreate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1736,6 +1824,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_download_blocks.
+     * @gir-type Class
      */
     class DownloadBlocks extends GObject.Object {
         static $gtype: GObject.GType<DownloadBlocks>;
@@ -1767,16 +1856,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof DownloadBlocks.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DownloadBlocks.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof DownloadBlocks.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DownloadBlocks.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DownloadBlocks.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DownloadBlocks.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1801,6 +1893,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_e2fsck.
+     * @gir-type Class
      */
     class E2fsck extends GObject.Object {
         static $gtype: GObject.GType<E2fsck>;
@@ -1837,16 +1930,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof E2fsck.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, E2fsck.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof E2fsck.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, E2fsck.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof E2fsck.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<E2fsck.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1873,6 +1969,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_fstrim.
+     * @gir-type Class
      */
     class Fstrim extends GObject.Object {
         static $gtype: GObject.GType<Fstrim>;
@@ -1914,16 +2011,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Fstrim.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Fstrim.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Fstrim.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Fstrim.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Fstrim.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Fstrim.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1946,6 +2046,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_glob_expand.
+     * @gir-type Class
      */
     class GlobExpand extends GObject.Object {
         static $gtype: GObject.GType<GlobExpand>;
@@ -1977,16 +2078,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof GlobExpand.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GlobExpand.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof GlobExpand.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, GlobExpand.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof GlobExpand.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<GlobExpand.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2015,6 +2119,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_grep.
+     * @gir-type Class
      */
     class Grep extends GObject.Object {
         static $gtype: GObject.GType<Grep>;
@@ -2061,16 +2166,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Grep.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Grep.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Grep.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Grep.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Grep.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Grep.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2099,6 +2207,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_hivex_open.
+     * @gir-type Class
      */
     class HivexOpen extends GObject.Object {
         static $gtype: GObject.GType<HivexOpen>;
@@ -2145,16 +2254,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof HivexOpen.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HivexOpen.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof HivexOpen.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, HivexOpen.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof HivexOpen.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<HivexOpen.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2179,6 +2291,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_inspect_get_icon.
+     * @gir-type Class
      */
     class InspectGetIcon extends GObject.Object {
         static $gtype: GObject.GType<InspectGetIcon>;
@@ -2215,16 +2328,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof InspectGetIcon.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InspectGetIcon.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof InspectGetIcon.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InspectGetIcon.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof InspectGetIcon.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<InspectGetIcon.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2253,6 +2369,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_internal_test.
+     * @gir-type Class
      */
     class InternalTest extends GObject.Object {
         static $gtype: GObject.GType<InternalTest>;
@@ -2299,16 +2416,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof InternalTest.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InternalTest.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof InternalTest.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InternalTest.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof InternalTest.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<InternalTest.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2455,6 +2575,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_internal_test_63_optargs.
+     * @gir-type Class
      */
     class InternalTest63Optargs extends GObject.Object {
         static $gtype: GObject.GType<InternalTest63Optargs>;
@@ -2796,16 +2917,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof InternalTest63Optargs.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InternalTest63Optargs.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof InternalTest63Optargs.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InternalTest63Optargs.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof InternalTest63Optargs.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<InternalTest63Optargs.SignalSignatures[K]> extends [any, ...infer Q]
@@ -2830,6 +2954,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_internal_test_only_optargs.
+     * @gir-type Class
      */
     class InternalTestOnlyOptargs extends GObject.Object {
         static $gtype: GObject.GType<InternalTestOnlyOptargs>;
@@ -2861,16 +2986,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof InternalTestOnlyOptargs.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InternalTestOnlyOptargs.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof InternalTestOnlyOptargs.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InternalTestOnlyOptargs.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof InternalTestOnlyOptargs.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<InternalTestOnlyOptargs.SignalSignatures[K]> extends [any, ...infer Q]
@@ -2895,6 +3023,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_is_blockdev.
+     * @gir-type Class
      */
     class IsBlockdev extends GObject.Object {
         static $gtype: GObject.GType<IsBlockdev>;
@@ -2926,16 +3055,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof IsBlockdev.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, IsBlockdev.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof IsBlockdev.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, IsBlockdev.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof IsBlockdev.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<IsBlockdev.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2958,6 +3090,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_is_chardev.
+     * @gir-type Class
      */
     class IsChardev extends GObject.Object {
         static $gtype: GObject.GType<IsChardev>;
@@ -2989,16 +3122,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof IsChardev.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, IsChardev.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof IsChardev.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, IsChardev.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof IsChardev.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<IsChardev.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3021,6 +3157,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_is_dir.
+     * @gir-type Class
      */
     class IsDir extends GObject.Object {
         static $gtype: GObject.GType<IsDir>;
@@ -3052,16 +3189,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof IsDir.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, IsDir.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof IsDir.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, IsDir.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof IsDir.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<IsDir.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3084,6 +3224,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_is_fifo.
+     * @gir-type Class
      */
     class IsFifo extends GObject.Object {
         static $gtype: GObject.GType<IsFifo>;
@@ -3115,16 +3256,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof IsFifo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, IsFifo.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof IsFifo.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, IsFifo.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof IsFifo.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<IsFifo.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3147,6 +3291,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_is_file.
+     * @gir-type Class
      */
     class IsFile extends GObject.Object {
         static $gtype: GObject.GType<IsFile>;
@@ -3178,16 +3323,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof IsFile.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, IsFile.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof IsFile.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, IsFile.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof IsFile.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<IsFile.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3210,6 +3358,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_is_socket.
+     * @gir-type Class
      */
     class IsSocket extends GObject.Object {
         static $gtype: GObject.GType<IsSocket>;
@@ -3241,16 +3390,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof IsSocket.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, IsSocket.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof IsSocket.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, IsSocket.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof IsSocket.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<IsSocket.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3281,6 +3433,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_md_create.
+     * @gir-type Class
      */
     class MDCreate extends GObject.Object {
         static $gtype: GObject.GType<MDCreate>;
@@ -3332,16 +3485,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MDCreate.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MDCreate.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MDCreate.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MDCreate.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MDCreate.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MDCreate.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3438,6 +3594,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_mke2fs.
+     * @gir-type Class
      */
     class Mke2fs extends GObject.Object {
         static $gtype: GObject.GType<Mke2fs>;
@@ -3654,16 +3811,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Mke2fs.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Mke2fs.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Mke2fs.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Mke2fs.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Mke2fs.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Mke2fs.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3694,6 +3854,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_mkfs.
+     * @gir-type Class
      */
     class Mkfs extends GObject.Object {
         static $gtype: GObject.GType<Mkfs>;
@@ -3745,16 +3906,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Mkfs.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Mkfs.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Mkfs.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Mkfs.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Mkfs.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Mkfs.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3791,6 +3955,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_mkfs_btrfs.
+     * @gir-type Class
      */
     class MkfsBtrfs extends GObject.Object {
         static $gtype: GObject.GType<MkfsBtrfs>;
@@ -3857,16 +4022,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MkfsBtrfs.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MkfsBtrfs.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MkfsBtrfs.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MkfsBtrfs.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MkfsBtrfs.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MkfsBtrfs.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3889,6 +4057,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_mksquashfs.
+     * @gir-type Class
      */
     class Mksquashfs extends GObject.Object {
         static $gtype: GObject.GType<Mksquashfs>;
@@ -3920,16 +4089,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Mksquashfs.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Mksquashfs.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Mksquashfs.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Mksquashfs.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Mksquashfs.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Mksquashfs.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3954,6 +4126,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_mkswap.
+     * @gir-type Class
      */
     class Mkswap extends GObject.Object {
         static $gtype: GObject.GType<Mkswap>;
@@ -3990,16 +4163,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Mkswap.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Mkswap.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Mkswap.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Mkswap.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Mkswap.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Mkswap.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4022,6 +4198,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_mktemp.
+     * @gir-type Class
      */
     class Mktemp extends GObject.Object {
         static $gtype: GObject.GType<Mktemp>;
@@ -4053,16 +4230,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Mktemp.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Mktemp.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Mktemp.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Mktemp.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Mktemp.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Mktemp.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4085,6 +4265,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_mount_9p.
+     * @gir-type Class
      */
     class Mount9P extends GObject.Object {
         static $gtype: GObject.GType<Mount9P>;
@@ -4116,16 +4297,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Mount9P.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Mount9P.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Mount9P.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Mount9P.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Mount9P.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Mount9P.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4154,6 +4338,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_mount_local.
+     * @gir-type Class
      */
     class MountLocal extends GObject.Object {
         static $gtype: GObject.GType<MountLocal>;
@@ -4200,16 +4385,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof MountLocal.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MountLocal.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof MountLocal.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MountLocal.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MountLocal.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MountLocal.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4234,6 +4422,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_ntfsresize.
+     * @gir-type Class
      */
     class NTFSResizeOpts extends GObject.Object {
         static $gtype: GObject.GType<NTFSResizeOpts>;
@@ -4270,16 +4459,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof NTFSResizeOpts.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, NTFSResizeOpts.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof NTFSResizeOpts.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, NTFSResizeOpts.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof NTFSResizeOpts.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<NTFSResizeOpts.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4310,6 +4502,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_ntfsclone_out.
+     * @gir-type Class
      */
     class NtfscloneOut extends GObject.Object {
         static $gtype: GObject.GType<NtfscloneOut>;
@@ -4361,16 +4554,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof NtfscloneOut.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, NtfscloneOut.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof NtfscloneOut.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, NtfscloneOut.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof NtfscloneOut.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<NtfscloneOut.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4393,6 +4589,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_ntfsfix.
+     * @gir-type Class
      */
     class Ntfsfix extends GObject.Object {
         static $gtype: GObject.GType<Ntfsfix>;
@@ -4424,16 +4621,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Ntfsfix.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Ntfsfix.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Ntfsfix.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Ntfsfix.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Ntfsfix.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Ntfsfix.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4456,6 +4656,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_remount.
+     * @gir-type Class
      */
     class Remount extends GObject.Object {
         static $gtype: GObject.GType<Remount>;
@@ -4487,16 +4688,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Remount.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Remount.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Remount.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Remount.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Remount.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Remount.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4521,6 +4725,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_rsync.
+     * @gir-type Class
      */
     class Rsync extends GObject.Object {
         static $gtype: GObject.GType<Rsync>;
@@ -4557,16 +4762,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Rsync.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Rsync.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Rsync.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Rsync.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Rsync.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Rsync.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4591,6 +4799,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_rsync_in.
+     * @gir-type Class
      */
     class RsyncIn extends GObject.Object {
         static $gtype: GObject.GType<RsyncIn>;
@@ -4627,16 +4836,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RsyncIn.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RsyncIn.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RsyncIn.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RsyncIn.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RsyncIn.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RsyncIn.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4661,6 +4873,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_rsync_out.
+     * @gir-type Class
      */
     class RsyncOut extends GObject.Object {
         static $gtype: GObject.GType<RsyncOut>;
@@ -4697,16 +4910,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof RsyncOut.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RsyncOut.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof RsyncOut.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RsyncOut.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RsyncOut.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RsyncOut.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4729,6 +4945,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_selinux_relabel.
+     * @gir-type Class
      */
     class SelinuxRelabel extends GObject.Object {
         static $gtype: GObject.GType<SelinuxRelabel>;
@@ -4760,16 +4977,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SelinuxRelabel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SelinuxRelabel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SelinuxRelabel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SelinuxRelabel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SelinuxRelabel.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SelinuxRelabel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4780,15 +5000,69 @@ export namespace Guestfs {
     namespace Session {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * See "SETTING CALLBACKS TO HANDLE EVENTS" in guestfs(3) for
+             * more details about this event.
+             * @signal
+             * @run-last
+             */
             appliance: (arg0: SessionEventParams) => void;
+            /**
+             * See "SETTING CALLBACKS TO HANDLE EVENTS" in guestfs(3) for
+             * more details about this event.
+             * @signal
+             * @run-last
+             */
             close: (arg0: SessionEventParams) => void;
+            /**
+             * See "SETTING CALLBACKS TO HANDLE EVENTS" in guestfs(3) for
+             * more details about this event.
+             * @signal
+             * @run-last
+             */
             enter: (arg0: SessionEventParams) => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'launch-done': (arg0: SessionEventParams) => void;
+            /**
+             * See "SETTING CALLBACKS TO HANDLE EVENTS" in guestfs(3) for
+             * more details about this event.
+             * @signal
+             * @run-last
+             */
             library: (arg0: SessionEventParams) => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'libvirt-auth': (arg0: SessionEventParams) => void;
+            /**
+             * See "SETTING CALLBACKS TO HANDLE EVENTS" in guestfs(3) for
+             * more details about this event.
+             * @signal
+             * @run-last
+             */
             progress: (arg0: SessionEventParams) => void;
+            /**
+             * @signal
+             * @run-last
+             */
             'subprocess-quit': (arg0: SessionEventParams) => void;
+            /**
+             * See "SETTING CALLBACKS TO HANDLE EVENTS" in guestfs(3) for
+             * more details about this event.
+             * @signal
+             * @run-last
+             */
             trace: (arg0: SessionEventParams) => void;
+            /**
+             * See "SETTING CALLBACKS TO HANDLE EVENTS" in guestfs(3) for
+             * more details about this event.
+             * @signal
+             * @run-last
+             */
             warning: (arg0: SessionEventParams) => void;
         }
 
@@ -4799,6 +5073,7 @@ export namespace Guestfs {
 
     /**
      * A libguestfs session, encapsulating a single libguestfs handle.
+     * @gir-type Class
      */
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
@@ -4822,16 +5097,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Session.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Session.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Session.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Session.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -4847,7 +5125,7 @@ export namespace Guestfs {
          * attached to directory `dir`.
          *
          * This function depends on the feature "acl".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param dir
          * @returns true on success, false on error
          */
@@ -4869,7 +5147,7 @@ export namespace Guestfs {
          * directory.
          *
          * This function depends on the feature "acl".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param path
          * @param acltype
          * @returns the returned string, or NULL on error
@@ -4906,10 +5184,10 @@ export namespace Guestfs {
          *
          * You should use numeric UIDs and GIDs. To map usernames and groupnames to
          * the correct numeric ID in the context of the guest, use the Augeas
-         * functions (see guestfs_session_aug_init()).
+         * functions (see `guestfs_session_aug_init()`).
          *
          * This function depends on the feature "acl".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param path
          * @param acltype
          * @param acl
@@ -4922,7 +5200,7 @@ export namespace Guestfs {
          * This function adds a virtual CD-ROM disk image to the guest.
          *
          * The image is added as read-only drive, so this function is equivalent of
-         * guestfs_session_add_drive_ro().
+         * `guestfs_session_add_drive_ro()`.
          * @param filename
          * @returns true on success, false on error
          */
@@ -4933,7 +5211,7 @@ export namespace Guestfs {
          * This function adds the disk(s) attached to the named libvirt domain
          * `dom`. It works by connecting to libvirt, requesting the domain and
          * domain XML from libvirt, parsing it for disks, and calling
-         * guestfs_session_add_drive_opts() on each one.
+         * `guestfs_session_add_drive_opts()` on each one.
          *
          * The number of disks added is returned. This operation is atomic: if an
          * error is returned, then no disks are added.
@@ -5003,7 +5281,7 @@ export namespace Guestfs {
          * Disks with the &lt;readonly/&gt; flag are skipped.
          *
          * The other optional parameters are passed directly through to
-         * guestfs_session_add_drive_opts().
+         * `guestfs_session_add_drive_opts()`.
          * @param dom
          * @param optargs a GuestfsAddDomain containing optional arguments
          * @returns the returned value, or -1 on error
@@ -5015,7 +5293,7 @@ export namespace Guestfs {
          * This function adds a disk image called filename to the handle. filename
          * may be a regular host file or a host device.
          *
-         * When this function is called before guestfs_session_launch() (the usual
+         * When this function is called before `guestfs_session_launch()` (the usual
          * case) then the first time you call this function, the disk appears in
          * the API as /dev/sda, the second time as /dev/sdb, and so on.
          *
@@ -5043,7 +5321,7 @@ export namespace Guestfs {
          *
          * `format`
          * This forces the image format. If you omit this (or use
-         * guestfs_session_add_drive() or guestfs_session_add_drive_ro()) then
+         * `guestfs_session_add_drive()` or `guestfs_session_add_drive_ro()`) then
          * the format is automatically detected. Possible formats include `raw`
          * and `qcow2`.
          *
@@ -5056,7 +5334,7 @@ export namespace Guestfs {
          *
          * `iface`
          * This rarely-used option lets you emulate the behaviour of the
-         * deprecated guestfs_session_add_drive_with_if() call (q.v.)
+         * deprecated `guestfs_session_add_drive_with_if()` call (q.v.)
          *
          * `name`
          * The name the drive had in the original guest, e.g. /dev/sdb. This is
@@ -5168,10 +5446,10 @@ export namespace Guestfs {
          * protocol is used (see /etc/services).
          *
          * `username`
-         * For the `ftp,` `ftps,` `http,` `https,` `iscsi,` `rbd,` `ssh` and `tftp`
+         * For the `ftp`, `ftps`, `http`, `https`, `iscsi`, `rbd`, `ssh` and `tftp`
          * protocols, this specifies the remote username.
          *
-         * If not given, then the local username is used for `ssh,` and no
+         * If not given, then the local username is used for `ssh`, and no
          * authentication is attempted for ceph. But note this sometimes may
          * give unexpected results, for example if using the libvirt backend
          * and if the libvirt backend is configured to start the qemu appliance
@@ -5210,7 +5488,7 @@ export namespace Guestfs {
          *
          * `discard`
          * Enable or disable discard (a.k.a. trim or unmap) support on this
-         * drive. If enabled, operations such as guestfs_session_fstrim() will
+         * drive. If enabled, operations such as `guestfs_session_fstrim()` will
          * be able to discard / make thin / punch holes in the underlying host
          * file or device.
          *
@@ -5246,7 +5524,7 @@ export namespace Guestfs {
          * add a drive in snapshot mode (read-only)
          *
          * This function is the equivalent of calling
-         * guestfs_session_add_drive_opts() with the optional parameter
+         * `guestfs_session_add_drive_opts()` with the optional parameter
          * `GUESTFS_ADD_DRIVE_OPTS_READONLY` set to 1, so the disk is added
          * read-only, with the format being detected automatically.
          * @param filename
@@ -5256,7 +5534,7 @@ export namespace Guestfs {
         /**
          * add a drive read-only specifying the QEMU block emulation to use
          *
-         * This is the same as guestfs_session_add_drive_ro() but it allows you to
+         * This is the same as `guestfs_session_add_drive_ro()` but it allows you to
          * specify the QEMU interface emulation to use at run time.
          * @param filename
          * @param iface
@@ -5272,7 +5550,7 @@ export namespace Guestfs {
          * drive is deleted when the handle is closed.
          *
          * The optional arguments `name` and `label` are passed through to
-         * guestfs_session_add_drive().
+         * `guestfs_session_add_drive()`.
          * @param size
          * @param optargs a GuestfsAddDriveScratch containing optional arguments
          * @returns true on success, false on error
@@ -5281,7 +5559,7 @@ export namespace Guestfs {
         /**
          * add a drive specifying the QEMU block emulation to use
          *
-         * This is the same as guestfs_session_add_drive() but it allows you to
+         * This is the same as `guestfs_session_add_drive()` but it allows you to
          * specify the QEMU interface emulation to use at run time.
          * @param filename
          * @param iface
@@ -5293,7 +5571,7 @@ export namespace Guestfs {
          *
          * This function adds the disk(s) attached to the libvirt domain `dom`. It
          * works by requesting the domain XML from libvirt, parsing it for disks,
-         * and calling guestfs_session_add_drive_opts() on each one.
+         * and calling `guestfs_session_add_drive_opts()` on each one.
          *
          * In the C API we declare "void *dom", but really it has type
          * "virDomainPtr dom". This is so we don't need &lt;libvirt.h&gt;.
@@ -5319,10 +5597,10 @@ export namespace Guestfs {
          *
          * The optional `readonlydisk` parameter controls what we do for disks which
          * are marked &lt;readonly/&gt; in the libvirt XML. See
-         * guestfs_session_add_domain() for possible values.
+         * `guestfs_session_add_domain()` for possible values.
          *
          * The other optional parameters are passed directly through to
-         * guestfs_session_add_drive_opts().
+         * `guestfs_session_add_drive_opts()`.
          * @param dom pointer (not implemented in gobject bindings)
          * @param optargs a GuestfsAddLibvirtDom containing optional arguments
          * @returns the returned value, or -1 on error
@@ -5341,7 +5619,7 @@ export namespace Guestfs {
          * close the current Augeas handle
          *
          * Close the current Augeas handle and free up any resources used by it.
-         * After calling this, you have to call guestfs_session_aug_init() again
+         * After calling this, you have to call `guestfs_session_aug_init()` again
          * before you can use any other Augeas functions.
          * @returns true on success, false on error
          */
@@ -5352,7 +5630,7 @@ export namespace Guestfs {
          * Defines a variable `name` whose value is the result of evaluating `expr`.
          *
          * If `expr` evaluates to an empty nodeset, a node is created, equivalent to
-         * calling guestfs_session_aug_set() `expr,` `value`. `name` will be the
+         * calling `guestfs_session_aug_set()` `expr`, `value`. `name` will be the
          * nodeset containing that single node.
          *
          * On success this returns a pair containing the number of nodes in the
@@ -5369,7 +5647,7 @@ export namespace Guestfs {
          * Defines an Augeas variable `name` whose value is the result of evaluating
          * `expr`. If `expr` is NULL, then `name` is undefined.
          *
-         * On success this returns the number of nodes in `expr,` or `0` if `expr`
+         * On success this returns the number of nodes in `expr`, or @0 if `expr`
          * evaluates to something which is not a nodeset.
          * @param name
          * @param expr
@@ -5412,7 +5690,7 @@ export namespace Guestfs {
          * This option is only useful when debugging Augeas lenses. Use of this
          * option may require additional memory for the libguestfs appliance.
          * You may need to set the `LIBGUESTFS_MEMSIZE` environment variable or
-         * call guestfs_session_set_memsize().
+         * call `guestfs_session_set_memsize()`.
          *
          * `AUG_NO_STDINC` = 8
          * Do not use standard load path for modules.
@@ -5421,9 +5699,9 @@ export namespace Guestfs {
          * Make save a no-op, just record what would have been changed.
          *
          * `AUG_NO_LOAD` = 32
-         * Do not load the tree in guestfs_session_aug_init().
+         * Do not load the tree in `guestfs_session_aug_init()`.
          *
-         * To close the handle, you can call guestfs_session_aug_close().
+         * To close the handle, you can call `guestfs_session_aug_close()`.
          *
          * To find out more about Augeas, see <ulink url='http://augeas.net/'>
          * http://augeas.net/ </ulink>.
@@ -5435,8 +5713,8 @@ export namespace Guestfs {
         /**
          * insert a sibling Augeas node
          *
-         * Create a new sibling `label` for `path,` inserting it into the tree before
-         * or after `path` (depending on the boolean flag `before)`.
+         * Create a new sibling `label` for `path`, inserting it into the tree before
+         * or after `path` (depending on the boolean flag `before`).
          *
          * `path` must match exactly one existing node in the tree, and `label` must
          * be a label, ie. not contain /, "*" or end with a bracketed index "[N]".
@@ -5468,7 +5746,7 @@ export namespace Guestfs {
         /**
          * list Augeas nodes under augpath
          *
-         * This is just a shortcut for listing guestfs_session_aug_match() "path/*"
+         * This is just a shortcut for listing `guestfs_session_aug_match()` "path/*"
          * and sorting the resulting nodes into alphabetical order.
          * @param augpath
          * @returns an array of returned strings, or NULL on error
@@ -5509,7 +5787,7 @@ export namespace Guestfs {
          *
          * This writes all pending changes to disk.
          *
-         * The flags which were passed to guestfs_session_aug_init() affect exactly
+         * The flags which were passed to `guestfs_session_aug_init()` affect exactly
          * how files are saved.
          * @returns true on success, false on error
          */
@@ -5521,7 +5799,7 @@ export namespace Guestfs {
          *
          * In the Augeas API, it is possible to clear a node by setting the value
          * to NULL. Due to an oversight in the libguestfs API you cannot do that
-         * with this call. Instead you must use the guestfs_session_aug_clear()
+         * with this call. Instead you must use the `guestfs_session_aug_clear()`
          * call.
          * @param augpath
          * @param val
@@ -5567,7 +5845,7 @@ export namespace Guestfs {
          *
          * The libguestfs groups, and the functions that those groups correspond
          * to, are listed in "AVAILABILITY" in guestfs(3). You can also fetch this
-         * list at runtime by calling guestfs_session_available_all_groups().
+         * list at runtime by calling `guestfs_session_available_all_groups()`.
          *
          * The argument `groups` is a list of group names, eg: "["inotify",
          * "augeas"]" would check for the availability of the Linux inotify
@@ -5583,11 +5861,11 @@ export namespace Guestfs {
          *
          * *Notes:*
          *
-         * *   guestfs_session_feature_available() is the same as this call, but
+         * *   `guestfs_session_feature_available()` is the same as this call, but
          * with a slightly simpler to use API: that call returns a boolean
          * true/false instead of throwing an error.
          *
-         * *   You must call guestfs_session_launch() before calling this function.
+         * *   You must call `guestfs_session_launch()` before calling this function.
          *
          * The reason is because we don't know what groups are supported by the
          * appliance/daemon until it is running and can be queried.
@@ -5604,9 +5882,9 @@ export namespace Guestfs {
          * *   This call was added in version 1.0.80. In previous versions of
          * libguestfs all you could do would be to speculatively execute a
          * command to find out if the daemon implemented it. See also
-         * guestfs_session_version().
+         * `guestfs_session_version()`.
          *
-         * See also guestfs_session_filesystem_available().
+         * See also `guestfs_session_filesystem_available()`.
          * @param groups an array of strings
          * @returns true on success, false on error
          */
@@ -5617,18 +5895,18 @@ export namespace Guestfs {
          * This command returns a list of all optional groups that this daemon
          * knows about. Note this returns both supported and unsupported groups. To
          * find out which ones the daemon can actually support you have to call
-         * guestfs_session_available() / guestfs_session_feature_available() on
+         * `guestfs_session_available()` / `guestfs_session_feature_available()` on
          * each member of the returned list.
          *
-         * See also guestfs_session_available(),
-         * guestfs_session_feature_available() and "AVAILABILITY" in guestfs(3).
+         * See also `guestfs_session_available()`,
+         * `guestfs_session_feature_available()` and "AVAILABILITY" in guestfs(3).
          * @returns an array of returned strings, or NULL on error
          */
         available_all_groups(): string[];
         /**
          * upload base64-encoded data to file
          *
-         * This command uploads base64-encoded data from `base6`4file to filename.
+         * This command uploads base64-encoded data from `base64file` to filename.
          * @param base64file
          * @param filename
          * @param cancellable A GCancellable object
@@ -5639,7 +5917,7 @@ export namespace Guestfs {
          * download file and encode as base64
          *
          * This command downloads the contents of filename, writing it out to local
-         * file `base6`4file encoded as base64.
+         * file `base64file` encoded as base64.
          * @param filename
          * @param base64file
          * @param cancellable A GCancellable object
@@ -5649,17 +5927,17 @@ export namespace Guestfs {
         /**
          * discard all blocks on a device
          *
-         * This discards all blocks on the block device `device,` giving the free
+         * This discards all blocks on the block device `device`, giving the free
          * space back to the host.
          *
          * This operation requires support in libguestfs, the host filesystem, qemu
          * and the host kernel. If this support isn't present it may give an error
          * or even appear to run but do nothing. You must also set the `discard`
          * attribute on the underlying drive (see
-         * guestfs_session_add_drive_opts()).
+         * `guestfs_session_add_drive_opts()`).
          *
          * This function depends on the feature "blkdiscard".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @returns true on success, false on error
          */
@@ -5668,14 +5946,14 @@ export namespace Guestfs {
          * return true if discarded blocks are read as zeroes
          *
          * This call returns true if blocks on `device` that have been discarded by
-         * a call to guestfs_session_blkdiscard() are returned as blocks of zero
+         * a call to `guestfs_session_blkdiscard()` are returned as blocks of zero
          * bytes when read the next time.
          *
          * If it returns false, then it may be that discarded blocks are read as
          * stale or random data.
          *
          * This function depends on the feature "blkdiscardzeroes".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @returns the returned value, or -1 on error
          */
@@ -5746,7 +6024,7 @@ export namespace Guestfs {
          *
          * This returns the size of the device in bytes.
          *
-         * See also guestfs_session_blockdev_getsz().
+         * See also `guestfs_session_blockdev_getsz()`.
          *
          * This uses the blockdev(8) command.
          * @param device
@@ -5760,7 +6038,7 @@ export namespace Guestfs {
          * be larger for modern devices.
          *
          * (Note, this is not the size in sectors, use
-         * guestfs_session_blockdev_getsz() for that).
+         * `guestfs_session_blockdev_getsz()` for that).
          *
          * This uses the blockdev(8) command.
          * @param device
@@ -5773,8 +6051,8 @@ export namespace Guestfs {
          * This returns the size of the device in units of 512-byte sectors (even
          * if the sectorsize isn't 512 bytes ... weird).
          *
-         * See also guestfs_session_blockdev_getss() for the real sector size of
-         * the device, and guestfs_session_blockdev_getsize64() for the more useful
+         * See also `guestfs_session_blockdev_getss()` for the real sector size of
+         * the device, and `guestfs_session_blockdev_getsize64()` for the more useful
          * *size in bytes*.
          *
          * This uses the blockdev(8) command.
@@ -5799,7 +6077,7 @@ export namespace Guestfs {
          * blockdev. Do not use it.
          *
          * If you need to set the filesystem block size, use the `blocksize` option
-         * of guestfs_session_mkfs().
+         * of `guestfs_session_mkfs()`.
          * @param device
          * @param blocksize
          * @returns true on success, false on error
@@ -5842,7 +6120,7 @@ export namespace Guestfs {
          * Cancel a running balance on a btrfs filesystem.
          *
          * This function depends on the feature "btrfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param path
          * @returns true on success, false on error
          */
@@ -5853,7 +6131,7 @@ export namespace Guestfs {
          * Pause a running balance on a btrfs filesystem.
          *
          * This function depends on the feature "btrfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param path
          * @returns true on success, false on error
          */
@@ -5864,7 +6142,7 @@ export namespace Guestfs {
          * Resume a paused balance on a btrfs filesystem.
          *
          * This function depends on the feature "btrfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param path
          * @returns true on success, false on error
          */
@@ -5875,7 +6153,7 @@ export namespace Guestfs {
          * Show the status of a running or paused balance on a btrfs filesystem.
          *
          * This function depends on the feature "btrfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param path
          * @returns a BTRFSBalance object, or NULL on error
          */
@@ -5887,7 +6165,7 @@ export namespace Guestfs {
          * `fs`. If `devices` is an empty list, this does nothing.
          *
          * This function depends on the feature "btrfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param devices an array of strings
          * @param fs
          * @returns true on success, false on error
@@ -5900,7 +6178,7 @@ export namespace Guestfs {
          * `devices` is an empty list, this does nothing.
          *
          * This function depends on the feature "btrfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param devices an array of strings
          * @param fs
          * @returns true on success, false on error
@@ -5913,7 +6191,7 @@ export namespace Guestfs {
          * underlying devices.
          *
          * This function depends on the feature "btrfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param fs
          * @returns true on success, false on error
          */
@@ -5925,7 +6203,7 @@ export namespace Guestfs {
          * zlib or lzo.
          *
          * This function depends on the feature "btrfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param path
          * @param optargs a GuestfsBTRFSFilesystemDefragment containing optional arguments
          * @returns true on success, false on error
@@ -5949,7 +6227,7 @@ export namespace Guestfs {
          * See also btrfs(8).
          *
          * This function depends on the feature "btrfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param mountpoint
          * @param optargs a GuestfsBTRFSFilesystemResize containing optional arguments
          * @returns true on success, false on error
@@ -5964,7 +6242,7 @@ export namespace Guestfs {
          * function fails and the `errno` is set to `ENODEV`.
          *
          * This function depends on the feature "btrfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @returns an array of returned strings, or NULL on error
          */
@@ -5975,7 +6253,7 @@ export namespace Guestfs {
          * Force sync on the btrfs filesystem mounted at `fs`.
          *
          * This function depends on the feature "btrfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param fs
          * @returns true on success, false on error
          */
@@ -5987,7 +6265,7 @@ export namespace Guestfs {
          * filesystem is stored.
          *
          * This function depends on the feature "btrfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @param optargs a GuestfsBtrfsFsck containing optional arguments
          * @returns true on success, false on error
@@ -6000,7 +6278,7 @@ export namespace Guestfs {
          * zeroed, but metadata and the like is preserved.
          *
          * This function depends on the feature "btrfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param source an array of strings
          * @param image
          * @param optargs a GuestfsBTRFSImage containing optional arguments
@@ -6014,7 +6292,7 @@ export namespace Guestfs {
          * qgroups into a parent qgroup to share common limit.
          *
          * This function depends on the feature "btrfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param src
          * @param dst
          * @param path
@@ -6027,7 +6305,7 @@ export namespace Guestfs {
          * Create a quota group (qgroup) for subvolume at `subvolume`.
          *
          * This function depends on the feature "btrfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param qgroupid
          * @param subvolume
          * @returns true on success, false on error
@@ -6039,7 +6317,7 @@ export namespace Guestfs {
          * Destroy a quota group.
          *
          * This function depends on the feature "btrfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param qgroupid
          * @param subvolume
          * @returns true on success, false on error
@@ -6051,7 +6329,7 @@ export namespace Guestfs {
          * Limit the size of the subvolume with path `subvolume`.
          *
          * This function depends on the feature "btrfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param subvolume
          * @param size
          * @returns true on success, false on error
@@ -6063,7 +6341,7 @@ export namespace Guestfs {
          * Remove qgroup `src` from the parent qgroup `dst`.
          *
          * This function depends on the feature "btrfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param src
          * @param dst
          * @param path
@@ -6077,7 +6355,7 @@ export namespace Guestfs {
          * usages.
          *
          * This function depends on the feature "btrfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param path
          * @returns an array of BTRFSQgroup objects, or NULL on error
          */
@@ -6089,7 +6367,7 @@ export namespace Guestfs {
          * `path`.
          *
          * This function depends on the feature "btrfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param fs
          * @param enable
          * @returns true on success, false on error
@@ -6102,7 +6380,7 @@ export namespace Guestfs {
          * config.
          *
          * This function depends on the feature "btrfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param fs
          * @returns true on success, false on error
          */
@@ -6120,7 +6398,7 @@ export namespace Guestfs {
          * `targetdev`.
          *
          * This function depends on the feature "btrfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param srcdev
          * @param targetdev
          * @param mntpoint
@@ -6134,7 +6412,7 @@ export namespace Guestfs {
          * by one.
          *
          * This function depends on the feature "btrfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @returns true on success, false on error
          */
@@ -6145,7 +6423,7 @@ export namespace Guestfs {
          * Recover bad superblocks from good copies.
          *
          * This function depends on the feature "btrfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @returns true on success, false on error
          */
@@ -6156,7 +6434,7 @@ export namespace Guestfs {
          * Cancel a running scrub on a btrfs filesystem.
          *
          * This function depends on the feature "btrfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param path
          * @returns true on success, false on error
          */
@@ -6167,7 +6445,7 @@ export namespace Guestfs {
          * Resume a previously canceled or interrupted scrub on a btrfs filesystem.
          *
          * This function depends on the feature "btrfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param path
          * @returns true on success, false on error
          */
@@ -6180,7 +6458,7 @@ export namespace Guestfs {
          * corrupt data.
          *
          * This function depends on the feature "btrfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param path
          * @returns true on success, false on error
          */
@@ -6191,7 +6469,7 @@ export namespace Guestfs {
          * Show status of running or finished scrub on a btrfs filesystem.
          *
          * This function depends on the feature "btrfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param path
          * @returns a BTRFSScrub object, or NULL on error
          */
@@ -6203,7 +6481,7 @@ export namespace Guestfs {
          * filesystem.
          *
          * This function depends on the feature "btrfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @param seeding
          * @returns true on success, false on error
@@ -6218,7 +6496,7 @@ export namespace Guestfs {
          * created subvolume will be added to.
          *
          * This function depends on the feature "btrfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param dest
          * @param optargs a GuestfsBTRFSSubvolumeCreate containing optional arguments
          * @returns true on success, false on error
@@ -6230,7 +6508,7 @@ export namespace Guestfs {
          * Delete the named btrfs subvolume or snapshot.
          *
          * This function depends on the feature "btrfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param subvolume
          * @returns true on success, false on error
          */
@@ -6242,7 +6520,7 @@ export namespace Guestfs {
          * `mountpoint`.
          *
          * This function depends on the feature "btrfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param fs
          * @returns the returned value, or -1 on error
          */
@@ -6254,7 +6532,7 @@ export namespace Guestfs {
          * mounted at `fs`.
          *
          * This function depends on the feature "btrfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param fs
          * @returns an array of BTRFSSubvolume objects, or NULL on error
          */
@@ -6263,11 +6541,11 @@ export namespace Guestfs {
          * set default btrfs subvolume
          *
          * Set the subvolume of the btrfs filesystem `fs` which will be mounted by
-         * default. See guestfs_session_btrfs_subvolume_list() to get a list of
+         * default. See `guestfs_session_btrfs_subvolume_list()` to get a list of
          * subvolumes.
          *
          * This function depends on the feature "btrfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param id
          * @param fs
          * @returns true on success, false on error
@@ -6279,7 +6557,7 @@ export namespace Guestfs {
          * Return detailed information of the subvolume.
          *
          * This function depends on the feature "btrfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param subvolume
          * @returns a GHashTable of results, or NULL on error
          */
@@ -6295,7 +6573,7 @@ export namespace Guestfs {
          * the newly created snapshot will be added to.
          *
          * This function depends on the feature "btrfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param source
          * @param dest
          * @param optargs a GuestfsBTRFSSubvolumeSnapshot containing optional arguments
@@ -6308,7 +6586,7 @@ export namespace Guestfs {
          * This will Enable extended inode refs.
          *
          * This function depends on the feature "btrfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @returns true on success, false on error
          */
@@ -6319,7 +6597,7 @@ export namespace Guestfs {
          * This enable skinny metadata extent refs.
          *
          * This function depends on the feature "btrfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @returns true on success, false on error
          */
@@ -6331,7 +6609,7 @@ export namespace Guestfs {
          * you can use it to build other filesystems.
          *
          * This function depends on the feature "btrfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @param seeding
          * @returns true on success, false on error
@@ -6362,7 +6640,7 @@ export namespace Guestfs {
          * /dev/mapper/VG-LV
          * /dev/dm-N
          * Converted to /dev/VG/LV form using
-         * guestfs_session_lvm_canonical_lv_name().
+         * `guestfs_session_lvm_canonical_lv_name()`.
          *
          * Other strings are returned unmodified.
          * @param device
@@ -6378,7 +6656,7 @@ export namespace Guestfs {
          * If no capabilities are attached to a file, an empty string is returned.
          *
          * This function depends on the feature "linuxcaps".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param path
          * @returns the returned string, or NULL on error
          */
@@ -6391,7 +6669,7 @@ export namespace Guestfs {
          * cap_from_text(3)).
          *
          * This function depends on the feature "linuxcaps".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param path
          * @param cap
          * @returns true on success, false on error
@@ -6419,29 +6697,29 @@ export namespace Guestfs {
          * url='http://www.tuxera.com/community/ntfs-3g-faq/#posixfilenames1'>
          * http://www.tuxera.com/community/ntfs-3g-faq/#posixfilenames1 </ulink>
          *
-         * guestfs_session_case_sensitive_path() attempts to resolve the true case
+         * `guestfs_session_case_sensitive_path()` attempts to resolve the true case
          * of each element in the path. It will return a resolved path if either
          * the full path or its parent directory exists. If the parent directory
          * exists but the full path does not, the case of the parent directory will
          * be correctly resolved, and the remainder appended unmodified. For
          * example, if the file "/Windows/System32/netkvm.sys" exists:
          *
-         * guestfs_session_case_sensitive_path() ("/windows/system32/netkvm.sys")
+         * `guestfs_session_case_sensitive_path()` ("/windows/system32/netkvm.sys")
          * "Windows/System32/netkvm.sys"
          *
-         * guestfs_session_case_sensitive_path() ("/windows/system32/NoSuchFile")
+         * `guestfs_session_case_sensitive_path()` ("/windows/system32/NoSuchFile")
          * "Windows/System32/NoSuchFile"
          *
-         * guestfs_session_case_sensitive_path() ("/windows/system33/netkvm.sys")
+         * `guestfs_session_case_sensitive_path()` ("/windows/system33/netkvm.sys")
          * *ERROR*
          *
          * *Note*: Because of the above behaviour,
-         * guestfs_session_case_sensitive_path() cannot be used to check for the
+         * `guestfs_session_case_sensitive_path()` cannot be used to check for the
          * existence of a file.
          *
          * *Note*: This function does not handle drive names, backslashes etc.
          *
-         * See also guestfs_session_realpath().
+         * See also `guestfs_session_realpath()`.
          * @param path
          * @returns the returned string, or NULL on error
          */
@@ -6453,8 +6731,8 @@ export namespace Guestfs {
          *
          * Because, in C, this function returns a "char *", there is no way to
          * differentiate between a "\0" character in a file and end of string. To
-         * handle binary files, use the guestfs_session_read_file() or
-         * guestfs_session_download() functions.
+         * handle binary files, use the `guestfs_session_read_file()` or
+         * `guestfs_session_download()` functions.
          * @param path
          * @returns the returned string, or NULL on error
          */
@@ -6473,29 +6751,29 @@ export namespace Guestfs {
          * `cksum` command.
          *
          * `md5`
-         * Compute the MD5 hash (using the `md5`sum program).
+         * Compute the MD5 hash (using the `md5sum` program).
          *
          * `sha1`
-         * Compute the SHA1 hash (using the `sha1`sum program).
+         * Compute the SHA1 hash (using the `sha1sum` program).
          *
-         * `sha2`24
-         * Compute the SHA224 hash (using the `sha2`24sum program).
+         * `sha224`
+         * Compute the SHA224 hash (using the `sha224sum` program).
          *
-         * `sha2`56
-         * Compute the SHA256 hash (using the `sha2`56sum program).
+         * `sha256`
+         * Compute the SHA256 hash (using the `sha256sum` program).
          *
-         * `sha3`84
-         * Compute the SHA384 hash (using the `sha3`84sum program).
+         * `sha384`
+         * Compute the SHA384 hash (using the `sha384sum` program).
          *
-         * `sha5`12
-         * Compute the SHA512 hash (using the `sha5`12sum program).
+         * `sha512`
+         * Compute the SHA512 hash (using the `sha512sum` program).
          *
          * The checksum is returned as a printable string.
          *
-         * To get the checksum for a device, use guestfs_session_checksum_device().
+         * To get the checksum for a device, use `guestfs_session_checksum_device()`.
          *
          * To get the checksums for many files, use
-         * guestfs_session_checksums_out().
+         * `guestfs_session_checksums_out()`.
          * @param csumtype
          * @param path
          * @returns the returned string, or NULL on error
@@ -6506,7 +6784,7 @@ export namespace Guestfs {
          *
          * This call computes the MD5, SHAx or CRC checksum of the contents of the
          * device named `device`. For the types of checksums supported see the
-         * guestfs_session_checksum() command.
+         * `guestfs_session_checksum()` command.
          * @param csumtype
          * @param device
          * @returns the returned string, or NULL on error
@@ -6543,8 +6821,8 @@ export namespace Guestfs {
          * supported.
          *
          * *Note*: When using this command from guestfish, `mode` by default would
-         * be decimal, unless you prefix it with `0` to get octal, ie. use `0`700 not
-         * `7`00.
+         * be decimal, unless you prefix it with @0 to get octal, ie. use @0700 not
+         * @700.
          *
          * The mode actually set is affected by the umask.
          * @param mode
@@ -6596,7 +6874,7 @@ export namespace Guestfs {
          * element is the name of the program to run. Subsequent elements are
          * parameters. The list must be non-empty (ie. must contain a program
          * name). Note that the command runs directly, and is *not* invoked via the
-         * shell (see guestfs_session_sh()).
+         * shell (see `guestfs_session_sh()`).
          *
          * The return value is anything printed to *stdout* by the command.
          *
@@ -6619,10 +6897,10 @@ export namespace Guestfs {
         /**
          * run a command, returning lines
          *
-         * This is the same as guestfs_session_command(), but splits the result
+         * This is the same as `guestfs_session_command()`, but splits the result
          * into a list of lines.
          *
-         * See also: guestfs_session_sh_lines()
+         * See also: `guestfs_session_sh_lines()`
          * @param _arguments an array of strings
          * @returns an array of returned strings, or NULL on error
          */
@@ -6634,7 +6912,7 @@ export namespace Guestfs {
          * `zdevice`.
          *
          * The `ctype` and optional `level` parameters have the same meaning as in
-         * guestfs_session_compress_out().
+         * `guestfs_session_compress_out()`.
          * @param ctype
          * @param device
          * @param zdevice
@@ -6655,7 +6933,7 @@ export namespace Guestfs {
          * This command compresses file and writes it out to the local file zfile.
          *
          * The compression program used is controlled by the `ctype` parameter.
-         * Currently this includes: `compress,` `gzip,` `bzip2`, `xz` or `lzop`. Some
+         * Currently this includes: `compress`, `gzip`, `bzip2`, `xz` or `lzop`. Some
          * compression types may not be supported by particular builds of
          * libguestfs, in which case you will get an error containing the substring
          * "not supported".
@@ -6685,7 +6963,7 @@ export namespace Guestfs {
          * setting some parameters which would interfere with parameters that we
          * use.
          *
-         * The first character of `hvparam` string must be a `-` (dash).
+         * The first character of `hvparam` string must be a @- (dash).
          *
          * `hvvalue` can be NULL.
          * @param hvparam
@@ -6711,7 +6989,7 @@ export namespace Guestfs {
          * `xattributes`
          * Copy the Linux extended attributes (xattrs) from `source` to
          * `destination`. This flag does nothing if the *linuxxattrs* feature is
-         * not available (see guestfs_session_feature_available()).
+         * not available (see `guestfs_session_feature_available()`).
          *
          * `ownership`
          * Copy the owner uid and the group gid of `source` to `destination`.
@@ -6728,10 +7006,10 @@ export namespace Guestfs {
         /**
          * copy from source device to destination device
          *
-         * The four calls guestfs_session_copy_device_to_device(),
-         * guestfs_session_copy_device_to_file(),
-         * guestfs_session_copy_file_to_device(), and
-         * guestfs_session_copy_file_to_file() let you copy from a source
+         * The four calls `guestfs_session_copy_device_to_device()`,
+         * `guestfs_session_copy_device_to_file()`,
+         * `guestfs_session_copy_file_to_device()`, and
+         * `guestfs_session_copy_file_to_file()` let you copy from a source
          * (device|file) to a destination (device|file).
          *
          * Partial copies can be made since you can specify optionally the source
@@ -6764,7 +7042,7 @@ export namespace Guestfs {
         /**
          * copy from source device to destination file
          *
-         * See guestfs_session_copy_device_to_device() for a general overview of
+         * See `guestfs_session_copy_device_to_device()` for a general overview of
          * this call.
          * @param src
          * @param dest
@@ -6775,7 +7053,7 @@ export namespace Guestfs {
         /**
          * copy from source file to destination device
          *
-         * See guestfs_session_copy_device_to_device() for a general overview of
+         * See `guestfs_session_copy_device_to_device()` for a general overview of
          * this call.
          * @param src
          * @param dest
@@ -6786,12 +7064,12 @@ export namespace Guestfs {
         /**
          * copy from source file to destination file
          *
-         * See guestfs_session_copy_device_to_device() for a general overview of
+         * See `guestfs_session_copy_device_to_device()` for a general overview of
          * this call.
          *
          * This is not the function you want for copying files. This is for copying
-         * blocks within existing files. See guestfs_session_cp(),
-         * guestfs_session_cp_a() and guestfs_session_mv() for general file copying
+         * blocks within existing files. See `guestfs_session_cp()`,
+         * `guestfs_session_cp_a()` and `guestfs_session_mv()` for general file copying
          * and moving functions.
          * @param src
          * @param dest
@@ -6802,7 +7080,7 @@ export namespace Guestfs {
         /**
          * copy local files or directories into an image
          *
-         * guestfs_session_copy_in() copies local files or directories recursively
+         * `guestfs_session_copy_in()` copies local files or directories recursively
          * into the disk image, placing them in the directory called `remotedir`
          * (which must exist).
          *
@@ -6815,7 +7093,7 @@ export namespace Guestfs {
         /**
          * copy remote files or directories out of an image
          *
-         * guestfs_session_copy_out() copies remote files or directories
+         * `guestfs_session_copy_out()` copies remote files or directories
          * recursively out of the disk image, placing them on the host disk in a
          * local directory called `localdir` (which must exist).
          *
@@ -6869,7 +7147,7 @@ export namespace Guestfs {
          * This copies a file or directory from `src` to `dest` recursively using the
          * "cp -rP" command.
          *
-         * Most users should use guestfs_session_cp_a() instead. This command is
+         * Most users should use `guestfs_session_cp_a()` instead. This command is
          * useful when you don't want to preserve permissions, because the target
          * filesystem does not support it (primarily when writing to DOS FAT
          * filesystems).
@@ -6916,7 +7194,7 @@ export namespace Guestfs {
          *
          * If the destination is a device, it must be as large or larger than the
          * source file or device, otherwise the copy will fail. This command cannot
-         * do partial copies (see guestfs_session_copy_device_to_device()).
+         * do partial copies (see `guestfs_session_copy_device_to_device()`).
          * @param src
          * @param dest
          * @returns true on success, false on error
@@ -6925,7 +7203,7 @@ export namespace Guestfs {
         /**
          * debugging and internals
          *
-         * The guestfs_session_debug() command exposes some internals of `guestfsd`
+         * The `guestfs_session_debug()` command exposes some internals of `guestfsd`
          * (the guestfs daemon) that runs inside the hypervisor.
          *
          * There is no comprehensive help for this command. You have to look at the
@@ -6947,7 +7225,7 @@ export namespace Guestfs {
         /**
          * upload a file to the appliance (internal use only)
          *
-         * The guestfs_session_debug_upload() command uploads a file to the
+         * The `guestfs_session_debug_upload()` command uploads a file to the
          * libguestfs appliance.
          *
          * There is no comprehensive help for this command. You have to look at the
@@ -6966,9 +7244,9 @@ export namespace Guestfs {
          * of the device in the list of devices.
          *
          * Index numbers start from 0. The named device must exist, for example as
-         * a string returned from guestfs_session_list_devices().
+         * a string returned from `guestfs_session_list_devices()`.
          *
-         * See also guestfs_session_list_devices(), guestfs_session_part_to_dev().
+         * See also `guestfs_session_list_devices()`, `guestfs_session_part_to_dev()`.
          * @param device
          * @returns the returned value, or -1 on error
          */
@@ -6980,7 +7258,7 @@ export namespace Guestfs {
          *
          * This command is mostly useful for interactive sessions. It is *not*
          * intended that you try to parse the output string. Use
-         * guestfs_session_statvfs() from programs.
+         * `guestfs_session_statvfs()` from programs.
          * @returns the returned string, or NULL on error
          */
         df(): string;
@@ -6992,7 +7270,7 @@ export namespace Guestfs {
          *
          * This command is mostly useful for interactive sessions. It is *not*
          * intended that you try to parse the output string. Use
-         * guestfs_session_statvfs() from programs.
+         * `guestfs_session_statvfs()` from programs.
          * @returns the returned string, or NULL on error
          */
         df_h(): string;
@@ -7004,7 +7282,7 @@ export namespace Guestfs {
          *
          * If used with the optional `backingfile` parameter, then a snapshot is
          * created on top of the backing file. In this case, `size` must be passed
-         * as `-1`. The size of the snapshot is the same as the size of the backing
+         * as @-1. The size of the snapshot is the same as the size of the backing
          * file, which is discovered automatically. You are encouraged to also pass
          * `backingformat` to describe the format of `backingfile`.
          *
@@ -7014,11 +7292,11 @@ export namespace Guestfs {
          * The other optional parameters are:
          *
          * `preallocation`
-         * If format is `raw,` then this can be either `off` (or `sparse)` or
+         * If format is `raw`, then this can be either `off` (or `sparse`) or
          * `full` to create a sparse or fully allocated file respectively. The
          * default is `off`.
          *
-         * If format is `qcow2`, then this can be `off` (or `sparse)`, `metadata`
+         * If format is `qcow2`, then this can be `off` (or `sparse`), `metadata`
          * or `full`. Preallocating metadata can be faster when doing lots of
          * writes, but uses more space. The default is `off`.
          *
@@ -7032,7 +7310,7 @@ export namespace Guestfs {
          * 2097152.
          *
          * Note that this call does not add the new disk to the handle. You may
-         * need to call guestfs_session_add_drive_opts() separately.
+         * need to call `guestfs_session_add_drive_opts()` separately.
          * @param filename
          * @param format
          * @param size
@@ -7085,7 +7363,7 @@ export namespace Guestfs {
          * This is sometimes useful for extended debugging of problems.
          *
          * Another way to get the same information is to enable verbose messages
-         * with guestfs_session_set_verbose() or by setting the environment
+         * with `guestfs_session_set_verbose()` or by setting the environment
          * variable "LIBGUESTFS_DEBUG=1" before running the program.
          * @returns the returned string, or NULL on error
          */
@@ -7098,7 +7376,7 @@ export namespace Guestfs {
          *
          * filename can also be a named pipe.
          *
-         * See also guestfs_session_upload(), guestfs_session_cat().
+         * See also `guestfs_session_upload()`, `guestfs_session_cat()`.
          * @param remotefilename
          * @param filename
          * @param cancellable A GCancellable object
@@ -7125,7 +7403,7 @@ export namespace Guestfs {
          * overwritten yet.
          *
          * This function depends on the feature "sleuthkit".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @param start
          * @param stop
@@ -7153,7 +7431,7 @@ export namespace Guestfs {
          * The command is capable of downloading deleted or inaccessible files.
          *
          * This function depends on the feature "sleuthkit".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @param inode
          * @param filename
@@ -7171,10 +7449,10 @@ export namespace Guestfs {
          * must be within the file or device).
          *
          * Note that there is no limit on the amount of data that can be downloaded
-         * with this call, unlike with guestfs_session_pread(), and this call
+         * with this call, unlike with `guestfs_session_pread()`, and this call
          * always reads the full amount unless an error occurs.
          *
-         * See also guestfs_session_download(), guestfs_session_pread().
+         * See also `guestfs_session_download()`, `guestfs_session_pread()`.
          * @param remotefilename
          * @param filename
          * @param offset
@@ -7250,7 +7528,7 @@ export namespace Guestfs {
          * check an ext2/ext3 filesystem
          *
          * This runs "e2fsck -p -f device", ie. runs the ext2/ext3 filesystem
-         * checker on `device,` noninteractively (*-p*), even if the filesystem
+         * checker on `device`, noninteractively (*-p*), even if the filesystem
          * appears to be clean (*-f*).
          * @param device
          * @returns true on success, false on error
@@ -7264,7 +7542,7 @@ export namespace Guestfs {
          *
          * You can use this command to test the connection through to the daemon.
          *
-         * See also guestfs_session_ping_daemon().
+         * See also `guestfs_session_ping_daemon()`.
          * @param words an array of strings
          * @returns the returned string, or NULL on error
          */
@@ -7306,8 +7584,8 @@ export namespace Guestfs {
          * This returns `true` if and only if there is a file, directory (or
          * anything) with the given `path` name.
          *
-         * See also guestfs_session_is_file(), guestfs_session_is_dir(),
-         * guestfs_session_stat().
+         * See also `guestfs_session_is_file()`, `guestfs_session_is_dir()`,
+         * `guestfs_session_stat()`.
          * @param path
          * @returns the returned value, or -1 on error
          */
@@ -7316,7 +7594,7 @@ export namespace Guestfs {
          * install the SYSLINUX bootloader on an ext2/3/4 or btrfs filesystem
          *
          * Install the SYSLINUX bootloader on the device mounted at directory.
-         * Unlike guestfs_session_syslinux() which requires a FAT filesystem, this
+         * Unlike `guestfs_session_syslinux()` which requires a FAT filesystem, this
          * can be used on an ext2/3/4 or btrfs filesystem.
          *
          * The directory parameter can be either a mountpoint, or a directory
@@ -7324,7 +7602,7 @@ export namespace Guestfs {
          *
          * You also have to mark the partition as "active"
          * (guestfs_session_part_set_bootable()) and a Master Boot Record must be
-         * installed (eg. using guestfs_session_pwrite_device()) on the first
+         * installed (eg. using `guestfs_session_pwrite_device()`) on the first
          * sector of the whole disk. The SYSLINUX package comes with some suitable
          * Master Boot Records. See the extlinux(1) man page for further
          * information.
@@ -7333,10 +7611,10 @@ export namespace Guestfs {
          * called extlinux.conf on the filesystem under directory. For further
          * information about the contents of this file, see extlinux(1).
          *
-         * See also guestfs_session_syslinux().
+         * See also `guestfs_session_syslinux()`.
          *
          * This function depends on the feature "extlinux".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param directory
          * @returns true on success, false on error
          */
@@ -7348,7 +7626,7 @@ export namespace Guestfs {
          * device.
          *
          * This function depends on the feature "f2fs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @returns true on success, false on error
          */
@@ -7373,9 +7651,9 @@ export namespace Guestfs {
          * size `len` bytes. If the file exists already, it is overwritten.
          *
          * Note that this call allocates disk blocks for the file. To create a
-         * sparse file use guestfs_session_truncate_size() instead.
+         * sparse file use `guestfs_session_truncate_size()` instead.
          *
-         * The deprecated call guestfs_session_fallocate() does the same, but owing
+         * The deprecated call `guestfs_session_fallocate()` does the same, but owing
          * to an oversight it only allowed 30 bit lengths to be specified,
          * effectively limiting the maximum size of files created through that call
          * to 1GB.
@@ -7390,10 +7668,10 @@ export namespace Guestfs {
         /**
          * test availability of some parts of the API
          *
-         * This is the same as guestfs_session_available(), but unlike that call it
+         * This is the same as `guestfs_session_available()`, but unlike that call it
          * returns a simple true/false boolean result, instead of throwing an
          * exception if a feature is not found. For other documentation see
-         * guestfs_session_available().
+         * `guestfs_session_available()`.
          * @param groups an array of strings
          * @returns the returned value, or -1 on error
          */
@@ -7433,9 +7711,9 @@ export namespace Guestfs {
          * it can change in future in ways beyond our control. In other words, the
          * output is not guaranteed by the ABI.
          *
-         * See also: file(1), guestfs_session_vfs_type(), guestfs_session_lstat(),
-         * guestfs_session_is_file(), guestfs_session_is_blockdev() (etc),
-         * guestfs_session_is_zero().
+         * See also: file(1), `guestfs_session_vfs_type()`, `guestfs_session_lstat()`,
+         * `guestfs_session_is_file()`, `guestfs_session_is_blockdev()` (etc),
+         * `guestfs_session_is_zero()`.
          * @param path
          * @returns the returned string, or NULL on error
          */
@@ -7503,9 +7781,9 @@ export namespace Guestfs {
          *
          * *   Windows Win32 and Win64 DLLs
          *
-         * Win32 binaries and DLLs return `i3`86.
+         * Win32 binaries and DLLs return `i386`.
          *
-         * Win64 binaries and DLLs return `x8`6_64.
+         * Win64 binaries and DLLs return `x86_64`.
          *
          * *   Linux kernel modules
          *
@@ -7534,10 +7812,10 @@ export namespace Guestfs {
          *
          * This command returns the size of file in bytes.
          *
-         * To get other stats about a file, use guestfs_session_stat(),
-         * guestfs_session_lstat(), guestfs_session_is_dir(),
-         * guestfs_session_is_file() etc. To get the size of block devices, use
-         * guestfs_session_blockdev_getsize64().
+         * To get other stats about a file, use `guestfs_session_stat()`,
+         * `guestfs_session_lstat()`, `guestfs_session_is_dir()`,
+         * `guestfs_session_is_file()` etc. To get the size of block devices, use
+         * `guestfs_session_blockdev_getsize64()`.
          * @param file
          * @returns the returned value, or -1 on error
          */
@@ -7548,7 +7826,7 @@ export namespace Guestfs {
          * Check whether libguestfs supports the named filesystem. The argument
          * `filesystem` is a filesystem name, such as `ext3`.
          *
-         * You must call guestfs_session_launch() before using this command.
+         * You must call `guestfs_session_launch()` before using this command.
          *
          * This is mainly useful as a negative test. If this returns true, it
          * doesn't mean that a particular filesystem can be created or mounted,
@@ -7556,8 +7834,8 @@ export namespace Guestfs {
          * version of the filesystem, or having incompatible features, or lacking
          * the right mkfs.&lt;*fs*&gt; tool.
          *
-         * See also guestfs_session_available(),
-         * guestfs_session_feature_available(), "AVAILABILITY" in guestfs(3).
+         * See also `guestfs_session_available()`,
+         * `guestfs_session_feature_available()`, "AVAILABILITY" in guestfs(3).
          * @param filesystem
          * @returns the returned value, or -1 on error
          */
@@ -7577,7 +7855,7 @@ export namespace Guestfs {
          * The `tsk_dirent` structure contains the following fields.
          *
          * `tsk_inode`
-         * Filesystem reference number of the node. It might be `0` if the node
+         * Filesystem reference number of the node. It might be @0 if the node
          * has been deleted.
          *
          * `tsk_type`
@@ -7585,7 +7863,7 @@ export namespace Guestfs {
          * values.
          *
          * `tsk_size`
-         * File size in bytes. It might be `-1` if the node has been deleted.
+         * File size in bytes. It might be @-1 if the node has been deleted.
          *
          * `tsk_name`
          * The file path relative to its directory.
@@ -7595,14 +7873,14 @@ export namespace Guestfs {
          * contains the logical OR of the following values:
          *
          * 0x0001
-         * If set to `1`, the file is allocated and visible within the
+         * If set to @1, the file is allocated and visible within the
          * filesystem. Otherwise, the file has been deleted. Under certain
          * circumstances, the function `download_inode` can be used to
          * recover deleted files.
          *
          * 0x0002
          * Filesystem such as NTFS and Ext2 or greater, separate the file
-         * name from the metadata structure. The bit is set to `1` when the
+         * name from the metadata structure. The bit is set to @1 when the
          * file name is in an unallocated state and the metadata structure
          * is in an allocated one. This generally implies the metadata has
          * been reallocated to a new file. Therefore, information such as
@@ -7611,7 +7889,7 @@ export namespace Guestfs {
          * deleted entry.
          *
          * 0x0004
-         * The bit is set to `1` when the file is compressed using
+         * The bit is set to @1 when the file is compressed using
          * filesystem native compression support (NTFS). The API is not
          * able to detect application level compression.
          *
@@ -7656,7 +7934,7 @@ export namespace Guestfs {
          * 'u' Unknown file type
          *
          * This function depends on the feature "libtsk".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @param cancellable A GCancellable object
          * @returns an array of TSKDirent objects, or NULL on error
@@ -7666,12 +7944,12 @@ export namespace Guestfs {
          * fill a file with octets
          *
          * This command creates a new file called `path`. The initial content of the
-         * file is `len` octets of `c,` where `c` must be a number in the range
+         * file is `len` octets of `c`, where `c` must be a number in the range
          * "[0..255]".
          *
          * To fill a file with zero bytes (sparsely), it is much more efficient to
-         * use guestfs_session_truncate_size(). To create a file with a pattern of
-         * repeating bytes use guestfs_session_fill_pattern().
+         * use `guestfs_session_truncate_size()`. To create a file with a pattern of
+         * repeating bytes use `guestfs_session_fill_pattern()`.
          * @param c
          * @param len
          * @param path
@@ -7682,7 +7960,7 @@ export namespace Guestfs {
          * fill a directory with empty files
          *
          * This function, useful for testing filesystems, creates `nr` empty files
-         * in the directory `dir` with names `0`0000000 through `nr-1` (ie. each file
+         * in the directory `dir` with names @00000000 through `nr`-1 (ie. each file
          * name is 8 digits long padded with zeroes).
          * @param dir
          * @param nr
@@ -7692,7 +7970,7 @@ export namespace Guestfs {
         /**
          * fill a file with a repeating pattern of bytes
          *
-         * This function is like guestfs_session_fill() except that it creates a
+         * This function is like `guestfs_session_fill()` except that it creates a
          * new file of length `len` containing the repeating pattern of bytes in
          * `pattern`. The pattern is truncated if necessary to ensure the length of
          * the file is exactly `len` bytes.
@@ -7719,7 +7997,7 @@ export namespace Guestfs {
          *
          * <![CDATA[/tmp/c/d]]>
          *
-         * then the returned list from guestfs_session_find() /tmp would be 4
+         * then the returned list from `guestfs_session_find()` /tmp would be 4
          * elements:
          *
          * <![CDATA[a]]>
@@ -7744,7 +8022,7 @@ export namespace Guestfs {
          * at directory, placing the resulting list in the external file called
          * files.
          *
-         * This command works the same way as guestfs_session_find() with the
+         * This command works the same way as `guestfs_session_find()` with the
          * following exceptions:
          *
          * *   The resulting list is written to an external file.
@@ -7768,7 +8046,7 @@ export namespace Guestfs {
          * `filesystem_walk` for more information about `tsk_dirent` structures.
          *
          * This function depends on the feature "libtsk".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @param inode
          * @param cancellable A GCancellable object
@@ -7781,7 +8059,7 @@ export namespace Guestfs {
          * This command searches the filesystems and returns the one which has the
          * given label. An error is returned if no such filesystem can be found.
          *
-         * To find the label of a filesystem, use guestfs_session_vfs_label().
+         * To find the label of a filesystem, use `guestfs_session_vfs_label()`.
          * @param label
          * @returns the returned string, or NULL on error
          */
@@ -7792,7 +8070,7 @@ export namespace Guestfs {
          * This command searches the filesystems and returns the one which has the
          * given UUID. An error is returned if no such filesystem can be found.
          *
-         * To find the UUID of a filesystem, use guestfs_session_vfs_uuid().
+         * To find the UUID of a filesystem, use `guestfs_session_vfs_uuid()`.
          * @param uuid
          * @returns the returned string, or NULL on error
          */
@@ -7841,13 +8119,13 @@ export namespace Guestfs {
          * call will fail with errno set to `ENOTSUP`. Currently this happens when
          * trying to trim FAT filesystems.
          *
-         * See also guestfs_session_zero_free_space(). That is a slightly different
+         * See also `guestfs_session_zero_free_space()`. That is a slightly different
          * operation that turns free space in the filesystem into zeroes. It is
-         * valid to call guestfs_session_fstrim() either instead of, or after
-         * calling guestfs_session_zero_free_space().
+         * valid to call `guestfs_session_fstrim()` either instead of, or after
+         * calling `guestfs_session_zero_free_space()`.
          *
          * This function depends on the feature "fstrim".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param mountpoint
          * @param optargs a GuestfsFstrim containing optional arguments
          * @returns true on success, false on error
@@ -7868,7 +8146,7 @@ export namespace Guestfs {
          *
          * Return the current backend.
          *
-         * See guestfs_session_set_backend() and "BACKEND" in guestfs(3).
+         * See `guestfs_session_set_backend()` and "BACKEND" in guestfs(3).
          * @returns the returned string, or NULL on error
          */
         get_attach_method(): string;
@@ -7886,7 +8164,7 @@ export namespace Guestfs {
          *
          * This handle property was previously called the "attach method".
          *
-         * See guestfs_session_set_backend() and "BACKEND" in guestfs(3).
+         * See `guestfs_session_set_backend()` and "BACKEND" in guestfs(3).
          * @returns the returned string, or NULL on error
          */
         get_backend(): string;
@@ -7898,7 +8176,7 @@ export namespace Guestfs {
          * returns the part after the equals sign (which may be an empty string).
          *
          * If no such setting is found, this function throws an error. The errno
-         * (see guestfs_session_last_errno()) will be `ESRCH` in this case.
+         * (see `guestfs_session_last_errno()`) will be `ESRCH` in this case.
          *
          * See "BACKEND" in guestfs(3), "BACKEND SETTINGS" in guestfs(3).
          * @param name
@@ -7911,7 +8189,7 @@ export namespace Guestfs {
          * Return the current backend settings.
          *
          * This call returns all backend settings strings. If you want to find a
-         * single backend setting, see guestfs_session_get_backend_setting().
+         * single backend setting, see `guestfs_session_get_backend_setting()`.
          *
          * See "BACKEND" in guestfs(3), "BACKEND SETTINGS" in guestfs(3).
          * @returns an array of returned strings, or NULL on error
@@ -7995,10 +8273,10 @@ export namespace Guestfs {
          * attributes may be set for all kinds of files. For detailed information,
          * consult the chattr(1) man page.
          *
-         * See also guestfs_session_set_e2attrs().
+         * See also `guestfs_session_set_e2attrs()`.
          *
          * Don't confuse these attributes with extended attributes (see
-         * guestfs_session_getxattr()).
+         * `guestfs_session_getxattr()`).
          * @param file
          * @returns the returned string, or NULL on error
          */
@@ -8014,7 +8292,7 @@ export namespace Guestfs {
          * filesystem. Using this call on other filesystem types will result in an
          * error.
          *
-         * See guestfs_session_set_e2generation().
+         * See `guestfs_session_set_e2generation()`.
          * @param file
          * @returns the returned value, or -1 on error
          */
@@ -8048,14 +8326,14 @@ export namespace Guestfs {
         /**
          * get the handle identifier
          *
-         * Get the handle identifier. See guestfs_session_set_identifier().
+         * Get the handle identifier. See `guestfs_session_set_identifier()`.
          * @returns the returned string, or NULL on error
          */
         get_identifier(): string;
         /**
          * challenge of i'th requested credential
          *
-         * Get the challenge (provided by libvirt) for the `index'`th requested
+         * Get the challenge (provided by libvirt) for the `index`'th requested
          * credential. If libvirt did not provide a challenge, this returns the
          * empty string "".
          *
@@ -8068,7 +8346,7 @@ export namespace Guestfs {
         /**
          * default result of i'th requested credential
          *
-         * Get the default result (provided by libvirt) for the `index'`th requested
+         * Get the default result (provided by libvirt) for the `index`'th requested
          * credential. If libvirt did not provide a default result, this returns
          * the empty string "".
          *
@@ -8081,7 +8359,7 @@ export namespace Guestfs {
         /**
          * prompt of i'th requested credential
          *
-         * Get the prompt (provided by libvirt) for the `index'`th requested
+         * Get the prompt (provided by libvirt) for the `index`'th requested
          * credential. If libvirt did not provide a prompt, this returns the empty
          * string "".
          *
@@ -8099,7 +8377,7 @@ export namespace Guestfs {
          *
          * Return the list of credentials requested by libvirt. Possible values are
          * a subset of the strings provided when you called
-         * guestfs_session_set_libvirt_supported_credentials().
+         * `guestfs_session_set_libvirt_supported_credentials()`.
          *
          * See "LIBVIRT AUTHENTICATION" in guestfs(3) for documentation and example
          * code.
@@ -8111,7 +8389,7 @@ export namespace Guestfs {
          *
          * This gets the memory size in megabytes allocated to the hypervisor.
          *
-         * If guestfs_session_set_memsize() was not called on this handle, and if
+         * If `guestfs_session_set_memsize()` was not called on this handle, and if
          * `LIBGUESTFS_MEMSIZE` was not set, then this returns the compiled-in
          * default value for memsize.
          *
@@ -8156,7 +8434,7 @@ export namespace Guestfs {
         /**
          * get the program name
          *
-         * Get the program name. See guestfs_session_set_program().
+         * Get the program name. See `guestfs_session_set_program()`.
          * @returns the returned string, or NULL on error
          */
         get_program(): string;
@@ -8181,7 +8459,7 @@ export namespace Guestfs {
          * get SELinux enabled flag
          *
          * This returns the current setting of the selinux flag which is passed to
-         * the appliance at boot time. See guestfs_session_set_selinux().
+         * the appliance at boot time. See `guestfs_session_set_selinux()`.
          *
          * For more information on the architecture of libguestfs, see guestfs(3).
          * @returns the returned value, or -1 on error
@@ -8199,9 +8477,9 @@ export namespace Guestfs {
          *
          * Get the directory used by the handle to store temporary socket files.
          *
-         * This is different from guestfs_session_tmpdir(), as we need shorter
+         * This is different from `guestfs_session_tmpdir()`, as we need shorter
          * paths for sockets (due to the limited buffers of filenames for UNIX
-         * sockets), and guestfs_session_tmpdir() may be too long for them.
+         * sockets), and `guestfs_session_tmpdir()` may be too long for them.
          *
          * The environment variable `XDG_RUNTIME_DIR` controls the default value: If
          * `XDG_RUNTIME_DIR` is set, then that is the default. Else /tmp is the
@@ -8236,8 +8514,8 @@ export namespace Guestfs {
         /**
          * get the current umask
          *
-         * Return the current umask. By default the umask is `0`22 unless it has
-         * been set by calling guestfs_session_umask().
+         * Return the current umask. By default the umask is @022 unless it has
+         * been set by calling `guestfs_session_umask()`.
          * @returns the returned value, or -1 on error
          */
         get_umask(): number;
@@ -8254,10 +8532,10 @@ export namespace Guestfs {
          * This gets the SELinux security context of the daemon.
          *
          * See the documentation about SELINUX in guestfs(3), and
-         * guestfs_session_setcon()
+         * `guestfs_session_setcon()`
          *
          * This function depends on the feature "selinux".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @returns the returned string, or NULL on error
          */
         getcon(): string;
@@ -8266,23 +8544,23 @@ export namespace Guestfs {
          *
          * Get a single extended attribute from file `path` named `name`. This call
          * follows symlinks. If you want to lookup an extended attribute for the
-         * symlink itself, use guestfs_session_lgetxattr().
+         * symlink itself, use `guestfs_session_lgetxattr()`.
          *
          * Normally it is better to get all extended attributes from a file in one
-         * go by calling guestfs_session_getxattrs(). However some Linux filesystem
+         * go by calling `guestfs_session_getxattrs()`. However some Linux filesystem
          * implementations are buggy and do not provide a way to list out
          * attributes. For these filesystems (notably ntfs-3g) you have to know the
          * names of the extended attributes you want in advance and call this
          * function.
          *
          * Extended attribute values are blobs of binary data. If there is no
-         * extended attribute named `name,` this returns an error.
+         * extended attribute named `name`, this returns an error.
          *
-         * See also: guestfs_session_getxattrs(), guestfs_session_lgetxattr(),
+         * See also: `guestfs_session_getxattrs()`, `guestfs_session_lgetxattr()`,
          * attr(5).
          *
          * This function depends on the feature "linuxxattrs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param path
          * @param name
          * @returns an array of binary data, or NULL on error
@@ -8296,10 +8574,10 @@ export namespace Guestfs {
          * At the system call level, this is a combination of the listxattr(2) and
          * getxattr(2) calls.
          *
-         * See also: guestfs_session_lgetxattrs(), attr(5).
+         * See also: `guestfs_session_lgetxattrs()`, attr(5).
          *
          * This function depends on the feature "linuxxattrs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param path
          * @returns an array of XAttr objects, or NULL on error
          */
@@ -8320,8 +8598,8 @@ export namespace Guestfs {
          * trailing slashes in filenames of directories.
          *
          * Notice that there is no equivalent command for expanding a device name
-         * (eg. /dev/sd*). Use guestfs_session_list_devices(),
-         * guestfs_session_list_partitions() etc functions instead.
+         * (eg. /dev/sd*). Use `guestfs_session_list_devices()`,
+         * `guestfs_session_list_partitions()` etc functions instead.
          * @param pattern
          * @param optargs a GuestfsGlobExpand containing optional arguments
          * @returns an array of returned strings, or NULL on error
@@ -8367,7 +8645,7 @@ export namespace Guestfs {
         /**
          * install GRUB 1
          *
-         * This command installs GRUB 1 (the Grand Unified Bootloader) on `device,`
+         * This command installs GRUB 1 (the Grand Unified Bootloader) on `device`,
          * with the root directory being `root`.
          *
          * Notes:
@@ -8377,7 +8655,7 @@ export namespace Guestfs {
          * from the guest, although see the caveats in "RUNNING COMMANDS" in
          * guestfs(3).
          *
-         * *   This uses `grub-install` from the host. Unfortunately grub is not
+         * *   This uses `grub`-install from the host. Unfortunately grub is not
          * always compatible with itself, so this only works in rather narrow
          * circumstances. Careful testing with each guest version is advisable.
          *
@@ -8392,7 +8670,7 @@ export namespace Guestfs {
          * replacing /dev/vda with the name of the installation device.
          *
          * This function depends on the feature "grub".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param root
          * @param device
          * @returns true on success, false on error
@@ -8414,7 +8692,7 @@ export namespace Guestfs {
          * `nrlines` lines of the file `path`.
          *
          * If the parameter `nrlines` is a negative number, this returns lines from
-         * the file `path,` excluding the last `nrlines` lines.
+         * the file `path`, excluding the last `nrlines` lines.
          *
          * If the parameter `nrlines` is zero, this returns an empty list.
          * @param nrlines
@@ -8439,7 +8717,7 @@ export namespace Guestfs {
          * This is a wrapper around the hivex(3) call of the same name.
          *
          * This function depends on the feature "hivex".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @returns true on success, false on error
          */
         hivex_close(): boolean;
@@ -8456,7 +8734,7 @@ export namespace Guestfs {
          * This is a wrapper around the hivex(3) call of the same name.
          *
          * This function depends on the feature "hivex".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param filename
          * @returns true on success, false on error
          */
@@ -8469,7 +8747,7 @@ export namespace Guestfs {
          * This is a wrapper around the hivex(3) call of the same name.
          *
          * This function depends on the feature "hivex".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param parent
          * @param name
          * @returns the returned value, or -1 on error
@@ -8483,7 +8761,7 @@ export namespace Guestfs {
          * This is a wrapper around the hivex(3) call of the same name.
          *
          * This function depends on the feature "hivex".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param nodeh
          * @returns an array of HivexNode objects, or NULL on error
          */
@@ -8491,12 +8769,12 @@ export namespace Guestfs {
         /**
          * delete a node (recursively)
          *
-         * Delete `nodeh,` recursively if necessary.
+         * Delete `nodeh`, recursively if necessary.
          *
          * This is a wrapper around the hivex(3) call of the same name.
          *
          * This function depends on the feature "hivex".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param nodeh
          * @returns true on success, false on error
          */
@@ -8504,13 +8782,13 @@ export namespace Guestfs {
         /**
          * return the named child of node
          *
-         * Return the child of `nodeh` with the name `name,` if it exists. This can
-         * return `0` meaning the name was not found.
+         * Return the child of `nodeh` with the name `name`, if it exists. This can
+         * return @0 meaning the name was not found.
          *
          * This is a wrapper around the hivex(3) call of the same name.
          *
          * This function depends on the feature "hivex".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param nodeh
          * @param name
          * @returns the returned value, or -1 on error
@@ -8519,13 +8797,13 @@ export namespace Guestfs {
         /**
          * return the named value
          *
-         * Return the value attached to `nodeh` which has the name `key,` if it
-         * exists. This can return `0` meaning the key was not found.
+         * Return the value attached to `nodeh` which has the name `key`, if it
+         * exists. This can return @0 meaning the key was not found.
          *
          * This is a wrapper around the hivex(3) call of the same name.
          *
          * This function depends on the feature "hivex".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param nodeh
          * @param key
          * @returns the returned value, or -1 on error
@@ -8539,7 +8817,7 @@ export namespace Guestfs {
          * This is a wrapper around the hivex(3) call of the same name.
          *
          * This function depends on the feature "hivex".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param nodeh
          * @returns the returned string, or NULL on error
          */
@@ -8552,7 +8830,7 @@ export namespace Guestfs {
          * This is a wrapper around the hivex(3) call of the same name.
          *
          * This function depends on the feature "hivex".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param nodeh
          * @returns the returned value, or -1 on error
          */
@@ -8566,7 +8844,7 @@ export namespace Guestfs {
          * This is a wrapper around the hivex(3) call of the same name.
          *
          * This function depends on the feature "hivex".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param nodeh
          * @param key
          * @param t
@@ -8582,7 +8860,7 @@ export namespace Guestfs {
          * This is a wrapper around the hivex(3) call of the same name.
          *
          * This function depends on the feature "hivex".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param nodeh
          * @returns an array of HivexValue objects, or NULL on error
          */
@@ -8597,7 +8875,7 @@ export namespace Guestfs {
          * This is a wrapper around the hivex(3) call of the same name.
          *
          * This function depends on the feature "hivex".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param filename
          * @param optargs a GuestfsHivexOpen containing optional arguments
          * @returns true on success, false on error
@@ -8611,7 +8889,7 @@ export namespace Guestfs {
          * This is a wrapper around the hivex(3) call of the same name.
          *
          * This function depends on the feature "hivex".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @returns the returned value, or -1 on error
          */
         hivex_root(): number;
@@ -8623,7 +8901,7 @@ export namespace Guestfs {
          * This is a wrapper around the hivex(3) call of the same name.
          *
          * This function depends on the feature "hivex".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param valueh
          * @returns the returned string, or NULL on error
          */
@@ -8631,7 +8909,7 @@ export namespace Guestfs {
         /**
          * return the data field as a UTF-8 string
          *
-         * This calls guestfs_session_hivex_value_value() (which returns the data
+         * This calls `guestfs_session_hivex_value_value()` (which returns the data
          * field from a hivex value tuple). It then assumes that the field is a
          * UTF-16LE string and converts the result to UTF-8 (or if this is not
          * possible, it returns an error).
@@ -8641,7 +8919,7 @@ export namespace Guestfs {
          * fields can contain arbitrary or unexpected data.
          *
          * This function depends on the feature "hivex".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param valueh
          * @returns the returned string, or NULL on error
          */
@@ -8654,7 +8932,7 @@ export namespace Guestfs {
          * This is a wrapper around the hivex(3) call of the same name.
          *
          * This function depends on the feature "hivex".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param valueh
          * @returns the returned value, or -1 on error
          */
@@ -8662,7 +8940,7 @@ export namespace Guestfs {
         /**
          * return the data field as a UTF-8 string
          *
-         * This calls guestfs_session_hivex_value_value() (which returns the data
+         * This calls `guestfs_session_hivex_value_value()` (which returns the data
          * field from a hivex value tuple). It then assumes that the field is a
          * UTF-16LE string and converts the result to UTF-8 (or if this is not
          * possible, it returns an error).
@@ -8672,7 +8950,7 @@ export namespace Guestfs {
          * fields can contain arbitrary or unexpected data.
          *
          * This function depends on the feature "hivex".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param valueh
          * @returns the returned string, or NULL on error
          */
@@ -8684,10 +8962,10 @@ export namespace Guestfs {
          *
          * This is a wrapper around the hivex(3) call of the same name.
          *
-         * See also: guestfs_session_hivex_value_utf8().
+         * See also: `guestfs_session_hivex_value_utf8()`.
          *
          * This function depends on the feature "hivex".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param valueh
          * @returns an array of binary data, or NULL on error
          */
@@ -8705,7 +8983,7 @@ export namespace Guestfs {
          *
          * <![CDATA[initrd-cat /boot/initrd-<version>.img init]]>
          *
-         * See also guestfs_session_initrd_list().
+         * See also `guestfs_session_initrd_list()`.
          * @param initrdpath
          * @param filename
          * @returns an array of binary data, or NULL on error
@@ -8739,7 +9017,7 @@ export namespace Guestfs {
          * the Linux kernel ABI and are listed in /usr/include/sys/inotify.h.
          *
          * This function depends on the feature "inotify".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param path
          * @param mask
          * @returns the returned value, or -1 on error
@@ -8753,19 +9031,19 @@ export namespace Guestfs {
          * and deallocates all resources.
          *
          * This function depends on the feature "inotify".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @returns true on success, false on error
          */
         inotify_close(): boolean;
         /**
          * return list of watched files that had events
          *
-         * This function is a helpful wrapper around guestfs_session_inotify_read()
+         * This function is a helpful wrapper around `guestfs_session_inotify_read()`
          * which just returns a list of pathnames of objects that were touched. The
          * returned pathnames are sorted and deduplicated.
          *
          * This function depends on the feature "inotify".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @returns an array of returned strings, or NULL on error
          */
         inotify_files(): string[];
@@ -8776,26 +9054,26 @@ export namespace Guestfs {
          * used to notify events which happen to objects in the guest filesystem.
          *
          * `maxevents` is the maximum number of events which will be queued up
-         * between calls to guestfs_session_inotify_read() or
-         * guestfs_session_inotify_files(). If this is passed as `0`, then the
+         * between calls to `guestfs_session_inotify_read()` or
+         * `guestfs_session_inotify_files()`. If this is passed as @0, then the
          * kernel (or previously set) default is used. For Linux 2.6.29 the default
          * was 16384 events. Beyond this limit, the kernel throws away events, but
          * records the fact that it threw them away by setting a flag
          * `IN_Q_OVERFLOW` in the returned structure list (see
-         * guestfs_session_inotify_read()).
+         * `guestfs_session_inotify_read()`).
          *
          * Before any events are generated, you have to add some watches to the
-         * internal watch list. See: guestfs_session_inotify_add_watch() and
-         * guestfs_session_inotify_rm_watch().
+         * internal watch list. See: `guestfs_session_inotify_add_watch()` and
+         * `guestfs_session_inotify_rm_watch()`.
          *
          * Queued up events should be read periodically by calling
-         * guestfs_session_inotify_read() (or guestfs_session_inotify_files() which
-         * is just a helpful wrapper around guestfs_session_inotify_read()). If you
+         * `guestfs_session_inotify_read()` (or `guestfs_session_inotify_files()` which
+         * is just a helpful wrapper around `guestfs_session_inotify_read()`). If you
          * don't read the events out often enough then you risk the internal queue
          * overflowing.
          *
          * The handle should be closed after use by calling
-         * guestfs_session_inotify_close(). This also removes any watches
+         * `guestfs_session_inotify_close()`. This also removes any watches
          * automatically.
          *
          * See also inotify(7) for an overview of the inotify interface as exposed
@@ -8803,7 +9081,7 @@ export namespace Guestfs {
          * Note that there is one global inotify handle per libguestfs instance.
          *
          * This function depends on the feature "inotify".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param maxevents
          * @returns true on success, false on error
          */
@@ -8822,7 +9100,7 @@ export namespace Guestfs {
          * message size and leave remaining events in the queue.
          *
          * This function depends on the feature "inotify".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @returns an array of INotifyEvent objects, or NULL on error
          */
         inotify_read(): INotifyEvent[];
@@ -8830,10 +9108,10 @@ export namespace Guestfs {
          * remove an inotify watch
          *
          * Remove a previously defined inotify watch. See
-         * guestfs_session_inotify_add_watch().
+         * `guestfs_session_inotify_add_watch()`.
          *
          * This function depends on the feature "inotify".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param wd
          * @returns true on success, false on error
          */
@@ -8843,7 +9121,7 @@ export namespace Guestfs {
          *
          * This returns the architecture of the inspected operating system. The
          * possible return values are listed under
-         * guestfs_session_file_architecture().
+         * `guestfs_session_file_architecture()`.
          *
          * If the architecture could not be determined, then the string `unknown` is
          * returned.
@@ -9012,8 +9290,8 @@ export namespace Guestfs {
          * could not be determined, this returns an empty hash table.
          *
          * Please read "INSPECTION" in guestfs(3) for more details. See also
-         * guestfs_session_inspect_get_mountpoints(),
-         * guestfs_session_inspect_get_filesystems().
+         * `guestfs_session_inspect_get_mountpoints()`,
+         * `guestfs_session_inspect_get_filesystems()`.
          * @param root
          * @returns a GHashTable of results, or NULL on error
          */
@@ -9029,7 +9307,7 @@ export namespace Guestfs {
          * filesystem to be shared between operating systems.
          *
          * Please read "INSPECTION" in guestfs(3) for more details. See also
-         * guestfs_session_inspect_get_mountpoints().
+         * `guestfs_session_inspect_get_mountpoints()`.
          * @param root
          * @returns an array of returned strings, or NULL on error
          */
@@ -9111,8 +9389,8 @@ export namespace Guestfs {
          * available. The application must scale the icon to the required size.
          *
          * *   Extracting icons from Windows guests requires the external `wrestool`
-         * program from the `icoutils` package, and several programs (`bmptopnm,`
-         * `pnmtopng,` `pamcut)` from the `netpbm` package. These must be
+         * program from the `icoutils` package, and several programs (`bmptopnm`,
+         * `pnmtopng`, `pamcut`) from the `netpbm` package. These must be
          * installed separately.
          *
          * *   Operating system icons are usually trademarks. Seek legal advice
@@ -9133,7 +9411,7 @@ export namespace Guestfs {
          * 6, minor = 1). You can find out the real versions corresponding to
          * releases of Windows by consulting Wikipedia or MSDN.
          *
-         * If the version could not be determined, then `0` is returned.
+         * If the version could not be determined, then @0 is returned.
          *
          * Please read "INSPECTION" in guestfs(3) for more details.
          * @param root
@@ -9145,10 +9423,10 @@ export namespace Guestfs {
          *
          * This returns the minor version number of the inspected operating system.
          *
-         * If the version could not be determined, then `0` is returned.
+         * If the version could not be determined, then @0 is returned.
          *
          * Please read "INSPECTION" in guestfs(3) for more details. See also
-         * guestfs_session_inspect_get_major_version().
+         * `guestfs_session_inspect_get_major_version()`.
          * @param root
          * @returns the returned value, or -1 on error
          */
@@ -9173,10 +9451,10 @@ export namespace Guestfs {
          * For operating systems like Windows which still use drive letters, this
          * call will only return an entry for the first drive "mounted on" /. For
          * information about the mapping of drive letters to partitions, see
-         * guestfs_session_inspect_get_drive_mappings().
+         * `guestfs_session_inspect_get_drive_mappings()`.
          *
          * Please read "INSPECTION" in guestfs(3) for more details. See also
-         * guestfs_session_inspect_get_filesystems().
+         * `guestfs_session_inspect_get_filesystems()`.
          * @param root
          * @returns a GHashTable of results, or NULL on error
          */
@@ -9198,7 +9476,7 @@ export namespace Guestfs {
         /**
          * get package format used by the operating system
          *
-         * This function and guestfs_session_inspect_get_package_management()
+         * This function and `guestfs_session_inspect_get_package_management()`
          * return the package format and package management tool used by the
          * inspected operating system. For example for Fedora these functions would
          * return `rpm` (package format), and `yum` or `dnf` (package management).
@@ -9207,8 +9485,8 @@ export namespace Guestfs {
          * format *or* if the operating system does not have a real packaging
          * system (eg. Windows).
          *
-         * Possible strings include: `rpm,` `deb,` `ebuild,` `pisi,` `pacman,` `pkgsrc,`
-         * `apk,` `xbps`. Future versions of libguestfs may return other strings.
+         * Possible strings include: `rpm`, `deb`, `ebuild`, `pisi`, `pacman`, `pkgsrc`,
+         * `apk`, `xbps`. Future versions of libguestfs may return other strings.
          *
          * Please read "INSPECTION" in guestfs(3) for more details.
          * @param root
@@ -9218,7 +9496,7 @@ export namespace Guestfs {
         /**
          * get package management tool used by the operating system
          *
-         * guestfs_session_inspect_get_package_format() and this function return
+         * `guestfs_session_inspect_get_package_format()` and this function return
          * the package format and package management tool used by the inspected
          * operating system. For example for Fedora these functions would return
          * `rpm` (package format), and `yum` or `dnf` (package management).
@@ -9227,8 +9505,8 @@ export namespace Guestfs {
          * management tool *or* if the operating system does not have a real
          * packaging system (eg. Windows).
          *
-         * Possible strings include: `yum,` `dnf,` `up2`date, `apt` (for all Debian
-         * derivatives), `portage,` `pisi,` `pacman,` `urpmi,` `zypper,` `apk,` `xbps`.
+         * Possible strings include: `yum`, `dnf`, `up2date`, `apt` (for all Debian
+         * derivatives), `portage`, `pisi`, `pacman`, `urpmi`, `zypper`, `apk`, `xbps`.
          * Future versions of libguestfs may return other strings.
          *
          * Please read "INSPECTION" in guestfs(3) for more details.
@@ -9262,18 +9540,18 @@ export namespace Guestfs {
          * possible). This can be used to distinguish consumer and enterprise
          * versions of Windows that have the same version number (for example,
          * Windows 7 and Windows 2008 Server are both version 6.1, but the former
-         * is `Client` and the latter is `Server)`.
+         * is `Client` and the latter is `Server`).
          *
          * For enterprise Linux guests, in future we intend this to return the
-         * product variant such as `Desktop,` `Server` and so on. But this is not
+         * product variant such as `Desktop`, `Server` and so on. But this is not
          * implemented at present.
          *
          * If the product variant could not be determined, then the string `unknown`
          * is returned.
          *
          * Please read "INSPECTION" in guestfs(3) for more details. See also
-         * guestfs_session_inspect_get_product_name(),
-         * guestfs_session_inspect_get_major_version().
+         * `guestfs_session_inspect_get_product_name()`,
+         * `guestfs_session_inspect_get_major_version()`.
          * @param root
          * @returns the returned string, or NULL on error
          */
@@ -9282,11 +9560,11 @@ export namespace Guestfs {
          * return list of operating systems found by last inspection
          *
          * This function is a convenient way to get the list of root devices, as
-         * returned from a previous call to guestfs_session_inspect_os(), but
+         * returned from a previous call to `guestfs_session_inspect_os()`, but
          * without redoing the whole inspection process.
          *
          * This returns an empty list if either no root devices were found or the
-         * caller has not called guestfs_session_inspect_os().
+         * caller has not called `guestfs_session_inspect_os()`.
          *
          * Please read "INSPECTION" in guestfs(3) for more details.
          * @returns an array of returned strings, or NULL on error
@@ -9337,7 +9615,7 @@ export namespace Guestfs {
          * get Windows CurrentControlSet of inspected operating system
          *
          * This returns the Windows CurrentControlSet of the inspected guest. The
-         * CurrentControlSet is a registry key name such as `ControlSet0`01.
+         * CurrentControlSet is a registry key name such as `ControlSet001`.
          *
          * This call assumes that the guest is Windows and that the Registry could
          * be examined by inspection. If this is not the case then an error is
@@ -9359,7 +9637,7 @@ export namespace Guestfs {
          * error is returned. This call does not check that the hive is a valid
          * Windows Registry hive.
          *
-         * You can use guestfs_session_hivex_open() to read or write to the hive.
+         * You can use `guestfs_session_hivex_open()` to read or write to the hive.
          *
          * Please read "INSPECTION" in guestfs(3) for more details.
          * @param root
@@ -9377,7 +9655,7 @@ export namespace Guestfs {
          * error is returned. This call does not check that the hive is a valid
          * Windows Registry hive.
          *
-         * You can use guestfs_session_hivex_open() to read or write to the hive.
+         * You can use `guestfs_session_hivex_open()` to read or write to the hive.
          *
          * Please read "INSPECTION" in guestfs(3) for more details.
          * @param root
@@ -9435,8 +9713,8 @@ export namespace Guestfs {
          * Return the list of applications installed in the operating system.
          *
          * *Note:* This call works differently from other parts of the inspection
-         * API. You have to call guestfs_session_inspect_os(), then
-         * guestfs_session_inspect_get_mountpoints(), then mount up the disks,
+         * API. You have to call `guestfs_session_inspect_os()`, then
+         * `guestfs_session_inspect_get_mountpoints()`, then mount up the disks,
          * before calling this. Listing applications is a significantly more
          * difficult operation which requires access to the full filesystem. Also
          * note that unlike the other "guestfs_inspect_get_*" calls which are just
@@ -9461,7 +9739,7 @@ export namespace Guestfs {
          *
          * `app_epoch`
          * For package managers which use epochs, this contains the epoch of
-         * the package (an integer). If unavailable, this is returned as `0`.
+         * the package (an integer). If unavailable, this is returned as @0.
          *
          * `app_version`
          * The version string of the application or package. If unavailable
@@ -9515,8 +9793,8 @@ export namespace Guestfs {
          * Return the list of applications installed in the operating system.
          *
          * *Note:* This call works differently from other parts of the inspection
-         * API. You have to call guestfs_session_inspect_os(), then
-         * guestfs_session_inspect_get_mountpoints(), then mount up the disks,
+         * API. You have to call `guestfs_session_inspect_os()`, then
+         * `guestfs_session_inspect_get_mountpoints()`, then mount up the disks,
          * before calling this. Listing applications is a significantly more
          * difficult operation which requires access to the full filesystem. Also
          * note that unlike the other "guestfs_inspect_get_*" calls which are just
@@ -9528,64 +9806,64 @@ export namespace Guestfs {
          *
          * The application structure contains the following fields:
          *
-         * `app2`_name
+         * `app2_name`
          * The name of the application. For Red Hat-derived and Debian-derived
          * Linux guests, this is the package name.
          *
-         * `app2`_display_name
+         * `app2_display_name`
          * The display name of the application, sometimes localized to the
          * install language of the guest operating system.
          *
          * If unavailable this is returned as an empty string "". Callers
-         * needing to display something can use `app2`_name instead.
+         * needing to display something can use `app2_name` instead.
          *
-         * `app2`_epoch
+         * `app2_epoch`
          * For package managers which use epochs, this contains the epoch of
-         * the package (an integer). If unavailable, this is returned as `0`.
+         * the package (an integer). If unavailable, this is returned as @0.
          *
-         * `app2`_version
+         * `app2_version`
          * The version string of the application or package. If unavailable
          * this is returned as an empty string "".
          *
-         * `app2`_release
+         * `app2_release`
          * The release string of the application or package, for package
          * managers that use this. If unavailable this is returned as an empty
          * string "".
          *
-         * `app2`_arch
+         * `app2_arch`
          * The architecture string of the application or package, for package
          * managers that use this. If unavailable this is returned as an empty
          * string "".
          *
-         * `app2`_install_path
+         * `app2_install_path`
          * The installation path of the application (on operating systems such
          * as Windows which use installation paths). This path is in the format
          * used by the guest operating system, it is not a libguestfs path.
          *
          * If unavailable this is returned as an empty string "".
          *
-         * `app2`_trans_path
+         * `app2_trans_path`
          * The install path translated into a libguestfs path. If unavailable
          * this is returned as an empty string "".
          *
-         * `app2`_publisher
+         * `app2_publisher`
          * The name of the publisher of the application, for package managers
          * that use this. If unavailable this is returned as an empty string
          * "".
          *
-         * `app2`_url
+         * `app2_url`
          * The URL (eg. upstream URL) of the application. If unavailable this
          * is returned as an empty string "".
          *
-         * `app2`_source_package
+         * `app2_source_package`
          * For packaging systems which support this, the name of the source
          * package. If unavailable this is returned as an empty string "".
          *
-         * `app2`_summary
+         * `app2_summary`
          * A short (usually one line) description of the application or
          * package. If unavailable this is returned as an empty string "".
          *
-         * `app2`_description
+         * `app2_description`
          * A longer description of the application or package. If unavailable
          * this is returned as an empty string "".
          *
@@ -9615,7 +9893,7 @@ export namespace Guestfs {
          * about each operating system, such as the name and version.
          *
          * This function uses other libguestfs features such as
-         * guestfs_session_mount_ro() and guestfs_session_umount_all() in order to
+         * `guestfs_session_mount_ro()` and `guestfs_session_umount_all()` in order to
          * mount and unmount filesystems and look at the contents. This should be
          * called with no disks currently mounted. The function may also use
          * Augeas, so any existing Augeas handle will be closed.
@@ -9625,7 +9903,7 @@ export namespace Guestfs {
          *
          * Please read "INSPECTION" in guestfs(3) for more details.
          *
-         * See also guestfs_session_list_filesystems().
+         * See also `guestfs_session_list_filesystems()`.
          * @returns an array of returned strings, or NULL on error
          */
         inspect_os(): string[];
@@ -9645,7 +9923,7 @@ export namespace Guestfs {
          * type correctly.
          *
          * It echos the contents of each parameter to stdout (by default) or to a
-         * file (if guestfs_session_internal_test_set_output() was called).
+         * file (if `guestfs_session_internal_test_set_output()` was called).
          *
          * You probably don't want to call this function.
          * @param str
@@ -9683,7 +9961,7 @@ export namespace Guestfs {
          * by changing the XDR protocol).
          *
          * It echos the contents of each parameter to stdout (by default) or to a
-         * file (if guestfs_session_internal_test_set_output() was called).
+         * file (if `guestfs_session_internal_test_set_output()` was called).
          *
          * You probably don't want to call this function.
          * @param optargs a GuestfsInternalTest63Optargs containing optional arguments
@@ -9699,7 +9977,7 @@ export namespace Guestfs {
          * type correctly.
          *
          * It closes the output file previously opened by
-         * guestfs_session_internal_test_set_output().
+         * `guestfs_session_internal_test_set_output()`.
          *
          * You probably don't want to call this function.
          * @returns true on success, false on error
@@ -9713,7 +9991,7 @@ export namespace Guestfs {
          * correctly.
          *
          * It echos the contents of each parameter to stdout (by default) or to a
-         * file (if guestfs_session_internal_test_set_output() was called).
+         * file (if `guestfs_session_internal_test_set_output()` was called).
          *
          * You probably don't want to call this function.
          * @param optargs a GuestfsInternalTestOnlyOptargs containing optional arguments
@@ -10028,7 +10306,7 @@ export namespace Guestfs {
          * automatically generated bindings can handle every possible parameter
          * type correctly.
          *
-         * It sets the output file used by guestfs_session_internal_test().
+         * It sets the output file used by `guestfs_session_internal_test()`.
          *
          * You probably don't want to call this function.
          * @param filename
@@ -10049,7 +10327,7 @@ export namespace Guestfs {
          * partitions and block devices (eg. /dev/sda) cannot be used as the `path`
          * parameter of this call.
          *
-         * See also guestfs_session_stat().
+         * See also `guestfs_session_stat()`.
          * @param path
          * @param optargs a GuestfsIsBlockdev containing optional arguments
          * @returns the returned value, or -1 on error
@@ -10075,7 +10353,7 @@ export namespace Guestfs {
          * of symlinks) that ends with a chardev also causes the function to return
          * true.
          *
-         * See also guestfs_session_stat().
+         * See also `guestfs_session_stat()`.
          * @param path
          * @param optargs a GuestfsIsChardev containing optional arguments
          * @returns the returned value, or -1 on error
@@ -10101,7 +10379,7 @@ export namespace Guestfs {
          * of symlinks) that ends with a directory also causes the function to
          * return true.
          *
-         * See also guestfs_session_stat().
+         * See also `guestfs_session_stat()`.
          * @param path
          * @param optargs a GuestfsIsDir containing optional arguments
          * @returns the returned value, or -1 on error
@@ -10117,7 +10395,7 @@ export namespace Guestfs {
          * of symlinks) that ends with a FIFO also causes the function to return
          * true.
          *
-         * See also guestfs_session_stat().
+         * See also `guestfs_session_stat()`.
          * @param path
          * @param optargs a GuestfsIsFifo containing optional arguments
          * @returns the returned value, or -1 on error
@@ -10134,7 +10412,7 @@ export namespace Guestfs {
          * of symlinks) that ends with a file also causes the function to return
          * true.
          *
-         * See also guestfs_session_stat().
+         * See also `guestfs_session_stat()`.
          * @param path
          * @param optargs a GuestfsIsFile containing optional arguments
          * @returns the returned value, or -1 on error
@@ -10179,7 +10457,7 @@ export namespace Guestfs {
          * of symlinks) that ends with a socket also causes the function to return
          * true.
          *
-         * See also guestfs_session_stat().
+         * See also `guestfs_session_stat()`.
          * @param path
          * @param optargs a GuestfsIsSocket containing optional arguments
          * @returns the returned value, or -1 on error
@@ -10191,7 +10469,7 @@ export namespace Guestfs {
          * This returns `true` if and only if there is a symbolic link with the
          * given `path` name.
          *
-         * See also guestfs_session_stat().
+         * See also `guestfs_session_stat()`.
          * @param path
          * @returns the returned value, or -1 on error
          */
@@ -10227,11 +10505,11 @@ export namespace Guestfs {
         /**
          * get ISO information from primary volume descriptor of ISO file
          *
-         * This is the same as guestfs_session_isoinfo_device() except that it
+         * This is the same as `guestfs_session_isoinfo_device()` except that it
          * works for an ISO file located inside some other mounted filesystem. Note
          * that in the common case where you have added an ISO file as a libguestfs
          * device, you would *not* call this. Instead you would call
-         * guestfs_session_isoinfo_device().
+         * `guestfs_session_isoinfo_device()`.
          * @param isofile
          * @returns a ISOInfo object, or NULL on error
          */
@@ -10260,7 +10538,7 @@ export namespace Guestfs {
          * Close the journal handle.
          *
          * This function depends on the feature "journal".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @returns true on success, false on error
          */
         journal_close(): boolean;
@@ -10276,15 +10554,15 @@ export namespace Guestfs {
          * \0-terminated C string.
          *
          * The length of data may be truncated to the data threshold (see:
-         * guestfs_session_journal_set_data_threshold(),
-         * guestfs_session_journal_get_data_threshold()).
+         * `guestfs_session_journal_set_data_threshold()`,
+         * `guestfs_session_journal_get_data_threshold()`).
          *
-         * If you set the data threshold to unlimited (`0`) then this call can read
+         * If you set the data threshold to unlimited (@0) then this call can read
          * a journal entry of any size, ie. it is not limited by the libguestfs
          * protocol.
          *
          * This function depends on the feature "journal".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @returns an array of XAttr objects, or NULL on error
          */
         journal_get(): XAttr[];
@@ -10294,12 +10572,12 @@ export namespace Guestfs {
          * Get the current data threshold for reading journal entries. This is a
          * hint to the journal that it may truncate data fields to this size when
          * reading them (note also that it may not truncate them). If this returns
-         * `0`, then the threshold is unlimited.
+         * @0, then the threshold is unlimited.
          *
-         * See also guestfs_session_journal_set_data_threshold().
+         * See also `guestfs_session_journal_set_data_threshold()`.
          *
          * This function depends on the feature "journal".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @returns the returned value, or -1 on error
          */
         journal_get_data_threshold(): number;
@@ -10309,7 +10587,7 @@ export namespace Guestfs {
          * Get the realtime (wallclock) timestamp of the current journal entry.
          *
          * This function depends on the feature "journal".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @returns the returned value, or -1 on error
          */
         journal_get_realtime_usec(): number;
@@ -10321,11 +10599,11 @@ export namespace Guestfs {
          *
          * The returned boolean tells you if there are any more journal records to
          * read. `true` means you can read the next record (eg. using
-         * guestfs_session_journal_get()), and `false` means you have reached the
+         * `guestfs_session_journal_get()`), and `false` means you have reached the
          * end of the journal.
          *
          * This function depends on the feature "journal".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @returns the returned value, or -1 on error
          */
         journal_next(): number;
@@ -10336,13 +10614,13 @@ export namespace Guestfs {
          * journal handle is closed.
          *
          * The contents of the journal can be read using
-         * guestfs_session_journal_next() and guestfs_session_journal_get().
+         * `guestfs_session_journal_next()` and `guestfs_session_journal_get()`.
          *
          * After you have finished using the journal, you should close the handle
-         * by calling guestfs_session_journal_close().
+         * by calling `guestfs_session_journal_close()`.
          *
          * This function depends on the feature "journal".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param directory
          * @returns true on success, false on error
          */
@@ -10352,13 +10630,13 @@ export namespace Guestfs {
          *
          * Set the data threshold for reading journal entries. This is a hint to
          * the journal that it may truncate data fields to this size when reading
-         * them (note also that it may not truncate them). If you set this to `0`,
+         * them (note also that it may not truncate them). If you set this to @0,
          * then the threshold is unlimited.
          *
-         * See also guestfs_session_journal_get_data_threshold().
+         * See also `guestfs_session_journal_get_data_threshold()`.
          *
          * This function depends on the feature "journal".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param threshold
          * @returns true on success, false on error
          */
@@ -10375,7 +10653,7 @@ export namespace Guestfs {
          * start of the journal.
          *
          * This function depends on the feature "journal".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param skip
          * @returns the returned value, or -1 on error
          */
@@ -10385,7 +10663,7 @@ export namespace Guestfs {
          *
          * This kills the hypervisor.
          *
-         * Do not call this. See: guestfs_session_shutdown() instead.
+         * Do not call this. See: `guestfs_session_shutdown()` instead.
          * @returns true on success, false on error
          */
         kill_subprocess(): boolean;
@@ -10395,7 +10673,7 @@ export namespace Guestfs {
          * You should call this after configuring the handle (eg. adding drives)
          * but before performing any actions.
          *
-         * Do not call guestfs_session_launch() twice on the same handle. Although
+         * Do not call `guestfs_session_launch()` twice on the same handle. Although
          * it will not give an error (for historical reasons), the precise
          * behaviour when you do this is not well defined. Handles are very cheap
          * to create, so create a new one for each launch.
@@ -10406,7 +10684,7 @@ export namespace Guestfs {
          * change file owner and group
          *
          * Change the file owner to `owner` and group to `group`. This is like
-         * guestfs_session_chown() but if `path` is a symlink then the link itself
+         * `guestfs_session_chown()` but if `path` is a symlink then the link itself
          * is changed, not the target.
          *
          * Only numeric uid and gid are supported. If you want to use names, you
@@ -10424,16 +10702,16 @@ export namespace Guestfs {
          * This function scans all block devices looking for Windows dynamic disk
          * volumes and partitions, and creates devices for any that were found.
          *
-         * Call guestfs_session_list_ldm_volumes() and
-         * guestfs_session_list_ldm_partitions() to return all devices.
+         * Call `guestfs_session_list_ldm_volumes()` and
+         * `guestfs_session_list_ldm_partitions()` to return all devices.
          *
          * Note that you don't normally need to call this explicitly, since it is
-         * done automatically at guestfs_session_launch() time. However you might
+         * done automatically at `guestfs_session_launch()` time. However you might
          * want to call this function if you have hotplugged disks or have just
          * created a Windows dynamic disk.
          *
          * This function depends on the feature "ldm".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @returns true on success, false on error
          */
         ldmtool_create_all(): boolean;
@@ -10442,10 +10720,10 @@ export namespace Guestfs {
          *
          * Return the disks in a Windows dynamic disk group. The `diskgroup`
          * parameter should be the GUID of a disk group, one element from the list
-         * returned by guestfs_session_ldmtool_scan().
+         * returned by `guestfs_session_ldmtool_scan()`.
          *
          * This function depends on the feature "ldm".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param diskgroup
          * @returns an array of returned strings, or NULL on error
          */
@@ -10455,10 +10733,10 @@ export namespace Guestfs {
          *
          * Return the name of a Windows dynamic disk group. The `diskgroup`
          * parameter should be the GUID of a disk group, one element from the list
-         * returned by guestfs_session_ldmtool_scan().
+         * returned by `guestfs_session_ldmtool_scan()`.
          *
          * This function depends on the feature "ldm".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param diskgroup
          * @returns the returned string, or NULL on error
          */
@@ -10468,10 +10746,10 @@ export namespace Guestfs {
          *
          * Return the volumes in a Windows dynamic disk group. The `diskgroup`
          * parameter should be the GUID of a disk group, one element from the list
-         * returned by guestfs_session_ldmtool_scan().
+         * returned by `guestfs_session_ldmtool_scan()`.
          *
          * This function depends on the feature "ldm".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param diskgroup
          * @returns an array of returned strings, or NULL on error
          */
@@ -10480,11 +10758,11 @@ export namespace Guestfs {
          * remove all Windows dynamic disk volumes
          *
          * This is essentially the opposite of
-         * guestfs_session_ldmtool_create_all(). It removes the device mapper
+         * `guestfs_session_ldmtool_create_all()`. It removes the device mapper
          * mappings for all Windows dynamic disk volumes
          *
          * This function depends on the feature "ldm".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @returns true on success, false on error
          */
         ldmtool_remove_all(): boolean;
@@ -10496,10 +10774,10 @@ export namespace Guestfs {
          * identifiers can be passed to other "guestfs_ldmtool_*" functions.
          *
          * This function scans all block devices. To scan a subset of block
-         * devices, call guestfs_session_ldmtool_scan_devices() instead.
+         * devices, call `guestfs_session_ldmtool_scan_devices()` instead.
          *
          * This function depends on the feature "ldm".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @returns an array of returned strings, or NULL on error
          */
         ldmtool_scan(): string[];
@@ -10514,7 +10792,7 @@ export namespace Guestfs {
          * this list is empty, all block devices are scanned.
          *
          * This function depends on the feature "ldm".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param devices an array of strings
          * @returns an array of returned strings, or NULL on error
          */
@@ -10528,7 +10806,7 @@ export namespace Guestfs {
          * Windows drive, eg. "E:".
          *
          * This function depends on the feature "ldm".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param diskgroup
          * @param volume
          * @returns the returned string, or NULL on error
@@ -10541,7 +10819,7 @@ export namespace Guestfs {
          * group with GUID `diskgroup`.
          *
          * This function depends on the feature "ldm".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param diskgroup
          * @param volume
          * @returns an array of returned strings, or NULL on error
@@ -10553,11 +10831,11 @@ export namespace Guestfs {
          * Return the type of the volume named `volume` in the disk group with GUID
          * `diskgroup`.
          *
-         * Possible volume types that can be returned here include: `simple,`
-         * `spanned,` `striped,` `mirrored,` `raid5`. Other types may also be returned.
+         * Possible volume types that can be returned here include: `simple`,
+         * `spanned`, `striped`, `mirrored`, `raid5`. Other types may also be returned.
          *
          * This function depends on the feature "ldm".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param diskgroup
          * @param volume
          * @returns the returned string, or NULL on error
@@ -10571,20 +10849,20 @@ export namespace Guestfs {
          * symlink.
          *
          * Normally it is better to get all extended attributes from a file in one
-         * go by calling guestfs_session_getxattrs(). However some Linux filesystem
+         * go by calling `guestfs_session_getxattrs()`. However some Linux filesystem
          * implementations are buggy and do not provide a way to list out
          * attributes. For these filesystems (notably ntfs-3g) you have to know the
          * names of the extended attributes you want in advance and call this
          * function.
          *
          * Extended attribute values are blobs of binary data. If there is no
-         * extended attribute named `name,` this returns an error.
+         * extended attribute named `name`, this returns an error.
          *
-         * See also: guestfs_session_lgetxattrs(), guestfs_session_getxattr(),
+         * See also: `guestfs_session_lgetxattrs()`, `guestfs_session_getxattr()`,
          * attr(5).
          *
          * This function depends on the feature "linuxxattrs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param path
          * @param name
          * @returns an array of binary data, or NULL on error
@@ -10593,12 +10871,12 @@ export namespace Guestfs {
         /**
          * list extended attributes of a file or directory
          *
-         * This is the same as guestfs_session_getxattrs(), but if `path` is a
+         * This is the same as `guestfs_session_getxattrs()`, but if `path` is a
          * symbolic link, then it returns the extended attributes of the link
          * itself.
          *
          * This function depends on the feature "linuxxattrs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param path
          * @returns an array of XAttr objects, or NULL on error
          */
@@ -10618,7 +10896,7 @@ export namespace Guestfs {
          *
          * The full block device names are returned, eg. /dev/sda.
          *
-         * See also guestfs_session_list_filesystems().
+         * See also `guestfs_session_list_filesystems()`.
          * @returns an array of returned strings, or NULL on error
          */
         list_devices(): string[];
@@ -10626,7 +10904,7 @@ export namespace Guestfs {
          * mapping of disk labels to devices
          *
          * If you add drives using the optional `label` parameter of
-         * guestfs_session_add_drive_opts(), you can use this call to map between
+         * `guestfs_session_add_drive_opts()`, you can use this call to map between
          * disk labels, and raw block device and partition names (like /dev/sda and
          * /dev/sda1).
          *
@@ -10642,10 +10920,10 @@ export namespace Guestfs {
          * List all device mapper devices.
          *
          * The returned list contains /dev/mapper/* devices, eg. ones created by a
-         * previous call to guestfs_session_luks_open().
+         * previous call to `guestfs_session_luks_open()`.
          *
          * Device mapper devices which correspond to logical volumes are *not*
-         * returned in this list. Call guestfs_session_lvs() if you want to list
+         * returned in this list. Call `guestfs_session_lvs()` if you want to list
          * logical volumes.
          * @returns an array of returned strings, or NULL on error
          */
@@ -10669,15 +10947,15 @@ export namespace Guestfs {
          * <![CDATA["/dev/vg_guest/lv_swap" => "swap"]]>
          *
          * The key is not necessarily a block device. It may also be an opaque
-         * ‘mountable’ string which can be passed to guestfs_session_mount().
+         * ‘mountable’ string which can be passed to `guestfs_session_mount()`.
          *
          * The value can have the special value "unknown", meaning the content of
          * the device is undetermined or empty. "swap" means a Linux swap
          * partition.
          *
          * In libguestfs &le; 1.36 this command ran other libguestfs commands,
-         * which might have included guestfs_session_mount() and
-         * guestfs_session_umount(), and therefore you had to use this soon after
+         * which might have included `guestfs_session_mount()` and
+         * `guestfs_session_umount()`, and therefore you had to use this soon after
          * launch and only when nothing else was mounted. This restriction is
          * removed in libguestfs &ge; 1.38.
          *
@@ -10686,7 +10964,7 @@ export namespace Guestfs {
          * check that each filesystem found is valid and mountable, and some
          * filesystems might be mountable but require special options. Filesystems
          * may not all belong to a single logical operating system (use
-         * guestfs_session_inspect_os() to look for OSes).
+         * `guestfs_session_inspect_os()` to look for OSes).
          * @returns a GHashTable of results, or NULL on error
          */
         list_filesystems(): GLib.HashTable<string, string>;
@@ -10697,7 +10975,7 @@ export namespace Guestfs {
          * found at launch time. It returns a list of device names.
          *
          * This function depends on the feature "ldm".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @returns an array of returned strings, or NULL on error
          */
         list_ldm_partitions(): string[];
@@ -10708,7 +10986,7 @@ export namespace Guestfs {
          * at launch time. It returns a list of device names.
          *
          * This function depends on the feature "ldm".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @returns an array of returned strings, or NULL on error
          */
         list_ldm_volumes(): string[];
@@ -10727,9 +11005,9 @@ export namespace Guestfs {
          * The full partition device names are returned, eg. /dev/sda1
          *
          * This does not return logical volumes. For that you will need to call
-         * guestfs_session_lvs().
+         * `guestfs_session_lvs()`.
          *
-         * See also guestfs_session_list_filesystems().
+         * See also `guestfs_session_list_filesystems()`.
          * @returns an array of returned strings, or NULL on error
          */
         list_partitions(): string[];
@@ -10769,7 +11047,7 @@ export namespace Guestfs {
          * create a hard link
          *
          * This command creates a hard link using the "ln -f" command. The *-f*
-         * option removes the link (`linkname)` if it exists already.
+         * option removes the link (`linkname`) if it exists already.
          * @param target
          * @param linkname
          * @returns true on success, false on error
@@ -10788,7 +11066,7 @@ export namespace Guestfs {
          * create a symbolic link
          *
          * This command creates a symbolic link using the "ln -sf" command, The
-         * *-f* option removes the link (`linkname)` if it exists already.
+         * *-f* option removes the link (`linkname`) if it exists already.
          * @param target
          * @param linkname
          * @returns true on success, false on error
@@ -10797,11 +11075,11 @@ export namespace Guestfs {
         /**
          * remove extended attribute of a file or directory
          *
-         * This is the same as guestfs_session_removexattr(), but if `path` is a
+         * This is the same as `guestfs_session_removexattr()`, but if `path` is a
          * symbolic link, then it removes an extended attribute of the link itself.
          *
          * This function depends on the feature "linuxxattrs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param xattr
          * @param path
          * @returns true on success, false on error
@@ -10835,11 +11113,11 @@ export namespace Guestfs {
         /**
          * set extended attribute of a file or directory
          *
-         * This is the same as guestfs_session_setxattr(), but if `path` is a
+         * This is the same as `guestfs_session_setxattr()`, but if `path` is a
          * symbolic link, then it sets an extended attribute of the link itself.
          *
          * This function depends on the feature "linuxxattrs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param xattr
          * @param val
          * @param vallen
@@ -10852,7 +11130,7 @@ export namespace Guestfs {
          *
          * Returns file information for the given `path`.
          *
-         * This is the same as guestfs_session_stat() except that if `path` is a
+         * This is the same as `guestfs_session_stat()` except that if `path` is a
          * symbolic link, then the link is stat-ed, not the file it refers to.
          *
          * This is the same as the lstat(2) system call.
@@ -10863,17 +11141,17 @@ export namespace Guestfs {
         /**
          * lstat on multiple files
          *
-         * This call allows you to perform the guestfs_session_lstat() operation on
+         * This call allows you to perform the `guestfs_session_lstat()` operation on
          * multiple files, where all files are in the directory `path`. `names` is
          * the list of files from this directory.
          *
          * On return you get a list of stat structs, with a one-to-one
          * correspondence to the `names` list. If any name did not exist or could
-         * not be lstat'd, then the `st_ino` field of that structure is set to `-1`.
+         * not be lstat'd, then the `st_ino` field of that structure is set to @-1.
          *
          * This call is intended for programs that want to efficiently list a
          * directory contents without making many round-trips. See also
-         * guestfs_session_lxattrlist() for a similarly efficient call for getting
+         * `guestfs_session_lxattrlist()` for a similarly efficient call for getting
          * extended attributes.
          * @param path
          * @param names an array of strings
@@ -10885,7 +11163,7 @@ export namespace Guestfs {
          *
          * Returns file information for the given `path`.
          *
-         * This is the same as guestfs_session_statns() except that if `path` is a
+         * This is the same as `guestfs_session_statns()` except that if `path` is a
          * symbolic link, then the link is stat-ed, not the file it refers to.
          *
          * This is the same as the lstat(2) system call.
@@ -10896,17 +11174,17 @@ export namespace Guestfs {
         /**
          * lstat on multiple files
          *
-         * This call allows you to perform the guestfs_session_lstatns() operation
+         * This call allows you to perform the `guestfs_session_lstatns()` operation
          * on multiple files, where all files are in the directory `path`. `names` is
          * the list of files from this directory.
          *
          * On return you get a list of stat structs, with a one-to-one
          * correspondence to the `names` list. If any name did not exist or could
-         * not be lstat'd, then the `st_ino` field of that structure is set to `-1`.
+         * not be lstat'd, then the `st_ino` field of that structure is set to @-1.
          *
          * This call is intended for programs that want to efficiently list a
          * directory contents without making many round-trips. See also
-         * guestfs_session_lxattrlist() for a similarly efficient call for getting
+         * `guestfs_session_lxattrlist()` for a similarly efficient call for getting
          * extended attributes.
          * @param path
          * @param names an array of strings
@@ -10921,11 +11199,11 @@ export namespace Guestfs {
          * `keyslot` is the key slot that will be replaced.
          *
          * Note that if `keyslot` already contains a key, then this command will
-         * fail. You have to use guestfs_session_luks_kill_slot() first to remove
+         * fail. You have to use `guestfs_session_luks_kill_slot()` first to remove
          * that key.
          *
          * This function depends on the feature "luks".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @param key
          * @param newkey
@@ -10937,12 +11215,12 @@ export namespace Guestfs {
          * close a LUKS device
          *
          * This closes a LUKS device that was created earlier by
-         * guestfs_session_luks_open() or guestfs_session_luks_open_ro(). The
+         * `guestfs_session_luks_open()` or `guestfs_session_luks_open_ro()`. The
          * `device` parameter must be the name of the LUKS mapping device (ie.
          * /dev/mapper/mapname) and *not* the name of the underlying block device.
          *
          * This function depends on the feature "luks".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @returns true on success, false on error
          */
@@ -10955,7 +11233,7 @@ export namespace Guestfs {
          * slot `slot`. (LUKS supports 8 key slots, numbered 0-7).
          *
          * This function depends on the feature "luks".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @param key
          * @param keyslot
@@ -10965,11 +11243,11 @@ export namespace Guestfs {
         /**
          * format a block device as a LUKS encrypted device
          *
-         * This command is the same as guestfs_session_luks_format() but it also
+         * This command is the same as `guestfs_session_luks_format()` but it also
          * allows you to set the `cipher` used.
          *
          * This function depends on the feature "luks".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @param key
          * @param keyslot
@@ -10984,7 +11262,7 @@ export namespace Guestfs {
          * LUKS device `device`. `key` must be one of the *other* keys.
          *
          * This function depends on the feature "luks".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @param key
          * @param keyslot
@@ -11007,13 +11285,13 @@ export namespace Guestfs {
          * underlying `device` respectively.
          *
          * If this block device contains LVM volume groups, then calling
-         * guestfs_session_lvm_scan() with the `activate` parameter `true` will make
+         * `guestfs_session_lvm_scan()` with the `activate` parameter `true` will make
          * them visible.
          *
-         * Use guestfs_session_list_dm_devices() to list all device mapper devices.
+         * Use `guestfs_session_list_dm_devices()` to list all device mapper devices.
          *
          * This function depends on the feature "luks".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @param key
          * @param mapname
@@ -11023,11 +11301,11 @@ export namespace Guestfs {
         /**
          * open a LUKS-encrypted block device read-only
          *
-         * This is the same as guestfs_session_luks_open() except that a read-only
+         * This is the same as `guestfs_session_luks_open()` except that a read-only
          * mapping is created.
          *
          * This function depends on the feature "luks".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @param key
          * @param mapname
@@ -11038,10 +11316,10 @@ export namespace Guestfs {
          * create an LVM logical volume
          *
          * This creates an LVM logical volume called `logvol` on the volume group
-         * `volgroup,` with `size` megabytes.
+         * `volgroup`, with `size` megabytes.
          *
          * This function depends on the feature "lvm2".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param logvol
          * @param volgroup
          * @param mbytes
@@ -11053,11 +11331,11 @@ export namespace Guestfs {
          *
          * Create an LVM logical volume called /dev/volgroup/logvol, using
          * approximately `percent` % of the free space remaining in the volume
-         * group. Most usefully, when `percent` is `1`00 this will create the largest
+         * group. Most usefully, when `percent` is @100 this will create the largest
          * possible LV.
          *
          * This function depends on the feature "lvm2".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param logvol
          * @param volgroup
          * @param percent
@@ -11074,8 +11352,8 @@ export namespace Guestfs {
          * This command returns an error if the `lvname` parameter does not refer to
          * a logical volume.
          *
-         * See also guestfs_session_is_lv(),
-         * guestfs_session_canonical_device_name().
+         * See also `guestfs_session_is_lv()`,
+         * `guestfs_session_canonical_device_name()`.
          * @param lvname
          * @returns the returned string, or NULL on error
          */
@@ -11083,7 +11361,7 @@ export namespace Guestfs {
         /**
          * clear LVM device filter
          *
-         * This undoes the effect of guestfs_session_lvm_set_filter(). LVM will be
+         * This undoes the effect of `guestfs_session_lvm_set_filter()`. LVM will be
          * able to see every block device.
          *
          * This command also clears the LVM cache and performs a volume group scan.
@@ -11097,7 +11375,7 @@ export namespace Guestfs {
          * volumes.
          *
          * This function depends on the feature "lvm2".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @returns true on success, false on error
          */
         lvm_remove_all(): boolean;
@@ -11114,7 +11392,7 @@ export namespace Guestfs {
          * When a libguestfs handle is launched it scans for existing devices, so
          * you do not normally need to use this API. However it is useful when you
          * have added a new device or deleted an existing device (such as when the
-         * guestfs_session_luks_open() API is used).
+         * `guestfs_session_luks_open()` API is used).
          * @param activate
          * @returns true on success, false on error
          */
@@ -11123,7 +11401,7 @@ export namespace Guestfs {
          * set LVM device filter
          *
          * This sets the LVM device filter so that LVM will only be able to "see"
-         * the block devices in the list `devices,` and will ignore all other
+         * the block devices in the list `devices`, and will ignore all other
          * attached block devices.
          *
          * Where disk image(s) contain duplicate PVs or VGs, this command is useful
@@ -11142,7 +11420,7 @@ export namespace Guestfs {
          * mounted filesystem), even if you are not filtering out that VG.
          *
          * This function depends on the feature "lvm2".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param devices an array of strings
          * @returns true on success, false on error
          */
@@ -11150,14 +11428,14 @@ export namespace Guestfs {
         /**
          * remove an LVM logical volume
          *
-         * Remove an LVM logical volume `device,` where `device` is the path to the
+         * Remove an LVM logical volume `device`, where `device` is the path to the
          * LV, such as /dev/VG/LV.
          *
          * You can also remove all LVs in a volume group by specifying the VG name,
          * /dev/VG.
          *
          * This function depends on the feature "lvm2".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @returns true on success, false on error
          */
@@ -11178,7 +11456,7 @@ export namespace Guestfs {
          * `mbytes`. When reducing, data in the reduced part is lost.
          *
          * This function depends on the feature "lvm2".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @param mbytes
          * @returns true on success, false on error
@@ -11187,13 +11465,13 @@ export namespace Guestfs {
         /**
          * expand an LV to fill free space
          *
-         * This expands an existing logical volume `lv` so that it fills `pc%` of the
+         * This expands an existing logical volume `lv` so that it fills `pc`% of the
          * remaining free space in the volume group. Commonly you would call this
          * with pc = 100 which expands the logical volume as much as possible,
          * using all remaining free space in the volume group.
          *
          * This function depends on the feature "lvm2".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param lv
          * @param percent
          * @returns true on success, false on error
@@ -11208,10 +11486,10 @@ export namespace Guestfs {
          * This returns a list of the logical volume device names (eg.
          * /dev/VolGroup00/LogVol00).
          *
-         * See also guestfs_session_lvs_full(), guestfs_session_list_filesystems().
+         * See also `guestfs_session_lvs_full()`, `guestfs_session_list_filesystems()`.
          *
          * This function depends on the feature "lvm2".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @returns an array of returned strings, or NULL on error
          */
         lvs(): string[];
@@ -11222,7 +11500,7 @@ export namespace Guestfs {
          * lvs(8) command. The "full" version includes all fields.
          *
          * This function depends on the feature "lvm2".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @returns an array of LV objects, or NULL on error
          */
         lvs_full(): LV[];
@@ -11252,11 +11530,11 @@ export namespace Guestfs {
          *
          * This call is intended for programs that want to efficiently list a
          * directory contents without making many round-trips. See also
-         * guestfs_session_lstatlist() for a similarly efficient call for getting
+         * `guestfs_session_lstatlist()` for a similarly efficient call for getting
          * standard stats.
          *
          * This function depends on the feature "linuxxattrs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param path
          * @param names an array of strings
          * @returns an array of XAttr objects, or NULL on error
@@ -11266,7 +11544,7 @@ export namespace Guestfs {
          * maximum number of disks that may be added
          *
          * Return the maximum number of disks that may be added to a handle (eg. by
-         * guestfs_session_add_drive_opts() and similar calls).
+         * `guestfs_session_add_drive_opts()` and similar calls).
          *
          * This function was added in libguestfs 1.19.7. In previous versions of
          * libguestfs the limit was 25.
@@ -11297,7 +11575,7 @@ export namespace Guestfs {
          * If "devices = ["/dev/sda"]" and "missingbitmap = 0x2" then the
          * resulting array would be "["/dev/sda", &lt;missing&gt;]".
          *
-         * This defaults to `0` (no missing devices).
+         * This defaults to @0 (no missing devices).
          *
          * The length of `devices` + the number of bits set in `missingbitmap`
          * must equal `nrdevices` + `spare`.
@@ -11311,7 +11589,7 @@ export namespace Guestfs {
          * `spare`
          * The number of spare devices.
          *
-         * If not set, this defaults to `0`.
+         * If not set, this defaults to @0.
          *
          * `chunk`
          * The chunk size in bytes.
@@ -11325,7 +11603,7 @@ export namespace Guestfs {
          * If not set, this defaults to `raid1`.
          *
          * This function depends on the feature "mdadm".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param name
          * @param devices an array of strings
          * @param optargs a GuestfsMDCreate containing optional arguments
@@ -11355,7 +11633,7 @@ export namespace Guestfs {
          * The name of the MD device.
          *
          * This function depends on the feature "mdadm".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param md
          * @returns a GHashTable of results, or NULL on error
          */
@@ -11367,7 +11645,7 @@ export namespace Guestfs {
          * single software RAID array device `md`.
          *
          * To get a list of software RAID devices, call
-         * guestfs_session_list_md_devices().
+         * `guestfs_session_list_md_devices()`.
          *
          * Each structure returned corresponds to one device along with additional
          * status information:
@@ -11391,7 +11669,7 @@ export namespace Guestfs {
          * `R`  replacement
          *
          * This function depends on the feature "mdadm".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param md
          * @returns an array of MDStat objects, or NULL on error
          */
@@ -11403,7 +11681,7 @@ export namespace Guestfs {
          * but it is not destroyed or zeroed.
          *
          * This function depends on the feature "mdadm".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param md
          * @returns true on success, false on error
          */
@@ -11426,7 +11704,7 @@ export namespace Guestfs {
          * & ~umask & 01777". Non-native-Linux filesystems may interpret the mode
          * in other ways.
          *
-         * See also guestfs_session_mkdir(), guestfs_session_umask()
+         * See also `guestfs_session_mkdir()`, `guestfs_session_umask()`
          * @param path
          * @param mode
          * @returns true on success, false on error
@@ -11435,7 +11713,7 @@ export namespace Guestfs {
         /**
          * create a directory and parents
          *
-         * Create a directory named `path,` creating any parent directories as
+         * Create a directory named `path`, creating any parent directories as
          * necessary. This is like the "mkdir -p" shell command.
          * @param path
          * @returns true on success, false on error
@@ -11466,11 +11744,11 @@ export namespace Guestfs {
         /**
          * create an ext2/ext3/ext4 filesystem on device
          *
-         * `mke2`fs is used to create an ext2, ext3, or ext4 filesystem on `device`.
+         * `mke2fs` is used to create an ext2, ext3, or ext4 filesystem on `device`.
          *
          * The optional `blockscount` is the size of the filesystem in blocks. If
          * omitted it defaults to the size of `device`. Note if the filesystem is
-         * too small to contain a journal, `mke2`fs will silently create an ext2
+         * too small to contain a journal, `mke2fs` will silently create an ext2
          * filesystem instead.
          * @param device
          * @param optargs a GuestfsMke2fs containing optional arguments
@@ -11485,7 +11763,7 @@ export namespace Guestfs {
          *
          * <![CDATA[mke2fs -t fstype -b blocksize -J device=<journal> <device>]]>
          *
-         * See also guestfs_session_mke2journal().
+         * See also `guestfs_session_mke2journal()`.
          * @param fstype
          * @param blocksize
          * @param device
@@ -11516,7 +11794,7 @@ export namespace Guestfs {
          * See also guestfs_session_mke2journal_U().
          *
          * This function depends on the feature "linuxfsuuid".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param fstype
          * @param blocksize
          * @param device
@@ -11552,7 +11830,7 @@ export namespace Guestfs {
          * This creates an ext2 external journal on `device` with UUID `uuid`.
          *
          * This function depends on the feature "linuxfsuuid".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param blocksize
          * @param uuid
          * @param device
@@ -11563,15 +11841,15 @@ export namespace Guestfs {
          * make FIFO (named pipe)
          *
          * This call creates a FIFO (named pipe) called `path` with mode `mode`. It
-         * is just a convenient wrapper around guestfs_session_mknod().
+         * is just a convenient wrapper around `guestfs_session_mknod()`.
          *
-         * Unlike with guestfs_session_mknod(), `mode` must contain only permissions
+         * Unlike with `guestfs_session_mknod()`, `mode` must contain only permissions
          * bits.
          *
          * The mode actually set is affected by the umask.
          *
          * This function depends on the feature "mknod".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param mode
          * @param path
          * @returns true on success, false on error
@@ -11581,13 +11859,13 @@ export namespace Guestfs {
          * make a filesystem
          *
          * This function creates a filesystem on `device`. The filesystem type is
-         * `fstype,` for example `ext3`.
+         * `fstype`, for example `ext3`.
          *
          * The optional arguments are:
          *
          * `blocksize`
          * The filesystem block size. Supported block sizes depend on the
-         * filesystem type, but typically they are `1`024, `2`048 or `4`096 for
+         * filesystem type, but typically they are @1024, @2048 or @4096 for
          * Linux ext2/3 filesystems.
          *
          * For VFAT and NTFS the `blocksize` parameter is treated as the
@@ -11621,10 +11899,10 @@ export namespace Guestfs {
         /**
          * make a filesystem with block size
          *
-         * This call is similar to guestfs_session_mkfs(), but it allows you to
+         * This call is similar to `guestfs_session_mkfs()`, but it allows you to
          * control the block size of the resulting filesystem. Supported block
-         * sizes depend on the filesystem type, but typically they are `1`024, `2`048
-         * or `4`096 only.
+         * sizes depend on the filesystem type, but typically they are @1024, @2048
+         * or @4096 only.
          *
          * For VFAT and NTFS the `blocksize` parameter is treated as the requested
          * cluster size.
@@ -11643,10 +11921,10 @@ export namespace Guestfs {
          * Since btrfs filesystems can span multiple devices, this takes a
          * non-empty list of devices.
          *
-         * To create general filesystems, use guestfs_session_mkfs().
+         * To create general filesystems, use `guestfs_session_mkfs()`.
          *
          * This function depends on the feature "btrfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param devices an array of strings
          * @param optargs a GuestfsMkfsBtrfs containing optional arguments
          * @returns true on success, false on error
@@ -11665,7 +11943,7 @@ export namespace Guestfs {
         /**
          * create a mountpoint
          *
-         * guestfs_session_mkmountpoint() and guestfs_session_rmmountpoint() are
+         * `guestfs_session_mkmountpoint()` and `guestfs_session_rmmountpoint()` are
          * specialized calls that can be used to create extra mountpoints before
          * mounting the first filesystem.
          *
@@ -11695,12 +11973,12 @@ export namespace Guestfs {
          *
          * The inner filesystem is now unpacked under the /ext3fs mountpoint.
          *
-         * guestfs_session_mkmountpoint() is not compatible with
-         * guestfs_session_umount_all(). You may get unexpected errors if you try
+         * `guestfs_session_mkmountpoint()` is not compatible with
+         * `guestfs_session_umount_all()`. You may get unexpected errors if you try
          * to mix these calls. It is safest to manually unmount filesystems and
          * remove mountpoints after use.
          *
-         * guestfs_session_umount_all() unmounts filesystems by sorting the paths
+         * `guestfs_session_umount_all()` unmounts filesystems by sorting the paths
          * longest first, so for this to work for manual mountpoints, you must
          * ensure that the innermost mountpoints have the longest pathnames, as in
          * the example code above.
@@ -11709,8 +11987,8 @@ export namespace Guestfs {
          * url='https://bugzilla.redhat.com/show_bug.cgi?id=599503'>
          * http://bugzilla.redhat.com/show_bug.cgi?id=599503 </ulink>
          *
-         * Autosync [see guestfs_session_set_autosync(), this is set by default on
-         * handles] can cause guestfs_session_umount_all() to be called when the
+         * Autosync [see `guestfs_session_set_autosync()`, this is set by default on
+         * handles] can cause `guestfs_session_umount_all()` to be called when the
          * handle is closed which can also trigger these issues.
          * @param exemptpath
          * @returns true on success, false on error
@@ -11729,15 +12007,15 @@ export namespace Guestfs {
          * Note that, just like mknod(2), the mode must be bitwise OR'd with
          * S_IFBLK, S_IFCHR, S_IFIFO or S_IFSOCK (otherwise this call just creates
          * a regular file). These constants are available in the standard Linux
-         * header files, or you can use guestfs_session_mknod_b(),
-         * guestfs_session_mknod_c() or guestfs_session_mkfifo() which are wrappers
+         * header files, or you can use `guestfs_session_mknod_b()`,
+         * `guestfs_session_mknod_c()` or `guestfs_session_mkfifo()` which are wrappers
          * around this command which bitwise OR in the appropriate constant for
          * you.
          *
          * The mode actually set is affected by the umask.
          *
          * This function depends on the feature "mknod".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param mode
          * @param devmajor
          * @param devminor
@@ -11750,15 +12028,15 @@ export namespace Guestfs {
          *
          * This call creates a block device node called `path` with mode `mode` and
          * device major/minor `devmajor` and `devminor`. It is just a convenient
-         * wrapper around guestfs_session_mknod().
+         * wrapper around `guestfs_session_mknod()`.
          *
-         * Unlike with guestfs_session_mknod(), `mode` must contain only permissions
+         * Unlike with `guestfs_session_mknod()`, `mode` must contain only permissions
          * bits.
          *
          * The mode actually set is affected by the umask.
          *
          * This function depends on the feature "mknod".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param mode
          * @param devmajor
          * @param devminor
@@ -11771,15 +12049,15 @@ export namespace Guestfs {
          *
          * This call creates a char device node called `path` with mode `mode` and
          * device major/minor `devmajor` and `devminor`. It is just a convenient
-         * wrapper around guestfs_session_mknod().
+         * wrapper around `guestfs_session_mknod()`.
          *
-         * Unlike with guestfs_session_mknod(), `mode` must contain only permissions
+         * Unlike with `guestfs_session_mknod()`, `mode` must contain only permissions
          * bits.
          *
          * The mode actually set is affected by the umask.
          *
          * This function depends on the feature "mknod".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param mode
          * @param devmajor
          * @param devminor
@@ -11794,8 +12072,8 @@ export namespace Guestfs {
          *
          * The optional `compress` flag controls compression. If not given, then the
          * output compressed using `gzip`. Otherwise one of the following strings
-         * may be given to select the compression type of the squashfs: `gzip,`
-         * `lzma,` `lzo,` `lz4`, `xz`.
+         * may be given to select the compression type of the squashfs: `gzip`,
+         * `lzma`, `lzo`, `lz4`, `xz`.
          *
          * The other optional arguments are:
          *
@@ -11807,7 +12085,7 @@ export namespace Guestfs {
          * with large files, such as the resulting squashfs will be over 3GB big.
          *
          * This function depends on the feature "squashfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param path
          * @param filename
          * @param optargs a GuestfsMksquashfs containing optional arguments
@@ -11851,7 +12129,7 @@ export namespace Guestfs {
          * Create a swap partition on `device` with UUID `uuid`.
          *
          * This function depends on the feature "linuxfsuuid".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param uuid
          * @param device
          * @returns true on success, false on error
@@ -11863,7 +12141,7 @@ export namespace Guestfs {
          * Create a swap file.
          *
          * This command just writes a swap file signature to an existing file. To
-         * create the file itself, use something like guestfs_session_fallocate().
+         * create the file itself, use something like `guestfs_session_fallocate()`.
          * @param path
          * @returns true on success, false on error
          */
@@ -11887,7 +12165,7 @@ export namespace Guestfs {
          * If the optional `suffix` parameter is given, then the suffix (eg. ".txt")
          * is appended to the temporary name.
          *
-         * See also: guestfs_session_mkdtemp().
+         * See also: `guestfs_session_mkdtemp()`.
          * @param tmpl
          * @param optargs a GuestfsMktemp containing optional arguments
          * @returns the returned string, or NULL on error
@@ -11899,7 +12177,7 @@ export namespace Guestfs {
          * This loads a kernel module in the appliance.
          *
          * This function depends on the feature "linuxmodules".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param modulename
          * @returns true on success, false on error
          */
@@ -11911,8 +12189,8 @@ export namespace Guestfs {
          * named /dev/sda, /dev/sdb and so on, as they were added to the guest. If
          * those block devices contain partitions, they will have the usual names
          * (eg. /dev/sda1). Also LVM /dev/VG/LV-style names can be used, or
-         * ‘mountable’ strings returned by guestfs_session_list_filesystems() or
-         * guestfs_session_inspect_get_mountpoints().
+         * ‘mountable’ strings returned by `guestfs_session_list_filesystems()` or
+         * `guestfs_session_inspect_get_mountpoints()`.
          *
          * The rules are the same as for mount(2): A filesystem must first be
          * mounted on / before others can be mounted. Other filesystems can only be
@@ -11924,7 +12202,7 @@ export namespace Guestfs {
          * Before libguestfs 1.13.16, this call implicitly added the options `sync`
          * and `noatime`. The `sync` option greatly slowed writes and caused many
          * problems for users. If your program might need to work with older
-         * versions of libguestfs, use guestfs_session_mount_options() instead
+         * versions of libguestfs, use `guestfs_session_mount_options()` instead
          * (using an empty string for the first parameter if you don't want any
          * options).
          * @param mountable
@@ -11968,9 +12246,9 @@ export namespace Guestfs {
          * If `debugcalls` is set to true, then additional debugging information is
          * generated for every FUSE call.
          *
-         * When guestfs_session_mount_local() returns, the filesystem is ready, but
+         * When `guestfs_session_mount_local()` returns, the filesystem is ready, but
          * is not processing requests (access to it will block). You have to call
-         * guestfs_session_mount_local_run() to run the main loop.
+         * `guestfs_session_mount_local_run()` to run the main loop.
          *
          * See "MOUNT LOCAL" in guestfs(3) for full documentation.
          * @param localmountpoint
@@ -11983,7 +12261,7 @@ export namespace Guestfs {
          *
          * Run the main loop which translates kernel calls to libguestfs calls.
          *
-         * This should only be called after guestfs_session_mount_local() returns
+         * This should only be called after `guestfs_session_mount_local()` returns
          * successfully. The call will not return until the filesystem is
          * unmounted.
          *
@@ -11991,7 +12269,7 @@ export namespace Guestfs {
          * from another thread.
          *
          * You may call this from a different thread than the one which called
-         * guestfs_session_mount_local(), subject to the usual rules for threads
+         * `guestfs_session_mount_local()`, subject to the usual rules for threads
          * and libguestfs (see "MULTIPLE HANDLES AND MULTIPLE THREADS" in
          * guestfs(3)).
          *
@@ -12014,7 +12292,7 @@ export namespace Guestfs {
         /**
          * mount a guest disk with mount options
          *
-         * This is the same as the guestfs_session_mount() command, but it allows
+         * This is the same as the `guestfs_session_mount()` command, but it allows
          * you to set the mount options as for the mount(8) *-o* flag.
          *
          * If the `options` parameter is an empty string, then no options are passed
@@ -12028,7 +12306,7 @@ export namespace Guestfs {
         /**
          * mount a guest disk, read-only
          *
-         * This is the same as the guestfs_session_mount() command, but it mounts
+         * This is the same as the `guestfs_session_mount()` command, but it mounts
          * the filesystem with the read-only (*-o ro*) flag.
          * @param mountable
          * @param mountpoint
@@ -12038,7 +12316,7 @@ export namespace Guestfs {
         /**
          * mount a guest disk with mount options and vfstype
          *
-         * This is the same as the guestfs_session_mount() command, but it allows
+         * This is the same as the `guestfs_session_mount()` command, but it allows
          * you to set both the mount options and the vfstype as for the mount(8)
          * *-o* and *-t* flags.
          * @param options
@@ -12056,7 +12334,7 @@ export namespace Guestfs {
          *
          * However this doesn't apply for btrfs subvolumes, where the mountable is
          * a combination of both the device name and the subvolume path (see also
-         * guestfs_session_mountable_subvolume() to extract the subvolume path of
+         * `guestfs_session_mountable_subvolume()` to extract the subvolume path of
          * the mountable if any).
          * @param mountable
          * @returns the returned string, or NULL on error
@@ -12067,7 +12345,7 @@ export namespace Guestfs {
          *
          * Returns the subvolume path of a mountable. Btrfs subvolumes mountables
          * are a combination of both the device name and the subvolume path (see
-         * also guestfs_session_mountable_device() to extract the device of the
+         * also `guestfs_session_mountable_device()` to extract the device of the
          * mountable).
          *
          * If the mountable does not represent a btrfs subvolume, then this
@@ -12079,7 +12357,7 @@ export namespace Guestfs {
         /**
          * show mountpoints
          *
-         * This call is similar to guestfs_session_mounts(). That call returns a
+         * This call is similar to `guestfs_session_mounts()`. That call returns a
          * list of devices. This one returns a hash table (map) of device name to
          * directory where the device is mounted.
          * @returns a GHashTable of results, or NULL on error
@@ -12093,7 +12371,7 @@ export namespace Guestfs {
          *
          * Some internal mounts are not shown.
          *
-         * See also: guestfs_session_mountpoints()
+         * See also: `guestfs_session_mountpoints()`
          * @returns an array of returned strings, or NULL on error
          */
         mounts(): string[];
@@ -12103,7 +12381,7 @@ export namespace Guestfs {
          * This moves a file from `src` to `dest` where `dest` is either a destination
          * filename or destination directory.
          *
-         * See also: guestfs_session_rename().
+         * See also: `guestfs_session_rename()`.
          * @param src
          * @param dest
          * @returns true on success, false on error
@@ -12114,10 +12392,10 @@ export namespace Guestfs {
          *
          * This returns the number of whole block devices that were added. This is
          * the same as the number of devices that would be returned if you called
-         * guestfs_session_list_devices().
+         * `guestfs_session_list_devices()`.
          *
          * To find out the maximum number of devices that could be added, call
-         * guestfs_session_max_disks().
+         * `guestfs_session_max_disks()`.
          * @returns the returned value, or -1 on error
          */
         nr_devices(): number;
@@ -12132,11 +12410,11 @@ export namespace Guestfs {
          * can be mounted read-write. Set it to false if you want to test if the
          * volume can be mounted read-only.
          *
-         * The return value is an integer which `0` if the operation would succeed,
+         * The return value is an integer which @0 if the operation would succeed,
          * or some non-zero value documented in the ntfs-3g.probe(8) manual page.
          *
          * This function depends on the feature "ntfs3g".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param rw
          * @param device
          * @returns the returned value, or -1 on error
@@ -12164,11 +12442,11 @@ export namespace Guestfs {
          * restore NTFS from backup file
          *
          * Restore the `backupfile` (from a previous call to
-         * guestfs_session_ntfsclone_out()) to `device,` overwriting any existing
+         * `guestfs_session_ntfsclone_out()`) to `device`, overwriting any existing
          * contents of this device.
          *
          * This function depends on the feature "ntfs3g".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param backupfile
          * @param device
          * @param cancellable A GCancellable object
@@ -12186,14 +12464,14 @@ export namespace Guestfs {
          * saved, losing all the user data (this is useful for diagnosing some
          * filesystem problems).
          *
-         * The optional `rescue,` `ignorefscheck,` `preservetimestamps` and `force`
+         * The optional `rescue`, `ignorefscheck`, `preservetimestamps` and `force`
          * flags have precise meanings detailed in the ntfsclone(8) man page.
          *
-         * Use guestfs_session_ntfsclone_in() to restore the file back to a
+         * Use `guestfs_session_ntfsclone_in()` to restore the file back to a
          * libguestfs device.
          *
          * This function depends on the feature "ntfs3g".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @param backupfile
          * @param optargs a GuestfsNtfscloneOut containing optional arguments
@@ -12220,7 +12498,7 @@ export namespace Guestfs {
          * is useful after cloning a disk with bad sectors to a new disk.
          *
          * This function depends on the feature "ntfs3g".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @param optargs a GuestfsNtfsfix containing optional arguments
          * @returns true on success, false on error
@@ -12246,13 +12524,13 @@ export namespace Guestfs {
          * requiring a consistency check (for safety). You have to boot into
          * Windows to perform this check and clear this condition. If you
          * *don't* set the `force` option then it is not possible to call
-         * guestfs_session_ntfsresize() multiple times on a single filesystem
+         * `guestfs_session_ntfsresize()` multiple times on a single filesystem
          * without booting into Windows between each resize.
          *
          * See also ntfsresize(8).
          *
          * This function depends on the feature "ntfsprogs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @param optargs a GuestfsNTFSResizeOpts containing optional arguments
          * @returns true on success, false on error
@@ -12261,11 +12539,11 @@ export namespace Guestfs {
         /**
          * resize an NTFS filesystem (with size)
          *
-         * This command is the same as guestfs_session_ntfsresize() except that it
+         * This command is the same as `guestfs_session_ntfsresize()` except that it
          * allows you to specify the new size (in bytes) explicitly.
          *
          * This function depends on the feature "ntfsprogs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @param size
          * @returns true on success, false on error
@@ -12279,12 +12557,12 @@ export namespace Guestfs {
          * the handle.
          *
          * *Most programs do not need to call this*. It is done implicitly when you
-         * call guestfs_session_create().
+         * call `guestfs_session_create()`.
          *
          * See "ENVIRONMENT VARIABLES" in guestfs(3) for a list of environment
          * variables that can affect libguestfs handles. See also
          * "guestfs_create_flags" in guestfs(3), and
-         * guestfs_session_parse_environment_list().
+         * `guestfs_session_parse_environment_list()`.
          * @returns true on success, false on error
          */
         parse_environment(): boolean;
@@ -12295,7 +12573,7 @@ export namespace Guestfs {
          * the handle accordingly. For example if "LIBGUESTFS_DEBUG=1" is a string
          * in the list, then the ‘verbose’ flag is set in the handle.
          *
-         * This is the same as guestfs_session_parse_environment() except that it
+         * This is the same as `guestfs_session_parse_environment()` except that it
          * parses an explicit list of strings instead of the program's environment.
          * @param environment an array of strings
          * @returns true on success, false on error
@@ -12305,18 +12583,18 @@ export namespace Guestfs {
          * add a partition to the device
          *
          * This command adds a partition to `device`. If there is no partition table
-         * on the device, call guestfs_session_part_init() first.
+         * on the device, call `guestfs_session_part_init()` first.
          *
          * The `prlogex` parameter is the type of partition. Normally you should
          * pass `p` or `primary` here, but MBR partition tables also support `l` (or
-         * `logical)` and `e` (or `extended)` partition types.
+         * `logical`) and `e` (or `extended`) partition types.
          *
          * `startsect` and `endsect` are the start and end of the partition in
          * *sectors*. `endsect` may be negative, which means it counts backwards
-         * from the end of the disk (`-1` is the last sector).
+         * from the end of the disk (@-1 is the last sector).
          *
          * Creating a partition which covers the whole disk is not so easy. Use
-         * guestfs_session_part_disk() to do that.
+         * `guestfs_session_part_disk()` to do that.
          * @param device
          * @param prlogex
          * @param startsect
@@ -12339,12 +12617,12 @@ export namespace Guestfs {
         /**
          * partition whole disk with a single primary partition
          *
-         * This command is simply a combination of guestfs_session_part_init()
-         * followed by guestfs_session_part_add() to create a single primary
+         * This command is simply a combination of `guestfs_session_part_init()`
+         * followed by `guestfs_session_part_add()` to create a single primary
          * partition covering the whole disk.
          *
-         * `parttype` is the partition table type, usually `mbr` or `gpt,` but other
-         * possible values are described in guestfs_session_part_init().
+         * `parttype` is the partition table type, usually `mbr` or `gpt`, but other
+         * possible values are described in `guestfs_session_part_init()`.
          * @param device
          * @param parttype
          * @returns true on success, false on error
@@ -12360,7 +12638,7 @@ export namespace Guestfs {
          * See also sgdisk(8).
          *
          * This function depends on the feature "gdisk".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @returns true on success, false on error
          */
@@ -12371,7 +12649,7 @@ export namespace Guestfs {
          * This command returns true if the partition `partnum` on `device` has the
          * bootable flag set.
          *
-         * See also guestfs_session_part_set_bootable().
+         * See also `guestfs_session_part_set_bootable()`.
          * @param device
          * @param partnum
          * @returns the returned value, or -1 on error
@@ -12384,7 +12662,7 @@ export namespace Guestfs {
          * Behaviour is undefined for other partition types.
          *
          * This function depends on the feature "gdisk".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @returns the returned string, or NULL on error
          */
@@ -12396,7 +12674,7 @@ export namespace Guestfs {
          * is returned for MBR partitions.
          *
          * This function depends on the feature "gdisk".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @param partnum
          * @returns the returned value, or -1 on error
@@ -12408,7 +12686,7 @@ export namespace Guestfs {
          * Return the GUID of numbered GPT partition `partnum`.
          *
          * This function depends on the feature "gdisk".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @param partnum
          * @returns the returned string, or NULL on error
@@ -12422,7 +12700,7 @@ export namespace Guestfs {
          * Behaviour is undefined for other partition types.
          *
          * This function depends on the feature "gdisk".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @param partnum
          * @returns the returned string, or NULL on error
@@ -12436,7 +12714,7 @@ export namespace Guestfs {
          *
          * Note that only MBR (old DOS-style) partitions have type bytes. You will
          * get undefined results for other partition table types (see
-         * guestfs_session_part_get_parttype()).
+         * `guestfs_session_part_get_parttype()`).
          * @param device
          * @param partnum
          * @returns the returned value, or -1 on error
@@ -12448,7 +12726,7 @@ export namespace Guestfs {
          * This returns the partition type of an MBR partition numbered `partnum` on
          * device `device`.
          *
-         * It returns `primary,` `logical,` or `extended`.
+         * It returns `primary`, `logical`, or `extended`.
          * @param device
          * @param partnum
          * @returns the returned string, or NULL on error
@@ -12475,7 +12753,7 @@ export namespace Guestfs {
          *
          * Common return values include: `msdos` (a DOS/Windows style MBR partition
          * table), `gpt` (a GPT/EFI-style partition table). Other values are
-         * possible, although unusual. See guestfs_session_part_init() for a full
+         * possible, although unusual. See `guestfs_session_part_init()` for a full
          * list.
          * @param device
          * @returns the returned string, or NULL on error
@@ -12489,7 +12767,7 @@ export namespace Guestfs {
          * (for large disks).
          *
          * Initially there are no partitions. Following this, you should call
-         * guestfs_session_part_add() for each partition required.
+         * `guestfs_session_part_add()` for each partition required.
          *
          * Possible values for `parttype` are:
          *
@@ -12544,7 +12822,7 @@ export namespace Guestfs {
          *
          * part_start
          * Start of the partition *in bytes*. To get sectors you have to divide
-         * by the device’s sector size, see guestfs_session_blockdev_getss().
+         * by the device’s sector size, see `guestfs_session_blockdev_getss()`.
          *
          * part_end
          * End of the partition in bytes.
@@ -12563,7 +12841,7 @@ export namespace Guestfs {
          *
          * Note that this does not modify any filesystem present in the partition.
          * If you wish to do this, you will need to use filesystem resizing
-         * commands like guestfs_session_resize2fs().
+         * commands like `guestfs_session_resize2fs()`.
          *
          * When growing a partition you will want to grow the filesystem
          * afterwards, but when shrinking, you need to shrink the filesystem before
@@ -12597,7 +12875,7 @@ export namespace Guestfs {
          * is not a valid GUID.
          *
          * This function depends on the feature "gdisk".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @param guid
          * @returns true on success, false on error
@@ -12611,7 +12889,7 @@ export namespace Guestfs {
          * `device` isn't GPT.
          *
          * This function depends on the feature "gdisk".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @returns true on success, false on error
          */
@@ -12629,7 +12907,7 @@ export namespace Guestfs {
          * </ulink> for a useful list of partition attributes.
          *
          * This function depends on the feature "gdisk".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @param partnum
          * @param attributes
@@ -12644,7 +12922,7 @@ export namespace Guestfs {
          * valid GUID.
          *
          * This function depends on the feature "gdisk".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @param partnum
          * @param guid
@@ -12665,7 +12943,7 @@ export namespace Guestfs {
          * </ulink> for a useful list of type GUIDs.
          *
          * This function depends on the feature "gdisk".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @param partnum
          * @param guid
@@ -12682,7 +12960,7 @@ export namespace Guestfs {
          *
          * Note that only MBR (old DOS-style) partitions have type bytes. You will
          * get undefined results for other partition table types (see
-         * guestfs_session_part_get_parttype()).
+         * `guestfs_session_part_get_parttype()`).
          * @param device
          * @param partnum
          * @param idbyte
@@ -12710,10 +12988,10 @@ export namespace Guestfs {
          * partition number, returning the device name (eg. "/dev/sdb").
          *
          * The named partition must exist, for example as a string returned from
-         * guestfs_session_list_partitions().
+         * `guestfs_session_list_partitions()`.
          *
-         * See also guestfs_session_part_to_partnum(),
-         * guestfs_session_device_index().
+         * See also `guestfs_session_part_to_partnum()`,
+         * `guestfs_session_device_index()`.
          * @param partition
          * @returns the returned string, or NULL on error
          */
@@ -12722,12 +13000,12 @@ export namespace Guestfs {
          * convert partition name to partition number
          *
          * This function takes a partition name (eg. "/dev/sdb1") and returns the
-         * partition number (eg. `1`).
+         * partition number (eg. @1).
          *
          * The named partition must exist, for example as a string returned from
-         * guestfs_session_list_partitions().
+         * `guestfs_session_list_partitions()`.
          *
-         * See also guestfs_session_part_to_dev().
+         * See also `guestfs_session_part_to_dev()`.
          * @param partition
          * @returns the returned value, or -1 on error
          */
@@ -12746,12 +13024,12 @@ export namespace Guestfs {
          * read part of a file
          *
          * This command lets you read part of a file. It reads `count` bytes of the
-         * file, starting at `offset,` from file `path`.
+         * file, starting at `offset`, from file `path`.
          *
          * This may read fewer bytes than requested. For further details see the
          * pread(2) system call.
          *
-         * See also guestfs_session_pwrite(), guestfs_session_pread_device().
+         * See also `guestfs_session_pwrite()`, `guestfs_session_pread_device()`.
          * @param path
          * @param count
          * @param offset
@@ -12762,12 +13040,12 @@ export namespace Guestfs {
          * read part of a device
          *
          * This command lets you read part of a block device. It reads `count` bytes
-         * of `device,` starting at `offset`.
+         * of `device`, starting at `offset`.
          *
          * This may read fewer bytes than requested. For further details see the
          * pread(2) system call.
          *
-         * See also guestfs_session_pread().
+         * See also `guestfs_session_pread()`.
          * @param device
          * @param count
          * @param offset
@@ -12780,7 +13058,7 @@ export namespace Guestfs {
          * Generate a new random UUID for the physical volume `device`.
          *
          * This function depends on the feature "lvm2".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @returns true on success, false on error
          */
@@ -12791,18 +13069,18 @@ export namespace Guestfs {
          * Generate new random UUIDs for all physical volumes.
          *
          * This function depends on the feature "lvm2".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @returns true on success, false on error
          */
         pvchange_uuid_all(): boolean;
         /**
          * create an LVM physical volume
          *
-         * This creates an LVM physical volume on the named `device,` where `device`
+         * This creates an LVM physical volume on the named `device`, where `device`
          * should usually be a partition name such as /dev/sda1.
          *
          * This function depends on the feature "lvm2".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @returns true on success, false on error
          */
@@ -12818,7 +13096,7 @@ export namespace Guestfs {
          * those first.
          *
          * This function depends on the feature "lvm2".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @returns true on success, false on error
          */
@@ -12830,7 +13108,7 @@ export namespace Guestfs {
          * match the new size of the underlying device.
          *
          * This function depends on the feature "lvm2".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @returns true on success, false on error
          */
@@ -12838,11 +13116,11 @@ export namespace Guestfs {
         /**
          * resize an LVM physical volume (with size)
          *
-         * This command is the same as guestfs_session_pvresize() except that it
+         * This command is the same as `guestfs_session_pvresize()` except that it
          * allows you to specify the new size (in bytes) explicitly.
          *
          * This function depends on the feature "lvm2".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @param size
          * @returns true on success, false on error
@@ -12857,10 +13135,10 @@ export namespace Guestfs {
          * This returns a list of just the device names that contain PVs (eg.
          * /dev/sda2).
          *
-         * See also guestfs_session_pvs_full().
+         * See also `guestfs_session_pvs_full()`.
          *
          * This function depends on the feature "lvm2".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @returns an array of returned strings, or NULL on error
          */
         pvs(): string[];
@@ -12871,7 +13149,7 @@ export namespace Guestfs {
          * pvs(8) command. The "full" version includes all fields.
          *
          * This function depends on the feature "lvm2".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @returns an array of PV objects, or NULL on error
          */
         pvs_full(): PV[];
@@ -12895,7 +13173,7 @@ export namespace Guestfs {
          * be 0, although short writes are unlikely for regular files in ordinary
          * circumstances.
          *
-         * See also guestfs_session_pread(), guestfs_session_pwrite_device().
+         * See also `guestfs_session_pread()`, `guestfs_session_pwrite_device()`.
          * @param path
          * @param content an array of binary data
          * @param offset
@@ -12913,7 +13191,7 @@ export namespace Guestfs {
          * disk devices and partitions are probably impossible with standard Linux
          * kernels).
          *
-         * See also guestfs_session_pwrite().
+         * See also `guestfs_session_pwrite()`.
          * @param device
          * @param content an array of binary data
          * @param offset
@@ -12925,7 +13203,7 @@ export namespace Guestfs {
          *
          * This calls returns the contents of the file `path` as a buffer.
          *
-         * Unlike guestfs_session_cat(), this function can correctly handle files
+         * Unlike `guestfs_session_cat()`, this function can correctly handle files
          * that contain embedded ASCII NUL characters.
          * @param path
          * @returns an array of binary data, or NULL on error
@@ -12941,7 +13219,7 @@ export namespace Guestfs {
          *
          * Note that this function cannot correctly handle binary files
          * (specifically, files containing "\0" character which is treated as end
-         * of string). For those you need to use the guestfs_session_read_file()
+         * of string). For those you need to use the `guestfs_session_read_file()`
          * function and split the buffer into lines yourself.
          * @param path
          * @returns an array of returned strings, or NULL on error
@@ -12979,8 +13257,8 @@ export namespace Guestfs {
          * value
          *
          * This function is primarily intended for use by programs. To get a simple
-         * list of names, use guestfs_session_ls(). To get a printable directory
-         * for human consumption, use guestfs_session_ll().
+         * list of names, use `guestfs_session_ls()`. To get a printable directory
+         * for human consumption, use `guestfs_session_ll()`.
          * @param dir
          * @returns an array of Dirent objects, or NULL on error
          */
@@ -13029,7 +13307,7 @@ export namespace Guestfs {
          * remount a filesystem with different options
          *
          * This call allows you to change the `rw` (readonly/read-write) flag on an
-         * already mounted filesystem at `mountpoint,` converting a readonly
+         * already mounted filesystem at `mountpoint`, converting a readonly
          * filesystem to be read-write, or vice-versa.
          *
          * Note that at the moment you must supply the "optional" `rw` parameter. In
@@ -13043,11 +13321,11 @@ export namespace Guestfs {
          * remove a disk image
          *
          * This function is conceptually the opposite of
-         * guestfs_session_add_drive_opts(). It removes the drive that was
+         * `guestfs_session_add_drive_opts()`. It removes the drive that was
          * previously added with label `label`.
          *
          * Note that in order to remove drives, you have to add them with labels
-         * (see the optional `label` argument to guestfs_session_add_drive_opts()).
+         * (see the optional `label` argument to `guestfs_session_add_drive_opts()`).
          * If you didn't use a label, then they cannot be removed.
          *
          * You can call this function before or after launching the handle. If
@@ -13064,10 +13342,10 @@ export namespace Guestfs {
          *
          * This call removes the extended attribute named `xattr` of the file `path`.
          *
-         * See also: guestfs_session_lremovexattr(), attr(5).
+         * See also: `guestfs_session_lremovexattr()`, attr(5).
          *
          * This function depends on the feature "linuxxattrs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param xattr
          * @param path
          * @returns true on success, false on error
@@ -13078,7 +13356,7 @@ export namespace Guestfs {
          *
          * Rename a file to a new place on the same filesystem. This is the same as
          * the Linux rename(2) system call. In most cases you are better to use
-         * guestfs_session_mv() instead.
+         * `guestfs_session_mv()` instead.
          * @param oldpath
          * @param newpath
          * @returns true on success, false on error
@@ -13098,12 +13376,12 @@ export namespace Guestfs {
         /**
          * resize an ext2, ext3 or ext4 filesystem to the minimum size
          *
-         * This command is the same as guestfs_session_resize2fs(), but the
+         * This command is the same as `guestfs_session_resize2fs()`, but the
          * filesystem is resized to its minimum size. This works like the *-M*
-         * option to the `resize2`fs command.
+         * option to the `resize2fs` command.
          *
          * To get the resulting size of the filesystem you should call
-         * guestfs_session_tune2fs_l() and read the "Block size" and "Block count"
+         * `guestfs_session_tune2fs_l()` and read the "Block size" and "Block count"
          * values. These two numbers, multiplied together, give the resulting size
          * of the minimal filesystem in bytes.
          *
@@ -13115,7 +13393,7 @@ export namespace Guestfs {
         /**
          * resize an ext2, ext3 or ext4 filesystem (with size)
          *
-         * This command is the same as guestfs_session_resize2fs() except that it
+         * This command is the same as `guestfs_session_resize2fs()` except that it
          * allows you to specify the new size (in bytes) explicitly.
          *
          * See also "RESIZE2FS ERRORS" in guestfs(3).
@@ -13140,8 +13418,8 @@ export namespace Guestfs {
          * If the file doesn't exist, that error is ignored. (Other errors, eg. I/O
          * errors or bad paths, are not ignored)
          *
-         * This call cannot remove directories. Use guestfs_session_rmdir() to
-         * remove an empty directory, or guestfs_session_rm_rf() to remove
+         * This call cannot remove directories. Use `guestfs_session_rmdir()` to
+         * remove an empty directory, or `guestfs_session_rm_rf()` to remove
          * directories recursively.
          * @param path
          * @returns true on success, false on error
@@ -13150,7 +13428,7 @@ export namespace Guestfs {
         /**
          * remove a file or directory recursively
          *
-         * Remove the file or directory `path,` recursively removing the contents if
+         * Remove the file or directory `path`, recursively removing the contents if
          * its a directory. This is like the "rm -rf" shell command.
          * @param path
          * @returns true on success, false on error
@@ -13168,7 +13446,7 @@ export namespace Guestfs {
          * remove a mountpoint
          *
          * This call removes a mountpoint that was previously created with
-         * guestfs_session_mkmountpoint(). See guestfs_session_mkmountpoint() for
+         * `guestfs_session_mkmountpoint()`. See `guestfs_session_mkmountpoint()` for
          * full details.
          * @param exemptpath
          * @returns true on success, false on error
@@ -13194,7 +13472,7 @@ export namespace Guestfs {
          * Delete files at the destination that do not exist at the source.
          *
          * This function depends on the feature "rsync".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param src
          * @param dest
          * @param optargs a GuestfsRsync containing optional arguments
@@ -13210,7 +13488,7 @@ export namespace Guestfs {
          * files unnecessarily.
          *
          * This call only works if the network is enabled. See
-         * guestfs_session_set_network() or the *--network* option to various tools
+         * `guestfs_session_set_network()` or the *--network* option to various tools
          * like guestfish(1).
          *
          * Files are copied from the remote server and directory specified by
@@ -13220,10 +13498,10 @@ export namespace Guestfs {
          * there is no way to supply a password or passphrase so the target must be
          * set up not to require one.
          *
-         * The optional arguments are the same as those of guestfs_session_rsync().
+         * The optional arguments are the same as those of `guestfs_session_rsync()`.
          *
          * This function depends on the feature "rsync".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param remote
          * @param dest
          * @param optargs a GuestfsRsyncIn containing optional arguments
@@ -13239,7 +13517,7 @@ export namespace Guestfs {
          * copying files unnecessarily.
          *
          * This call only works if the network is enabled. See
-         * guestfs_session_set_network() or the *--network* option to various tools
+         * `guestfs_session_set_network()` or the *--network* option to various tools
          * like guestfish(1).
          *
          * Files are copied from the source directory `src` to the remote server and
@@ -13249,17 +13527,17 @@ export namespace Guestfs {
          * there is no way to supply a password or passphrase so the target must be
          * set up not to require one.
          *
-         * The optional arguments are the same as those of guestfs_session_rsync().
+         * The optional arguments are the same as those of `guestfs_session_rsync()`.
          *
          * Globbing does not happen on the `src` parameter. In programs which use
          * the API directly you have to expand wildcards yourself (see
-         * guestfs_session_glob_expand()). In guestfish you can use the `glob`
+         * `guestfs_session_glob_expand()`). In guestfish you can use the `glob`
          * command (see "glob" in guestfish(1)), for example:
          *
          * <![CDATA[><fs> glob rsync-out /* rsync://remote/]]>
          *
          * This function depends on the feature "rsync".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param src
          * @param remote
          * @param optargs a GuestfsRsyncOut containing optional arguments
@@ -13276,7 +13554,7 @@ export namespace Guestfs {
          * more details.
          *
          * This function depends on the feature "scrub".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @returns true on success, false on error
          */
@@ -13293,7 +13571,7 @@ export namespace Guestfs {
          * more details.
          *
          * This function depends on the feature "scrub".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param file
          * @returns true on success, false on error
          */
@@ -13303,14 +13581,14 @@ export namespace Guestfs {
          *
          * This command creates the directory `dir` and then fills it with files
          * until the filesystem is full, and scrubs the files as for
-         * guestfs_session_scrub_file(), and deletes them. The intention is to
+         * `guestfs_session_scrub_file()`, and deletes them. The intention is to
          * scrub any free space on the partition containing `dir`.
          *
          * It is an interface to the scrub(1) program. See that manual page for
          * more details.
          *
          * This function depends on the feature "scrub".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param dir
          * @returns true on success, false on error
          */
@@ -13334,7 +13612,7 @@ export namespace Guestfs {
          * the file context is changed.
          *
          * This function depends on the feature "selinuxrelabel".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param specfile
          * @param path
          * @param optargs a GuestfsSelinuxRelabel containing optional arguments
@@ -13418,9 +13696,9 @@ export namespace Guestfs {
          * environment variable contains a colon-separated list of settings.
          *
          * This call replaces all backend settings. If you want to replace a single
-         * backend setting, see guestfs_session_set_backend_setting(). If you want
+         * backend setting, see `guestfs_session_set_backend_setting()`. If you want
          * to clear a single backend setting, see
-         * guestfs_session_clear_backend_setting().
+         * `guestfs_session_clear_backend_setting()`.
          *
          * See "BACKEND" in guestfs(3), "BACKEND SETTINGS" in guestfs(3).
          * @param settings an array of strings
@@ -13449,7 +13727,7 @@ export namespace Guestfs {
          * passed directly through to the appliance once it is launched.
          *
          * One consequence of this is that log messages aren't caught by the
-         * library and handled by guestfs_session_set_log_message_callback(), but
+         * library and handled by `guestfs_session_set_log_message_callback()`, but
          * go straight to stdout.
          *
          * You probably don't want to use this unless you know what you are doing.
@@ -13466,7 +13744,7 @@ export namespace Guestfs {
          * file.
          *
          * `attrs` is a string of characters representing file attributes. See
-         * guestfs_session_get_e2attrs() for a list of possible attributes. Not all
+         * `guestfs_session_get_e2attrs()` for a list of possible attributes. Not all
          * attributes can be changed.
          *
          * If optional boolean `clear` is not present or false, then the `attrs`
@@ -13491,7 +13769,7 @@ export namespace Guestfs {
          *
          * This sets the ext2 file generation of a file.
          *
-         * See guestfs_session_get_e2generation().
+         * See `guestfs_session_get_e2generation()`.
          * @param file
          * @param generation
          * @returns true on success, false on error
@@ -13503,8 +13781,8 @@ export namespace Guestfs {
          * This sets the ext2/3/4 filesystem label of the filesystem on `device` to
          * `label`. Filesystem labels are limited to 16 characters.
          *
-         * You can use either guestfs_session_tune2fs_l() or
-         * guestfs_session_get_e2label() to return the existing label on a
+         * You can use either `guestfs_session_tune2fs_l()` or
+         * `guestfs_session_get_e2label()` to return the existing label on a
          * filesystem.
          * @param device
          * @param label
@@ -13515,10 +13793,10 @@ export namespace Guestfs {
          * set the ext2/3/4 filesystem UUID
          *
          * This sets the ext2/3/4 filesystem UUID of the filesystem on `device` to
-         * `uuid`. The format of the UUID and alternatives such as `clear,` `random`
+         * `uuid`. The format of the UUID and alternatives such as `clear`, `random`
          * and `time` are described in the tune2fs(8) manpage.
          *
-         * You can use guestfs_session_vfs_uuid() to return the existing UUID of a
+         * You can use `guestfs_session_vfs_uuid()` to return the existing UUID of a
          * filesystem.
          * @param device
          * @param uuid
@@ -13574,8 +13852,8 @@ export namespace Guestfs {
          * The identifier must only contain alphanumeric ASCII characters,
          * underscore and minus sign. The default is the empty string.
          *
-         * See also guestfs_session_set_program(), guestfs_session_set_trace(),
-         * guestfs_session_get_identifier().
+         * See also `guestfs_session_set_program()`, `guestfs_session_set_trace()`,
+         * `guestfs_session_get_identifier()`.
          * @param identifier
          * @returns true on success, false on error
          */
@@ -13611,7 +13889,7 @@ export namespace Guestfs {
          * If there is no support for changing the label for the type of the
          * specified filesystem, set_label will fail and set errno as ENOTSUP.
          *
-         * To read the label on a filesystem, call guestfs_session_vfs_label().
+         * To read the label on a filesystem, call `guestfs_session_vfs_label()`.
          * @param mountable
          * @param label
          * @returns true on success, false on error
@@ -13620,7 +13898,7 @@ export namespace Guestfs {
         /**
          * pass requested credential back to libvirt
          *
-         * After requesting the `index'`th credential from the user, call this
+         * After requesting the `index`'th credential from the user, call this
          * function to pass the answer back to libvirt.
          *
          * See "LIBVIRT AUTHENTICATION" in guestfs(3) for documentation and example
@@ -13634,7 +13912,7 @@ export namespace Guestfs {
          * set libvirt credentials supported by calling program
          *
          * Call this function before setting an event handler for
-         * `GUESTFS_EVENT_LIBVIRT_AUTH,` to supply the list of credential types that
+         * `GUESTFS_EVENT_LIBVIRT_AUTH`, to supply the list of credential types that
          * the program knows how to process.
          *
          * The `creds` list must be a non-empty list of strings. Possible strings
@@ -13662,7 +13940,7 @@ export namespace Guestfs {
          * set memory allocated to the hypervisor
          *
          * This sets the memory size in megabytes allocated to the hypervisor. This
-         * only has any effect if called before guestfs_session_launch().
+         * only has any effect if called before `guestfs_session_launch()`.
          *
          * You can also change this by setting the environment variable
          * `LIBGUESTFS_MEMSIZE` before the handle is created.
@@ -13681,7 +13959,7 @@ export namespace Guestfs {
          * This affects whether commands are able to access the network (see
          * "RUNNING COMMANDS" in guestfs(3)).
          *
-         * You must call this before calling guestfs_session_launch(), otherwise it
+         * You must call this before calling `guestfs_session_launch()`, otherwise it
          * has no effect.
          * @param network
          * @returns true on success, false on error
@@ -13712,7 +13990,7 @@ export namespace Guestfs {
          * The default for this flag is false, because usually you want "^C" to
          * kill the subprocess. Guestfish sets this flag to true when used
          * interactively, so that "^C" can cancel long-running commands gracefully
-         * (see guestfs_session_user_cancel()).
+         * (see `guestfs_session_user_cancel()`).
          * @param pgroup
          * @returns true on success, false on error
          */
@@ -13757,11 +14035,11 @@ export namespace Guestfs {
          * enable or disable the recovery process
          *
          * If this is called with the parameter `false` then
-         * guestfs_session_launch() does not create a recovery process. The purpose
+         * `guestfs_session_launch()` does not create a recovery process. The purpose
          * of the recovery process is to stop runaway hypervisor processes in the
          * case where the main program aborts abruptly.
          *
-         * This only has any effect if called before guestfs_session_launch(), and
+         * This only has any effect if called before `guestfs_session_launch()`, and
          * the default is true.
          *
          * About the only time when you would want to disable this is if the main
@@ -13790,10 +14068,10 @@ export namespace Guestfs {
          * set number of virtual CPUs in appliance
          *
          * Change the number of virtual CPUs assigned to the appliance. The default
-         * is `1`. Increasing this may improve performance, though often it has no
+         * is @1. Increasing this may improve performance, though often it has no
          * effect.
          *
-         * This function must be called before guestfs_session_launch().
+         * This function must be called before `guestfs_session_launch()`.
          * @param smp
          * @returns true on success, false on error
          */
@@ -13821,11 +14099,11 @@ export namespace Guestfs {
          * then possibly a better way is to use the external ltrace(1) command.
          *
          * Command traces are disabled unless the environment variable
-         * `LIBGUESTFS_TRACE` is defined and set to `1`.
+         * `LIBGUESTFS_TRACE` is defined and set to @1.
          *
-         * Trace messages are normally sent to `stderr,` unless you register a
+         * Trace messages are normally sent to `stderr`, unless you register a
          * callback to send them somewhere else (see
-         * guestfs_session_set_event_callback()).
+         * `guestfs_session_set_event_callback()`).
          * @param trace
          * @returns true on success, false on error
          */
@@ -13839,7 +14117,7 @@ export namespace Guestfs {
          *
          * Only some filesystem types support setting UUIDs.
          *
-         * To read the UUID on a filesystem, call guestfs_session_vfs_uuid().
+         * To read the UUID on a filesystem, call `guestfs_session_vfs_uuid()`.
          * @param device
          * @param uuid
          * @returns true on success, false on error
@@ -13854,7 +14132,7 @@ export namespace Guestfs {
          *
          * Only some filesystem types support setting UUIDs.
          *
-         * To read the UUID on a filesystem, call guestfs_session_vfs_uuid().
+         * To read the UUID on a filesystem, call `guestfs_session_vfs_uuid()`.
          * @param device
          * @returns true on success, false on error
          */
@@ -13865,11 +14143,11 @@ export namespace Guestfs {
          * If `verbose` is true, this turns on verbose messages.
          *
          * Verbose messages are disabled unless the environment variable
-         * `LIBGUESTFS_DEBUG` is defined and set to `1`.
+         * `LIBGUESTFS_DEBUG` is defined and set to @1.
          *
-         * Verbose messages are normally sent to `stderr,` unless you register a
+         * Verbose messages are normally sent to `stderr`, unless you register a
          * callback to send them somewhere else (see
-         * guestfs_session_set_event_callback()).
+         * `guestfs_session_set_event_callback()`).
          * @param verbose
          * @returns true on success, false on error
          */
@@ -13883,7 +14161,7 @@ export namespace Guestfs {
          * See the documentation about SELINUX in guestfs(3).
          *
          * This function depends on the feature "selinux".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param context
          * @returns true on success, false on error
          */
@@ -13892,12 +14170,12 @@ export namespace Guestfs {
          * set extended attribute of a file or directory
          *
          * This call sets the extended attribute named `xattr` of the file `path` to
-         * the value `val` (of length `vallen)`. The value is arbitrary 8 bit data.
+         * the value `val` (of length `vallen`). The value is arbitrary 8 bit data.
          *
-         * See also: guestfs_session_lsetxattr(), attr(5).
+         * See also: `guestfs_session_lsetxattr()`, attr(5).
          *
          * This function depends on the feature "linuxxattrs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param xattr
          * @param val
          * @param vallen
@@ -13913,11 +14191,11 @@ export namespace Guestfs {
          *
          * `device` should be a block device, for example /dev/sda.
          *
-         * `cyls,` `heads` and `sectors` are the number of cylinders, heads and
+         * `cyls`, `heads` and `sectors` are the number of cylinders, heads and
          * sectors on the device, which are passed directly to sfdisk as the *-C*,
-         * *-H* and *-S* parameters. If you pass `0` for any of these, then the
+         * *-H* and *-S* parameters. If you pass @0 for any of these, then the
          * corresponding parameter is omitted. Usually for ‘large’ disks, you can
-         * just pass `0` for these, but for small (floppy-sized) disks, sfdisk (or
+         * just pass @0 for these, but for small (floppy-sized) disks, sfdisk (or
          * rather, the kernel) cannot work out the right geometry and you will need
          * to tell it.
          *
@@ -13928,8 +14206,8 @@ export namespace Guestfs {
          * `lines` as a single element list, when the single element being the
          * string "," (comma).
          *
-         * See also: guestfs_session_sfdisk_l(), guestfs_session_sfdisk_N(),
-         * guestfs_session_part_init()
+         * See also: `guestfs_session_sfdisk_l()`, guestfs_session_sfdisk_N(),
+         * `guestfs_session_part_init()`
          * @param device
          * @param cyls
          * @param heads
@@ -13941,13 +14219,13 @@ export namespace Guestfs {
         /**
          * create partitions on a block device
          *
-         * This is a simplified interface to the guestfs_session_sfdisk() command,
+         * This is a simplified interface to the `guestfs_session_sfdisk()` command,
          * where partition sizes are specified in megabytes only (rounded to the
          * nearest cylinder) and you don't need to specify the cyls, heads and
          * sectors parameters which were rarely if ever used anyway.
          *
-         * See also: guestfs_session_sfdisk(), the sfdisk(8) manpage and
-         * guestfs_session_part_disk()
+         * See also: `guestfs_session_sfdisk()`, the sfdisk(8) manpage and
+         * `guestfs_session_part_disk()`
          * @param device
          * @param lines an array of strings
          * @returns true on success, false on error
@@ -13959,10 +14237,10 @@ export namespace Guestfs {
          * This runs sfdisk(8) option to modify just the single partition `n` (note:
          * `n` counts from 1).
          *
-         * For other parameters, see guestfs_session_sfdisk(). You should usually
-         * pass `0` for the cyls/heads/sectors parameters.
+         * For other parameters, see `guestfs_session_sfdisk()`. You should usually
+         * pass @0 for the cyls/heads/sectors parameters.
          *
-         * See also: guestfs_session_part_add()
+         * See also: `guestfs_session_part_add()`
          * @param device
          * @param partnum
          * @param cyls
@@ -13978,7 +14256,7 @@ export namespace Guestfs {
          * This displays the disk geometry of `device` read from the partition
          * table. Especially in the case where the underlying block device has been
          * resized, this can be different from the kernel’s idea of the geometry
-         * (see guestfs_session_sfdisk_kernel_geometry()).
+         * (see `guestfs_session_sfdisk_kernel_geometry()`).
          *
          * The result is in human-readable format, and not designed to be parsed.
          * @param device
@@ -13998,10 +14276,10 @@ export namespace Guestfs {
         /**
          * display the partition table
          *
-         * This displays the partition table on `device,` in the human-readable
+         * This displays the partition table on `device`, in the human-readable
          * output of the sfdisk(8) command. It is not intended to be parsed.
          *
-         * See also: guestfs_session_part_list()
+         * See also: `guestfs_session_part_list()`
          * @param device
          * @returns the returned string, or NULL on error
          */
@@ -14012,14 +14290,14 @@ export namespace Guestfs {
          * This call runs a command from the guest filesystem via the guest’s
          * /bin/sh.
          *
-         * This is like guestfs_session_command(), but passes the command to:
+         * This is like `guestfs_session_command()`, but passes the command to:
          *
          * <![CDATA[/bin/sh -c "command"]]>
          *
          * Depending on the guest’s shell, this usually results in wildcards being
          * expanded, shell expressions being interpolated and so on.
          *
-         * All the provisos about guestfs_session_command() apply to this call.
+         * All the provisos about `guestfs_session_command()` apply to this call.
          * @param command
          * @returns the returned string, or NULL on error
          */
@@ -14027,10 +14305,10 @@ export namespace Guestfs {
         /**
          * run a command via the shell returning lines
          *
-         * This is the same as guestfs_session_sh(), but splits the result into a
+         * This is the same as `guestfs_session_sh()`, but splits the result into a
          * list of lines.
          *
-         * See also: guestfs_session_command_lines()
+         * See also: `guestfs_session_command_lines()`
          * @param command
          * @returns an array of returned strings, or NULL on error
          */
@@ -14038,7 +14316,7 @@ export namespace Guestfs {
         /**
          * shutdown the hypervisor
          *
-         * This is the opposite of guestfs_session_launch(). It performs an orderly
+         * This is the opposite of `guestfs_session_launch()`. It performs an orderly
          * shutdown of the backend process(es). If the autosync flag is set (which
          * is the default) then the disk image is synchronized.
          *
@@ -14049,9 +14327,9 @@ export namespace Guestfs {
          * It is safe to call this multiple times. Extra calls are ignored.
          *
          * This call does *not* close or free up the handle. You still need to call
-         * guestfs_session_close() afterwards.
+         * `guestfs_session_close()` afterwards.
          *
-         * guestfs_session_close() will call this if you don't do it explicitly,
+         * `guestfs_session_close()` will call this if you don't do it explicitly,
          * but note that any errors are ignored in that case.
          * @returns true on success, false on error
          */
@@ -14112,14 +14390,14 @@ export namespace Guestfs {
         /**
          * print the printable strings in a file
          *
-         * This is like the guestfs_session_strings() command, but allows you to
+         * This is like the `guestfs_session_strings()` command, but allows you to
          * specify the encoding of strings that are looked for in the source file
          * `path`.
          *
          * Allowed encodings are:
          *
          * s   Single 7-bit-byte characters like ASCII and the ASCII-compatible
-         * parts of ISO-8859-X (this is what guestfs_session_strings() uses).
+         * parts of ISO-8859-X (this is what `guestfs_session_strings()` uses).
          *
          * S   Single 8-bit-byte characters.
          *
@@ -14148,7 +14426,7 @@ export namespace Guestfs {
          * disable swap on device
          *
          * This command disables the libguestfs appliance swap device or partition
-         * named `device`. See guestfs_session_swapon_device().
+         * named `device`. See `guestfs_session_swapon_device()`.
          * @param device
          * @returns true on success, false on error
          */
@@ -14177,7 +14455,7 @@ export namespace Guestfs {
          * given UUID.
          *
          * This function depends on the feature "linuxfsuuid".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param uuid
          * @returns true on success, false on error
          */
@@ -14187,8 +14465,8 @@ export namespace Guestfs {
          *
          * This command enables the libguestfs appliance to use the swap device or
          * partition named `device`. The increased memory is made available for all
-         * commands, for example those run using guestfs_session_command() or
-         * guestfs_session_sh().
+         * commands, for example those run using `guestfs_session_command()` or
+         * `guestfs_session_sh()`.
          *
          * Note that you should not swap to existing guest swap partitions unless
          * you know what you are doing. They may contain hibernation information,
@@ -14202,7 +14480,7 @@ export namespace Guestfs {
         /**
          * enable swap on file
          *
-         * This command enables swap to a file. See guestfs_session_swapon_device()
+         * This command enables swap to a file. See `guestfs_session_swapon_device()`
          * for other notes.
          * @param file
          * @returns true on success, false on error
@@ -14212,7 +14490,7 @@ export namespace Guestfs {
          * enable swap on labeled swap partition
          *
          * This command enables swap to a labeled swap partition. See
-         * guestfs_session_swapon_device() for other notes.
+         * `guestfs_session_swapon_device()` for other notes.
          * @param label
          * @returns true on success, false on error
          */
@@ -14221,10 +14499,10 @@ export namespace Guestfs {
          * enable swap on swap partition by UUID
          *
          * This command enables swap to a swap partition with the given UUID. See
-         * guestfs_session_swapon_device() for other notes.
+         * `guestfs_session_swapon_device()` for other notes.
          *
          * This function depends on the feature "linuxfsuuid".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param uuid
          * @returns true on success, false on error
          */
@@ -14249,7 +14527,7 @@ export namespace Guestfs {
          * filesystem, or a partition formatted as a FAT filesystem. In the latter
          * case, the partition should be marked as "active"
          * (guestfs_session_part_set_bootable()) and a Master Boot Record must be
-         * installed (eg. using guestfs_session_pwrite_device()) on the first
+         * installed (eg. using `guestfs_session_pwrite_device()`) on the first
          * sector of the whole disk. The SYSLINUX package comes with some suitable
          * Master Boot Records. See the syslinux(1) man page for further
          * information.
@@ -14265,10 +14543,10 @@ export namespace Guestfs {
          * or under directory if that optional argument is being used. For further
          * information about the contents of this file, see syslinux(1).
          *
-         * See also guestfs_session_extlinux().
+         * See also `guestfs_session_extlinux()`.
          *
          * This function depends on the feature "syslinux".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @param optargs a GuestfsSyslinux containing optional arguments
          * @returns true on success, false on error
@@ -14290,7 +14568,7 @@ export namespace Guestfs {
          * `nrlines` lines of the file `path`.
          *
          * If the parameter `nrlines` is a negative number, this returns lines from
-         * the file `path,` starting with the `-nrlinesth` line.
+         * the file `path`, starting with the @-nrlinesth line.
          *
          * If the parameter `nrlines` is zero, this returns an empty list.
          * @param nrlines
@@ -14306,7 +14584,7 @@ export namespace Guestfs {
          * The optional `compress` flag controls compression. If not given, then the
          * input should be an uncompressed tar file. Otherwise one of the following
          * strings may be given to select the compression type of the input file:
-         * `compress,` `gzip,` `bzip2`, `xz,` `lzop`. (Note that not all builds of
+         * `compress`, `gzip`, `bzip2`, `xz`, `lzop`. (Note that not all builds of
          * libguestfs will support all of these compression types).
          *
          * The other optional arguments are:
@@ -14340,7 +14618,7 @@ export namespace Guestfs {
          * The optional `compress` flag controls compression. If not given, then the
          * output will be an uncompressed tar file. Otherwise one of the following
          * strings may be given to select the compression type of the output file:
-         * `compress,` `gzip,` `bzip2`, `xz,` `lzop`. (Note that not all builds of
+         * `compress`, `gzip`, `bzip2`, `xz`, `lzop`. (Note that not all builds of
          * libguestfs will support all of these compression types).
          *
          * The other optional arguments are:
@@ -14426,7 +14704,7 @@ export namespace Guestfs {
          * If the current file size is less than `size` then the file is extended to
          * the required size with zero bytes. This creates a sparse file (ie. disk
          * blocks are not allocated for the file until you write to it). To create
-         * a non-sparse file of zeroes, use guestfs_session_fallocate64() instead.
+         * a non-sparse file of zeroes, use `guestfs_session_fallocate64()` instead.
          * @param path
          * @param size
          * @returns true on success, false on error
@@ -14442,54 +14720,54 @@ export namespace Guestfs {
          *
          * `force`
          * Force tune2fs to complete the operation even in the face of errors.
-         * This is the same as the tune2fs `-f` option.
+         * This is the same as the tune2fs @-f option.
          *
          * `maxmountcount`
          * Set the number of mounts after which the filesystem is checked by
-         * e2fsck(8). If this is `0` then the number of mounts is disregarded.
-         * This is the same as the tune2fs `-c` option.
+         * e2fsck(8). If this is @0 then the number of mounts is disregarded.
+         * This is the same as the tune2fs @-c option.
          *
          * `mountcount`
          * Set the number of times the filesystem has been mounted. This is the
-         * same as the tune2fs `-C` option.
+         * same as the tune2fs @-C option.
          *
          * `errorbehavior`
          * Change the behavior of the kernel code when errors are detected.
-         * Possible values currently are: `continue,` `remount-ro,` `panic`. In
+         * Possible values currently are: `continue`, `remount`-ro, `panic`. In
          * practice these options don't really make any difference,
          * particularly for write errors.
          *
-         * This is the same as the tune2fs `-e` option.
+         * This is the same as the tune2fs @-e option.
          *
          * `group`
          * Set the group which can use reserved filesystem blocks. This is the
-         * same as the tune2fs `-g` option except that it can only be specified
+         * same as the tune2fs @-g option except that it can only be specified
          * as a number.
          *
          * `intervalbetweenchecks`
          * Adjust the maximal time between two filesystem checks (in seconds).
-         * If the option is passed as `0` then time-dependent checking is
+         * If the option is passed as @0 then time-dependent checking is
          * disabled.
          *
-         * This is the same as the tune2fs `-i` option.
+         * This is the same as the tune2fs @-i option.
          *
          * `reservedblockspercentage`
          * Set the percentage of the filesystem which may only be allocated by
-         * privileged processes. This is the same as the tune2fs `-m` option.
+         * privileged processes. This is the same as the tune2fs @-m option.
          *
          * `lastmounteddirectory`
-         * Set the last mounted directory. This is the same as the tune2fs `-M`
+         * Set the last mounted directory. This is the same as the tune2fs @-M
          * option.
          *
          * `reservedblockscount` Set the number of reserved filesystem blocks. This
-         * is the same as the tune2fs `-r` option.
+         * is the same as the tune2fs @-r option.
          * `user`
          * Set the user who can use the reserved filesystem blocks. This is the
-         * same as the tune2fs `-u` option except that it can only be specified
+         * same as the tune2fs @-u option except that it can only be specified
          * as a number.
          *
          * To get the current values of filesystem parameters, see
-         * guestfs_session_tune2fs_l(). For precise details of how tune2fs works,
+         * `guestfs_session_tune2fs_l()`. For precise details of how tune2fs works,
          * see the tune2fs(8) man page.
          * @param device
          * @param optargs a GuestfsTune2FS containing optional arguments
@@ -14504,7 +14782,7 @@ export namespace Guestfs {
          *
          * It is the same as running "tune2fs -l device". See tune2fs(8) manpage
          * for more details. The list of fields returned isn't clearly defined, and
-         * depends on both the version of `tune2`fs that libguestfs was built
+         * depends on both the version of `tune2fs` that libguestfs was built
          * against, and the filesystem itself.
          * @param device
          * @returns a GHashTable of results, or NULL on error
@@ -14517,7 +14795,7 @@ export namespace Guestfs {
          * tar file) into directory.
          *
          * This function depends on the feature "xz".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param tarball
          * @param directory
          * @param cancellable A GCancellable object
@@ -14531,7 +14809,7 @@ export namespace Guestfs {
          * file `tarball` (as an xz compressed tar archive).
          *
          * This function depends on the feature "xz".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param directory
          * @param tarball
          * @param cancellable A GCancellable object
@@ -14544,16 +14822,16 @@ export namespace Guestfs {
          * This function sets the mask used for creating new files and device nodes
          * to "mask & 0777".
          *
-         * Typical umask values would be `0`22 which creates new files with
-         * permissions like "-rw-r--r--" or "-rwxr-xr-x", and `0`02 which creates
+         * Typical umask values would be @022 which creates new files with
+         * permissions like "-rw-r--r--" or "-rwxr-xr-x", and @002 which creates
          * new files with permissions like "-rw-rw-r--" or "-rwxrwxr-x".
          *
-         * The default umask is `0`22. This is important because it means that
-         * directories and device nodes will be created with `0`644 or `0`755 mode
-         * even if you specify `0`777.
+         * The default umask is @022. This is important because it means that
+         * directories and device nodes will be created with @0644 or @0755 mode
+         * even if you specify @0777.
          *
-         * See also guestfs_session_get_umask(), umask(2), guestfs_session_mknod(),
-         * guestfs_session_mkdir().
+         * See also `guestfs_session_get_umask()`, umask(2), `guestfs_session_mknod()`,
+         * `guestfs_session_mkdir()`.
          *
          * This call returns the previous umask.
          * @param mask
@@ -14598,7 +14876,7 @@ export namespace Guestfs {
          *
          * filename can also be a named pipe.
          *
-         * See also guestfs_session_download().
+         * See also `guestfs_session_download()`.
          * @param filename
          * @param remotefilename
          * @param cancellable A GCancellable object
@@ -14617,10 +14895,10 @@ export namespace Guestfs {
          * size of the source filename.
          *
          * Note that there is no limit on the amount of data that can be uploaded
-         * with this call, unlike with guestfs_session_pwrite(), and this call
+         * with this call, unlike with `guestfs_session_pwrite()`, and this call
          * always writes the full amount unless an error occurs.
          *
-         * See also guestfs_session_upload(), guestfs_session_pwrite().
+         * See also `guestfs_session_upload()`, `guestfs_session_pwrite()`.
          * @param filename
          * @param remotefilename
          * @param offset
@@ -14644,7 +14922,7 @@ export namespace Guestfs {
          *
          * The transfer that was in progress (if there is one) will stop shortly
          * afterwards, and will return an error. The errno (see
-         * "guestfs_last_errno") is set to `EINTR,` so you can test for this to find
+         * "guestfs_last_errno") is set to `EINTR`, so you can test for this to find
          * out if the operation was cancelled or failed because of another error.
          *
          * No cleanup is performed: for example, if a file was being uploaded then
@@ -14652,7 +14930,7 @@ export namespace Guestfs {
          * caller’s responsibility to clean up if necessary.
          *
          * There are two common places that you might call
-         * guestfs_session_user_cancel():
+         * `guestfs_session_user_cancel()`:
          *
          * In an interactive text-based program, you might call it from a `SIGINT`
          * signal handler so that pressing "^C" cancels the current operation. (You
@@ -14676,11 +14954,11 @@ export namespace Guestfs {
          * "mtsecs, mtnsecs" are the last modification time (mtime) in secs and
          * nanoseconds from the epoch.
          *
-         * If the *nsecs field contains the special value `-1` then the
+         * If the *nsecs field contains the special value @-1 then the
          * corresponding timestamp is set to the current time. (The *secs field is
          * ignored in this case).
          *
-         * If the *nsecs field contains the special value `-2` then the
+         * If the *nsecs field contains the special value @-2 then the
          * corresponding timestamp is left unchanged. (The *secs field is ignored
          * in this case).
          * @param path
@@ -14716,8 +14994,8 @@ export namespace Guestfs {
          * it doesn't, then it’s an earlier version).
          *
          * The call returns a structure with four elements. The first three
-         * (`major,` `minor` and `release)` are numbers and correspond to the usual
-         * version triplet. The fourth element (`extra)` is a string and is normally
+         * (`major`, `minor` and `release`) are numbers and correspond to the usual
+         * version triplet. The fourth element (`extra`) is a string and is normally
          * empty, but may be used for distro-specific information.
          *
          * To construct the original version string: "$major.$minor.$release$extra"
@@ -14727,7 +15005,7 @@ export namespace Guestfs {
          * *Note:* Don't use this call to test for availability of features. In
          * enterprise distributions we backport features from later versions into
          * earlier versions, making this an unreliable way to test for features.
-         * Use guestfs_session_available() or guestfs_session_feature_available()
+         * Use `guestfs_session_available()` or `guestfs_session_feature_available()`
          * instead.
          * @returns a Version object, or NULL on error
          */
@@ -14739,7 +15017,7 @@ export namespace Guestfs {
          *
          * If the filesystem is unlabeled, this returns the empty string.
          *
-         * To find a filesystem from the label, use guestfs_session_findfs_label().
+         * To find a filesystem from the label, use `guestfs_session_findfs_label()`.
          * @param mountable
          * @returns the returned string, or NULL on error
          */
@@ -14779,7 +15057,7 @@ export namespace Guestfs {
          *
          * If the filesystem does not have a UUID, this returns the empty string.
          *
-         * To find a filesystem from the UUID, use guestfs_session_findfs_uuid().
+         * To find a filesystem from the UUID, use `guestfs_session_findfs_uuid()`.
          * @param mountable
          * @returns the returned string, or NULL on error
          */
@@ -14796,7 +15074,7 @@ export namespace Guestfs {
          * activated or deactivated.
          *
          * This function depends on the feature "lvm2".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param activate
          * @param volgroups an array of strings
          * @returns true on success, false on error
@@ -14811,7 +15089,7 @@ export namespace Guestfs {
          * This command is the same as running "vgchange -a y|n"
          *
          * This function depends on the feature "lvm2".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param activate
          * @returns true on success, false on error
          */
@@ -14822,7 +15100,7 @@ export namespace Guestfs {
          * Generate a new random UUID for the volume group `vg`.
          *
          * This function depends on the feature "lvm2".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param vg
          * @returns true on success, false on error
          */
@@ -14833,7 +15111,7 @@ export namespace Guestfs {
          * Generate new random UUIDs for all volume groups.
          *
          * This function depends on the feature "lvm2".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @returns true on success, false on error
          */
         vgchange_uuid_all(): boolean;
@@ -14844,7 +15122,7 @@ export namespace Guestfs {
          * list of physical volumes `physvols`.
          *
          * This function depends on the feature "lvm2".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param volgroup
          * @param physvols an array of strings
          * @returns true on success, false on error
@@ -14853,14 +15131,14 @@ export namespace Guestfs {
         /**
          * get the LV UUIDs of all LVs in the volume group
          *
-         * Given a VG called `vgname,` this returns the UUIDs of all the logical
+         * Given a VG called `vgname`, this returns the UUIDs of all the logical
          * volumes created in this volume group.
          *
-         * You can use this along with guestfs_session_lvs() and
-         * guestfs_session_lvuuid() calls to associate logical volumes and volume
+         * You can use this along with `guestfs_session_lvs()` and
+         * `guestfs_session_lvuuid()` calls to associate logical volumes and volume
          * groups.
          *
-         * See also guestfs_session_vgpvuuids().
+         * See also `guestfs_session_vgpvuuids()`.
          * @param vgname
          * @returns an array of returned strings, or NULL on error
          */
@@ -14875,7 +15153,7 @@ export namespace Guestfs {
          * change at any time, and is provided for information only.
          *
          * This function depends on the feature "lvm2".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param vgname
          * @returns an array of binary data, or NULL on error
          */
@@ -14883,14 +15161,14 @@ export namespace Guestfs {
         /**
          * get the PV UUIDs containing the volume group
          *
-         * Given a VG called `vgname,` this returns the UUIDs of all the physical
+         * Given a VG called `vgname`, this returns the UUIDs of all the physical
          * volumes that this volume group resides on.
          *
-         * You can use this along with guestfs_session_pvs() and
-         * guestfs_session_pvuuid() calls to associate physical volumes and volume
+         * You can use this along with `guestfs_session_pvs()` and
+         * `guestfs_session_pvuuid()` calls to associate physical volumes and volume
          * groups.
          *
-         * See also guestfs_session_vglvuuids().
+         * See also `guestfs_session_vglvuuids()`.
          * @param vgname
          * @returns an array of returned strings, or NULL on error
          */
@@ -14898,13 +15176,13 @@ export namespace Guestfs {
         /**
          * remove an LVM volume group
          *
-         * Remove an LVM volume group `vgname,` (for example `VG)`.
+         * Remove an LVM volume group `vgname`, (for example `VG`).
          *
          * This also forcibly removes all logical volumes in the volume group (if
          * any).
          *
          * This function depends on the feature "lvm2".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param vgname
          * @returns true on success, false on error
          */
@@ -14925,12 +15203,12 @@ export namespace Guestfs {
          * vgs(8) command.
          *
          * This returns a list of just the volume group names that were detected
-         * (eg. `VolGroup0`0).
+         * (eg. `VolGroup00`).
          *
-         * See also guestfs_session_vgs_full().
+         * See also `guestfs_session_vgs_full()`.
          *
          * This function depends on the feature "lvm2".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @returns an array of returned strings, or NULL on error
          */
         vgs(): string[];
@@ -14941,7 +15219,7 @@ export namespace Guestfs {
          * vgs(8) command. The "full" version includes all fields.
          *
          * This function depends on the feature "lvm2".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @returns an array of VG objects, or NULL on error
          */
         vgs_full(): VG[];
@@ -14967,9 +15245,9 @@ export namespace Guestfs {
          * This function is a no op.
          *
          * In versions of the API &lt; 1.0.71 you had to call this function just
-         * after calling guestfs_session_launch() to wait for the launch to
+         * after calling `guestfs_session_launch()` to wait for the launch to
          * complete. However this is no longer necessary because
-         * guestfs_session_launch() now does the waiting.
+         * `guestfs_session_launch()` now does the waiting.
          *
          * If you see any calls to this function in code then you can just remove
          * them, unless you want to retain compatibility with older versions of the
@@ -15013,11 +15291,11 @@ export namespace Guestfs {
          * This does not erase the filesystem itself nor any other data from the
          * `device`.
          *
-         * Compare with guestfs_session_zero() which zeroes the first few blocks of
+         * Compare with `guestfs_session_zero()` which zeroes the first few blocks of
          * a device.
          *
          * This function depends on the feature "wipefs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @returns true on success, false on error
          */
@@ -15028,7 +15306,7 @@ export namespace Guestfs {
          * This call creates a file called `path`. The content of the file is the
          * string `content` (which can contain any 8 bit data).
          *
-         * See also guestfs_session_write_append().
+         * See also `guestfs_session_write_append()`.
          * @param path
          * @param content an array of binary data
          * @returns true on success, false on error
@@ -15040,7 +15318,7 @@ export namespace Guestfs {
          * This call appends `content` to the end of file `path`. If `path` does not
          * exist, then a new file is created.
          *
-         * See also guestfs_session_write().
+         * See also `guestfs_session_write()`.
          * @param path
          * @param content an array of binary data
          * @returns true on success, false on error
@@ -15052,7 +15330,7 @@ export namespace Guestfs {
          * This call creates a file called `path`. The contents of the file is the
          * string `content` (which can contain any 8 bit data), with length `size`.
          *
-         * As a special case, if `size` is `0` then the length is calculated using
+         * As a special case, if `size` is @0 then the length is calculated using
          * `strlen` (so in this case the content cannot contain embedded ASCII
          * NULs).
          *
@@ -15073,11 +15351,11 @@ export namespace Guestfs {
          * filesystems before this call can modify parameters.
          *
          * Some of the parameters of a mounted filesystem can be examined and
-         * modified using the guestfs_session_xfs_info() and
-         * guestfs_session_xfs_growfs() calls.
+         * modified using the `guestfs_session_xfs_info()` and
+         * `guestfs_session_xfs_growfs()` calls.
          *
          * This function depends on the feature "xfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @param optargs a GuestfsXfsAdmin containing optional arguments
          * @returns true on success, false on error
@@ -15089,10 +15367,10 @@ export namespace Guestfs {
          * Grow the XFS filesystem mounted at `path`.
          *
          * The returned struct contains geometry information. Missing fields are
-         * returned as `-1` (for numeric fields) or empty string.
+         * returned as @-1 (for numeric fields) or empty string.
          *
          * This function depends on the feature "xfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param path
          * @param optargs a GuestfsXfsGrowfs containing optional arguments
          * @returns true on success, false on error
@@ -15105,10 +15383,10 @@ export namespace Guestfs {
          * filesystem. This command returns the geometry of the filesystem.
          *
          * The returned struct contains geometry information. Missing fields are
-         * returned as `-1` (for numeric fields) or empty string.
+         * returned as @-1 (for numeric fields) or empty string.
          *
          * This function depends on the feature "xfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param pathordevice
          * @returns a XFSInfo object, or NULL on error
          */
@@ -15128,10 +15406,10 @@ export namespace Guestfs {
          * the resulting filesystem may be inconsistent or corrupt.
          *
          * The returned status indicates whether filesystem corruption was detected
-         * (returns `1`) or was not detected (returns `0`).
+         * (returns @1) or was not detected (returns @0).
          *
          * This function depends on the feature "xfs".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @param optargs a GuestfsXfsRepair containing optional arguments
          * @returns the returned value, or -1 on error
@@ -15144,7 +15422,7 @@ export namespace Guestfs {
          * resources.
          *
          * This function depends on the feature "libyara".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @returns true on success, false on error
          */
         yara_destroy(): boolean;
@@ -15154,7 +15432,7 @@ export namespace Guestfs {
          * Upload a set of Yara rules from local file filename.
          *
          * Yara rules allow to categorize files based on textual or binary patterns
-         * within their content. See guestfs_session_yara_scan() to see how to scan
+         * within their content. See `guestfs_session_yara_scan()` to see how to scan
          * files with the loaded rules.
          *
          * Rules can be in binary format, as when compiled with yarac command, or
@@ -15167,7 +15445,7 @@ export namespace Guestfs {
          * Previously loaded rules will be destroyed.
          *
          * This function depends on the feature "libyara".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param filename
          * @param cancellable A GCancellable object
          * @returns true on success, false on error
@@ -15189,7 +15467,7 @@ export namespace Guestfs {
          * Identifier of the Yara rule which matched against the given file.
          *
          * This function depends on the feature "libyara".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param path
          * @param cancellable A GCancellable object
          * @returns an array of YaraDetection objects, or NULL on error
@@ -15227,8 +15505,8 @@ export namespace Guestfs {
          * This prevents the underlying device from becoming non-sparse or growing
          * unnecessarily.
          *
-         * See also: guestfs_session_zero_device(), guestfs_session_scrub_device(),
-         * guestfs_session_is_zero_device()
+         * See also: `guestfs_session_zero_device()`, `guestfs_session_scrub_device()`,
+         * `guestfs_session_is_zero_device()`
          * @param device
          * @returns true on success, false on error
          */
@@ -15237,7 +15515,7 @@ export namespace Guestfs {
          * write zeroes to an entire device
          *
          * This command writes zeroes over the entire `device`. Compare with
-         * guestfs_session_zero() which just zeroes the first few blocks of a
+         * `guestfs_session_zero()` which just zeroes the first few blocks of a
          * device.
          *
          * If blocks are already zero, then this command avoids writing zeroes.
@@ -15257,7 +15535,7 @@ export namespace Guestfs {
          * filesystem is freed.
          *
          * Free space is not "trimmed". You may want to call
-         * guestfs_session_fstrim() either as an alternative to this, or after
+         * `guestfs_session_fstrim()` either as an alternative to this, or after
          * calling this, depending on your requirements.
          * @param directory
          * @returns true on success, false on error
@@ -15276,7 +15554,7 @@ export namespace Guestfs {
          * on the filesystem.
          *
          * This function depends on the feature "zerofree".
-         * See also guestfs_session_feature_available().
+         * See also `guestfs_session_feature_available()`.
          * @param device
          * @returns true on success, false on error
          */
@@ -15305,9 +15583,9 @@ export namespace Guestfs {
          *
          * This command runs file after first decompressing `path` using `method`.
          *
-         * `method` must be one of `gzip,` `compress` or `bzip2`.
+         * `method` must be one of `gzip`, `compress` or `bzip2`.
          *
-         * Since 1.0.63, use guestfs_session_file() instead which can now process
+         * Since 1.0.63, use `guestfs_session_file()` instead which can now process
          * compressed files.
          * @param meth
          * @param path
@@ -15350,6 +15628,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_set_e2attrs.
+     * @gir-type Class
      */
     class SetE2attrs extends GObject.Object {
         static $gtype: GObject.GType<SetE2attrs>;
@@ -15381,16 +15660,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SetE2attrs.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SetE2attrs.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SetE2attrs.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SetE2attrs.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SetE2attrs.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SetE2attrs.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -15413,6 +15695,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_syslinux.
+     * @gir-type Class
      */
     class Syslinux extends GObject.Object {
         static $gtype: GObject.GType<Syslinux>;
@@ -15444,16 +15727,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Syslinux.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Syslinux.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Syslinux.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Syslinux.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Syslinux.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Syslinux.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -15482,6 +15768,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_tar_in.
+     * @gir-type Class
      */
     class TarIn extends GObject.Object {
         static $gtype: GObject.GType<TarIn>;
@@ -15528,16 +15815,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TarIn.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TarIn.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TarIn.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TarIn.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TarIn.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TarIn.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -15568,6 +15858,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_tar_out.
+     * @gir-type Class
      */
     class TarOut extends GObject.Object {
         static $gtype: GObject.GType<TarOut>;
@@ -15619,16 +15910,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof TarOut.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TarOut.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof TarOut.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, TarOut.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof TarOut.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<TarOut.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -15669,6 +15963,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_tune2fs.
+     * @gir-type Class
      */
     class Tune2FS extends GObject.Object {
         static $gtype: GObject.GType<Tune2FS>;
@@ -15745,16 +16040,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Tune2FS.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Tune2FS.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Tune2FS.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Tune2FS.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Tune2FS.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Tune2FS.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -15779,6 +16077,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_umount.
+     * @gir-type Class
      */
     class Umount extends GObject.Object {
         static $gtype: GObject.GType<Umount>;
@@ -15815,16 +16114,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Umount.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Umount.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Umount.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Umount.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Umount.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Umount.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -15847,6 +16149,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_umount_local.
+     * @gir-type Class
      */
     class UmountLocal extends GObject.Object {
         static $gtype: GObject.GType<UmountLocal>;
@@ -15878,16 +16181,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof UmountLocal.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UmountLocal.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof UmountLocal.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UmountLocal.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UmountLocal.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UmountLocal.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -15922,6 +16228,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_xfs_admin.
+     * @gir-type Class
      */
     class XfsAdmin extends GObject.Object {
         static $gtype: GObject.GType<XfsAdmin>;
@@ -15983,16 +16290,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof XfsAdmin.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, XfsAdmin.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof XfsAdmin.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, XfsAdmin.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof XfsAdmin.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<XfsAdmin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -16029,6 +16339,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_xfs_growfs.
+     * @gir-type Class
      */
     class XfsGrowfs extends GObject.Object {
         static $gtype: GObject.GType<XfsGrowfs>;
@@ -16095,16 +16406,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof XfsGrowfs.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, XfsGrowfs.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof XfsGrowfs.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, XfsGrowfs.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof XfsGrowfs.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<XfsGrowfs.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -16145,6 +16459,7 @@ export namespace Guestfs {
 
     /**
      * An object encapsulating optional arguments for guestfs_session_xfs_repair.
+     * @gir-type Class
      */
     class XfsRepair extends GObject.Object {
         static $gtype: GObject.GType<XfsRepair>;
@@ -16221,16 +16536,19 @@ export namespace Guestfs {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof XfsRepair.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, XfsRepair.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof XfsRepair.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, XfsRepair.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof XfsRepair.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<XfsRepair.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -16238,26 +16556,53 @@ export namespace Guestfs {
         emit(signal: string, ...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AddDomainClass = typeof AddDomain;
+    /**
+     * @gir-type Struct
+     */
     abstract class AddDomainPrivate {
         static $gtype: GObject.GType<AddDomainPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AddDriveClass = typeof AddDrive;
+    /**
+     * @gir-type Struct
+     */
     abstract class AddDrivePrivate {
         static $gtype: GObject.GType<AddDrivePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AddDriveScratchClass = typeof AddDriveScratch;
+    /**
+     * @gir-type Struct
+     */
     abstract class AddDriveScratchPrivate {
         static $gtype: GObject.GType<AddDriveScratchPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AddLibvirtDomClass = typeof AddLibvirtDom;
+    /**
+     * @gir-type Struct
+     */
     abstract class AddLibvirtDomPrivate {
         static $gtype: GObject.GType<AddLibvirtDomPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Application {
         static $gtype: GObject.GType<Application>;
 
@@ -16296,6 +16641,9 @@ export namespace Guestfs {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Application2 {
         static $gtype: GObject.GType<Application2>;
 
@@ -16344,11 +16692,20 @@ export namespace Guestfs {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AugTransformClass = typeof AugTransform;
+    /**
+     * @gir-type Struct
+     */
     abstract class AugTransformPrivate {
         static $gtype: GObject.GType<AugTransformPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class BTRFSBalance {
         static $gtype: GObject.GType<BTRFSBalance>;
 
@@ -16373,21 +16730,42 @@ export namespace Guestfs {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type BTRFSFilesystemDefragmentClass = typeof BTRFSFilesystemDefragment;
+    /**
+     * @gir-type Struct
+     */
     abstract class BTRFSFilesystemDefragmentPrivate {
         static $gtype: GObject.GType<BTRFSFilesystemDefragmentPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type BTRFSFilesystemResizeClass = typeof BTRFSFilesystemResize;
+    /**
+     * @gir-type Struct
+     */
     abstract class BTRFSFilesystemResizePrivate {
         static $gtype: GObject.GType<BTRFSFilesystemResizePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type BTRFSImageClass = typeof BTRFSImage;
+    /**
+     * @gir-type Struct
+     */
     abstract class BTRFSImagePrivate {
         static $gtype: GObject.GType<BTRFSImagePrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class BTRFSQgroup {
         static $gtype: GObject.GType<BTRFSQgroup>;
 
@@ -16408,6 +16786,9 @@ export namespace Guestfs {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class BTRFSScrub {
         static $gtype: GObject.GType<BTRFSScrub>;
 
@@ -16452,6 +16833,9 @@ export namespace Guestfs {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class BTRFSSubvolume {
         static $gtype: GObject.GType<BTRFSSubvolume>;
 
@@ -16472,61 +16856,130 @@ export namespace Guestfs {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type BTRFSSubvolumeCreateClass = typeof BTRFSSubvolumeCreate;
+    /**
+     * @gir-type Struct
+     */
     abstract class BTRFSSubvolumeCreatePrivate {
         static $gtype: GObject.GType<BTRFSSubvolumeCreatePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type BTRFSSubvolumeSnapshotClass = typeof BTRFSSubvolumeSnapshot;
+    /**
+     * @gir-type Struct
+     */
     abstract class BTRFSSubvolumeSnapshotPrivate {
         static $gtype: GObject.GType<BTRFSSubvolumeSnapshotPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type BtrfsFsckClass = typeof BtrfsFsck;
+    /**
+     * @gir-type Struct
+     */
     abstract class BtrfsFsckPrivate {
         static $gtype: GObject.GType<BtrfsFsckPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CompressDeviceOutClass = typeof CompressDeviceOut;
+    /**
+     * @gir-type Struct
+     */
     abstract class CompressDeviceOutPrivate {
         static $gtype: GObject.GType<CompressDeviceOutPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CompressOutClass = typeof CompressOut;
+    /**
+     * @gir-type Struct
+     */
     abstract class CompressOutPrivate {
         static $gtype: GObject.GType<CompressOutPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CopyAttributesClass = typeof CopyAttributes;
+    /**
+     * @gir-type Struct
+     */
     abstract class CopyAttributesPrivate {
         static $gtype: GObject.GType<CopyAttributesPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CopyDeviceToDeviceClass = typeof CopyDeviceToDevice;
+    /**
+     * @gir-type Struct
+     */
     abstract class CopyDeviceToDevicePrivate {
         static $gtype: GObject.GType<CopyDeviceToDevicePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CopyDeviceToFileClass = typeof CopyDeviceToFile;
+    /**
+     * @gir-type Struct
+     */
     abstract class CopyDeviceToFilePrivate {
         static $gtype: GObject.GType<CopyDeviceToFilePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CopyFileToDeviceClass = typeof CopyFileToDevice;
+    /**
+     * @gir-type Struct
+     */
     abstract class CopyFileToDevicePrivate {
         static $gtype: GObject.GType<CopyFileToDevicePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CopyFileToFileClass = typeof CopyFileToFile;
+    /**
+     * @gir-type Struct
+     */
     abstract class CopyFileToFilePrivate {
         static $gtype: GObject.GType<CopyFileToFilePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CpioOutClass = typeof CpioOut;
+    /**
+     * @gir-type Struct
+     */
     abstract class CpioOutPrivate {
         static $gtype: GObject.GType<CpioOutPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Dirent {
         static $gtype: GObject.GType<Dirent>;
 
@@ -16547,36 +17000,75 @@ export namespace Guestfs {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DiskCreateClass = typeof DiskCreate;
+    /**
+     * @gir-type Struct
+     */
     abstract class DiskCreatePrivate {
         static $gtype: GObject.GType<DiskCreatePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DownloadBlocksClass = typeof DownloadBlocks;
+    /**
+     * @gir-type Struct
+     */
     abstract class DownloadBlocksPrivate {
         static $gtype: GObject.GType<DownloadBlocksPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type E2fsckClass = typeof E2fsck;
+    /**
+     * @gir-type Struct
+     */
     abstract class E2fsckPrivate {
         static $gtype: GObject.GType<E2fsckPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type FstrimClass = typeof Fstrim;
+    /**
+     * @gir-type Struct
+     */
     abstract class FstrimPrivate {
         static $gtype: GObject.GType<FstrimPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type GlobExpandClass = typeof GlobExpand;
+    /**
+     * @gir-type Struct
+     */
     abstract class GlobExpandPrivate {
         static $gtype: GObject.GType<GlobExpandPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type GrepClass = typeof Grep;
+    /**
+     * @gir-type Struct
+     */
     abstract class GrepPrivate {
         static $gtype: GObject.GType<GrepPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class HivexNode {
         static $gtype: GObject.GType<HivexNode>;
 
@@ -16593,11 +17085,20 @@ export namespace Guestfs {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type HivexOpenClass = typeof HivexOpen;
+    /**
+     * @gir-type Struct
+     */
     abstract class HivexOpenPrivate {
         static $gtype: GObject.GType<HivexOpenPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class HivexValue {
         static $gtype: GObject.GType<HivexValue>;
 
@@ -16614,6 +17115,9 @@ export namespace Guestfs {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class INotifyEvent {
         static $gtype: GObject.GType<INotifyEvent>;
 
@@ -16636,6 +17140,9 @@ export namespace Guestfs {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class ISOInfo {
         static $gtype: GObject.GType<ISOInfo>;
 
@@ -16684,11 +17191,20 @@ export namespace Guestfs {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type InspectGetIconClass = typeof InspectGetIcon;
+    /**
+     * @gir-type Struct
+     */
     abstract class InspectGetIconPrivate {
         static $gtype: GObject.GType<InspectGetIconPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class IntBool {
         static $gtype: GObject.GType<IntBool>;
 
@@ -16707,51 +17223,108 @@ export namespace Guestfs {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type InternalTest63OptargsClass = typeof InternalTest63Optargs;
+    /**
+     * @gir-type Struct
+     */
     abstract class InternalTest63OptargsPrivate {
         static $gtype: GObject.GType<InternalTest63OptargsPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type InternalTestClass = typeof InternalTest;
+    /**
+     * @gir-type Alias
+     */
     type InternalTestOnlyOptargsClass = typeof InternalTestOnlyOptargs;
+    /**
+     * @gir-type Struct
+     */
     abstract class InternalTestOnlyOptargsPrivate {
         static $gtype: GObject.GType<InternalTestOnlyOptargsPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class InternalTestPrivate {
         static $gtype: GObject.GType<InternalTestPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type IsBlockdevClass = typeof IsBlockdev;
+    /**
+     * @gir-type Struct
+     */
     abstract class IsBlockdevPrivate {
         static $gtype: GObject.GType<IsBlockdevPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type IsChardevClass = typeof IsChardev;
+    /**
+     * @gir-type Struct
+     */
     abstract class IsChardevPrivate {
         static $gtype: GObject.GType<IsChardevPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type IsDirClass = typeof IsDir;
+    /**
+     * @gir-type Struct
+     */
     abstract class IsDirPrivate {
         static $gtype: GObject.GType<IsDirPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type IsFifoClass = typeof IsFifo;
+    /**
+     * @gir-type Struct
+     */
     abstract class IsFifoPrivate {
         static $gtype: GObject.GType<IsFifoPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type IsFileClass = typeof IsFile;
+    /**
+     * @gir-type Struct
+     */
     abstract class IsFilePrivate {
         static $gtype: GObject.GType<IsFilePrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type IsSocketClass = typeof IsSocket;
+    /**
+     * @gir-type Struct
+     */
     abstract class IsSocketPrivate {
         static $gtype: GObject.GType<IsSocketPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class LV {
         static $gtype: GObject.GType<LV>;
 
@@ -16798,11 +17371,20 @@ export namespace Guestfs {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MDCreateClass = typeof MDCreate;
+    /**
+     * @gir-type Struct
+     */
     abstract class MDCreatePrivate {
         static $gtype: GObject.GType<MDCreatePrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class MDStat {
         static $gtype: GObject.GType<MDStat>;
 
@@ -16823,61 +17405,130 @@ export namespace Guestfs {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type Mke2fsClass = typeof Mke2fs;
+    /**
+     * @gir-type Struct
+     */
     abstract class Mke2fsPrivate {
         static $gtype: GObject.GType<Mke2fsPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MkfsBtrfsClass = typeof MkfsBtrfs;
+    /**
+     * @gir-type Struct
+     */
     abstract class MkfsBtrfsPrivate {
         static $gtype: GObject.GType<MkfsBtrfsPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MkfsClass = typeof Mkfs;
+    /**
+     * @gir-type Struct
+     */
     abstract class MkfsPrivate {
         static $gtype: GObject.GType<MkfsPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MksquashfsClass = typeof Mksquashfs;
+    /**
+     * @gir-type Struct
+     */
     abstract class MksquashfsPrivate {
         static $gtype: GObject.GType<MksquashfsPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MkswapClass = typeof Mkswap;
+    /**
+     * @gir-type Struct
+     */
     abstract class MkswapPrivate {
         static $gtype: GObject.GType<MkswapPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MktempClass = typeof Mktemp;
+    /**
+     * @gir-type Struct
+     */
     abstract class MktempPrivate {
         static $gtype: GObject.GType<MktempPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type Mount9PClass = typeof Mount9P;
+    /**
+     * @gir-type Struct
+     */
     abstract class Mount9PPrivate {
         static $gtype: GObject.GType<Mount9PPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MountLocalClass = typeof MountLocal;
+    /**
+     * @gir-type Struct
+     */
     abstract class MountLocalPrivate {
         static $gtype: GObject.GType<MountLocalPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type NTFSResizeOptsClass = typeof NTFSResizeOpts;
+    /**
+     * @gir-type Struct
+     */
     abstract class NTFSResizeOptsPrivate {
         static $gtype: GObject.GType<NTFSResizeOptsPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type NtfscloneOutClass = typeof NtfscloneOut;
+    /**
+     * @gir-type Struct
+     */
     abstract class NtfscloneOutPrivate {
         static $gtype: GObject.GType<NtfscloneOutPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type NtfsfixClass = typeof Ntfsfix;
+    /**
+     * @gir-type Struct
+     */
     abstract class NtfsfixPrivate {
         static $gtype: GObject.GType<NtfsfixPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class PV {
         static $gtype: GObject.GType<PV>;
 
@@ -16920,6 +17571,9 @@ export namespace Guestfs {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Partition {
         static $gtype: GObject.GType<Partition>;
 
@@ -16942,32 +17596,68 @@ export namespace Guestfs {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RemountClass = typeof Remount;
+    /**
+     * @gir-type Struct
+     */
     abstract class RemountPrivate {
         static $gtype: GObject.GType<RemountPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RsyncClass = typeof Rsync;
+    /**
+     * @gir-type Alias
+     */
     type RsyncInClass = typeof RsyncIn;
+    /**
+     * @gir-type Struct
+     */
     abstract class RsyncInPrivate {
         static $gtype: GObject.GType<RsyncInPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RsyncOutClass = typeof RsyncOut;
+    /**
+     * @gir-type Struct
+     */
     abstract class RsyncOutPrivate {
         static $gtype: GObject.GType<RsyncOutPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class RsyncPrivate {
         static $gtype: GObject.GType<RsyncPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SelinuxRelabelClass = typeof SelinuxRelabel;
+    /**
+     * @gir-type Struct
+     */
     abstract class SelinuxRelabelPrivate {
         static $gtype: GObject.GType<SelinuxRelabelPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SessionClass = typeof Session;
+    /**
+     * @gir-type Struct
+     */
     class SessionEventParams {
         static $gtype: GObject.GType<SessionEventParams>;
 
@@ -16980,15 +17670,27 @@ export namespace Guestfs {
         array_len: number;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class SessionPrivate {
         static $gtype: GObject.GType<SessionPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SetE2attrsClass = typeof SetE2attrs;
+    /**
+     * @gir-type Struct
+     */
     abstract class SetE2attrsPrivate {
         static $gtype: GObject.GType<SetE2attrsPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Stat {
         static $gtype: GObject.GType<Stat>;
 
@@ -17029,6 +17731,9 @@ export namespace Guestfs {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class StatNS {
         static $gtype: GObject.GType<StatNS>;
 
@@ -17087,6 +17792,9 @@ export namespace Guestfs {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class StatVFS {
         static $gtype: GObject.GType<StatVFS>;
 
@@ -17123,11 +17831,20 @@ export namespace Guestfs {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SyslinuxClass = typeof Syslinux;
+    /**
+     * @gir-type Struct
+     */
     abstract class SyslinuxPrivate {
         static $gtype: GObject.GType<SyslinuxPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class TSKDirent {
         static $gtype: GObject.GType<TSKDirent>;
 
@@ -17174,21 +17891,42 @@ export namespace Guestfs {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TarInClass = typeof TarIn;
+    /**
+     * @gir-type Struct
+     */
     abstract class TarInPrivate {
         static $gtype: GObject.GType<TarInPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type TarOutClass = typeof TarOut;
+    /**
+     * @gir-type Struct
+     */
     abstract class TarOutPrivate {
         static $gtype: GObject.GType<TarOutPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type Tune2FSClass = typeof Tune2FS;
+    /**
+     * @gir-type Struct
+     */
     abstract class Tune2FSPrivate {
         static $gtype: GObject.GType<Tune2FSPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class UTSName {
         static $gtype: GObject.GType<UTSName>;
 
@@ -17211,16 +17949,31 @@ export namespace Guestfs {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type UmountClass = typeof Umount;
+    /**
+     * @gir-type Alias
+     */
     type UmountLocalClass = typeof UmountLocal;
+    /**
+     * @gir-type Struct
+     */
     abstract class UmountLocalPrivate {
         static $gtype: GObject.GType<UmountLocalPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class UmountPrivate {
         static $gtype: GObject.GType<UmountPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class VG {
         static $gtype: GObject.GType<VG>;
 
@@ -17273,6 +18026,9 @@ export namespace Guestfs {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class Version {
         static $gtype: GObject.GType<Version>;
 
@@ -17295,6 +18051,9 @@ export namespace Guestfs {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class XAttr {
         static $gtype: GObject.GType<XAttr>;
 
@@ -17313,6 +18072,9 @@ export namespace Guestfs {
         );
     }
 
+    /**
+     * @gir-type Struct
+     */
     class XFSInfo {
         static $gtype: GObject.GType<XFSInfo>;
 
@@ -17377,21 +18139,42 @@ export namespace Guestfs {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type XfsAdminClass = typeof XfsAdmin;
+    /**
+     * @gir-type Struct
+     */
     abstract class XfsAdminPrivate {
         static $gtype: GObject.GType<XfsAdminPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type XfsGrowfsClass = typeof XfsGrowfs;
+    /**
+     * @gir-type Struct
+     */
     abstract class XfsGrowfsPrivate {
         static $gtype: GObject.GType<XfsGrowfsPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type XfsRepairClass = typeof XfsRepair;
+    /**
+     * @gir-type Struct
+     */
     abstract class XfsRepairPrivate {
         static $gtype: GObject.GType<XfsRepairPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     class YaraDetection {
         static $gtype: GObject.GType<YaraDetection>;
 

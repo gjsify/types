@@ -1,0 +1,9 @@
+{
+    "entryPoints": ["./ministream-1.d.ts"],
+    "readme": "./README.md",
+    "name": "Ministream-1",
+    "tsconfig": "./tsconfig.json",
+    "skipErrorChecking": true,
+    "highlightLanguages": ["typescript", "javascript", "c", "cpp", "xml", "bash", "json", "css"]
+}
+

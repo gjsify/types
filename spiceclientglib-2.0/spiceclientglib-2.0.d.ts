@@ -22,12 +22,16 @@ export namespace SpiceClientGLib {
      * SpiceClientGLib-2.0
      */
 
+    /**
+     * @gir-type Enum
+     */
     export namespace ChannelEvent {
         export const $gtype: GObject.GType<ChannelEvent>;
     }
 
     /**
-     * An event, emitted by #SpiceChannel::channel-event signal.
+     * An event, emitted by {@link SpiceClientGLib.Channel.SignalSignatures.channel_event | SpiceClientGLib.Channel::channel-event} signal.
+     * @gir-type Enum
      */
     enum ChannelEvent {
         /**
@@ -70,6 +74,7 @@ export namespace SpiceClientGLib {
 
     /**
      * Error codes returned by spice-client API.
+     * @gir-type Struct
      */
     class ClientError extends GLib.Error {
         static $gtype: GObject.GType<GLib.Error>;
@@ -112,6 +117,8 @@ export namespace SpiceClientGLib {
 
     /**
      * An action to perform on the VM.
+     * @gir-type Enum
+     * @since 0.36
      */
     enum QmpPortVmAction {
         /**
@@ -140,12 +147,16 @@ export namespace SpiceClientGLib {
         LAST,
     }
 
+    /**
+     * @gir-type Enum
+     */
     export namespace SessionMigration {
         export const $gtype: GObject.GType<SessionMigration>;
     }
 
     /**
      * Session migration state.
+     * @gir-type Enum
      */
     enum SessionMigration {
         /**
@@ -168,205 +179,203 @@ export namespace SpiceClientGLib {
 
     /**
      * Spice-Gtk major version component (e.g. 1 if version is 1.2.3)
+     * @since 0.24
      */
     const GTK_MAJOR_VERSION: number;
     /**
      * Spice-Gtk micro version component (e.g. 3 if version is 1.2.3)
+     * @since 0.24
      */
     const GTK_MICRO_VERSION: number;
     /**
      * Spice-Gtk minor version component (e.g. 2 if version is 1.2.3)
+     * @since 0.24
      */
     const GTK_MINOR_VERSION: number;
+    const WEBDAV_CLIPBOARD_FOLDER_PATH: string;
     /**
-     * Gets a #GQuark representing the string "spice-client-error-quark"
-     * @returns the #GQuark representing the string.
+     * Gets a {@link GLib.Quark} representing the string "spice-client-error-quark"
+     * @returns the {@link GLib.Quark} representing the string.
      */
     function client_error_quark(): GLib.Quark;
     /**
-     * Tells the spice server to change the preferred image compression
-     * for the `channel`.
-     * @param channel a #SpiceDisplayChannel
-     * @param compression a #SpiceImageCompression
-     */
-    function display_change_preferred_compression(channel: Channel, compression: number): void;
-    /**
-     * Tells the spice server to change the preferred video codec type for
-     * streaming in `channel`. Application can set only one preferred video codec per
-     * display channel.
-     * @param channel a #SpiceDisplayChannel
-     * @param codec_type a #SpiceVideoCodecType
-     */
-    function display_change_preferred_video_codec_type(channel: Channel, codec_type: number): void;
-    /**
      * Retrieves the GL scanout if available
-     * @param channel a #SpiceDisplayChannel
-     * @returns the current GL scanout, or %NULL if none or not valid
+     * @param channel a {@link SpiceClientGLib.DisplayChannel}
+     * @returns the current GL scanout, or `null` if none or not valid
+     * @since 0.31
+     * @deprecated since 0.35: use `spice_display_channel_get_gl_scanout()` instead.
      */
     function display_get_gl_scanout(channel: DisplayChannel): GlScanout;
     /**
-     * Retrieve primary display surface `surface_id`.
-     * @param channel a #SpiceDisplayChannel
-     * @param surface_id a surface id
-     * @param primary a #SpiceDisplayPrimary
-     * @returns %TRUE if the primary surface was found and its details collected in @primary.
-     */
-    function display_get_primary(channel: Channel, surface_id: number, primary: DisplayPrimary): boolean;
-    /**
      * After a SpiceDisplayChannel::gl-draw is emitted, the client should
      * draw the current display with the current GL scanout, and must
-     * release the GL resource with a call to spice_display_gl_draw_done()
+     * release the GL resource with a call to `spice_display_gl_draw_done()`
      * (failing to do so for each gl-draw may result in a frozen display).
-     * @param channel a #SpiceDisplayChannel
+     * @param channel a {@link SpiceClientGLib.DisplayChannel}
+     * @since 0.31
+     * @deprecated since 0.35: use `spice_display_channel_gl_draw_done()` instead.
      */
     function display_gl_draw_done(channel: DisplayChannel): void;
     /**
      * Gets commandline options.
      *
      * Bindings for other languages are available since 0.32
-     * @returns a #GOptionGroup for the commandline arguments specific to Spice.  You have to call spice_set_session_option() after to set the options on a #SpiceSession.
+     * @returns a {@link GLib.OptionGroup} for the commandline arguments specific to Spice.  You have to call `spice_set_session_option()` after to set the options on a {@link SpiceClientGLib.Session}.
      */
     function get_option_group(): GLib.OptionGroup;
     /**
      * Press a mouse button.
-     * @param channel a #SpiceInputsChannel
+     * @param channel a {@link SpiceClientGLib.InputsChannel}
      * @param button a SPICE_MOUSE_BUTTON
      * @param button_state SPICE_MOUSE_BUTTON_MASK flags
+     * @deprecated since 0.35: use `spice_inputs_channel_button_press()` instead.
      */
     function inputs_button_press(channel: InputsChannel, button: number, button_state: number): void;
     /**
      * Release a button.
-     * @param channel a #SpiceInputsChannel
+     * @param channel a {@link SpiceClientGLib.InputsChannel}
      * @param button a SPICE_MOUSE_BUTTON
      * @param button_state SPICE_MOUSE_BUTTON_MASK flags
+     * @deprecated since 0.35: use `spice_inputs_channel_button_release()` instead.
      */
     function inputs_button_release(channel: InputsChannel, button: number, button_state: number): void;
     /**
      * Press a key.
-     * @param channel a #SpiceInputsChannel
+     * @param channel a {@link SpiceClientGLib.InputsChannel}
      * @param scancode a PC XT (set 1) key scancode.  For scancodes with an \%0xe0            prefix, drop the prefix and OR the scancode with \%0x100.
+     * @deprecated since 0.35: use `spice_inputs_channel_key_press()` instead.
      */
     function inputs_key_press(channel: InputsChannel, scancode: number): void;
     /**
      * Press and release a key event atomically (in the same message).
-     * @param channel a #SpiceInputsChannel
+     * @param channel a {@link SpiceClientGLib.InputsChannel}
      * @param scancode a PC XT (set 1) key scancode.  For scancodes with an \%0xe0            prefix, drop the prefix and OR the scancode with \%0x100.
+     * @since 0.13
+     * @deprecated since 0.35
      */
     function inputs_key_press_and_release(channel: InputsChannel, scancode: number): void;
     /**
      * Release a key.
-     * @param channel a #SpiceInputsChannel
+     * @param channel a {@link SpiceClientGLib.InputsChannel}
      * @param scancode a PC XT (set 1) key scancode.  For scancodes with an \%0xe0            prefix, drop the prefix and OR the scancode with \%0x100.
+     * @deprecated since 0.35: use `spice_inputs_channel_key_release()` instead.
      */
     function inputs_key_release(channel: InputsChannel, scancode: number): void;
     /**
      * Change mouse position (used in SPICE_MOUSE_MODE_SERVER).
-     * @param channel a #SpiceInputsChannel
+     * @param channel a {@link SpiceClientGLib.InputsChannel}
      * @param dx delta X mouse coordinates
      * @param dy delta Y mouse coordinates
      * @param button_state SPICE_MOUSE_BUTTON_MASK flags
+     * @deprecated since 0.35: use `spice_inputs_channel_motion()` instead.
      */
     function inputs_motion(channel: InputsChannel, dx: number, dy: number, button_state: number): void;
     /**
      * Change mouse position (used in SPICE_MOUSE_MODE_CLIENT).
-     * @param channel a #SpiceInputsChannel
+     * @param channel a {@link SpiceClientGLib.InputsChannel}
      * @param x X mouse coordinates
      * @param y Y mouse coordinates
      * @param display display channel id
      * @param button_state SPICE_MOUSE_BUTTON_MASK flags
+     * @deprecated since 0.35: use `spice_inputs_channel_position()` instead.
      */
     function inputs_position(channel: InputsChannel, x: number, y: number, display: number, button_state: number): void;
     /**
      * Set the keyboard locks on the guest (Caps, Num, Scroll..)
-     * @param channel a #SpiceInputsChannel
-     * @param locks #SpiceInputsLock modifiers flags
+     * @param channel a {@link SpiceClientGLib.InputsChannel}
+     * @param locks {@link SpiceClientGLib.InputsLock} modifiers flags
+     * @deprecated since 0.35: use `spice_inputs_channel_set_key_locks()` instead.
      */
     function inputs_set_key_locks(channel: InputsChannel, locks: number): void;
     /**
      * Test capability of a remote agent.
-     * @param channel a #SpiceMainChannel
+     * @param channel a {@link SpiceClientGLib.MainChannel}
      * @param cap an agent capability identifier
-     * @returns %TRUE if @cap (channel kind capability) is available.
+     * @returns `true` if `cap` (channel kind capability) is available.
+     * @deprecated since 0.35: use `spice_main_channel_agent_test_capability()` instead.
      */
     function main_agent_test_capability(channel: MainChannel, cap: number): boolean;
     /**
      * Grab the guest clipboard, with #VD_AGENT_CLIPBOARD `types`.
-     * @param channel a #SpiceMainChannel
+     * @param channel a {@link SpiceClientGLib.MainChannel}
      * @param types an array of #VD_AGENT_CLIPBOARD types available in the clipboard
-     * @param ntypes the number of @types
+     * @deprecated since 0.6: use `spice_main_channel_clipboard_selection_grab()` instead.
      */
-    function main_clipboard_grab(channel: MainChannel, types: number, ntypes: number): void;
+    function main_clipboard_grab(channel: MainChannel, types: number[]): void;
     /**
      * Send the clipboard data to the guest.
-     * @param channel a #SpiceMainChannel
+     * @param channel a {@link SpiceClientGLib.MainChannel}
      * @param type a #VD_AGENT_CLIPBOARD type
      * @param data clipboard data
-     * @param size data length in bytes
+     * @deprecated since 0.6: use `spice_main_channel_clipboard_selection_notify()` instead.
      */
-    function main_clipboard_notify(channel: MainChannel, type: number, data: number, size: number): void;
+    function main_clipboard_notify(channel: MainChannel, type: number, data: Uint8Array | string): void;
     /**
      * Release the clipboard (for example, when the client loses the
      * clipboard grab): Inform the guest no clipboard data is available.
-     * @param channel a #SpiceMainChannel
+     * @param channel a {@link SpiceClientGLib.MainChannel}
+     * @deprecated since 0.6: use `spice_main_channel_clipboard_selection_release()` instead.
      */
     function main_clipboard_release(channel: MainChannel): void;
     /**
      * Request clipboard data of `type` from the guest. The reply is sent
-     * through the #SpiceMainChannel::main-clipboard signal.
-     * @param channel a #SpiceMainChannel
+     * through the {@link SpiceClientGLib.MainChannel.SignalSignatures.main_clipboard | SpiceClientGLib.MainChannel::main-clipboard} signal.
+     * @param channel a {@link SpiceClientGLib.MainChannel}
      * @param type a #VD_AGENT_CLIPBOARD type
+     * @deprecated since 0.6: use `spice_main_channel_clipboard_selection_request()` instead.
      */
     function main_clipboard_request(channel: MainChannel, type: number): void;
     /**
      * Grab the guest clipboard, with #VD_AGENT_CLIPBOARD `types`.
-     * @param channel a #SpiceMainChannel
+     * @param channel a {@link SpiceClientGLib.MainChannel}
      * @param selection one of the clipboard #VD_AGENT_CLIPBOARD_SELECTION_*
      * @param types an array of #VD_AGENT_CLIPBOARD types available in the clipboard
-     * @param ntypes the number of @types
+     * @since 0.6
+     * @deprecated since 0.35: use `spice_main_channel_clipboard_selection_grab()` instead.
      */
-    function main_clipboard_selection_grab(
-        channel: MainChannel,
-        selection: number,
-        types: number,
-        ntypes: number,
-    ): void;
+    function main_clipboard_selection_grab(channel: MainChannel, selection: number, types: number[]): void;
     /**
      * Send the clipboard data to the guest.
-     * @param channel a #SpiceMainChannel
+     * @param channel a {@link SpiceClientGLib.MainChannel}
      * @param selection one of the clipboard #VD_AGENT_CLIPBOARD_SELECTION_*
      * @param type a #VD_AGENT_CLIPBOARD type
      * @param data clipboard data
-     * @param size data length in bytes
+     * @since 0.6
+     * @deprecated since 0.35: use `spice_main_channel_clipboard_selection_notify()` instead.
      */
     function main_clipboard_selection_notify(
         channel: MainChannel,
         selection: number,
         type: number,
-        data: number,
-        size: number,
+        data: Uint8Array | string,
     ): void;
     /**
      * Release the clipboard (for example, when the client loses the
      * clipboard grab): Inform the guest no clipboard data is available.
-     * @param channel a #SpiceMainChannel
+     * @param channel a {@link SpiceClientGLib.MainChannel}
      * @param selection one of the clipboard #VD_AGENT_CLIPBOARD_SELECTION_*
+     * @since 0.6
+     * @deprecated since 0.35: use `spice_main_channel_clipboard_selection_release()` instead.
      */
     function main_clipboard_selection_release(channel: MainChannel, selection: number): void;
     /**
      * Request clipboard data of `type` from the guest. The reply is sent
-     * through the #SpiceMainChannel::main-clipboard-selection signal.
-     * @param channel a #SpiceMainChannel
+     * through the {@link SpiceClientGLib.MainChannel.SignalSignatures.main_clipboard_selection | SpiceClientGLib.MainChannel::main-clipboard-selection} signal.
+     * @param channel a {@link SpiceClientGLib.MainChannel}
      * @param selection one of the clipboard #VD_AGENT_CLIPBOARD_SELECTION_*
      * @param type a #VD_AGENT_CLIPBOARD type
+     * @since 0.6
+     * @deprecated since 0.35: use `spice_main_channel_clipboard_selection_request()` instead.
      */
     function main_clipboard_selection_request(channel: MainChannel, selection: number, type: number): void;
     /**
-     * See: spice_main_channel_file_copy_async()
-     * @param channel a #SpiceMainChannel
-     * @param sources a %NULL-terminated array of #GFile objects to be transferred
-     * @param flags set of #GFileCopyFlags
-     * @param cancellable optional #GCancellable object, %NULL to ignore
-     * @param progress_callback function to callback with     progress information, or %NULL if progress information is not needed
+     * See: `spice_main_channel_file_copy_async()`
+     * @param channel a {@link SpiceClientGLib.MainChannel}
+     * @param sources a `null`-terminated array of {@link Gio.File} objects to be transferred
+     * @param flags set of {@link Gio.FileCopyFlags}
+     * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
+     * @param progress_callback function to callback with     progress information, or `null` if progress information is not needed
+     * @deprecated since 0.35: use `spice_main_channel_file_copy_async()` instead.
      */
     function main_file_copy_async(
         channel: MainChannel,
@@ -376,13 +385,14 @@ export namespace SpiceClientGLib {
         progress_callback?: Gio.FileProgressCallback | null,
     ): globalThis.Promise<boolean>;
     /**
-     * See: spice_main_channel_file_copy_async()
-     * @param channel a #SpiceMainChannel
-     * @param sources a %NULL-terminated array of #GFile objects to be transferred
-     * @param flags set of #GFileCopyFlags
-     * @param cancellable optional #GCancellable object, %NULL to ignore
-     * @param progress_callback function to callback with     progress information, or %NULL if progress information is not needed
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+     * See: `spice_main_channel_file_copy_async()`
+     * @param channel a {@link SpiceClientGLib.MainChannel}
+     * @param sources a `null`-terminated array of {@link Gio.File} objects to be transferred
+     * @param flags set of {@link Gio.FileCopyFlags}
+     * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
+     * @param progress_callback function to callback with     progress information, or `null` if progress information is not needed
+     * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+     * @deprecated since 0.35: use `spice_main_channel_file_copy_async()` instead.
      */
     function main_file_copy_async(
         channel: MainChannel,
@@ -393,13 +403,14 @@ export namespace SpiceClientGLib {
         callback: Gio.AsyncReadyCallback<MainChannel> | null,
     ): void;
     /**
-     * See: spice_main_channel_file_copy_async()
-     * @param channel a #SpiceMainChannel
-     * @param sources a %NULL-terminated array of #GFile objects to be transferred
-     * @param flags set of #GFileCopyFlags
-     * @param cancellable optional #GCancellable object, %NULL to ignore
-     * @param progress_callback function to callback with     progress information, or %NULL if progress information is not needed
-     * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+     * See: `spice_main_channel_file_copy_async()`
+     * @param channel a {@link SpiceClientGLib.MainChannel}
+     * @param sources a `null`-terminated array of {@link Gio.File} objects to be transferred
+     * @param flags set of {@link Gio.FileCopyFlags}
+     * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
+     * @param progress_callback function to callback with     progress information, or `null` if progress information is not needed
+     * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+     * @deprecated since 0.35: use `spice_main_channel_file_copy_async()` instead.
      */
     function main_file_copy_async(
         channel: MainChannel,
@@ -411,10 +422,10 @@ export namespace SpiceClientGLib {
     ): globalThis.Promise<boolean> | void;
     /**
      * Finishes copying the file started with
-     * spice_main_file_copy_async().
-     * @param channel a #SpiceMainChannel
-     * @param result a #GAsyncResult.
-     * @returns a %TRUE on success, %FALSE on error.
+     * `spice_main_file_copy_async()`.
+     * @param channel a {@link SpiceClientGLib.MainChannel}
+     * @param result a {@link Gio.AsyncResult}.
+     * @returns a `true` on success, `false` on error.
      */
     function main_file_copy_finish(channel: MainChannel, result: Gio.AsyncResult): boolean;
     /**
@@ -423,24 +434,28 @@ export namespace SpiceClientGLib {
      * when possible.
      * @param channel a %SpiceMainChannel
      * @param mode a SPICE_MOUSE_MODE
+     * @since 0.32
+     * @deprecated since 0.35: use `spice_main_channel_request_mouse_mode()` instead.
      */
     function main_request_mouse_mode(channel: MainChannel, mode: number): void;
     /**
      * Send monitors configuration previously set with
-     * spice_main_set_display() and spice_main_set_display_enabled()
-     * @param channel a #SpiceMainChannel
-     * @returns %TRUE on success.
+     * `spice_main_set_display()` and `spice_main_set_display_enabled()`
+     * @param channel a {@link SpiceClientGLib.MainChannel}
+     * @returns `true` on success.
+     * @deprecated since 0.35: use `spice_main_channel_send_monitor_config()` instead.
      */
     function main_send_monitor_config(channel: MainChannel): boolean;
     /**
      * Notify the guest of screen resolution change. The notification is
      * sent 1 second later, if no further changes happen.
-     * @param channel a #SpiceMainChannel
+     * @param channel a {@link SpiceClientGLib.MainChannel}
      * @param id display ID
      * @param x x position
      * @param y y position
      * @param width display width
      * @param height display height
+     * @deprecated since 0.35: use `spice_main_channel_update_display()` instead.
      */
     function main_set_display(
         channel: MainChannel,
@@ -452,28 +467,31 @@ export namespace SpiceClientGLib {
     ): void;
     /**
      * When sending monitor configuration to agent guest, don't set
-     * display `id,` which the agent translates to disabling the display
+     * display `id`, which the agent translates to disabling the display
      * id. Note: this will take effect next time the monitor
      * configuration is sent.
-     * @param channel a #SpiceMainChannel
+     * @param channel a {@link SpiceClientGLib.MainChannel}
      * @param id display ID (if -1: set all displays)
-     * @param enabled wether display @id is enabled
+     * @param enabled wether display `id` is enabled
+     * @since 0.6
+     * @deprecated since 0.35: use `spice_main_channel_update_display_enabled()` instead.
      */
     function main_set_display_enabled(channel: MainChannel, id: number, enabled: boolean): void;
     /**
      * Update the display `id` resolution.
      *
-     * If `update` is %TRUE, the remote configuration will be updated too
+     * If `update` is `true`, the remote configuration will be updated too
      * after 1 second without further changes. You can send when you want
      * without delay the new configuration to the remote with
-     * spice_main_send_monitor_config()
-     * @param channel a #SpiceMainChannel
+     * `spice_main_send_monitor_config()`
+     * @param channel a {@link SpiceClientGLib.MainChannel}
      * @param id display ID
      * @param x x position
      * @param y y position
      * @param width display width
      * @param height display height
-     * @param update if %TRUE, update guest resolution after 1sec.
+     * @param update if `true`, update guest resolution after 1sec.
+     * @deprecated since 0.35: use `spice_main_channel_update_display()` instead.
      */
     function main_update_display(
         channel: MainChannel,
@@ -485,18 +503,20 @@ export namespace SpiceClientGLib {
         update: boolean,
     ): void;
     /**
-     * When sending monitor configuration to agent guest, if `enabled` is %FALSE,
-     * don't set display `id,` which the agent translates to disabling the display
-     * id. If `enabled` is %TRUE, the monitor will be included in the next monitor
+     * When sending monitor configuration to agent guest, if `enabled` is `false`,
+     * don't set display `id`, which the agent translates to disabling the display
+     * id. If `enabled` is `true`, the monitor will be included in the next monitor
      * update. Note: this will take effect next time the monitor configuration is
      * sent.
      *
-     * If `update` is %FALSE, no server update will be triggered by this call, but
+     * If `update` is `false`, no server update will be triggered by this call, but
      * the value will be saved and used in the next configuration update.
-     * @param channel a #SpiceMainChannel
+     * @param channel a {@link SpiceClientGLib.MainChannel}
      * @param id display ID (if -1: set all displays)
-     * @param enabled wether display @id is enabled
-     * @param update if %TRUE, update guest display state after 1sec.
+     * @param enabled wether display `id` is enabled
+     * @param update if `true`, update guest display state after 1sec.
+     * @since 0.30
+     * @deprecated since 0.35: use `spice_main_channel_update_display_enabled()` instead.
      */
     function main_update_display_enabled(channel: MainChannel, id: number, enabled: boolean, update: boolean): void;
     /**
@@ -505,18 +525,22 @@ export namespace SpiceClientGLib {
      * Note: The values SPICE_PORT_EVENT_CLOSED and
      * SPICE_PORT_EVENT_OPENED are managed by the channel connection
      * state.
-     * @param port a #SpicePortChannel
+     * @param port a {@link SpiceClientGLib.PortChannel}
      * @param event a SPICE_PORT_EVENT value
+     * @since 0.15
+     * @deprecated since 0.35: use `spice_port_channel_event()` instead.
      */
     function port_event(port: PortChannel, event: number): void;
     /**
      * Request an asynchronous write of count bytes from `buffer` into the
      * `port`. When the operation is finished `callback` will be called. You
-     * can then call spice_port_write_finish() to get the result of
+     * can then call `spice_port_write_finish()` to get the result of
      * the operation.
-     * @param port A #SpicePortChannel
+     * @param port A {@link SpiceClientGLib.PortChannel}
      * @param buffer the buffer containing the data to write
      * @param cancellable optional GCancellable object, NULL to ignore
+     * @since 0.15
+     * @deprecated since 0.35: use `spice_port_channel_write_async()` instead.
      */
     function port_write_async(
         port: PortChannel,
@@ -526,12 +550,14 @@ export namespace SpiceClientGLib {
     /**
      * Request an asynchronous write of count bytes from `buffer` into the
      * `port`. When the operation is finished `callback` will be called. You
-     * can then call spice_port_write_finish() to get the result of
+     * can then call `spice_port_write_finish()` to get the result of
      * the operation.
-     * @param port A #SpicePortChannel
+     * @param port A {@link SpiceClientGLib.PortChannel}
      * @param buffer the buffer containing the data to write
      * @param cancellable optional GCancellable object, NULL to ignore
      * @param callback callback to call when the request is satisfied
+     * @since 0.15
+     * @deprecated since 0.35: use `spice_port_channel_write_async()` instead.
      */
     function port_write_async(
         port: PortChannel,
@@ -542,12 +568,14 @@ export namespace SpiceClientGLib {
     /**
      * Request an asynchronous write of count bytes from `buffer` into the
      * `port`. When the operation is finished `callback` will be called. You
-     * can then call spice_port_write_finish() to get the result of
+     * can then call `spice_port_write_finish()` to get the result of
      * the operation.
-     * @param port A #SpicePortChannel
+     * @param port A {@link SpiceClientGLib.PortChannel}
      * @param buffer the buffer containing the data to write
      * @param cancellable optional GCancellable object, NULL to ignore
      * @param callback callback to call when the request is satisfied
+     * @since 0.15
+     * @deprecated since 0.35: use `spice_port_channel_write_async()` instead.
      */
     function port_write_async(
         port: PortChannel,
@@ -557,23 +585,26 @@ export namespace SpiceClientGLib {
     ): globalThis.Promise<number> | void;
     /**
      * Finishes a port write operation.
-     * @param port a #SpicePortChannel
-     * @param result a #GAsyncResult
-     * @returns a #gssize containing the number of bytes written to the stream.
+     * @param port a {@link SpiceClientGLib.PortChannel}
+     * @param result a {@link Gio.AsyncResult}
+     * @returns a `gssize` containing the number of bytes written to the stream.
+     * @since 0.15
+     * @deprecated since 0.35: use `spice_port_channel_write_finish()` instead.
      */
     function port_write_finish(port: PortChannel, result: Gio.AsyncResult): number;
     /**
      * Send recorded PCM data to the guest.
-     * @param channel a #SpiceRecordChannel
+     * @param channel a {@link SpiceClientGLib.RecordChannel}
      * @param data PCM data
-     * @param bytes size of @data
+     * @param bytes size of `data`
      * @param time stream timestamp
+     * @deprecated since 0.35: use `spice_record_channel_send_data()` instead.
      */
     function record_send_data(channel: RecordChannel, data: any | null, bytes: number, time: number): void;
     /**
-     * Set various properties on `session,` according to the commandline
-     * arguments given to spice_get_option_group() option group.
-     * @param session a #SpiceSession to set option upon
+     * Set various properties on `session`, according to the commandline
+     * arguments given to `spice_get_option_group()` option group.
+     * @param session a {@link SpiceClientGLib.Session} to set option upon
      */
     function set_session_option(session: Session): void;
     function util_get_debug(): boolean;
@@ -584,26 +615,37 @@ export namespace SpiceClientGLib {
     function util_get_version_string(): string;
     /**
      * Enable or disable Spice-GTK debugging messages.
-     * @param enabled %TRUE or %FALSE
+     * @param enabled `true` or `false`
      */
     function util_set_debug(enabled: boolean): void;
     /**
-     * Creates a string representation of `uuid,` of the form
+     * Creates a string representation of `uuid`, of the form
      * "06e023d5-86d8-420e-8103-383e4566087a"
      * @param uuid UUID byte array
-     * @returns A string that should be freed with g_free().
+     * @returns A string that should be freed with `g_free()`.
+     * @since 0.22
      */
-    function uuid_to_string(uuid: number): string;
+    function uuid_to_string(uuid: Uint8Array | string): string;
+    /**
+     * @gir-type Callback
+     */
     interface msg_handler {
         (channel: Channel, _in: MsgIn): void;
     }
+    /**
+     * @gir-type Alias
+     */
     type VReader = object | null;
+    /**
+     * @gir-type Flags
+     */
     export namespace InputsLock {
         export const $gtype: GObject.GType<InputsLock>;
     }
 
     /**
      * Constants used to synchronize modifiers between a client and a guest.
+     * @gir-type Flags
      */
     enum InputsLock {
         /**
@@ -620,12 +662,16 @@ export namespace SpiceClientGLib {
         CAPS_LOCK,
     }
 
+    /**
+     * @gir-type Flags
+     */
     export namespace SessionVerify {
         export const $gtype: GObject.GType<SessionVerify>;
     }
 
     /**
      * Peer certificate verification parameters flags.
+     * @gir-type Flags
      */
     enum SessionVerify {
         /**
@@ -659,17 +705,25 @@ export namespace SpiceClientGLib {
     }
 
     /**
-     * The #SpiceAudio struct is opaque and should not be accessed directly.
+     * The {@link SpiceClientGLib.Audio} struct is opaque and should not be accessed directly.
+     * @gir-type Class
      */
     abstract class Audio extends GObject.Object {
         static $gtype: GObject.GType<Audio>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get main_context(): GLib.MainContext;
+        /**
+         * @construct-only
+         */
         get mainContext(): GLib.MainContext;
         /**
-         * #SpiceSession this #SpiceAudio is associated with
+         * {@link SpiceClientGLib.Session} this {@link SpiceClientGLib.Audio} is associated with
+         * @construct-only
          */
         get session(): Session;
 
@@ -692,16 +746,19 @@ export namespace SpiceClientGLib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Audio.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Audio.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Audio.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Audio.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Audio.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Audio.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -711,36 +768,66 @@ export namespace SpiceClientGLib {
         // Static methods
 
         /**
-         * Gets the #SpiceAudio associated with the passed in #SpiceSession.
-         * A new #SpiceAudio instance will be created the first time this
-         * function is called for a certain #SpiceSession.
+         * Gets the {@link SpiceClientGLib.Audio} associated with the passed in {@link SpiceClientGLib.Session}.
+         * A new {@link SpiceClientGLib.Audio} instance will be created the first time this
+         * function is called for a certain {@link SpiceClientGLib.Session}.
          *
          * Note that this function returns a weak reference, which should not be used
-         * after the #SpiceSession itself has been unref-ed by the caller.
-         * @param session the #SpiceSession to connect to
-         * @param context a #GMainContext to attach to (or %NULL for default).
+         * after the {@link SpiceClientGLib.Session} itself has been unref-ed by the caller.
+         * @param session the {@link SpiceClientGLib.Session} to connect to
+         * @param context a {@link GLib.MainContext} to attach to (or `null` for default).
          */
         static get(session: Session, context?: GLib.MainContext | null): Audio;
 
         // Virtual methods
 
+        /**
+         * @param channel
+         * @virtual
+         */
         vfunc_connect_channel(channel: Channel): boolean;
+        /**
+         * @param cancellable
+         * @param main_channel
+         * @param callback
+         * @virtual
+         */
         vfunc_get_playback_volume_info_async(
             cancellable: Gio.Cancellable | null,
             main_channel: MainChannel,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param res
+         * @param mute
+         * @param nchannels
+         * @param volume
+         * @virtual
+         */
         vfunc_get_playback_volume_info_finish(
             res: Gio.AsyncResult,
             mute: boolean,
             nchannels: number,
             volume: number,
         ): boolean;
+        /**
+         * @param cancellable
+         * @param main_channel
+         * @param callback
+         * @virtual
+         */
         vfunc_get_record_volume_info_async(
             cancellable: Gio.Cancellable | null,
             main_channel: MainChannel,
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): void;
+        /**
+         * @param res
+         * @param mute
+         * @param nchannels
+         * @param volume
+         * @virtual
+         */
         vfunc_get_record_volume_info_finish(
             res: Gio.AsyncResult,
             mute: boolean,
@@ -752,7 +839,22 @@ export namespace SpiceClientGLib {
     namespace Channel {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * The {@link SpiceClientGLib.Channel.SignalSignatures.channel_event | SpiceClientGLib.Channel::channel-event} signal is emitted when the
+             * state of the connection is changed. In case of errors,
+             * `spice_channel_get_error()` may provide additional informations
+             * on the source of the error.
+             * @signal
+             * @run-first
+             */
             'channel-event': (arg0: ChannelEvent) => void;
+            /**
+             * The {@link SpiceClientGLib.Channel.SignalSignatures.open_fd | SpiceClientGLib.Channel::open-fd} signal is emitted when a new
+             * connection is requested. This signal is emitted when the
+             * connection is made with `spice_session_open_fd()`.
+             * @signal
+             * @run-first
+             */
             'open-fd': (arg0: number) => void;
             'notify::channel-id': (pspec: GObject.ParamSpec) => void;
             'notify::channel-type': (pspec: GObject.ParamSpec) => void;
@@ -777,27 +879,54 @@ export namespace SpiceClientGLib {
     }
 
     /**
-     * The #SpiceChannel struct is opaque and should not be accessed directly.
+     * The {@link SpiceClientGLib.Channel} struct is opaque and should not be accessed directly.
+     * @gir-type Class
      */
     class Channel extends GObject.Object {
         static $gtype: GObject.GType<Channel>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get channel_id(): number;
+        /**
+         * @construct-only
+         */
         get channelId(): number;
+        /**
+         * @construct-only
+         */
         get channel_type(): number;
+        /**
+         * @construct-only
+         */
         get channelType(): number;
         /**
-         * Get the underlying #GSocket. Note that you should not read or
+         * Get the underlying {@link Gio.Socket}. Note that you should not read or
          * write any data to it directly since this will likely corrupt
          * the channel stream.  This property is mainly useful to get some
          * connections details.
+         * @since 0.33
+         * @read-only
          */
         get socket(): Gio.Socket;
+        /**
+         * @construct-only
+         */
         get spice_session(): Session;
+        /**
+         * @construct-only
+         */
         get spiceSession(): Session;
+        /**
+         * @read-only
+         */
         get total_read_bytes(): number;
+        /**
+         * @read-only
+         */
         get totalReadBytes(): number;
 
         /**
@@ -819,16 +948,19 @@ export namespace SpiceClientGLib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Channel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Channel.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Channel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Channel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Channel.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Channel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -850,22 +982,55 @@ export namespace SpiceClientGLib {
 
         // Virtual methods
 
+        /**
+         * Signal class handler for the {@link SpiceClientGLib.Channel.SignalSignatures.channel_event | SpiceClientGLib.Channel::channel_event} signal.
+         * @param event
+         * @virtual
+         */
         vfunc_channel_event(event: ChannelEvent): void;
+        /**
+         * @param migrating
+         * @virtual
+         */
         vfunc_channel_reset(migrating: boolean): void;
+        /**
+         * @virtual
+         */
         vfunc_channel_send_migration_handshake(): void;
+        /**
+         * @virtual
+         */
         vfunc_channel_up(): void;
+        /**
+         * @param msg
+         * @virtual
+         */
         vfunc_handle_msg(msg: MsgIn): void;
+        /**
+         * @virtual
+         */
         vfunc_iterate_read(): void;
+        /**
+         * @virtual
+         */
         vfunc_iterate_write(): void;
+        /**
+         * Signal class handler for the {@link SpiceClientGLib.Channel.SignalSignatures.open_fd | SpiceClientGLib.Channel::open_fd} signal.
+         * @param with_tls
+         * @virtual
+         */
         vfunc_open_fd(with_tls: number): void;
 
         // Methods
 
         /**
-         * Connect the channel, using #SpiceSession connection informations
-         * @returns %TRUE on success.
+         * Connect the channel, using {@link SpiceClientGLib.Session} connection informations
+         * @returns `true` on success.
          */
         connect(): boolean;
+        /**
+         * @param args
+         */
         connect(...args: never[]): any;
         /**
          * Disconnect and unref the `channel`.
@@ -873,11 +1038,14 @@ export namespace SpiceClientGLib {
         destroy(): void;
         /**
          * Close the socket and reset connection specific data. Finally, emit
-         * `reason` #SpiceChannel::channel-event on main context if not
+         * `reason` {@link SpiceClientGLib.Channel.SignalSignatures.channel_event | SpiceClientGLib.Channel::channel-event} on main context if not
          * #SPICE_CHANNEL_NONE.
          * @param reason a channel event emitted on main context (or #SPICE_CHANNEL_NONE)
          */
         disconnect(reason: ChannelEvent | null): void;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.disconnect
         disconnect(...args: never[]): any;
         /**
@@ -885,9 +1053,9 @@ export namespace SpiceClientGLib {
          * the given channel.
          *
          * When the operation is finished callback will be called. You can
-         * then call spice_channel_flush_finish() to get the result of the
+         * then call `spice_channel_flush_finish()` to get the result of the
          * operation.
-         * @param cancellable optional GCancellable object, %NULL to ignore
+         * @param cancellable optional GCancellable object, `null` to ignore
          */
         flush_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
@@ -895,9 +1063,9 @@ export namespace SpiceClientGLib {
          * the given channel.
          *
          * When the operation is finished callback will be called. You can
-         * then call spice_channel_flush_finish() to get the result of the
+         * then call `spice_channel_flush_finish()` to get the result of the
          * operation.
-         * @param cancellable optional GCancellable object, %NULL to ignore
+         * @param cancellable optional GCancellable object, `null` to ignore
          * @param callback callback to call when the request is satisfied
          */
         flush_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
@@ -906,9 +1074,9 @@ export namespace SpiceClientGLib {
          * the given channel.
          *
          * When the operation is finished callback will be called. You can
-         * then call spice_channel_flush_finish() to get the result of the
+         * then call `spice_channel_flush_finish()` to get the result of the
          * operation.
-         * @param cancellable optional GCancellable object, %NULL to ignore
+         * @param cancellable optional GCancellable object, `null` to ignore
          * @param callback callback to call when the request is satisfied
          */
         flush_async(
@@ -917,14 +1085,14 @@ export namespace SpiceClientGLib {
         ): globalThis.Promise<boolean> | void;
         /**
          * Finishes flushing a channel.
-         * @param result a #GAsyncResult
-         * @returns %TRUE if flush operation succeeded, %FALSE otherwise.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns `true` if flush operation succeeded, `false` otherwise.
          */
         flush_finish(result: Gio.AsyncResult): boolean;
         /**
-         * Retrieves the #GError currently set on channel, if the #SpiceChannel
+         * Retrieves the {@link GLib.Error} currently set on channel, if the {@link SpiceClientGLib.Channel}
          * is in error state and can provide additional error details.
-         * @returns the pointer to the error, or %NULL
+         * @returns the pointer to the error, or `null`
          */
         get_error(): GLib.Error;
         /**
@@ -933,7 +1101,7 @@ export namespace SpiceClientGLib {
          * If `fd` is -1, a valid fd will be requested later via the
          * SpiceChannel::open-fd signal.
          * @param fd a file descriptor (socket) or -1. request mechanism
-         * @returns %TRUE on success.
+         * @returns `true` on success.
          */
         open_fd(fd: number): boolean;
         /**
@@ -944,13 +1112,13 @@ export namespace SpiceClientGLib {
         /**
          * Test availability of remote "channel kind capability".
          * @param cap a capability
-         * @returns %TRUE if @cap (channel kind capability) is available.
+         * @returns `true` if `cap` (channel kind capability) is available.
          */
         test_capability(cap: number): boolean;
         /**
          * Test availability of remote "common channel capability".
          * @param cap a capability
-         * @returns %TRUE if @cap (common channel capability) is available.
+         * @returns `true` if `cap` (common channel capability) is available.
          */
         test_common_capability(cap: number): boolean;
     }
@@ -958,9 +1126,34 @@ export namespace SpiceClientGLib {
     namespace CursorChannel {
         // Signal signatures
         interface SignalSignatures extends Channel.SignalSignatures {
+            /**
+             * The {@link SpiceClientGLib.CursorChannel.SignalSignatures.cursor_hide | SpiceClientGLib.CursorChannel::cursor-hide} signal is emitted to hide
+             * the cursor/pointer on the display area.
+             * @signal
+             * @run-first
+             */
             'cursor-hide': () => void;
+            /**
+             * The {@link SpiceClientGLib.CursorChannel.SignalSignatures.cursor_move | SpiceClientGLib.CursorChannel::cursor-move} signal is emitted to update
+             * the cursor position on the display area.
+             * @signal
+             * @run-first
+             */
             'cursor-move': (arg0: number, arg1: number) => void;
+            /**
+             * The {@link SpiceClientGLib.CursorChannel.SignalSignatures.cursor_reset | SpiceClientGLib.CursorChannel::cursor-reset} signal is emitted to
+             * reset the cursor to its default context.
+             * @signal
+             * @run-first
+             */
             'cursor-reset': () => void;
+            /**
+             * The {@link SpiceClientGLib.CursorChannel.SignalSignatures.cursor_set | SpiceClientGLib.CursorChannel::cursor-set} signal is emitted to modify
+             * cursor aspect and position on the display area.
+             * @signal
+             * @deprecated since 0.34: Use {@link SpiceClientGLib.CursorChannel.cursor} notify instead.
+             * @run-first
+             */
             'cursor-set': (arg0: number, arg1: number, arg2: number, arg3: number, arg4: any | null) => void;
             'notify::cursor': (pspec: GObject.ParamSpec) => void;
             'notify::channel-id': (pspec: GObject.ParamSpec) => void;
@@ -978,7 +1171,8 @@ export namespace SpiceClientGLib {
     }
 
     /**
-     * The #SpiceCursorChannel struct is opaque and should not be accessed directly.
+     * The {@link SpiceClientGLib.CursorChannel} struct is opaque and should not be accessed directly.
+     * @gir-type Class
      */
     class CursorChannel extends Channel {
         static $gtype: GObject.GType<CursorChannel>;
@@ -986,7 +1180,9 @@ export namespace SpiceClientGLib {
         // Properties
 
         /**
-         * The last #SpiceCursorShape received.
+         * The last {@link SpiceClientGLib.CursorShape} received.
+         * @since 0.34
+         * @read-only
          */
         get cursor(): CursorShape;
 
@@ -1007,11 +1203,13 @@ export namespace SpiceClientGLib {
 
         // Signals
 
+        /** @signal */
         connect_after<K extends keyof CursorChannel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, CursorChannel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof CursorChannel.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<CursorChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1020,17 +1218,60 @@ export namespace SpiceClientGLib {
 
         // Virtual methods
 
+        /**
+         * Signal class handler for the {@link SpiceClientGLib.CursorChannel.SignalSignatures.cursor_hide | SpiceClientGLib.CursorChannel::cursor-hide} signal.
+         * @virtual
+         */
         vfunc_cursor_hide(): void;
+        /**
+         * Signal class handler for the {@link SpiceClientGLib.CursorChannel.SignalSignatures.cursor_move | SpiceClientGLib.CursorChannel::cursor-move} signal.
+         * @param x
+         * @param y
+         * @virtual
+         */
         vfunc_cursor_move(x: number, y: number): void;
+        /**
+         * Signal class handler for the {@link SpiceClientGLib.CursorChannel.SignalSignatures.cursor_reset | SpiceClientGLib.CursorChannel::cursor-reset} signal.
+         * @virtual
+         */
         vfunc_cursor_reset(): void;
+        /**
+         * Signal class handler for the {@link SpiceClientGLib.CursorChannel.SignalSignatures.cursor_set | SpiceClientGLib.CursorChannel::cursor-set} signal.
+         * @param width
+         * @param height
+         * @param hot_x
+         * @param hot_y
+         * @param rgba
+         * @virtual
+         */
         vfunc_cursor_set(width: number, height: number, hot_x: number, hot_y: number, rgba?: any | null): void;
     }
 
     namespace DisplayChannel {
         // Signal signatures
         interface SignalSignatures extends Channel.SignalSignatures {
+            /**
+             * The {@link SpiceClientGLib.DisplayChannel.SignalSignatures.display_invalidate | SpiceClientGLib.DisplayChannel::display-invalidate} signal is emitted
+             * when the rectangular region x/y/w/h of the primary buffer is
+             * updated.
+             * @signal
+             * @run-first
+             */
             'display-invalidate': (arg0: number, arg1: number, arg2: number, arg3: number) => void;
+            /**
+             * The {@link SpiceClientGLib.DisplayChannel.SignalSignatures.display_mark | SpiceClientGLib.DisplayChannel::display-mark} signal is emitted when
+             * the `RED_DISPLAY_MARK` command is received, and the display
+             * should be exposed.
+             * @signal
+             * @run-first
+             */
             'display-mark': (arg0: number) => void;
+            /**
+             * The {@link SpiceClientGLib.DisplayChannel.SignalSignatures.display_primary_create | SpiceClientGLib.DisplayChannel::display-primary-create} signal
+             * provides main display buffer data.
+             * @signal
+             * @run-first
+             */
             'display-primary-create': (
                 arg0: number,
                 arg1: number,
@@ -1039,9 +1280,39 @@ export namespace SpiceClientGLib {
                 arg4: number,
                 arg5: any | null,
             ) => void;
+            /**
+             * The {@link SpiceClientGLib.DisplayChannel.SignalSignatures.display_primary_destroy | SpiceClientGLib.DisplayChannel::display-primary-destroy} signal is
+             * emitted when the primary surface is freed and should not be
+             * accessed anymore.
+             * @signal
+             * @run-first
+             */
             'display-primary-destroy': () => void;
+            /**
+             * The {@link SpiceClientGLib.DisplayChannel.SignalSignatures.gl_draw | SpiceClientGLib.DisplayChannel::gl-draw} signal is emitted when the
+             * rectangular region x/y/w/h of the GL scanout is updated and
+             * must be drawn. When the draw is finished, you must call
+             * `spice_display_gl_draw_done()` in order to release the GL
+             * resources.
+             * @signal
+             * @since 0.31
+             */
             'gl-draw': (arg0: number, arg1: number, arg2: number, arg3: number) => void;
+            /**
+             * The {@link SpiceClientGLib.DisplayChannel.SignalSignatures.gst_video_overlay | SpiceClientGLib.DisplayChannel::gst-video-overlay} signal is emitted when
+             * pipeline is ready and can be passed to widget to register GStreamer
+             * overlay interface and other GStreamer callbacks. If the pipeline
+             * pointer is NULL, the drawing area of the native renderer is set
+             * visible.
+             * @signal
+             * @since 0.36
+             */
             'gst-video-overlay': (arg0: Gst.Pipeline) => boolean | void;
+            /**
+             * @signal
+             * @since 0.35
+             * @deprecated since 0.36: use {@link SpiceClientGLib.DisplayChannel.SignalSignatures.gst_video_overlay | SpiceClientGLib.DisplayChannel::gst-video-overlay} instead
+             */
             'streaming-mode': (arg0: boolean) => any | null;
             'notify::gl-scanout': (pspec: GObject.ParamSpec) => void;
             'notify::height': (pspec: GObject.ParamSpec) => void;
@@ -1061,7 +1332,7 @@ export namespace SpiceClientGLib {
             gl_scanout: GlScanout;
             glScanout: GlScanout;
             height: number;
-            monitors: any[];
+            monitors: DisplayMonitorConfig[];
             monitors_max: number;
             monitorsMax: number;
             width: number;
@@ -1069,7 +1340,8 @@ export namespace SpiceClientGLib {
     }
 
     /**
-     * The #SpiceDisplayChannel struct is opaque and should not be accessed directly.
+     * The {@link SpiceClientGLib.DisplayChannel} struct is opaque and should not be accessed directly.
+     * @gir-type Class
      */
     class DisplayChannel extends Channel {
         static $gtype: GObject.GType<DisplayChannel>;
@@ -1077,30 +1349,46 @@ export namespace SpiceClientGLib {
         // Properties
 
         /**
-         * The last #SpiceGlScanout received.
+         * The last {@link SpiceClientGLib.GlScanout} received.
+         * @since 0.31
+         * @read-only
          */
         get gl_scanout(): GlScanout;
         /**
-         * The last #SpiceGlScanout received.
+         * The last {@link SpiceClientGLib.GlScanout} received.
+         * @since 0.31
+         * @read-only
          */
         get glScanout(): GlScanout;
+        /**
+         * @read-only
+         */
         get height(): number;
         /**
          * Current monitors configuration.
+         * @since 0.13
+         * @read-only
          */
-        get monitors(): any[];
+        get monitors(): DisplayMonitorConfig[];
         /**
          * The maximum number of monitors the server or guest supports.
          * May change during client lifetime, for instance guest may
          * reboot or dynamically adjust this.
+         * @since 0.13
+         * @read-only
          */
         get monitors_max(): number;
         /**
          * The maximum number of monitors the server or guest supports.
          * May change during client lifetime, for instance guest may
          * reboot or dynamically adjust this.
+         * @since 0.13
+         * @read-only
          */
         get monitorsMax(): number;
+        /**
+         * @read-only
+         */
         get width(): number;
 
         /**
@@ -1120,53 +1408,77 @@ export namespace SpiceClientGLib {
 
         // Signals
 
+        /** @signal */
         connect_after<K extends keyof DisplayChannel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, DisplayChannel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof DisplayChannel.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<DisplayChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
         ): void;
         emit(signal: string, ...args: any[]): void;
 
-        // Static methods
+        // Methods
 
         /**
          * Tells the spice server to change the preferred image compression
          * for the `channel`.
-         * @param channel a #SpiceDisplayChannel
-         * @param compression a #SpiceImageCompression
+         * @param compression a `SpiceImageCompression`
          */
-        static change_preferred_compression(channel: Channel, compression: number): void;
+        display_change_preferred_compression(compression: number): void;
         /**
          * Tells the spice server to change the preferred video codec type for
          * streaming in `channel`. Application can set only one preferred video codec per
          * display channel.
-         * @param channel a #SpiceDisplayChannel
-         * @param codec_type a #SpiceVideoCodecType
+         * @param codec_type a `SpiceVideoCodecType`
          */
-        static change_preferred_video_codec_type(channel: Channel, codec_type: number): void;
+        display_change_preferred_video_codec_type(codec_type: number): void;
+        /**
+         * Tells the spice server to change the preferred image compression
+         * for the `channel`.
+         * @param compression a `SpiceImageCompression`
+         */
+        display_channel_change_preferred_compression(compression: number): void;
+        /**
+         * Tells the spice server to change the preferred video codec type for
+         * streaming in `channel`. Application can set only one preferred video codec per
+         * display channel.
+         * @param codec_type a `SpiceVideoCodecType`
+         */
+        display_channel_change_preferred_video_codec_type(codec_type: number): void;
+        /**
+         * Tells the spice server the ordered preferred video codec types to
+         * use for streaming in `channel`.
+         * @param codecs an array of `ncodecs` `SpiceVideoCodecType` types
+         * @returns `true` if the preferred codec list was successfully changed, and `false` otherwise.
+         */
+        display_channel_change_preferred_video_codec_types(codecs: number[]): boolean;
         /**
          * Retrieve primary display surface `surface_id`.
-         * @param channel a #SpiceDisplayChannel
          * @param surface_id a surface id
-         * @param primary a #SpiceDisplayPrimary
+         * @param primary a {@link SpiceClientGLib.DisplayPrimary}
+         * @returns `true` if the primary surface was found and its details collected in `primary`.
          */
-        static get_primary(channel: Channel, surface_id: number, primary: DisplayPrimary): boolean;
-
-        // Methods
-
+        display_channel_get_primary(surface_id: number, primary: DisplayPrimary): boolean;
+        /**
+         * Retrieve primary display surface `surface_id`.
+         * @param surface_id a surface id
+         * @param primary a {@link SpiceClientGLib.DisplayPrimary}
+         * @returns `true` if the primary surface was found and its details collected in `primary`.
+         */
+        display_get_primary(surface_id: number, primary: DisplayPrimary): boolean;
         /**
          * Retrieves the GL scanout if available
-         * @returns the current GL scanout, or %NULL if none or not valid
+         * @returns the current GL scanout, or `null` if none or not valid
          */
         get_gl_scanout(): GlScanout;
         /**
          * After a SpiceDisplayChannel::gl-draw is emitted, the client should
          * draw the current display with the current GL scanout, and must
-         * release the GL resource with a call to spice_display_gl_draw_done()
+         * release the GL resource with a call to `spice_display_gl_draw_done()`
          * (failing to do so for each gl-draw may result in a frozen display).
          */
         gl_draw_done(): void;
@@ -1175,6 +1487,10 @@ export namespace SpiceClientGLib {
     namespace FileTransferTask {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             * @run-first
+             */
             finished: (arg0: GLib.Error) => void;
             'notify::cancellable': (pspec: GObject.ParamSpec) => void;
             'notify::channel': (pspec: GObject.ParamSpec) => void;
@@ -1200,19 +1516,49 @@ export namespace SpiceClientGLib {
         }
     }
 
+    /**
+     * @gir-type Class
+     */
     class FileTransferTask extends GObject.Object {
         static $gtype: GObject.GType<FileTransferTask>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get cancellable(): Gio.Cancellable;
+        /**
+         * @construct-only
+         */
         get channel(): MainChannel;
+        /**
+         * @construct-only
+         */
         get file(): Gio.File;
+        /**
+         * @construct-only
+         */
         get id(): number;
+        /**
+         * @read-only
+         */
         get progress(): number;
+        /**
+         * @read-only
+         */
         get total_bytes(): number;
+        /**
+         * @read-only
+         */
         get totalBytes(): number;
+        /**
+         * @read-only
+         */
         get transferred_bytes(): number;
+        /**
+         * @read-only
+         */
         get transferredBytes(): number;
 
         /**
@@ -1232,16 +1578,19 @@ export namespace SpiceClientGLib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof FileTransferTask.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileTransferTask.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof FileTransferTask.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, FileTransferTask.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof FileTransferTask.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<FileTransferTask.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1260,6 +1609,13 @@ export namespace SpiceClientGLib {
     namespace InputsChannel {
         // Signal signatures
         interface SignalSignatures extends Channel.SignalSignatures {
+            /**
+             * The {@link SpiceClientGLib.InputsChannel.SignalSignatures.inputs_modifiers | SpiceClientGLib.InputsChannel::inputs-modifiers} signal is emitted when
+             * the guest keyboard locks are changed. You can read the current
+             * state from {@link SpiceClientGLib.InputsChannel.key_modifiers} property.
+             * @signal
+             * @run-first
+             */
             'inputs-modifiers': () => void;
             'notify::key-modifiers': (pspec: GObject.ParamSpec) => void;
             'notify::channel-id': (pspec: GObject.ParamSpec) => void;
@@ -1278,14 +1634,21 @@ export namespace SpiceClientGLib {
     }
 
     /**
-     * The #SpiceInputsChannel struct is opaque and should not be accessed directly.
+     * The {@link SpiceClientGLib.InputsChannel} struct is opaque and should not be accessed directly.
+     * @gir-type Class
      */
     class InputsChannel extends Channel {
         static $gtype: GObject.GType<InputsChannel>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get key_modifiers(): number;
+        /**
+         * @read-only
+         */
         get keyModifiers(): number;
 
         /**
@@ -1305,11 +1668,13 @@ export namespace SpiceClientGLib {
 
         // Signals
 
+        /** @signal */
         connect_after<K extends keyof InputsChannel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, InputsChannel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof InputsChannel.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<InputsChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1362,7 +1727,7 @@ export namespace SpiceClientGLib {
         position(x: number, y: number, display: number, button_state: number): void;
         /**
          * Set the keyboard locks on the guest (Caps, Num, Scroll..)
-         * @param locks #SpiceInputsLock modifiers flags
+         * @param locks {@link SpiceClientGLib.InputsLock} modifiers flags
          */
         set_key_locks(locks: number): void;
     }
@@ -1370,17 +1735,96 @@ export namespace SpiceClientGLib {
     namespace MainChannel {
         // Signal signatures
         interface SignalSignatures extends Channel.SignalSignatures {
+            /**
+             * Notify when the %SpiceMainChannel:agent-connected or
+             * %SpiceMainChannel:agent-caps-0 property change.
+             * @signal
+             * @run-first
+             */
             'main-agent-update': () => void;
-            'main-clipboard': (arg0: number, arg1: any | null, arg2: number) => void;
-            'main-clipboard-grab': (arg0: any | null, arg1: number) => boolean | void;
+            /**
+             * Provides guest clipboard data requested by `spice_main_clipboard_request()`.
+             * @signal
+             * @deprecated since 0.6: use SpiceMainChannel::main-clipboard-selection instead.
+             * @run-last
+             */
+            'main-clipboard': (arg0: number, arg1: Uint8Array) => void;
+            /**
+             * Inform when clipboard data is available from the guest, and for
+             * which `types`.
+             * @signal
+             * @deprecated since 0.6: use SpiceMainChannel::main-clipboard-selection-grab instead.
+             * @run-last
+             */
+            'main-clipboard-grab': (arg0: number[]) => boolean | void;
+            /**
+             * Inform when the clipboard is released from the guest, when no
+             * clipboard data is available from the guest.
+             * @signal
+             * @deprecated since 0.6: use SpiceMainChannel::main-clipboard-selection-release instead.
+             * @run-last
+             */
             'main-clipboard-release': () => void;
+            /**
+             * Request clipboard data from the client.
+             * @signal
+             * @deprecated since 0.6: use SpiceMainChannel::main-clipboard-selection-request instead.
+             * @run-last
+             */
             'main-clipboard-request': (arg0: number) => boolean | void;
-            'main-clipboard-selection': (arg0: number, arg1: number, arg2: any | null, arg3: number) => void;
-            'main-clipboard-selection-grab': (arg0: number, arg1: any | null, arg2: number) => boolean | void;
+            /**
+             * Informs that clipboard selection data are available.
+             * @signal
+             * @since 0.6
+             * @run-last
+             */
+            'main-clipboard-selection': (arg0: number, arg1: number, arg2: Uint8Array) => void;
+            /**
+             * Inform when clipboard data is available from the guest, and for
+             * which `types`.
+             * @signal
+             * @since 0.6
+             * @run-last
+             */
+            'main-clipboard-selection-grab': (arg0: number, arg1: number[]) => boolean | void;
+            /**
+             * Inform when the clipboard is released from the guest, when no
+             * clipboard data is available from the guest.
+             * @signal
+             * @since 0.6
+             * @run-last
+             */
             'main-clipboard-selection-release': (arg0: number) => void;
+            /**
+             * Request clipboard data from the client.
+             * @signal
+             * @since 0.6
+             * @run-last
+             */
             'main-clipboard-selection-request': (arg0: number, arg1: number) => boolean | void;
+            /**
+             * Notify when the mouse mode has changed.
+             * @signal
+             * @run-first
+             */
             'main-mouse-update': () => void;
+            /**
+             * Inform when migration is starting. Application wishing to make
+             * connections themself can set the {@link SpiceClientGLib.Session.client_sockets}
+             * to `TRUE`, then follow {@link SpiceClientGLib.Session.SignalSignatures.channel_new | SpiceClientGLib.Session::channel-new} creation, and
+             * use `spice_channel_open_fd()` once the socket is created.
+             * @signal
+             * @run-last
+             */
             'migration-started': (arg0: GObject.Object) => void;
+            /**
+             * This signal is emitted when a new file transfer task has been initiated
+             * on this channel. Client applications may take a reference on the `task`
+             * object and use it to monitor the status of the file transfer task.
+             * @signal
+             * @since 0.31
+             * @run-last
+             */
             'new-file-transfer': (arg0: GObject.Object) => void;
             'notify::agent-caps-0': (pspec: GObject.ParamSpec) => void;
             'notify::agent-caps0': (pspec: GObject.ParamSpec) => void;
@@ -1427,19 +1871,38 @@ export namespace SpiceClientGLib {
     }
 
     /**
-     * The #SpiceMainChannel struct is opaque and should not be accessed directly.
+     * The {@link SpiceClientGLib.MainChannel} struct is opaque and should not be accessed directly.
+     * @gir-type Class
      */
     class MainChannel extends Channel {
         static $gtype: GObject.GType<MainChannel>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get agent_caps_0(): number;
+        /**
+         * @read-only
+         */
         get agentCaps0(): number;
+        /**
+         * @read-only
+         */
         get agent_connected(): boolean;
+        /**
+         * @read-only
+         */
         get agentConnected(): boolean;
+        /**
+         * @deprecated since 0.37: Deprecated due lack of support in drivers, only Windows 7 and older. This option is currently ignored.
+         */
         get color_depth(): number;
         set color_depth(val: number);
+        /**
+         * @deprecated since 0.37: Deprecated due lack of support in drivers, only Windows 7 and older. This option is currently ignored.
+         */
         get colorDepth(): number;
         set colorDepth(val: number);
         get disable_animation(): boolean;
@@ -1448,11 +1911,13 @@ export namespace SpiceClientGLib {
         set disableAnimation(val: boolean);
         /**
          * Disable automatic horizontal display position alignment.
+         * @since 0.13
          */
         get disable_display_align(): boolean;
         set disable_display_align(val: boolean);
         /**
          * Disable automatic horizontal display position alignment.
+         * @since 0.13
          */
         get disableDisplayAlign(): boolean;
         set disableDisplayAlign(val: boolean);
@@ -1471,33 +1936,37 @@ export namespace SpiceClientGLib {
         /**
          * Maximum size of clipboard operations in bytes (default 100MB,
          * -1 for unlimited size);
+         * @since 0.22
          */
         get max_clipboard(): number;
         set max_clipboard(val: number);
         /**
          * Maximum size of clipboard operations in bytes (default 100MB,
          * -1 for unlimited size);
+         * @since 0.22
          */
         get maxClipboard(): number;
         set maxClipboard(val: number);
         /**
          * Spice protocol specifies two mouse modes, client mode and
-         * server mode. In client mode (%SPICE_MOUSE_MODE_CLIENT), the
+         * server mode. In client mode (`SPICE_MOUSE_MODE_CLIENT`), the
          * affective mouse is the client side mouse: the client sends
          * mouse position within the display and the server sends mouse
-         * shape messages. In server mode (%SPICE_MOUSE_MODE_SERVER), the
+         * shape messages. In server mode (`SPICE_MOUSE_MODE_SERVER`), the
          * client sends relative mouse movements and the server sends
          * position and shape commands.
+         * @read-only
          */
         get mouse_mode(): number;
         /**
          * Spice protocol specifies two mouse modes, client mode and
-         * server mode. In client mode (%SPICE_MOUSE_MODE_CLIENT), the
+         * server mode. In client mode (`SPICE_MOUSE_MODE_CLIENT`), the
          * affective mouse is the client side mouse: the client sends
          * mouse position within the display and the server sends mouse
-         * shape messages. In server mode (%SPICE_MOUSE_MODE_SERVER), the
+         * shape messages. In server mode (`SPICE_MOUSE_MODE_SERVER`), the
          * client sends relative mouse movements and the server sends
          * position and shape commands.
+         * @read-only
          */
         get mouseMode(): number;
 
@@ -1518,11 +1987,13 @@ export namespace SpiceClientGLib {
 
         // Signals
 
+        /** @signal */
         connect_after<K extends keyof MainChannel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, MainChannel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof MainChannel.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<MainChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1534,24 +2005,22 @@ export namespace SpiceClientGLib {
         /**
          * Test capability of a remote agent.
          * @param cap an agent capability identifier
-         * @returns %TRUE if @cap (channel kind capability) is available.
+         * @returns `true` if `cap` (channel kind capability) is available.
          */
         agent_test_capability(cap: number): boolean;
         /**
          * Grab the guest clipboard, with #VD_AGENT_CLIPBOARD `types`.
          * @param selection one of the clipboard #VD_AGENT_CLIPBOARD_SELECTION_*
          * @param types an array of #VD_AGENT_CLIPBOARD types available in the clipboard
-         * @param ntypes the number of @types
          */
-        clipboard_selection_grab(selection: number, types: number, ntypes: number): void;
+        clipboard_selection_grab(selection: number, types: number[]): void;
         /**
          * Send the clipboard data to the guest.
          * @param selection one of the clipboard #VD_AGENT_CLIPBOARD_SELECTION_*
          * @param type a #VD_AGENT_CLIPBOARD type
          * @param data clipboard data
-         * @param size data length in bytes
          */
-        clipboard_selection_notify(selection: number, type: number, data: number, size: number): void;
+        clipboard_selection_notify(selection: number, type: number, data: Uint8Array | string): void;
         /**
          * Release the clipboard (for example, when the client loses the
          * clipboard grab): Inform the guest no clipboard data is available.
@@ -1560,7 +2029,7 @@ export namespace SpiceClientGLib {
         clipboard_selection_release(selection: number): void;
         /**
          * Request clipboard data of `type` from the guest. The reply is sent
-         * through the #SpiceMainChannel::main-clipboard-selection signal.
+         * through the {@link SpiceClientGLib.MainChannel.SignalSignatures.main_clipboard_selection | SpiceClientGLib.MainChannel::main-clipboard-selection} signal.
          * @param selection one of the clipboard #VD_AGENT_CLIPBOARD_SELECTION_*
          * @param type a #VD_AGENT_CLIPBOARD type
          */
@@ -1568,12 +2037,12 @@ export namespace SpiceClientGLib {
         /**
          * Copies the file `sources` to guest
          *
-         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
-         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+         * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
          *
-         * If `progress_callback` is not %NULL, then the operation can be monitored by
-         * setting this to a #GFileProgressCallback function. `progress_callback_data`
+         * If `progress_callback` is not `null`, then the operation can be monitored by
+         * setting this to a {@link Gio.FileProgressCallback} function. `progress_callback_data`
          * will be passed to this function. It is guaranteed that this callback will
          * be called after all data has been transferred with the total number of bytes
          * copied during the operation. Note that before release 0.31, progress_callback
@@ -1581,18 +2050,18 @@ export namespace SpiceClientGLib {
          * not provide a way to determine which file it referred to. In release 0.31,
          * this behavior was changed so that progress_callback provides the status of
          * all ongoing file transfers. If you need to monitor the status of individual
-         * files, please connect to the #SpiceMainChannel::new-file-transfer signal.
+         * files, please connect to the {@link SpiceClientGLib.MainChannel.SignalSignatures.new_file_transfer | SpiceClientGLib.MainChannel::new-file-transfer} signal.
          *
          * When the operation is finished, callback will be called. You can then call
-         * spice_main_file_copy_finish() to get the result of the operation. Note that
+         * `spice_main_file_copy_finish()` to get the result of the operation. Note that
          * before release 0.33 the callback was called for each file in multiple file
          * transfer. This behavior was changed for the same reason as the
          * progress_callback (above). If you need to monitor the ending of individual
          * files, you can connect to "finished" signal from each SpiceFileTransferTask.
-         * @param sources a %NULL-terminated array of #GFile objects to be transferred
-         * @param flags set of #GFileCopyFlags
-         * @param cancellable optional #GCancellable object, %NULL to ignore
-         * @param progress_callback function to callback with     progress information, or %NULL if progress information is not needed
+         * @param sources a `null`-terminated array of {@link Gio.File} objects to be transferred
+         * @param flags set of {@link Gio.FileCopyFlags}
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
+         * @param progress_callback function to callback with     progress information, or `null` if progress information is not needed
          */
         file_copy_async(
             sources: Gio.File[],
@@ -1603,12 +2072,12 @@ export namespace SpiceClientGLib {
         /**
          * Copies the file `sources` to guest
          *
-         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
-         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+         * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
          *
-         * If `progress_callback` is not %NULL, then the operation can be monitored by
-         * setting this to a #GFileProgressCallback function. `progress_callback_data`
+         * If `progress_callback` is not `null`, then the operation can be monitored by
+         * setting this to a {@link Gio.FileProgressCallback} function. `progress_callback_data`
          * will be passed to this function. It is guaranteed that this callback will
          * be called after all data has been transferred with the total number of bytes
          * copied during the operation. Note that before release 0.31, progress_callback
@@ -1616,19 +2085,19 @@ export namespace SpiceClientGLib {
          * not provide a way to determine which file it referred to. In release 0.31,
          * this behavior was changed so that progress_callback provides the status of
          * all ongoing file transfers. If you need to monitor the status of individual
-         * files, please connect to the #SpiceMainChannel::new-file-transfer signal.
+         * files, please connect to the {@link SpiceClientGLib.MainChannel.SignalSignatures.new_file_transfer | SpiceClientGLib.MainChannel::new-file-transfer} signal.
          *
          * When the operation is finished, callback will be called. You can then call
-         * spice_main_file_copy_finish() to get the result of the operation. Note that
+         * `spice_main_file_copy_finish()` to get the result of the operation. Note that
          * before release 0.33 the callback was called for each file in multiple file
          * transfer. This behavior was changed for the same reason as the
          * progress_callback (above). If you need to monitor the ending of individual
          * files, you can connect to "finished" signal from each SpiceFileTransferTask.
-         * @param sources a %NULL-terminated array of #GFile objects to be transferred
-         * @param flags set of #GFileCopyFlags
-         * @param cancellable optional #GCancellable object, %NULL to ignore
-         * @param progress_callback function to callback with     progress information, or %NULL if progress information is not needed
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param sources a `null`-terminated array of {@link Gio.File} objects to be transferred
+         * @param flags set of {@link Gio.FileCopyFlags}
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
+         * @param progress_callback function to callback with     progress information, or `null` if progress information is not needed
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         file_copy_async(
             sources: Gio.File[],
@@ -1640,12 +2109,12 @@ export namespace SpiceClientGLib {
         /**
          * Copies the file `sources` to guest
          *
-         * If `cancellable` is not %NULL, then the operation can be cancelled by
+         * If `cancellable` is not `null`, then the operation can be cancelled by
          * triggering the cancellable object from another thread. If the operation
-         * was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+         * was cancelled, the error {@link Gio.IOErrorEnum.CANCELLED} will be returned.
          *
-         * If `progress_callback` is not %NULL, then the operation can be monitored by
-         * setting this to a #GFileProgressCallback function. `progress_callback_data`
+         * If `progress_callback` is not `null`, then the operation can be monitored by
+         * setting this to a {@link Gio.FileProgressCallback} function. `progress_callback_data`
          * will be passed to this function. It is guaranteed that this callback will
          * be called after all data has been transferred with the total number of bytes
          * copied during the operation. Note that before release 0.31, progress_callback
@@ -1653,19 +2122,19 @@ export namespace SpiceClientGLib {
          * not provide a way to determine which file it referred to. In release 0.31,
          * this behavior was changed so that progress_callback provides the status of
          * all ongoing file transfers. If you need to monitor the status of individual
-         * files, please connect to the #SpiceMainChannel::new-file-transfer signal.
+         * files, please connect to the {@link SpiceClientGLib.MainChannel.SignalSignatures.new_file_transfer | SpiceClientGLib.MainChannel::new-file-transfer} signal.
          *
          * When the operation is finished, callback will be called. You can then call
-         * spice_main_file_copy_finish() to get the result of the operation. Note that
+         * `spice_main_file_copy_finish()` to get the result of the operation. Note that
          * before release 0.33 the callback was called for each file in multiple file
          * transfer. This behavior was changed for the same reason as the
          * progress_callback (above). If you need to monitor the ending of individual
          * files, you can connect to "finished" signal from each SpiceFileTransferTask.
-         * @param sources a %NULL-terminated array of #GFile objects to be transferred
-         * @param flags set of #GFileCopyFlags
-         * @param cancellable optional #GCancellable object, %NULL to ignore
-         * @param progress_callback function to callback with     progress information, or %NULL if progress information is not needed
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param sources a `null`-terminated array of {@link Gio.File} objects to be transferred
+         * @param flags set of {@link Gio.FileCopyFlags}
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
+         * @param progress_callback function to callback with     progress information, or `null` if progress information is not needed
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         file_copy_async(
             sources: Gio.File[],
@@ -1676,9 +2145,9 @@ export namespace SpiceClientGLib {
         ): globalThis.Promise<boolean> | void;
         /**
          * Finishes copying the file started with
-         * spice_main_file_copy_async().
-         * @param result a #GAsyncResult.
-         * @returns a %TRUE on success, %FALSE on error.
+         * `spice_main_file_copy_async()`.
+         * @param result a {@link Gio.AsyncResult}.
+         * @returns a `true` on success, `false` on error.
          */
         file_copy_finish(result: Gio.AsyncResult): boolean;
         /**
@@ -1690,47 +2159,81 @@ export namespace SpiceClientGLib {
         request_mouse_mode(mode: number): void;
         /**
          * Send monitors configuration previously set with
-         * spice_main_set_display() and spice_main_set_display_enabled()
-         * @returns %TRUE on success.
+         * `spice_main_set_display()` and `spice_main_set_display_enabled()`
+         * @returns `true` on success.
          */
         send_monitor_config(): boolean;
         /**
          * Update the display `id` resolution.
          *
-         * If `update` is %TRUE, the remote configuration will be updated too
+         * If `update` is `true`, the remote configuration will be updated too
          * after 1 second without further changes. You can send when you want
          * without delay the new configuration to the remote with
-         * spice_main_send_monitor_config()
+         * `spice_main_send_monitor_config()`
          * @param id display ID
          * @param x x position
          * @param y y position
          * @param width display width
          * @param height display height
-         * @param update if %TRUE, update guest resolution after 1sec.
+         * @param update if `true`, update guest resolution after 1sec.
          */
         update_display(id: number, x: number, y: number, width: number, height: number, update: boolean): void;
         /**
-         * When sending monitor configuration to agent guest, if `enabled` is %FALSE,
-         * don't set display `id,` which the agent translates to disabling the display
-         * id. If `enabled` is %TRUE, the monitor will be included in the next monitor
+         * When sending monitor configuration to agent guest, if `enabled` is `false`,
+         * don't set display `id`, which the agent translates to disabling the display
+         * id. If `enabled` is `true`, the monitor will be included in the next monitor
          * update. Note: this will take effect next time the monitor configuration is
          * sent.
          *
-         * If `update` is %FALSE, no server update will be triggered by this call, but
+         * If `update` is `false`, no server update will be triggered by this call, but
          * the value will be saved and used in the next configuration update.
          * @param id display ID (if -1: set all displays)
-         * @param enabled wether display @id is enabled
-         * @param update if %TRUE, update guest display state after 1sec.
+         * @param enabled wether display `id` is enabled
+         * @param update if `true`, update guest display state after 1sec.
          */
         update_display_enabled(id: number, enabled: boolean, update: boolean): void;
+        /**
+         * Update the display `id` physical size.
+         *
+         * If `update` is `true`, the remote configuration will be updated too
+         * after 1 second without further changes. You can send when you want
+         * without delay the new configuration to the remote with
+         * `spice_main_send_monitor_config()`
+         * @param id display ID
+         * @param width_mm physical display width in millimeters
+         * @param height_mm physical display height in millimeters
+         * @param update if `true`, update guest resolution after 1sec.
+         */
+        update_display_mm(id: number, width_mm: number, height_mm: number, update: boolean): void;
     }
 
     namespace PlaybackChannel {
         // Signal signatures
         interface SignalSignatures extends Channel.SignalSignatures {
+            /**
+             * Provide audio data to be played.
+             * @signal
+             * @run-first
+             */
             'playback-data': (arg0: any | null, arg1: number) => void;
+            /**
+             * Notify when the current playback delay is requested
+             * @signal
+             * @run-first
+             */
             'playback-get-delay': () => void;
+            /**
+             * Notify when the playback should start, and provide audio format
+             * characteristics.
+             * @signal
+             * @run-first
+             */
             'playback-start': (arg0: number, arg1: number, arg2: number) => void;
+            /**
+             * Notify when the playback should stop.
+             * @signal
+             * @run-first
+             */
             'playback-stop': () => void;
             'notify::min-latency': (pspec: GObject.ParamSpec) => void;
             'notify::mute': (pspec: GObject.ParamSpec) => void;
@@ -1755,7 +2258,8 @@ export namespace SpiceClientGLib {
     }
 
     /**
-     * The #SpicePlaybackChannel struct is opaque and should not be accessed directly.
+     * The {@link SpiceClientGLib.PlaybackChannel} struct is opaque and should not be accessed directly.
+     * @gir-type Class
      */
     class PlaybackChannel extends Channel {
         static $gtype: GObject.GType<PlaybackChannel>;
@@ -1790,11 +2294,13 @@ export namespace SpiceClientGLib {
 
         // Signals
 
+        /** @signal */
         connect_after<K extends keyof PlaybackChannel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PlaybackChannel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PlaybackChannel.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PlaybackChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1803,8 +2309,25 @@ export namespace SpiceClientGLib {
 
         // Virtual methods
 
+        /**
+         * Signal class handler for the {@link SpiceClientGLib.PlaybackChannel.SignalSignatures.playback_data | SpiceClientGLib.PlaybackChannel::playback-data} signal.
+         * @param data
+         * @param size
+         * @virtual
+         */
         vfunc_playback_data(data: any | null, size: number): void;
+        /**
+         * Signal class handler for the {@link SpiceClientGLib.PlaybackChannel.SignalSignatures.playback_start | SpiceClientGLib.PlaybackChannel::playback-start} signal.
+         * @param format
+         * @param channels
+         * @param freq
+         * @virtual
+         */
         vfunc_playback_start(format: number, channels: number, freq: number): void;
+        /**
+         * Signal class handler for the {@link SpiceClientGLib.PlaybackChannel.SignalSignatures.playback_stop | SpiceClientGLib.PlaybackChannel::playback-stop} signal.
+         * @virtual
+         */
         vfunc_playback_stop(): void;
 
         // Methods
@@ -1819,7 +2342,21 @@ export namespace SpiceClientGLib {
     namespace PortChannel {
         // Signal signatures
         interface SignalSignatures extends Channel.SignalSignatures {
+            /**
+             * The {@link SpiceClientGLib.PortChannel.SignalSignatures.port_data | SpiceClientGLib.PortChannel::port-data} signal is emitted when new
+             * port data is received.
+             * @signal
+             * @since 0.15
+             * @run-last
+             */
             'port-data': (arg0: any | null, arg1: number) => void;
+            /**
+             * The {@link SpiceClientGLib.PortChannel.SignalSignatures.port_event | SpiceClientGLib.PortChannel::port-event} signal is emitted when new
+             * port event is received.
+             * @signal
+             * @since 0.15
+             * @run-last
+             */
             'port-event': (arg0: number) => void;
             'notify::port-name': (pspec: GObject.ParamSpec) => void;
             'notify::port-opened': (pspec: GObject.ParamSpec) => void;
@@ -1841,16 +2378,29 @@ export namespace SpiceClientGLib {
     }
 
     /**
-     * The #SpicePortChannel struct is opaque and should not be accessed directly.
+     * The {@link SpiceClientGLib.PortChannel} struct is opaque and should not be accessed directly.
+     * @gir-type Class
      */
     class PortChannel extends Channel {
         static $gtype: GObject.GType<PortChannel>;
 
         // Properties
 
+        /**
+         * @read-only
+         */
         get port_name(): string;
+        /**
+         * @read-only
+         */
         get portName(): string;
+        /**
+         * @read-only
+         */
         get port_opened(): boolean;
+        /**
+         * @read-only
+         */
         get portOpened(): boolean;
 
         /**
@@ -1870,11 +2420,13 @@ export namespace SpiceClientGLib {
 
         // Signals
 
+        /** @signal */
         connect_after<K extends keyof PortChannel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, PortChannel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof PortChannel.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<PortChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -1895,7 +2447,7 @@ export namespace SpiceClientGLib {
         /**
          * Request an asynchronous write of count bytes from `buffer` into the
          * `port`. When the operation is finished `callback` will be called. You
-         * can then call spice_port_write_finish() to get the result of
+         * can then call `spice_port_write_finish()` to get the result of
          * the operation.
          * @param buffer the buffer containing the data to write
          * @param cancellable optional GCancellable object, NULL to ignore
@@ -1904,7 +2456,7 @@ export namespace SpiceClientGLib {
         /**
          * Request an asynchronous write of count bytes from `buffer` into the
          * `port`. When the operation is finished `callback` will be called. You
-         * can then call spice_port_write_finish() to get the result of
+         * can then call `spice_port_write_finish()` to get the result of
          * the operation.
          * @param buffer the buffer containing the data to write
          * @param cancellable optional GCancellable object, NULL to ignore
@@ -1918,7 +2470,7 @@ export namespace SpiceClientGLib {
         /**
          * Request an asynchronous write of count bytes from `buffer` into the
          * `port`. When the operation is finished `callback` will be called. You
-         * can then call spice_port_write_finish() to get the result of
+         * can then call `spice_port_write_finish()` to get the result of
          * the operation.
          * @param buffer the buffer containing the data to write
          * @param cancellable optional GCancellable object, NULL to ignore
@@ -1931,8 +2483,8 @@ export namespace SpiceClientGLib {
         ): globalThis.Promise<number> | void;
         /**
          * Finishes a port write operation.
-         * @param result a #GAsyncResult
-         * @returns a #gssize containing the number of bytes written to the stream.
+         * @param result a {@link Gio.AsyncResult}
+         * @returns a `gssize` containing the number of bytes written to the stream.
          */
         write_finish(result: Gio.AsyncResult): number;
     }
@@ -1940,6 +2492,12 @@ export namespace SpiceClientGLib {
     namespace QmpPort {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * Event emitted whenever a QMP event is received.
+             * @signal
+             * @since 0.36
+             * @run-first
+             */
             event: (arg0: string, arg1: any | null) => void;
             'notify::channel': (pspec: GObject.ParamSpec) => void;
             'notify::ready': (pspec: GObject.ParamSpec) => void;
@@ -1955,13 +2513,21 @@ export namespace SpiceClientGLib {
 
     /**
      * Opaque data structure.
+     * @gir-type Class
+     * @since 0.36
      */
     class QmpPort extends GObject.Object {
         static $gtype: GObject.GType<QmpPort>;
 
         // Properties
 
+        /**
+         * @construct-only
+         */
         get channel(): PortChannel;
+        /**
+         * @read-only
+         */
         get ready(): boolean;
 
         /**
@@ -1981,16 +2547,19 @@ export namespace SpiceClientGLib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof QmpPort.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, QmpPort.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof QmpPort.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, QmpPort.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof QmpPort.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<QmpPort.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2010,18 +2579,18 @@ export namespace SpiceClientGLib {
 
         /**
          * Query the run status of all VCPUs.
-         * @param cancellable A #GCancellable
+         * @param cancellable A {@link Gio.Cancellable}
          */
         query_status_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<QmpStatus>;
         /**
          * Query the run status of all VCPUs.
-         * @param cancellable A #GCancellable
+         * @param cancellable A {@link Gio.Cancellable}
          * @param callback The async callback.
          */
         query_status_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
         /**
          * Query the run status of all VCPUs.
-         * @param cancellable A #GCancellable
+         * @param cancellable A {@link Gio.Cancellable}
          * @param callback The async callback.
          */
         query_status_async(
@@ -2030,14 +2599,14 @@ export namespace SpiceClientGLib {
         ): globalThis.Promise<QmpStatus> | void;
         /**
          * Finish the asynchronous status query.
-         * @param result The async #GAsyncResult result
-         * @returns The #SpiceQmpStatus result or %NULL, in which case @error will be set.
+         * @param result The async {@link Gio.AsyncResult} result
+         * @returns The {@link SpiceClientGLib.QmpStatus} result or `null`, in which case `error` will be set.
          */
         query_status_finish(result: Gio.AsyncResult): QmpStatus;
         /**
          * Request the VM to perform an action.
          * @param action a VM action
-         * @param cancellable a #GCancellable, or %NULL
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          */
         vm_action_async(
             action: QmpPortVmAction | null,
@@ -2046,7 +2615,7 @@ export namespace SpiceClientGLib {
         /**
          * Request the VM to perform an action.
          * @param action a VM action
-         * @param cancellable a #GCancellable, or %NULL
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to call when the action is complete
          */
         vm_action_async(
@@ -2057,7 +2626,7 @@ export namespace SpiceClientGLib {
         /**
          * Request the VM to perform an action.
          * @param action a VM action
-         * @param cancellable a #GCancellable, or %NULL
+         * @param cancellable a {@link Gio.Cancellable}, or `null`
          * @param callback callback to call when the action is complete
          */
         vm_action_async(
@@ -2067,7 +2636,7 @@ export namespace SpiceClientGLib {
         ): globalThis.Promise<boolean> | void;
         /**
          * Finishes asynchronous VM action and returns the result.
-         * @param result The async #GAsyncResult result
+         * @param result The async {@link Gio.AsyncResult} result
          */
         vm_action_finish(result: Gio.AsyncResult): boolean;
     }
@@ -2075,7 +2644,18 @@ export namespace SpiceClientGLib {
     namespace RecordChannel {
         // Signal signatures
         interface SignalSignatures extends Channel.SignalSignatures {
+            /**
+             * Notify when the recording should start, and provide audio format
+             * characteristics.
+             * @signal
+             * @run-first
+             */
             'record-start': (arg0: number, arg1: number, arg2: number) => void;
+            /**
+             * Notify when the recording should stop.
+             * @signal
+             * @run-first
+             */
             'record-stop': () => void;
             'notify::mute': (pspec: GObject.ParamSpec) => void;
             'notify::nchannels': (pspec: GObject.ParamSpec) => void;
@@ -2097,7 +2677,8 @@ export namespace SpiceClientGLib {
     }
 
     /**
-     * The #SpiceRecordChannel struct is opaque and should not be accessed directly.
+     * The {@link SpiceClientGLib.RecordChannel} struct is opaque and should not be accessed directly.
+     * @gir-type Class
      */
     class RecordChannel extends Channel {
         static $gtype: GObject.GType<RecordChannel>;
@@ -2128,11 +2709,13 @@ export namespace SpiceClientGLib {
 
         // Signals
 
+        /** @signal */
         connect_after<K extends keyof RecordChannel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, RecordChannel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof RecordChannel.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<RecordChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2141,8 +2724,25 @@ export namespace SpiceClientGLib {
 
         // Virtual methods
 
+        /**
+         * Unused (deprecated).
+         * @param data
+         * @param size
+         * @virtual
+         */
         vfunc_record_data(data: any | null, size: number): void;
+        /**
+         * Signal class handler for the {@link SpiceClientGLib.RecordChannel.SignalSignatures.record_start | SpiceClientGLib.RecordChannel::record-start} signal.
+         * @param format
+         * @param channels
+         * @param freq
+         * @virtual
+         */
         vfunc_record_start(format: number, channels: number, freq: number): void;
+        /**
+         * Signal class handler for the {@link SpiceClientGLib.RecordChannel.SignalSignatures.record_stop | SpiceClientGLib.RecordChannel::record-stop} signal.
+         * @virtual
+         */
         vfunc_record_stop(): void;
 
         // Methods
@@ -2150,7 +2750,7 @@ export namespace SpiceClientGLib {
         /**
          * Send recorded PCM data to the guest.
          * @param data PCM data
-         * @param bytes size of @data
+         * @param bytes size of `data`
          * @param time stream timestamp
          */
         send_data(data: any | null, bytes: number, time: number): void;
@@ -2159,9 +2759,32 @@ export namespace SpiceClientGLib {
     namespace Session {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * The {@link SpiceClientGLib.Session.SignalSignatures.channel_destroy | SpiceClientGLib.Session::channel-destroy} signal is emitted each time a {@link SpiceClientGLib.Channel} is destroyed.
+             * @signal
+             * @run-first
+             */
             'channel-destroy': (arg0: Channel) => void;
+            /**
+             * The {@link SpiceClientGLib.Session.SignalSignatures.channel_new | SpiceClientGLib.Session::channel-new} signal is emitted each time a {@link SpiceClientGLib.Channel} is created.
+             * @signal
+             * @run-first
+             */
             'channel-new': (arg0: Channel) => void;
+            /**
+             * The {@link SpiceClientGLib.Session.SignalSignatures.disconnected | SpiceClientGLib.Session::disconnected} signal is emitted when all channels have been destroyed.
+             * @signal
+             * @since 0.35
+             * @run-first
+             */
             disconnected: () => void;
+            /**
+             * The {@link SpiceClientGLib.Session.SignalSignatures.mm_time_reset | SpiceClientGLib.Session::mm-time-reset} is emitted when we identify discontinuity in mm-time
+             *
+             * Since 0.20
+             * @signal
+             * @run-first
+             */
             'mm-time-reset': () => void;
             'notify::ca': (pspec: GObject.ParamSpec) => void;
             'notify::ca-file': (pspec: GObject.ParamSpec) => void;
@@ -2261,7 +2884,8 @@ export namespace SpiceClientGLib {
     }
 
     /**
-     * The #SpiceSession struct is opaque and should not be accessed directly.
+     * The {@link SpiceClientGLib.Session} struct is opaque and should not be accessed directly.
+     * @gir-type Class
      */
     class Session extends GObject.Object {
         static $gtype: GObject.GType<Session>;
@@ -2275,6 +2899,7 @@ export namespace SpiceClientGLib {
          *  -----BEGIN CERTIFICATE-----
          *  ... (CA certificate in base64 encoding) ...
          *  -----END CERTIFICATE-----
+         * @since 0.15
          */
         get ca(): Uint8Array;
         set ca(val: Uint8Array);
@@ -2292,11 +2917,13 @@ export namespace SpiceClientGLib {
         set caFile(val: string);
         /**
          * Images cache size. If 0, don't set.
+         * @since 0.9
          */
         get cache_size(): number;
         set cache_size(val: number);
         /**
          * Images cache size. If 0, don't set.
+         * @since 0.9
          */
         get cacheSize(): number;
         set cacheSize(val: number);
@@ -2312,11 +2939,15 @@ export namespace SpiceClientGLib {
         set clientSockets(val: boolean);
         /**
          * Display color depth to set on new display channels. If 0, don't set.
+         * @since 0.7
+         * @deprecated since 0.37: Deprecated due lack of support in drivers, only Windows 7 and older. This option is currently ignored.
          */
         get color_depth(): number;
         set color_depth(val: number);
         /**
          * Display color depth to set on new display channels. If 0, don't set.
+         * @since 0.7
+         * @deprecated since 0.37: Deprecated due lack of support in drivers, only Windows 7 and older. This option is currently ignored.
          */
         get colorDepth(): number;
         set colorDepth(val: number);
@@ -2325,6 +2956,7 @@ export namespace SpiceClientGLib {
          * be applied on new display channels. The following effets can be
          * disabled "wallpaper", "font-smooth", "animation", and "all",
          * which will disable all the effects. If NULL, don't apply changes.
+         * @since 0.7
          */
         get disable_effects(): string[];
         set disable_effects(val: string[]);
@@ -2333,42 +2965,49 @@ export namespace SpiceClientGLib {
          * be applied on new display channels. The following effets can be
          * disabled "wallpaper", "font-smooth", "animation", and "all",
          * which will disable all the effects. If NULL, don't apply changes.
+         * @since 0.7
          */
         get disableEffects(): string[];
         set disableEffects(val: string[]);
         /**
          * If set to TRUE, the audio channels will be enabled for
          * playback and recording.
+         * @since 0.8
          */
         get enable_audio(): boolean;
         set enable_audio(val: boolean);
         /**
          * If set to TRUE, the audio channels will be enabled for
          * playback and recording.
+         * @since 0.8
          */
         get enableAudio(): boolean;
         set enableAudio(val: boolean);
         /**
          * If set to TRUE, the smartcard channel will be enabled and smartcard
          * events will be forwarded to the guest
+         * @since 0.7
          */
         get enable_smartcard(): boolean;
         set enable_smartcard(val: boolean);
         /**
          * If set to TRUE, the smartcard channel will be enabled and smartcard
          * events will be forwarded to the guest
+         * @since 0.7
          */
         get enableSmartcard(): boolean;
         set enableSmartcard(val: boolean);
         /**
          * If set to TRUE, the usbredir channel will be enabled and USB devices
          * can be redirected to the guest
+         * @since 0.8
          */
         get enable_usbredir(): boolean;
         set enable_usbredir(val: boolean);
         /**
          * If set to TRUE, the usbredir channel will be enabled and USB devices
          * can be redirected to the guest
+         * @since 0.8
          */
         get enableUsbredir(): boolean;
         set enableUsbredir(val: boolean);
@@ -2376,6 +3015,7 @@ export namespace SpiceClientGLib {
          * Whether to enable gl-scanout (Unix only).  Set to TRUE by
          * default on EGL-enabled host, unless SPICE_DISABLE_GL_SCANOUT
          * environment variable is set.
+         * @since 0.36
          */
         get gl_scanout(): boolean;
         set gl_scanout(val: boolean);
@@ -2383,16 +3023,19 @@ export namespace SpiceClientGLib {
          * Whether to enable gl-scanout (Unix only).  Set to TRUE by
          * default on EGL-enabled host, unless SPICE_DISABLE_GL_SCANOUT
          * environment variable is set.
+         * @since 0.36
          */
         get glScanout(): boolean;
         set glScanout(val: boolean);
         /**
          * Glz window size. If 0, don't set.
+         * @since 0.9
          */
         get glz_window_size(): number;
         set glz_window_size(val: number);
         /**
          * Glz window size. If 0, don't set.
+         * @since 0.9
          */
         get glzWindowSize(): number;
         set glzWindowSize(val: number);
@@ -2406,17 +3049,21 @@ export namespace SpiceClientGLib {
         get inhibitKeyboardGrab(): boolean;
         set inhibitKeyboardGrab(val: boolean);
         /**
-         * #SpiceSessionMigration bit field indicating if a migration is in
+         * {@link SpiceClientGLib.SessionMigration} bit field indicating if a migration is in
          * progress
+         * @read-only
          */
         get migration_state(): SessionMigration;
         /**
-         * #SpiceSessionMigration bit field indicating if a migration is in
+         * {@link SpiceClientGLib.SessionMigration} bit field indicating if a migration is in
          * progress
+         * @read-only
          */
         get migrationState(): SessionMigration;
         /**
          * Spice server name.
+         * @since 0.11
+         * @read-only
          */
         get name(): string;
         /**
@@ -2437,6 +3084,7 @@ export namespace SpiceClientGLib {
         /**
          * URI to the proxy server to use when doing network connection.
          * of the form <![CDATA[ [protocol://]<host>[:port] ]]>
+         * @since 0.17
          */
         get proxy(): string;
         set proxy(val: string);
@@ -2444,41 +3092,49 @@ export namespace SpiceClientGLib {
         set pubkey(val: Uint8Array);
         /**
          * Whether this connection is read-only mode.
+         * @since 0.8
          */
         get read_only(): boolean;
         set read_only(val: boolean);
         /**
          * Whether this connection is read-only mode.
+         * @since 0.8
          */
         get readOnly(): boolean;
         set readOnly(val: boolean);
         /**
          * A string array of channel types to be secured.
+         * @since 0.20
          */
         get secure_channels(): string[];
         set secure_channels(val: string[]);
         /**
          * A string array of channel types to be secured.
+         * @since 0.20
          */
         get secureChannels(): string[];
         set secureChannels(val: string[]);
         /**
          * Whether to share the directory read-only.
+         * @since 0.28
          */
         get share_dir_ro(): boolean;
         set share_dir_ro(val: boolean);
         /**
          * Whether to share the directory read-only.
+         * @since 0.28
          */
         get shareDirRo(): boolean;
         set shareDirRo(val: boolean);
         /**
          * Location of the shared directory
+         * @since 0.24
          */
         get shared_dir(): string;
         set shared_dir(val: string);
         /**
          * Location of the shared directory
+         * @since 0.24
          */
         get sharedDir(): string;
         set sharedDir(val: string);
@@ -2487,7 +3143,8 @@ export namespace SpiceClientGLib {
          * hardware smartcard reader. If it's set to a NULL-terminated string
          * array containing the names of 3 valid certificates, these will be
          * used to simulate a smartcard in the guest
-         * See also spice_smartcard_manager_insert_card()
+         * See also `spice_smartcard_manager_insert_card()`
+         * @since 0.7
          */
         get smartcard_certificates(): string[];
         set smartcard_certificates(val: string[]);
@@ -2496,19 +3153,22 @@ export namespace SpiceClientGLib {
          * hardware smartcard reader. If it's set to a NULL-terminated string
          * array containing the names of 3 valid certificates, these will be
          * used to simulate a smartcard in the guest
-         * See also spice_smartcard_manager_insert_card()
+         * See also `spice_smartcard_manager_insert_card()`
+         * @since 0.7
          */
         get smartcardCertificates(): string[];
         set smartcardCertificates(val: string[]);
         /**
          * Path to the NSS certificate database containing the certificates to
          * use to simulate a software smartcard
+         * @since 0.7
          */
         get smartcard_db(): string;
         set smartcard_db(val: string);
         /**
          * Path to the NSS certificate database containing the certificates to
          * use to simulate a software smartcard
+         * @since 0.7
          */
         get smartcardDb(): string;
         set smartcardDb(val: string);
@@ -2524,11 +3184,13 @@ export namespace SpiceClientGLib {
         set tlsPort(val: string);
         /**
          * Path of the Unix socket to connect to
+         * @since 0.28
          */
         get unix_path(): string;
         set unix_path(val: string);
         /**
          * Path of the Unix socket to connect to
+         * @since 0.28
          */
         get unixPath(): string;
         set unixPath(val: string);
@@ -2545,10 +3207,12 @@ export namespace SpiceClientGLib {
         set username(val: string);
         /**
          * Spice server uuid.
+         * @since 0.11
+         * @read-only
          */
         get uuid(): any;
         /**
-         * #SpiceSessionVerify bit field indicating which parts of the peer
+         * {@link SpiceClientGLib.SessionVerify} bit field indicating which parts of the peer
          * certificate should be checked
          */
         get verify(): SessionVerify;
@@ -2573,16 +3237,19 @@ export namespace SpiceClientGLib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof Session.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof Session.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, Session.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof Session.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<Session.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2591,42 +3258,55 @@ export namespace SpiceClientGLib {
 
         // Virtual methods
 
+        /**
+         * Signal class handler for the {@link SpiceClientGLib.Session.SignalSignatures.channel_destroy | SpiceClientGLib.Session::channel_destroy} signal.
+         * @param channel
+         * @virtual
+         */
         vfunc_channel_destroy(channel: Channel): void;
+        /**
+         * Signal class handler for the {@link SpiceClientGLib.Session.SignalSignatures.channel_new | SpiceClientGLib.Session::channel_new} signal.
+         * @param channel
+         * @virtual
+         */
         vfunc_channel_new(channel: Channel): void;
 
         // Methods
 
         /**
-         * Open the session using the #SpiceSession:host and
-         * #SpiceSession:port.
-         * @returns %FALSE if the session state is invalid for connection request. %TRUE if the connection is initiated. To know whether the connection is established, you must watch for channels creation (#SpiceSession::channel-new) and the channels state (#SpiceChannel::channel-event).
+         * Open the session using the {@link SpiceClientGLib.Session.host} and
+         * {@link SpiceClientGLib.Session.port}.
+         * @returns `false` if the session state is invalid for connection request. `true` if the connection is initiated. To know whether the connection is established, you must watch for channels creation ({@link SpiceClientGLib.Session.SignalSignatures.channel_new | SpiceClientGLib.Session::channel-new}) and the channels state ({@link SpiceClientGLib.Channel.SignalSignatures.channel_event | SpiceClientGLib.Channel::channel-event}).
          */
         connect(): boolean;
+        /**
+         * @param args
+         */
         connect(...args: never[]): any;
         /**
-         * Disconnect the `session,` and destroy all channels.
+         * Disconnect the `session`, and destroy all channels.
          */
         disconnect(): void;
         /**
          * Get the list of current channels associated with this `session`.
-         * @returns a #GList          of unowned #SpiceChannel channels.
+         * @returns a {@link GLib.List}          of unowned {@link SpiceClientGLib.Channel} channels.
          */
         get_channels(): Channel[];
         /**
          * Gets the `session` proxy uri.
-         * @returns the session proxy #SpiceURI or %NULL.
+         * @returns the session proxy {@link SpiceClientGLib.URI} or `null`.
          */
         get_proxy_uri(): URI;
         /**
          * Checks whether the `session` is read-only.
-         * @returns whether the @session is in read-only mode.
+         * @returns whether the `session` is in read-only mode.
          */
         get_read_only(): boolean;
         /**
          * See if there is a `type` channel in the channels associated with this
          * `session`.
-         * @param type a #SpiceChannel:channel-type
-         * @returns TRUE if a @type channel is available otherwise FALSE.
+         * @param type a {@link SpiceClientGLib.Channel.channel_type}
+         * @returns TRUE if a `type` channel is available otherwise FALSE.
          */
         has_channel_type(type: number): boolean;
         /**
@@ -2634,7 +3314,7 @@ export namespace SpiceClientGLib {
          * connection with the target, but they are temporary and should only
          * handle migration steps. In order to avoid other interactions with
          * the client, channels should check this value.
-         * @returns %TRUE if the session is a copy created during migration
+         * @returns `true` if the session is a copy created during migration
          */
         is_for_migration(): boolean;
         /**
@@ -2645,7 +3325,7 @@ export namespace SpiceClientGLib {
          * Note however that additional sockets will be needed by all the channels
          * created for `session` so users of this API should hook into
          * SpiceChannel::open-fd signal for each channel they are interested in, and
-         * create and pass a new socket to the channel using #spice_channel_open_fd, in
+         * create and pass a new socket to the channel using `spice_channel_open_fd`, in
          * the signal callback.
          *
          * If `fd` is -1, a valid fd will be requested later via the
@@ -2653,7 +3333,7 @@ export namespace SpiceClientGLib {
          * `fd` this call since you will have to hook to SpiceChannel::open-fd signal
          * anyway.
          * @param fd a file descriptor (socket) or -1
-         * @returns %TRUE on success.
+         * @returns `true` on success.
          */
         open_fd(fd: number): boolean;
     }
@@ -2674,7 +3354,8 @@ export namespace SpiceClientGLib {
     }
 
     /**
-     * The #SpiceSmartcardChannel struct is opaque and should not be accessed directly.
+     * The {@link SpiceClientGLib.SmartcardChannel} struct is opaque and should not be accessed directly.
+     * @gir-type Class
      */
     class SmartcardChannel extends Channel {
         static $gtype: GObject.GType<SmartcardChannel>;
@@ -2696,11 +3377,13 @@ export namespace SpiceClientGLib {
 
         // Signals
 
+        /** @signal */
         connect_after<K extends keyof SmartcardChannel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SmartcardChannel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SmartcardChannel.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SmartcardChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2711,9 +3394,33 @@ export namespace SpiceClientGLib {
     namespace SmartcardManager {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * The {@link SpiceClientGLib.SmartcardManager.SignalSignatures.card_inserted | SpiceClientGLib.SmartcardManager::card-inserted} signal is emitted whenever
+             * a smartcard is inserted in a reader
+             * @signal
+             * @run-first
+             */
             'card-inserted': (arg0: VReader) => void;
+            /**
+             * The {@link SpiceClientGLib.SmartcardManager.SignalSignatures.card_removed | SpiceClientGLib.SmartcardManager::card-removed} signal is emitted whenever
+             * a smartcard was removed from a reader.
+             * @signal
+             * @run-first
+             */
             'card-removed': (arg0: VReader) => void;
+            /**
+             * The {@link SpiceClientGLib.SmartcardManager.SignalSignatures.reader_added | SpiceClientGLib.SmartcardManager::reader-added} signal is emitted whenever
+             * a new smartcard reader (software or hardware) has been plugged in.
+             * @signal
+             * @run-first
+             */
             'reader-added': (arg0: VReader) => void;
+            /**
+             * The {@link SpiceClientGLib.SmartcardManager.SignalSignatures.reader_removed | SpiceClientGLib.SmartcardManager::reader-removed} signal is emitted whenever
+             * a smartcard reader (software or hardware) has been removed.
+             * @signal
+             * @run-first
+             */
             'reader-removed': (arg0: VReader) => void;
         }
 
@@ -2723,7 +3430,8 @@ export namespace SpiceClientGLib {
     }
 
     /**
-     * The #SpiceSmartcardManager struct is opaque and should not be accessed directly.
+     * The {@link SpiceClientGLib.SmartcardManager} struct is opaque and should not be accessed directly.
+     * @gir-type Class
      */
     class SmartcardManager extends GObject.Object {
         static $gtype: GObject.GType<SmartcardManager>;
@@ -2745,16 +3453,19 @@ export namespace SpiceClientGLib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof SmartcardManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SmartcardManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof SmartcardManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, SmartcardManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof SmartcardManager.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<SmartcardManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2764,7 +3475,7 @@ export namespace SpiceClientGLib {
         // Static methods
 
         /**
-         * #SpiceSmartcardManager is a singleton, use this function to get a pointer
+         * {@link SpiceClientGLib.SmartcardManager} is a singleton, use this function to get a pointer
          * to it. A new SpiceSmartcardManager instance will be created the first
          * time this function is called
          */
@@ -2772,9 +3483,29 @@ export namespace SpiceClientGLib {
 
         // Virtual methods
 
+        /**
+         * Signal class handler for the {@link SpiceClientGLib.SmartcardManager.SignalSignatures.card_inserted | SpiceClientGLib.SmartcardManager::card_inserted} signal.
+         * @param reader
+         * @virtual
+         */
         vfunc_card_inserted(reader: SmartcardReader): void;
+        /**
+         * Signal class handler for the {@link SpiceClientGLib.SmartcardManager.SignalSignatures.card_removed | SpiceClientGLib.SmartcardManager::card_removed} signal.
+         * @param reader
+         * @virtual
+         */
         vfunc_card_removed(reader: SmartcardReader): void;
+        /**
+         * Signal class handler for the {@link SpiceClientGLib.SmartcardManager.SignalSignatures.reader_added | SpiceClientGLib.SmartcardManager::reader_added} signal.
+         * @param reader
+         * @virtual
+         */
         vfunc_reader_added(reader: SmartcardReader): void;
+        /**
+         * Signal class handler for the {@link SpiceClientGLib.SmartcardManager.SignalSignatures.reader_removed | SpiceClientGLib.SmartcardManager::reader_removed} signal.
+         * @param reader
+         * @virtual
+         */
         vfunc_reader_removed(reader: SmartcardReader): void;
 
         // Methods
@@ -2782,12 +3513,12 @@ export namespace SpiceClientGLib {
         /**
          * Gets the list of smartcard readers that are currently available, they
          * can be either software (emulated) readers, or hardware ones.
-         * @returns a newly allocated list of SpiceSmartcardReader instances, or NULL if none were found. When no longer needed, the list must be freed after unreferencing its elements with g_boxed_free()
+         * @returns a newly allocated list of SpiceSmartcardReader instances, or NULL if none were found. When no longer needed, the list must be freed after unreferencing its elements with `g_boxed_free()`
          */
         get_readers(): SmartcardReader[];
         /**
          * Simulates the insertion of a smartcard in the guest. Valid certificates
-         * must have been set in #SpiceSession:smartcard-certificates for software
+         * must have been set in {@link SpiceClientGLib.Session.smartcard_certificates} for software
          * smartcard support to work. At the moment, only one software smartcard
          * reader is supported, that's why there is no parameter to indicate which
          * reader to insert the card in.
@@ -2825,7 +3556,8 @@ export namespace SpiceClientGLib {
     }
 
     /**
-     * The #SpiceURI struct is opaque and cannot be accessed directly.
+     * The {@link SpiceClientGLib.URI} struct is opaque and cannot be accessed directly.
+     * @gir-type Class
      */
     class URI extends GObject.Object {
         static $gtype: GObject.GType<URI>;
@@ -2860,16 +3592,19 @@ export namespace SpiceClientGLib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof URI.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, URI.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof URI.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, URI.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof URI.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<URI.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -2883,10 +3618,25 @@ export namespace SpiceClientGLib {
         get_port(): number;
         get_scheme(): string;
         get_user(): string;
+        /**
+         * @param hostname
+         */
         set_hostname(hostname: string): void;
+        /**
+         * @param password
+         */
         set_password(password: string): void;
+        /**
+         * @param port
+         */
         set_port(port: number): void;
+        /**
+         * @param scheme
+         */
         set_scheme(scheme: string): void;
+        /**
+         * @param user
+         */
         set_user(user: string): void;
         to_string(): string;
     }
@@ -2894,9 +3644,35 @@ export namespace SpiceClientGLib {
     namespace UsbDeviceManager {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * The {@link SpiceClientGLib.UsbDeviceManager.SignalSignatures.auto_connect_failed | SpiceClientGLib.UsbDeviceManager::auto-connect-failed} signal is emitted
+             * whenever the auto-connect property is true, and a newly plugged in
+             * device could not be auto-connected.
+             * @signal
+             * @run-first
+             */
             'auto-connect-failed': (arg0: UsbDevice, arg1: GLib.Error) => void;
+            /**
+             * The {@link SpiceClientGLib.UsbDeviceManager.SignalSignatures.device_added | SpiceClientGLib.UsbDeviceManager::device-added} signal is emitted whenever
+             * a new USB device has been plugged in.
+             * @signal
+             * @run-first
+             */
             'device-added': (arg0: UsbDevice) => void;
+            /**
+             * The {@link SpiceClientGLib.UsbDeviceManager.SignalSignatures.device_error | SpiceClientGLib.UsbDeviceManager::device-error} signal is emitted whenever an
+             * error happens which causes a device to no longer be available to the
+             * guest.
+             * @signal
+             * @run-first
+             */
             'device-error': (arg0: UsbDevice, arg1: GLib.Error) => void;
+            /**
+             * The {@link SpiceClientGLib.UsbDeviceManager.SignalSignatures.device_removed | SpiceClientGLib.UsbDeviceManager::device-removed} signal is emitted whenever
+             * an USB device has been removed.
+             * @signal
+             * @run-first
+             */
             'device-removed': (arg0: UsbDevice) => void;
             'notify::auto-connect': (pspec: GObject.ParamSpec) => void;
             'notify::auto-connect-filter': (pspec: GObject.ParamSpec) => void;
@@ -2921,7 +3697,8 @@ export namespace SpiceClientGLib {
     }
 
     /**
-     * The #SpiceUsbDeviceManager struct is opaque and should not be accessed directly.
+     * The {@link SpiceClientGLib.UsbDeviceManager} struct is opaque and should not be accessed directly.
+     * @gir-type Class
      */
     class UsbDeviceManager extends GObject.Object implements Gio.Initable {
         static $gtype: GObject.GType<UsbDeviceManager>;
@@ -2931,16 +3708,16 @@ export namespace SpiceClientGLib {
         /**
          * Set this to TRUE to automatically redirect newly plugged in device.
          *
-         * Note when #SpiceGtkSession's auto-usbredir property is TRUE, this
-         * property is controlled by #SpiceGtkSession.
+         * Note when `SpiceGtkSession`'s auto-usbredir property is TRUE, this
+         * property is controlled by `SpiceGtkSession`.
          */
         get auto_connect(): boolean;
         set auto_connect(val: boolean);
         /**
          * Set this to TRUE to automatically redirect newly plugged in device.
          *
-         * Note when #SpiceGtkSession's auto-usbredir property is TRUE, this
-         * property is controlled by #SpiceGtkSession.
+         * Note when `SpiceGtkSession`'s auto-usbredir property is TRUE, this
+         * property is controlled by `SpiceGtkSession`.
          */
         get autoConnect(): boolean;
         set autoConnect(val: boolean);
@@ -2949,9 +3726,9 @@ export namespace SpiceClientGLib {
          * to autoconnect when plugged in, a filter consists of one or more rules.
          * Where each rule has the form of:
          *
-         * `class,``vendor,``product,``version,``allow`
+         * `class`,`vendor`,`product`,`version`,`allow`
          *
-         * Use -1 for `class/``vendor/``product/``version` to accept any value.
+         * Use -1 for `class`/`vendor`/`product`/`version` to accept any value.
          *
          * And the rules themselves are concatenated like this:
          *
@@ -2972,9 +3749,9 @@ export namespace SpiceClientGLib {
          * to autoconnect when plugged in, a filter consists of one or more rules.
          * Where each rule has the form of:
          *
-         * `class,``vendor,``product,``version,``allow`
+         * `class`,`vendor`,`product`,`version`,`allow`
          *
-         * Use -1 for `class/``vendor/``product/``version` to accept any value.
+         * Use -1 for `class`/`vendor`/`product`/`version` to accept any value.
          *
          * And the rules themselves are concatenated like this:
          *
@@ -2992,17 +3769,21 @@ export namespace SpiceClientGLib {
         set autoConnectFilter(val: string);
         /**
          * Get the number of available channels for redirecting USB devices.
+         * @since 0.31
+         * @read-only
          */
         get free_channels(): number;
         /**
          * Get the number of available channels for redirecting USB devices.
+         * @since 0.31
+         * @read-only
          */
         get freeChannels(): number;
         /**
          * Set a string specifying a filter selecting USB devices to automatically
          * redirect after a Spice connection has been established.
          *
-         * See #SpiceUsbDeviceManager:auto-connect-filter for the filter string
+         * See {@link SpiceClientGLib.UsbDeviceManager.auto_connect_filter} for the filter string
          * format.
          */
         get redirect_on_connect(): string;
@@ -3011,13 +3792,14 @@ export namespace SpiceClientGLib {
          * Set a string specifying a filter selecting USB devices to automatically
          * redirect after a Spice connection has been established.
          *
-         * See #SpiceUsbDeviceManager:auto-connect-filter for the filter string
+         * See {@link SpiceClientGLib.UsbDeviceManager.auto_connect_filter} for the filter string
          * format.
          */
         get redirectOnConnect(): string;
         set redirectOnConnect(val: string);
         /**
-         * #SpiceSession this #SpiceUsbDeviceManager is associated with
+         * {@link SpiceClientGLib.Session} this {@link SpiceClientGLib.UsbDeviceManager} is associated with
+         * @construct-only
          */
         get session(): Session;
 
@@ -3038,16 +3820,19 @@ export namespace SpiceClientGLib {
 
         // Signals
 
+        /** @signal */
         connect<K extends keyof UsbDeviceManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UsbDeviceManager.SignalSignatures[K]>,
         ): number;
         connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         connect_after<K extends keyof UsbDeviceManager.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UsbDeviceManager.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UsbDeviceManager.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UsbDeviceManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3057,46 +3842,74 @@ export namespace SpiceClientGLib {
         // Static methods
 
         /**
-         * Gets the #SpiceUsbDeviceManager associated with the passed in #SpiceSession.
-         * A new #SpiceUsbDeviceManager instance will be created the first time this
-         * function is called for a certain #SpiceSession.
+         * Gets the {@link SpiceClientGLib.UsbDeviceManager} associated with the passed in {@link SpiceClientGLib.Session}.
+         * A new {@link SpiceClientGLib.UsbDeviceManager} instance will be created the first time this
+         * function is called for a certain {@link SpiceClientGLib.Session}.
          *
          * Note that this function returns a weak reference, which should not be used
-         * after the #SpiceSession itself has been unref-ed by the caller.
-         * @param session #SpiceSession for which to get the #SpiceUsbDeviceManager
+         * after the {@link SpiceClientGLib.Session} itself has been unref-ed by the caller.
+         * @param session {@link SpiceClientGLib.Session} for which to get the {@link SpiceClientGLib.UsbDeviceManager}
          */
         static get(session: Session): UsbDeviceManager;
 
         // Virtual methods
 
+        /**
+         * Signal class handler for the {@link SpiceClientGLib.UsbDeviceManager.SignalSignatures.auto_connect_failed | SpiceClientGLib.UsbDeviceManager::auto-connect-failed} signal.
+         * @param device
+         * @param error
+         * @virtual
+         */
         vfunc_auto_connect_failed(device: UsbDevice, error: GLib.Error): void;
+        /**
+         * Signal class handler for the {@link SpiceClientGLib.UsbDeviceManager.SignalSignatures.device_added | SpiceClientGLib.UsbDeviceManager::device-added} signal.
+         * @param device
+         * @virtual
+         */
         vfunc_device_added(device: UsbDevice): void;
+        /**
+         * Signal class handler for the {@link SpiceClientGLib.UsbDeviceManager.SignalSignatures.device_error | SpiceClientGLib.UsbDeviceManager::device_error} signal.
+         * @param device
+         * @param error
+         * @virtual
+         */
         vfunc_device_error(device: UsbDevice, error: GLib.Error): void;
+        /**
+         * Signal class handler for the {@link SpiceClientGLib.UsbDeviceManager.SignalSignatures.device_removed | SpiceClientGLib.UsbDeviceManager::device-removed} signal.
+         * @param device
+         * @virtual
+         */
         vfunc_device_removed(device: UsbDevice): void;
 
         // Methods
 
         /**
+         * Allocates a SpiceUsbDevice instance for the specified file descriptor.
+         * @param file_descriptor an open file descriptor for the USB device.
+         * @returns an allocated SpiceUsbDevice instance or `null` in case of failure.
+         */
+        allocate_device_for_file_descriptor(file_descriptor: number): UsbDevice | null;
+        /**
          * Checks whether it is possible to redirect the `device`.
-         * @param device a #SpiceUsbDevice to disconnect
-         * @returns %TRUE if @device can be redirected
+         * @param device a {@link SpiceClientGLib.UsbDevice} to disconnect
+         * @returns `true` if `device` can be redirected
          */
         can_redirect_device(device: UsbDevice): boolean;
         /**
          * Asynchronously connects the `device`. When completed, `callback` will be called.
-         * Then it is possible to call spice_usb_device_manager_connect_device_finish()
+         * Then it is possible to call `spice_usb_device_manager_connect_device_finish()`
          * to get the result of the operation.
-         * @param device a #SpiceUsbDevice to redirect
-         * @param cancellable optional #GCancellable object, %NULL to ignore
+         * @param device a {@link SpiceClientGLib.UsbDevice} to redirect
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
          */
         connect_device_async(device: UsbDevice, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously connects the `device`. When completed, `callback` will be called.
-         * Then it is possible to call spice_usb_device_manager_connect_device_finish()
+         * Then it is possible to call `spice_usb_device_manager_connect_device_finish()`
          * to get the result of the operation.
-         * @param device a #SpiceUsbDevice to redirect
-         * @param cancellable optional #GCancellable object, %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param device a {@link SpiceClientGLib.UsbDevice} to redirect
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         connect_device_async(
             device: UsbDevice,
@@ -3105,11 +3918,11 @@ export namespace SpiceClientGLib {
         ): void;
         /**
          * Asynchronously connects the `device`. When completed, `callback` will be called.
-         * Then it is possible to call spice_usb_device_manager_connect_device_finish()
+         * Then it is possible to call `spice_usb_device_manager_connect_device_finish()`
          * to get the result of the operation.
-         * @param device a #SpiceUsbDevice to redirect
-         * @param cancellable optional #GCancellable object, %NULL to ignore
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied
+         * @param device a {@link SpiceClientGLib.UsbDevice} to redirect
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
          */
         connect_device_async(
             device: UsbDevice,
@@ -3117,31 +3930,38 @@ export namespace SpiceClientGLib {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Finishes an async operation. See spice_usb_device_manager_connect_device_async().
-         * @param res a #GAsyncResult
-         * @returns %TRUE if connection is successful
+         * Finishes an async operation. See `spice_usb_device_manager_connect_device_async()`.
+         * @param res a {@link Gio.AsyncResult}
+         * @returns `true` if connection is successful
          */
         connect_device_finish(res: Gio.AsyncResult): boolean;
         /**
+         * Creates a new shared CD device based on a disk image file
+         * or a physical CD device.
+         * @param filename image or device path
+         * @returns `true` if device created successfully
+         */
+        create_shared_cd_device(filename: string): boolean;
+        /**
          * Disconnects the `device`.
-         * @param device a #SpiceUsbDevice to disconnect
+         * @param device a {@link SpiceClientGLib.UsbDevice} to disconnect
          */
         disconnect_device(device: UsbDevice): void;
         /**
          * Asynchronously disconnects the `device`. When completed, `callback` will be called.
-         * Then it is possible to call spice_usb_device_manager_disconnect_device_finish()
+         * Then it is possible to call `spice_usb_device_manager_disconnect_device_finish()`
          * to get the result of the operation.
-         * @param device a connected #SpiceUsbDevice to disconnect.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param device a connected {@link SpiceClientGLib.UsbDevice} to disconnect.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
          */
         disconnect_device_async(device: UsbDevice, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
         /**
          * Asynchronously disconnects the `device`. When completed, `callback` will be called.
-         * Then it is possible to call spice_usb_device_manager_disconnect_device_finish()
+         * Then it is possible to call `spice_usb_device_manager_disconnect_device_finish()`
          * to get the result of the operation.
-         * @param device a connected #SpiceUsbDevice to disconnect.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         * @param device a connected {@link SpiceClientGLib.UsbDevice} to disconnect.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         disconnect_device_async(
             device: UsbDevice,
@@ -3150,11 +3970,11 @@ export namespace SpiceClientGLib {
         ): void;
         /**
          * Asynchronously disconnects the `device`. When completed, `callback` will be called.
-         * Then it is possible to call spice_usb_device_manager_disconnect_device_finish()
+         * Then it is possible to call `spice_usb_device_manager_disconnect_device_finish()`
          * to get the result of the operation.
-         * @param device a connected #SpiceUsbDevice to disconnect.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
+         * @param device a connected {@link SpiceClientGLib.UsbDevice} to disconnect.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
          */
         disconnect_device_async(
             device: UsbDevice,
@@ -3162,9 +3982,9 @@ export namespace SpiceClientGLib {
             callback?: Gio.AsyncReadyCallback<this> | null,
         ): globalThis.Promise<boolean> | void;
         /**
-         * Finishes an async operation. See spice_usb_device_manager_disconnect_device_async().
-         * @param res a #GAsyncResult
-         * @returns %TRUE if disconnection is successful
+         * Finishes an async operation. See `spice_usb_device_manager_disconnect_device_async()`.
+         * @param res a {@link Gio.AsyncResult}
+         * @returns `true` if disconnection is successful
          */
         disconnect_device_finish(res: Gio.AsyncResult): boolean;
         /**
@@ -3174,49 +3994,53 @@ export namespace SpiceClientGLib {
         get_devices(): UsbDevice[];
         /**
          * Finds devices associated with the `manager` complying with the `filter`
-         * @param filter filter string for selecting which devices to return,      see #SpiceUsbDeviceManager:auto-connect-filter for the filter      string format
+         * @param filter filter string for selecting which devices to return,      see {@link SpiceClientGLib.UsbDeviceManager.auto_connect_filter} for the filter      string format
          * @returns a %GPtrArray array of %SpiceUsbDevice
          */
         get_devices_with_filter(filter?: string | null): UsbDevice[];
         /**
          * Finds if the `device` is connected.
-         * @param device a #SpiceUsbDevice
-         * @returns %TRUE if @device has an associated USB redirection channel
+         * @param device a {@link SpiceClientGLib.UsbDevice}
+         * @returns `true` if `device` has an associated USB redirection channel
          */
         is_device_connected(device: UsbDevice): boolean;
         /**
+         * Checks whether a device is shared CD.
+         * @param device a {@link SpiceClientGLib.UsbDevice} to query
+         * @returns `true` if the device is shared CD
+         */
+        is_device_shared_cd(device: UsbDevice): boolean;
+        /**
          * Checks whether a device is being redirected
-         * @returns %TRUE if device redirection negotiation flow is in progress
+         * @returns `true` if device redirection negotiation flow is in progress
          */
         is_redirecting(): boolean;
-
-        // Inherited methods
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -3226,40 +4050,40 @@ export namespace SpiceClientGLib {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
-         * @returns %TRUE if successful. If an error has occurred, this function will     return %FALSE and set @error appropriately if present.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
          */
         init(cancellable?: Gio.Cancellable | null): boolean;
         /**
          * Initializes the object implementing the interface.
          *
          * This method is intended for language bindings. If writing in C,
-         * g_initable_new() should typically be used instead.
+         * `g_initable_new()` should typically be used instead.
          *
          * The object must be initialized before any real use after initial
-         * construction, either with this function or g_async_initable_init_async().
+         * construction, either with this function or `g_async_initable_init_async()`.
          *
-         * Implementations may also support cancellation. If `cancellable` is not %NULL,
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
          * then initialization can be cancelled by triggering the cancellable object
          * from another thread. If the operation was cancelled, the error
-         * %G_IO_ERROR_CANCELLED will be returned. If `cancellable` is not %NULL and
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
          * the object doesn't support cancellable initialization the error
-         * %G_IO_ERROR_NOT_SUPPORTED will be returned.
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
          *
          * If the object is not initialized, or initialization returns with an
-         * error, then all operations on the object except g_object_ref() and
-         * g_object_unref() are considered to be invalid, and have undefined
-         * behaviour. See the [description][iface`Gio`.Initable#description] for more details.
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
          *
-         * Callers should not assume that a class which implements #GInitable can be
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
          * initialized multiple times, unless the class explicitly documents itself as
-         * supporting this. Generally, a class’ implementation of init() can assume
+         * supporting this. Generally, a class’ implementation of `init()` can assume
          * (and assert) that it will only be called once. Previously, this documentation
-         * recommended all #GInitable implementations should be idempotent; that
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
          * recommendation was relaxed in GLib 2.54.
          *
          * If a class explicitly supports being initialized multiple times, it is
@@ -3269,11 +4093,12 @@ export namespace SpiceClientGLib {
          *
          * One reason why a class might need to support idempotent initialization is if
          * it is designed to be used via the singleton pattern, with a
-         * #GObjectClass.constructor that sometimes returns an existing instance.
-         * In this pattern, a caller would expect to be able to call g_initable_init()
-         * on the result of g_object_new(), regardless of whether it is in fact a new
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
          * instance.
-         * @param cancellable optional #GCancellable object, %NULL to ignore.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
          */
         vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
         /**
@@ -3289,32 +4114,32 @@ export namespace SpiceClientGLib {
          * ```
          *
          *
-         * Will result in the "sensitive" property of the widget #GObject instance to be
-         * updated with the same value of the "active" property of the action #GObject
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
          * instance.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well.
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. To remove the binding without affecting the
-         * `source` and the `target` you can just call g_object_unref() on the returned
-         * #GBinding instance.
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
          *
-         * Removing the binding by calling g_object_unref() on it must only be done if
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
          * the binding, `source` and `target` are only used from a single thread and it
          * is clear that both `source` and `target` outlive the binding. Especially it
          * is not safe to rely on this if the binding, `source` or `target` can be
          * finalized from different threads. Keep another reference to the binding and
-         * use g_binding_unbind() instead to be on the safe side.
+         * use `g_binding_unbind()` instead to be on the safe side.
          *
-         * A #GObject can have multiple bindings.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property(
             source_property: string,
@@ -3323,39 +4148,39 @@ export namespace SpiceClientGLib {
             flags: GObject.BindingFlags | null,
         ): GObject.Binding;
         /**
-         * Complete version of g_object_bind_property().
+         * Complete version of `g_object_bind_property()`.
          *
          * Creates a binding between `source_property` on `source` and `target_property`
-         * on `target,` allowing you to set the transformation functions to be used by
+         * on `target`, allowing you to set the transformation functions to be used by
          * the binding.
          *
-         * If `flags` contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
          * if `target_property` on `target` changes then the `source_property` on `source`
          * will be updated as well. The `transform_from` function is only used in case
          * of bidirectional bindings, otherwise it will be ignored
          *
          * The binding will automatically be removed when either the `source` or the
          * `target` instances are finalized. This will release the reference that is
-         * being held on the #GBinding instance; if you want to hold on to the
-         * #GBinding instance, you will need to hold a reference to it.
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
          *
-         * To remove the binding, call g_binding_unbind().
+         * To remove the binding, call `g_binding_unbind()`.
          *
-         * A #GObject can have multiple bindings.
+         * A {@link GObject.Object} can have multiple bindings.
          *
          * The same `user_data` parameter will be used for both `transform_to`
          * and `transform_from` transformation functions; the `notify` function will
          * be called once, when the binding is removed. If you need different data
          * for each transformation function, please use
-         * g_object_bind_property_with_closures() instead.
-         * @param source_property the property on @source to bind
-         * @param target the target #GObject
-         * @param target_property the property on @target to bind
-         * @param flags flags to pass to #GBinding
-         * @param transform_to the transformation function     from the @source to the @target, or %NULL to use the default
-         * @param transform_from the transformation function     from the @target to the @source, or %NULL to use the default
-         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or %NULL if not required
-         * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
          */
         bind_property_full(
             source_property: string,
@@ -3366,13 +4191,16 @@ export namespace SpiceClientGLib {
             transform_from?: GObject.BindingTransformFunc | null,
             notify?: GLib.DestroyNotify | null,
         ): GObject.Binding;
+        /**
+         * @param args
+         */
         // Conflicted with GObject.Object.bind_property_full
         bind_property_full(...args: never[]): any;
         /**
-         * This function is intended for #GObject implementations to re-enforce
-         * a [floating][floating-ref] object reference. Doing this is seldom
-         * required: all #GInitiallyUnowneds are created with a floating reference
-         * which usually just needs to be sunken by calling g_object_ref_sink().
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
         force_floating(): void;
         /**
@@ -3380,7 +4208,7 @@ export namespace SpiceClientGLib {
          * non-zero, the emission of "notify" signals on `object` is
          * stopped. The signals are queued until the freeze count is decreased
          * to zero. Duplicate notifications are squashed so that at most one
-         * #GObject::notify signal is emitted for each property modified while the
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
          * object is frozen.
          *
          * This is necessary for accessors that modify multiple properties to prevent
@@ -3388,9 +4216,9 @@ export namespace SpiceClientGLib {
          */
         freeze_notify(): void;
         /**
-         * Gets a named field from the objects table of associations (see g_object_set_data()).
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
          * @param key name of the key for that association
-         * @returns the data if found,          or %NULL if no such data exists.
+         * @returns the data if found,          or `null` if no such data exists.
          */
         get_data(key: string): any | null;
         /**
@@ -3410,9 +4238,9 @@ export namespace SpiceClientGLib {
         get_property(property_name: string, value: GObject.Value | any): any;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         get_qdata(quark: GLib.Quark): any | null;
         /**
@@ -3425,34 +4253,34 @@ export namespace SpiceClientGLib {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating][floating-ref] reference.
-         * @returns %TRUE if @object has a floating reference
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
-         * @param property_name the name of a property installed on the class of @object.
+         * @param property_name the name of a property installed on the class of `object`.
          */
         notify(property_name: string): void;
         /**
          * Emits a "notify" signal for the property specified by `pspec` on `object`.
          *
          * This function omits the property name lookup, hence it is faster than
-         * g_object_notify().
+         * `g_object_notify()`.
          *
-         * One way to avoid using g_object_notify() from within the
-         * class that registered the properties, and using g_object_notify_by_pspec()
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
          * instead, is to store the GParamSpec used with
-         * g_object_class_install_property() inside a static array, e.g.:
+         * `g_object_class_install_property()` inside a static array, e.g.:
          *
          *
          * ```c
@@ -3485,22 +4313,22 @@ export namespace SpiceClientGLib {
          *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
          * ```
          *
-         * @param pspec the #GParamSpec of a property installed on the class of @object.
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
          */
         notify_by_pspec(pspec: GObject.ParamSpec): void;
         /**
          * Increases the reference count of `object`.
          *
          * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
-         * of `object` will be propagated to the return type (using the GCC typeof()
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
          * extension), so any casting the caller needs to do on the return type must be
          * explicit.
-         * @returns the same @object
+         * @returns the same `object`
          */
         ref(): GObject.Object;
         /**
-         * Increase the reference count of `object,` and possibly remove the
-         * [floating][floating-ref] reference, if `object` has a floating reference.
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -3509,8 +4337,8 @@ export namespace SpiceClientGLib {
          * adds a new normal reference increasing the reference count by one.
          *
          * Since GLib 2.56, the type of `object` will be propagated to the return type
-         * under the same conditions as for g_object_ref().
-         * @returns @object
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
          */
         ref_sink(): GObject.Object;
         /**
@@ -3527,10 +4355,10 @@ export namespace SpiceClientGLib {
          * If the object already had an association with that name,
          * the old association will be destroyed.
          *
-         * Internally, the `key` is converted to a #GQuark using g_quark_from_string().
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
          * This means a copy of `key` is kept permanently (even after `object` has been
          * finalized) — so it is recommended to only use a small, bounded set of values
-         * for `key` in your program, to avoid the #GQuark storage growing unbounded.
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
          * @param key name of the key
          * @param data data to associate with that key
          */
@@ -3545,13 +4373,13 @@ export namespace SpiceClientGLib {
          * Remove a specified datum from the object's data associations,
          * without invoking the association's destroy handler.
          * @param key name of the key
-         * @returns the data if found, or %NULL          if no such data exists.
+         * @returns the data if found, or `null`          if no such data exists.
          */
         steal_data(key: string): any | null;
         /**
          * This function gets back user data pointers stored via
-         * g_object_set_qdata() and removes the `data` from object
-         * without invoking its destroy() function (if any was
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
          * set).
          * Usually, calling this function is only required to update
          * user data pointers with a destroy notifier, for example:
@@ -3582,21 +4410,21 @@ export namespace SpiceClientGLib {
          * }
          * ```
          *
-         * Using g_object_get_qdata() in the above example, instead of
-         * g_object_steal_qdata() would have left the destroy function set,
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
          * and thus the partial string list would have been freed upon
-         * g_object_set_qdata_full().
-         * @param quark A #GQuark, naming the user data pointer
-         * @returns The user data pointer set, or %NULL
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
          */
         steal_qdata(quark: GLib.Quark): any | null;
         /**
          * Reverts the effect of a previous call to
-         * g_object_freeze_notify(). The freeze count is decreased on `object`
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
          * and when it reaches zero, queued "notify" signals are emitted.
          *
          * Duplicate notifications for each property are squashed so that at most one
-         * #GObject::notify signal is emitted for each property, in the reverse order
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
          * in which they have been queued.
          *
          * It is an error to call this function when the freeze count is zero.
@@ -3606,33 +4434,34 @@ export namespace SpiceClientGLib {
          * Decreases the reference count of `object`. When its reference count
          * drops to 0, the object is finalized (i.e. its memory is freed).
          *
-         * If the pointer to the #GObject may be reused in future (for example, if it is
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
          * an instance variable of another object), it is recommended to clear the
-         * pointer to %NULL rather than retain a dangling pointer to a potentially
-         * invalid #GObject instance. Use g_clear_object() for this.
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
          */
         unref(): void;
         /**
          * This function essentially limits the life time of the `closure` to
          * the life time of the object. That is, when the object is finalized,
-         * the `closure` is invalidated by calling g_closure_invalidate() on
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
          * it, in order to prevent invocations of the closure with a finalized
-         * (nonexisting) object. Also, g_object_ref() and g_object_unref() are
-         * added as marshal guards to the `closure,` to ensure that an extra
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
          * reference count is held on `object` during invocation of the
          * `closure`.  Usually, this function will be called on closures that
          * use this `object` as closure data.
-         * @param closure #GClosure to watch
+         * @param closure {@link GObject.Closure} to watch
          */
         watch_closure(closure: GObject.Closure): void;
         /**
-         * the `constructed` function is called by g_object_new() as the
+         * the `constructed` function is called by `g_object_new()` as the
          *  final step of the object creation process.  At the point of the call, all
          *  construction properties have been set on the object.  The purpose of this
          *  call is to allow for object initialisation steps that can only be performed
          *  after construction properties have been set.  `constructed` implementors
          *  should chain up to the `constructed` call of their parent class to allow it
          *  to complete its initialisation.
+         * @virtual
          */
         vfunc_constructed(): void;
         /**
@@ -3641,6 +4470,7 @@ export namespace SpiceClientGLib {
          *  needed.
          * @param n_pspecs
          * @param pspecs
+         * @virtual
          */
         vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
         /**
@@ -3649,12 +4479,14 @@ export namespace SpiceClientGLib {
          *  invocations still work. It may be run multiple times (due to reference
          *  loops). Before returning, `dispose` should chain up to the `dispose` method
          *  of the parent class.
+         * @virtual
          */
         vfunc_dispose(): void;
         /**
          * instance finalization function, should finish the finalization of
          *  the instance begun in `dispose` and chain up to the `finalize` method of the
          *  parent class.
+         * @virtual
          */
         vfunc_finalize(): void;
         /**
@@ -3663,20 +4495,22 @@ export namespace SpiceClientGLib {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
          * Emits a "notify" signal for the property `property_name` on `object`.
          *
          * When possible, eg. when signaling a property change from within the class
-         * that registered the property, you should use g_object_notify_by_pspec()
+         * that registered the property, you should use `g_object_notify_by_pspec()`
          * instead.
          *
          * Note that emission of the notify signal may be blocked with
-         * g_object_freeze_notify(). In this case, the signal emissions are queued
-         * and will be emitted (in reverse order) when g_object_thaw_notify() is
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
          * called.
          * @param pspec
+         * @virtual
          */
         vfunc_notify(pspec: GObject.ParamSpec): void;
         /**
@@ -3688,6 +4522,7 @@ export namespace SpiceClientGLib {
          * @param property_id
          * @param value
          * @param pspec
+         * @virtual
          */
         vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
         /**
@@ -3733,7 +4568,8 @@ export namespace SpiceClientGLib {
     }
 
     /**
-     * The #SpiceUsbredirChannel struct is opaque and should not be accessed directly.
+     * The {@link SpiceClientGLib.UsbredirChannel} struct is opaque and should not be accessed directly.
+     * @gir-type Class
      */
     class UsbredirChannel extends Channel {
         static $gtype: GObject.GType<UsbredirChannel>;
@@ -3755,11 +4591,13 @@ export namespace SpiceClientGLib {
 
         // Signals
 
+        /** @signal */
         connect_after<K extends keyof UsbredirChannel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, UsbredirChannel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof UsbredirChannel.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<UsbredirChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3785,7 +4623,8 @@ export namespace SpiceClientGLib {
     }
 
     /**
-     * The #SpiceWebdavChannel struct is opaque and should not be accessed directly.
+     * The {@link SpiceClientGLib.WebdavChannel} struct is opaque and should not be accessed directly.
+     * @gir-type Class
      */
     class WebdavChannel extends PortChannel {
         static $gtype: GObject.GType<WebdavChannel>;
@@ -3807,11 +4646,13 @@ export namespace SpiceClientGLib {
 
         // Signals
 
+        /** @signal */
         connect_after<K extends keyof WebdavChannel.SignalSignatures>(
             signal: K,
             callback: GObject.SignalCallback<this, WebdavChannel.SignalSignatures[K]>,
         ): number;
         connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
         emit<K extends keyof WebdavChannel.SignalSignatures>(
             signal: K,
             ...args: GObject.GjsParameters<WebdavChannel.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
@@ -3819,27 +4660,49 @@ export namespace SpiceClientGLib {
         emit(signal: string, ...args: any[]): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type AudioClass = typeof Audio;
+    /**
+     * @gir-type Struct
+     */
     abstract class AudioPrivate {
         static $gtype: GObject.GType<AudioPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type ChannelClass = typeof Channel;
+    /**
+     * @gir-type Struct
+     */
     abstract class ChannelClassPrivate {
         static $gtype: GObject.GType<ChannelClassPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class ChannelPrivate {
         static $gtype: GObject.GType<ChannelPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type CursorChannelClass = typeof CursorChannel;
+    /**
+     * @gir-type Struct
+     */
     abstract class CursorChannelPrivate {
         static $gtype: GObject.GType<CursorChannelPrivate>;
     }
 
     /**
-     * The #SpiceCursorShape structure defines the remote cursor's shape.
+     * The {@link SpiceClientGLib.CursorShape} structure defines the remote cursor's shape.
+     * @gir-type Struct
      */
     class CursorShape {
         static $gtype: GObject.GType<CursorShape>;
@@ -3866,13 +4729,20 @@ export namespace SpiceClientGLib {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type DisplayChannelClass = typeof DisplayChannel;
+    /**
+     * @gir-type Struct
+     */
     abstract class DisplayChannelPrivate {
         static $gtype: GObject.GType<DisplayChannelPrivate>;
     }
 
     /**
      * Holds a monitor configuration.
+     * @gir-type Struct
      */
     class DisplayMonitorConfig {
         static $gtype: GObject.GType<DisplayMonitorConfig>;
@@ -3902,6 +4772,7 @@ export namespace SpiceClientGLib {
 
     /**
      * Holds the information necessary to use the primary surface.
+     * @gir-type Struct
      */
     class DisplayPrimary {
         static $gtype: GObject.GType<DisplayPrimary>;
@@ -3931,9 +4802,13 @@ export namespace SpiceClientGLib {
         );
     }
 
+    /**
+     * @gir-type Alias
+     */
     type FileTransferTaskClass = typeof FileTransferTask;
     /**
      * Holds the information necessary for using the GL display scanout.
+     * @gir-type Struct
      */
     class GlScanout {
         static $gtype: GObject.GType<GlScanout>;
@@ -3968,37 +4843,72 @@ export namespace SpiceClientGLib {
         free(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type InputsChannelClass = typeof InputsChannel;
+    /**
+     * @gir-type Struct
+     */
     abstract class InputsChannelPrivate {
         static $gtype: GObject.GType<InputsChannelPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type MainChannelClass = typeof MainChannel;
+    /**
+     * @gir-type Struct
+     */
     abstract class MainChannelPrivate {
         static $gtype: GObject.GType<MainChannelPrivate>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class MsgIn {
         static $gtype: GObject.GType<MsgIn>;
     }
 
+    /**
+     * @gir-type Struct
+     */
     abstract class MsgOut {
         static $gtype: GObject.GType<MsgOut>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PlaybackChannelClass = typeof PlaybackChannel;
+    /**
+     * @gir-type Struct
+     */
     abstract class PlaybackChannelPrivate {
         static $gtype: GObject.GType<PlaybackChannelPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type PortChannelClass = typeof PortChannel;
+    /**
+     * @gir-type Struct
+     */
     abstract class PortChannelPrivate {
         static $gtype: GObject.GType<PortChannelPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type QmpPortClass = typeof QmpPort;
     /**
      * Information about VCPU run state.
+     * @gir-type Struct
+     * @since 0.36
      */
     class QmpStatus {
         static $gtype: GObject.GType<QmpStatus>;
@@ -4025,7 +4935,7 @@ export namespace SpiceClientGLib {
 
         /**
          * References a `status`.
-         * @returns The same @status
+         * @returns The same `status`
          */
         ref(): QmpStatus;
         /**
@@ -4034,28 +4944,53 @@ export namespace SpiceClientGLib {
         unref(): void;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type RecordChannelClass = typeof RecordChannel;
+    /**
+     * @gir-type Struct
+     */
     abstract class RecordChannelPrivate {
         static $gtype: GObject.GType<RecordChannelPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SessionClass = typeof Session;
+    /**
+     * @gir-type Struct
+     */
     abstract class SessionPrivate {
         static $gtype: GObject.GType<SessionPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SmartcardChannelClass = typeof SmartcardChannel;
+    /**
+     * @gir-type Struct
+     */
     abstract class SmartcardChannelPrivate {
         static $gtype: GObject.GType<SmartcardChannelPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type SmartcardManagerClass = typeof SmartcardManager;
+    /**
+     * @gir-type Struct
+     */
     abstract class SmartcardManagerPrivate {
         static $gtype: GObject.GType<SmartcardManagerPrivate>;
     }
 
     /**
-     * The #SpiceSmartcardReader struct is opaque and cannot be accessed directly.
+     * The {@link SpiceClientGLib.SmartcardReader} struct is opaque and cannot be accessed directly.
+     * @gir-type Struct
      */
     abstract class SmartcardReader {
         static $gtype: GObject.GType<SmartcardReader>;
@@ -4071,7 +5006,7 @@ export namespace SpiceClientGLib {
         insert_card(): boolean;
         /**
          * Tests if `reader` is a software (emulated) smartcard reader.
-         * @returns TRUE if @reader is a software (emulated) smartcard reader, FALSE otherwise
+         * @returns TRUE if `reader` is a software (emulated) smartcard reader, FALSE otherwise
          */
         is_software(): boolean;
         /**
@@ -4083,15 +5018,22 @@ export namespace SpiceClientGLib {
         remove_card(): boolean;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type URIClass = typeof URI;
+    /**
+     * @gir-type Struct
+     */
     abstract class URIPrivate {
         static $gtype: GObject.GType<URIPrivate>;
     }
 
     /**
-     * The #SpiceUsbDevice struct is opaque and cannot be accessed directly.
+     * The {@link SpiceClientGLib.UsbDevice} struct is opaque and cannot be accessed directly.
+     * @gir-type Struct
      */
-    class UsbDevice {
+    abstract class UsbDevice {
         static $gtype: GObject.GType<UsbDevice>;
 
         // Methods
@@ -4099,7 +5041,7 @@ export namespace SpiceClientGLib {
         /**
          * Get a string describing the device which is suitable as a description of
          * the device for the end user. The returned string should be freed with
-         * g_free() when no longer needed.
+         * `g_free()` when no longer needed.
          *
          * The `format` positional parameters are the following:
          * 1. \%s manufacturer
@@ -4109,8 +5051,8 @@ export namespace SpiceClientGLib {
          * 5. \%d address
          *
          * (the default format string is "\%s \%s \%s at \%d-\%d")
-         * @param format an optional printf() format string with positional parameters
-         * @returns a newly-allocated string holding the description, or %NULL if failed
+         * @param format an optional `printf()` format string with positional parameters
+         * @returns a newly-allocated string holding the description, or `null` if failed
          */
         get_description(format?: string | null): string;
         /**
@@ -4120,17 +5062,35 @@ export namespace SpiceClientGLib {
         get_libusb_device(): any | null;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type UsbDeviceManagerClass = typeof UsbDeviceManager;
+    /**
+     * @gir-type Struct
+     */
     abstract class UsbDeviceManagerPrivate {
         static $gtype: GObject.GType<UsbDeviceManagerPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type UsbredirChannelClass = typeof UsbredirChannel;
+    /**
+     * @gir-type Struct
+     */
     abstract class UsbredirChannelPrivate {
         static $gtype: GObject.GType<UsbredirChannelPrivate>;
     }
 
+    /**
+     * @gir-type Alias
+     */
     type WebdavChannelClass = typeof WebdavChannel;
+    /**
+     * @gir-type Struct
+     */
     abstract class WebdavChannelPrivate {
         static $gtype: GObject.GType<WebdavChannelPrivate>;
     }

@@ -1,0 +1,55 @@
+{
+    "name": "@girs/gpiodglib-1.0",
+    "version": "1.0.0-4.0.0-beta.41",
+    "description": "GJS TypeScript type definitions for Gpiodglib-1.0, generated from library version 1.0.0",
+    "type": "module",
+    "module": "gpiodglib-1.0.js",
+    "main": "gpiodglib-1.0.js",
+    "exports": {
+      "./ambient": {
+        "types": "./gpiodglib-1.0-ambient.d.ts",
+        "import": "./gpiodglib-1.0-ambient.js",
+        "default": "./gpiodglib-1.0-ambient.js"
+      },
+      "./import": {
+        "types": "./gpiodglib-1.0-import.d.ts",
+        "import": "./gpiodglib-1.0-import.js",
+        "default": "./gpiodglib-1.0-import.js"
+      },
+      "./gpiodglib-1.0": {
+        "types": "./gpiodglib-1.0.d.ts",
+        "import": "./gpiodglib-1.0.js",
+        "default": "./gpiodglib-1.0.js"
+      },
+      ".": {
+        "types": "./index.d.ts",
+        "import": "./index.js",
+        "default": "./index.js"
+      }
+    },
+    "scripts": {
+      "test": "tsc --project tsconfig.json"
+    },
+    "dependencies": {
+      "@girs/gjs": "4.0.0-beta.41",
+      "@girs/gio-2.0": "2.88.0-4.0.0-beta.41",
+      "@girs/gobject-2.0": "2.88.0-4.0.0-beta.41",
+      "@girs/glib-2.0": "2.88.0-4.0.0-beta.41",
+      "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.41"    },
+    "devDependencies": {
+      "typescript": "*"
+    },
+    "keywords": ["Gir", "TypeScript", "types", "GObject-Introspection", "GJS", "Gpiodglib-1.0"],
+    "author": "ts-for-gir",
+    "license": "MIT",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/gjsify/types.git"
+    },
+    "bugs": {
+      "url": "https://github.com/gjsify/ts-for-gir/issues"
+    },
+    "homepage": "https://github.com/gjsify/types/tree/main/gpiodglib-1.0#readme"
+}
+
+
