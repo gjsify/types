@@ -1,34 +1,34 @@
 
-# Gcr-3
+# Ministream-1
 
-![version](https://img.shields.io/npm/v/@girs/gcr-3)
-![downloads/week](https://img.shields.io/npm/dw/@girs/gcr-3)
+![version](https://img.shields.io/npm/v/@girs/ministream-1)
+![downloads/week](https://img.shields.io/npm/dw/@girs/ministream-1)
 
 
-GJS TypeScript type definitions for Gcr-3, generated from library version 3.41.2 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.41.
+GJS TypeScript type definitions for Ministream-1, generated from library version 0.99.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.41.
 
 ## Install
 
 To use this type definitions, install them with NPM:
 ```bash
-npm install @girs/gcr-3
+npm install @girs/ministream-1
 ```
 
 ## Usage
 
 You can import this package into your project like this:
 ```ts
-import Gcr from '@girs/gcr-3';
+import Ministream from '@girs/ministream-1';
 ```
 
 ### Ambient Modules
 
 You can also use [ambient modules](https://github.com/gjsify/ts-for-gir/tree/main/packages/cli#ambient-modules) to import this module like you would do this in JavaScript.
-For this you need to include `@girs/gcr-3` or `@girs/gcr-3/ambient` in your `tsconfig` or entry point Typescript file:
+For this you need to include `@girs/ministream-1` or `@girs/ministream-1/ambient` in your `tsconfig` or entry point Typescript file:
 
 `index.ts`:
 ```ts
-import '@girs/gcr-3'
+import '@girs/ministream-1'
 ```
 
 `tsconfig.json`:
@@ -37,7 +37,7 @@ import '@girs/gcr-3'
   "compilerOptions": {
     ...
   },
-  "include": ["@girs/gcr-3"],
+  "include": ["@girs/ministream-1"],
   ...
 }
 ```
@@ -45,17 +45,17 @@ import '@girs/gcr-3'
 Now you can import the ambient module with TypeScript support: 
 
 ```ts
-import Gcr from 'gi://Gcr?version=3';
+import Ministream from 'gi://Ministream?version=1';
 ```
 
 ### Global import
 
 You can also import the module with Typescript support using the global `imports.gi` object of GJS.
-For this you need to include `@girs/gcr-3` or `@girs/gcr-3/import` in your `tsconfig` or entry point Typescript file:
+For this you need to include `@girs/ministream-1` or `@girs/ministream-1/import` in your `tsconfig` or entry point Typescript file:
 
 `index.ts`:
 ```ts
-import '@girs/gcr-3'
+import '@girs/ministream-1'
 ```
 
 `tsconfig.json`:
@@ -64,7 +64,7 @@ import '@girs/gcr-3'
   "compilerOptions": {
     ...
   },
-  "include": ["@girs/gcr-3"],
+  "include": ["@girs/ministream-1"],
   ...
 }
 ```
@@ -72,7 +72,7 @@ import '@girs/gcr-3'
 Now you have also type support for this, too:
 
 ```ts
-const Gcr = imports.gi.Gcr;
+const Ministream = imports.gi.Ministream;
 ```
 
 ### Bundle

@@ -10,8 +10,7 @@
 import '@girs/gjs';
 
 // Module dependencies
-import type Tepl from '@girs/tepl-6';
-import type GtkSource from '@girs/gtksource-300';
+import type GtkSource from '@girs/gtksource-4';
 import type Gtk from '@girs/gtk-3.0';
 import type xlib from '@girs/xlib-2.0';
 import type Gdk from '@girs/gdk-3.0';
@@ -25,7 +24,6 @@ import type Gio from '@girs/gio-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
 import type Atk from '@girs/atk-1.0';
-import type Amtk from '@girs/amtk-5';
 
 export namespace Gedit {
     /**
@@ -40,60 +38,22 @@ export namespace Gedit {
     }
 
     /**
-     * The state of a {@link Gedit.Tab}. Note that the enumerators are not flags, so they
-     * cannot be combined. A {@link Gedit.Tab} is in only one state at a time.
      * @gir-type Enum
      */
     enum TabState {
-        /**
-         * Normal state.
-         */
-        NORMAL,
-        /**
-         * Loading.
-         */
-        LOADING,
-        /**
-         * Reverting.
-         */
-        REVERTING,
-        /**
-         * Saving.
-         */
-        SAVING,
-        /**
-         * Printing.
-         */
-        PRINTING,
-        /**
-         * Showing print preview.
-         */
-        SHOWING_PRINT_PREVIEW,
-        /**
-         * There is a loading error.
-         */
-        LOADING_ERROR,
-        /**
-         * There is a reverting error.
-         */
-        REVERTING_ERROR,
-        /**
-         * There is a saving error.
-         */
-        SAVING_ERROR,
-        /**
-         * There is another kind of error.
-         */
-        GENERIC_ERROR,
-        /**
-         * Closing.
-         */
-        CLOSING,
-        /**
-         * There is a notification
-         *   about the document being externally modified.
-         */
-        EXTERNALLY_MODIFIED_NOTIFICATION,
+        STATE_NORMAL,
+        STATE_LOADING,
+        STATE_REVERTING,
+        STATE_SAVING,
+        STATE_PRINTING,
+        STATE_SHOWING_PRINT_PREVIEW,
+        STATE_LOADING_ERROR,
+        STATE_REVERTING_ERROR,
+        STATE_SAVING_ERROR,
+        STATE_GENERIC_ERROR,
+        STATE_CLOSING,
+        STATE_EXTERNALLY_MODIFIED_NOTIFICATION,
+        NUM_OF_STATES,
     }
 
     /**
@@ -280,6 +240,15 @@ export namespace Gedit {
      */
     function utils_is_valid_location(location: Gio.File): boolean;
     /**
+     * Returns a string suitable to be displayed in the UI indicating
+     * the name of the directory where the file is located.
+     * For remote files it may also contain the hostname etc.
+     * For local files it tries to replace the home dir with ~.
+     * @param location the location
+     * @returns a string to display the dirname
+     */
+    function utils_location_get_dirname_for_display(location: Gio.File): string;
+    /**
      * @param tree_view
      * @param rect
      */
@@ -288,6 +257,14 @@ export namespace Gedit {
      * @param newline_type
      */
     function utils_newline_type_to_string(newline_type: GtkSource.NewlineType | null): string;
+    /**
+     * This function sets up name and description
+     * for a specified gtk widget.
+     * @param widget The Gtk widget for which name/description to be set
+     * @param name Atk name string
+     * @param description Atk description string
+     */
+    function utils_set_atk_name_description(widget: Gtk.Widget, name: string, description: string): void;
     /**
      * @param context
      */
@@ -323,6 +300,8 @@ export namespace Gedit {
      */
     enum DebugSection {
         NO_DEBUG,
+        DEBUG_VIEW,
+        DEBUG_PREFS,
         DEBUG_WINDOW,
         DEBUG_PANEL,
         DEBUG_PLUGINS,
@@ -341,32 +320,13 @@ export namespace Gedit {
     }
 
     /**
-     * Flags for the state of a {@link Gedit.Window}. The enumerators are flags and can be
-     * combined. {@link Gedit.Window} combines and summarizes the state of its {@link Gedit.Tab}'s
-     * into one {@link Gedit.WindowState} value. See {@link Gedit.TabState} for the more precise
-     * states.
      * @gir-type Flags
      */
     enum WindowState {
-        /**
-         * No flags.
-         */
         NORMAL,
-        /**
-         * A tab is in saving state.
-         */
         SAVING,
-        /**
-         * There is a printing operation on a tab.
-         */
         PRINTING,
-        /**
-         * A tab is in loading or reverting state.
-         */
         LOADING,
-        /**
-         * A tab is in an error state.
-         */
         ERROR,
     }
 
@@ -443,11 +403,11 @@ export namespace Gedit {
         // Virtual methods
 
         /**
-         * @param name_of_user_manual
-         * @param link_id_within_user_manual
+         * @param name
+         * @param link_id
          * @virtual
          */
-        vfunc_get_help_uri(name_of_user_manual: string, link_id_within_user_manual: string): string;
+        vfunc_help_link_id(name: string, link_id: string): string;
         /**
          * @param window
          * @param event
@@ -461,91 +421,54 @@ export namespace Gedit {
          */
         vfunc_set_window_title(window: Window, title: string): void;
         /**
-         * To show the user manual.
-         *
-         * As a useful information to know, the gedit user documentation is currently
-         * written in Mallard. As such, this functionality can easily be tested with
-         * Yelp on Linux:
-         *
-         * With `name_of_user_manual` and `link_id_within_user_manual` both `null`, it is
-         * equivalent to:
-         *
-         * `$ yelp 'help:gedit'`
-         *
-         * With `link_id_within_user_manual` set to `"gedit-replace"` (a Mallard page
-         * id):
-         *
-         * `$ yelp 'help:gedit/gedit-replace'`
-         *
-         * With `link_id_within_user_manual` set to `"gedit-spellcheck#dict"` (it refers
-         * to a section id within a page id):
-         *
-         * `$ yelp 'help:gedit/gedit-spellcheck#dict'`
-         * @param parent_window the {@link Gtk.Window} where the request originates from.
-         * @param name_of_user_manual `null` for gedit's user manual, otherwise   the name of another user manual (e.g., one from another application).
-         * @param link_id_within_user_manual a link ID within the user manual, or   `null` to show its start page.
+         * @param parent
+         * @param name
+         * @param link_id
          * @virtual
          */
-        vfunc_show_help(
-            parent_window?: Gtk.Window | null,
-            name_of_user_manual?: string | null,
-            link_id_within_user_manual?: string | null,
-        ): boolean;
+        vfunc_show_help(parent: Gtk.Window, name: string, link_id: string): boolean;
 
         // Methods
 
         /**
-         * Creates a new {@link Gedit.Window} part of `app`.
-         * @param screen a {@link Gdk.Screen}, or `null`.
-         * @returns the new {@link Gedit.Window}.
+         * Create a new {@link Gedit.Window} part of `app`.
+         * @param screen
+         * @returns the new {@link Gedit.Window}
          */
         create_window(screen?: Gdk.Screen | null): Window;
         /**
-         * @returns a newly allocated   list of all the {@link Gedit.Document}'s currently part of `app`.
+         * Returns all the documents currently open in {@link Gedit.App}.
+         * @returns a newly allocated list of {@link Gedit.Document} objects
          */
         get_documents(): Document[];
         /**
-         * Returns all {@link Gedit.Window}'s currently open in {@link Gedit.App}. This differs from
-         * `gtk_application_get_windows()` since it does not include the preferences
-         * dialog and other auxiliary windows.
-         * @returns a newly allocated   list of {@link Gedit.Window} objects.
+         * Returns all `GeditWindows` currently open in {@link Gedit.App}.
+         * This differs from `gtk_application_get_windows()` since it does not
+         * include the preferences dialog and other auxiliary windows.
+         * @returns a newly allocated list of {@link Gedit.Window} objects
          */
         get_main_windows(): Window[];
         /**
-         * @returns a newly allocated   list of all the {@link Gedit.View}'s currently part of `app`.
+         * Returns all the views currently present in {@link Gedit.App}.
+         * @returns a newly allocated list of {@link Gedit.View} objects
          */
         get_views(): View[];
         /**
-         * To show the user manual.
-         *
-         * As a useful information to know, the gedit user documentation is currently
-         * written in Mallard. As such, this functionality can easily be tested with
-         * Yelp on Linux:
-         *
-         * With `name_of_user_manual` and `link_id_within_user_manual` both `null`, it is
-         * equivalent to:
-         *
-         * `$ yelp 'help:gedit'`
-         *
-         * With `link_id_within_user_manual` set to `"gedit-replace"` (a Mallard page
-         * id):
-         *
-         * `$ yelp 'help:gedit/gedit-replace'`
-         *
-         * With `link_id_within_user_manual` set to `"gedit-spellcheck#dict"` (it refers
-         * to a section id within a page id):
-         *
-         * `$ yelp 'help:gedit/gedit-spellcheck#dict'`
-         * @param parent_window the {@link Gtk.Window} where the request originates from.
-         * @param name_of_user_manual `null` for gedit's user manual, otherwise   the name of another user manual (e.g., one from another application).
-         * @param link_id_within_user_manual a link ID within the user manual, or   `null` to show its start page.
-         * @returns whether the operation was successful.
+         * @param window
+         * @param event
          */
-        show_help(
-            parent_window?: Gtk.Window | null,
-            name_of_user_manual?: string | null,
-            link_id_within_user_manual?: string | null,
-        ): boolean;
+        process_window_event(window: Window, event: Gdk.Event): boolean;
+        /**
+         * @param window
+         * @param title
+         */
+        set_window_title(window: Window, title: string): void;
+        /**
+         * @param parent
+         * @param name
+         * @param link_id
+         */
+        show_help(parent: Gtk.Window, name: string, link_id: string): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -999,9 +922,9 @@ export namespace Gedit {
 
     namespace Document {
         // Signal signatures
-        interface SignalSignatures extends Tepl.Buffer.SignalSignatures {
+        interface SignalSignatures extends GtkSource.Buffer.SignalSignatures {
             /**
-             * The ::load signal is emitted at the beginning of a file loading.
+             * The "load" signal is emitted at the beginning of a file loading.
              *
              * Before gedit 3.14 this signal contained parameters to configure the
              * file loading (the location, encoding, etc). Plugins should not need
@@ -1011,7 +934,7 @@ export namespace Gedit {
              */
             load: () => void;
             /**
-             * The ::loaded signal is emitted at the end of a successful file
+             * The "loaded" signal is emitted at the end of a successful file
              * loading.
              *
              * Before gedit 3.14 this signal contained a {@link GLib.Error} parameter, and the
@@ -1022,7 +945,7 @@ export namespace Gedit {
              */
             loaded: () => void;
             /**
-             * The ::save signal is emitted at the beginning of a file saving.
+             * The "save" signal is emitted at the beginning of a file saving.
              *
              * Before gedit 3.14 this signal contained parameters to configure the
              * file saving (the location, encoding, etc). Plugins should not need
@@ -1032,7 +955,7 @@ export namespace Gedit {
              */
             save: () => void;
             /**
-             * The ::saved signal is emitted at the end of a successful file saving.
+             * The "saved" signal is emitted at the end of a successful file saving.
              *
              * Before gedit 3.14 this signal contained a {@link GLib.Error} parameter, and the
              * signal was also emitted if an error occurred. To save a document, a
@@ -1046,8 +969,6 @@ export namespace Gedit {
             'notify::content-type': (pspec: GObject.ParamSpec) => void;
             'notify::empty-search': (pspec: GObject.ParamSpec) => void;
             'notify::mime-type': (pspec: GObject.ParamSpec) => void;
-            'notify::tepl-full-title': (pspec: GObject.ParamSpec) => void;
-            'notify::tepl-short-title': (pspec: GObject.ParamSpec) => void;
             'notify::can-redo': (pspec: GObject.ParamSpec) => void;
             'notify::can-undo': (pspec: GObject.ParamSpec) => void;
             'notify::highlight-matching-brackets': (pspec: GObject.ParamSpec) => void;
@@ -1067,7 +988,7 @@ export namespace Gedit {
 
         // Constructor properties interface
 
-        interface ConstructorProps extends Tepl.Buffer.ConstructorProps {
+        interface ConstructorProps extends GtkSource.Buffer.ConstructorProps {
             content_type: string;
             contentType: string;
             empty_search: boolean;
@@ -1080,7 +1001,7 @@ export namespace Gedit {
     /**
      * @gir-type Class
      */
-    class Document extends Tepl.Buffer {
+    class Document extends GtkSource.Buffer {
         static $gtype: GObject.GType<Document>;
 
         // Properties
@@ -1100,8 +1021,6 @@ export namespace Gedit {
          * The property is used internally by gedit. It must not be used in a
          * gedit plugin. The property can be modified or removed at any time.
          * </warning>
-         *
-         * Whether the search is empty.
          * @read-only
          */
         get empty_search(): boolean;
@@ -1110,8 +1029,6 @@ export namespace Gedit {
          * The property is used internally by gedit. It must not be used in a
          * gedit plugin. The property can be modified or removed at any time.
          * </warning>
-         *
-         * Whether the search is empty.
          * @read-only
          */
         get emptySearch(): boolean;
@@ -1185,9 +1102,6 @@ export namespace Gedit {
 
         // Methods
 
-        /**
-         * @returns the value of the {@link Gedit.Document.content_type}   property.
-         */
         get_content_type(): string;
         /**
          * Gets the associated {@link GtkSource.File}. You should use it only for reading
@@ -1201,23 +1115,20 @@ export namespace Gedit {
          * @returns the associated {@link GtkSource.File}.
          */
         get_file(): GtkSource.File;
+        get_language(): GtkSource.Language;
         /**
          * @param args
          */
-        // Conflicted with Tepl.Buffer.get_file
-        get_file(...args: never[]): any;
+        // Conflicted with GtkSource.Buffer.get_language
+        get_language(...args: never[]): any;
         /**
-         * @param key the name of the key.
-         * @returns the metadata assigned to `key`.
+         * Gets the metadata assigned to `key`.
+         * @param key name of the key
+         * @returns the value assigned to `key`. Free with `g_free()`.
          */
-        get_metadata(key: string): string | null;
+        get_metadata(key: string): string;
         /**
-         * @param args
-         */
-        // Conflicted with Tepl.Buffer.get_metadata
-        get_metadata(...args: never[]): any;
-        /**
-         * @returns the value of the   {@link Gedit.Document.mime_type} property.
+         * Note: this never returns `null`.
          */
         get_mime_type(): string;
         /**
@@ -1226,12 +1137,16 @@ export namespace Gedit {
          * contexts, so you have to verify that the returned search context is yours.
          * One way to verify that is to compare the search settings object, or to mark
          * the search context with `g_object_set_data()`.
-         * @returns the current search context of the   document, or NULL if there is no current search context.
+         * @returns the current search context of the document, or NULL if there is no current search context.
          */
-        get_search_context(): GtkSource.SearchContext | null;
+        get_search_context(): GtkSource.SearchContext;
         /**
-         * Like `gtk_source_buffer_set_language()`, but this function is preferred.
-         * @param lang a {@link GtkSource.Language}.
+         * Note: this never returns `null`.
+         */
+        get_short_name_for_display(): string;
+        is_untitled(): boolean;
+        /**
+         * @param lang
          */
         set_language(lang?: GtkSource.Language | null): void;
         /**
@@ -1244,7 +1159,7 @@ export namespace Gedit {
          * should be the only owner of the `search_context`, so that the Clear Highlight
          * action works. If you need the `search_context` after calling this function,
          * use `gedit_document_get_search_context()`.
-         * @param search_context the new {@link GtkSource.SearchContext}.
+         * @param search_context the new {@link GtkSource.SearchContext}
          */
         set_search_context(search_context?: GtkSource.SearchContext | null): void;
     }
@@ -1398,7 +1313,7 @@ export namespace Gedit {
         // Methods
 
         /**
-         * @returns the selected {@link GtkSource.Encoding}, or `null` if the   encoding should be auto-detected (only for loading mode, not for saving).
+         * @returns the selected {@link GtkSource.Encoding}, or `null` if the encoding should be auto-detected (only for loading mode, not for saving).
          */
         get_selected_encoding(): GtkSource.Encoding;
         /**
@@ -6566,9 +6481,583 @@ export namespace Gedit {
         unregister_all(object_path: string): void;
     }
 
+    namespace Statusbar {
+        // Signal signatures
+        interface SignalSignatures extends Gtk.Statusbar.SignalSignatures {
+            'notify::baseline-position': (pspec: GObject.ParamSpec) => void;
+            'notify::homogeneous': (pspec: GObject.ParamSpec) => void;
+            'notify::spacing': (pspec: GObject.ParamSpec) => void;
+            'notify::border-width': (pspec: GObject.ParamSpec) => void;
+            'notify::child': (pspec: GObject.ParamSpec) => void;
+            'notify::resize-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::app-paintable': (pspec: GObject.ParamSpec) => void;
+            'notify::can-default': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::composite-child': (pspec: GObject.ParamSpec) => void;
+            'notify::double-buffered': (pspec: GObject.ParamSpec) => void;
+            'notify::events': (pspec: GObject.ParamSpec) => void;
+            'notify::expand': (pspec: GObject.ParamSpec) => void;
+            'notify::focus-on-click': (pspec: GObject.ParamSpec) => void;
+            'notify::halign': (pspec: GObject.ParamSpec) => void;
+            'notify::has-default': (pspec: GObject.ParamSpec) => void;
+            'notify::has-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::has-tooltip': (pspec: GObject.ParamSpec) => void;
+            'notify::height-request': (pspec: GObject.ParamSpec) => void;
+            'notify::hexpand': (pspec: GObject.ParamSpec) => void;
+            'notify::hexpand-set': (pspec: GObject.ParamSpec) => void;
+            'notify::is-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::margin': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-end': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-start': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::no-show-all': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::parent': (pspec: GObject.ParamSpec) => void;
+            'notify::receives-default': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-factor': (pspec: GObject.ParamSpec) => void;
+            'notify::sensitive': (pspec: GObject.ParamSpec) => void;
+            'notify::style': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip-markup': (pspec: GObject.ParamSpec) => void;
+            'notify::tooltip-text': (pspec: GObject.ParamSpec) => void;
+            'notify::valign': (pspec: GObject.ParamSpec) => void;
+            'notify::vexpand': (pspec: GObject.ParamSpec) => void;
+            'notify::vexpand-set': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
+            'notify::width-request': (pspec: GObject.ParamSpec) => void;
+            'notify::window': (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps
+            extends
+                Gtk.Statusbar.ConstructorProps,
+                Atk.ImplementorIface.ConstructorProps,
+                Gtk.Buildable.ConstructorProps,
+                Gtk.Orientable.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class Statusbar extends Gtk.Statusbar implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
+        static $gtype: GObject.GType<Statusbar>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: Statusbar.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<Statusbar.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](): Statusbar;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof Statusbar.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Statusbar.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof Statusbar.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Statusbar.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof Statusbar.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<Statusbar.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+
+        clear_overwrite(): void;
+        /**
+         * Sets the overwrite mode on the statusbar.
+         * @param overwrite if the overwrite mode is set
+         */
+        set_overwrite(overwrite: boolean): void;
+        /**
+         * @param state
+         * @param num_of_errors
+         */
+        set_window_state(state: WindowState | null, num_of_errors: number): void;
+        /**
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target`.
+         *
+         * Whenever the `source_property` is changed the `target_property` is
+         * updated using the same value. For instance:
+         *
+         *
+         * ```c
+         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+         * ```
+         *
+         *
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
+         * instance.
+         *
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well.
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. To remove the binding without affecting the
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
+         *
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
+         * the binding, `source` and `target` are only used from a single thread and it
+         * is clear that both `source` and `target` outlive the binding. Especially it
+         * is not safe to rely on this if the binding, `source` or `target` can be
+         * finalized from different threads. Keep another reference to the binding and
+         * use `g_binding_unbind()` instead to be on the safe side.
+         *
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
+         */
+        bind_property(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags | null,
+        ): GObject.Binding;
+        /**
+         * Complete version of `g_object_bind_property()`.
+         *
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target`, allowing you to set the transformation functions to be used by
+         * the binding.
+         *
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well. The `transform_from` function is only used in case
+         * of bidirectional bindings, otherwise it will be ignored
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. This will release the reference that is
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
+         *
+         * To remove the binding, call `g_binding_unbind()`.
+         *
+         * A {@link GObject.Object} can have multiple bindings.
+         *
+         * The same `user_data` parameter will be used for both `transform_to`
+         * and `transform_from` transformation functions; the `notify` function will
+         * be called once, when the binding is removed. If you need different data
+         * for each transformation function, please use
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
+         */
+        bind_property_full(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags | null,
+            transform_to?: GObject.BindingTransformFunc | null,
+            transform_from?: GObject.BindingTransformFunc | null,
+            notify?: GLib.DestroyNotify | null,
+        ): GObject.Binding;
+        /**
+         * @param args
+         */
+        // Conflicted with GObject.Object.bind_property_full
+        bind_property_full(...args: never[]): any;
+        /**
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
+         */
+        force_floating(): void;
+        /**
+         * Increases the freeze count on `object`. If the freeze count is
+         * non-zero, the emission of "notify" signals on `object` is
+         * stopped. The signals are queued until the freeze count is decreased
+         * to zero. Duplicate notifications are squashed so that at most one
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
+         * object is frozen.
+         *
+         * This is necessary for accessors that modify multiple properties to prevent
+         * premature notification while the object is still being modified.
+         */
+        freeze_notify(): void;
+        /**
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
+         * @param key name of the key for that association
+         * @returns the data if found,          or `null` if no such data exists.
+         */
+        get_data(key: string): any | null;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
+        /**
+         * This function gets back user data pointers stored via
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
+         */
+        get_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Gets `n_properties` properties for an `object`.
+         * Obtained properties will be set to `values`. All properties must be valid.
+         * Warnings will be emitted and undefined behaviour may result if invalid
+         * properties are passed in.
+         * @param names the names of each property to get
+         * @param values the values of each property to get
+         */
+        getv(names: string[], values: (GObject.Value | any)[]): void;
+        /**
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
+         */
+        is_floating(): boolean;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use `g_object_notify_by_pspec()`
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
+         * called.
+         * @param property_name the name of a property installed on the class of `object`.
+         */
+        notify(property_name: string): void;
+        /**
+         * Emits a "notify" signal for the property specified by `pspec` on `object`.
+         *
+         * This function omits the property name lookup, hence it is faster than
+         * `g_object_notify()`.
+         *
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
+         * instead, is to store the GParamSpec used with
+         * `g_object_class_install_property()` inside a static array, e.g.:
+         *
+         *
+         * ```c
+         *   typedef enum
+         *   {
+         *     PROP_FOO = 1,
+         *     PROP_LAST
+         *   } MyObjectProperty;
+         *
+         *   static GParamSpec *properties[PROP_LAST];
+         *
+         *   static void
+         *   my_object_class_init (MyObjectClass *klass)
+         *   {
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *                                              0, 100,
+         *                                              50,
+         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+         *     g_object_class_install_property (gobject_class,
+         *                                      PROP_FOO,
+         *                                      properties[PROP_FOO]);
+         *   }
+         * ```
+         *
+         *
+         * and then notify a change on the "foo" property with:
+         *
+         *
+         * ```c
+         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+         * ```
+         *
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
+         */
+        notify_by_pspec(pspec: GObject.ParamSpec): void;
+        /**
+         * Increases the reference count of `object`.
+         *
+         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
+         * extension), so any casting the caller needs to do on the return type must be
+         * explicit.
+         * @returns the same `object`
+         */
+        ref(): GObject.Object;
+        /**
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         *
+         * In other words, if the object is floating, then this call "assumes
+         * ownership" of the floating reference, converting it to a normal
+         * reference by clearing the floating flag while leaving the reference
+         * count unchanged.  If the object is not floating, then this call
+         * adds a new normal reference increasing the reference count by one.
+         *
+         * Since GLib 2.56, the type of `object` will be propagated to the return type
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
+         */
+        ref_sink(): GObject.Object;
+        /**
+         * Releases all references to other objects. This can be used to break
+         * reference cycles.
+         *
+         * This function should only be called from object system implementations.
+         */
+        run_dispose(): void;
+        /**
+         * Each object carries around a table of associations from
+         * strings to pointers.  This function lets you set an association.
+         *
+         * If the object already had an association with that name,
+         * the old association will be destroyed.
+         *
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
+         * This means a copy of `key` is kept permanently (even after `object` has been
+         * finalized) — so it is recommended to only use a small, bounded set of values
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
+         * @param key name of the key
+         * @param data data to associate with that key
+         */
+        set_data(key: string, data?: any | null): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
+        /**
+         * Remove a specified datum from the object's data associations,
+         * without invoking the association's destroy handler.
+         * @param key name of the key
+         * @returns the data if found, or `null`          if no such data exists.
+         */
+        steal_data(key: string): any | null;
+        /**
+         * This function gets back user data pointers stored via
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
+         * set).
+         * Usually, calling this function is only required to update
+         * user data pointers with a destroy notifier, for example:
+         *
+         * ```c
+         * void
+         * object_add_to_user_list (GObject     *object,
+         *                          const gchar *new_string)
+         * {
+         *   // the quark, naming the object data
+         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+         *   // retrieve the old string list
+         *   GList *list = g_object_steal_qdata (object, quark_string_list);
+         *
+         *   // prepend new string
+         *   list = g_list_prepend (list, g_strdup (new_string));
+         *   // this changed 'list', so we need to set it again
+         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+         * }
+         * static void
+         * free_string_list (gpointer data)
+         * {
+         *   GList *node, *list = data;
+         *
+         *   for (node = list; node; node = node->next)
+         *     g_free (node->data);
+         *   g_list_free (list);
+         * }
+         * ```
+         *
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
+         * and thus the partial string list would have been freed upon
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
+         */
+        steal_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Reverts the effect of a previous call to
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
+         * and when it reaches zero, queued "notify" signals are emitted.
+         *
+         * Duplicate notifications for each property are squashed so that at most one
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
+         * in which they have been queued.
+         *
+         * It is an error to call this function when the freeze count is zero.
+         */
+        thaw_notify(): void;
+        /**
+         * Decreases the reference count of `object`. When its reference count
+         * drops to 0, the object is finalized (i.e. its memory is freed).
+         *
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
+         * an instance variable of another object), it is recommended to clear the
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
+         */
+        unref(): void;
+        /**
+         * This function essentially limits the life time of the `closure` to
+         * the life time of the object. That is, when the object is finalized,
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
+         * it, in order to prevent invocations of the closure with a finalized
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
+         * reference count is held on `object` during invocation of the
+         * `closure`.  Usually, this function will be called on closures that
+         * use this `object` as closure data.
+         * @param closure {@link GObject.Closure} to watch
+         */
+        watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by `g_object_new()` as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         * @virtual
+         */
+        vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         * @virtual
+         */
+        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         * @virtual
+         */
+        vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         * @virtual
+         */
+        vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         * @virtual
+         */
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use `g_object_notify_by_pspec()`
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
+         * called.
+         * @param pspec
+         * @virtual
+         */
+        vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         * @virtual
+         */
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
+        disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
+        set(properties: { [key: string]: any }): void;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
+    }
+
     namespace Tab {
         // Signal signatures
         interface SignalSignatures extends Gtk.Box.SignalSignatures {
+            /**
+             * @signal
+             * @action
+             * @run-last
+             */
+            'drop-uris': (arg0: string[]) => void;
             'notify::autosave': (pspec: GObject.ParamSpec) => void;
             'notify::autosave-interval': (pspec: GObject.ParamSpec) => void;
             'notify::can-close': (pspec: GObject.ParamSpec) => void;
@@ -6647,39 +7136,25 @@ export namespace Gedit {
 
         // Properties
 
-        /**
-         * Whether the autosave feature is enabled.
-         */
         get autosave(): boolean;
         set autosave(val: boolean);
-        /**
-         * Time in minutes between two autosaves.
-         */
         get autosave_interval(): number;
         set autosave_interval(val: number);
-        /**
-         * Time in minutes between two autosaves.
-         */
         get autosaveInterval(): number;
         set autosaveInterval(val: number);
         /**
-         * Whether the tab can be closed.
          * @read-only
          */
         get can_close(): boolean;
         /**
-         * Whether the tab can be closed.
          * @read-only
          */
         get canClose(): boolean;
         /**
-         * The tab's name.
-         * @deprecated since 47: Use the {@link Tepl.Buffer.tepl_short_title} property   instead.
          * @read-only
          */
         get name(): string;
         /**
-         * The state of the {@link Gedit.Tab}.
          * @read-only
          */
         get state(): TabState;
@@ -6723,28 +7198,31 @@ export namespace Gedit {
         // Static methods
 
         /**
-         * @param doc a {@link Gedit.Document}.
+         * Gets the {@link Gedit.Tab} associated with `doc`.
+         * @param doc a {@link Gedit.Document}
          */
-        static get_from_document(doc: Document): Tab | null;
+        static get_from_document(doc: Document): Tab;
 
         // Methods
 
         /**
-         * @returns the value of the {@link Gedit.Tab.autosave} property.
+         * Gets the current state for the autosave feature
+         * @returns `true` if the autosave is enabled, else `false`
          */
         get_auto_save_enabled(): boolean;
         /**
-         * @returns the value of the {@link Gedit.Tab.autosave_interval} property.
+         * Gets the current interval for the autosaves
+         * @returns the value of the autosave
          */
         get_auto_save_interval(): number;
         /**
-         * Convenience function. It is equivalent to call `gedit_tab_get_view()` followed
-         * by `gtk_text_view_get_buffer()`.
-         * @returns the {@link Gedit.Document} associated to `tab`.
+         * Gets the {@link Gedit.Document} associated to `tab`.
+         * @returns the {@link Gedit.Document} associated to `tab`
          */
         get_document(): Document;
         /**
-         * @returns the current {@link Gedit.TabState} of `tab`.
+         * Gets the {@link Gedit.TabState} of `tab`.
+         * @returns the {@link Gedit.TabState} of `tab`
          */
         get_state(): TabState;
         /**
@@ -6753,70 +7231,23 @@ export namespace Gedit {
         // Conflicted with Gtk.Widget.get_state
         get_state(...args: never[]): any;
         /**
-         * @returns the {@link Gedit.View} of `tab`.
+         * Gets the {@link Gedit.View} inside `tab`.
+         * @returns the {@link Gedit.View} inside `tab`
          */
         get_view(): View;
         /**
-         * This function tries to load `location` into `tab`. It is usually called only on
-         * a newly-created tab.
-         *
-         * If `location` doesn't exist, the behavior depends on `create`:
-         * - If `create` is `false`, an error is shown.
-         * - If `create` is `true`, an empty {@link Gedit.Document} is created without error (but
-         *   the file is not yet created on disk).
-         *
-         * The `tab` needs to be in {@link Gedit.TabState.NORMAL}. The previous
-         * {@link Gtk.TextBuffer}'s content is lost.
-         * @param location the {@link Gio.File} to load.
-         * @param encoding a {@link GtkSource.Encoding}, or `null`.
-         * @param line_pos the line position to visualize.
-         * @param column_pos the column position to visualize.
-         * @param create `true` to show no errors if `location` doesn't exist.
-         */
-        load_file(
-            location: Gio.File,
-            encoding: GtkSource.Encoding | null,
-            line_pos: number,
-            column_pos: number,
-            create: boolean,
-        ): void;
-        /**
-         * Loads `stream` into `tab`. This function is usually called only on a
-         * newly-created tab.
-         *
-         * The `tab` needs to be in {@link Gedit.TabState.NORMAL}. The previous
-         * {@link Gtk.TextBuffer}'s content is lost.
-         * @param stream the {@link Gio.InputStream} to load, e.g. stdin.
-         * @param encoding a {@link GtkSource.Encoding}, or `null`.
-         * @param line_pos the line position to visualize.
-         * @param column_pos the column position to visualize.
-         */
-        load_stream(
-            stream: Gio.InputStream,
-            encoding: GtkSource.Encoding | null,
-            line_pos: number,
-            column_pos: number,
-        ): void;
-        /**
-         * Sets the {@link Gedit.Tab.autosave} property.
-         *
-         * It does not install an autosave timeout if the document is new or is
-         * read-only.
-         * @param enable the new value.
+         * Enables or disables the autosave feature. It does not install an
+         * autosave timeout if the document is new or is read-only
+         * @param enable enable (`true`) or disable (`false`) auto save
          */
         set_auto_save_enabled(enable: boolean): void;
         /**
-         * Sets the {@link Gedit.Tab.autosave_interval} property.
-         * @param interval the new value.
+         * Sets the interval for the autosave feature.
+         * @param interval the new interval
          */
         set_auto_save_interval(interval: number): void;
         /**
-         * Sets the {@link Gtk.InfoBar} of `tab`. Note that there can be only one {@link Gtk.InfoBar} per
-         * {@link Gedit.Tab}. If there was already an infobar set, it is destroyed and replaced
-         * by the new one.
-         *
-         * See also {@link Tepl.InfoBar}, it permits to create a {@link Gtk.InfoBar} more easily.
-         * @param info_bar a {@link Gtk.InfoBar}.
+         * @param info_bar
          */
         set_info_bar(info_bar: Gtk.Widget): void;
         /**
@@ -7289,7 +7720,7 @@ export namespace Gedit {
 
     namespace View {
         // Signal signatures
-        interface SignalSignatures extends Tepl.View.SignalSignatures {
+        interface SignalSignatures extends GtkSource.View.SignalSignatures {
             /**
              * The {@link Gedit.View.SignalSignatures.drop_uris | Gedit.View::drop-uris} signal allows plugins to intercept the
              * default drag-and-drop behaviour of 'text/uri-list'. {@link Gedit.View}
@@ -7308,6 +7739,7 @@ export namespace Gedit {
              */
             'drop-uris': (arg0: string[]) => void;
             'notify::auto-indent': (pspec: GObject.ParamSpec) => void;
+            'notify::background-pattern': (pspec: GObject.ParamSpec) => void;
             'notify::completion': (pspec: GObject.ParamSpec) => void;
             'notify::highlight-current-line': (pspec: GObject.ParamSpec) => void;
             'notify::indent-on-tab': (pspec: GObject.ParamSpec) => void;
@@ -7390,7 +7822,7 @@ export namespace Gedit {
 
         interface ConstructorProps
             extends
-                Tepl.View.ConstructorProps,
+                GtkSource.View.ConstructorProps,
                 Atk.ImplementorIface.ConstructorProps,
                 Gtk.Buildable.ConstructorProps,
                 Gtk.Scrollable.ConstructorProps {}
@@ -7399,7 +7831,7 @@ export namespace Gedit {
     /**
      * @gir-type Class
      */
-    class View extends Tepl.View implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
+    class View extends GtkSource.View implements Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
         static $gtype: GObject.GType<View>;
 
         /**
@@ -7411,10 +7843,6 @@ export namespace Gedit {
          */
         $signals: View.SignalSignatures;
 
-        // Fields
-
-        view: Tepl.View;
-
         // Constructors
 
         constructor(properties?: Partial<View.ConstructorProps>, ...args: any[]);
@@ -7422,7 +7850,7 @@ export namespace Gedit {
         _init(...args: any[]): void;
 
         static ['new'](doc: Document): View;
-        // Conflicted with Tepl.View.new
+        // Conflicted with GtkSource.View.new
 
         static ['new'](...args: never[]): any;
 
@@ -7909,37 +8337,30 @@ export namespace Gedit {
         // Signal signatures
         interface SignalSignatures extends Gtk.ApplicationWindow.SignalSignatures {
             /**
-             * The ::active-tab-changed signal is emitted when the active {@link Gedit.Tab}
-             * of `window` changes (including when it becomes `null`). You can get its
-             * value with `gedit_window_get_active_tab()`.
              * @signal
-             * @since 47
              * @run-first
              */
-            'active-tab-changed': () => void;
+            'active-tab-changed': (arg0: Tab) => void;
             /**
-             * The ::tab-added signal is emitted right after a {@link Gedit.Tab} is added to
-             * `window`.
+             * @signal
+             * @run-first
+             */
+            'active-tab-state-changed': () => void;
+            /**
              * @signal
              * @run-first
              */
             'tab-added': (arg0: Tab) => void;
             /**
-             * The ::tab-removed signal is emitted right after a {@link Gedit.Tab} is
-             * removed from `window`.
-             *
-             * During the signal emission, the `tab`'s {@link Gedit.View} and {@link Gedit.Document}
-             * objects are absent from the lists returned by
-             * `gedit_window_get_views()` and `gedit_window_get_documents()` (`tab` is
-             * not part of `window`).
-             *
-             * During the signal emission, `tab` is still a valid object. As such you
-             * can call functions like `gedit_tab_get_view()` and
-             * `gedit_tab_get_document()`, for example to disconnect signal handlers.
              * @signal
              * @run-first
              */
             'tab-removed': (arg0: Tab) => void;
+            /**
+             * @signal
+             * @run-first
+             */
+            'tabs-reordered': () => void;
             'notify::state': (pspec: GObject.ParamSpec) => void;
             'notify::show-menubar': (pspec: GObject.ParamSpec) => void;
             'notify::accept-focus': (pspec: GObject.ParamSpec) => void;
@@ -8044,7 +8465,6 @@ export namespace Gedit {
         // Properties
 
         /**
-         * The state of the {@link Gedit.Window}.
          * @read-only
          */
         get state(): WindowState;
@@ -8096,69 +8516,130 @@ export namespace Gedit {
          * @param tab
          * @virtual
          */
+        vfunc_active_tab_changed(tab: Tab): void;
+        /**
+         * @virtual
+         */
+        vfunc_active_tab_state_changed(): void;
+        /**
+         * @param tab
+         * @virtual
+         */
         vfunc_tab_added(tab: Tab): void;
         /**
          * @param tab
          * @virtual
          */
         vfunc_tab_removed(tab: Tab): void;
+        /**
+         * @virtual
+         */
+        vfunc_tabs_reordered(): void;
 
         // Methods
 
         /**
-         * Closes all tabs of `window`.
+         * Closes all opened tabs.
          */
         close_all_tabs(): void;
         /**
          * Closes the `tab`.
-         * @param tab the {@link Gedit.Tab} to close.
+         * @param tab the {@link Gedit.Tab} to close
          */
         close_tab(tab: Tab): void;
         /**
-         * Closes all tabs specified in `tabs`.
-         * @param tabs a list of {@link Gedit.Tab}'s.
+         * Closes all tabs specified by `tabs`.
+         * @param tabs a list of {@link Gedit.Tab}
          */
         close_tabs(tabs: Tab[]): void;
         /**
-         * Creates a new {@link Gedit.Tab} and adds it to the {@link Gtk.Notebook}.
-         * @param jump_to if `true`, the {@link Gtk.Notebook} switches to the new {@link Gedit.Tab}.
-         * @returns the new {@link Gedit.Tab}.
+         * Creates a new {@link Gedit.Tab} and adds the new tab to the {@link Gtk.Notebook}.
+         * In case `jump_to` is `true` the {@link Gtk.Notebook} switches to that new {@link Gedit.Tab}.
+         * @param jump_to `true` to set the new {@link Gedit.Tab} as active
+         * @returns a new {@link Gedit.Tab}
          */
         create_tab(jump_to: boolean): Tab;
         /**
-         * @returns the active {@link Gedit.Document} of `window`.
+         * Creates a new {@link Gedit.Tab} loading the document specified by `uri`.
+         * In case `jump_to` is `true` the {@link Gtk.Notebook} swithes to that new {@link Gedit.Tab}.
+         * Whether `create` is `true`, creates a new empty document if location does
+         * not refer to an existing file
+         * @param location the location of the document
+         * @param encoding a {@link GtkSource.Encoding}, or `null`
+         * @param line_pos the line position to visualize
+         * @param column_pos the column position to visualize
+         * @param create `true` to create a new document in case `uri` does exist
+         * @param jump_to `true` to set the new {@link Gedit.Tab} as active
+         * @returns a new {@link Gedit.Tab}
          */
-        get_active_document(): Document | null;
+        create_tab_from_location(
+            location: Gio.File,
+            encoding: GtkSource.Encoding | null,
+            line_pos: number,
+            column_pos: number,
+            create: boolean,
+            jump_to: boolean,
+        ): Tab;
         /**
-         * @returns the active {@link Gedit.Tab} of `window`.
+         * @param stream a {@link Gio.InputStream}
+         * @param encoding a {@link GtkSource.Encoding}, or `null`
+         * @param line_pos the line position to visualize
+         * @param column_pos the column position to visualize
+         * @param jump_to `true` to set the new {@link Gedit.Tab} as active
+         * @returns a new {@link Gedit.Tab}
          */
-        get_active_tab(): Tab | null;
+        create_tab_from_stream(
+            stream: Gio.InputStream,
+            encoding: GtkSource.Encoding | null,
+            line_pos: number,
+            column_pos: number,
+            jump_to: boolean,
+        ): Tab;
         /**
-         * @returns the active {@link Gedit.View} of `window`.
+         * Gets the active {@link Gedit.Document}.
+         * @returns the active {@link Gedit.Document}
          */
-        get_active_view(): View | null;
+        get_active_document(): Document;
         /**
-         * @returns the bottom panel of `window`.
+         * Gets the active {@link Gedit.Tab} in the `window`.
+         * @returns the active {@link Gedit.Tab} in the `window`.
          */
-        get_bottom_panel(): Tepl.Panel;
+        get_active_tab(): Tab;
         /**
-         * @returns a newly allocated   list with all the {@link Gedit.Document}'s currently part of `window`.
+         * Gets the active {@link Gedit.View}.
+         * @returns the active {@link Gedit.View}
+         */
+        get_active_view(): View;
+        /**
+         * Gets the bottom panel of the `window`.
+         * @returns the bottom panel's {@link Gtk.Stack}.
+         */
+        get_bottom_panel(): Gtk.Widget;
+        /**
+         * Gets a newly allocated list with all the documents in the window.
+         * This list must be freed.
+         * @returns a newly allocated list with all the documents in the window
          */
         get_documents(): Document[];
         /**
-         * @returns the {@link Gtk.WindowGroup} in which `window` resides.
+         * Gets the {@link Gtk.WindowGroup} in which `window` resides.
+         * @returns the {@link Gtk.WindowGroup}
          */
         get_group(): Gtk.WindowGroup;
         /**
-         * @returns the {@link Gedit.MessageBus} associated with `window`. The   returned reference is owned by the window and should not be unreffed.
+         * Gets the {@link Gedit.MessageBus} associated with `window`. The returned reference
+         * is owned by the window and should not be unreffed.
+         * @returns the {@link Gedit.MessageBus} associated with `window`
          */
         get_message_bus(): MessageBus;
         /**
-         * @returns the side panel of `window`.
+         * Gets the side panel of the `window`.
+         * @returns the side panel's {@link Gtk.Stack}.
          */
-        get_side_panel(): Tepl.Panel;
+        get_side_panel(): Gtk.Widget;
         /**
-         * @returns the current {@link Gedit.WindowState} of `window`.
+         * Retrieves the state of the `window`.
+         * @returns the current {@link Gedit.WindowState} of the `window`.
          */
         get_state(): WindowState;
         /**
@@ -8167,25 +8648,29 @@ export namespace Gedit {
         // Conflicted with Gtk.Widget.get_state
         get_state(...args: never[]): any;
         /**
-         * @returns the {@link Tepl.Statusbar} of `window`.
+         * Gets the {@link Gedit.Statusbar} of the `window`.
+         * @returns the {@link Gedit.Statusbar} of the `window`.
          */
         get_statusbar(): Gtk.Widget;
         /**
-         * @param location a {@link Gio.File}.
-         * @returns the {@link Gedit.Tab} that matches the given `location`.
+         * Gets the {@link Gedit.Tab} that matches with the given `location`.
+         * @param location a {@link Gio.File}
+         * @returns the {@link Gedit.Tab} that matches with the given `location`.
          */
         get_tab_from_location(location: Gio.File): Tab;
         /**
-         * @returns a newly allocated   list of {@link Gedit.Document}'s part of `window` that currently have unsaved changes.
+         * Gets the list of documents that need to be saved before closing the window.
+         * @returns a list of {@link Gedit.Document} that need to be saved before closing the window
          */
         get_unsaved_documents(): Document[];
         /**
-         * @returns a newly allocated   list with all the {@link Gedit.View}'s currently part of `window`.
+         * Gets a list with all the views in the window. This list must be freed.
+         * @returns a newly allocated list with all the views in the window
          */
         get_views(): View[];
         /**
-         * Switches to `tab`.
-         * @param tab a {@link Gedit.Tab}.
+         * Switches to the tab that matches with `tab`.
+         * @param tab a {@link Gedit.Tab}
          */
         set_active_tab(tab: Tab): void;
         /**
@@ -9220,6 +9705,10 @@ export namespace Gedit {
     /**
      * @gir-type Alias
      */
+    type StatusbarClass = typeof Statusbar;
+    /**
+     * @gir-type Alias
+     */
     type TabClass = typeof Tab;
     /**
      * @gir-type Alias
@@ -9289,7 +9778,8 @@ export namespace Gedit {
         // Properties
 
         /**
-         * The {@link Gedit.App}.
+         * The app property contains the gedit app for this
+         * {@link Gedit.AppActivatable} instance.
          * @construct-only
          */
         get app(): App;
@@ -9327,12 +9817,12 @@ export namespace Gedit {
             // Virtual methods
 
             /**
-             * Activates the extension on the {@link Gedit.View}.
+             * Activates the extension on the window property.
              * @virtual
              */
             vfunc_activate(): void;
             /**
-             * Deactivates the extension from the {@link Gedit.View}.
+             * Deactivates the extension on the window property.
              * @virtual
              */
             vfunc_deactivate(): void;
@@ -9356,7 +9846,8 @@ export namespace Gedit {
         // Properties
 
         /**
-         * The {@link Gedit.View}.
+         * The window property contains the gedit window for this
+         * {@link Gedit.ViewActivatable} instance.
          * @construct-only
          */
         get view(): View;
@@ -9364,11 +9855,11 @@ export namespace Gedit {
         // Methods
 
         /**
-         * Activates the extension on the {@link Gedit.View}.
+         * Activates the extension on the window property.
          */
         activate(): void;
         /**
-         * Deactivates the extension from the {@link Gedit.View}.
+         * Deactivates the extension on the window property.
          */
         deactivate(): void;
     }
@@ -9386,12 +9877,12 @@ export namespace Gedit {
             // Virtual methods
 
             /**
-             * Activates the extension on the window.
+             * Activates the extension on the window property.
              * @virtual
              */
             vfunc_activate(): void;
             /**
-             * Deactivates the extension from the window.
+             * Deactivates the extension on the window property.
              * @virtual
              */
             vfunc_deactivate(): void;
@@ -9421,7 +9912,8 @@ export namespace Gedit {
         // Properties
 
         /**
-         * The {@link Gedit.Window}.
+         * The window property contains the gedit window for this
+         * {@link Gedit.WindowActivatable} instance.
          * @construct-only
          */
         get window(): Window;
@@ -9429,11 +9921,11 @@ export namespace Gedit {
         // Methods
 
         /**
-         * Activates the extension on the window.
+         * Activates the extension on the window property.
          */
         activate(): void;
         /**
-         * Deactivates the extension from the window.
+         * Deactivates the extension on the window property.
          */
         deactivate(): void;
         /**

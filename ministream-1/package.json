@@ -1,25 +1,25 @@
 {
-    "name": "@girs/gcr-3",
-    "version": "3.41.2-4.0.0-beta.41",
-    "description": "GJS TypeScript type definitions for Gcr-3, generated from library version 3.41.2",
+    "name": "@girs/ministream-1",
+    "version": "0.99.0-4.0.0-beta.41",
+    "description": "GJS TypeScript type definitions for Ministream-1, generated from library version 0.99.0",
     "type": "module",
-    "module": "gcr-3.js",
-    "main": "gcr-3.js",
+    "module": "ministream-1.js",
+    "main": "ministream-1.js",
     "exports": {
         "./ambient": {
-            "types": "./gcr-3-ambient.d.ts",
-            "import": "./gcr-3-ambient.js",
-            "default": "./gcr-3-ambient.js"
+            "types": "./ministream-1-ambient.d.ts",
+            "import": "./ministream-1-ambient.js",
+            "default": "./ministream-1-ambient.js"
         },
         "./import": {
-            "types": "./gcr-3-import.d.ts",
-            "import": "./gcr-3-import.js",
-            "default": "./gcr-3-import.js"
+            "types": "./ministream-1-import.d.ts",
+            "import": "./ministream-1-import.js",
+            "default": "./ministream-1-import.js"
         },
-        "./gcr-3": {
-            "types": "./gcr-3.d.ts",
-            "import": "./gcr-3.js",
-            "default": "./gcr-3.js"
+        "./ministream-1": {
+            "types": "./ministream-1.d.ts",
+            "import": "./ministream-1.js",
+            "default": "./ministream-1.js"
         },
         ".": {
             "types": "./index.d.ts",
@@ -31,11 +31,8 @@
         "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-        "@girs/gck-1": "workspace:^",
-        "@girs/gio-2.0": "workspace:^",
         "@girs/gjs": "workspace:^",
         "@girs/glib-2.0": "workspace:^",
-        "@girs/gmodule-2.0": "workspace:^",
         "@girs/gobject-2.0": "workspace:^"
     },
     "devDependencies": {
@@ -47,7 +44,7 @@
         "types",
         "GObject-Introspection",
         "GJS",
-        "Gcr-3"
+        "Ministream-1"
     ],
     "author": "ts-for-gir",
     "license": "MIT",
@@ -58,5 +55,5 @@
     "bugs": {
         "url": "https://github.com/gjsify/ts-for-gir/issues"
     },
-    "homepage": "https://github.com/gjsify/types/tree/main/gcr-3#readme"
+    "homepage": "https://github.com/gjsify/types/tree/main/ministream-1#readme"
 }

@@ -19,11 +19,8 @@
     // Show diagnostics
     "diagnostics": true,
     "paths": {
-      "@girs/tepl-6": [
-            "../tepl-6/index.d.ts"
-      ],
-      "@girs/gtksource-300": [
-            "../gtksource-300/index.d.ts"
+      "@girs/gtksource-4": [
+            "../gtksource-4/index.d.ts"
       ],
       "@girs/gtk-3.0": [
             "../gtk-3.0/index.d.ts"
@@ -63,9 +60,6 @@
       ],
       "@girs/atk-1.0": [
             "../atk-1.0/index.d.ts"
-      ],
-      "@girs/amtk-5": [
-            "../amtk-5/index.d.ts"
       ],
       "@girs/gjs": [
             "../gjs/index.d.ts"

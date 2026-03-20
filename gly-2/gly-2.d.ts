@@ -371,7 +371,7 @@ export namespace Gly {
      * guint8 data[] = {255, 0, 0};
      * gsize length = sizeof(data);
      * GBytes *texture = g_bytes_new(data, length);
-     * GlyNewFrame *new_frame = gly_creator_add_frame(creator, 1, 1, GLY_MEMORY_R8G8B8, texture, NULL);
+     * GlyNewFrame *new_frame = gly_creator_add_frame(creator, 1, 1, GLY_MEMORY_R8G8B8, texture);
      *
      * // Create JPEG
      * GlyEncodedImage *encoded_image = gly_creator_create(creator, NULL);
@@ -826,7 +826,7 @@ export namespace Gly {
          *
          * ::: warning
          *     Most loaders will ignore this option. Currently, only the SVG
-         *     loader is known to obey it.
+         *     loader is known to obay it.
          * @param width Maximum width
          * @param height Maximum height
          */
@@ -963,7 +963,7 @@ export namespace Gly {
          * guaranteed to only return values from 1 to 8.
          *
          * If {@link Loader.set_apply_transformations} is set to `FALSE`,
-         * the orientation has to be corrected manually to display the image
+         * the orientation has to be corrected manually to dispaly the image
          * correctly.
          */
         get_transformation_orientation(): number;

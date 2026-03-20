@@ -156,11 +156,6 @@ export namespace Bump {
          * @param element
          */
         offer(element: any): boolean;
-        /**
-         * @param args
-         */
-        // Conflicted with Gee.PriorityQueue.offer
-        offer(...args: never[]): any;
         get_waiting_threads(): number;
     }
 

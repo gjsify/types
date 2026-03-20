@@ -418,12 +418,12 @@ export namespace Folks {
         /**
          * @virtual
          */
-        vfunc_get_value(): any | null;
+        vfunc_get_value(): any;
         /**
          * @param value
          * @virtual
          */
-        vfunc_set_value(value?: any | null): void;
+        vfunc_set_value(value: any): void;
         /**
          * @virtual
          */
@@ -480,11 +480,11 @@ export namespace Folks {
          */
         values_equal(that: AbstractFieldDetails): boolean;
         hash(): number;
-        get_value(): any | null;
+        get_value(): any;
         /**
          * @param value
          */
-        set_value(value?: any | null): void;
+        set_value(value: any): void;
         get_value_type(): GObject.GType;
         get_id(): string;
         /**
@@ -3961,13 +3961,13 @@ export namespace Folks {
          * @param object
          * @virtual
          */
-        vfunc_serialise_object(object?: any | null): GLib.Variant;
+        vfunc_serialise_object(object: any): GLib.Variant;
         /**
          * @param variant
          * @param object_version
          * @virtual
          */
-        vfunc_deserialise_object(variant: GLib.Variant, object_version: number): any | null;
+        vfunc_deserialise_object(variant: GLib.Variant, object_version: number): any;
 
         // Methods
 
@@ -3979,12 +3979,12 @@ export namespace Folks {
         /**
          * @param object
          */
-        serialise_object(object?: any | null): GLib.Variant;
+        serialise_object(object: any): GLib.Variant;
         /**
          * @param variant
          * @param object_version
          */
-        deserialise_object(variant: GLib.Variant, object_version: number): any | null;
+        deserialise_object(variant: GLib.Variant, object_version: number): any;
         /**
          * @param cancellable
          */

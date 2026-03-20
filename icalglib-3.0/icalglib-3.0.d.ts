@@ -1590,14 +1590,13 @@ export namespace ICalGLib {
          * that are specified as an EXDATE or an EXRULE.
          * @param start Ignore timespans before this
          * @param end Ignore timespans after this
-         * @param callback Function called for each timespan within the range
          */
-        foreach_recurrence(start: Time, end: Time, callback: ComponentForeachRecurrenceFunc): void;
+        foreach_recurrence(start: Time, end: Time): void;
         /**
          * Applies the same manipulation on every tzid in {@link ICalGLib.Component}.
          * @param callback The callback function
          */
-        foreach_tzid(callback: ComponentForeachTZIDFunc): void;
+        foreach_tzid(callback?: ComponentForeachTZIDFunc | null): void;
         /**
          * Gets the comment of the {@link ICalGLib.Component}.
          * @returns The comment of `comp`.

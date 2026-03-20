@@ -2720,7 +2720,7 @@ export namespace Gpseq {
         /**
          * @param object
          */
-        equal_to(object?: any | null): boolean;
+        equal_to(object: any): boolean;
         /**
          * @virtual
          */
@@ -2729,7 +2729,7 @@ export namespace Gpseq {
          * @param object
          * @virtual
          */
-        vfunc_equal_to(object?: any | null): boolean;
+        vfunc_equal_to(object: any): boolean;
         get_value_type(): GObject.GType;
         get_value(): any;
         get_exception(): GLib.Error;
@@ -6192,7 +6192,7 @@ export namespace Gpseq {
          * @param f
          * @param seed
          */
-        fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed?: any | null): any | null;
+        fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: any): any;
         /**
          * @param a_type
          * @param a_dup_func
@@ -6205,12 +6205,7 @@ export namespace Gpseq {
          * @param f
          * @param seed
          */
-        scan(
-            a_type: GObject.GType,
-            a_dup_func: GObject.BoxedCopyFunc,
-            f: Gee.FoldFunc,
-            seed?: any | null,
-        ): Gee.Iterator;
+        scan(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: any): Gee.Iterator;
         /**
          * @param pred
          */
@@ -6245,11 +6240,11 @@ export namespace Gpseq {
         /**
          * @param compare
          */
-        max(compare: GLib.CompareDataFunc): any | null;
+        max(compare: GLib.CompareDataFunc): any;
         /**
          * @param compare
          */
-        min(compare: GLib.CompareDataFunc): any | null;
+        min(compare: GLib.CompareDataFunc): any;
         /**
          * @param compare
          */
@@ -6274,12 +6269,7 @@ export namespace Gpseq {
          * @param seed
          * @virtual
          */
-        vfunc_fold(
-            a_type: GObject.GType,
-            a_dup_func: GObject.BoxedCopyFunc,
-            f: Gee.FoldFunc,
-            seed?: any | null,
-        ): any | null;
+        vfunc_fold(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: any): any;
         /**
          * @param a_type
          * @param a_dup_func
@@ -6294,12 +6284,7 @@ export namespace Gpseq {
          * @param seed
          * @virtual
          */
-        vfunc_scan(
-            a_type: GObject.GType,
-            a_dup_func: GObject.BoxedCopyFunc,
-            f: Gee.FoldFunc,
-            seed?: any | null,
-        ): Gee.Iterator;
+        vfunc_scan(a_type: GObject.GType, a_dup_func: GObject.BoxedCopyFunc, f: Gee.FoldFunc, seed: any): Gee.Iterator;
         /**
          * @param pred
          * @virtual
@@ -6342,12 +6327,12 @@ export namespace Gpseq {
          * @param compare
          * @virtual
          */
-        vfunc_max(compare: GLib.CompareDataFunc): any | null;
+        vfunc_max(compare: GLib.CompareDataFunc): any;
         /**
          * @param compare
          * @virtual
          */
-        vfunc_min(compare: GLib.CompareDataFunc): any | null;
+        vfunc_min(compare: GLib.CompareDataFunc): any;
         /**
          * @param compare
          * @virtual
