@@ -1,6 +1,6 @@
 {
     "name": "@girs/ide-50",
-    "version": "50.0.0-4.0.0-beta.41",
+    "version": "50.0.0-4.0.0-beta.42",
     "description": "GJS TypeScript type definitions for Ide-50, generated from library version 50.0.0",
     "type": "module",
     "module": "ide-50.js",

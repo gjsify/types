@@ -1,6 +1,6 @@
 {
     "name": "@girs/foundrygtk-1",
-    "version": "1.0.0-4.0.0-beta.41",
+    "version": "1.0.0-4.0.0-beta.42",
     "description": "GJS TypeScript type definitions for FoundryGtk-1, generated from library version 1.0.0",
     "type": "module",
     "module": "foundrygtk-1.js",

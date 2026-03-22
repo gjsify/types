@@ -1,6 +1,6 @@
 {
     "name": "@girs/shell-10",
-    "version": "10.0.0-4.0.0-beta.41",
+    "version": "10.0.0-4.0.0-beta.42",
     "description": "GJS TypeScript type definitions for Shell-10, generated from library version 10.0.0",
     "type": "module",
     "module": "shell-10.js",

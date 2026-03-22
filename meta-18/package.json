@@ -1,6 +1,6 @@
 {
     "name": "@girs/meta-18",
-    "version": "18.0.0-4.0.0-beta.41",
+    "version": "18.0.0-4.0.0-beta.42",
     "description": "GJS TypeScript type definitions for Meta-18, generated from library version 18.0.0",
     "type": "module",
     "module": "meta-18.js",

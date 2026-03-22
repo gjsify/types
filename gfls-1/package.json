@@ -1,6 +1,6 @@
 {
     "name": "@girs/gfls-1",
-    "version": "1.0.0-4.0.0-beta.41",
+    "version": "1.0.0-4.0.0-beta.42",
     "description": "GJS TypeScript type definitions for Gfls-1, generated from library version 1.0.0",
     "type": "module",
     "module": "gfls-1.js",
