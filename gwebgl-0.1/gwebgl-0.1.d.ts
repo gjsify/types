@@ -990,7 +990,7 @@ export namespace Gwebgl {
         compressedTexImage2D(
             target: number,
             level: number,
-            internalFormat: GL.__enum,
+            internalFormat: number,
             width: number,
             height: number,
             border: number,
