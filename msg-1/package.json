@@ -1,6 +1,6 @@
 {
     "name": "@girs/msg-1",
-    "version": "1.0.0-4.0.0-beta.42",
+    "version": "1.0.0-4.0.0-beta.43",
     "description": "GJS TypeScript type definitions for Msg-1, generated from library version 1.0.0",
     "type": "module",
     "module": "msg-1.js",

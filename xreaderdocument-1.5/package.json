@@ -1,6 +1,6 @@
 {
     "name": "@girs/xreaderdocument-1.5",
-    "version": "4.6.3-4.0.0-beta.42",
+    "version": "4.6.3-4.0.0-beta.43",
     "description": "GJS TypeScript type definitions for XreaderDocument-1.5, generated from library version 4.6.3",
     "type": "module",
     "module": "xreaderdocument-1.5.js",

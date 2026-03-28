@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/arrow-23.0)
 
 
-GJS TypeScript type definitions for Arrow-23.0, generated from library version 23.0.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.42.
+GJS TypeScript type definitions for Arrow-23.0, generated from library version 23.0.1 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.43.
 
 ## Install
 

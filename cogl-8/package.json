@@ -1,6 +1,6 @@
 {
     "name": "@girs/cogl-8",
-    "version": "8.0.0-4.0.0-beta.42",
+    "version": "8.0.0-4.0.0-beta.43",
     "description": "GJS TypeScript type definitions for Cogl-8, generated from library version 8.0.0",
     "type": "module",
     "module": "cogl-8.js",

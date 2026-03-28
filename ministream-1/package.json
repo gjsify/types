@@ -1,6 +1,6 @@
 {
     "name": "@girs/ministream-1",
-    "version": "0.99.0-4.0.0-beta.42",
+    "version": "0.99.0-4.0.0-beta.43",
     "description": "GJS TypeScript type definitions for Ministream-1, generated from library version 0.99.0",
     "type": "module",
     "module": "ministream-1.js",

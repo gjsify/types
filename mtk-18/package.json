@@ -1,6 +1,6 @@
 {
     "name": "@girs/mtk-18",
-    "version": "18.0.0-4.0.0-beta.42",
+    "version": "18.0.0-4.0.0-beta.43",
     "description": "GJS TypeScript type definitions for Mtk-18, generated from library version 18.0.0",
     "type": "module",
     "module": "mtk-18.js",
