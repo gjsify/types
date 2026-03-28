@@ -4168,6 +4168,8 @@ export namespace GPaste {
              * @run-last
              */
             track: (arg0: boolean) => void;
+            [key: `changed::${string}`]: (arg0: string) => void;
+            [key: `rebind::${string}`]: (arg0: string) => void;
         }
 
         // Constructor properties interface

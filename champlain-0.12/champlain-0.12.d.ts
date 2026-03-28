@@ -15038,6 +15038,7 @@ export namespace Champlain {
              * @run-last
              */
             'animation-completed::z-position': () => void;
+            [key: `animation-completed::${string}`]: () => void;
         }
 
         // Constructor properties interface

@@ -445,6 +445,7 @@ export namespace Deviced {
              * @run-last
              */
             'notification::triplet': (arg0: string, arg1: GLib.Variant) => void;
+            [key: `notification::${string}`]: (arg0: string, arg1: GLib.Variant) => void;
         }
 
         // Constructor properties interface
@@ -1852,6 +1853,7 @@ export namespace Deviced {
              * @run-last
              */
             'notification::client': (arg0: string, arg1: GLib.Variant) => void;
+            [key: `notification::${string}`]: (arg0: string, arg1: GLib.Variant) => void;
         }
 
         // Constructor properties interface

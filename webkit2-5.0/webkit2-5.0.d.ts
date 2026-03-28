@@ -2083,6 +2083,7 @@ export namespace WebKit2 {
              * @run-last
              */
             'create-web-view::id': () => WebView;
+            [key: `create-web-view::${string}`]: () => WebView;
         }
 
         // Constructor properties interface
@@ -12011,6 +12012,7 @@ export namespace WebKit2 {
              * @run-last
              */
             'script-message-received': (arg0: JavascriptResult) => void;
+            [key: `script-message-received::${string}`]: (arg0: JavascriptResult) => void;
         }
 
         // Constructor properties interface

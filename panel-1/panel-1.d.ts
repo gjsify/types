@@ -21251,6 +21251,7 @@ export namespace Panel {
              * @run-last
              */
             'changed::schema-id': (arg0: string) => void;
+            [key: `changed::${string}`]: (arg0: string) => void;
         }
 
         // Constructor properties interface
@@ -30197,6 +30198,7 @@ export namespace Panel {
              * @run-last
              */
             'changed::schema-id-prefix': (arg0: string) => void;
+            [key: `changed::${string}`]: (arg0: string) => void;
         }
 
         // Constructor properties interface

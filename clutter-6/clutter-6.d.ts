@@ -7550,6 +7550,7 @@ export namespace Clutter {
              * @run-last
              */
             'captured-event::z-position': (arg0: Event) => boolean | void;
+            [key: `captured-event::${string}`]: (arg0: Event) => boolean | void;
             /**
              * The ::transition-stopped signal is emitted once a transition
              * is stopped; a transition is stopped once it reached its total
@@ -8522,6 +8523,7 @@ export namespace Clutter {
              * @run-last
              */
             'transition-stopped::z-position': (arg0: string, arg1: boolean) => void;
+            [key: `transition-stopped::${string}`]: (arg0: string, arg1: boolean) => void;
         }
 
         // Constructor properties interface
@@ -35827,6 +35829,7 @@ export namespace Clutter {
              * @run-last
              */
             'marker-reached::repeat-count': (arg0: string, arg1: number) => void;
+            [key: `marker-reached::${string}`]: (arg0: string, arg1: number) => void;
         }
 
         // Constructor properties interface

@@ -6248,6 +6248,7 @@ export namespace Atk {
              * @run-last
              */
             'active-descendant-changed::accessible-value': (arg0: Object) => void;
+            [key: `active-descendant-changed::${string}`]: (arg0: Object) => void;
             /**
              * The signal "children-changed" is emitted when a child is added or
              * removed from an object. It supports two details: "add" and
@@ -6401,6 +6402,7 @@ export namespace Atk {
              * @run-last
              */
             'children-changed::accessible-value': (arg0: number, arg1: Object) => void;
+            [key: `children-changed::${string}`]: (arg0: number, arg1: Object) => void;
             /**
              * The signal "property-change" is emitted when an object's property
              * value changes. `arg1` contains an {@link Atk.PropertyValues} with the name
@@ -6724,6 +6726,7 @@ export namespace Atk {
              * @run-last
              */
             'property-change::accessible-value': (arg0: PropertyValues) => void;
+            [key: `property-change::${string}`]: (arg0: PropertyValues) => void;
             /**
              * The "state-change" signal is emitted when an object's state
              * changes.  The detail value identifies the state type which has
@@ -6877,6 +6880,7 @@ export namespace Atk {
              * @run-last
              */
             'state-change::accessible-value': (arg0: string, arg1: boolean) => void;
+            [key: `state-change::${string}`]: (arg0: string, arg1: boolean) => void;
         }
 
         // Constructor properties interface

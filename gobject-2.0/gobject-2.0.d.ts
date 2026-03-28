@@ -3817,6 +3817,7 @@ export namespace GObject {
              * @run-first
              */
             notify: (arg0: ParamSpec) => void;
+            [key: `notify::${string}`]: (pspec: ParamSpec) => void;
         }
 
         // Constructor properties interface
@@ -3862,6 +3863,8 @@ export namespace GObject {
         $signals: Object.SignalSignatures;
 
         // Constructors
+
+        constructor(properties?: Partial<Object.ConstructorProps>, ...args: any[]);
 
         _init(...args: any[]): void;
 
@@ -4911,7 +4914,7 @@ export namespace GObject {
          * @param name The name of the property to override
          * @param oclass The object class or type that contains the property to override
          */
-        override(name: string, oclass: Object | Function | GType): void;
+        override(name: string, oclass: Object | Function | GType): ParamSpec;
         /**
          * @param arg
          */

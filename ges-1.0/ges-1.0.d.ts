@@ -26553,6 +26553,7 @@ export namespace GES {
              * @run-first
              */
             'deep-notify::timeline': (arg0: GObject.Object, arg1: GObject.ParamSpec) => void;
+            [key: `deep-notify::${string}`]: (arg0: GObject.Object, arg1: GObject.ParamSpec) => void;
         }
 
         // Constructor properties interface

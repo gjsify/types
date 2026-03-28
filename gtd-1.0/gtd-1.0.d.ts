@@ -9948,6 +9948,7 @@ export namespace Gtd {
              * @run-last
              */
             'transition-stopped::accessible-role': (arg0: string, arg1: boolean) => void;
+            [key: `transition-stopped::${string}`]: (arg0: string, arg1: boolean) => void;
         }
 
         // Constructor properties interface

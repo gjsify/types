@@ -298,6 +298,7 @@ export namespace Xfconf {
              * @run-last
              */
             'property-changed::property-base': (arg0: string, arg1: GObject.Value) => void;
+            [key: `property-changed::${string}`]: (arg0: string, arg1: GObject.Value) => void;
         }
 
         // Constructor properties interface

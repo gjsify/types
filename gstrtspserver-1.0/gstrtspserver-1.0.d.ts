@@ -1569,6 +1569,7 @@ export namespace GstRtspServer {
              * @run-last
              */
             'handle-message::transport-mode': (arg0: Gst.Message) => boolean | void;
+            [key: `handle-message::${string}`]: (arg0: Gst.Message) => boolean | void;
         }
 
         // Constructor properties interface

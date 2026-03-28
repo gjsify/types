@@ -4906,6 +4906,7 @@ export namespace Shumate {
              * @run-last
              */
             'animation-completed::accessible-role': () => void;
+            [key: `animation-completed::${string}`]: () => void;
         }
 
         // Constructor properties interface

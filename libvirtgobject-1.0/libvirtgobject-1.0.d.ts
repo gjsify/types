@@ -1141,6 +1141,7 @@ export namespace LibvirtGObject {
              * @run-last
              */
             'pmsuspended::persistent': () => void;
+            [key: `pmsuspended::${string}`]: () => void;
             /**
              * @signal
              * @detailed
@@ -1153,6 +1154,7 @@ export namespace LibvirtGObject {
              * @run-last
              */
             'resumed::persistent': () => void;
+            [key: `resumed::${string}`]: () => void;
             /**
              * @signal
              * @detailed
@@ -1165,6 +1167,7 @@ export namespace LibvirtGObject {
              * @run-last
              */
             'started::persistent': () => void;
+            [key: `started::${string}`]: () => void;
             /**
              * @signal
              * @detailed
@@ -1177,6 +1180,7 @@ export namespace LibvirtGObject {
              * @run-last
              */
             'stopped::persistent': () => void;
+            [key: `stopped::${string}`]: () => void;
             /**
              * @signal
              * @detailed
@@ -1189,6 +1193,7 @@ export namespace LibvirtGObject {
              * @run-last
              */
             'suspended::persistent': () => void;
+            [key: `suspended::${string}`]: () => void;
         }
 
         // Constructor properties interface
