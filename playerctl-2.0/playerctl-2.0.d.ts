@@ -303,6 +303,7 @@ export namespace Playerctl {
              * @run-first
              */
             'loop-status::volume': (arg0: LoopStatus) => void;
+            [key: `loop-status::${string}`]: (arg0: LoopStatus) => void;
             /**
              * Emitted when the playback status changes. Detail will be "playing",
              * "paused", or "stopped" which you can listen to by connecting to the
@@ -447,6 +448,7 @@ export namespace Playerctl {
              * @run-first
              */
             'playback-status::volume': (arg0: PlaybackStatus) => void;
+            [key: `playback-status::${string}`]: (arg0: PlaybackStatus) => void;
         }
 
         // Constructor properties interface

@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/coglpango-7)
 
 
-GJS TypeScript type definitions for CoglPango-7, generated from library version 7.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.42.
+GJS TypeScript type definitions for CoglPango-7, generated from library version 7.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v4.0.0-beta.43.
 
 ## Install
 

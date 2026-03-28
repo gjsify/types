@@ -136,6 +136,11 @@ export namespace Jsonrpc {
                 arg1: GLib.Variant,
                 arg2: GLib.Variant | null,
             ) => boolean | void;
+            [key: `handle-call::${string}`]: (
+                arg0: string,
+                arg1: GLib.Variant,
+                arg2: GLib.Variant | null,
+            ) => boolean | void;
             /**
              * This signal is emitted when a notification has been received from a
              * peer. Unlike `Jsonrpc.Client::handle-call`, this does not have an "id"
@@ -158,6 +163,7 @@ export namespace Jsonrpc {
              * @run-last
              */
             'notification::use-gvariant': (arg0: string, arg1: GLib.Variant | null) => void;
+            [key: `notification::${string}`]: (arg0: string, arg1: GLib.Variant | null) => void;
         }
 
         // Constructor properties interface

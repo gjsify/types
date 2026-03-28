@@ -21412,6 +21412,7 @@ export namespace Ide {
              * @run-last
              */
             'notification::context': (arg0: string, arg1: GLib.Variant) => void;
+            [key: `notification::${string}`]: (arg0: string, arg1: GLib.Variant) => void;
         }
 
         // Constructor properties interface
@@ -49862,6 +49863,7 @@ export namespace Ide {
              * @run-last
              */
             'changed::context': (arg0: string) => void;
+            [key: `changed::${string}`]: (arg0: string) => void;
         }
 
         // Constructor properties interface

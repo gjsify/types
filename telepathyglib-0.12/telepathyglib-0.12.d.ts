@@ -6688,6 +6688,7 @@ export namespace TelepathyGLib {
              * @run-last
              */
             're-handled::user-action-time': (arg0: Channel, arg1: number, arg2: HandleChannelsContext) => void;
+            [key: `re-handled::${string}`]: (arg0: Channel, arg1: number, arg2: HandleChannelsContext) => void;
         }
 
         // Constructor properties interface
@@ -9422,6 +9423,7 @@ export namespace TelepathyGLib {
              * @run-last
              */
             'request-added::uniquify-name': (arg0: Account, arg1: ChannelRequest) => void;
+            [key: `request-added::${string}`]: (arg0: Account, arg1: ChannelRequest) => void;
             /**
              * Emitted when a request has failed and should be disregarded.
              *
@@ -9494,6 +9496,7 @@ export namespace TelepathyGLib {
              * @run-last
              */
             'request-removed::uniquify-name': (arg0: ChannelRequest, arg1: string, arg2: string) => void;
+            [key: `request-removed::${string}`]: (arg0: ChannelRequest, arg1: string, arg2: string) => void;
         }
 
         // Constructor properties interface
@@ -10206,6 +10209,7 @@ export namespace TelepathyGLib {
              * @run-last
              */
             'clients-interested::has-immortal-handles': (arg0: string) => void;
+            [key: `clients-interested::${string}`]: (arg0: string) => void;
             /**
              * Emitted when no more clients are interested in an interface added with
              * `tp_base_connection_add_possible_client_interest()`, for which
@@ -10236,6 +10240,7 @@ export namespace TelepathyGLib {
              * @run-last
              */
             'clients-uninterested::has-immortal-handles': (arg0: string) => void;
+            [key: `clients-uninterested::${string}`]: (arg0: string) => void;
             /**
              * Emitted by `tp_base_connection_finish_shutdown()` when the underlying
              * network connection has been closed; `TpBaseConnectionManager` listens
@@ -10256,6 +10261,7 @@ export namespace TelepathyGLib {
              * @run-last
              */
             'shutdown-finished::has-immortal-handles': () => void;
+            [key: `shutdown-finished::${string}`]: () => void;
         }
 
         // Constructor properties interface
@@ -12814,6 +12820,7 @@ export namespace TelepathyGLib {
              * @run-last
              */
             'chat-state-changed::object-path': (arg0: number, arg1: number) => void;
+            [key: `chat-state-changed::${string}`]: (arg0: number, arg1: number) => void;
             /**
              * Emitted when the group members change in a Group channel.
              *
@@ -13137,6 +13144,14 @@ export namespace TelepathyGLib {
                 arg4: Contact,
                 arg5: GLib.HashTable<string, GObject.Value>,
             ) => void;
+            [key: `group-contacts-changed::${string}`]: (
+                arg0: Contact[],
+                arg1: Contact[],
+                arg2: Contact[],
+                arg3: Contact[],
+                arg4: Contact,
+                arg5: GLib.HashTable<string, GObject.Value>,
+            ) => void;
             /**
              * Emitted when the {@link TelepathyGLib.Channel.group_flags} property changes while the
              * channel is ready.
@@ -13290,6 +13305,7 @@ export namespace TelepathyGLib {
              * @run-last
              */
             'group-flags-changed::object-path': (arg0: number, arg1: number) => void;
+            [key: `group-flags-changed::${string}`]: (arg0: number, arg1: number) => void;
             /**
              * Emitted when the group members change in a Group channel that is ready.
              * @signal
@@ -13571,6 +13587,15 @@ export namespace TelepathyGLib {
              * @run-last
              */
             'group-members-changed::object-path': (
+                arg0: string,
+                arg1: unknown,
+                arg2: unknown,
+                arg3: unknown,
+                arg4: unknown,
+                arg5: number,
+                arg6: number,
+            ) => void;
+            [key: `group-members-changed::${string}`]: (
                 arg0: string,
                 arg1: unknown,
                 arg2: unknown,
@@ -13879,6 +13904,13 @@ export namespace TelepathyGLib {
              * @run-last
              */
             'group-members-changed-detailed::object-path': (
+                arg0: number[],
+                arg1: number[],
+                arg2: number[],
+                arg3: number[],
+                arg4: GLib.HashTable<string, GObject.Value>,
+            ) => void;
+            [key: `group-members-changed-detailed::${string}`]: (
                 arg0: number[],
                 arg1: number[],
                 arg2: number[],
@@ -14963,6 +14995,7 @@ export namespace TelepathyGLib {
              * @run-last
              */
             'channel-lost::object-path': (arg0: Channel, arg1: number, arg2: number, arg3: string) => void;
+            [key: `channel-lost::${string}`]: (arg0: Channel, arg1: number, arg2: number, arg3: string) => void;
         }
 
         // Constructor properties interface
@@ -15896,6 +15929,7 @@ export namespace TelepathyGLib {
              * @run-last
              */
             'succeeded::object-path': () => void;
+            [key: `succeeded::${string}`]: () => void;
             /**
              * Emitted when the channel request succeeds.
              *
@@ -16083,6 +16117,7 @@ export namespace TelepathyGLib {
              * @run-last
              */
             'succeeded-with-channel::object-path': (arg0: Connection, arg1: Channel) => void;
+            [key: `succeeded-with-channel::${string}`]: (arg0: Connection, arg1: Channel) => void;
         }
 
         // Constructor properties interface
@@ -16897,6 +16932,7 @@ export namespace TelepathyGLib {
              * @run-last
              */
             'balance-changed::object-path': (arg0: number, arg1: number, arg2: string) => void;
+            [key: `balance-changed::${string}`]: (arg0: number, arg1: number, arg2: string) => void;
         }
 
         // Constructor properties interface
@@ -18777,6 +18813,7 @@ export namespace TelepathyGLib {
              * @run-last
              */
             'activated::object-path': () => void;
+            [key: `activated::${string}`]: () => void;
             /**
              * Emitted when the connection manager's well-known name disappears from
              * the bus or when activation fails.
@@ -18857,6 +18894,7 @@ export namespace TelepathyGLib {
              * @run-last
              */
             'exited::object-path': () => void;
+            [key: `exited::${string}`]: () => void;
             /**
              * Emitted when the connection manager's capabilities have been discovered.
              *
@@ -18957,6 +18995,7 @@ export namespace TelepathyGLib {
              * @run-last
              */
             'got-info::object-path': (arg0: number) => void;
+            [key: `got-info::${string}`]: (arg0: number) => void;
         }
 
         // Constructor properties interface
@@ -22423,6 +22462,7 @@ export namespace TelepathyGLib {
              * @run-last
              */
             'done::user-action-time': () => void;
+            [key: `done::${string}`]: () => void;
         }
 
         // Constructor properties interface
@@ -23822,6 +23862,7 @@ export namespace TelepathyGLib {
              * @run-last
              */
             'interface-added::object-path': (arg0: number, arg1: unknown) => void;
+            [key: `interface-added::${string}`]: (arg0: number, arg1: unknown) => void;
             /**
              * Emitted when this proxy has been become invalid for
              * whatever reason. Any more specific signal should be emitted first.
@@ -23902,6 +23943,7 @@ export namespace TelepathyGLib {
              * @run-last
              */
             'invalidated::object-path': (arg0: number, arg1: number, arg2: string) => void;
+            [key: `invalidated::${string}`]: (arg0: number, arg1: number, arg2: string) => void;
         }
 
         // Constructor properties interface
@@ -27073,6 +27115,7 @@ export namespace TelepathyGLib {
              * @run-last
              */
             'contact-chat-state-changed::object-path': (arg0: Contact, arg1: number) => void;
+            [key: `contact-chat-state-changed::${string}`]: (arg0: Contact, arg1: number) => void;
         }
 
         // Constructor properties interface

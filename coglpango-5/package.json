@@ -1,6 +1,6 @@
 {
     "name": "@girs/coglpango-5",
-    "version": "5.0.0-4.0.0-beta.42",
+    "version": "5.0.0-4.0.0-beta.43",
     "description": "GJS TypeScript type definitions for CoglPango-5, generated from library version 5.0.0",
     "type": "module",
     "module": "coglpango-5.js",
@@ -31,18 +31,18 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "4.0.0-beta.42",
-      "@girs/pangocairo-1.0": "1.0.0-4.0.0-beta.42",
-      "@girs/cairo-1.0": "1.0.0-4.0.0-beta.42",
-      "@girs/gobject-2.0": "2.88.0-4.0.0-beta.42",
-      "@girs/glib-2.0": "2.88.0-4.0.0-beta.42",
-      "@girs/pango-1.0": "1.57.0-4.0.0-beta.42",
-      "@girs/harfbuzz-0.0": "12.3.2-4.0.0-beta.42",
-      "@girs/freetype2-2.0": "2.0.0-4.0.0-beta.42",
-      "@girs/gio-2.0": "2.88.0-4.0.0-beta.42",
-      "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.42",
-      "@girs/cogl-5": "5.0.0-4.0.0-beta.42",
-      "@girs/gl-1.0": "1.0.0-4.0.0-beta.42"    },
+      "@girs/gjs": "4.0.0-beta.43",
+      "@girs/pangocairo-1.0": "1.0.0-4.0.0-beta.43",
+      "@girs/cairo-1.0": "1.0.0-4.0.0-beta.43",
+      "@girs/gobject-2.0": "2.88.0-4.0.0-beta.43",
+      "@girs/glib-2.0": "2.88.0-4.0.0-beta.43",
+      "@girs/pango-1.0": "1.57.0-4.0.0-beta.43",
+      "@girs/harfbuzz-0.0": "12.3.2-4.0.0-beta.43",
+      "@girs/freetype2-2.0": "2.0.0-4.0.0-beta.43",
+      "@girs/gio-2.0": "2.88.0-4.0.0-beta.43",
+      "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.43",
+      "@girs/cogl-5": "5.0.0-4.0.0-beta.43",
+      "@girs/gl-1.0": "1.0.0-4.0.0-beta.43"    },
     "devDependencies": {
       "typescript": "*"
     },

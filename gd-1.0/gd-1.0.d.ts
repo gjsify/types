@@ -38511,6 +38511,7 @@ export namespace Gd {
              * @run-first
              */
             'tag-button-clicked::window': (arg0: TaggedEntryTag) => void;
+            [key: `tag-button-clicked::${string}`]: (arg0: TaggedEntryTag) => void;
             /**
              * @signal
              * @detailed
@@ -39057,6 +39058,7 @@ export namespace Gd {
              * @run-first
              */
             'tag-clicked::window': (arg0: TaggedEntryTag) => void;
+            [key: `tag-clicked::${string}`]: (arg0: TaggedEntryTag) => void;
         }
 
         // Constructor properties interface

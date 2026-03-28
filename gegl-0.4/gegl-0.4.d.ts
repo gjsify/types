@@ -2618,6 +2618,7 @@ export namespace Gegl {
              * @run-last
              */
             'changed::warning': (arg0: GObject.ParamSpec) => void;
+            [key: `changed::${string}`]: (arg0: GObject.ParamSpec) => void;
             /**
              * If a signal handler is connected to `::generate-value` a signal is emitted
              * when the file module accesses a value using `gegl_metadata_get_value()`.
@@ -2800,6 +2801,7 @@ export namespace Gegl {
              * @run-last
              */
             'generate-value::warning': (arg0: GObject.ParamSpec, arg1: GObject.Value) => boolean | void;
+            [key: `generate-value::${string}`]: (arg0: GObject.ParamSpec, arg1: GObject.Value) => boolean | void;
             /**
              * If a signal handler is connected to `::parse-value` a signal is emitted when
              * the file module accesses a value using `gegl_metadata_set_value()`.  The
@@ -2968,6 +2970,7 @@ export namespace Gegl {
              * @run-last
              */
             'parse-value::warning': (arg0: GObject.ParamSpec, arg1: GObject.Value) => boolean | void;
+            [key: `parse-value::${string}`]: (arg0: GObject.ParamSpec, arg1: GObject.Value) => boolean | void;
         }
 
         // Constructor properties interface

@@ -2485,6 +2485,7 @@ export namespace Atspi {
              * @run-last
              */
             'region-changed': (arg0: number, arg1: number) => void;
+            [key: `mode-changed::${string}`]: (arg0: number, arg1: string) => void;
         }
 
         // Constructor properties interface

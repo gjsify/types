@@ -15135,6 +15135,11 @@ export namespace RB {
              * @run-last
              */
             'entry-extra-metadata-notify::no-update': (arg0: RhythmDBEntry, arg1: string, arg2: GObject.Value) => void;
+            [key: `entry-extra-metadata-notify::${string}`]: (
+                arg0: RhythmDBEntry,
+                arg1: string,
+                arg2: GObject.Value,
+            ) => void;
             /**
              * This signal is emitted to allow extra (transient) metadata to be supplied
              * for the given entry.  The detail of the signal invocation describes the
@@ -15171,6 +15176,7 @@ export namespace RB {
              * @run-last
              */
             'entry-extra-metadata-request::no-update': (arg0: RhythmDBEntry) => GObject.Value;
+            [key: `entry-extra-metadata-request::${string}`]: (arg0: RhythmDBEntry) => GObject.Value;
         }
 
         // Constructor properties interface

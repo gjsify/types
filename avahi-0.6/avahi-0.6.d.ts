@@ -182,6 +182,7 @@ export namespace Avahi {
              * @run-last
              */
             'state-changed::state': (arg0: ClientState) => void;
+            [key: `state-changed::${string}`]: (arg0: ClientState) => void;
         }
 
         // Constructor properties interface
@@ -272,6 +273,7 @@ export namespace Avahi {
              * @run-last
              */
             'state-changed::state': (arg0: EntryGroupState) => void;
+            [key: `state-changed::${string}`]: (arg0: EntryGroupState) => void;
         }
 
         // Constructor properties interface

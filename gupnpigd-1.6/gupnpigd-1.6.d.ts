@@ -88,6 +88,14 @@ export namespace GUPnPIgd {
                 arg4: number,
                 arg5: string,
             ) => void;
+            [key: `error-mapping-port::${string}`]: (
+                arg0: GLib.Error,
+                arg1: string,
+                arg2: number,
+                arg3: string,
+                arg4: number,
+                arg5: string,
+            ) => void;
         }
 
         // Constructor properties interface

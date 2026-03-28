@@ -3568,6 +3568,7 @@ export namespace FoundryGtk {
              * @run-last
              */
             'accel-changed::model': (arg0: string, arg1: string | null) => void;
+            [key: `accel-changed::${string}`]: (arg0: string, arg1: string | null) => void;
         }
 
         // Constructor properties interface

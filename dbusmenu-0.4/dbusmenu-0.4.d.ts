@@ -656,6 +656,7 @@ export namespace Dbusmenu {
              * @run-last
              */
             'event::id': (arg0: string, arg1: GLib.Variant, arg2: number) => boolean | void;
+            [key: `event::${string}`]: (arg0: string, arg1: GLib.Variant, arg2: number) => boolean | void;
         }
 
         // Constructor properties interface

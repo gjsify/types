@@ -3581,6 +3581,7 @@ export namespace Vte {
              * @run-last
              */
             'termprop-changed::vscroll-policy': (arg0: string) => void;
+            [key: `termprop-changed::${string}`]: (arg0: string) => void;
         }
 
         // Constructor properties interface

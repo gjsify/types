@@ -2193,6 +2193,7 @@ export namespace WebKit2 {
              * @run-last
              */
             'create-web-view::id': () => WebView;
+            [key: `create-web-view::${string}`]: () => WebView;
         }
 
         // Constructor properties interface
@@ -12951,6 +12952,11 @@ export namespace WebKit2 {
              * @run-last
              */
             'script-message-with-reply-received': (
+                arg0: JavaScriptCore.Value,
+                arg1: ScriptMessageReply,
+            ) => boolean | void;
+            [key: `script-message-received::${string}`]: (arg0: JavascriptResult) => void;
+            [key: `script-message-with-reply-received::${string}`]: (
                 arg0: JavaScriptCore.Value,
                 arg1: ScriptMessageReply,
             ) => boolean | void;

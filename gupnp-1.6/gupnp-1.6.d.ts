@@ -3149,6 +3149,7 @@ export namespace GUPnP {
              * @run-last
              */
             'action-invoked::url-base': (arg0: ServiceAction) => void;
+            [key: `action-invoked::${string}`]: (arg0: ServiceAction) => void;
             /**
              * Emitted whenever `service` needs to know the value of `variable`.
              * Handler should fill `value` with the value of `variable`.
@@ -3213,6 +3214,7 @@ export namespace GUPnP {
              * @run-last
              */
             'query-variable::url-base': (arg0: string, arg1: GObject.Value) => void;
+            [key: `query-variable::${string}`]: (arg0: string, arg1: GObject.Value) => void;
         }
 
         // Constructor properties interface

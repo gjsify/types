@@ -3257,6 +3257,7 @@ export namespace Clapper {
              * @run-last
              */
             'message::parent': (arg0: Gst.Message) => void;
+            [key: `message::${string}`]: (arg0: Gst.Message) => void;
         }
 
         // Constructor properties interface

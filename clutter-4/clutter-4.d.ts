@@ -9940,6 +9940,7 @@ export namespace Clutter {
              * @run-last
              */
             'transition-stopped::z-position': (arg0: string, arg1: boolean) => void;
+            [key: `transition-stopped::${string}`]: (arg0: string, arg1: boolean) => void;
         }
 
         // Constructor properties interface
@@ -43286,6 +43287,7 @@ export namespace Clutter {
              * @run-last
              */
             'marker-reached::repeat-count': (arg0: string, arg1: number) => void;
+            [key: `marker-reached::${string}`]: (arg0: string, arg1: number) => void;
         }
 
         // Constructor properties interface
