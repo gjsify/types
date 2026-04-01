@@ -1,6 +1,6 @@
 {
     "name": "@girs/template-1.0",
-    "version": "3.40.0-4.0.0-beta.43",
+    "version": "3.40.0-4.0.0-beta.44",
     "description": "GJS TypeScript type definitions for Template-1.0, generated from library version 3.40.0",
     "type": "module",
     "module": "template-1.0.js",

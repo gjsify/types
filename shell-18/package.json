@@ -1,6 +1,6 @@
 {
     "name": "@girs/shell-18",
-    "version": "18.0.0-4.0.0-beta.43",
+    "version": "18.0.0-4.0.0-beta.44",
     "description": "GJS TypeScript type definitions for Shell-18, generated from library version 18.0.0",
     "type": "module",
     "module": "shell-18.js",

@@ -1,6 +1,6 @@
 {
     "name": "@girs/cally-8",
-    "version": "8.0.0-4.0.0-beta.43",
+    "version": "8.0.0-4.0.0-beta.44",
     "description": "GJS TypeScript type definitions for Cally-8, generated from library version 8.0.0",
     "type": "module",
     "module": "cally-8.js",
