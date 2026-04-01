@@ -5487,6 +5487,10 @@ export namespace Gegl {
         negative_max: number;
         bitmask: number[];
         table: number[];
+
+        // Methods
+
+        free(): void;
     }
 
     /**
@@ -5822,6 +5826,13 @@ export namespace Gegl {
                 d: PathItem;
             }>,
         );
+
+        // Methods
+
+        /**
+         * Frees up a path list
+         */
+        destroy(): PathList;
     }
 
     /**

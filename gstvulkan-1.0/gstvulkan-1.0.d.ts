@@ -3400,6 +3400,14 @@ export namespace GstVulkan {
         constructor(cmd: Vulkan.CommandBuffer, level: Vulkan.CommandBufferLevel);
 
         static new_wrapped(cmd: Vulkan.CommandBuffer, level: Vulkan.CommandBufferLevel): VulkanCommandBuffer;
+
+        // Methods
+
+        /**
+         * Increases the refcount of the given buffer by one.
+         * @returns `cmd`
+         */
+        ref(): VulkanCommandBuffer;
     }
 
     /**
@@ -3457,6 +3465,14 @@ export namespace GstVulkan {
             set: Vulkan.DescriptorSet,
             layouts: VulkanHandle[],
         ): VulkanDescriptorSet;
+
+        // Methods
+
+        /**
+         * Increases the refcount of the given buffer by one.
+         * @returns `set`
+         */
+        ref(): VulkanDescriptorSet;
     }
 
     /**
@@ -3692,6 +3708,11 @@ export namespace GstVulkan {
          * @param user_data callback user data
          */
         free_shader(user_data?: any | null): void;
+        /**
+         * Increases the refcount of the given handle by one.
+         * @returns `buf`
+         */
+        ref(): VulkanHandle;
     }
 
     /**
@@ -3840,6 +3861,14 @@ export namespace GstVulkan {
         constructor(image: VulkanImageMemory, create_info: Vulkan.ImageViewCreateInfo);
 
         static ['new'](image: VulkanImageMemory, create_info: Vulkan.ImageViewCreateInfo): VulkanImageView;
+
+        // Methods
+
+        /**
+         * Increases the refcount of the given trash object by one.
+         * @returns `trash`
+         */
+        ref(): VulkanImageView;
     }
 
     /**
@@ -4015,6 +4044,14 @@ export namespace GstVulkan {
          * @param user_data the {@link Gst.MiniObject}
          */
         static object_unref(device: VulkanDevice, user_data?: any | null): void;
+
+        // Methods
+
+        /**
+         * Increases the refcount of the given trash object by one.
+         * @returns `trash`
+         */
+        ref(): VulkanTrash;
     }
 
     /**

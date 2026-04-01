@@ -274,8 +274,8 @@ export namespace Gee {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractList.ConstructorProps, BidirList.ConstructorProps {
-            g_type: GObject.GType;
-            gType: GObject.GType;
+            g_type: GObject.GTypeInput;
+            gType: GObject.GTypeInput;
             g_dup_func: GObject.BoxedCopyFunc;
             gDupFunc: GObject.BoxedCopyFunc;
             g_destroy_func: GLib.DestroyNotify;
@@ -543,8 +543,8 @@ export namespace Gee {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractSortedSet.ConstructorProps, BidirSortedSet.ConstructorProps {
-            g_type: GObject.GType;
-            gType: GObject.GType;
+            g_type: GObject.GTypeInput;
+            gType: GObject.GTypeInput;
             g_dup_func: GObject.BoxedCopyFunc;
             gDupFunc: GObject.BoxedCopyFunc;
             g_destroy_func: GLib.DestroyNotify;
@@ -806,14 +806,14 @@ export namespace Gee {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractSortedMap.ConstructorProps, BidirSortedMap.ConstructorProps {
-            k_type: GObject.GType;
-            kType: GObject.GType;
+            k_type: GObject.GTypeInput;
+            kType: GObject.GTypeInput;
             k_dup_func: GObject.BoxedCopyFunc;
             kDupFunc: GObject.BoxedCopyFunc;
             k_destroy_func: GLib.DestroyNotify;
             kDestroyFunc: GLib.DestroyNotify;
-            v_type: GObject.GType;
-            vType: GObject.GType;
+            v_type: GObject.GTypeInput;
+            vType: GObject.GTypeInput;
             v_dup_func: GObject.BoxedCopyFunc;
             vDupFunc: GObject.BoxedCopyFunc;
             v_destroy_func: GLib.DestroyNotify;
@@ -1073,8 +1073,8 @@ export namespace Gee {
                 Traversable.ConstructorProps,
                 Iterable.ConstructorProps,
                 Collection.ConstructorProps {
-            g_type: GObject.GType;
-            gType: GObject.GType;
+            g_type: GObject.GTypeInput;
+            gType: GObject.GTypeInput;
             g_dup_func: GObject.BoxedCopyFunc;
             gDupFunc: GObject.BoxedCopyFunc;
             g_destroy_func: GLib.DestroyNotify;
@@ -2014,8 +2014,8 @@ export namespace Gee {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractCollection.ConstructorProps, List.ConstructorProps {
-            g_type: GObject.GType;
-            gType: GObject.GType;
+            g_type: GObject.GTypeInput;
+            gType: GObject.GTypeInput;
             g_dup_func: GObject.BoxedCopyFunc;
             gDupFunc: GObject.BoxedCopyFunc;
             g_destroy_func: GLib.DestroyNotify;
@@ -2451,14 +2451,14 @@ export namespace Gee {
                 Traversable.ConstructorProps,
                 Iterable.ConstructorProps,
                 Map.ConstructorProps {
-            k_type: GObject.GType;
-            kType: GObject.GType;
+            k_type: GObject.GTypeInput;
+            kType: GObject.GTypeInput;
             k_dup_func: GObject.BoxedCopyFunc;
             kDupFunc: GObject.BoxedCopyFunc;
             k_destroy_func: GLib.DestroyNotify;
             kDestroyFunc: GLib.DestroyNotify;
-            v_type: GObject.GType;
-            vType: GObject.GType;
+            v_type: GObject.GTypeInput;
+            vType: GObject.GTypeInput;
             v_dup_func: GObject.BoxedCopyFunc;
             vDupFunc: GObject.BoxedCopyFunc;
             v_destroy_func: GLib.DestroyNotify;
@@ -3431,14 +3431,14 @@ export namespace Gee {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, MultiMap.ConstructorProps {
-            k_type: GObject.GType;
-            kType: GObject.GType;
+            k_type: GObject.GTypeInput;
+            kType: GObject.GTypeInput;
             k_dup_func: GObject.BoxedCopyFunc;
             kDupFunc: GObject.BoxedCopyFunc;
             k_destroy_func: GLib.DestroyNotify;
             kDestroyFunc: GLib.DestroyNotify;
-            v_type: GObject.GType;
-            vType: GObject.GType;
+            v_type: GObject.GTypeInput;
+            vType: GObject.GTypeInput;
             v_dup_func: GObject.BoxedCopyFunc;
             vDupFunc: GObject.BoxedCopyFunc;
             v_destroy_func: GLib.DestroyNotify;
@@ -4175,8 +4175,8 @@ export namespace Gee {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractCollection.ConstructorProps, MultiSet.ConstructorProps {
-            g_type: GObject.GType;
-            gType: GObject.GType;
+            g_type: GObject.GTypeInput;
+            gType: GObject.GTypeInput;
             g_dup_func: GObject.BoxedCopyFunc;
             gDupFunc: GObject.BoxedCopyFunc;
             g_destroy_func: GLib.DestroyNotify;
@@ -4508,8 +4508,8 @@ export namespace Gee {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractCollection.ConstructorProps, Queue.ConstructorProps {
-            g_type: GObject.GType;
-            gType: GObject.GType;
+            g_type: GObject.GTypeInput;
+            gType: GObject.GTypeInput;
             g_dup_func: GObject.BoxedCopyFunc;
             gDupFunc: GObject.BoxedCopyFunc;
             g_destroy_func: GLib.DestroyNotify;
@@ -4904,8 +4904,8 @@ export namespace Gee {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractCollection.ConstructorProps, Set.ConstructorProps {
-            g_type: GObject.GType;
-            gType: GObject.GType;
+            g_type: GObject.GTypeInput;
+            gType: GObject.GTypeInput;
             g_dup_func: GObject.BoxedCopyFunc;
             gDupFunc: GObject.BoxedCopyFunc;
             g_destroy_func: GLib.DestroyNotify;
@@ -5238,14 +5238,14 @@ export namespace Gee {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractMap.ConstructorProps, SortedMap.ConstructorProps {
-            k_type: GObject.GType;
-            kType: GObject.GType;
+            k_type: GObject.GTypeInput;
+            kType: GObject.GTypeInput;
             k_dup_func: GObject.BoxedCopyFunc;
             kDupFunc: GObject.BoxedCopyFunc;
             k_destroy_func: GLib.DestroyNotify;
             kDestroyFunc: GLib.DestroyNotify;
-            v_type: GObject.GType;
-            vType: GObject.GType;
+            v_type: GObject.GTypeInput;
+            vType: GObject.GTypeInput;
             v_dup_func: GObject.BoxedCopyFunc;
             vDupFunc: GObject.BoxedCopyFunc;
             v_destroy_func: GLib.DestroyNotify;
@@ -5660,8 +5660,8 @@ export namespace Gee {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractSet.ConstructorProps, SortedSet.ConstructorProps {
-            g_type: GObject.GType;
-            gType: GObject.GType;
+            g_type: GObject.GTypeInput;
+            gType: GObject.GTypeInput;
             g_dup_func: GObject.BoxedCopyFunc;
             gDupFunc: GObject.BoxedCopyFunc;
             g_destroy_func: GLib.DestroyNotify;
@@ -5908,8 +5908,8 @@ export namespace Gee {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractBidirList.ConstructorProps {
-            g_type: GObject.GType;
-            gType: GObject.GType;
+            g_type: GObject.GTypeInput;
+            gType: GObject.GTypeInput;
             g_dup_func: GObject.BoxedCopyFunc;
             gDupFunc: GObject.BoxedCopyFunc;
             g_destroy_func: GLib.DestroyNotify;
@@ -6026,8 +6026,8 @@ export namespace Gee {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractQueue.ConstructorProps, Deque.ConstructorProps {
-            g_type: GObject.GType;
-            gType: GObject.GType;
+            g_type: GObject.GTypeInput;
+            gType: GObject.GTypeInput;
             g_dup_func: GObject.BoxedCopyFunc;
             gDupFunc: GObject.BoxedCopyFunc;
             g_destroy_func: GLib.DestroyNotify;
@@ -6271,8 +6271,8 @@ export namespace Gee {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractList.ConstructorProps {
-            g_type: GObject.GType;
-            gType: GObject.GType;
+            g_type: GObject.GTypeInput;
+            gType: GObject.GTypeInput;
             g_dup_func: GObject.BoxedCopyFunc;
             gDupFunc: GObject.BoxedCopyFunc;
             g_destroy_func: GLib.DestroyNotify;
@@ -6385,8 +6385,8 @@ export namespace Gee {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractSortedSet.ConstructorProps {
-            g_type: GObject.GType;
-            gType: GObject.GType;
+            g_type: GObject.GTypeInput;
+            gType: GObject.GTypeInput;
             g_dup_func: GObject.BoxedCopyFunc;
             gDupFunc: GObject.BoxedCopyFunc;
             g_destroy_func: GLib.DestroyNotify;
@@ -6490,14 +6490,14 @@ export namespace Gee {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractMap.ConstructorProps {
-            k_type: GObject.GType;
-            kType: GObject.GType;
+            k_type: GObject.GTypeInput;
+            kType: GObject.GTypeInput;
             k_dup_func: GObject.BoxedCopyFunc;
             kDupFunc: GObject.BoxedCopyFunc;
             k_destroy_func: GLib.DestroyNotify;
             kDestroyFunc: GLib.DestroyNotify;
-            v_type: GObject.GType;
-            vType: GObject.GType;
+            v_type: GObject.GTypeInput;
+            vType: GObject.GTypeInput;
             v_dup_func: GObject.BoxedCopyFunc;
             vDupFunc: GObject.BoxedCopyFunc;
             v_destroy_func: GLib.DestroyNotify;
@@ -6629,14 +6629,14 @@ export namespace Gee {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractMultiMap.ConstructorProps {
-            k_type: GObject.GType;
-            kType: GObject.GType;
+            k_type: GObject.GTypeInput;
+            kType: GObject.GTypeInput;
             k_dup_func: GObject.BoxedCopyFunc;
             kDupFunc: GObject.BoxedCopyFunc;
             k_destroy_func: GLib.DestroyNotify;
             kDestroyFunc: GLib.DestroyNotify;
-            v_type: GObject.GType;
-            vType: GObject.GType;
+            v_type: GObject.GTypeInput;
+            vType: GObject.GTypeInput;
             v_dup_func: GObject.BoxedCopyFunc;
             vDupFunc: GObject.BoxedCopyFunc;
             v_destroy_func: GLib.DestroyNotify;
@@ -6770,8 +6770,8 @@ export namespace Gee {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractMultiSet.ConstructorProps {
-            g_type: GObject.GType;
-            gType: GObject.GType;
+            g_type: GObject.GTypeInput;
+            gType: GObject.GTypeInput;
             g_dup_func: GObject.BoxedCopyFunc;
             gDupFunc: GObject.BoxedCopyFunc;
             g_destroy_func: GLib.DestroyNotify;
@@ -6882,8 +6882,8 @@ export namespace Gee {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractSet.ConstructorProps {
-            g_type: GObject.GType;
-            gType: GObject.GType;
+            g_type: GObject.GTypeInput;
+            gType: GObject.GTypeInput;
             g_dup_func: GObject.BoxedCopyFunc;
             gDupFunc: GObject.BoxedCopyFunc;
             g_destroy_func: GLib.DestroyNotify;
@@ -7043,8 +7043,8 @@ export namespace Gee {
 
         interface ConstructorProps
             extends AbstractBidirList.ConstructorProps, Queue.ConstructorProps, Deque.ConstructorProps {
-            g_type: GObject.GType;
-            gType: GObject.GType;
+            g_type: GObject.GTypeInput;
+            gType: GObject.GTypeInput;
             g_dup_func: GObject.BoxedCopyFunc;
             gDupFunc: GObject.BoxedCopyFunc;
             g_destroy_func: GLib.DestroyNotify;
@@ -7291,8 +7291,8 @@ export namespace Gee {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractQueue.ConstructorProps {
-            g_type: GObject.GType;
-            gType: GObject.GType;
+            g_type: GObject.GTypeInput;
+            gType: GObject.GTypeInput;
             g_dup_func: GObject.BoxedCopyFunc;
             gDupFunc: GObject.BoxedCopyFunc;
             g_destroy_func: GLib.DestroyNotify;
@@ -7466,14 +7466,14 @@ export namespace Gee {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractBidirSortedMap.ConstructorProps {
-            k_type: GObject.GType;
-            kType: GObject.GType;
+            k_type: GObject.GTypeInput;
+            kType: GObject.GTypeInput;
             k_dup_func: GObject.BoxedCopyFunc;
             kDupFunc: GObject.BoxedCopyFunc;
             k_destroy_func: GLib.DestroyNotify;
             kDestroyFunc: GLib.DestroyNotify;
-            v_type: GObject.GType;
-            vType: GObject.GType;
+            v_type: GObject.GTypeInput;
+            vType: GObject.GTypeInput;
             v_dup_func: GObject.BoxedCopyFunc;
             vDupFunc: GObject.BoxedCopyFunc;
             v_destroy_func: GLib.DestroyNotify;
@@ -7603,14 +7603,14 @@ export namespace Gee {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractMultiMap.ConstructorProps {
-            k_type: GObject.GType;
-            kType: GObject.GType;
+            k_type: GObject.GTypeInput;
+            kType: GObject.GTypeInput;
             k_dup_func: GObject.BoxedCopyFunc;
             kDupFunc: GObject.BoxedCopyFunc;
             k_destroy_func: GLib.DestroyNotify;
             kDestroyFunc: GLib.DestroyNotify;
-            v_type: GObject.GType;
-            vType: GObject.GType;
+            v_type: GObject.GTypeInput;
+            vType: GObject.GTypeInput;
             v_dup_func: GObject.BoxedCopyFunc;
             vDupFunc: GObject.BoxedCopyFunc;
             v_destroy_func: GLib.DestroyNotify;
@@ -7740,8 +7740,8 @@ export namespace Gee {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractMultiSet.ConstructorProps {
-            g_type: GObject.GType;
-            gType: GObject.GType;
+            g_type: GObject.GTypeInput;
+            gType: GObject.GTypeInput;
             g_dup_func: GObject.BoxedCopyFunc;
             gDupFunc: GObject.BoxedCopyFunc;
             g_destroy_func: GLib.DestroyNotify;
@@ -7843,8 +7843,8 @@ export namespace Gee {
         // Constructor properties interface
 
         interface ConstructorProps extends AbstractBidirSortedSet.ConstructorProps {
-            g_type: GObject.GType;
-            gType: GObject.GType;
+            g_type: GObject.GTypeInput;
+            gType: GObject.GTypeInput;
             g_dup_func: GObject.BoxedCopyFunc;
             gDupFunc: GObject.BoxedCopyFunc;
             g_destroy_func: GLib.DestroyNotify;
@@ -7950,8 +7950,8 @@ export namespace Gee {
 
         interface ConstructorProps
             extends AbstractBidirList.ConstructorProps, Queue.ConstructorProps, Deque.ConstructorProps {
-            g_type: GObject.GType;
-            gType: GObject.GType;
+            g_type: GObject.GTypeInput;
+            gType: GObject.GTypeInput;
             g_dup_func: GObject.BoxedCopyFunc;
             gDupFunc: GObject.BoxedCopyFunc;
             g_destroy_func: GLib.DestroyNotify;
@@ -8196,14 +8196,14 @@ export namespace Gee {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            k_type: GObject.GType;
-            kType: GObject.GType;
+            k_type: GObject.GTypeInput;
+            kType: GObject.GTypeInput;
             k_dup_func: GObject.BoxedCopyFunc;
             kDupFunc: GObject.BoxedCopyFunc;
             k_destroy_func: GLib.DestroyNotify;
             kDestroyFunc: GLib.DestroyNotify;
-            v_type: GObject.GType;
-            vType: GObject.GType;
+            v_type: GObject.GTypeInput;
+            vType: GObject.GTypeInput;
             v_dup_func: GObject.BoxedCopyFunc;
             vDupFunc: GObject.BoxedCopyFunc;
             v_destroy_func: GLib.DestroyNotify;

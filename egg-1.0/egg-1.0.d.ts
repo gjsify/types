@@ -4573,8 +4573,8 @@ export namespace Egg {
                 Gtk.Buildable.ConstructorProps {
             property_name: string;
             propertyName: string;
-            row_type: GObject.GType;
-            rowType: GObject.GType;
+            row_type: GObject.GTypeInput;
+            rowType: GObject.GTypeInput;
             row_type_name: string;
             rowTypeName: string;
         }
@@ -14049,8 +14049,8 @@ export namespace Egg {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             target: GObject.Object;
-            target_type: GObject.GType;
-            targetType: GObject.GType;
+            target_type: GObject.GTypeInput;
+            targetType: GObject.GTypeInput;
         }
     }
 

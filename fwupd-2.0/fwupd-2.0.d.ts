@@ -13146,11 +13146,21 @@ export namespace Fwupd {
          */
         get_size(): number;
         /**
+         * Increases the reference count of a JSON array.
+         * @returns a {@link Fwupd.JsonArray}
+         */
+        ref(): JsonArray;
+        /**
          * Converts the JSON array to a string representation.
          * @param flags some {@link Fwupd.JsonExportFlags} e.g. #FWUPD_JSON_EXPORT_FLAG_INDENT
          * @returns a {@link GLib.String}
          */
         to_string(flags: JsonExportFlags | null): GLib.String;
+        /**
+         * Decreases the reference count of a JSON array.
+         * @returns a {@link Fwupd.JsonArray}, or `null`
+         */
+        unref(): JsonArray;
     }
 
     /**
@@ -13180,6 +13190,11 @@ export namespace Fwupd {
          * @returns a {@link Fwupd.JsonNodeKind}
          */
         get_kind(): JsonNodeKind;
+        /**
+         * Increases the reference count of a JSON json_node.
+         * @returns a {@link Fwupd.JsonNode}
+         */
+        ref(): JsonNode;
         /**
          * Converts the JSON json_node to a string representation.
          * @param flags some {@link Fwupd.JsonExportFlags} e.g. #FWUPD_JSON_EXPORT_FLAG_INDENT
@@ -13308,6 +13323,11 @@ export namespace Fwupd {
          */
         get_string_with_default(key: string, value_default: string): string;
         /**
+         * Increases the reference count of a JSON object.
+         * @returns a {@link Fwupd.JsonObject}
+         */
+        ref(): JsonObject;
+        /**
          * Converts the JSON object to UTF-8 bytes.
          * @param flags some {@link Fwupd.JsonExportFlags} e.g. #FWUPD_JSON_EXPORT_FLAG_INDENT
          * @returns a {@link GLib.Bytes}
@@ -13319,6 +13339,11 @@ export namespace Fwupd {
          * @returns a {@link GLib.String}
          */
         to_string(flags: JsonExportFlags | null): GLib.String;
+        /**
+         * Decreases the reference count of a JSON object.
+         * @returns a {@link Fwupd.JsonObject}, or `null`
+         */
+        unref(): JsonObject;
     }
 
     /**

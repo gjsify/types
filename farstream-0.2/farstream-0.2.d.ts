@@ -3292,6 +3292,10 @@ export namespace Farstream {
          * @returns a new {@link Farstream.Candidate}
          */
         copy(): Candidate;
+        /**
+         * Frees a {@link Farstream.Candidate} and all its contents
+         */
+        destroy(): void;
     }
 
     /**
@@ -3346,6 +3350,10 @@ export namespace Farstream {
          * @returns a copy of the codec
          */
         copy(): Codec;
+        /**
+         * Deletes a {@link Farstream.Codec} structure and all its data. Is a no-op on `null` codec
+         */
+        destroy(): void;
         /**
          * Finds the {@link Farstream.FeedbackParameter} in the {@link Farstream.Codec} that has the requested
          * subtype, type and extra_params. One of which must be non-NULL;
@@ -3523,6 +3531,15 @@ export namespace Farstream {
          * @returns `true` if they are identical, `false` otherwise
          */
         are_equal(extension2: RtpHeaderExtension): boolean;
+        /**
+         * Copies a {@link Farstream.RtpHeaderExtension}
+         * @returns a new {@link Farstream.RtpHeaderExtension}
+         */
+        copy(): RtpHeaderExtension;
+        /**
+         * Frees the passed {@link Farstream.RtpHeaderExtension}
+         */
+        destroy(): void;
     }
 
     /**

@@ -22547,6 +22547,13 @@ export namespace EDataServer {
      */
     abstract class AsyncClosure {
         static $gtype: GObject.GType<AsyncClosure>;
+
+        // Methods
+
+        /**
+         * Frees the `closure` and the resources it holds.
+         */
+        free(): void;
     }
 
     /**
@@ -22684,6 +22691,13 @@ export namespace EDataServer {
      */
     abstract class Flag {
         static $gtype: GObject.GType<Flag>;
+
+        // Methods
+
+        /**
+         * Destroys `flag`.
+         */
+        free(): void;
     }
 
     /**

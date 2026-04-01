@@ -2629,6 +2629,11 @@ export namespace Liferea {
         // Static methods
 
         /**
+         * Free all memory associated with the enclosure.
+         * @param enclosure the enclosure
+         */
+        static free(enclosure: enclosurePtr): void;
+        /**
          * Get URL from enclosure string
          * @param str enclosure string to parse
          */
@@ -2840,6 +2845,19 @@ export namespace Liferea {
                 dontUseProxy: boolean;
             }>,
         );
+
+        // Static methods
+
+        /**
+         * Copies the given update options.
+         * @param options the options to copy
+         */
+        static copy(options: updateOptionsPtr): updateOptionsPtr;
+        /**
+         * Frees the given update options
+         * @param options the update options
+         */
+        static free(options: updateOptionsPtr): void;
     }
 
     /**
@@ -2885,6 +2903,11 @@ export namespace Liferea {
 
         // Static methods
 
+        /**
+         * Copy update state
+         * @param state
+         */
+        static copy(state: updateStatePtr): updateStatePtr;
         /**
          * Frees the given update state.
          * @param updateState the update state

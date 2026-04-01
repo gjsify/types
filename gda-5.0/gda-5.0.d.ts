@@ -19355,8 +19355,8 @@ export namespace Gda {
             description: string;
             full_bind: Holder;
             fullBind: Holder;
-            g_type: GObject.GType;
-            gType: GObject.GType;
+            g_type: GObject.GTypeInput;
+            gType: GObject.GTypeInput;
             id: string;
             name: string;
             not_null: boolean;

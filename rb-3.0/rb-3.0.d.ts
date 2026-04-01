@@ -29528,6 +29528,13 @@ export namespace RB {
      */
     abstract class Profiler {
         static $gtype: GObject.GType<Profiler>;
+
+        // Methods
+
+        /**
+         * Frees the memory associated with a profiler instance.
+         */
+        free(): void;
     }
 
     /**

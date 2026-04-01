@@ -6873,6 +6873,12 @@ export namespace GMime {
         // Methods
 
         /**
+         * Creates a dynamically allocated header iterator as a copy of
+         * `iter`. You must free this iter with `g_mime_header_iter_free()`.
+         * @returns a newly-allocated copy of `iter`.
+         */
+        copy(): HeaderIter;
+        /**
          * Copies `src` to `dest`.
          * @param dest a {@link GMime.HeaderIter}
          */

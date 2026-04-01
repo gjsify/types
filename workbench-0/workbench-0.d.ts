@@ -896,8 +896,8 @@ export namespace Workbench {
             extends GObject.Object.ConstructorProps, Gio.ListModel.ConstructorProps {
             cancellable: Gio.Cancellable;
             context: GtkSource.CompletionContext;
-            item_type: GObject.GType;
-            itemType: GObject.GType;
+            item_type: GObject.GTypeInput;
+            itemType: GObject.GTypeInput;
             n_items: number;
             nItems: number;
             provider: GtkSource.CompletionProvider;

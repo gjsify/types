@@ -26140,6 +26140,13 @@ export namespace Camel {
      */
     abstract class AsyncClosure {
         static $gtype: GObject.GType<AsyncClosure>;
+
+        // Methods
+
+        /**
+         * Frees the `closure` and the resources it holds.
+         */
+        free(): void;
     }
 
     /**
@@ -28918,6 +28925,13 @@ export namespace Camel {
      */
     abstract class Trie {
         static $gtype: GObject.GType<Trie>;
+
+        // Methods
+
+        /**
+         * Frees the memory associated with the {@link Camel.Trie} `trie`.
+         */
+        free(): void;
     }
 
     /**
@@ -29183,6 +29197,13 @@ export namespace Camel {
      */
     abstract class UrlScanner {
         static $gtype: GObject.GType<UrlScanner>;
+
+        // Methods
+
+        /**
+         * Frees the `scanner`.
+         */
+        free(): void;
     }
 
     /**

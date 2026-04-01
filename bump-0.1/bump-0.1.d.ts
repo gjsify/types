@@ -49,8 +49,8 @@ export namespace Bump {
         // Constructor properties interface
 
         interface ConstructorProps extends Gee.PriorityQueue.ConstructorProps {
-            g_type: GObject.GType;
-            gType: GObject.GType;
+            g_type: GObject.GTypeInput;
+            gType: GObject.GTypeInput;
             g_dup_func: GObject.BoxedCopyFunc;
             gDupFunc: GObject.BoxedCopyFunc;
             g_destroy_func: GLib.DestroyNotify;
@@ -820,8 +820,8 @@ export namespace Bump {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            t_type: GObject.GType;
-            tType: GObject.GType;
+            t_type: GObject.GTypeInput;
+            tType: GObject.GTypeInput;
             t_dup_func: GObject.BoxedCopyFunc;
             tDupFunc: GObject.BoxedCopyFunc;
             t_destroy_func: GLib.DestroyNotify;
@@ -1069,8 +1069,8 @@ export namespace Bump {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            g_type: GObject.GType;
-            gType: GObject.GType;
+            g_type: GObject.GTypeInput;
+            gType: GObject.GTypeInput;
             g_dup_func: GObject.BoxedCopyFunc;
             gDupFunc: GObject.BoxedCopyFunc;
             g_destroy_func: GLib.DestroyNotify;
@@ -1370,8 +1370,8 @@ export namespace Bump {
         // Constructor properties interface
 
         interface ConstructorProps extends Factory.ConstructorProps {
-            t_type: GObject.GType;
-            tType: GObject.GType;
+            t_type: GObject.GTypeInput;
+            tType: GObject.GTypeInput;
             t_dup_func: GObject.BoxedCopyFunc;
             tDupFunc: GObject.BoxedCopyFunc;
             t_destroy_func: GLib.DestroyNotify;
@@ -1494,8 +1494,8 @@ export namespace Bump {
         // Constructor properties interface
 
         interface ConstructorProps extends Claim.ConstructorProps {
-            t_type: GObject.GType;
-            tType: GObject.GType;
+            t_type: GObject.GTypeInput;
+            tType: GObject.GTypeInput;
             t_dup_func: GObject.BoxedCopyFunc;
             tDupFunc: GObject.BoxedCopyFunc;
             t_destroy_func: GLib.DestroyNotify;
@@ -1623,8 +1623,8 @@ export namespace Bump {
         // Constructor properties interface
 
         interface ConstructorProps extends Factory.ConstructorProps {
-            t_type: GObject.GType;
-            tType: GObject.GType;
+            t_type: GObject.GTypeInput;
+            tType: GObject.GTypeInput;
             t_dup_func: GObject.BoxedCopyFunc;
             tDupFunc: GObject.BoxedCopyFunc;
             t_destroy_func: GLib.DestroyNotify;

@@ -10774,6 +10774,11 @@ export namespace Gdk {
         // Methods
 
         /**
+         * Copies `region`, creating an identical new region.
+         * @returns a new region identical to `region`
+         */
+        copy(): Region;
+        /**
          * Destroys a {@link Gdk.Region}.
          */
         destroy(): void;

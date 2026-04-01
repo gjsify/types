@@ -22471,8 +22471,8 @@ export namespace Gda {
             description: string;
             full_bind: Holder;
             fullBind: Holder;
-            g_type: GObject.GType;
-            gType: GObject.GType;
+            g_type: GObject.GTypeInput;
+            gType: GObject.GTypeInput;
             id: string;
             name: string;
             not_null: boolean;
@@ -31021,8 +31021,8 @@ export namespace Gda {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             attributes: ColumnAttributes;
-            data_type: GObject.GType;
-            dataType: GObject.GType;
+            data_type: GObject.GTypeInput;
+            dataType: GObject.GTypeInput;
             foreign_key: ForeignKey;
             foreignKey: ForeignKey;
             index: number;
@@ -32587,8 +32587,8 @@ export namespace Gda {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            column_type: GObject.GType;
-            columnType: GObject.GType;
+            column_type: GObject.GTypeInput;
+            columnType: GObject.GTypeInput;
             column_type_name: string;
             columnTypeName: string;
             name: string;

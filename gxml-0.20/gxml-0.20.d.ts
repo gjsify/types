@@ -15976,8 +15976,8 @@ export namespace GXml {
             camelCase: boolean;
             upper_case: boolean;
             upperCase: boolean;
-            enum_type: GObject.GType;
-            enumType: GObject.GType;
+            enum_type: GObject.GTypeInput;
+            enumType: GObject.GTypeInput;
         }
     }
 
@@ -35570,8 +35570,8 @@ export namespace GXml {
             element: DomElement;
             items_name: string;
             itemsName: string;
-            items_type: GObject.GType;
-            itemsType: GObject.GType;
+            items_type: GObject.GTypeInput;
+            itemsType: GObject.GTypeInput;
         }
     }
 
@@ -42069,10 +42069,10 @@ export namespace GXml {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             element: DomElement;
-            items_type: GObject.GType;
-            itemsType: GObject.GType;
-            items_name: GObject.GType;
-            itemsName: GObject.GType;
+            items_type: GObject.GTypeInput;
+            itemsType: GObject.GTypeInput;
+            items_name: GObject.GTypeInput;
+            itemsName: GObject.GTypeInput;
             length: number;
         }
     }

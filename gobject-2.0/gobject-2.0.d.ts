@@ -25,13 +25,17 @@ export namespace GObject {
         name: string;
     };
 
+    // Accepts either a raw GType or a class constructor with $gtype property.
+    // Used in input positions where GJS automatically extracts $gtype from class constructors.
+    export type GTypeInput<T = unknown> = GType<T> | { $gtype: GType<T> };
+
     // Extra interfaces used to help define GObject classes in js; these
     // aren't part of gi.
     export interface SignalDefinition {
         flags?: SignalFlags;
         accumulator: number;
-        return_type?: GType;
-        param_types?: GType[];
+        return_type?: GTypeInput;
+        param_types?: GTypeInput[];
     }
 
     export interface MetaInfo<Props, Interfaces, Sigs> {
@@ -116,7 +120,7 @@ export namespace GObject {
         : never;
 
     export type SignalDefinitionType = {
-        param_types?: readonly GType[];
+        param_types?: readonly GTypeInput[];
         [key: string]: any;
     };
 
@@ -337,7 +341,7 @@ export namespace GObject {
         Interfaces extends { $gtype: GType }[],
         Sigs extends {
             [key: string]: {
-                param_types?: readonly GType[];
+                param_types?: readonly GTypeInput[];
                 [key: string]: any;
             };
         },
@@ -355,7 +359,7 @@ export namespace GObject {
         Interfaces extends { $gtype: GType }[],
         Sigs extends {
             [key: string]: {
-                param_types?: readonly GType[];
+                param_types?: readonly GTypeInput[];
                 [key: string]: any;
             };
         },
@@ -4953,8 +4957,8 @@ export namespace GObject {
 
         interface ConstructorProps extends Object.ConstructorProps {
             target: Object;
-            target_type: GType;
-            targetType: GType;
+            target_type: GTypeInput;
+            targetType: GTypeInput;
         }
     }
 
@@ -7329,6 +7333,10 @@ export namespace GObject {
          * @returns Newly allocated copy of {@link GObject.ValueArray}
          */
         copy(): ValueArray;
+        /**
+         * Free a {@link GObject.ValueArray} including its contents.
+         */
+        free(): void;
         /**
          * Return a pointer to the value at `index_` contained in `value_array`.
          * @param index_ index of the value of interest

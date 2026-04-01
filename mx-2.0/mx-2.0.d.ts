@@ -14555,8 +14555,8 @@ export namespace Mx {
                 Scrollable.ConstructorProps,
                 Stylable.ConstructorProps {
             factory: GObject.Object;
-            item_type: GObject.GType;
-            itemType: GObject.GType;
+            item_type: GObject.GTypeInput;
+            itemType: GObject.GTypeInput;
             model: Clutter.Model;
         }
     }
@@ -17330,8 +17330,8 @@ export namespace Mx {
                 Scrollable.ConstructorProps,
                 Stylable.ConstructorProps {
             factory: GObject.Object;
-            item_type: GObject.GType;
-            itemType: GObject.GType;
+            item_type: GObject.GTypeInput;
+            itemType: GObject.GTypeInput;
             model: Clutter.Model;
         }
     }

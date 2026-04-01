@@ -2264,6 +2264,13 @@ export namespace Fcitx {
         );
 
         static ['new'](name: string, unique_name: string, langcode: string, enable: boolean): IMItem;
+
+        // Methods
+
+        /**
+         * free an im_item
+         */
+        free(): void;
     }
 
     /**

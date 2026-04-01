@@ -283,15 +283,15 @@ export namespace Folks {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            t_type: GObject.GType;
-            tType: GObject.GType;
+            t_type: GObject.GTypeInput;
+            tType: GObject.GTypeInput;
             t_dup_func: GObject.BoxedCopyFunc;
             tDupFunc: GObject.BoxedCopyFunc;
             t_destroy_func: GLib.DestroyNotify;
             tDestroyFunc: GLib.DestroyNotify;
             value: any;
-            value_type: GObject.GType;
-            valueType: GObject.GType;
+            value_type: GObject.GTypeInput;
+            valueType: GObject.GTypeInput;
             id: string;
             parameters: Gee.MultiMap;
         }
@@ -3817,8 +3817,8 @@ export namespace Folks {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            t_type: GObject.GType;
-            tType: GObject.GType;
+            t_type: GObject.GTypeInput;
+            tType: GObject.GTypeInput;
             t_dup_func: GObject.BoxedCopyFunc;
             tDupFunc: GObject.BoxedCopyFunc;
             t_destroy_func: GLib.DestroyNotify;

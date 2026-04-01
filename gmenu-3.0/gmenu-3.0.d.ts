@@ -364,6 +364,14 @@ export namespace GMenu {
          * @returns The type of the next item that can be retrived from the iterator
          */
         next(): TreeItemType;
+        /**
+         * Increment the reference count of `iter`
+         */
+        ref(): TreeIter;
+        /**
+         * Decrement the reference count of `iter`
+         */
+        unref(): void;
     }
 
     /**

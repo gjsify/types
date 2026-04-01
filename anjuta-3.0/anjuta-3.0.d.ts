@@ -36829,6 +36829,7 @@ export namespace Anjuta {
         dump_link(): void;
         evaluate(): string;
         evaluate_name(): string;
+        free(): Token;
         get_flags(): number;
         get_length(): number;
         get_string(): string;

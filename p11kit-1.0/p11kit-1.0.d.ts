@@ -162,6 +162,13 @@ export namespace P11Kit {
          */
         get_value(length: number): number;
         /**
+         * Add a reference to a P11KitPin. This should be matched with a later call
+         * to `p11_kit_pin_unref()`. As long as at least one reference is held, the PIN
+         * will remain valid and in memory.
+         * @returns the `pin` pointer, for convenience sake.
+         */
+        ref(): Pin;
+        /**
          * Remove a reference from a P11KitPin. When all references have been removed
          * then the PIN will be freed and will no longer be in memory.
          */

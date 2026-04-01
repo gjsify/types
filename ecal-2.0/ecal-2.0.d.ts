@@ -6602,6 +6602,13 @@ export namespace ECal {
          */
         fill_component(component: ICalGLib.Component): void;
         /**
+         * Free `alarm`, previously created by `e_cal_component_alarm_new()`,
+         * `e_cal_component_alarm_new_from_component()`
+         * or `e_cal_component_alarm_copy()`. The function does nothing, if `alarm`
+         * is `null`.
+         */
+        free(): void;
+        /**
          * Get the last time the alarm had been acknowledged, that is, when its
          * reminder had been triggered.
          * The returned {@link ICalGLib.Time} is owned by `alarm` and should not be modified,
@@ -6760,6 +6767,12 @@ export namespace ECal {
          */
         copy(): ComponentAlarmInstance;
         /**
+         * Free `instance`, previously created by `e_cal_component_alarm_instance_new()`
+         * or `e_cal_component_alarm_instance_copy()`. The function does nothing, if `instance`
+         * is `null`.
+         */
+        free(): void;
+        /**
          * @returns component associated with the instance, or `null`
          */
         get_component(): any | null;
@@ -6839,6 +6852,11 @@ export namespace ECal {
          */
         copy(): ComponentAlarmRepeat;
         /**
+         * Free the `repeat`, previously allocated by `e_cal_component_alarm_repeat_new()`,
+         * `e_cal_component_alarm_repeat_new_seconds()` or `e_cal_component_alarm_repeat_copy()`.
+         */
+        free(): void;
+        /**
          * Returns the interval between repetitions of the `repeat`, as an {@link ICalGLib.Duration}
          * object. This object is owned by `repeat` and should not be freed. It's valid until
          * the `repeat` is not freed or its interval changed with either `e_cal_component_alarm_repeat_set_interval()`
@@ -6904,6 +6922,13 @@ export namespace ECal {
          * @param property an {@link ICalGLib.Property}
          */
         fill_property(property: ICalGLib.Property): ICalGLib.Property;
+        /**
+         * Free `trigger`, previously created by `e_cal_component_alarm_trigger_new_relative()`,
+         * `e_cal_component_alarm_trigger_new_absolute()`, `e_cal_component_alarm_trigger_new_from_property()`
+         * or `e_cal_component_alarm_trigger_copy()`. The function does nothing, if `trigger`
+         * is `null`.
+         */
+        free(): void;
         /**
          * Returns the `trigger` absolute time for an absolute trigger, or `null`, when
          * the `trigger` is a relative trigger. The object is owned by `trigger` and it's
@@ -7010,6 +7035,12 @@ export namespace ECal {
          */
         copy(): ComponentAlarms;
         /**
+         * Free `alarms`, previously created by `e_cal_component_alarms_new()`
+         * or `e_cal_component_alarms_copy()`. The function does nothing, if `alarms`
+         * is `null`.
+         */
+        free(): void;
+        /**
          * The returned component is valid until the `alarms` is freed.
          * @returns an {@link ECal.Component} associated with the `alarms` structure, or `null`
          */
@@ -7091,6 +7122,13 @@ export namespace ECal {
          * @param property an {@link ICalGLib.Property}
          */
         fill_property(property: ICalGLib.Property): ICalGLib.Property;
+        /**
+         * Free `attendee`, previously created by `e_cal_component_attendee_new()`,
+         * `e_cal_component_attendee_new_full()`, `e_cal_component_attendee_new_from_property()`
+         * or `e_cal_component_attendee_copy()`. The function does nothing, if `attendee`
+         * is `null`.
+         */
+        free(): void;
         /**
          * Converts information stored in `attendee` into an {@link ICalGLib.Property}
          * of {@link ICalGLib.PropertyKind.ATTENDEE_PROPERTY} kind. The caller is responsible to free
@@ -7347,6 +7385,12 @@ export namespace ECal {
          */
         copy(): ComponentDateTime;
         /**
+         * Free `dt`, previously created by `e_cal_component_datetime_new()`,
+         * `e_cal_component_datetime_new_take()` or `e_cal_component_datetime_copy()`.
+         * The function does nothing, if `dt` is `null`.
+         */
+        free(): void;
+        /**
          * Returns the TZID stored with the `dt`. The string is owned by `dt` and
          * it's valid until the `dt` is freed or its TZID overwritten. It never
          * returns an empty string, it returns either set TZID parameter value
@@ -7424,6 +7468,11 @@ export namespace ECal {
          */
         equal(id2: ComponentId): boolean;
         /**
+         * Free the `id`, previously created by `e_cal_component_id_new()`,
+         * `e_cal_component_id_new_take()` or `e_cal_component_id_copy()`.
+         */
+        free(): void;
+        /**
          * @returns The RECURRENCE-ID part of the `id`.    The returned string is owned by `id` and it's valid until it's    changed with `e_cal_component_id_set_rid()` or until the `id` is freed.
          */
         get_rid(): string | null;
@@ -7486,6 +7535,13 @@ export namespace ECal {
          * @param property an {@link ICalGLib.Property}
          */
         fill_property(property: ICalGLib.Property): ICalGLib.Property;
+        /**
+         * Free `organizer`, previously created by `e_cal_component_organizer_new()`,
+         * `e_cal_component_organizer_new_full()`, `e_cal_component_organizer_new_from_property()`
+         * or `e_cal_component_organizer_copy()`. The function does nothing, if `organizer`
+         * is `null`.
+         */
+        free(): void;
         /**
          * Converts information stored in `organizer` into an {@link ICalGLib.Property}
          * of {@link ICalGLib.PropertyKind.ORGANIZER_PROPERTY} kind. The caller is responsible to free
@@ -7595,6 +7651,13 @@ export namespace ECal {
          */
         fill_property(property: ICalGLib.Property): void;
         /**
+         * Free `bag`, previously created by `e_cal_component_parameter_bag_new()`,
+         * `e_cal_component_parameter_bag_new_from_component()` or
+         * `e_cal_component_parameter_bag_copy()`. The function does nothing, if `bag`
+         * is `null`.
+         */
+        free(): void;
+        /**
          * Returns the {@link ICalGLib.Parameter} at the given `index`. If the `index` is
          * out of bounds (not lower than `e_cal_component_parameter_bag_get_count()`),
          * then `null` is returned.
@@ -7665,6 +7728,11 @@ export namespace ECal {
          * @returns a newly allocated {@link ECal.ComponentPeriod}, copy of `period`.    The returned structure should be freed with `e_cal_component_period_free()`,    when no longer needed.
          */
         copy(): ComponentPeriod;
+        /**
+         * Free the `period`, previously allocated by `e_cal_component_period_new_datetime()`,
+         * `e_cal_component_period_new_duration()` or `e_cal_component_period_copy()`.
+         */
+        free(): void;
         /**
          * Returns the duration of the `period`. This can be called only on `period`
          * objects of kind {@link ECal.ComponentPeriodKind.DURATION}.
@@ -7790,6 +7858,13 @@ export namespace ECal {
          */
         fill_component(component: ICalGLib.Component): void;
         /**
+         * Free `bag`, previously created by `e_cal_component_property_bag_new()`,
+         * `e_cal_component_property_bag_new_from_component()` or
+         * `e_cal_component_property_bag_copy()`. The function does nothing, if `bag`
+         * is `null`.
+         */
+        free(): void;
+        /**
          * Returns the {@link ICalGLib.Property} at the given `index`. If the `index` is
          * out of bounds (not lower than `e_cal_component_property_bag_get_count()`),
          * then `null` is returned.
@@ -7858,6 +7933,11 @@ export namespace ECal {
          */
         copy(): ComponentRange;
         /**
+         * Free the `range`, previously allocated by `e_cal_component_range_new()`,
+         * `e_cal_component_range_new_take()` or `e_cal_component_range_copy()`.
+         */
+        free(): void;
+        /**
          * Returns the date/time of the `range`. The returned {@link ECal.ComponentDateTime}
          * is owned by `range` and should not be freed. It's valid until the `range`
          * is freed or its date/time changed.
@@ -7907,6 +7987,11 @@ export namespace ECal {
          * @param property an {@link ICalGLib.Property}
          */
         fill_property(property: ICalGLib.Property): void;
+        /**
+         * Free the `text`, previously allocated by `e_cal_component_text_new()` or
+         * `e_cal_component_text_copy()`.
+         */
+        free(): void;
         /**
          * @returns the alternate representation URI of the `text`
          */

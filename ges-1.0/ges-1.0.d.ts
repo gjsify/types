@@ -1230,8 +1230,8 @@ export namespace GES {
                 MetaContainer.ConstructorProps,
                 Gio.AsyncInitable.ConstructorProps,
                 Gio.Initable.ConstructorProps {
-            extractable_type: GObject.GType;
-            extractableType: GObject.GType;
+            extractable_type: GObject.GTypeInput;
+            extractableType: GObject.GTypeInput;
             id: string;
             proxy: Asset;
             proxy_target: Asset;

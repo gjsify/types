@@ -6414,8 +6414,8 @@ export namespace Gcr {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            prompt_type: GObject.GType;
-            promptType: GObject.GType;
+            prompt_type: GObject.GTypeInput;
+            promptType: GObject.GTypeInput;
             prompting: boolean;
         }
     }

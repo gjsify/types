@@ -5946,6 +5946,10 @@ export namespace GstBase {
      */
     abstract class TypeFindData {
         static $gtype: GObject.GType<TypeFindData>;
+
+        // Methods
+
+        free(): void;
     }
 
     /**

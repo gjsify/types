@@ -1649,10 +1649,10 @@ export namespace XreaderDocument {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            ctime: GObject.GType;
+            ctime: GObject.GTypeInput;
             data: any;
             description: string;
-            mtime: GObject.GType;
+            mtime: GObject.GTypeInput;
             name: string;
             size: number;
         }
@@ -3437,6 +3437,7 @@ export namespace XreaderDocument {
         get_data(x: number, y: number): any | null;
         get_page(): number;
         length(): number;
+        ref(): MappingList;
         /**
          * @param mapping
          */

@@ -3049,6 +3049,18 @@ export namespace Cogl {
         // Methods
 
         /**
+         * Creates a new material with the configuration copied from the
+         * source material.
+         *
+         * We would strongly advise developers to always aim to use
+         * `cogl_material_copy()` instead of `cogl_material_new()` whenever there will
+         * be any similarity between two materials. Copying a material helps Cogl
+         * keep track of a materials ancestry which we may use to help minimize GPU
+         * state changes.
+         * @returns a pointer to the newly allocated {@link Cogl.Material}
+         */
+        copy(): Material;
+        /**
          * Retrieves the current ambient color for `material`
          * @param ambient The location to store the ambient color
          */

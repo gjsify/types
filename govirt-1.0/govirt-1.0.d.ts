@@ -2119,8 +2119,8 @@ export namespace GoVirt {
             collection_xml_name: string;
             collectionXmlName: string;
             href: string;
-            resource_type: GObject.GType;
-            resourceType: GObject.GType;
+            resource_type: GObject.GTypeInput;
+            resourceType: GObject.GTypeInput;
             resource_xml_name: string;
             resourceXmlName: string;
             resources: GLib.HashTable<any, any>;
