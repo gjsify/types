@@ -3754,8 +3754,8 @@ export namespace Libosinfo {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            element_type: GObject.GType;
-            elementType: GObject.GType;
+            element_type: GObject.GTypeInput;
+            elementType: GObject.GTypeInput;
         }
     }
 

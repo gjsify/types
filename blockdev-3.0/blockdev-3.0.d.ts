@@ -4568,6 +4568,17 @@ export namespace BlockDev {
                 used: number;
             }>,
         );
+
+        // Methods
+
+        /**
+         * Creates a new copy of `info`.
+         */
+        copy(): BtrfsDeviceInfo;
+        /**
+         * Frees `info`.
+         */
+        free(): void;
     }
 
     /**
@@ -4593,6 +4604,17 @@ export namespace BlockDev {
                 used: number;
             }>,
         );
+
+        // Methods
+
+        /**
+         * Creates a new copy of `info`.
+         */
+        copy(): BtrfsFilesystemInfo;
+        /**
+         * Frees `info`.
+         */
+        free(): void;
     }
 
     /**
@@ -4616,6 +4638,17 @@ export namespace BlockDev {
                 path: string;
             }>,
         );
+
+        // Methods
+
+        /**
+         * Creates a new copy of `info`.
+         */
+        copy(): BtrfsSubvolumeInfo;
+        /**
+         * Frees `info`.
+         */
+        free(): void;
     }
 
     /**
@@ -4643,6 +4676,17 @@ export namespace BlockDev {
                 sector_size: number;
             }>,
         );
+
+        // Methods
+
+        /**
+         * Creates a new copy of `info`.
+         */
+        copy(): CryptoBITLKInfo;
+        /**
+         * Frees `info`.
+         */
+        free(): void;
     }
 
     /**
@@ -4684,6 +4728,17 @@ export namespace BlockDev {
             tag_size: number,
             buffer_sectors: number,
         ): CryptoIntegrityExtra;
+
+        // Methods
+
+        /**
+         * Creates a new copy of `extra`.
+         */
+        copy(): CryptoIntegrityExtra;
+        /**
+         * Frees `extra`.
+         */
+        free(): void;
     }
 
     /**
@@ -4717,6 +4772,17 @@ export namespace BlockDev {
                 journal_integrity: string;
             }>,
         );
+
+        // Methods
+
+        /**
+         * Creates a new copy of `info`.
+         */
+        copy(): CryptoIntegrityInfo;
+        /**
+         * Frees `info`.
+         */
+        free(): void;
     }
 
     /**
@@ -4740,6 +4806,17 @@ export namespace BlockDev {
         static new_passphrase(pass_data: Uint8Array | string): CryptoKeyslotContext;
 
         static new_volume_key(volume_key: Uint8Array | string): CryptoKeyslotContext;
+
+        // Methods
+
+        /**
+         * Creates a new copy of `context`.
+         */
+        copy(): CryptoKeyslotContext;
+        /**
+         * Frees `context`.
+         */
+        free(): void;
     }
 
     /**
@@ -4780,6 +4857,17 @@ export namespace BlockDev {
             subsystem?: string | null,
             pbkdf?: CryptoLUKSPBKDF | null,
         ): CryptoLUKSExtra;
+
+        // Methods
+
+        /**
+         * Creates a new copy of `extra`.
+         */
+        copy(): CryptoLUKSExtra;
+        /**
+         * Frees `extra`.
+         */
+        free(): void;
     }
 
     /**
@@ -4800,6 +4888,17 @@ export namespace BlockDev {
         label: string;
         subsystem: string;
         hw_encryption: CryptoLUKSHWEncryptionType;
+
+        // Methods
+
+        /**
+         * Creates a new copy of `info`.
+         */
+        copy(): CryptoLUKSInfo;
+        /**
+         * Frees `info`.
+         */
+        free(): void;
     }
 
     /**
@@ -4838,6 +4937,17 @@ export namespace BlockDev {
             time_ms: number,
             parallel_threads: number,
         ): CryptoLUKSPBKDF;
+
+        // Methods
+
+        /**
+         * Creates a new copy of `pbkdf`.
+         */
+        copy(): CryptoLUKSPBKDF;
+        /**
+         * Frees `pbkdf`.
+         */
+        free(): void;
     }
 
     /**
@@ -4861,6 +4971,17 @@ export namespace BlockDev {
                 keyslot: number;
             }>,
         );
+
+        // Methods
+
+        /**
+         * Creates a new copy of `info`.
+         */
+        copy(): CryptoLUKSTokenInfo;
+        /**
+         * Frees `info`.
+         */
+        free(): void;
     }
 
     /**
@@ -4929,6 +5050,17 @@ export namespace BlockDev {
                 free_space: number;
             }>,
         );
+
+        // Methods
+
+        /**
+         * Creates a new copy of `data`.
+         */
+        copy(): FSBtrfsInfo;
+        /**
+         * Frees `data`.
+         */
+        free(): void;
     }
 
     /**
@@ -4956,6 +5088,17 @@ export namespace BlockDev {
                 cluster_count: number;
             }>,
         );
+
+        // Methods
+
+        /**
+         * Creates a new copy of `data`.
+         */
+        copy(): FSExfatInfo;
+        /**
+         * Frees `data`.
+         */
+        free(): void;
     }
 
     /**
@@ -4985,6 +5128,13 @@ export namespace BlockDev {
                 free_blocks: number;
             }>,
         );
+
+        // Methods
+
+        /**
+         * Creates a new copy of `data`.
+         */
+        copy(): FSExt2Info;
     }
 
     /**
@@ -5014,6 +5164,17 @@ export namespace BlockDev {
                 free_blocks: number;
             }>,
         );
+
+        // Methods
+
+        /**
+         * Creates a new copy of `data`.
+         */
+        copy(): FSExt3Info;
+        /**
+         * Frees `data`.
+         */
+        free(): void;
     }
 
     /**
@@ -5043,6 +5204,17 @@ export namespace BlockDev {
                 free_blocks: number;
             }>,
         );
+
+        // Methods
+
+        /**
+         * Creates a new copy of `data`.
+         */
+        copy(): FSExt4Info;
+        /**
+         * Frees `data`.
+         */
+        free(): void;
     }
 
     /**
@@ -5099,6 +5271,17 @@ export namespace BlockDev {
                 features: number;
             }>,
         );
+
+        // Methods
+
+        /**
+         * Creates a new copy of `data`.
+         */
+        copy(): FSF2FSInfo;
+        /**
+         * Frees `data`.
+         */
+        free(): void;
     }
 
     /**
@@ -5118,6 +5301,17 @@ export namespace BlockDev {
         partition_type: string;
         min_size: number;
         max_size: number;
+
+        // Methods
+
+        /**
+         * Creates a new copy of `data`.
+         */
+        copy(): FSFeatures;
+        /**
+         * Frees `data`.
+         */
+        free(): void;
     }
 
     /**
@@ -5149,6 +5343,17 @@ export namespace BlockDev {
                 reserve: Uint8Array;
             }>,
         );
+
+        // Methods
+
+        /**
+         * Creates a new copy of `data`.
+         */
+        copy(): FSMkfsOptions;
+        /**
+         * Frees `data`.
+         */
+        free(): void;
     }
 
     /**
@@ -5176,6 +5381,17 @@ export namespace BlockDev {
                 free_blocks: number;
             }>,
         );
+
+        // Methods
+
+        /**
+         * Creates a new copy of `data`.
+         */
+        copy(): FSNILFS2Info;
+        /**
+         * Frees `data`.
+         */
+        free(): void;
     }
 
     /**
@@ -5201,6 +5417,17 @@ export namespace BlockDev {
                 free_space: number;
             }>,
         );
+
+        // Methods
+
+        /**
+         * Creates a new copy of `data`.
+         */
+        copy(): FSNtfsInfo;
+        /**
+         * Frees `data`.
+         */
+        free(): void;
     }
 
     /**
@@ -5234,6 +5461,17 @@ export namespace BlockDev {
                 free_blocks: number;
             }>,
         );
+
+        // Methods
+
+        /**
+         * Creates a new copy of `data`.
+         */
+        copy(): FSUdfInfo;
+        /**
+         * Frees `data`.
+         */
+        free(): void;
     }
 
     /**
@@ -5261,6 +5499,17 @@ export namespace BlockDev {
                 free_cluster_count: number;
             }>,
         );
+
+        // Methods
+
+        /**
+         * Creates a new copy of `data`.
+         */
+        copy(): FSVfatInfo;
+        /**
+         * Frees `data`.
+         */
+        free(): void;
     }
 
     /**
@@ -5286,6 +5535,17 @@ export namespace BlockDev {
                 block_count: number;
             }>,
         );
+
+        // Methods
+
+        /**
+         * Creates a new copy of `data`.
+         */
+        copy(): FSXfsInfo;
+        /**
+         * Frees `data`.
+         */
+        free(): void;
     }
 
     /**
@@ -5307,6 +5567,21 @@ export namespace BlockDev {
         write_hits: number;
         write_misses: number;
         mode: LVMCacheMode;
+
+        // Static methods
+
+        /**
+         * Frees `data`.
+         * @param data %BDLVMCacheStats to free
+         */
+        static free(data?: LVMLVdata | null): void;
+
+        // Methods
+
+        /**
+         * Creates a new copy of `data`.
+         */
+        copy(): LVMCacheStats;
     }
 
     /**
@@ -5381,6 +5656,17 @@ export namespace BlockDev {
                 segs: LVMSEGdata[];
             }>,
         );
+
+        // Methods
+
+        /**
+         * Creates a new copy of `data`.
+         */
+        copy(): LVMLVdata;
+        /**
+         * Frees `data`.
+         */
+        free(): void;
     }
 
     /**
@@ -5428,6 +5714,17 @@ export namespace BlockDev {
                 missing: boolean;
             }>,
         );
+
+        // Methods
+
+        /**
+         * Creates a new copy of `data`.
+         */
+        copy(): LVMPVdata;
+        /**
+         * Frees `data`.
+         */
+        free(): void;
     }
 
     /**
@@ -5451,6 +5748,17 @@ export namespace BlockDev {
                 pvdev: string;
             }>,
         );
+
+        // Methods
+
+        /**
+         * Creates a new copy of `data`.
+         */
+        copy(): LVMSEGdata;
+        /**
+         * Frees `data`.
+         */
+        free(): void;
     }
 
     /**
@@ -5470,6 +5778,17 @@ export namespace BlockDev {
         index_memory_size: number;
         deduplication: boolean;
         compression: boolean;
+
+        // Methods
+
+        /**
+         * Creates a new copy of `data`.
+         */
+        copy(): LVMVDOPooldata;
+        /**
+         * Frees `data`.
+         */
+        free(): void;
     }
 
     /**
@@ -5505,6 +5824,17 @@ export namespace BlockDev {
                 write_amplification_ratio: number;
             }>,
         );
+
+        // Methods
+
+        /**
+         * Creates a new copy of `stats`.
+         */
+        copy(): LVMVDOStats;
+        /**
+         * Frees `stats`.
+         */
+        free(): void;
     }
 
     /**
@@ -5541,6 +5871,17 @@ export namespace BlockDev {
                 vg_tags: string[];
             }>,
         );
+
+        // Methods
+
+        /**
+         * Creates a new copy of `data`.
+         */
+        copy(): LVMVGdata;
+        /**
+         * Frees `data`.
+         */
+        free(): void;
     }
 
     /**
@@ -5570,6 +5911,17 @@ export namespace BlockDev {
                 read_only: boolean;
             }>,
         );
+
+        // Methods
+
+        /**
+         * Creates a new copy of `info`.
+         */
+        copy(): LoopInfo;
+        /**
+         * Frees `info`.
+         */
+        free(): void;
     }
 
     /**
@@ -5619,6 +5971,17 @@ export namespace BlockDev {
                 container: string;
             }>,
         );
+
+        // Methods
+
+        /**
+         * Creates a new copy of `data`.
+         */
+        copy(): MDDetailData;
+        /**
+         * Frees `data`.
+         */
+        free(): void;
     }
 
     /**
@@ -5658,6 +6021,17 @@ export namespace BlockDev {
                 chunk_size: number;
             }>,
         );
+
+        // Methods
+
+        /**
+         * Creates a new copy of `data`.
+         */
+        copy(): MDExamineData;
+        /**
+         * Frees `data`.
+         */
+        free(): void;
     }
 
     /**
@@ -5689,6 +6063,17 @@ export namespace BlockDev {
                 enabled: boolean;
             }>,
         );
+
+        // Methods
+
+        /**
+         * Creates a new copy of `info`.
+         */
+        copy(): NVDIMMNamespaceInfo;
+        /**
+         * Frees `info`.
+         */
+        free(): void;
     }
 
     /**
@@ -5716,6 +6101,17 @@ export namespace BlockDev {
         size_unalloc: number;
         num_namespaces: number;
         subsysnqn: string;
+
+        // Methods
+
+        /**
+         * Creates a new copy of `info`.
+         */
+        copy(): NVMEControllerInfo;
+        /**
+         * Frees `info`.
+         */
+        free(): void;
     }
 
     /**
@@ -5734,6 +6130,17 @@ export namespace BlockDev {
         lba: number;
         nsid: number;
         transport_type: NVMETransportType;
+
+        // Methods
+
+        /**
+         * Creates a new copy of `entry`.
+         */
+        copy(): NVMEErrorLogEntry;
+        /**
+         * Frees `entry`.
+         */
+        free(): void;
     }
 
     /**
@@ -5748,6 +6155,17 @@ export namespace BlockDev {
         data_size: number;
         metadata_size: number;
         relative_performance: NVMELBAFormatRelativePerformance;
+
+        // Methods
+
+        /**
+         * Creates a new copy of `fmt`.
+         */
+        copy(): NVMELBAFormat;
+        /**
+         * Frees `fmt`.
+         */
+        free(): void;
     }
 
     /**
@@ -5768,6 +6186,17 @@ export namespace BlockDev {
         features: number;
         format_progress_remaining: number;
         write_protected: boolean;
+
+        // Methods
+
+        /**
+         * Creates a new copy of `info`.
+         */
+        copy(): NVMENamespaceInfo;
+        /**
+         * Frees `info`.
+         */
+        free(): void;
     }
 
     /**
@@ -5788,6 +6217,17 @@ export namespace BlockDev {
         time_for_overwrite_nd: number;
         time_for_block_erase_nd: number;
         time_for_crypto_erase_nd: number;
+
+        // Methods
+
+        /**
+         * Creates a new copy of `log`.
+         */
+        copy(): NVMESanitizeLog;
+        /**
+         * Frees `log`.
+         */
+        free(): void;
     }
 
     /**
@@ -5800,6 +6240,17 @@ export namespace BlockDev {
 
         current_operation: NVMESelfTestAction;
         current_operation_completion: number;
+
+        // Methods
+
+        /**
+         * Creates a new copy of `log`.
+         */
+        copy(): NVMESelfTestLog;
+        /**
+         * Frees `log`.
+         */
+        free(): void;
     }
 
     /**
@@ -5817,6 +6268,17 @@ export namespace BlockDev {
         nsid: number;
         failing_lba: number;
         status_code_error: GLib.Error;
+
+        // Methods
+
+        /**
+         * Creates a new copy of `entry`.
+         */
+        copy(): NVMESelfTestLogEntry;
+        /**
+         * Frees `entry`.
+         */
+        free(): void;
     }
 
     /**
@@ -5870,6 +6332,17 @@ export namespace BlockDev {
                 critical_temp_time: number;
             }>,
         );
+
+        // Methods
+
+        /**
+         * Creates a new copy of `log`.
+         */
+        copy(): NVMESmartLog;
+        /**
+         * Frees `log`.
+         */
+        free(): void;
     }
 
     /**
@@ -5951,6 +6424,17 @@ export namespace BlockDev {
         constructor(name: Plugin, so_name?: string | null);
 
         static ['new'](name: Plugin, so_name?: string | null): PluginSpec;
+
+        // Methods
+
+        /**
+         * Creates a new copy of `spec`.
+         */
+        copy(): PluginSpec;
+        /**
+         * Frees `spec`.
+         */
+        free(): void;
     }
 
     /**
@@ -5991,6 +6475,17 @@ export namespace BlockDev {
          * @param data binary data to parse.
          */
         static get_info_from_data(data: Uint8Array | string): SmartATA;
+
+        // Methods
+
+        /**
+         * Creates a new copy of `data`.
+         */
+        copy(): SmartATA;
+        /**
+         * Frees `data`.
+         */
+        free(): void;
     }
 
     /**
@@ -6014,6 +6509,17 @@ export namespace BlockDev {
         pretty_value: number;
         pretty_value_unit: SmartATAAttributeUnit;
         pretty_value_string: string;
+
+        // Methods
+
+        /**
+         * Creates a new copy of `attr`.
+         */
+        copy(): SmartATAAttribute;
+        /**
+         * Frees `attr`.
+         */
+        free(): void;
     }
 
     /**
@@ -6065,6 +6571,17 @@ export namespace BlockDev {
          * @param extra extra options to pass through.
          */
         static get_info(device: string, extra?: ExtraArg[] | null): SmartSCSI;
+
+        // Methods
+
+        /**
+         * Creates a new copy of `data`.
+         */
+        copy(): SmartSCSI;
+        /**
+         * Frees `data`.
+         */
+        free(): void;
     }
 
     /**

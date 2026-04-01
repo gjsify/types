@@ -1,6 +1,6 @@
 {
     "name": "@girs/arrowcuda-1.0",
-    "version": "1.0.0-4.0.0-beta.43",
+    "version": "1.0.0-4.0.0-beta.44",
     "description": "GJS TypeScript type definitions for ArrowCUDA-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "arrowcuda-1.0.js",
@@ -31,12 +31,12 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "4.0.0-beta.43",
-      "@girs/arrow-1.0": "16.1.0-4.0.0-beta.43",
-      "@girs/gio-2.0": "2.88.0-4.0.0-beta.43",
-      "@girs/gobject-2.0": "2.88.0-4.0.0-beta.43",
-      "@girs/glib-2.0": "2.88.0-4.0.0-beta.43",
-      "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.43"    },
+      "@girs/gjs": "4.0.0-beta.44",
+      "@girs/arrow-1.0": "16.1.0-4.0.0-beta.44",
+      "@girs/gio-2.0": "2.88.0-4.0.0-beta.44",
+      "@girs/gobject-2.0": "2.88.0-4.0.0-beta.44",
+      "@girs/glib-2.0": "2.88.0-4.0.0-beta.44",
+      "@girs/gmodule-2.0": "2.0.0-4.0.0-beta.44"    },
     "devDependencies": {
       "typescript": "*"
     },

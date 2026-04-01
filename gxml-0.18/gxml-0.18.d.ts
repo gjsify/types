@@ -13623,8 +13623,8 @@ export namespace GXml {
         // Constructor properties interface
 
         interface ConstructorProps extends GomBaseProperty.ConstructorProps {
-            enum_type: GObject.GType;
-            enumType: GObject.GType;
+            enum_type: GObject.GTypeInput;
+            enumType: GObject.GTypeInput;
         }
     }
 
@@ -38608,12 +38608,12 @@ export namespace GXml {
                 Gee.Traversable.ConstructorProps,
                 Serializable.ConstructorProps,
                 SerializableCollection.ConstructorProps {
-            value_type: GObject.GType;
-            valueType: GObject.GType;
-            primary_key_type: GObject.GType;
-            primaryKeyType: GObject.GType;
-            secondary_key_type: GObject.GType;
-            secondaryKeyType: GObject.GType;
+            value_type: GObject.GTypeInput;
+            valueType: GObject.GTypeInput;
+            primary_key_type: GObject.GTypeInput;
+            primaryKeyType: GObject.GTypeInput;
+            secondary_key_type: GObject.GTypeInput;
+            secondaryKeyType: GObject.GTypeInput;
             primary_keys: Gee.Collection;
             primaryKeys: Gee.Collection;
             size: number;
@@ -50867,8 +50867,8 @@ export namespace GXml {
             element: DomElement;
             items_name: string;
             itemsName: string;
-            items_type: GObject.GType;
-            itemsType: GObject.GType;
+            items_type: GObject.GTypeInput;
+            itemsType: GObject.GTypeInput;
             length: number;
         }
     }
@@ -58326,10 +58326,10 @@ export namespace GXml {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             element: DomElement;
-            items_type: GObject.GType;
-            itemsType: GObject.GType;
-            items_name: GObject.GType;
-            itemsName: GObject.GType;
+            items_type: GObject.GTypeInput;
+            itemsType: GObject.GTypeInput;
+            items_name: GObject.GTypeInput;
+            itemsName: GObject.GTypeInput;
             length: number;
         }
     }

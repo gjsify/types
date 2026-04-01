@@ -15670,6 +15670,48 @@ export namespace GLib {
                 len: number;
             }>,
         );
+
+        // Static methods
+
+        /**
+         * Creates a shallow copy of a {@link GLib.Array}. If the array elements consist of
+         * pointers to data, the pointers are copied but the actual data is not.
+         * @param array an array
+         */
+        static copy(array: any[]): any[];
+        /**
+         * Frees the memory allocated for the {@link GLib.Array}. If `free_segment` is
+         * true it frees the memory block holding the elements as well. Pass
+         * false if you want to free the {@link GLib.Array} wrapper but preserve the
+         * underlying array for use elsewhere. If the reference count of
+         * `array` is greater than one, the {@link GLib.Array} wrapper is preserved but
+         * the size of `array` will be set to zero.
+         *
+         * If array contents point to dynamically-allocated memory, they should
+         * be freed separately if `free_segment` is true and no `clear_func`
+         * function has been set for `array`.
+         *
+         * This function is not thread-safe. If using a {@link GLib.Array} from multiple
+         * threads, use only the atomic {@link GLib.Array.ref} and
+         * {@link GLib.Array.unref} functions.
+         * @param array an array
+         * @param free_segment if true, the actual element data is freed as well
+         */
+        static free(array: any[], free_segment: boolean): string;
+        /**
+         * Atomically increments the reference count of `array` by one.
+         * This function is thread-safe and may be called from any thread.
+         * @param array an array
+         */
+        static ref(array: any[]): any[];
+        /**
+         * Atomically decrements the reference count of `array` by one. If the
+         * reference count drops to 0, the effect is the same as calling
+         * {@link GLib.Array.free} with `free_segment` set to true. This function is
+         * thread-safe and may be called from any thread.
+         * @param array an array
+         */
+        static unref(array: any[]): void;
     }
 
     /**
@@ -17187,6 +17229,13 @@ export namespace GLib {
          * blocking leads to undefined behaviour.
          */
         clear(): void;
+        /**
+         * Destroys a {@link GLib.Cond} that has been created with `g_cond_new()`.
+         *
+         * Calling `g_cond_free()` for a {@link GLib.Cond} on which threads are
+         * blocking leads to undefined behaviour.
+         */
+        free(): void;
         /**
          * Initialises a {@link GLib.Cond} so that it can be used.
          *
@@ -19033,6 +19082,12 @@ export namespace GLib {
          */
         static prepend(hook_list: HookList, hook: Hook): void;
         /**
+         * Increments the reference count for a {@link GLib.Hook}.
+         * @param hook_list a {@link GLib.HookList}
+         * @param hook the {@link GLib.Hook} to increment the reference count of
+         */
+        static ref(hook_list: HookList, hook: Hook): Hook;
+        /**
          * Decrements the reference count of a {@link GLib.Hook}.
          * If the reference count falls to 0, the {@link GLib.Hook} is removed
          * from the {@link GLib.HookList} and `g_hook_free()` is called to free it.
@@ -19598,6 +19653,14 @@ export namespace GLib {
         // Methods
 
         /**
+         * Clears all keys and groups from `key_file`, and decreases the
+         * reference count by 1.
+         *
+         * If the reference count reaches zero, frees the key file and all its allocated
+         * memory.
+         */
+        free(): void;
+        /**
          * Returns the value associated with `key` under `group_name` as a
          * boolean.
          *
@@ -19910,6 +19973,11 @@ export namespace GLib {
          */
         load_from_file(file: string, flags: KeyFileFlags | null): boolean;
         /**
+         * Increases the reference count of `key_file`.
+         * @returns the same `key_file`.
+         */
+        ref(): KeyFile;
+        /**
          * Removes a comment above `key` from `group_name`.
          *
          * If `key` is `NULL` then `comment` will be removed above `group_name`.
@@ -20147,6 +20215,34 @@ export namespace GLib {
 
         // Static methods
 
+        /**
+         * Copies a {@link GLib.List}.
+         *
+         * Note that this is a "shallow" copy. If the list elements
+         * consist of pointers to data, the pointers are copied but
+         * the actual data is not. See `g_list_copy_deep()` if you need
+         * to copy the data as well.
+         * @param list a {@link GLib.List}, this must point to the top of the list
+         */
+        static copy(list: any[]): any[];
+        /**
+         * Frees all of the memory used by a {@link GLib.List}.
+         * The freed elements are returned to the slice allocator.
+         *
+         * If list elements contain dynamically-allocated memory, you should
+         * either use `g_list_free_full()` or free them manually first.
+         *
+         * It can be combined with `g_steal_pointer()` to ensure the list head pointer
+         * is not left dangling:
+         *
+         * ```c
+         * GList *list_of_borrowed_things = …;  /<!-- -->* (transfer container) *<!-- -->/
+         * g_list_free (g_steal_pointer (&list_of_borrowed_things));
+         * ```
+         *
+         * @param list the first link of a {@link GLib.List}
+         */
+        static free(list: any[]): void;
         static pop_allocator(): void;
         /**
          * @param allocator
@@ -21475,6 +21571,12 @@ export namespace GLib {
          */
         children_foreach(flags: TraverseFlags | null, func: NodeForeachFunc): void;
         /**
+         * Recursively copies a {@link GLib.Node} (but does not deep-copy the data inside the
+         * nodes, see `g_node_copy_deep()` if you need that).
+         * @returns a new {@link GLib.Node} containing the same data pointers
+         */
+        copy(): Node;
+        /**
          * Gets the depth of a {@link GLib.Node}.
          *
          * If `node` is `null` the depth is 0. The root node has a depth of 1.
@@ -22052,6 +22154,11 @@ export namespace GLib {
          */
         clear_to_path(): string | null;
         /**
+         * Copies the contents of a path buffer into a new {@link GLib.PathBuf}.
+         * @returns the newly allocated path buffer
+         */
+        copy(): PathBuf;
+        /**
          * Frees a {@link GLib.PathBuf} allocated by `g_path_buf_new()`.
          */
         free(): void;
@@ -22383,6 +22490,67 @@ export namespace GLib {
                 len: number;
             }>,
         );
+
+        // Static methods
+
+        /**
+         * Makes a full (deep) copy of a {@link GLib.PtrArray}.
+         *
+         * `func`, as a {@link GLib.CopyFunc}, takes two arguments, the data to be
+         * copied
+         * and a `user_data` pointer. On common processor architectures, it’s safe to
+         * pass `NULL` as `user_data` if the copy function takes only one argument. You
+         * may get compiler warnings from this though if compiling with GCC’s
+         * `-Wcast-function-type` warning.
+         *
+         * If `func` is `NULL`, then only the pointers (and not what they are
+         * pointing to) are copied to the new {@link GLib.PtrArray}.
+         *
+         * The copy of `array` will have the same {@link GLib.DestroyNotify} for its
+         * elements as
+         * `array`. The copy will also be `NULL` terminated if (and only if) the source
+         * array is.
+         * @param array a pointer array to duplicate
+         * @param func a copy function used to copy every element in the array
+         */
+        static copy(array: any[], func?: CopyFunc | null): any[];
+        /**
+         * Frees the memory allocated for the {@link GLib.PtrArray}. If `free_segment` is true
+         * it frees the memory block holding the elements as well. Pass false
+         * if you want to free the {@link GLib.PtrArray} wrapper but preserve the
+         * underlying array for use elsewhere. If the reference count of `array`
+         * is greater than one, the {@link GLib.PtrArray} wrapper is preserved but the
+         * size of `array` will be set to zero.
+         *
+         * If array contents point to dynamically-allocated memory, they should
+         * be freed separately if `free_segment` is true and no
+         * {@link GLib.DestroyNotify} function has been set for `array`.
+         *
+         * Note that if the array is `NULL` terminated and `free_segment` is false
+         * then this will always return an allocated `NULL` terminated buffer.
+         * If `pdata` is previously `NULL`, a new buffer will be allocated.
+         *
+         * This function is not thread-safe. If using a {@link GLib.PtrArray} from multiple
+         * threads, use only the atomic {@link GLib.PtrArray.ref} and
+         * {@link GLib.PtrArray.unref} functions.
+         * @param array a pointer array
+         * @param free_segment if true, the actual pointer array is freed as well
+         */
+        static free(array: any[], free_segment: boolean): any[] | null;
+        /**
+         * Atomically increments the reference count of `array` by one.
+         * This function is thread-safe and may be called from any thread.
+         * @param array a pointer array
+         */
+        static ref(array: any[]): any[];
+        /**
+         * Atomically decrements the reference count of `array` by one. If the
+         * reference count drops to 0, the effect is the same as calling
+         * {@link GLib.PtrArray.free} with `free_segment` set to true. This function
+         * is thread-safe and may be called from any thread.
+         * @param array a pointer array
+         */
+        static unref(array: any[]): void;
     }
 
     /**
@@ -22420,6 +22588,13 @@ export namespace GLib {
          * @param free_func the function to be called to free memory allocated
          */
         clear_full(free_func?: DestroyNotify | null): void;
+        /**
+         * Copies a `queue`. Note that is a shallow copy. If the elements in the
+         * queue consist of pointers to data, the pointers are copied, but the
+         * actual data is not.
+         * @returns a copy of `queue`
+         */
+        copy(): Queue;
         /**
          * Calls `func` for each element in the queue passing `user_data` to the
          * function.
@@ -23654,6 +23829,35 @@ export namespace GLib {
 
         // Static methods
 
+        /**
+         * Copies a {@link GLib.SList}.
+         *
+         * Note that this is a "shallow" copy. If the list elements
+         * consist of pointers to data, the pointers are copied but
+         * the actual data isn't. See `g_slist_copy_deep()` if you need
+         * to copy the data as well.
+         * @param list a {@link GLib.SList}
+         */
+        static copy(list: any[]): any[];
+        /**
+         * Frees all of the memory used by a {@link GLib.SList}.
+         * The freed elements are returned to the slice allocator.
+         *
+         * If list elements contain dynamically-allocated memory,
+         * you should either use `g_slist_free_full()` or free them manually
+         * first.
+         *
+         * It can be combined with `g_steal_pointer()` to ensure the list head pointer
+         * is not left dangling:
+         *
+         * ```c
+         * GSList *list_of_borrowed_things = …;  /<!-- -->* (transfer container) *<!-- -->/
+         * g_slist_free (g_steal_pointer (&list_of_borrowed_things));
+         * ```
+         *
+         * @param list the first link of a {@link GLib.SList}
+         */
+        static free(list: any[]): void;
         static pop_allocator(): void;
         /**
          * @param allocator
@@ -27124,6 +27328,11 @@ export namespace GLib {
          */
         parse_relative(uri_ref: string, flags: UriFlags | null): Uri;
         /**
+         * Increments the reference count of `uri` by one.
+         * @returns `uri`
+         */
+        ref(): Uri;
+        /**
          * Returns a string representing `uri`.
          *
          * This is not guaranteed to return a string which is identical to the
@@ -27146,6 +27355,13 @@ export namespace GLib {
          * @returns a string representing     `uri`, which the caller must free.
          */
         to_string_partial(flags: UriHideFlags | null): string;
+        /**
+         * Atomically decrements the reference count of `uri` by one.
+         *
+         * When the reference count reaches zero, the resources allocated by
+         * `uri` are freed
+         */
+        unref(): void;
     }
 
     /**
@@ -27343,6 +27559,13 @@ export namespace GLib {
          * behaviour.
          */
         clear(): void;
+        /**
+         * Destroys a `mutex` that has been created with `g_mutex_new()`.
+         *
+         * Calling `g_mutex_free()` on a locked mutex may result
+         * in undefined behaviour.
+         */
+        free(): void;
         /**
          * Initializes a {@link GLib.Mutex} so that it can be used.
          *

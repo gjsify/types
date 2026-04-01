@@ -19399,8 +19399,8 @@ export namespace Clutter {
         interface ConstructorProps extends GObject.InitiallyUnowned.ConstructorProps {
             final: GObject.Value;
             initial: GObject.Value;
-            value_type: GObject.GType;
-            valueType: GObject.GType;
+            value_type: GObject.GTypeInput;
+            valueType: GObject.GTypeInput;
         }
     }
 

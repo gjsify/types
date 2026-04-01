@@ -685,8 +685,8 @@ export namespace Gpseq {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Spliterator.ConstructorProps {
-            g_type: GObject.GType;
-            gType: GObject.GType;
+            g_type: GObject.GTypeInput;
+            gType: GObject.GTypeInput;
             g_dup_func: GObject.BoxedCopyFunc;
             gDupFunc: GObject.BoxedCopyFunc;
             g_destroy_func: GLib.DestroyNotify;
@@ -1306,8 +1306,8 @@ export namespace Gpseq {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Task.ConstructorProps {
-            g_type: GObject.GType;
-            gType: GObject.GType;
+            g_type: GObject.GTypeInput;
+            gType: GObject.GTypeInput;
             g_dup_func: GObject.BoxedCopyFunc;
             gDupFunc: GObject.BoxedCopyFunc;
             g_destroy_func: GLib.DestroyNotify;
@@ -2016,8 +2016,8 @@ export namespace Gpseq {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Task.ConstructorProps {
-            g_type: GObject.GType;
-            gType: GObject.GType;
+            g_type: GObject.GTypeInput;
+            gType: GObject.GTypeInput;
             g_dup_func: GObject.BoxedCopyFunc;
             gDupFunc: GObject.BoxedCopyFunc;
             g_destroy_func: GLib.DestroyNotify;
@@ -2575,8 +2575,8 @@ export namespace Gpseq {
 
         interface ConstructorProps
             extends GObject.Object.ConstructorProps, Gee.Hashable.ConstructorProps, Result.ConstructorProps {
-            g_type: GObject.GType;
-            gType: GObject.GType;
+            g_type: GObject.GTypeInput;
+            gType: GObject.GTypeInput;
             g_dup_func: GObject.BoxedCopyFunc;
             gDupFunc: GObject.BoxedCopyFunc;
             g_destroy_func: GLib.DestroyNotify;
@@ -3300,8 +3300,8 @@ export namespace Gpseq {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Spliterator.ConstructorProps {
-            g_type: GObject.GType;
-            gType: GObject.GType;
+            g_type: GObject.GTypeInput;
+            gType: GObject.GTypeInput;
             g_dup_func: GObject.BoxedCopyFunc;
             gDupFunc: GObject.BoxedCopyFunc;
             g_destroy_func: GLib.DestroyNotify;
@@ -3914,8 +3914,8 @@ export namespace Gpseq {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Spliterator.ConstructorProps {
-            g_type: GObject.GType;
-            gType: GObject.GType;
+            g_type: GObject.GTypeInput;
+            gType: GObject.GTypeInput;
             g_dup_func: GObject.BoxedCopyFunc;
             gDupFunc: GObject.BoxedCopyFunc;
             g_destroy_func: GLib.DestroyNotify;
@@ -4534,8 +4534,8 @@ export namespace Gpseq {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Spliterator.ConstructorProps {
-            g_type: GObject.GType;
-            gType: GObject.GType;
+            g_type: GObject.GTypeInput;
+            gType: GObject.GTypeInput;
             g_dup_func: GObject.BoxedCopyFunc;
             gDupFunc: GObject.BoxedCopyFunc;
             g_destroy_func: GLib.DestroyNotify;
@@ -5147,14 +5147,14 @@ export namespace Gpseq {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            g_type: GObject.GType;
-            gType: GObject.GType;
+            g_type: GObject.GTypeInput;
+            gType: GObject.GTypeInput;
             g_dup_func: GObject.BoxedCopyFunc;
             gDupFunc: GObject.BoxedCopyFunc;
             g_destroy_func: GLib.DestroyNotify;
             gDestroyFunc: GLib.DestroyNotify;
-            value_type: GObject.GType;
-            valueType: GObject.GType;
+            value_type: GObject.GTypeInput;
+            valueType: GObject.GTypeInput;
             value: any;
             is_present: boolean;
             isPresent: boolean;
@@ -5361,14 +5361,14 @@ export namespace Gpseq {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            g_type: GObject.GType;
-            gType: GObject.GType;
+            g_type: GObject.GTypeInput;
+            gType: GObject.GTypeInput;
             g_dup_func: GObject.BoxedCopyFunc;
             gDupFunc: GObject.BoxedCopyFunc;
             g_destroy_func: GLib.DestroyNotify;
             gDestroyFunc: GLib.DestroyNotify;
-            element_type: GObject.GType;
-            elementType: GObject.GType;
+            element_type: GObject.GTypeInput;
+            elementType: GObject.GTypeInput;
             task_env: TaskEnv;
             taskEnv: TaskEnv;
             is_closed: boolean;
@@ -5818,14 +5818,14 @@ export namespace Gpseq {
         // Constructor properties interface
 
         interface ConstructorProps extends ForkJoinTask.ConstructorProps {
-            r_type: GObject.GType;
-            rType: GObject.GType;
+            r_type: GObject.GTypeInput;
+            rType: GObject.GTypeInput;
             r_dup_func: GObject.BoxedCopyFunc;
             rDupFunc: GObject.BoxedCopyFunc;
             r_destroy_func: GLib.DestroyNotify;
             rDestroyFunc: GLib.DestroyNotify;
-            g_type: GObject.GType;
-            gType: GObject.GType;
+            g_type: GObject.GTypeInput;
+            gType: GObject.GTypeInput;
             g_dup_func: GObject.BoxedCopyFunc;
             gDupFunc: GObject.BoxedCopyFunc;
             g_destroy_func: GLib.DestroyNotify;
@@ -6037,8 +6037,8 @@ export namespace Gpseq {
 
         interface ConstructorProps
             extends GObject.Object.ConstructorProps, Gee.Traversable.ConstructorProps, Gee.Iterable.ConstructorProps {
-            g_type: GObject.GType;
-            gType: GObject.GType;
+            g_type: GObject.GTypeInput;
+            gType: GObject.GTypeInput;
             g_dup_func: GObject.BoxedCopyFunc;
             gDupFunc: GObject.BoxedCopyFunc;
             g_destroy_func: GLib.DestroyNotify;
@@ -6800,8 +6800,8 @@ export namespace Gpseq {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Spliterator.ConstructorProps {
-            g_type: GObject.GType;
-            gType: GObject.GType;
+            g_type: GObject.GTypeInput;
+            gType: GObject.GTypeInput;
             g_dup_func: GObject.BoxedCopyFunc;
             gDupFunc: GObject.BoxedCopyFunc;
             g_destroy_func: GLib.DestroyNotify;
@@ -7414,8 +7414,8 @@ export namespace Gpseq {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps, Spliterator.ConstructorProps {
-            g_type: GObject.GType;
-            gType: GObject.GType;
+            g_type: GObject.GTypeInput;
+            gType: GObject.GTypeInput;
             g_dup_func: GObject.BoxedCopyFunc;
             gDupFunc: GObject.BoxedCopyFunc;
             g_destroy_func: GLib.DestroyNotify;
@@ -8973,15 +8973,15 @@ export namespace Gpseq {
         // Constructor properties interface
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
-            g_type: GObject.GType;
-            gType: GObject.GType;
+            g_type: GObject.GTypeInput;
+            gType: GObject.GTypeInput;
             g_dup_func: GObject.BoxedCopyFunc;
             gDupFunc: GObject.BoxedCopyFunc;
             g_destroy_func: GLib.DestroyNotify;
             gDestroyFunc: GLib.DestroyNotify;
             value: any;
-            value_type: GObject.GType;
-            valueType: GObject.GType;
+            value_type: GObject.GTypeInput;
+            valueType: GObject.GTypeInput;
         }
     }
 

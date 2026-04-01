@@ -1068,8 +1068,8 @@ export namespace Peas {
             construct_properties: any;
             constructProperties: any;
             engine: Engine;
-            extension_type: GObject.GType;
-            extensionType: GObject.GType;
+            extension_type: GObject.GTypeInput;
+            extensionType: GObject.GTypeInput;
         }
     }
 

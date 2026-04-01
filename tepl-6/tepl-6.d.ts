@@ -20352,6 +20352,10 @@ export namespace Tepl {
          */
         add(property_name: string): void;
         /**
+         * Frees a {@link Tepl.SettingsBindingGroup} instance.
+         */
+        free(): void;
+        /**
          * Calls `g_settings_unbind()` on `object` for all properties that have been added
          * to `group`.
          *

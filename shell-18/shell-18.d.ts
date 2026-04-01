@@ -1,0 +1,8353 @@
+/**
+ * Type Definitions for Gjs (https://gjs.guide/)
+ *
+ * These type definitions are automatically generated, do not edit them by hand.
+ * If you found a bug fix it in `ts-for-gir` or create a bug report on https://github.com/gjsify/ts-for-gir
+ *
+ * The based EJS template file is used for the generated .d.ts file of each GIR module like Gtk-4.0, GObject-2.0, ...
+ */
+
+import '@girs/gjs';
+
+// Module dependencies
+import type St from '@girs/st-18';
+import type Meta from '@girs/meta-18';
+import type xlib from '@girs/xlib-2.0';
+import type xfixes from '@girs/xfixes-4.0';
+import type Mtk from '@girs/mtk-18';
+import type Graphene from '@girs/graphene-1.0';
+import type GObject from '@girs/gobject-2.0';
+import type GLib from '@girs/glib-2.0';
+import type Gio from '@girs/gio-2.0';
+import type GModule from '@girs/gmodule-2.0';
+import type GDesktopEnums from '@girs/gdesktopenums-3.0';
+import type Cogl from '@girs/cogl-18';
+import type GL from '@girs/gl-1.0';
+import type Clutter from '@girs/clutter-18';
+import type Pango from '@girs/pango-1.0';
+import type cairo from 'cairo';
+import type HarfBuzz from '@girs/harfbuzz-0.0';
+import type freetype2 from '@girs/freetype2-2.0';
+import type Atk from '@girs/atk-1.0';
+import type GdkPixbuf from '@girs/gdkpixbuf-2.0';
+import type PolkitAgent from '@girs/polkitagent-1.0';
+import type Polkit from '@girs/polkit-1.0';
+import type NM from '@girs/nm-1.0';
+import type Gvc from '@girs/gvc-1.0';
+import type GioUnix from '@girs/giounix-2.0';
+import type Gcr from '@girs/gcr-4';
+import type Gck from '@girs/gck-2';
+
+export namespace Shell {
+    /**
+     * Shell-18
+     */
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace AppLaunchGpu {
+        export const $gtype: GObject.GType<AppLaunchGpu>;
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    enum AppLaunchGpu {
+        APP_PREF,
+        DISCRETE,
+        DEFAULT,
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace AppState {
+        export const $gtype: GObject.GType<AppState>;
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    enum AppState {
+        STOPPED,
+        STARTING,
+        RUNNING,
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace BlurMode {
+        export const $gtype: GObject.GType<BlurMode>;
+    }
+
+    /**
+     * The mode of blurring of the effect.
+     * @gir-type Enum
+     */
+    enum BlurMode {
+        /**
+         * blur the actor contents, and its children
+         */
+        ACTOR,
+        /**
+         * blur what's beneath the actor
+         */
+        BACKGROUND,
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    export namespace NetworkAgentResponse {
+        export const $gtype: GObject.GType<NetworkAgentResponse>;
+    }
+
+    /**
+     * @gir-type Enum
+     */
+    enum NetworkAgentResponse {
+        CONFIRMED,
+        USER_CANCELED,
+        INTERNAL_ERROR,
+    }
+
+    const KEYRING_SK_TAG: string;
+    const KEYRING_SN_TAG: string;
+    const KEYRING_UUID_TAG: string;
+    /**
+     * Synchronously load the contents of a file as a NUL terminated
+     * string, validating it as UTF-8.  Embedded NUL characters count as
+     * invalid content.
+     * @param path UTF-8 encoded filename path
+     * @returns File contents
+     */
+    function get_file_contents_utf8_sync(path: string): string;
+    /**
+     * Creates a {@link GLib.Source} which is dispatched every time the system realtime clock
+     * changes relative to the monotonic clock.
+     *
+     * This typically happens after NTP synchronisation.
+     *
+     * On error, a {@link GLib.FileError} will be returned. This happens if a timerfd cannot be
+     * created.
+     *
+     * Any callback attached to the returned {@link GLib.Source} must have type
+     * {@link GLib.SourceFunc}.
+     * @returns the newly created {@link GLib.Source}, or `null` on error
+     */
+    function time_change_source_new(): GLib.Source;
+    /**
+     * Walk over all open file descriptors. Check them for the FD_CLOEXEC flag.
+     * If this flag is not set, log the offending file descriptor number.
+     *
+     * It is important that gnome-shell's file descriptors are all marked CLOEXEC,
+     * so that the shell's open file descriptors are not passed to child processes
+     * that we launch.
+     */
+    function util_check_cloexec_fds(): void;
+    /**
+     * Workaround for non-introspectability of `gdk_pixbuf_from_data()`.
+     * @param data
+     * @param colorspace
+     * @param has_alpha
+     * @param bits_per_sample
+     * @param width
+     * @param height
+     * @param rowstride
+     */
+    function util_create_pixbuf_from_data(
+        data: Uint8Array | string,
+        colorspace: GdkPixbuf.Colorspace | null,
+        has_alpha: boolean,
+        bits_per_sample: number,
+        width: number,
+        height: number,
+        rowstride: number,
+    ): GdkPixbuf.Pixbuf;
+    /**
+     * Attempts to translate the folder `name` using translations provided
+     * by .directory files.
+     * @param name the untranslated folder name
+     * @returns a translated string or `null`
+     */
+    function util_get_translated_folder_name(name: string): string | null;
+    /**
+     * A wrapper around `getuid()` so that it can be used from JavaScript. This
+     * function will always succeed.
+     * @returns the real user ID of the calling process
+     */
+    function util_get_uid(): number;
+    /**
+     * Gets the first week day for the current locale, expressed as a
+     * number in the range 0..6, representing week days from Sunday to
+     * Saturday.
+     * @returns A number representing the first week day for the current          locale
+     */
+    function util_get_week_start(): number;
+    /**
+     * If the corresponding X11 display provides the passed extension, return `true`,
+     * otherwise `false`. If there is no X11 display, `false` is passed.
+     * @param display A {@link Meta.Display}
+     * @param extension An X11 extension
+     */
+    function util_has_x11_display_extension(display: Meta.Display, extension: string): boolean;
+    /**
+     * A wrapper around `g_regex_escape_string()` that takes its argument as
+     * \0-terminated string rather than a byte-array that confuses gjs.
+     * @param str a UTF-8 string to escape
+     * @returns `str` with all regex-special characters escaped
+     */
+    function util_regex_escape(str: string): string;
+    function util_sd_notify(): void;
+    /**
+     * If `hidden` is `true`, hide `actor` from pick even with a mode of
+     * {@link Clutter.PickMode.ALL}; if `hidden` is `false`, unhide `actor`.
+     * @param actor A {@link Clutter.Actor}
+     * @param hidden Whether `actor` should be hidden from pick
+     */
+    function util_set_hidden_from_pick(actor: Clutter.Actor, hidden: boolean): void;
+    /**
+     * A wrapper around `g_spawn_async()` with async-signal-safe implementation of
+     * {@link GLib.SpawnChildSetupFunc} to launch a child program asynchronously resetting the
+     * rlimit nofile on child setup.
+     * @param working_directory child's current working     directory, or `null` to inherit parent's
+     * @param argv child's argument vector
+     * @param envp child's environment, or `null` to inherit parent's
+     * @param flags flags from {@link GLib.SpawnFlags}
+     * @returns the PID of the child on success, 0 if error is set
+     */
+    function util_spawn_async(
+        working_directory: string | null,
+        argv: string[],
+        envp: string[] | null,
+        flags: GLib.SpawnFlags | null,
+    ): GLib.Pid;
+    /**
+     * A wrapper around `g_spawn_async_with_fds()` with async-signal-safe
+     * implementation of {@link GLib.SpawnChildSetupFunc} to launch a child program
+     * asynchronously resetting the rlimit nofile on child setup.
+     * @param working_directory child's current working     directory, or `null` to inherit parent's
+     * @param argv child's argument vector
+     * @param envp child's environment, or `null` to inherit parent's
+     * @param flags flags from {@link GLib.SpawnFlags}
+     * @param stdin_fd file descriptor to use for child's stdin, or `-1`
+     * @param stdout_fd file descriptor to use for child's stdout, or `-1`
+     * @param stderr_fd file descriptor to use for child's stderr, or `-1`
+     * @returns the PID of the child on success, 0 if error is set
+     */
+    function util_spawn_async_with_fds(
+        working_directory: string | null,
+        argv: string[],
+        envp: string[] | null,
+        flags: GLib.SpawnFlags | null,
+        stdin_fd: number,
+        stdout_fd: number,
+        stderr_fd: number,
+    ): GLib.Pid;
+    /**
+     * A wrapper around `g_spawn_async_with_pipes()` with async-signal-safe
+     * implementation of {@link GLib.SpawnChildSetupFunc} to launch a child program
+     * asynchronously resetting the rlimit nofile on child setup.
+     * @param working_directory child's current working     directory, or `null` to inherit parent's
+     * @param argv child's argument vector
+     * @param envp child's environment, or `null` to inherit parent's
+     * @param flags flags from {@link GLib.SpawnFlags}
+     * @returns the PID of the child on success, 0 if error is set
+     */
+    function util_spawn_async_with_pipes(
+        working_directory: string | null,
+        argv: string[],
+        envp: string[] | null,
+        flags: GLib.SpawnFlags | null,
+    ): [GLib.Pid, number, number, number];
+    /**
+     * A wrapper around `g_spawn_async_with_pipes_and_fds()` with async-signal-safe
+     * implementation of {@link GLib.SpawnChildSetupFunc} to launch a child program
+     * asynchronously resetting the rlimit nofile on child setup.
+     * @param working_directory child's current working     directory, or `null` to inherit parent's, in the GLib file name encoding
+     * @param argv child's argument     vector, in the GLib file name encoding; it must be non-empty and `null`-terminated
+     * @param envp child's environment, or `null` to inherit parent's, in the GLib file     name encoding
+     * @param flags flags from {@link GLib.SpawnFlags}
+     * @param stdin_fd file descriptor to use for child's stdin, or `-1`
+     * @param stdout_fd file descriptor to use for child's stdout, or `-1`
+     * @param stderr_fd file descriptor to use for child's stderr, or `-1`
+     * @param source_fds array of FDs from the parent    process to make available in the child process
+     * @param target_fds array of FDs to remap    `source_fds` to in the child process
+     * @returns the PID of the child on success, 0 if error is set
+     */
+    function util_spawn_async_with_pipes_and_fds(
+        working_directory: string | null,
+        argv: string[],
+        envp: string[] | null,
+        flags: GLib.SpawnFlags | null,
+        stdin_fd: number,
+        stdout_fd: number,
+        stderr_fd: number,
+        source_fds: number[] | null,
+        target_fds: number[] | null,
+    ): [GLib.Pid, number, number, number];
+    /**
+     * @param unit
+     * @param mode
+     * @param cancellable
+     */
+    function util_start_systemd_unit(
+        unit: string,
+        mode: string,
+        cancellable?: Gio.Cancellable | null,
+    ): globalThis.Promise<boolean>;
+    /**
+     * @param unit
+     * @param mode
+     * @param cancellable
+     * @param callback
+     */
+    function util_start_systemd_unit(
+        unit: string,
+        mode: string,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<string> | null,
+    ): void;
+    /**
+     * @param unit
+     * @param mode
+     * @param cancellable
+     * @param callback
+     */
+    function util_start_systemd_unit(
+        unit: string,
+        mode: string,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<string> | null,
+    ): globalThis.Promise<boolean> | void;
+    /**
+     * @param res
+     */
+    function util_start_systemd_unit_finish(res: Gio.AsyncResult): boolean;
+    /**
+     * @param unit
+     * @param mode
+     * @param cancellable
+     */
+    function util_stop_systemd_unit(
+        unit: string,
+        mode: string,
+        cancellable?: Gio.Cancellable | null,
+    ): globalThis.Promise<boolean>;
+    /**
+     * @param unit
+     * @param mode
+     * @param cancellable
+     * @param callback
+     */
+    function util_stop_systemd_unit(
+        unit: string,
+        mode: string,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<string> | null,
+    ): void;
+    /**
+     * @param unit
+     * @param mode
+     * @param cancellable
+     * @param callback
+     */
+    function util_stop_systemd_unit(
+        unit: string,
+        mode: string,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<string> | null,
+    ): globalThis.Promise<boolean> | void;
+    /**
+     * @param res
+     */
+    function util_stop_systemd_unit_finish(res: Gio.AsyncResult): boolean;
+    /**
+     * @param unit
+     * @param cancellable
+     */
+    function util_systemd_unit_exists(unit: string, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+    /**
+     * @param unit
+     * @param cancellable
+     * @param callback
+     */
+    function util_systemd_unit_exists(
+        unit: string,
+        cancellable: Gio.Cancellable | null,
+        callback: Gio.AsyncReadyCallback<string> | null,
+    ): void;
+    /**
+     * @param unit
+     * @param cancellable
+     * @param callback
+     */
+    function util_systemd_unit_exists(
+        unit: string,
+        cancellable?: Gio.Cancellable | null,
+        callback?: Gio.AsyncReadyCallback<string> | null,
+    ): globalThis.Promise<boolean> | void;
+    /**
+     * @param res
+     */
+    function util_systemd_unit_exists_finish(res: Gio.AsyncResult): boolean;
+    /**
+     * @param file
+     */
+    function util_touch_file_async(file: Gio.File): globalThis.Promise<boolean>;
+    /**
+     * @param file
+     * @param callback
+     */
+    function util_touch_file_async(file: Gio.File, callback: Gio.AsyncReadyCallback<Gio.File> | null): void;
+    /**
+     * @param file
+     * @param callback
+     */
+    function util_touch_file_async(
+        file: Gio.File,
+        callback?: Gio.AsyncReadyCallback<Gio.File> | null,
+    ): globalThis.Promise<boolean> | void;
+    /**
+     * @param file
+     * @param res
+     */
+    function util_touch_file_finish(file: Gio.File, res: Gio.AsyncResult): boolean;
+    /**
+     * Translate `str` according to the locale defined by LC_TIME; unlike
+     * `dcgettext()`, the translations is still taken from the LC_MESSAGES
+     * catalogue and not the LC_TIME one.
+     * @param str String to translate
+     * @returns the translated string
+     */
+    function util_translate_time_string(str: string): string;
+    /**
+     * Implements libc standard WIFEXITED, that cannot be used JS
+     * code.
+     * @param status the status returned by `wait()` or `waitpid()`
+     * @returns TRUE if the process exited normally, FALSE otherwise
+     */
+    function util_wifexited(status: number): [boolean, number];
+    /**
+     * Write a string to a GOutputStream as UTF-8. This is a workaround
+     * for not having binary buffers in GJS.
+     * @param stream a {@link Gio.OutputStream}
+     * @param str a UTF-8 string to write to `stream`
+     * @returns `true` if write succeeded
+     */
+    function write_string_to_stream(stream: Gio.OutputStream, str: string): boolean;
+    /**
+     * @gir-type Callback
+     */
+    interface LeisureFunction {
+        (data?: any | null): void;
+    }
+    /**
+     * @gir-type Callback
+     */
+    interface PerfReplayFunction {
+        (time: number, name: string, signature: string, arg: GObject.Value | any): void;
+    }
+    /**
+     * @gir-type Callback
+     */
+    interface PerfStatisticsCallback {
+        (perf_log: PerfLog, data?: any | null): void;
+    }
+    /**
+     * @gir-type Flags
+     */
+    export namespace ActionMode {
+        export const $gtype: GObject.GType<ActionMode>;
+    }
+
+    /**
+     * Controls in which GNOME Shell states an action (like keybindings and gestures)
+     * should be handled.
+     * @gir-type Flags
+     */
+    enum ActionMode {
+        /**
+         * block action
+         */
+        NONE,
+        /**
+         * allow action when in window mode,
+         *     e.g. when the focus is in an application window
+         */
+        NORMAL,
+        /**
+         * allow action while the overview
+         *     is active
+         */
+        OVERVIEW,
+        /**
+         * allow action when the screen
+         *     is locked, e.g. when the screen shield is shown
+         */
+        LOCK_SCREEN,
+        /**
+         * allow action in the unlock
+         *     dialog
+         */
+        UNLOCK_SCREEN,
+        /**
+         * allow action in the login screen
+         */
+        LOGIN_SCREEN,
+        /**
+         * allow action when a system modal
+         *     dialog (e.g. authentication or session dialogs) is open
+         */
+        SYSTEM_MODAL,
+        /**
+         * allow action in looking glass
+         */
+        LOOKING_GLASS,
+        /**
+         * allow action while a shell menu is open
+         */
+        POPUP,
+        /**
+         * always allow action
+         */
+        ALL,
+    }
+
+    namespace App {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
+            'windows-changed': () => void;
+            'notify::action-group': (pspec: GObject.ParamSpec) => void;
+            'notify::app-info': (pspec: GObject.ParamSpec) => void;
+            'notify::busy': (pspec: GObject.ParamSpec) => void;
+            'notify::icon': (pspec: GObject.ParamSpec) => void;
+            'notify::id': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            action_group: Gio.ActionGroup;
+            actionGroup: Gio.ActionGroup;
+            app_info: GioUnix.DesktopAppInfo;
+            appInfo: GioUnix.DesktopAppInfo;
+            busy: boolean;
+            icon: Gio.Icon;
+            id: string;
+            state: AppState;
+        }
+    }
+
+    /**
+     * Object representing an application
+     *
+     * This object wraps a {@link GioUnix.DesktopAppInfo}, providing methods and signals
+     * primarily useful for running applications.
+     * @gir-type Class
+     */
+    class App extends GObject.Object {
+        static $gtype: GObject.GType<App>;
+
+        // Properties
+
+        /**
+         * The {@link Gio.DBusActionGroup} associated with this ShellApp, if any. See the
+         * documentation of {@link Gio.Application} and {@link Gio.ActionGroup} for details.
+         * @read-only
+         */
+        get action_group(): Gio.ActionGroup;
+        /**
+         * The {@link Gio.DBusActionGroup} associated with this ShellApp, if any. See the
+         * documentation of {@link Gio.Application} and {@link Gio.ActionGroup} for details.
+         * @read-only
+         */
+        get actionGroup(): Gio.ActionGroup;
+        /**
+         * The {@link GioUnix.DesktopAppInfo} associated with this ShellApp, if any.
+         * @construct-only
+         */
+        get app_info(): GioUnix.DesktopAppInfo;
+        /**
+         * The {@link GioUnix.DesktopAppInfo} associated with this ShellApp, if any.
+         * @construct-only
+         */
+        get appInfo(): GioUnix.DesktopAppInfo;
+        /**
+         * Whether the application has marked itself as busy.
+         * @read-only
+         */
+        get busy(): boolean;
+        /**
+         * The {@link Gio.Icon} representing this ShellApp
+         * @read-only
+         */
+        get icon(): Gio.Icon;
+        /**
+         * The id of this application (a desktop filename, or a special string
+         * like window:0xabcd1234)
+         * @read-only
+         */
+        get id(): string;
+        /**
+         * The high-level state of the application, effectively whether it's
+         * running or not, or transitioning between those states.
+         * @read-only
+         */
+        get state(): AppState;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: App.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<App.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof App.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, App.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof App.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, App.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof App.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<App.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+
+        /**
+         * Like `shell_app_activate_full()`, but using the default workspace and
+         * event timestamp.
+         */
+        activate(): void;
+        /**
+         * This activates an action using 'org.freedesktop.Application' DBus interface.
+         *
+         * This function will fail if this {@link Shell.App} doesn't have a valid {@link GioUnix.DesktopAppInfo}
+         * with a valid id.
+         * @param action_name the name of an action to activate
+         * @param parameter the parameter to the activation
+         * @param timestamp Event timestamp, or 0 for current event timestamp
+         * @param workspace Start on this workspace, or -1 for default
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         */
+        activate_action(
+            action_name: string,
+            parameter: GLib.Variant | null,
+            timestamp: number,
+            workspace: number,
+            cancellable?: Gio.Cancellable | null,
+        ): globalThis.Promise<boolean>;
+        /**
+         * This activates an action using 'org.freedesktop.Application' DBus interface.
+         *
+         * This function will fail if this {@link Shell.App} doesn't have a valid {@link GioUnix.DesktopAppInfo}
+         * with a valid id.
+         * @param action_name the name of an action to activate
+         * @param parameter the parameter to the activation
+         * @param timestamp Event timestamp, or 0 for current event timestamp
+         * @param workspace Start on this workspace, or -1 for default
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        activate_action(
+            action_name: string,
+            parameter: GLib.Variant | null,
+            timestamp: number,
+            workspace: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * This activates an action using 'org.freedesktop.Application' DBus interface.
+         *
+         * This function will fail if this {@link Shell.App} doesn't have a valid {@link GioUnix.DesktopAppInfo}
+         * with a valid id.
+         * @param action_name the name of an action to activate
+         * @param parameter the parameter to the activation
+         * @param timestamp Event timestamp, or 0 for current event timestamp
+         * @param workspace Start on this workspace, or -1 for default
+         * @param cancellable a {@link Gio.Cancellable} or `null`
+         * @param callback A {@link Gio.AsyncReadyCallback} to call when the request is satisfied.
+         */
+        activate_action(
+            action_name: string,
+            parameter: GLib.Variant | null,
+            timestamp: number,
+            workspace: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<boolean> | void;
+        /**
+         * Finish the asynchronous operation started by `shell_app_activate_action()`
+         * and obtain its result.
+         * @param result
+         * @returns whether the operation was successful
+         */
+        activate_action_finish(result: Gio.AsyncResult): boolean;
+        /**
+         * Perform an appropriate default action for operating on this application,
+         * dependent on its current state.  For example, if the application is not
+         * currently running, launch it.  If it is running, activate the most
+         * recently used NORMAL window (or if that window has a transient, the most
+         * recently used transient for that window).
+         * @param workspace launch on this workspace, or -1 for default. Ignored if   activating an existing window
+         * @param timestamp Event timestamp
+         */
+        activate_full(workspace: number, timestamp: number): void;
+        /**
+         * Bring all windows for the given app to the foreground,
+         * but ensure that `window` is on top.  If `window` is `null`,
+         * the window with the most recent user time for the app
+         * will be used.
+         *
+         * This function has no effect if `app` is not currently running.
+         * @param window Window to be focused
+         * @param timestamp Event timestamp
+         */
+        activate_window(window: Meta.Window | null, timestamp: number): void;
+        /**
+         * Returns `true` if the app supports opening a new window through
+         * `shell_app_open_new_window()` (ie, if calling that function will
+         * result in actually opening a new window and not something else,
+         * like presenting the most recently active one)
+         */
+        can_open_new_window(): boolean;
+        /**
+         * Compare one {@link Shell.App} instance to another, in the following way:
+         *   - Running applications sort before not-running applications.
+         *   - If one of them has non-minimized windows and the other does not,
+         *     the one with visible windows is first.
+         *   - Finally, the application which the user interacted with most recently
+         *     compares earlier.
+         * @param other A {@link Shell.App}
+         */
+        compare(other: App): number;
+        /**
+         * Order two applications by name.
+         * @param other The other app
+         * @returns -1, 0, or 1; suitable for use as a comparison function for e.g. `g_slist_sort()`
+         */
+        compare_by_name(other: App): number;
+        /**
+         * Look up the icon for this application, and create a {@link Clutter.Actor}
+         * for it at the given size.
+         * @param size
+         * @returns A floating {@link Clutter.Actor}
+         */
+        create_icon_texture(size: number): Clutter.Actor;
+        get_action_group(): Gio.ActionGroup | null;
+        /**
+         * @returns The {@link GioUnix.DesktopAppInfo} for this app, or `null` if backed by a window
+         */
+        get_app_info(): GioUnix.DesktopAppInfo;
+        get_busy(): boolean;
+        get_description(): string;
+        /**
+         * Look up the icon for this application
+         * @returns A {@link Gio.Icon}
+         */
+        get_icon(): Gio.Icon;
+        get_id(): string;
+        get_n_windows(): number;
+        get_name(): string;
+        /**
+         * @returns An unordered list of process identifiers associated with this application.
+         */
+        get_pids(): number[];
+        /**
+         * @returns State of the application
+         */
+        get_state(): AppState;
+        /**
+         * Get the windows which are associated with this application. The
+         * returned list will be sorted first by whether they're on the
+         * active workspace, then by whether they're visible, and finally
+         * by the time the user last interacted with them.
+         * @returns List of windows
+         */
+        get_windows(): Meta.Window[];
+        /**
+         * @param workspace
+         */
+        is_on_workspace(workspace: Meta.Workspace): boolean;
+        /**
+         * A window backed application is one which represents just an open
+         * window, i.e. there's no .desktop file association, so we don't know
+         * how to launch it again.
+         */
+        is_window_backed(): boolean;
+        /**
+         * @param timestamp Event timestamp, or 0 for current event timestamp
+         * @param workspace Start on this workspace, or -1 for default
+         * @param gpu_pref the GPU to prefer launching on
+         */
+        launch(timestamp: number, workspace: number, gpu_pref: AppLaunchGpu | null): boolean;
+        /**
+         * @param action_name the name of the action to launch (as obtained by               `g_desktop_app_info_list_actions()`)
+         * @param timestamp Event timestamp, or 0 for current event timestamp
+         * @param workspace Start on this workspace, or -1 for default
+         */
+        launch_action(action_name: string, timestamp: number, workspace: number): void;
+        /**
+         * Request that the application create a new window.
+         * @param workspace open on this workspace, or -1 for default
+         */
+        open_new_window(workspace: number): void;
+        /**
+         * Initiate an asynchronous request to quit this application.
+         * The application may interact with the user, and the user
+         * might cancel the quit request from the application UI.
+         *
+         * This operation may not be supported for all applications.
+         * @returns `true` if a quit request is supported for this application
+         */
+        request_quit(): boolean;
+        /**
+         * @param window
+         */
+        update_app_actions(window: Meta.Window): void;
+        /**
+         * @param window
+         */
+        update_window_actions(window: Meta.Window): void;
+    }
+
+    namespace AppSystem {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
+            'app-state-changed': (arg0: App) => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            'installed-changed': () => void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class AppSystem extends GObject.Object {
+        static $gtype: GObject.GType<AppSystem>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: AppSystem.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<AppSystem.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof AppSystem.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, AppSystem.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof AppSystem.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, AppSystem.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof AppSystem.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<AppSystem.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Static methods
+
+        static get_default(): AppSystem;
+        /**
+         * Wrapper around `g_desktop_app_info_search()` that replaces results that
+         * don't validate as UTF-8 with the empty string.
+         * @param search_string the search string to use
+         */
+        static search(search_string: string): string[][];
+
+        // Methods
+
+        /**
+         * Returns all installed apps, as a list of {@link Gio.AppInfo}
+         * @returns a list of {@link Gio.AppInfo}   describing all known applications. This memory is owned by the   {@link Shell.AppSystem} and should not be freed.
+         */
+        get_installed(): Gio.AppInfo[];
+        /**
+         * Returns the set of applications which currently have at least one
+         * open window.  The returned list will be sorted by `shell_app_compare()`.
+         * @returns Active applications
+         */
+        get_running(): App[];
+        /**
+         * Find a {@link Shell.App} corresponding to an id.
+         * @param id
+         * @returns The {@link Shell.App} for id, or `null` if none
+         */
+        lookup_app(id: string): App;
+        /**
+         * Find a valid application whose .desktop file, without the extension
+         * and properly canonicalized, matches `wmclass`.
+         * @param wmclass A WM_CLASS value
+         * @returns A {@link Shell.App} for `wmclass`
+         */
+        lookup_desktop_wmclass(wmclass?: string | null): App;
+        /**
+         * Find a valid application corresponding to a given
+         * heuristically determined application identifier
+         * string, or `null` if none.
+         * @param id Probable application identifier
+         * @returns A {@link Shell.App} for `name`
+         */
+        lookup_heuristic_basename(id: string): App;
+        /**
+         * Find a valid application whose .desktop file contains a
+         * StartupWMClass entry matching `wmclass`.
+         * @param wmclass A WM_CLASS value
+         * @returns A {@link Shell.App} for `wmclass`
+         */
+        lookup_startup_wmclass(wmclass?: string | null): App;
+    }
+
+    namespace AppUsage {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    /**
+     * Track application usage/state data
+     *
+     * This class maintains some usage and state statistics for
+     * applications by keeping track of the approximate time an application's
+     * windows are focused, as well as the last workspace it was seen on.
+     * This time tracking is implemented by watching for focus notifications,
+     * and computing a time delta between them.  Also we watch the
+     * GNOME Session "StatusChanged" signal which by default is emitted after 5
+     * minutes to signify idle.
+     * @gir-type Class
+     */
+    class AppUsage extends GObject.Object {
+        static $gtype: GObject.GType<AppUsage>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: AppUsage.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<AppUsage.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof AppUsage.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, AppUsage.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof AppUsage.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, AppUsage.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof AppUsage.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<AppUsage.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Static methods
+
+        static get_default(): AppUsage;
+
+        // Methods
+
+        /**
+         * Compare `id_a` and `id_b` based on frequency of use.
+         * @param id_a ID of first app
+         * @param id_b ID of second app
+         * @returns -1 if `id_a` ranks higher than `id_b`, 1 if `id_b` ranks higher          than `id_a`, and 0 if both rank equally.
+         */
+        compare(id_a: string, id_b: string): number;
+        /**
+         * @returns List of applications
+         */
+        get_most_used(): App[];
+    }
+
+    namespace BlurEffect {
+        // Signal signatures
+        interface SignalSignatures extends Clutter.Effect.SignalSignatures {
+            'notify::brightness': (pspec: GObject.ParamSpec) => void;
+            'notify::mode': (pspec: GObject.ParamSpec) => void;
+            'notify::radius': (pspec: GObject.ParamSpec) => void;
+            'notify::actor': (pspec: GObject.ParamSpec) => void;
+            'notify::enabled': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends Clutter.Effect.ConstructorProps {
+            brightness: number;
+            mode: BlurMode;
+            radius: number;
+        }
+    }
+
+    /**
+     * Blur effect for actors
+     *
+     * {@link Shell.BlurEffect} is a blur implementation based on Clutter. It also has
+     * an optional brightness property.
+     *
+     * # Modes
+     *
+     * {@link Shell.BlurEffect} can work in `SHELL_BLUR_MODE_BACKGROUND` and `SHELL_BLUR_MODE_ACTOR`
+     * modes. The actor mode blurs the actor itself, and all of its children. The
+     * background mode blurs the pixels beneath the actor, but not the actor itself.
+     *
+     * `SHELL_BLUR_MODE_BACKGROUND` can be computationally expensive, since the contents
+     * beneath the actor cannot be cached, so beware of the performance implications
+     * of using this blur mode.
+     * @gir-type Class
+     */
+    class BlurEffect extends Clutter.Effect {
+        static $gtype: GObject.GType<BlurEffect>;
+
+        // Properties
+
+        get brightness(): number;
+        set brightness(val: number);
+        get mode(): BlurMode;
+        set mode(val: BlurMode);
+        get radius(): number;
+        set radius(val: number);
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: BlurEffect.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<BlurEffect.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](): BlurEffect;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof BlurEffect.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, BlurEffect.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof BlurEffect.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, BlurEffect.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof BlurEffect.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<BlurEffect.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+
+        get_brightness(): number;
+        get_mode(): BlurMode;
+        get_radius(): number;
+        /**
+         * @param brightness
+         */
+        set_brightness(brightness: number): void;
+        /**
+         * @param mode
+         */
+        set_mode(mode: BlurMode | null): void;
+        /**
+         * @param radius
+         */
+        set_radius(radius: number): void;
+    }
+
+    namespace CameraMonitor {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            'notify::cameras-in-use': (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            cameras_in_use: boolean;
+            camerasInUse: boolean;
+        }
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class CameraMonitor extends GObject.Object {
+        static $gtype: GObject.GType<CameraMonitor>;
+
+        // Properties
+
+        /**
+         * @read-only
+         */
+        get cameras_in_use(): boolean;
+        /**
+         * @read-only
+         */
+        get camerasInUse(): boolean;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: CameraMonitor.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<CameraMonitor.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof CameraMonitor.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, CameraMonitor.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof CameraMonitor.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, CameraMonitor.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof CameraMonitor.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<CameraMonitor.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+
+        get_cameras_in_use(): boolean;
+    }
+
+    namespace EdgeDragGesture {
+        // Signal signatures
+        interface SignalSignatures extends Clutter.Gesture.SignalSignatures {
+            /**
+             * The ::progress signal is emitted when the edge drag has moved
+             * @signal
+             * @run-last
+             */
+            progress: (arg0: number) => void;
+            'notify::side': (pspec: GObject.ParamSpec) => void;
+            'notify::state': (pspec: GObject.ParamSpec) => void;
+            'notify::actor': (pspec: GObject.ParamSpec) => void;
+            'notify::enabled': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends Clutter.Gesture.ConstructorProps {
+            side: Clutter.GestureState;
+        }
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class EdgeDragGesture extends Clutter.Gesture {
+        static $gtype: GObject.GType<EdgeDragGesture>;
+
+        // Properties
+
+        /**
+         * Edge that the gesture may start at. Defaults to the top edge.
+         */
+        get side(): Clutter.GestureState;
+        set side(val: Clutter.GestureState);
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: EdgeDragGesture.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<EdgeDragGesture.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof EdgeDragGesture.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, EdgeDragGesture.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof EdgeDragGesture.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, EdgeDragGesture.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof EdgeDragGesture.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<EdgeDragGesture.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+
+        /**
+         * Gets the edge of the monitor that the edge drag may start at.
+         * @returns the side that the edge drag may start at
+         */
+        get_side(): St.Side;
+        /**
+         * Sets the edge of the monitor that the edge drag may start at.
+         * @param side the side
+         */
+        set_side(side: St.Side | null): void;
+    }
+
+    namespace GLSLEffect {
+        // Signal signatures
+        interface SignalSignatures extends Clutter.OffscreenEffect.SignalSignatures {
+            'notify::actor': (pspec: GObject.ParamSpec) => void;
+            'notify::enabled': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends Clutter.OffscreenEffect.ConstructorProps {}
+    }
+
+    /**
+     * An offscreen effect using GLSL
+     *
+     * A {@link Shell.GLSLEffect} is a {@link Clutter.OffscreenEffect} that allows
+     * running custom GLSL to the vertex and fragment stages of the
+     * graphic pipeline.
+     * @gir-type Class
+     */
+    class GLSLEffect extends Clutter.OffscreenEffect {
+        static $gtype: GObject.GType<GLSLEffect>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: GLSLEffect.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<GLSLEffect.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof GLSLEffect.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, GLSLEffect.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof GLSLEffect.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, GLSLEffect.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof GLSLEffect.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<GLSLEffect.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Virtual methods
+
+        /**
+         * @virtual
+         */
+        vfunc_build_pipeline(): void;
+
+        // Methods
+
+        /**
+         * Adds a GLSL snippet to the pipeline used for drawing the effect texture.
+         * See {@link Cogl.Snippet} for details.
+         *
+         * This is only valid inside the a call to the `build_pipeline()` virtual
+         * function.
+         * @param hook where to insert the code
+         * @param declarations GLSL declarations
+         * @param code GLSL code
+         * @param is_replace whether Cogl code should be replaced by the custom shader
+         */
+        add_glsl_snippet(
+            hook: (never | Cogl.SnippetHook) | null,
+            declarations: string,
+            code: string,
+            is_replace: boolean,
+        ): void;
+        /**
+         * @param name the uniform name
+         * @returns the location of the uniform named `name`, that can be          passed to `shell_glsl_effect_set_uniform_float()`.
+         */
+        get_uniform_location(name: string): number;
+        /**
+         * @param uniform the uniform location (as returned by `shell_glsl_effect_get_uniform_location()`)
+         * @param n_components the number of components in the uniform (eg. 3 for a vec3)
+         * @param value the array of floats to set `uniform`
+         */
+        set_uniform_float(uniform: number, n_components: number, value: number[]): void;
+        /**
+         * @param uniform the uniform location (as returned by `shell_glsl_effect_get_uniform_location()`)
+         * @param transpose Whether to transpose the matrix
+         * @param dimensions the number of components in the uniform (eg. 3 for a vec3)
+         * @param value the array of floats to set `uniform`
+         */
+        set_uniform_matrix(uniform: number, transpose: boolean, dimensions: number, value: number[]): void;
+    }
+
+    namespace Global {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
+            'locate-pointer': () => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            'notify-error': (arg0: string, arg1: string) => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            shutdown: () => void;
+            'notify::automation-script': (pspec: GObject.ParamSpec) => void;
+            'notify::backend': (pspec: GObject.ParamSpec) => void;
+            'notify::compositor': (pspec: GObject.ParamSpec) => void;
+            'notify::context': (pspec: GObject.ParamSpec) => void;
+            'notify::datadir': (pspec: GObject.ParamSpec) => void;
+            'notify::display': (pspec: GObject.ParamSpec) => void;
+            'notify::focus-manager': (pspec: GObject.ParamSpec) => void;
+            'notify::force-animations': (pspec: GObject.ParamSpec) => void;
+            'notify::frame-finish-timestamp': (pspec: GObject.ParamSpec) => void;
+            'notify::frame-timestamps': (pspec: GObject.ParamSpec) => void;
+            'notify::screen-height': (pspec: GObject.ParamSpec) => void;
+            'notify::screen-width': (pspec: GObject.ParamSpec) => void;
+            'notify::session-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::settings': (pspec: GObject.ParamSpec) => void;
+            'notify::stage': (pspec: GObject.ParamSpec) => void;
+            'notify::switcheroo-control': (pspec: GObject.ParamSpec) => void;
+            'notify::top-window-group': (pspec: GObject.ParamSpec) => void;
+            'notify::userdatadir': (pspec: GObject.ParamSpec) => void;
+            'notify::window-group': (pspec: GObject.ParamSpec) => void;
+            'notify::window-manager': (pspec: GObject.ParamSpec) => void;
+            'notify::workspace-manager': (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            automation_script: Gio.File;
+            automationScript: Gio.File;
+            backend: Meta.Backend;
+            compositor: Meta.Compositor;
+            context: Meta.Context;
+            datadir: string;
+            display: Meta.Display;
+            focus_manager: St.FocusManager;
+            focusManager: St.FocusManager;
+            force_animations: boolean;
+            forceAnimations: boolean;
+            frame_finish_timestamp: boolean;
+            frameFinishTimestamp: boolean;
+            frame_timestamps: boolean;
+            frameTimestamps: boolean;
+            screen_height: number;
+            screenHeight: number;
+            screen_width: number;
+            screenWidth: number;
+            session_mode: string;
+            sessionMode: string;
+            settings: Gio.Settings;
+            stage: Clutter.Stage;
+            switcheroo_control: Gio.DBusProxy;
+            switcherooControl: Gio.DBusProxy;
+            top_window_group: Clutter.Actor;
+            topWindowGroup: Clutter.Actor;
+            userdatadir: string;
+            window_group: Clutter.Actor;
+            windowGroup: Clutter.Actor;
+            window_manager: WM;
+            windowManager: WM;
+            workspace_manager: Meta.WorkspaceManager;
+            workspaceManager: Meta.WorkspaceManager;
+        }
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class Global extends GObject.Object {
+        static $gtype: GObject.GType<Global>;
+
+        // Properties
+
+        /**
+         * @construct-only
+         */
+        get automation_script(): Gio.File;
+        /**
+         * @construct-only
+         */
+        get automationScript(): Gio.File;
+        /**
+         * @read-only
+         */
+        get backend(): Meta.Backend;
+        /**
+         * @read-only
+         */
+        get compositor(): Meta.Compositor;
+        /**
+         * @read-only
+         */
+        get context(): Meta.Context;
+        /**
+         * @read-only
+         */
+        get datadir(): string;
+        /**
+         * @read-only
+         */
+        get display(): Meta.Display;
+        /**
+         * @read-only
+         */
+        get focus_manager(): St.FocusManager;
+        /**
+         * @read-only
+         */
+        get focusManager(): St.FocusManager;
+        get force_animations(): boolean;
+        set force_animations(val: boolean);
+        get forceAnimations(): boolean;
+        set forceAnimations(val: boolean);
+        get frame_finish_timestamp(): boolean;
+        set frame_finish_timestamp(val: boolean);
+        get frameFinishTimestamp(): boolean;
+        set frameFinishTimestamp(val: boolean);
+        get frame_timestamps(): boolean;
+        set frame_timestamps(val: boolean);
+        get frameTimestamps(): boolean;
+        set frameTimestamps(val: boolean);
+        /**
+         * @read-only
+         */
+        get screen_height(): number;
+        /**
+         * @read-only
+         */
+        get screenHeight(): number;
+        /**
+         * @read-only
+         */
+        get screen_width(): number;
+        /**
+         * @read-only
+         */
+        get screenWidth(): number;
+        /**
+         * @construct-only
+         */
+        get session_mode(): string;
+        /**
+         * @construct-only
+         */
+        get sessionMode(): string;
+        /**
+         * @read-only
+         */
+        get settings(): Gio.Settings;
+        /**
+         * @read-only
+         */
+        get stage(): Clutter.Stage;
+        /**
+         * @read-only
+         */
+        get switcheroo_control(): Gio.DBusProxy;
+        /**
+         * @read-only
+         */
+        get switcherooControl(): Gio.DBusProxy;
+        /**
+         * @read-only
+         */
+        get top_window_group(): Clutter.Actor;
+        /**
+         * @read-only
+         */
+        get topWindowGroup(): Clutter.Actor;
+        /**
+         * @read-only
+         */
+        get userdatadir(): string;
+        /**
+         * @read-only
+         */
+        get window_group(): Clutter.Actor;
+        /**
+         * @read-only
+         */
+        get windowGroup(): Clutter.Actor;
+        /**
+         * @read-only
+         */
+        get window_manager(): WM;
+        /**
+         * @read-only
+         */
+        get windowManager(): WM;
+        /**
+         * @read-only
+         */
+        get workspace_manager(): Meta.WorkspaceManager;
+        /**
+         * @read-only
+         */
+        get workspaceManager(): Meta.WorkspaceManager;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: Global.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<Global.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof Global.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Global.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof Global.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Global.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof Global.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<Global.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Static methods
+
+        /**
+         * Gets the singleton global object that represents the desktop.
+         */
+        static get(): Global;
+
+        // Methods
+
+        /**
+         * Marks that we are currently doing work. This is used to to track
+         * whether we are busy for the purposes of `shell_global_run_at_leisure()`.
+         * A count is kept and `shell_global_end_work()` must be called exactly
+         * as many times as `shell_global_begin_work()`.
+         */
+        begin_work(): void;
+        /**
+         * Create a {@link Gio.AppLaunchContext} set up with the correct timestamp, and
+         * targeted to activate on `workspace`.
+         * @param timestamp the timestamp for the launch (or 0 for current time)
+         * @param workspace a workspace index, or -1 to indicate no specific one
+         * @returns A new {@link Gio.AppLaunchContext}
+         */
+        create_app_launch_context(timestamp: number, workspace: number): Gio.AppLaunchContext;
+        /**
+         * Marks the end of work that we started with `shell_global_begin_work()`.
+         * If no other work is ongoing and functions have been added with
+         * `shell_global_run_at_leisure()`, they will be run at the next
+         * opportunity.
+         */
+        end_work(): void;
+        /**
+         * Gets app system.
+         * @returns the app system
+         */
+        get_app_system(): AppSystem;
+        /**
+         * Gets app usage.
+         * @returns the app usage
+         */
+        get_app_usage(): AppUsage;
+        get_automation_script(): Gio.File;
+        /**
+         * @returns The {@link Meta.Backend}
+         */
+        get_backend(): Meta.Backend;
+        /**
+         * @returns The {@link Meta.Compositor}
+         */
+        get_compositor(): Meta.Compositor;
+        /**
+         * @returns The {@link Meta.Context}
+         */
+        get_context(): Meta.Context;
+        /**
+         * @returns the current X server time from the current Clutter, Gdk, or X event. If called from outside an event handler, this may return %Clutter.CURRENT_TIME (aka 0), or it may return a slightly out-of-date timestamp.
+         */
+        get_current_time(): number;
+        get_datadir(): string;
+        /**
+         * @returns The default {@link Meta.Display}
+         */
+        get_display(): Meta.Display;
+        /**
+         * @returns The default {@link St.FocusManager}
+         */
+        get_focus_manager(): St.FocusManager;
+        get_force_animations(): boolean;
+        get_frame_finish_timestamp(): boolean;
+        get_frame_timestamps(): boolean;
+        /**
+         * The shell maintains "persistent" state which will persist after
+         * logout or reboot.
+         * @param property_type Expected data type
+         * @param property_name Name of the property
+         * @returns The value of a serialized property, or `null` if none stored
+         */
+        get_persistent_state(property_type: string, property_name: string): GLib.Variant;
+        /**
+         * Gets the pointer coordinates and current modifier key state.
+         */
+        get_pointer(): [number, number, Clutter.ModifierType];
+        /**
+         * The shell maintains "runtime" state which does not persist across
+         * logout or reboot.
+         * @param property_type Expected data type
+         * @param property_name Name of the property
+         * @returns The value of a serialized property, or `null` if none stored
+         */
+        get_runtime_state(property_type: string, property_name: string): GLib.Variant;
+        get_screen_height(): number;
+        get_screen_width(): number;
+        get_session_mode(): string;
+        /**
+         * Get the global GSettings instance.
+         * @returns The GSettings object
+         */
+        get_settings(): Gio.Settings;
+        /**
+         * @returns The default {@link Clutter.Stage}
+         */
+        get_stage(): Clutter.Stage;
+        /**
+         * Get the global {@link Gio.DBusProxy} instance for the switcheroo-control
+         * daemon.
+         * @returns the {@link Gio.DBusProxy} for the daemon,   or `null` on error.
+         */
+        get_switcheroo_control(): Gio.DBusProxy;
+        get_top_window_group(): Clutter.Actor;
+        get_userdatadir(): string;
+        /**
+         * Gets the list of {@link Meta.WindowActor} for the plugin's screen
+         * @returns the list of windows
+         */
+        get_window_actors(): Meta.WindowActor[];
+        get_window_group(): Clutter.Actor;
+        /**
+         * @returns The default {@link Shell.WM}
+         */
+        get_window_manager(): WM;
+        /**
+         * Gets window tracker.
+         * @returns the window tracker
+         */
+        get_window_tracker(): WindowTracker;
+        /**
+         * @returns The default {@link Meta.WorkspaceManager}
+         */
+        get_workspace_manager(): Meta.WorkspaceManager;
+        /**
+         * Show a system error notification.  Use this function
+         * when a user-initiated action results in a non-fatal problem
+         * from causes that may not be under system control.  For
+         * example, an application crash.
+         * @param msg Error message
+         * @param details Error details
+         */
+        notify_error(msg: string, details: string): void;
+        /**
+         * Schedules a function to be called the next time the shell is idle.
+         * Idle means here no animations, no redrawing, and no ongoing background
+         * work. Since there is currently no way to hook into the Clutter master
+         * clock and know when is running, the implementation here is somewhat
+         * approximation. Animations may be detected as terminating early if they
+         * can be drawn fast enough so that the event loop goes idle between frames.
+         *
+         * The intent of this function is for performance measurement runs
+         * where a number of actions should be run serially and each action is
+         * timed individually. Using this function for other purposes will
+         * interfere with the ability to use it for performance measurement so
+         * should be avoided.
+         * @param func function to call at leisure
+         */
+        run_at_leisure(func: LeisureFunction): void;
+        /**
+         * @param force
+         */
+        set_force_animations(force: boolean): void;
+        /**
+         * @param enable
+         */
+        set_frame_finish_timestamp(enable: boolean): void;
+        /**
+         * @param enable
+         */
+        set_frame_timestamps(enable: boolean): void;
+        /**
+         * Change the value of serialized persistent state.
+         * @param property_name Name of the property
+         * @param variant A {@link GLib.Variant}, or `null` to unset
+         */
+        set_persistent_state(property_name: string, variant?: GLib.Variant | null): void;
+        /**
+         * Change the value of serialized runtime state.
+         * @param property_name Name of the property
+         * @param variant A {@link GLib.Variant}, or `null` to unset
+         */
+        set_runtime_state(property_name: string, variant?: GLib.Variant | null): void;
+    }
+
+    namespace InvertLightnessEffect {
+        // Signal signatures
+        interface SignalSignatures extends Clutter.OffscreenEffect.SignalSignatures {
+            'notify::actor': (pspec: GObject.ParamSpec) => void;
+            'notify::enabled': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends Clutter.OffscreenEffect.ConstructorProps {}
+    }
+
+    /**
+     * A colorization effect where lightness is inverted but
+     * color is not.
+     *
+     * {@link Shell.InvertLightnessEffect} is a sub-class of {@link Clutter.Effect} that enhances
+     * the appearance of a clutter actor.  Specifically it inverts the lightness
+     * of a {@link Clutter.Actor} (e.g., darker colors become lighter, white becomes black,
+     * and white, black).
+     * @gir-type Class
+     */
+    class InvertLightnessEffect extends Clutter.OffscreenEffect {
+        static $gtype: GObject.GType<InvertLightnessEffect>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: InvertLightnessEffect.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<InvertLightnessEffect.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](): InvertLightnessEffect;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof InvertLightnessEffect.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, InvertLightnessEffect.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof InvertLightnessEffect.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, InvertLightnessEffect.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof InvertLightnessEffect.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<InvertLightnessEffect.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+    }
+
+    namespace KeyringPrompt {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             */
+            'show-confirm': () => void;
+            /**
+             * @signal
+             */
+            'show-password': () => void;
+            'notify::choice-visible': (pspec: GObject.ParamSpec) => void;
+            'notify::confirm-actor': (pspec: GObject.ParamSpec) => void;
+            'notify::confirm-visible': (pspec: GObject.ParamSpec) => void;
+            'notify::password-actor': (pspec: GObject.ParamSpec) => void;
+            'notify::password-visible': (pspec: GObject.ParamSpec) => void;
+            'notify::warning-visible': (pspec: GObject.ParamSpec) => void;
+            'notify::caller-window': (pspec: GObject.ParamSpec) => void;
+            'notify::cancel-label': (pspec: GObject.ParamSpec) => void;
+            'notify::choice-chosen': (pspec: GObject.ParamSpec) => void;
+            'notify::choice-label': (pspec: GObject.ParamSpec) => void;
+            'notify::continue-label': (pspec: GObject.ParamSpec) => void;
+            'notify::description': (pspec: GObject.ParamSpec) => void;
+            'notify::message': (pspec: GObject.ParamSpec) => void;
+            'notify::password-new': (pspec: GObject.ParamSpec) => void;
+            'notify::password-strength': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::warning': (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps, Gcr.Prompt.ConstructorProps {
+            choice_visible: boolean;
+            choiceVisible: boolean;
+            confirm_actor: Clutter.Text;
+            confirmActor: Clutter.Text;
+            confirm_visible: boolean;
+            confirmVisible: boolean;
+            password_actor: Clutter.Text;
+            passwordActor: Clutter.Text;
+            password_visible: boolean;
+            passwordVisible: boolean;
+            warning_visible: boolean;
+            warningVisible: boolean;
+        }
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class KeyringPrompt extends GObject.Object implements Gcr.Prompt {
+        static $gtype: GObject.GType<KeyringPrompt>;
+
+        // Properties
+
+        /**
+         * Whether the choice check box is visible or not.
+         * @read-only
+         */
+        get choice_visible(): boolean;
+        /**
+         * Whether the choice check box is visible or not.
+         * @read-only
+         */
+        get choiceVisible(): boolean;
+        /**
+         * Text field for confirmation password
+         */
+        get confirm_actor(): Clutter.Text;
+        set confirm_actor(val: Clutter.Text);
+        /**
+         * Text field for confirmation password
+         */
+        get confirmActor(): Clutter.Text;
+        set confirmActor(val: Clutter.Text);
+        /**
+         * Whether the password confirm entry is visible or not.
+         * @read-only
+         */
+        get confirm_visible(): boolean;
+        /**
+         * Whether the password confirm entry is visible or not.
+         * @read-only
+         */
+        get confirmVisible(): boolean;
+        /**
+         * Text field for password
+         */
+        get password_actor(): Clutter.Text;
+        set password_actor(val: Clutter.Text);
+        /**
+         * Text field for password
+         */
+        get passwordActor(): Clutter.Text;
+        set passwordActor(val: Clutter.Text);
+        /**
+         * Whether the password entry is visible or not.
+         * @read-only
+         */
+        get password_visible(): boolean;
+        /**
+         * Whether the password entry is visible or not.
+         * @read-only
+         */
+        get passwordVisible(): boolean;
+        /**
+         * Whether the warning label is visible or not.
+         * @read-only
+         */
+        get warning_visible(): boolean;
+        /**
+         * Whether the warning label is visible or not.
+         * @read-only
+         */
+        get warningVisible(): boolean;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: KeyringPrompt.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<KeyringPrompt.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](): KeyringPrompt;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof KeyringPrompt.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, KeyringPrompt.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof KeyringPrompt.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, KeyringPrompt.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof KeyringPrompt.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<KeyringPrompt.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+
+        /**
+         * Called by implementation when the prompt is cancelled.
+         */
+        cancel(): void;
+        /**
+         * Called by the implementation when the prompt completes. There are various
+         * checks done. `true` is returned if the prompt actually should complete.
+         * @returns whether the prompt completed
+         */
+        complete(): boolean;
+        get_choice_visible(): boolean;
+        /**
+         * Get the prompt password text actor
+         * @returns the password actor
+         */
+        get_confirm_actor(): Clutter.Text | null;
+        get_confirm_visible(): boolean;
+        /**
+         * Get the prompt password text actor
+         * @returns the password actor
+         */
+        get_password_actor(): Clutter.Text | null;
+        get_password_visible(): boolean;
+        get_warning_visible(): boolean;
+        /**
+         * Set the prompt password confirmation text actor
+         * @param confirm_actor the confirm password actor
+         */
+        set_confirm_actor(confirm_actor?: Clutter.Text | null): void;
+        /**
+         * Set the prompt password text actor
+         * @param password_actor the password actor
+         */
+        set_password_actor(password_actor?: Clutter.Text | null): void;
+        /**
+         * The string handle of the caller's window.
+         *
+         * The caller window indicates to the prompt which window is prompting the
+         * user. The prompt may choose to ignore this information or use it in whatever
+         * way it sees fit.
+         *
+         * In X11, this will be a stringified version of the XWindow handle; in
+         * Wayland this is the result of an export using the XDG foreign
+         * protocol.
+         * @category Inherited from Gcr.Prompt
+         */
+        get caller_window(): string;
+        set caller_window(val: string);
+        /**
+         * The string handle of the caller's window.
+         *
+         * The caller window indicates to the prompt which window is prompting the
+         * user. The prompt may choose to ignore this information or use it in whatever
+         * way it sees fit.
+         *
+         * In X11, this will be a stringified version of the XWindow handle; in
+         * Wayland this is the result of an export using the XDG foreign
+         * protocol.
+         * @category Inherited from Gcr.Prompt
+         */
+        get callerWindow(): string;
+        set callerWindow(val: string);
+        /**
+         * The label for the cancel button in the prompt.
+         * @category Inherited from Gcr.Prompt
+         */
+        get cancel_label(): string;
+        set cancel_label(val: string);
+        /**
+         * The label for the cancel button in the prompt.
+         * @category Inherited from Gcr.Prompt
+         */
+        get cancelLabel(): string;
+        set cancelLabel(val: string);
+        /**
+         * Whether the additional choice is chosen or not.
+         *
+         * The additional choice would have been setup using {@link Gcr.Prompt.choice_label}.
+         * @category Inherited from Gcr.Prompt
+         */
+        get choice_chosen(): boolean;
+        set choice_chosen(val: boolean);
+        /**
+         * Whether the additional choice is chosen or not.
+         *
+         * The additional choice would have been setup using {@link Gcr.Prompt.choice_label}.
+         * @category Inherited from Gcr.Prompt
+         */
+        get choiceChosen(): boolean;
+        set choiceChosen(val: boolean);
+        /**
+         * The label for the additional choice.
+         *
+         * If this is a non-`null` value then an additional boolean choice will be
+         * displayed by the prompt allowing the user to select or deselect it.
+         *
+         * If `null`, then no additional choice is displayed.
+         *
+         * The initial value of the choice can be set with {@link Gcr.Prompt.choice_chosen}.
+         * @category Inherited from Gcr.Prompt
+         */
+        get choice_label(): string;
+        set choice_label(val: string);
+        /**
+         * The label for the additional choice.
+         *
+         * If this is a non-`null` value then an additional boolean choice will be
+         * displayed by the prompt allowing the user to select or deselect it.
+         *
+         * If `null`, then no additional choice is displayed.
+         *
+         * The initial value of the choice can be set with {@link Gcr.Prompt.choice_chosen}.
+         * @category Inherited from Gcr.Prompt
+         */
+        get choiceLabel(): string;
+        set choiceLabel(val: string);
+        /**
+         * The label for the continue button in the prompt.
+         * @category Inherited from Gcr.Prompt
+         */
+        get continue_label(): string;
+        set continue_label(val: string);
+        /**
+         * The label for the continue button in the prompt.
+         * @category Inherited from Gcr.Prompt
+         */
+        get continueLabel(): string;
+        set continueLabel(val: string);
+        /**
+         * The detailed description of the prompt.
+         *
+         * A prompt implementation may choose not to display this detailed description.
+         * The prompt message should contain relevant information.
+         * @category Inherited from Gcr.Prompt
+         */
+        get description(): string;
+        set description(val: string);
+        /**
+         * The prompt message for the user.
+         *
+         * A prompt implementation should always display this message.
+         * @category Inherited from Gcr.Prompt
+         */
+        get message(): string;
+        set message(val: string);
+        /**
+         * Whether the prompt will prompt for a new password.
+         *
+         * This will cause the prompt implementation to ask the user to confirm the
+         * password and/or display other relevant user interface for creating a new
+         * password.
+         * @category Inherited from Gcr.Prompt
+         */
+        get password_new(): boolean;
+        set password_new(val: boolean);
+        /**
+         * Whether the prompt will prompt for a new password.
+         *
+         * This will cause the prompt implementation to ask the user to confirm the
+         * password and/or display other relevant user interface for creating a new
+         * password.
+         * @category Inherited from Gcr.Prompt
+         */
+        get passwordNew(): boolean;
+        set passwordNew(val: boolean);
+        /**
+         * Indication of the password strength.
+         *
+         * Prompts will return a zero value if the password is empty, and a value
+         * greater than zero if the password has any characters.
+         *
+         * This is only valid after a successful prompt for a password.
+         * @read-only
+         * @category Inherited from Gcr.Prompt
+         */
+        get password_strength(): number;
+        /**
+         * Indication of the password strength.
+         *
+         * Prompts will return a zero value if the password is empty, and a value
+         * greater than zero if the password has any characters.
+         *
+         * This is only valid after a successful prompt for a password.
+         * @read-only
+         * @category Inherited from Gcr.Prompt
+         */
+        get passwordStrength(): number;
+        /**
+         * The title of the prompt.
+         *
+         * A prompt implementation may choose not to display the prompt title. The
+         * {@link Gcr.Prompt.message} should contain relevant information.
+         * @category Inherited from Gcr.Prompt
+         */
+        get title(): string;
+        set title(val: string);
+        /**
+         * A prompt warning displayed on the prompt, or `null` for no warning.
+         *
+         * This is a warning like "The password is incorrect." usually displayed to the
+         * user about a previous 'unsuccessful' prompt.
+         * @category Inherited from Gcr.Prompt
+         */
+        get warning(): string;
+        set warning(val: string);
+        /**
+         * Closes the prompt so that in can no longer be used to prompt. The various
+         * prompt methods will return results as if the user dismissed the prompt.
+         *
+         * The prompt may also be closed by the implementor of the prompt object.
+         *
+         * This emits the `Gcr.Prompt::prompt-close` signal on the prompt object.
+         */
+        close(): void;
+        /**
+         * Prompts for confirmation asking a cancel/continue style question.
+         * Set the various properties on the prompt before calling this function to
+         * represent the question correctly.
+         *
+         * This method will block until the a response is returned from the prompter.
+         *
+         * {@link Gcr.PromptReply.CONTINUE} will be returned if the user confirms the prompt. The
+         * return value will also be {@link Gcr.PromptReply.CANCEL} if the user cancels or if
+         * an error occurs. Check the `error` argument to tell the difference.
+         * @param cancellable optional cancellation object
+         * @returns the reply from the prompt
+         */
+        confirm(cancellable?: Gio.Cancellable | null): Gcr.PromptReply;
+        /**
+         * Prompts for confirmation asking a cancel/continue style question.
+         * Set the various properties on the prompt before calling this method to
+         * represent the question correctly.
+         *
+         * This method will return immediately and complete asynchronously.
+         * @param cancellable optional cancellation object
+         */
+        confirm_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<Gcr.PromptReply>;
+        /**
+         * Prompts for confirmation asking a cancel/continue style question.
+         * Set the various properties on the prompt before calling this method to
+         * represent the question correctly.
+         *
+         * This method will return immediately and complete asynchronously.
+         * @param cancellable optional cancellation object
+         * @param callback called when the operation completes
+         */
+        confirm_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Prompts for confirmation asking a cancel/continue style question.
+         * Set the various properties on the prompt before calling this method to
+         * represent the question correctly.
+         *
+         * This method will return immediately and complete asynchronously.
+         * @param cancellable optional cancellation object
+         * @param callback called when the operation completes
+         */
+        confirm_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<Gcr.PromptReply> | void;
+        /**
+         * Complete an operation to prompt for confirmation.
+         *
+         * {@link Gcr.PromptReply.CONTINUE} will be returned if the user confirms the prompt. The
+         * return value will also be {@link Gcr.PromptReply.CANCEL} if the user cancels or if
+         * an error occurs. Check the `error` argument to tell the difference.
+         * @param result asynchronous result passed to callback
+         * @returns the reply from the prompt
+         */
+        confirm_finish(result: Gio.AsyncResult): Gcr.PromptReply;
+        /**
+         * Prompts for confirmation asking a cancel/continue style question.
+         * Set the various properties on the prompt before calling this function to
+         * represent the question correctly.
+         *
+         * This method will block until the a response is returned from the prompter
+         * and will run a main loop similar to a `gtk_dialog_run()`. The application
+         * will remain responsive but care must be taken to handle reentrancy issues.
+         *
+         * {@link Gcr.PromptReply.CONTINUE} will be returned if the user confirms the prompt. The
+         * return value will also be {@link Gcr.PromptReply.CANCEL} if the user cancels or if
+         * an error occurs. Check the `error` argument to tell the difference.
+         * @param cancellable optional cancellation object
+         * @returns the reply from the prompt
+         */
+        confirm_run(cancellable?: Gio.Cancellable | null): Gcr.PromptReply;
+        /**
+         * Get the string handle of the caller's window.
+         *
+         * The caller window indicates to the prompt which window is prompting the
+         * user. The prompt may choose to ignore this information or use it in whatever
+         * way it sees fit.
+         * @returns a newly allocated string containing the string          handle of the window.
+         */
+        get_caller_window(): string;
+        /**
+         * Get the label for the cancel button.
+         *
+         * This is the button that results in a {@link Gcr.PromptReply.CANCEL} reply
+         * from the prompt.
+         * @returns a newly allocated string containing the label
+         */
+        get_cancel_label(): string;
+        /**
+         * Get whether the additional choice was chosen or not.
+         *
+         * The additional choice would have been setup using
+         * `gcr_prompt_set_choice_label()`.
+         * @returns whether chosen
+         */
+        get_choice_chosen(): boolean;
+        /**
+         * Get the label for the additional choice.
+         *
+         * This will be `null` if no additional choice is being displayed.
+         * @returns a newly allocated string containing the additional          choice or `null`
+         */
+        get_choice_label(): string;
+        /**
+         * Get the label for the continue button.
+         *
+         * This is the button that results in a {@link Gcr.PromptReply.CONTINUE} reply
+         * from the prompt.
+         * @returns a newly allocated string containing the label
+         */
+        get_continue_label(): string;
+        /**
+         * Get the detailed description of the prompt.
+         *
+         * A prompt implementation may choose not to display this detailed description.
+         * The prompt message should contain relevant information.
+         * @returns a newly allocated string containing the detailed          description of the prompt
+         */
+        get_description(): string;
+        /**
+         * Gets the prompt message for the user.
+         *
+         * A prompt implementation should always display this message.
+         * @returns a newly allocated string containing the detailed          description of the prompt
+         */
+        get_message(): string;
+        /**
+         * Get whether the prompt will prompt for a new password.
+         *
+         * This will cause the prompt implementation to ask the user to confirm the
+         * password and/or display other relevant user interface for creating a new
+         * password.
+         * @returns whether in new password mode or not
+         */
+        get_password_new(): boolean;
+        /**
+         * Get indication of the password strength.
+         *
+         * Prompts will return a zero value if the password is empty, and a value
+         * greater than zero if the password has any characters.
+         *
+         * This is only valid after a successful prompt for a password.
+         * @returns zero if the password is empty, greater than zero if not
+         */
+        get_password_strength(): number;
+        /**
+         * Gets the title of the prompt.
+         *
+         * A prompt implementation may choose not to display the prompt title. The
+         * prompt message should contain relevant information.
+         * @returns a newly allocated string containing the prompt          title.
+         */
+        get_title(): string;
+        /**
+         * Get a prompt warning displayed on the prompt.
+         *
+         * This is a warning like "The password is incorrect." usually displayed to the
+         * user about a previous 'unsuccessful' prompt.
+         *
+         * If this string is `null` then no warning is displayed.
+         * @returns a newly allocated string containing the prompt          warning, or `null` if no warning
+         */
+        get_warning(): string;
+        /**
+         * Prompts for password. Set the various properties on the prompt before calling
+         * this method to explain which password should be entered.
+         *
+         * This method will block until the a response is returned from the prompter.
+         *
+         * A password will be returned if the user enters a password successfully.
+         * The returned password is valid until the next time a method is called
+         * to display another prompt.
+         *
+         * `null` will be returned if the user cancels or if an error occurs. Check the
+         * `error` argument to tell the difference.
+         * @param cancellable optional cancellation object
+         * @returns the password owned by the prompt, or `null`
+         */
+        password(cancellable?: Gio.Cancellable | null): string;
+        /**
+         * Prompts for password. Set the various properties on the prompt before calling
+         * this method to explain which password should be entered.
+         *
+         * This method will return immediately and complete asynchronously.
+         * @param cancellable optional cancellation object
+         */
+        password_async(cancellable?: Gio.Cancellable | null): globalThis.Promise<string>;
+        /**
+         * Prompts for password. Set the various properties on the prompt before calling
+         * this method to explain which password should be entered.
+         *
+         * This method will return immediately and complete asynchronously.
+         * @param cancellable optional cancellation object
+         * @param callback called when the operation completes
+         */
+        password_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Prompts for password. Set the various properties on the prompt before calling
+         * this method to explain which password should be entered.
+         *
+         * This method will return immediately and complete asynchronously.
+         * @param cancellable optional cancellation object
+         * @param callback called when the operation completes
+         */
+        password_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<string> | void;
+        /**
+         * Complete an operation to prompt for a password.
+         *
+         * A password will be returned if the user enters a password successfully.
+         * The returned password is valid until the next time a method is called
+         * to display another prompt.
+         *
+         * `null` will be returned if the user cancels or if an error occurs. Check the
+         * `error` argument to tell the difference.
+         * @param result asynchronous result passed to callback
+         * @returns the password owned by the prompt, or `null`
+         */
+        password_finish(result: Gio.AsyncResult): string;
+        /**
+         * Prompts for password. Set the various properties on the prompt before calling
+         * this method to explain which password should be entered.
+         *
+         * This method will block until the a response is returned from the prompter
+         * and will run a main loop similar to a `gtk_dialog_run()`. The application
+         * will remain responsive but care must be taken to handle reentrancy issues.
+         *
+         * A password will be returned if the user enters a password successfully.
+         * The returned password is valid until the next time a method is called
+         * to display another prompt.
+         *
+         * `null` will be returned if the user cancels or if an error occurs. Check the
+         * `error` argument to tell the difference.
+         * @param cancellable optional cancellation object
+         * @returns the password owned by the prompt, or `null`
+         */
+        password_run(cancellable?: Gio.Cancellable | null): string;
+        /**
+         * Reset the contents and properties of the prompt.
+         */
+        reset(): void;
+        /**
+         * Set the string handle of the caller's window.
+         *
+         * The caller window indicates to the prompt which window is prompting the
+         * user. The prompt may choose to ignore this information or use it in whatever
+         * way it sees fit.
+         * @param window_id the window id
+         */
+        set_caller_window(window_id: string): void;
+        /**
+         * Set the label for the continue button.
+         *
+         * This is the button that results in a {@link Gcr.PromptReply.CANCEL} reply
+         * from the prompt.
+         * @param cancel_label the label
+         */
+        set_cancel_label(cancel_label: string): void;
+        /**
+         * Set whether the additional choice is chosen or not.
+         *
+         * The additional choice should be set up using `gcr_prompt_set_choice_label()`.
+         * @param chosen whether chosen
+         */
+        set_choice_chosen(chosen: boolean): void;
+        /**
+         * Set the label for the additional choice.
+         *
+         * If this is a non-`null` value then an additional boolean choice will be
+         * displayed by the prompt allowing the user to select or deselect it.
+         *
+         * The initial value of the choice can be set with the
+         * `gcr_prompt_set_choice_label()` method.
+         *
+         * If this is `null`, then no additional choice is being displayed.
+         * @param choice_label the additional choice or `null`
+         */
+        set_choice_label(choice_label?: string | null): void;
+        /**
+         * Set the label for the continue button.
+         *
+         * This is the button that results in a {@link Gcr.PromptReply.CONTINUE} reply
+         * from the prompt.
+         * @param continue_label the label
+         */
+        set_continue_label(continue_label: string): void;
+        /**
+         * Set the detailed description of the prompt.
+         *
+         * A prompt implementation may choose not to display this detailed description.
+         * Use `gcr_prompt_set_message()` to set a general message containing relevant
+         * information.
+         * @param description the detailed description
+         */
+        set_description(description: string): void;
+        /**
+         * Sets the prompt message for the user.
+         *
+         * A prompt implementation should always display this message.
+         * @param message the prompt message
+         */
+        set_message(message: string): void;
+        /**
+         * Set whether the prompt will prompt for a new password.
+         *
+         * This will cause the prompt implementation to ask the user to confirm the
+         * password and/or display other relevant user interface for creating a new
+         * password.
+         * @param new_password whether in new password mode or not
+         */
+        set_password_new(new_password: boolean): void;
+        /**
+         * Sets the title of the prompt.
+         *
+         * A prompt implementation may choose not to display the prompt title. The
+         * prompt message should contain relevant information.
+         * @param title the prompt title
+         */
+        set_title(title: string): void;
+        /**
+         * Set a prompt warning displayed on the prompt.
+         *
+         * This is a warning like "The password is incorrect." usually displayed to the
+         * user about a previous 'unsuccessful' prompt.
+         *
+         * If this string is `null` then no warning is displayed.
+         * @param warning the warning or `null`
+         */
+        set_warning(warning?: string | null): void;
+        /**
+         * close a prompt
+         * @virtual
+         */
+        vfunc_prompt_close(): void;
+        /**
+         * Prompts for confirmation asking a cancel/continue style question.
+         * Set the various properties on the prompt before calling this method to
+         * represent the question correctly.
+         *
+         * This method will return immediately and complete asynchronously.
+         * @param cancellable optional cancellation object
+         * @param callback called when the operation completes
+         * @virtual
+         */
+        vfunc_prompt_confirm_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Complete an operation to prompt for confirmation.
+         *
+         * {@link Gcr.PromptReply.CONTINUE} will be returned if the user confirms the prompt. The
+         * return value will also be {@link Gcr.PromptReply.CANCEL} if the user cancels or if
+         * an error occurs. Check the `error` argument to tell the difference.
+         * @param result asynchronous result passed to callback
+         * @virtual
+         */
+        vfunc_prompt_confirm_finish(result: Gio.AsyncResult): Gcr.PromptReply;
+        /**
+         * Prompts for password. Set the various properties on the prompt before calling
+         * this method to explain which password should be entered.
+         *
+         * This method will return immediately and complete asynchronously.
+         * @param cancellable optional cancellation object
+         * @param callback called when the operation completes
+         * @virtual
+         */
+        vfunc_prompt_password_async(
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Complete an operation to prompt for a password.
+         *
+         * A password will be returned if the user enters a password successfully.
+         * The returned password is valid until the next time a method is called
+         * to display another prompt.
+         *
+         * `null` will be returned if the user cancels or if an error occurs. Check the
+         * `error` argument to tell the difference.
+         * @param result asynchronous result passed to callback
+         * @virtual
+         */
+        vfunc_prompt_password_finish(result: Gio.AsyncResult): string;
+        /**
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target`.
+         *
+         * Whenever the `source_property` is changed the `target_property` is
+         * updated using the same value. For instance:
+         *
+         *
+         * ```c
+         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+         * ```
+         *
+         *
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
+         * instance.
+         *
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well.
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. To remove the binding without affecting the
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
+         *
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
+         * the binding, `source` and `target` are only used from a single thread and it
+         * is clear that both `source` and `target` outlive the binding. Especially it
+         * is not safe to rely on this if the binding, `source` or `target` can be
+         * finalized from different threads. Keep another reference to the binding and
+         * use `g_binding_unbind()` instead to be on the safe side.
+         *
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
+         */
+        bind_property(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags | null,
+        ): GObject.Binding;
+        /**
+         * Complete version of `g_object_bind_property()`.
+         *
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target`, allowing you to set the transformation functions to be used by
+         * the binding.
+         *
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well. The `transform_from` function is only used in case
+         * of bidirectional bindings, otherwise it will be ignored
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. This will release the reference that is
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
+         *
+         * To remove the binding, call `g_binding_unbind()`.
+         *
+         * A {@link GObject.Object} can have multiple bindings.
+         *
+         * The same `user_data` parameter will be used for both `transform_to`
+         * and `transform_from` transformation functions; the `notify` function will
+         * be called once, when the binding is removed. If you need different data
+         * for each transformation function, please use
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
+         */
+        bind_property_full(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags | null,
+            transform_to?: GObject.BindingTransformFunc | null,
+            transform_from?: GObject.BindingTransformFunc | null,
+            notify?: GLib.DestroyNotify | null,
+        ): GObject.Binding;
+        /**
+         * @param args
+         */
+        // Conflicted with GObject.Object.bind_property_full
+        bind_property_full(...args: never[]): any;
+        /**
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
+         */
+        force_floating(): void;
+        /**
+         * Increases the freeze count on `object`. If the freeze count is
+         * non-zero, the emission of "notify" signals on `object` is
+         * stopped. The signals are queued until the freeze count is decreased
+         * to zero. Duplicate notifications are squashed so that at most one
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
+         * object is frozen.
+         *
+         * This is necessary for accessors that modify multiple properties to prevent
+         * premature notification while the object is still being modified.
+         */
+        freeze_notify(): void;
+        /**
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
+         * @param key name of the key for that association
+         * @returns the data if found,          or `null` if no such data exists.
+         */
+        get_data(key: string): any | null;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
+        /**
+         * This function gets back user data pointers stored via
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
+         */
+        get_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Gets `n_properties` properties for an `object`.
+         * Obtained properties will be set to `values`. All properties must be valid.
+         * Warnings will be emitted and undefined behaviour may result if invalid
+         * properties are passed in.
+         * @param names the names of each property to get
+         * @param values the values of each property to get
+         */
+        getv(names: string[], values: (GObject.Value | any)[]): void;
+        /**
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
+         */
+        is_floating(): boolean;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use `g_object_notify_by_pspec()`
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
+         * called.
+         * @param property_name the name of a property installed on the class of `object`.
+         */
+        notify(property_name: string): void;
+        /**
+         * Emits a "notify" signal for the property specified by `pspec` on `object`.
+         *
+         * This function omits the property name lookup, hence it is faster than
+         * `g_object_notify()`.
+         *
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
+         * instead, is to store the GParamSpec used with
+         * `g_object_class_install_property()` inside a static array, e.g.:
+         *
+         *
+         * ```c
+         *   typedef enum
+         *   {
+         *     PROP_FOO = 1,
+         *     PROP_LAST
+         *   } MyObjectProperty;
+         *
+         *   static GParamSpec *properties[PROP_LAST];
+         *
+         *   static void
+         *   my_object_class_init (MyObjectClass *klass)
+         *   {
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *                                              0, 100,
+         *                                              50,
+         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+         *     g_object_class_install_property (gobject_class,
+         *                                      PROP_FOO,
+         *                                      properties[PROP_FOO]);
+         *   }
+         * ```
+         *
+         *
+         * and then notify a change on the "foo" property with:
+         *
+         *
+         * ```c
+         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+         * ```
+         *
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
+         */
+        notify_by_pspec(pspec: GObject.ParamSpec): void;
+        /**
+         * Increases the reference count of `object`.
+         *
+         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
+         * extension), so any casting the caller needs to do on the return type must be
+         * explicit.
+         * @returns the same `object`
+         */
+        ref(): GObject.Object;
+        /**
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         *
+         * In other words, if the object is floating, then this call "assumes
+         * ownership" of the floating reference, converting it to a normal
+         * reference by clearing the floating flag while leaving the reference
+         * count unchanged.  If the object is not floating, then this call
+         * adds a new normal reference increasing the reference count by one.
+         *
+         * Since GLib 2.56, the type of `object` will be propagated to the return type
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
+         */
+        ref_sink(): GObject.Object;
+        /**
+         * Releases all references to other objects. This can be used to break
+         * reference cycles.
+         *
+         * This function should only be called from object system implementations.
+         */
+        run_dispose(): void;
+        /**
+         * Each object carries around a table of associations from
+         * strings to pointers.  This function lets you set an association.
+         *
+         * If the object already had an association with that name,
+         * the old association will be destroyed.
+         *
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
+         * This means a copy of `key` is kept permanently (even after `object` has been
+         * finalized) — so it is recommended to only use a small, bounded set of values
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
+         * @param key name of the key
+         * @param data data to associate with that key
+         */
+        set_data(key: string, data?: any | null): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
+        /**
+         * Remove a specified datum from the object's data associations,
+         * without invoking the association's destroy handler.
+         * @param key name of the key
+         * @returns the data if found, or `null`          if no such data exists.
+         */
+        steal_data(key: string): any | null;
+        /**
+         * This function gets back user data pointers stored via
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
+         * set).
+         * Usually, calling this function is only required to update
+         * user data pointers with a destroy notifier, for example:
+         *
+         * ```c
+         * void
+         * object_add_to_user_list (GObject     *object,
+         *                          const gchar *new_string)
+         * {
+         *   // the quark, naming the object data
+         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+         *   // retrieve the old string list
+         *   GList *list = g_object_steal_qdata (object, quark_string_list);
+         *
+         *   // prepend new string
+         *   list = g_list_prepend (list, g_strdup (new_string));
+         *   // this changed 'list', so we need to set it again
+         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+         * }
+         * static void
+         * free_string_list (gpointer data)
+         * {
+         *   GList *node, *list = data;
+         *
+         *   for (node = list; node; node = node->next)
+         *     g_free (node->data);
+         *   g_list_free (list);
+         * }
+         * ```
+         *
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
+         * and thus the partial string list would have been freed upon
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
+         */
+        steal_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Reverts the effect of a previous call to
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
+         * and when it reaches zero, queued "notify" signals are emitted.
+         *
+         * Duplicate notifications for each property are squashed so that at most one
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
+         * in which they have been queued.
+         *
+         * It is an error to call this function when the freeze count is zero.
+         */
+        thaw_notify(): void;
+        /**
+         * Decreases the reference count of `object`. When its reference count
+         * drops to 0, the object is finalized (i.e. its memory is freed).
+         *
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
+         * an instance variable of another object), it is recommended to clear the
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
+         */
+        unref(): void;
+        /**
+         * This function essentially limits the life time of the `closure` to
+         * the life time of the object. That is, when the object is finalized,
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
+         * it, in order to prevent invocations of the closure with a finalized
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
+         * reference count is held on `object` during invocation of the
+         * `closure`.  Usually, this function will be called on closures that
+         * use this `object` as closure data.
+         * @param closure {@link GObject.Closure} to watch
+         */
+        watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by `g_object_new()` as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         * @virtual
+         */
+        vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         * @virtual
+         */
+        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         * @virtual
+         */
+        vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         * @virtual
+         */
+        vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         * @virtual
+         */
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use `g_object_notify_by_pspec()`
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
+         * called.
+         * @param pspec
+         * @virtual
+         */
+        vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         * @virtual
+         */
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
+        disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
+        set(properties: { [key: string]: any }): void;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
+    }
+
+    namespace MountOperation {
+        // Signal signatures
+        interface SignalSignatures extends Gio.MountOperation.SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
+            'show-processes-2': () => void;
+            'notify::anonymous': (pspec: GObject.ParamSpec) => void;
+            'notify::choice': (pspec: GObject.ParamSpec) => void;
+            'notify::domain': (pspec: GObject.ParamSpec) => void;
+            'notify::is-tcrypt-hidden-volume': (pspec: GObject.ParamSpec) => void;
+            'notify::is-tcrypt-system-volume': (pspec: GObject.ParamSpec) => void;
+            'notify::password': (pspec: GObject.ParamSpec) => void;
+            'notify::password-save': (pspec: GObject.ParamSpec) => void;
+            'notify::pim': (pspec: GObject.ParamSpec) => void;
+            'notify::username': (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends Gio.MountOperation.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class MountOperation extends Gio.MountOperation {
+        static $gtype: GObject.GType<MountOperation>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: MountOperation.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<MountOperation.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](): MountOperation;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof MountOperation.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, MountOperation.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof MountOperation.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, MountOperation.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof MountOperation.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<MountOperation.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+
+        get_show_processes_choices(): string[];
+        get_show_processes_message(): string;
+        /**
+         * @returns a {@link GLib.Array}
+         */
+        get_show_processes_pids(): GLib.Pid[];
+    }
+
+    namespace NetworkAgent {
+        // Signal signatures
+        interface SignalSignatures extends NM.SecretAgentOld.SignalSignatures {
+            /**
+             * @signal
+             */
+            'cancel-request': (arg0: string) => void;
+            /**
+             * @signal
+             */
+            'new-request': (arg0: string, arg1: NM.Connection, arg2: string, arg3: string[], arg4: number) => void;
+            'notify::force-always-ask': (pspec: GObject.ParamSpec) => void;
+            'notify::auto-register': (pspec: GObject.ParamSpec) => void;
+            'notify::capabilities': (pspec: GObject.ParamSpec) => void;
+            'notify::dbus-connection': (pspec: GObject.ParamSpec) => void;
+            'notify::identifier': (pspec: GObject.ParamSpec) => void;
+            'notify::registered': (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps
+            extends
+                NM.SecretAgentOld.ConstructorProps,
+                Gio.AsyncInitable.ConstructorProps,
+                Gio.Initable.ConstructorProps {
+            force_always_ask: boolean;
+            forceAlwaysAsk: boolean;
+        }
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class NetworkAgent extends NM.SecretAgentOld implements Gio.AsyncInitable<NetworkAgent>, Gio.Initable {
+        static $gtype: GObject.GType<NetworkAgent>;
+
+        // Properties
+
+        /**
+         * @construct-only
+         */
+        get force_always_ask(): boolean;
+        /**
+         * @construct-only
+         */
+        get forceAlwaysAsk(): boolean;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: NetworkAgent.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<NetworkAgent.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof NetworkAgent.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, NetworkAgent.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof NetworkAgent.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, NetworkAgent.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof NetworkAgent.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<NetworkAgent.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+
+        /**
+         * @param request_id
+         * @param setting_key
+         * @param setting_value
+         */
+        add_vpn_secret(request_id: string, setting_key: string, setting_value: string): void;
+        /**
+         * @param request_id
+         * @param response
+         */
+        respond(request_id: string, response: NetworkAgentResponse | null): void;
+        /**
+         * @param service
+         */
+        search_vpn_plugin(service: string): globalThis.Promise<NM.VpnPluginInfo | null>;
+        /**
+         * @param service
+         * @param callback
+         */
+        search_vpn_plugin(service: string, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * @param service
+         * @param callback
+         */
+        search_vpn_plugin(
+            service: string,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<NM.VpnPluginInfo | null> | void;
+        /**
+         * @param result
+         * @returns The found plugin or `null`
+         */
+        search_vpn_plugin_finish(result: Gio.AsyncResult): NM.VpnPluginInfo | null;
+        /**
+         * @param request_id
+         * @param setting_key
+         * @param setting_value
+         */
+        set_password(request_id: string, setting_key: string, setting_value: string): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * `g_async_initable_new_async()` should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call `g_async_initable_init_finish()` to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * `null`, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
+         * the object doesn't support cancellable initialization, the error
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
+         *
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to `init_async()` on the
+         * results of the first call.
+         *
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         */
+        init_async(io_priority: number, cancellable?: Gio.Cancellable | null): globalThis.Promise<boolean>;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * `g_async_initable_new_async()` should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call `g_async_initable_init_finish()` to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * `null`, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
+         * the object doesn't support cancellable initialization, the error
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
+         *
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to `init_async()` on the
+         * results of the first call.
+         *
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable: Gio.Cancellable | null,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * `g_async_initable_new_async()` should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call `g_async_initable_init_finish()` to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * `null`, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
+         * the object doesn't support cancellable initialization, the error
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
+         *
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to `init_async()` on the
+         * results of the first call.
+         *
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         */
+        init_async(
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<boolean> | void;
+        /**
+         * Finishes asynchronous initialization and returns the result.
+         * See `g_async_initable_init_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @returns `true` if successful. If an error has occurred, this function will return `false` and set `error` appropriately if present.
+         */
+        init_finish(res: Gio.AsyncResult): boolean;
+        /**
+         * Finishes the async construction for the various g_async_initable_new
+         * calls, returning the created object or `null` on error.
+         * @param res the {@link Gio.AsyncResult} from the callback
+         * @returns a newly created {@link GObject.Object},      or `null` on error. Free with `g_object_unref()`.
+         */
+        new_finish(res: Gio.AsyncResult): NetworkAgent;
+        /**
+         * Starts asynchronous initialization of the object implementing the
+         * interface. This must be done before any real use of the object after
+         * initial construction. If the object also implements {@link Gio.Initable} you can
+         * optionally call `g_initable_init()` instead.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * `g_async_initable_new_async()` should typically be used instead.
+         *
+         * When the initialization is finished, `callback` will be called. You can
+         * then call `g_async_initable_init_finish()` to get the result of the
+         * initialization.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not
+         * `null`, then initialization can be cancelled by triggering the cancellable
+         * object from another thread. If the operation was cancelled, the error
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null`, and
+         * the object doesn't support cancellable initialization, the error
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
+         *
+         * As with {@link Gio.Initable}, if the object is not initialized, or initialization
+         * returns with an error, then all operations on the object except
+         * `g_object_ref()` and `g_object_unref()` are considered to be invalid, and
+         * have undefined behaviour. They will often fail with `g_critical()` or
+         * `g_warning()`, but this must not be relied on.
+         *
+         * Callers should not assume that a class which implements {@link Gio.AsyncInitable} can
+         * be initialized multiple times; for more information, see `g_initable_init()`.
+         * If a class explicitly supports being initialized multiple times,
+         * implementation requires yielding all subsequent calls to `init_async()` on the
+         * results of the first call.
+         *
+         * For classes that also support the {@link Gio.Initable} interface, the default
+         * implementation of this method will run the `g_initable_init()` function
+         * in a thread, so if you want to support asynchronous initialization via
+         * threads, just implement the {@link Gio.AsyncInitable} interface without overriding
+         * any interface methods.
+         * @param io_priority the [I/O priority](iface.AsyncResult.html#io-priority) of the operation
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @param callback a {@link Gio.AsyncReadyCallback} to call when the request is satisfied
+         * @virtual
+         */
+        vfunc_init_async(
+            io_priority: number,
+            cancellable?: Gio.Cancellable | null,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Finishes asynchronous initialization and returns the result.
+         * See `g_async_initable_init_async()`.
+         * @param res a {@link Gio.AsyncResult}.
+         * @virtual
+         */
+        vfunc_init_finish(res: Gio.AsyncResult): boolean;
+        /**
+         * Initializes the object implementing the interface.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * `g_initable_new()` should typically be used instead.
+         *
+         * The object must be initialized before any real use after initial
+         * construction, either with this function or `g_async_initable_init_async()`.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
+         * then initialization can be cancelled by triggering the cancellable object
+         * from another thread. If the operation was cancelled, the error
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
+         * the object doesn't support cancellable initialization the error
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
+         *
+         * If the object is not initialized, or initialization returns with an
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
+         *
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
+         * initialized multiple times, unless the class explicitly documents itself as
+         * supporting this. Generally, a class’ implementation of `init()` can assume
+         * (and assert) that it will only be called once. Previously, this documentation
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
+         * recommendation was relaxed in GLib 2.54.
+         *
+         * If a class explicitly supports being initialized multiple times, it is
+         * recommended that the method is idempotent: multiple calls with the same
+         * arguments should return the same results. Only the first call initializes
+         * the object; further calls return the result of the first call.
+         *
+         * One reason why a class might need to support idempotent initialization is if
+         * it is designed to be used via the singleton pattern, with a
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
+         * instance.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @returns `true` if successful. If an error has occurred, this function will     return `false` and set `error` appropriately if present.
+         */
+        init(cancellable?: Gio.Cancellable | null): boolean;
+        /**
+         * Initializes the object implementing the interface.
+         *
+         * This method is intended for language bindings. If writing in C,
+         * `g_initable_new()` should typically be used instead.
+         *
+         * The object must be initialized before any real use after initial
+         * construction, either with this function or `g_async_initable_init_async()`.
+         *
+         * Implementations may also support cancellation. If `cancellable` is not `null`,
+         * then initialization can be cancelled by triggering the cancellable object
+         * from another thread. If the operation was cancelled, the error
+         * {@link Gio.IOErrorEnum.CANCELLED} will be returned. If `cancellable` is not `null` and
+         * the object doesn't support cancellable initialization the error
+         * {@link Gio.IOErrorEnum.NOT_SUPPORTED} will be returned.
+         *
+         * If the object is not initialized, or initialization returns with an
+         * error, then all operations on the object except `g_object_ref()` and
+         * `g_object_unref()` are considered to be invalid, and have undefined
+         * behaviour. See the [description][iface@Gio.Initable#description] for more details.
+         *
+         * Callers should not assume that a class which implements {@link Gio.Initable} can be
+         * initialized multiple times, unless the class explicitly documents itself as
+         * supporting this. Generally, a class’ implementation of `init()` can assume
+         * (and assert) that it will only be called once. Previously, this documentation
+         * recommended all {@link Gio.Initable} implementations should be idempotent; that
+         * recommendation was relaxed in GLib 2.54.
+         *
+         * If a class explicitly supports being initialized multiple times, it is
+         * recommended that the method is idempotent: multiple calls with the same
+         * arguments should return the same results. Only the first call initializes
+         * the object; further calls return the result of the first call.
+         *
+         * One reason why a class might need to support idempotent initialization is if
+         * it is designed to be used via the singleton pattern, with a
+         * {@link GObject.ObjectClass}.constructor that sometimes returns an existing instance.
+         * In this pattern, a caller would expect to be able to call `g_initable_init()`
+         * on the result of `g_object_new()`, regardless of whether it is in fact a new
+         * instance.
+         * @param cancellable optional {@link Gio.Cancellable} object, `null` to ignore.
+         * @virtual
+         */
+        vfunc_init(cancellable?: Gio.Cancellable | null): boolean;
+        /**
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target`.
+         *
+         * Whenever the `source_property` is changed the `target_property` is
+         * updated using the same value. For instance:
+         *
+         *
+         * ```c
+         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+         * ```
+         *
+         *
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
+         * instance.
+         *
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well.
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. To remove the binding without affecting the
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
+         *
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
+         * the binding, `source` and `target` are only used from a single thread and it
+         * is clear that both `source` and `target` outlive the binding. Especially it
+         * is not safe to rely on this if the binding, `source` or `target` can be
+         * finalized from different threads. Keep another reference to the binding and
+         * use `g_binding_unbind()` instead to be on the safe side.
+         *
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
+         */
+        bind_property(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags | null,
+        ): GObject.Binding;
+        /**
+         * Complete version of `g_object_bind_property()`.
+         *
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target`, allowing you to set the transformation functions to be used by
+         * the binding.
+         *
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well. The `transform_from` function is only used in case
+         * of bidirectional bindings, otherwise it will be ignored
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. This will release the reference that is
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
+         *
+         * To remove the binding, call `g_binding_unbind()`.
+         *
+         * A {@link GObject.Object} can have multiple bindings.
+         *
+         * The same `user_data` parameter will be used for both `transform_to`
+         * and `transform_from` transformation functions; the `notify` function will
+         * be called once, when the binding is removed. If you need different data
+         * for each transformation function, please use
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
+         */
+        bind_property_full(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags | null,
+            transform_to?: GObject.BindingTransformFunc | null,
+            transform_from?: GObject.BindingTransformFunc | null,
+            notify?: GLib.DestroyNotify | null,
+        ): GObject.Binding;
+        /**
+         * @param args
+         */
+        // Conflicted with GObject.Object.bind_property_full
+        bind_property_full(...args: never[]): any;
+        /**
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
+         */
+        force_floating(): void;
+        /**
+         * Increases the freeze count on `object`. If the freeze count is
+         * non-zero, the emission of "notify" signals on `object` is
+         * stopped. The signals are queued until the freeze count is decreased
+         * to zero. Duplicate notifications are squashed so that at most one
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
+         * object is frozen.
+         *
+         * This is necessary for accessors that modify multiple properties to prevent
+         * premature notification while the object is still being modified.
+         */
+        freeze_notify(): void;
+        /**
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
+         * @param key name of the key for that association
+         * @returns the data if found,          or `null` if no such data exists.
+         */
+        get_data(key: string): any | null;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
+        /**
+         * This function gets back user data pointers stored via
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
+         */
+        get_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Gets `n_properties` properties for an `object`.
+         * Obtained properties will be set to `values`. All properties must be valid.
+         * Warnings will be emitted and undefined behaviour may result if invalid
+         * properties are passed in.
+         * @param names the names of each property to get
+         * @param values the values of each property to get
+         */
+        getv(names: string[], values: (GObject.Value | any)[]): void;
+        /**
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
+         */
+        is_floating(): boolean;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use `g_object_notify_by_pspec()`
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
+         * called.
+         * @param property_name the name of a property installed on the class of `object`.
+         */
+        notify(property_name: string): void;
+        /**
+         * Emits a "notify" signal for the property specified by `pspec` on `object`.
+         *
+         * This function omits the property name lookup, hence it is faster than
+         * `g_object_notify()`.
+         *
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
+         * instead, is to store the GParamSpec used with
+         * `g_object_class_install_property()` inside a static array, e.g.:
+         *
+         *
+         * ```c
+         *   typedef enum
+         *   {
+         *     PROP_FOO = 1,
+         *     PROP_LAST
+         *   } MyObjectProperty;
+         *
+         *   static GParamSpec *properties[PROP_LAST];
+         *
+         *   static void
+         *   my_object_class_init (MyObjectClass *klass)
+         *   {
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *                                              0, 100,
+         *                                              50,
+         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+         *     g_object_class_install_property (gobject_class,
+         *                                      PROP_FOO,
+         *                                      properties[PROP_FOO]);
+         *   }
+         * ```
+         *
+         *
+         * and then notify a change on the "foo" property with:
+         *
+         *
+         * ```c
+         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+         * ```
+         *
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
+         */
+        notify_by_pspec(pspec: GObject.ParamSpec): void;
+        /**
+         * Increases the reference count of `object`.
+         *
+         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
+         * extension), so any casting the caller needs to do on the return type must be
+         * explicit.
+         * @returns the same `object`
+         */
+        ref(): GObject.Object;
+        /**
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         *
+         * In other words, if the object is floating, then this call "assumes
+         * ownership" of the floating reference, converting it to a normal
+         * reference by clearing the floating flag while leaving the reference
+         * count unchanged.  If the object is not floating, then this call
+         * adds a new normal reference increasing the reference count by one.
+         *
+         * Since GLib 2.56, the type of `object` will be propagated to the return type
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
+         */
+        ref_sink(): GObject.Object;
+        /**
+         * Releases all references to other objects. This can be used to break
+         * reference cycles.
+         *
+         * This function should only be called from object system implementations.
+         */
+        run_dispose(): void;
+        /**
+         * Each object carries around a table of associations from
+         * strings to pointers.  This function lets you set an association.
+         *
+         * If the object already had an association with that name,
+         * the old association will be destroyed.
+         *
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
+         * This means a copy of `key` is kept permanently (even after `object` has been
+         * finalized) — so it is recommended to only use a small, bounded set of values
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
+         * @param key name of the key
+         * @param data data to associate with that key
+         */
+        set_data(key: string, data?: any | null): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
+        /**
+         * Remove a specified datum from the object's data associations,
+         * without invoking the association's destroy handler.
+         * @param key name of the key
+         * @returns the data if found, or `null`          if no such data exists.
+         */
+        steal_data(key: string): any | null;
+        /**
+         * This function gets back user data pointers stored via
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
+         * set).
+         * Usually, calling this function is only required to update
+         * user data pointers with a destroy notifier, for example:
+         *
+         * ```c
+         * void
+         * object_add_to_user_list (GObject     *object,
+         *                          const gchar *new_string)
+         * {
+         *   // the quark, naming the object data
+         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+         *   // retrieve the old string list
+         *   GList *list = g_object_steal_qdata (object, quark_string_list);
+         *
+         *   // prepend new string
+         *   list = g_list_prepend (list, g_strdup (new_string));
+         *   // this changed 'list', so we need to set it again
+         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+         * }
+         * static void
+         * free_string_list (gpointer data)
+         * {
+         *   GList *node, *list = data;
+         *
+         *   for (node = list; node; node = node->next)
+         *     g_free (node->data);
+         *   g_list_free (list);
+         * }
+         * ```
+         *
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
+         * and thus the partial string list would have been freed upon
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
+         */
+        steal_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Reverts the effect of a previous call to
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
+         * and when it reaches zero, queued "notify" signals are emitted.
+         *
+         * Duplicate notifications for each property are squashed so that at most one
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
+         * in which they have been queued.
+         *
+         * It is an error to call this function when the freeze count is zero.
+         */
+        thaw_notify(): void;
+        /**
+         * Decreases the reference count of `object`. When its reference count
+         * drops to 0, the object is finalized (i.e. its memory is freed).
+         *
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
+         * an instance variable of another object), it is recommended to clear the
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
+         */
+        unref(): void;
+        /**
+         * This function essentially limits the life time of the `closure` to
+         * the life time of the object. That is, when the object is finalized,
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
+         * it, in order to prevent invocations of the closure with a finalized
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
+         * reference count is held on `object` during invocation of the
+         * `closure`.  Usually, this function will be called on closures that
+         * use this `object` as closure data.
+         * @param closure {@link GObject.Closure} to watch
+         */
+        watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by `g_object_new()` as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         * @virtual
+         */
+        vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         * @virtual
+         */
+        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         * @virtual
+         */
+        vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         * @virtual
+         */
+        vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         * @virtual
+         */
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use `g_object_notify_by_pspec()`
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
+         * called.
+         * @param pspec
+         * @virtual
+         */
+        vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         * @virtual
+         */
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
+        disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
+        set(properties: { [key: string]: any }): void;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
+    }
+
+    namespace PerfLog {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {}
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    /**
+     * Event recorder for performance measurement
+     *
+     * ShellPerfLog provides a way for different parts of the code to
+     * record information for subsequent analysis and interactive
+     * exploration. Events exist of a timestamp, an event ID, and
+     * arguments to the event.
+     *
+     * Emphasis is placed on storing recorded events in a compact
+     * fashion so log recording disturbs the execution of the program
+     * as little as possible, however events should not be recorded
+     * at too fine a granularity - an event that is recorded once
+     * per frame or once per user action is appropriate, an event that
+     * occurs many times per frame is not.
+     *
+     * Arguments are identified by a D-Bus style signature; at the moment
+     * only a limited number of event signatures are supported to
+     * simplify the code.
+     * @gir-type Class
+     */
+    class PerfLog extends GObject.Object {
+        static $gtype: GObject.GType<PerfLog>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: PerfLog.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<PerfLog.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof PerfLog.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, PerfLog.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof PerfLog.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, PerfLog.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof PerfLog.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<PerfLog.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Static methods
+
+        /**
+         * Gets the global singleton performance log. This is initially disabled
+         * and must be explicitly enabled with `shell_perf_log_set_enabled()`.
+         */
+        static get_default(): PerfLog;
+
+        // Methods
+
+        /**
+         * Adds a function that will be called before statistics are recorded.
+         * The function would typically compute one or more statistics values
+         * and call a function such as `shell_perf_log_update_statistic_i()`
+         * to update the value that will be recorded.
+         * @param callback function to call before recording statistics
+         */
+        add_statistics_callback(callback: PerfStatisticsCallback): void;
+        /**
+         * Calls all the update functions added with
+         * `shell_perf_log_add_statistics_callback()` and then records events
+         * for all statistics, followed by a perf.statisticsCollected event.
+         */
+        collect_statistics(): void;
+        /**
+         * Defines a performance event for later recording.
+         * @param name name of the event. This should of the form   '<namespace>.<specific eventf'>, for example   'clutter.stagePaintDone'.
+         * @param description human readable description of the event.
+         * @param signature signature defining the arguments that event takes.   This is a string of type characters, using the same characters   as D-Bus or GVariant. Only a very limited number of signatures   are supported: , '', 's', 'i', and 'x'. This mean respectively:   no arguments, one string, one 32-bit integer, and one 64-bit   integer.
+         */
+        define_event(name: string, description: string, signature: string): void;
+        /**
+         * Defines a statistic. A statistic is a numeric value that is stored
+         * by the performance log and recorded periodically or when
+         * `shell_perf_log_collect_statistics()` is called explicitly.
+         *
+         * Code that defines a statistic should update it by calling
+         * the update function for the particular data type of the statistic,
+         * such as `shell_perf_log_update_statistic_i()`. This can be done
+         * at any time, but would normally done inside a function registered
+         * with `shell_perf_log_add_statistics_callback()`. These functions
+         * are called immediately before statistics are recorded.
+         * @param name name of the statistic and of the corresponding event.  This should follow the same guidelines as for `shell_perf_log_define_event()`
+         * @param description human readable description of the statistic.
+         * @param signature The type of the data stored for statistic. Must  currently be 'i' or 'x'.
+         */
+        define_statistic(name: string, description: string, signature: string): void;
+        /**
+         * Dump the definition of currently defined events and statistics, formatted
+         * as JSON, to the specified output stream. The JSON output is an array,
+         * with each element being a dictionary of the form:
+         *
+         * { name: <name of event>,
+         *   description: <description of string,
+         *   statistic: true } (only for statistics)
+         * @param out output stream into which to write the event definitions
+         * @returns `true` if the dump succeeded. `false` if an IO error occurred
+         */
+        dump_events(out: Gio.OutputStream): boolean;
+        /**
+         * Writes the performance event log, formatted as JSON, to the specified
+         * output stream. For performance reasons, the output stream passed
+         * in should generally be a buffered (or memory) output stream, since
+         * it will be written to in small pieces. The JSON output is an array
+         * with the elements of the array also being arrays, of the form
+         * '[' <time>, <event name> [, <event_arg>... ] ']'.
+         * @param out output stream into which to write the event log
+         * @returns `true` if the dump succeeded. `false` if an IO error occurred
+         */
+        dump_log(out: Gio.OutputStream): boolean;
+        /**
+         * Records a performance event with no arguments.
+         * @param name name of the event
+         */
+        event(name: string): void;
+        /**
+         * Records a performance event with one 32-bit integer argument.
+         * @param name name of the event
+         * @param arg the argument
+         */
+        event_i(name: string, arg: number): void;
+        /**
+         * Records a performance event with one string argument.
+         * @param name name of the event
+         * @param arg the argument
+         */
+        event_s(name: string, arg: string): void;
+        /**
+         * Records a performance event with one 64-bit integer argument.
+         * @param name name of the event
+         * @param arg the argument
+         */
+        event_x(name: string, arg: number): void;
+        /**
+         * Replays the log by calling the given function for each event
+         * in the log.
+         * @param replay_function function to call for each event in the log
+         */
+        replay(replay_function: PerfReplayFunction): void;
+        /**
+         * Sets whether events are currently being recorded.
+         * @param enabled whether to record events
+         */
+        set_enabled(enabled: boolean): void;
+        /**
+         * Updates the current value of an 32-bit integer statistic.
+         * @param name name of the statistic
+         * @param value new value for the statistic
+         */
+        update_statistic_i(name: string, value: number): void;
+        /**
+         * Updates the current value of an 64-bit integer statistic.
+         * @param name name of the statistic
+         * @param value new value for the statistic
+         */
+        update_statistic_x(name: string, value: number): void;
+    }
+
+    namespace PolkitAuthenticationAgent {
+        // Signal signatures
+        interface SignalSignatures extends PolkitAgent.Listener.SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
+            cancel: () => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            initiate: (arg0: string, arg1: string, arg2: string, arg3: string, arg4: string[]) => void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends PolkitAgent.Listener.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class PolkitAuthenticationAgent extends PolkitAgent.Listener {
+        static $gtype: GObject.GType<PolkitAuthenticationAgent>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: PolkitAuthenticationAgent.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<PolkitAuthenticationAgent.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](): PolkitAuthenticationAgent;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof PolkitAuthenticationAgent.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, PolkitAuthenticationAgent.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof PolkitAuthenticationAgent.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, PolkitAuthenticationAgent.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof PolkitAuthenticationAgent.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<PolkitAuthenticationAgent.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+
+        /**
+         * @param dismissed
+         */
+        complete(dismissed: boolean): void;
+        register(): void;
+        /**
+         * @param args
+         */
+        // Conflicted with PolkitAgent.Listener.register
+        register(...args: never[]): any;
+        unregister(): void;
+    }
+
+    namespace Screenshot {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
+            'screenshot-taken': (arg0: Mtk.Rectangle) => void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    /**
+     * Grabs screenshots of areas and/or windows
+     *
+     * The {@link Shell.Screenshot} object is used to take screenshots of screen
+     * areas or windows and write them out as png files.
+     * @gir-type Class
+     */
+    class Screenshot extends GObject.Object {
+        static $gtype: GObject.GType<Screenshot>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: Screenshot.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<Screenshot.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](): Screenshot;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof Screenshot.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Screenshot.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof Screenshot.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Screenshot.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof Screenshot.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<Screenshot.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Static methods
+
+        /**
+         * Composite a rectangle defined by x, y, width, height from the texture to a
+         * pixbuf and write it as a PNG image into the stream.
+         * @param texture the source texture
+         * @param x x coordinate of the rectangle
+         * @param y y coordinate of the rectangle
+         * @param width width of the rectangle, or -1 to use the full texture
+         * @param height height of the rectangle, or -1 to use the full texture
+         * @param scale scale of the source texture
+         * @param cursor the cursor texture
+         * @param cursor_x x coordinate to put the cursor texture at, relative to the full source texture
+         * @param cursor_y y coordinate to put the cursor texture at, relative to the full source texture
+         * @param cursor_scale scale of the cursor texture
+         * @param stream the stream to write the PNG image into
+         * @param callback function to call returning success or failure
+         */
+        static composite_to_stream(
+            texture: Cogl.Texture,
+            x: number,
+            y: number,
+            width: number,
+            height: number,
+            scale: number,
+            cursor: Cogl.Texture | null,
+            cursor_x: number,
+            cursor_y: number,
+            cursor_scale: number,
+            stream: Gio.OutputStream,
+            callback?: Gio.AsyncReadyCallback<Screenshot> | null,
+        ): void;
+        /**
+         * Finish the asynchronous operation started by
+         * shell_screenshot_composite_to_stream () and obtain its result.
+         * @param result the {@link Gio.AsyncResult} that was provided to the callback
+         */
+        static composite_to_stream_finish(result: Gio.AsyncResult): GdkPixbuf.Pixbuf | null;
+
+        // Methods
+
+        /**
+         * Picks the pixel at `x`, `y` and returns its color as {@link Cogl.Color}.
+         * @param x The X coordinate to pick
+         * @param y The Y coordinate to pick
+         */
+        pick_color(x: number, y: number): globalThis.Promise<Cogl.Color>;
+        /**
+         * Picks the pixel at `x`, `y` and returns its color as {@link Cogl.Color}.
+         * @param x The X coordinate to pick
+         * @param y The Y coordinate to pick
+         * @param callback function to call returning success or failure of the async grabbing
+         */
+        pick_color(x: number, y: number, callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Picks the pixel at `x`, `y` and returns its color as {@link Cogl.Color}.
+         * @param x The X coordinate to pick
+         * @param y The Y coordinate to pick
+         * @param callback function to call returning success or failure of the async grabbing
+         */
+        pick_color(
+            x: number,
+            y: number,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<Cogl.Color> | void;
+        /**
+         * Finish the asynchronous operation started by `shell_screenshot_pick_color()`
+         * and obtain its result.
+         * @param result the {@link Gio.AsyncResult} that was provided to the callback
+         * @returns whether the operation was successful
+         */
+        pick_color_finish(result: Gio.AsyncResult): [boolean, Cogl.Color];
+        /**
+         * Takes a screenshot of the whole screen
+         * in `stream` as png image.
+         * @param include_cursor Whether to include the cursor or not
+         * @param stream The stream for the screenshot
+         */
+        screenshot(include_cursor: boolean, stream: Gio.OutputStream): globalThis.Promise<Mtk.Rectangle>;
+        /**
+         * Takes a screenshot of the whole screen
+         * in `stream` as png image.
+         * @param include_cursor Whether to include the cursor or not
+         * @param stream The stream for the screenshot
+         * @param callback function to call returning success or failure of the async grabbing
+         */
+        screenshot(
+            include_cursor: boolean,
+            stream: Gio.OutputStream,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Takes a screenshot of the whole screen
+         * in `stream` as png image.
+         * @param include_cursor Whether to include the cursor or not
+         * @param stream The stream for the screenshot
+         * @param callback function to call returning success or failure of the async grabbing
+         */
+        screenshot(
+            include_cursor: boolean,
+            stream: Gio.OutputStream,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<Mtk.Rectangle> | void;
+        /**
+         * Takes a screenshot of the passed in area and saves it
+         * in `stream` as png image.
+         * @param x The X coordinate of the area
+         * @param y The Y coordinate of the area
+         * @param width The width of the area
+         * @param height The height of the area
+         * @param stream The stream for the screenshot
+         */
+        screenshot_area(
+            x: number,
+            y: number,
+            width: number,
+            height: number,
+            stream: Gio.OutputStream,
+        ): globalThis.Promise<Mtk.Rectangle>;
+        /**
+         * Takes a screenshot of the passed in area and saves it
+         * in `stream` as png image.
+         * @param x The X coordinate of the area
+         * @param y The Y coordinate of the area
+         * @param width The width of the area
+         * @param height The height of the area
+         * @param stream The stream for the screenshot
+         * @param callback function to call returning success or failure of the async grabbing
+         */
+        screenshot_area(
+            x: number,
+            y: number,
+            width: number,
+            height: number,
+            stream: Gio.OutputStream,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Takes a screenshot of the passed in area and saves it
+         * in `stream` as png image.
+         * @param x The X coordinate of the area
+         * @param y The Y coordinate of the area
+         * @param width The width of the area
+         * @param height The height of the area
+         * @param stream The stream for the screenshot
+         * @param callback function to call returning success or failure of the async grabbing
+         */
+        screenshot_area(
+            x: number,
+            y: number,
+            width: number,
+            height: number,
+            stream: Gio.OutputStream,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<Mtk.Rectangle> | void;
+        /**
+         * Finish the asynchronous operation started by `shell_screenshot_screenshot_area()`
+         * and obtain its result.
+         * @param result the {@link Gio.AsyncResult} that was provided to the callback
+         * @returns whether the operation was successful
+         */
+        screenshot_area_finish(result: Gio.AsyncResult): [boolean, Mtk.Rectangle];
+        /**
+         * Finish the asynchronous operation started by `shell_screenshot_screenshot()`
+         * and obtain its result.
+         * @param result the {@link Gio.AsyncResult} that was provided to the callback
+         * @returns whether the operation was successful
+         */
+        screenshot_finish(result: Gio.AsyncResult): [boolean, Mtk.Rectangle];
+        /**
+         * Takes a screenshot of the whole screen as {@link Clutter.Content}.
+         */
+        screenshot_stage_to_content(): globalThis.Promise<
+            [Clutter.Content, number, Clutter.Content | null, Graphene.Point | null, number]
+        >;
+        /**
+         * Takes a screenshot of the whole screen as {@link Clutter.Content}.
+         * @param callback function to call returning success or failure of the async grabbing
+         */
+        screenshot_stage_to_content(callback: Gio.AsyncReadyCallback<this> | null): void;
+        /**
+         * Takes a screenshot of the whole screen as {@link Clutter.Content}.
+         * @param callback function to call returning success or failure of the async grabbing
+         */
+        screenshot_stage_to_content(
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<[Clutter.Content, number, Clutter.Content | null, Graphene.Point | null, number]> | void;
+        /**
+         * Finish the asynchronous operation started by
+         * `shell_screenshot_screenshot_stage_to_content()` and obtain its result.
+         * @param result the {@link Gio.AsyncResult} that was provided to the callback
+         * @returns the {@link Clutter.Content}, or NULL
+         */
+        screenshot_stage_to_content_finish(
+            result: Gio.AsyncResult,
+        ): [Clutter.Content, number, Clutter.Content | null, Graphene.Point | null, number];
+        /**
+         * Takes a screenshot of the focused window (optionally omitting the frame)
+         * in `stream` as png image.
+         * @param include_frame Whether to include the frame or not
+         * @param include_cursor Whether to include the cursor or not
+         * @param stream The stream for the screenshot
+         */
+        screenshot_window(
+            include_frame: boolean,
+            include_cursor: boolean,
+            stream: Gio.OutputStream,
+        ): globalThis.Promise<Mtk.Rectangle>;
+        /**
+         * Takes a screenshot of the focused window (optionally omitting the frame)
+         * in `stream` as png image.
+         * @param include_frame Whether to include the frame or not
+         * @param include_cursor Whether to include the cursor or not
+         * @param stream The stream for the screenshot
+         * @param callback function to call returning success or failure of the async grabbing
+         */
+        screenshot_window(
+            include_frame: boolean,
+            include_cursor: boolean,
+            stream: Gio.OutputStream,
+            callback: Gio.AsyncReadyCallback<this> | null,
+        ): void;
+        /**
+         * Takes a screenshot of the focused window (optionally omitting the frame)
+         * in `stream` as png image.
+         * @param include_frame Whether to include the frame or not
+         * @param include_cursor Whether to include the cursor or not
+         * @param stream The stream for the screenshot
+         * @param callback function to call returning success or failure of the async grabbing
+         */
+        screenshot_window(
+            include_frame: boolean,
+            include_cursor: boolean,
+            stream: Gio.OutputStream,
+            callback?: Gio.AsyncReadyCallback<this> | null,
+        ): globalThis.Promise<Mtk.Rectangle> | void;
+        /**
+         * Finish the asynchronous operation started by `shell_screenshot_screenshot_window()`
+         * and obtain its result.
+         * @param result the {@link Gio.AsyncResult} that was provided to the callback
+         * @returns whether the operation was successful
+         */
+        screenshot_window_finish(result: Gio.AsyncResult): [boolean, Mtk.Rectangle];
+    }
+
+    namespace SecureTextBuffer {
+        // Signal signatures
+        interface SignalSignatures extends Clutter.TextBuffer.SignalSignatures {
+            'notify::length': (pspec: GObject.ParamSpec) => void;
+            'notify::max-length': (pspec: GObject.ParamSpec) => void;
+            'notify::text': (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends Clutter.TextBuffer.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class SecureTextBuffer extends Clutter.TextBuffer {
+        static $gtype: GObject.GType<SecureTextBuffer>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: SecureTextBuffer.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<SecureTextBuffer.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](): SecureTextBuffer;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof SecureTextBuffer.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, SecureTextBuffer.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof SecureTextBuffer.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, SecureTextBuffer.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof SecureTextBuffer.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<SecureTextBuffer.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+    }
+
+    namespace SquareBin {
+        // Signal signatures
+        interface SignalSignatures extends St.Bin.SignalSignatures {
+            'notify::child': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::hover': (pspec: GObject.ParamSpec) => void;
+            'notify::label-actor': (pspec: GObject.ParamSpec) => void;
+            'notify::pseudo-class': (pspec: GObject.ParamSpec) => void;
+            'notify::style': (pspec: GObject.ParamSpec) => void;
+            'notify::style-class': (pspec: GObject.ParamSpec) => void;
+            'notify::track-hover': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-name': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
+            'notify::actions': (pspec: GObject.ParamSpec) => void;
+            'notify::allocation': (pspec: GObject.ParamSpec) => void;
+            'notify::background-color': (pspec: GObject.ParamSpec) => void;
+            'notify::background-color-set': (pspec: GObject.ParamSpec) => void;
+            'notify::child-transform': (pspec: GObject.ParamSpec) => void;
+            'notify::child-transform-set': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-rect': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-to-allocation': (pspec: GObject.ParamSpec) => void;
+            'notify::color-state': (pspec: GObject.ParamSpec) => void;
+            'notify::constraints': (pspec: GObject.ParamSpec) => void;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
+            'notify::content-box': (pspec: GObject.ParamSpec) => void;
+            'notify::content-gravity': (pspec: GObject.ParamSpec) => void;
+            'notify::content-repeat': (pspec: GObject.ParamSpec) => void;
+            'notify::context': (pspec: GObject.ParamSpec) => void;
+            'notify::cursor-type': (pspec: GObject.ParamSpec) => void;
+            'notify::effect': (pspec: GObject.ParamSpec) => void;
+            'notify::first-child': (pspec: GObject.ParamSpec) => void;
+            'notify::fixed-position-set': (pspec: GObject.ParamSpec) => void;
+            'notify::fixed-x': (pspec: GObject.ParamSpec) => void;
+            'notify::fixed-y': (pspec: GObject.ParamSpec) => void;
+            'notify::has-clip': (pspec: GObject.ParamSpec) => void;
+            'notify::has-pointer': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::last-child': (pspec: GObject.ParamSpec) => void;
+            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
+            'notify::magnification-filter': (pspec: GObject.ParamSpec) => void;
+            'notify::mapped': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
+            'notify::min-height': (pspec: GObject.ParamSpec) => void;
+            'notify::min-height-set': (pspec: GObject.ParamSpec) => void;
+            'notify::min-width': (pspec: GObject.ParamSpec) => void;
+            'notify::min-width-set': (pspec: GObject.ParamSpec) => void;
+            'notify::minification-filter': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::natural-height': (pspec: GObject.ParamSpec) => void;
+            'notify::natural-height-set': (pspec: GObject.ParamSpec) => void;
+            'notify::natural-width': (pspec: GObject.ParamSpec) => void;
+            'notify::natural-width-set': (pspec: GObject.ParamSpec) => void;
+            'notify::offscreen-redirect': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
+            'notify::pivot-point-z': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::reactive': (pspec: GObject.ParamSpec) => void;
+            'notify::realized': (pspec: GObject.ParamSpec) => void;
+            'notify::request-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::rotation-angle-x': (pspec: GObject.ParamSpec) => void;
+            'notify::rotation-angle-y': (pspec: GObject.ParamSpec) => void;
+            'notify::rotation-angle-z': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-z': (pspec: GObject.ParamSpec) => void;
+            'notify::show-on-set-parent': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::text-direction': (pspec: GObject.ParamSpec) => void;
+            'notify::transform': (pspec: GObject.ParamSpec) => void;
+            'notify::transform-set': (pspec: GObject.ParamSpec) => void;
+            'notify::translation-x': (pspec: GObject.ParamSpec) => void;
+            'notify::translation-y': (pspec: GObject.ParamSpec) => void;
+            'notify::translation-z': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::x': (pspec: GObject.ParamSpec) => void;
+            'notify::x-align': (pspec: GObject.ParamSpec) => void;
+            'notify::x-expand': (pspec: GObject.ParamSpec) => void;
+            'notify::y': (pspec: GObject.ParamSpec) => void;
+            'notify::y-align': (pspec: GObject.ParamSpec) => void;
+            'notify::y-expand': (pspec: GObject.ParamSpec) => void;
+            'notify::z-position': (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
+            extends
+                St.Bin.ConstructorProps<A>,
+                Atk.ImplementorIface.ConstructorProps,
+                Clutter.Animatable.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class SquareBin<A extends Clutter.Actor = Clutter.Actor>
+        extends St.Bin<A>
+        implements Atk.ImplementorIface, Clutter.Animatable
+    {
+        static $gtype: GObject.GType<SquareBin>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: SquareBin.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<SquareBin.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof SquareBin.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, SquareBin.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof SquareBin.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, SquareBin.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof SquareBin.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<SquareBin.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+        /**
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target`.
+         *
+         * Whenever the `source_property` is changed the `target_property` is
+         * updated using the same value. For instance:
+         *
+         *
+         * ```c
+         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+         * ```
+         *
+         *
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
+         * instance.
+         *
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well.
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. To remove the binding without affecting the
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
+         *
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
+         * the binding, `source` and `target` are only used from a single thread and it
+         * is clear that both `source` and `target` outlive the binding. Especially it
+         * is not safe to rely on this if the binding, `source` or `target` can be
+         * finalized from different threads. Keep another reference to the binding and
+         * use `g_binding_unbind()` instead to be on the safe side.
+         *
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
+         */
+        bind_property(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags | null,
+        ): GObject.Binding;
+        /**
+         * Complete version of `g_object_bind_property()`.
+         *
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target`, allowing you to set the transformation functions to be used by
+         * the binding.
+         *
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well. The `transform_from` function is only used in case
+         * of bidirectional bindings, otherwise it will be ignored
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. This will release the reference that is
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
+         *
+         * To remove the binding, call `g_binding_unbind()`.
+         *
+         * A {@link GObject.Object} can have multiple bindings.
+         *
+         * The same `user_data` parameter will be used for both `transform_to`
+         * and `transform_from` transformation functions; the `notify` function will
+         * be called once, when the binding is removed. If you need different data
+         * for each transformation function, please use
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
+         */
+        bind_property_full(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags | null,
+            transform_to?: GObject.BindingTransformFunc | null,
+            transform_from?: GObject.BindingTransformFunc | null,
+            notify?: GLib.DestroyNotify | null,
+        ): GObject.Binding;
+        /**
+         * @param args
+         */
+        // Conflicted with GObject.Object.bind_property_full
+        bind_property_full(...args: never[]): any;
+        /**
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
+         */
+        force_floating(): void;
+        /**
+         * Increases the freeze count on `object`. If the freeze count is
+         * non-zero, the emission of "notify" signals on `object` is
+         * stopped. The signals are queued until the freeze count is decreased
+         * to zero. Duplicate notifications are squashed so that at most one
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
+         * object is frozen.
+         *
+         * This is necessary for accessors that modify multiple properties to prevent
+         * premature notification while the object is still being modified.
+         */
+        freeze_notify(): void;
+        /**
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
+         * @param key name of the key for that association
+         * @returns the data if found,          or `null` if no such data exists.
+         */
+        get_data(key: string): any | null;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
+        /**
+         * This function gets back user data pointers stored via
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
+         */
+        get_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Gets `n_properties` properties for an `object`.
+         * Obtained properties will be set to `values`. All properties must be valid.
+         * Warnings will be emitted and undefined behaviour may result if invalid
+         * properties are passed in.
+         * @param names the names of each property to get
+         * @param values the values of each property to get
+         */
+        getv(names: string[], values: (GObject.Value | any)[]): void;
+        /**
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
+         */
+        is_floating(): boolean;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use `g_object_notify_by_pspec()`
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
+         * called.
+         * @param property_name the name of a property installed on the class of `object`.
+         */
+        notify(property_name: string): void;
+        /**
+         * Emits a "notify" signal for the property specified by `pspec` on `object`.
+         *
+         * This function omits the property name lookup, hence it is faster than
+         * `g_object_notify()`.
+         *
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
+         * instead, is to store the GParamSpec used with
+         * `g_object_class_install_property()` inside a static array, e.g.:
+         *
+         *
+         * ```c
+         *   typedef enum
+         *   {
+         *     PROP_FOO = 1,
+         *     PROP_LAST
+         *   } MyObjectProperty;
+         *
+         *   static GParamSpec *properties[PROP_LAST];
+         *
+         *   static void
+         *   my_object_class_init (MyObjectClass *klass)
+         *   {
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *                                              0, 100,
+         *                                              50,
+         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+         *     g_object_class_install_property (gobject_class,
+         *                                      PROP_FOO,
+         *                                      properties[PROP_FOO]);
+         *   }
+         * ```
+         *
+         *
+         * and then notify a change on the "foo" property with:
+         *
+         *
+         * ```c
+         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+         * ```
+         *
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
+         */
+        notify_by_pspec(pspec: GObject.ParamSpec): void;
+        /**
+         * Increases the reference count of `object`.
+         *
+         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
+         * extension), so any casting the caller needs to do on the return type must be
+         * explicit.
+         * @returns the same `object`
+         */
+        ref(): GObject.Object;
+        /**
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         *
+         * In other words, if the object is floating, then this call "assumes
+         * ownership" of the floating reference, converting it to a normal
+         * reference by clearing the floating flag while leaving the reference
+         * count unchanged.  If the object is not floating, then this call
+         * adds a new normal reference increasing the reference count by one.
+         *
+         * Since GLib 2.56, the type of `object` will be propagated to the return type
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
+         */
+        ref_sink(): GObject.Object;
+        /**
+         * Releases all references to other objects. This can be used to break
+         * reference cycles.
+         *
+         * This function should only be called from object system implementations.
+         */
+        run_dispose(): void;
+        /**
+         * Each object carries around a table of associations from
+         * strings to pointers.  This function lets you set an association.
+         *
+         * If the object already had an association with that name,
+         * the old association will be destroyed.
+         *
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
+         * This means a copy of `key` is kept permanently (even after `object` has been
+         * finalized) — so it is recommended to only use a small, bounded set of values
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
+         * @param key name of the key
+         * @param data data to associate with that key
+         */
+        set_data(key: string, data?: any | null): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
+        /**
+         * Remove a specified datum from the object's data associations,
+         * without invoking the association's destroy handler.
+         * @param key name of the key
+         * @returns the data if found, or `null`          if no such data exists.
+         */
+        steal_data(key: string): any | null;
+        /**
+         * This function gets back user data pointers stored via
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
+         * set).
+         * Usually, calling this function is only required to update
+         * user data pointers with a destroy notifier, for example:
+         *
+         * ```c
+         * void
+         * object_add_to_user_list (GObject     *object,
+         *                          const gchar *new_string)
+         * {
+         *   // the quark, naming the object data
+         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+         *   // retrieve the old string list
+         *   GList *list = g_object_steal_qdata (object, quark_string_list);
+         *
+         *   // prepend new string
+         *   list = g_list_prepend (list, g_strdup (new_string));
+         *   // this changed 'list', so we need to set it again
+         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+         * }
+         * static void
+         * free_string_list (gpointer data)
+         * {
+         *   GList *node, *list = data;
+         *
+         *   for (node = list; node; node = node->next)
+         *     g_free (node->data);
+         *   g_list_free (list);
+         * }
+         * ```
+         *
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
+         * and thus the partial string list would have been freed upon
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
+         */
+        steal_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Reverts the effect of a previous call to
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
+         * and when it reaches zero, queued "notify" signals are emitted.
+         *
+         * Duplicate notifications for each property are squashed so that at most one
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
+         * in which they have been queued.
+         *
+         * It is an error to call this function when the freeze count is zero.
+         */
+        thaw_notify(): void;
+        /**
+         * Decreases the reference count of `object`. When its reference count
+         * drops to 0, the object is finalized (i.e. its memory is freed).
+         *
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
+         * an instance variable of another object), it is recommended to clear the
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
+         */
+        unref(): void;
+        /**
+         * This function essentially limits the life time of the `closure` to
+         * the life time of the object. That is, when the object is finalized,
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
+         * it, in order to prevent invocations of the closure with a finalized
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
+         * reference count is held on `object` during invocation of the
+         * `closure`.  Usually, this function will be called on closures that
+         * use this `object` as closure data.
+         * @param closure {@link GObject.Closure} to watch
+         */
+        watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by `g_object_new()` as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         * @virtual
+         */
+        vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         * @virtual
+         */
+        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         * @virtual
+         */
+        vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         * @virtual
+         */
+        vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         * @virtual
+         */
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use `g_object_notify_by_pspec()`
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
+         * called.
+         * @param pspec
+         * @virtual
+         */
+        vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         * @virtual
+         */
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
+        disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
+        set(properties: { [key: string]: any }): void;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
+    }
+
+    namespace Stack {
+        // Signal signatures
+        interface SignalSignatures extends St.Widget.SignalSignatures {
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::hover': (pspec: GObject.ParamSpec) => void;
+            'notify::label-actor': (pspec: GObject.ParamSpec) => void;
+            'notify::pseudo-class': (pspec: GObject.ParamSpec) => void;
+            'notify::style': (pspec: GObject.ParamSpec) => void;
+            'notify::style-class': (pspec: GObject.ParamSpec) => void;
+            'notify::track-hover': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-name': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
+            'notify::actions': (pspec: GObject.ParamSpec) => void;
+            'notify::allocation': (pspec: GObject.ParamSpec) => void;
+            'notify::background-color': (pspec: GObject.ParamSpec) => void;
+            'notify::background-color-set': (pspec: GObject.ParamSpec) => void;
+            'notify::child-transform': (pspec: GObject.ParamSpec) => void;
+            'notify::child-transform-set': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-rect': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-to-allocation': (pspec: GObject.ParamSpec) => void;
+            'notify::color-state': (pspec: GObject.ParamSpec) => void;
+            'notify::constraints': (pspec: GObject.ParamSpec) => void;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
+            'notify::content-box': (pspec: GObject.ParamSpec) => void;
+            'notify::content-gravity': (pspec: GObject.ParamSpec) => void;
+            'notify::content-repeat': (pspec: GObject.ParamSpec) => void;
+            'notify::context': (pspec: GObject.ParamSpec) => void;
+            'notify::cursor-type': (pspec: GObject.ParamSpec) => void;
+            'notify::effect': (pspec: GObject.ParamSpec) => void;
+            'notify::first-child': (pspec: GObject.ParamSpec) => void;
+            'notify::fixed-position-set': (pspec: GObject.ParamSpec) => void;
+            'notify::fixed-x': (pspec: GObject.ParamSpec) => void;
+            'notify::fixed-y': (pspec: GObject.ParamSpec) => void;
+            'notify::has-clip': (pspec: GObject.ParamSpec) => void;
+            'notify::has-pointer': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::last-child': (pspec: GObject.ParamSpec) => void;
+            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
+            'notify::magnification-filter': (pspec: GObject.ParamSpec) => void;
+            'notify::mapped': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
+            'notify::min-height': (pspec: GObject.ParamSpec) => void;
+            'notify::min-height-set': (pspec: GObject.ParamSpec) => void;
+            'notify::min-width': (pspec: GObject.ParamSpec) => void;
+            'notify::min-width-set': (pspec: GObject.ParamSpec) => void;
+            'notify::minification-filter': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::natural-height': (pspec: GObject.ParamSpec) => void;
+            'notify::natural-height-set': (pspec: GObject.ParamSpec) => void;
+            'notify::natural-width': (pspec: GObject.ParamSpec) => void;
+            'notify::natural-width-set': (pspec: GObject.ParamSpec) => void;
+            'notify::offscreen-redirect': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
+            'notify::pivot-point-z': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::reactive': (pspec: GObject.ParamSpec) => void;
+            'notify::realized': (pspec: GObject.ParamSpec) => void;
+            'notify::request-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::rotation-angle-x': (pspec: GObject.ParamSpec) => void;
+            'notify::rotation-angle-y': (pspec: GObject.ParamSpec) => void;
+            'notify::rotation-angle-z': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-z': (pspec: GObject.ParamSpec) => void;
+            'notify::show-on-set-parent': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::text-direction': (pspec: GObject.ParamSpec) => void;
+            'notify::transform': (pspec: GObject.ParamSpec) => void;
+            'notify::transform-set': (pspec: GObject.ParamSpec) => void;
+            'notify::translation-x': (pspec: GObject.ParamSpec) => void;
+            'notify::translation-y': (pspec: GObject.ParamSpec) => void;
+            'notify::translation-z': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::x': (pspec: GObject.ParamSpec) => void;
+            'notify::x-align': (pspec: GObject.ParamSpec) => void;
+            'notify::x-expand': (pspec: GObject.ParamSpec) => void;
+            'notify::y': (pspec: GObject.ParamSpec) => void;
+            'notify::y-align': (pspec: GObject.ParamSpec) => void;
+            'notify::y-expand': (pspec: GObject.ParamSpec) => void;
+            'notify::z-position': (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps
+            extends
+                St.Widget.ConstructorProps,
+                Atk.ImplementorIface.ConstructorProps,
+                Clutter.Animatable.ConstructorProps {}
+    }
+
+    /**
+     * Pure "Z-axis" container class
+     *
+     * A {@link Shell.Stack} draws its children on top of each other,
+     * aligned to the top left.  It will be sized in width/height
+     * according to the largest such dimension of its children, and
+     * all children will be allocated that size.  This differs
+     * from `ClutterGroup` which allocates its children their natural
+     * size, even if that would overflow the size allocated to the stack.
+     * @gir-type Class
+     */
+    class Stack extends St.Widget implements Atk.ImplementorIface, Clutter.Animatable {
+        static $gtype: GObject.GType<Stack>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: Stack.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<Stack.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof Stack.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Stack.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof Stack.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, Stack.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof Stack.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<Stack.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+        /**
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target`.
+         *
+         * Whenever the `source_property` is changed the `target_property` is
+         * updated using the same value. For instance:
+         *
+         *
+         * ```c
+         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+         * ```
+         *
+         *
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
+         * instance.
+         *
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well.
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. To remove the binding without affecting the
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
+         *
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
+         * the binding, `source` and `target` are only used from a single thread and it
+         * is clear that both `source` and `target` outlive the binding. Especially it
+         * is not safe to rely on this if the binding, `source` or `target` can be
+         * finalized from different threads. Keep another reference to the binding and
+         * use `g_binding_unbind()` instead to be on the safe side.
+         *
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
+         */
+        bind_property(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags | null,
+        ): GObject.Binding;
+        /**
+         * Complete version of `g_object_bind_property()`.
+         *
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target`, allowing you to set the transformation functions to be used by
+         * the binding.
+         *
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well. The `transform_from` function is only used in case
+         * of bidirectional bindings, otherwise it will be ignored
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. This will release the reference that is
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
+         *
+         * To remove the binding, call `g_binding_unbind()`.
+         *
+         * A {@link GObject.Object} can have multiple bindings.
+         *
+         * The same `user_data` parameter will be used for both `transform_to`
+         * and `transform_from` transformation functions; the `notify` function will
+         * be called once, when the binding is removed. If you need different data
+         * for each transformation function, please use
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
+         */
+        bind_property_full(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags | null,
+            transform_to?: GObject.BindingTransformFunc | null,
+            transform_from?: GObject.BindingTransformFunc | null,
+            notify?: GLib.DestroyNotify | null,
+        ): GObject.Binding;
+        /**
+         * @param args
+         */
+        // Conflicted with GObject.Object.bind_property_full
+        bind_property_full(...args: never[]): any;
+        /**
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
+         */
+        force_floating(): void;
+        /**
+         * Increases the freeze count on `object`. If the freeze count is
+         * non-zero, the emission of "notify" signals on `object` is
+         * stopped. The signals are queued until the freeze count is decreased
+         * to zero. Duplicate notifications are squashed so that at most one
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
+         * object is frozen.
+         *
+         * This is necessary for accessors that modify multiple properties to prevent
+         * premature notification while the object is still being modified.
+         */
+        freeze_notify(): void;
+        /**
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
+         * @param key name of the key for that association
+         * @returns the data if found,          or `null` if no such data exists.
+         */
+        get_data(key: string): any | null;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
+        /**
+         * This function gets back user data pointers stored via
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
+         */
+        get_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Gets `n_properties` properties for an `object`.
+         * Obtained properties will be set to `values`. All properties must be valid.
+         * Warnings will be emitted and undefined behaviour may result if invalid
+         * properties are passed in.
+         * @param names the names of each property to get
+         * @param values the values of each property to get
+         */
+        getv(names: string[], values: (GObject.Value | any)[]): void;
+        /**
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
+         */
+        is_floating(): boolean;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use `g_object_notify_by_pspec()`
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
+         * called.
+         * @param property_name the name of a property installed on the class of `object`.
+         */
+        notify(property_name: string): void;
+        /**
+         * Emits a "notify" signal for the property specified by `pspec` on `object`.
+         *
+         * This function omits the property name lookup, hence it is faster than
+         * `g_object_notify()`.
+         *
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
+         * instead, is to store the GParamSpec used with
+         * `g_object_class_install_property()` inside a static array, e.g.:
+         *
+         *
+         * ```c
+         *   typedef enum
+         *   {
+         *     PROP_FOO = 1,
+         *     PROP_LAST
+         *   } MyObjectProperty;
+         *
+         *   static GParamSpec *properties[PROP_LAST];
+         *
+         *   static void
+         *   my_object_class_init (MyObjectClass *klass)
+         *   {
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *                                              0, 100,
+         *                                              50,
+         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+         *     g_object_class_install_property (gobject_class,
+         *                                      PROP_FOO,
+         *                                      properties[PROP_FOO]);
+         *   }
+         * ```
+         *
+         *
+         * and then notify a change on the "foo" property with:
+         *
+         *
+         * ```c
+         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+         * ```
+         *
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
+         */
+        notify_by_pspec(pspec: GObject.ParamSpec): void;
+        /**
+         * Increases the reference count of `object`.
+         *
+         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
+         * extension), so any casting the caller needs to do on the return type must be
+         * explicit.
+         * @returns the same `object`
+         */
+        ref(): GObject.Object;
+        /**
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         *
+         * In other words, if the object is floating, then this call "assumes
+         * ownership" of the floating reference, converting it to a normal
+         * reference by clearing the floating flag while leaving the reference
+         * count unchanged.  If the object is not floating, then this call
+         * adds a new normal reference increasing the reference count by one.
+         *
+         * Since GLib 2.56, the type of `object` will be propagated to the return type
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
+         */
+        ref_sink(): GObject.Object;
+        /**
+         * Releases all references to other objects. This can be used to break
+         * reference cycles.
+         *
+         * This function should only be called from object system implementations.
+         */
+        run_dispose(): void;
+        /**
+         * Each object carries around a table of associations from
+         * strings to pointers.  This function lets you set an association.
+         *
+         * If the object already had an association with that name,
+         * the old association will be destroyed.
+         *
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
+         * This means a copy of `key` is kept permanently (even after `object` has been
+         * finalized) — so it is recommended to only use a small, bounded set of values
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
+         * @param key name of the key
+         * @param data data to associate with that key
+         */
+        set_data(key: string, data?: any | null): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
+        /**
+         * Remove a specified datum from the object's data associations,
+         * without invoking the association's destroy handler.
+         * @param key name of the key
+         * @returns the data if found, or `null`          if no such data exists.
+         */
+        steal_data(key: string): any | null;
+        /**
+         * This function gets back user data pointers stored via
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
+         * set).
+         * Usually, calling this function is only required to update
+         * user data pointers with a destroy notifier, for example:
+         *
+         * ```c
+         * void
+         * object_add_to_user_list (GObject     *object,
+         *                          const gchar *new_string)
+         * {
+         *   // the quark, naming the object data
+         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+         *   // retrieve the old string list
+         *   GList *list = g_object_steal_qdata (object, quark_string_list);
+         *
+         *   // prepend new string
+         *   list = g_list_prepend (list, g_strdup (new_string));
+         *   // this changed 'list', so we need to set it again
+         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+         * }
+         * static void
+         * free_string_list (gpointer data)
+         * {
+         *   GList *node, *list = data;
+         *
+         *   for (node = list; node; node = node->next)
+         *     g_free (node->data);
+         *   g_list_free (list);
+         * }
+         * ```
+         *
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
+         * and thus the partial string list would have been freed upon
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
+         */
+        steal_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Reverts the effect of a previous call to
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
+         * and when it reaches zero, queued "notify" signals are emitted.
+         *
+         * Duplicate notifications for each property are squashed so that at most one
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
+         * in which they have been queued.
+         *
+         * It is an error to call this function when the freeze count is zero.
+         */
+        thaw_notify(): void;
+        /**
+         * Decreases the reference count of `object`. When its reference count
+         * drops to 0, the object is finalized (i.e. its memory is freed).
+         *
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
+         * an instance variable of another object), it is recommended to clear the
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
+         */
+        unref(): void;
+        /**
+         * This function essentially limits the life time of the `closure` to
+         * the life time of the object. That is, when the object is finalized,
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
+         * it, in order to prevent invocations of the closure with a finalized
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
+         * reference count is held on `object` during invocation of the
+         * `closure`.  Usually, this function will be called on closures that
+         * use this `object` as closure data.
+         * @param closure {@link GObject.Closure} to watch
+         */
+        watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by `g_object_new()` as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         * @virtual
+         */
+        vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         * @virtual
+         */
+        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         * @virtual
+         */
+        vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         * @virtual
+         */
+        vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         * @virtual
+         */
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use `g_object_notify_by_pspec()`
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
+         * called.
+         * @param pspec
+         * @virtual
+         */
+        vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         * @virtual
+         */
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
+        disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
+        set(properties: { [key: string]: any }): void;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
+    }
+
+    namespace TrayIcon {
+        // Signal signatures
+        interface SignalSignatures extends Clutter.Clone.SignalSignatures {
+            'notify::pid': (pspec: GObject.ParamSpec) => void;
+            'notify::title': (pspec: GObject.ParamSpec) => void;
+            'notify::wm-class': (pspec: GObject.ParamSpec) => void;
+            'notify::source': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-name': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
+            'notify::actions': (pspec: GObject.ParamSpec) => void;
+            'notify::allocation': (pspec: GObject.ParamSpec) => void;
+            'notify::background-color': (pspec: GObject.ParamSpec) => void;
+            'notify::background-color-set': (pspec: GObject.ParamSpec) => void;
+            'notify::child-transform': (pspec: GObject.ParamSpec) => void;
+            'notify::child-transform-set': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-rect': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-to-allocation': (pspec: GObject.ParamSpec) => void;
+            'notify::color-state': (pspec: GObject.ParamSpec) => void;
+            'notify::constraints': (pspec: GObject.ParamSpec) => void;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
+            'notify::content-box': (pspec: GObject.ParamSpec) => void;
+            'notify::content-gravity': (pspec: GObject.ParamSpec) => void;
+            'notify::content-repeat': (pspec: GObject.ParamSpec) => void;
+            'notify::context': (pspec: GObject.ParamSpec) => void;
+            'notify::cursor-type': (pspec: GObject.ParamSpec) => void;
+            'notify::effect': (pspec: GObject.ParamSpec) => void;
+            'notify::first-child': (pspec: GObject.ParamSpec) => void;
+            'notify::fixed-position-set': (pspec: GObject.ParamSpec) => void;
+            'notify::fixed-x': (pspec: GObject.ParamSpec) => void;
+            'notify::fixed-y': (pspec: GObject.ParamSpec) => void;
+            'notify::has-clip': (pspec: GObject.ParamSpec) => void;
+            'notify::has-pointer': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::last-child': (pspec: GObject.ParamSpec) => void;
+            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
+            'notify::magnification-filter': (pspec: GObject.ParamSpec) => void;
+            'notify::mapped': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
+            'notify::min-height': (pspec: GObject.ParamSpec) => void;
+            'notify::min-height-set': (pspec: GObject.ParamSpec) => void;
+            'notify::min-width': (pspec: GObject.ParamSpec) => void;
+            'notify::min-width-set': (pspec: GObject.ParamSpec) => void;
+            'notify::minification-filter': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::natural-height': (pspec: GObject.ParamSpec) => void;
+            'notify::natural-height-set': (pspec: GObject.ParamSpec) => void;
+            'notify::natural-width': (pspec: GObject.ParamSpec) => void;
+            'notify::natural-width-set': (pspec: GObject.ParamSpec) => void;
+            'notify::offscreen-redirect': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
+            'notify::pivot-point-z': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::reactive': (pspec: GObject.ParamSpec) => void;
+            'notify::realized': (pspec: GObject.ParamSpec) => void;
+            'notify::request-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::rotation-angle-x': (pspec: GObject.ParamSpec) => void;
+            'notify::rotation-angle-y': (pspec: GObject.ParamSpec) => void;
+            'notify::rotation-angle-z': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-z': (pspec: GObject.ParamSpec) => void;
+            'notify::show-on-set-parent': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::text-direction': (pspec: GObject.ParamSpec) => void;
+            'notify::transform': (pspec: GObject.ParamSpec) => void;
+            'notify::transform-set': (pspec: GObject.ParamSpec) => void;
+            'notify::translation-x': (pspec: GObject.ParamSpec) => void;
+            'notify::translation-y': (pspec: GObject.ParamSpec) => void;
+            'notify::translation-z': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::x': (pspec: GObject.ParamSpec) => void;
+            'notify::x-align': (pspec: GObject.ParamSpec) => void;
+            'notify::x-expand': (pspec: GObject.ParamSpec) => void;
+            'notify::y': (pspec: GObject.ParamSpec) => void;
+            'notify::y-align': (pspec: GObject.ParamSpec) => void;
+            'notify::y-expand': (pspec: GObject.ParamSpec) => void;
+            'notify::z-position': (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps<A extends Clutter.Actor = Clutter.Actor>
+            extends
+                Clutter.Clone.ConstructorProps<A>,
+                Atk.ImplementorIface.ConstructorProps,
+                Clutter.Animatable.ConstructorProps {
+            pid: number;
+            title: string;
+            wm_class: string;
+            wmClass: string;
+        }
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class TrayIcon<A extends Clutter.Actor = Clutter.Actor>
+        extends Clutter.Clone<A>
+        implements Atk.ImplementorIface, Clutter.Animatable
+    {
+        static $gtype: GObject.GType<TrayIcon>;
+
+        // Properties
+
+        /**
+         * @read-only
+         */
+        get pid(): number;
+        /**
+         * @read-only
+         */
+        get title(): string;
+        /**
+         * @read-only
+         */
+        get wm_class(): string;
+        /**
+         * @read-only
+         */
+        get wmClass(): string;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: TrayIcon.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<TrayIcon.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof TrayIcon.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, TrayIcon.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof TrayIcon.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, TrayIcon.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof TrayIcon.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<TrayIcon.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+
+        /**
+         * Fakes a press and release on `icon`. `event` must be a
+         * {@link Clutter.EventType.BUTTON_RELEASE}, {@link Clutter.EventType.KEY_PRESS} or {@link Clutter.EventType.KEY_RELEASE} event.
+         * Its relevant details will be passed on to the icon, but its
+         * coordinates will be ignored; the click is
+         * always made on the center of `icon`.
+         * @param event the {@link Clutter.Event} triggering the fake click
+         */
+        click(event: Clutter.Event): void;
+        get_pid(): never;
+        get_title(): string;
+        get_wm_class(): string;
+        /**
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target`.
+         *
+         * Whenever the `source_property` is changed the `target_property` is
+         * updated using the same value. For instance:
+         *
+         *
+         * ```c
+         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+         * ```
+         *
+         *
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
+         * instance.
+         *
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well.
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. To remove the binding without affecting the
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
+         *
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
+         * the binding, `source` and `target` are only used from a single thread and it
+         * is clear that both `source` and `target` outlive the binding. Especially it
+         * is not safe to rely on this if the binding, `source` or `target` can be
+         * finalized from different threads. Keep another reference to the binding and
+         * use `g_binding_unbind()` instead to be on the safe side.
+         *
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
+         */
+        bind_property(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags | null,
+        ): GObject.Binding;
+        /**
+         * Complete version of `g_object_bind_property()`.
+         *
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target`, allowing you to set the transformation functions to be used by
+         * the binding.
+         *
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well. The `transform_from` function is only used in case
+         * of bidirectional bindings, otherwise it will be ignored
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. This will release the reference that is
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
+         *
+         * To remove the binding, call `g_binding_unbind()`.
+         *
+         * A {@link GObject.Object} can have multiple bindings.
+         *
+         * The same `user_data` parameter will be used for both `transform_to`
+         * and `transform_from` transformation functions; the `notify` function will
+         * be called once, when the binding is removed. If you need different data
+         * for each transformation function, please use
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
+         */
+        bind_property_full(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags | null,
+            transform_to?: GObject.BindingTransformFunc | null,
+            transform_from?: GObject.BindingTransformFunc | null,
+            notify?: GLib.DestroyNotify | null,
+        ): GObject.Binding;
+        /**
+         * @param args
+         */
+        // Conflicted with GObject.Object.bind_property_full
+        bind_property_full(...args: never[]): any;
+        /**
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
+         */
+        force_floating(): void;
+        /**
+         * Increases the freeze count on `object`. If the freeze count is
+         * non-zero, the emission of "notify" signals on `object` is
+         * stopped. The signals are queued until the freeze count is decreased
+         * to zero. Duplicate notifications are squashed so that at most one
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
+         * object is frozen.
+         *
+         * This is necessary for accessors that modify multiple properties to prevent
+         * premature notification while the object is still being modified.
+         */
+        freeze_notify(): void;
+        /**
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
+         * @param key name of the key for that association
+         * @returns the data if found,          or `null` if no such data exists.
+         */
+        get_data(key: string): any | null;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
+        /**
+         * This function gets back user data pointers stored via
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
+         */
+        get_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Gets `n_properties` properties for an `object`.
+         * Obtained properties will be set to `values`. All properties must be valid.
+         * Warnings will be emitted and undefined behaviour may result if invalid
+         * properties are passed in.
+         * @param names the names of each property to get
+         * @param values the values of each property to get
+         */
+        getv(names: string[], values: (GObject.Value | any)[]): void;
+        /**
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
+         */
+        is_floating(): boolean;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use `g_object_notify_by_pspec()`
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
+         * called.
+         * @param property_name the name of a property installed on the class of `object`.
+         */
+        notify(property_name: string): void;
+        /**
+         * Emits a "notify" signal for the property specified by `pspec` on `object`.
+         *
+         * This function omits the property name lookup, hence it is faster than
+         * `g_object_notify()`.
+         *
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
+         * instead, is to store the GParamSpec used with
+         * `g_object_class_install_property()` inside a static array, e.g.:
+         *
+         *
+         * ```c
+         *   typedef enum
+         *   {
+         *     PROP_FOO = 1,
+         *     PROP_LAST
+         *   } MyObjectProperty;
+         *
+         *   static GParamSpec *properties[PROP_LAST];
+         *
+         *   static void
+         *   my_object_class_init (MyObjectClass *klass)
+         *   {
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *                                              0, 100,
+         *                                              50,
+         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+         *     g_object_class_install_property (gobject_class,
+         *                                      PROP_FOO,
+         *                                      properties[PROP_FOO]);
+         *   }
+         * ```
+         *
+         *
+         * and then notify a change on the "foo" property with:
+         *
+         *
+         * ```c
+         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+         * ```
+         *
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
+         */
+        notify_by_pspec(pspec: GObject.ParamSpec): void;
+        /**
+         * Increases the reference count of `object`.
+         *
+         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
+         * extension), so any casting the caller needs to do on the return type must be
+         * explicit.
+         * @returns the same `object`
+         */
+        ref(): GObject.Object;
+        /**
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         *
+         * In other words, if the object is floating, then this call "assumes
+         * ownership" of the floating reference, converting it to a normal
+         * reference by clearing the floating flag while leaving the reference
+         * count unchanged.  If the object is not floating, then this call
+         * adds a new normal reference increasing the reference count by one.
+         *
+         * Since GLib 2.56, the type of `object` will be propagated to the return type
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
+         */
+        ref_sink(): GObject.Object;
+        /**
+         * Releases all references to other objects. This can be used to break
+         * reference cycles.
+         *
+         * This function should only be called from object system implementations.
+         */
+        run_dispose(): void;
+        /**
+         * Each object carries around a table of associations from
+         * strings to pointers.  This function lets you set an association.
+         *
+         * If the object already had an association with that name,
+         * the old association will be destroyed.
+         *
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
+         * This means a copy of `key` is kept permanently (even after `object` has been
+         * finalized) — so it is recommended to only use a small, bounded set of values
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
+         * @param key name of the key
+         * @param data data to associate with that key
+         */
+        set_data(key: string, data?: any | null): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
+        /**
+         * Remove a specified datum from the object's data associations,
+         * without invoking the association's destroy handler.
+         * @param key name of the key
+         * @returns the data if found, or `null`          if no such data exists.
+         */
+        steal_data(key: string): any | null;
+        /**
+         * This function gets back user data pointers stored via
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
+         * set).
+         * Usually, calling this function is only required to update
+         * user data pointers with a destroy notifier, for example:
+         *
+         * ```c
+         * void
+         * object_add_to_user_list (GObject     *object,
+         *                          const gchar *new_string)
+         * {
+         *   // the quark, naming the object data
+         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+         *   // retrieve the old string list
+         *   GList *list = g_object_steal_qdata (object, quark_string_list);
+         *
+         *   // prepend new string
+         *   list = g_list_prepend (list, g_strdup (new_string));
+         *   // this changed 'list', so we need to set it again
+         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+         * }
+         * static void
+         * free_string_list (gpointer data)
+         * {
+         *   GList *node, *list = data;
+         *
+         *   for (node = list; node; node = node->next)
+         *     g_free (node->data);
+         *   g_list_free (list);
+         * }
+         * ```
+         *
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
+         * and thus the partial string list would have been freed upon
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
+         */
+        steal_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Reverts the effect of a previous call to
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
+         * and when it reaches zero, queued "notify" signals are emitted.
+         *
+         * Duplicate notifications for each property are squashed so that at most one
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
+         * in which they have been queued.
+         *
+         * It is an error to call this function when the freeze count is zero.
+         */
+        thaw_notify(): void;
+        /**
+         * Decreases the reference count of `object`. When its reference count
+         * drops to 0, the object is finalized (i.e. its memory is freed).
+         *
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
+         * an instance variable of another object), it is recommended to clear the
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
+         */
+        unref(): void;
+        /**
+         * This function essentially limits the life time of the `closure` to
+         * the life time of the object. That is, when the object is finalized,
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
+         * it, in order to prevent invocations of the closure with a finalized
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
+         * reference count is held on `object` during invocation of the
+         * `closure`.  Usually, this function will be called on closures that
+         * use this `object` as closure data.
+         * @param closure {@link GObject.Closure} to watch
+         */
+        watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by `g_object_new()` as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         * @virtual
+         */
+        vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         * @virtual
+         */
+        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         * @virtual
+         */
+        vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         * @virtual
+         */
+        vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         * @virtual
+         */
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use `g_object_notify_by_pspec()`
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
+         * called.
+         * @param pspec
+         * @virtual
+         */
+        vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         * @virtual
+         */
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
+        disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
+        set(properties: { [key: string]: any }): void;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
+    }
+
+    namespace TrayManager {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
+            'tray-icon-added': (arg0: Clutter.Actor) => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            'tray-icon-removed': (arg0: Clutter.Actor) => void;
+            'notify::bg-color': (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            bg_color: Cogl.Color;
+            bgColor: Cogl.Color;
+        }
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class TrayManager extends GObject.Object {
+        static $gtype: GObject.GType<TrayManager>;
+
+        // Properties
+
+        /**
+         * @construct-only
+         */
+        get bg_color(): Cogl.Color;
+        /**
+         * @construct-only
+         */
+        get bgColor(): Cogl.Color;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: TrayManager.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<TrayManager.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](): TrayManager;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof TrayManager.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, TrayManager.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof TrayManager.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, TrayManager.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof TrayManager.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<TrayManager.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+
+        get_bg_color(): Cogl.Color;
+        /**
+         * @param theme_widget
+         */
+        manage_screen(theme_widget: St.Widget): void;
+        unmanage_screen(): void;
+    }
+
+    namespace WM {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
+            'confirm-display-change': () => void;
+            /**
+             * Creates a close dialog for the given window.
+             * @signal
+             * @run-last
+             */
+            'create-close-dialog': (arg0: Meta.Window) => Meta.CloseDialog;
+            /**
+             * Creates an inhibit shortcuts dialog for the given window.
+             * @signal
+             * @run-last
+             */
+            'create-inhibit-shortcuts-dialog': (arg0: Meta.Window) => Meta.InhibitShortcutsDialog;
+            /**
+             * @signal
+             * @run-last
+             */
+            destroy: (arg0: Meta.WindowActor) => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            'filter-keybinding': (arg0: Meta.KeyBinding) => boolean | void;
+            /**
+             * @signal
+             * @run-last
+             */
+            'hide-tile-preview': () => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            'kill-switch-workspace': () => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            'kill-window-effects': (arg0: Meta.WindowActor) => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            map: (arg0: Meta.WindowActor) => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            minimize: (arg0: Meta.WindowActor) => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            'show-tile-preview': (arg0: Meta.Window, arg1: Mtk.Rectangle, arg2: number) => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            'show-window-menu': (arg0: Meta.Window, arg1: number, arg2: Mtk.Rectangle) => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            'size-change': (
+                arg0: Meta.WindowActor,
+                arg1: Meta.SizeChange,
+                arg2: Mtk.Rectangle,
+                arg3: Mtk.Rectangle,
+            ) => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            'size-changed': (arg0: Meta.WindowActor) => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            'switch-workspace': (arg0: number, arg1: number, arg2: number) => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            unminimize: (arg0: Meta.WindowActor) => void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {}
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class WM extends GObject.Object {
+        static $gtype: GObject.GType<WM>;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: WM.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<WM.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        static ['new'](plugin: Meta.Plugin): WM;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof WM.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, WM.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof WM.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, WM.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof WM.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<WM.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+
+        /**
+         * The plugin must call this after the user responded to the confirmation dialog.
+         * @param ok if the new configuration was OK
+         */
+        complete_display_change(ok: boolean): void;
+        /**
+         * The plugin must call this when it has completed a window destroy effect.
+         * @param actor the MetaWindowActor actor
+         */
+        completed_destroy(actor: Meta.WindowActor): void;
+        /**
+         * The plugin must call this when it has completed a window map effect.
+         * @param actor the MetaWindowActor actor
+         */
+        completed_map(actor: Meta.WindowActor): void;
+        /**
+         * The plugin must call this when it has completed a window minimize effect.
+         * @param actor the MetaWindowActor actor
+         */
+        completed_minimize(actor: Meta.WindowActor): void;
+        /**
+         * @param actor
+         */
+        completed_size_change(actor: Meta.WindowActor): void;
+        /**
+         * The plugin must call this when it has finished switching the
+         * workspace.
+         */
+        completed_switch_workspace(): void;
+        /**
+         * The plugin must call this when it has completed a window unminimize effect.
+         * @param actor the MetaWindowActor actor
+         */
+        completed_unminimize(actor: Meta.WindowActor): void;
+    }
+
+    namespace WindowPreview {
+        // Signal signatures
+        interface SignalSignatures extends St.Widget.SignalSignatures {
+            'notify::window-container': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::hover': (pspec: GObject.ParamSpec) => void;
+            'notify::label-actor': (pspec: GObject.ParamSpec) => void;
+            'notify::pseudo-class': (pspec: GObject.ParamSpec) => void;
+            'notify::style': (pspec: GObject.ParamSpec) => void;
+            'notify::style-class': (pspec: GObject.ParamSpec) => void;
+            'notify::track-hover': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-name': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
+            'notify::actions': (pspec: GObject.ParamSpec) => void;
+            'notify::allocation': (pspec: GObject.ParamSpec) => void;
+            'notify::background-color': (pspec: GObject.ParamSpec) => void;
+            'notify::background-color-set': (pspec: GObject.ParamSpec) => void;
+            'notify::child-transform': (pspec: GObject.ParamSpec) => void;
+            'notify::child-transform-set': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-rect': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-to-allocation': (pspec: GObject.ParamSpec) => void;
+            'notify::color-state': (pspec: GObject.ParamSpec) => void;
+            'notify::constraints': (pspec: GObject.ParamSpec) => void;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
+            'notify::content-box': (pspec: GObject.ParamSpec) => void;
+            'notify::content-gravity': (pspec: GObject.ParamSpec) => void;
+            'notify::content-repeat': (pspec: GObject.ParamSpec) => void;
+            'notify::context': (pspec: GObject.ParamSpec) => void;
+            'notify::cursor-type': (pspec: GObject.ParamSpec) => void;
+            'notify::effect': (pspec: GObject.ParamSpec) => void;
+            'notify::first-child': (pspec: GObject.ParamSpec) => void;
+            'notify::fixed-position-set': (pspec: GObject.ParamSpec) => void;
+            'notify::fixed-x': (pspec: GObject.ParamSpec) => void;
+            'notify::fixed-y': (pspec: GObject.ParamSpec) => void;
+            'notify::has-clip': (pspec: GObject.ParamSpec) => void;
+            'notify::has-pointer': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::last-child': (pspec: GObject.ParamSpec) => void;
+            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
+            'notify::magnification-filter': (pspec: GObject.ParamSpec) => void;
+            'notify::mapped': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
+            'notify::min-height': (pspec: GObject.ParamSpec) => void;
+            'notify::min-height-set': (pspec: GObject.ParamSpec) => void;
+            'notify::min-width': (pspec: GObject.ParamSpec) => void;
+            'notify::min-width-set': (pspec: GObject.ParamSpec) => void;
+            'notify::minification-filter': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::natural-height': (pspec: GObject.ParamSpec) => void;
+            'notify::natural-height-set': (pspec: GObject.ParamSpec) => void;
+            'notify::natural-width': (pspec: GObject.ParamSpec) => void;
+            'notify::natural-width-set': (pspec: GObject.ParamSpec) => void;
+            'notify::offscreen-redirect': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
+            'notify::pivot-point-z': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::reactive': (pspec: GObject.ParamSpec) => void;
+            'notify::realized': (pspec: GObject.ParamSpec) => void;
+            'notify::request-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::rotation-angle-x': (pspec: GObject.ParamSpec) => void;
+            'notify::rotation-angle-y': (pspec: GObject.ParamSpec) => void;
+            'notify::rotation-angle-z': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-z': (pspec: GObject.ParamSpec) => void;
+            'notify::show-on-set-parent': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::text-direction': (pspec: GObject.ParamSpec) => void;
+            'notify::transform': (pspec: GObject.ParamSpec) => void;
+            'notify::transform-set': (pspec: GObject.ParamSpec) => void;
+            'notify::translation-x': (pspec: GObject.ParamSpec) => void;
+            'notify::translation-y': (pspec: GObject.ParamSpec) => void;
+            'notify::translation-z': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::x': (pspec: GObject.ParamSpec) => void;
+            'notify::x-align': (pspec: GObject.ParamSpec) => void;
+            'notify::x-expand': (pspec: GObject.ParamSpec) => void;
+            'notify::y': (pspec: GObject.ParamSpec) => void;
+            'notify::y-align': (pspec: GObject.ParamSpec) => void;
+            'notify::y-expand': (pspec: GObject.ParamSpec) => void;
+            'notify::z-position': (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps
+            extends
+                St.Widget.ConstructorProps,
+                Atk.ImplementorIface.ConstructorProps,
+                Clutter.Animatable.ConstructorProps {
+            window_container: Clutter.Actor;
+            windowContainer: Clutter.Actor;
+        }
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class WindowPreview extends St.Widget implements Atk.ImplementorIface, Clutter.Animatable {
+        static $gtype: GObject.GType<WindowPreview>;
+
+        // Properties
+
+        /**
+         * @construct-only
+         */
+        get window_container(): Clutter.Actor;
+        /**
+         * @construct-only
+         */
+        get windowContainer(): Clutter.Actor;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: WindowPreview.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<WindowPreview.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof WindowPreview.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, WindowPreview.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof WindowPreview.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, WindowPreview.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof WindowPreview.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<WindowPreview.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+
+        get_window_container(): Clutter.Actor;
+        /**
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target`.
+         *
+         * Whenever the `source_property` is changed the `target_property` is
+         * updated using the same value. For instance:
+         *
+         *
+         * ```c
+         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+         * ```
+         *
+         *
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
+         * instance.
+         *
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well.
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. To remove the binding without affecting the
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
+         *
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
+         * the binding, `source` and `target` are only used from a single thread and it
+         * is clear that both `source` and `target` outlive the binding. Especially it
+         * is not safe to rely on this if the binding, `source` or `target` can be
+         * finalized from different threads. Keep another reference to the binding and
+         * use `g_binding_unbind()` instead to be on the safe side.
+         *
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
+         */
+        bind_property(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags | null,
+        ): GObject.Binding;
+        /**
+         * Complete version of `g_object_bind_property()`.
+         *
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target`, allowing you to set the transformation functions to be used by
+         * the binding.
+         *
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well. The `transform_from` function is only used in case
+         * of bidirectional bindings, otherwise it will be ignored
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. This will release the reference that is
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
+         *
+         * To remove the binding, call `g_binding_unbind()`.
+         *
+         * A {@link GObject.Object} can have multiple bindings.
+         *
+         * The same `user_data` parameter will be used for both `transform_to`
+         * and `transform_from` transformation functions; the `notify` function will
+         * be called once, when the binding is removed. If you need different data
+         * for each transformation function, please use
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
+         */
+        bind_property_full(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags | null,
+            transform_to?: GObject.BindingTransformFunc | null,
+            transform_from?: GObject.BindingTransformFunc | null,
+            notify?: GLib.DestroyNotify | null,
+        ): GObject.Binding;
+        /**
+         * @param args
+         */
+        // Conflicted with GObject.Object.bind_property_full
+        bind_property_full(...args: never[]): any;
+        /**
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
+         */
+        force_floating(): void;
+        /**
+         * Increases the freeze count on `object`. If the freeze count is
+         * non-zero, the emission of "notify" signals on `object` is
+         * stopped. The signals are queued until the freeze count is decreased
+         * to zero. Duplicate notifications are squashed so that at most one
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
+         * object is frozen.
+         *
+         * This is necessary for accessors that modify multiple properties to prevent
+         * premature notification while the object is still being modified.
+         */
+        freeze_notify(): void;
+        /**
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
+         * @param key name of the key for that association
+         * @returns the data if found,          or `null` if no such data exists.
+         */
+        get_data(key: string): any | null;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
+        /**
+         * This function gets back user data pointers stored via
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
+         */
+        get_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Gets `n_properties` properties for an `object`.
+         * Obtained properties will be set to `values`. All properties must be valid.
+         * Warnings will be emitted and undefined behaviour may result if invalid
+         * properties are passed in.
+         * @param names the names of each property to get
+         * @param values the values of each property to get
+         */
+        getv(names: string[], values: (GObject.Value | any)[]): void;
+        /**
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
+         */
+        is_floating(): boolean;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use `g_object_notify_by_pspec()`
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
+         * called.
+         * @param property_name the name of a property installed on the class of `object`.
+         */
+        notify(property_name: string): void;
+        /**
+         * Emits a "notify" signal for the property specified by `pspec` on `object`.
+         *
+         * This function omits the property name lookup, hence it is faster than
+         * `g_object_notify()`.
+         *
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
+         * instead, is to store the GParamSpec used with
+         * `g_object_class_install_property()` inside a static array, e.g.:
+         *
+         *
+         * ```c
+         *   typedef enum
+         *   {
+         *     PROP_FOO = 1,
+         *     PROP_LAST
+         *   } MyObjectProperty;
+         *
+         *   static GParamSpec *properties[PROP_LAST];
+         *
+         *   static void
+         *   my_object_class_init (MyObjectClass *klass)
+         *   {
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *                                              0, 100,
+         *                                              50,
+         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+         *     g_object_class_install_property (gobject_class,
+         *                                      PROP_FOO,
+         *                                      properties[PROP_FOO]);
+         *   }
+         * ```
+         *
+         *
+         * and then notify a change on the "foo" property with:
+         *
+         *
+         * ```c
+         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+         * ```
+         *
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
+         */
+        notify_by_pspec(pspec: GObject.ParamSpec): void;
+        /**
+         * Increases the reference count of `object`.
+         *
+         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
+         * extension), so any casting the caller needs to do on the return type must be
+         * explicit.
+         * @returns the same `object`
+         */
+        ref(): GObject.Object;
+        /**
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         *
+         * In other words, if the object is floating, then this call "assumes
+         * ownership" of the floating reference, converting it to a normal
+         * reference by clearing the floating flag while leaving the reference
+         * count unchanged.  If the object is not floating, then this call
+         * adds a new normal reference increasing the reference count by one.
+         *
+         * Since GLib 2.56, the type of `object` will be propagated to the return type
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
+         */
+        ref_sink(): GObject.Object;
+        /**
+         * Releases all references to other objects. This can be used to break
+         * reference cycles.
+         *
+         * This function should only be called from object system implementations.
+         */
+        run_dispose(): void;
+        /**
+         * Each object carries around a table of associations from
+         * strings to pointers.  This function lets you set an association.
+         *
+         * If the object already had an association with that name,
+         * the old association will be destroyed.
+         *
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
+         * This means a copy of `key` is kept permanently (even after `object` has been
+         * finalized) — so it is recommended to only use a small, bounded set of values
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
+         * @param key name of the key
+         * @param data data to associate with that key
+         */
+        set_data(key: string, data?: any | null): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
+        /**
+         * Remove a specified datum from the object's data associations,
+         * without invoking the association's destroy handler.
+         * @param key name of the key
+         * @returns the data if found, or `null`          if no such data exists.
+         */
+        steal_data(key: string): any | null;
+        /**
+         * This function gets back user data pointers stored via
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
+         * set).
+         * Usually, calling this function is only required to update
+         * user data pointers with a destroy notifier, for example:
+         *
+         * ```c
+         * void
+         * object_add_to_user_list (GObject     *object,
+         *                          const gchar *new_string)
+         * {
+         *   // the quark, naming the object data
+         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+         *   // retrieve the old string list
+         *   GList *list = g_object_steal_qdata (object, quark_string_list);
+         *
+         *   // prepend new string
+         *   list = g_list_prepend (list, g_strdup (new_string));
+         *   // this changed 'list', so we need to set it again
+         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+         * }
+         * static void
+         * free_string_list (gpointer data)
+         * {
+         *   GList *node, *list = data;
+         *
+         *   for (node = list; node; node = node->next)
+         *     g_free (node->data);
+         *   g_list_free (list);
+         * }
+         * ```
+         *
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
+         * and thus the partial string list would have been freed upon
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
+         */
+        steal_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Reverts the effect of a previous call to
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
+         * and when it reaches zero, queued "notify" signals are emitted.
+         *
+         * Duplicate notifications for each property are squashed so that at most one
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
+         * in which they have been queued.
+         *
+         * It is an error to call this function when the freeze count is zero.
+         */
+        thaw_notify(): void;
+        /**
+         * Decreases the reference count of `object`. When its reference count
+         * drops to 0, the object is finalized (i.e. its memory is freed).
+         *
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
+         * an instance variable of another object), it is recommended to clear the
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
+         */
+        unref(): void;
+        /**
+         * This function essentially limits the life time of the `closure` to
+         * the life time of the object. That is, when the object is finalized,
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
+         * it, in order to prevent invocations of the closure with a finalized
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
+         * reference count is held on `object` during invocation of the
+         * `closure`.  Usually, this function will be called on closures that
+         * use this `object` as closure data.
+         * @param closure {@link GObject.Closure} to watch
+         */
+        watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by `g_object_new()` as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         * @virtual
+         */
+        vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         * @virtual
+         */
+        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         * @virtual
+         */
+        vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         * @virtual
+         */
+        vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         * @virtual
+         */
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use `g_object_notify_by_pspec()`
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
+         * called.
+         * @param pspec
+         * @virtual
+         */
+        vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         * @virtual
+         */
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
+        disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
+        set(properties: { [key: string]: any }): void;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
+    }
+
+    namespace WindowPreviewLayout {
+        // Signal signatures
+        interface SignalSignatures extends Clutter.LayoutManager.SignalSignatures {
+            'notify::bounding-box': (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends Clutter.LayoutManager.ConstructorProps {
+            bounding_box: Clutter.ActorBox;
+            boundingBox: Clutter.ActorBox;
+        }
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class WindowPreviewLayout extends Clutter.LayoutManager {
+        static $gtype: GObject.GType<WindowPreviewLayout>;
+
+        // Properties
+
+        /**
+         * @read-only
+         */
+        get bounding_box(): Clutter.ActorBox;
+        /**
+         * @read-only
+         */
+        get boundingBox(): Clutter.ActorBox;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: WindowPreviewLayout.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<WindowPreviewLayout.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof WindowPreviewLayout.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, WindowPreviewLayout.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof WindowPreviewLayout.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, WindowPreviewLayout.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof WindowPreviewLayout.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<WindowPreviewLayout.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+
+        /**
+         * Creates a ClutterActor drawing the texture of `window` and adds it
+         * to the container. If `window` is already part of the preview, this
+         * function will do nothing.
+         * @param window the {@link Meta.Window}
+         * @returns The newly created actor drawing `window`
+         */
+        add_window(window: Meta.Window): Clutter.Actor | null;
+        get_bounding_box(): Clutter.ActorBox;
+        /**
+         * Gets an array of all MetaWindows that were added to the layout
+         * using `shell_window_preview_layout_add_window()`, ordered by the
+         * insertion order.
+         * @returns The list of windows
+         */
+        get_windows(): Meta.Window[];
+        /**
+         * Removes a MetaWindow `window` from the preview which has been added
+         * previously using `shell_window_preview_layout_add_window()`.
+         * If `window` is not part of preview, this function will do nothing.
+         * @param window the {@link Meta.Window}
+         */
+        remove_window(window: Meta.Window): void;
+    }
+
+    namespace WindowTracker {
+        // Signal signatures
+        interface SignalSignatures extends GObject.Object.SignalSignatures {
+            /**
+             * @signal
+             * @run-last
+             */
+            'startup-sequence-changed': (arg0: Meta.StartupSequence) => void;
+            /**
+             * @signal
+             * @run-last
+             */
+            'tracked-windows-changed': () => void;
+            'notify::focus-app': (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps extends GObject.Object.ConstructorProps {
+            focus_app: App;
+            focusApp: App;
+        }
+    }
+
+    /**
+     * Associate windows with applications
+     *
+     * Maintains a mapping from windows to applications (.desktop file ids).
+     * It currently implements this with some heuristics on the WM_CLASS X11
+     * property (and some static override regexps); in the future, we want to
+     * have it also track through startup-notification.
+     * @gir-type Class
+     */
+    class WindowTracker extends GObject.Object {
+        static $gtype: GObject.GType<WindowTracker>;
+
+        // Properties
+
+        /**
+         * @read-only
+         */
+        get focus_app(): App;
+        /**
+         * @read-only
+         */
+        get focusApp(): App;
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: WindowTracker.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<WindowTracker.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof WindowTracker.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, WindowTracker.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof WindowTracker.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, WindowTracker.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof WindowTracker.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<WindowTracker.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Static methods
+
+        static get_default(): WindowTracker;
+
+        // Methods
+
+        /**
+         * Look up the application corresponding to a process.
+         * @param pid A Unix process identifier
+         * @returns A {@link Shell.App}, or `null` if none
+         */
+        get_app_from_pid(pid: number): App;
+        get_focus_app(): App | null;
+        /**
+         * @returns Currently active startup sequences
+         */
+        get_startup_sequences(): Meta.StartupSequence[];
+        /**
+         * @param metawin A {@link Meta.Window}
+         * @returns Application associated with window
+         */
+        get_window_app(metawin: Meta.Window): App;
+    }
+
+    namespace WorkspaceBackground {
+        // Signal signatures
+        interface SignalSignatures extends St.Widget.SignalSignatures {
+            'notify::monitor-index': (pspec: GObject.ParamSpec) => void;
+            'notify::state-adjustment-value': (pspec: GObject.ParamSpec) => void;
+            'notify::can-focus': (pspec: GObject.ParamSpec) => void;
+            'notify::hover': (pspec: GObject.ParamSpec) => void;
+            'notify::label-actor': (pspec: GObject.ParamSpec) => void;
+            'notify::pseudo-class': (pspec: GObject.ParamSpec) => void;
+            'notify::style': (pspec: GObject.ParamSpec) => void;
+            'notify::style-class': (pspec: GObject.ParamSpec) => void;
+            'notify::track-hover': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-name': (pspec: GObject.ParamSpec) => void;
+            'notify::accessible-role': (pspec: GObject.ParamSpec) => void;
+            'notify::actions': (pspec: GObject.ParamSpec) => void;
+            'notify::allocation': (pspec: GObject.ParamSpec) => void;
+            'notify::background-color': (pspec: GObject.ParamSpec) => void;
+            'notify::background-color-set': (pspec: GObject.ParamSpec) => void;
+            'notify::child-transform': (pspec: GObject.ParamSpec) => void;
+            'notify::child-transform-set': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-rect': (pspec: GObject.ParamSpec) => void;
+            'notify::clip-to-allocation': (pspec: GObject.ParamSpec) => void;
+            'notify::color-state': (pspec: GObject.ParamSpec) => void;
+            'notify::constraints': (pspec: GObject.ParamSpec) => void;
+            'notify::content': (pspec: GObject.ParamSpec) => void;
+            'notify::content-box': (pspec: GObject.ParamSpec) => void;
+            'notify::content-gravity': (pspec: GObject.ParamSpec) => void;
+            'notify::content-repeat': (pspec: GObject.ParamSpec) => void;
+            'notify::context': (pspec: GObject.ParamSpec) => void;
+            'notify::cursor-type': (pspec: GObject.ParamSpec) => void;
+            'notify::effect': (pspec: GObject.ParamSpec) => void;
+            'notify::first-child': (pspec: GObject.ParamSpec) => void;
+            'notify::fixed-position-set': (pspec: GObject.ParamSpec) => void;
+            'notify::fixed-x': (pspec: GObject.ParamSpec) => void;
+            'notify::fixed-y': (pspec: GObject.ParamSpec) => void;
+            'notify::has-clip': (pspec: GObject.ParamSpec) => void;
+            'notify::has-pointer': (pspec: GObject.ParamSpec) => void;
+            'notify::height': (pspec: GObject.ParamSpec) => void;
+            'notify::last-child': (pspec: GObject.ParamSpec) => void;
+            'notify::layout-manager': (pspec: GObject.ParamSpec) => void;
+            'notify::magnification-filter': (pspec: GObject.ParamSpec) => void;
+            'notify::mapped': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-bottom': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-left': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-right': (pspec: GObject.ParamSpec) => void;
+            'notify::margin-top': (pspec: GObject.ParamSpec) => void;
+            'notify::min-height': (pspec: GObject.ParamSpec) => void;
+            'notify::min-height-set': (pspec: GObject.ParamSpec) => void;
+            'notify::min-width': (pspec: GObject.ParamSpec) => void;
+            'notify::min-width-set': (pspec: GObject.ParamSpec) => void;
+            'notify::minification-filter': (pspec: GObject.ParamSpec) => void;
+            'notify::name': (pspec: GObject.ParamSpec) => void;
+            'notify::natural-height': (pspec: GObject.ParamSpec) => void;
+            'notify::natural-height-set': (pspec: GObject.ParamSpec) => void;
+            'notify::natural-width': (pspec: GObject.ParamSpec) => void;
+            'notify::natural-width-set': (pspec: GObject.ParamSpec) => void;
+            'notify::offscreen-redirect': (pspec: GObject.ParamSpec) => void;
+            'notify::opacity': (pspec: GObject.ParamSpec) => void;
+            'notify::pivot-point': (pspec: GObject.ParamSpec) => void;
+            'notify::pivot-point-z': (pspec: GObject.ParamSpec) => void;
+            'notify::position': (pspec: GObject.ParamSpec) => void;
+            'notify::reactive': (pspec: GObject.ParamSpec) => void;
+            'notify::realized': (pspec: GObject.ParamSpec) => void;
+            'notify::request-mode': (pspec: GObject.ParamSpec) => void;
+            'notify::rotation-angle-x': (pspec: GObject.ParamSpec) => void;
+            'notify::rotation-angle-y': (pspec: GObject.ParamSpec) => void;
+            'notify::rotation-angle-z': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-x': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-y': (pspec: GObject.ParamSpec) => void;
+            'notify::scale-z': (pspec: GObject.ParamSpec) => void;
+            'notify::show-on-set-parent': (pspec: GObject.ParamSpec) => void;
+            'notify::size': (pspec: GObject.ParamSpec) => void;
+            'notify::text-direction': (pspec: GObject.ParamSpec) => void;
+            'notify::transform': (pspec: GObject.ParamSpec) => void;
+            'notify::transform-set': (pspec: GObject.ParamSpec) => void;
+            'notify::translation-x': (pspec: GObject.ParamSpec) => void;
+            'notify::translation-y': (pspec: GObject.ParamSpec) => void;
+            'notify::translation-z': (pspec: GObject.ParamSpec) => void;
+            'notify::visible': (pspec: GObject.ParamSpec) => void;
+            'notify::width': (pspec: GObject.ParamSpec) => void;
+            'notify::x': (pspec: GObject.ParamSpec) => void;
+            'notify::x-align': (pspec: GObject.ParamSpec) => void;
+            'notify::x-expand': (pspec: GObject.ParamSpec) => void;
+            'notify::y': (pspec: GObject.ParamSpec) => void;
+            'notify::y-align': (pspec: GObject.ParamSpec) => void;
+            'notify::y-expand': (pspec: GObject.ParamSpec) => void;
+            'notify::z-position': (pspec: GObject.ParamSpec) => void;
+        }
+
+        // Constructor properties interface
+
+        interface ConstructorProps
+            extends
+                St.Widget.ConstructorProps,
+                Atk.ImplementorIface.ConstructorProps,
+                Clutter.Animatable.ConstructorProps {
+            monitor_index: number;
+            monitorIndex: number;
+            state_adjustment_value: number;
+            stateAdjustmentValue: number;
+        }
+    }
+
+    /**
+     * @gir-type Class
+     */
+    class WorkspaceBackground extends St.Widget implements Atk.ImplementorIface, Clutter.Animatable {
+        static $gtype: GObject.GType<WorkspaceBackground>;
+
+        // Properties
+
+        /**
+         * @construct-only
+         */
+        get monitor_index(): number;
+        /**
+         * @construct-only
+         */
+        get monitorIndex(): number;
+        get state_adjustment_value(): number;
+        set state_adjustment_value(val: number);
+        get stateAdjustmentValue(): number;
+        set stateAdjustmentValue(val: number);
+
+        /**
+         * Compile-time signal type information.
+         *
+         * This instance property is generated only for TypeScript type checking.
+         * It is not defined at runtime and should not be accessed in JS code.
+         * @internal
+         */
+        $signals: WorkspaceBackground.SignalSignatures;
+
+        // Constructors
+
+        constructor(properties?: Partial<WorkspaceBackground.ConstructorProps>, ...args: any[]);
+
+        _init(...args: any[]): void;
+
+        // Signals
+
+        /** @signal */
+        connect<K extends keyof WorkspaceBackground.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, WorkspaceBackground.SignalSignatures[K]>,
+        ): number;
+        connect(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        connect_after<K extends keyof WorkspaceBackground.SignalSignatures>(
+            signal: K,
+            callback: GObject.SignalCallback<this, WorkspaceBackground.SignalSignatures[K]>,
+        ): number;
+        connect_after(signal: string, callback: (...args: any[]) => any): number;
+        /** @signal */
+        emit<K extends keyof WorkspaceBackground.SignalSignatures>(
+            signal: K,
+            ...args: GObject.GjsParameters<WorkspaceBackground.SignalSignatures[K]> extends [any, ...infer Q]
+                ? Q
+                : never
+        ): void;
+        emit(signal: string, ...args: any[]): void;
+
+        // Methods
+
+        get_monitor_index(): number;
+        get_state_adjustment_value(): number;
+        /**
+         * @param value
+         */
+        set_state_adjustment_value(value: number): void;
+        /**
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target`.
+         *
+         * Whenever the `source_property` is changed the `target_property` is
+         * updated using the same value. For instance:
+         *
+         *
+         * ```c
+         *   g_object_bind_property (action, "active", widget, "sensitive", 0);
+         * ```
+         *
+         *
+         * Will result in the "sensitive" property of the widget {@link GObject.Object} instance to be
+         * updated with the same value of the "active" property of the action {@link GObject.Object}
+         * instance.
+         *
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well.
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. To remove the binding without affecting the
+         * `source` and the `target` you can just call `g_object_unref()` on the returned
+         * {@link GObject.Binding} instance.
+         *
+         * Removing the binding by calling `g_object_unref()` on it must only be done if
+         * the binding, `source` and `target` are only used from a single thread and it
+         * is clear that both `source` and `target` outlive the binding. Especially it
+         * is not safe to rely on this if the binding, `source` or `target` can be
+         * finalized from different threads. Keep another reference to the binding and
+         * use `g_binding_unbind()` instead to be on the safe side.
+         *
+         * A {@link GObject.Object} can have multiple bindings.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
+         */
+        bind_property(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags | null,
+        ): GObject.Binding;
+        /**
+         * Complete version of `g_object_bind_property()`.
+         *
+         * Creates a binding between `source_property` on `source` and `target_property`
+         * on `target`, allowing you to set the transformation functions to be used by
+         * the binding.
+         *
+         * If `flags` contains {@link GObject.BindingFlags.BIDIRECTIONAL} then the binding will be mutual:
+         * if `target_property` on `target` changes then the `source_property` on `source`
+         * will be updated as well. The `transform_from` function is only used in case
+         * of bidirectional bindings, otherwise it will be ignored
+         *
+         * The binding will automatically be removed when either the `source` or the
+         * `target` instances are finalized. This will release the reference that is
+         * being held on the {@link GObject.Binding} instance; if you want to hold on to the
+         * {@link GObject.Binding} instance, you will need to hold a reference to it.
+         *
+         * To remove the binding, call `g_binding_unbind()`.
+         *
+         * A {@link GObject.Object} can have multiple bindings.
+         *
+         * The same `user_data` parameter will be used for both `transform_to`
+         * and `transform_from` transformation functions; the `notify` function will
+         * be called once, when the binding is removed. If you need different data
+         * for each transformation function, please use
+         * `g_object_bind_property_with_closures()` instead.
+         * @param source_property the property on `source` to bind
+         * @param target the target {@link GObject.Object}
+         * @param target_property the property on `target` to bind
+         * @param flags flags to pass to {@link GObject.Binding}
+         * @param transform_to the transformation function     from the `source` to the `target`, or `null` to use the default
+         * @param transform_from the transformation function     from the `target` to the `source`, or `null` to use the default
+         * @param notify a function to call when disposing the binding, to free     resources used by the transformation functions, or `null` if not required
+         * @returns the {@link GObject.Binding} instance representing the     binding between the two {@link GObject.Object} instances. The binding is released     whenever the {@link GObject.Binding} reference count reaches zero.
+         */
+        bind_property_full(
+            source_property: string,
+            target: GObject.Object,
+            target_property: string,
+            flags: GObject.BindingFlags | null,
+            transform_to?: GObject.BindingTransformFunc | null,
+            transform_from?: GObject.BindingTransformFunc | null,
+            notify?: GLib.DestroyNotify | null,
+        ): GObject.Binding;
+        /**
+         * @param args
+         */
+        // Conflicted with GObject.Object.bind_property_full
+        bind_property_full(...args: never[]): any;
+        /**
+         * This function is intended for {@link GObject.Object} implementations to re-enforce
+         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * required: all `GInitiallyUnowneds` are created with a floating reference
+         * which usually just needs to be sunken by calling `g_object_ref_sink()`.
+         */
+        force_floating(): void;
+        /**
+         * Increases the freeze count on `object`. If the freeze count is
+         * non-zero, the emission of "notify" signals on `object` is
+         * stopped. The signals are queued until the freeze count is decreased
+         * to zero. Duplicate notifications are squashed so that at most one
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property modified while the
+         * object is frozen.
+         *
+         * This is necessary for accessors that modify multiple properties to prevent
+         * premature notification while the object is still being modified.
+         */
+        freeze_notify(): void;
+        /**
+         * Gets a named field from the objects table of associations (see `g_object_set_data()`).
+         * @param key name of the key for that association
+         * @returns the data if found,          or `null` if no such data exists.
+         */
+        get_data(key: string): any | null;
+        /**
+         * Gets a property of an object.
+         *
+         * The value can be:
+         * - an empty GObject.Value initialized by G_VALUE_INIT, which will be automatically initialized with the expected type of the property (since GLib 2.60)
+         * - a GObject.Value initialized with the expected type of the property
+         * - a GObject.Value initialized with a type to which the expected type of the property can be transformed
+         *
+         * In general, a copy is made of the property contents and the caller is responsible for freeing the memory by calling GObject.Value.unset.
+         *
+         * Note that GObject.Object.get_property is really intended for language bindings, GObject.Object.get is much more convenient for C programming.
+         * @param property_name The name of the property to get
+         * @param value Return location for the property value. Can be an empty GObject.Value initialized by G_VALUE_INIT (auto-initialized with expected type since GLib 2.60), a GObject.Value initialized with the expected property type, or a GObject.Value initialized with a transformable type
+         */
+        get_property(property_name: string, value: GObject.Value | any): any;
+        /**
+         * This function gets back user data pointers stored via
+         * `g_object_set_qdata()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
+         */
+        get_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Gets `n_properties` properties for an `object`.
+         * Obtained properties will be set to `values`. All properties must be valid.
+         * Warnings will be emitted and undefined behaviour may result if invalid
+         * properties are passed in.
+         * @param names the names of each property to get
+         * @param values the values of each property to get
+         */
+        getv(names: string[], values: (GObject.Value | any)[]): void;
+        /**
+         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * @returns `true` if `object` has a floating reference
+         */
+        is_floating(): boolean;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use `g_object_notify_by_pspec()`
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
+         * called.
+         * @param property_name the name of a property installed on the class of `object`.
+         */
+        notify(property_name: string): void;
+        /**
+         * Emits a "notify" signal for the property specified by `pspec` on `object`.
+         *
+         * This function omits the property name lookup, hence it is faster than
+         * `g_object_notify()`.
+         *
+         * One way to avoid using `g_object_notify()` from within the
+         * class that registered the properties, and using `g_object_notify_by_pspec()`
+         * instead, is to store the GParamSpec used with
+         * `g_object_class_install_property()` inside a static array, e.g.:
+         *
+         *
+         * ```c
+         *   typedef enum
+         *   {
+         *     PROP_FOO = 1,
+         *     PROP_LAST
+         *   } MyObjectProperty;
+         *
+         *   static GParamSpec *properties[PROP_LAST];
+         *
+         *   static void
+         *   my_object_class_init (MyObjectClass *klass)
+         *   {
+         *     properties[PROP_FOO] = g_param_spec_int ("foo", NULL, NULL,
+         *                                              0, 100,
+         *                                              50,
+         *                                              G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS);
+         *     g_object_class_install_property (gobject_class,
+         *                                      PROP_FOO,
+         *                                      properties[PROP_FOO]);
+         *   }
+         * ```
+         *
+         *
+         * and then notify a change on the "foo" property with:
+         *
+         *
+         * ```c
+         *   g_object_notify_by_pspec (self, properties[PROP_FOO]);
+         * ```
+         *
+         * @param pspec the {@link GObject.ParamSpec} of a property installed on the class of `object`.
+         */
+        notify_by_pspec(pspec: GObject.ParamSpec): void;
+        /**
+         * Increases the reference count of `object`.
+         *
+         * Since GLib 2.56, if `GLIB_VERSION_MAX_ALLOWED` is 2.56 or greater, the type
+         * of `object` will be propagated to the return type (using the GCC `typeof()`
+         * extension), so any casting the caller needs to do on the return type must be
+         * explicit.
+         * @returns the same `object`
+         */
+        ref(): GObject.Object;
+        /**
+         * Increase the reference count of `object`, and possibly remove the
+         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         *
+         * In other words, if the object is floating, then this call "assumes
+         * ownership" of the floating reference, converting it to a normal
+         * reference by clearing the floating flag while leaving the reference
+         * count unchanged.  If the object is not floating, then this call
+         * adds a new normal reference increasing the reference count by one.
+         *
+         * Since GLib 2.56, the type of `object` will be propagated to the return type
+         * under the same conditions as for `g_object_ref()`.
+         * @returns `object`
+         */
+        ref_sink(): GObject.Object;
+        /**
+         * Releases all references to other objects. This can be used to break
+         * reference cycles.
+         *
+         * This function should only be called from object system implementations.
+         */
+        run_dispose(): void;
+        /**
+         * Each object carries around a table of associations from
+         * strings to pointers.  This function lets you set an association.
+         *
+         * If the object already had an association with that name,
+         * the old association will be destroyed.
+         *
+         * Internally, the `key` is converted to a {@link GLib.Quark} using `g_quark_from_string()`.
+         * This means a copy of `key` is kept permanently (even after `object` has been
+         * finalized) — so it is recommended to only use a small, bounded set of values
+         * for `key` in your program, to avoid the {@link GLib.Quark} storage growing unbounded.
+         * @param key name of the key
+         * @param data data to associate with that key
+         */
+        set_data(key: string, data?: any | null): void;
+        /**
+         * Sets a property on an object.
+         * @param property_name The name of the property to set
+         * @param value The value to set the property to
+         */
+        set_property(property_name: string, value: GObject.Value | any): void;
+        /**
+         * Remove a specified datum from the object's data associations,
+         * without invoking the association's destroy handler.
+         * @param key name of the key
+         * @returns the data if found, or `null`          if no such data exists.
+         */
+        steal_data(key: string): any | null;
+        /**
+         * This function gets back user data pointers stored via
+         * `g_object_set_qdata()` and removes the `data` from object
+         * without invoking its `destroy()` function (if any was
+         * set).
+         * Usually, calling this function is only required to update
+         * user data pointers with a destroy notifier, for example:
+         *
+         * ```c
+         * void
+         * object_add_to_user_list (GObject     *object,
+         *                          const gchar *new_string)
+         * {
+         *   // the quark, naming the object data
+         *   GQuark quark_string_list = g_quark_from_static_string ("my-string-list");
+         *   // retrieve the old string list
+         *   GList *list = g_object_steal_qdata (object, quark_string_list);
+         *
+         *   // prepend new string
+         *   list = g_list_prepend (list, g_strdup (new_string));
+         *   // this changed 'list', so we need to set it again
+         *   g_object_set_qdata_full (object, quark_string_list, list, free_string_list);
+         * }
+         * static void
+         * free_string_list (gpointer data)
+         * {
+         *   GList *node, *list = data;
+         *
+         *   for (node = list; node; node = node->next)
+         *     g_free (node->data);
+         *   g_list_free (list);
+         * }
+         * ```
+         *
+         * Using `g_object_get_qdata()` in the above example, instead of
+         * `g_object_steal_qdata()` would have left the destroy function set,
+         * and thus the partial string list would have been freed upon
+         * `g_object_set_qdata_full()`.
+         * @param quark A {@link GLib.Quark}, naming the user data pointer
+         * @returns The user data pointer set, or `null`
+         */
+        steal_qdata(quark: GLib.Quark): any | null;
+        /**
+         * Reverts the effect of a previous call to
+         * `g_object_freeze_notify()`. The freeze count is decreased on `object`
+         * and when it reaches zero, queued "notify" signals are emitted.
+         *
+         * Duplicate notifications for each property are squashed so that at most one
+         * {@link GObject.Object.SignalSignatures.notify | GObject.Object::notify} signal is emitted for each property, in the reverse order
+         * in which they have been queued.
+         *
+         * It is an error to call this function when the freeze count is zero.
+         */
+        thaw_notify(): void;
+        /**
+         * Decreases the reference count of `object`. When its reference count
+         * drops to 0, the object is finalized (i.e. its memory is freed).
+         *
+         * If the pointer to the {@link GObject.Object} may be reused in future (for example, if it is
+         * an instance variable of another object), it is recommended to clear the
+         * pointer to `null` rather than retain a dangling pointer to a potentially
+         * invalid {@link GObject.Object} instance. Use `g_clear_object()` for this.
+         */
+        unref(): void;
+        /**
+         * This function essentially limits the life time of the `closure` to
+         * the life time of the object. That is, when the object is finalized,
+         * the `closure` is invalidated by calling `g_closure_invalidate()` on
+         * it, in order to prevent invocations of the closure with a finalized
+         * (nonexisting) object. Also, `g_object_ref()` and `g_object_unref()` are
+         * added as marshal guards to the `closure`, to ensure that an extra
+         * reference count is held on `object` during invocation of the
+         * `closure`.  Usually, this function will be called on closures that
+         * use this `object` as closure data.
+         * @param closure {@link GObject.Closure} to watch
+         */
+        watch_closure(closure: GObject.Closure): void;
+        /**
+         * the `constructed` function is called by `g_object_new()` as the
+         *  final step of the object creation process.  At the point of the call, all
+         *  construction properties have been set on the object.  The purpose of this
+         *  call is to allow for object initialisation steps that can only be performed
+         *  after construction properties have been set.  `constructed` implementors
+         *  should chain up to the `constructed` call of their parent class to allow it
+         *  to complete its initialisation.
+         * @virtual
+         */
+        vfunc_constructed(): void;
+        /**
+         * emits property change notification for a bunch
+         *  of properties. Overriding `dispatch_properties_changed` should be rarely
+         *  needed.
+         * @param n_pspecs
+         * @param pspecs
+         * @virtual
+         */
+        vfunc_dispatch_properties_changed(n_pspecs: number, pspecs: GObject.ParamSpec): void;
+        /**
+         * the `dispose` function is supposed to drop all references to other
+         *  objects, but keep the instance otherwise intact, so that client method
+         *  invocations still work. It may be run multiple times (due to reference
+         *  loops). Before returning, `dispose` should chain up to the `dispose` method
+         *  of the parent class.
+         * @virtual
+         */
+        vfunc_dispose(): void;
+        /**
+         * instance finalization function, should finish the finalization of
+         *  the instance begun in `dispose` and chain up to the `finalize` method of the
+         *  parent class.
+         * @virtual
+         */
+        vfunc_finalize(): void;
+        /**
+         * the generic getter for all properties of this type. Should be
+         *  overridden for every type with properties.
+         * @param property_id
+         * @param value
+         * @param pspec
+         * @virtual
+         */
+        vfunc_get_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Emits a "notify" signal for the property `property_name` on `object`.
+         *
+         * When possible, eg. when signaling a property change from within the class
+         * that registered the property, you should use `g_object_notify_by_pspec()`
+         * instead.
+         *
+         * Note that emission of the notify signal may be blocked with
+         * `g_object_freeze_notify()`. In this case, the signal emissions are queued
+         * and will be emitted (in reverse order) when `g_object_thaw_notify()` is
+         * called.
+         * @param pspec
+         * @virtual
+         */
+        vfunc_notify(pspec: GObject.ParamSpec): void;
+        /**
+         * the generic setter for all properties of this type. Should be
+         *  overridden for every type with properties. If implementations of
+         *  `set_property` don't emit property change notification explicitly, this will
+         *  be done implicitly by the type system. However, if the notify signal is
+         *  emitted explicitly, the type system will not emit it a second time.
+         * @param property_id
+         * @param value
+         * @param pspec
+         * @virtual
+         */
+        vfunc_set_property(property_id: number, value: GObject.Value | any, pspec: GObject.ParamSpec): void;
+        /**
+         * Disconnects a handler from an instance so it will not be called during any future or currently ongoing emissions of the signal it has been connected to.
+         * @param id Handler ID of the handler to be disconnected
+         */
+        disconnect(id: number): void;
+        /**
+         * Sets multiple properties of an object at once. The properties argument should be a dictionary mapping property names to values.
+         * @param properties Object containing the properties to set
+         */
+        set(properties: { [key: string]: any }): void;
+        /**
+         * Blocks a handler of an instance so it will not be called during any signal emissions
+         * @param id Handler ID of the handler to be blocked
+         */
+        block_signal_handler(id: number): void;
+        /**
+         * Unblocks a handler so it will be called again during any signal emissions
+         * @param id Handler ID of the handler to be unblocked
+         */
+        unblock_signal_handler(id: number): void;
+        /**
+         * Stops a signal's emission by the given signal name. This will prevent the default handler and any subsequent signal handlers from being invoked.
+         * @param detailedName Name of the signal to stop emission of
+         */
+        stop_emission_by_name(detailedName: string): void;
+    }
+
+    /**
+     * @gir-type Alias
+     */
+    type AppClass = typeof App;
+    /**
+     * @gir-type Alias
+     */
+    type AppSystemClass = typeof AppSystem;
+    /**
+     * @gir-type Alias
+     */
+    type AppUsageClass = typeof AppUsage;
+    /**
+     * @gir-type Alias
+     */
+    type BlurEffectClass = typeof BlurEffect;
+    /**
+     * @gir-type Alias
+     */
+    type CameraMonitorClass = typeof CameraMonitor;
+    /**
+     * @gir-type Alias
+     */
+    type EdgeDragGestureClass = typeof EdgeDragGesture;
+    /**
+     * @gir-type Alias
+     */
+    type GLSLEffectClass = typeof GLSLEffect;
+    /**
+     * @gir-type Alias
+     */
+    type GlobalClass = typeof Global;
+    /**
+     * @gir-type Alias
+     */
+    type InvertLightnessEffectClass = typeof InvertLightnessEffect;
+    /**
+     * @gir-type Alias
+     */
+    type KeyringPromptClass = typeof KeyringPrompt;
+    /**
+     * @gir-type Struct
+     */
+    class MemoryInfo {
+        static $gtype: GObject.GType<MemoryInfo>;
+
+        // Fields
+
+        glibc_uordblks: number;
+        js_bytes: number;
+        gjs_boxed: number;
+        gjs_gobject: number;
+        gjs_function: number;
+        gjs_closure: number;
+        last_gc_seconds_ago: number;
+
+        // Constructors
+
+        constructor(
+            properties?: Partial<{
+                glibc_uordblks: number;
+                js_bytes: number;
+                gjs_boxed: number;
+                gjs_gobject: number;
+                gjs_function: number;
+                gjs_closure: number;
+                last_gc_seconds_ago: number;
+            }>,
+        );
+    }
+
+    /**
+     * @gir-type Alias
+     */
+    type MountOperationClass = typeof MountOperation;
+    /**
+     * @gir-type Alias
+     */
+    type NetworkAgentClass = typeof NetworkAgent;
+    /**
+     * @gir-type Alias
+     */
+    type PerfLogClass = typeof PerfLog;
+    /**
+     * @gir-type Alias
+     */
+    type PolkitAuthenticationAgentClass = typeof PolkitAuthenticationAgent;
+    /**
+     * @gir-type Alias
+     */
+    type ScreenshotClass = typeof Screenshot;
+    /**
+     * @gir-type Alias
+     */
+    type SecureTextBufferClass = typeof SecureTextBuffer;
+    /**
+     * @gir-type Alias
+     */
+    type SquareBinClass = typeof SquareBin;
+    /**
+     * @gir-type Alias
+     */
+    type StackClass = typeof Stack;
+    /**
+     * @gir-type Alias
+     */
+    type TrayIconClass = typeof TrayIcon;
+    /**
+     * @gir-type Alias
+     */
+    type TrayManagerClass = typeof TrayManager;
+    /**
+     * @gir-type Alias
+     */
+    type WMClass = typeof WM;
+    /**
+     * @gir-type Alias
+     */
+    type WindowPreviewClass = typeof WindowPreview;
+    /**
+     * @gir-type Alias
+     */
+    type WindowPreviewLayoutClass = typeof WindowPreviewLayout;
+    /**
+     * @gir-type Struct
+     */
+    abstract class WindowPreviewLayoutPrivate {
+        static $gtype: GObject.GType<WindowPreviewLayoutPrivate>;
+    }
+
+    /**
+     * @gir-type Alias
+     */
+    type WindowTrackerClass = typeof WindowTracker;
+    /**
+     * @gir-type Alias
+     */
+    type WorkspaceBackgroundClass = typeof WorkspaceBackground;
+    /**
+     * Name of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
+     */
+    const __name__: string;
+    /**
+     * Version of the imported GIR library
+     * `see` https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L189
+     */
+    const __version__: string;
+}
+
+export default Shell;
+
+// END

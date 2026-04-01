@@ -8306,6 +8306,7 @@ export namespace Gthree {
          * @param offset
          */
         peek_uint8_at(index: number, offset: number): number;
+        ref(): AttributeArray;
         /**
          * @param index
          * @param offset

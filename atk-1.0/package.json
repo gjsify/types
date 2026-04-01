@@ -1,6 +1,6 @@
 {
     "name": "@girs/atk-1.0",
-    "version": "2.60.0-4.0.0-beta.43",
+    "version": "2.60.0-4.0.0-beta.44",
     "description": "GJS TypeScript type definitions for Atk-1.0, generated from library version 2.60.0",
     "type": "module",
     "module": "atk-1.0.js",
@@ -31,9 +31,9 @@
       "test": "tsc --project tsconfig.json"
     },
     "dependencies": {
-      "@girs/gjs": "4.0.0-beta.43",
-      "@girs/gobject-2.0": "2.88.0-4.0.0-beta.43",
-      "@girs/glib-2.0": "2.88.0-4.0.0-beta.43"    },
+      "@girs/gjs": "4.0.0-beta.44",
+      "@girs/gobject-2.0": "2.88.0-4.0.0-beta.44",
+      "@girs/glib-2.0": "2.88.0-4.0.0-beta.44"    },
     "devDependencies": {
       "typescript": "*"
     },

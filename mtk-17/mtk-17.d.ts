@@ -148,6 +148,13 @@ export namespace Mtk {
      */
     abstract class AnonymousFile {
         static $gtype: GObject.GType<AnonymousFile>;
+
+        // Methods
+
+        /**
+         * Free the resources used by an anonymous read-only file.
+         */
+        free(): void;
     }
 
     /**

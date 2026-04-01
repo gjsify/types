@@ -329,6 +329,10 @@ export namespace MyPaint {
          */
         new_stroke(): void;
         /**
+         * Increase the reference count.
+         */
+        ref(): void;
+        /**
          * Reset the current brush engine state.
          * Used when the next `mypaint_brush_stroke_to()` call is not related to the current state.
          * Note that the reset request is queued and changes in state will only happen on next `stroke_to()`
@@ -389,6 +393,10 @@ export namespace MyPaint {
             ytilt: number,
             dtime: number,
         ): number;
+        /**
+         * Decrease the reference count. Will be freed when it hits 0.
+         */
+        unref(): void;
     }
 
     /**
@@ -616,6 +624,10 @@ export namespace MyPaint {
             color_a: number,
         ): void;
         /**
+         * Increase the reference count.
+         */
+        ref(): void;
+        /**
          * @param path
          * @param x
          * @param y
@@ -623,6 +635,10 @@ export namespace MyPaint {
          * @param height
          */
         save_png(path: string, x: number, y: number, width: number, height: number): void;
+        /**
+         * Decrease the reference count.
+         */
+        unref(): void;
     }
 
     /**
@@ -686,6 +702,12 @@ export namespace MyPaint {
 
         // Methods
 
+        /**
+         * Deallocate resources set up by `mypaint_tiled_surface_init()`
+         * Does not free the {@link MyPaint.TiledSurface} itself.
+         * Note: Only intended to be called from subclasses of {@link MyPaint.TiledSurface}
+         */
+        destroy(): void;
         /**
          * @param x
          * @param y

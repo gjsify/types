@@ -399,6 +399,10 @@ export namespace Manette {
         // Methods
 
         /**
+         * Frees `self`.
+         */
+        free(): void;
+        /**
          * Gets the next device from `self`.
          * @returns whether the next device was retrieved, if not, the end was reached
          */
@@ -414,6 +418,15 @@ export namespace Manette {
 
         // Methods
 
+        /**
+         * Creates a copy of `self`.
+         * @returns a new event
+         */
+        copy(): Event;
+        /**
+         * Frees `self`.
+         */
+        free(): void;
         /**
          * Gets the axis of `self`, if any.
          * @returns whether the axis was retrieved

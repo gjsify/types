@@ -20529,8 +20529,8 @@ export namespace Ide {
         interface ConstructorProps extends Object.ConstructorProps {
             engine: Peas.Engine;
             extension: GObject.Object;
-            interface_type: GObject.GType;
-            interfaceType: GObject.GType;
+            interface_type: GObject.GTypeInput;
+            interfaceType: GObject.GTypeInput;
             key: string;
             value: string;
         }
@@ -20658,8 +20658,8 @@ export namespace Ide {
 
         interface ConstructorProps extends Object.ConstructorProps {
             engine: Peas.Engine;
-            interface_type: GObject.GType;
-            interfaceType: GObject.GType;
+            interface_type: GObject.GTypeInput;
+            interfaceType: GObject.GTypeInput;
             key: string;
             value: string;
         }

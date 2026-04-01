@@ -3115,8 +3115,8 @@ export namespace Kkc {
         // Constructor properties interface
 
         interface ConstructorProps extends MetadataFile.ConstructorProps {
-            model_type: GObject.GType;
-            modelType: GObject.GType;
+            model_type: GObject.GTypeInput;
+            modelType: GObject.GTypeInput;
         }
     }
 

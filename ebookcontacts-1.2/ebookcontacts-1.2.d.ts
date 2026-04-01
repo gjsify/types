@@ -3184,6 +3184,24 @@ export namespace EBookContacts {
 
         field: ContactField;
         sort_type: BookCursorSortType;
+
+        // Methods
+
+        /**
+         * Creates a copy of the `src`. If the %src is `null`, the `null` is returned.
+         * Both the `src` and the returned array is terminated by an item, which has
+         * the field member set to {@link EBookContacts.ContactField.FIELD_LAST}.
+         *
+         * Free the returned array with `e_book_client_view_sort_fields_free()`,
+         * when no longer needed.
+         * @returns copy of the `src`
+         */
+        copy(): BookClientViewSortFields;
+        /**
+         * Frees the `fields` array with each member. The array should be terminated
+         * by an item with field member set to {@link EBookContacts.ContactField.FIELD_LAST}.
+         */
+        free(): void;
     }
 
     /**
@@ -3224,6 +3242,24 @@ export namespace EBookContacts {
          * @param ascending_sort the value to set
          */
         static set_ascending_sort(self: BookIndicesUpdater, ascending_sort: boolean): void;
+
+        // Methods
+
+        /**
+         * Creates a copy of the `src`. If the %src is `null`, the `null` is returned.
+         * Both the `src` and the returned array is terminated by an item, which has
+         * the chr member set to `null`.
+         *
+         * Free the returned array with `e_book_indices_free()`,
+         * when no longer needed.
+         * @returns copy of the `src`
+         */
+        copy(): BookIndices;
+        /**
+         * Frees the `indices` array with each member. The array should be terminated
+         * by an item with chr member set to `null`.
+         */
+        free(): void;
     }
 
     /**

@@ -389,11 +389,11 @@ export namespace Gom {
             limit: number;
             m2m_table: string;
             m2mTable: string;
-            m2m_type: GObject.GType;
-            m2mType: GObject.GType;
+            m2m_type: GObject.GTypeInput;
+            m2mType: GObject.GTypeInput;
             offset: number;
-            resource_type: GObject.GType;
-            resourceType: GObject.GType;
+            resource_type: GObject.GTypeInput;
+            resourceType: GObject.GTypeInput;
             sorting: Sorting;
         }
     }
@@ -1231,11 +1231,11 @@ export namespace Gom {
             isWritable: boolean;
             m2m_table: string;
             m2mTable: string;
-            m2m_type: GObject.GType;
-            m2mType: GObject.GType;
+            m2m_type: GObject.GTypeInput;
+            m2mType: GObject.GTypeInput;
             repository: Repository;
-            resource_type: GObject.GType;
-            resourceType: GObject.GType;
+            resource_type: GObject.GTypeInput;
+            resourceType: GObject.GTypeInput;
             sorting: Sorting;
         }
     }

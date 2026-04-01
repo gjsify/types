@@ -6591,6 +6591,10 @@ export namespace Cogl {
          */
         equal(v2: Color): boolean;
         /**
+         * Frees the resources allocated by `cogl_color_new()` and `cogl_color_copy()`
+         */
+        free(): void;
+        /**
          * Retrieves the alpha channel of `color` as a fixed point
          * value between 0 and 1.0.
          * @returns the alpha channel of the passed color

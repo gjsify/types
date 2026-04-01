@@ -1453,10 +1453,20 @@ export namespace Rest {
          */
         print(): string;
         /**
+         * Increases the reference count of `node`.
+         * @returns the same `node`.
+         */
+        ref(): XmlNode;
+        /**
          * Sets content for the given node.
          * @param value the content
          */
         set_content(value: string): void;
+        /**
+         * Decreases the reference count of `node`. When its reference count drops to 0,
+         * the node is finalized (i.e. its memory is freed).
+         */
+        unref(): void;
     }
 
     /**

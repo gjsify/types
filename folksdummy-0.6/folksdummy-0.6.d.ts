@@ -1927,8 +1927,8 @@ export namespace FolksDummy {
         // Constructor properties interface
 
         interface ConstructorProps extends Folks.PersonaStore.ConstructorProps {
-            persona_type: GObject.GType;
-            personaType: GObject.GType;
+            persona_type: GObject.GTypeInput;
+            personaType: GObject.GTypeInput;
         }
     }
 

@@ -14522,7 +14522,7 @@ export namespace Gst {
         interface ConstructorProps extends Object.ConstructorProps {
             caps: Caps;
             direction: PadDirection;
-            gtype: GObject.GType;
+            gtype: GObject.GTypeInput;
             name_template: string;
             nameTemplate: string;
             presence: PadPresence;
@@ -18207,6 +18207,15 @@ export namespace Gst {
          */
         append_region(buf2: Buffer, offset: number, size: number): Buffer;
         /**
+         * Creates a copy of the given buffer. This will only copy the buffer's
+         * data to a newly allocated memory if needed (if the type of memory
+         * requires it), otherwise the underlying data is just referenced.
+         * Check `gst_buffer_copy_deep()` if you want to force the data
+         * to be copied to newly allocated memory.
+         * @returns a new copy of `buf` if the copy succeeded, `null` otherwise.
+         */
+        copy(): Buffer | null;
+        /**
          * Creates a copy of the given buffer. This will make a newly allocated
          * copy of the data the source buffer contains.
          * @returns a new copy of `buf` if the copy succeeded, `null` otherwise.
@@ -18488,6 +18497,17 @@ export namespace Gst {
          */
         prepend_memory(mem: Memory): void;
         /**
+         * Increases the refcount of the given buffer by one.
+         *
+         * Note that the refcount affects the writability
+         * of `buf` and its metadata, see `gst_buffer_is_writable()`.
+         * It is important to note that keeping additional references to
+         * GstBuffer instances can potentially increase the number
+         * of `memcpy` operations in a pipeline.
+         * @returns `buf`
+         */
+        ref(): Buffer;
+        /**
          * Removes all the memory blocks in `buffer`.
          */
         remove_all_memory(): void;
@@ -18566,6 +18586,11 @@ export namespace Gst {
          */
         unmap(info: MapInfo): void;
         /**
+         * Decreases the refcount of the buffer. If the refcount reaches 0, the buffer
+         * with the associated metadata and memory will be freed.
+         */
+        unref(): void;
+        /**
          * Clears one or more buffer flags.
          * @param flags the {@link Gst.BufferFlags} to clear
          * @returns true if `flags` is successfully cleared from buffer.
@@ -18625,6 +18650,13 @@ export namespace Gst {
          * @returns the size of the data contained in `list` in bytes.
          */
         calculate_size(): number;
+        /**
+         * Creates a shallow copy of the given buffer list. This will make a newly
+         * allocated copy of the source list with copies of buffer pointers. The
+         * refcount of buffers pointed to will be increased by one.
+         * @returns a new copy of `list`.
+         */
+        copy(): BufferList;
         /**
          * Creates a copy of the given buffer list. This will make a newly allocated
          * copy of the buffers that the source buffer list contains.
@@ -18694,12 +18726,27 @@ export namespace Gst {
          */
         make_writable(): BufferList;
         /**
+         * Increases the refcount of the given buffer list by one.
+         *
+         * Note that the refcount affects the writability of `list` and its data, see
+         * `gst_buffer_list_make_writable()`. It is important to note that keeping
+         * additional references to GstBufferList instances can potentially increase
+         * the number of memcpy operations in a pipeline.
+         * @returns `list`
+         */
+        ref(): BufferList;
+        /**
          * Removes `length` buffers starting from `idx` in `list`. The following buffers
          * are moved to close the gap.
          * @param idx the index
          * @param length the amount to remove
          */
         remove(idx: number, length: number): void;
+        /**
+         * Decreases the refcount of the buffer list. If the refcount reaches 0, the
+         * buffer list will be freed.
+         */
+        unref(): void;
     }
 
     /**
@@ -19109,6 +19156,18 @@ export namespace Gst {
          */
         normalize(): Caps;
         /**
+         * Adds a reference to a {@link Gst.Caps} object.
+         *
+         * From this point on, until the caller calls `gst_caps_unref()` or
+         * `gst_caps_make_writable()`, it is guaranteed that the caps object will not
+         * change. This means its structures won't change, etc. To use a {@link Gst.Caps}
+         * object, you must always have a refcount on it -- either the one made
+         * implicitly by e.g. `gst_caps_new_simple()`, or via taking one explicitly with
+         * this function.
+         * @returns the same {@link Gst.Caps} object.
+         */
+        ref(): Caps;
+        /**
          * Removes the structure with the given index from the list of structures
          * contained in `caps`.
          * @param idx Index of the structure to remove
@@ -19218,6 +19277,11 @@ export namespace Gst {
          * @returns truncated caps
          */
         truncate(): Caps;
+        /**
+         * Unrefs a {@link Gst.Caps} and frees all its structures and the
+         * structures' values when the refcount reaches 0.
+         */
+        unref(): void;
     }
 
     /**
@@ -20005,6 +20069,11 @@ export namespace Gst {
         // Methods
 
         /**
+         * Copy the event using the event specific copy function.
+         * @returns the new event
+         */
+        copy(): Event;
+        /**
          * Parses a segment `event` and copies the {@link Gst.Segment} into the location
          * given by `segment`.
          * @param segment a pointer to a {@link Gst.Segment}
@@ -20197,6 +20266,11 @@ export namespace Gst {
          */
         parse_toc_select(): string;
         /**
+         * Increase the refcount of this event.
+         * @returns `event` (for convenience when doing assignments)
+         */
+        ref(): Event;
+        /**
          * Sets `flags` on `event` to give additional information about the reason for
          * the #GST_EVENT_GAP.
          * @param flags a {@link Gst.GapFlags}
@@ -20248,6 +20322,10 @@ export namespace Gst {
          * @param flags the stream flags to set
          */
         set_stream_flags(flags: StreamFlags | null): void;
+        /**
+         * Decrease the refcount of an event, freeing it if the refcount reaches 0.
+         */
+        unref(): void;
         /**
          * Get a writable version of the structure.
          * @returns The structure of the event. The structure is still owned by the event, which means that you should not free it and that the pointer becomes invalid when you free the event. This function ensures that `event` is writable, and if so, will never return `null`. MT safe.
@@ -20848,6 +20926,11 @@ export namespace Gst {
          */
         map(flags: MapFlags | null): [boolean, MapInfo];
         /**
+         * Increase the refcount of this memory.
+         * @returns `memory` (for convenience when doing assignments)
+         */
+        ref(): Memory;
+        /**
          * Resize the memory region. `mem` should be writable and offset + size should be
          * less than the maxsize of `mem`.
          *
@@ -20872,6 +20955,10 @@ export namespace Gst {
          * @param info a {@link Gst.MapInfo}
          */
         unmap(info: MapInfo): void;
+        /**
+         * Decrease the refcount of a memory, freeing it if the refcount reaches 0.
+         */
+        unref(): void;
     }
 
     /**
@@ -21068,6 +21155,11 @@ export namespace Gst {
          * @param entry_struct structure for the new entry
          */
         add_redirect_entry(location: string, tag_list?: TagList | null, entry_struct?: Structure | null): void;
+        /**
+         * Creates a copy of the message. Returns a copy of the message.
+         * @returns a new copy of `msg`. MT safe
+         */
+        copy(): Message;
         /**
          * Returns the optional details structure of the message. May be NULL if none.
          *
@@ -21453,6 +21545,11 @@ export namespace Gst {
          */
         parse_warning_writable_details(): Structure | null;
         /**
+         * Convenience macro to increase the reference count of the message.
+         * @returns `msg` (for convenience when doing assignments)
+         */
+        ref(): Message;
+        /**
          * Configures the buffering stats values in `message`.
          * @param mode a buffering mode
          * @param avg_in the average input rate
@@ -21534,6 +21631,11 @@ export namespace Gst {
          * @returns A {@link Gst.Stream}
          */
         streams_selected_get_stream(idx: number): Stream | null;
+        /**
+         * Convenience macro to decrease the reference count of the message, possibly
+         * freeing it.
+         */
+        unref(): void;
         /**
          * Returns the details structure of the `message`. If not present it will be
          * created. Use this function (instead of `gst_message_get_details()`) if you
@@ -21860,6 +21962,13 @@ export namespace Gst {
          */
         add_parent(parent: MiniObject): void;
         /**
+         * Creates a copy of the mini-object.
+         *
+         * MT safe
+         * @returns the new mini-object if copying is possible, `null` otherwise.
+         */
+        copy(): MiniObject | null;
+        /**
          * This function gets back user data pointers stored via
          * `gst_mini_object_set_qdata()`.
          * @param quark A {@link GLib.Quark}, naming the user data pointer
@@ -21886,6 +21995,18 @@ export namespace Gst {
          * @returns `true` if `object` could be locked.
          */
         lock(flags: LockFlags | null): boolean;
+        /**
+         * Increase the reference count of the mini-object.
+         *
+         * Note that the refcount affects the writability
+         * of `mini`-object, see `gst_mini_object_is_writable()`. It is
+         * important to note that keeping additional references to
+         * GstMiniObject instances can potentially increase the number
+         * of memcpy operations in a pipeline, especially if the miniobject
+         * is a {@link Gst.Buffer}.
+         * @returns the mini-object.
+         */
+        ref(): MiniObject;
         /**
          * This removes `parent` as a parent for `object`. See
          * `gst_mini_object_add_parent()`.
@@ -21922,6 +22043,11 @@ export namespace Gst {
          * @param flags {@link Gst.LockFlags}
          */
         unlock(flags: LockFlags | null): void;
+        /**
+         * Decreases the reference count of the mini-object, possibly freeing
+         * the mini-object.
+         */
+        unref(): void;
     }
 
     /**
@@ -22653,6 +22779,13 @@ export namespace Gst {
          */
         add_scheduling_mode(mode: PadMode | null): void;
         /**
+         * Copies the given query using the copy function of the parent {@link Gst.Structure}.
+         *
+         * Free-function: gst_query_unref
+         * @returns a new copy of `q`.
+         */
+        copy(): Query;
+        /**
          * Check if `query` has metadata `api` set. When this function returns `true`,
          * `index` will contain the index where the requested API and the parameters
          * can be found.
@@ -23079,6 +23212,11 @@ export namespace Gst {
          */
         set_uri_redirection_permanent(permanent: boolean): void;
         /**
+         * Decreases the refcount of the query. If the refcount reaches 0, the query
+         * will be freed.
+         */
+        unref(): void;
+        /**
          * Get the structure of a query. This method should be called with a writable
          * `query` so that the returned structure is guaranteed to be writable.
          * @returns the {@link Gst.Structure} of the query. The structure is     still owned by the query and will therefore be freed when the query     is unreffed.
@@ -23167,6 +23305,12 @@ export namespace Gst {
         // Methods
 
         /**
+         * Create a copy of the given sample. This will also make a newly allocated
+         * copy of the data the source sample contains.
+         * @returns a new copy of `sample`.
+         */
+        copy(): Sample;
+        /**
          * Get the buffer associated with `sample`
          * @returns the buffer of `sample` or `null`  when there is no buffer. The buffer remains valid as long as  `sample` is valid.  If you need to hold on to it for longer than  that, take a ref to the buffer with `gst_buffer_ref()`.
          */
@@ -23216,6 +23360,11 @@ export namespace Gst {
          */
         make_writable(): Sample;
         /**
+         * Increases the refcount of the given sample by one.
+         * @returns `sample`
+         */
+        ref(): Sample;
+        /**
          * Set the buffer associated with `sample`. `sample` must be writable.
          * @param buffer A {@link Gst.Buffer}
          */
@@ -23241,6 +23390,11 @@ export namespace Gst {
          * @param segment A {@link Gst.Segment}
          */
         set_segment(segment: Segment): void;
+        /**
+         * Decreases the refcount of the sample. If the refcount reaches 0, the
+         * sample will be freed.
+         */
+        unref(): void;
     }
 
     /**
@@ -24812,6 +24966,17 @@ export namespace Gst {
          */
         peek_string_index(tag: string, index: number): [boolean, string];
         /**
+         * Add a reference to a {@link Gst.TagList} mini object.
+         *
+         * From this point on, until the caller calls `gst_tag_list_unref()` or
+         * `gst_tag_list_make_writable()`, it is guaranteed that the taglist object will
+         * not change. To use a {@link Gst.TagList} object, you must always have a refcount on
+         * it -- either the one made implicitly by e.g. `gst_tag_list_new()`, or via
+         * taking one explicitly with this function.
+         * @returns the same {@link Gst.TagList} mini object.
+         */
+        ref(): TagList;
+        /**
          * Removes the given tag from the taglist.
          * @param tag tag to remove
          */
@@ -24827,6 +24992,10 @@ export namespace Gst {
          * @returns a newly-allocated string.     The string must be freed with `g_free()` when no longer     needed.
          */
         to_string(): string;
+        /**
+         * Unref a {@link Gst.TagList}, and and free all its memory when the refcount reaches 0.
+         */
+        unref(): void;
     }
 
     /**

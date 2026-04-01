@@ -808,6 +808,13 @@ export namespace GstCuda {
         flags: CudaGst.graphicsRegisterFlags;
         registered: boolean;
         mapped: boolean;
+
+        // Methods
+
+        /**
+         * Free `resource`
+         */
+        free(): void;
     }
 
     /**

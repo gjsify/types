@@ -56661,8 +56661,8 @@ export namespace Vda {
 
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             name: string;
-            data_type: GObject.GType;
-            dataType: GObject.GType;
+            data_type: GObject.GTypeInput;
+            dataType: GObject.GTypeInput;
         }
     }
 
@@ -57554,8 +57554,8 @@ export namespace Vda {
             parent_property: string;
             parentProperty: string;
             parent: DataObject;
-            object_type: GObject.GType;
-            objectType: GObject.GType;
+            object_type: GObject.GTypeInput;
+            objectType: GObject.GTypeInput;
             ref_field: string;
             refField: string;
             cancellable: Gio.Cancellable;
@@ -60627,7 +60627,7 @@ export namespace Vda {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             parameters: SqlParameters;
             name: string;
-            gtype: GObject.GType;
+            gtype: GObject.GTypeInput;
         }
     }
 

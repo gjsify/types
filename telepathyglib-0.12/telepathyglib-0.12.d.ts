@@ -27756,6 +27756,18 @@ export namespace TelepathyGLib {
             maximum_height: number,
             maximum_bytes: number,
         ): AvatarRequirements;
+
+        // Methods
+
+        /**
+         * <!--Returns: says it all-->
+         * @returns a newly allocated {@link TelepathyGLib.AvatarRequirements}, free it with `tp_avatar_requirements_destroy()`
+         */
+        copy(): AvatarRequirements;
+        /**
+         * Free all memory used by the {@link TelepathyGLib.AvatarRequirements}.
+         */
+        destroy(): void;
     }
 
     /**
@@ -28113,6 +28125,18 @@ export namespace TelepathyGLib {
         );
 
         static ['new'](field_name: string, parameters: string[], field_value: string[]): ContactInfoField;
+
+        // Methods
+
+        /**
+         * <!--Returns: says it all-->
+         * @returns a newly allocated {@link TelepathyGLib.ContactInfoField}, free it with  `tp_contact_info_field_free()`
+         */
+        copy(): ContactInfoField;
+        /**
+         * Free all memory used by the {@link TelepathyGLib.ContactInfoField}.
+         */
+        free(): void;
     }
 
     /**
@@ -28129,6 +28153,18 @@ export namespace TelepathyGLib {
         parameters: string[];
         flags: ContactInfoFieldFlags;
         max: number;
+
+        // Methods
+
+        /**
+         * <!--Returns: says it all-->
+         * @returns a newly allocated {@link TelepathyGLib.ContactInfoFieldSpec}, free it with  `tp_contact_info_field_spec_free()`
+         */
+        copy(): ContactInfoFieldSpec;
+        /**
+         * Free all memory used by the {@link TelepathyGLib.ContactInfoFieldSpec}.
+         */
+        free(): void;
     }
 
     /**
@@ -28468,6 +28504,15 @@ export namespace TelepathyGLib {
         // Methods
 
         /**
+         * Creates a new {@link TelepathyGLib.HandleSet} with the same contents as `other`.
+         * @returns a new set
+         */
+        copy(): HandleSet;
+        /**
+         * Delete a {@link TelepathyGLib.HandleSet} and unreference any handles that it holds
+         */
+        destroy(): void;
+        /**
          * Format a {@link TelepathyGLib.HandleSet} for debug output.
          * @returns a string representation of the  handle set suitable for debug output
          */
@@ -28804,6 +28849,13 @@ export namespace TelepathyGLib {
         // Fields
 
         index: number;
+
+        // Methods
+
+        /**
+         * Deallocate all resources associated with a presence status structure.
+         */
+        free(): void;
     }
 
     /**
@@ -29134,6 +29186,15 @@ export namespace TelepathyGLib {
      */
     abstract class WeakRef {
         static $gtype: GObject.GType<WeakRef>;
+
+        // Methods
+
+        /**
+         * Free a weak reference wrapper. This drops the weak reference to the
+         * object (if it still exists), and frees the user data with the user-supplied
+         * destructor function if one was provided.
+         */
+        destroy(): void;
     }
 
     namespace ClientChannelFactory {
