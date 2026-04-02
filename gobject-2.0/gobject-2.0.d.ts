@@ -3417,7 +3417,7 @@ export namespace GObject {
          * The name of the property of {@link GObject.Binding.source} that should be used
          * as the source of the binding.
          *
-         * This should be in [canonical form][class@GObject.ParamSpec#parameter-names] to get the
+         * This should be in [canonical form][canonical-parameter-names] to get the
          * best performance.
          * @since 2.26
          * @construct-only
@@ -3427,7 +3427,7 @@ export namespace GObject {
          * The name of the property of {@link GObject.Binding.source} that should be used
          * as the source of the binding.
          *
-         * This should be in [canonical form][class@GObject.ParamSpec#parameter-names] to get the
+         * This should be in [canonical form][canonical-parameter-names] to get the
          * best performance.
          * @since 2.26
          * @construct-only
@@ -3443,7 +3443,7 @@ export namespace GObject {
          * The name of the property of {@link GObject.Binding.target} that should be used
          * as the target of the binding.
          *
-         * This should be in [canonical form][class@GObject.ParamSpec#parameter-names] to get the
+         * This should be in [canonical form][canonical-parameter-names] to get the
          * best performance.
          * @since 2.26
          * @construct-only
@@ -3453,7 +3453,7 @@ export namespace GObject {
          * The name of the property of {@link GObject.Binding.target} that should be used
          * as the target of the binding.
          *
-         * This should be in [canonical form][class@GObject.ParamSpec#parameter-names] to get the
+         * This should be in [canonical form][canonical-parameter-names] to get the
          * best performance.
          * @since 2.26
          * @construct-only
@@ -3836,7 +3836,7 @@ export namespace GObject {
      * methods for all object types in GTK, Pango and other libraries
      * based on GObject. The {@link GObject.Object} class provides methods for object
      * construction and destruction, property access methods, and signal
-     * support. Signals are described in detail [here](https://docs.gtk.org/gobject/signals.html).
+     * support. Signals are described in detail [here][gobject-Signals].
      *
      * For a tutorial on implementing a new {@link GObject.Object} class, see [How to define and
      * implement a new GObject](https://docs.gtk.org/gobject/tutorial.html#how-to-define-and-implement-a-new-gobject).
@@ -4158,7 +4158,7 @@ export namespace GObject {
         ): Binding;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](https://docs.gtk.org/gobject/floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -4213,7 +4213,7 @@ export namespace GObject {
          */
         getv(names: string[], values: (Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](https://docs.gtk.org/gobject/floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -4288,7 +4288,7 @@ export namespace GObject {
         ref(): Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](https://docs.gtk.org/gobject/floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -5433,7 +5433,7 @@ export namespace GObject {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](https://docs.gtk.org/gobject/floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -5488,7 +5488,7 @@ export namespace GObject {
          */
         getv(names: string[], values: (Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](https://docs.gtk.org/gobject/floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -5563,7 +5563,7 @@ export namespace GObject {
         ref(): Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](https://docs.gtk.org/gobject/floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -6252,7 +6252,7 @@ export namespace GObject {
         minimum: number;
         maximum: number;
         n_values: number;
-        values: EnumValue[];
+        values: EnumValue;
     }
 
     /**
@@ -6292,7 +6292,7 @@ export namespace GObject {
 
         mask: number;
         n_values: number;
-        values: FlagsValue[];
+        values: FlagsValue;
     }
 
     /**
@@ -7005,7 +7005,7 @@ export namespace GObject {
         get_variant(): GLib.Variant | null;
         /**
          * Initializes `value` to store values of the given `type`, and sets its value
-         * to the initial value for `type`.
+         * to the default for `type`.
          *
          * This must be called before any other methods on a {@link GObject.Value}, so
          * the value knows what type it’s meant to store.
@@ -7045,7 +7045,7 @@ export namespace GObject {
          */
         peek_pointer(): any | null;
         /**
-         * Clears the current value in `value` and resets it to the initial value
+         * Clears the current value in `value` and resets it to the default value
          * (as if the value had just been initialized using
          * {@link GObject.Value.init}).
          * @returns the {@link GObject.Value} structure that has been passed in

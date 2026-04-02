@@ -42,6 +42,7 @@ export namespace WebKit2WebExtension {
      * Enum values used to denote the various levels of console messages.
      * @gir-type Enum
      * @since 2.12
+     * @deprecated since 2.40
      */
     enum ConsoleMessageLevel {
         /**
@@ -77,6 +78,7 @@ export namespace WebKit2WebExtension {
      * Enum values used to denote the various sources of console messages.
      * @gir-type Enum
      * @since 2.12
+     * @deprecated since 2.40
      */
     enum ConsoleMessageSource {
         /**
@@ -885,14 +887,6 @@ export namespace WebKit2WebExtension {
          */
         get_n_items(): number;
         /**
-         * Gets the position in view coordinates where the context menu was triggered.
-         *
-         * This function only returns valid coordinates when called for a {@link WebKit2WebExtension.ContextMenu}
-         * passed to `WebKitWebView::context-menu` signal.
-         * @returns `true` if valid position coordinates are available, `false` otherwise
-         */
-        get_position(): [boolean, number, number];
-        /**
          * Gets the user data of `menu`.
          *
          * This function can be used from the UI Process to get user data previously set
@@ -1036,11 +1030,6 @@ export namespace WebKit2WebExtension {
          */
         get_gaction(): Gio.Action;
         /**
-         * Gets the target {@link GLib.Variant} associated with `item`.
-         * @returns the target {@link GLib.Variant} of the {@link WebKit2WebExtension.ContextMenuItem},    or `null` if `item` was not created with `webkit_context_menu_item_new_from_gaction()`    or if no target was specified.
-         */
-        get_gaction_target(): GLib.Variant | null;
-        /**
          * Gets the {@link WebKit2WebExtension.ContextMenuAction} of `item`.
          *
          * If the {@link WebKit2WebExtension.ContextMenuItem} was not
@@ -1055,11 +1044,6 @@ export namespace WebKit2WebExtension {
          * @returns the {@link WebKit2WebExtension.ContextMenu} representing the submenu of    `item` or `null` if `item` doesn't have a submenu.
          */
         get_submenu(): ContextMenu;
-        /**
-         * Gets the title of `item`.
-         * @returns the title of `item`, or `null` if `item` is a separator.
-         */
-        get_title(): string;
         /**
          * Checks whether `item` is a separator.
          * @returns `true` is `item` is a separator or `false` otherwise
@@ -1257,7 +1241,7 @@ export namespace WebKit2WebExtension {
          * @param use_capture A `gboolean`
          * @returns a `gboolean`
          */
-        remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
+        remove_event_listener(event_name: string, handler: GObject.Callback, use_capture: boolean): boolean;
         /**
          * @param args
          */
@@ -1281,7 +1265,7 @@ export namespace WebKit2WebExtension {
          * @param use_capture A `gboolean`
          * @virtual
          */
-        vfunc_remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
+        vfunc_remove_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -1379,7 +1363,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -1434,7 +1418,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -1509,7 +1493,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -1969,7 +1953,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -2029,7 +2013,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -2104,7 +2088,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -3037,7 +3021,7 @@ export namespace WebKit2WebExtension {
          * @param use_capture A `gboolean`
          * @returns a `gboolean`
          */
-        remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
+        remove_event_listener(event_name: string, handler: GObject.Callback, use_capture: boolean): boolean;
         /**
          * @param args
          */
@@ -3061,7 +3045,7 @@ export namespace WebKit2WebExtension {
          * @param use_capture A `gboolean`
          * @virtual
          */
-        vfunc_remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
+        vfunc_remove_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -3159,7 +3143,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -3208,7 +3192,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -3283,7 +3267,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -3861,7 +3845,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -3921,7 +3905,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -3996,7 +3980,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -5230,7 +5214,7 @@ export namespace WebKit2WebExtension {
          * @param use_capture A `gboolean`
          * @returns a `gboolean`
          */
-        remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
+        remove_event_listener(event_name: string, handler: GObject.Callback, use_capture: boolean): boolean;
         /**
          * @param args
          */
@@ -5254,7 +5238,7 @@ export namespace WebKit2WebExtension {
          * @param use_capture A `gboolean`
          * @virtual
          */
-        vfunc_remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
+        vfunc_remove_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -5352,7 +5336,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -5407,7 +5391,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -5482,7 +5466,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -6713,7 +6697,7 @@ export namespace WebKit2WebExtension {
          * @param use_capture A `gboolean`
          * @returns a `gboolean`
          */
-        remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
+        remove_event_listener(event_name: string, handler: GObject.Callback, use_capture: boolean): boolean;
         /**
          * @param args
          */
@@ -6737,7 +6721,7 @@ export namespace WebKit2WebExtension {
          * @param use_capture A `gboolean`
          * @virtual
          */
-        vfunc_remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
+        vfunc_remove_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -6835,7 +6819,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -6890,7 +6874,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -6965,7 +6949,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -7356,7 +7340,7 @@ export namespace WebKit2WebExtension {
          * @param use_capture A `gboolean`
          * @returns a `gboolean`
          */
-        remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
+        remove_event_listener(event_name: string, handler: GObject.Callback, use_capture: boolean): boolean;
         /**
          * @param args
          */
@@ -7380,7 +7364,7 @@ export namespace WebKit2WebExtension {
          * @param use_capture A `gboolean`
          * @virtual
          */
-        vfunc_remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
+        vfunc_remove_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -7478,7 +7462,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -7533,7 +7517,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -7608,7 +7592,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -8002,7 +7986,7 @@ export namespace WebKit2WebExtension {
          * @param use_capture A `gboolean`
          * @returns a `gboolean`
          */
-        remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
+        remove_event_listener(event_name: string, handler: GObject.Callback, use_capture: boolean): boolean;
         /**
          * @param args
          */
@@ -8026,7 +8010,7 @@ export namespace WebKit2WebExtension {
          * @param use_capture A `gboolean`
          * @virtual
          */
-        vfunc_remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
+        vfunc_remove_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -8124,7 +8108,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -8179,7 +8163,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -8254,7 +8238,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -9217,7 +9201,7 @@ export namespace WebKit2WebExtension {
          * @param use_capture A `gboolean`
          * @returns a `gboolean`
          */
-        remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
+        remove_event_listener(event_name: string, handler: GObject.Callback, use_capture: boolean): boolean;
         /**
          * @param args
          */
@@ -9241,7 +9225,7 @@ export namespace WebKit2WebExtension {
          * @param use_capture A `gboolean`
          * @virtual
          */
-        vfunc_remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
+        vfunc_remove_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -9339,7 +9323,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -9394,7 +9378,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -9469,7 +9453,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -9781,7 +9765,7 @@ export namespace WebKit2WebExtension {
          * @param use_capture A `gboolean`
          * @returns a `gboolean`
          */
-        remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
+        remove_event_listener(event_name: string, handler: GObject.Callback, use_capture: boolean): boolean;
         /**
          * @param args
          */
@@ -9805,7 +9789,7 @@ export namespace WebKit2WebExtension {
          * @param use_capture A `gboolean`
          * @virtual
          */
-        vfunc_remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
+        vfunc_remove_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -9903,7 +9887,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -9958,7 +9942,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -10033,7 +10017,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -11036,7 +11020,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -11091,7 +11075,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -11166,7 +11150,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -11741,7 +11725,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -11796,7 +11780,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -11871,7 +11855,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -12468,7 +12452,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -12523,7 +12507,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -12598,7 +12582,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -13048,7 +13032,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -13103,7 +13087,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -13178,7 +13162,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -13640,7 +13624,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -13695,7 +13679,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -13770,7 +13754,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -14236,7 +14220,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -14291,7 +14275,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -14366,7 +14350,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -14885,7 +14869,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -14940,7 +14924,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -15015,7 +14999,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -15540,7 +15524,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -15595,7 +15579,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -15670,7 +15654,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -16134,7 +16118,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -16189,7 +16173,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -16264,7 +16248,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -16797,7 +16781,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -16852,7 +16836,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -16927,7 +16911,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -17379,7 +17363,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -17434,7 +17418,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -17509,7 +17493,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -17959,7 +17943,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -18014,7 +17998,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -18089,7 +18073,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -18667,7 +18651,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -18722,7 +18706,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -18797,7 +18781,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -19428,7 +19412,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -19483,7 +19467,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -19558,7 +19542,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -20070,7 +20054,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -20125,7 +20109,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -20200,7 +20184,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -20650,7 +20634,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -20705,7 +20689,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -20780,7 +20764,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -21254,7 +21238,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -21309,7 +21293,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -21384,7 +21368,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -21931,7 +21915,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -21986,7 +21970,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -22061,7 +22045,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -22656,7 +22640,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -22711,7 +22695,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -22786,7 +22770,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -23250,7 +23234,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -23305,7 +23289,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -23380,7 +23364,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -23869,7 +23853,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -23924,7 +23908,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -23999,7 +23983,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -24449,7 +24433,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -24504,7 +24488,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -24579,7 +24563,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -25031,7 +25015,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -25086,7 +25070,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -25161,7 +25145,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -25611,7 +25595,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -25666,7 +25650,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -25741,7 +25725,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -26343,7 +26327,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -26398,7 +26382,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -26473,7 +26457,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -27138,7 +27122,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -27193,7 +27177,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -27268,7 +27252,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -28035,7 +28019,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -28090,7 +28074,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -28165,7 +28149,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -28627,7 +28611,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -28682,7 +28666,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -28757,7 +28741,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -29222,7 +29206,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -29277,7 +29261,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -29352,7 +29336,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -29814,7 +29798,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -29869,7 +29853,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -29944,7 +29928,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -30514,7 +30498,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -30569,7 +30553,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -30644,7 +30628,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -31104,7 +31088,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -31159,7 +31143,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -31234,7 +31218,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -31672,7 +31656,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -31727,7 +31711,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -31802,7 +31786,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -32252,7 +32236,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -32307,7 +32291,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -32382,7 +32366,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -32871,7 +32855,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -32926,7 +32910,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -33001,7 +32985,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -33466,7 +33450,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -33521,7 +33505,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -33596,7 +33580,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -34072,7 +34056,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -34127,7 +34111,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -34202,7 +34186,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -34873,7 +34857,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -34922,7 +34906,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -34997,7 +34981,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -35446,7 +35430,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -35501,7 +35485,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -35576,7 +35560,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -36109,7 +36093,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -36164,7 +36148,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -36239,7 +36223,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -36784,7 +36768,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -36839,7 +36823,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -36914,7 +36898,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -37405,7 +37389,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -37460,7 +37444,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -37535,7 +37519,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -37997,7 +37981,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -38052,7 +38036,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -38127,7 +38111,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -38579,7 +38563,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -38634,7 +38618,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -38709,7 +38693,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -39236,7 +39220,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -39291,7 +39275,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -39366,7 +39350,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -39974,7 +39958,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -40029,7 +40013,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -40104,7 +40088,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -40590,7 +40574,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -40645,7 +40629,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -40720,7 +40704,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -41172,7 +41156,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -41227,7 +41211,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -41302,7 +41286,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -41943,7 +41927,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -41998,7 +41982,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -42073,7 +42057,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -42591,7 +42575,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -42646,7 +42630,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -42721,7 +42705,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -43367,7 +43351,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -43422,7 +43406,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -43497,7 +43481,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -44055,7 +44039,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -44110,7 +44094,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -44185,7 +44169,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -44698,7 +44682,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -44753,7 +44737,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -44828,7 +44812,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -45446,7 +45430,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -45501,7 +45485,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -45576,7 +45560,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -46028,7 +46012,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -46083,7 +46067,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -46158,7 +46142,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -46622,7 +46606,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -46677,7 +46661,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -46752,7 +46736,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -48115,7 +48099,7 @@ export namespace WebKit2WebExtension {
          * @param use_capture A `gboolean`
          * @returns a `gboolean`
          */
-        remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
+        remove_event_listener(event_name: string, handler: GObject.Callback, use_capture: boolean): boolean;
         /**
          * @param args
          */
@@ -48139,7 +48123,7 @@ export namespace WebKit2WebExtension {
          * @param use_capture A `gboolean`
          * @virtual
          */
-        vfunc_remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
+        vfunc_remove_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         /**
          * Creates a binding between `source_property` on `source` and `target_property`
          * on `target`.
@@ -48237,7 +48221,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -48292,7 +48276,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -48367,7 +48351,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -49072,7 +49056,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -49132,7 +49116,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -49207,7 +49191,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -50108,7 +50092,7 @@ export namespace WebKit2WebExtension {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -50168,7 +50152,7 @@ export namespace WebKit2WebExtension {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -50243,7 +50227,7 @@ export namespace WebKit2WebExtension {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -52543,6 +52527,7 @@ export namespace WebKit2WebExtension {
              * The `console_message` contains information of the message.
              * @signal
              * @since 2.12
+             * @deprecated since 2.40
              * @run-last
              */
             'console-message-sent': (arg0: ConsoleMessage) => void;
@@ -53441,7 +53426,7 @@ export namespace WebKit2WebExtension {
              * @param use_capture A `gboolean`
              * @virtual
              */
-            vfunc_remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
+            vfunc_remove_event_listener(event_name: string, handler: GObject.Closure, use_capture: boolean): boolean;
         }
 
         // Constructor properties interface
@@ -53486,7 +53471,7 @@ export namespace WebKit2WebExtension {
          * @param use_capture A `gboolean`
          * @returns a `gboolean`
          */
-        remove_event_listener(event_name: string, handler: any | null, use_capture: boolean): boolean;
+        remove_event_listener(event_name: string, handler: GObject.Callback, use_capture: boolean): boolean;
         /**
          * Version of `webkit_dom_event_target_remove_event_listener()` using a closure
          * instead of a callbacks for easier binding in other languages.

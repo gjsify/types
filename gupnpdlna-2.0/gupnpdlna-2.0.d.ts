@@ -331,8 +331,6 @@ export namespace GUPnPDLNA {
          */
         vfunc_get_image_information(): ImageInformation;
         /**
-         * This is called by {@link GUPnPDLNA.ProfileGuesser} to
-         * get the name of the DLNA profile assigned with this information.
          * @virtual
          */
         vfunc_get_profile_name(): string;

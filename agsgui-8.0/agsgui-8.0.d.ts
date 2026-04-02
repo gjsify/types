@@ -2460,7 +2460,7 @@ export namespace AgsGui {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of “ID” and it makes sense to map the XML id
+         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
          *   attribute to it.
          * @param id
          * @virtual
@@ -2563,7 +2563,7 @@ export namespace AgsGui {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -2618,7 +2618,7 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -2693,7 +2693,7 @@ export namespace AgsGui {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -3626,7 +3626,7 @@ export namespace AgsGui {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of “ID” and it makes sense to map the XML id
+         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
          *   attribute to it.
          * @param id
          * @virtual
@@ -3729,7 +3729,7 @@ export namespace AgsGui {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -3784,7 +3784,7 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -3859,7 +3859,7 @@ export namespace AgsGui {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -4226,7 +4226,7 @@ export namespace AgsGui {
         get_orientation(): Gtk.Orientation;
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable’s new orientation
+         * @param orientation the orientable&#x2019;s new orientation
          */
         set_orientation(orientation: Gtk.Orientation | null): void;
         /**
@@ -4326,7 +4326,7 @@ export namespace AgsGui {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -4381,7 +4381,7 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -4456,7 +4456,7 @@ export namespace AgsGui {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -4823,7 +4823,7 @@ export namespace AgsGui {
         get_orientation(): Gtk.Orientation;
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable’s new orientation
+         * @param orientation the orientable&#x2019;s new orientation
          */
         set_orientation(orientation: Gtk.Orientation | null): void;
         /**
@@ -4923,7 +4923,7 @@ export namespace AgsGui {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -4978,7 +4978,7 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -5053,7 +5053,7 @@ export namespace AgsGui {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -6141,7 +6141,7 @@ export namespace AgsGui {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -6196,7 +6196,7 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -6271,7 +6271,7 @@ export namespace AgsGui {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -6557,7 +6557,7 @@ export namespace AgsGui {
         /**
          * Adds a style class to the widget.
          *
-         * After calling this function, the widget’s style will match
+         * After calling this function, the widget&#x2019;s style will match
          * for `css_class`, according to CSS matching rules.
          *
          * Use {@link Gtk.Widget.remove_css_class} to remove the
@@ -6587,7 +6587,7 @@ export namespace AgsGui {
          * frame or every few frames.
          *
          * The tick callback does not automatically imply a relayout or repaint.
-         * If you want a repaint or relayout, and aren’t changing widget properties
+         * If you want a repaint or relayout, and aren&#x2019;t changing widget properties
          * that would trigger that (for example, changing the text of a label),
          * then you will have to call {@link Gtk.Widget.queue_resize} or
          * {@link Gtk.Widget.queue_draw} yourself.
@@ -6613,7 +6613,7 @@ export namespace AgsGui {
          *
          * In this function, the allocation and baseline may be adjusted.
          * The given allocation will be forced to be bigger than the
-         * widget's minimum size, as well as at least 0×0 in size.
+         * widget's minimum size, as well as at least 0&#xD7;0 in size.
          *
          * This function is only used by widget implementations.
          *
@@ -6641,10 +6641,10 @@ export namespace AgsGui {
          * inside that widget, and false if moving in `direction` moved the focus
          * outside the widget. When returning true, widgets normally call
          * {@link Gtk.Widget.grab_focus} to place the focus accordingly;
-         * when returning false, they don’t modify the current focus location.
+         * when returning false, they don&#x2019;t modify the current focus location.
          *
          * This function is used by custom widget implementations; if you're
-         * writing an app, you’d use {@link Gtk.Widget.grab_focus} to move
+         * writing an app, you&#x2019;d use {@link Gtk.Widget.grab_focus} to move
          * the focus to a particular widget.
          * @param direction direction of focus movement
          * @returns true if focus ended up inside `widget`
@@ -6687,7 +6687,7 @@ export namespace AgsGui {
         compute_expand(orientation: Gtk.Orientation | null): boolean;
         /**
          * Translates the given `point` in `widget`'s coordinates to coordinates
-         * in `target`’s coordinate system.
+         * in `target`&#x2019;s coordinate system.
          *
          * In order to perform this operation, both widgets must share a
          * a common ancestor. If that is not the case, `out_point` is set
@@ -6820,10 +6820,10 @@ export namespace AgsGui {
          */
         get_allocated_width(): number;
         /**
-         * Retrieves the widget’s allocation.
+         * Retrieves the widget&#x2019;s allocation.
          *
-         * Note, when implementing a layout widget: a widget’s allocation
-         * will be its “adjusted” allocation, that is, the widget’s parent
+         * Note, when implementing a layout widget: a widget&#x2019;s allocation
+         * will be its &#x201C;adjusted&#x201D; allocation, that is, the widget&#x2019;s parent
          * typically calls {@link Gtk.Widget.size_allocate} with an allocation,
          * and that allocation is then adjusted (to handle margin
          * and alignment for example) before assignment to the widget.
@@ -6841,7 +6841,7 @@ export namespace AgsGui {
          * Gets the first ancestor of the widget with type `widget_type`.
          *
          * For example, `gtk_widget_get_ancestor (widget, GTK_TYPE_BOX)`
-         * gets the first {@link Gtk.Box} that’s an ancestor of `widget`. No
+         * gets the first {@link Gtk.Box} that&#x2019;s an ancestor of `widget`. No
          * reference will be added to the returned widget; it should
          * not be unreferenced.
          *
@@ -6896,7 +6896,7 @@ export namespace AgsGui {
          */
         get_clipboard(): Gdk.Clipboard;
         /**
-         * Gets the current foreground color for the widget’s style.
+         * Gets the current foreground color for the widget&#x2019;s style.
          *
          * This function should only be used in snapshot
          * implementations that need to do custom drawing
@@ -6928,7 +6928,7 @@ export namespace AgsGui {
          */
         get_direction(): Gtk.TextDirection;
         /**
-         * Returns the widget’s first child.
+         * Returns the widget&#x2019;s first child.
          *
          * This function is primarily meant for widget implementations.
          * @returns the widget's first child
@@ -6971,7 +6971,7 @@ export namespace AgsGui {
         /**
          * Obtains the frame clock for a widget.
          *
-         * The frame clock is a global “ticker” that can be used to drive
+         * The frame clock is a global &#x201C;ticker&#x201D; that can be used to drive
          * animations and repaints. The most common reason to get the frame
          * clock is to call {@link Gdk.FrameClock.get_frame_time}, in order
          * to get a time to use for animating. For example you might record
@@ -6980,15 +6980,15 @@ export namespace AgsGui {
          * by calling {@link Gdk.FrameClock.get_frame_time} again during each repaint.
          *
          * {@link Gdk.FrameClock.request_phase} will result in a new frame on the
-         * clock, but won’t necessarily repaint any widgets. To repaint a widget,
+         * clock, but won&#x2019;t necessarily repaint any widgets. To repaint a widget,
          * you have to use {@link Gtk.Widget.queue_draw} which invalidates the
          * widget (thus scheduling it to receive a draw on the next frame).
          * {@link Gtk.Widget.queue_draw} will also end up requesting a frame
          * on the appropriate frame clock.
          *
-         * A widget’s frame clock will not change while the widget is mapped.
+         * A widget&#x2019;s frame clock will not change while the widget is mapped.
          * Reparenting a widget (which implies a temporary unmap) can change
-         * the widget’s frame clock.
+         * the widget&#x2019;s frame clock.
          *
          * Unrealized widgets do not have a frame clock.
          * @returns the frame clock
@@ -7037,7 +7037,7 @@ export namespace AgsGui {
          * has the expand flag set. If any child of a widget wants to
          * expand, the parent may ask to expand also.
          *
-         * This function only looks at the widget’s own hexpand flag, rather
+         * This function only looks at the widget&#x2019;s own hexpand flag, rather
          * than computing whether the entire widget tree rooted at this widget
          * wants to expand.
          * @returns whether hexpand flag is set
@@ -7051,13 +7051,13 @@ export namespace AgsGui {
          * If `hexpand` is not set, then the expand value depends on
          * whether any children of the widget would like to expand.
          *
-         * There are few reasons to use this function, but it’s here
+         * There are few reasons to use this function, but it&#x2019;s here
          * for completeness and consistency.
          * @returns whether hexpand has been explicitly set
          */
         get_hexpand_set(): boolean;
         /**
-         * Returns the widget’s last child.
+         * Returns the widget&#x2019;s last child.
          *
          * This function is primarily meant for widget implementations.
          * @returns the widget's last child
@@ -7117,7 +7117,7 @@ export namespace AgsGui {
          */
         get_native(): Gtk.Native | null;
         /**
-         * Returns the widget’s next sibling.
+         * Returns the widget&#x2019;s next sibling.
          *
          * This function is primarily meant for widget implementations.
          * @returns the widget's next sibling
@@ -7131,7 +7131,7 @@ export namespace AgsGui {
          */
         get_opacity(): number;
         /**
-         * Returns the widget’s overflow value.
+         * Returns the widget&#x2019;s overflow value.
          * @returns The widget's overflow value
          */
         get_overflow(): Gtk.Overflow;
@@ -7144,7 +7144,7 @@ export namespace AgsGui {
          * Unlike the context returned by {@link Gtk.Widget.create_pango_context},
          * this context is owned by the widget (it can be used until the screen
          * for the widget changes or the widget is removed from its toplevel),
-         * and will be updated to match any changes to the widget’s attributes.
+         * and will be updated to match any changes to the widget&#x2019;s attributes.
          * This can be tracked by listening to changes of the
          * {@link Gtk.Widget.root} property on the widget.
          * @returns the {@link Pango.Context} for the widget
@@ -7157,7 +7157,7 @@ export namespace AgsGui {
         get_parent(): Gtk.Widget | null;
         /**
          * Retrieves the minimum and natural size of a widget, taking
-         * into account the widget’s preference for height-for-width management.
+         * into account the widget&#x2019;s preference for height-for-width management.
          *
          * This is used to retrieve a suitable size by container widgets which do
          * not impose any restrictions on the child placement. It can be used
@@ -7173,7 +7173,7 @@ export namespace AgsGui {
          */
         get_preferred_size(): [Gtk.Requisition | null, Gtk.Requisition | null];
         /**
-         * Returns the widget’s previous sibling.
+         * Returns the widget&#x2019;s previous sibling.
          *
          * This function is primarily meant for widget implementations.
          * @returns the widget's previous sibling
@@ -7243,13 +7243,13 @@ export namespace AgsGui {
          */
         get_scale_factor(): number;
         /**
-         * Returns the widget’s sensitivity.
+         * Returns the widget&#x2019;s sensitivity.
          *
          * This function returns the value that has been set using
          * {@link Gtk.Widget.set_sensitive}).
          *
          * The effective sensitivity of a widget is however determined
-         * by both its own and its parent widget’s sensitivity.
+         * by both its own and its parent widget&#x2019;s sensitivity.
          * See {@link Gtk.Widget.is_sensitive}.
          * @returns true if the widget is sensitive
          */
@@ -7372,7 +7372,7 @@ export namespace AgsGui {
         /**
          * Determines whether the widget is visible.
          *
-         * If you want to take into account whether the widget’s
+         * If you want to take into account whether the widget&#x2019;s
          * parent is also marked as visible, use
          * {@link Gtk.Widget.is_visible} instead.
          *
@@ -7427,7 +7427,7 @@ export namespace AgsGui {
          *
          * To find out if the widget has the global input focus, use
          * {@link Gtk.Widget.has_focus}.
-         * @returns true if the widget should display a “focus rectangle”
+         * @returns true if the widget should display a &#x201C;focus rectangle&#x201D;
          */
         has_visible_focus(): boolean;
         /**
@@ -7459,7 +7459,7 @@ export namespace AgsGui {
          *    defined by its parent classes have been created in their
          *    relative instance initializers
          *  - when calling `g_object_new()` on a widget with composite templates,
-         *    it’s important to build the composite widgets before the construct
+         *    it&#x2019;s important to build the composite widgets before the construct
          *    properties are set. Properties passed to `g_object_new()` should
          *    take precedence over properties set in the private template XML
          *
@@ -7472,7 +7472,7 @@ export namespace AgsGui {
          *
          * Children of `widget` that implement {@link Gtk.Actionable} can
          * then be associated with actions in `group` by setting their
-         * “action-name” to `prefix`.`action-name`.
+         * &#x201C;action-name&#x201D; to `prefix`.`action-name`.
          *
          * Note that inheritance is defined for individual actions. I.e.
          * even if you insert a group with prefix `prefix`, actions with
@@ -7555,7 +7555,7 @@ export namespace AgsGui {
          */
         is_focus(): boolean;
         /**
-         * Returns the widget’s effective sensitivity.
+         * Returns the widget&#x2019;s effective sensitivity.
          *
          * This means it is sensitive itself and also its
          * parent widget is sensitive.
@@ -7586,7 +7586,7 @@ export namespace AgsGui {
          * and/or there is nowhere we can/should move the focus to.
          * When false is returned, the caller should continue with
          * keyboard navigation outside the widget, e.g. by calling
-         * {@link Gtk.Widget.child_focus} on the widget’s toplevel.
+         * {@link Gtk.Widget.child_focus} on the widget&#x2019;s toplevel.
          *
          * The default `Gtk.Widget::keynav-failed` handler returns
          * false for {@link Gtk.DirectionType.TAB-FORWARD} and
@@ -7622,7 +7622,7 @@ export namespace AgsGui {
          */
         list_mnemonic_labels(): Gtk.Widget[];
         /**
-         * Causes a widget to be mapped if it isn’t already.
+         * Causes a widget to be mapped if it isn&#x2019;t already.
          *
          * This function is only for use in widget implementations.
          */
@@ -7634,7 +7634,7 @@ export namespace AgsGui {
          * is 300, this functions will compute the minimum and natural width of `widget`
          * if it is allocated at a height of 300 pixels.
          *
-         * See [GtkWidget’s geometry management section](class.Widget.html#height-for-width-geometry-management) for
+         * See [GtkWidget&#x2019;s geometry management section](class.Widget.html#height-for-width-geometry-management) for
          * a more details on implementing {@link Gtk.Widget.measure}.
          * @param orientation the orientation to measure
          * @param for_size Size for the opposite of `orientation`, i.e.   if `orientation` is {@link Gtk.Orientation.HORIZONTAL}, this is   the height the widget should be measured with. The {@link Gtk.Orientation.VERTICAL}   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
@@ -7719,7 +7719,7 @@ export namespace AgsGui {
          *
          * This should be called when a widget for some reason has a new
          * size request. For example, when you change the text in a
-         * {@link Gtk.Label}, the label queues a resize to ensure there’s
+         * {@link Gtk.Label}, the label queues a resize to ensure there&#x2019;s
          * enough space for the new text.
          *
          * Note that you cannot call `gtk_widget_queue_resize()` on a widget
@@ -7869,7 +7869,7 @@ export namespace AgsGui {
          * with the mouse.
          *
          * Making mouse clicks not grab focus is useful in places like
-         * toolbars where you don’t want the keyboard focus removed from
+         * toolbars where you don&#x2019;t want the keyboard focus removed from
          * the main area of the application.
          * @param focus_on_click whether the widget should grab focus when clicked   with the mouse
          */
@@ -7947,7 +7947,7 @@ export namespace AgsGui {
          * This function forces the widget to expand or not to expand,
          * regardless of children. The override occurs because
          * {@link Gtk.Widget.set_hexpand} sets the hexpand-set property (see
-         * {@link Gtk.Widget.set_hexpand_set}) which causes the widget’s hexpand
+         * {@link Gtk.Widget.set_hexpand_set}) which causes the widget&#x2019;s hexpand
          * value to be used, rather than looking at children and widget state.
          * @param expand whether to expand
          */
@@ -7965,7 +7965,7 @@ export namespace AgsGui {
          * set, then the expand value depends on whether any
          * children of the widget would like to expand.
          *
-         * There are few reasons to use this function, but it’s here
+         * There are few reasons to use this function, but it&#x2019;s here
          * for completeness and consistency.
          * @param set value for hexpand-set property
          */
@@ -8028,10 +8028,10 @@ export namespace AgsGui {
          * depends on the capabilities of the windowing system. On X11, this
          * has any effect only on X displays with a compositing manager, see
          * {@link Gdk.Display.is_composited}. On Windows and Wayland it will
-         * always work, although setting a window’s opacity after the window
+         * always work, although setting a window&#x2019;s opacity after the window
          * has been shown may cause some flicker.
          *
-         * Note that the opacity is inherited through inclusion — if you set
+         * Note that the opacity is inherited through inclusion &#x2014; if you set
          * a toplevel to be partially translucent, all of its content will
          * appear translucent, since it is ultimatively rendered on that
          * toplevel. The opacity value itself is not inherited by child
@@ -8080,16 +8080,16 @@ export namespace AgsGui {
          * Sets the sensitivity of the widget.
          *
          * A widget is sensitive if the user can interact with it.
-         * Insensitive widgets are “grayed out” and the user can’t
+         * Insensitive widgets are &#x201C;grayed out&#x201D; and the user can&#x2019;t
          * interact with them. Insensitive widgets are known as
-         * “inactive”, “disabled”, or “ghosted” in some other toolkits.
+         * &#x201C;inactive&#x201D;, &#x201C;disabled&#x201D;, or &#x201C;ghosted&#x201D; in some other toolkits.
          * @param sensitive true to make the widget sensitive
          */
         set_sensitive(sensitive: boolean): void;
         /**
          * Sets the minimum size of the widget.
          *
-         * That is, the widget’s size request will be at least `width`
+         * That is, the widget&#x2019;s size request will be at least `width`
          * by `height`. You can use this function to force a widget to
          * be larger than it normally would be.
          *
@@ -8111,7 +8111,7 @@ export namespace AgsGui {
          * space than it requested.
          *
          * If the size request in a given direction is -1 (unset), then
-         * the “natural” size request of the widget will be used instead.
+         * the &#x201C;natural&#x201D; size request of the widget will be used instead.
          *
          * The size request set here does not include any margin from the
          * properties
@@ -8189,7 +8189,7 @@ export namespace AgsGui {
         /**
          * Sets the visibility state of `widget`.
          *
-         * Note that setting this to true doesn’t mean the widget is
+         * Note that setting this to true doesn&#x2019;t mean the widget is
          * actually viewable, see {@link Gtk.Widget.get_visible}.
          * @param visible whether the widget should be shown or not
          */
@@ -8207,7 +8207,7 @@ export namespace AgsGui {
         /**
          * Flags a widget to be displayed.
          *
-         * Any widget that isn’t shown will not appear on the screen.
+         * Any widget that isn&#x2019;t shown will not appear on the screen.
          *
          * Remember that you have to show the containers containing a widget,
          * in addition to the widget itself, before it will appear onscreen.
@@ -8246,8 +8246,8 @@ export namespace AgsGui {
          */
         snapshot_child(child: Gtk.Widget, snapshot: Gtk.Snapshot): void;
         /**
-         * Translates coordinates relative to `src_widget`’s allocation
-         * to coordinates relative to `dest_widget`’s allocations.
+         * Translates coordinates relative to `src_widget`&#x2019;s allocation
+         * to coordinates relative to `dest_widget`&#x2019;s allocations.
          *
          * In order to perform this operation, both widget must share
          * a common ancestor. If that is not the case, `dest_x` and `dest_y`
@@ -8263,7 +8263,7 @@ export namespace AgsGui {
          */
         trigger_tooltip_query(): void;
         /**
-         * Causes a widget to be unmapped if it’s currently mapped.
+         * Causes a widget to be unmapped if it&#x2019;s currently mapped.
          *
          * This function is only for use in widget implementations.
          */
@@ -8368,7 +8368,7 @@ export namespace AgsGui {
          * and/or there is nowhere we can/should move the focus to.
          * When false is returned, the caller should continue with
          * keyboard navigation outside the widget, e.g. by calling
-         * {@link Gtk.Widget.child_focus} on the widget’s toplevel.
+         * {@link Gtk.Widget.child_focus} on the widget&#x2019;s toplevel.
          *
          * The default `Gtk.Widget::keynav-failed` handler returns
          * false for {@link Gtk.DirectionType.TAB-FORWARD} and
@@ -8389,7 +8389,7 @@ export namespace AgsGui {
          */
         vfunc_keynav_failed(direction: Gtk.DirectionType): boolean;
         /**
-         * Causes a widget to be mapped if it isn’t already.
+         * Causes a widget to be mapped if it isn&#x2019;t already.
          *
          * This function is only for use in widget implementations.
          * @virtual
@@ -8402,7 +8402,7 @@ export namespace AgsGui {
          * is 300, this functions will compute the minimum and natural width of `widget`
          * if it is allocated at a height of 300 pixels.
          *
-         * See [GtkWidget’s geometry management section](class.Widget.html#height-for-width-geometry-management) for
+         * See [GtkWidget&#x2019;s geometry management section](class.Widget.html#height-for-width-geometry-management) for
          * a more details on implementing {@link Gtk.Widget.measure}.
          * @param orientation the orientation to measure
          * @param for_size Size for the opposite of `orientation`, i.e.   if `orientation` is {@link Gtk.Orientation.HORIZONTAL}, this is   the height the widget should be measured with. The {@link Gtk.Orientation.VERTICAL}   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
@@ -8422,8 +8422,8 @@ export namespace AgsGui {
          */
         vfunc_move_focus(direction: Gtk.DirectionType): void;
         /**
-         * Signal emitted when “has-tooltip” is `true` and the
-         *   hover timeout has expired with the cursor hovering “above”
+         * Signal emitted when &#x201C;has-tooltip&#x201D; is `true` and the
+         *   hover timeout has expired with the cursor hovering &#x201C;above&#x201D;
          *   widget; or emitted when widget got focus in keyboard mode.
          * @param x
          * @param y
@@ -8439,13 +8439,13 @@ export namespace AgsGui {
          * and all its parent containers, then the widget will be realized
          * and mapped automatically.
          *
-         * Realizing a widget requires all the widget’s parent widgets to be
-         * realized; calling this function realizes the widget’s parents
+         * Realizing a widget requires all the widget&#x2019;s parent widgets to be
+         * realized; calling this function realizes the widget&#x2019;s parents
          * in addition to `widget` itself. If a widget is not yet inside a
          * toplevel window when you realize it, bad things will happen.
          *
          * This function is primarily used in widget implementations, and
-         * isn’t very useful otherwise. Many times when you think you might
+         * isn&#x2019;t very useful otherwise. Many times when you think you might
          * need it, a better approach is to connect to a signal that will be
          * called after the widget is realized automatically, such as
          * `Gtk.Widget::realize`.
@@ -8471,7 +8471,7 @@ export namespace AgsGui {
         /**
          * Flags a widget to be displayed.
          *
-         * Any widget that isn’t shown will not appear on the screen.
+         * Any widget that isn&#x2019;t shown will not appear on the screen.
          *
          * Remember that you have to show the containers containing a widget,
          * in addition to the widget itself, before it will appear onscreen.
@@ -8511,7 +8511,7 @@ export namespace AgsGui {
          */
         vfunc_system_setting_changed(settings: Gtk.SystemSetting): void;
         /**
-         * Causes a widget to be unmapped if it’s currently mapped.
+         * Causes a widget to be unmapped if it&#x2019;s currently mapped.
          *
          * This function is only for use in widget implementations.
          * @virtual
@@ -8742,7 +8742,7 @@ export namespace AgsGui {
         get_orientation(): Gtk.Orientation;
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable’s new orientation
+         * @param orientation the orientable&#x2019;s new orientation
          */
         set_orientation(orientation: Gtk.Orientation | null): void;
         /**
@@ -8842,7 +8842,7 @@ export namespace AgsGui {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -8897,7 +8897,7 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -8972,7 +8972,7 @@ export namespace AgsGui {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -9710,7 +9710,7 @@ export namespace AgsGui {
         get_orientation(): Gtk.Orientation;
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable’s new orientation
+         * @param orientation the orientable&#x2019;s new orientation
          */
         set_orientation(orientation: Gtk.Orientation | null): void;
         /**
@@ -9810,7 +9810,7 @@ export namespace AgsGui {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -9865,7 +9865,7 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -9940,7 +9940,7 @@ export namespace AgsGui {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -10402,7 +10402,7 @@ export namespace AgsGui {
         get_orientation(): Gtk.Orientation;
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable’s new orientation
+         * @param orientation the orientable&#x2019;s new orientation
          */
         set_orientation(orientation: Gtk.Orientation | null): void;
         /**
@@ -10502,7 +10502,7 @@ export namespace AgsGui {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -10557,7 +10557,7 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -10632,7 +10632,7 @@ export namespace AgsGui {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -11396,7 +11396,7 @@ export namespace AgsGui {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of “ID” and it makes sense to map the XML id
+         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
          *   attribute to it.
          * @param id
          * @virtual
@@ -11409,7 +11409,7 @@ export namespace AgsGui {
         get_orientation(): Gtk.Orientation;
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable’s new orientation
+         * @param orientation the orientable&#x2019;s new orientation
          */
         set_orientation(orientation: Gtk.Orientation | null): void;
         /**
@@ -11509,7 +11509,7 @@ export namespace AgsGui {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -11564,7 +11564,7 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -11639,7 +11639,7 @@ export namespace AgsGui {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -12729,7 +12729,7 @@ export namespace AgsGui {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -12784,7 +12784,7 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -12859,7 +12859,7 @@ export namespace AgsGui {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -13145,7 +13145,7 @@ export namespace AgsGui {
         /**
          * Adds a style class to the widget.
          *
-         * After calling this function, the widget’s style will match
+         * After calling this function, the widget&#x2019;s style will match
          * for `css_class`, according to CSS matching rules.
          *
          * Use {@link Gtk.Widget.remove_css_class} to remove the
@@ -13175,7 +13175,7 @@ export namespace AgsGui {
          * frame or every few frames.
          *
          * The tick callback does not automatically imply a relayout or repaint.
-         * If you want a repaint or relayout, and aren’t changing widget properties
+         * If you want a repaint or relayout, and aren&#x2019;t changing widget properties
          * that would trigger that (for example, changing the text of a label),
          * then you will have to call {@link Gtk.Widget.queue_resize} or
          * {@link Gtk.Widget.queue_draw} yourself.
@@ -13201,7 +13201,7 @@ export namespace AgsGui {
          *
          * In this function, the allocation and baseline may be adjusted.
          * The given allocation will be forced to be bigger than the
-         * widget's minimum size, as well as at least 0×0 in size.
+         * widget's minimum size, as well as at least 0&#xD7;0 in size.
          *
          * This function is only used by widget implementations.
          *
@@ -13229,10 +13229,10 @@ export namespace AgsGui {
          * inside that widget, and false if moving in `direction` moved the focus
          * outside the widget. When returning true, widgets normally call
          * {@link Gtk.Widget.grab_focus} to place the focus accordingly;
-         * when returning false, they don’t modify the current focus location.
+         * when returning false, they don&#x2019;t modify the current focus location.
          *
          * This function is used by custom widget implementations; if you're
-         * writing an app, you’d use {@link Gtk.Widget.grab_focus} to move
+         * writing an app, you&#x2019;d use {@link Gtk.Widget.grab_focus} to move
          * the focus to a particular widget.
          * @param direction direction of focus movement
          * @returns true if focus ended up inside `widget`
@@ -13275,7 +13275,7 @@ export namespace AgsGui {
         compute_expand(orientation: Gtk.Orientation | null): boolean;
         /**
          * Translates the given `point` in `widget`'s coordinates to coordinates
-         * in `target`’s coordinate system.
+         * in `target`&#x2019;s coordinate system.
          *
          * In order to perform this operation, both widgets must share a
          * a common ancestor. If that is not the case, `out_point` is set
@@ -13408,10 +13408,10 @@ export namespace AgsGui {
          */
         get_allocated_width(): number;
         /**
-         * Retrieves the widget’s allocation.
+         * Retrieves the widget&#x2019;s allocation.
          *
-         * Note, when implementing a layout widget: a widget’s allocation
-         * will be its “adjusted” allocation, that is, the widget’s parent
+         * Note, when implementing a layout widget: a widget&#x2019;s allocation
+         * will be its &#x201C;adjusted&#x201D; allocation, that is, the widget&#x2019;s parent
          * typically calls {@link Gtk.Widget.size_allocate} with an allocation,
          * and that allocation is then adjusted (to handle margin
          * and alignment for example) before assignment to the widget.
@@ -13429,7 +13429,7 @@ export namespace AgsGui {
          * Gets the first ancestor of the widget with type `widget_type`.
          *
          * For example, `gtk_widget_get_ancestor (widget, GTK_TYPE_BOX)`
-         * gets the first {@link Gtk.Box} that’s an ancestor of `widget`. No
+         * gets the first {@link Gtk.Box} that&#x2019;s an ancestor of `widget`. No
          * reference will be added to the returned widget; it should
          * not be unreferenced.
          *
@@ -13484,7 +13484,7 @@ export namespace AgsGui {
          */
         get_clipboard(): Gdk.Clipboard;
         /**
-         * Gets the current foreground color for the widget’s style.
+         * Gets the current foreground color for the widget&#x2019;s style.
          *
          * This function should only be used in snapshot
          * implementations that need to do custom drawing
@@ -13516,7 +13516,7 @@ export namespace AgsGui {
          */
         get_direction(): Gtk.TextDirection;
         /**
-         * Returns the widget’s first child.
+         * Returns the widget&#x2019;s first child.
          *
          * This function is primarily meant for widget implementations.
          * @returns the widget's first child
@@ -13559,7 +13559,7 @@ export namespace AgsGui {
         /**
          * Obtains the frame clock for a widget.
          *
-         * The frame clock is a global “ticker” that can be used to drive
+         * The frame clock is a global &#x201C;ticker&#x201D; that can be used to drive
          * animations and repaints. The most common reason to get the frame
          * clock is to call {@link Gdk.FrameClock.get_frame_time}, in order
          * to get a time to use for animating. For example you might record
@@ -13568,15 +13568,15 @@ export namespace AgsGui {
          * by calling {@link Gdk.FrameClock.get_frame_time} again during each repaint.
          *
          * {@link Gdk.FrameClock.request_phase} will result in a new frame on the
-         * clock, but won’t necessarily repaint any widgets. To repaint a widget,
+         * clock, but won&#x2019;t necessarily repaint any widgets. To repaint a widget,
          * you have to use {@link Gtk.Widget.queue_draw} which invalidates the
          * widget (thus scheduling it to receive a draw on the next frame).
          * {@link Gtk.Widget.queue_draw} will also end up requesting a frame
          * on the appropriate frame clock.
          *
-         * A widget’s frame clock will not change while the widget is mapped.
+         * A widget&#x2019;s frame clock will not change while the widget is mapped.
          * Reparenting a widget (which implies a temporary unmap) can change
-         * the widget’s frame clock.
+         * the widget&#x2019;s frame clock.
          *
          * Unrealized widgets do not have a frame clock.
          * @returns the frame clock
@@ -13625,7 +13625,7 @@ export namespace AgsGui {
          * has the expand flag set. If any child of a widget wants to
          * expand, the parent may ask to expand also.
          *
-         * This function only looks at the widget’s own hexpand flag, rather
+         * This function only looks at the widget&#x2019;s own hexpand flag, rather
          * than computing whether the entire widget tree rooted at this widget
          * wants to expand.
          * @returns whether hexpand flag is set
@@ -13639,13 +13639,13 @@ export namespace AgsGui {
          * If `hexpand` is not set, then the expand value depends on
          * whether any children of the widget would like to expand.
          *
-         * There are few reasons to use this function, but it’s here
+         * There are few reasons to use this function, but it&#x2019;s here
          * for completeness and consistency.
          * @returns whether hexpand has been explicitly set
          */
         get_hexpand_set(): boolean;
         /**
-         * Returns the widget’s last child.
+         * Returns the widget&#x2019;s last child.
          *
          * This function is primarily meant for widget implementations.
          * @returns the widget's last child
@@ -13705,7 +13705,7 @@ export namespace AgsGui {
          */
         get_native(): Gtk.Native | null;
         /**
-         * Returns the widget’s next sibling.
+         * Returns the widget&#x2019;s next sibling.
          *
          * This function is primarily meant for widget implementations.
          * @returns the widget's next sibling
@@ -13719,7 +13719,7 @@ export namespace AgsGui {
          */
         get_opacity(): number;
         /**
-         * Returns the widget’s overflow value.
+         * Returns the widget&#x2019;s overflow value.
          * @returns The widget's overflow value
          */
         get_overflow(): Gtk.Overflow;
@@ -13732,7 +13732,7 @@ export namespace AgsGui {
          * Unlike the context returned by {@link Gtk.Widget.create_pango_context},
          * this context is owned by the widget (it can be used until the screen
          * for the widget changes or the widget is removed from its toplevel),
-         * and will be updated to match any changes to the widget’s attributes.
+         * and will be updated to match any changes to the widget&#x2019;s attributes.
          * This can be tracked by listening to changes of the
          * {@link Gtk.Widget.root} property on the widget.
          * @returns the {@link Pango.Context} for the widget
@@ -13745,7 +13745,7 @@ export namespace AgsGui {
         get_parent(): Gtk.Widget | null;
         /**
          * Retrieves the minimum and natural size of a widget, taking
-         * into account the widget’s preference for height-for-width management.
+         * into account the widget&#x2019;s preference for height-for-width management.
          *
          * This is used to retrieve a suitable size by container widgets which do
          * not impose any restrictions on the child placement. It can be used
@@ -13761,7 +13761,7 @@ export namespace AgsGui {
          */
         get_preferred_size(): [Gtk.Requisition | null, Gtk.Requisition | null];
         /**
-         * Returns the widget’s previous sibling.
+         * Returns the widget&#x2019;s previous sibling.
          *
          * This function is primarily meant for widget implementations.
          * @returns the widget's previous sibling
@@ -13831,13 +13831,13 @@ export namespace AgsGui {
          */
         get_scale_factor(): number;
         /**
-         * Returns the widget’s sensitivity.
+         * Returns the widget&#x2019;s sensitivity.
          *
          * This function returns the value that has been set using
          * {@link Gtk.Widget.set_sensitive}).
          *
          * The effective sensitivity of a widget is however determined
-         * by both its own and its parent widget’s sensitivity.
+         * by both its own and its parent widget&#x2019;s sensitivity.
          * See {@link Gtk.Widget.is_sensitive}.
          * @returns true if the widget is sensitive
          */
@@ -13960,7 +13960,7 @@ export namespace AgsGui {
         /**
          * Determines whether the widget is visible.
          *
-         * If you want to take into account whether the widget’s
+         * If you want to take into account whether the widget&#x2019;s
          * parent is also marked as visible, use
          * {@link Gtk.Widget.is_visible} instead.
          *
@@ -14015,7 +14015,7 @@ export namespace AgsGui {
          *
          * To find out if the widget has the global input focus, use
          * {@link Gtk.Widget.has_focus}.
-         * @returns true if the widget should display a “focus rectangle”
+         * @returns true if the widget should display a &#x201C;focus rectangle&#x201D;
          */
         has_visible_focus(): boolean;
         /**
@@ -14047,7 +14047,7 @@ export namespace AgsGui {
          *    defined by its parent classes have been created in their
          *    relative instance initializers
          *  - when calling `g_object_new()` on a widget with composite templates,
-         *    it’s important to build the composite widgets before the construct
+         *    it&#x2019;s important to build the composite widgets before the construct
          *    properties are set. Properties passed to `g_object_new()` should
          *    take precedence over properties set in the private template XML
          *
@@ -14060,7 +14060,7 @@ export namespace AgsGui {
          *
          * Children of `widget` that implement {@link Gtk.Actionable} can
          * then be associated with actions in `group` by setting their
-         * “action-name” to `prefix`.`action-name`.
+         * &#x201C;action-name&#x201D; to `prefix`.`action-name`.
          *
          * Note that inheritance is defined for individual actions. I.e.
          * even if you insert a group with prefix `prefix`, actions with
@@ -14143,7 +14143,7 @@ export namespace AgsGui {
          */
         is_focus(): boolean;
         /**
-         * Returns the widget’s effective sensitivity.
+         * Returns the widget&#x2019;s effective sensitivity.
          *
          * This means it is sensitive itself and also its
          * parent widget is sensitive.
@@ -14174,7 +14174,7 @@ export namespace AgsGui {
          * and/or there is nowhere we can/should move the focus to.
          * When false is returned, the caller should continue with
          * keyboard navigation outside the widget, e.g. by calling
-         * {@link Gtk.Widget.child_focus} on the widget’s toplevel.
+         * {@link Gtk.Widget.child_focus} on the widget&#x2019;s toplevel.
          *
          * The default `Gtk.Widget::keynav-failed` handler returns
          * false for {@link Gtk.DirectionType.TAB-FORWARD} and
@@ -14210,7 +14210,7 @@ export namespace AgsGui {
          */
         list_mnemonic_labels(): Gtk.Widget[];
         /**
-         * Causes a widget to be mapped if it isn’t already.
+         * Causes a widget to be mapped if it isn&#x2019;t already.
          *
          * This function is only for use in widget implementations.
          */
@@ -14222,7 +14222,7 @@ export namespace AgsGui {
          * is 300, this functions will compute the minimum and natural width of `widget`
          * if it is allocated at a height of 300 pixels.
          *
-         * See [GtkWidget’s geometry management section](class.Widget.html#height-for-width-geometry-management) for
+         * See [GtkWidget&#x2019;s geometry management section](class.Widget.html#height-for-width-geometry-management) for
          * a more details on implementing {@link Gtk.Widget.measure}.
          * @param orientation the orientation to measure
          * @param for_size Size for the opposite of `orientation`, i.e.   if `orientation` is {@link Gtk.Orientation.HORIZONTAL}, this is   the height the widget should be measured with. The {@link Gtk.Orientation.VERTICAL}   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
@@ -14307,7 +14307,7 @@ export namespace AgsGui {
          *
          * This should be called when a widget for some reason has a new
          * size request. For example, when you change the text in a
-         * {@link Gtk.Label}, the label queues a resize to ensure there’s
+         * {@link Gtk.Label}, the label queues a resize to ensure there&#x2019;s
          * enough space for the new text.
          *
          * Note that you cannot call `gtk_widget_queue_resize()` on a widget
@@ -14457,7 +14457,7 @@ export namespace AgsGui {
          * with the mouse.
          *
          * Making mouse clicks not grab focus is useful in places like
-         * toolbars where you don’t want the keyboard focus removed from
+         * toolbars where you don&#x2019;t want the keyboard focus removed from
          * the main area of the application.
          * @param focus_on_click whether the widget should grab focus when clicked   with the mouse
          */
@@ -14535,7 +14535,7 @@ export namespace AgsGui {
          * This function forces the widget to expand or not to expand,
          * regardless of children. The override occurs because
          * {@link Gtk.Widget.set_hexpand} sets the hexpand-set property (see
-         * {@link Gtk.Widget.set_hexpand_set}) which causes the widget’s hexpand
+         * {@link Gtk.Widget.set_hexpand_set}) which causes the widget&#x2019;s hexpand
          * value to be used, rather than looking at children and widget state.
          * @param expand whether to expand
          */
@@ -14553,7 +14553,7 @@ export namespace AgsGui {
          * set, then the expand value depends on whether any
          * children of the widget would like to expand.
          *
-         * There are few reasons to use this function, but it’s here
+         * There are few reasons to use this function, but it&#x2019;s here
          * for completeness and consistency.
          * @param set value for hexpand-set property
          */
@@ -14616,10 +14616,10 @@ export namespace AgsGui {
          * depends on the capabilities of the windowing system. On X11, this
          * has any effect only on X displays with a compositing manager, see
          * {@link Gdk.Display.is_composited}. On Windows and Wayland it will
-         * always work, although setting a window’s opacity after the window
+         * always work, although setting a window&#x2019;s opacity after the window
          * has been shown may cause some flicker.
          *
-         * Note that the opacity is inherited through inclusion — if you set
+         * Note that the opacity is inherited through inclusion &#x2014; if you set
          * a toplevel to be partially translucent, all of its content will
          * appear translucent, since it is ultimatively rendered on that
          * toplevel. The opacity value itself is not inherited by child
@@ -14668,16 +14668,16 @@ export namespace AgsGui {
          * Sets the sensitivity of the widget.
          *
          * A widget is sensitive if the user can interact with it.
-         * Insensitive widgets are “grayed out” and the user can’t
+         * Insensitive widgets are &#x201C;grayed out&#x201D; and the user can&#x2019;t
          * interact with them. Insensitive widgets are known as
-         * “inactive”, “disabled”, or “ghosted” in some other toolkits.
+         * &#x201C;inactive&#x201D;, &#x201C;disabled&#x201D;, or &#x201C;ghosted&#x201D; in some other toolkits.
          * @param sensitive true to make the widget sensitive
          */
         set_sensitive(sensitive: boolean): void;
         /**
          * Sets the minimum size of the widget.
          *
-         * That is, the widget’s size request will be at least `width`
+         * That is, the widget&#x2019;s size request will be at least `width`
          * by `height`. You can use this function to force a widget to
          * be larger than it normally would be.
          *
@@ -14699,7 +14699,7 @@ export namespace AgsGui {
          * space than it requested.
          *
          * If the size request in a given direction is -1 (unset), then
-         * the “natural” size request of the widget will be used instead.
+         * the &#x201C;natural&#x201D; size request of the widget will be used instead.
          *
          * The size request set here does not include any margin from the
          * properties
@@ -14777,7 +14777,7 @@ export namespace AgsGui {
         /**
          * Sets the visibility state of `widget`.
          *
-         * Note that setting this to true doesn’t mean the widget is
+         * Note that setting this to true doesn&#x2019;t mean the widget is
          * actually viewable, see {@link Gtk.Widget.get_visible}.
          * @param visible whether the widget should be shown or not
          */
@@ -14795,7 +14795,7 @@ export namespace AgsGui {
         /**
          * Flags a widget to be displayed.
          *
-         * Any widget that isn’t shown will not appear on the screen.
+         * Any widget that isn&#x2019;t shown will not appear on the screen.
          *
          * Remember that you have to show the containers containing a widget,
          * in addition to the widget itself, before it will appear onscreen.
@@ -14834,8 +14834,8 @@ export namespace AgsGui {
          */
         snapshot_child(child: Gtk.Widget, snapshot: Gtk.Snapshot): void;
         /**
-         * Translates coordinates relative to `src_widget`’s allocation
-         * to coordinates relative to `dest_widget`’s allocations.
+         * Translates coordinates relative to `src_widget`&#x2019;s allocation
+         * to coordinates relative to `dest_widget`&#x2019;s allocations.
          *
          * In order to perform this operation, both widget must share
          * a common ancestor. If that is not the case, `dest_x` and `dest_y`
@@ -14851,7 +14851,7 @@ export namespace AgsGui {
          */
         trigger_tooltip_query(): void;
         /**
-         * Causes a widget to be unmapped if it’s currently mapped.
+         * Causes a widget to be unmapped if it&#x2019;s currently mapped.
          *
          * This function is only for use in widget implementations.
          */
@@ -14956,7 +14956,7 @@ export namespace AgsGui {
          * and/or there is nowhere we can/should move the focus to.
          * When false is returned, the caller should continue with
          * keyboard navigation outside the widget, e.g. by calling
-         * {@link Gtk.Widget.child_focus} on the widget’s toplevel.
+         * {@link Gtk.Widget.child_focus} on the widget&#x2019;s toplevel.
          *
          * The default `Gtk.Widget::keynav-failed` handler returns
          * false for {@link Gtk.DirectionType.TAB-FORWARD} and
@@ -14977,7 +14977,7 @@ export namespace AgsGui {
          */
         vfunc_keynav_failed(direction: Gtk.DirectionType): boolean;
         /**
-         * Causes a widget to be mapped if it isn’t already.
+         * Causes a widget to be mapped if it isn&#x2019;t already.
          *
          * This function is only for use in widget implementations.
          * @virtual
@@ -14990,7 +14990,7 @@ export namespace AgsGui {
          * is 300, this functions will compute the minimum and natural width of `widget`
          * if it is allocated at a height of 300 pixels.
          *
-         * See [GtkWidget’s geometry management section](class.Widget.html#height-for-width-geometry-management) for
+         * See [GtkWidget&#x2019;s geometry management section](class.Widget.html#height-for-width-geometry-management) for
          * a more details on implementing {@link Gtk.Widget.measure}.
          * @param orientation the orientation to measure
          * @param for_size Size for the opposite of `orientation`, i.e.   if `orientation` is {@link Gtk.Orientation.HORIZONTAL}, this is   the height the widget should be measured with. The {@link Gtk.Orientation.VERTICAL}   case is analogous. This way, both height-for-width and width-for-height   requests can be implemented. If no size is known, -1 can be passed.
@@ -15010,8 +15010,8 @@ export namespace AgsGui {
          */
         vfunc_move_focus(direction: Gtk.DirectionType): void;
         /**
-         * Signal emitted when “has-tooltip” is `true` and the
-         *   hover timeout has expired with the cursor hovering “above”
+         * Signal emitted when &#x201C;has-tooltip&#x201D; is `true` and the
+         *   hover timeout has expired with the cursor hovering &#x201C;above&#x201D;
          *   widget; or emitted when widget got focus in keyboard mode.
          * @param x
          * @param y
@@ -15027,13 +15027,13 @@ export namespace AgsGui {
          * and all its parent containers, then the widget will be realized
          * and mapped automatically.
          *
-         * Realizing a widget requires all the widget’s parent widgets to be
-         * realized; calling this function realizes the widget’s parents
+         * Realizing a widget requires all the widget&#x2019;s parent widgets to be
+         * realized; calling this function realizes the widget&#x2019;s parents
          * in addition to `widget` itself. If a widget is not yet inside a
          * toplevel window when you realize it, bad things will happen.
          *
          * This function is primarily used in widget implementations, and
-         * isn’t very useful otherwise. Many times when you think you might
+         * isn&#x2019;t very useful otherwise. Many times when you think you might
          * need it, a better approach is to connect to a signal that will be
          * called after the widget is realized automatically, such as
          * `Gtk.Widget::realize`.
@@ -15059,7 +15059,7 @@ export namespace AgsGui {
         /**
          * Flags a widget to be displayed.
          *
-         * Any widget that isn’t shown will not appear on the screen.
+         * Any widget that isn&#x2019;t shown will not appear on the screen.
          *
          * Remember that you have to show the containers containing a widget,
          * in addition to the widget itself, before it will appear onscreen.
@@ -15099,7 +15099,7 @@ export namespace AgsGui {
          */
         vfunc_system_setting_changed(settings: Gtk.SystemSetting): void;
         /**
-         * Causes a widget to be unmapped if it’s currently mapped.
+         * Causes a widget to be unmapped if it&#x2019;s currently mapped.
          *
          * This function is only for use in widget implementations.
          * @virtual
@@ -15603,7 +15603,7 @@ export namespace AgsGui {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of “ID” and it makes sense to map the XML id
+         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
          *   attribute to it.
          * @param id
          * @virtual
@@ -15706,7 +15706,7 @@ export namespace AgsGui {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -15761,7 +15761,7 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -15836,7 +15836,7 @@ export namespace AgsGui {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -16276,7 +16276,7 @@ export namespace AgsGui {
         get_orientation(): Gtk.Orientation;
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable’s new orientation
+         * @param orientation the orientable&#x2019;s new orientation
          */
         set_orientation(orientation: Gtk.Orientation | null): void;
         /**
@@ -16376,7 +16376,7 @@ export namespace AgsGui {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -16431,7 +16431,7 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -16506,7 +16506,7 @@ export namespace AgsGui {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -17274,7 +17274,7 @@ export namespace AgsGui {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of “ID” and it makes sense to map the XML id
+         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
          *   attribute to it.
          * @param id
          * @virtual
@@ -17287,7 +17287,7 @@ export namespace AgsGui {
         get_orientation(): Gtk.Orientation;
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable’s new orientation
+         * @param orientation the orientable&#x2019;s new orientation
          */
         set_orientation(orientation: Gtk.Orientation | null): void;
         /**
@@ -17387,7 +17387,7 @@ export namespace AgsGui {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -17442,7 +17442,7 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -17517,7 +17517,7 @@ export namespace AgsGui {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -17919,7 +17919,7 @@ export namespace AgsGui {
         get_orientation(): Gtk.Orientation;
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable’s new orientation
+         * @param orientation the orientable&#x2019;s new orientation
          */
         set_orientation(orientation: Gtk.Orientation | null): void;
         /**
@@ -18019,7 +18019,7 @@ export namespace AgsGui {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -18074,7 +18074,7 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -18149,7 +18149,7 @@ export namespace AgsGui {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -18559,7 +18559,7 @@ export namespace AgsGui {
         get_orientation(): Gtk.Orientation;
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable’s new orientation
+         * @param orientation the orientable&#x2019;s new orientation
          */
         set_orientation(orientation: Gtk.Orientation | null): void;
         /**
@@ -18659,7 +18659,7 @@ export namespace AgsGui {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -18714,7 +18714,7 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -18789,7 +18789,7 @@ export namespace AgsGui {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -19653,7 +19653,7 @@ export namespace AgsGui {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of “ID” and it makes sense to map the XML id
+         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
          *   attribute to it.
          * @param id
          * @virtual
@@ -19666,7 +19666,7 @@ export namespace AgsGui {
         get_orientation(): Gtk.Orientation;
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable’s new orientation
+         * @param orientation the orientable&#x2019;s new orientation
          */
         set_orientation(orientation: Gtk.Orientation | null): void;
         /**
@@ -19766,7 +19766,7 @@ export namespace AgsGui {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -19821,7 +19821,7 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -19896,7 +19896,7 @@ export namespace AgsGui {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -20719,7 +20719,7 @@ export namespace AgsGui {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of “ID” and it makes sense to map the XML id
+         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
          *   attribute to it.
          * @param id
          * @virtual
@@ -20732,7 +20732,7 @@ export namespace AgsGui {
         get_orientation(): Gtk.Orientation;
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable’s new orientation
+         * @param orientation the orientable&#x2019;s new orientation
          */
         set_orientation(orientation: Gtk.Orientation | null): void;
         /**
@@ -20832,7 +20832,7 @@ export namespace AgsGui {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -20887,7 +20887,7 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -20962,7 +20962,7 @@ export namespace AgsGui {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -21723,7 +21723,7 @@ export namespace AgsGui {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of “ID” and it makes sense to map the XML id
+         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
          *   attribute to it.
          * @param id
          * @virtual
@@ -21736,7 +21736,7 @@ export namespace AgsGui {
         get_orientation(): Gtk.Orientation;
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable’s new orientation
+         * @param orientation the orientable&#x2019;s new orientation
          */
         set_orientation(orientation: Gtk.Orientation | null): void;
         /**
@@ -21836,7 +21836,7 @@ export namespace AgsGui {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -21891,7 +21891,7 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -21966,7 +21966,7 @@ export namespace AgsGui {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -22368,7 +22368,7 @@ export namespace AgsGui {
         get_orientation(): Gtk.Orientation;
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable’s new orientation
+         * @param orientation the orientable&#x2019;s new orientation
          */
         set_orientation(orientation: Gtk.Orientation | null): void;
         /**
@@ -22468,7 +22468,7 @@ export namespace AgsGui {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -22523,7 +22523,7 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -22598,7 +22598,7 @@ export namespace AgsGui {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -22957,7 +22957,7 @@ export namespace AgsGui {
         get_orientation(): Gtk.Orientation;
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable’s new orientation
+         * @param orientation the orientable&#x2019;s new orientation
          */
         set_orientation(orientation: Gtk.Orientation | null): void;
         /**
@@ -23057,7 +23057,7 @@ export namespace AgsGui {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -23112,7 +23112,7 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -23187,7 +23187,7 @@ export namespace AgsGui {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -23546,7 +23546,7 @@ export namespace AgsGui {
         get_orientation(): Gtk.Orientation;
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable’s new orientation
+         * @param orientation the orientable&#x2019;s new orientation
          */
         set_orientation(orientation: Gtk.Orientation | null): void;
         /**
@@ -23646,7 +23646,7 @@ export namespace AgsGui {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -23701,7 +23701,7 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -23776,7 +23776,7 @@ export namespace AgsGui {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -24130,7 +24130,7 @@ export namespace AgsGui {
         get_orientation(): Gtk.Orientation;
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable’s new orientation
+         * @param orientation the orientable&#x2019;s new orientation
          */
         set_orientation(orientation: Gtk.Orientation | null): void;
         /**
@@ -24230,7 +24230,7 @@ export namespace AgsGui {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -24285,7 +24285,7 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -24360,7 +24360,7 @@ export namespace AgsGui {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -25120,7 +25120,7 @@ export namespace AgsGui {
         /**
          * Stores the id attribute given in the {@link Gtk.Builder} UI definition.
          *   {@link Gtk.Widget} stores the name as object data. Implement this method if your
-         *   object has some notion of “ID” and it makes sense to map the XML id
+         *   object has some notion of &#x201C;ID&#x201D; and it makes sense to map the XML id
          *   attribute to it.
          * @param id
          * @virtual
@@ -25133,7 +25133,7 @@ export namespace AgsGui {
         get_orientation(): Gtk.Orientation;
         /**
          * Sets the orientation of the `orientable`.
-         * @param orientation the orientable’s new orientation
+         * @param orientation the orientable&#x2019;s new orientation
          */
         set_orientation(orientation: Gtk.Orientation | null): void;
         /**
@@ -25233,7 +25233,7 @@ export namespace AgsGui {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -25288,7 +25288,7 @@ export namespace AgsGui {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -25363,7 +25363,7 @@ export namespace AgsGui {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal

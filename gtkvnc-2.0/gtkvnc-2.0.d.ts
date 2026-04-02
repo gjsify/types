@@ -464,7 +464,7 @@ export namespace GtkVnc {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -519,7 +519,7 @@ export namespace GtkVnc {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -594,7 +594,7 @@ export namespace GtkVnc {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal
@@ -1240,11 +1240,6 @@ export namespace GtkVnc {
          */
         get_pixbuf(): GdkPixbuf.Pixbuf;
         /**
-         * Determine if a visible pointer will be forced
-         * @returns TRUE if a visible pointer will be forced, FALSE otherwise
-         */
-        get_pointer_force_visible(): boolean;
-        /**
          * Determine if the mouse pointer will be grabbed
          * on first click
          * @returns TRUE if the pointer will be grabbed, FALSE otherwise
@@ -1454,14 +1449,6 @@ export namespace GtkVnc {
          */
         set_lossy_encoding(enable: boolean): void;
         /**
-         * If `enable` is TRUE, then when the remote cursor has
-         * no visible pixels, it will be replaced with a visible
-         * cursor. If `enable` is FALSE, the empty remote cursor
-         * will be honoured.
-         * @param enable TRUE to force a visible cursor, FALSE otherwise
-         */
-        set_pointer_force_visible(enable: boolean): void;
-        /**
          * Set whether the widget will automatically grab the mouse
          * pointer upon a button click
          * @param enable TRUE to enable automatic pointer grab, FALSE otherwise
@@ -1622,7 +1609,7 @@ export namespace GtkVnc {
         bind_property_full(...args: never[]): any;
         /**
          * This function is intended for {@link GObject.Object} implementations to re-enforce
-         * a [floating](floating-refs.html) object reference. Doing this is seldom
+         * a [floating][floating-ref] object reference. Doing this is seldom
          * required: all `GInitiallyUnowneds` are created with a floating reference
          * which usually just needs to be sunken by calling `g_object_ref_sink()`.
          */
@@ -1677,7 +1664,7 @@ export namespace GtkVnc {
          */
         getv(names: string[], values: (GObject.Value | any)[]): void;
         /**
-         * Checks whether `object` has a [floating](floating-refs.html) reference.
+         * Checks whether `object` has a [floating][floating-ref] reference.
          * @returns `true` if `object` has a floating reference
          */
         is_floating(): boolean;
@@ -1752,7 +1739,7 @@ export namespace GtkVnc {
         ref(): GObject.Object;
         /**
          * Increase the reference count of `object`, and possibly remove the
-         * [floating](floating-refs.html) reference, if `object` has a floating reference.
+         * [floating][floating-ref] reference, if `object` has a floating reference.
          *
          * In other words, if the object is floating, then this call "assumes
          * ownership" of the floating reference, converting it to a normal

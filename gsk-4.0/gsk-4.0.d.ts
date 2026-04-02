@@ -482,48 +482,6 @@ export namespace Gsk {
     /**
      * @gir-type Enum
      */
-    export namespace PorterDuff {
-        export const $gtype: GObject.GType<PorterDuff>;
-    }
-
-    /**
-     * GSK_PORTER_DUFF_SOURCE:
-     * GSK_PORTER_DUFF_DEST:
-     * GSK_PORTER_DUFF_SOURCE_OVER_DEST:
-     * GSK_PORTER_DUFF_DEST_OVER_SOURCE:
-     * GSK_PORTER_DUFF_SOURCE_IN_DEST:
-     * GSK_PORTER_DUFF_DEST_IN_SOURCE:
-     * GSK_PORTER_DUFF_SOURCE_OUT_DEST:
-     * GSK_PORTER_DUFF_DEST_OUT_SOURCE:
-     * GSK_PORTER_DUFF_SOURCE_ATOP_DEST:
-     * GSK_PORTER_DUFF_DEST_ATOP_SOURCE:
-     * GSK_PORTER_DUFF_XOR:
-     * GSK_PORTER_DUFF_CLEAR:
-     * The 12 compositing modes defined by the seminal paper
-     * by Thomas Porter and Tom Duff.
-     *
-     * They are used in SVG, PDF and in Cairo with `cairo_operator_t`.
-     * @gir-type Enum
-     * @since 4.22
-     */
-    enum PorterDuff {
-        SOURCE,
-        DEST,
-        SOURCE_OVER_DEST,
-        DEST_OVER_SOURCE,
-        SOURCE_IN_DEST,
-        DEST_IN_SOURCE,
-        SOURCE_OUT_DEST,
-        DEST_OUT_SOURCE,
-        SOURCE_ATOP_DEST,
-        DEST_ATOP_SOURCE,
-        XOR,
-        CLEAR,
-    }
-
-    /**
-     * @gir-type Enum
-     */
     export namespace RenderNodeType {
         export const $gtype: GObject.GType<RenderNodeType>;
     }
@@ -661,31 +619,6 @@ export namespace Gsk {
          * A node that applies some function to each color component.
          */
         COMPONENT_TRANSFER_NODE,
-        /**
-         * A node that copies the rendering canvas to be pasted later.
-         */
-        COPY_NODE,
-        /**
-         * A node that pastes a previously copied canvas.
-         */
-        PASTE_NODE,
-        /**
-         * A node that combines a child with the background using Porter/Duff
-         * operations.
-         */
-        COMPOSITE_NODE,
-        /**
-         * A node that isolated content of its child from previous content.
-         */
-        ISOLATION_NODE,
-        /**
-         * A node that displaces content according to some mask.
-         */
-        DISPLACEMENT_NODE,
-        /**
-         * A node that combines two child nodes in an arithmetic way.
-         */
-        ARITHMETIC_NODE,
     }
 
     /**
@@ -929,63 +862,6 @@ export namespace Gsk {
     interface PathIntersectionFunc {
         (path1: Path, point1: PathPoint, path2: Path, point2: PathPoint, kind: PathIntersection): boolean;
     }
-    /**
-     * @gir-type Callback
-     */
-    interface RenderReplayFontFilter {
-        (replay: RenderReplay, font: Pango.Font): Pango.Font;
-    }
-    /**
-     * @gir-type Callback
-     */
-    interface RenderReplayNodeFilter {
-        (replay: RenderReplay, node: RenderNode): RenderNode | null;
-    }
-    /**
-     * @gir-type Callback
-     */
-    interface RenderReplayTextureFilter {
-        (replay: RenderReplay, texture: Gdk.Texture): Gdk.Texture;
-    }
-    /**
-     * @gir-type Flags
-     */
-    export namespace Isolation {
-        export const $gtype: GObject.GType<Isolation>;
-    }
-
-    /**
-     * These flags describe the types of isolations possible with a
-     * {@link Gsk.IsolationNode}.
-     *
-     * More isolation options may be added in the future.
-     * @gir-type Flags
-     * @since 4.22
-     */
-    enum Isolation {
-        /**
-         * No isolation is defined.
-         */
-        NONE,
-        /**
-         * If the background should be made available.
-         *   If the background is not available, future operations will be rendered
-         *   to a transparent background and added to the existing background later.
-         */
-        BACKGROUND,
-        /**
-         * If copies should be available to paste nodes.
-         *   If copies are not available, paste nodes can only paste from copies that
-         *   are made inside the isolated contents.
-         */
-        COPY_PASTE,
-        /**
-         * Isolate everything. This will include features that
-         *   are added in the future.
-         */
-        ALL,
-    }
-
     /**
      * @gir-type Flags
      */
@@ -1538,8 +1414,6 @@ export namespace Gsk {
     }
 
     /**
-     * A render node for applying a {@link Gsk.ComponentTransfer} for each color
-     * component of the child node.
      * @gir-type Class
      * @since 4.20
      */
@@ -1590,71 +1464,10 @@ export namespace Gsk {
         get_child(): RenderNode;
         /**
          * Gets the component transfer for one of the components.
-         * @param component the component to get the transfer for
+         * @param component a value between 0 and 3 to indicate the red, green, blue   or alpha component
          * @returns the {@link Gsk.ComponentTransfer}
          */
-        get_transfer(component: Gdk.ColorChannel | null): ComponentTransfer;
-    }
-
-    namespace CompositeNode {
-        // Signal signatures
-        interface SignalSignatures extends RenderNode.SignalSignatures {}
-    }
-
-    /**
-     * A render node that uses Porter/Duff compositing operators to combine
-     * its child with the background.
-     * @gir-type Class
-     * @since 4.22
-     */
-    class CompositeNode extends RenderNode {
-        static $gtype: GObject.GType<CompositeNode>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-
-        static ['new'](child: RenderNode, mask: RenderNode, op: PorterDuff): CompositeNode;
-
-        // Signals
-
-        /** @signal */
-        connect<K extends keyof CompositeNode.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CompositeNode.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CompositeNode.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CompositeNode.SignalSignatures[K]>,
-        ): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        emit<K extends keyof CompositeNode.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CompositeNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
-        emit(signal: string, ...args: any[]): void;
-
-        // Methods
-
-        /**
-         * Gets the child node that is getting composited by the given `node`.
-         * @returns the child {@link Gsk.RenderNode}
-         */
-        get_child(): RenderNode;
-        /**
-         * Gets the mask node that describes the region where the compositing
-         * applies.
-         * @returns the mask {@link Gsk.RenderNode}
-         */
-        get_mask(): RenderNode;
-        /**
-         * Gets the compositing operator used by this node.
-         * @returns The compositing operator
-         */
-        get_operator(): PorterDuff;
+        get_transfer(component: number): ComponentTransfer;
     }
 
     namespace ConicGradientNode {
@@ -1787,56 +1600,6 @@ export namespace Gsk {
          * @returns the number of children of the {@link Gsk.RenderNode}
          */
         get_n_children(): number;
-    }
-
-    namespace CopyNode {
-        // Signal signatures
-        interface SignalSignatures extends RenderNode.SignalSignatures {}
-    }
-
-    /**
-     * A render node that copies the current state of the rendering canvas
-     * so a {@link Gsk.PasteNode} can draw it.
-     * @gir-type Class
-     * @since 4.22
-     */
-    class CopyNode extends RenderNode {
-        static $gtype: GObject.GType<CopyNode>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-
-        static ['new'](child: RenderNode): CopyNode;
-
-        // Signals
-
-        /** @signal */
-        connect<K extends keyof CopyNode.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CopyNode.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof CopyNode.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, CopyNode.SignalSignatures[K]>,
-        ): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        emit<K extends keyof CopyNode.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<CopyNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
-        emit(signal: string, ...args: any[]): void;
-
-        // Methods
-
-        /**
-         * Gets the child node that is getting drawn by the given `node`.
-         * @returns the child {@link Gsk.RenderNode}
-         */
-        get_child(): RenderNode;
     }
 
     namespace CrossFadeNode {
@@ -2554,60 +2317,6 @@ export namespace Gsk {
         get_spread(): number;
     }
 
-    namespace IsolationNode {
-        // Signal signatures
-        interface SignalSignatures extends RenderNode.SignalSignatures {}
-    }
-
-    /**
-     * A render node that isolates its child from surrounding rendernodes.
-     * @gir-type Class
-     * @since 4.22
-     */
-    class IsolationNode extends RenderNode {
-        static $gtype: GObject.GType<IsolationNode>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-
-        static ['new'](child: RenderNode, isolations: Isolation): IsolationNode;
-
-        // Signals
-
-        /** @signal */
-        connect<K extends keyof IsolationNode.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, IsolationNode.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof IsolationNode.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, IsolationNode.SignalSignatures[K]>,
-        ): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        emit<K extends keyof IsolationNode.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<IsolationNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
-        emit(signal: string, ...args: any[]): void;
-
-        // Methods
-
-        /**
-         * Gets the child node that is getting drawn by the given `node`.
-         * @returns the child {@link Gsk.RenderNode}
-         */
-        get_child(): RenderNode;
-        /**
-         * Gets the isolation features that are enforced by this node.
-         * @returns the isolation features
-         */
-        get_isolations(): Isolation;
-    }
-
     namespace LinearGradientNode {
         // Signal signatures
         interface SignalSignatures extends RenderNode.SignalSignatures {}
@@ -2931,55 +2640,6 @@ export namespace Gsk {
         get_spread(): number;
     }
 
-    namespace PasteNode {
-        // Signal signatures
-        interface SignalSignatures extends RenderNode.SignalSignatures {}
-    }
-
-    /**
-     * A render node for a paste.
-     * @gir-type Class
-     * @since 4.22
-     */
-    class PasteNode extends RenderNode {
-        static $gtype: GObject.GType<PasteNode>;
-
-        // Constructors
-
-        _init(...args: any[]): void;
-
-        static ['new'](bounds: Graphene.Rect, depth: number): PasteNode;
-
-        // Signals
-
-        /** @signal */
-        connect<K extends keyof PasteNode.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PasteNode.SignalSignatures[K]>,
-        ): number;
-        connect(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        connect_after<K extends keyof PasteNode.SignalSignatures>(
-            signal: K,
-            callback: GObject.SignalCallback<this, PasteNode.SignalSignatures[K]>,
-        ): number;
-        connect_after(signal: string, callback: (...args: any[]) => any): number;
-        /** @signal */
-        emit<K extends keyof PasteNode.SignalSignatures>(
-            signal: K,
-            ...args: GObject.GjsParameters<PasteNode.SignalSignatures[K]> extends [any, ...infer Q] ? Q : never
-        ): void;
-        emit(signal: string, ...args: any[]): void;
-
-        // Methods
-
-        /**
-         * Retrieves the index of the copy that should be pasted.
-         * @returns the index of the copy to paste.
-         */
-        get_depth(): number;
-    }
-
     namespace RadialGradientNode {
         // Signal signatures
         interface SignalSignatures extends RenderNode.SignalSignatures {}
@@ -3145,15 +2805,6 @@ export namespace Gsk {
          * The node will not draw outside of its boundaries.
          */
         get_bounds(): Graphene.Rect;
-        /**
-         * Gets a list of all children nodes of the rendernode.
-         *
-         * Keep in mind that for various rendernodes, their children have different
-         * semantics, like the mask vs the source of a mask node. If you care about
-         * thse semantics, don't use this function, use the specific getters instead.
-         * @returns The children
-         */
-        get_children(): RenderNode[] | null;
         /**
          * Returns the type of the render node.
          * @returns the type of `node`
@@ -3930,7 +3581,7 @@ export namespace Gsk {
 
         _init(...args: any[]): void;
 
-        static ['new'](child: RenderNode, transform?: Transform | null): TransformNode;
+        static ['new'](child: RenderNode, transform: Transform): TransformNode;
 
         // Signals
 
@@ -4205,15 +3856,6 @@ export namespace Gsk {
         // Methods
 
         /**
-         * Returns whether two paths have identical structure.
-         *
-         * Note that it is possible to construct paths that render
-         * identical even though they don't have the same structure.
-         * @param path2 another path
-         * @returns true if `path1` and `path2` have identical structure
-         */
-        equal(path2: Path): boolean;
-        /**
          * Calls `func` for every operation of the path.
          *
          * Note that this may only approximate `self`, because paths can contain
@@ -4258,8 +3900,7 @@ export namespace Gsk {
          *
          * The returned bounds may be larger than necessary, because this
          * function aims to be fast, not accurate. The bounds are guaranteed
-         * to contain the path. For accurate bounds, use
-         * {@link Gsk.Path.get_tight_bounds}.
+         * to contain the path.
          *
          * It is possible that the returned rectangle has 0 width and/or height.
          * This can happen when the path only describes a point or an
@@ -4291,24 +3932,6 @@ export namespace Gsk {
          */
         get_end_point(): [boolean, PathPoint];
         /**
-         * Moves `point` to the next vertex.
-         *
-         * An empty path has no points, so false
-         * is returned in this case.
-         * @param point the current point
-         * @returns true if `point` was set
-         */
-        get_next(point: PathPoint): [boolean, PathPoint];
-        /**
-         * Moves `point` to the previous vertex.
-         *
-         * An empty path has no points, so false
-         * is returned in this case.
-         * @param point the current point
-         * @returns true if `point` was set
-         */
-        get_previous(point: PathPoint): [boolean, PathPoint];
-        /**
          * Gets the start point of the path.
          *
          * An empty path has no points, so false
@@ -4328,14 +3951,6 @@ export namespace Gsk {
          * @returns true if the path has bounds, false if the path is known   to be empty and have no bounds.
          */
         get_stroke_bounds(stroke: Stroke): [boolean, Graphene.Rect];
-        /**
-         * Computes the tight bounds of the given path.
-         *
-         * This function works harder than {@link Gsk.Path.get_bounds} to
-         * produce the smallest possible bounds.
-         * @returns true if the path has bounds, false if the path is known   to be empty and have no bounds
-         */
-        get_tight_bounds(): [boolean, Graphene.Rect];
         /**
          * Returns whether a point is inside the fill area of a path.
          *
@@ -5005,184 +4620,6 @@ export namespace Gsk {
          * @param direction the direction for which to return the tangent
          */
         get_tangent(path: Path, direction: PathDirection | null): Graphene.Vec2;
-    }
-
-    /**
-     * A facility to replay a {@link Gsk.RenderNode} and its children, potentially
-     * modifying them.
-     *
-     * This is a utility tool to walk a rendernode tree. The most powerful way
-     * is to provide a function via {@link Gsk.RenderReplay.set_node_filter}
-     * to filter each individual node and then run
-     * {@link Gsk.RenderReplay.filter_node} on the nodes you want to filter.
-     *
-     * If you want to just walk the node tree and extract information
-     * without any modifications, you can also use {@link Gsk.RenderNode.get_children}.
-     *
-     * Here is a little example application that redacts text in a node file:
-     *
-     * ```
-     * #include <gtk/gtk.h>
-     *
-     * static GskRenderNode *
-     * redact_nodes (GskRenderReplay *replay,
-     *               GskRenderNode   *node,
-     *               gpointer         user_data)
-     * {
-     *   GskRenderNode *result;
-     *
-     *   if (gsk_render_node_get_node_type (node) == GSK_TEXT_NODE)
-     *     {
-     *       graphene_rect_t bounds;
-     *       const GdkRGBA *color;
-     *
-     *       gsk_render_node_get_bounds (node, &bounds);
-     *       color = gsk_text_node_get_color (node);
-     *
-     *       result = gsk_color_node_new (color, &bounds);
-     *     }
-     *   else
-     *     {
-     *       result = gsk_render_replay_default (replay, node);
-     *     }
-     *
-     *   return result;
-     * }
-     *
-     * int
-     * main (int argc, char *argv[])
-     * {
-     *   GFile *file;
-     *   GBytes *bytes;
-     *   GskRenderNode *result, *node;
-     *   GskRenderReplay *replay;
-     *
-     *   gtk_init ();
-     *
-     *   if (argc != 3)
-     *     {
-     *       g_print ("usage: %s INFILE OUTFILE\n", argv[0]);
-     *       return 0;
-     *     }
-     *
-     *   file = g_file_new_for_commandline_arg (argv[1]);
-     *   bytes = g_file_load_bytes (file, NULL, NULL, NULL);
-     *   g_object_unref (file);
-     *   if (bytes == NULL)
-     *     return 1;
-     *
-     *   node = gsk_render_node_deserialize (bytes, NULL, NULL);
-     *   g_bytes_unref (bytes);
-     *   if (node == NULL)
-     *     return 1;
-     *
-     *   replay = gsk_render_replay_new ();
-     *   gsk_render_replay_set_node_filter (replay, redact_nodes, NULL, NULL);
-     *   result = gsk_render_replay_filter_node (replay, node);
-     *   gsk_render_replay_free (replay);
-     *
-     *   if (!gsk_render_node_write_to_file (result, argv[2], NULL))
-     *     return 1;
-     *
-     *   gsk_render_node_unref (result);
-     *   gsk_render_node_unref (node);
-     *
-     *   return 0;
-     * }
-     * ```
-     * @gir-type Struct
-     * @since 4.22
-     */
-    class RenderReplay {
-        static $gtype: GObject.GType<RenderReplay>;
-
-        // Constructors
-
-        constructor(properties?: Partial<{}>);
-
-        static ['new'](): RenderReplay;
-
-        // Methods
-
-        /**
-         * Replays the node using the default method.
-         *
-         * The default method calls {@link Gsk.RenderReplay.filter_node}
-         * on all its child nodes and the filter functions for all its
-         * properties. If none of them are changed, it returns the passed
-         * in node. Otherwise it constructs a new node with the changed
-         * children and properties.
-         *
-         * It may not be possible to construct a new node when any of the
-         * callbacks return NULL. In that case, this function will return
-         * NULL, too.
-         * @param node the node to replay
-         * @returns The replayed node
-         */
-        ['default'](node: RenderNode): RenderNode | null;
-        /**
-         * Filters a font using the current filter function.
-         * @param font The font to filter
-         * @returns the filtered font
-         */
-        filter_font(font: Pango.Font): Pango.Font;
-        /**
-         * Replays a node using the replay's filter function.
-         *
-         * After the replay the node may be unchanged, or it may be
-         * removed, which will result in `null` being returned.
-         *
-         * If no filter node is set, {@link Gsk.RenderReplay.default} is
-         * called instead.
-         * @param node the node to replay
-         * @returns The replayed node
-         */
-        filter_node(node: RenderNode): RenderNode | null;
-        /**
-         * Filters a texture using the current filter function.
-         * @param texture The texture to filter
-         * @returns the filtered texture
-         */
-        filter_texture(texture: Gdk.Texture): Gdk.Texture;
-        /**
-         * Frees a {@link Gsk.RenderReplay}.
-         */
-        free(): void;
-        /**
-         * Sets a filter function to be called by {@link Gsk.RenderReplay.default}
-         * for nodes that contain fonts.
-         *
-         * You can call {@link GskRenderReplay.filter_font} to filter
-         * a font yourself.
-         * @param filter the font filter function
-         */
-        set_font_filter(filter?: RenderReplayFontFilter | null): void;
-        /**
-         * Sets the function to use as a node filter.
-         *
-         * This is the most complex function to use for replaying nodes.
-         * It can either:
-         *
-         * * keep the node and just return it unchanged
-         *
-         * * create a replacement node and return that
-         *
-         * * discard the node by returning `NULL`
-         *
-         * * call {@link Gsk.RenderReplay.default} to have the default handler
-         *   run for this node, which calls your function on its children
-         * @param filter the function to call to replay nodes
-         */
-        set_node_filter(filter?: RenderReplayNodeFilter | null): void;
-        /**
-         * Sets a filter function to be called by {@link Gsk.RenderReplay.default}
-         * for nodes that contain textures.
-         *
-         * You can call {@link GskRenderReplay.filter_texture} to filter
-         * a texture yourself.
-         * @param filter the texture filter function
-         */
-        set_texture_filter(filter?: RenderReplayTextureFilter | null): void;
     }
 
     /**
@@ -5874,8 +5311,6 @@ export namespace Gsk {
          * Transforms a rectangle using the given transform.
          *
          * The result is the bounding box containing the coplanar quad.
-         *
-         * The input and output rect may point to the same rectangle.
          * @param rect the rectangle to transform
          */
         transform_bounds(rect: Graphene.Rect): Graphene.Rect;

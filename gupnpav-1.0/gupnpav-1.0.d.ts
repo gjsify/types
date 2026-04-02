@@ -20,12 +20,11 @@ export namespace GUPnPAV {
      */
 
     /**
-     * The type of event a {@link GUPnPAV.CDSLastChangeEntry} is representing
      * @gir-type Enum
      */
     enum CDSLastChangeEvent {
         /**
-         * Invalid {@link GUPnPAV.CDSLastChangeEntry}
+         * Invalid {@link GUPnPAV.CDSLastChangeEntry}.
          */
         INVALID,
         /**
@@ -201,7 +200,6 @@ export namespace GUPnPAV {
      * @param date_time DateTime to format
      * @param date_only
      * @returns `date_time` formatted as an ISO8601 string
-     * @since 0.14.1
      */
     function format_date_time_for_didl_lite(date_time: GLib.DateTime, date_only: boolean): string;
     function protocol_error_quark(): GLib.Quark;
@@ -393,13 +391,6 @@ export namespace GUPnPAV {
     }
 
     /**
-     * LastChange parser for the format used in ContentDirectory:3
-     *
-     * {@link GUPnPAV.CDSLastChangeParser} parses XML strings from
-     * ContentDirectory's LastChange state variable.
-     *
-     * Unfortunately this is different enough from the renderer's
-     * LastChange syntax that it warrants a different parser.
      * @gir-type Class
      */
     class CDSLastChangeParser extends GObject.Object {
@@ -451,7 +442,7 @@ export namespace GUPnPAV {
          * Parse a LastChange XML document in the flavor defined by the
          * ContentDirectory:3 specification.
          * @param last_change XML string to parse
-         * @returns List of {@link GUPnPAV.CDSLastChangeEntry}
+         * @returns List of {@link GUPnPAV.CDSLastChangeEntry}<!-- -->s
          */
         parse(last_change: string): CDSLastChangeEntry[];
     }
@@ -504,7 +495,6 @@ export namespace GUPnPAV {
     }
 
     /**
-     * Representation of a DIDL-Lite container element.
      * @gir-type Class
      */
     class DIDLLiteContainer extends DIDLLiteObject {
@@ -598,23 +588,17 @@ export namespace GUPnPAV {
 
         /**
          * Add a new create class to the `container`. includeDerived defaults to "0".
-         * If setting the includeDerived is required, see
-         * {@link GUPnPAV.DIDLLiteContainer.add_create_class_full}
          * @param create_class The createClass to add.
          */
         add_create_class(create_class: string): void;
         /**
          * Add a new create class to the `container`.
          * @param create_class The createClass to add.
-         * @param include_derived Whether object with derived classes, such as object.item.imageItem.Photo for a create class of object.item.imageItem are allowed.
+         * @param include_derived Whether object with dervied classes may be created in this container or not.
          */
         add_create_class_full(create_class: string, include_derived: boolean): void;
         /**
          * Add a new search class to the `container`.
-         *
-         * `includDerived` will default to "1". See
-         * {@link GUPnPAV.DIDLLiteContainer.add_search_class_full} if
-         * you need to set the property to "0".
          * @param search_class The searchClass to add.
          */
         add_search_class(search_class: string): void;
@@ -630,9 +614,8 @@ export namespace GUPnPAV {
          */
         container_update_id_is_set(): boolean;
         /**
-         * Get the child count of the `container`.
-         *
-         * If the child count is unknown, -1 is returned.
+         * Get the child count of the `container`.  If the child count is unknown, -1 is
+         * returned.
          * @returns The child count of the `container`, or -1 if it is unknown.
          */
         get_child_count(): number;
@@ -643,12 +626,12 @@ export namespace GUPnPAV {
         get_container_update_id(): number;
         /**
          * Gets the list of create classes of the `container`.
-         * @returns The list of create classes belonging to `container`, or `null`.
+         * @returns The list of create classes belonging to `container`, or `null`. `g_list_free` the returned list after usage and `g_free` each string in it.
          */
         get_create_classes(): string[];
         /**
          * Gets the list of create classes of the `container`.
-         * @returns The list of create classes belonging to `container`, or `null`.
+         * @returns The list of create classes belonging to `container`, or `null`. `g_list_free` the returned list after usage and unref each object in it.
          */
         get_create_classes_full(): DIDLLiteCreateClass[];
         /**
@@ -663,7 +646,6 @@ export namespace GUPnPAV {
         get_searchable(): boolean;
         /**
          * Get the number of bytes used by all child items of the `container`.
-         *
          * If storage used is unknown, -1 is returned.
          * @returns The number of bytes used by all children of the `container`, or -1 if it is unknown.
          */
@@ -684,8 +666,8 @@ export namespace GUPnPAV {
          */
         set_container_update_id(update_id: number): void;
         /**
-         * (Un)set the search-ability of `container`.
-         * @param searchable The search-ability
+         * (Un)set the searchibility of `container`.
+         * @param searchable The searchibility
          */
         set_searchable(searchable: boolean): void;
         /**
@@ -699,7 +681,7 @@ export namespace GUPnPAV {
          */
         set_total_deleted_child_count(count: number): void;
         /**
-         * Get whether the total deleted child count of the `container` is set.
+         * Get whether the total deleted child conut of the `container` is set.
          * @returns `true` if property is set, otherwise `false`
          */
         total_deleted_child_count_is_set(): boolean;
@@ -732,10 +714,6 @@ export namespace GUPnPAV {
     }
 
     /**
-     * Contributor attached to a DIDL-Lite object
-     *
-     * This represents a contributor (artist, author, actor,
-     * producer, director, producer and contributor) property in a DIDL-Lite object.
      * @gir-type Class
      */
     class DIDLLiteContributor extends GObject.Object {
@@ -854,10 +832,6 @@ export namespace GUPnPAV {
     }
 
     /**
-     * DIDL-Lite CreateClass
-     *
-     * {@link GUPnPAV.DIDLLiteCreateClass} respresents a DIDL-Lite create class
-     * element.
      * @gir-type Class
      */
     class DIDLLiteCreateClass extends GObject.Object {
@@ -1003,9 +977,6 @@ export namespace GUPnPAV {
     }
 
     /**
-     * DIDL-Lite Descriptor
-     *
-     * {@link GUPnPAV.DIDLLiteDescriptor} respresents a DIDL-Lite descriptor (desc) element.
      * @gir-type Class
      */
     class DIDLLiteDescriptor extends GObject.Object {
@@ -1180,9 +1151,6 @@ export namespace GUPnPAV {
     }
 
     /**
-     * DIDL-Lite Item
-     *
-     * {@link GUPnPAV.DIDLLiteItem} respresents a DIDL-Lite item element.
      * @gir-type Class
      */
     class DIDLLiteItem extends DIDLLiteObject {
@@ -1254,7 +1222,6 @@ export namespace GUPnPAV {
          */
         get_ref_id(): string;
         /**
-         * Sets the lifetime in seconds of this item in a media collection.
          * @param lifetime The lifetime (in seconds) of this item in a media collection.
          */
         set_lifetime(lifetime: number): void;
@@ -1333,9 +1300,6 @@ export namespace GUPnPAV {
     }
 
     /**
-     * DIDL-Lite Object
-     *
-     * {@link GUPnPAV.DIDLLiteObject} respresent a DIDL-Lite object element.
      * @gir-type Class
      */
     abstract class DIDLLiteObject extends GObject.Object {
@@ -1937,9 +1901,6 @@ export namespace GUPnPAV {
     }
 
     /**
-     * A/V DIDL-Lite XML parser
-     *
-     * {@link GUPnPAV.DIDLLiteParser} parses DIDL-Lite XML strings.
      * @gir-type Class
      */
     class DIDLLiteParser extends GObject.Object {
@@ -2083,9 +2044,6 @@ export namespace GUPnPAV {
     }
 
     /**
-     * DIDL-Lite Resource
-     *
-     * {@link GUPnPAV.DIDLLiteResource} respresent a DIDL-Lite resource (res) element.
      * @gir-type Class
      */
     class DIDLLiteResource extends GObject.Object {
@@ -2562,9 +2520,6 @@ export namespace GUPnPAV {
     }
 
     /**
-     * DIDL-Lite fragment writer
-     *
-     * {@link GUPnPAV.DIDLLiteWriter} is a helper class for writing DIDL-Lite fragments.
      * @gir-type Class
      */
     class DIDLLiteWriter extends GObject.Object {
@@ -2688,9 +2643,6 @@ export namespace GUPnPAV {
     }
 
     /**
-     * ContentDirectory feature
-     *
-     * {@link GUPnPAV.Feature} respresent a Feature element.
      * @gir-type Class
      */
     class Feature extends GObject.Object {
@@ -2784,10 +2736,6 @@ export namespace GUPnPAV {
     }
 
     /**
-     * FeatureList state variable XML parser
-     *
-     * {@link GUPnPAV.FeatureListParser} parses XML strings from ContentDirectory
-     * FeatureList state variable.
      * @gir-type Class
      */
     class FeatureListParser extends GObject.Object {
@@ -2835,9 +2783,9 @@ export namespace GUPnPAV {
 
         /**
          * Parses `text` and returns the list of available features.
-         * If an error occurred `error` will be set.
+         * If an error occured `error` will be set.
          * @param text The feature list string to be parsed
-         * @returns The list of features or `null` if an error occurred.
+         * @returns The list of features or `null` if an error occured.
          */
         parse_text(text: string): Feature[] | null;
     }
@@ -2852,10 +2800,6 @@ export namespace GUPnPAV {
     }
 
     /**
-     * A/V LastChange event XML parser
-     *
-     * {@link GUPnPAV.LastChangeParser} parses XML strings from LastChange events that are
-     * generated by AVTransport and RenderingControl services.
      * @gir-type Class
      */
     class LastChangeParser extends GObject.Object {
@@ -2920,9 +2864,6 @@ export namespace GUPnPAV {
     }
 
     /**
-     * Media collection writer
-     *
-     * {@link GUPnPAV.MediaCollection} is a helper class for writing media collection files.
      * @gir-type Class
      */
     class MediaCollection extends GObject.Object {
@@ -3065,10 +3006,6 @@ export namespace GUPnPAV {
     }
 
     /**
-     * UPnP AV ProtocolInfo
-     *
-     * {@link GUPnPAV.ProtocolInfo} provides a convenient API to deal with ProtocolInfo
-     * strings used in UPnP AV specifications.
      * @gir-type Class
      */
     class ProtocolInfo extends GObject.Object {
@@ -3269,10 +3206,9 @@ export namespace GUPnPAV {
         set_network(network: string): void;
         /**
          * Set the allowed play speeds on this info in the form of array of strings.
-         * The array must be `null`-terminated.
          * @param speeds The allowed play speeds
          */
-        set_play_speeds(speeds: string[]): void;
+        set_play_speeds(speeds: string): void;
         /**
          * Set the protocol of this info.
          * @param protocol The protocol string
@@ -3331,14 +3267,6 @@ export namespace GUPnPAV {
     }
 
     /**
-     * A/V search criteria parser
-     *
-     * {@link GUPnPAV.SearchCriteriaParser} parses ContentDirectory search criteria
-     * strings.
-     *
-     * Note that no signals will be emitted if a wildcard is specified,
-     * and that the user is responsible for ensuring precedence of conjunction
-     * over disjunction.
      * @gir-type Class
      */
     class SearchCriteriaParser extends GObject.Object {
@@ -3435,8 +3363,8 @@ export namespace GUPnPAV {
         // Methods
 
         /**
-         * Get the UPnP class of the object in this change entry. This is only
-         * valid if {@link GUPnPAV.CDSLastChangeEntry.get_event} returns
+         * Get the class of the object in this change entry. This is only
+         * valid if `gupnp_cds_last_change_entry_get_event()` returns
          * {@link GUPnPAV.CDSLastChangeEvent.OBJECT_ADDED}.
          * @returns The upnp class of the object of this entry.
          */
@@ -3454,7 +3382,7 @@ export namespace GUPnPAV {
         get_object_id(): string;
         /**
          * Get the parent object id of the object in this change entry. This is only
-         * valid if {@link GUPnPAV.CDSLastChangeEntry.get_event} returns
+         * valid if `gupnp_cds_last_change_entry_get_event()` returns
          * {@link GUPnPAV.CDSLastChangeEvent.OBJECT_ADDED}.
          * @returns The id of the object's parent of this entry.
          */
@@ -3475,8 +3403,8 @@ export namespace GUPnPAV {
          */
         ref(): CDSLastChangeEntry;
         /**
-         * Decrease reference count of a {@link GUPnPAV.CDSLastChangeEntry}. If the
-         * reference count drops to 0, `entry` is freed.
+         * Decrease reference count of a {@link GUPnPAV.CDSLastChangeEntry}. If the reference
+         * count drops to 0, `entry` is freed.
          */
         unref(): void;
     }

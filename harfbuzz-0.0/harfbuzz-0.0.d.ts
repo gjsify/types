@@ -1188,6 +1188,14 @@ export namespace HarfBuzz {
      */
     const OT_MAX_TAGS_PER_SCRIPT: number;
     /**
+     * The serial number of the current internal buffer format.
+     *
+     * The serial number will increase when internal {@link HarfBuzz.glyph_info_t} and
+     * {@link HarfBuzz.glyph_position_t} members change their format.
+     * @since 13.2.0
+     */
+    const OT_SHAPE_BUFFER_FORMAT_SERIAL: number;
+    /**
      * Do not use.
      * @since 1.4.2
      * @deprecated since 2.2.0
@@ -1485,6 +1493,15 @@ export namespace HarfBuzz {
      * @since 1.5.0
      */
     function buffer_append(buffer: buffer_t, source: buffer_t, start: number, end: number): void;
+    /**
+     * Called by a message callback after modifying buffer glyph indices,
+     * to update internal caches.
+     *
+     * If not called from inside a message callback, does nothing.
+     * @param buffer An {@link HarfBuzz.buffer_t}
+     * @since 13.0.0
+     */
+    function buffer_changed(buffer: buffer_t): void;
     /**
      * Similar to `hb_buffer_reset()`, but does not clear the Unicode functions and
      * the replacement code point.
@@ -1810,9 +1827,11 @@ export namespace HarfBuzz {
      * A human-readable, plain text format.
      * The serialized glyphs will look something like:
      *
+     *
      * ```
      * [uni0651=0@518,0+0|uni0628=0+1897]
      * ```
+     *
      *
      * - The serialized glyphs are delimited with `[` and `]`.
      * - Glyphs are separated with `|`
@@ -1828,10 +1847,12 @@ export namespace HarfBuzz {
      * A machine-readable, structured format.
      * The serialized glyphs will look something like:
      *
+     *
      * ```
      * [{"g":"uni0651","cl":0,"dx":518,"dy":0,"ax":0,"ay":0},
-     * {"g":"uni0628","cl":0,"dx":0,"dy":0,"ax":1897,"ay":0}]
+     *  {"g":"uni0628","cl":0,"dx":0,"dy":0,"ax":1897,"ay":0}]
      * ```
+     *
      *
      * Each glyph is a JSON object, with the following properties:
      * - `g`: the glyph name or glyph index if
@@ -1877,9 +1898,11 @@ export namespace HarfBuzz {
      * A human-readable, plain text format.
      * The serialized codepoints will look something like:
      *
+     *
      * ```
-     *  <U+0651=0|U+0628=1>
+     * &#xA0;<U+0651=0|U+0628=1>
      * ```
+     *
      *
      * - Glyphs are separated with `|`
      * - Unicode codepoints are expressed as zero-padded four (or more)
@@ -1897,9 +1920,11 @@ export namespace HarfBuzz {
      *
      * For example:
      *
+     *
      * ```
      * [{u:1617,cl:0},{u:1576,cl:1}]
      * ```
+     *
      * @param buffer an {@link HarfBuzz.buffer_t} buffer.
      * @param start the first item in `buffer` to serialize.
      * @param end the last item in `buffer` to serialize.
@@ -2643,16 +2668,16 @@ export namespace HarfBuzz {
      * </thead>
      * <tbody>
      * <row><entry>Setting value:</entry></row>
-     * <row><entry>kern</entry>      <entry>1</entry>     <entry>0</entry>      <entry>∞</entry>   <entry>Turn feature on</entry></row>
-     * <row><entry>+kern</entry>     <entry>1</entry>     <entry>0</entry>      <entry>∞</entry>   <entry>Turn feature on</entry></row>
-     * <row><entry>-kern</entry>     <entry>0</entry>     <entry>0</entry>      <entry>∞</entry>   <entry>Turn feature off</entry></row>
-     * <row><entry>kern=0</entry>    <entry>0</entry>     <entry>0</entry>      <entry>∞</entry>   <entry>Turn feature off</entry></row>
-     * <row><entry>kern=1</entry>    <entry>1</entry>     <entry>0</entry>      <entry>∞</entry>   <entry>Turn feature on</entry></row>
-     * <row><entry>aalt=2</entry>    <entry>2</entry>     <entry>0</entry>      <entry>∞</entry>   <entry>Choose 2nd alternate</entry></row>
+     * <row><entry>kern</entry>      <entry>1</entry>     <entry>0</entry>      <entry>&#x221E;</entry>   <entry>Turn feature on</entry></row>
+     * <row><entry>+kern</entry>     <entry>1</entry>     <entry>0</entry>      <entry>&#x221E;</entry>   <entry>Turn feature on</entry></row>
+     * <row><entry>-kern</entry>     <entry>0</entry>     <entry>0</entry>      <entry>&#x221E;</entry>   <entry>Turn feature off</entry></row>
+     * <row><entry>kern=0</entry>    <entry>0</entry>     <entry>0</entry>      <entry>&#x221E;</entry>   <entry>Turn feature off</entry></row>
+     * <row><entry>kern=1</entry>    <entry>1</entry>     <entry>0</entry>      <entry>&#x221E;</entry>   <entry>Turn feature on</entry></row>
+     * <row><entry>aalt=2</entry>    <entry>2</entry>     <entry>0</entry>      <entry>&#x221E;</entry>   <entry>Choose 2nd alternate</entry></row>
      * <row><entry>Setting index:</entry></row>
-     * <row><entry>kern[]</entry>    <entry>1</entry>     <entry>0</entry>      <entry>∞</entry>   <entry>Turn feature on</entry></row>
-     * <row><entry>kern[:]</entry>   <entry>1</entry>     <entry>0</entry>      <entry>∞</entry>   <entry>Turn feature on</entry></row>
-     * <row><entry>kern[5:]</entry>  <entry>1</entry>     <entry>5</entry>      <entry>∞</entry>   <entry>Turn feature on, partial</entry></row>
+     * <row><entry>kern[]</entry>    <entry>1</entry>     <entry>0</entry>      <entry>&#x221E;</entry>   <entry>Turn feature on</entry></row>
+     * <row><entry>kern[:]</entry>   <entry>1</entry>     <entry>0</entry>      <entry>&#x221E;</entry>   <entry>Turn feature on</entry></row>
+     * <row><entry>kern[5:]</entry>  <entry>1</entry>     <entry>5</entry>      <entry>&#x221E;</entry>   <entry>Turn feature on, partial</entry></row>
      * <row><entry>kern[:5]</entry>  <entry>1</entry>     <entry>0</entry>      <entry>5</entry>   <entry>Turn feature on, partial</entry></row>
      * <row><entry>kern[3:5]</entry> <entry>1</entry>     <entry>3</entry>      <entry>5</entry>   <entry>Turn feature on, range</entry></row>
      * <row><entry>kern[3]</entry>   <entry>1</entry>     <entry>3</entry>      <entry>3+1</entry> <entry>Turn feature on, single char</entry></row>
@@ -3902,26 +3927,6 @@ export namespace HarfBuzz {
      */
     function free(ptr?: any | null): void;
     /**
-     * Creates an {@link HarfBuzz.face_t} face object from the specified FT_Face.
-     *
-     * Note that this is using the FT_Face object just to get at the underlying
-     * font data, and fonts created from the returned {@link HarfBuzz.face_t} will use the native
-     * HarfBuzz font implementation, unless you call `hb_ft_font_set_funcs()` on them.
-     *
-     * This variant of the function caches the newly created {@link HarfBuzz.face_t}
-     * face object, using the `generic` pointer of `ft_face`. Subsequent function
-     * calls that are passed the same `ft_face` parameter will have the same
-     * {@link HarfBuzz.face_t} returned to them, and that {@link HarfBuzz.face_t} will be correctly
-     * reference counted.
-     *
-     * However, client programs are still responsible for destroying
-     * `ft_face` after the last {@link HarfBuzz.face_t} face object has been destroyed.
-     * @param ft_face FT_Face to work upon
-     * @returns the new {@link HarfBuzz.face_t} face object
-     * @since 0.9.2
-     */
-    function ft_face_create_cached(ft_face: freetype2.Face): face_t;
-    /**
      * Creates an {@link HarfBuzz.face_t} face object from the specified
      * font blob and face index.
      *
@@ -3948,25 +3953,6 @@ export namespace HarfBuzz {
      */
     function ft_face_create_from_file_or_fail(file_name: string, index: number): face_t;
     /**
-     * Creates an {@link HarfBuzz.face_t} face object from the specified FT_Face.
-     *
-     * Note that this is using the FT_Face object just to get at the underlying
-     * font data, and fonts created from the returned {@link HarfBuzz.face_t} will use the native
-     * HarfBuzz font implementation, unless you call `hb_ft_font_set_funcs()` on them.
-     *
-     * This is the preferred variant of the hb_ft_face_create*
-     * function family, because it calls FT_Reference_Face() on `ft_face`,
-     * ensuring that `ft_face` remains alive as long as the resulting
-     * {@link HarfBuzz.face_t} face object remains alive. Also calls FT_Done_Face()
-     * when the {@link HarfBuzz.face_t} face object is destroyed.
-     *
-     * Use this version unless you know you have good reasons not to.
-     * @param ft_face FT_Face to work upon
-     * @returns the new {@link HarfBuzz.face_t} face object
-     * @since 0.9.38
-     */
-    function ft_face_create_referenced(ft_face: freetype2.Face): face_t;
-    /**
      * Refreshes the state of `font` when the underlying FT_Face has changed.
      * This function should be called after changing the size or
      * variation-axis settings on the FT_Face.
@@ -3974,24 +3960,6 @@ export namespace HarfBuzz {
      * @since 1.0.5
      */
     function ft_font_changed(font: font_t): void;
-    /**
-     * Creates an {@link HarfBuzz.font_t} font object from the specified FT_Face.
-     *
-     * <note>Note: You must set the face size on `ft_face` before calling
-     * `hb_ft_font_create_referenced()` on it. HarfBuzz assumes size is always set
-     * and will access `size` member of FT_Face unconditionally.</note>
-     *
-     * This is the preferred variant of the hb_ft_font_create*
-     * function family, because it calls FT_Reference_Face() on `ft_face`,
-     * ensuring that `ft_face` remains alive as long as the resulting
-     * {@link HarfBuzz.font_t} font object remains alive.
-     *
-     * Use this version unless you know you have good reasons not to.
-     * @param ft_face FT_Face to work upon
-     * @returns the new {@link HarfBuzz.font_t} font object
-     * @since 0.9.38
-     */
-    function ft_font_create_referenced(ft_face: freetype2.Face): font_t;
     /**
      * Fetches the FT_Load_Glyph load flags of the specified {@link HarfBuzz.font_t}.
      *
@@ -4269,6 +4237,24 @@ export namespace HarfBuzz {
      */
     function map_values(map: map_t, values: set_t): void;
     /**
+     * Gets the number of SVG documents in the face `SVG` table.
+     * @param face {@link HarfBuzz.face_t} to work upon.
+     * @returns number of SVG documents in the face.
+     * @since 12.1.0
+     */
+    function ot_color_get_svg_document_count(face: face_t): number;
+    /**
+     * Gets the glyph range covered by an `SVG`-table document index.
+     * @param face {@link HarfBuzz.face_t} to work upon.
+     * @param svg_document_index SVG document index.
+     * @returns `true` if `svg_document_index` is valid, `false` otherwise.
+     * @since 13.0.0
+     */
+    function ot_color_get_svg_document_glyph_range(
+        face: face_t,
+        svg_document_index: number,
+    ): [bool_t, codepoint_t | null, codepoint_t | null];
+    /**
      * Fetches a list of all color layers for the specified glyph index in the specified
      * face. The list returned will begin at the offset provided.
      * @param face {@link HarfBuzz.face_t} to work upon
@@ -4282,6 +4268,14 @@ export namespace HarfBuzz {
         glyph: codepoint_t,
         start_offset: number,
     ): [number, ot_color_layer_t[] | null];
+    /**
+     * Gets the `SVG`-table document index associated with a glyph.
+     * @param face {@link HarfBuzz.face_t} to work upon.
+     * @param glyph glyph ID to query.
+     * @returns `true` if `glyph` maps to an SVG document, `false` otherwise.
+     * @since 12.1.0
+     */
+    function ot_color_glyph_get_svg_document_index(face: face_t, glyph: codepoint_t): [bool_t, number];
     /**
      * Tests where a face includes COLRv1 paint
      * data for `glyph`.
@@ -5187,7 +5181,7 @@ export namespace HarfBuzz {
      * appropriate kern value for a given correction height.
      *
      * <note>For a glyph with `n` defined kern values (where `n` > 0), there are only
-     * `n`−1 defined correction heights, as each correction height defines a boundary
+     * `n`&#x2212;1 defined correction heights, as each correction height defines a boundary
      * past which the next kern value should be selected. Therefore, only the
      * {@link HarfBuzz.ot_math_kern_entry_t}.kern_value of the uppermost {@link HarfBuzz.ot_math_kern_entry_t}
      * actually comes from the font; its corresponding
@@ -5380,6 +5374,13 @@ export namespace HarfBuzz {
      * @since 2.1.0
      */
     function ot_name_list_names(face: face_t): ot_name_entry_t[];
+    /**
+     * Returns the serial number of the current internal buffer format.
+     * See #HB_OT_SHAPE_BUFFER_FORMAT_SERIAL for more information.
+     * @returns The current buffer-format serial number.
+     * @since 13.2.0
+     */
+    function ot_shape_get_buffer_format_serial(): number;
     /**
      * Computes the transitive closure of glyphs needed for a specified
      * input buffer under the given font and feature list. The closure is
@@ -5590,11 +5591,11 @@ export namespace HarfBuzz {
      */
     function paint_color_glyph(funcs: paint_funcs_t, paint_data: any | null, glyph: codepoint_t, font: font_t): bool_t;
     /**
-     * Gets the custom palette color for `color_index`.
-     * @param funcs paint functions
-     * @param paint_data associated data passed by the caller
-     * @param color_index color index
-     * @returns `true` if found, `false` otherwise
+     * Gets the custom palette override color for `color_index`.
+     * @param funcs paint functions.
+     * @param paint_data associated data passed by the caller.
+     * @param color_index color index to fetch.
+     * @returns `true` if a custom color is provided, `false` otherwise.
      * @since 7.0.0
      */
     function paint_custom_palette_color(
@@ -5660,10 +5661,10 @@ export namespace HarfBuzz {
         destroy?: destroy_func_t | null,
     ): void;
     /**
-     * Sets the custom-palette-color callback on the paint functions struct.
-     * @param funcs A paint functions struct
-     * @param func The custom-palette-color callback
-     * @param destroy Function to call when `user_data` is no longer needed
+     * Sets the custom-palette-color callback on `funcs`.
+     * @param funcs a paint functions struct.
+     * @param func custom-palette-color callback.
+     * @param destroy function to call when `user_data` is no longer needed.
      * @since 7.0.0
      */
     function paint_funcs_set_custom_palette_color_func(
@@ -6035,7 +6036,7 @@ export namespace HarfBuzz {
      */
     function script_get_horizontal_direction(script: script_t | null): direction_t;
     /**
-     * Converts an {@link HarfBuzz.script_t} to a corresponding ISO 15924 script tag.
+     * Converts an {@link HarfBuzz.script_t} to a corresponding ISO&#xA0;15924 script tag.
      * @param script an {@link HarfBuzz.script_t} to convert.
      * @returns An {@link HarfBuzz.tag_t} representing an ISO 15924 script tag.
      * @since 0.9.2
@@ -8491,7 +8492,12 @@ export namespace HarfBuzz {
         GLYPH_FLAGS,
         /**
          * do not serialize glyph advances,
-         *  glyph offsets will reflect absolute glyph positions. Since: 1.8.0
+         *  glyph offsets will reflect absolute glyph positions. Since: 1.8.0.
+         *  Note: when this flag is used with a partial range of the buffer (i.e.
+         *  `start` is not 0), calculating the absolute positions has a cost
+         *  proportional to `start`. If the buffer is serialized in many small
+         *  chunks, this can lead to quadratic behavior. It is recommended to
+         *  use a larger `buf_size` to minimize this cost.
          */
         NO_ADVANCES,
         /**
@@ -9614,7 +9620,7 @@ export namespace HarfBuzz {
         /**
          * Used to vary width of text from narrower to wider.
          * Non-zero. Values can be interpreted as a percentage of whatever the font
-         * designer considers “normal width” for that font design.
+         * designer considers &#x201C;normal width&#x201D; for that font design.
          */
         B_STYLE_TAG_WIDTH,
         /**

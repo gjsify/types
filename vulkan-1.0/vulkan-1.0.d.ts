@@ -20,15 +20,15 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class Bool32 {
-        static $gtype: GObject.GType<Bool32>;
+    class Flags {
+        static $gtype: GObject.GType<Flags>;
     }
 
     /**
      * @gir-type Struct
      */
-    class DeviceAddress {
-        static $gtype: GObject.GType<DeviceAddress>;
+    class Bool32 {
+        static $gtype: GObject.GType<Bool32>;
     }
 
     /**
@@ -41,29 +41,8 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class Flags {
-        static $gtype: GObject.GType<Flags>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
     class SampleMask {
         static $gtype: GObject.GType<SampleMask>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class Buffer {
-        static $gtype: GObject.GType<Buffer>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class Image {
-        static $gtype: GObject.GType<Image>;
     }
 
     /**
@@ -125,6 +104,20 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
+    class Buffer {
+        static $gtype: GObject.GType<Buffer>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class Image {
+        static $gtype: GObject.GType<Image>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
     class Event {
         static $gtype: GObject.GType<Event>;
     }
@@ -174,15 +167,15 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class Pipeline {
-        static $gtype: GObject.GType<Pipeline>;
+    class RenderPass {
+        static $gtype: GObject.GType<RenderPass>;
     }
 
     /**
      * @gir-type Struct
      */
-    class RenderPass {
-        static $gtype: GObject.GType<RenderPass>;
+    class Pipeline {
+        static $gtype: GObject.GType<Pipeline>;
     }
 
     /**
@@ -202,15 +195,15 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class DescriptorSet {
-        static $gtype: GObject.GType<DescriptorSet>;
+    class DescriptorPool {
+        static $gtype: GObject.GType<DescriptorPool>;
     }
 
     /**
      * @gir-type Struct
      */
-    class DescriptorPool {
-        static $gtype: GObject.GType<DescriptorPool>;
+    class DescriptorSet {
+        static $gtype: GObject.GType<DescriptorSet>;
     }
 
     /**
@@ -230,6 +223,13 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
+    class PipelineCacheHeaderVersion {
+        static $gtype: GObject.GType<PipelineCacheHeaderVersion>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
     class Result {
         static $gtype: GObject.GType<Result>;
     }
@@ -239,34 +239,6 @@ export namespace Vulkan {
      */
     class StructureType {
         static $gtype: GObject.GType<StructureType>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineCacheHeaderVersion {
-        static $gtype: GObject.GType<PipelineCacheHeaderVersion>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ImageLayout {
-        static $gtype: GObject.GType<ImageLayout>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ObjectType {
-        static $gtype: GObject.GType<ObjectType>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VendorId {
-        static $gtype: GObject.GType<VendorId>;
     }
 
     /**
@@ -293,15 +265,15 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class ImageTiling {
-        static $gtype: GObject.GType<ImageTiling>;
+    class ImageType {
+        static $gtype: GObject.GType<ImageType>;
     }
 
     /**
      * @gir-type Struct
      */
-    class ImageType {
-        static $gtype: GObject.GType<ImageType>;
+    class ImageTiling {
+        static $gtype: GObject.GType<ImageTiling>;
     }
 
     /**
@@ -328,8 +300,8 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class ComponentSwizzle {
-        static $gtype: GObject.GType<ComponentSwizzle>;
+    class ImageLayout {
+        static $gtype: GObject.GType<ImageLayout>;
     }
 
     /**
@@ -342,36 +314,8 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class BlendFactor {
-        static $gtype: GObject.GType<BlendFactor>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class BlendOp {
-        static $gtype: GObject.GType<BlendOp>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CompareOp {
-        static $gtype: GObject.GType<CompareOp>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DynamicState {
-        static $gtype: GObject.GType<DynamicState>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class FrontFace {
-        static $gtype: GObject.GType<FrontFace>;
+    class ComponentSwizzle {
+        static $gtype: GObject.GType<ComponentSwizzle>;
     }
 
     /**
@@ -398,6 +342,20 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
+    class FrontFace {
+        static $gtype: GObject.GType<FrontFace>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class CompareOp {
+        static $gtype: GObject.GType<CompareOp>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
     class StencilOp {
         static $gtype: GObject.GType<StencilOp>;
     }
@@ -412,8 +370,22 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class BorderColor {
-        static $gtype: GObject.GType<BorderColor>;
+    class BlendFactor {
+        static $gtype: GObject.GType<BlendFactor>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class BlendOp {
+        static $gtype: GObject.GType<BlendOp>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class DynamicState {
+        static $gtype: GObject.GType<DynamicState>;
     }
 
     /**
@@ -426,6 +398,13 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
+    class SamplerMipmapMode {
+        static $gtype: GObject.GType<SamplerMipmapMode>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
     class SamplerAddressMode {
         static $gtype: GObject.GType<SamplerAddressMode>;
     }
@@ -433,8 +412,8 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class SamplerMipmapMode {
-        static $gtype: GObject.GType<SamplerMipmapMode>;
+    class BorderColor {
+        static $gtype: GObject.GType<BorderColor>;
     }
 
     /**
@@ -489,29 +468,22 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class AccessFlagBits {
-        static $gtype: GObject.GType<AccessFlagBits>;
+    class ObjectType {
+        static $gtype: GObject.GType<ObjectType>;
     }
 
     /**
      * @gir-type Struct
      */
-    class AccessFlags {
-        static $gtype: GObject.GType<AccessFlags>;
+    class VendorId {
+        static $gtype: GObject.GType<VendorId>;
     }
 
     /**
      * @gir-type Struct
      */
-    class ImageAspectFlagBits {
-        static $gtype: GObject.GType<ImageAspectFlagBits>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ImageAspectFlags {
-        static $gtype: GObject.GType<ImageAspectFlags>;
+    class InstanceCreateFlags {
+        static $gtype: GObject.GType<InstanceCreateFlags>;
     }
 
     /**
@@ -526,6 +498,20 @@ export namespace Vulkan {
      */
     class FormatFeatureFlags {
         static $gtype: GObject.GType<FormatFeatureFlags>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class ImageUsageFlagBits {
+        static $gtype: GObject.GType<ImageUsageFlagBits>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class ImageUsageFlags {
+        static $gtype: GObject.GType<ImageUsageFlags>;
     }
 
     /**
@@ -559,43 +545,15 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class ImageUsageFlagBits {
-        static $gtype: GObject.GType<ImageUsageFlagBits>;
+    class QueueFlagBits {
+        static $gtype: GObject.GType<QueueFlagBits>;
     }
 
     /**
      * @gir-type Struct
      */
-    class ImageUsageFlags {
-        static $gtype: GObject.GType<ImageUsageFlags>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class InstanceCreateFlagBits {
-        static $gtype: GObject.GType<InstanceCreateFlagBits>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class InstanceCreateFlags {
-        static $gtype: GObject.GType<InstanceCreateFlags>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class MemoryHeapFlagBits {
-        static $gtype: GObject.GType<MemoryHeapFlagBits>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class MemoryHeapFlags {
-        static $gtype: GObject.GType<MemoryHeapFlags>;
+    class QueueFlags {
+        static $gtype: GObject.GType<QueueFlags>;
     }
 
     /**
@@ -615,15 +573,15 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class QueueFlagBits {
-        static $gtype: GObject.GType<QueueFlagBits>;
+    class MemoryHeapFlagBits {
+        static $gtype: GObject.GType<MemoryHeapFlagBits>;
     }
 
     /**
      * @gir-type Struct
      */
-    class QueueFlags {
-        static $gtype: GObject.GType<QueueFlags>;
+    class MemoryHeapFlags {
+        static $gtype: GObject.GType<MemoryHeapFlags>;
     }
 
     /**
@@ -664,13 +622,6 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class MemoryMapFlagBits {
-        static $gtype: GObject.GType<MemoryMapFlagBits>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
     class MemoryMapFlags {
         static $gtype: GObject.GType<MemoryMapFlags>;
     }
@@ -678,15 +629,15 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class SparseMemoryBindFlagBits {
-        static $gtype: GObject.GType<SparseMemoryBindFlagBits>;
+    class ImageAspectFlagBits {
+        static $gtype: GObject.GType<ImageAspectFlagBits>;
     }
 
     /**
      * @gir-type Struct
      */
-    class SparseMemoryBindFlags {
-        static $gtype: GObject.GType<SparseMemoryBindFlags>;
+    class ImageAspectFlags {
+        static $gtype: GObject.GType<ImageAspectFlags>;
     }
 
     /**
@@ -701,6 +652,20 @@ export namespace Vulkan {
      */
     class SparseImageFormatFlags {
         static $gtype: GObject.GType<SparseImageFormatFlags>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class SparseMemoryBindFlagBits {
+        static $gtype: GObject.GType<SparseMemoryBindFlagBits>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class SparseMemoryBindFlags {
+        static $gtype: GObject.GType<SparseMemoryBindFlags>;
     }
 
     /**
@@ -727,15 +692,15 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class EventCreateFlagBits {
-        static $gtype: GObject.GType<EventCreateFlagBits>;
+    class EventCreateFlags {
+        static $gtype: GObject.GType<EventCreateFlags>;
     }
 
     /**
      * @gir-type Struct
      */
-    class EventCreateFlags {
-        static $gtype: GObject.GType<EventCreateFlags>;
+    class QueryPoolCreateFlags {
+        static $gtype: GObject.GType<QueryPoolCreateFlags>;
     }
 
     /**
@@ -750,13 +715,6 @@ export namespace Vulkan {
      */
     class QueryPipelineStatisticFlags {
         static $gtype: GObject.GType<QueryPipelineStatisticFlags>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class QueryPoolCreateFlags {
-        static $gtype: GObject.GType<QueryPoolCreateFlags>;
     }
 
     /**
@@ -832,29 +790,8 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class PipelineCacheCreateFlagBits {
-        static $gtype: GObject.GType<PipelineCacheCreateFlagBits>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
     class PipelineCacheCreateFlags {
         static $gtype: GObject.GType<PipelineCacheCreateFlags>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ColorComponentFlagBits {
-        static $gtype: GObject.GType<ColorComponentFlagBits>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ColorComponentFlags {
-        static $gtype: GObject.GType<ColorComponentFlags>;
     }
 
     /**
@@ -874,13 +811,6 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class PipelineShaderStageCreateFlagBits {
-        static $gtype: GObject.GType<PipelineShaderStageCreateFlagBits>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
     class PipelineShaderStageCreateFlags {
         static $gtype: GObject.GType<PipelineShaderStageCreateFlags>;
     }
@@ -890,20 +820,6 @@ export namespace Vulkan {
      */
     class ShaderStageFlagBits {
         static $gtype: GObject.GType<ShaderStageFlagBits>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CullModeFlagBits {
-        static $gtype: GObject.GType<CullModeFlagBits>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CullModeFlags {
-        static $gtype: GObject.GType<CullModeFlags>;
     }
 
     /**
@@ -944,15 +860,22 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class PipelineMultisampleStateCreateFlags {
-        static $gtype: GObject.GType<PipelineMultisampleStateCreateFlags>;
+    class CullModeFlagBits {
+        static $gtype: GObject.GType<CullModeFlagBits>;
     }
 
     /**
      * @gir-type Struct
      */
-    class PipelineDepthStencilStateCreateFlagBits {
-        static $gtype: GObject.GType<PipelineDepthStencilStateCreateFlagBits>;
+    class CullModeFlags {
+        static $gtype: GObject.GType<CullModeFlags>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class PipelineMultisampleStateCreateFlags {
+        static $gtype: GObject.GType<PipelineMultisampleStateCreateFlags>;
     }
 
     /**
@@ -965,13 +888,6 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class PipelineColorBlendStateCreateFlagBits {
-        static $gtype: GObject.GType<PipelineColorBlendStateCreateFlagBits>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
     class PipelineColorBlendStateCreateFlags {
         static $gtype: GObject.GType<PipelineColorBlendStateCreateFlags>;
     }
@@ -979,15 +895,22 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class PipelineDynamicStateCreateFlags {
-        static $gtype: GObject.GType<PipelineDynamicStateCreateFlags>;
+    class ColorComponentFlagBits {
+        static $gtype: GObject.GType<ColorComponentFlagBits>;
     }
 
     /**
      * @gir-type Struct
      */
-    class PipelineLayoutCreateFlagBits {
-        static $gtype: GObject.GType<PipelineLayoutCreateFlagBits>;
+    class ColorComponentFlags {
+        static $gtype: GObject.GType<ColorComponentFlags>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class PipelineDynamicStateCreateFlags {
+        static $gtype: GObject.GType<PipelineDynamicStateCreateFlags>;
     }
 
     /**
@@ -1021,6 +944,20 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
+    class DescriptorSetLayoutCreateFlagBits {
+        static $gtype: GObject.GType<DescriptorSetLayoutCreateFlagBits>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class DescriptorSetLayoutCreateFlags {
+        static $gtype: GObject.GType<DescriptorSetLayoutCreateFlags>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
     class DescriptorPoolCreateFlagBits {
         static $gtype: GObject.GType<DescriptorPoolCreateFlagBits>;
     }
@@ -1042,15 +979,15 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class DescriptorSetLayoutCreateFlagBits {
-        static $gtype: GObject.GType<DescriptorSetLayoutCreateFlagBits>;
+    class FramebufferCreateFlags {
+        static $gtype: GObject.GType<FramebufferCreateFlags>;
     }
 
     /**
      * @gir-type Struct
      */
-    class DescriptorSetLayoutCreateFlags {
-        static $gtype: GObject.GType<DescriptorSetLayoutCreateFlags>;
+    class RenderPassCreateFlags {
+        static $gtype: GObject.GType<RenderPassCreateFlags>;
     }
 
     /**
@@ -1070,48 +1007,6 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class DependencyFlagBits {
-        static $gtype: GObject.GType<DependencyFlagBits>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DependencyFlags {
-        static $gtype: GObject.GType<DependencyFlags>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class FramebufferCreateFlagBits {
-        static $gtype: GObject.GType<FramebufferCreateFlagBits>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class FramebufferCreateFlags {
-        static $gtype: GObject.GType<FramebufferCreateFlags>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class RenderPassCreateFlagBits {
-        static $gtype: GObject.GType<RenderPassCreateFlagBits>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class RenderPassCreateFlags {
-        static $gtype: GObject.GType<RenderPassCreateFlags>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
     class SubpassDescriptionFlagBits {
         static $gtype: GObject.GType<SubpassDescriptionFlagBits>;
     }
@@ -1121,6 +1016,34 @@ export namespace Vulkan {
      */
     class SubpassDescriptionFlags {
         static $gtype: GObject.GType<SubpassDescriptionFlags>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class AccessFlagBits {
+        static $gtype: GObject.GType<AccessFlagBits>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class AccessFlags {
+        static $gtype: GObject.GType<AccessFlags>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class DependencyFlagBits {
+        static $gtype: GObject.GType<DependencyFlagBits>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class DependencyFlags {
+        static $gtype: GObject.GType<DependencyFlags>;
     }
 
     /**
@@ -1210,134 +1133,8 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class Extent2D {
-        static $gtype: GObject.GType<Extent2D>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class Extent3D {
-        static $gtype: GObject.GType<Extent3D>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class Offset2D {
-        static $gtype: GObject.GType<Offset2D>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class Offset3D {
-        static $gtype: GObject.GType<Offset3D>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class Rect2D {
-        static $gtype: GObject.GType<Rect2D>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class BaseInStructure {
-        static $gtype: GObject.GType<BaseInStructure>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class BaseOutStructure {
-        static $gtype: GObject.GType<BaseOutStructure>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class BufferMemoryBarrier {
-        static $gtype: GObject.GType<BufferMemoryBarrier>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DispatchIndirectCommand {
-        static $gtype: GObject.GType<DispatchIndirectCommand>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DrawIndexedIndirectCommand {
-        static $gtype: GObject.GType<DrawIndexedIndirectCommand>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DrawIndirectCommand {
-        static $gtype: GObject.GType<DrawIndirectCommand>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ImageSubresourceRange {
-        static $gtype: GObject.GType<ImageSubresourceRange>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ImageMemoryBarrier {
-        static $gtype: GObject.GType<ImageMemoryBarrier>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class MemoryBarrier {
-        static $gtype: GObject.GType<MemoryBarrier>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineCacheHeaderVersionOne {
-        static $gtype: GObject.GType<PipelineCacheHeaderVersionOne>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AllocationCallbacks {
-        static $gtype: GObject.GType<AllocationCallbacks>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
     class ApplicationInfo {
         static $gtype: GObject.GType<ApplicationInfo>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class FormatProperties {
-        static $gtype: GObject.GType<FormatProperties>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ImageFormatProperties {
-        static $gtype: GObject.GType<ImageFormatProperties>;
     }
 
     /**
@@ -1350,15 +1147,8 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class MemoryHeap {
-        static $gtype: GObject.GType<MemoryHeap>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class MemoryType {
-        static $gtype: GObject.GType<MemoryType>;
+    class AllocationCallbacks {
+        static $gtype: GObject.GType<AllocationCallbacks>;
     }
 
     /**
@@ -1371,15 +1161,29 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class PhysicalDeviceLimits {
-        static $gtype: GObject.GType<PhysicalDeviceLimits>;
+    class FormatProperties {
+        static $gtype: GObject.GType<FormatProperties>;
     }
 
     /**
      * @gir-type Struct
      */
-    class PhysicalDeviceMemoryProperties {
-        static $gtype: GObject.GType<PhysicalDeviceMemoryProperties>;
+    class Extent3D {
+        static $gtype: GObject.GType<Extent3D>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class ImageFormatProperties {
+        static $gtype: GObject.GType<ImageFormatProperties>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class PhysicalDeviceLimits {
+        static $gtype: GObject.GType<PhysicalDeviceLimits>;
     }
 
     /**
@@ -1401,6 +1205,27 @@ export namespace Vulkan {
      */
     class QueueFamilyProperties {
         static $gtype: GObject.GType<QueueFamilyProperties>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class MemoryType {
+        static $gtype: GObject.GType<MemoryType>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class MemoryHeap {
+        static $gtype: GObject.GType<MemoryHeap>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class PhysicalDeviceMemoryProperties {
+        static $gtype: GObject.GType<PhysicalDeviceMemoryProperties>;
     }
 
     /**
@@ -1441,13 +1266,6 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class MappedMemoryRange {
-        static $gtype: GObject.GType<MappedMemoryRange>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
     class MemoryAllocateInfo {
         static $gtype: GObject.GType<MemoryAllocateInfo>;
     }
@@ -1455,8 +1273,29 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
+    class MappedMemoryRange {
+        static $gtype: GObject.GType<MappedMemoryRange>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
     class MemoryRequirements {
         static $gtype: GObject.GType<MemoryRequirements>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class SparseImageFormatProperties {
+        static $gtype: GObject.GType<SparseImageFormatProperties>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class SparseImageMemoryRequirements {
+        static $gtype: GObject.GType<SparseImageMemoryRequirements>;
     }
 
     /**
@@ -1490,6 +1329,13 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
+    class Offset3D {
+        static $gtype: GObject.GType<Offset3D>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
     class SparseImageMemoryBind {
         static $gtype: GObject.GType<SparseImageMemoryBind>;
     }
@@ -1506,20 +1352,6 @@ export namespace Vulkan {
      */
     class BindSparseInfo {
         static $gtype: GObject.GType<BindSparseInfo>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SparseImageFormatProperties {
-        static $gtype: GObject.GType<SparseImageFormatProperties>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SparseImageMemoryRequirements {
-        static $gtype: GObject.GType<SparseImageMemoryRequirements>;
     }
 
     /**
@@ -1588,6 +1420,13 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
+    class ImageSubresourceRange {
+        static $gtype: GObject.GType<ImageSubresourceRange>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
     class ImageViewCreateInfo {
         static $gtype: GObject.GType<ImageViewCreateInfo>;
     }
@@ -1630,13 +1469,6 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class ComputePipelineCreateInfo {
-        static $gtype: GObject.GType<ComputePipelineCreateInfo>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
     class VertexInputBindingDescription {
         static $gtype: GObject.GType<VertexInputBindingDescription>;
     }
@@ -1674,6 +1506,27 @@ export namespace Vulkan {
      */
     class Viewport {
         static $gtype: GObject.GType<Viewport>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class Offset2D {
+        static $gtype: GObject.GType<Offset2D>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class Extent2D {
+        static $gtype: GObject.GType<Extent2D>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class Rect2D {
+        static $gtype: GObject.GType<Rect2D>;
     }
 
     /**
@@ -1742,6 +1595,13 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
+    class ComputePipelineCreateInfo {
+        static $gtype: GObject.GType<ComputePipelineCreateInfo>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
     class PushConstantRange {
         static $gtype: GObject.GType<PushConstantRange>;
     }
@@ -1763,22 +1623,15 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class CopyDescriptorSet {
-        static $gtype: GObject.GType<CopyDescriptorSet>;
+    class DescriptorSetLayoutBinding {
+        static $gtype: GObject.GType<DescriptorSetLayoutBinding>;
     }
 
     /**
      * @gir-type Struct
      */
-    class DescriptorBufferInfo {
-        static $gtype: GObject.GType<DescriptorBufferInfo>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DescriptorImageInfo {
-        static $gtype: GObject.GType<DescriptorImageInfo>;
+    class DescriptorSetLayoutCreateInfo {
+        static $gtype: GObject.GType<DescriptorSetLayoutCreateInfo>;
     }
 
     /**
@@ -1805,15 +1658,15 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class DescriptorSetLayoutBinding {
-        static $gtype: GObject.GType<DescriptorSetLayoutBinding>;
+    class DescriptorImageInfo {
+        static $gtype: GObject.GType<DescriptorImageInfo>;
     }
 
     /**
      * @gir-type Struct
      */
-    class DescriptorSetLayoutCreateInfo {
-        static $gtype: GObject.GType<DescriptorSetLayoutCreateInfo>;
+    class DescriptorBufferInfo {
+        static $gtype: GObject.GType<DescriptorBufferInfo>;
     }
 
     /**
@@ -1821,6 +1674,20 @@ export namespace Vulkan {
      */
     class WriteDescriptorSet {
         static $gtype: GObject.GType<WriteDescriptorSet>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class CopyDescriptorSet {
+        static $gtype: GObject.GType<CopyDescriptorSet>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class FramebufferCreateInfo {
+        static $gtype: GObject.GType<FramebufferCreateInfo>;
     }
 
     /**
@@ -1835,13 +1702,6 @@ export namespace Vulkan {
      */
     class AttachmentReference {
         static $gtype: GObject.GType<AttachmentReference>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class FramebufferCreateInfo {
-        static $gtype: GObject.GType<FramebufferCreateInfo>;
     }
 
     /**
@@ -1910,6 +1770,20 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
+    class ImageCopy {
+        static $gtype: GObject.GType<ImageCopy>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class ImageBlit {
+        static $gtype: GObject.GType<ImageBlit>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
     class BufferImageCopy {
         static $gtype: GObject.GType<BufferImageCopy>;
     }
@@ -1952,20 +1826,6 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class ImageBlit {
-        static $gtype: GObject.GType<ImageBlit>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ImageCopy {
-        static $gtype: GObject.GType<ImageCopy>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
     class ImageResolve {
         static $gtype: GObject.GType<ImageResolve>;
     }
@@ -1973,8 +1833,64 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
+    class MemoryBarrier {
+        static $gtype: GObject.GType<MemoryBarrier>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class BufferMemoryBarrier {
+        static $gtype: GObject.GType<BufferMemoryBarrier>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class ImageMemoryBarrier {
+        static $gtype: GObject.GType<ImageMemoryBarrier>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
     class RenderPassBeginInfo {
         static $gtype: GObject.GType<RenderPassBeginInfo>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class DispatchIndirectCommand {
+        static $gtype: GObject.GType<DispatchIndirectCommand>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class DrawIndexedIndirectCommand {
+        static $gtype: GObject.GType<DrawIndexedIndirectCommand>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class DrawIndirectCommand {
+        static $gtype: GObject.GType<DrawIndirectCommand>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class BaseOutStructure {
+        static $gtype: GObject.GType<BaseOutStructure>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class BaseInStructure {
+        static $gtype: GObject.GType<BaseInStructure>;
     }
 
     /**
@@ -2337,6 +2253,13 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
+    class MemoryRequirements2KHR {
+        static $gtype: GObject.GType<MemoryRequirements2KHR>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
     class SparseImageMemoryRequirements2 {
         static $gtype: GObject.GType<SparseImageMemoryRequirements2>;
     }
@@ -2694,932 +2617,8 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class DriverId {
-        static $gtype: GObject.GType<DriverId>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ShaderFloatControlsIndependence {
-        static $gtype: GObject.GType<ShaderFloatControlsIndependence>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SamplerReductionMode {
-        static $gtype: GObject.GType<SamplerReductionMode>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SemaphoreType {
-        static $gtype: GObject.GType<SemaphoreType>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ResolveModeFlagBits {
-        static $gtype: GObject.GType<ResolveModeFlagBits>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ResolveModeFlags {
-        static $gtype: GObject.GType<ResolveModeFlags>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DescriptorBindingFlagBits {
-        static $gtype: GObject.GType<DescriptorBindingFlagBits>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DescriptorBindingFlags {
-        static $gtype: GObject.GType<DescriptorBindingFlags>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SemaphoreWaitFlagBits {
-        static $gtype: GObject.GType<SemaphoreWaitFlagBits>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SemaphoreWaitFlags {
-        static $gtype: GObject.GType<SemaphoreWaitFlags>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceVulkan11Features {
-        static $gtype: GObject.GType<PhysicalDeviceVulkan11Features>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceVulkan11Properties {
-        static $gtype: GObject.GType<PhysicalDeviceVulkan11Properties>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceVulkan12Features {
-        static $gtype: GObject.GType<PhysicalDeviceVulkan12Features>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ConformanceVersion {
-        static $gtype: GObject.GType<ConformanceVersion>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceVulkan12Properties {
-        static $gtype: GObject.GType<PhysicalDeviceVulkan12Properties>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ImageFormatListCreateInfo {
-        static $gtype: GObject.GType<ImageFormatListCreateInfo>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AttachmentDescription2 {
-        static $gtype: GObject.GType<AttachmentDescription2>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AttachmentReference2 {
-        static $gtype: GObject.GType<AttachmentReference2>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SubpassDescription2 {
-        static $gtype: GObject.GType<SubpassDescription2>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SubpassDependency2 {
-        static $gtype: GObject.GType<SubpassDependency2>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class RenderPassCreateInfo2 {
-        static $gtype: GObject.GType<RenderPassCreateInfo2>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SubpassBeginInfo {
-        static $gtype: GObject.GType<SubpassBeginInfo>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SubpassEndInfo {
-        static $gtype: GObject.GType<SubpassEndInfo>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDevice8BitStorageFeatures {
-        static $gtype: GObject.GType<PhysicalDevice8BitStorageFeatures>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceDriverProperties {
-        static $gtype: GObject.GType<PhysicalDeviceDriverProperties>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceShaderAtomicInt64Features {
-        static $gtype: GObject.GType<PhysicalDeviceShaderAtomicInt64Features>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceShaderFloat16Int8Features {
-        static $gtype: GObject.GType<PhysicalDeviceShaderFloat16Int8Features>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceFloatControlsProperties {
-        static $gtype: GObject.GType<PhysicalDeviceFloatControlsProperties>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DescriptorSetLayoutBindingFlagsCreateInfo {
-        static $gtype: GObject.GType<DescriptorSetLayoutBindingFlagsCreateInfo>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceDescriptorIndexingFeatures {
-        static $gtype: GObject.GType<PhysicalDeviceDescriptorIndexingFeatures>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceDescriptorIndexingProperties {
-        static $gtype: GObject.GType<PhysicalDeviceDescriptorIndexingProperties>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DescriptorSetVariableDescriptorCountAllocateInfo {
-        static $gtype: GObject.GType<DescriptorSetVariableDescriptorCountAllocateInfo>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DescriptorSetVariableDescriptorCountLayoutSupport {
-        static $gtype: GObject.GType<DescriptorSetVariableDescriptorCountLayoutSupport>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SubpassDescriptionDepthStencilResolve {
-        static $gtype: GObject.GType<SubpassDescriptionDepthStencilResolve>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceDepthStencilResolveProperties {
-        static $gtype: GObject.GType<PhysicalDeviceDepthStencilResolveProperties>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceScalarBlockLayoutFeatures {
-        static $gtype: GObject.GType<PhysicalDeviceScalarBlockLayoutFeatures>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ImageStencilUsageCreateInfo {
-        static $gtype: GObject.GType<ImageStencilUsageCreateInfo>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SamplerReductionModeCreateInfo {
-        static $gtype: GObject.GType<SamplerReductionModeCreateInfo>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceSamplerFilterMinmaxProperties {
-        static $gtype: GObject.GType<PhysicalDeviceSamplerFilterMinmaxProperties>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceVulkanMemoryModelFeatures {
-        static $gtype: GObject.GType<PhysicalDeviceVulkanMemoryModelFeatures>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceImagelessFramebufferFeatures {
-        static $gtype: GObject.GType<PhysicalDeviceImagelessFramebufferFeatures>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class FramebufferAttachmentImageInfo {
-        static $gtype: GObject.GType<FramebufferAttachmentImageInfo>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class FramebufferAttachmentsCreateInfo {
-        static $gtype: GObject.GType<FramebufferAttachmentsCreateInfo>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class RenderPassAttachmentBeginInfo {
-        static $gtype: GObject.GType<RenderPassAttachmentBeginInfo>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceUniformBufferStandardLayoutFeatures {
-        static $gtype: GObject.GType<PhysicalDeviceUniformBufferStandardLayoutFeatures>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceShaderSubgroupExtendedTypesFeatures {
-        static $gtype: GObject.GType<PhysicalDeviceShaderSubgroupExtendedTypesFeatures>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceSeparateDepthStencilLayoutsFeatures {
-        static $gtype: GObject.GType<PhysicalDeviceSeparateDepthStencilLayoutsFeatures>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AttachmentReferenceStencilLayout {
-        static $gtype: GObject.GType<AttachmentReferenceStencilLayout>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AttachmentDescriptionStencilLayout {
-        static $gtype: GObject.GType<AttachmentDescriptionStencilLayout>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceHostQueryResetFeatures {
-        static $gtype: GObject.GType<PhysicalDeviceHostQueryResetFeatures>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceTimelineSemaphoreFeatures {
-        static $gtype: GObject.GType<PhysicalDeviceTimelineSemaphoreFeatures>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceTimelineSemaphoreProperties {
-        static $gtype: GObject.GType<PhysicalDeviceTimelineSemaphoreProperties>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SemaphoreTypeCreateInfo {
-        static $gtype: GObject.GType<SemaphoreTypeCreateInfo>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class TimelineSemaphoreSubmitInfo {
-        static $gtype: GObject.GType<TimelineSemaphoreSubmitInfo>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SemaphoreWaitInfo {
-        static $gtype: GObject.GType<SemaphoreWaitInfo>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SemaphoreSignalInfo {
-        static $gtype: GObject.GType<SemaphoreSignalInfo>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceBufferDeviceAddressFeatures {
-        static $gtype: GObject.GType<PhysicalDeviceBufferDeviceAddressFeatures>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class BufferDeviceAddressInfo {
-        static $gtype: GObject.GType<BufferDeviceAddressInfo>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class BufferOpaqueCaptureAddressCreateInfo {
-        static $gtype: GObject.GType<BufferOpaqueCaptureAddressCreateInfo>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class MemoryOpaqueCaptureAddressAllocateInfo {
-        static $gtype: GObject.GType<MemoryOpaqueCaptureAddressAllocateInfo>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DeviceMemoryOpaqueCaptureAddressInfo {
-        static $gtype: GObject.GType<DeviceMemoryOpaqueCaptureAddressInfo>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class Flags64 {
-        static $gtype: GObject.GType<Flags64>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PrivateDataSlot {
-        static $gtype: GObject.GType<PrivateDataSlot>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineCreationFeedbackFlagBits {
-        static $gtype: GObject.GType<PipelineCreationFeedbackFlagBits>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineCreationFeedbackFlags {
-        static $gtype: GObject.GType<PipelineCreationFeedbackFlags>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ToolPurposeFlagBits {
-        static $gtype: GObject.GType<ToolPurposeFlagBits>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ToolPurposeFlags {
-        static $gtype: GObject.GType<ToolPurposeFlags>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PrivateDataSlotCreateFlags {
-        static $gtype: GObject.GType<PrivateDataSlotCreateFlags>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineStageFlags2 {
-        static $gtype: GObject.GType<PipelineStageFlags2>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineStageFlagBits2 {
-        static $gtype: GObject.GType<PipelineStageFlagBits2>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AccessFlags2 {
-        static $gtype: GObject.GType<AccessFlags2>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AccessFlagBits2 {
-        static $gtype: GObject.GType<AccessFlagBits2>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SubmitFlagBits {
-        static $gtype: GObject.GType<SubmitFlagBits>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SubmitFlags {
-        static $gtype: GObject.GType<SubmitFlags>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class RenderingFlagBits {
-        static $gtype: GObject.GType<RenderingFlagBits>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class RenderingFlags {
-        static $gtype: GObject.GType<RenderingFlags>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class FormatFeatureFlags2 {
-        static $gtype: GObject.GType<FormatFeatureFlags2>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class FormatFeatureFlagBits2 {
-        static $gtype: GObject.GType<FormatFeatureFlagBits2>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceVulkan13Features {
-        static $gtype: GObject.GType<PhysicalDeviceVulkan13Features>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceVulkan13Properties {
-        static $gtype: GObject.GType<PhysicalDeviceVulkan13Properties>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineCreationFeedback {
-        static $gtype: GObject.GType<PipelineCreationFeedback>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineCreationFeedbackCreateInfo {
-        static $gtype: GObject.GType<PipelineCreationFeedbackCreateInfo>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceShaderTerminateInvocationFeatures {
-        static $gtype: GObject.GType<PhysicalDeviceShaderTerminateInvocationFeatures>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceToolProperties {
-        static $gtype: GObject.GType<PhysicalDeviceToolProperties>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceShaderDemoteToHelperInvocationFeatures {
-        static $gtype: GObject.GType<PhysicalDeviceShaderDemoteToHelperInvocationFeatures>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDevicePrivateDataFeatures {
-        static $gtype: GObject.GType<PhysicalDevicePrivateDataFeatures>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DevicePrivateDataCreateInfo {
-        static $gtype: GObject.GType<DevicePrivateDataCreateInfo>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PrivateDataSlotCreateInfo {
-        static $gtype: GObject.GType<PrivateDataSlotCreateInfo>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDevicePipelineCreationCacheControlFeatures {
-        static $gtype: GObject.GType<PhysicalDevicePipelineCreationCacheControlFeatures>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class MemoryBarrier2 {
-        static $gtype: GObject.GType<MemoryBarrier2>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class BufferMemoryBarrier2 {
-        static $gtype: GObject.GType<BufferMemoryBarrier2>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ImageMemoryBarrier2 {
-        static $gtype: GObject.GType<ImageMemoryBarrier2>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DependencyInfo {
-        static $gtype: GObject.GType<DependencyInfo>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SemaphoreSubmitInfo {
-        static $gtype: GObject.GType<SemaphoreSubmitInfo>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CommandBufferSubmitInfo {
-        static $gtype: GObject.GType<CommandBufferSubmitInfo>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SubmitInfo2 {
-        static $gtype: GObject.GType<SubmitInfo2>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceSynchronization2Features {
-        static $gtype: GObject.GType<PhysicalDeviceSynchronization2Features>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceZeroInitializeWorkgroupMemoryFeatures {
-        static $gtype: GObject.GType<PhysicalDeviceZeroInitializeWorkgroupMemoryFeatures>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceImageRobustnessFeatures {
-        static $gtype: GObject.GType<PhysicalDeviceImageRobustnessFeatures>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class BufferCopy2 {
-        static $gtype: GObject.GType<BufferCopy2>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CopyBufferInfo2 {
-        static $gtype: GObject.GType<CopyBufferInfo2>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ImageCopy2 {
-        static $gtype: GObject.GType<ImageCopy2>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CopyImageInfo2 {
-        static $gtype: GObject.GType<CopyImageInfo2>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class BufferImageCopy2 {
-        static $gtype: GObject.GType<BufferImageCopy2>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CopyBufferToImageInfo2 {
-        static $gtype: GObject.GType<CopyBufferToImageInfo2>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CopyImageToBufferInfo2 {
-        static $gtype: GObject.GType<CopyImageToBufferInfo2>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ImageBlit2 {
-        static $gtype: GObject.GType<ImageBlit2>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class BlitImageInfo2 {
-        static $gtype: GObject.GType<BlitImageInfo2>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ImageResolve2 {
-        static $gtype: GObject.GType<ImageResolve2>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ResolveImageInfo2 {
-        static $gtype: GObject.GType<ResolveImageInfo2>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceSubgroupSizeControlFeatures {
-        static $gtype: GObject.GType<PhysicalDeviceSubgroupSizeControlFeatures>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceSubgroupSizeControlProperties {
-        static $gtype: GObject.GType<PhysicalDeviceSubgroupSizeControlProperties>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineShaderStageRequiredSubgroupSizeCreateInfo {
-        static $gtype: GObject.GType<PipelineShaderStageRequiredSubgroupSizeCreateInfo>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceInlineUniformBlockFeatures {
-        static $gtype: GObject.GType<PhysicalDeviceInlineUniformBlockFeatures>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceInlineUniformBlockProperties {
-        static $gtype: GObject.GType<PhysicalDeviceInlineUniformBlockProperties>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class WriteDescriptorSetInlineUniformBlock {
-        static $gtype: GObject.GType<WriteDescriptorSetInlineUniformBlock>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DescriptorPoolInlineUniformBlockCreateInfo {
-        static $gtype: GObject.GType<DescriptorPoolInlineUniformBlockCreateInfo>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceTextureCompressionASTCHDRFeatures {
-        static $gtype: GObject.GType<PhysicalDeviceTextureCompressionASTCHDRFeatures>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class RenderingAttachmentInfo {
-        static $gtype: GObject.GType<RenderingAttachmentInfo>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class RenderingInfo {
-        static $gtype: GObject.GType<RenderingInfo>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineRenderingCreateInfo {
-        static $gtype: GObject.GType<PipelineRenderingCreateInfo>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceDynamicRenderingFeatures {
-        static $gtype: GObject.GType<PhysicalDeviceDynamicRenderingFeatures>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CommandBufferInheritanceRenderingInfo {
-        static $gtype: GObject.GType<CommandBufferInheritanceRenderingInfo>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceShaderIntegerDotProductFeatures {
-        static $gtype: GObject.GType<PhysicalDeviceShaderIntegerDotProductFeatures>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceShaderIntegerDotProductProperties {
-        static $gtype: GObject.GType<PhysicalDeviceShaderIntegerDotProductProperties>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceTexelBufferAlignmentProperties {
-        static $gtype: GObject.GType<PhysicalDeviceTexelBufferAlignmentProperties>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class FormatProperties3 {
-        static $gtype: GObject.GType<FormatProperties3>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceMaintenance4Features {
-        static $gtype: GObject.GType<PhysicalDeviceMaintenance4Features>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceMaintenance4Properties {
-        static $gtype: GObject.GType<PhysicalDeviceMaintenance4Properties>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DeviceBufferMemoryRequirements {
-        static $gtype: GObject.GType<DeviceBufferMemoryRequirements>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DeviceImageMemoryRequirements {
-        static $gtype: GObject.GType<DeviceImageMemoryRequirements>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
     class SurfaceKHR {
         static $gtype: GObject.GType<SurfaceKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PresentModeKHR {
-        static $gtype: GObject.GType<PresentModeKHR>;
     }
 
     /**
@@ -3632,8 +2631,22 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
+    class PresentModeKHR {
+        static $gtype: GObject.GType<PresentModeKHR>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
     class SurfaceTransformFlagBitsKHR {
         static $gtype: GObject.GType<SurfaceTransformFlagBitsKHR>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class SurfaceTransformFlagsKHR {
+        static $gtype: GObject.GType<SurfaceTransformFlagsKHR>;
     }
 
     /**
@@ -3648,13 +2661,6 @@ export namespace Vulkan {
      */
     class CompositeAlphaFlagsKHR {
         static $gtype: GObject.GType<CompositeAlphaFlagsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SurfaceTransformFlagsKHR {
-        static $gtype: GObject.GType<SurfaceTransformFlagsKHR>;
     }
 
     /**
@@ -3779,13 +2785,6 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class DisplayModeCreateFlagsKHR {
-        static $gtype: GObject.GType<DisplayModeCreateFlagsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
     class DisplayPlaneAlphaFlagBitsKHR {
         static $gtype: GObject.GType<DisplayPlaneAlphaFlagBitsKHR>;
     }
@@ -3800,8 +2799,22 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
+    class DisplayModeCreateFlagsKHR {
+        static $gtype: GObject.GType<DisplayModeCreateFlagsKHR>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
     class DisplaySurfaceCreateFlagsKHR {
         static $gtype: GObject.GType<DisplaySurfaceCreateFlagsKHR>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class DisplayPropertiesKHR {
+        static $gtype: GObject.GType<DisplayPropertiesKHR>;
     }
 
     /**
@@ -3814,15 +2827,15 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class DisplayModeCreateInfoKHR {
-        static $gtype: GObject.GType<DisplayModeCreateInfoKHR>;
+    class DisplayModePropertiesKHR {
+        static $gtype: GObject.GType<DisplayModePropertiesKHR>;
     }
 
     /**
      * @gir-type Struct
      */
-    class DisplayModePropertiesKHR {
-        static $gtype: GObject.GType<DisplayModePropertiesKHR>;
+    class DisplayModeCreateInfoKHR {
+        static $gtype: GObject.GType<DisplayModeCreateInfoKHR>;
     }
 
     /**
@@ -3842,13 +2855,6 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class DisplayPropertiesKHR {
-        static $gtype: GObject.GType<DisplayPropertiesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
     class DisplaySurfaceCreateInfoKHR {
         static $gtype: GObject.GType<DisplaySurfaceCreateInfoKHR>;
     }
@@ -3858,783 +2864,6 @@ export namespace Vulkan {
      */
     class DisplayPresentInfoKHR {
         static $gtype: GObject.GType<DisplayPresentInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoSessionKHR {
-        static $gtype: GObject.GType<VideoSessionKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoSessionParametersKHR {
-        static $gtype: GObject.GType<VideoSessionParametersKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class QueryResultStatusKHR {
-        static $gtype: GObject.GType<QueryResultStatusKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoCodecOperationFlagBitsKHR {
-        static $gtype: GObject.GType<VideoCodecOperationFlagBitsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoCodecOperationFlagsKHR {
-        static $gtype: GObject.GType<VideoCodecOperationFlagsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoChromaSubsamplingFlagBitsKHR {
-        static $gtype: GObject.GType<VideoChromaSubsamplingFlagBitsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoChromaSubsamplingFlagsKHR {
-        static $gtype: GObject.GType<VideoChromaSubsamplingFlagsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoComponentBitDepthFlagBitsKHR {
-        static $gtype: GObject.GType<VideoComponentBitDepthFlagBitsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoComponentBitDepthFlagsKHR {
-        static $gtype: GObject.GType<VideoComponentBitDepthFlagsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoCapabilityFlagBitsKHR {
-        static $gtype: GObject.GType<VideoCapabilityFlagBitsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoCapabilityFlagsKHR {
-        static $gtype: GObject.GType<VideoCapabilityFlagsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoSessionCreateFlagBitsKHR {
-        static $gtype: GObject.GType<VideoSessionCreateFlagBitsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoSessionCreateFlagsKHR {
-        static $gtype: GObject.GType<VideoSessionCreateFlagsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoSessionParametersCreateFlagsKHR {
-        static $gtype: GObject.GType<VideoSessionParametersCreateFlagsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoBeginCodingFlagsKHR {
-        static $gtype: GObject.GType<VideoBeginCodingFlagsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEndCodingFlagsKHR {
-        static $gtype: GObject.GType<VideoEndCodingFlagsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoCodingControlFlagBitsKHR {
-        static $gtype: GObject.GType<VideoCodingControlFlagBitsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoCodingControlFlagsKHR {
-        static $gtype: GObject.GType<VideoCodingControlFlagsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class QueueFamilyQueryResultStatusPropertiesKHR {
-        static $gtype: GObject.GType<QueueFamilyQueryResultStatusPropertiesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class QueueFamilyVideoPropertiesKHR {
-        static $gtype: GObject.GType<QueueFamilyVideoPropertiesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoProfileInfoKHR {
-        static $gtype: GObject.GType<VideoProfileInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoProfileListInfoKHR {
-        static $gtype: GObject.GType<VideoProfileListInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoCapabilitiesKHR {
-        static $gtype: GObject.GType<VideoCapabilitiesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceVideoFormatInfoKHR {
-        static $gtype: GObject.GType<PhysicalDeviceVideoFormatInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoFormatPropertiesKHR {
-        static $gtype: GObject.GType<VideoFormatPropertiesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoPictureResourceInfoKHR {
-        static $gtype: GObject.GType<VideoPictureResourceInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoReferenceSlotInfoKHR {
-        static $gtype: GObject.GType<VideoReferenceSlotInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoSessionMemoryRequirementsKHR {
-        static $gtype: GObject.GType<VideoSessionMemoryRequirementsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class BindVideoSessionMemoryInfoKHR {
-        static $gtype: GObject.GType<BindVideoSessionMemoryInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoSessionCreateInfoKHR {
-        static $gtype: GObject.GType<VideoSessionCreateInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoSessionParametersCreateInfoKHR {
-        static $gtype: GObject.GType<VideoSessionParametersCreateInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoSessionParametersUpdateInfoKHR {
-        static $gtype: GObject.GType<VideoSessionParametersUpdateInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoBeginCodingInfoKHR {
-        static $gtype: GObject.GType<VideoBeginCodingInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEndCodingInfoKHR {
-        static $gtype: GObject.GType<VideoEndCodingInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoCodingControlInfoKHR {
-        static $gtype: GObject.GType<VideoCodingControlInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoDecodeCapabilityFlagBitsKHR {
-        static $gtype: GObject.GType<VideoDecodeCapabilityFlagBitsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoDecodeCapabilityFlagsKHR {
-        static $gtype: GObject.GType<VideoDecodeCapabilityFlagsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoDecodeUsageFlagBitsKHR {
-        static $gtype: GObject.GType<VideoDecodeUsageFlagBitsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoDecodeUsageFlagsKHR {
-        static $gtype: GObject.GType<VideoDecodeUsageFlagsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoDecodeFlagsKHR {
-        static $gtype: GObject.GType<VideoDecodeFlagsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoDecodeCapabilitiesKHR {
-        static $gtype: GObject.GType<VideoDecodeCapabilitiesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoDecodeUsageInfoKHR {
-        static $gtype: GObject.GType<VideoDecodeUsageInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoDecodeInfoKHR {
-        static $gtype: GObject.GType<VideoDecodeInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH264CapabilityFlagBitsKHR {
-        static $gtype: GObject.GType<VideoEncodeH264CapabilityFlagBitsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH264CapabilityFlagsKHR {
-        static $gtype: GObject.GType<VideoEncodeH264CapabilityFlagsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH264StdFlagBitsKHR {
-        static $gtype: GObject.GType<VideoEncodeH264StdFlagBitsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH264StdFlagsKHR {
-        static $gtype: GObject.GType<VideoEncodeH264StdFlagsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH264RateControlFlagBitsKHR {
-        static $gtype: GObject.GType<VideoEncodeH264RateControlFlagBitsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH264RateControlFlagsKHR {
-        static $gtype: GObject.GType<VideoEncodeH264RateControlFlagsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH264CapabilitiesKHR {
-        static $gtype: GObject.GType<VideoEncodeH264CapabilitiesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH264QpKHR {
-        static $gtype: GObject.GType<VideoEncodeH264QpKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH264QualityLevelPropertiesKHR {
-        static $gtype: GObject.GType<VideoEncodeH264QualityLevelPropertiesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH264SessionCreateInfoKHR {
-        static $gtype: GObject.GType<VideoEncodeH264SessionCreateInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH264SessionParametersAddInfoKHR {
-        static $gtype: GObject.GType<VideoEncodeH264SessionParametersAddInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH264SessionParametersCreateInfoKHR {
-        static $gtype: GObject.GType<VideoEncodeH264SessionParametersCreateInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH264SessionParametersGetInfoKHR {
-        static $gtype: GObject.GType<VideoEncodeH264SessionParametersGetInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH264SessionParametersFeedbackInfoKHR {
-        static $gtype: GObject.GType<VideoEncodeH264SessionParametersFeedbackInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH264NaluSliceInfoKHR {
-        static $gtype: GObject.GType<VideoEncodeH264NaluSliceInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH264PictureInfoKHR {
-        static $gtype: GObject.GType<VideoEncodeH264PictureInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH264DpbSlotInfoKHR {
-        static $gtype: GObject.GType<VideoEncodeH264DpbSlotInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH264ProfileInfoKHR {
-        static $gtype: GObject.GType<VideoEncodeH264ProfileInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH264RateControlInfoKHR {
-        static $gtype: GObject.GType<VideoEncodeH264RateControlInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH264FrameSizeKHR {
-        static $gtype: GObject.GType<VideoEncodeH264FrameSizeKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH264RateControlLayerInfoKHR {
-        static $gtype: GObject.GType<VideoEncodeH264RateControlLayerInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH264GopRemainingFrameInfoKHR {
-        static $gtype: GObject.GType<VideoEncodeH264GopRemainingFrameInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH265CapabilityFlagBitsKHR {
-        static $gtype: GObject.GType<VideoEncodeH265CapabilityFlagBitsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH265CapabilityFlagsKHR {
-        static $gtype: GObject.GType<VideoEncodeH265CapabilityFlagsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH265StdFlagBitsKHR {
-        static $gtype: GObject.GType<VideoEncodeH265StdFlagBitsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH265StdFlagsKHR {
-        static $gtype: GObject.GType<VideoEncodeH265StdFlagsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH265CtbSizeFlagBitsKHR {
-        static $gtype: GObject.GType<VideoEncodeH265CtbSizeFlagBitsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH265CtbSizeFlagsKHR {
-        static $gtype: GObject.GType<VideoEncodeH265CtbSizeFlagsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH265TransformBlockSizeFlagBitsKHR {
-        static $gtype: GObject.GType<VideoEncodeH265TransformBlockSizeFlagBitsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH265TransformBlockSizeFlagsKHR {
-        static $gtype: GObject.GType<VideoEncodeH265TransformBlockSizeFlagsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH265RateControlFlagBitsKHR {
-        static $gtype: GObject.GType<VideoEncodeH265RateControlFlagBitsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH265RateControlFlagsKHR {
-        static $gtype: GObject.GType<VideoEncodeH265RateControlFlagsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH265CapabilitiesKHR {
-        static $gtype: GObject.GType<VideoEncodeH265CapabilitiesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH265SessionCreateInfoKHR {
-        static $gtype: GObject.GType<VideoEncodeH265SessionCreateInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH265QpKHR {
-        static $gtype: GObject.GType<VideoEncodeH265QpKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH265QualityLevelPropertiesKHR {
-        static $gtype: GObject.GType<VideoEncodeH265QualityLevelPropertiesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH265SessionParametersAddInfoKHR {
-        static $gtype: GObject.GType<VideoEncodeH265SessionParametersAddInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH265SessionParametersCreateInfoKHR {
-        static $gtype: GObject.GType<VideoEncodeH265SessionParametersCreateInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH265SessionParametersGetInfoKHR {
-        static $gtype: GObject.GType<VideoEncodeH265SessionParametersGetInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH265SessionParametersFeedbackInfoKHR {
-        static $gtype: GObject.GType<VideoEncodeH265SessionParametersFeedbackInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH265NaluSliceSegmentInfoKHR {
-        static $gtype: GObject.GType<VideoEncodeH265NaluSliceSegmentInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH265PictureInfoKHR {
-        static $gtype: GObject.GType<VideoEncodeH265PictureInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH265DpbSlotInfoKHR {
-        static $gtype: GObject.GType<VideoEncodeH265DpbSlotInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH265ProfileInfoKHR {
-        static $gtype: GObject.GType<VideoEncodeH265ProfileInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH265RateControlInfoKHR {
-        static $gtype: GObject.GType<VideoEncodeH265RateControlInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH265FrameSizeKHR {
-        static $gtype: GObject.GType<VideoEncodeH265FrameSizeKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH265RateControlLayerInfoKHR {
-        static $gtype: GObject.GType<VideoEncodeH265RateControlLayerInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeH265GopRemainingFrameInfoKHR {
-        static $gtype: GObject.GType<VideoEncodeH265GopRemainingFrameInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoDecodeH264PictureLayoutFlagBitsKHR {
-        static $gtype: GObject.GType<VideoDecodeH264PictureLayoutFlagBitsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoDecodeH264PictureLayoutFlagsKHR {
-        static $gtype: GObject.GType<VideoDecodeH264PictureLayoutFlagsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoDecodeH264ProfileInfoKHR {
-        static $gtype: GObject.GType<VideoDecodeH264ProfileInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoDecodeH264CapabilitiesKHR {
-        static $gtype: GObject.GType<VideoDecodeH264CapabilitiesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoDecodeH264SessionParametersAddInfoKHR {
-        static $gtype: GObject.GType<VideoDecodeH264SessionParametersAddInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoDecodeH264SessionParametersCreateInfoKHR {
-        static $gtype: GObject.GType<VideoDecodeH264SessionParametersCreateInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoDecodeH264PictureInfoKHR {
-        static $gtype: GObject.GType<VideoDecodeH264PictureInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoDecodeH264DpbSlotInfoKHR {
-        static $gtype: GObject.GType<VideoDecodeH264DpbSlotInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class RenderingFlagsKHR {
-        static $gtype: GObject.GType<RenderingFlagsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class RenderingFlagBitsKHR {
-        static $gtype: GObject.GType<RenderingFlagBitsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class RenderingInfoKHR {
-        static $gtype: GObject.GType<RenderingInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class RenderingAttachmentInfoKHR {
-        static $gtype: GObject.GType<RenderingAttachmentInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineRenderingCreateInfoKHR {
-        static $gtype: GObject.GType<PipelineRenderingCreateInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceDynamicRenderingFeaturesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceDynamicRenderingFeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CommandBufferInheritanceRenderingInfoKHR {
-        static $gtype: GObject.GType<CommandBufferInheritanceRenderingInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class RenderingFragmentShadingRateAttachmentInfoKHR {
-        static $gtype: GObject.GType<RenderingFragmentShadingRateAttachmentInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class RenderingFragmentDensityMapAttachmentInfoEXT {
-        static $gtype: GObject.GType<RenderingFragmentDensityMapAttachmentInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AttachmentSampleCountInfoAMD {
-        static $gtype: GObject.GType<AttachmentSampleCountInfoAMD>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AttachmentSampleCountInfoNV {
-        static $gtype: GObject.GType<AttachmentSampleCountInfoNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class MultiviewPerViewAttributesInfoNVX {
-        static $gtype: GObject.GType<MultiviewPerViewAttributesInfoNVX>;
     }
 
     /**
@@ -5018,13 +3247,6 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class PhysicalDeviceShaderFloat16Int8FeaturesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceShaderFloat16Int8FeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
     class PhysicalDeviceFloat16Int8FeaturesKHR {
         static $gtype: GObject.GType<PhysicalDeviceFloat16Int8FeaturesKHR>;
     }
@@ -5095,41 +3317,6 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class PhysicalDeviceImagelessFramebufferFeaturesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceImagelessFramebufferFeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class FramebufferAttachmentsCreateInfoKHR {
-        static $gtype: GObject.GType<FramebufferAttachmentsCreateInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class FramebufferAttachmentImageInfoKHR {
-        static $gtype: GObject.GType<FramebufferAttachmentImageInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class RenderPassAttachmentBeginInfoKHR {
-        static $gtype: GObject.GType<RenderPassAttachmentBeginInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class RenderPassCreateInfo2KHR {
-        static $gtype: GObject.GType<RenderPassCreateInfo2KHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
     class AttachmentDescription2KHR {
         static $gtype: GObject.GType<AttachmentDescription2KHR>;
     }
@@ -5153,6 +3340,13 @@ export namespace Vulkan {
      */
     class SubpassDependency2KHR {
         static $gtype: GObject.GType<SubpassDependency2KHR>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class RenderPassCreateInfo2KHR {
+        static $gtype: GObject.GType<RenderPassCreateInfo2KHR>;
     }
 
     /**
@@ -5251,111 +3445,6 @@ export namespace Vulkan {
      */
     class FenceGetFdInfoKHR {
         static $gtype: GObject.GType<FenceGetFdInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PerformanceCounterUnitKHR {
-        static $gtype: GObject.GType<PerformanceCounterUnitKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PerformanceCounterScopeKHR {
-        static $gtype: GObject.GType<PerformanceCounterScopeKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PerformanceCounterStorageKHR {
-        static $gtype: GObject.GType<PerformanceCounterStorageKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PerformanceCounterDescriptionFlagBitsKHR {
-        static $gtype: GObject.GType<PerformanceCounterDescriptionFlagBitsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PerformanceCounterDescriptionFlagsKHR {
-        static $gtype: GObject.GType<PerformanceCounterDescriptionFlagsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AcquireProfilingLockFlagBitsKHR {
-        static $gtype: GObject.GType<AcquireProfilingLockFlagBitsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AcquireProfilingLockFlagsKHR {
-        static $gtype: GObject.GType<AcquireProfilingLockFlagsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDevicePerformanceQueryFeaturesKHR {
-        static $gtype: GObject.GType<PhysicalDevicePerformanceQueryFeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDevicePerformanceQueryPropertiesKHR {
-        static $gtype: GObject.GType<PhysicalDevicePerformanceQueryPropertiesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PerformanceCounterKHR {
-        static $gtype: GObject.GType<PerformanceCounterKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PerformanceCounterDescriptionKHR {
-        static $gtype: GObject.GType<PerformanceCounterDescriptionKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class QueryPoolPerformanceCreateInfoKHR {
-        static $gtype: GObject.GType<QueryPoolPerformanceCreateInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PerformanceCounterResultKHR {
-        static $gtype: GObject.GType<PerformanceCounterResultKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AcquireProfilingLockInfoKHR {
-        static $gtype: GObject.GType<AcquireProfilingLockInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PerformanceQuerySubmitInfoKHR {
-        static $gtype: GObject.GType<PerformanceQuerySubmitInfoKHR>;
     }
 
     /**
@@ -5515,13 +3604,6 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class MemoryRequirements2KHR {
-        static $gtype: GObject.GType<MemoryRequirements2KHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
     class SparseImageMemoryRequirements2KHR {
         static $gtype: GObject.GType<SparseImageMemoryRequirements2KHR>;
     }
@@ -5634,13 +3716,6 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class PhysicalDeviceShaderSubgroupExtendedTypesFeaturesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceShaderSubgroupExtendedTypesFeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
     class PhysicalDevice8BitStorageFeaturesKHR {
         static $gtype: GObject.GType<PhysicalDevice8BitStorageFeaturesKHR>;
     }
@@ -5650,83 +3725,6 @@ export namespace Vulkan {
      */
     class PhysicalDeviceShaderAtomicInt64FeaturesKHR {
         static $gtype: GObject.GType<PhysicalDeviceShaderAtomicInt64FeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceShaderClockFeaturesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceShaderClockFeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoDecodeH265ProfileInfoKHR {
-        static $gtype: GObject.GType<VideoDecodeH265ProfileInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoDecodeH265CapabilitiesKHR {
-        static $gtype: GObject.GType<VideoDecodeH265CapabilitiesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoDecodeH265SessionParametersAddInfoKHR {
-        static $gtype: GObject.GType<VideoDecodeH265SessionParametersAddInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoDecodeH265SessionParametersCreateInfoKHR {
-        static $gtype: GObject.GType<VideoDecodeH265SessionParametersCreateInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoDecodeH265PictureInfoKHR {
-        static $gtype: GObject.GType<VideoDecodeH265PictureInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoDecodeH265DpbSlotInfoKHR {
-        static $gtype: GObject.GType<VideoDecodeH265DpbSlotInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class QueueGlobalPriorityKHR {
-        static $gtype: GObject.GType<QueueGlobalPriorityKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DeviceQueueGlobalPriorityCreateInfoKHR {
-        static $gtype: GObject.GType<DeviceQueueGlobalPriorityCreateInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceGlobalPriorityQueryFeaturesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceGlobalPriorityQueryFeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class QueueFamilyGlobalPriorityPropertiesKHR {
-        static $gtype: GObject.GType<QueueFamilyGlobalPriorityPropertiesKHR>;
     }
 
     /**
@@ -5748,13 +3746,6 @@ export namespace Vulkan {
      */
     class PhysicalDeviceDriverPropertiesKHR {
         static $gtype: GObject.GType<PhysicalDeviceDriverPropertiesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ShaderFloatControlsIndependenceKHR {
-        static $gtype: GObject.GType<ShaderFloatControlsIndependenceKHR>;
     }
 
     /**
@@ -5795,148 +3786,8 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class SemaphoreTypeKHR {
-        static $gtype: GObject.GType<SemaphoreTypeKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SemaphoreWaitFlagBitsKHR {
-        static $gtype: GObject.GType<SemaphoreWaitFlagBitsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SemaphoreWaitFlagsKHR {
-        static $gtype: GObject.GType<SemaphoreWaitFlagsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceTimelineSemaphoreFeaturesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceTimelineSemaphoreFeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceTimelineSemaphorePropertiesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceTimelineSemaphorePropertiesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SemaphoreTypeCreateInfoKHR {
-        static $gtype: GObject.GType<SemaphoreTypeCreateInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class TimelineSemaphoreSubmitInfoKHR {
-        static $gtype: GObject.GType<TimelineSemaphoreSubmitInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SemaphoreWaitInfoKHR {
-        static $gtype: GObject.GType<SemaphoreWaitInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SemaphoreSignalInfoKHR {
-        static $gtype: GObject.GType<SemaphoreSignalInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
     class PhysicalDeviceVulkanMemoryModelFeaturesKHR {
         static $gtype: GObject.GType<PhysicalDeviceVulkanMemoryModelFeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceShaderTerminateInvocationFeaturesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceShaderTerminateInvocationFeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class FragmentShadingRateCombinerOpKHR {
-        static $gtype: GObject.GType<FragmentShadingRateCombinerOpKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class FragmentShadingRateAttachmentInfoKHR {
-        static $gtype: GObject.GType<FragmentShadingRateAttachmentInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineFragmentShadingRateStateCreateInfoKHR {
-        static $gtype: GObject.GType<PipelineFragmentShadingRateStateCreateInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceFragmentShadingRateFeaturesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceFragmentShadingRateFeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceFragmentShadingRatePropertiesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceFragmentShadingRatePropertiesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceFragmentShadingRateKHR {
-        static $gtype: GObject.GType<PhysicalDeviceFragmentShadingRateKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceDynamicRenderingLocalReadFeaturesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceDynamicRenderingLocalReadFeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class RenderingAttachmentLocationInfoKHR {
-        static $gtype: GObject.GType<RenderingAttachmentLocationInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class RenderingInputAttachmentIndexInfoKHR {
-        static $gtype: GObject.GType<RenderingInputAttachmentIndexInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceShaderQuadControlFeaturesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceShaderQuadControlFeaturesKHR>;
     }
 
     /**
@@ -5949,1002 +3800,8 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class PhysicalDeviceSeparateDepthStencilLayoutsFeaturesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceSeparateDepthStencilLayoutsFeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AttachmentReferenceStencilLayoutKHR {
-        static $gtype: GObject.GType<AttachmentReferenceStencilLayoutKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AttachmentDescriptionStencilLayoutKHR {
-        static $gtype: GObject.GType<AttachmentDescriptionStencilLayoutKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDevicePresentWaitFeaturesKHR {
-        static $gtype: GObject.GType<PhysicalDevicePresentWaitFeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
     class PhysicalDeviceUniformBufferStandardLayoutFeaturesKHR {
         static $gtype: GObject.GType<PhysicalDeviceUniformBufferStandardLayoutFeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceBufferDeviceAddressFeaturesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceBufferDeviceAddressFeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class BufferDeviceAddressInfoKHR {
-        static $gtype: GObject.GType<BufferDeviceAddressInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class BufferOpaqueCaptureAddressCreateInfoKHR {
-        static $gtype: GObject.GType<BufferOpaqueCaptureAddressCreateInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class MemoryOpaqueCaptureAddressAllocateInfoKHR {
-        static $gtype: GObject.GType<MemoryOpaqueCaptureAddressAllocateInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DeviceMemoryOpaqueCaptureAddressInfoKHR {
-        static $gtype: GObject.GType<DeviceMemoryOpaqueCaptureAddressInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DeferredOperationKHR {
-        static $gtype: GObject.GType<DeferredOperationKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineExecutableStatisticFormatKHR {
-        static $gtype: GObject.GType<PipelineExecutableStatisticFormatKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDevicePipelineExecutablePropertiesFeaturesKHR {
-        static $gtype: GObject.GType<PhysicalDevicePipelineExecutablePropertiesFeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineInfoKHR {
-        static $gtype: GObject.GType<PipelineInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineExecutablePropertiesKHR {
-        static $gtype: GObject.GType<PipelineExecutablePropertiesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineExecutableInfoKHR {
-        static $gtype: GObject.GType<PipelineExecutableInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineExecutableStatisticValueKHR {
-        static $gtype: GObject.GType<PipelineExecutableStatisticValueKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineExecutableStatisticKHR {
-        static $gtype: GObject.GType<PipelineExecutableStatisticKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineExecutableInternalRepresentationKHR {
-        static $gtype: GObject.GType<PipelineExecutableInternalRepresentationKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class MemoryUnmapFlagBitsKHR {
-        static $gtype: GObject.GType<MemoryUnmapFlagBitsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class MemoryUnmapFlagsKHR {
-        static $gtype: GObject.GType<MemoryUnmapFlagsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class MemoryMapInfoKHR {
-        static $gtype: GObject.GType<MemoryMapInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class MemoryUnmapInfoKHR {
-        static $gtype: GObject.GType<MemoryUnmapInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceShaderIntegerDotProductFeaturesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceShaderIntegerDotProductFeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceShaderIntegerDotProductPropertiesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceShaderIntegerDotProductPropertiesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineLibraryCreateInfoKHR {
-        static $gtype: GObject.GType<PipelineLibraryCreateInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PresentIdKHR {
-        static $gtype: GObject.GType<PresentIdKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDevicePresentIdFeaturesKHR {
-        static $gtype: GObject.GType<PhysicalDevicePresentIdFeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeTuningModeKHR {
-        static $gtype: GObject.GType<VideoEncodeTuningModeKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeFlagBitsKHR {
-        static $gtype: GObject.GType<VideoEncodeFlagBitsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeFlagsKHR {
-        static $gtype: GObject.GType<VideoEncodeFlagsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeCapabilityFlagBitsKHR {
-        static $gtype: GObject.GType<VideoEncodeCapabilityFlagBitsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeCapabilityFlagsKHR {
-        static $gtype: GObject.GType<VideoEncodeCapabilityFlagsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeRateControlModeFlagBitsKHR {
-        static $gtype: GObject.GType<VideoEncodeRateControlModeFlagBitsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeRateControlModeFlagsKHR {
-        static $gtype: GObject.GType<VideoEncodeRateControlModeFlagsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeFeedbackFlagBitsKHR {
-        static $gtype: GObject.GType<VideoEncodeFeedbackFlagBitsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeFeedbackFlagsKHR {
-        static $gtype: GObject.GType<VideoEncodeFeedbackFlagsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeUsageFlagBitsKHR {
-        static $gtype: GObject.GType<VideoEncodeUsageFlagBitsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeUsageFlagsKHR {
-        static $gtype: GObject.GType<VideoEncodeUsageFlagsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeContentFlagBitsKHR {
-        static $gtype: GObject.GType<VideoEncodeContentFlagBitsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeContentFlagsKHR {
-        static $gtype: GObject.GType<VideoEncodeContentFlagsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeRateControlFlagsKHR {
-        static $gtype: GObject.GType<VideoEncodeRateControlFlagsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeInfoKHR {
-        static $gtype: GObject.GType<VideoEncodeInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeCapabilitiesKHR {
-        static $gtype: GObject.GType<VideoEncodeCapabilitiesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class QueryPoolVideoEncodeFeedbackCreateInfoKHR {
-        static $gtype: GObject.GType<QueryPoolVideoEncodeFeedbackCreateInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeUsageInfoKHR {
-        static $gtype: GObject.GType<VideoEncodeUsageInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeRateControlLayerInfoKHR {
-        static $gtype: GObject.GType<VideoEncodeRateControlLayerInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeRateControlInfoKHR {
-        static $gtype: GObject.GType<VideoEncodeRateControlInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceVideoEncodeQualityLevelInfoKHR {
-        static $gtype: GObject.GType<PhysicalDeviceVideoEncodeQualityLevelInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeQualityLevelPropertiesKHR {
-        static $gtype: GObject.GType<VideoEncodeQualityLevelPropertiesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeQualityLevelInfoKHR {
-        static $gtype: GObject.GType<VideoEncodeQualityLevelInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeSessionParametersGetInfoKHR {
-        static $gtype: GObject.GType<VideoEncodeSessionParametersGetInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoEncodeSessionParametersFeedbackInfoKHR {
-        static $gtype: GObject.GType<VideoEncodeSessionParametersFeedbackInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineStageFlags2KHR {
-        static $gtype: GObject.GType<PipelineStageFlags2KHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineStageFlagBits2KHR {
-        static $gtype: GObject.GType<PipelineStageFlagBits2KHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AccessFlags2KHR {
-        static $gtype: GObject.GType<AccessFlags2KHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AccessFlagBits2KHR {
-        static $gtype: GObject.GType<AccessFlagBits2KHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SubmitFlagBitsKHR {
-        static $gtype: GObject.GType<SubmitFlagBitsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SubmitFlagsKHR {
-        static $gtype: GObject.GType<SubmitFlagsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class MemoryBarrier2KHR {
-        static $gtype: GObject.GType<MemoryBarrier2KHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class BufferMemoryBarrier2KHR {
-        static $gtype: GObject.GType<BufferMemoryBarrier2KHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ImageMemoryBarrier2KHR {
-        static $gtype: GObject.GType<ImageMemoryBarrier2KHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DependencyInfoKHR {
-        static $gtype: GObject.GType<DependencyInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SubmitInfo2KHR {
-        static $gtype: GObject.GType<SubmitInfo2KHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SemaphoreSubmitInfoKHR {
-        static $gtype: GObject.GType<SemaphoreSubmitInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CommandBufferSubmitInfoKHR {
-        static $gtype: GObject.GType<CommandBufferSubmitInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceSynchronization2FeaturesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceSynchronization2FeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class QueueFamilyCheckpointProperties2NV {
-        static $gtype: GObject.GType<QueueFamilyCheckpointProperties2NV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CheckpointData2NV {
-        static $gtype: GObject.GType<CheckpointData2NV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceFragmentShaderBarycentricFeaturesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceFragmentShaderBarycentricFeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceFragmentShaderBarycentricPropertiesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceFragmentShaderBarycentricPropertiesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceZeroInitializeWorkgroupMemoryFeaturesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceZeroInitializeWorkgroupMemoryFeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CopyBufferInfo2KHR {
-        static $gtype: GObject.GType<CopyBufferInfo2KHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CopyImageInfo2KHR {
-        static $gtype: GObject.GType<CopyImageInfo2KHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CopyBufferToImageInfo2KHR {
-        static $gtype: GObject.GType<CopyBufferToImageInfo2KHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CopyImageToBufferInfo2KHR {
-        static $gtype: GObject.GType<CopyImageToBufferInfo2KHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class BlitImageInfo2KHR {
-        static $gtype: GObject.GType<BlitImageInfo2KHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ResolveImageInfo2KHR {
-        static $gtype: GObject.GType<ResolveImageInfo2KHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class BufferCopy2KHR {
-        static $gtype: GObject.GType<BufferCopy2KHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ImageCopy2KHR {
-        static $gtype: GObject.GType<ImageCopy2KHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ImageBlit2KHR {
-        static $gtype: GObject.GType<ImageBlit2KHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class BufferImageCopy2KHR {
-        static $gtype: GObject.GType<BufferImageCopy2KHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ImageResolve2KHR {
-        static $gtype: GObject.GType<ImageResolve2KHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class FormatFeatureFlags2KHR {
-        static $gtype: GObject.GType<FormatFeatureFlags2KHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class FormatFeatureFlagBits2KHR {
-        static $gtype: GObject.GType<FormatFeatureFlagBits2KHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class FormatProperties3KHR {
-        static $gtype: GObject.GType<FormatProperties3KHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceRayTracingMaintenance1FeaturesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceRayTracingMaintenance1FeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class TraceRaysIndirectCommand2KHR {
-        static $gtype: GObject.GType<TraceRaysIndirectCommand2KHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceMaintenance4FeaturesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceMaintenance4FeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceMaintenance4PropertiesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceMaintenance4PropertiesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DeviceBufferMemoryRequirementsKHR {
-        static $gtype: GObject.GType<DeviceBufferMemoryRequirementsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DeviceImageMemoryRequirementsKHR {
-        static $gtype: GObject.GType<DeviceImageMemoryRequirementsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceShaderSubgroupRotateFeaturesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceShaderSubgroupRotateFeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceShaderMaximalReconvergenceFeaturesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceShaderMaximalReconvergenceFeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineCreateFlags2KHR {
-        static $gtype: GObject.GType<PipelineCreateFlags2KHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineCreateFlagBits2KHR {
-        static $gtype: GObject.GType<PipelineCreateFlagBits2KHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class BufferUsageFlags2KHR {
-        static $gtype: GObject.GType<BufferUsageFlags2KHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class BufferUsageFlagBits2KHR {
-        static $gtype: GObject.GType<BufferUsageFlagBits2KHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceMaintenance5FeaturesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceMaintenance5FeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceMaintenance5PropertiesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceMaintenance5PropertiesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class RenderingAreaInfoKHR {
-        static $gtype: GObject.GType<RenderingAreaInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ImageSubresource2KHR {
-        static $gtype: GObject.GType<ImageSubresource2KHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DeviceImageSubresourceInfoKHR {
-        static $gtype: GObject.GType<DeviceImageSubresourceInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SubresourceLayout2KHR {
-        static $gtype: GObject.GType<SubresourceLayout2KHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineCreateFlags2CreateInfoKHR {
-        static $gtype: GObject.GType<PipelineCreateFlags2CreateInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class BufferUsageFlags2CreateInfoKHR {
-        static $gtype: GObject.GType<BufferUsageFlags2CreateInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceRayTracingPositionFetchFeaturesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceRayTracingPositionFetchFeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ComponentTypeKHR {
-        static $gtype: GObject.GType<ComponentTypeKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ScopeKHR {
-        static $gtype: GObject.GType<ScopeKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CooperativeMatrixPropertiesKHR {
-        static $gtype: GObject.GType<CooperativeMatrixPropertiesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceCooperativeMatrixFeaturesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceCooperativeMatrixFeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceCooperativeMatrixPropertiesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceCooperativeMatrixPropertiesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoDecodeAV1ProfileInfoKHR {
-        static $gtype: GObject.GType<VideoDecodeAV1ProfileInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoDecodeAV1CapabilitiesKHR {
-        static $gtype: GObject.GType<VideoDecodeAV1CapabilitiesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoDecodeAV1SessionParametersCreateInfoKHR {
-        static $gtype: GObject.GType<VideoDecodeAV1SessionParametersCreateInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoDecodeAV1PictureInfoKHR {
-        static $gtype: GObject.GType<VideoDecodeAV1PictureInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoDecodeAV1DpbSlotInfoKHR {
-        static $gtype: GObject.GType<VideoDecodeAV1DpbSlotInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceVideoMaintenance1FeaturesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceVideoMaintenance1FeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VideoInlineQueryInfoKHR {
-        static $gtype: GObject.GType<VideoInlineQueryInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceVertexAttributeDivisorPropertiesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceVertexAttributeDivisorPropertiesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VertexInputBindingDivisorDescriptionKHR {
-        static $gtype: GObject.GType<VertexInputBindingDivisorDescriptionKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineVertexInputDivisorStateCreateInfoKHR {
-        static $gtype: GObject.GType<PipelineVertexInputDivisorStateCreateInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceVertexAttributeDivisorFeaturesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceVertexAttributeDivisorFeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceShaderFloatControls2FeaturesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceShaderFloatControls2FeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceIndexTypeUint8FeaturesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceIndexTypeUint8FeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class LineRasterizationModeKHR {
-        static $gtype: GObject.GType<LineRasterizationModeKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceLineRasterizationFeaturesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceLineRasterizationFeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceLineRasterizationPropertiesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceLineRasterizationPropertiesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineRasterizationLineStateCreateInfoKHR {
-        static $gtype: GObject.GType<PipelineRasterizationLineStateCreateInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class TimeDomainKHR {
-        static $gtype: GObject.GType<TimeDomainKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CalibratedTimestampInfoKHR {
-        static $gtype: GObject.GType<CalibratedTimestampInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceShaderExpectAssumeFeaturesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceShaderExpectAssumeFeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceMaintenance6FeaturesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceMaintenance6FeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceMaintenance6PropertiesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceMaintenance6PropertiesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class BindMemoryStatusKHR {
-        static $gtype: GObject.GType<BindMemoryStatusKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class BindDescriptorSetsInfoKHR {
-        static $gtype: GObject.GType<BindDescriptorSetsInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PushConstantsInfoKHR {
-        static $gtype: GObject.GType<PushConstantsInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PushDescriptorSetInfoKHR {
-        static $gtype: GObject.GType<PushDescriptorSetInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PushDescriptorSetWithTemplateInfoKHR {
-        static $gtype: GObject.GType<PushDescriptorSetWithTemplateInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SetDescriptorBufferOffsetsInfoEXT {
-        static $gtype: GObject.GType<SetDescriptorBufferOffsetsInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class BindDescriptorBufferEmbeddedSamplersInfoEXT {
-        static $gtype: GObject.GType<BindDescriptorBufferEmbeddedSamplersInfoEXT>;
     }
 
     /**
@@ -7069,50 +3926,8 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class CuModuleNVX {
-        static $gtype: GObject.GType<CuModuleNVX>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CuFunctionNVX {
-        static $gtype: GObject.GType<CuFunctionNVX>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CuModuleCreateInfoNVX {
-        static $gtype: GObject.GType<CuModuleCreateInfoNVX>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CuFunctionCreateInfoNVX {
-        static $gtype: GObject.GType<CuFunctionCreateInfoNVX>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CuLaunchInfoNVX {
-        static $gtype: GObject.GType<CuLaunchInfoNVX>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
     class ImageViewHandleInfoNVX {
         static $gtype: GObject.GType<ImageViewHandleInfoNVX>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ImageViewAddressPropertiesNVX {
-        static $gtype: GObject.GType<ImageViewAddressPropertiesNVX>;
     }
 
     /**
@@ -7216,13 +4031,6 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class PhysicalDeviceTextureCompressionASTCHDRFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceTextureCompressionASTCHDRFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
     class ImageViewASTCDecodeModeEXT {
         static $gtype: GObject.GType<ImageViewASTCDecodeModeEXT>;
     }
@@ -7232,41 +4040,6 @@ export namespace Vulkan {
      */
     class PhysicalDeviceASTCDecodeFeaturesEXT {
         static $gtype: GObject.GType<PhysicalDeviceASTCDecodeFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineRobustnessBufferBehaviorEXT {
-        static $gtype: GObject.GType<PipelineRobustnessBufferBehaviorEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineRobustnessImageBehaviorEXT {
-        static $gtype: GObject.GType<PipelineRobustnessImageBehaviorEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDevicePipelineRobustnessFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDevicePipelineRobustnessFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDevicePipelineRobustnessPropertiesEXT {
-        static $gtype: GObject.GType<PhysicalDevicePipelineRobustnessPropertiesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineRobustnessCreateInfoEXT {
-        static $gtype: GObject.GType<PipelineRobustnessCreateInfoEXT>;
     }
 
     /**
@@ -7302,6 +4075,160 @@ export namespace Vulkan {
      */
     class CommandBufferInheritanceConditionalRenderingInfoEXT {
         static $gtype: GObject.GType<CommandBufferInheritanceConditionalRenderingInfoEXT>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class ObjectTableNVX {
+        static $gtype: GObject.GType<ObjectTableNVX>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class IndirectCommandsLayoutNVX {
+        static $gtype: GObject.GType<IndirectCommandsLayoutNVX>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class IndirectCommandsTokenTypeNVX {
+        static $gtype: GObject.GType<IndirectCommandsTokenTypeNVX>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class ObjectEntryTypeNVX {
+        static $gtype: GObject.GType<ObjectEntryTypeNVX>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class IndirectCommandsLayoutUsageFlagBitsNVX {
+        static $gtype: GObject.GType<IndirectCommandsLayoutUsageFlagBitsNVX>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class IndirectCommandsLayoutUsageFlagsNVX {
+        static $gtype: GObject.GType<IndirectCommandsLayoutUsageFlagsNVX>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class ObjectEntryUsageFlagBitsNVX {
+        static $gtype: GObject.GType<ObjectEntryUsageFlagBitsNVX>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class ObjectEntryUsageFlagsNVX {
+        static $gtype: GObject.GType<ObjectEntryUsageFlagsNVX>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class DeviceGeneratedCommandsFeaturesNVX {
+        static $gtype: GObject.GType<DeviceGeneratedCommandsFeaturesNVX>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class DeviceGeneratedCommandsLimitsNVX {
+        static $gtype: GObject.GType<DeviceGeneratedCommandsLimitsNVX>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class IndirectCommandsTokenNVX {
+        static $gtype: GObject.GType<IndirectCommandsTokenNVX>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class IndirectCommandsLayoutTokenNVX {
+        static $gtype: GObject.GType<IndirectCommandsLayoutTokenNVX>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class IndirectCommandsLayoutCreateInfoNVX {
+        static $gtype: GObject.GType<IndirectCommandsLayoutCreateInfoNVX>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class CmdProcessCommandsInfoNVX {
+        static $gtype: GObject.GType<CmdProcessCommandsInfoNVX>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class CmdReserveSpaceForCommandsInfoNVX {
+        static $gtype: GObject.GType<CmdReserveSpaceForCommandsInfoNVX>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class ObjectTableCreateInfoNVX {
+        static $gtype: GObject.GType<ObjectTableCreateInfoNVX>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class ObjectTableEntryNVX {
+        static $gtype: GObject.GType<ObjectTableEntryNVX>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class ObjectTablePipelineEntryNVX {
+        static $gtype: GObject.GType<ObjectTablePipelineEntryNVX>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class ObjectTableDescriptorSetEntryNVX {
+        static $gtype: GObject.GType<ObjectTableDescriptorSetEntryNVX>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class ObjectTableVertexBufferEntryNVX {
+        static $gtype: GObject.GType<ObjectTableVertexBufferEntryNVX>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class ObjectTableIndexBufferEntryNVX {
+        static $gtype: GObject.GType<ObjectTableIndexBufferEntryNVX>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class ObjectTablePushConstantEntryNVX {
+        static $gtype: GObject.GType<ObjectTablePushConstantEntryNVX>;
     }
 
     /**
@@ -7545,13 +4472,6 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class PhysicalDeviceRelaxedLineRasterizationFeaturesIMG {
-        static $gtype: GObject.GType<PhysicalDeviceRelaxedLineRasterizationFeaturesIMG>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
     class DebugUtilsMessengerEXT {
         static $gtype: GObject.GType<DebugUtilsMessengerEXT>;
     }
@@ -7566,8 +4486,22 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
+    class DebugUtilsMessengerCreateFlagsEXT {
+        static $gtype: GObject.GType<DebugUtilsMessengerCreateFlagsEXT>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
     class DebugUtilsMessageSeverityFlagBitsEXT {
         static $gtype: GObject.GType<DebugUtilsMessageSeverityFlagBitsEXT>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
+    class DebugUtilsMessageSeverityFlagsEXT {
+        static $gtype: GObject.GType<DebugUtilsMessageSeverityFlagsEXT>;
     }
 
     /**
@@ -7587,15 +4521,15 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class DebugUtilsMessageSeverityFlagsEXT {
-        static $gtype: GObject.GType<DebugUtilsMessageSeverityFlagsEXT>;
+    class DebugUtilsObjectNameInfoEXT {
+        static $gtype: GObject.GType<DebugUtilsObjectNameInfoEXT>;
     }
 
     /**
      * @gir-type Struct
      */
-    class DebugUtilsMessengerCreateFlagsEXT {
-        static $gtype: GObject.GType<DebugUtilsMessengerCreateFlagsEXT>;
+    class DebugUtilsObjectTagInfoEXT {
+        static $gtype: GObject.GType<DebugUtilsObjectTagInfoEXT>;
     }
 
     /**
@@ -7603,13 +4537,6 @@ export namespace Vulkan {
      */
     class DebugUtilsLabelEXT {
         static $gtype: GObject.GType<DebugUtilsLabelEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DebugUtilsObjectNameInfoEXT {
-        static $gtype: GObject.GType<DebugUtilsObjectNameInfoEXT>;
     }
 
     /**
@@ -7624,13 +4551,6 @@ export namespace Vulkan {
      */
     class DebugUtilsMessengerCreateInfoEXT {
         static $gtype: GObject.GType<DebugUtilsMessengerCreateInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DebugUtilsObjectTagInfoEXT {
-        static $gtype: GObject.GType<DebugUtilsObjectTagInfoEXT>;
     }
 
     /**
@@ -7804,20 +4724,6 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class PhysicalDeviceShaderSMBuiltinsPropertiesNV {
-        static $gtype: GObject.GType<PhysicalDeviceShaderSMBuiltinsPropertiesNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceShaderSMBuiltinsFeaturesNV {
-        static $gtype: GObject.GType<PhysicalDeviceShaderSMBuiltinsFeaturesNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
     class DrmFormatModifierPropertiesEXT {
         static $gtype: GObject.GType<DrmFormatModifierPropertiesEXT>;
     }
@@ -7855,20 +4761,6 @@ export namespace Vulkan {
      */
     class ImageDrmFormatModifierPropertiesEXT {
         static $gtype: GObject.GType<ImageDrmFormatModifierPropertiesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DrmFormatModifierProperties2EXT {
-        static $gtype: GObject.GType<DrmFormatModifierProperties2EXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DrmFormatModifierPropertiesList2EXT {
-        static $gtype: GObject.GType<DrmFormatModifierPropertiesList2EXT>;
     }
 
     /**
@@ -8028,22 +4920,8 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class RayTracingShaderGroupTypeKHR {
-        static $gtype: GObject.GType<RayTracingShaderGroupTypeKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
     class RayTracingShaderGroupTypeNV {
         static $gtype: GObject.GType<RayTracingShaderGroupTypeNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class GeometryTypeKHR {
-        static $gtype: GObject.GType<GeometryTypeKHR>;
     }
 
     /**
@@ -8056,22 +4934,8 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class AccelerationStructureTypeKHR {
-        static $gtype: GObject.GType<AccelerationStructureTypeKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
     class AccelerationStructureTypeNV {
         static $gtype: GObject.GType<AccelerationStructureTypeNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CopyAccelerationStructureModeKHR {
-        static $gtype: GObject.GType<CopyAccelerationStructureModeKHR>;
     }
 
     /**
@@ -8091,15 +4955,8 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class GeometryFlagBitsKHR {
-        static $gtype: GObject.GType<GeometryFlagBitsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class GeometryFlagsKHR {
-        static $gtype: GObject.GType<GeometryFlagsKHR>;
+    class GeometryFlagBitsNV {
+        static $gtype: GObject.GType<GeometryFlagBitsNV>;
     }
 
     /**
@@ -8112,22 +4969,8 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class GeometryFlagBitsNV {
-        static $gtype: GObject.GType<GeometryFlagBitsNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class GeometryInstanceFlagBitsKHR {
-        static $gtype: GObject.GType<GeometryInstanceFlagBitsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class GeometryInstanceFlagsKHR {
-        static $gtype: GObject.GType<GeometryInstanceFlagsKHR>;
+    class GeometryInstanceFlagBitsNV {
+        static $gtype: GObject.GType<GeometryInstanceFlagBitsNV>;
     }
 
     /**
@@ -8140,22 +4983,8 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class GeometryInstanceFlagBitsNV {
-        static $gtype: GObject.GType<GeometryInstanceFlagBitsNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class BuildAccelerationStructureFlagBitsKHR {
-        static $gtype: GObject.GType<BuildAccelerationStructureFlagBitsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class BuildAccelerationStructureFlagsKHR {
-        static $gtype: GObject.GType<BuildAccelerationStructureFlagsKHR>;
+    class BuildAccelerationStructureFlagBitsNV {
+        static $gtype: GObject.GType<BuildAccelerationStructureFlagBitsNV>;
     }
 
     /**
@@ -8163,13 +4992,6 @@ export namespace Vulkan {
      */
     class BuildAccelerationStructureFlagsNV {
         static $gtype: GObject.GType<BuildAccelerationStructureFlagsNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class BuildAccelerationStructureFlagBitsNV {
-        static $gtype: GObject.GType<BuildAccelerationStructureFlagBitsNV>;
     }
 
     /**
@@ -8259,48 +5081,6 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class TransformMatrixKHR {
-        static $gtype: GObject.GType<TransformMatrixKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class TransformMatrixNV {
-        static $gtype: GObject.GType<TransformMatrixNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AabbPositionsKHR {
-        static $gtype: GObject.GType<AabbPositionsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AabbPositionsNV {
-        static $gtype: GObject.GType<AabbPositionsNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AccelerationStructureInstanceKHR {
-        static $gtype: GObject.GType<AccelerationStructureInstanceKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AccelerationStructureInstanceNV {
-        static $gtype: GObject.GType<AccelerationStructureInstanceNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
     class PhysicalDeviceRepresentativeFragmentTestFeaturesNV {
         static $gtype: GObject.GType<PhysicalDeviceRepresentativeFragmentTestFeaturesNV>;
     }
@@ -8359,27 +5139,6 @@ export namespace Vulkan {
      */
     class PhysicalDeviceExternalMemoryHostPropertiesEXT {
         static $gtype: GObject.GType<PhysicalDeviceExternalMemoryHostPropertiesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineCompilerControlFlagBitsAMD {
-        static $gtype: GObject.GType<PipelineCompilerControlFlagBitsAMD>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineCompilerControlFlagsAMD {
-        static $gtype: GObject.GType<PipelineCompilerControlFlagsAMD>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineCompilerControlCreateInfoAMD {
-        static $gtype: GObject.GType<PipelineCompilerControlCreateInfoAMD>;
     }
 
     /**
@@ -8462,15 +5221,15 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class PipelineCreationFeedbackCreateInfoEXT {
-        static $gtype: GObject.GType<PipelineCreationFeedbackCreateInfoEXT>;
+    class PipelineCreationFeedbackEXT {
+        static $gtype: GObject.GType<PipelineCreationFeedbackEXT>;
     }
 
     /**
      * @gir-type Struct
      */
-    class PipelineCreationFeedbackEXT {
-        static $gtype: GObject.GType<PipelineCreationFeedbackEXT>;
+    class PipelineCreationFeedbackCreateInfoEXT {
+        static $gtype: GObject.GType<PipelineCreationFeedbackCreateInfoEXT>;
     }
 
     /**
@@ -8546,118 +5305,6 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class PhysicalDeviceShaderIntegerFunctions2FeaturesINTEL {
-        static $gtype: GObject.GType<PhysicalDeviceShaderIntegerFunctions2FeaturesINTEL>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PerformanceConfigurationINTEL {
-        static $gtype: GObject.GType<PerformanceConfigurationINTEL>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PerformanceConfigurationTypeINTEL {
-        static $gtype: GObject.GType<PerformanceConfigurationTypeINTEL>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class QueryPoolSamplingModeINTEL {
-        static $gtype: GObject.GType<QueryPoolSamplingModeINTEL>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PerformanceOverrideTypeINTEL {
-        static $gtype: GObject.GType<PerformanceOverrideTypeINTEL>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PerformanceParameterTypeINTEL {
-        static $gtype: GObject.GType<PerformanceParameterTypeINTEL>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PerformanceValueTypeINTEL {
-        static $gtype: GObject.GType<PerformanceValueTypeINTEL>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PerformanceValueDataINTEL {
-        static $gtype: GObject.GType<PerformanceValueDataINTEL>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PerformanceValueINTEL {
-        static $gtype: GObject.GType<PerformanceValueINTEL>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class InitializePerformanceApiInfoINTEL {
-        static $gtype: GObject.GType<InitializePerformanceApiInfoINTEL>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class QueryPoolPerformanceQueryCreateInfoINTEL {
-        static $gtype: GObject.GType<QueryPoolPerformanceQueryCreateInfoINTEL>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class QueryPoolCreateInfoINTEL {
-        static $gtype: GObject.GType<QueryPoolCreateInfoINTEL>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PerformanceMarkerInfoINTEL {
-        static $gtype: GObject.GType<PerformanceMarkerInfoINTEL>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PerformanceStreamMarkerInfoINTEL {
-        static $gtype: GObject.GType<PerformanceStreamMarkerInfoINTEL>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PerformanceOverrideInfoINTEL {
-        static $gtype: GObject.GType<PerformanceOverrideInfoINTEL>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PerformanceConfigurationAcquireInfoINTEL {
-        static $gtype: GObject.GType<PerformanceConfigurationAcquireInfoINTEL>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
     class PhysicalDevicePCIBusInfoPropertiesEXT {
         static $gtype: GObject.GType<PhysicalDevicePCIBusInfoPropertiesEXT>;
     }
@@ -8707,62 +5354,6 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class PhysicalDeviceSubgroupSizeControlFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceSubgroupSizeControlFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceSubgroupSizeControlPropertiesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceSubgroupSizeControlPropertiesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineShaderStageRequiredSubgroupSizeCreateInfoEXT {
-        static $gtype: GObject.GType<PipelineShaderStageRequiredSubgroupSizeCreateInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ShaderCorePropertiesFlagBitsAMD {
-        static $gtype: GObject.GType<ShaderCorePropertiesFlagBitsAMD>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ShaderCorePropertiesFlagsAMD {
-        static $gtype: GObject.GType<ShaderCorePropertiesFlagsAMD>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceShaderCoreProperties2AMD {
-        static $gtype: GObject.GType<PhysicalDeviceShaderCoreProperties2AMD>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceCoherentMemoryFeaturesAMD {
-        static $gtype: GObject.GType<PhysicalDeviceCoherentMemoryFeaturesAMD>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceShaderImageAtomicInt64FeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceShaderImageAtomicInt64FeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
     class PhysicalDeviceMemoryBudgetPropertiesEXT {
         static $gtype: GObject.GType<PhysicalDeviceMemoryBudgetPropertiesEXT>;
     }
@@ -8791,6 +5382,13 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
+    class DeviceAddress {
+        static $gtype: GObject.GType<DeviceAddress>;
+    }
+
+    /**
+     * @gir-type Struct
+     */
     class PhysicalDeviceBufferDeviceAddressFeaturesEXT {
         static $gtype: GObject.GType<PhysicalDeviceBufferDeviceAddressFeaturesEXT>;
     }
@@ -8814,27 +5412,6 @@ export namespace Vulkan {
      */
     class BufferDeviceAddressCreateInfoEXT {
         static $gtype: GObject.GType<BufferDeviceAddressCreateInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ToolPurposeFlagBitsEXT {
-        static $gtype: GObject.GType<ToolPurposeFlagBitsEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ToolPurposeFlagsEXT {
-        static $gtype: GObject.GType<ToolPurposeFlagsEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceToolPropertiesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceToolPropertiesEXT>;
     }
 
     /**
@@ -8938,43 +5515,8 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class PhysicalDeviceFragmentShaderInterlockFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceFragmentShaderInterlockFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
     class PhysicalDeviceYcbcrImageArraysFeaturesEXT {
         static $gtype: GObject.GType<PhysicalDeviceYcbcrImageArraysFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ProvokingVertexModeEXT {
-        static $gtype: GObject.GType<ProvokingVertexModeEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceProvokingVertexFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceProvokingVertexFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceProvokingVertexPropertiesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceProvokingVertexPropertiesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineRasterizationProvokingVertexStateCreateInfoEXT {
-        static $gtype: GObject.GType<PipelineRasterizationProvokingVertexStateCreateInfoEXT>;
     }
 
     /**
@@ -8994,2934 +5536,8 @@ export namespace Vulkan {
     /**
      * @gir-type Struct
      */
-    class LineRasterizationModeEXT {
-        static $gtype: GObject.GType<LineRasterizationModeEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceLineRasterizationFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceLineRasterizationFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceLineRasterizationPropertiesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceLineRasterizationPropertiesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineRasterizationLineStateCreateInfoEXT {
-        static $gtype: GObject.GType<PipelineRasterizationLineStateCreateInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceShaderAtomicFloatFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceShaderAtomicFloatFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
     class PhysicalDeviceHostQueryResetFeaturesEXT {
         static $gtype: GObject.GType<PhysicalDeviceHostQueryResetFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceIndexTypeUint8FeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceIndexTypeUint8FeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceExtendedDynamicStateFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceExtendedDynamicStateFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class HostImageCopyFlagBitsEXT {
-        static $gtype: GObject.GType<HostImageCopyFlagBitsEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class HostImageCopyFlagsEXT {
-        static $gtype: GObject.GType<HostImageCopyFlagsEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceHostImageCopyFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceHostImageCopyFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceHostImageCopyPropertiesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceHostImageCopyPropertiesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class MemoryToImageCopyEXT {
-        static $gtype: GObject.GType<MemoryToImageCopyEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ImageToMemoryCopyEXT {
-        static $gtype: GObject.GType<ImageToMemoryCopyEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CopyMemoryToImageInfoEXT {
-        static $gtype: GObject.GType<CopyMemoryToImageInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CopyImageToMemoryInfoEXT {
-        static $gtype: GObject.GType<CopyImageToMemoryInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CopyImageToImageInfoEXT {
-        static $gtype: GObject.GType<CopyImageToImageInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class HostImageLayoutTransitionInfoEXT {
-        static $gtype: GObject.GType<HostImageLayoutTransitionInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SubresourceHostMemcpySizeEXT {
-        static $gtype: GObject.GType<SubresourceHostMemcpySizeEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class HostImageCopyDevicePerformanceQueryEXT {
-        static $gtype: GObject.GType<HostImageCopyDevicePerformanceQueryEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SubresourceLayout2EXT {
-        static $gtype: GObject.GType<SubresourceLayout2EXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ImageSubresource2EXT {
-        static $gtype: GObject.GType<ImageSubresource2EXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceMapMemoryPlacedFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceMapMemoryPlacedFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceMapMemoryPlacedPropertiesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceMapMemoryPlacedPropertiesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class MemoryMapPlacedInfoEXT {
-        static $gtype: GObject.GType<MemoryMapPlacedInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceShaderAtomicFloat2FeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceShaderAtomicFloat2FeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PresentScalingFlagBitsEXT {
-        static $gtype: GObject.GType<PresentScalingFlagBitsEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PresentScalingFlagsEXT {
-        static $gtype: GObject.GType<PresentScalingFlagsEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PresentGravityFlagBitsEXT {
-        static $gtype: GObject.GType<PresentGravityFlagBitsEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PresentGravityFlagsEXT {
-        static $gtype: GObject.GType<PresentGravityFlagsEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SurfacePresentModeEXT {
-        static $gtype: GObject.GType<SurfacePresentModeEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SurfacePresentScalingCapabilitiesEXT {
-        static $gtype: GObject.GType<SurfacePresentScalingCapabilitiesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SurfacePresentModeCompatibilityEXT {
-        static $gtype: GObject.GType<SurfacePresentModeCompatibilityEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceSwapchainMaintenance1FeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceSwapchainMaintenance1FeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SwapchainPresentFenceInfoEXT {
-        static $gtype: GObject.GType<SwapchainPresentFenceInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SwapchainPresentModesCreateInfoEXT {
-        static $gtype: GObject.GType<SwapchainPresentModesCreateInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SwapchainPresentModeInfoEXT {
-        static $gtype: GObject.GType<SwapchainPresentModeInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SwapchainPresentScalingCreateInfoEXT {
-        static $gtype: GObject.GType<SwapchainPresentScalingCreateInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ReleaseSwapchainImagesInfoEXT {
-        static $gtype: GObject.GType<ReleaseSwapchainImagesInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceShaderDemoteToHelperInvocationFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceShaderDemoteToHelperInvocationFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class IndirectCommandsLayoutNV {
-        static $gtype: GObject.GType<IndirectCommandsLayoutNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class IndirectCommandsTokenTypeNV {
-        static $gtype: GObject.GType<IndirectCommandsTokenTypeNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class IndirectStateFlagBitsNV {
-        static $gtype: GObject.GType<IndirectStateFlagBitsNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class IndirectStateFlagsNV {
-        static $gtype: GObject.GType<IndirectStateFlagsNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class IndirectCommandsLayoutUsageFlagBitsNV {
-        static $gtype: GObject.GType<IndirectCommandsLayoutUsageFlagBitsNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class IndirectCommandsLayoutUsageFlagsNV {
-        static $gtype: GObject.GType<IndirectCommandsLayoutUsageFlagsNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceDeviceGeneratedCommandsPropertiesNV {
-        static $gtype: GObject.GType<PhysicalDeviceDeviceGeneratedCommandsPropertiesNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceDeviceGeneratedCommandsFeaturesNV {
-        static $gtype: GObject.GType<PhysicalDeviceDeviceGeneratedCommandsFeaturesNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class GraphicsShaderGroupCreateInfoNV {
-        static $gtype: GObject.GType<GraphicsShaderGroupCreateInfoNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class GraphicsPipelineShaderGroupsCreateInfoNV {
-        static $gtype: GObject.GType<GraphicsPipelineShaderGroupsCreateInfoNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class BindShaderGroupIndirectCommandNV {
-        static $gtype: GObject.GType<BindShaderGroupIndirectCommandNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class BindIndexBufferIndirectCommandNV {
-        static $gtype: GObject.GType<BindIndexBufferIndirectCommandNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class BindVertexBufferIndirectCommandNV {
-        static $gtype: GObject.GType<BindVertexBufferIndirectCommandNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SetStateFlagsIndirectCommandNV {
-        static $gtype: GObject.GType<SetStateFlagsIndirectCommandNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class IndirectCommandsStreamNV {
-        static $gtype: GObject.GType<IndirectCommandsStreamNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class IndirectCommandsLayoutTokenNV {
-        static $gtype: GObject.GType<IndirectCommandsLayoutTokenNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class IndirectCommandsLayoutCreateInfoNV {
-        static $gtype: GObject.GType<IndirectCommandsLayoutCreateInfoNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class GeneratedCommandsInfoNV {
-        static $gtype: GObject.GType<GeneratedCommandsInfoNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class GeneratedCommandsMemoryRequirementsInfoNV {
-        static $gtype: GObject.GType<GeneratedCommandsMemoryRequirementsInfoNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceInheritedViewportScissorFeaturesNV {
-        static $gtype: GObject.GType<PhysicalDeviceInheritedViewportScissorFeaturesNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CommandBufferInheritanceViewportScissorInfoNV {
-        static $gtype: GObject.GType<CommandBufferInheritanceViewportScissorInfoNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceTexelBufferAlignmentFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceTexelBufferAlignmentFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceTexelBufferAlignmentPropertiesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceTexelBufferAlignmentPropertiesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class RenderPassTransformBeginInfoQCOM {
-        static $gtype: GObject.GType<RenderPassTransformBeginInfoQCOM>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CommandBufferInheritanceRenderPassTransformInfoQCOM {
-        static $gtype: GObject.GType<CommandBufferInheritanceRenderPassTransformInfoQCOM>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DepthBiasRepresentationEXT {
-        static $gtype: GObject.GType<DepthBiasRepresentationEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceDepthBiasControlFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceDepthBiasControlFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DepthBiasInfoEXT {
-        static $gtype: GObject.GType<DepthBiasInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DepthBiasRepresentationInfoEXT {
-        static $gtype: GObject.GType<DepthBiasRepresentationInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DeviceMemoryReportEventTypeEXT {
-        static $gtype: GObject.GType<DeviceMemoryReportEventTypeEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DeviceMemoryReportFlagsEXT {
-        static $gtype: GObject.GType<DeviceMemoryReportFlagsEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceDeviceMemoryReportFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceDeviceMemoryReportFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DeviceMemoryReportCallbackDataEXT {
-        static $gtype: GObject.GType<DeviceMemoryReportCallbackDataEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DeviceDeviceMemoryReportCreateInfoEXT {
-        static $gtype: GObject.GType<DeviceDeviceMemoryReportCreateInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceRobustness2FeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceRobustness2FeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceRobustness2PropertiesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceRobustness2PropertiesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SamplerCustomBorderColorCreateInfoEXT {
-        static $gtype: GObject.GType<SamplerCustomBorderColorCreateInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceCustomBorderColorPropertiesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceCustomBorderColorPropertiesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceCustomBorderColorFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceCustomBorderColorFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDevicePresentBarrierFeaturesNV {
-        static $gtype: GObject.GType<PhysicalDevicePresentBarrierFeaturesNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SurfaceCapabilitiesPresentBarrierNV {
-        static $gtype: GObject.GType<SurfaceCapabilitiesPresentBarrierNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SwapchainPresentBarrierCreateInfoNV {
-        static $gtype: GObject.GType<SwapchainPresentBarrierCreateInfoNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PrivateDataSlotEXT {
-        static $gtype: GObject.GType<PrivateDataSlotEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PrivateDataSlotCreateFlagsEXT {
-        static $gtype: GObject.GType<PrivateDataSlotCreateFlagsEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDevicePrivateDataFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDevicePrivateDataFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DevicePrivateDataCreateInfoEXT {
-        static $gtype: GObject.GType<DevicePrivateDataCreateInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PrivateDataSlotCreateInfoEXT {
-        static $gtype: GObject.GType<PrivateDataSlotCreateInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDevicePipelineCreationCacheControlFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDevicePipelineCreationCacheControlFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DeviceDiagnosticsConfigFlagBitsNV {
-        static $gtype: GObject.GType<DeviceDiagnosticsConfigFlagBitsNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DeviceDiagnosticsConfigFlagsNV {
-        static $gtype: GObject.GType<DeviceDiagnosticsConfigFlagsNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceDiagnosticsConfigFeaturesNV {
-        static $gtype: GObject.GType<PhysicalDeviceDiagnosticsConfigFeaturesNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DeviceDiagnosticsConfigCreateInfoNV {
-        static $gtype: GObject.GType<DeviceDiagnosticsConfigCreateInfoNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CudaModuleNV {
-        static $gtype: GObject.GType<CudaModuleNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CudaFunctionNV {
-        static $gtype: GObject.GType<CudaFunctionNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CudaModuleCreateInfoNV {
-        static $gtype: GObject.GType<CudaModuleCreateInfoNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CudaFunctionCreateInfoNV {
-        static $gtype: GObject.GType<CudaFunctionCreateInfoNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CudaLaunchInfoNV {
-        static $gtype: GObject.GType<CudaLaunchInfoNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceCudaKernelLaunchFeaturesNV {
-        static $gtype: GObject.GType<PhysicalDeviceCudaKernelLaunchFeaturesNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceCudaKernelLaunchPropertiesNV {
-        static $gtype: GObject.GType<PhysicalDeviceCudaKernelLaunchPropertiesNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class QueryLowLatencySupportNV {
-        static $gtype: GObject.GType<QueryLowLatencySupportNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AccelerationStructureKHR {
-        static $gtype: GObject.GType<AccelerationStructureKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceDescriptorBufferPropertiesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceDescriptorBufferPropertiesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceDescriptorBufferDensityMapPropertiesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceDescriptorBufferDensityMapPropertiesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceDescriptorBufferFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceDescriptorBufferFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DescriptorAddressInfoEXT {
-        static $gtype: GObject.GType<DescriptorAddressInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DescriptorBufferBindingInfoEXT {
-        static $gtype: GObject.GType<DescriptorBufferBindingInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DescriptorBufferBindingPushDescriptorBufferHandleEXT {
-        static $gtype: GObject.GType<DescriptorBufferBindingPushDescriptorBufferHandleEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DescriptorDataEXT {
-        static $gtype: GObject.GType<DescriptorDataEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DescriptorGetInfoEXT {
-        static $gtype: GObject.GType<DescriptorGetInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class BufferCaptureDescriptorDataInfoEXT {
-        static $gtype: GObject.GType<BufferCaptureDescriptorDataInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ImageCaptureDescriptorDataInfoEXT {
-        static $gtype: GObject.GType<ImageCaptureDescriptorDataInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ImageViewCaptureDescriptorDataInfoEXT {
-        static $gtype: GObject.GType<ImageViewCaptureDescriptorDataInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SamplerCaptureDescriptorDataInfoEXT {
-        static $gtype: GObject.GType<SamplerCaptureDescriptorDataInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class OpaqueCaptureDescriptorDataCreateInfoEXT {
-        static $gtype: GObject.GType<OpaqueCaptureDescriptorDataCreateInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AccelerationStructureCaptureDescriptorDataInfoEXT {
-        static $gtype: GObject.GType<AccelerationStructureCaptureDescriptorDataInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class GraphicsPipelineLibraryFlagBitsEXT {
-        static $gtype: GObject.GType<GraphicsPipelineLibraryFlagBitsEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class GraphicsPipelineLibraryFlagsEXT {
-        static $gtype: GObject.GType<GraphicsPipelineLibraryFlagsEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceGraphicsPipelineLibraryFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceGraphicsPipelineLibraryFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceGraphicsPipelineLibraryPropertiesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceGraphicsPipelineLibraryPropertiesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class GraphicsPipelineLibraryCreateInfoEXT {
-        static $gtype: GObject.GType<GraphicsPipelineLibraryCreateInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD {
-        static $gtype: GObject.GType<PhysicalDeviceShaderEarlyAndLateFragmentTestsFeaturesAMD>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class FragmentShadingRateTypeNV {
-        static $gtype: GObject.GType<FragmentShadingRateTypeNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class FragmentShadingRateNV {
-        static $gtype: GObject.GType<FragmentShadingRateNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceFragmentShadingRateEnumsFeaturesNV {
-        static $gtype: GObject.GType<PhysicalDeviceFragmentShadingRateEnumsFeaturesNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceFragmentShadingRateEnumsPropertiesNV {
-        static $gtype: GObject.GType<PhysicalDeviceFragmentShadingRateEnumsPropertiesNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineFragmentShadingRateEnumStateCreateInfoNV {
-        static $gtype: GObject.GType<PipelineFragmentShadingRateEnumStateCreateInfoNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AccelerationStructureMotionInstanceTypeNV {
-        static $gtype: GObject.GType<AccelerationStructureMotionInstanceTypeNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AccelerationStructureMotionInfoFlagsNV {
-        static $gtype: GObject.GType<AccelerationStructureMotionInfoFlagsNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AccelerationStructureMotionInstanceFlagsNV {
-        static $gtype: GObject.GType<AccelerationStructureMotionInstanceFlagsNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DeviceOrHostAddressConstKHR {
-        static $gtype: GObject.GType<DeviceOrHostAddressConstKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AccelerationStructureGeometryMotionTrianglesDataNV {
-        static $gtype: GObject.GType<AccelerationStructureGeometryMotionTrianglesDataNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AccelerationStructureMotionInfoNV {
-        static $gtype: GObject.GType<AccelerationStructureMotionInfoNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AccelerationStructureMatrixMotionInstanceNV {
-        static $gtype: GObject.GType<AccelerationStructureMatrixMotionInstanceNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SRTDataNV {
-        static $gtype: GObject.GType<SRTDataNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AccelerationStructureSRTMotionInstanceNV {
-        static $gtype: GObject.GType<AccelerationStructureSRTMotionInstanceNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AccelerationStructureMotionInstanceDataNV {
-        static $gtype: GObject.GType<AccelerationStructureMotionInstanceDataNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AccelerationStructureMotionInstanceNV {
-        static $gtype: GObject.GType<AccelerationStructureMotionInstanceNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceRayTracingMotionBlurFeaturesNV {
-        static $gtype: GObject.GType<PhysicalDeviceRayTracingMotionBlurFeaturesNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceYcbcr2Plane444FormatsFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceFragmentDensityMap2FeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceFragmentDensityMap2FeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceFragmentDensityMap2PropertiesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceFragmentDensityMap2PropertiesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CopyCommandTransformInfoQCOM {
-        static $gtype: GObject.GType<CopyCommandTransformInfoQCOM>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceImageRobustnessFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceImageRobustnessFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ImageCompressionFlagBitsEXT {
-        static $gtype: GObject.GType<ImageCompressionFlagBitsEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ImageCompressionFlagsEXT {
-        static $gtype: GObject.GType<ImageCompressionFlagsEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ImageCompressionFixedRateFlagBitsEXT {
-        static $gtype: GObject.GType<ImageCompressionFixedRateFlagBitsEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ImageCompressionFixedRateFlagsEXT {
-        static $gtype: GObject.GType<ImageCompressionFixedRateFlagsEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceImageCompressionControlFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceImageCompressionControlFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ImageCompressionControlEXT {
-        static $gtype: GObject.GType<ImageCompressionControlEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ImageCompressionPropertiesEXT {
-        static $gtype: GObject.GType<ImageCompressionPropertiesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceAttachmentFeedbackLoopLayoutFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDevice4444FormatsFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDevice4444FormatsFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DeviceFaultAddressTypeEXT {
-        static $gtype: GObject.GType<DeviceFaultAddressTypeEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DeviceFaultVendorBinaryHeaderVersionEXT {
-        static $gtype: GObject.GType<DeviceFaultVendorBinaryHeaderVersionEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceFaultFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceFaultFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DeviceFaultCountsEXT {
-        static $gtype: GObject.GType<DeviceFaultCountsEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DeviceFaultAddressInfoEXT {
-        static $gtype: GObject.GType<DeviceFaultAddressInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DeviceFaultVendorInfoEXT {
-        static $gtype: GObject.GType<DeviceFaultVendorInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DeviceFaultInfoEXT {
-        static $gtype: GObject.GType<DeviceFaultInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DeviceFaultVendorBinaryHeaderVersionOneEXT {
-        static $gtype: GObject.GType<DeviceFaultVendorBinaryHeaderVersionOneEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceRasterizationOrderAttachmentAccessFeaturesARM {
-        static $gtype: GObject.GType<PhysicalDeviceRasterizationOrderAttachmentAccessFeaturesARM>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceRGBA10X6FormatsFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceRGBA10X6FormatsFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceMutableDescriptorTypeFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceMutableDescriptorTypeFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceMutableDescriptorTypeFeaturesVALVE {
-        static $gtype: GObject.GType<PhysicalDeviceMutableDescriptorTypeFeaturesVALVE>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class MutableDescriptorTypeListEXT {
-        static $gtype: GObject.GType<MutableDescriptorTypeListEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class MutableDescriptorTypeListVALVE {
-        static $gtype: GObject.GType<MutableDescriptorTypeListVALVE>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class MutableDescriptorTypeCreateInfoEXT {
-        static $gtype: GObject.GType<MutableDescriptorTypeCreateInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class MutableDescriptorTypeCreateInfoVALVE {
-        static $gtype: GObject.GType<MutableDescriptorTypeCreateInfoVALVE>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceVertexInputDynamicStateFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceVertexInputDynamicStateFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VertexInputBindingDescription2EXT {
-        static $gtype: GObject.GType<VertexInputBindingDescription2EXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class VertexInputAttributeDescription2EXT {
-        static $gtype: GObject.GType<VertexInputAttributeDescription2EXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceDrmPropertiesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceDrmPropertiesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DeviceAddressBindingTypeEXT {
-        static $gtype: GObject.GType<DeviceAddressBindingTypeEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DeviceAddressBindingFlagBitsEXT {
-        static $gtype: GObject.GType<DeviceAddressBindingFlagBitsEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DeviceAddressBindingFlagsEXT {
-        static $gtype: GObject.GType<DeviceAddressBindingFlagsEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceAddressBindingReportFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceAddressBindingReportFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DeviceAddressBindingCallbackDataEXT {
-        static $gtype: GObject.GType<DeviceAddressBindingCallbackDataEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceDepthClipControlFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceDepthClipControlFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineViewportDepthClipControlCreateInfoEXT {
-        static $gtype: GObject.GType<PipelineViewportDepthClipControlCreateInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDevicePrimitiveTopologyListRestartFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDevicePrimitiveTopologyListRestartFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SubpassShadingPipelineCreateInfoHUAWEI {
-        static $gtype: GObject.GType<SubpassShadingPipelineCreateInfoHUAWEI>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceSubpassShadingFeaturesHUAWEI {
-        static $gtype: GObject.GType<PhysicalDeviceSubpassShadingFeaturesHUAWEI>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceSubpassShadingPropertiesHUAWEI {
-        static $gtype: GObject.GType<PhysicalDeviceSubpassShadingPropertiesHUAWEI>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceInvocationMaskFeaturesHUAWEI {
-        static $gtype: GObject.GType<PhysicalDeviceInvocationMaskFeaturesHUAWEI>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class RemoteAddressNV {
-        static $gtype: GObject.GType<RemoteAddressNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class MemoryGetRemoteAddressInfoNV {
-        static $gtype: GObject.GType<MemoryGetRemoteAddressInfoNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceExternalMemoryRDMAFeaturesNV {
-        static $gtype: GObject.GType<PhysicalDeviceExternalMemoryRDMAFeaturesNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineInfoEXT {
-        static $gtype: GObject.GType<PipelineInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelinePropertiesIdentifierEXT {
-        static $gtype: GObject.GType<PipelinePropertiesIdentifierEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDevicePipelinePropertiesFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDevicePipelinePropertiesFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class FrameBoundaryFlagBitsEXT {
-        static $gtype: GObject.GType<FrameBoundaryFlagBitsEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class FrameBoundaryFlagsEXT {
-        static $gtype: GObject.GType<FrameBoundaryFlagsEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceFrameBoundaryFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceFrameBoundaryFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class FrameBoundaryEXT {
-        static $gtype: GObject.GType<FrameBoundaryEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceMultisampledRenderToSingleSampledFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SubpassResolvePerformanceQueryEXT {
-        static $gtype: GObject.GType<SubpassResolvePerformanceQueryEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class MultisampledRenderToSingleSampledInfoEXT {
-        static $gtype: GObject.GType<MultisampledRenderToSingleSampledInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceExtendedDynamicState2FeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceExtendedDynamicState2FeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceColorWriteEnableFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceColorWriteEnableFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineColorWriteCreateInfoEXT {
-        static $gtype: GObject.GType<PipelineColorWriteCreateInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDevicePrimitivesGeneratedQueryFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDevicePrimitivesGeneratedQueryFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceGlobalPriorityQueryFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceGlobalPriorityQueryFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class QueueFamilyGlobalPriorityPropertiesEXT {
-        static $gtype: GObject.GType<QueueFamilyGlobalPriorityPropertiesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceImageViewMinLodFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceImageViewMinLodFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ImageViewMinLodCreateInfoEXT {
-        static $gtype: GObject.GType<ImageViewMinLodCreateInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceMultiDrawFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceMultiDrawFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceMultiDrawPropertiesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceMultiDrawPropertiesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class MultiDrawInfoEXT {
-        static $gtype: GObject.GType<MultiDrawInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class MultiDrawIndexedInfoEXT {
-        static $gtype: GObject.GType<MultiDrawIndexedInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceImage2DViewOf3DFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceImage2DViewOf3DFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceShaderTileImageFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceShaderTileImageFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceShaderTileImagePropertiesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceShaderTileImagePropertiesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class MicromapEXT {
-        static $gtype: GObject.GType<MicromapEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class MicromapTypeEXT {
-        static $gtype: GObject.GType<MicromapTypeEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class BuildMicromapModeEXT {
-        static $gtype: GObject.GType<BuildMicromapModeEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CopyMicromapModeEXT {
-        static $gtype: GObject.GType<CopyMicromapModeEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class OpacityMicromapFormatEXT {
-        static $gtype: GObject.GType<OpacityMicromapFormatEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class OpacityMicromapSpecialIndexEXT {
-        static $gtype: GObject.GType<OpacityMicromapSpecialIndexEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AccelerationStructureCompatibilityKHR {
-        static $gtype: GObject.GType<AccelerationStructureCompatibilityKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AccelerationStructureBuildTypeKHR {
-        static $gtype: GObject.GType<AccelerationStructureBuildTypeKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class BuildMicromapFlagBitsEXT {
-        static $gtype: GObject.GType<BuildMicromapFlagBitsEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class BuildMicromapFlagsEXT {
-        static $gtype: GObject.GType<BuildMicromapFlagsEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class MicromapCreateFlagBitsEXT {
-        static $gtype: GObject.GType<MicromapCreateFlagBitsEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class MicromapCreateFlagsEXT {
-        static $gtype: GObject.GType<MicromapCreateFlagsEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class MicromapUsageEXT {
-        static $gtype: GObject.GType<MicromapUsageEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DeviceOrHostAddressKHR {
-        static $gtype: GObject.GType<DeviceOrHostAddressKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class MicromapBuildInfoEXT {
-        static $gtype: GObject.GType<MicromapBuildInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class MicromapCreateInfoEXT {
-        static $gtype: GObject.GType<MicromapCreateInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceOpacityMicromapFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceOpacityMicromapFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceOpacityMicromapPropertiesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceOpacityMicromapPropertiesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class MicromapVersionInfoEXT {
-        static $gtype: GObject.GType<MicromapVersionInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CopyMicromapToMemoryInfoEXT {
-        static $gtype: GObject.GType<CopyMicromapToMemoryInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CopyMemoryToMicromapInfoEXT {
-        static $gtype: GObject.GType<CopyMemoryToMicromapInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CopyMicromapInfoEXT {
-        static $gtype: GObject.GType<CopyMicromapInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class MicromapBuildSizesInfoEXT {
-        static $gtype: GObject.GType<MicromapBuildSizesInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AccelerationStructureTrianglesOpacityMicromapEXT {
-        static $gtype: GObject.GType<AccelerationStructureTrianglesOpacityMicromapEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class MicromapTriangleEXT {
-        static $gtype: GObject.GType<MicromapTriangleEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceClusterCullingShaderFeaturesHUAWEI {
-        static $gtype: GObject.GType<PhysicalDeviceClusterCullingShaderFeaturesHUAWEI>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceClusterCullingShaderPropertiesHUAWEI {
-        static $gtype: GObject.GType<PhysicalDeviceClusterCullingShaderPropertiesHUAWEI>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI {
-        static $gtype: GObject.GType<PhysicalDeviceClusterCullingShaderVrsFeaturesHUAWEI>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceBorderColorSwizzleFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceBorderColorSwizzleFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SamplerBorderColorComponentMappingCreateInfoEXT {
-        static $gtype: GObject.GType<SamplerBorderColorComponentMappingCreateInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDevicePageableDeviceLocalMemoryFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDevicePageableDeviceLocalMemoryFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceShaderCorePropertiesARM {
-        static $gtype: GObject.GType<PhysicalDeviceShaderCorePropertiesARM>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceSchedulingControlsFlagsARM {
-        static $gtype: GObject.GType<PhysicalDeviceSchedulingControlsFlagsARM>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceSchedulingControlsFlagBitsARM {
-        static $gtype: GObject.GType<PhysicalDeviceSchedulingControlsFlagBitsARM>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DeviceQueueShaderCoreControlCreateInfoARM {
-        static $gtype: GObject.GType<DeviceQueueShaderCoreControlCreateInfoARM>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceSchedulingControlsFeaturesARM {
-        static $gtype: GObject.GType<PhysicalDeviceSchedulingControlsFeaturesARM>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceSchedulingControlsPropertiesARM {
-        static $gtype: GObject.GType<PhysicalDeviceSchedulingControlsPropertiesARM>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceImageSlicedViewOf3DFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceImageSlicedViewOf3DFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ImageViewSlicedCreateInfoEXT {
-        static $gtype: GObject.GType<ImageViewSlicedCreateInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceDescriptorSetHostMappingFeaturesVALVE {
-        static $gtype: GObject.GType<PhysicalDeviceDescriptorSetHostMappingFeaturesVALVE>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DescriptorSetBindingReferenceVALVE {
-        static $gtype: GObject.GType<DescriptorSetBindingReferenceVALVE>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DescriptorSetLayoutHostMappingInfoVALVE {
-        static $gtype: GObject.GType<DescriptorSetLayoutHostMappingInfoVALVE>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceDepthClampZeroOneFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceDepthClampZeroOneFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceNonSeamlessCubeMapFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceNonSeamlessCubeMapFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceRenderPassStripedFeaturesARM {
-        static $gtype: GObject.GType<PhysicalDeviceRenderPassStripedFeaturesARM>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceRenderPassStripedPropertiesARM {
-        static $gtype: GObject.GType<PhysicalDeviceRenderPassStripedPropertiesARM>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class RenderPassStripeInfoARM {
-        static $gtype: GObject.GType<RenderPassStripeInfoARM>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class RenderPassStripeBeginInfoARM {
-        static $gtype: GObject.GType<RenderPassStripeBeginInfoARM>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class RenderPassStripeSubmitInfoARM {
-        static $gtype: GObject.GType<RenderPassStripeSubmitInfoARM>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM {
-        static $gtype: GObject.GType<PhysicalDeviceFragmentDensityMapOffsetFeaturesQCOM>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM {
-        static $gtype: GObject.GType<PhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SubpassFragmentDensityMapOffsetEndInfoQCOM {
-        static $gtype: GObject.GType<SubpassFragmentDensityMapOffsetEndInfoQCOM>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CopyMemoryIndirectCommandNV {
-        static $gtype: GObject.GType<CopyMemoryIndirectCommandNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CopyMemoryToImageIndirectCommandNV {
-        static $gtype: GObject.GType<CopyMemoryToImageIndirectCommandNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceCopyMemoryIndirectFeaturesNV {
-        static $gtype: GObject.GType<PhysicalDeviceCopyMemoryIndirectFeaturesNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceCopyMemoryIndirectPropertiesNV {
-        static $gtype: GObject.GType<PhysicalDeviceCopyMemoryIndirectPropertiesNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class MemoryDecompressionMethodFlagBitsNV {
-        static $gtype: GObject.GType<MemoryDecompressionMethodFlagBitsNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class MemoryDecompressionMethodFlagsNV {
-        static $gtype: GObject.GType<MemoryDecompressionMethodFlagsNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DecompressMemoryRegionNV {
-        static $gtype: GObject.GType<DecompressMemoryRegionNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceMemoryDecompressionFeaturesNV {
-        static $gtype: GObject.GType<PhysicalDeviceMemoryDecompressionFeaturesNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceMemoryDecompressionPropertiesNV {
-        static $gtype: GObject.GType<PhysicalDeviceMemoryDecompressionPropertiesNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV {
-        static $gtype: GObject.GType<PhysicalDeviceDeviceGeneratedCommandsComputeFeaturesNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ComputePipelineIndirectBufferInfoNV {
-        static $gtype: GObject.GType<ComputePipelineIndirectBufferInfoNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineIndirectDeviceAddressInfoNV {
-        static $gtype: GObject.GType<PipelineIndirectDeviceAddressInfoNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class BindPipelineIndirectCommandNV {
-        static $gtype: GObject.GType<BindPipelineIndirectCommandNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceLinearColorAttachmentFeaturesNV {
-        static $gtype: GObject.GType<PhysicalDeviceLinearColorAttachmentFeaturesNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceImageCompressionControlSwapchainFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceImageCompressionControlSwapchainFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ImageViewSampleWeightCreateInfoQCOM {
-        static $gtype: GObject.GType<ImageViewSampleWeightCreateInfoQCOM>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceImageProcessingFeaturesQCOM {
-        static $gtype: GObject.GType<PhysicalDeviceImageProcessingFeaturesQCOM>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceImageProcessingPropertiesQCOM {
-        static $gtype: GObject.GType<PhysicalDeviceImageProcessingPropertiesQCOM>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceNestedCommandBufferFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceNestedCommandBufferFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceNestedCommandBufferPropertiesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceNestedCommandBufferPropertiesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ExternalMemoryAcquireUnmodifiedEXT {
-        static $gtype: GObject.GType<ExternalMemoryAcquireUnmodifiedEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceExtendedDynamicState3FeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceExtendedDynamicState3FeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceExtendedDynamicState3PropertiesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceExtendedDynamicState3PropertiesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ColorBlendEquationEXT {
-        static $gtype: GObject.GType<ColorBlendEquationEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ColorBlendAdvancedEXT {
-        static $gtype: GObject.GType<ColorBlendAdvancedEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SubpassMergeStatusEXT {
-        static $gtype: GObject.GType<SubpassMergeStatusEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceSubpassMergeFeedbackFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceSubpassMergeFeedbackFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class RenderPassCreationControlEXT {
-        static $gtype: GObject.GType<RenderPassCreationControlEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class RenderPassCreationFeedbackInfoEXT {
-        static $gtype: GObject.GType<RenderPassCreationFeedbackInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class RenderPassCreationFeedbackCreateInfoEXT {
-        static $gtype: GObject.GType<RenderPassCreationFeedbackCreateInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class RenderPassSubpassFeedbackInfoEXT {
-        static $gtype: GObject.GType<RenderPassSubpassFeedbackInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class RenderPassSubpassFeedbackCreateInfoEXT {
-        static $gtype: GObject.GType<RenderPassSubpassFeedbackCreateInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DirectDriverLoadingModeLUNARG {
-        static $gtype: GObject.GType<DirectDriverLoadingModeLUNARG>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DirectDriverLoadingFlagsLUNARG {
-        static $gtype: GObject.GType<DirectDriverLoadingFlagsLUNARG>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DirectDriverLoadingInfoLUNARG {
-        static $gtype: GObject.GType<DirectDriverLoadingInfoLUNARG>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DirectDriverLoadingListLUNARG {
-        static $gtype: GObject.GType<DirectDriverLoadingListLUNARG>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceShaderModuleIdentifierFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceShaderModuleIdentifierFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceShaderModuleIdentifierPropertiesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceShaderModuleIdentifierPropertiesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PipelineShaderStageModuleIdentifierCreateInfoEXT {
-        static $gtype: GObject.GType<PipelineShaderStageModuleIdentifierCreateInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ShaderModuleIdentifierEXT {
-        static $gtype: GObject.GType<ShaderModuleIdentifierEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class OpticalFlowSessionNV {
-        static $gtype: GObject.GType<OpticalFlowSessionNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class OpticalFlowPerformanceLevelNV {
-        static $gtype: GObject.GType<OpticalFlowPerformanceLevelNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class OpticalFlowSessionBindingPointNV {
-        static $gtype: GObject.GType<OpticalFlowSessionBindingPointNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class OpticalFlowGridSizeFlagBitsNV {
-        static $gtype: GObject.GType<OpticalFlowGridSizeFlagBitsNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class OpticalFlowGridSizeFlagsNV {
-        static $gtype: GObject.GType<OpticalFlowGridSizeFlagsNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class OpticalFlowUsageFlagBitsNV {
-        static $gtype: GObject.GType<OpticalFlowUsageFlagBitsNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class OpticalFlowUsageFlagsNV {
-        static $gtype: GObject.GType<OpticalFlowUsageFlagsNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class OpticalFlowSessionCreateFlagBitsNV {
-        static $gtype: GObject.GType<OpticalFlowSessionCreateFlagBitsNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class OpticalFlowSessionCreateFlagsNV {
-        static $gtype: GObject.GType<OpticalFlowSessionCreateFlagsNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class OpticalFlowExecuteFlagBitsNV {
-        static $gtype: GObject.GType<OpticalFlowExecuteFlagBitsNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class OpticalFlowExecuteFlagsNV {
-        static $gtype: GObject.GType<OpticalFlowExecuteFlagsNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceOpticalFlowFeaturesNV {
-        static $gtype: GObject.GType<PhysicalDeviceOpticalFlowFeaturesNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceOpticalFlowPropertiesNV {
-        static $gtype: GObject.GType<PhysicalDeviceOpticalFlowPropertiesNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class OpticalFlowImageFormatInfoNV {
-        static $gtype: GObject.GType<OpticalFlowImageFormatInfoNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class OpticalFlowImageFormatPropertiesNV {
-        static $gtype: GObject.GType<OpticalFlowImageFormatPropertiesNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class OpticalFlowSessionCreateInfoNV {
-        static $gtype: GObject.GType<OpticalFlowSessionCreateInfoNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class OpticalFlowSessionCreatePrivateDataInfoNV {
-        static $gtype: GObject.GType<OpticalFlowSessionCreatePrivateDataInfoNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class OpticalFlowExecuteInfoNV {
-        static $gtype: GObject.GType<OpticalFlowExecuteInfoNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceLegacyDitheringFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceLegacyDitheringFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDevicePipelineProtectedAccessFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDevicePipelineProtectedAccessFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ShaderEXT {
-        static $gtype: GObject.GType<ShaderEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ShaderCodeTypeEXT {
-        static $gtype: GObject.GType<ShaderCodeTypeEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ShaderCreateFlagBitsEXT {
-        static $gtype: GObject.GType<ShaderCreateFlagBitsEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ShaderCreateFlagsEXT {
-        static $gtype: GObject.GType<ShaderCreateFlagsEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceShaderObjectFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceShaderObjectFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceShaderObjectPropertiesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceShaderObjectPropertiesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ShaderCreateInfoEXT {
-        static $gtype: GObject.GType<ShaderCreateInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ShaderRequiredSubgroupSizeCreateInfoEXT {
-        static $gtype: GObject.GType<ShaderRequiredSubgroupSizeCreateInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceTilePropertiesFeaturesQCOM {
-        static $gtype: GObject.GType<PhysicalDeviceTilePropertiesFeaturesQCOM>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class TilePropertiesQCOM {
-        static $gtype: GObject.GType<TilePropertiesQCOM>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceAmigoProfilingFeaturesSEC {
-        static $gtype: GObject.GType<PhysicalDeviceAmigoProfilingFeaturesSEC>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AmigoProfilingSubmitInfoSEC {
-        static $gtype: GObject.GType<AmigoProfilingSubmitInfoSEC>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM {
-        static $gtype: GObject.GType<PhysicalDeviceMultiviewPerViewViewportsFeaturesQCOM>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class RayTracingInvocationReorderModeNV {
-        static $gtype: GObject.GType<RayTracingInvocationReorderModeNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceRayTracingInvocationReorderPropertiesNV {
-        static $gtype: GObject.GType<PhysicalDeviceRayTracingInvocationReorderPropertiesNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceRayTracingInvocationReorderFeaturesNV {
-        static $gtype: GObject.GType<PhysicalDeviceRayTracingInvocationReorderFeaturesNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceExtendedSparseAddressSpaceFeaturesNV {
-        static $gtype: GObject.GType<PhysicalDeviceExtendedSparseAddressSpaceFeaturesNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceExtendedSparseAddressSpacePropertiesNV {
-        static $gtype: GObject.GType<PhysicalDeviceExtendedSparseAddressSpacePropertiesNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceLegacyVertexAttributesFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceLegacyVertexAttributesFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceLegacyVertexAttributesPropertiesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceLegacyVertexAttributesPropertiesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class LayerSettingTypeEXT {
-        static $gtype: GObject.GType<LayerSettingTypeEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class LayerSettingEXT {
-        static $gtype: GObject.GType<LayerSettingEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class LayerSettingsCreateInfoEXT {
-        static $gtype: GObject.GType<LayerSettingsCreateInfoEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceShaderCoreBuiltinsFeaturesARM {
-        static $gtype: GObject.GType<PhysicalDeviceShaderCoreBuiltinsFeaturesARM>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceShaderCoreBuiltinsPropertiesARM {
-        static $gtype: GObject.GType<PhysicalDeviceShaderCoreBuiltinsPropertiesARM>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDevicePipelineLibraryGroupHandlesFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceDynamicRenderingUnusedAttachmentsFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class LatencyMarkerNV {
-        static $gtype: GObject.GType<LatencyMarkerNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class OutOfBandQueueTypeNV {
-        static $gtype: GObject.GType<OutOfBandQueueTypeNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class LatencySleepModeInfoNV {
-        static $gtype: GObject.GType<LatencySleepModeInfoNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class LatencySleepInfoNV {
-        static $gtype: GObject.GType<LatencySleepInfoNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SetLatencyMarkerInfoNV {
-        static $gtype: GObject.GType<SetLatencyMarkerInfoNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class LatencyTimingsFrameReportNV {
-        static $gtype: GObject.GType<LatencyTimingsFrameReportNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class GetLatencyMarkerInfoNV {
-        static $gtype: GObject.GType<GetLatencyMarkerInfoNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class LatencySubmissionPresentIdNV {
-        static $gtype: GObject.GType<LatencySubmissionPresentIdNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SwapchainLatencyCreateInfoNV {
-        static $gtype: GObject.GType<SwapchainLatencyCreateInfoNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class OutOfBandQueueTypeInfoNV {
-        static $gtype: GObject.GType<OutOfBandQueueTypeInfoNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class LatencySurfaceCapabilitiesNV {
-        static $gtype: GObject.GType<LatencySurfaceCapabilitiesNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM {
-        static $gtype: GObject.GType<PhysicalDeviceMultiviewPerViewRenderAreasFeaturesQCOM>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class MultiviewPerViewRenderAreasRenderPassBeginInfoQCOM {
-        static $gtype: GObject.GType<MultiviewPerViewRenderAreasRenderPassBeginInfoQCOM>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDevicePerStageDescriptorSetFeaturesNV {
-        static $gtype: GObject.GType<PhysicalDevicePerStageDescriptorSetFeaturesNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class BlockMatchWindowCompareModeQCOM {
-        static $gtype: GObject.GType<BlockMatchWindowCompareModeQCOM>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceImageProcessing2FeaturesQCOM {
-        static $gtype: GObject.GType<PhysicalDeviceImageProcessing2FeaturesQCOM>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceImageProcessing2PropertiesQCOM {
-        static $gtype: GObject.GType<PhysicalDeviceImageProcessing2PropertiesQCOM>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SamplerBlockMatchWindowCreateInfoQCOM {
-        static $gtype: GObject.GType<SamplerBlockMatchWindowCreateInfoQCOM>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CubicFilterWeightsQCOM {
-        static $gtype: GObject.GType<CubicFilterWeightsQCOM>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceCubicWeightsFeaturesQCOM {
-        static $gtype: GObject.GType<PhysicalDeviceCubicWeightsFeaturesQCOM>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SamplerCubicWeightsCreateInfoQCOM {
-        static $gtype: GObject.GType<SamplerCubicWeightsCreateInfoQCOM>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class BlitImageCubicWeightsInfoQCOM {
-        static $gtype: GObject.GType<BlitImageCubicWeightsInfoQCOM>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceYcbcrDegammaFeaturesQCOM {
-        static $gtype: GObject.GType<PhysicalDeviceYcbcrDegammaFeaturesQCOM>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class SamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM {
-        static $gtype: GObject.GType<SamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceCubicClampFeaturesQCOM {
-        static $gtype: GObject.GType<PhysicalDeviceCubicClampFeaturesQCOM>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceAttachmentFeedbackLoopDynamicStateFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class LayeredDriverUnderlyingApiMSFT {
-        static $gtype: GObject.GType<LayeredDriverUnderlyingApiMSFT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceLayeredDriverPropertiesMSFT {
-        static $gtype: GObject.GType<PhysicalDeviceLayeredDriverPropertiesMSFT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceDescriptorPoolOverallocationFeaturesNV {
-        static $gtype: GObject.GType<PhysicalDeviceDescriptorPoolOverallocationFeaturesNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceRawAccessChainsFeaturesNV {
-        static $gtype: GObject.GType<PhysicalDeviceRawAccessChainsFeaturesNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceShaderAtomicFloat16VectorFeaturesNV {
-        static $gtype: GObject.GType<PhysicalDeviceShaderAtomicFloat16VectorFeaturesNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceRayTracingValidationFeaturesNV {
-        static $gtype: GObject.GType<PhysicalDeviceRayTracingValidationFeaturesNV>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceImageAlignmentControlFeaturesMESA {
-        static $gtype: GObject.GType<PhysicalDeviceImageAlignmentControlFeaturesMESA>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceImageAlignmentControlPropertiesMESA {
-        static $gtype: GObject.GType<PhysicalDeviceImageAlignmentControlPropertiesMESA>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ImageAlignmentControlCreateInfoMESA {
-        static $gtype: GObject.GType<ImageAlignmentControlCreateInfoMESA>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class BuildAccelerationStructureModeKHR {
-        static $gtype: GObject.GType<BuildAccelerationStructureModeKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AccelerationStructureCreateFlagBitsKHR {
-        static $gtype: GObject.GType<AccelerationStructureCreateFlagBitsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AccelerationStructureCreateFlagsKHR {
-        static $gtype: GObject.GType<AccelerationStructureCreateFlagsKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AccelerationStructureBuildRangeInfoKHR {
-        static $gtype: GObject.GType<AccelerationStructureBuildRangeInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AccelerationStructureGeometryTrianglesDataKHR {
-        static $gtype: GObject.GType<AccelerationStructureGeometryTrianglesDataKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AccelerationStructureGeometryAabbsDataKHR {
-        static $gtype: GObject.GType<AccelerationStructureGeometryAabbsDataKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AccelerationStructureGeometryInstancesDataKHR {
-        static $gtype: GObject.GType<AccelerationStructureGeometryInstancesDataKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AccelerationStructureGeometryDataKHR {
-        static $gtype: GObject.GType<AccelerationStructureGeometryDataKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AccelerationStructureGeometryKHR {
-        static $gtype: GObject.GType<AccelerationStructureGeometryKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AccelerationStructureBuildGeometryInfoKHR {
-        static $gtype: GObject.GType<AccelerationStructureBuildGeometryInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AccelerationStructureCreateInfoKHR {
-        static $gtype: GObject.GType<AccelerationStructureCreateInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class WriteDescriptorSetAccelerationStructureKHR {
-        static $gtype: GObject.GType<WriteDescriptorSetAccelerationStructureKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceAccelerationStructureFeaturesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceAccelerationStructureFeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceAccelerationStructurePropertiesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceAccelerationStructurePropertiesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AccelerationStructureDeviceAddressInfoKHR {
-        static $gtype: GObject.GType<AccelerationStructureDeviceAddressInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AccelerationStructureVersionInfoKHR {
-        static $gtype: GObject.GType<AccelerationStructureVersionInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CopyAccelerationStructureToMemoryInfoKHR {
-        static $gtype: GObject.GType<CopyAccelerationStructureToMemoryInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CopyMemoryToAccelerationStructureInfoKHR {
-        static $gtype: GObject.GType<CopyMemoryToAccelerationStructureInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class CopyAccelerationStructureInfoKHR {
-        static $gtype: GObject.GType<CopyAccelerationStructureInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class AccelerationStructureBuildSizesInfoKHR {
-        static $gtype: GObject.GType<AccelerationStructureBuildSizesInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class ShaderGroupShaderKHR {
-        static $gtype: GObject.GType<ShaderGroupShaderKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class RayTracingShaderGroupCreateInfoKHR {
-        static $gtype: GObject.GType<RayTracingShaderGroupCreateInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class RayTracingPipelineInterfaceCreateInfoKHR {
-        static $gtype: GObject.GType<RayTracingPipelineInterfaceCreateInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class RayTracingPipelineCreateInfoKHR {
-        static $gtype: GObject.GType<RayTracingPipelineCreateInfoKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceRayTracingPipelineFeaturesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceRayTracingPipelineFeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceRayTracingPipelinePropertiesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceRayTracingPipelinePropertiesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class StridedDeviceAddressRegionKHR {
-        static $gtype: GObject.GType<StridedDeviceAddressRegionKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class TraceRaysIndirectCommandKHR {
-        static $gtype: GObject.GType<TraceRaysIndirectCommandKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceRayQueryFeaturesKHR {
-        static $gtype: GObject.GType<PhysicalDeviceRayQueryFeaturesKHR>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceMeshShaderFeaturesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceMeshShaderFeaturesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class PhysicalDeviceMeshShaderPropertiesEXT {
-        static $gtype: GObject.GType<PhysicalDeviceMeshShaderPropertiesEXT>;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    class DrawMeshTasksIndirectCommandEXT {
-        static $gtype: GObject.GType<DrawMeshTasksIndirectCommandEXT>;
     }
 
     /**

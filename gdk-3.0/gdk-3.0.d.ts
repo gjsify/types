@@ -1104,7 +1104,7 @@ export namespace Gdk {
      * Defines the reference point of a window and the meaning of coordinates
      * passed to `gtk_window_move()`. See `gtk_window_move()` and the "implementation
      * notes" section of the
-     * [Extended Window Manager Hints](http://www.freedesktop.org/Standards/wm-spec)
+     * [Extended Window Manager Hints](https://specifications.freedesktop.org/wm/latest/)
      * specification for more details.
      * @gir-type Enum
      */
@@ -1774,7 +1774,7 @@ export namespace Gdk {
      * the window has. The window manager can use this when determining decoration
      * and behaviour of the window. The hint must be set before mapping the window.
      *
-     * See the [Extended Window Manager Hints](http://www.freedesktop.org/Standards/wm-spec)
+     * See the [Extended Window Manager Hints](https://specifications.freedesktop.org/wm/latest/)
      * specification for more details about window types.
      * @gir-type Enum
      */
@@ -6566,7 +6566,7 @@ export namespace Gdk {
          * Sets the workspace on which applications will be launched when
          * using this context when running under a window manager that
          * supports multiple workspaces, as described in the
-         * [Extended Window Manager Hints](http://www.freedesktop.org/Standards/wm-spec).
+         * [Extended Window Manager Hints](https://specifications.freedesktop.org/wm/latest/).
          *
          * When the workspace is not specified or `desktop` is set to -1,
          * it is up to the window manager to pick one, typically it will
@@ -9703,7 +9703,7 @@ export namespace Gdk {
          *
          * On X11, this is done by inspecting the _NET_ACTIVE_WINDOW property
          * on the root window, as described in the
-         * [Extended Window Manager Hints](http://www.freedesktop.org/Standards/wm-spec).
+         * [Extended Window Manager Hints](https://specifications.freedesktop.org/wm/latest/).
          * If there is no currently currently active
          * window, or the window manager does not support the
          * _NET_ACTIVE_WINDOW hint, this function returns `null`.
@@ -9922,7 +9922,7 @@ export namespace Gdk {
          *
          * On X11, this is done by inspecting the _NET_CLIENT_LIST_STACKING
          * property on the root window, as described in the
-         * [Extended Window Manager Hints](http://www.freedesktop.org/Standards/wm-spec).
+         * [Extended Window Manager Hints](https://specifications.freedesktop.org/wm/latest/).
          * If the window manager does not support the
          * _NET_CLIENT_LIST_STACKING hint, this function returns `null`.
          *
@@ -10583,7 +10583,7 @@ export namespace Gdk {
          * Begins a window move operation (for a toplevel window).
          * You might use this function to implement a “window move grip,” for
          * example. The function works best with window managers that support the
-         * [Extended Window Manager Hints](http://www.freedesktop.org/Standards/wm-spec)
+         * [Extended Window Manager Hints](https://specifications.freedesktop.org/wm/latest/)
          * but has a fallback implementation for other window managers.
          * @param device the device used for the operation
          * @param button the button being used to drag, or 0 for a keyboard-initiated drag
@@ -10671,7 +10671,7 @@ export namespace Gdk {
          * You might use this function to implement a “window resize grip,” for
          * example; in fact `GtkStatusbar` uses it. The function works best
          * with window managers that support the
-         * [Extended Window Manager Hints](http://www.freedesktop.org/Standards/wm-spec)
+         * [Extended Window Manager Hints](https://specifications.freedesktop.org/wm/latest/)
          * but has a fallback implementation for other window managers.
          * @param edge the edge or corner from which the drag is started
          * @param device the device used for the operation

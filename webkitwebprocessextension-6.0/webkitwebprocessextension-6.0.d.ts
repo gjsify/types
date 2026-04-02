@@ -33,76 +33,6 @@ export namespace WebKitWebProcessExtension {
      */
 
     /**
-     * @gir-type Enum
-     */
-    export namespace ConsoleMessageLevel {
-        export const $gtype: GObject.GType<ConsoleMessageLevel>;
-    }
-
-    /**
-     * Enum values used to denote the various levels of console messages.
-     * @gir-type Enum
-     * @since 2.12
-     */
-    enum ConsoleMessageLevel {
-        /**
-         * Information message.
-         */
-        INFO,
-        /**
-         * Log message.
-         */
-        LOG,
-        /**
-         * Warning message.
-         */
-        WARNING,
-        /**
-         * Error message.
-         */
-        ERROR,
-        /**
-         * Debug message.
-         */
-        DEBUG,
-    }
-
-    /**
-     * @gir-type Enum
-     */
-    export namespace ConsoleMessageSource {
-        export const $gtype: GObject.GType<ConsoleMessageSource>;
-    }
-
-    /**
-     * Enum values used to denote the various sources of console messages.
-     * @gir-type Enum
-     * @since 2.12
-     */
-    enum ConsoleMessageSource {
-        /**
-         * Message produced by JavaScript.
-         */
-        JAVASCRIPT,
-        /**
-         * Network messages.
-         */
-        NETWORK,
-        /**
-         * Messages produced by console API.
-         */
-        CONSOLE_API,
-        /**
-         * Security messages.
-         */
-        SECURITY,
-        /**
-         * Other messages.
-         */
-        OTHER,
-    }
-
-    /**
      * Enum values used to denote the stock actions for
      * {@link WebKitWebProcessExtension.ContextMenuItem}<!-- -->s
      * @gir-type Enum
@@ -474,14 +404,6 @@ export namespace WebKitWebProcessExtension {
          */
         get_n_items(): number;
         /**
-         * Gets the position in view coordinates where the context menu was triggered.
-         *
-         * This function only returns valid coordinates when called for a {@link WebKitWebProcessExtension.ContextMenu}
-         * passed to `WebKitWebView::context-menu` signal.
-         * @returns `true` if valid position coordinates are available, `false` otherwise
-         */
-        get_position(): [boolean, number, number];
-        /**
          * Gets the user data of `menu`.
          *
          * This function can be used from the UI Process to get user data previously set
@@ -618,11 +540,6 @@ export namespace WebKitWebProcessExtension {
          */
         get_gaction(): Gio.Action;
         /**
-         * Gets the target {@link GLib.Variant} associated with `item`.
-         * @returns the target {@link GLib.Variant} of the {@link WebKitWebProcessExtension.ContextMenuItem},    or `null` if `item` was not created with `webkit_context_menu_item_new_from_gaction()`    or if no target was specified.
-         */
-        get_gaction_target(): GLib.Variant | null;
-        /**
          * Gets the {@link WebKitWebProcessExtension.ContextMenuAction} of `item`.
          *
          * If the {@link WebKitWebProcessExtension.ContextMenuItem} was not
@@ -637,11 +554,6 @@ export namespace WebKitWebProcessExtension {
          * @returns the {@link WebKitWebProcessExtension.ContextMenu} representing the submenu of    `item` or `null` if `item` doesn't have a submenu.
          */
         get_submenu(): ContextMenu;
-        /**
-         * Gets the title of `item`.
-         * @returns the title of `item`, or `null` if `item` is a separator.
-         */
-        get_title(): string;
         /**
          * Checks whether `item` is a separator.
          * @returns `true` is `item` is a separator or `false` otherwise
@@ -1820,16 +1732,6 @@ export namespace WebKitWebProcessExtension {
         // Signal signatures
         interface SignalSignatures extends GObject.Object.SignalSignatures {
             /**
-             * Emitted when a message is sent to the console. This can be a message
-             * produced by the use of JavaScript console API, a JavaScript exception,
-             * a security error or other errors, warnings, debug or log messages.
-             * The `console_message` contains information of the message.
-             * @signal
-             * @since 2.12
-             * @run-last
-             */
-            'console-message-sent': (arg0: ConsoleMessage) => void;
-            /**
              * Emitted before a context menu is displayed in the UI Process to
              * give the application a chance to customize the proposed menu,
              * build its own context menu or pass user data to the UI Process.
@@ -2229,50 +2131,6 @@ export namespace WebKitWebProcessExtension {
          * @returns a {@link WebKitWebProcessExtension.UserMessage} with the reply or `null` in case of error.
          */
         send_message_to_context_finish(result: Gio.AsyncResult): UserMessage;
-    }
-
-    /**
-     * @gir-type Struct
-     */
-    abstract class ConsoleMessage {
-        static $gtype: GObject.GType<ConsoleMessage>;
-
-        // Methods
-
-        /**
-         * Make a copy of `console_message`.
-         * @returns A copy of passed in {@link WebKitWebProcessExtension.ConsoleMessage}
-         */
-        copy(): ConsoleMessage;
-        /**
-         * Free the {@link WebKitWebProcessExtension.ConsoleMessage}
-         */
-        free(): void;
-        /**
-         * Gets the log level of a {@link WebKitWebProcessExtension.ConsoleMessage}
-         * @returns a {@link WebKitWebProcessExtension.ConsoleMessageLevel} indicating the log level of `console_message`
-         */
-        get_level(): ConsoleMessageLevel;
-        /**
-         * Gets the line number of a {@link WebKitWebProcessExtension.ConsoleMessage}
-         * @returns the line number of `console_message`
-         */
-        get_line(): number;
-        /**
-         * Gets the source of a {@link WebKitWebProcessExtension.ConsoleMessage}
-         * @returns a {@link WebKitWebProcessExtension.ConsoleMessageSource} indicating the source of `console_message`
-         */
-        get_source(): ConsoleMessageSource;
-        /**
-         * Gets the source identifier of a {@link WebKitWebProcessExtension.ConsoleMessage}
-         * @returns the source identifier of `console_message`
-         */
-        get_source_id(): string;
-        /**
-         * Gets the text message of a {@link WebKitWebProcessExtension.ConsoleMessage}
-         * @returns the text message of `console_message`
-         */
-        get_text(): string;
     }
 
     /**

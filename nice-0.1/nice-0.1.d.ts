@@ -44,7 +44,7 @@ export namespace Nice {
     }
 
     /**
-     * An enum representing the type of a candidate
+     * An enum represneting the type of a candidate
      * @gir-type Enum
      */
     enum CandidateType {
@@ -53,7 +53,7 @@ export namespace Nice {
          */
         HOST,
         /**
-         * A server reflexive candidate (or a NAT-assisted candidate)
+         * A server reflexive candidate
          */
         SERVER_REFLEXIVE,
         /**
@@ -376,9 +376,9 @@ export namespace Nice {
     }
 
     /**
-     * Was a limit on the number of remote candidates one can set, but is
-     * no longer used by libnice itself.
-     * @deprecated since 0.1.20: Replace with dynamic value based on the {@link Nice.Agent.SignalSignatures.max_connectivity_checks | Nice.Agent::max-connectivity-checks} property
+     * A hard limit for the number of remote candidates. This
+     * limit is enforced to protect against malevolent remote
+     * clients.
      */
     const AGENT_MAX_REMOTE_CANDIDATES: number;
     /**
@@ -442,14 +442,6 @@ export namespace Nice {
      */
     function debug_enable(with_stun: boolean): void;
     /**
-     * Returns the interface index match the local address passed. This can
-     * by used for APIs that need a specific address.
-     * @param addr A {@link Nice.Address} for a local interface
-     * @returns The interface index or 0 on error
-     * @since 0.1.20
-     */
-    function interfaces_get_if_index_by_addr(addr: Address): number;
-    /**
      * Retrieves the IP address of an interface by its name. If this fails, `null`
      * is returned.
      * @param interface_name name of local interface
@@ -488,10 +480,6 @@ export namespace Nice {
      */
     enum AgentOption {
         /**
-         * No enabled options (Since: 0.1.19)
-         */
-        NONE,
-        /**
          * Enables regular nomination, default
          *  is aggrssive mode (see {@link Nice.NominationMode}).
          */
@@ -517,15 +505,6 @@ export namespace Nice {
          * Enable RFC 7675 consent freshness support. (Since: 0.1.19)
          */
         CONSENT_FRESHNESS,
-        /**
-         * Use bytestream mode for reliable TCP connections. (Since: 0.1.20)
-         */
-        BYTESTREAM_TCP,
-        /**
-         * When removing TURN port allocations on TURN server,
-         * don't do retransmissions and don't wait for a response. (Since: 0.1.23)
-         */
-        CLOSE_FORCED,
     }
 
     namespace Agent {
@@ -627,13 +606,11 @@ export namespace Nice {
              */
             'new-selected-pair-full': (arg0: number, arg1: number, arg2: Candidate, arg3: Candidate) => void;
             /**
-             * This signal is fired on {@link Nice.Agent} when the underlying transport becomes writable.
+             * This signal is fired on the reliable {@link Nice.Agent} when the underlying reliable
+             * transport becomes writable.
              * This signal is only emitted when the `nice_agent_send()` function returns less
              * bytes than requested to send (or -1) and once when the connection
              * is established.
-             *
-             * Note: Since 0.1.23 this signal also fires for non-reliable transports.
-             * See https://gitlab.freedesktop.org/libnice/libnice/-/issues/202.
              * @signal
              * @since 0.0.11
              * @run-last
@@ -648,7 +625,6 @@ export namespace Nice {
              */
             'streams-removed': (arg0: number[]) => void;
             'notify::bytestream-tcp': (pspec: GObject.ParamSpec) => void;
-            'notify::close-forced': (pspec: GObject.ParamSpec) => void;
             'notify::compatibility': (pspec: GObject.ParamSpec) => void;
             'notify::consent-freshness': (pspec: GObject.ParamSpec) => void;
             'notify::controlling-mode': (pspec: GObject.ParamSpec) => void;
@@ -661,7 +637,6 @@ export namespace Nice {
             'notify::keepalive-conncheck': (pspec: GObject.ParamSpec) => void;
             'notify::main-context': (pspec: GObject.ParamSpec) => void;
             'notify::max-connectivity-checks': (pspec: GObject.ParamSpec) => void;
-            'notify::proxy-extra-headers': (pspec: GObject.ParamSpec) => void;
             'notify::proxy-ip': (pspec: GObject.ParamSpec) => void;
             'notify::proxy-password': (pspec: GObject.ParamSpec) => void;
             'notify::proxy-port': (pspec: GObject.ParamSpec) => void;
@@ -684,8 +659,6 @@ export namespace Nice {
         interface ConstructorProps extends GObject.Object.ConstructorProps {
             bytestream_tcp: boolean;
             bytestreamTcp: boolean;
-            close_forced: boolean;
-            closeForced: boolean;
             compatibility: number;
             consent_freshness: boolean;
             consentFreshness: boolean;
@@ -709,8 +682,6 @@ export namespace Nice {
             mainContext: any;
             max_connectivity_checks: number;
             maxConnectivityChecks: number;
-            proxy_extra_headers: GLib.HashTable<string, string>;
-            proxyExtraHeaders: GLib.HashTable<string, string>;
             proxy_ip: string;
             proxyIp: string;
             proxy_password: string;
@@ -753,7 +724,7 @@ export namespace Nice {
         // Properties
 
         /**
-         * This property defines whether receive/send operations over a TCP socket, in
+         * This property defines whether receive/send over a TCP or pseudo-TCP, in
          * reliable mode, are considered as packetized or as bytestream.
          * In unreliable mode, every send/recv is considered as packetized, and
          * this property is ignored and cannot be set.
@@ -763,17 +734,21 @@ export namespace Nice {
          * </para>
          * If the property is `true`, the stream is considered in bytestream mode
          * and data can be read with any receive size. If the property is `false`, then
-         * the stream is considered packetized and each receive will return one packet
+         * the stream is considred packetized and each receive will return one packet
          * of the same size as what was sent from the peer. If in packetized mode,
          * then doing a receive with a size smaller than the packet, will cause the
          * remaining bytes in the packet to be dropped, breaking the reliability
          * of the stream.
+         * <para>
+         * This property is currently read-only, and will become read/write once
+         * bytestream mode will be supported.
+         * </para>
          * @since 0.1.8
+         * @read-only
          */
         get bytestream_tcp(): boolean;
-        set bytestream_tcp(val: boolean);
         /**
-         * This property defines whether receive/send operations over a TCP socket, in
+         * This property defines whether receive/send over a TCP or pseudo-TCP, in
          * reliable mode, are considered as packetized or as bytestream.
          * In unreliable mode, every send/recv is considered as packetized, and
          * this property is ignored and cannot be set.
@@ -783,31 +758,19 @@ export namespace Nice {
          * </para>
          * If the property is `true`, the stream is considered in bytestream mode
          * and data can be read with any receive size. If the property is `false`, then
-         * the stream is considered packetized and each receive will return one packet
+         * the stream is considred packetized and each receive will return one packet
          * of the same size as what was sent from the peer. If in packetized mode,
          * then doing a receive with a size smaller than the packet, will cause the
          * remaining bytes in the packet to be dropped, breaking the reliability
          * of the stream.
+         * <para>
+         * This property is currently read-only, and will become read/write once
+         * bytestream mode will be supported.
+         * </para>
          * @since 0.1.8
+         * @read-only
          */
         get bytestreamTcp(): boolean;
-        set bytestreamTcp(val: boolean);
-        /**
-         * Whether to omit performing retransmissions and wait for a response for the 0-lifetime
-         * refresh request that is sent by `nice_agent_close_async()`. This favors a quick shutdown of
-         * the agent at the risk of lingering TURN server port allocations.
-         * @since 0.1.23
-         * @construct-only
-         */
-        get close_forced(): boolean;
-        /**
-         * Whether to omit performing retransmissions and wait for a response for the 0-lifetime
-         * refresh request that is sent by `nice_agent_close_async()`. This favors a quick shutdown of
-         * the agent at the risk of lingering TURN server port allocations.
-         * @since 0.1.23
-         * @construct-only
-         */
-        get closeForced(): boolean;
         /**
          * The Nice agent can work in various compatibility modes depending on
          * what the application/peer needs.
@@ -825,9 +788,9 @@ export namespace Nice {
          * Setting this property to `true` implies that 'keepalive-conncheck' should
          * be `true` as well.
          * @since 0.1.19
+         * @construct-only
          */
         get consent_freshness(): boolean;
-        set consent_freshness(val: boolean);
         /**
          * Whether to perform periodic consent freshness checks as specified in
          * RFC 7675.  When `true`, the agent will periodically send binding requests
@@ -838,9 +801,9 @@ export namespace Nice {
          * Setting this property to `true` implies that 'keepalive-conncheck' should
          * be `true` as well.
          * @since 0.1.19
+         * @construct-only
          */
         get consentFreshness(): boolean;
-        set consentFreshness(val: boolean);
         /**
          * Whether the agent has the controlling role. This property should
          * be modified before gathering candidates, any modification occuring
@@ -1093,22 +1056,6 @@ export namespace Nice {
         set max_connectivity_checks(val: number);
         get maxConnectivityChecks(): number;
         set maxConnectivityChecks(val: number);
-        /**
-         * Optional extra headers to append to the HTTP proxy CONNECT request.
-         * Provided as key/value-pairs in hash table corresponding to
-         * header-name/header-value.
-         * @since 0.1.20
-         */
-        get proxy_extra_headers(): GLib.HashTable<string, string>;
-        set proxy_extra_headers(val: GLib.HashTable<string, string>);
-        /**
-         * Optional extra headers to append to the HTTP proxy CONNECT request.
-         * Provided as key/value-pairs in hash table corresponding to
-         * header-name/header-value.
-         * @since 0.1.20
-         */
-        get proxyExtraHeaders(): GLib.HashTable<string, string>;
-        set proxyExtraHeaders(val: GLib.HashTable<string, string>);
         /**
          * The proxy server IP used to bypass a proxy firewall
          * @since 0.0.4
@@ -1907,7 +1854,7 @@ export namespace Nice {
          * discovery process; one TCP and one UDP, for example.
          * @param stream_id The ID of the stream
          * @param component_id The ID of the component
-         * @param server_ip The address of the TURN server
+         * @param server_ip The IP address of the TURN server
          * @param server_port The port of the TURN server
          * @param username The TURN username to use for the allocate
          * @param password The TURN password to use for the allocate
@@ -2364,12 +2311,6 @@ export namespace Nice {
     class Address {
         static $gtype: GObject.GType<Address>;
 
-        // Constructors
-
-        constructor(properties?: Partial<{}>);
-
-        static ['new'](): Address;
-
         // Methods
 
         /**
@@ -2377,16 +2318,6 @@ export namespace Nice {
          * @param sin The sockaddr to fill
          */
         copy_to_sockaddr(sin?: any | null): void;
-        /**
-         * Creates a new {@link Nice.Address} with the same address as `addr`
-         * @returns The new {@link Nice.Address}
-         */
-        dup(): Address;
-        /**
-         * Transforms the address `addr` into a newly allocated human readable string
-         * @returns the address string
-         */
-        dup_string(): string;
         /**
          * Compares two {@link Nice.Address} structures to see if they contain the same address
          * and the same port.
@@ -2419,11 +2350,6 @@ export namespace Nice {
          * @returns 4 for IPv4, 6 for IPv6 and 0 for undefined address
          */
         ip_version(): number;
-        /**
-         * Verifies if the address in `addr` is a link-local address or not
-         * @returns `true` if `addr` is a link-local address, `false` otherwise
-         */
-        is_linklocal(): boolean;
         /**
          * Verifies if the address in `addr` is a private address or not
          * @returns `true` if `addr` is a private address, `false` otherwise
@@ -2474,6 +2400,11 @@ export namespace Nice {
          * @param port The port to set
          */
         set_port(port: number): void;
+        /**
+         * Transforms the address `addr` into a human readable string
+         * @param dst The string to fill
+         */
+        to_string(dst: string): void;
     }
 
     /**
@@ -2545,19 +2476,6 @@ export namespace Nice {
          * Frees a {@link Nice.Candidate}
          */
         free(): void;
-        /**
-         * In case the given candidate is relayed through a TURN server, use this utility function to get
-         * its address.
-         * @param addr The {@link Nice.Address} to fill
-         */
-        relay_address(addr: Address): void;
-        /**
-         * In case the given candidate server-reflexive, use this utility function to get its address. The
-         * address will be filled only if the candidate was generated using an STUN server.
-         * @param addr The {@link Nice.Address} to fill
-         * @returns TRUE if it's a STUN created ICE candidate, or FALSE if the reflexed's server was not STUN.
-         */
-        stun_server_address(addr: Address): boolean;
     }
 
     /**
