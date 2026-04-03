@@ -42,9 +42,10 @@ function getEnvInt(name: string, fallback: number): number {
 	return Number.isNaN(num) ? fallback : num;
 }
 
-const BATCH_SIZE = Math.max(1, getEnvInt("NPM_BATCH_SIZE", 1));
-const BATCH_DELAY_MS = Math.max(0, getEnvInt("NPM_BATCH_DELAY_MS", 5000));
-const PUBLISH_DELAY_MS = Math.max(0, getEnvInt("NPM_PUBLISH_DELAY_MS", 2000));
+const BATCH_SIZE = Math.max(1, getEnvInt("NPM_BATCH_SIZE", 5));
+const BATCH_DELAY_MS = Math.max(0, getEnvInt("NPM_BATCH_DELAY_MS", 3000));
+const PUBLISH_DELAY_MS = Math.max(0, getEnvInt("NPM_PUBLISH_DELAY_MS", 500));
+const STATUS_CONCURRENCY = Math.max(1, getEnvInt("NPM_STATUS_CONCURRENCY", 20));
 
 const MAX_RETRIES_PUBLISH = Math.max(0, getEnvInt("NPM_MAX_RETRIES", 8));
 const MAX_RETRIES_STATUS = Math.max(0, getEnvInt("NPM_STATUS_MAX_RETRIES", 5));
@@ -52,6 +53,23 @@ const RETRY_BASE_MS = Math.max(100, getEnvInt("NPM_RETRY_BASE_MS", 2000));
 const RETRY_MAX_MS = Math.max(RETRY_BASE_MS, getEnvInt("NPM_RETRY_MAX_MS", 60000));
 
 const API_TIMEOUT_MS = 10000;
+
+/** Run async tasks with a concurrency limit */
+async function pMap<T, R>(items: T[], fn: (item: T, index: number) => Promise<R>, concurrency: number): Promise<R[]> {
+	const results: R[] = new Array(items.length);
+	let nextIndex = 0;
+
+	async function worker(): Promise<void> {
+		while (nextIndex < items.length) {
+			const i = nextIndex++;
+			results[i] = await fn(items[i], i);
+		}
+	}
+
+	const workers = Array.from({ length: Math.min(concurrency, items.length) }, () => worker());
+	await Promise.all(workers);
+	return results;
+}
 
 function sleep(ms: number): Promise<void> {
 	return new Promise((resolve) => setTimeout(resolve, ms));
@@ -131,6 +149,7 @@ function showUsage(): void {
 	console.log("  NODE_AUTH_TOKEN        NPM authentication token (required)");
 	console.log("  NPM_REGISTRY           NPM registry URL (default: https://registry.npmjs.org/)");
 	console.log("  NPM_TIMEOUT_SEC        Timeout in seconds (default: 300)");
+	console.log("  NPM_STATUS_CONCURRENCY Max parallel status checks (default: 20)");
 	console.log("");
 }
 
@@ -466,36 +485,78 @@ async function testNpmAuth(config: Config): Promise<void> {
 	});
 }
 
-// Main processing logic
-async function processPackagesBatch(
+// Phase 1: Check all package statuses in parallel with concurrency limit
+async function checkAllStatuses(
 	packages: Package[],
+	registry: string,
+): Promise<Map<string, PackageStatus>> {
+	console.log(`\n🔍 Phase 1: Checking status of ${packages.length} packages (concurrency: ${STATUS_CONCURRENCY})...`);
+	const startTime = Date.now();
+
+	const statuses = new Map<string, PackageStatus>();
+	let checked = 0;
+
+	await pMap(packages, async (pkg) => {
+		try {
+			const status = await checkPackageStatus(pkg, registry);
+			statuses.set(pkg.name, status);
+		} catch (error) {
+			console.warn(`⚠️  Could not check ${pkg.name}: ${error instanceof Error ? error.message : error}`);
+			// Treat as "needs publish" if we can't check
+			statuses.set(pkg.name, { exists: false, versions: [] });
+		}
+		checked++;
+		if (checked % 50 === 0 || checked === packages.length) {
+			console.log(`   Checked ${checked}/${packages.length} packages...`);
+		}
+	}, STATUS_CONCURRENCY);
+
+	const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
+	console.log(`✅ Status check complete in ${elapsed}s\n`);
+	return statuses;
+}
+
+// Phase 2: Publish only packages that need it, in batches
+async function publishPendingPackages(
+	packages: Package[],
+	statuses: Map<string, PackageStatus>,
 	config: Config,
-): Promise<{ published: number; processed: number; errors: number }> {
-	let published = 0;
+): Promise<{ alreadyPublished: number; processed: number; errors: number }> {
+	// Split into already-published and needs-publish
+	const needsPublish: { pkg: Package; isUpdate: boolean }[] = [];
+	let alreadyPublished = 0;
+
+	for (const pkg of packages) {
+		const status = statuses.get(pkg.name);
+		if (status?.exists && status.versions.includes(pkg.version)) {
+			alreadyPublished++;
+			continue;
+		}
+		needsPublish.push({ pkg, isUpdate: status?.exists ?? false });
+	}
+
+	console.log(`📊 ${alreadyPublished} already published, ${needsPublish.length} to publish\n`);
+
+	if (needsPublish.length === 0) {
+		return { alreadyPublished, processed: 0, errors: 0 };
+	}
+
+	console.log(`🚀 Phase 2: Publishing ${needsPublish.length} packages (batch size: ${BATCH_SIZE})...\n`);
+
 	let processed = 0;
 	let errors = 0;
 
-	for (let i = 0; i < packages.length; i += BATCH_SIZE) {
-		const batch = packages.slice(i, i + BATCH_SIZE);
+	for (let i = 0; i < needsPublish.length; i += BATCH_SIZE) {
+		const batch = needsPublish.slice(i, i + BATCH_SIZE);
 		const batchNum = Math.floor(i / BATCH_SIZE) + 1;
-		const totalBatches = Math.ceil(packages.length / BATCH_SIZE);
+		const totalBatches = Math.ceil(needsPublish.length / BATCH_SIZE);
 
-		console.log(`📦 Batch ${batchNum}/${totalBatches} (${i + 1}-${Math.min(i + BATCH_SIZE, packages.length)})`);
+		console.log(`📦 Batch ${batchNum}/${totalBatches} (${batch.map((b) => b.pkg.name).join(", ")})`);
 
 		const batchResults = await Promise.allSettled(
-			batch.map(async (pkg): Promise<BatchResult> => {
+			batch.map(async ({ pkg, isUpdate }): Promise<BatchResult> => {
 				try {
-					const status = await checkPackageStatus(pkg, config.registry);
-
-					if (status.exists && status.versions.includes(pkg.version)) {
-						console.log(`✅ ${pkg.name}@${pkg.version} already published`);
-						return { result: "already-published", pkg };
-					}
-
-					const isUpdate = status.exists;
 					const action = isUpdate ? "update" : "create";
-					
-
 
 					if (config.dryRun) {
 						console.log(`📦 [DRY RUN] Would ${action} ${pkg.name}@${pkg.version}`);
@@ -516,22 +577,12 @@ async function processPackagesBatch(
 			}),
 		);
 
-		// Process results
 		for (const result of batchResults) {
 			if (result.status === "fulfilled") {
-				switch (result.value.result) {
-					case "already-published":
-						published++;
-						break;
-					case "created":
-					case "updated":
-					case "dry-run-create":
-					case "dry-run-update":
-						processed++;
-						break;
-					case "error":
-						errors++;
-						break;
+				if (result.value.result === "error") {
+					errors++;
+				} else {
+					processed++;
 				}
 			} else if (config.continueOnError) {
 				console.error(`❌ Batch error: ${result.reason}`);
@@ -541,18 +592,18 @@ async function processPackagesBatch(
 			}
 		}
 
-		const progress = (((i + BATCH_SIZE) / packages.length) * 100).toFixed(1);
+		const progress = (((i + BATCH_SIZE) / needsPublish.length) * 100).toFixed(1);
 		console.log(
-			`✅ Batch ${batchNum}/${totalBatches} done (${progress}%) - Published: ${published}, Processed: ${processed}, Errors: ${errors}`,
+			`✅ Batch ${batchNum}/${totalBatches} done (${progress}%) - Processed: ${processed}, Errors: ${errors}\n`,
 		);
 
-		// Delay between batches
-		if (i + BATCH_SIZE < packages.length) {
-			await new Promise((resolve) => setTimeout(resolve, BATCH_DELAY_MS));
+		// Delay between batches (not after the last one)
+		if (i + BATCH_SIZE < needsPublish.length && BATCH_DELAY_MS > 0) {
+			await sleep(BATCH_DELAY_MS);
 		}
 	}
 
-	return { published, processed, errors };
+	return { alreadyPublished, processed, errors };
 }
 
 async function main(): Promise<void> {
@@ -567,6 +618,8 @@ async function main(): Promise<void> {
 			console.log("🔄 CONTINUE ON ERROR MODE - Processing will continue despite failures");
 		}
 
+		console.log(`⚙️  Config: batch=${BATCH_SIZE}, batchDelay=${BATCH_DELAY_MS}ms, publishDelay=${PUBLISH_DELAY_MS}ms, statusConcurrency=${STATUS_CONCURRENCY}`);
+
 		await testNpmAuth(config);
 		const packages = await collectPackages();
 
@@ -575,14 +628,18 @@ async function main(): Promise<void> {
 
 		console.log(`🚀 Processing ${packages.length} packages...`);
 
-		const { published, processed, errors } = await processPackagesBatch(packages, config);
+		// Phase 1: Check all statuses in parallel
+		const statuses = await checkAllStatuses(packages, config.registry);
+
+		// Phase 2: Publish only what's needed
+		const { alreadyPublished, processed, errors } = await publishPendingPackages(packages, statuses, config);
 
 		// Final summary
 		console.log("📊 Final Summary:");
-		console.log(`   ✅ Already published: ${published}`);
+		console.log(`   ✅ Already published: ${alreadyPublished}`);
 		console.log(`   🚀 ${config.dryRun ? "Would process" : "Processed"}: ${processed}`);
 		console.log(`   ❌ Errors: ${errors}`);
-		console.log(`   📋 Total: ${published + processed + errors}`);
+		console.log(`   📋 Total: ${alreadyPublished + processed + errors}`);
 
 		if (errors > 0 && !config.continueOnError) {
 			throw new Error(`Processing failed with ${errors} errors`);

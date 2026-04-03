@@ -13,10 +13,11 @@ concurrency:
 
 env:
   node-version: 24.x
-  # Conservative defaults to avoid npm 429 rate limits; overridable per-run
-  NPM_BATCH_SIZE: 1
-  NPM_BATCH_DELAY_MS: 5000
-  NPM_PUBLISH_DELAY_MS: 2000
+  # Tuned for speed while staying under npm rate limits; overridable per-run
+  NPM_BATCH_SIZE: 5
+  NPM_BATCH_DELAY_MS: 3000
+  NPM_PUBLISH_DELAY_MS: 500
+  NPM_STATUS_CONCURRENCY: 20
   NPM_MAX_RETRIES: 8
   NPM_STATUS_MAX_RETRIES: 5
   NPM_RETRY_BASE_MS: 2000
